@@ -1,15 +1,17 @@
+# Copyright (C) 2018-2023 Battelle Memorial Institute
+# Copyright (C) 2024 Meltran, Inc
 from SPARQLWrapper import SPARQLWrapper2
-import cimhub.CIMHubConfig as CIMHubConfig
+import emthub.EMTHubConfig as EMTHubConfig
 import sys
 
 def list_feeders (cfg_file=None):
 
   if cfg_file is not None:
-    CIMHubConfig.ConfigFromJsonFile (cfg_file)
+    EMTHubConfig.ConfigFromJsonFile (cfg_file)
 
-  sparql = SPARQLWrapper2(CIMHubConfig.blazegraph_url)
+  sparql = SPARQLWrapper2(EMTHubConfig.blazegraph_url)
 
-  sparql.setQuery(CIMHubConfig.prefix + 
+  sparql.setQuery(EMTHubConfig.prefix + 
       """
       SELECT ?feeder ?fid ?station ?sid ?subregion ?sgrid ?region ?rgnid WHERE {
        ?s r:type c:Feeder.

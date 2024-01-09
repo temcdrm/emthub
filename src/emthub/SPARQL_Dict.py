@@ -1,4 +1,6 @@
-import cimhub.CIMHubConfig as CIMHubConfig
+# Copyright (C) 2018-2023 Battelle Memorial Institute
+# Copyright (C) 2024 Meltran, Inc
+import emthub.EMTHubConfig as EMTHubConfig
 from SPARQLWrapper import SPARQLWrapper2, JSON
 import time
 import xml.etree.ElementTree as ET
@@ -11,9 +13,9 @@ DELIM = ':'
 def initialize_SPARQL (cfg_file=None):
   global SPARQL
   if cfg_file is not None:
-    CIMHubConfig.ConfigFromJsonFile (cfg_file)
+    EMTHubConfig.ConfigFromJsonFile (cfg_file)
 
-  SPARQL = SPARQLWrapper2(CIMHubConfig.blazegraph_url)
+  SPARQL = SPARQLWrapper2(EMTHubConfig.blazegraph_url)
   SPARQL.setReturnFormat(JSON)
 
 def build_query (prefix, base, fid):

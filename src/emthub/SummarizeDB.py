@@ -1,6 +1,8 @@
+# Copyright (C) 2018-2023 Battelle Memorial Institute
+# Copyright (C) 2024 Meltran, Inc
 from SPARQLWrapper import SPARQLWrapper2
 import re
-import cimhub.CIMHubConfig as CIMHubConfig
+import emthub.EMTHubConfig as EMTHubConfig
 
 prefix_template = """PREFIX r: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX c: <{cimURL}>
@@ -30,10 +32,10 @@ def run_query (sparql, prefix, lbl, qstr):
 
 def summarize_db (cfg_file=None):
   if cfg_file is not None:
-    CIMHubConfig.ConfigFromJsonFile (cfg_file)
-  sparql = SPARQLWrapper2 (CIMHubConfig.blazegraph_url)
+    EMTHubConfig.ConfigFromJsonFile (cfg_file)
+  sparql = SPARQLWrapper2 (EMTHubConfig.blazegraph_url)
   sparql.method = 'GET'
-  prefix = CIMHubConfig.prefix
+  prefix = EMTHubConfig.prefix
 
   run_query (sparql, prefix, 'Class Summary', count_classes)
   run_query (sparql, prefix, 'Tuple Summary', count_tuples)

@@ -1,10 +1,12 @@
+# Copyright (C) 2018-2023 Battelle Memorial Institute
+# Copyright (C) 2024 Meltran, Inc
 from SPARQLWrapper import SPARQLWrapper2
 import os
-import cimhub.CIMHubConfig as CIMHubConfig
+import emthub.EMTHubConfig as EMTHubConfig
 
 def clear_database (sparql):
   sparql.method = 'POST'
-  sparql.setQuery(CIMHubConfig.prefix + 
+  sparql.setQuery(EMTHubConfig.prefix + 
   """
   DROP ALL
   """)
@@ -12,7 +14,7 @@ def clear_database (sparql):
 
 def count_classes (sparql):
   sparql.method = 'GET'
-  sparql.setQuery(CIMHubConfig.prefix + 
+  sparql.setQuery(EMTHubConfig.prefix + 
   """
   SELECT ?class (COUNT(?class) as ?cnt)
   WHERE {
@@ -24,9 +26,9 @@ def count_classes (sparql):
 
 def count_platform_circuit_classes (cfg_file=None, xml_path = '../model_output_tests/'):
   if cfg_file is not None:
-    CIMHubConfig.ConfigFromJsonFile (cfg_file)
+    EMTHubConfig.ConfigFromJsonFile (cfg_file)
 
-  sparql = SPARQLWrapper2(CIMHubConfig.blazegraph_url)
+  sparql = SPARQLWrapper2(EMTHubConfig.blazegraph_url)
 
   xml_files = {'ACEP_PSIL':{}, 
                'EPRI_DPV_J1':{}, 
@@ -44,7 +46,7 @@ def count_platform_circuit_classes (cfg_file=None, xml_path = '../model_output_t
 
   for fname in xml_files:
     clear_database (sparql)
-    cmd = 'curl -D- -H "Content-Type: application/xml" --upload-file ' + xml_path + fname + '.xml' + ' -X POST ' + CIMHubConfig.blazegraph_url
+    cmd = 'curl -D- -H "Content-Type: application/xml" --upload-file ' + xml_path + fname + '.xml' + ' -X POST ' + EMTHubConfig.blazegraph_url
     os.system (cmd)
     ret = count_classes (sparql)
     for b in ret.bindings:
