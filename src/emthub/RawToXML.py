@@ -1,13 +1,9 @@
 # Copyright (C) 2022-2023 Battelle Memorial Institute
 # Copyright (C) 2024 Meltran, Inc
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jan  10 13:34:29 2023
+"""Translates raw XML (PSLF/PSSE) to CIM XML.
 
-@author: wang109
+The __main__ function currently calls loadRaw and convertXML to write XML to a filename on the IEEE118 and WECC240 examples.
 """
-# translates raw XML (PSLF/PSSE) to CIM XML
-#
 # using Python 3 XML module as documented at:
 #   https://docs.python.org/3/library/xml.etree.elementtree.html
 # CIMHub uses lxml:
@@ -53,6 +49,16 @@ def getStartEndLinesNo(fileName, stringbegin, stringend):
   return [startLine , endLine]
 
 def loadRaw(rawpath, rawname, savetocsv=False): 
+  """Converts a RAW file from PSSE or PSLF to XML with original attribute/node names.
+
+  Args:
+    rawpath (str): relative path to input and output files
+    rawname (str): name of the input file, typically with .raw extension
+    savetocsv (bool): optionally saves the list(DataFrame) to a text file in rawpath
+
+  Returns:
+    list(DataFrame): parsed values
+  """
   dflist = []
   filename = rawpath+rawname
   if sys.platform == 'win32':
@@ -337,6 +343,14 @@ def loadRaw(rawpath, rawname, savetocsv=False):
   return dflist
 
 def convertXML(dflist):
+  """Converts dataframes to XML.
+
+  Args:
+    dflist (list(DataFrame)): pandas DataFrames returned from loadRaw
+
+  Returns:
+    root: an etree root Element from Lxml
+  """
   root = et.Element('root')
   list_subelement = ['BUSDATA', 'LOADDATA', 'FIXEDSHUNTDATA', 
              'GENERATORDATA', 'BRANCHDATA', 'TRANSFORMERDATA', 
@@ -368,7 +382,6 @@ def convertXML(dflist):
 
 #%%
 if __name__ == "__main__":
-  
   # user selected model
   for model in ["IEEE118", "WECC240"]:
   

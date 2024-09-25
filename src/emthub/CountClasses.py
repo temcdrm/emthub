@@ -1,5 +1,7 @@
 # Copyright (C) 2018-2023 Battelle Memorial Institute
 # Copyright (C) 2024 Meltran, Inc
+"""List and count the instances of classes found in a Blazegraph database.
+"""
 from SPARQLWrapper import SPARQLWrapper2
 import os
 import emthub.EMTHubConfig as EMTHubConfig
@@ -25,6 +27,17 @@ def count_classes (sparql):
   return sparql.query()
 
 def count_platform_circuit_classes (cfg_file=None, xml_path = '../model_output_tests/'):
+  """ Counts the class instances found in CIMHub's distribution test feeders.
+
+  Blazegraph must already be started. If not already configured, cfg_file must be provided.
+  The test feeder CIM XML files, as exported from OpenDSS, must already exist in xml_path.
+  Use this function as a template for summarizing BES test cases.
+  Writes to console, and writes summary files to xml_path.
+
+  Args:
+    cfg_file (str): configuration file for Blazegraph.
+    xml_path (str): relative path for reading CIM XML and writing summary files.
+  """
   if cfg_file is not None:
     EMTHubConfig.ConfigFromJsonFile (cfg_file)
 

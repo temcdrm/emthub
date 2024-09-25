@@ -1,7 +1,7 @@
 # Copyright (C) 2018-2023 Battelle Memorial Institute
 # Copyright (C) 2024 Meltran, Inc
 # file: EMTHubConfig.py
-"""Set the CIM namespace and Blazegraph URL
+"""Set the CIM namespace and Blazegraph URL.
 """
 import json
 import urllib.request
@@ -25,6 +25,18 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 """.format(cimURL=cim100)
 
 def ConfigFromJsonFile (fname):
+  """ Sets the CIM namespace and Blazegraph database URL.
+
+  Blazegraph must already be started. The configuration file should be JSON
+  and include the following:
+
+  - blazegraph_url (required): for HTTP queries to Blazegraph
+  - cim_ns (required): namespace for the version of CIM used
+  - use_proxy: *true* if your computer runs a proxy server, e.g., using a VPN
+
+  Args:
+    fname (str): a JSON configuration file for Blazegraph.
+  """
   global blazegraph_url, prefix, cim_ns, DB_URL, EMTHUB_PATH, EMTHUB_PROG
   with open(fname) as fp: 
     cfg = json.load(fp)

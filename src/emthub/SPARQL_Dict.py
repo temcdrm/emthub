@@ -1,5 +1,7 @@
 # Copyright (C) 2018-2023 Battelle Memorial Institute
 # Copyright (C) 2024 Meltran, Inc
+"""Load a Python dictionary of specific BES from database queries.
+"""
 import emthub.EMTHubConfig as EMTHubConfig
 from SPARQLWrapper import SPARQLWrapper2, JSON
 import time
@@ -11,6 +13,14 @@ PREFIX = None
 DELIM = ':'
 
 def initialize_SPARQL (cfg_file=None):
+  """Configure Blazegraph and initialize the SPARQL query object.
+
+  Blazegraph must already be started. If not already configured, cfg_file must be provided.
+  Writes a summary of classes and tuples to the console.
+
+  Args:
+    cfg_file (str): configuration file for Blazegraph.
+  """
   global SPARQL
   if cfg_file is not None:
     EMTHubConfig.ConfigFromJsonFile (cfg_file)
@@ -150,6 +160,20 @@ def load_feeder_dict (xml_file, fid, bTime=True, keyDelimiter=':', cfg_file=None
   return dict
 
 def load_bes_dict (xml_file, sysid, bTime=True, keyDelimiter=':', cfg_file=None):
+  """Query a BES network model from the Blazegraph database.
+
+  Blazegraph must already be started. If not already configured, cfg_file must be provided.
+
+  Args:
+    xml_file (str): definition of the SPARQL queries, should be qbes.xml
+    sysid (str): mRID (no underscore) for the BES ConnectivityNodeContainer
+    bTime (bool): optionally time the query performance
+    keyDelimiter (str): delimiter for separating composite keys
+    cfg_file (str): configuration file for Blazegraph
+
+  Returns:
+    dict: a dictionary of the BES network model data
+  """
   global PREFIX
   global DELIM
   DELIM = keyDelimiter

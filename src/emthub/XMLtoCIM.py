@@ -1,18 +1,9 @@
 # Copyright (C) 2022-2023 Battelle Memorial Institute
 # Copyright (C) 2024 Meltran, Inc
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jan  10 13:34:29 2023
+"""Process the XML-formatted PSSE/PSLF file to compliant CIM XML.
 
-@author: wang109
+The __main__ function currently calls convertRawToCIM on the IEEE118 and WECC240 examples.
 """
-# translates raw XML (PSLF/PSSE) to CIM XML
-#
-# using Python 3 XML module as documented at:
-#   https://docs.python.org/3/library/xml.etree.elementtree.html
-# CIMHub uses lxml:
-#   from lxml import etree
-#   from lxml.etree import Element, ElementTree, QName
 
 import uuid
 import os
@@ -509,7 +500,20 @@ wtgaa_template = """<cim:WeccWTGAA rdf:about="urn:uuid:{mRID}">
 
 #%%
 def convertRawtoCIM(workpath, xmlname, addon_fueltype, cimname, fuidname, containername, containerdesc):
-    
+    """Converts PSSE/PSLF XML to CIM XML.
+
+    Writes files for the CIM XML and persisted mRID values to separate files. Processes data
+    for SI unit conversions, zero-sequence data, attaching dynamic blocks, etc.
+
+    Args:
+      workpath (str): relative path to input and output files
+      xmlname (str): name of the PSSE/PSLF XML file, should have .raw extension
+      addon_fueltype (str): name of xlsx file with generator fuel types
+      cimname (str): name of the output CIM XML file, should have .raw extension and differ from xmlname
+      fuidname (str): name of persistent mRID file, should have .dat extension. If this file exists, the mRIDs in it will be reused if possible. Any new mRIDs created in the conversion process will be added and re-written to the file.
+      containername (str): name of the CIM ConnectivityNodeContainer for the BES system to be converted
+      containerdesc (str): a text description of the BES system to be converted
+    """
     fuidname = workpath+fuidname
     xmlname = workpath+xmlname
     cimname = workpath+cimname

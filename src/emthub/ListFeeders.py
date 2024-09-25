@@ -1,10 +1,20 @@
 # Copyright (C) 2018-2023 Battelle Memorial Institute
 # Copyright (C) 2024 Meltran, Inc
+"""List the distribution feeders found in a Blazegraph database.
+"""
 from SPARQLWrapper import SPARQLWrapper2
 import emthub.EMTHubConfig as EMTHubConfig
 import sys
 
 def list_feeders (cfg_file=None):
+  """ List the names and mRID values of distribution feeders found in the Blazegraph database.
+
+  Blazegraph must already be started. If not already configured, cfg_file must be provided.
+  Writes a list of feeder names and mRIDs to the console.
+
+  Args:
+    cfg_file (str): configuration file for Blazegraph.
+  """
 
   if cfg_file is not None:
     EMTHubConfig.ConfigFromJsonFile (cfg_file)
