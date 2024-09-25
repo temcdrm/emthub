@@ -1,0 +1,272 @@
+BEGIN NEW DATA CASE --NOSORT--
+DATA BASE MODULE
+$ERASE
+ARG __PCC, __OUT
+ARG __VOLTBASE, _POWERBASE, __CURRBASE, _______PPU, _______QPU, ____VREFPU
+C 
+NUM __VOLTBASE, _POWERBASE, __CURRBASE, _______PPU, _______QPU, ____VREFPU
+C 
+DUM _COSTH, _SINTH, _THETA, _ALPHA, __BETA, ___VGD, ___VGQ, ___IGD, ___IGQ
+DUM __PDQ0, __QDQ0, ___VGR, _IQRMX, _IQRMN, _IALPH, _IBETA, _IPREF, _IPCMD
+DUM _IQREF, _IQCMD, ____ID, _LVACM, __VGPU, ____PG, ____QG, ____DW, ____WE
+DUM ____WC, _POWER, _VLVPL, __LVPL, _LVPRR, _LVPSW, _IOLIM, ___KCV, _VSWEL
+DUM __VSAG, _VFILT, _VREF0, __VDIP, _IQVRF, __VDL1, __VDL2, _PELEC, _TANPF
+DUM __QREF, ___QPF, _QCTRL, __QREG, ____ND, _NDFLT, _IQRAW, _IQFRZ, _IQCMD
+DUM __IMAX, _PQFLG, _IQLIM, _IPLIM, _IQMAX, _IPMAX, _IQMIN, _IQINJ, _VREF1
+DUM _QFLAG, _PREFW, _RFLAG, __PORD, __PMIN, __PMAX, _IPRAW, _IPCMD, _VQMAX
+DUM _VQMIN, ___IGR, ____KC, ____RC, ____XC, __VLDC, ___ZC2, _VCTRL, _LDCFG
+DUM _REFFG, _VCLAG, _QGLAG, __QEX1, __QEX2, __QEX3, __QEX4, _PGLAG, ___DWP
+DUM __DWDB, __PEX1, _FRQFG, __PEX2, __PEX3, _PFFLG, __QEXT, _NDFLG, _IQFLG
+DUM ____IQ, _VFLAG, _VFGIN, ____IA, ____IB, ____IC, ___IGA, ___IGB, ___IGC
+DUM __IX16, __IX17, __IX18, __IX19, _VALPH, _VBETA, __PREF
+/TACS
+C
+C voltage and current sensors
+90__PCCA                                                           -1.      1.E3
+90__PCCB                                                           -1.      1.E3
+90__PCCC                                                           -1.      1.E3
+91___IGA                                                                    1.E3
+91___IGB                                                                    1.E3
+91___IGC                                                                    1.E3
+C 
+C control logic
+C 
+99_COSTH  =COS(_THETA)
+99_SINTH  =SIN(_THETA)
+98____IA  =0.816497*_ALPHA
+98____IB  =-0.408248*_ALPHA + 0.707107*__BETA
+98____IC  =-0.408248*_ALPHA - 0.707107*__BETA
+99___VGD  =_VALPH*_COSTH + _VBETA*_SINTH
+99___VGQ  =-_VALPH*_SINTH + _VBETA*_COSTH
+99___IGD  =_IALPH*_COSTH + _IBETA*_SINTH
+99___IGQ  =-_IALPH*_SINTH + _IBETA*_COSTH
+99__PDQ0  =___VGD*___IGD+___VGQ*___IGQ
+99__QDQ0  =___VGQ*___IGD-___VGD*___IGQ
+99___VGR  =SQRT(___VGD*___VGD+___VGQ*___VGQ)
+98_IQRMX  =    999.9
+98_IQRMN  =   -999.9
+ 1_IPREF  +_IPCMD                                     1.                  _LVPRR
+        1.          
+        1.       .02
+ 1_IQREF  +_IQCMD                                     1.            _IQRMN_IQRMX
+        1.          
+        1.       .02
+99____ID  =-_IPREF*_LVACM
+ 2__VGPU                  +___VGR                     1.                  
+        1.                                                                      
+        1.    .01667  6.944E-5                                                  
+ 2____PG                  +__PDQ0                     1.                  
+        1.                                                                      
+        1.    .01667  6.944E-5                                                  
+ 2____QG                  +__QDQ0                     1.                  
+        1.                                                                      
+        1.    .01667  6.944E-5                                                  
+ 1____DW  +___VGQ                                     1.                  
+    1.34E5     188.5
+                  1.
+ 0____WE          -____DW         +____WC             1.                  
+98____WC  = 376.9911
+ 1_THETA  +____WE                                     1.
+        1.
+                  1.
+99_VALPH  =0.408248*(2*__PCCA-__PCCB-__PCCC)/__VOLTBASE
+99_VBETA  =0.707107*(__PCCB-__PCCC)/__VOLTBASE
+99_IALPH  =0.408248*(2*___IGA-___IGB-___IGC)/__CURRBASE
+99_IBETA  =0.707107*(___IGB-___IGC)/__CURRBASE
+99_ALPHA  =(____ID*_COSTH - ____IQ*_SINTH)*__CURRBASE
+99__BETA  =(____ID*_SINTH + ____IQ*_COSTH)*__CURRBASE
+99_POWER  =__PCCA*___IGA + __PCCB*___IGB + __PCCC*___IGC
+ 1_VLVPL  +__VGPU                                     1.                  
+        1.          
+        1.      .015
+98__LVPL56                +_VLVPL                     1.
+              -1               0
+             0.4               0
+             0.9             1.2
+              10             1.2
+           9999.
+98_LVACM56                +__VGPU                     1.
+              -1               0
+             0.4               0
+             0.8               1
+              10               1
+           9999.
+99_LVPRR  =_LVPSW*__LVPL
+98_LVPSW  =       1.
+C 98_VBASE  =    2.2E4
+C 98_SBASE  =     6.E8
+C 98_IBASE  =   27273.
+98_IOLIM  =     -1.2
+98___KCV  =      0.0
+98_VSWEL  =     1.15
+98__VSAG  =     0.87
+ 1_VFILT  +__VGPU                                     1.                  
+        1.          
+        1.       .03
+98_VREF0  =____VREFPU
+98__VDIP  =___KCV * ((__VGPU.LT.__VSAG) .OR. (__VGPU.GT._VSWEL))
+98_IQVRF56        -_VFILT         +_VREF0             1.
+      -100000000           -1.05
+           -1.05           -1.05
+           -0.05           -0.05
+         -0.0499               0
+          0.0499               0
+            0.05            0.05
+            1.05            1.05
+       100000000            1.05
+           9999.
+98__VDL156                +_VFILT                     1.
+              -1               1
+               2               1
+               3               1
+               4               1
+           9999.
+98__VDL256                +_VFILT                     1.
+              -1               1
+               2               1
+               3               1
+               4               1
+           9999.
+ 1_PELEC  +____PG                                     1.                  
+        1.          
+        1.       .05
+98_TANPF  = -0.20306
+24__IX16  _______QPU        .3                                      .1        .4
+11__IX17  _______QPU                                                .4      1.E3
+98__QREF  =__IX16+__IX17
+99___QPF  =_PELEC * _TANPF * _PFFLG
+ 0_QCTRL          +___QPF         +__QEXT             1.   -.7    .7      
+ 1__QREG          +_QCTRL         -____QG             1.            _VQMIN_VQMAX
+        .1        .1                                                            
+                  1.                                                            
+98____ND  = _QCTRL / _VFILT
+ 1_NDFLT  +____ND                                     1.                  
+        1.          
+        1.      .015
+ 1_IQRAW          +_VFGIN         -_VFILT             1.            _IQMIN_IQMAX
+        1.        5.                                                            
+                  1.                                                            
+98_IQFRZ  =      0.0
+ 0_IQCMD  +_NDFLG +_IQINJ                 +_IQFLG     1.            _IQMIN_IQMAX
+98__IMAX  =      1.2
+98_PQFLG  =      0.0
+98_IQLIM  =SQRT(__IMAX*__IMAX - _PQFLG*_IPCMD*_IPCMD)
+98_IPLIM  =SQRT(__IMAX*__IMAX - (1-_PQFLG)*_IQCMD*_IQCMD)
+98_IQMAX63        +__VDL1         +_IQLIM                  -1.
+98_IPMAX63        +__VDL2         +_IPLIM                  -1.
+98_IQMIN  = - _IQMAX
+98_IQINJ  = _IQVRF * __VDIP
+98_VREF1  =      0.0
+98_QFLAG  =       1.
+24__IX18  _______PPU        .3                                      .1        .4
+11__IX19  _______PPU                                                .4      1.E3
+98__PREF  =__IX18+__IX19
+99_PREFW  =__PREF * (NOT(_RFLAG) + _RFLAG*____WE)
+98_RFLAG  =      0.0
+ 1__PORD  +_PREFW                                     1.            __PMIN__PMAX
+        1.          
+        1.       .03
+98__PMIN  =      0.0
+98__PMAX  =       1.
+98_IPRAW  = __PORD / _VFILT
+ 0_IPCMD                  +_IPRAW                     1.            __PMIN_IPMAX
+98_VQMAX  =     1.07
+98_VQMIN  =      0.9
+99___IGR  =SQRT(___IGD*___IGD+___IGQ*___IGQ)
+98____KC  =      0.0
+98____RC  =    0.001
+98____XC  =     0.01
+99__VLDC  =SQRT(_VFILT*_VFILT-(___ZC2*___IGR*___IGR))
+98___ZC2  =  1.01E-4
+99_VCTRL  =(____KC*____QG+__VGPU)*(1-_LDCFG) + _LDCFG*__VLDC
+98_LDCFG  =      0.0
+98_REFFG  =       1.
+ 1_VCLAG  +_VCTRL                                     1.                  
+        1.          
+        1.       .02
+ 1_QGLAG  +____QG                                     1.                  
+        1.          
+        1.       .02
+99__QEX1  =(__QREF-_QGLAG)*(1-_REFFG) + _REFFG*(_VREF0-_VCLAG)
+98__QEX256                +__QEX1                     1.
+           -2000            -999
+            -999            -999
+             999             999
+            2000             999
+           9999.
+ 1__QEX3                  +__QEX2                    .25   -.7    .7      
+        5.       10.                                                            
+                  1.                                                            
+ 1__QEX4  +__QEX3                                     1.                  
+        1.          
+        1.       .08
+ 1_PGLAG  +____PG                                     1.                  
+        1.          
+        1.       .03
+99___DWP  =(____WC - ____WE) / ____WC
+98__DWDB56                +___DWP                    20.
+           -9999              -1
+           -0.06              -1
+           -0.01               0
+            1000               0
+           9999.
+99__PEX1  =(__PREF - _PGLAG + __DWDB) * _FRQFG
+98_FRQFG  =       1.
+ 1__PEX2                  +__PEX1                     1.          1.      
+       .05        .1                                                            
+                  1.                                                            
+ 1__PEX3  +__PEX2                                     1.                  
+        1.          
+        1.       .08
+98_PFFLG  =      0.0
+99__QEXT  =__QEX4 * (1.0 - _PFFLG)
+99_NDFLG  =_NDFLT * (1.0 - _QFLAG)
+99_IQFLG  =_IQRAW * _QFLAG
+98____IQ  =     1. * _IQREF
+98_VFLAG  =       1.
+99_VFGIN  =__QREG * _VFLAG + __QEXT * (1.0-_VFLAG) * (1.0-_PFFLG)
+C 
+C Define output variables
+C 
+98__OUTF  =____WE
+98__OUTP  =__PDQ0
+98__OUTQ  =__QDQ0
+C 
+C Initial conditions
+C 
+77__VGPU  ____VREFPU
+77_VFILT  ____VREFPU
+77_VCLAG  ____VREFPU
+77__QEX3  ____VREFPU
+77__QEX4  ____VREFPU
+77__OUTF    376.9911
+77__OUTP          0.
+77__OUTQ          0.
+C 
+C Current injection
+C 
+/BRANCH
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  >
+  ____IA___IGA             0.001
+  ____IB___IGB             0.001
+  ____IC___IGC             0.001
+  ___IGA                    1.E3        .001                                   0
+  ___IGB                    1.E3        .001                                   0
+  ___IGC                    1.E3        .001                                   0
+/SWITCH
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >
+  ___IGA__PCCA                                        MEASURING                0
+  ___IGB__PCCB                                        MEASURING                0
+  ___IGC__PCCC                                        MEASURING                0
+/SOURCE
+C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >
+60____IA-1                                                         -1.      1.E3
+60____IB-1                                                         -1.      1.E3
+60____IC-1                                                         -1.      1.E3
+BEGIN NEW DATA CASE
+C 
+$PUNCH
+BEGIN NEW DATA CASE
+BLANK
+

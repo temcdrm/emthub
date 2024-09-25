@@ -1,0 +1,9 @@
+del *.lis
+del *.dbg
+del fort.6
+del *.dat
+del *.cfg
+del *.pl4
+del commands.script
+del *.log
+del Test3PF.atp

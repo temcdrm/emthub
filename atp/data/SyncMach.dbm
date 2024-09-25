@@ -1,0 +1,189 @@
+BEGIN NEW DATA CASE --NOSORT--
+DATA BASE MODULE
+$ERASE
+ARG __GEN, __OUT
+ARG ______RMVA, _______RKV, ____AGLINE, _______S1D, _______S2D, _______VPK
+ARG ______ANG0, ________RA, ________XL, ________XD, ________XQ, _______XDP
+ARG _______XQP, ______XDPP, ______XQPP, ______TDOP, ______TQOP, _____TDOPP
+ARG _____TQOPP, ________X0, ________RN, ________XN, ______XCAN, ______HICO
+ARG _______DSD
+ARG __IKV0, _____KVINI, _____IFINI, _____IFNOM
+ARG __KGOV, ________T2, _____T1PT3, ______T1T3, __PMAX
+ARG ____KC, _______ILR, _______KLR, _VRMIN, _VRMAX
+ARG ______V0PU, ____KA, ________TA, ________TB, ________TC, ______TLED
+ARG ______TLAG, ______KFBK, ______TFBK
+ARG __PSK5, ______PSA1, ______PSA2, ______PST3, ______PST4, ______PST5
+ARG ______PST6, _VSTMN, _VSTMX
+C 
+NUM ______RMVA, _______RKV, ____AGLINE, _______S1D, _______S2D, _______VPK
+NUM ______ANG0, ________RA, ________XL, ________XD, ________XQ, _______XDP
+NUM _______XQP, ______XDPP, ______XQPP, ______TDOP, ______TQOP, _____TDOPP
+NUM _____TQOPP, ________X0, ________RN, ________XN, ______XCAN, ______HICO
+NUM _______DSD
+NUM __IKV0, _____KVINI, _____IFINI, _____IFNOM
+NUM __KGOV, ________T2, ______T1T3, _____T1PT3, __PMAX
+NUM ____KC, _______ILR, _______KLR, _VRMIN, _VRMAX
+NUM ______V0PU, ____KA, ________TA, ________TB, ________TC, ______TLED
+NUM ______TLAG, ______KFBK, ______TFBK
+NUM __PSK5, ______PSA1, ______PSA2, ______PST3, ______PST4, ______PST5
+NUM ______PST6, _VSTMN, _VSTMX
+C 
+DUM __WREF, __PREF, VRMSKV, VRMSPU, ____WG, __DPWG, _PMECH, _PSST5, PSST12
+DUM EXCOUT, EXCTRN, _KVREF, __DWGN, EXCLIM, __WGPU, _TORQD, _TORQC, _PSST6
+DUM PSSA12, PSST34, ___VSI, ___IFD, _EXCVA, EXCFBK, ___EFD, __LIMN, __LIMP
+DUM _KCIFD, VTVRMX, _IFDPU, FLDLIM
+/TACS
+C 
+C frequency and power set points based on the initial condition
+C 
+11__WREF          1.                                               -1.      1.E3
+11__PREF          1.                                               -1.      1.E3
+C 
+C Voltage sensor
+C 
+90__GENA                                                           -1.      1.E3
+90__GENB                                                           -1.      1.E3
+90__GENC                                                           -1.      1.E3
+99VRMSKV  =0.001*SQRT(__GENA*__GENA+__GENB*__GENB+__GENC*__GENC)
+ 2VRMSPU                  +VRMSKV                 __IKV0                  
+        1.                                                                      
+        1.    .01667  6.944E-5                                                  
+C 
+C Frequency sensor
+C 
+92____WG                                                           -1.      1.E3
+99__WGPU  =____WG/OMEGAR
+ 2__DWGN                  -__WGPU         +__WREF     1.                  
+        1.                                                                      
+        1.    .01667  6.944E-5                                                  
+C 
+C Governor
+C 
+ 2__DPWG                  +__DWGN                 __KGOV
+        1.________T2                                                            
+        1._____T1PT3______T1T3                                                  
+ 0_PMECH  +__DPWG                         +__PREF     1.      __PMAX      
+C 
+C Power system stabilizer on frequency; block order does not match IEEE 421.5
+C 
+ 1_PSST5                  +__DWGN                 __PSK5                  
+          ______PST5                                                            
+        1.______PST5                                                            
+ 1_PSST6                  +_PSST5                     1.                  
+        1. 
+        1.______PST6                                                            
+ 2PSSA12                  +_PSST6                     1.                  
+        1.                                                                      
+        1.______PSA1______PSA2                                                  
+ 1PSST34                  +PSSA12                     1.                  
+        1.______PST3                                                            
+        1.______PST4                                                            
+ 0PSST12                  +PSST34                     1.
+C This limit comes after all the dynamic blocks as in IEEE 421.5                  
+ 0___VSI                  +PSST12                     1._VSTMN_VSTMX
+C 
+C Excitation system
+C 
+11_KVREF  ______V0PU                                               -1.      1.E3
+ 0EXCLIM  -VRMSPU         +_KVREF -___VSI -EXCFBK     1.   -.1    .1      
+ 1_EXCVA                  +EXCTRN                 ____KA -999.  999.      
+        1.
+        1.________TA
+ 1EXCTRN                  +EXCLIM                     1.                  
+        1.________TC                                                            
+        1.________TB                                                            
+ 1EXCOUT  -FLDLIM         +_EXCVA                     1.                  
+        1.______TLED                                                            
+        1.______TLAG                                                            
+ 1EXCFBK                  +EXCOUT                     1. -999.  999.      
+        0.______KFBK                                                           
+        1.______TFBK                                                            
+ 0___EFD                  +EXCOUT                     1.            __LIMN__LIMP  
+C 
+C Field limiting
+C 
+92___IFD                                                           -1.      1.E3
+99_IFDPU  =___IFD/_____IFNOM
+ 0_KCIFD                  +_IFDPU                 ____KC                  
+99FLDLIM  =_______KLR * (_IFDPU - _______ILR) * (_IFDPU .GT. _______ILR)
+ 0__LIMN                  -VRMSPU                 _VRMIN                  
+ 0VTVRMX                  +VRMSPU                 _VRMAX                  
+ 0__LIMP  -_KCIFD                         +VTVRMX     1.                  
+C 
+C Define output variables
+C 
+98__OUTV  =VRMSPU
+98__OUTP  =_PMECH
+98__OUTW  =__WGPU
+98__OUTF  =___EFD
+C
+C more outputs for debugging
+C 
+C 98__OUTA  =__DWGN
+C 98__OUTB  =__DPWG
+C 98__OUT5  =_PSST5
+C 98__OUT6  =_PSST6
+C 98__OUT2  =PSSA12
+C 98__OUT3  =PSST34
+C 98__OUT1  =PSST12
+C 98__OUTS  =___VSI
+C 98__OUTM  =EXCLIM
+C 98__OUTC  =_EXCVA
+C 98__OUTD  =EXCTRN
+C 98__OUTE  =EXCOUT
+C 98__OUTG  =EXCFBK
+C 98__OUTH  =___IFD
+C 98__OUTI  =_IFDPU
+C 98__OUTJ  =_KCIFD
+C 98__OUTK  =FLDLIM
+C 98__OUTL  =__LIMN
+C 98__OUTN  =VTVRMX
+C 98__OUTO  =__LIMP
+C 
+C Initial conditions
+C 
+77VRMSKV  _____KVINI
+77_PMECH          1.
+77__WGPU          1.
+77_IFDPU  _____IFINI
+77__OUTF          1.
+77__OUTV          1.
+77__OUTP          1.
+77__OUTW          1.
+C        1         2         3         4         5         6         7         8
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+/BRANCH
+  __GENA                    1.E3        .232                                   0
+  __GENB                    1.E3        .232                                   0
+  __GENC                    1.E3        .232                                   0
+/SOURCE
+C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >
+58__GENA  _______VPK       60.______ANG0
+  __GENB
+  __GENC
+PARAMETER FITTING             2.
+TOLERANCES       50.   1.0E-15   1.0E-16                  20
+ 1 1 11  2                    ______RMVA_______RKV____AGLINE_______S1D_______S2D
+                  1.      1.25                           -1.
+________RA________XL________XD________XQ_______XDP_______XQP______XDPP______XQPP
+______TDOP______TQOP_____TDOPP_____TQOPP________X0________RN________XN______XCAN
+ 1                1.______HICO                              _______DSD
+BLANK
+C 1          4     5     6     7     1     2     3     11    14    15    
+C 1          4     8     9    13
+C 2     2
+C 3     2
+C 4     2
+  51
+BLANK
+71___EFD   
+72_PMECH        1
+74____WG        2
+73___IFD        4
+  FINISH
+BEGIN NEW DATA CASE
+C 
+$PUNCH
+BEGIN NEW DATA CASE
+BLANK
+

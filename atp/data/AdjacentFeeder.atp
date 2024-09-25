@@ -1,0 +1,13 @@
+/BRANCH
+$VINTAGE,0
+C approximately 250 feet to ADJ1, 1 mile to ADJ2, 1 mile to ADJ3
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  >
+51SBUS AADJ1 A             0.020  0.10
+52SBUS BADJ1 B             0.002  0.05
+53SBUS CADJ1 C
+51ADJ1 AADJ2 A             0.080  0.40
+52ADJ1 BADJ2 B             0.008  0.20
+53ADJ1 CADJ2 C
+51ADJ2 AADJ3 A             0.320  1.60
+52ADJ2 BADJ3 B             0.032  0.80
+53ADJ2 CADJ3 C
