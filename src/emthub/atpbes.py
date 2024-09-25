@@ -36,7 +36,7 @@ def reset_globals(case):
   print ('This function requires an ATP user license.')
 
 def convert_one_atp_model (query_file, fpath, case):
-  """Reset counters and limits for the next ATP netlist export.
+  """Export one BES network model to ATP.
 
   Writes a file ending in *_net.atp*, which references support files for machines,
   IBR, controls, and other components. An ATP user license is required for the
