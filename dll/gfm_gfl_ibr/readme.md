@@ -12,11 +12,11 @@ Then follow these instructions:
 
 1. Open the *x64 Native Tools Command Prompt for VS 2022* from Windows Start Menu
 2. From the _GFM_GFL_IBR_ project directory:
-    a. `md build`
-    b. `cd build`
-    c. `cmake ..`
-    d. `cmake --build . --config Release`
-    e. `cmake --build . --config Debug`
+    1. `md build`
+    2. `cd build`
+    3. `cmake ..`
+    4. `cmake --build . --config Release`
+    5. `cmake --build . --config Debug`
 3. From the build/Release or build/Debug output directory, check the exported functions:
-    a. `dumpbin /exports GFM_GFL_IBR.dll`
-    b. `test`
+    1. `dumpbin /exports GFM_GFL_IBR.dll`
+    2. `test`
