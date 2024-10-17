@@ -1,7 +1,7 @@
-# GFM GFL IBR Example
+# SCRX9 Example
 
-This is an example DLL for the IEEE/Cigre specification, implementing grid-forming (GFL) 
-and grid-following (GFL) behaviors for inverter-based resources (IBR). Developed by EPRI.
+This is an example DLL for the IEEE/Cigre specification, a static exciter model
+for synchronous machines. Developed by Electranix.
 
 ## Build Instructions - Windows
 
@@ -11,7 +11,7 @@ Install compiler and Cmake from: https://visualstudio.microsoft.com/downloads/
 Then follow these instructions:
 
 1. Open the *x64 Native Tools Command Prompt for VS 2022* from Windows Start Menu
-2. From the _GFM_GFL_IBR_ project directory:
+2. From the _SCRX9_ project directory:
     1. `md build`
     2. `cd build`
     3. `cmake ..`
@@ -24,7 +24,7 @@ Then follow these instructions:
 ## File Directory
 
 - _CMakeLists.txt_ generates the detailed build instructions
-- _GFM_GFL_IBR.c_ is the unmodified example file from Deepak Ramasubramanian of EPRI
+- _SCRX9_ is the unmodified example file from Garth Irwin of Electranix
 - _test.c_ is a test harness, mimicking the DLL import and calling functions of a simulation tool
 
 Copyright &copy; 2024, Meltran, Inc

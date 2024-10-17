@@ -2,7 +2,7 @@
 
 // see https://learn.microsoft.com/en-us/windows/win32/dlls/using-run-time-dynamic-linking
 
-#define DLL_NAME "GFM_GFL_IBR.dll"
+#define DLL_NAME "SCRX9.dll"
 
 #include <windows.h> 
 #include <stdio.h> 

@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.26)
 
-project(GFM_GFL_IBR)
+project(SCRX9)
 
-add_library(GFM_GFL_IBR SHARED 
- GFM_GFL_IBR.c)
+add_library(SCRX9 SHARED 
+ SCRX9.c)
 add_executable (test test.c)
 
 include_directories(../include)
 
 if(WIN32)
-  target_compile_options(GFM_GFL_IBR PUBLIC "-D_USRDLL")
+  target_compile_options(SCRX9 PUBLIC "-D_USRDLL")
 endif()
 if(UNIX)
   set(CMAKE_C_FLAGS "-O3 -fPIC")
