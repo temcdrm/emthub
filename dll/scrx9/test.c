@@ -3,6 +3,7 @@
 // see https://learn.microsoft.com/en-us/windows/win32/dlls/using-run-time-dynamic-linking
 
 #define DLL_NAME "SCRX9.dll"
+#define TMAX 1.0
 
 #include <windows.h> 
 #include <stdio.h> 
@@ -34,6 +35,132 @@ const char *modeEMTorRMS (int val)
   return "n/a";
 }
 
+int get_datatype_size (int dtype)
+{
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_char_T) return sizeof (char_T);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_int8_T) return sizeof (int8_T);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_uint8_T) return sizeof (uint8_T);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_int16_T) return sizeof (int16_T);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_uint16_T) return sizeof (uint16_T);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_int32_T) return sizeof (int32_T);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_uint32_T) return sizeof (uint32_T);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_real32_T) return sizeof (real32_T);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_real64_T) return sizeof (real64_T);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_c_string_T) return sizeof (const char *);
+  return 0;
+}
+
+void assign_dll_value (char *pVals, int offset, int dtype, int dsize, union DefaultValueU val)
+{
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_char_T) memcpy (pVals+offset, &val.Char_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_int8_T) memcpy (pVals+offset, &val.Int8_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_uint8_T) memcpy (pVals+offset, &val.Uint8_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_int16_T) memcpy (pVals+offset, &val.Int16_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_uint16_T) memcpy (pVals+offset, &val.Uint16_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_int32_T) memcpy (pVals+offset, &val.Int32_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_uint32_T) memcpy (pVals+offset, &val.Uint32_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_real32_T) memcpy (pVals+offset, &val.Real32_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_real64_T) memcpy (pVals+offset, &val.Real64_Val, dsize);
+//  if (dtype == IEEE_Cigre_DLLInterface_DataType_c_string_T) pVals[offset] = val.Char_Ptr;
+}
+
+IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInterface_Model_Info *pInfo)
+{
+  printf("creating pModel\n");
+  IEEE_Cigre_DLLInterface_Instance *pModel = malloc (sizeof *pModel);
+  pModel->Time = 0.0;
+  // allocate memory
+  pModel->IntStates = NULL;
+  pModel->FloatStates = NULL;
+  pModel->DoubleStates = NULL;
+  pModel->ExternalInputs = NULL;
+  pModel->ExternalOutputs = NULL;
+  pModel->Parameters = NULL;
+  if (pInfo->NumInputPorts > 0) {
+    int parm_size = 0;
+    for (int i = 0; i < pInfo->NumInputPorts; i++) {
+      int dtype = pInfo->InputPortsInfo[i].DataType;
+      int dsize = get_datatype_size (dtype);
+      parm_size += dsize;
+    }
+    printf ("%d inputs of total size %d\n", pInfo->NumInputPorts, parm_size);
+    pModel->ExternalInputs = malloc(parm_size);
+  }
+  if (pInfo->NumOutputPorts > 0) {
+    int parm_size = 0;
+    for (int i = 0; i < pInfo->NumOutputPorts; i++) {
+      int dtype = pInfo->OutputPortsInfo[i].DataType;
+      int dsize = get_datatype_size (dtype);
+      parm_size += dsize;
+    }
+    printf ("%d outputs of total size %d\n", pInfo->NumOutputPorts, parm_size);
+    pModel->ExternalOutputs = malloc(parm_size);
+  }
+  if (pInfo->NumIntStates > 0) {
+    pModel->IntStates = (int32_T *) malloc(pInfo->NumIntStates * sizeof(int32_T));
+  }
+  if (pInfo->NumFloatStates > 0) {
+    pModel->FloatStates = (real32_T *) malloc(pInfo->NumDoubleStates * sizeof(real32_T));
+  }
+  if (pInfo->NumDoubleStates > 0) {
+    pModel->DoubleStates = (real64_T *) malloc(pInfo->NumFloatStates * sizeof(real64_T));
+  }
+  if (pInfo->NumParameters > 0) {
+    int parm_size = 0;
+    for (int i = 0; i < pInfo->NumParameters; i++) {
+      int dtype = pInfo->ParametersInfo[i].DataType;
+      int dsize = get_datatype_size (dtype);
+      printf ("parm %d type %d size %d\n", i, dtype, dsize);
+      parm_size += dsize;
+    }
+    printf("parm_size = %d\n", parm_size);
+    pModel->Parameters = malloc (parm_size);
+    // initialize the parameters to default values
+    int offset = 0;
+    for (int i = 0; i < pInfo->NumParameters; i++) {
+      int dtype = pInfo->ParametersInfo[i].DataType;
+      int dsize = get_datatype_size (dtype);
+      assign_dll_value ((char *)pModel->Parameters, offset, dtype, dsize, pInfo->ParametersInfo[i].DefaultValue);
+      offset += dsize;
+    }
+  }
+  return pModel;
+}
+
+void FreeModelInstance (IEEE_Cigre_DLLInterface_Instance *pModel)
+{
+  printf("freeing pModel\n");
+  if (NULL != pModel->ExternalInputs) {
+    free (pModel->ExternalInputs);
+  }
+  if (NULL != pModel->ExternalOutputs) {
+    free (pModel->ExternalOutputs);
+  }
+  if (NULL != pModel->IntStates) {
+    free (pModel->IntStates);
+  }
+  if (NULL != pModel->FloatStates) {
+    free (pModel->FloatStates);
+  }
+  if (NULL != pModel->DoubleStates) {
+    free (pModel->DoubleStates);
+  }
+  if (NULL != pModel->Parameters) {
+    free (pModel->Parameters);
+  }
+  free (pModel);
+  return;
+}
+
+void check_messages (const char *loc, IEEE_Cigre_DLLInterface_Instance *pModel)
+{
+  if (NULL != pModel->LastGeneralMessage) {
+    if (strlen (pModel->LastGeneralMessage) > 0) {
+      printf("  %s says %s\n", loc, pModel->LastGeneralMessage);
+    }
+  }
+}
+
 int main( void ) 
 { 
   HINSTANCE hLib; 
@@ -47,39 +174,77 @@ int main( void )
     Model_PrintInfo = (DLL_INFO_FCN) GetProcAddress(hLib, "Model_PrintInfo"); 
     if (NULL != Model_PrintInfo) {
       fRunTimeLinkSuccess = TRUE;
+      // we seem to only need Model_GetInfo to run the DLL
 //      Model_PrintInfo (); 
     }
+    // find the required DLL functions
     Model_GetInfo = (DLL_STRUCT_FCN) GetProcAddress(hLib, "Model_GetInfo");
-    if (NULL != Model_GetInfo) {
-      const IEEE_Cigre_DLLInterface_Model_Info *pModelInfo = Model_GetInfo();
-      printf("Model Name = %s\n", pModelInfo->ModelName);
-      printf("Model Version = %s\n", pModelInfo->ModelVersion);
-      printf("Updated %s by %s\n", pModelInfo->ModelLastModifiedDate, pModelInfo->ModelLastModifiedBy);
-      printf("Time Step: %0.5g [s]\n", pModelInfo->FixedStepBaseSampleTime);
-      printf("EMT/RMS Mode: %s\n", modeEMTorRMS (pModelInfo->EMT_RMS_Mode));
-      printf("Parameters/Description/Default:\n");
-      for (int k=0; k < pModelInfo->NumParameters; k++) {
-        printf("  %2d %-12s %-70s %-10s %g\n", k, pModelInfo->ParametersInfo[k].Name, pModelInfo->ParametersInfo[k].Description, 
-               pModelInfo->ParametersInfo[k].Unit, pModelInfo->ParametersInfo[k].DefaultValue.Real64_Val);
-      }
-      printf("Input Signals:\n");
-      for (int k=0; k < pModelInfo->NumInputPorts; k++) {
-        printf("  %2d %-12s %-70s %-10s\n", k, pModelInfo->InputPortsInfo[k].Name, pModelInfo->InputPortsInfo[k].Description, 
-               pModelInfo->InputPortsInfo[k].Unit);
-      }
-      printf("Output Signals:\n");
-      for (int k=0; k < pModelInfo->NumOutputPorts; k++) {
-        printf("  %2d %-12s %-70s %-10s\n", k, pModelInfo->OutputPortsInfo[k].Name, pModelInfo->OutputPortsInfo[k].Description, 
-               pModelInfo->OutputPortsInfo[k].Unit);
-      }
-      printf("Internal State Variables: %d int, %d float, %d double\n", pModelInfo->NumIntStates, pModelInfo->NumFloatStates, pModelInfo->NumDoubleStates);
-    }
     Model_CheckParameters = LoadModelFunction (hLib, "Model_CheckParameters"); 
-    Model_FirstCall = LoadModelFunction (hLib, "Model_FirstCall");
     Model_Initialize = LoadModelFunction (hLib, "Model_Initialize");
     Model_Outputs = LoadModelFunction (hLib, "Model_Outputs");
-    Model_Iterate = LoadModelFunction (hLib, "Model_Iterate");
     Model_Terminate = LoadModelFunction (hLib, "Model_Terminate");
+    // look for the new (optional) DLL functions
+    Model_FirstCall = LoadModelFunction (hLib, "Model_FirstCall");
+    Model_Iterate = LoadModelFunction (hLib, "Model_Iterate");
+    // retrieve the DLL interface points
+    const IEEE_Cigre_DLLInterface_Model_Info *pModelInfo = Model_GetInfo();
+    printf("Model Name = %s\n", pModelInfo->ModelName);
+    printf("Model Version = %s\n", pModelInfo->ModelVersion);
+    printf("Updated %s by %s\n", pModelInfo->ModelLastModifiedDate, pModelInfo->ModelLastModifiedBy);
+    printf("Time Step: %0.5g [s]\n", pModelInfo->FixedStepBaseSampleTime);
+    printf("EMT/RMS Mode: %s\n", modeEMTorRMS (pModelInfo->EMT_RMS_Mode));
+    printf("Parameters/Description/Default:\n");
+    for (int k=0; k < pModelInfo->NumParameters; k++) {
+      printf("  %2d %-12s %-70s %-10s %g\n", k, pModelInfo->ParametersInfo[k].Name, pModelInfo->ParametersInfo[k].Description, 
+             pModelInfo->ParametersInfo[k].Unit, pModelInfo->ParametersInfo[k].DefaultValue.Real64_Val);
+    }
+    printf("Input Signals:\n");
+    for (int k=0; k < pModelInfo->NumInputPorts; k++) {
+      printf("  %2d %-12s %-70s %-10s\n", k, pModelInfo->InputPortsInfo[k].Name, pModelInfo->InputPortsInfo[k].Description, 
+             pModelInfo->InputPortsInfo[k].Unit);
+    }
+    printf("Output Signals:\n");
+    for (int k=0; k < pModelInfo->NumOutputPorts; k++) {
+      printf("  %2d %-12s %-70s %-10s\n", k, pModelInfo->OutputPortsInfo[k].Name, pModelInfo->OutputPortsInfo[k].Description, 
+             pModelInfo->OutputPortsInfo[k].Unit);
+    }
+    printf("Internal State Variables: %d int, %d float, %d double\n", pModelInfo->NumIntStates, pModelInfo->NumFloatStates, pModelInfo->NumDoubleStates);
+    // create a model instance, initialized to default values
+    IEEE_Cigre_DLLInterface_Instance* pModel = CreateModelInstance (pModelInfo);
+    real64_T *pInputs = (real64_T *) pModel->ExternalInputs;
+    real64_T *pOutputs = (real64_T *) pModel->ExternalOutputs;
+    // initialize the model
+    if (NULL != Model_FirstCall) {
+      Model_FirstCall (pModel);
+    }
+    printf("calling CheckParameters\n");
+    Model_CheckParameters (pModel);
+    check_messages ("Model_CheckParameters", pModel);
+
+    // initialize time-stepping
+    printf("calling Initialize\n");
+    Model_Initialize (pModel);
+    check_messages ("Model_Initialize", pModel);
+
+    // time step loop, matching the DLL's desired time step
+    double dt = pModelInfo->FixedStepBaseSampleTime;
+    printf("Looping with dt=%g, tmax=%g\n", dt, TMAX);
+    double t = 0.0;
+    while (t < TMAX) {
+      // update the inputs for this next DLL step
+      pModel->Time = t;
+      // execute the DLL
+      Model_Outputs (pModel);
+      check_messages ("Model_Outputs", pModel);
+      printf("t=%g, efd=%g\n", pModel->Time, pOutputs[0]);
+      // save the outputs and states from this DLL step
+      t += dt;
+    }
+    // free the Model data and library
+    printf("calling Terminate\n");
+    Model_Terminate (pModel);
+    check_messages ("Model_Terminate", pModel);
+    FreeModelInstance (pModel);
     fFreeResult = FreeLibrary(hLib); 
   } else {
     printf ("LoadLibrary failed on %s\n", DLL_NAME);
