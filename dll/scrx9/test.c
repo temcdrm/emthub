@@ -3,7 +3,7 @@
 // see https://learn.microsoft.com/en-us/windows/win32/dlls/using-run-time-dynamic-linking
 
 #define DLL_NAME "SCRX9.dll"
-#define TMAX 1.0
+#define TMAX 10.0
 
 #include <windows.h> 
 #include <stdio.h> 
@@ -13,6 +13,11 @@
 typedef int32_T (__cdecl *DLL_INFO_FCN)(void); 
 typedef const IEEE_Cigre_DLLInterface_Model_Info * (__cdecl *DLL_STRUCT_FCN)(void);
 typedef int32_T (__cdecl *DLL_MODEL_FCN)(IEEE_Cigre_DLLInterface_Instance *);
+
+typedef struct _ArrayMap {  // we will have arrays of these for Parameters, ExternalInputs and ExternalOutputs
+  int size;    // size of the value from IEEE_Cigre_DLLInterface_types.h
+  int offset;  // byte offset into the malloced memory for this value
+} ArrayMap;
 
 DLL_MODEL_FCN LoadModelFunction (HINSTANCE hLib, char *name)
 {
@@ -64,7 +69,10 @@ void assign_dll_value (char *pVals, int offset, int dtype, int dsize, union Defa
 //  if (dtype == IEEE_Cigre_DLLInterface_DataType_c_string_T) pVals[offset] = val.Char_Ptr;
 }
 
-IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInterface_Model_Info *pInfo)
+IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInterface_Model_Info *pInfo,
+                                                       ArrayMap **pParameterMap,
+                                                       ArrayMap **pInputMap,
+                                                       ArrayMap **pOutputMap)
 {
   printf("creating pModel\n");
   IEEE_Cigre_DLLInterface_Instance *pModel = malloc (sizeof *pModel);
@@ -77,43 +85,55 @@ IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInter
   pModel->ExternalOutputs = NULL;
   pModel->Parameters = NULL;
   if (pInfo->NumInputPorts > 0) {
-    int parm_size = 0;
+    ArrayMap *pTest = malloc (pInfo->NumInputPorts * sizeof (ArrayMap));
+    *pInputMap = pTest;
+    int input_size = 0;
     for (int i = 0; i < pInfo->NumInputPorts; i++) {
       int dtype = pInfo->InputPortsInfo[i].DataType;
       int dsize = get_datatype_size (dtype);
-      parm_size += dsize;
+      pTest[i].size = dsize;
+      pTest[i].offset = input_size;
+      input_size += dsize;
     }
-    printf ("%d inputs of total size %d\n", pInfo->NumInputPorts, parm_size);
-    pModel->ExternalInputs = malloc(parm_size);
+//    printf ("%d inputs of total size %d\n", pInfo->NumInputPorts, input_size);
+    pModel->ExternalInputs = malloc(input_size);
   }
   if (pInfo->NumOutputPorts > 0) {
-    int parm_size = 0;
+    ArrayMap *pTest = malloc (pInfo->NumOutputPorts * sizeof (ArrayMap));
+    *pOutputMap = pTest;
+    int output_size = 0;
     for (int i = 0; i < pInfo->NumOutputPorts; i++) {
       int dtype = pInfo->OutputPortsInfo[i].DataType;
       int dsize = get_datatype_size (dtype);
-      parm_size += dsize;
+      pTest[i].size = dsize;
+      pTest[i].offset = output_size;
+      output_size += dsize;
     }
-    printf ("%d outputs of total size %d\n", pInfo->NumOutputPorts, parm_size);
-    pModel->ExternalOutputs = malloc(parm_size);
+//    printf ("%d outputs of total size %d\n", pInfo->NumOutputPorts, output_size);
+    pModel->ExternalOutputs = malloc(output_size);
   }
   if (pInfo->NumIntStates > 0) {
     pModel->IntStates = (int32_T *) malloc(pInfo->NumIntStates * sizeof(int32_T));
   }
   if (pInfo->NumFloatStates > 0) {
-    pModel->FloatStates = (real32_T *) malloc(pInfo->NumDoubleStates * sizeof(real32_T));
+    pModel->FloatStates = (real32_T *) malloc(pInfo->NumFloatStates * sizeof(real32_T));
   }
   if (pInfo->NumDoubleStates > 0) {
-    pModel->DoubleStates = (real64_T *) malloc(pInfo->NumFloatStates * sizeof(real64_T));
+    pModel->DoubleStates = (real64_T *) malloc(pInfo->NumDoubleStates * sizeof(real64_T));
   }
   if (pInfo->NumParameters > 0) {
+    ArrayMap *pTest = malloc (pInfo->NumParameters * sizeof (ArrayMap));
+    *pParameterMap = pTest;
     int parm_size = 0;
     for (int i = 0; i < pInfo->NumParameters; i++) {
       int dtype = pInfo->ParametersInfo[i].DataType;
       int dsize = get_datatype_size (dtype);
-      printf ("parm %d type %d size %d\n", i, dtype, dsize);
+      pTest[i].size = dsize;
+      pTest[i].offset = parm_size;
+//      printf ("parm %d type %d size %d\n", i, dtype, dsize);
       parm_size += dsize;
     }
-    printf("parm_size = %d\n", parm_size);
+//    printf("parm_size = %d\n", parm_size);
     pModel->Parameters = malloc (parm_size);
     // initialize the parameters to default values
     int offset = 0;
@@ -127,7 +147,8 @@ IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInter
   return pModel;
 }
 
-void FreeModelInstance (IEEE_Cigre_DLLInterface_Instance *pModel)
+void FreeModelInstance (IEEE_Cigre_DLLInterface_Instance *pModel, ArrayMap *pParameterMap,
+                        ArrayMap *pInputMap, ArrayMap *pOutputMap)
 {
   printf("freeing pModel\n");
   if (NULL != pModel->ExternalInputs) {
@@ -149,6 +170,15 @@ void FreeModelInstance (IEEE_Cigre_DLLInterface_Instance *pModel)
     free (pModel->Parameters);
   }
   free (pModel);
+  if (NULL != pInputMap) {
+    free (pInputMap);
+  }
+  if (NULL != pOutputMap) {
+    free (pOutputMap);
+  }
+  if (NULL != pParameterMap) {
+    free (pParameterMap);
+  }
   return;
 }
 
@@ -188,31 +218,38 @@ int main( void )
     Model_Iterate = LoadModelFunction (hLib, "Model_Iterate");
     // retrieve the DLL interface points
     const IEEE_Cigre_DLLInterface_Model_Info *pModelInfo = Model_GetInfo();
+    // create a model instance, initialized to default values
+    ArrayMap *pParameterMap;//  = NULL;
+    ArrayMap *pInputMap;// = NULL;
+    ArrayMap *pOutputMap;// = NULL;
+    IEEE_Cigre_DLLInterface_Instance* pModel = CreateModelInstance (pModelInfo, &pParameterMap, &pInputMap, &pOutputMap);
+    real64_T *pInputs = (real64_T *) pModel->ExternalInputs;
+    real64_T *pOutputs = (real64_T *) pModel->ExternalOutputs;
+    // display the DLL interface schema
     printf("Model Name = %s\n", pModelInfo->ModelName);
     printf("Model Version = %s\n", pModelInfo->ModelVersion);
     printf("Updated %s by %s\n", pModelInfo->ModelLastModifiedDate, pModelInfo->ModelLastModifiedBy);
     printf("Time Step: %0.5g [s]\n", pModelInfo->FixedStepBaseSampleTime);
     printf("EMT/RMS Mode: %s\n", modeEMTorRMS (pModelInfo->EMT_RMS_Mode));
-    printf("Parameters/Description/Default:\n");
+    printf("Parameters (idx,size,offset,desc,units,default,min,max:\n");
     for (int k=0; k < pModelInfo->NumParameters; k++) {
-      printf("  %2d %-12s %-70s %-10s %g\n", k, pModelInfo->ParametersInfo[k].Name, pModelInfo->ParametersInfo[k].Description, 
-             pModelInfo->ParametersInfo[k].Unit, pModelInfo->ParametersInfo[k].DefaultValue.Real64_Val);
+      printf("  %2d %4d %4d %-12s %-70s %-10s %g \t %g \t %g\n", k, pParameterMap[k].size, pParameterMap[k].offset,
+             pModelInfo->ParametersInfo[k].Name, pModelInfo->ParametersInfo[k].Description, 
+             pModelInfo->ParametersInfo[k].Unit, pModelInfo->ParametersInfo[k].DefaultValue.Real64_Val,
+             pModelInfo->ParametersInfo[k].MinValue.Real64_Val, pModelInfo->ParametersInfo[k].MaxValue.Real64_Val);
     }
-    printf("Input Signals:\n");
+    printf("Input Signals (idx,size,offset,name,desc,units):\n");
     for (int k=0; k < pModelInfo->NumInputPorts; k++) {
-      printf("  %2d %-12s %-70s %-10s\n", k, pModelInfo->InputPortsInfo[k].Name, pModelInfo->InputPortsInfo[k].Description, 
-             pModelInfo->InputPortsInfo[k].Unit);
+      printf("  %2d %4d %4d %-12s %-70s %-10s\n", k, pInputMap[k].size, pInputMap[k].offset,
+             pModelInfo->InputPortsInfo[k].Name, pModelInfo->InputPortsInfo[k].Description, pModelInfo->InputPortsInfo[k].Unit);
     }
-    printf("Output Signals:\n");
+    printf("Output Signals (idx,size,offset,name,desc,units):\n");
     for (int k=0; k < pModelInfo->NumOutputPorts; k++) {
-      printf("  %2d %-12s %-70s %-10s\n", k, pModelInfo->OutputPortsInfo[k].Name, pModelInfo->OutputPortsInfo[k].Description, 
-             pModelInfo->OutputPortsInfo[k].Unit);
+      printf("  %2d %4d %4d %-12s %-70s %-10s\n", k, pOutputMap[k].size, pOutputMap[k].offset,
+             pModelInfo->OutputPortsInfo[k].Name, pModelInfo->OutputPortsInfo[k].Description, pModelInfo->OutputPortsInfo[k].Unit);
     }
     printf("Internal State Variables: %d int, %d float, %d double\n", pModelInfo->NumIntStates, pModelInfo->NumFloatStates, pModelInfo->NumDoubleStates);
-    // create a model instance, initialized to default values
-    IEEE_Cigre_DLLInterface_Instance* pModel = CreateModelInstance (pModelInfo);
-    real64_T *pInputs = (real64_T *) pModel->ExternalInputs;
-    real64_T *pOutputs = (real64_T *) pModel->ExternalOutputs;
+
     // initialize the model
     if (NULL != Model_FirstCall) {
       Model_FirstCall (pModel);
@@ -236,7 +273,7 @@ int main( void )
       // execute the DLL
       Model_Outputs (pModel);
       check_messages ("Model_Outputs", pModel);
-      printf("t=%g, efd=%g\n", pModel->Time, pOutputs[0]);
+      // printf("t=%g, efd=%g\n", pModel->Time, pOutputs[0]);
       // save the outputs and states from this DLL step
       t += dt;
     }
@@ -244,8 +281,9 @@ int main( void )
     printf("calling Terminate\n");
     Model_Terminate (pModel);
     check_messages ("Model_Terminate", pModel);
-    FreeModelInstance (pModel);
-    fFreeResult = FreeLibrary(hLib); 
+    FreeModelInstance (pModel, pParameterMap, pInputMap, pOutputMap);
+    fFreeResult = FreeLibrary(hLib);
+    printf("normal finish\n"); 
   } else {
     printf ("LoadLibrary failed on %s\n", DLL_NAME);
   }
