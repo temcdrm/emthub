@@ -4,6 +4,8 @@
 
 #define DLL_NAME "SCRX9.dll"
 #define TMAX 10.0
+// relative output path for execution from the build directory, e.g., release\test or debug\test
+#define CSV_NAME "..\\..\\plots\\scrx9.csv"
 
 #include <windows.h> 
 #include <stdio.h> 
@@ -57,15 +59,16 @@ int get_datatype_size (int dtype)
 
 void assign_dll_value (char *pVals, int offset, int dtype, int dsize, union DefaultValueU val)
 {
+  printf(" assigning: %d %d %d\n", offset, dtype, dsize);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_char_T) memcpy (pVals+offset, &val.Char_Val, dsize);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_int8_T) memcpy (pVals+offset, &val.Int8_Val, dsize);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_uint8_T) memcpy (pVals+offset, &val.Uint8_Val, dsize);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_int16_T) memcpy (pVals+offset, &val.Int16_Val, dsize);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_uint16_T) memcpy (pVals+offset, &val.Uint16_Val, dsize);
-  if (dtype == IEEE_Cigre_DLLInterface_DataType_int32_T) memcpy (pVals+offset, &val.Int32_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_int32_T) {memcpy (pVals+offset, &val.Int32_Val, dsize);printf("   %d\n", val.Int32_Val);}
   if (dtype == IEEE_Cigre_DLLInterface_DataType_uint32_T) memcpy (pVals+offset, &val.Uint32_Val, dsize);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_real32_T) memcpy (pVals+offset, &val.Real32_Val, dsize);
-  if (dtype == IEEE_Cigre_DLLInterface_DataType_real64_T) memcpy (pVals+offset, &val.Real64_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_real64_T) {memcpy (pVals+offset, &val.Real64_Val, dsize);printf("   %g\n", val.Real64_Val);}
 //  if (dtype == IEEE_Cigre_DLLInterface_DataType_c_string_T) pVals[offset] = val.Char_Ptr;
 }
 
@@ -191,6 +194,79 @@ void check_messages (const char *loc, IEEE_Cigre_DLLInterface_Instance *pModel)
   }
 }
 
+void update_inputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, double t, int nPorts)
+{
+  double Vref = 1.0;
+  double Ec = 1.0;
+  double Vs = 0.0;
+  double IFD = 0.0;
+  double VT = 1.0;
+  double VUEL = -5.0;
+  double VOEL = 5.0;
+  if (t >= 2.0 && t <= 2.15) { // fault
+    Ec = 0.5;
+    VT = Ec;
+  }
+  char *pData = (char *) pModel->ExternalInputs;
+  memcpy (pData + pMap[0].offset, &Vref, pMap[0].size);
+  memcpy (pData + pMap[1].offset, &Ec, pMap[1].size);
+  memcpy (pData + pMap[2].offset, &Vs, pMap[2].size);
+  memcpy (pData + pMap[3].offset, &IFD, pMap[3].size);
+  memcpy (pData + pMap[4].offset, &VT, pMap[4].size);
+  memcpy (pData + pMap[5].offset, &VUEL, pMap[5].size);
+  memcpy (pData + pMap[6].offset, &VOEL, pMap[6].size);
+}
+
+double extract_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, int nPorts)
+{
+  char *pData = (char *) pModel->ExternalOutputs;
+  double efd = 0.0;
+  for (int i = 0; i < nPorts; i++) {
+    memcpy (&efd, pData + pMap[i].offset, pMap[i].size);
+  }
+  return efd;
+}
+
+void write_csv_header (FILE *fp, const IEEE_Cigre_DLLInterface_Model_Info *pInfo)
+{
+  char buf[16384];
+  buf[0] = '\0';
+  strcat (buf, "t");
+  for (int i = 0; i < pInfo->NumInputPorts; i++) {
+    strcat (buf, ",");
+    strcat (buf, pInfo->InputPortsInfo[i].Name);
+  }
+  for (int i = 0; i < pInfo->NumOutputPorts; i++) {
+    strcat (buf, ",");
+    strcat (buf, pInfo->OutputPortsInfo[i].Name);
+  }
+  fprintf (fp, "%s\n", buf);
+}
+
+void write_csv_values (FILE *fp, IEEE_Cigre_DLLInterface_Instance *pModel, const IEEE_Cigre_DLLInterface_Model_Info *pInfo, 
+                       ArrayMap *pInputMap, ArrayMap *pOutputMap, double t)
+{
+  char buf[256];
+  char line[16384];
+  line[0] = '\0';
+  sprintf (buf, "%g", t);
+  strcat (line, buf);
+  char *pData = (char *) pModel->ExternalInputs;
+  double val;
+  for (int i = 0; i < pInfo->NumInputPorts; i++) {
+    memcpy (&val, pData + pInputMap[i].offset, pInputMap[i].size);
+    sprintf (buf, ",%g", val);
+    strcat (line, buf);
+  }
+  pData = (char *) pModel->ExternalOutputs;
+  for (int i = 0; i < pInfo->NumOutputPorts; i++) {
+    memcpy (&val, pData + pOutputMap[i].offset, pOutputMap[i].size);
+    sprintf (buf, ",%g", val);
+    strcat (line, buf);
+  }
+  fprintf (fp, "%s\n", line);
+}
+
 int main( void ) 
 { 
   HINSTANCE hLib; 
@@ -267,16 +343,25 @@ int main( void )
     double dt = pModelInfo->FixedStepBaseSampleTime;
     printf("Looping with dt=%g, tmax=%g\n", dt, TMAX);
     double t = 0.0;
-    while (t < TMAX) {
+    printf("opening %s\n", CSV_NAME);
+    FILE *fp = fopen (CSV_NAME, "w");
+    write_csv_header (fp, pModelInfo);
+    double tstop = TMAX + 0.5 * dt;
+    while (t <= tstop) {
       // update the inputs for this next DLL step
       pModel->Time = t;
+      update_inputs (pModel, pInputMap, t, pModelInfo->NumInputPorts);
       // execute the DLL
       Model_Outputs (pModel);
+      double efd = extract_outputs (pModel, pOutputMap, pModelInfo->NumOutputPorts);
+      write_csv_values (fp, pModel, pModelInfo, pInputMap, pOutputMap, t);
+      // printf("  efd[t] = %g %g\n", t, efd);
       check_messages ("Model_Outputs", pModel);
       // printf("t=%g, efd=%g\n", pModel->Time, pOutputs[0]);
       // save the outputs and states from this DLL step
       t += dt;
     }
+    fclose (fp);
     // free the Model data and library
     printf("calling Terminate\n");
     Model_Terminate (pModel);
