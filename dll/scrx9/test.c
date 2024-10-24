@@ -288,6 +288,13 @@ void check_messages (const char *loc, IEEE_Cigre_DLLInterface_Instance *pModel)
   }
 }
 
+void initialize_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, int nPorts)
+{
+  double EFD = 1.0;
+  char *pData = (char *) pModel->ExternalOutputs;
+  memcpy (pData + pMap[0].offset, &EFD, pMap[0].size);
+}
+
 void update_inputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, double t, int nPorts)
 {
   double Vref = 1.0;
@@ -479,6 +486,7 @@ int main( void )
 
     // initialize time-stepping
     printf("calling Initialize\n");
+    initialize_outputs (pModel, pOutputMap, pModelInfo->NumOutputPorts);
     Model_Initialize (pModel);
     check_messages ("Model_Initialize", pModel);
 
