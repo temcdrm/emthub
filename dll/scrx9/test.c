@@ -10,6 +10,8 @@
 #include <windows.h> 
 #include <stdio.h> 
 
+// #pragma pack(4)
+
 #include "IEEE_Cigre_DLLInterface.h"
  
 typedef int32_T (__cdecl *DLL_INFO_FCN)(void); 
@@ -19,7 +21,47 @@ typedef int32_T (__cdecl *DLL_MODEL_FCN)(IEEE_Cigre_DLLInterface_Instance *);
 typedef struct _ArrayMap {  // we will have arrays of these for Parameters, ExternalInputs and ExternalOutputs
   int size;    // size of the value from IEEE_Cigre_DLLInterface_types.h
   int offset;  // byte offset into the malloced memory for this value
+  enum IEEE_Cigre_DLLInterface_DataType dtype;
 } ArrayMap;
+
+struct MyCharPtrStruct {
+  char_T c;
+  char_T *v;
+};
+
+struct MyCharStruct {
+  char_T c;
+  char_T v;
+};
+
+struct MyInt16Struct {
+  char_T c;
+  int16_T v;
+};
+
+struct MyInt32Struct {
+  char_T c;
+  int32_T v;
+};
+
+struct MyReal32Struct {
+  char_T c;
+  real32_T v;
+};
+
+struct MyReal64Struct {
+  char_T c;
+  real64_T v;
+};
+
+void show_struct_alignment_requirements () {
+  printf ("Char alignment requirement: %zu\n", offsetof(struct MyCharStruct, v));
+  printf ("CharPtr alignment requirement: %zu\n", offsetof(struct MyCharPtrStruct, v));
+  printf ("Int16 alignment requirement: %zu\n", offsetof(struct MyInt16Struct, v));
+  printf ("Int32 alignment requirement: %zu\n", offsetof(struct MyInt32Struct, v));
+  printf ("Real32 alignment requirement: %zu\n", offsetof(struct MyReal32Struct, v));
+  printf ("Real64 alignment requirement: %zu\n", offsetof(struct MyReal64Struct, v));
+}
 
 DLL_MODEL_FCN LoadModelFunction (HINSTANCE hLib, char *name)
 {
@@ -42,7 +84,22 @@ const char *modeEMTorRMS (int val)
   return "n/a";
 }
 
-int get_datatype_size (int dtype)
+size_t get_alignment_requirement (enum IEEE_Cigre_DLLInterface_DataType dtype)
+{
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_char_T) return offsetof(struct MyCharStruct, v);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_int8_T) return offsetof(struct MyCharStruct, v);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_uint8_T) return offsetof(struct MyCharStruct, v);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_int16_T) return offsetof(struct MyInt16Struct, v);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_uint16_T) return offsetof(struct MyInt16Struct, v);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_int32_T) return offsetof(struct MyInt32Struct, v);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_uint32_T) return offsetof(struct MyInt32Struct, v);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_real32_T) return offsetof(struct MyReal32Struct, v);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_real64_T) return offsetof(struct MyReal64Struct, v);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_c_string_T) return offsetof(struct MyCharPtrStruct, v);
+  return 0;
+}
+
+int get_datatype_size (enum IEEE_Cigre_DLLInterface_DataType dtype)
 {
   if (dtype == IEEE_Cigre_DLLInterface_DataType_char_T) return sizeof (char_T);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_int8_T) return sizeof (int8_T);
@@ -57,19 +114,30 @@ int get_datatype_size (int dtype)
   return 0;
 }
 
-void assign_dll_value (char *pVals, int offset, int dtype, int dsize, union DefaultValueU val)
+void assign_dll_value (char *pVals, int offset, enum IEEE_Cigre_DLLInterface_DataType dtype, int dsize, union DefaultValueU val)
 {
-  printf(" assigning: %d %d %d\n", offset, dtype, dsize);
+  // printf(" assigning: %d %d %d\n", offset, dtype, dsize);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_char_T) memcpy (pVals+offset, &val.Char_Val, dsize);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_int8_T) memcpy (pVals+offset, &val.Int8_Val, dsize);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_uint8_T) memcpy (pVals+offset, &val.Uint8_Val, dsize);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_int16_T) memcpy (pVals+offset, &val.Int16_Val, dsize);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_uint16_T) memcpy (pVals+offset, &val.Uint16_Val, dsize);
-  if (dtype == IEEE_Cigre_DLLInterface_DataType_int32_T) {memcpy (pVals+offset, &val.Int32_Val, dsize);printf("   %d\n", val.Int32_Val);}
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_int32_T) memcpy (pVals+offset, &val.Int32_Val, dsize);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_uint32_T) memcpy (pVals+offset, &val.Uint32_Val, dsize);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_real32_T) memcpy (pVals+offset, &val.Real32_Val, dsize);
-  if (dtype == IEEE_Cigre_DLLInterface_DataType_real64_T) {memcpy (pVals+offset, &val.Real64_Val, dsize);printf("   %g\n", val.Real64_Val);}
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_real64_T) memcpy (pVals+offset, &val.Real64_Val, dsize);
 //  if (dtype == IEEE_Cigre_DLLInterface_DataType_c_string_T) pVals[offset] = val.Char_Ptr;
+}
+
+int get_next_struct_offset (int offset, int dsize, size_t align)
+{
+  offset += 1;
+  if (dsize > 1) {
+    while (offset % align != 0) {
+      ++offset;
+    }
+  }
+  return offset;
 }
 
 IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInterface_Model_Info *pInfo,
@@ -88,29 +156,49 @@ IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInter
   pModel->ExternalOutputs = NULL;
   pModel->Parameters = NULL;
   if (pInfo->NumInputPorts > 0) {
+    size_t input_align = 0;
+    for (int i = 0; i < pInfo->NumInputPorts; i++) {
+      enum IEEE_Cigre_DLLInterface_DataType dtype = pInfo->InputPortsInfo[i].DataType;
+      size_t this_align = get_alignment_requirement (dtype);
+      if (this_align > input_align) {
+        input_align = this_align;
+      }
+    }
+    printf("Input Struct Alignment Requirement = %zu\n", input_align);
     ArrayMap *pTest = malloc (pInfo->NumInputPorts * sizeof (ArrayMap));
     *pInputMap = pTest;
     int input_size = 0;
     for (int i = 0; i < pInfo->NumInputPorts; i++) {
-      int dtype = pInfo->InputPortsInfo[i].DataType;
+      enum IEEE_Cigre_DLLInterface_DataType dtype = pInfo->InputPortsInfo[i].DataType;
       int dsize = get_datatype_size (dtype);
       pTest[i].size = dsize;
       pTest[i].offset = input_size;
-      input_size += dsize;
+      pTest[i].dtype = dtype;
+      input_size = get_next_struct_offset (input_size, dsize, input_align);
     }
 //    printf ("%d inputs of total size %d\n", pInfo->NumInputPorts, input_size);
     pModel->ExternalInputs = malloc(input_size);
   }
   if (pInfo->NumOutputPorts > 0) {
+    size_t output_align = 0;
+    for (int i = 0; i < pInfo->NumOutputPorts; i++) {
+      enum IEEE_Cigre_DLLInterface_DataType dtype = pInfo->OutputPortsInfo[i].DataType;
+      size_t this_align = get_alignment_requirement (dtype);
+      if (this_align > output_align) {
+        output_align = this_align;
+      }
+    }
+    printf("Output Struct Alignment Requirement = %zu\n", output_align);
     ArrayMap *pTest = malloc (pInfo->NumOutputPorts * sizeof (ArrayMap));
     *pOutputMap = pTest;
     int output_size = 0;
     for (int i = 0; i < pInfo->NumOutputPorts; i++) {
-      int dtype = pInfo->OutputPortsInfo[i].DataType;
+      enum IEEE_Cigre_DLLInterface_DataType dtype = pInfo->OutputPortsInfo[i].DataType;
       int dsize = get_datatype_size (dtype);
       pTest[i].size = dsize;
       pTest[i].offset = output_size;
-      output_size += dsize;
+      pTest[i].dtype = dtype;
+      output_size = get_next_struct_offset (output_size, dsize, output_align);
     }
 //    printf ("%d outputs of total size %d\n", pInfo->NumOutputPorts, output_size);
     pModel->ExternalOutputs = malloc(output_size);
@@ -125,26 +213,32 @@ IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInter
     pModel->DoubleStates = (real64_T *) malloc(pInfo->NumDoubleStates * sizeof(real64_T));
   }
   if (pInfo->NumParameters > 0) {
+    size_t parm_align = 0;
+    for (int i = 0; i < pInfo->NumParameters; i++) {
+      enum IEEE_Cigre_DLLInterface_DataType dtype = pInfo->ParametersInfo[i].DataType;
+      size_t this_align = get_alignment_requirement (dtype);
+      if (this_align > parm_align) {
+        parm_align = this_align;
+      }
+    }
+    printf("Parameter Struct Alignment Requirement = %zu\n", parm_align);
     ArrayMap *pTest = malloc (pInfo->NumParameters * sizeof (ArrayMap));
     *pParameterMap = pTest;
     int parm_size = 0;
     for (int i = 0; i < pInfo->NumParameters; i++) {
-      int dtype = pInfo->ParametersInfo[i].DataType;
+      enum IEEE_Cigre_DLLInterface_DataType dtype = pInfo->ParametersInfo[i].DataType;
       int dsize = get_datatype_size (dtype);
       pTest[i].size = dsize;
       pTest[i].offset = parm_size;
-//      printf ("parm %d type %d size %d\n", i, dtype, dsize);
-      parm_size += dsize;
+      pTest[i].dtype = dtype;
+      parm_size = get_next_struct_offset (parm_size, dsize, parm_align);
     }
 //    printf("parm_size = %d\n", parm_size);
     pModel->Parameters = malloc (parm_size);
     // initialize the parameters to default values
-    int offset = 0;
     for (int i = 0; i < pInfo->NumParameters; i++) {
-      int dtype = pInfo->ParametersInfo[i].DataType;
-      int dsize = get_datatype_size (dtype);
-      assign_dll_value ((char *)pModel->Parameters, offset, dtype, dsize, pInfo->ParametersInfo[i].DefaultValue);
-      offset += dsize;
+      assign_dll_value ((char *)pModel->Parameters, pTest[i].offset, pTest[i].dtype, 
+                        pTest[i].size, pInfo->ParametersInfo[i].DefaultValue);
     }
   }
   return pModel;
@@ -217,6 +311,51 @@ void update_inputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, do
   memcpy (pData + pMap[6].offset, &VOEL, pMap[6].size);
 }
 
+void get_parm_value_string (char *pBuf, char *pData, ArrayMap sMap)
+{
+  if (sMap.dtype == IEEE_Cigre_DLLInterface_DataType_char_T) {
+    char_T val;
+    memcpy (&val, pData + sMap.offset, sMap.size);
+    sprintf (pBuf, "%c", val);
+  } else if (sMap.dtype == IEEE_Cigre_DLLInterface_DataType_int8_T) {
+    int8_T val;
+    memcpy (&val, pData + sMap.offset, sMap.size);
+    sprintf (pBuf, "%hhd", val);
+  } else if (sMap.dtype == IEEE_Cigre_DLLInterface_DataType_uint8_T) {
+    uint8_T val;
+    memcpy (&val, pData + sMap.offset, sMap.size);
+    sprintf (pBuf, "%hhu", val);
+  } else if (sMap.dtype == IEEE_Cigre_DLLInterface_DataType_int16_T) {
+    int16_T val;
+    memcpy (&val, pData + sMap.offset, sMap.size);
+    sprintf (pBuf, "%hd", val);
+  } else if (sMap.dtype == IEEE_Cigre_DLLInterface_DataType_uint16_T) {
+    uint16_T val;
+    memcpy (&val, pData + sMap.offset, sMap.size);
+    sprintf (pBuf, "%hu", val);
+  } else if (sMap.dtype == IEEE_Cigre_DLLInterface_DataType_int32_T) {
+    int32_T val;
+    memcpy (&val, pData + sMap.offset, sMap.size);
+    sprintf (pBuf, "%d", val);
+  } else if (sMap.dtype == IEEE_Cigre_DLLInterface_DataType_uint32_T) {
+    uint32_T val;
+    memcpy (&val, pData + sMap.offset, sMap.size);
+    sprintf (pBuf, "%u", val);
+  } else if (sMap.dtype == IEEE_Cigre_DLLInterface_DataType_real32_T) {
+    real32_T val;
+    memcpy (&val, pData + sMap.offset, sMap.size);
+    sprintf (pBuf, "%g", val);
+  } else if (sMap.dtype == IEEE_Cigre_DLLInterface_DataType_real64_T) {
+    real64_T val;
+    memcpy (&val, pData + sMap.offset, sMap.size);
+    sprintf (pBuf, "%g", val);
+  } else if (sMap.dtype == IEEE_Cigre_DLLInterface_DataType_c_string_T) {
+    strcpy (pBuf, "String");
+  } else {
+    strcpy (pBuf, "Unknown");
+  }
+}
+
 double extract_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, int nPorts)
 {
   char *pData = (char *) pModel->ExternalOutputs;
@@ -274,6 +413,8 @@ int main( void )
   DLL_STRUCT_FCN Model_GetInfo;
   DLL_MODEL_FCN Model_CheckParameters, Model_Initialize, Model_Outputs, Model_FirstCall, Model_Iterate, Model_Terminate; 
   BOOL fFreeResult, fRunTimeLinkSuccess = FALSE;
+
+  show_struct_alignment_requirements ();
  
   hLib = LoadLibrary(TEXT(DLL_NAME)); 
   if (hLib != NULL) { 
@@ -307,10 +448,12 @@ int main( void )
     printf("Updated %s by %s\n", pModelInfo->ModelLastModifiedDate, pModelInfo->ModelLastModifiedBy);
     printf("Time Step: %0.5g [s]\n", pModelInfo->FixedStepBaseSampleTime);
     printf("EMT/RMS Mode: %s\n", modeEMTorRMS (pModelInfo->EMT_RMS_Mode));
-    printf("Parameters (idx,size,offset,desc,units,default,min,max:\n");
+    printf("Parameters (idx,size,offset,name,val,desc,units,default,min,max:\n");
+    char val_buf[256];
     for (int k=0; k < pModelInfo->NumParameters; k++) {
-      printf("  %2d %4d %4d %-12s %-70s %-10s %g \t %g \t %g\n", k, pParameterMap[k].size, pParameterMap[k].offset,
-             pModelInfo->ParametersInfo[k].Name, pModelInfo->ParametersInfo[k].Description, 
+      get_parm_value_string (val_buf, pModel->Parameters, pParameterMap[k]);
+      printf("  %2d %4d %4d %-12s %-12s %-70s %-10s %g \t %g \t %g\n", k, pParameterMap[k].size, pParameterMap[k].offset,
+             pModelInfo->ParametersInfo[k].Name, val_buf, pModelInfo->ParametersInfo[k].Description, 
              pModelInfo->ParametersInfo[k].Unit, pModelInfo->ParametersInfo[k].DefaultValue.Real64_Val,
              pModelInfo->ParametersInfo[k].MinValue.Real64_Val, pModelInfo->ParametersInfo[k].MaxValue.Real64_Val);
     }

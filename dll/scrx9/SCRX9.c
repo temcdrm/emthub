@@ -36,11 +36,10 @@ The IEEE/Cigre DLL standard is based on concepts from the IEC 61400-27-1 DLL sta
 
 September 14, 2021, GDI
 */
-#include <windows.h>
+// #include <windows.h>
 #include <stdio.h>
 
 #include "IEEE_Cigre_DLLInterface.h"
-#pragma pack(4)
 char ErrorMessage[1000];
 
 // ----------------------------------------------------------------------
@@ -341,8 +340,8 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
     double VUEL = inputs->VUEL;
     double VOEL = inputs->VOEL;
 
-    printf("  parms (%zd): %g %g %g %g %g %g %d %g\n", sizeof (*parameters), TAdTB, TB, K, TE, EMin, EMax, CSwitch, RCdRFD);
-    printf("  inputs (%zd): %g %g %g %g %g %g %g\n", sizeof (*inputs), VRef, Ec, Vs, IFD, VT, VUEL, VOEL);
+    // printf("  parms (%zd): %g %g %g %g %g %g %d %g\n", sizeof (*parameters), TAdTB, TB, K, TE, EMin, EMax, CSwitch, RCdRFD);
+    // printf("  inputs (%zd): %g %g %g %g %g %g %g\n", sizeof (*inputs), VRef, Ec, Vs, IFD, VT, VUEL, VOEL);
 
     // Working back from initial output
     MyModelOutputs* outputs = (MyModelOutputs*)instance->ExternalOutputs;
