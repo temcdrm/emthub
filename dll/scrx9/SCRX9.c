@@ -39,7 +39,8 @@ September 14, 2021, GDI
 Changes for EMTHub:
 - Commented out windows.h, which is not necessary to build the DLL
 - Inserted two printf statements in Model_Initialize for parameter checking, currently commented out
-October 24, 2024, TEMc
+- Initialize LastGeneralMessage for the case Model_Terminate called without actually using the model
+October 30, 2024, TEMc
 
 */
 // #include <windows.h>
@@ -231,17 +232,17 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
 
 
 IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
-    .DLLInterfaceVersion = { 1, 1, 0, 0 },                              // Release number of the API used during code generation
+    .DLLInterfaceVersion = { 1, 1, 0, 1 },                              // Release number of the API used during code generation
     .ModelName = "SCRX9",                                               // Model name
-    .ModelVersion = "1.1.0.0",                                          // Model version
+    .ModelVersion = "1.1.0.1",                                          // Model version
     .ModelDescription = "SCRX9 - Bus fed or Solid Fed Static Exciter",  // Model description
     .GeneralInformation = "General Information",                        // General information
     .ModelCreated = "September 14, 2021",                               // Model created on
     .ModelCreator = "gdi",                                              // Model created by
-    .ModelLastModifiedDate = "September 14, 2021",                      // Model last modified on
-    .ModelLastModifiedBy = "gdi",                                       // Model last modified by
-    .ModelModifiedComment = "Version 1.1.0.0 for IEEE/Cigre DLL API V2",// Model modified comment
-    .ModelModifiedHistory = "History of Changes: V1.0.0.0 Initial model for API V1; V1.1.0.0 for API V2",     // Model modified history
+    .ModelLastModifiedDate = "October 24, 2024",                        // Model last modified on
+    .ModelLastModifiedBy = "temc",                                      // Model last modified by
+    .ModelModifiedComment = "Version 1.1.0.1 for IEEE/Cigre DLL API V2",// Model modified comment
+    .ModelModifiedHistory = "History of Changes: V1.0.0.0 Initial model for API V1; V1.1.0.0 for API V2; 1.1.0.1 Wrapper", // Model modified history
     .FixedStepBaseSampleTime = 0.005,                                   // Time Step sampling time (sec)
 
     // Inputs
@@ -498,6 +499,8 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
 __declspec(dllexport) int32_T __cdecl Model_Terminate(IEEE_Cigre_DLLInterface_Instance* instance) {
     /*   Destroys any objects allocated by the model code - not used
     */
+    ErrorMessage[0] = '\0';
+    instance->LastGeneralMessage = ErrorMessage;
 
     return IEEE_Cigre_DLLInterface_Return_OK;
 };
