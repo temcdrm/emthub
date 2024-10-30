@@ -35,6 +35,12 @@ The IEEE/Cigre DLL standard is based on concepts from the IEC 61400-27-1 DLL sta
 - focus on fixed time step controllers (as are used in real-code firmware in the field)
 
 September 14, 2021, GDI
+
+Changes for EMTHub:
+- Commented out windows.h, which is not necessary to build the DLL
+- Inserted two printf statements in Model_Initialize for parameter checking, currently commented out
+October 24, 2024, TEMc
+
 */
 // #include <windows.h>
 #include <stdio.h>

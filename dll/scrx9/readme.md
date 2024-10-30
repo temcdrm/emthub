@@ -18,13 +18,13 @@ Then follow these instructions:
     4. `cmake --build . --config Release`
     5. `cmake --build . --config Debug`
 3. From the build/Release or build/Debug output directory, check the exported functions:
-    1. `dumpbin /exports GFM_GFL_IBR.dll`
+    1. `dumpbin /exports SCRX9.dll`
     2. `test`
 
 ## File Directory
 
 - _CMakeLists.txt_ generates the detailed build instructions
-- _SCRX9_ is the unmodified example file from Garth Irwin of Electranix
+- _SCRX9_ is the (nearly) unmodified example file from Garth Irwin of Electranix
 - _test.c_ is a test harness, mimicking the DLL import and calling functions of a simulation tool
 
 Copyright &copy; 2024, Meltran, Inc
