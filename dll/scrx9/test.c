@@ -5,7 +5,7 @@
 #define DLL_NAME "SCRX9.dll"
 #define TMAX 10.0
 // relative output path for execution from the build directory, e.g., release\test or debug\test
-#define CSV_NAME "..\\..\\plots\\scrx9.csv"
+#define CSV_NAME "..\\..\\bin\\scrx9.csv"
 
 #include <windows.h> 
 #include <stdio.h> 

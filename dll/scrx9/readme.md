@@ -15,21 +15,21 @@ Then follow these instructions:
     1. `md build`
     2. `cd build`
     3. `cmake ..`
-    4. `cmake --build . --config Release`
-    5. `cmake --build . --config Debug`
+    4. `cmake --build . --config Release` or `cmake --build . --config Debug`
+    5. `cmake --install .`
 3. From the _SCRX9/build_ directory, check the exported functions with no wrapper:
     1. `dumpbin /exports release/SCRX9.dll` or `dumpbin /exports debug/SCRX9.dll`
-    2. `release/test` generates an output CSV file in the _../../plots_ directory
-    3. From the _../plots_ directory, relative to _SCRX9_, check outputs with `python plotdlltest.py`
-4. From the _SCRX9/build_ directory, check the **DLL wrapper**:
-    1. `release/test_wrapper` should give the same results as `release/test` above
+    2. `release/test` generates an output CSV file in the _../../bin_ directory
+    3. From the _../bin_ directory, relative to _SCRX9_, check outputs with `python plotdlltest.py`
+4. From the _../bin_ directory, check the **DLL wrapper**:
+    1. `test_scrx9` should give the same results as `release/test` above
     2. Verify with `python plotdlltest.py` from the _../plots_ directory relative to _SCRX9_
 
 ## File Directory
 
 - _CMakeLists.txt_ generates the detailed build instructions
-- _SCRX9_ is the (nearly) unmodified example file from Garth Irwin of Electranix
+- _SCRX9.c_ is the (nearly) unmodified example file from Garth Irwin of Electranix
 - _test.c_ is a test harness, mimicking the DLL import and calling functions of a simulation tool
-- _test_wrapper.c_ is a test harness, invoking the DLL through an EMTHub wrapper that supports all IEEE/Cigre DLLs
+- _test_scrx9.c_ is a test harness, invoking the DLL through an EMTHub wrapper that supports all IEEE/Cigre DLLs
 
 Copyright &copy; 2024, Meltran, Inc
