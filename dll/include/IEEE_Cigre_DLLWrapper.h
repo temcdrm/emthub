@@ -15,6 +15,19 @@ typedef struct _ArrayMap {  // we will have arrays of these for Parameters, Exte
   enum IEEE_Cigre_DLLInterface_DataType dtype;
 } ArrayMap;
 
+union EditValueU {
+  char_T   Char_Val;
+  char_T  *Char_Ptr;
+  int8_T   Int8_Val;
+  uint8_T  Uint8_Val;
+  int16_T  Int16_Val;
+  uint16_T Uint16_Val;
+  int32_T  Int32_Val;
+  uint32_T Uint32_Val;
+  real32_T Real32_Val;
+  real64_T Real64_Val;
+};
+
 typedef struct _Wrapped_IEEE_Cigre_DLL_ {
   HINSTANCE hLib;
   DLL_INFO_FCN Model_PrintInfo;
@@ -46,7 +59,7 @@ size_t get_alignment_requirement (enum IEEE_Cigre_DLLInterface_DataType dtype);
 
 int get_datatype_size (enum IEEE_Cigre_DLLInterface_DataType dtype);
 
-void assign_dll_value (char *pVals, int offset, enum IEEE_Cigre_DLLInterface_DataType dtype, int dsize, union DefaultValueU val);
+void edit_dll_value (char *pVals, int offset, enum IEEE_Cigre_DLLInterface_DataType dtype, int dsize, union EditValueU val);
 
 IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInterface_Model_Info *pInfo,
                                                        ArrayMap **pParameterMap,

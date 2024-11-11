@@ -97,7 +97,7 @@ int get_datatype_size (enum IEEE_Cigre_DLLInterface_DataType dtype)
   return 0;
 }
 
-void assign_dll_value (char *pVals, int offset, enum IEEE_Cigre_DLLInterface_DataType dtype, int dsize, union DefaultValueU val)
+void assign_default_value (char *pVals, int offset, enum IEEE_Cigre_DLLInterface_DataType dtype, int dsize, union DefaultValueU val)
 {
   // printf(" assigning: %d %d %d\n", offset, dtype, dsize);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_char_T) memcpy (pVals+offset, &val.Char_Val, dsize);
@@ -109,7 +109,22 @@ void assign_dll_value (char *pVals, int offset, enum IEEE_Cigre_DLLInterface_Dat
   if (dtype == IEEE_Cigre_DLLInterface_DataType_uint32_T) memcpy (pVals+offset, &val.Uint32_Val, dsize);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_real32_T) memcpy (pVals+offset, &val.Real32_Val, dsize);
   if (dtype == IEEE_Cigre_DLLInterface_DataType_real64_T) memcpy (pVals+offset, &val.Real64_Val, dsize);
-//  if (dtype == IEEE_Cigre_DLLInterface_DataType_c_string_T) pVals[offset] = val.Char_Ptr;
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_c_string_T) memcpy (pVals+offset, &val.Char_Ptr, dsize);
+}
+
+void edit_dll_value (char *pVals, int offset, enum IEEE_Cigre_DLLInterface_DataType dtype, int dsize, union EditValueU val)
+{
+  // printf(" assigning: %d %d %d\n", offset, dtype, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_char_T) memcpy (pVals+offset, &val.Char_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_int8_T) memcpy (pVals+offset, &val.Int8_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_uint8_T) memcpy (pVals+offset, &val.Uint8_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_int16_T) memcpy (pVals+offset, &val.Int16_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_uint16_T) memcpy (pVals+offset, &val.Uint16_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_int32_T) memcpy (pVals+offset, &val.Int32_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_uint32_T) memcpy (pVals+offset, &val.Uint32_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_real32_T) memcpy (pVals+offset, &val.Real32_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_real64_T) memcpy (pVals+offset, &val.Real64_Val, dsize);
+  if (dtype == IEEE_Cigre_DLLInterface_DataType_c_string_T) memcpy (pVals+offset, &val.Char_Ptr, dsize);
 }
 
 int get_next_struct_offset (int offset, int dsize, size_t align)
@@ -220,8 +235,8 @@ IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInter
     pModel->Parameters = malloc (parm_size);
     // initialize the parameters to default values
     for (int i = 0; i < pInfo->NumParameters; i++) {
-      assign_dll_value ((char *)pModel->Parameters, pTest[i].offset, pTest[i].dtype, 
-                        pTest[i].size, pInfo->ParametersInfo[i].DefaultValue);
+      assign_default_value ((char *)pModel->Parameters, pTest[i].offset, pTest[i].dtype, 
+                            pTest[i].size, pInfo->ParametersInfo[i].DefaultValue);
     }
   }
   return pModel;
