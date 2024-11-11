@@ -15,16 +15,16 @@ Then follow these instructions:
     1. `md build`
     2. `cd build`
     3. `cmake ..`
-    4. `cmake --build . --config Release`
-    5. `cmake --build . --config Debug`
-3. From the build/Release or build/Debug output directory, check the exported functions:
-    1. `dumpbin /exports GFM_GFL_IBR.dll`
-    2. `test`
+    4. `cmake --build . --config Release` or `cmake --build . --config Debug`
+    5. `cmake --install .`
+3. From the _../bin_ directory, check the **DLL wrapper**:
+    1. `test_ibr` should produce an output _ibr.csv_ file
+    2. Verify with `python plotdlltest.py ibr.csv`
 
 ## File Directory
 
 - _CMakeLists.txt_ generates the detailed build instructions
 - _GFM_GFL_IBR.c_ is the unmodified example file from Deepak Ramasubramanian of EPRI
-- _test.c_ is a test harness, mimicking the DLL import and calling functions of a simulation tool
+- _test_ibr.c_ is a test harness, mimicking the DLL import and calling functions of a simulation tool
 
 Copyright &copy; 2024, Meltran, Inc

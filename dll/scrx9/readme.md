@@ -23,7 +23,7 @@ Then follow these instructions:
     3. From the _../bin_ directory, relative to _SCRX9_, check outputs with `python plotdlltest.py`
 4. From the _../bin_ directory, check the **DLL wrapper**:
     1. `test_scrx9` should give the same results as `release/test` above
-    2. Verify with `python plotdlltest.py` from the _../plots_ directory relative to _SCRX9_
+    2. Verify with `python plotdlltest.py` from the _../bin_ directory relative to _SCRX9_
 
 ## File Directory
 

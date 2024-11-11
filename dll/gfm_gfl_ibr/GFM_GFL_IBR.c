@@ -113,7 +113,7 @@ The IEEE/Cigre DLL standard is based on concepts from the IEC 61400-27-1 DLL sta
 This is a draft model that may still need further modifications and improvements
 January 27, 2022, Deepak Ramasubramanian, EPRI (dramasubramanian@epri.com)
 */
-#include <windows.h>
+//#include <windows.h>
 #include <stdio.h>
 #include <math.h>
 #define PI 3.14159265
@@ -1516,6 +1516,8 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
 __declspec(dllexport) int32_T __cdecl Model_Terminate(IEEE_Cigre_DLLInterface_Instance* instance) {
     /*   Destroys any objects allocated by the model code - not used
     */
+    ErrorMessage[0] = '\0';
+    instance->LastGeneralMessage = ErrorMessage;
 
     return IEEE_Cigre_DLLInterface_Return_OK;
 };
