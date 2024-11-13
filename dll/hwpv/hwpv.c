@@ -11,9 +11,180 @@ November 11, 2024, TEMc
 */
 
 #include <stdio.h>
-
+#include <jansson.h>
 #include "IEEE_Cigre_DLLInterface.h"
 char ErrorMessage[1000];
+
+/* forward refs */
+void print_json(json_t *root);
+void print_json_aux(json_t *element, int indent);
+void print_json_indent(int indent);
+const char *json_plural(size_t count);
+void print_json_object(json_t *element, int indent);
+void print_json_array(json_t *element, int indent);
+void print_json_string(json_t *element, int indent);
+void print_json_integer(json_t *element, int indent);
+void print_json_real(json_t *element, int indent);
+void print_json_true(json_t *element, int indent);
+void print_json_false(json_t *element, int indent);
+void print_json_null(json_t *element, int indent);
+
+void print_json(json_t *root) { print_json_aux(root, 0); }
+
+void print_json_aux(json_t *element, int indent) {
+  switch (json_typeof(element)) {
+    case JSON_OBJECT:
+      print_json_object(element, indent);
+      break;
+    case JSON_ARRAY:
+      print_json_array(element, indent);
+      break;
+    case JSON_STRING:
+      print_json_string(element, indent);
+      break;
+    case JSON_INTEGER:
+      print_json_integer(element, indent);
+      break;
+    case JSON_REAL:
+      print_json_real(element, indent);
+      break;
+    case JSON_TRUE:
+      print_json_true(element, indent);
+      break;
+    case JSON_FALSE:
+      print_json_false(element, indent);
+      break;
+    case JSON_NULL:
+      print_json_null(element, indent);
+      break;
+    default:
+      fprintf(stderr, "unrecognized JSON type %d\n", json_typeof(element));
+  }
+}
+
+void print_json_indent(int indent) {
+  int i;
+  for (i = 0; i < indent; i++) {
+    putchar(' ');
+  }
+}
+
+const char *json_plural(size_t count) { return count == 1 ? "" : "s"; }
+
+void print_json_object(json_t *element, int indent) {
+  size_t size;
+  const char *key;
+  json_t *value;
+
+  print_json_indent(indent);
+  size = json_object_size(element);
+
+  printf("JSON Object of %lld pair%s:\n", (long long)size, json_plural(size));
+  json_object_foreach(element, key, value) {
+    print_json_indent(indent + 2);
+    printf("JSON Key: \"%s\"\n", key);
+    print_json_aux(value, indent + 2);
+  }
+}
+
+void print_json_array(json_t *element, int indent) {
+  size_t i;
+  size_t size = json_array_size(element);
+  print_json_indent(indent);
+
+  printf("JSON Array of %lld element%s:\n", (long long)size, json_plural(size));
+  for (i = 0; i < size; i++) {
+    print_json_aux(json_array_get(element, i), indent + 2);
+  }
+}
+
+void print_json_string(json_t *element, int indent) {
+  print_json_indent(indent);
+  printf("JSON String: \"%s\"\n", json_string_value(element));
+}
+
+void print_json_integer(json_t *element, int indent) {
+  print_json_indent(indent);
+  printf("JSON Integer: \"%" JSON_INTEGER_FORMAT "\"\n", json_integer_value(element));
+}
+
+void print_json_real(json_t *element, int indent) {
+  print_json_indent(indent);
+  printf("JSON Real: %f\n", json_real_value(element));
+}
+
+void print_json_true(json_t *element, int indent) {
+  (void)element;
+  print_json_indent(indent);
+  printf("JSON True\n");
+}
+
+void print_json_false(json_t *element, int indent) {
+  (void)element;
+  print_json_indent(indent);
+  printf("JSON False\n");
+}
+
+void print_json_null(json_t *element, int indent) {
+  (void)element;
+  print_json_indent(indent);
+  printf("JSON Null\n");
+}
+
+// ----------------------------------------------------------------------
+// Trained HWPV model coefficients read from JSON file
+//  1 - allocated in the DLL in Model_CheckParameters, 
+//      keep pointer in a state variable (double) provided by caller
+//      TODO: verify the spec requires state variable allocation before
+//            calling Model_CheckParameters. If not, use Model_Initialize
+//  2 - freed in the DLL in Model_Terminate
+
+typedef struct _MyH {
+  int32_T nin;
+  int32_T nout;
+  int32_T na;
+  int32_T nb;
+  int32_T nk;
+  real64_T ***a; // index nout, nin, na
+  real64_T ***b; // index nout, nin, nb
+} MyH;
+
+typedef struct _MyF {
+  int32_T nin;
+  int32_T nout;
+  int32_T nhid;
+  real64_T **n0w; // index nhid, nin
+  real64_T **n2w; // index nout, nhid
+  real64_T *n0b;  // index nhid
+  real64_T *n2b;  // index nout
+} MyF;
+
+typedef struct _MyCoefficients {
+  // training time step for H(z)
+  real64_T t_step;
+  // model dimensions
+  int32_T na;
+  int32_T nb;
+  int32_T nk;
+  int32_T nh1;
+  int32_T nh2;
+  int32_T nin;
+  int32_T nout;
+  // activation function must be tanh
+  char *activation;
+  // signal names
+  char **col_u;
+  char **col_y;
+  char **col_t;
+  // normalization factors, nin+nout, ordered as in col_u and col_y
+  real64_T *pScales;
+  real64_T *pOffsets;
+  real64_T *pMins;
+  real64_T *pMaxs;
+  MyH *pH1;
+  MyF *pF1;
+  MyF *pF2;
+} MyCoefficients;
 
 // ----------------------------------------------------------------------
 // Structures defining inputs, outputs, parameters and program structure
@@ -179,7 +350,7 @@ IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
   .ParametersInfo = Parameters,
 
   // Number of State Variables - this DLL will create its own internal storage
-  .NumIntStates = 0,
+  .NumIntStates = 4,    // store a pointer in the memory for these?!
   .NumFloatStates = 0,
   .NumDoubleStates = 0
 };
@@ -193,6 +364,168 @@ __declspec(dllexport) const IEEE_Cigre_DLLInterface_Model_Info* __cdecl Model_Ge
   return &Model_Info;
 };
 
+char **make_string_array (json_t *pJson)
+{
+  int n = json_array_size (pJson);
+  char **ret = malloc (sizeof (char *) * n);
+  for (int i=0; i < n; i++) {
+    json_t *jval = json_array_get (pJson, i);
+    const char *cstr = json_string_value (jval);
+    ret[i] = malloc (strlen(cstr)+1);
+    strcpy (ret[i], cstr);
+  }
+  return ret;
+}
+
+MyF *load_F_block (json_t *pJson)
+{
+  MyF *pF = malloc (sizeof (*pF));
+  pF->nin = pF->nout = pF->nhid = 0;
+  pF->n0w = pF->n2w = NULL;
+  pF->n0b = pF->n2b = NULL;
+  const char *key;
+  json_t *val;
+  json_object_foreach (pJson, key, val) {
+    if (0 == strcmp(key, "n_in")) {
+      pF->nin = json_integer_value (val);
+    } else if (0 == strcmp(key, "n_hid")) {
+      pF->nhid = json_integer_value (val);
+    } else if (0 == strcmp(key, "n_out")) {
+      pF->nout = json_integer_value (val);
+      pF->n0w = malloc (sizeof (real64_T *) * pF->nhid);
+      for (int i=0; i < pF->nhid; i++) {
+        pF->n0w[i] = malloc (sizeof (real64_T) * pF->nin);
+      }
+      pF->n2w = malloc (sizeof (real64_T *) * pF->nout);
+      for (int i=0; i < pF->nout; i++) {
+        pF->n2w[i] = malloc (sizeof (real64_T) * pF->nhid);
+      }
+      pF->n0b = malloc (sizeof (real64_T) * pF->nhid);
+      pF->n2b = malloc (sizeof (real64_T) * pF->nout);
+    } else if (0 == strcmp(key, "net.0.weight")) {
+      for (int i=0; i < pF->nhid; i++) {
+        json_t *row = json_array_get (val, i);
+        for (int j=0; j < pF->nin; j++) {
+          pF->n0w[i][j] = json_real_value (json_array_get (row, j));
+        }
+      }
+    } else if (0 == strcmp(key, "net.2.weight")) {
+      for (int i=0; i < pF->nout; i++) {
+        json_t *row = json_array_get (val, i);
+        for (int j=0; j < pF->nhid; j++) {
+          pF->n2w[i][j] = json_real_value (json_array_get (row, j));
+        }
+      }
+    } else if (0 == strcmp(key, "net.0.bias")) {
+      for (int i=0; i < pF->nhid; i++) {
+        pF->n0b[i] = json_real_value (json_array_get (val, i));
+      }
+    } else if (0 == strcmp(key, "net.2.bias")) {
+      for (int i=0; i < pF->nout; i++) {
+        pF->n2b[i] = json_real_value (json_array_get (val, i));
+      }
+    }
+  }
+  return pF;
+}
+
+MyH *load_H_block (json_t *pJson)
+{
+  char buf[100];
+  int row, col;
+  MyH *pH = malloc (sizeof (*pH));
+  pH->nin = pH->nout = pH->na = pH->nb = pH->nk = 0;
+  pH->a = pH->b = NULL;
+  const char *key;
+  json_t *val;
+  json_object_foreach (pJson, key, val) {
+    if (0 == strcmp(key, "n_in")) {
+      pH->nin = json_integer_value (val);
+    } else if (0 == strcmp(key, "n_out")) {
+      pH->nout = json_integer_value (val);
+    } else if (0 == strcmp(key, "n_a")) {
+      pH->na = json_integer_value (val);
+    } else if (0 == strcmp(key, "n_b")) {
+      pH->nb = json_integer_value (val);
+    } else if (0 == strcmp(key, "n_k")) {
+      pH->nk = json_integer_value (val);
+      pH->a = malloc (sizeof (real64_T **) * pH->nout);
+      pH->b = malloc (sizeof (real64_T **) * pH->nout);
+      for (int i = 0; i < pH->nout; i++) {
+        pH->a[i] = malloc (sizeof (real64_T *) * pH->nin);
+        pH->b[i] = malloc (sizeof (real64_T *) * pH->nin);
+        for (int j = 0; j < pH->nin; j++) {
+          pH->a[i][j] = malloc (sizeof (real64_T) * pH->na);
+          pH->b[i][j] = malloc (sizeof (real64_T) * pH->nb);
+        }
+      }
+    } else if (0 == strncmp (key, "a_", 2)) {
+      sscanf (key, "%[^_]_%d_%d", buf, &row, &col);
+      //printf("   found %s and parsed %s[%d,%d] size %zd\n", key, buf, row, col, json_array_size(val));
+      for (int i=0; i < pH->na; i++) {
+        pH->a[row][col][i] = json_real_value (json_array_get (val, i));
+      }
+    } else if (0 == strncmp (key, "b_", 2)) {
+      sscanf (key, "%[^_]_%d_%d", buf, &row, &col);
+      //printf("   found %s and parsed %s[%d,%d] size %zd\n", key, buf, row, col, json_array_size(val));
+      for (int i=0; i < pH->nb; i++) {
+        pH->b[row][col][i] = json_real_value (json_array_get (val, i));
+      }
+    }
+  }
+  return pH;
+}
+
+void load_normalization_factors (MyCoefficients *pCoeff, json_t *pJson)
+{
+//  print_json_indent(indent);
+  int n = json_object_size (pJson);
+  pCoeff->pOffsets = malloc (sizeof (double) * n);
+  pCoeff->pScales = malloc (sizeof (double) * n);
+  pCoeff->pMins = malloc (sizeof (double) * n);
+  pCoeff->pMaxs = malloc (sizeof (double) * n);
+
+  const char *key1, *key2;
+  json_t *val1, *val2;
+
+  int i = 0;
+  json_object_foreach (pJson, key1, val1) {
+    json_object_foreach (val1, key2, val2) {
+      if (0 == strcmp(key2, "scale")) {
+        pCoeff->pScales[i] = json_real_value (val2);
+      } else if (0 == strcmp(key2, "offset")) {
+        pCoeff->pOffsets[i] = json_real_value (val2);
+      } else if (0 == strcmp(key2, "max")) {
+        pCoeff->pMaxs[i] = json_real_value (val2);
+      } else if (0 == strcmp(key2, "min")) {
+        pCoeff->pMins[i] = json_real_value (val2);
+      }
+    }
+    i++;
+  }
+}
+
+MyCoefficients *get_coefficient_pointer (int32_T *pVals)
+{
+  unsigned long long part0 = ((unsigned long long) pVals[0] << 48) & 0xFFFF000000000000;
+  unsigned long long part1 = ((unsigned long long) pVals[1] << 32) & 0x0000FFFF00000000;
+  unsigned long long part2 = ((unsigned long long) pVals[2] << 16) & 0x00000000FFFF0000;
+  unsigned long long part3 = (unsigned long long) pVals[3] & 0x000000000000FFFF;
+  unsigned long long address = part0 | part1 | part2 | part3;
+//  printf("get_coefficient_pointer: %lld, %lld, %lld, %lld yields %p\n", part0, part1, part2, part3, (void *)address);
+  return (MyCoefficients *) address;
+}
+
+void set_coefficient_pointer (MyCoefficients *ptr, int32_T *pVals)
+{
+  unsigned long long address = (unsigned long long) ptr;
+  pVals[0] = (address >> 48) & 0xFFFF;
+  pVals[1] = (address >> 32) & 0xFFFF;
+  pVals[2] = (address >> 16) & 0xFFFF;
+  pVals[3] = address & 0xFFFF;
+//  printf("set_coefficient_pointer: %d, %d, %d, %d from %p\n", pVals[0], pVals[1], pVals[2], pVals[3], ptr);
+}
+
 // ----------------------------------------------------------------
 __declspec(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterface_Instance* instance) {
   /*   Checks the parameters on the given range
@@ -202,13 +535,93 @@ __declspec(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterf
   // Parameter checks done by the program
   // Note - standard min/max checks should be done by the higher level GUI/Program
   MyModelParameters* parameters = (MyModelParameters*)instance->Parameters;
+  MyCoefficients *pCoeff = NULL;
 
   char_T *pFileName = parameters->pFileName;
+  json_error_t json_error;
+  json_t *pJson = json_load_file (pFileName, 0, &json_error);
+  if (NULL == pJson) {
+    printf(" failed to read trained model from %s\n", pFileName);
+  } else {
+//    print_json (pJson);
+    pCoeff = malloc (sizeof (*pCoeff));
+    pCoeff->activation=NULL;
+    pCoeff->col_u=NULL;
+    pCoeff->col_y=NULL;
+    pCoeff->col_t=NULL;
+    pCoeff->pScales=NULL;
+    pCoeff->pOffsets=NULL;
+    pCoeff->pMins=NULL;
+    pCoeff->pMaxs=NULL;
 
-  FILE *fp = fopen (pFileName, "rt");
-  printf("  read trained model from %s, opened as %p\n", pFileName, fp);
-  fclose (fp);
-  //
+    const char *key;
+    json_t *value;
+    json_object_foreach (pJson, key, value) {
+      if (0 == strcmp (key, "t_step")) {
+        pCoeff->t_step = json_real_value (value);
+      } else if (0 == strcmp (key, "na")) {
+        pCoeff->na = json_integer_value (value);
+      } else if (0 == strcmp (key, "nb")) {
+        pCoeff->nb = json_integer_value (value);
+      } else if (0 == strcmp (key, "nk")) {
+        pCoeff->nk = json_integer_value (value);
+      } else if (0 == strcmp (key, "nh1")) {
+        pCoeff->nh1 = json_integer_value (value);
+      } else if (0 == strcmp (key, "nh2")) {
+        pCoeff->nh2 = json_integer_value (value);
+      } else if (0 == strcmp (key, "activation")) {
+        const char *cstr = json_string_value (value);
+        pCoeff->activation = malloc (strlen(cstr)+1);
+        strcpy (pCoeff->activation, cstr);
+      } else if (0 == strcmp (key, "COL_T")) {
+        pCoeff->col_t = make_string_array (value);
+      } else if (0 == strcmp (key, "COL_Y")) {
+        pCoeff->nout = json_array_size(value);
+        pCoeff->col_y = make_string_array (value);
+      } else if (0 == strcmp (key, "COL_U")) {
+        pCoeff->nin = json_array_size(value);
+        pCoeff->col_u = make_string_array (value);
+      } else if (0 == strcmp (key, "normfacs")) {
+        load_normalization_factors (pCoeff, value);
+      } else if (0 == strcmp (key, "F1")) {
+        pCoeff->pF1 = load_F_block (value);
+      } else if (0 == strcmp (key, "F2")) {
+        pCoeff->pF2 = load_F_block (value);
+      } else if (0 == strcmp (key, "H1")) {
+        pCoeff->pH1 = load_H_block (value);
+      }
+    }
+    json_decref (pJson);
+    printf("Parsed nin=%d, nout=%d, t_step=%g, na=%d, nb=%d, nk=%d, nh1=%d, nh2=%d, activation=%s\n", 
+           pCoeff->nin, pCoeff->nout, pCoeff->t_step, pCoeff->na, pCoeff->nb, pCoeff->nk, pCoeff->nh1, pCoeff->nh2, pCoeff->activation);
+    printf("  col_t=%s\n", pCoeff->col_t[0]);
+    printf("Inputs: scale, offset, min, max\n");
+    for (int i = 0; i < pCoeff->nin; i++) {
+      printf("  col_u[%d]=%6s %13g %13g %13g %13g\n", i, pCoeff->col_u[i], pCoeff->pScales[i], pCoeff->pOffsets[i], pCoeff->pMins[i], pCoeff->pMaxs[i]);
+    }
+    printf("Outputs: scale, offset, min, max\n");
+    for (int i = 0; i < pCoeff->nout; i++) {
+      int j = i + pCoeff->nin;
+      printf("  col_y[%d]=%6s %13g %13g %13g %13g\n", i, pCoeff->col_y[i], pCoeff->pScales[j], pCoeff->pOffsets[j], pCoeff->pMins[j], pCoeff->pMaxs[j]);
+    }
+    printf("F1: nin=%d, nout=%d, nhid=%d\n", pCoeff->pF1->nin, pCoeff->pF1->nout, pCoeff->pF1->nhid);
+//  for (int i=0; i < pCoeff->pF1->nhid; i++) {
+//    printf("n0w[%d]\n", i);
+//    for (int j=0; j < pCoeff->pF1->nin; j++) {
+//      printf("  %d=%g\n", j, pCoeff->pF1->n0w[i][j]);
+//    }
+//  }
+    printf("H1: nin=%d, nout=%d, na=%d, nb=%d, nk=%d\n", pCoeff->pH1->nin, pCoeff->pH1->nout, pCoeff->pH1->na, pCoeff->pH1->nb, pCoeff->pH1->nk);
+//  for (int i = 0; i < pCoeff->pH1->na; i++) {
+//    printf("  a_0_0[%d]=%g\n", i, pCoeff->pH1->a[0][0][i]);
+//  }
+//  for (int i = 0; i < pCoeff->pH1->nb; i++) {
+//    printf("  b_0_0[%d]=%g\n", i, pCoeff->pH1->b[0][0][i]);
+//  }
+    printf("F2: nin=%d, nout=%d, nhid=%d\n", pCoeff->pF2->nin, pCoeff->pF2->nout, pCoeff->pF2->nhid);
+    set_coefficient_pointer (pCoeff, instance->IntStates);
+  }
+
   double delt = Model_Info.FixedStepBaseSampleTime;
 
   ErrorMessage[0] = '\0';
@@ -242,6 +655,10 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
   double delt = Model_Info.FixedStepBaseSampleTime;
   MyModelInputs* inputs = (MyModelInputs*)instance->ExternalInputs;
   MyModelOutputs* outputs = (MyModelOutputs*)instance->ExternalOutputs;
+  printf("IntStates %d %d %d %d\n", instance->IntStates[0], instance->IntStates[1], instance->IntStates[2], instance->IntStates[3]);
+  MyCoefficients *pCoeff = get_coefficient_pointer (instance->IntStates);
+  printf("Restored t_step=%g from %p\n", pCoeff->t_step, pCoeff);
+
   ErrorMessage[0] = '\0';
 
   instance->LastGeneralMessage = ErrorMessage;
@@ -267,8 +684,68 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
 
 // ----------------------------------------------------------------
 __declspec(dllexport) int32_T __cdecl Model_Terminate(IEEE_Cigre_DLLInterface_Instance* instance) {
-  /*   Destroys any objects allocated by the model code - not used
+  /*   Destroys any objects allocated by the model code 
   */
+  MyCoefficients *pCoeff = get_coefficient_pointer (instance->IntStates);
+
+  free (pCoeff->activation);
+
+  for (int i=0; i<pCoeff->nin; i++) {
+    free (pCoeff->col_u[i]);
+  }
+  for (int i=0; i<pCoeff->nout; i++) {
+    free (pCoeff->col_y[i]);
+  }
+  for (int i=0; i<1; i++) {
+    free (pCoeff->col_t[i]);
+  }
+  free (pCoeff->col_u);
+  free (pCoeff->col_y);
+  free (pCoeff->col_t);
+
+  free (pCoeff->pOffsets);
+  free (pCoeff->pScales);
+  free (pCoeff->pMins);
+  free (pCoeff->pMaxs);
+
+  for (int i=0; i < pCoeff->pH1->nout; i++) {
+    for (int j=0; j < pCoeff->pH1->nin; j++) {
+      free (pCoeff->pH1->a[i][j]);
+      free (pCoeff->pH1->b[i][j]);
+    }
+    free (pCoeff->pH1->a[i]);
+    free (pCoeff->pH1->b[i]);
+  }
+  free (pCoeff->pH1->a);
+  free (pCoeff->pH1->b);
+  free (pCoeff->pH1);
+
+  for (int i=0; i < pCoeff->pF1->nhid; i++) {
+    free (pCoeff->pF1->n0w[i]);
+  }
+  for (int i=0; i < pCoeff->pF1->nout; i++) {
+    free (pCoeff->pF1->n2w[i]);
+  }
+  free (pCoeff->pF1->n0w);
+  free (pCoeff->pF1->n2w);
+  free (pCoeff->pF1->n0b);
+  free (pCoeff->pF1->n2b);
+  free (pCoeff->pF1);
+
+  for (int i=0; i < pCoeff->pF2->nhid; i++) {
+    free (pCoeff->pF2->n0w[i]);
+  }
+  for (int i=0; i < pCoeff->pF2->nout; i++) {
+    free (pCoeff->pF2->n2w[i]);
+  }
+  free (pCoeff->pF2->n0w);
+  free (pCoeff->pF2->n2w);
+  free (pCoeff->pF2->n0b);
+  free (pCoeff->pF2->n2b);
+  free (pCoeff->pF2);
+
+  free (pCoeff);
+
   ErrorMessage[0] = '\0';
   instance->LastGeneralMessage = ErrorMessage;
 
