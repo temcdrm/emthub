@@ -19,13 +19,6 @@
 
 #include "IEEE_Cigre_DLLWrapper.h"
  
-void initialize_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, int nPorts)
-{
-  double EFD = 1.0;
-  char *pData = (char *) pModel->ExternalOutputs;
-  memcpy (pData + pMap[0].offset, &EFD, pMap[0].size);
-}
-
 // interpolated inputs
 
 typedef struct {
@@ -182,6 +175,19 @@ void update_inputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, do
   memcpy (pData + pMap[8].offset, &Ctl, pMap[8].size);
 }
 
+void initialize_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap)
+{
+  double Vdc = 0.0;
+  double Idc = 0.0;
+  double Id = 0.0;
+  double Iq = 0.0;
+  char *pData = (char *) pModel->ExternalOutputs;
+  memcpy (pData + pMap[0].offset, &Vdc, pMap[0].size);
+  memcpy (pData + pMap[1].offset, &Idc, pMap[1].size);
+  memcpy (pData + pMap[2].offset, &Id, pMap[2].size);
+  memcpy (pData + pMap[3].offset, &Iq, pMap[3].size);
+}
+
 // need Id and Iq for injection into the simulated grid
 void extract_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, double *pId, double *pIq)
 {
@@ -219,7 +225,7 @@ int main( void )
     // initialize time-stepping
     initialize_tables ();
     printf("calling Initialize\n");
-    initialize_outputs (pWrap->pModel, pWrap->pOutputMap, pWrap->pInfo->NumOutputPorts);
+    initialize_outputs (pWrap->pModel, pWrap->pOutputMap);
     pWrap->Model_Initialize (pWrap->pModel);
     check_messages ("Model_Initialize", pWrap->pModel);
 
