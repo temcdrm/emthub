@@ -134,7 +134,7 @@ void print_json_null(json_t *element, int indent) {
 // ----------------------------------------------------------------------
 // Trained HWPV model coefficients read from JSON file
 //  1 - allocated in the DLL in Model_CheckParameters, 
-//      keep pointer in a state variable (double) provided by caller
+//      keep pointer in a state variable (real64_T) provided by caller
 //      TODO: verify the spec requires state variable allocation before
 //            calling Model_CheckParameters. If not, use Model_Initialize
 //  2 - freed in the DLL in Model_Terminate
@@ -145,8 +145,11 @@ typedef struct _MyH {
   int32_T na;
   int32_T nb;
   int32_T nk;
-  real64_T ***a; // index nout, nin, na
-  real64_T ***b; // index nout, nin, nb
+  real64_T ***a;     // index nout, nin, na
+  real64_T ***b;     // index nout, nin, nb
+  real64_T ***uhist; // index nout, nin, nb REVISIT
+  real64_T ***yhist; // index nout, nin, na REVISIT
+  real64_T *ysum;    // index nout
 } MyH;
 
 typedef struct _MyF {
@@ -157,6 +160,8 @@ typedef struct _MyF {
   real64_T **n2w; // index nout, nhid
   real64_T *n0b;  // index nhid
   real64_T *n2b;  // index nout
+  real64_T *yhid; // index nhid
+  real64_T *yout; // index nout
 } MyF;
 
 typedef struct _MyCoefficients {
@@ -184,6 +189,8 @@ typedef struct _MyCoefficients {
   MyH *pH1;
   MyF *pF1;
   MyF *pF2;
+  // normalized inputs
+  real64_T *ub;
 } MyCoefficients;
 
 // ----------------------------------------------------------------------
@@ -382,7 +389,7 @@ MyF *load_F_block (json_t *pJson)
   MyF *pF = malloc (sizeof (*pF));
   pF->nin = pF->nout = pF->nhid = 0;
   pF->n0w = pF->n2w = NULL;
-  pF->n0b = pF->n2b = NULL;
+  pF->n0b = pF->n2b = pF->yhid = pF->yout = NULL;
   const char *key;
   json_t *val;
   json_object_foreach (pJson, key, val) {
@@ -402,6 +409,8 @@ MyF *load_F_block (json_t *pJson)
       }
       pF->n0b = malloc (sizeof (real64_T) * pF->nhid);
       pF->n2b = malloc (sizeof (real64_T) * pF->nout);
+      pF->yhid = malloc (sizeof (real64_T) * pF->nhid);
+      pF->yout = malloc (sizeof (real64_T) * pF->nout);
     } else if (0 == strcmp(key, "net.0.weight")) {
       for (int i=0; i < pF->nhid; i++) {
         json_t *row = json_array_get (val, i);
@@ -429,13 +438,31 @@ MyF *load_F_block (json_t *pJson)
   return pF;
 }
 
+void evaluate_F_block (MyF *pF, real64_T *u)
+{
+  for (int i = 0; i < pF->nhid; i++) {
+    pF->yhid[i] = pF->n0b[i];
+    for (int j = 0; j < pF->nin; j++) {
+      pF->yhid[i] += pF->n0w[i][j] * u[j];
+    }
+    pF->yhid[i] = tanh (pF->yhid[i]);
+  }
+  for (int i = 0; i < pF->nout; i++) {
+    pF->yout[i] = pF->n2b[i];
+    for (int j = 0; j < pF->nhid; j++) {
+      pF->yout[i] += pF->n2w[i][j] * pF->yhid[j];
+    }
+  }
+}
+
 MyH *load_H_block (json_t *pJson)
 {
   char buf[100];
   int row, col;
   MyH *pH = malloc (sizeof (*pH));
   pH->nin = pH->nout = pH->na = pH->nb = pH->nk = 0;
-  pH->a = pH->b = NULL;
+  pH->a = pH->b = pH->uhist = pH->yhist = NULL;
+  pH->ysum = NULL;
   const char *key;
   json_t *val;
   json_object_foreach (pJson, key, val) {
@@ -451,12 +478,21 @@ MyH *load_H_block (json_t *pJson)
       pH->nk = json_integer_value (val);
       pH->a = malloc (sizeof (real64_T **) * pH->nout);
       pH->b = malloc (sizeof (real64_T **) * pH->nout);
+      pH->uhist = malloc (sizeof (real64_T **) * pH->nout);
+      pH->yhist = malloc (sizeof (real64_T **) * pH->nout);
+      pH->ysum = malloc (sizeof (real64_T) * pH->nout);
       for (int i = 0; i < pH->nout; i++) {
         pH->a[i] = malloc (sizeof (real64_T *) * pH->nin);
         pH->b[i] = malloc (sizeof (real64_T *) * pH->nin);
+        pH->uhist[i] = malloc (sizeof (real64_T *) * pH->nin);
+        pH->yhist[i] = malloc (sizeof (real64_T *) * pH->nin);
         for (int j = 0; j < pH->nin; j++) {
           pH->a[i][j] = malloc (sizeof (real64_T) * pH->na);
+          pH->yhist[i][j] = malloc (sizeof (real64_T) * pH->na);
+          memset (pH->yhist[i][j], 0, sizeof (real64_T) * pH->na);
           pH->b[i][j] = malloc (sizeof (real64_T) * pH->nb);
+          pH->uhist[i][j] = malloc (sizeof (real64_T) * pH->nb);
+          memset (pH->uhist[i][j], 0, sizeof (real64_T) * pH->nb);
         }
       }
     } else if (0 == strncmp (key, "a_", 2)) {
@@ -476,14 +512,94 @@ MyH *load_H_block (json_t *pJson)
   return pH;
 }
 
+void evaluate_H_block (MyH *pH, real64_T *u)
+{
+//for (int i = 0; i < pH->nout; i++) {
+//  for (int j = 0; j < pH->nin; j++) {
+//    pH->ysum[i] = u[j];
+//  }
+//}
+//return;
+  for (int i = 0; i < pH->nout; i++) {
+    pH->ysum[i] = 0.0;
+    for (int j = 0; j < pH->nin; j++) {
+      // local convenience pointers
+      real64_T *uh = pH->uhist[i][j];
+      real64_T *yh = pH->yhist[i][j];
+      real64_T *a = pH->a[i][j];
+      real64_T *b = pH->b[i][j];
+      // shift the input history one point, add the latest input
+      for (int k = pH->nb-1; k > 0; k--) {
+        uh[k] = uh[k-1];
+      }
+      uh[0] = u[j];
+      // evaluate H(z) for this input-output channel pair
+      real64_T ynew = 0.0;
+      for (int k = 0; k < pH->nb; k++) {
+        ynew += b[k] * uh[k];
+      }
+      for (int k = 0; k < pH->na; k++) {
+        ynew -= a[k] * yh[k];
+      }
+      // shift the output history one point, add the latest output
+      for (int k = pH->na-1; k > 0; k--) {
+        yh[k] = yh[k-1];
+      }
+//    if (fabs(yh[0] - ynew) > 1.0e-5) {
+//      printf("evaluate_H_block [%d][%d] changes ynew from %g to %g\n", i, j, yh[0], ynew);
+//      printf(" k            ub            uh             b            yh             a\n");
+//      for (int k=0; k < pH->na; k++) {
+//        printf("%2d %13g %13g %13g %13g %13g\n", k, u[k], uh[k], b[k], yh[k], a[k]);
+//      }
+//      //exit (EXIT_FAILURE);
+//    }
+      yh[0] = ynew;
+      // accumulate contributions from inputs to outputs
+      pH->ysum[i] += ynew;
+    }
+  }
+}
+
+void initialize_H_history (MyH *pH, real64_T *u)
+{
+  for (int i = 0; i < pH->nout; i++) {
+    for (int j = 0; j < pH->nin; j++) {
+      // local convenience pointers
+      real64_T *uh = pH->uhist[i][j];
+      real64_T *yh = pH->yhist[i][j];
+      real64_T *a = pH->a[i][j];
+      real64_T *b = pH->b[i][j];
+      real64_T denominator = 1.0;
+      real64_T numerator = 0.0;
+      for (int k = 0; k < pH->nb; k++) {
+        uh[k] = u[j];
+        numerator += b[k];
+      }
+      for (int k = 0; k < pH->na; k++) {
+        denominator += a[k];
+      }
+      real64_T ynew = u[j] * numerator / denominator;
+      for (int k = 0; k < pH->na; k++) {
+        yh[k] = ynew;
+      }
+      //printf("initialize_H_block [%d][%d] ynew=%g\n", i, j, ynew);
+      //printf(" k            ub            uh             b            yh             a\n");
+      //for (int k=0; k < pH->na; k++) {
+      //  printf("%2d %13g %13g %13g %13g %13g\n", k, u[k], uh[k], b[k], yh[k], a[k]);
+      //}
+      // exit (EXIT_FAILURE);
+    }
+  }
+}
+
 void load_normalization_factors (MyCoefficients *pCoeff, json_t *pJson)
 {
 //  print_json_indent(indent);
   int n = json_object_size (pJson);
-  pCoeff->pOffsets = malloc (sizeof (double) * n);
-  pCoeff->pScales = malloc (sizeof (double) * n);
-  pCoeff->pMins = malloc (sizeof (double) * n);
-  pCoeff->pMaxs = malloc (sizeof (double) * n);
+  pCoeff->pOffsets = malloc (sizeof (real64_T) * n);
+  pCoeff->pScales = malloc (sizeof (real64_T) * n);
+  pCoeff->pMins = malloc (sizeof (real64_T) * n);
+  pCoeff->pMaxs = malloc (sizeof (real64_T) * n);
 
   const char *key1, *key2;
   json_t *val1, *val2;
@@ -553,6 +669,7 @@ __declspec(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterf
     pCoeff->pOffsets=NULL;
     pCoeff->pMins=NULL;
     pCoeff->pMaxs=NULL;
+    pCoeff->ub=NULL;
 
     const char *key;
     json_t *value;
@@ -580,6 +697,7 @@ __declspec(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterf
         pCoeff->col_y = make_string_array (value);
       } else if (0 == strcmp (key, "COL_U")) {
         pCoeff->nin = json_array_size(value);
+        pCoeff->ub = malloc (sizeof(real64_T) * pCoeff->nin);
         pCoeff->col_u = make_string_array (value);
       } else if (0 == strcmp (key, "normfacs")) {
         load_normalization_factors (pCoeff, value);
@@ -622,7 +740,7 @@ __declspec(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterf
     set_coefficient_pointer (pCoeff, instance->IntStates);
   }
 
-  double delt = Model_Info.FixedStepBaseSampleTime;
+  real64_T delt = Model_Info.FixedStepBaseSampleTime;
 
   ErrorMessage[0] = '\0';
 //if (TE < 2.0*delt) {
@@ -652,9 +770,9 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
   // the main program must set the instance->ExternalOutputs to initial values.
   //
   MyModelParameters* parameters = (MyModelParameters*)instance->Parameters;
-  double delt = Model_Info.FixedStepBaseSampleTime;
-  MyModelInputs* inputs = (MyModelInputs*)instance->ExternalInputs;
-  MyModelOutputs* outputs = (MyModelOutputs*)instance->ExternalOutputs;
+  real64_T delt = Model_Info.FixedStepBaseSampleTime;
+  real64_T *inputs = (real64_T *)instance->ExternalInputs;
+  real64_T *outputs = (real64_T *)instance->ExternalOutputs;
   printf("IntStates %d %d %d %d\n", instance->IntStates[0], instance->IntStates[1], instance->IntStates[2], instance->IntStates[3]);
   MyCoefficients *pCoeff = get_coefficient_pointer (instance->IntStates);
   printf("Restored t_step=%g from %p\n", pCoeff->t_step, pCoeff);
@@ -674,13 +792,75 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   ErrorMessage[0] = '\0';
 
   MyModelParameters* parameters = (MyModelParameters*)instance->Parameters;
-  double delt = Model_Info.FixedStepBaseSampleTime;
-  MyModelInputs* inputs = (MyModelInputs*)instance->ExternalInputs;
-  MyModelOutputs* outputs = (MyModelOutputs*)instance->ExternalOutputs;
+  real64_T delt = Model_Info.FixedStepBaseSampleTime;
+  real64_T *inputs = (real64_T *)instance->ExternalInputs;
+  real64_T *outputs = (real64_T *)instance->ExternalOutputs;
+  MyCoefficients *pCoeff = get_coefficient_pointer (instance->IntStates);
+
+  // normalize the input vector
+  for (int i = 0; i < pCoeff->nin; i++) {
+    pCoeff->ub[i] = (inputs[i] - pCoeff->pOffsets[i]) / pCoeff->pScales[i];
+  }
+
+  // evaluate F1
+  evaluate_F_block (pCoeff->pF1, pCoeff->ub);
+
+  // evaluate H1
+  if (instance->Time <= 0.0) {
+    initialize_H_history (pCoeff->pH1, pCoeff->pF1->yout);
+  }
+  evaluate_H_block (pCoeff->pH1, pCoeff->pF1->yout);
+
+  // evaluate F2
+  evaluate_F_block (pCoeff->pF2, pCoeff->pH1->ysum);
+
+  // de-normalize the output vector
+  for (int i = 0; i < pCoeff->nout; i++) {
+    outputs[i] = pCoeff->pF2->yout[i] * pCoeff->pScales[i+pCoeff->nin] + pCoeff->pOffsets[i+pCoeff->nin];
+  }
 
   instance->LastGeneralMessage = ErrorMessage;
   return IEEE_Cigre_DLLInterface_Return_OK;
 };
+
+void free_F_block (MyF *pF)
+{
+  for (int i=0; i < pF->nhid; i++) {
+    free (pF->n0w[i]);
+  }
+  for (int i=0; i < pF->nout; i++) {
+    free (pF->n2w[i]);
+  }
+  free (pF->n0w);
+  free (pF->n2w);
+  free (pF->n0b);
+  free (pF->n2b);
+  free (pF->yhid);
+  free (pF->yout);
+  free (pF);
+}
+
+void free_H_block (MyH *pH)
+{
+  for (int i=0; i < pH->nout; i++) {
+    for (int j=0; j < pH->nin; j++) {
+      free (pH->a[i][j]);
+      free (pH->b[i][j]);
+      free (pH->uhist[i][j]);
+      free (pH->yhist[i][j]);
+    }
+    free (pH->a[i]);
+    free (pH->b[i]);
+    free (pH->uhist[i]);
+    free (pH->yhist[i]);
+  }
+  free (pH->a);
+  free (pH->b);
+  free (pH->uhist);
+  free (pH->yhist);
+  free (pH->ysum);
+  free (pH);
+}
 
 // ----------------------------------------------------------------
 __declspec(dllexport) int32_T __cdecl Model_Terminate(IEEE_Cigre_DLLInterface_Instance* instance) {
@@ -708,41 +888,11 @@ __declspec(dllexport) int32_T __cdecl Model_Terminate(IEEE_Cigre_DLLInterface_In
   free (pCoeff->pMins);
   free (pCoeff->pMaxs);
 
-  for (int i=0; i < pCoeff->pH1->nout; i++) {
-    for (int j=0; j < pCoeff->pH1->nin; j++) {
-      free (pCoeff->pH1->a[i][j]);
-      free (pCoeff->pH1->b[i][j]);
-    }
-    free (pCoeff->pH1->a[i]);
-    free (pCoeff->pH1->b[i]);
-  }
-  free (pCoeff->pH1->a);
-  free (pCoeff->pH1->b);
-  free (pCoeff->pH1);
+  free (pCoeff->ub);
 
-  for (int i=0; i < pCoeff->pF1->nhid; i++) {
-    free (pCoeff->pF1->n0w[i]);
-  }
-  for (int i=0; i < pCoeff->pF1->nout; i++) {
-    free (pCoeff->pF1->n2w[i]);
-  }
-  free (pCoeff->pF1->n0w);
-  free (pCoeff->pF1->n2w);
-  free (pCoeff->pF1->n0b);
-  free (pCoeff->pF1->n2b);
-  free (pCoeff->pF1);
-
-  for (int i=0; i < pCoeff->pF2->nhid; i++) {
-    free (pCoeff->pF2->n0w[i]);
-  }
-  for (int i=0; i < pCoeff->pF2->nout; i++) {
-    free (pCoeff->pF2->n2w[i]);
-  }
-  free (pCoeff->pF2->n0w);
-  free (pCoeff->pF2->n2w);
-  free (pCoeff->pF2->n0b);
-  free (pCoeff->pF2->n2b);
-  free (pCoeff->pF2);
+  free_H_block (pCoeff->pH1);
+  free_F_block (pCoeff->pF1);
+  free_F_block (pCoeff->pF2);
 
   free (pCoeff);
 

@@ -9,7 +9,7 @@
 #define JSON_FILE3 "C:\\src\\pecblocks\\examples\\hwpv\\unb3\\unb3_fhf.json"
 #define JSON_FILE4 "C:\\src\\pecblocks\\examples\\hwpv\\osg4\\osg4_fhf.json"
 
-#define TMAX 8.0
+#define TMAX 5.0
 // relative output path for execution from the build directory, e.g., release\test or debug\test
 #define CSV_NAME "hwpv.csv"
 
@@ -70,7 +70,7 @@ void initialize_tables ()
   initialize_one_table (&T_table, sizeof(xT) / sizeof(xT[0]), xT, yT);
 
   double xG[] = {0.0, 1.0, 2.0, 1000.0};
-  double yG[] = {0.0, 0.0, 950.0, 950.0};
+  double yG[] = {0.0, 0.0, 1000.0, 1000.0};
   if (sizeof(xG) != sizeof (yG)) {
     printf("**** ERROR: unequal number of points in lookup table for G\n");
     exit (EXIT_FAILURE);
@@ -110,7 +110,7 @@ void initialize_tables ()
   initialize_one_table (&Ctl_table, sizeof(xCtl) / sizeof(xCtl[0]), xCtl, yCtl);
 
   double xRg[] = {0.0, 5.0, 5.001, 1000.0};
-  double yRg[] = {2.3, 2.3, 3.0, 3.0};
+  double yRg[] = {0.2, 0.2, 0.2, 0.2}; // {2.3, 2.3, 3.0, 3.0};
   if (sizeof(xRg) != sizeof (yRg)) {
     printf("**** ERROR: unequal number of points in lookup table for Rg\n");
     exit (EXIT_FAILURE);
@@ -245,8 +245,8 @@ int main( void )
     while (t <= tstop) {
       // update the inputs for this next DLL step
       pWrap->pModel->Time = t;
-      Vd = Rg * Id;
-      Vq = Rg * Iq;
+      Vd = 0.0; // Rg * Id;
+      Vq = 0.0; // Rg * Iq;
       update_inputs (pWrap->pModel, pWrap->pInputMap, t, Vd, Vq);
       pWrap->Model_Outputs (pWrap->pModel);
       extract_outputs (pWrap->pModel, pWrap->pOutputMap, &Id, &Iq);
