@@ -8,8 +8,9 @@
 #define JSON_FILE2 "C:\\src\\pecblocks\\examples\\hwpv\\ucf4t\\ucf4t_fhf.json"
 #define JSON_FILE3 "C:\\src\\pecblocks\\examples\\hwpv\\unb3\\unb3_fhf.json"
 #define JSON_FILE4 "C:\\src\\pecblocks\\examples\\hwpv\\osg4\\osg4_fhf.json"
+#define JSON_FILE5 "C:\\src\\pecblocks\\examples\\hwpv\\bal3n\\bal3n_fhf.json"
 
-#define TMAX 5.0
+#define TMAX 8.0
 // relative output path for execution from the build directory, e.g., release\test or debug\test
 #define CSV_NAME "hwpv.csv"
 
@@ -110,7 +111,7 @@ void initialize_tables ()
   initialize_one_table (&Ctl_table, sizeof(xCtl) / sizeof(xCtl[0]), xCtl, yCtl);
 
   double xRg[] = {0.0, 5.0, 5.001, 1000.0};
-  double yRg[] = {0.2, 0.2, 0.2, 0.2}; // {2.3, 2.3, 3.0, 3.0};
+  double yRg[] = {2.3, 2.3, 3.0, 3.0}; // {0.2, 0.2, 0.2, 0.2};
   if (sizeof(xRg) != sizeof (yRg)) {
     printf("**** ERROR: unequal number of points in lookup table for Rg\n");
     exit (EXIT_FAILURE);
@@ -207,7 +208,7 @@ int main( void )
   if (NULL != pWrap) {
     // overwrite default JSON file with an actual one, knowing this is parameter 0
     union EditValueU val;
-    val.Char_Ptr = JSON_FILE1;
+    val.Char_Ptr = JSON_FILE5;
     edit_dll_value ((char *)pWrap->pModel->Parameters, 
                       pWrap->pParameterMap[0].offset, 
                       pWrap->pParameterMap[0].dtype, 
@@ -245,8 +246,9 @@ int main( void )
     while (t <= tstop) {
       // update the inputs for this next DLL step
       pWrap->pModel->Time = t;
-      Vd = 0.0; // Rg * Id;
-      Vq = 0.0; // Rg * Iq;
+      Rg = interpolate (&Rg_table, t);
+      Vd = Rg * Id;
+      Vq = Rg * Iq;
       update_inputs (pWrap->pModel, pWrap->pInputMap, t, Vd, Vq);
       pWrap->Model_Outputs (pWrap->pModel);
       extract_outputs (pWrap->pModel, pWrap->pOutputMap, &Id, &Iq);
