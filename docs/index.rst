@@ -1,5 +1,5 @@
-Power Electronic Converter Blocks (pecblocks)
-=============================================
+EMTHub\ |reg|
+=============
 
 .. toctree::
    :maxdepth: 4
@@ -15,3 +15,6 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+.. |reg|    unicode:: U+000AE .. REGISTERED SIGN
+

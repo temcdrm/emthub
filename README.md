@@ -1,4 +1,4 @@
-# EMTHub&trade;
+# EMTHub&reg;
 
 Software and data schemas for standards-based model building and 
 validation to perform electromagnetic transient (EMT) studies of electric 

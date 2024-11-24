@@ -5,7 +5,7 @@
 Overview
 ========
 
-EMTHub\ |trade| provides software and data schemas for standards-based model building and validation to perform electromagnetic transient (EMT) 
+EMTHub\ |reg| provides software and data schemas for standards-based model building and validation to perform electromagnetic transient (EMT) 
 studies of electric utility power systems. The focus is on inverter-based resources (IBR), e.g., wind, solar, and storage, 
 in electric utility systems. Network EMT models are based on the international standard Common Information Model (CIM). Unit and plant
 IBR models are based on IEEE standards 2800 and P2800.2, along with a Cigre/IEEE specification on real-code modeling through
