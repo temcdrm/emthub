@@ -1,9 +1,24 @@
-// Copyright (C) 2024 Meltran, Inc
+// Copyright (C) 2024-25 Meltran, Inc
 
 // see https://learn.microsoft.com/en-us/windows/win32/dlls/using-run-time-dynamic-linking
-
-#include <windows.h> 
+ 
+#ifdef ATP_MINGW
+#undef RC_INVOKED
+#define _WINGDI_H
+#define _WINUSER_H
+#define _WINNLS_H
+#define _WINVER_H
+#define _WINNETWK_H
+#define _WINREG_H
+#define _WINSVC_H
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#include <stdlib.h>
+#include <stddef.h>
+#else
+#include <windows.h>
 #include <stdio.h> 
+#endif
 
 #include "IEEE_Cigre_DLLWrapper.h"
  
@@ -38,20 +53,24 @@ struct MyReal64Struct {
 };
 
 void show_struct_alignment_requirements () {
+#ifndef ATP_MINGW
   printf ("Char alignment requirement: %zu\n", offsetof(struct MyCharStruct, v));
   printf ("CharPtr alignment requirement: %zu\n", offsetof(struct MyCharPtrStruct, v));
   printf ("Int16 alignment requirement: %zu\n", offsetof(struct MyInt16Struct, v));
   printf ("Int32 alignment requirement: %zu\n", offsetof(struct MyInt32Struct, v));
   printf ("Real32 alignment requirement: %zu\n", offsetof(struct MyReal32Struct, v));
   printf ("Real64 alignment requirement: %zu\n", offsetof(struct MyReal64Struct, v));
+#endif
 }
 
 DLL_MODEL_FCN LoadModelFunction (HINSTANCE hLib, char *name, char *dll_name)
 {
   DLL_MODEL_FCN fcn = (DLL_MODEL_FCN) GetProcAddress (hLib, name);
+#ifndef ATP_MINGW
   if (NULL == fcn) {
     printf("Failed to load %s from %s\n", name, dll_name);
   }
+#endif
   return fcn;
 }
 
@@ -143,7 +162,12 @@ IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInter
                                                        ArrayMap **pInputMap,
                                                        ArrayMap **pOutputMap)
 {
+  int i, input_size, output_size, parm_size, dsize;
+  ArrayMap *pTest;
+
+#ifndef ATP_MINGW
   printf("creating pModel on %s [%d,%d,%d]\n", pInfo->ModelName, pInfo->NumInputPorts, pInfo->NumOutputPorts, pInfo->NumParameters);
+#endif
   IEEE_Cigre_DLLInterface_Instance *pModel = malloc (sizeof *pModel);
   pModel->Time = 0.0;
   // allocate memory
@@ -155,18 +179,20 @@ IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInter
   pModel->Parameters = NULL;
   if (pInfo->NumInputPorts > 0) {
     size_t input_align = 0;
-    for (int i = 0; i < pInfo->NumInputPorts; i++) {
+    for (i = 0; i < pInfo->NumInputPorts; i++) {
       enum IEEE_Cigre_DLLInterface_DataType dtype = pInfo->InputPortsInfo[i].DataType;
       size_t this_align = get_alignment_requirement (dtype);
       if (this_align > input_align) {
         input_align = this_align;
       }
     }
+#ifndef ATP_MINGW
     printf("  Input Struct Alignment Requirement = %zu\n", input_align);
-    ArrayMap *pTest = malloc (pInfo->NumInputPorts * sizeof (ArrayMap));
+#endif
+    pTest = malloc (pInfo->NumInputPorts * sizeof (ArrayMap));
     *pInputMap = pTest;
-    int input_size = 0;
-    for (int i = 0; i < pInfo->NumInputPorts; i++) {
+    input_size = 0;
+    for (i = 0; i < pInfo->NumInputPorts; i++) {
       enum IEEE_Cigre_DLLInterface_DataType dtype = pInfo->InputPortsInfo[i].DataType;
       int dsize = get_datatype_size (dtype);
       pTest[i].size = dsize;
@@ -179,18 +205,20 @@ IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInter
   }
   if (pInfo->NumOutputPorts > 0) {
     size_t output_align = 0;
-    for (int i = 0; i < pInfo->NumOutputPorts; i++) {
+    for (i = 0; i < pInfo->NumOutputPorts; i++) {
       enum IEEE_Cigre_DLLInterface_DataType dtype = pInfo->OutputPortsInfo[i].DataType;
       size_t this_align = get_alignment_requirement (dtype);
       if (this_align > output_align) {
         output_align = this_align;
       }
     }
+#ifndef ATP_MINGW
     printf("  Output Struct Alignment Requirement = %zu\n", output_align);
-    ArrayMap *pTest = malloc (pInfo->NumOutputPorts * sizeof (ArrayMap));
+#endif
+    pTest = malloc (pInfo->NumOutputPorts * sizeof (ArrayMap));
     *pOutputMap = pTest;
-    int output_size = 0;
-    for (int i = 0; i < pInfo->NumOutputPorts; i++) {
+    output_size = 0;
+    for (i = 0; i < pInfo->NumOutputPorts; i++) {
       enum IEEE_Cigre_DLLInterface_DataType dtype = pInfo->OutputPortsInfo[i].DataType;
       int dsize = get_datatype_size (dtype);
       pTest[i].size = dsize;
@@ -212,20 +240,22 @@ IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInter
   }
   if (pInfo->NumParameters > 0) {
     size_t parm_align = 0;
-    for (int i = 0; i < pInfo->NumParameters; i++) {
+    for (i = 0; i < pInfo->NumParameters; i++) {
       enum IEEE_Cigre_DLLInterface_DataType dtype = pInfo->ParametersInfo[i].DataType;
       size_t this_align = get_alignment_requirement (dtype);
       if (this_align > parm_align) {
         parm_align = this_align;
       }
     }
+#ifndef ATP_MINGW
     printf("  Parameter Struct Alignment Requirement = %zu\n", parm_align);
-    ArrayMap *pTest = malloc (pInfo->NumParameters * sizeof (ArrayMap));
+#endif
+    pTest = malloc (pInfo->NumParameters * sizeof (ArrayMap));
     *pParameterMap = pTest;
-    int parm_size = 0;
-    for (int i = 0; i < pInfo->NumParameters; i++) {
+    parm_size = 0;
+    for (i = 0; i < pInfo->NumParameters; i++) {
       enum IEEE_Cigre_DLLInterface_DataType dtype = pInfo->ParametersInfo[i].DataType;
-      int dsize = get_datatype_size (dtype);
+      dsize = get_datatype_size (dtype);
       pTest[i].size = dsize;
       pTest[i].offset = parm_size;
       pTest[i].dtype = dtype;
@@ -234,7 +264,7 @@ IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInter
 //    printf("parm_size = %d\n", parm_size);
     pModel->Parameters = malloc (parm_size);
     // initialize the parameters to default values
-    for (int i = 0; i < pInfo->NumParameters; i++) {
+    for (i = 0; i < pInfo->NumParameters; i++) {
       assign_default_value ((char *)pModel->Parameters, pTest[i].offset, pTest[i].dtype, 
                             pTest[i].size, pInfo->ParametersInfo[i].DefaultValue);
     }
@@ -245,7 +275,9 @@ IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInter
 void FreeModelInstance (IEEE_Cigre_DLLInterface_Instance *pModel, ArrayMap *pParameterMap,
                         ArrayMap *pInputMap, ArrayMap *pOutputMap)
 {
+#ifndef ATP_MINGW
   printf("freeing pModel\n");
+#endif
   if (NULL != pModel->ExternalInputs) {
     free (pModel->ExternalInputs);
   }
@@ -279,15 +311,18 @@ void FreeModelInstance (IEEE_Cigre_DLLInterface_Instance *pModel, ArrayMap *pPar
 
 void check_messages (const char *loc, IEEE_Cigre_DLLInterface_Instance *pModel)
 {
+#ifndef ATP_MINGW
   if (NULL != pModel->LastGeneralMessage) {
     if (strlen (pModel->LastGeneralMessage) > 0) {
       printf("  %s says %s\n", loc, pModel->LastGeneralMessage);
     }
   }
+#endif
 }
 
 void print_parameter_info (int k, IEEE_Cigre_DLLInterface_Parameter parm, char *pData, ArrayMap sMap)
 {
+#ifndef ATP_MINGW
   if (sMap.dtype == IEEE_Cigre_DLLInterface_DataType_char_T) {
     char_T val;
     memcpy (&val, pData + sMap.offset, sMap.size);
@@ -351,7 +386,10 @@ void print_parameter_info (int k, IEEE_Cigre_DLLInterface_Parameter parm, char *
     printf("  %2d %4d %4d %12s %12s %-70s %-10s [Unknown Type]\n", k, sMap.size, sMap.offset,
            parm.Name, "??", parm.Description, parm.Unit);
   }
+#endif
 }
+
+#ifndef ATP_MINGW
 
 void write_csv_header (FILE *fp, const IEEE_Cigre_DLLInterface_Model_Info *pInfo)
 {
@@ -419,6 +457,8 @@ void PrintDLLModelParameters (Wrapped_IEEE_Cigre_DLL *pWrap)
          pWrap->pInfo->NumFloatStates, pWrap->pInfo->NumDoubleStates);
 }
 
+#endif
+
 Wrapped_IEEE_Cigre_DLL * CreateFirstDLLModel (char *dll_name)
 {
   Wrapped_IEEE_Cigre_DLL *pWrap = malloc (sizeof (*pWrap));
@@ -468,6 +508,8 @@ void FreeFirstDLLModel (Wrapped_IEEE_Cigre_DLL *pWrap)
   FreeModelInstance (pWrap->pModel, pWrap->pParameterMap, pWrap->pInputMap, pWrap->pOutputMap);
   FreeLibrary (pWrap->hLib);
   free (pWrap);
+#ifndef ATP_MINGW
   printf ("normal finish\n"); 
+#endif
 }
 

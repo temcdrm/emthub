@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.26)
 
+include(CMakePrintHelpers)
+
 SET(CMAKE_INSTALL_PREFIX ../..)
 project(SCRX9)
 
@@ -8,9 +10,6 @@ add_executable (test test.c)
 add_executable (TEST_SCRX9 test_scrx9.c)
 
 include_directories(../include)
-#link_directories(../lib)
-
-#target_link_libraries(TEST_SCRX9 PRIVATE c:/src/emthub/dll/lib/DLLWrapper.lib)
 
 if(WIN32)
   target_compile_options(SCRX9 PUBLIC "-D_USRDLL")
@@ -25,4 +24,5 @@ endif()
 
 install(TARGETS SCRX9 RUNTIME DESTINATION bin)
 install(TARGETS TEST_SCRX9 RUNTIME DESTINATION bin)
+
 

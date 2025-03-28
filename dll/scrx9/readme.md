@@ -25,6 +25,8 @@ Then follow these instructions:
     1. `test_scrx9` should give the same results as `release/test` above
     2. Verify with `python plotdlltest.py` from the _../bin_ directory relative to _SCRX9_
 
+To build 32-bit DLLs, repeat the process using `cmake -A Win32 ..` in step 2.3.
+
 ## File Directory
 
 - _CMakeLists.txt_ generates the detailed build instructions
@@ -32,4 +34,4 @@ Then follow these instructions:
 - _test.c_ is a test harness, mimicking the DLL import and calling functions of a simulation tool
 - _test_scrx9.c_ is a test harness, invoking the DLL through an EMTHub wrapper that supports all IEEE/Cigre DLLs
 
-Copyright &copy; 2024, Meltran, Inc
+Copyright &copy; 2024-25, Meltran, Inc

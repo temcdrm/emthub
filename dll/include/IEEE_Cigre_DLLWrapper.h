@@ -1,4 +1,4 @@
-// Copyright (C) 2024 Meltran, Inc
+// Copyright (C) 2024-25 Meltran, Inc
 
 #ifndef __IEEE_Cigre_DLLWrapper__
 #define __IEEE_Cigre_DLLWrapper__
@@ -47,7 +47,9 @@ typedef struct _Wrapped_IEEE_Cigre_DLL_ {
 
 Wrapped_IEEE_Cigre_DLL * CreateFirstDLLModel (char *dll_name);
 
+#ifndef ATP_MINGW
 void PrintDLLModelParameters (Wrapped_IEEE_Cigre_DLL *pWrap);
+#endif
 
 void FreeFirstDLLModel (Wrapped_IEEE_Cigre_DLL *pWrap);
 
@@ -73,9 +75,11 @@ void check_messages (const char *loc, IEEE_Cigre_DLLInterface_Instance *pModel);
 
 void get_parm_value_string (char *pBuf, char *pData, ArrayMap sMap);
 
+#ifndef ATP_MINGW
 void write_csv_header (FILE *fp, const IEEE_Cigre_DLLInterface_Model_Info *pInfo);
 
 void write_csv_values (FILE *fp, IEEE_Cigre_DLLInterface_Instance *pModel, const IEEE_Cigre_DLLInterface_Model_Info *pInfo, 
                        ArrayMap *pInputMap, ArrayMap *pOutputMap, double t);
+#endif
 
 #endif
