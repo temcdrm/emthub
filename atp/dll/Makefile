@@ -52,7 +52,7 @@ $(IMAGE) : $(OBJECTS) $(INSFILE)
 	copy c:\atp\atpmingw\make\MinGW\lib\crt2.o > null
 	$(FOR) -s -o $(IMAGE) $(OBJECTS) $(LIBRARY)
 	del crt2.o > null
-	copy /y c:\src\emthub\dll\bin\*_32.dll c:\atp\atpmingw
+	copy /y c:\src\emthub\dll\bin32\*.dll c:\atp\atpmingw
 
 dllfunc.o: dllfunc.c
 	$(CC) -c $(CFLAGS) dllfunc.c

@@ -124,7 +124,7 @@ void dll_scrx9_i__(double xdata_ar[],
 {
   char *pData;
   printf ("Initializing model 'scrx9'\n");
-  if ((pSCRX9 = CreateFirstDLLModel("SCRX9_32.dll")) != NULL) {
+  if ((pSCRX9 = CreateFirstDLLModel("SCRX9.dll")) != NULL) {
     if (NULL != pSCRX9->Model_FirstCall) {
       pSCRX9->Model_FirstCall (pSCRX9->pModel);
       printf("  FirstCall\n");
