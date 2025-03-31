@@ -189,6 +189,12 @@ void dll_scrx9_m__(double xdata_ar[],
    Sample Time: 0.002 (embedded in JSON file)
 */
 
+#define JSON_FILE1 "C:\\src\\pecblocks\\examples\\hwpv\\bal3\\bal3_fhf.json"
+#define JSON_FILE2 "C:\\src\\pecblocks\\examples\\hwpv\\ucf4t\\ucf4t_fhf.json"
+#define JSON_FILE3 "C:\\src\\pecblocks\\examples\\hwpv\\unb3\\unb3_fhf.json"
+#define JSON_FILE4 "C:\\src\\pecblocks\\examples\\hwpv\\osg4\\osg4_fhf.json"
+#define JSON_FILE5 "C:\\src\\pecblocks\\examples\\hwpv\\bal3n\\bal3n_fhf.json"
+
 static Wrapped_IEEE_Cigre_DLL *pHWPV = NULL;
 
 void dll_hwpv_i__(double xdata_ar[],
@@ -198,10 +204,18 @@ void dll_hwpv_i__(double xdata_ar[],
 {
   char *pData;
   if ((pHWPV = CreateFirstDLLModel("HWPV.dll")) != NULL) {
+    // overwrite default JSON file with an actual one, knowing this is parameter 0
+    union EditValueU val;
+    val.Char_Ptr = JSON_FILE5;
+    edit_dll_value ((char *)pHWPV->pModel->Parameters, 
+                      pHWPV->pParameterMap[0].offset, 
+                      pHWPV->pParameterMap[0].dtype, 
+                      pHWPV->pParameterMap[0].size,
+                      val);
     if (NULL != pHWPV->Model_FirstCall) {
       pHWPV->Model_FirstCall (pHWPV->pModel);
     }
-    xout_ar[0] = 1.0; /* REVISIT - might have been set properly from ATP/MODELS */
+//    xout_ar[0] = 1.0; /* REVISIT - might have been set properly from ATP/MODELS */
     initialize_dll_outputs (pHWPV, xout_ar);
     transfer_dll_parameters (pHWPV, xdata_ar);
     pHWPV->Model_CheckParameters (pHWPV->pModel);
