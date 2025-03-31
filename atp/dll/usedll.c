@@ -123,21 +123,26 @@ void dll_scrx9_i__(double xdata_ar[],
                    double xvar_ar[])
 {
   char *pData;
-  printf ("Initializing model 'scrx9'\n");
+//  printf ("Initializing model 'scrx9'\n");
   if ((pSCRX9 = CreateFirstDLLModel("SCRX9.dll")) != NULL) {
     if (NULL != pSCRX9->Model_FirstCall) {
       pSCRX9->Model_FirstCall (pSCRX9->pModel);
-      printf("  FirstCall\n");
+//      printf("  FirstCall\n");
     }
     xout_ar[0] = 1.0; /* REVISIT - might have been set properly from ATP/MODELS */
     initialize_dll_outputs (pSCRX9, xout_ar);
-    printf("  initialized outputs\n");
+//    printf("  initialized outputs\n");
     transfer_dll_parameters (pSCRX9, xdata_ar);
-    printf("  transferred parameters\n");
+//    printf("  transferred parameters\n");
     pSCRX9->Model_CheckParameters (pSCRX9->pModel);
-    printf("  checked parameters\n");
+//    printf("  checked parameters\n");
     pSCRX9->Model_Initialize (pSCRX9->pModel);
-    printf("  initialized model\n");
+//    printf("  initialized model\n");
+  }
+  if (pSCRX9 != NULL) {
+    printf ("DLL: Initialized pSCRX9\n");
+  } else {
+    printf ("DLL: *** Failed to initialize pSCRX9\n");
   }
   return;
 }
@@ -170,10 +175,131 @@ void dll_scrx9_m__(double xdata_ar[],
   }
 
   if (atp_time >= atp_stop - MINDELTAT) {
-    printf("Reached the end of DLL execution\n");
+//    printf("Reached the end of DLL execution\n");
     FreeFirstDLLModel (pSCRX9);
-    printf("  freed the model\n");
+//    printf("  freed the model\n");
     pSCRX9 = NULL;
+    printf ("DLL: Finalized pSCRX9\n");
+  }
+  return;
+}
+
+/* ====== HWPV interface (singleton only) =======================
+
+   Sample Time: 0.002 (embedded in JSON file)
+*/
+
+static Wrapped_IEEE_Cigre_DLL *pHWPV = NULL;
+
+void dll_hwpv_i__(double xdata_ar[],
+                   double xin_ar[],
+                   double xout_ar[],
+                   double xvar_ar[])
+{
+  char *pData;
+  if ((pHWPV = CreateFirstDLLModel("HWPV.dll")) != NULL) {
+    if (NULL != pHWPV->Model_FirstCall) {
+      pHWPV->Model_FirstCall (pHWPV->pModel);
+    }
+    xout_ar[0] = 1.0; /* REVISIT - might have been set properly from ATP/MODELS */
+    initialize_dll_outputs (pHWPV, xout_ar);
+    transfer_dll_parameters (pHWPV, xdata_ar);
+    pHWPV->Model_CheckParameters (pHWPV->pModel);
+    pHWPV->Model_Initialize (pHWPV->pModel);
+  }
+  if (pHWPV != NULL) {
+    printf ("DLL: Initialized pHWPV\n");
+  } else {
+    printf ("DLL: *** Failed to initialize pHWPV\n");
+  }
+  return;
+}
+
+void dll_hwpv_m__(double xdata_ar[],
+                   double xin_ar[],
+                   double xout_ar[],
+                   double xvar_ar[])
+{
+  int i;
+  double *pDoubles;
+  static double next_time = 0.0;
+  double atp_time = xin_ar[9];
+  double atp_stop = xin_ar[10];
+  if (NULL == pHWPV) {
+    return;
+  }
+
+  while (atp_time >= next_time) {
+    transfer_dll_inputs (pHWPV, xin_ar);
+    pHWPV->Model_Outputs (pHWPV->pModel);
+    extract_dll_outputs (pHWPV, xout_ar);
+    next_time += pHWPV->pInfo->FixedStepBaseSampleTime;
+  }
+
+  if (atp_time >= atp_stop - MINDELTAT) {
+    FreeFirstDLLModel (pHWPV);
+    pHWPV = NULL;
+    printf ("DLL: Finalized pHWPV\n");
+  }
+  return;
+}
+
+/* ====== GFM_GFL_IBR interface (singleton only) =======================
+
+   Sample Time: 10.0e-6
+*/
+
+static Wrapped_IEEE_Cigre_DLL *pIBR = NULL;
+
+void dll_gfm_gfl_ibr_i__(double xdata_ar[],
+                   double xin_ar[],
+                   double xout_ar[],
+                   double xvar_ar[])
+{
+  char *pData;
+  if ((pIBR = CreateFirstDLLModel("HWPV.dll")) != NULL) {
+    if (NULL != pIBR->Model_FirstCall) {
+      pIBR->Model_FirstCall (pIBR->pModel);
+    }
+    xout_ar[0] = 1.0; /* REVISIT - might have been set properly from ATP/MODELS */
+    initialize_dll_outputs (pIBR, xout_ar);
+    transfer_dll_parameters (pIBR, xdata_ar);
+    pIBR->Model_CheckParameters (pIBR->pModel);
+    pIBR->Model_Initialize (pIBR->pModel);
+  }
+  if (pIBR != NULL) {
+    printf ("DLL: Initialized pIBR\n");
+  } else {
+    printf ("DLL: *** Failed to initialize pIBR\n");
+  }
+  return;
+}
+
+void dll_gfm_gfl_ibr_m__(double xdata_ar[],
+                   double xin_ar[],
+                   double xout_ar[],
+                   double xvar_ar[])
+{
+  int i;
+  double *pDoubles;
+  static double next_time = 0.0;
+  double atp_time = xin_ar[41];
+  double atp_stop = xin_ar[42];
+  if (NULL == pIBR) {
+    return;
+  }
+
+  while (atp_time >= next_time) {
+    transfer_dll_inputs (pIBR, xin_ar);
+    pIBR->Model_Outputs (pIBR->pModel);
+    extract_dll_outputs (pIBR, xout_ar);
+    next_time += pIBR->pInfo->FixedStepBaseSampleTime;
+  }
+
+  if (atp_time >= atp_stop - MINDELTAT) {
+    FreeFirstDLLModel (pIBR);
+    pIBR = NULL;
+    printf ("DLL: Finalized pIBR\n");
   }
   return;
 }
