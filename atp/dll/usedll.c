@@ -215,10 +215,9 @@ void dll_hwpv_i__(double xdata_ar[],
     if (NULL != pHWPV->Model_FirstCall) {
       pHWPV->Model_FirstCall (pHWPV->pModel);
     }
-//    xout_ar[0] = 1.0; /* REVISIT - might have been set properly from ATP/MODELS */
     initialize_dll_outputs (pHWPV, xout_ar);
-    transfer_dll_parameters (pHWPV, xdata_ar);
-    pHWPV->Model_CheckParameters (pHWPV->pModel);
+    // DO NOT CALL the generic transfer_dll_parameters (pHWPV, xdata_ar);
+    pHWPV->Model_CheckParameters (pHWPV->pModel);  
     pHWPV->Model_Initialize (pHWPV->pModel);
   }
   if (pHWPV != NULL) {
