@@ -270,15 +270,20 @@ void dll_gfm_gfl_ibr_i__(double xdata_ar[],
                    double xvar_ar[])
 {
   char *pData;
-  if ((pIBR = CreateFirstDLLModel("HWPV.dll")) != NULL) {
+  if ((pIBR = CreateFirstDLLModel("gfm_gfl_ibr.dll")) != NULL) {
+    printf("created pIBR\n");
     if (NULL != pIBR->Model_FirstCall) {
       pIBR->Model_FirstCall (pIBR->pModel);
+      printf("pIBR first call\n");
     }
-    xout_ar[0] = 1.0; /* REVISIT - might have been set properly from ATP/MODELS */
     initialize_dll_outputs (pIBR, xout_ar);
+    printf("initialized pIBR outputs\n");
     transfer_dll_parameters (pIBR, xdata_ar);
+    printf("pIBR transfer parameters\n");
     pIBR->Model_CheckParameters (pIBR->pModel);
+    printf("pIBR check parameters\n");
     pIBR->Model_Initialize (pIBR->pModel);
+    printf("pIBR initialize\n");
   }
   if (pIBR != NULL) {
     printf ("DLL: Initialized pIBR\n");
@@ -296,16 +301,20 @@ void dll_gfm_gfl_ibr_m__(double xdata_ar[],
   int i;
   double *pDoubles;
   static double next_time = 0.0;
-  double atp_time = xin_ar[41];
-  double atp_stop = xin_ar[42];
+  double atp_time = xin_ar[12];
+  double atp_stop = xin_ar[13];
   if (NULL == pIBR) {
     return;
   }
 
   while (atp_time >= next_time) {
+    //printf("  trying a step at %lf with %lf, %lf\n", atp_time, xin_ar[0], xin_ar[1]);
     transfer_dll_inputs (pIBR, xin_ar);
+    //printf("  transferred inputs\n");
     pIBR->Model_Outputs (pIBR->pModel);
+    //printf("  called the DLL step\n");
     extract_dll_outputs (pIBR, xout_ar);
+    //printf("  extracted output %lf\n", xout_ar[0]);
     next_time += pIBR->pInfo->FixedStepBaseSampleTime;
   }
 
