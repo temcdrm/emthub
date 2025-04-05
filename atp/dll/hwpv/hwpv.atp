@@ -5,18 +5,18 @@ C from project C:\src\emthubsupport\atp\dll\hwpv\hwpv.acp
 C ATPDraw developed by H. K. Høidalen at NTNU - NORWAY 1999-2022
 C ------------------------------------------------------------------------------
 C  dT  >< Tmax >< Xopt >< Copt ><Epsiln>
-   5.E-5     10.                        
+   1.E-5     10.                        
    65535       1       1       1       1       0       0       1       0
 $PARAMETER
 RINI =2.304 $$
-RFIN =3.304 $$
+RFIN =2.600 $$
 RSWT =2.0 $$
 TEMP0 =5.0 $$
 DTEMP =30.0 $$
-G1 =1000.0 $$
+G1 =900.0 $$
 DG =-100.0 $$
 UD0 =1.0 $$
-DUD =-0.2 $$
+DUD =-0.05 $$
 FC0 =60.0 $$
 DFC =5.0 $$
 UQ0 =0.001 $$
@@ -164,32 +164,32 @@ C 345678901234567890123456789012345678901234567890123456789012345678901234567890
 C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  >
 C < n1 >< n2 ><ref1><ref2>< R  >< A  >< B  ><Leng><><>0
   ACOUTAACTEEA                    .061                                         0
-  ACOUTAACTEEA              18.3
+  ACOUTAACTEEA              91.5
   ACOUTBACTEEB                    .061                                         0
-  ACOUTBACTEEB              18.3
+  ACOUTBACTEEB              91.5
   ACOUTCACTEEC                    .061                                         0
-  ACOUTCACTEEC              18.3
+  ACOUTCACTEEC              91.5
   ACTEEA                     .01        19.1                                   0
   ACTEEB                     .01        19.1                                   0
   ACTEEC                     .01        19.1                                   0
   ACTEEAPCCA                     .0367                                         0
-  ACTEEAPCCA               11.01
+  ACTEEAPCCA               55.05
   ACTEEBPCCB                     .0367                                         0
-  ACTEEBPCCB               11.01
+  ACTEEBPCCB               55.05
   ACTEECPCCC                     .0367                                         0
-  ACTEECPCCC               11.01
+  ACTEECPCCC               55.05
   ACFLTALDNDA                     .061                                         0
-  ACFLTALDNDA               18.3
+  ACFLTALDNDA               91.5
   ACFLTBLDNDB                     .061                                         0
-  ACFLTBLDNDB               18.3
+  ACFLTBLDNDB               91.5
   ACFLTCLDNDC                     .061                                         0
-  ACFLTCLDNDC               18.3
+  ACFLTCLDNDC               91.5
   PCCA  ACFLTA              .046                                               0
   PCCB  ACFLTB              .046                                               0
   PCCC  ACFLTC              .046                                               0
 97LDNDA                            -1.                                         0
              0.0           2.304
-              2.           3.304
+              2.             2.6
             9999
 97LDNDB       LDNDA                                                            0
 97LDNDC       LDNDA                                                            0
