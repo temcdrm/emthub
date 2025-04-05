@@ -54,7 +54,7 @@ EXEC
   Vd := Rg * Id
   Vq := Rg * Iq
   Vrms := sqrt(Vd*Vd+Vq*Vq)
-  GVrms := 0.00122474 * Vrms
+  GVrms := 0.00122474 * Vrms * G
   Ctrl := Ctrl_table(t)
   Tdeg := 35.0
   Fc := 60.0
