@@ -127,16 +127,7 @@ void dll_scrx9_i__(double xdata_ar[],
   if ((pSCRX9 = CreateFirstDLLModel("SCRX9.dll")) != NULL) {
     if (NULL != pSCRX9->Model_FirstCall) {
       pSCRX9->Model_FirstCall (pSCRX9->pModel);
-//      printf("  FirstCall\n");
     }
-    initialize_dll_outputs (pSCRX9, xout_ar);
-//    printf("  initialized outputs\n");
-    transfer_dll_parameters (pSCRX9, xdata_ar);
-//    printf("  transferred parameters\n");
-    pSCRX9->Model_CheckParameters (pSCRX9->pModel);
-//    printf("  checked parameters\n");
-    pSCRX9->Model_Initialize (pSCRX9->pModel);
-//    printf("  initialized model\n");
   }
   if (pSCRX9 != NULL) {
     //printf ("DLL: Initialized pSCRX9\n");
@@ -160,6 +151,18 @@ void dll_scrx9_m__(double xdata_ar[],
   if (NULL == pSCRX9) {
 //    printf("  the DLL was not loaded\n");
     return;
+  }
+
+  if (atp_time <= 0.0) { // apply initial conditions here
+    xout_ar[0] = 1.0;
+    xin_ar[0] = 1.0;
+    xin_ar[1] = 1.0;
+    xin_ar[4] = 1.0;
+    initialize_dll_outputs (pSCRX9, xout_ar);
+    transfer_dll_inputs (pSCRX9, xin_ar);
+    transfer_dll_parameters (pSCRX9, xdata_ar);
+    pSCRX9->Model_CheckParameters (pSCRX9->pModel);
+    pSCRX9->Model_Initialize (pSCRX9->pModel);
   }
 
   while (atp_time >= next_time) {
@@ -275,13 +278,13 @@ void dll_gfm_gfl_ibr_i__(double xdata_ar[],
       pIBR->Model_FirstCall (pIBR->pModel);
       //printf("pIBR first call\n");
     }
-    initialize_dll_outputs (pIBR, xout_ar);
+    //initialize_dll_outputs (pIBR, xout_ar);
     //printf("initialized pIBR outputs\n");
-    transfer_dll_parameters (pIBR, xdata_ar);
+    //transfer_dll_parameters (pIBR, xdata_ar);
     //printf("pIBR transfer parameters\n");
-    pIBR->Model_CheckParameters (pIBR->pModel);
+    //pIBR->Model_CheckParameters (pIBR->pModel);
     //printf("pIBR check parameters\n");
-    pIBR->Model_Initialize (pIBR->pModel);
+    //pIBR->Model_Initialize (pIBR->pModel);
     //printf("pIBR initialize\n");
   }
   if (pIBR != NULL) {
@@ -312,6 +315,18 @@ void dll_gfm_gfl_ibr_m__(double xdata_ar[],
       xin_ar[i] *= 0.001;
     }
   }
+
+  if (atp_time <= 0.0) { // apply initial conditions here
+    //xin_ar[9] = 950.0;
+    //xin_ar[10] = -50.0;
+    //xin_ar[11] = 1.0;
+    initialize_dll_outputs (pIBR, xout_ar);
+    transfer_dll_inputs (pIBR, xin_ar);
+    transfer_dll_parameters (pIBR, xdata_ar);
+    pIBR->Model_CheckParameters (pIBR->pModel);
+    pIBR->Model_Initialize (pIBR->pModel);
+  }
+
   while (atp_time >= next_time) {
     //printf("  trying a step at %lf with %lf, %lf\n", atp_time, xin_ar[0], xin_ar[1]);
     transfer_dll_inputs (pIBR, xin_ar);

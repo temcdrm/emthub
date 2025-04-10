@@ -17,7 +17,7 @@ Steps for preparation:
 - Add `C:\ATP\atpmingw\make\MinGW\bin` to the Windows PATH variable. This enables command-line compilation of ATP with DLL interface.
 - Add `c:\atp\gtppl32` to the Windows PATH variable. This enables command-line plotting of ATP simulation results.
 - Set the environment variable `GNUDIR=c:\atp\atpmingw\`, which is required by ATP, and please note the trailing `\` is required.
-- Setup the ATP solver in ATPDraw to be `c:\atp\atpmingw\mytpbig.exe`, which will work after you build `mytpbig.exe` in the following steps.
+- Setup the ATP solver in ATPDraw to be `c:\atp\atpmingw\mytpbig.exe`, which will work after you build `mytpbig.exe` in the following steps. Save this configuration.
 - Assuming you cloned this repository into `c:\src\emthubsupport`, clone the following from a command prompt in `c:\src`:
     - `git clone emthub`, which is required to build the DLLs
     - `git clone pecblocks`, which is required for the _hwpv_ example
@@ -44,11 +44,11 @@ The other local files have been copied from the JAUG make example, so that you c
 
 Some issues are still under investigation:
 
-- The models will often (but not always) fail to run from ATPDraw. The output listing refers to an error calling a foreign model function, _m1_. In all such cases, the model runs from the netlisted ATP input file, e.g., by invoking _mytpbig ibr.atp_. (Note: this may be an artifact of ATPDraw not saving the connection to `mytpbig.exe`)
 - Only floating-point parameters can be passed to a foreign models function. For the _scrx9_ example, one DLL input parameter is an integer. The ATP interface casts that parameter from _double_ to _int_.
 - The _hwpv_ DLL takes one parameter, a string file name where the HWPV data is stored in JSON format. For now, this parameter is hard-coded in the ATP interface. At some future time, an integer index could be passed for use with a hard-coded configuration file name. The configuration file would be named _hwpv_models.txt_, to be collocated with _hwpv.dll_, storing one JSON file name per line. The integer parameter in the ATP interface could index the file name to be used from _hwpv_models.txt_. Unfortunately, the JAUG distribution did not include the header file, _stdio.h_, for the ATP interface to use file operations from C code. So, implementation of this more flexible interface would require a full installation of the MinGW C compiler.
 - The _gfm_gfl_ibr_ example shows some instability in steady-state output. One possibility is that the default DLL parameters need tuning. Another possibility is that the IBR filter circuit uses a topology different than what has been assumed here.
 - In ATPDraw, the "default" parameter values provided in the MODEL definition don't propagate upward to the user interface dialog. Parameters have to be entered manually in the dialog, even if they are the same as default values.
+- When calling the initialization function, MODELS does not seem to pass in the user-initialized output variables. The HWPV case is not affected because it starts from rest. However, effects were seen in the startup of _scrx9_, mitigated by inserting 1-pu initialization in the time-step function, _dll_scrx9_m_. This workaround would be more complicated in the _gfm_gfl_ibr_m_ time-step function because of the need to initialize the instantaneous voltage and currents for non-zero power flow. For that case, a better solution might be to ramp from zero initial conditions. However, possible errors in the output filtering should be addressed first. 
 
 Copyright &copy; 2024-25, Meltran, Inc
 
