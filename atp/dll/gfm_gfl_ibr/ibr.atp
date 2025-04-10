@@ -17,8 +17,8 @@ TCLC =100.0 $$
 TOPC =1000.0 $$
 RDAMP =4.01E-3 $$
 CFILT =105.0E3 $$
-RCHOK1 =0.0 $$
-LCHOK1 =0.063E-3 $$
+RCHOK0 =0.0 $$
+LCHOK0 =0.063E-3 $$
 TOPC______=TOPC
 TOPB______=TOPB
 TOPA______=TOPA
@@ -27,8 +27,8 @@ TCLB______=TCLB
 TCLA______=TCLA
 RFLT__=RFLT
 RDAMP_=RDAMP
-RCHOKE=RCHOK1
-LCHOKE=LCHOK1
+RCHOKE=RCHOK0
+LCHOKE=LCHOK0
 CFILT_=CFILT
 BLANK $PARAMETER
 /TACS
@@ -347,8 +347,8 @@ C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >
 /SOURCE
 C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >
 60VSCA   0                                                                  1.E3
-60VSCB  -1                                                                  1.E3
-60VSCC  -1                                                                  1.E3
+60VSCB   0                                                                  1.E3
+60VSCC   0                                                                  1.E3
 14INFA    530.722778       60.                                     -1.      100.
 14INFB    530.722778       60.     -120.                           -1.      100.
 14INFC    530.722778       60.     -240.                           -1.      100.
