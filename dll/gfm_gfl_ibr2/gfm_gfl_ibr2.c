@@ -26,15 +26,15 @@ char ErrorMessage[1000];
 
 typedef struct _MyModellnputs {
 	real64_T Vta; 
-	real64_T Vtb, 
-	real64_T Vte, 
-	real64_T Ila, 
-	real64_T //b; 
-	real64_T Ile; 
-	real64_T 12a; 
-	real64_T 12b; 
-	real64_T 12c; 
-	real64_T Ide: 
+	real64_T Vtb; 
+	real64_T Vtc; 
+	real64_T I1a; 
+	real64_T I1b; 
+	real64_T I1c; 
+	real64_T I2a; 
+	real64_T I2b; 
+	real64_T I2c; 
+	real64_T Idc; 
 	real64_T VdcMPPT; 
 	real64_T Pref; 
 	real64_T Qref; 
@@ -74,14 +74,14 @@ IEEE_Cigre_DLLInterface_Signal InputSignals [] = {
   }, 
   [4] = {
     .Name = "I1b", 
-    .Description "B phase VSC current", 
+    .Description = "B phase VSC current", 
     .Unit = "kA", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [5] = {
     .Name = "Ilc", 
-    .Description "C phase VSC current", 
+    .Description = "C phase VSC current", 
     .Unit = "kA", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
@@ -94,10 +94,10 @@ IEEE_Cigre_DLLInterface_Signal InputSignals [] = {
     .Width = 1 
   },
   [7] = {
-    .Name "I2b", 
-    .Description "B phase current after capacitor", 
+    .Name = "I2b", 
+    .Description = "B phase current after capacitor", 
     .Unit = "kA", 
-    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_ T, 
+    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   },
   [8] = {
@@ -110,14 +110,14 @@ IEEE_Cigre_DLLInterface_Signal InputSignals [] = {
   [9] = {
     .Name = "Idc", 
     .Description = "Current from Primay Power Source", 
-    .Unit = "kA, 
+    .Unit = "kA", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   },
-  [1O] = { 
-    .Name = "VdcMPPT" , 
+  [10] = { 
+    .Name = "VdcMPPT", 
     .Description = "Maximum power point voltage", 
-    .Unit = "kV, 
+    .Unit = "kV", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   },
@@ -130,8 +130,8 @@ IEEE_Cigre_DLLInterface_Signal InputSignals [] = {
   }, 
   [12] = { 
     .Name = "Qref" , 
-    .Description = "Reactive power reference" 
-    .Unit = "Mvar" , 
+    .Description = "Reactive power reference", 
+    .Unit = "Mvar", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   },
@@ -144,7 +144,7 @@ IEEE_Cigre_DLLInterface_Signal InputSignals [] = {
   },
   [14] = { 
     .Name = "currTime", 
-    .Description = "Current Time" , 
+    .Description = "Current Time", 
     .Unit = "s", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
@@ -170,7 +170,7 @@ typedef struct _MyModelOutputs {
 // Define Output Signals 
 IEEE_Cigre_DLLInterface_Signal OutputSignals[] = {
   [0] = { 
-    .Name = "m_a, 
+    .Name = "m_a", 
     .Description = "Phase A modulating signal", 
     .Unit = "N/A", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
@@ -185,13 +185,13 @@ IEEE_Cigre_DLLInterface_Signal OutputSignals[] = {
   }, 
   [2] = {
     .Name = "m_c", 
-    .Description = "Phase C modulating signal" .
+    .Description = "Phase C modulating signal",
     .Unit = "N/A", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   },
   [3] = {
-    .Name "FreqPLL" , 
+    .Name = "FreqPLL" , 
     .Description = "PLL frequency", 
     .Unit = "Hz", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
@@ -222,47 +222,47 @@ IEEE_Cigre_DLLInterface_Signal OutputSignals[] = {
     .Name = "Output_4", 
     .Description = "Negative Current d" , 
     .Unit = "N/A", 
-    .DataType = IEEE_Cigre_DLLInterface Data Type_real64_T, 
+    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [8] = {
     .Name = "Output_5", 
     .Description = "Negative Current q", 
     .Unit = "N/A", 
-    .DataType = IEEE_Cigre_DLLInterface Data Type_real64_T, 
+    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [9] = {
     .Name = "Output_6", 
-    .Description = "Pos Current d , 
+    .Description = "Pos Current d", 
     .Unit = "N/A", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [10] = {
     .Name = "Output_7", 
-    .Description = "Pos Current q, 
+    .Description = "Pos Current q", 
     .Unit = "N/A", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [11] = {
     .Name = "Output_8", 
-    .Description = "Neg Current d , 
+    .Description = "Neg Current d", 
     .Unit = "N/A", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [12] = {
-    .Name = "Output_9 
+    .Name = "Output_9", 
     .Description = "Neg Current q", 
-    .Unit = "N/A" 
-    .DataType = IEEE_Cigre_DLLinterface_DataType_real64_T, 
+    .Unit = "N/A", 
+    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   } 
 }; 
 
-typedef struct _MyModelParam eters {
+typedef struct _MyModelParameters {
   real64_T VLLbase; 
   real64_T Sbase; 
   real64_T Tflt_v; 
@@ -281,17 +281,17 @@ typedef struct _MyModelParam eters {
   real64_T MPPT_flag; 
   real64_T b_Vdc; 
   real64_T Kp_Vdc; 
-  real64_T Ki_Vdc, 
+  real64_T Ki_Vdc; 
   real64_T T_frq; 
   real64_T fdbdl; 
   real64_T fdbd2; 
   real64_T Ddn; 
-  real64 T Dup; 
+  real64_T Dup; 
   real64_T Tp_droop; 
   real64_T Vdc_flag; 
-  real64_T f_flag.
+  real64_T f_flag;
   real64_T Id_frz_flag; 
-  real64_T Ilim_pu, 
+  real64_T Ilim_pu; 
   real64_T Vt_ref; 
   real64_T Kv_p; 
   real64_T Kv_i; 
@@ -306,18 +306,18 @@ typedef struct _MyModelParam eters {
   real64_T Vt_flag; 
   real64_T dbl_2; 
   real64_T dbh_2; 
-  real64 T Kqv2; 
+  real64_T Kqv2; 
   real64_T V2_flag; 
   real64_T Ipramp_up; 
   real64_T Kcc_p; 
   real64_T Kcc_i; 
   real64_T Lim_upCC; 
   real64_T Lim_lowCC; 
-  real64_T Tau_ Vff; 
+  real64_T Tau_Vff; 
   real64_T Vff_flag; 
   real64_T Lchoke; 
   real64_T IR_flag; 
-} MyMode!Parameters; 
+} MyModelParameters; 
 
 // Define Parameters 
 
@@ -332,13 +332,13 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.001, 
     .MaxValue.Real64_Val = 1000.0 
   }, 
-  [l] = {
+  [1] = {
     .Name = "Sbase", 
     .Description = "VA base", 
-    .Unit = "VA, 
+    .Unit = "VA", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
-    .DefaultValue.Real64_Val = le6, 
+    .DefaultValue.Real64_Val = 1e6, 
     .MinValue.Real64_Val = 0.001, 
     .MaxValue.Real64_Val = 100000000.0 
   },
@@ -356,7 +356,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .Name = "Vflt_flag", 
     .Description = "Flag for voltage filter", 
     .Unit = "N/A", 
-    .DataType = IEEE Cigre_DLLInterface_DataType_real64_T, 
+    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = 1, 
     .MinValue.Real64_Val = 0.0, 
@@ -364,7 +364,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
   },
   [4] = {
     .Name = "Tflt_i", 
-    .Description = "LPF time constant for current" 
+    .Description = "LPF time constant for current", 
     .Unit = "s", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
@@ -390,13 +390,13 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = 1.0, 
-    .MinValue Real64_Val = 0.0, 
+    .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1.0 
   },
   [7] = {
     .Name = "k_PLL", 
     .Description = "Damping constant for SOGI filter", 
-    .Unit = "N/A" , 
+    .Unit = "N/A", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = 1.0, 
@@ -410,7 +410,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = 25.4, 
-    .MinValue Real64_Val = 0.0, 
+    .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1000.0 
   },
   [9] = {
@@ -419,51 +419,51 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .Unit = "pu/pu" , 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
-    .DefaultValue Real64_Val = 324, 
+    .DefaultValue.Real64_Val = 324, 
     .MinValue.Real64_Val = 0.001, 
     .MaxValue.Real64_Val = 1000.0 
   },
-  [l0] = {
+  [10] = {
     .Name = "Lim_PLL" , 
     .Description = "Windup limit for PLL", 
     .Unit = "pu/pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
-    .DefaultValue Real64_Val = 70 0, 
+    .DefaultValue.Real64_Val = 70.0, 
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1000.0 
   },
-  [l1] = {
+  [11] = {
     .Name = "w _nom" , 
     .Description = "Nominal angular frequency", 
     .Unit = "rad/s", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
     .FixedValue = 0, 
-    .DefaultValue.Real64_Val = 2 * PI 60, 
+    .DefaultValue.Real64_Val = 2 * PI * 60, 
     .MinValue.Real64_Val = 1.0, 
-    .MaxValue Real64_Val = 1e8 
+    .MaxValue.Real64_Val = 1e8 
   },
-  [l2] = {
+  [12] = {
     .Name = "tstart_up", 
-    .Description = "Time for start up flag of Q and Vt closed loop ",
+    .Description = "Time for start up flag of Q and Vt closed loop",
     .Unit = "s", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = 1.9, 
-    .MinValue Real64_Val = 0.0, 
+    .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1000.0 
   },
-  [l3] = {
+  [13] = {
     .Name = "Vdc_nom" , 
     .Description = "Nominal DC Link Voltage", 
-    .Unit = "kV" , 
+    .Unit = "kV", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
-    .DefaultValue Real64_Val = 1200, 
+    .DefaultValue.Real64_Val = 1200, 
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 10000.0 
   },
-  [l4] = {
+  [14] = {
     .Name = "VI_flag", 
     .Description = "1: enable PPS VI characteristic, 0: constant I", 
     .Unit = "N/A", 
@@ -471,9 +471,9 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = 0.0, 
     .MinValue.Real64_Val = 0.0, 
-    .MaxValue Real64_Val = 1.0 
+    .MaxValue.Real64_Val = 1.0 
   },
-  [l5] = {
+  [15] = {
     .Name = "MPPT_flag", 
     .Description = "1: enable MPPT for Vdc*, requires VI_flag=I and Vdc_flag=1", 
     .Unit = "pu/pu", 
@@ -481,19 +481,19 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = 0.0, 
     .MinValue.Real64_Val = 0.0, 
-    .MaxValue Real64_Val = 1.0 
+    .MaxValue.Real64_Val = 1.0 
   },
-  [l6] = {
+  [16] = {
     .Name = "b_Vdc", 
     .Description = "Setpoint weight for DC voltage", 
     .Unit = "N/A" , 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = 0.56, 
-    .MinValue Real64_Val = 0.0, 
+    .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val= 100.0 
   },
-  [l7] = {
+  [17] = {
     .Name = "Kp_Vdc", 
     .Description = "Proportional gain for Vdc", 
     .Unit = "pu/pu", 
@@ -503,7 +503,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.001, 
     .MaxValue.Real64_Val = 1000.0 
   },
-  [l8] = {
+  [18] = {
     .Name = "Ki_Vdc", 
     .Description = "Integral gain for Vdc", 
     .Unit = "pu/pu", 
@@ -513,15 +513,15 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1000.0 
   },
-  [l9] = {
+  [19] = {
     .Name = "T_frq", 
     .Description = "Time constant for PLL frequency", 
     .Unit = "s", 
-    .DataType = IEEE_Cigre_DLLinterface DataType_real64_T,
+    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
     .FixedValue = 0, 
-    .DefaultValue Real64_Val = 0.1, 
+    .DefaultValue.Real64_Val = 0.1, 
     .MinValue.Real64_Val = 0.0, 
-    .MaxValue Real64_Val = 1.0 
+    .MaxValue.Real64_Val = 1.0 
   },
   [20] = {
     .Name = "fdbd1", 
@@ -575,12 +575,12 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
   },
   [25] = {
     .Name = "Vdc_flag", 
-    .Description = "dc control flag (1: enable, 0: const. PQ), 
+    .Description = "dc control flag (1: enable, 0: const. PQ)", 
     .Unit = "N/A", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue= 0, 
     .DefaultValue.Real64_Val = 0.0, 
-    .MinValue.Rcal64_Val = 0.0, 
+    .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1.0 
   },
   [26] = {
@@ -600,7 +600,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = 0.0, 
-    .MinValue.Real64_Val = 0 0, 
+    .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1.0 
   },
   [28] = {
@@ -609,7 +609,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
-    .DefaultValue Real64_Val = 1.1, 
+    .DefaultValue.Real64_Val = 1.1, 
     .MinValue.Real64_Val = -10.0, 
     .MaxValue.Real64_Val = 10.0 
   },
@@ -617,7 +617,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .Name = "Vt_ref",
     .Description = "pu reference voltage for Vt control", 
     .Unit = "pu" , 
-    .DataType = IEEE_Cigre_DLLinterface_DataType_real64_T, 
+    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = 1.01, 
     .MinValue.Real64_Val = -10.0, 
@@ -660,18 +660,18 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = 0.4, 
-    .MinValue.Real64_Val = -le8, 
-    .MaxValue Real64_Val = 1e8 
+    .MinValue.Real64_Val = -1e8, 
+    .MaxValue.Real64_Val = 1e8 
   },
   [34] = {
-    .Name = "Kq_p".
-    .Description = "Q closed-loop proportional control gain 
-    .Unit = "pu" 
+    .Name = "Kq_p",
+    .Description = "Q closed-loop proportional control gain", 
+    .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = 0.0, 
     .MinValue.Real64_Val = 0.0, 
-    .MaxValue Real64_Val = 1e8 
+    .MaxValue.Real64_Val = 1e8 
   },
   [35] = {
     .Name = "Kq_i", 
@@ -680,17 +680,17 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = 40.0, 
-    .MinValue Real64_Val = 0.0, 
+    .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1e8 
   },
   [36] = {
     .Name = "dbhv_frt", 
     .Description = "Dead band LVRT +ve sequence HV", 
-    .Unit = "pu" 
+    .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = -0.1, 
-    .MinValue.Real64_Val = -le8, 
+    .MinValue.Real64_Val = -1e8, 
     .MaxValue.Real64_Val = 1e8 
   },
   [37] = {
@@ -700,7 +700,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = 0.1, 
-    .MinValue.Real64_Val = -le8, 
+    .MinValue.Real64_Val = -1e8, 
     .MaxValue.Real64_Val = 1e8 
   },
   [38] = {
@@ -709,9 +709,9 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
     .FixedValue = 0, 
-    .DefaultValue Real64_Val = 2.0, 
+    .DefaultValue.Real64_Val = 2.0, 
     .MinValue.Real64_Val = 0.0, 
-    .MaxValue Real64_Val = 1e8 
+    .MaxValue.Real64_Val = 1e8 
   },
   [39] = {
     .Name = "Qctl_CL_flag", 
@@ -729,7 +729,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .Unit = "N/A", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
     .FixedValue = 0, 
-    .DefaultValue.Real64_Val = 1.0 .
+    .DefaultValue.Real64_Val = 1.0,
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1.0 
   },
@@ -780,7 +780,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = 1.0, 
-    .MinValue.Real64_Val 0.0, 
+    .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1e8 
   },
   [46] = {
@@ -818,9 +818,9 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .Description = "Current controller's anti-windup lower limit", 
     .Unit = "pu" , 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-    .FixcdValue = 0, 
+    .FixedValue = 0, 
     .DefaultValue.Real64_Val = -99999, 
-    .MinValue.Real64_Val = -le8, 
+    .MinValue.Real64_Val = -1e8, 
     .MaxValue.Real64_Val = 0 
   },
   [50] = {
@@ -834,11 +834,11 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MaxValue.Real64_Val = 1e8 
   },
   [51] = {
-    .Name "Vff_flag", 
+    .Name = "Vff_flag", 
     .Description = "Voltage filter flag (1 enable)", 
     .Unit = "N/A", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-    .FixcdValue= 0, 
+    .FixedValue= 0, 
     .DefaultValue.Real64_Val = 0.0, 
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1e8 
@@ -846,7 +846,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
   [52] = {
     .Name = "Lchoke", 
     .Description = "Filter inductance", 
-    .Unit = "pu" , 
+    .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
     .DefaultValue.Real64_Val = 0.0001, 
@@ -858,15 +858,15 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .Description = "Flag", 
     .Unit = "N/A", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-    .FixcdValue= 0, 
+    .FixedValue= 0, 
     .DefaultValue.Real64_Val = 1.0, 
-    .MinValue.Real64_Val = 0 0, 
+    .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1.0 
   }
 };
 
 IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
-  .DLLInterfaceVersion = { 1, 1, 0, 0}          // Release number of the API 
+  .DLLInterfaceVersion = { 1, 1, 0, 0},         // Release number of the API 
   // used during code generation 
   .ModelName = "!BR-Average-Model",             // Model name   
   .ModelVersion = "1.1.0.0",                    // Model version   
@@ -880,16 +880,16 @@ IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
   .ModelModifiedHistory = "First instance",     // Model modified history 
   .FixedStepBaseSampleTime = 0.00001,           // Time Step sampling time (sec)  
   // Inputs 
-  .NumlnputPorts = 15,                          // Number of Input Signals 
-  .InputPortslnfo = InputSignals,               // Inputs structure defined above  
+  .NumInputPorts = 15,                          // Number of Input Signals 
+  .InputPortsInfo = InputSignals,               // Inputs structure defined above  
   // Outputs 
-  .NumOutputPorts 13,                           // Number of Output Signals 
-  .OutputPortslnfo = OutputSignals,             // Outputs structure defined above 
+  .NumOutputPorts = 13,                         // Number of Output Signals 
+  .OutputPortsInfo = OutputSignals,             // Outputs structure defined above 
   // Parameters 
   .NumParameters = 54,                          // Number of Parameters 
   .ParametersInfo = Parameters,                 // Parameters structure defined above
    // Number of State Variables 
-  .NumlntStates = 0,                            // Number of Integer states
+  .NumIntStates = 0,                            // Number of Integer states
   .NumFloatStates = 0,                          // Number of Float states
   .NumDoubleStates = 93                         // Number of Double states
 };
@@ -901,7 +901,7 @@ __declspec(dllexport) const IEEE_Cigre_DLLInterface_Model_Info* __cdecl Model_Ge
   return &Model_Info; 
 }; 
 
-__declspcc(dllexport) int32_T __cdecl Model_ChcckParameters(IEEE_Cigre_DLLInterface_Instance instance) {
+__declspcc(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterface_Instance* instance) {
 /* Checks the parameters on the given range 
    Arguments: Instance specific model structure containing Inputs , Parameters and Outputs 
    Return: Integer status O (normal), 1 if messages are written, 2 for errors.
@@ -910,7 +910,7 @@ __declspcc(dllexport) int32_T __cdecl Model_ChcckParameters(IEEE_Cigre_DLLInterf
 
 // Parameter checks done by the program 
 // Note - standard minimax checks should be done by the higher level GUI/ Program 
-  MyModelParameters* parameters = (MyModelParameters*)instance-Parameters; 
+  MyModelParameters* parameters = (MyModelParameters*)instance->Parameters; 
 
   double VLLbase = parameters->VLLbase; 
   double Sbase = parameters->Sbase, 
