@@ -24,7 +24,7 @@ char ErrorMessage[1000];
 // to be called by the DLLimport Tool 
 // ---------------------------------------------------------------------- 
 
-typedef struct _MyModellnputs {
+typedef struct _MyModelInputs {
 	real64_T Vta; 
 	real64_T Vtb; 
 	real64_T Vtc; 
@@ -901,7 +901,7 @@ __declspec(dllexport) const IEEE_Cigre_DLLInterface_Model_Info* __cdecl Model_Ge
   return &Model_Info; 
 }; 
 
-__declspcc(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterface_Instance* instance) {
+__declspec(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterface_Instance* instance) {
 /* Checks the parameters on the given range 
    Arguments: Instance specific model structure containing Inputs , Parameters and Outputs 
    Return: Integer status O (normal), 1 if messages are written, 2 for errors.
@@ -913,14 +913,14 @@ __declspcc(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterf
   MyModelParameters* parameters = (MyModelParameters*)instance->Parameters; 
 
   double VLLbase = parameters->VLLbase; 
-  double Sbase = parameters->Sbase, 
+  double Sbase = parameters->Sbase; 
   double Tflt_v = parameters->Tflt_v; 
   double Vflt_flag = parameters->Vflt_flag; 
   double Tflt_i = parameters->Tflt_i; 
   double Iflt_flag = parameters->Iflt_flag; 
-  double Curl_flag = parameters->Curl_flag, 
-  double k_PLL = parameters->k_FLL; 
-  double KpPLL = parameters->KpPLL, 
+  double Curl_flag = parameters->Curl_flag; 
+  double k_PLL = parameters->k_PLL; 
+  double KpPLL = parameters->KpPLL; 
   double KiPLL = parameters->KiPLL; 
   double Lim_PLL = parameters->Lim_PLL; 
   double w_nom = parameters->w_nom; 
@@ -951,7 +951,7 @@ __declspcc(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterf
   double dbhv_frt = parameters->dbhv_frt; 
   double dblv_frt = parameters->dblv_frt; 
   double Kqvl = parameters->Kqvl; 
-  double Qctl_CL_flag = parameters->Qctl_CL_flag, 
+  double Qctl_CL_flag = parameters->Qctl_CL_flag; 
   double Vt_flag = parameters->Vt_flag; 
   double dbl_2 = parameters->dbl_2; 
   double dbh_2 = parameters->dbh_2; 
@@ -962,16 +962,16 @@ __declspcc(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterf
   double Kcc_i = parameters->Kcc_i; 
   double Lim_upCC = parameters->Lim_upCC; 
   double Lim_lowCC = parameters->Lim_lowCC; 
-  double Tau_Vff = parameters->Tau_ Vff; 
+  double Tau_Vff = parameters->Tau_Vff; 
   double Vff_flag = parameters->Vff_flag; 
-  double Lchoke = parameters-Lchoke; 
+  double Lchoke = parameters->Lchoke; 
   double IR_flag = parameters->IR_flag; 
   // 
-  double delt = ModelInfo.FixedStepBaseSampleTime; 
+  double delt = Model_Info.FixedStepBaseSampleTime; 
 
-  ErrorMessage[0] '\0'; 
+  ErrorMessage[0] = '\0'; 
 
-  if ((1.0 / KiPLL) < 2.0 * delt) 
+  if ((1.0 / KiPLL) < 2.0 * delt) {
     // write error message 
     sprintf_s (ErrorMessage, sizeof(ErrorMessage), "GFL-IBR Error - Parameter KiPLL is %f , \
 but has been reset to be reciprocal of 2 times the time step: %f \n", KiPLL, delt); 
@@ -981,7 +981,7 @@ but has been reset to be reciprocal of 2 times the time step: %f \n", KiPLL, del
     // write error message 
     sprintf_s(ErrorMessage, sizeof(ErrorMessage), "GFL-IBR Error - Parameter Ki_Vdc is: %f, \
 but has been reset to be reciprocal of 2 times the time step %f \n", Ki_Vdc, delt); 
-    parameters->Ki_Vdc = 1.0 / (2.0 * dell); 
+    parameters->Ki_Vdc = 1.0 / (2.0 * delt); 
   } 
   if ((1.0 / Kv_i) < 2.0 * delt) { 
     // write error message 
@@ -995,18 +995,18 @@ but has been reset to be reciprocal of 2 times the time step: %f .\n", Kv_i, del
 but has been reset to be reciprocal of 2 times the time step.%f .\n", Kq_i, delt); 
     parameters->Kq_i = 1.0 / (2.0 * delt); 
   }
-  if ((1.0 / Kcc_i) < 2.0 * delt) 
+  if ((1.0 / Kcc_i) < 2.0 * delt) {
     // write error message 
     sprintf_s(ErrorMessage, sizeof(ErrorMessage), "GFL-IBR Error - Parameter KiV is: %f, \
 but has been reset to be reciprocal of 2 times the time step: %f .\n", Kcc_i, delt); 
     parameters->Kcc_i = 1.0 / (2.0 * delt); 
   }
   instance->LastGeneralMessage = ErrorMessage; 
-  return IEEE_Cigre_DLLInterface_Return_ OK; 
+  return IEEE_Cigre_DLLInterface_Return_OK; 
 }; 
 
 // -------------------------------------------------------------------------------------------
-__declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_Instance* instance) 
+__declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_Instance* instance) {
 
 /* Initializes the system by resetting the internal states 
    Arguments.Instance specific model structure containing Inputs, Parameters and Outputs 
@@ -1019,7 +1019,7 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
 // instance->External Outputs is normally the output of this routine, but in the first time step 
 // the main program must set the instance ExternalOutputs to initial values.
 
-  MyModelParameters* parameters= (MyModelParameters*)instance-Parameters; 
+  MyModelParameters* parameters = (MyModelParameters*)instance-Parameters; 
 
   // Retrieve variables from Input, Output and State 
   double VLLbase = parameters->VLLbase; 
