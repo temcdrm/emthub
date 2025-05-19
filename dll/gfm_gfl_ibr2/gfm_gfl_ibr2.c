@@ -2156,7 +2156,7 @@ __declspec(dllexport) int32_T __cdecl Model_Iterate(IEEE_Cigre_DLLInterface_Inst
   return 0;
 };
 
-__declspec(dllexport) int32_T __cdecl Model_Printlnfo () {
+__declspec(dllexport) int32_T __cdecl Model_PrintInfo () {
 // Prints Model Information once 
   int Printed = 0;
   if (!Printed) { 
