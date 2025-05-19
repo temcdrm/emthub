@@ -3,7 +3,7 @@
 // see https://learn.microsoft.com/en-us/windows/win32/dlls/using-run-time-dynamic-linking
 
 #define DLL_NAME "GFM_GFL_IBR2.dll"
-#define TMAX 10.0
+#define TMAX 5.0
 // relative output path for execution from the build directory, e.g., release\test or debug\test
 #define CSV_NAME "ibr2.csv"
 

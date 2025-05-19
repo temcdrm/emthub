@@ -198,64 +198,64 @@ IEEE_Cigre_DLLInterface_Signal OutputSignals[] = {
     .Width = 1 
   }, 
   [4] = {
-    .Name = "Output_1", 
-    .Description = "current flag", 
-    .Unit = "N/A", 
+    .Name = "Id1", 
+    .Description = "Positive Current d", 
+    .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [5] = {
-    .Name = "Output_2", 
-    .Description = "Positive Current d", 
-    .Unit = "N/A", 
+    .Name = "Iq1", 
+    .Description = "Positive Current q", 
+    .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [6] = {
-    .Name = "Output_3", 
-    .Description = "Positive Current q", 
-    .Unit = "N/A", 
+    .Name = "Id2", 
+    .Description = "Negative Current d" , 
+    .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [7] = {
-    .Name = "Output_4", 
-    .Description = "Negative Current d" , 
-    .Unit = "N/A", 
+    .Name = "Iq2", 
+    .Description = "Negative Current q", 
+    .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [8] = {
-    .Name = "Output_5", 
-    .Description = "Negative Current q", 
-    .Unit = "N/A", 
+    .Name = "Vtd1", 
+    .Description = "Positive Voltage d", 
+    .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [9] = {
-    .Name = "Output_6", 
-    .Description = "Pos Current d", 
-    .Unit = "N/A", 
+    .Name = "Vtq1", 
+    .Description = "Positive Voltage q", 
+    .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [10] = {
-    .Name = "Output_7", 
-    .Description = "Pos Current q", 
-    .Unit = "N/A", 
+    .Name = "Vtd2", 
+    .Description = "Negative Voltage d", 
+    .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [11] = {
-    .Name = "Output_8", 
-    .Description = "Neg Current d", 
-    .Unit = "N/A", 
+    .Name = "Vtq2", 
+    .Description = "Negative Voltage q", 
+    .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
-  }, 
+  },
   [12] = {
-    .Name = "Output_9", 
-    .Description = "Neg Current q", 
+    .Name = "FRT_Flag", 
+    .Description = "Fault ride-through", 
     .Unit = "N/A", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
@@ -384,8 +384,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
   },
   [6] = {
     .Name = "Cur1_flag", 
-    .Description = "Flag for current selection (1: current control before LCL, \
-                    0: current control after LCL)", 
+    .Description = "Current control at (1: before LCL, 0: after LCL)", 
     .Unit = "N/A", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
@@ -434,7 +433,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MaxValue.Real64_Val = 1000.0 
   },
   [11] = {
-    .Name = "w _nom" , 
+    .Name = "w_nom" , 
     .Description = "Nominal angular frequency", 
     .Unit = "rad/s", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
@@ -725,7 +724,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
   },
   [40] = {
     .Name = "Vt_flag", 
-    .Description = "l: enable inverter term. voltage control, 0: Q control", 
+    .Description = "1: enable inverter term. voltage control, 0: Q control", 
     .Unit = "N/A", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
     .FixedValue = 0, 
@@ -754,7 +753,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MaxValue.Real64_Val = 1e8 
   },
   [43] = {
-    .Name = "Kqv?", 
+    .Name = "Kqv2", 
     .Description = "Proportional gain for -ve voltage deviation", 
     .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
@@ -868,7 +867,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
 IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
   .DLLInterfaceVersion = { 1, 1, 0, 0},         // Release number of the API 
   // used during code generation 
-  .ModelName = "!BR-Average-Model",             // Model name   
+  .ModelName = "IBR-Average-Model",             // Model name   
   .ModelVersion = "1.1.0.0",                    // Model version   
   .ModelDescription = "GFD-IBR-Average",        // Model description 
   .GeneralInformation= "General Information",   // General information
@@ -896,7 +895,7 @@ IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
 
 // Subroutines that can be called by the main power system program 
 
-__declspec(dllexport) const IEEE_Cigre_DLLInterface_Model_Info* __cdecl Model_Getlnfo () {
+__declspec(dllexport) const IEEE_Cigre_DLLInterface_Model_Info* __cdecl Model_GetInfo () {
 // Returns Model Information 
   return &Model_Info;
 };
