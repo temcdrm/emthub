@@ -1,7 +1,7 @@
 ﻿/* 
 
 This model has.
-- 15 inputs (input current time can be removed) 
+- 14 inputs (input current time has been removed) 
 - 13 outputs (3 ouputs are essential, rest 1O outputs can be used for debugging) 
 - 54 parameters 
 
@@ -39,7 +39,6 @@ typedef struct _MyModelInputs {
 	real64_T Pref;
 	real64_T Qref;
 	real64_T Vdc_meas;
-	real64_T currTIME;
 } MyModelInputs;
 
 // Define Input Signals 
@@ -139,13 +138,6 @@ IEEE_Cigre_DLLInterface_Signal InputSignals [] = {
     .Name = "Vdc_meas", 
     .Description = "Measured DC Voltage", 
     .Unit = "kV", 
-    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-    .Width = 1 
-  },
-  [14] = { 
-    .Name = "currTime", 
-    .Description = "Current Time", 
-    .Unit = "s", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }
@@ -1093,7 +1085,6 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
   double Pref = inputs->Pref;
   double Qref = inputs->Qref;
   double Vdc_meas = inputs->Vdc_meas;
-  double currTIME = inputs->currTIME;
 
   // Working back from initial output 
 
@@ -1484,7 +1475,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double Pref = inputs->Pref;
   double Qref = inputs->Qref;
   double Vdc_meas = inputs->Vdc_meas;
-  double currTIME = inputs->currTIME;
+  double currTIME = instance->Time;
 
   double OldTIME = instance->DoubleStates[0];
   // Signal Processing block 
@@ -1602,7 +1593,6 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
 
   // local variables 
 
-  // double currTIME;removed on 3/14 
   // Signal Processing block 
 
   double Vdq_base;
