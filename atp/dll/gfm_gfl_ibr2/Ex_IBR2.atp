@@ -1,0 +1,101 @@
+BEGIN NEW DATA CASE
+C  dT  >< Tmax >< Xopt >< Copt >
+   1.E-5     2.0                
+  100000       1       1       1       1       0       0       1       0
+/TACS
+TACS HYBRID
+98OMEGA   = 2.0*PI*60.0
+98VA      = 0.53 * SIN(OMEGA*TIMEX)
+98VB      = 0.53 * SIN(OMEGA*TIMEX - 2.0*PI/3.0)
+98VC      = 0.53 * SIN(OMEGA*TIMEX + 2.0*PI/3.0)
+98IA      = 1130.0 * SIN(OMEGA*TIMEX)
+98IB      = 1130.0 * SIN(OMEGA*TIMEX - 2.0*PI/3.0)
+98IC      = 1130.0 * SIN(OMEGA*TIMEX + 2.0*PI/3.0)
+98IAL1    = 1140.0 * SIN(OMEGA*TIMEX)
+98IBL1    = 1140.0 * SIN(OMEGA*TIMEX - 2.0*PI/3.0)
+98ICL1    = 1140.0 * SIN(OMEGA*TIMEX + 2.0*PI/3.0)
+98PREF    = 900.0
+98QREF    = -50.0
+98VREF    = 1.0
+C 98VA      = 1.0
+C 98VB      = 1.0
+C 98VC      = 0.0
+C 98IA      = 0.0
+C 98IB      = 0.0
+C 98IC      = 0.0
+C 98IAL1    = 0.0
+C 98IBL1    = 0.0
+C 98ICL1    = 0.0
+C 98PREF    = 0.0
+C 98QREF    = 0.0
+C 98VREF    = 0.0
+/MODELS
+MODELS
+INPUT
+  MM0001 {tacs(VA)}
+  MM0002 {tacs(VB)}
+  MM0003 {tacs(VC)}
+  MM0004 {tacs(IA)}
+  MM0005 {tacs(IB)}
+  MM0006 {tacs(IC)}
+  MM0007 {tacs(IAL1)}
+  MM0008 {tacs(IBL1)}
+  MM0009 {tacs(ICL1)}
+  MM0010 {tacs(PREF)}
+  MM0011 {tacs(QREF)}
+  MM0012 {tacs(VREF)}
+$INCLUDE, IBR2.mod
+USE mIBR2 AS mymodel
+INPUT
+  Vta:=MM0001
+  Vtb:=MM0002
+  Vtc:=MM0003
+  I1a:=MM0004
+  I1b:=MM0005
+  I1c:=MM0006
+  I2a:=MM0007
+  I2b:=MM0008
+  I2c:=MM0009
+  Idc:=0.0
+  VdcMPPT:=0.0
+  Pref:=MM0010
+  Qref:=MM0011
+  Vdc_meas:=0.0
+ENDUSE
+RECORD mymodel.m_a AS m_a
+       mymodel.m_b AS m_b
+       mymodel.m_c AS m_c
+       mymodel.FreqPLL AS Freq
+       mymodel.Id1 AS Id1
+       mymodel.Iq1 AS Iq1
+       mymodel.Id2 AS Id2
+       mymodel.Iq2 AS Iq2
+       mymodel.Vtd1 AS Vtd1
+       mymodel.Vtq1 AS Vtq1
+       mymodel.Vtd2 AS Vtd2
+       mymodel.Vtq2 AS Vtq2
+       mymodel.FRT_Flag AS FRT
+ENDMODELS
+C        1         2         3         4         5         6         7         8
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+/BRANCH
+C < n 1>< n 2><ref1><ref2>< R  >< L  >< C  >
+C < n 1>< n 2><ref1><ref2>< R  >< A  >< B  ><Leng><><>0
+  XX0001                    1.E3                                               2
+/SWITCH
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >
+/SOURCE
+C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >
+14XX0001 0      1.E4       60.                                     -1.       10.
+/INITIAL
+/OUTPUT
+BLANK TACS
+BLANK MODELS
+BLANK BRANCH
+BLANK SWITCH
+BLANK SOURCE
+BLANK INITIAL
+BLANK OUTPUT
+BLANK PLOT
+BEGIN NEW DATA CASE
+BLANK
