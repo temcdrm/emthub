@@ -80,14 +80,14 @@ IEEE_Cigre_DLLInterface_Signal InputSignals [] = {
     .Width = 1 
   }, 
   [5] = {
-    .Name = "Ilc", 
+    .Name = "I1c", 
     .Description = "C phase VSC current", 
     .Unit = "kA", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   },
   [6] = {
-    .Name = "12a" , 
+    .Name = "I2a" , 
     .Description = "A phase current after capacitor", 
     .Unit = "kA", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
