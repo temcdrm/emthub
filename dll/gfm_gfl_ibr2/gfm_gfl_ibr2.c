@@ -871,7 +871,7 @@ IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
   .ModelModifiedHistory = "First instance",     // Model modified history 
   .FixedStepBaseSampleTime = 0.00001,           // Time Step sampling time (sec)  
   // Inputs 
-  .NumInputPorts = 15,                          // Number of Input Signals 
+  .NumInputPorts = 14,                          // Number of Input Signals 
   .InputPortsInfo = InputSignals,               // Inputs structure defined above  
   // Outputs 
   .NumOutputPorts = 13,                         // Number of Output Signals 
