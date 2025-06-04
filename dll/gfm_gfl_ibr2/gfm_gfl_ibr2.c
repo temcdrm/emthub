@@ -191,56 +191,56 @@ IEEE_Cigre_DLLInterface_Signal OutputSignals[] = {
   }, 
   [4] = {
     .Name = "Id1", 
-    .Description = "Positive Current d", 
+    .Description = "Positive Sequence Current d", 
     .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [5] = {
     .Name = "Iq1", 
-    .Description = "Positive Current q", 
+    .Description = "Positive Sequence Current q", 
     .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [6] = {
     .Name = "Id2", 
-    .Description = "Negative Current d" , 
+    .Description = "Negative Sequence Current d" , 
     .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [7] = {
     .Name = "Iq2", 
-    .Description = "Negative Current q", 
+    .Description = "Negative Sequence Current q", 
     .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [8] = {
     .Name = "Vtd1", 
-    .Description = "Positive Voltage d", 
+    .Description = "Positive Sequence Voltage d", 
     .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [9] = {
     .Name = "Vtq1", 
-    .Description = "Positive Voltage q", 
+    .Description = "Positive Sequence Voltage q", 
     .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [10] = {
     .Name = "Vtd2", 
-    .Description = "Negative Voltage d", 
+    .Description = "Negative Sequence Voltage d", 
     .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [11] = {
     .Name = "Vtq2", 
-    .Description = "Negative Voltage q", 
+    .Description = "Negative Sequence Voltage q", 
     .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
@@ -466,7 +466,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
   },
   [15] = {
     .Name = "MPPT_flag", 
-    .Description = "1: enable MPPT for Vdc*, requires VI_flag=I and Vdc_flag=1", 
+    .Description = "1: enable MPPT for Vdc*, requires VI_flag=1 and Vdc_flag=1", 
     .Unit = "pu/pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
@@ -556,7 +556,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
   },
   [24] = {
     .Name = "Tp_droop", 
-    .Description = "Time constant for first order lag block in Pf control", 
+    .Description = "Time constant for first order lag block in P-f control", 
     .Unit = "s", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue= 0, 
@@ -566,7 +566,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
   },
   [25] = {
     .Name = "Vdc_flag", 
-    .Description = "dc control flag (1: enable, 0: const. PQ)", 
+    .Description = "Vdc control flag (1: enable, 0: const. PQ)", 
     .Unit = "N/A", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue= 0, 
@@ -626,7 +626,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
   },
   [31] = {
     .Name = "Kv_i", 
-    .Description = "Proportional gain for terminal voltage PI controller", 
+    .Description = "Integral gain for terminal voltage PI controller", 
     .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
@@ -857,18 +857,18 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
 };
 
 IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
-  .DLLInterfaceVersion = { 1, 1, 0, 0},         // Release number of the API 
+  .DLLInterfaceVersion = { 1, 1, 0, 1},         // Release number of the API 
   // used during code generation 
   .ModelName = "IBR-Average-Model",             // Model name   
-  .ModelVersion = "1.1.0.0",                    // Model version   
+  .ModelVersion = "1.1.0.1",                    // Model version   
   .ModelDescription = "GFD-IBR-Average",        // Model description 
   .GeneralInformation= "General Information",   // General information
   .ModelCreated = "September 21, 2023",         // Model created on  
   .ModelCreator = "Vishal Verma",               // Model created by     
-  .ModelLastModifiedDate= "September 21, 2023", // Model last modified on  
-  .ModelLastModifiedBy = "Vishal Verma",        // Model last modified by 
-  .ModelModifiedComment = "Version 1.1.0.0 for IEEE/Cigre DLL API", // Model modified comment 
-  .ModelModifiedHistory = "First instance",     // Model modified history 
+  .ModelLastModifiedDate= "June 2, 2025",       // Model last modified on  
+  .ModelLastModifiedBy = "Tom McDermott",       // Model last modified by 
+  .ModelModifiedComment = "Remove currTime input, edit parameter descriptions", // Model modified comment 
+  .ModelModifiedHistory = "Second instance",    // Model modified history 
   .FixedStepBaseSampleTime = 0.00001,           // Time Step sampling time (sec)  
   // Inputs 
   .NumInputPorts = 14,                          // Number of Input Signals 
@@ -894,13 +894,13 @@ __declspec(dllexport) const IEEE_Cigre_DLLInterface_Model_Info* __cdecl Model_Ge
 
 __declspec(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterface_Instance* instance) {
 /* Checks the parameters on the given range 
-   Arguments: Instance specific model structure containing Inputs , Parameters and Outputs 
+   Arguments: Instance specific model structure containing Inputs, Parameters and Outputs 
    Return: Integer status O (normal), 1 if messages are written, 2 for errors.
    See IEEE_Cigre_DLLInterface types.h 
 */
 
 // Parameter checks done by the program 
-// Note - standard minimax checks should be done by the higher level GUI/ Program 
+// Note - standard minimax checks should be done by the higher level GUI/Program 
   MyModelParameters* parameters = (MyModelParameters*)instance->Parameters;
 
   double VLLbase = parameters->VLLbase;
@@ -960,6 +960,9 @@ __declspec(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterf
   // 
   double delt = Model_Info.FixedStepBaseSampleTime;
 
+  int bWarning = 0;
+  int bError = 0;
+
   ErrorMessage[0] = '\0';
 
   if ((1.0 / KiPLL) < 2.0 * delt) {
@@ -967,32 +970,43 @@ __declspec(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterf
     sprintf_s (ErrorMessage, sizeof(ErrorMessage), "GFL-IBR Error - Parameter KiPLL is %f , \
 but has been reset to be reciprocal of 2 times the time step: %f \n", KiPLL, delt);
     parameters->KiPLL = 1.0 / (2.0 * delt);
+    bWarning = 1;
   } 
   if ((1.0 / Ki_Vdc) < 2.0 * delt) { 
     // write error message 
     sprintf_s(ErrorMessage, sizeof(ErrorMessage), "GFL-IBR Error - Parameter Ki_Vdc is: %f, \
 but has been reset to be reciprocal of 2 times the time step %f \n", Ki_Vdc, delt);
     parameters->Ki_Vdc = 1.0 / (2.0 * delt);
+    bWarning = 1;
   } 
   if ((1.0 / Kv_i) < 2.0 * delt) { 
     // write error message 
     sprintf_s (ErrorMessage, sizeof(ErrorMessage), "GFL-IBR Error - Parameter KiP is: %f, \
 but has been reset to be reciprocal of 2 times the time step: %f .\n", Kv_i, delt);
     parameters->Kv_i = 1.0 / (2.0 * delt);
+    bWarning = 1;
   } 
   if ((1.0 / Kq_i) < 2.0 * delt) {
     // write error message 
     sprintf_s (ErrorMessage, sizeof(ErrorMessage), "GFL-IBR Error - Parameter KiQ is: %f, \
 but has been reset to be reciprocal of 2 times the time step.%f .\n", Kq_i, delt);
     parameters->Kq_i = 1.0 / (2.0 * delt);
+    bWarning = 1;
   }
   if ((1.0 / Kcc_i) < 2.0 * delt) {
     // write error message 
     sprintf_s(ErrorMessage, sizeof(ErrorMessage), "GFL-IBR Error - Parameter KiV is: %f, \
 but has been reset to be reciprocal of 2 times the time step: %f .\n", Kcc_i, delt);
     parameters->Kcc_i = 1.0 / (2.0 * delt);
+    bWarning = 1;
   }
   instance->LastGeneralMessage = ErrorMessage;
+  if (bError) {
+    return IEEE_Cigre_DLLInterface_Return_Error;
+  }
+  if (bWarning) {
+    return IEEE_Cigre_DLLInterface_Return_Message;
+  }
   return IEEE_Cigre_DLLInterface_Return_OK;
 };
 
@@ -1102,6 +1116,7 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
   double Output_7 = outputs->Output_7;
   double Output_8 = outputs->Output_8;
   double Output_9 = outputs->Output_9;
+
   ErrorMessage [0]= '\0';
 
   // save state variables 
@@ -1212,7 +1227,6 @@ double INTEGRATOR(double T, double x, double x_old, double y_old, double delt) {
 };
 
 // Integrator with time constant T and reset value rst_val 
-
 double INTEGRATORRESET(double T, double rst_flag, double rst_val, double x, double x_old, double y_old, double delt) { 
   double y;
   double Kint = (delt * 0.5) / T;
@@ -1299,7 +1313,7 @@ double LIMITER(double upper_limit, double lower_limit, double dat) {
   return dat;
 };
 
-// selector selects a input based on flag condition , input_A if FLAG is true 
+// selector selects an input based on flag condition , input_A if FLAG is true 
 double SELECTOR(double input_A, double input_B, double FLAG) { 
   return (FLAG ? input_A : input_B);
 };
@@ -1318,9 +1332,9 @@ void SAMPLEHOLD(double signal_in , double FLAG, double FLAG_OLD, double* sample_
 };
 
 // for DB block 
-double DB(double signal_in, double f_dbdl, double f_dbd2) { 
+double DB(double signal_in, double f_dbd1, double f_dbd2) { 
   double sum1 = (signal_in - f_dbd2) * COMPARATOR(signal_in, f_dbd2);
-  double sum2 = (signal_in - f_dbdl) * COMPARATOR(f_dbdl, signal_in);
+  double sum2 = (signal_in - f_dbd1) * COMPARATOR(f_dbd1, signal_in);
   return (sum1 + sum2);
 };
 
@@ -1346,20 +1360,20 @@ double RATELIMITER(double f_input, double Oldf_output, double rate_up, double ra
 // to convert DQ quantities to ABC 
 void DQ2ABC(double fd, double fq, double phi, double* fabc) { 
   fabc[0] = (fd * cos(phi) - fq * sin(phi));
-  fabc[1] = (fd * cos(phi - (2.0 * PI / 3.0)) - fq * sin(phi - (2.0 * PI / 3.0)));
-  fabc[2] = (fd * cos(phi + (2.0 * PI / 3.0)) - fq * sin(phi + (2.0 * PI / 3.0)));
+  fabc[1] = (fd * cos(phi - (2.0*PI/3.0)) - fq * sin(phi - (2.0*PI/3.0)));
+  fabc[2] = (fd * cos(phi + (2.0*PI/3.0)) - fq * sin(phi + (2.0*PI/3.0)));
 };
 
 // to convert ABC quantities to Alpha-Beta 
 void ABC2ALPHABETA(double fa, double fb, double fc, double* alpha_beta) { 
   alpha_beta[0] = (fa - 0.5 * fb - 0.5 * fc) * 2 / 3;
-  alpha_beta[1] = (fb * sqrt(3.0) / 2 - fc * sqrt (3.0) / 2.0) * 2.0 / 3.0;
+  alpha_beta[1] = (fb * sqrt(3.0) / 2.0 - fc * sqrt (3.0) / 2.0) * 2.0 / 3.0;
 };
 
 // to convert ABC to DQ 
 void ABC2DQ(double fa, double fb, double fc, double phi, double* fDQ) { 
-  fDQ[0] = 2.0 / 3.0 * (cos(phi) * fa + cos(phi - (2.0 * PI / 3.0)) * fb + cos(phi + (2.0 * PI / 3.0)) * fc);
-  fDQ[1] = 2.0 / 3.0 * (-sin (phi) * fa - sin(phi - (2.0 * PI / 3.0)) * fb - sin(phi + (2.0 * PI / 3.0)) * fc);
+  fDQ[0] = 2.0/3.0 * (cos(phi) * fa + cos(phi - (2.0*PI/3.0)) * fb + cos(phi + (2.0*PI/3.0)) * fc);
+  fDQ[1] = 2.0/3.0 * (-sin (phi) * fa - sin(phi - (2.0*PI/3.0)) * fb - sin(phi + (2.0*PI/3.0)) * fc);
 };
 
 // to convert alpha beta to DQ 
@@ -1477,7 +1491,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double Vdc_meas = inputs->Vdc_meas;
   double currTIME = instance->Time;
 
-  double OldTIME = instance->DoubleStates[0];
+  double OldTIME = instance->DoubleStates[0];  // not used
   // Signal Processing block 
   double OldVta_pu = instance->DoubleStates[1];
   double OldVta_flt1 = instance->DoubleStates[2];
@@ -1594,7 +1608,6 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   // local variables 
 
   // Signal Processing block 
-
   double Vdq_base;
   double Idq_base;
   double Vta_pu, Vtb_pu, Vtc_pu;
@@ -1619,7 +1632,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double Id1r_flt, Iq1r_flt, Id2r_flt, Iq2r_flt;
   double Idq1_flt[2], Idq2_flt[2];
   double Id_1, Iq_1, Id_2, Iq_2;
-  double I1_alphabeta[2], I2_alphabeta [2];
+  double I1_alphabeta[2], I2_alphabeta[2];
   double Piab_pu, Qiab_pu, Ptab_pu, Qtab_pu;
   // P, Q block 
   double Vdq1;
@@ -1651,7 +1664,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double Id2ref, Iq2ref;
   double I2m_ref_upper;
   double I2m_refmag, Iq2ref_Lang;
-  double Ilm_ref, I2m_ref;
+  double I1m_ref, I2m_ref;
   double Ilim_L;
   double IROL_flag;
   double scale, scale_phmax;
@@ -1710,7 +1723,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   I1c_flt = SELECTOR(I1c_flt1, I1c_pu, Iflt_flag);
   I2a_flt1 = REALPOLE(1, Tflt_i, I2a_pu, OldI2a_pu, OldI2a_flt1, -1e8, 1e8, delt);
   I2a_flt = SELECTOR(I2a_flt1, I2a_pu, Iflt_flag);
-  I2b_flt1= REALPOLE(1, Tflt_i, I2b_pu, OldI2b_pu, OldI2b_flt1, -1e8, 1e8, delt);
+  I2b_flt1 = REALPOLE(1, Tflt_i, I2b_pu, OldI2b_pu, OldI2b_flt1, -1e8, 1e8, delt);
   I2b_flt = SELECTOR(I2b_flt1, I2b_pu, Iflt_flag);
   I2c_flt1 = REALPOLE(1, Tflt_i, I2c_pu, OldI2c_pu, OldI2c_flt1, -1e8, 1e8, delt);
   I2c_flt = SELECTOR(I2c_flt1, I2c_pu, Iflt_flag);
@@ -1788,9 +1801,9 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   ABC2ALPHABETA(I1a_flt, I1b_flt, I1c_flt, I1_alphabeta);
   ABC2ALPHABETA(I2a_flt, I2b_flt, I2c_flt, I2_alphabeta);
   Piab_pu = REALPOWER(Vt_alpha, I1_alphabeta[0], Vt_beta, I1_alphabeta[1]);
-  Qiab_pu = REACTIVEPOWER(Vt_alpha, I1_alphabeta[0], Vt_beta, I1_alphabeta [1]);
+  Qiab_pu = REACTIVEPOWER(Vt_alpha, I1_alphabeta[0], Vt_beta, I1_alphabeta[1]);
   Ptab_pu = REALPOWER(Vt_alpha, I2_alphabeta[0], Vt_beta, I2_alphabeta[1]);
-  Qtab_pu = REACTIVEPOWER(Vt_alpha, I2_alphabeta[0], Vt_beta, I2_alphabeta [1]);
+  Qtab_pu = REACTIVEPOWER(Vt_alpha, I2_alphabeta[0], Vt_beta, I2_alphabeta[1]);
 
   // Outer P,Q LOOP
   Vdq1 = sqrt(Vtd_1 * Vtd_1 + Vtq_1 * Vtq_1);
@@ -1803,7 +1816,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   Id1_FFin = 2.0 / 3.0 * Vdc_nom * Idc * 1000;
   Id1_FFnolimit = REALPOLE(1, 0.005, Id1_FFin, OldId1_FFin, OldId1_FFnolimit, -999999, 999999, delt);
   Id1_FF = LIMITER(Idq_base * Ilim_pu, -Idq_base * Ilim_pu, Id1_FFnolimit / Vdq_base);
-  Vdc_ref= SELECTOR(VdcMPPT, Vdc_nom, (VI_flag * MPPT_flag));
+  Vdc_ref = SELECTOR(VdcMPPT, Vdc_nom, (VI_flag * MPPT_flag));
 
   // Anti Wind Up Code Begin 
   Id1_VdcP = (Vdc_ref * b_Vdc - Vdc_meas * 1000) * Kp_Vdc;  // Proportional term 
@@ -1835,10 +1848,9 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   Id_droop1 = SELECTOR(SELECTOR(Pref, 0, COMPARATOR(currTIME, 1)), 
                        SELECTOR(Id1ref_Vdc, Id1ref_P, Vdc_flag), Startup_flag);
   Id_droop = SELECTOR(Idref_droop, 0, f_flag);
-  Id1ref_cont = Id_droop + Id_droop1;  // Idlref_cont continuous 
+  Id1ref_cont = Id_droop + Id_droop1;  // Id1ref_cont continuous 
   Id1ref_hold_SH[1]= OldId1ref_hold_SH;
   SAMPLEHOLD(Id1ref_cont, FRT_flag, OldFRT_flag, Id1ref_hold_SH);
-  // Id1ref_hold = SAMPLEHOLD(Id1ref_cont, OldId1ref_hold, FRT_flag);
   Id1ref_hold = Id1ref_hold_SH[0];  // Id1ref_hold is output of Sample and Hold 
   Id1ref_nolimit = SELECTOR(Id1ref_hold, Id1ref_cont, Id_frz_flag);
   Id1ref = LIMITER(Ilim_pu, -Ilim_pu, Id1ref_nolimit);
@@ -1880,7 +1892,6 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   Iq1_i_SH[1] = OldIq1_i_SH;
   SAMPLEHOLD(LIMITER(1, -1, -1 * Iq1_icont), FRT_flag, OldFRT_flag, Iq1_i_SH);
   Iq1_i = Iq1_i_SH[0];
-  //Iq1_i = SAMPLEHOLDLIMITER(1,-1,-1 * Iq1_icont), OldIq1_i, FRT_flag);
   Iq1ref = Iq1_frt + Iq1_i;
 
   // V2 Control 
@@ -1894,7 +1905,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   I2m_ref_upper = SELECTOR(SELECTOR(fabs(Iq1_frt), fabs(Iq1ref), IR_flag), 9999, 1);
   RECTANGULAR2POLAR(Id2ref, Iq2ref, &I2m_refmag, &Iq2ref_Lang);
   I2m_ref = LIMITER(I2m_ref_upper, 0, I2m_refmag);
-  Ilm_ref = sqrt(Id1ref*Id1ref + Iq1ref*Iq1ref);  // sqrt(pow(Id1ref, 2) + pow(Iq1ref, 2));  // REVISIT
+  I1m_ref = sqrt(Id1ref*Id1ref + Iq1ref*Iq1ref);  // sqrt(pow(Id1ref, 2) + pow(Iq1ref, 2));  // REVISIT
   Ilim_L = SELECTOR((Ilim_pu - Iq1_i), (Ilim_pu + Iq1_i), COMPARATOR(Iq1_frt, 0));
   IROL_flag = COMPARATOR(fabs(Iq1ref) + fabs(I2m_ref), Ilim_pu);
   scale = SELECTOR((Ilim_L / (fabs(Iq1_frt) + I2m_ref)), 1, IROL_flag);
@@ -1904,7 +1915,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   Id1max_FRT = sqrt(LIMITER(999999.0, 0.0, (pow((Ilim_pu - I2m_ref_L), 2) - pow(Iq1ref_L, 2))));
   Id1ref_L = LIMITER(Id1max_FRT, -Id1max_FRT, Id1ref);
 
-  // Calculation for Him_phmax 
+  // Calculation for Ilim_phmax 
   MagIdq1 = sqrt(Id1ref_L*Id1ref_L + Iq1ref_L*Iq1ref_L);  // sqrt(pow(Id1ref_L, 2) + pow(Iq1ref_L, 2));
   MagIdq2 = sqrt(Id2ref_L*Id2ref_L + Iq2ref_L*Iq2ref_L);  // sqrt(pow(Id2ref_L, 2) + pow(Iq2ref_L, 2));
   AngIdq_12 = atan2(Iq1ref_L, Id1ref_L) + atan2(Iq2ref_L, Id2ref_L);
@@ -1914,7 +1925,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   Ib_max = sqrt(MagIdq1*MagIdq1 + MagIdq2*MagIdq2 + 2*MagIdq1*MagIdq2*cos(AngIdq_12+(2*PI/3)));
   Ic_max = sqrt(MagIdq1*MagIdq1 + MagIdq2*MagIdq2 + 2*MagIdq1*MagIdq2*cos(AngIdq_12-(2*PI/3)));
   Iph_max = fmax (Ia_max, fmax (Ib_max, Ic_max));
-  IOL_flag = COMPARATOR(Ilm_ref + I2m_ref, Ilim_pu);
+  IOL_flag = COMPARATOR(I1m_ref + I2m_ref, Ilim_pu);
   Ilim_phmax = SELECTOR(LIMITER((Ilim_pu / 0.877), 1, Ilim_pu / Iph_max), 1, IOL_flag);
 
   // Generating Id1ref_L2, Iq1ref_L2, Idref_2_L2, Iq2ref_L2 
@@ -2031,7 +2042,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   // Added outputs for debugging 
 
   // save state variables 
-  instance->DoubleStates[0]  = 0;  
+  instance->DoubleStates[0]  = currTIME;  // not used
   instance->DoubleStates[1]  = Vta_pu;
   instance->DoubleStates[2]  = Vta_flt1;
   instance->DoubleStates[3]  = Vtb_pu;
@@ -2077,7 +2088,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   instance->DoubleStates[43] = Id1_FFin;
   instance->DoubleStates[44] = Id1_FFnolimit;
   instance->DoubleStates[45] = Id1_VdcAWerr;
-  instance->DoubleStates[46] = Id1_VdcIin, 
+  instance->DoubleStates[46] = Id1_VdcIin; 
   instance->DoubleStates[47] = Id1_VdcI;
   instance->DoubleStates[48] = f_PLL;
   instance->DoubleStates[49] = fpu_flt;
@@ -2118,7 +2129,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   instance->DoubleStates[84] = Vtq_1;
   instance->DoubleStates[85] = Vtq_1y;
   instance->DoubleStates[86] = Vtd_2;
-  instance->DoubleStates[87] = Vtd_2y, 
+  instance->DoubleStates[87] = Vtd_2y; 
   instance->DoubleStates[88] = Vtq_2;
   instance->DoubleStates[89] = Vtq_2y;
   instance->DoubleStates[90] = FRT_flag;
@@ -2137,13 +2148,13 @@ __declspec(dllexport) int32_T __cdecl Model_Terminate(IEEE_Cigre_DLLInterface_In
 
 __declspec(dllexport) int32_T __cdecl Model_FirstCall(IEEE_Cigre_DLLInterface_Instance* instance) { 
 // Destroys any objects allocated by the model code not used 
-  return 0;
+  return IEEE_Cigre_DLLInterface_Return_OK;
 
 };
 
 __declspec(dllexport) int32_T __cdecl Model_Iterate(IEEE_Cigre_DLLInterface_Instance* instance) { 
 // Destroys any objects allocated by the model code not used 
-  return 0;
+  return IEEE_Cigre_DLLInterface_Return_OK;
 };
 
 __declspec(dllexport) int32_T __cdecl Model_PrintInfo () {
@@ -2151,17 +2162,17 @@ __declspec(dllexport) int32_T __cdecl Model_PrintInfo () {
   int Printed = 0;
   if (!Printed) { 
     printf("Cigre/IEEE DLL Standard\n");
-    printf("Model name:              %s\n", Model_Info.ModelName);
-    printf("Model version:           %s\n", Model_Info.ModelVersion);
-    printf("Model description:       %s\n", Model_Info.ModelDescription);
-    printf("Model general info:      %s\n", Model_Info.GeneralInformation);
-    printf("Model created on:        %s\n", Model_Info.ModelCreated);
-    printf("Model created by:        %s\n", Model_Info.ModelCreator);
-    printf("Model last modified      %s\n", Model_Info.ModelLastModifiedDate);
-    printf("Model last modified by:  %s\n", Model_Info.ModelLastModifiedBy);
+    printf("Model name:             %s\n", Model_Info.ModelName);
+    printf("Model version:          %s\n", Model_Info.ModelVersion);
+    printf("Model description:      %s\n", Model_Info.ModelDescription);
+    printf("Model general info:     %s\n", Model_Info.GeneralInformation);
+    printf("Model created on:       %s\n", Model_Info.ModelCreated);
+    printf("Model created by:       %s\n", Model_Info.ModelCreator);
+    printf("Model last modified     %s\n", Model_Info.ModelLastModifiedDate);
+    printf("Model last modified by: %s\n", Model_Info.ModelLastModifiedBy);
 
-    printf("Model modified comment:  %s\n" , Model_Info.ModelModifiedComment);
-    printf ("Model modified history: %s\n", Model_Info.ModelModifiedHistory);
+    printf("Model modified comment:  %s\n", Model_Info.ModelModifiedComment);
+    printf("Model modified history: %s\n", Model_Info.ModelModifiedHistory);
     printf("Time Step Sampling Time (sec): %0.5g\n", Model_Info.FixedStepBaseSampleTime);
     switch (Model_Info.EMT_RMS_Mode) {
       case 1: 
