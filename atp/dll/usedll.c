@@ -532,6 +532,8 @@ Output Signals (idx,size,offset,name,desc,units):
   10    8   80 Vtd2         Negative Voltage d                                                     pu
   11    8   88 Vtq2         Negative Voltage q                                                     pu
   12    8   96 FRT_Flag     Fault ride-through                                                     N/A
+  13    8  104 Pout         Active power output at terminal                                        pu
+  14    8  112 Qout         Reactive power output at terminal                                      pu
 Internal State Variables: 0 int, 0 float, 93 double
 */
 

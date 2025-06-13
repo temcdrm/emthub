@@ -4,21 +4,21 @@
     1,
     1,
     0,
-    0
+    1
   ],
   "ModelName": "IBR-Average-Model",
-  "ModelVersion": "1.1.0.0",
+  "ModelVersion": "1.1.0.1",
   "ModelDescription": "GFD-IBR-Average",
   "GeneralInformation": "General Information",
   "ModelCreated": "Vishal Verma",
   "ModelCreator": "September 21, 2023",
-  "ModelLastModifiedDate": "September 21, 2023",
-  "ModelLastModifiedBy": "Vishal Verma",
-  "ModelModifiedHistory": "First instance",
+  "ModelLastModifiedDate": "June 13, 2025",
+  "ModelLastModifiedBy": "Tom McDermott",
+  "ModelModifiedHistory": "Second instance",
   "FixedStepBaseSampleTime": 1e-05,
   "EMT_RMS_Mode": 0,
   "NumInputPorts": 14,
-  "NumOutputPorts": 13,
+  "NumOutputPorts": 15,
   "NumParameters": 54,
   "NumIntStates": 0,
   "NumFloatStates": 0,
@@ -89,7 +89,7 @@
     },
     {
       "Name": "Idc",
-      "Description": "Current from Primay Power Source",
+      "Description": "Current from Primary Power Source",
       "Unit": "kA",
       "DataType": 9,
       "Width": 1
@@ -104,14 +104,14 @@
     {
       "Name": "Pref",
       "Description": "Active power reference ",
-      "Unit": "MW",
+      "Unit": "pu",
       "DataType": 9,
       "Width": 1
     },
     {
       "Name": "Qref",
       "Description": "Reactive power reference",
-      "Unit": "Mvar",
+      "Unit": "pu",
       "DataType": 9,
       "Width": 1
     },
@@ -154,56 +154,56 @@
     },
     {
       "Name": "Id1",
-      "Description": "Positive Current d",
+      "Description": "Positive Sequence Current d",
       "Unit": "pu",
       "DataType": 9,
       "Width": 1
     },
     {
       "Name": "Iq1",
-      "Description": "Positive Current q",
+      "Description": "Positive Sequence Current q",
       "Unit": "pu",
       "DataType": 9,
       "Width": 1
     },
     {
       "Name": "Id2",
-      "Description": "Negative Current d",
+      "Description": "Negative Sequence Current d",
       "Unit": "pu",
       "DataType": 9,
       "Width": 1
     },
     {
       "Name": "Iq2",
-      "Description": "Negative Current q",
+      "Description": "Negative Sequence Current q",
       "Unit": "pu",
       "DataType": 9,
       "Width": 1
     },
     {
       "Name": "Vtd1",
-      "Description": "Positive Voltage d",
+      "Description": "Positive Sequence Voltage d",
       "Unit": "pu",
       "DataType": 9,
       "Width": 1
     },
     {
       "Name": "Vtq1",
-      "Description": "Positive Voltage q",
+      "Description": "Positive Sequence Voltage q",
       "Unit": "pu",
       "DataType": 9,
       "Width": 1
     },
     {
       "Name": "Vtd2",
-      "Description": "Negative Voltage d",
+      "Description": "Negative Sequence Voltage d",
       "Unit": "pu",
       "DataType": 9,
       "Width": 1
     },
     {
       "Name": "Vtq2",
-      "Description": "Negative Voltage q",
+      "Description": "Negative Sequence Voltage q",
       "Unit": "pu",
       "DataType": 9,
       "Width": 1
@@ -212,6 +212,20 @@
       "Name": "FRT_Flag",
       "Description": "Fault ride-through",
       "Unit": "N/A",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Pout",
+      "Description": "Active power output at terminal",
+      "Unit": "pu",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Qout",
+      "Description": "Reactive power output at terminal",
+      "Unit": "pu",
       "DataType": 9,
       "Width": 1
     }
@@ -369,7 +383,7 @@
     },
     {
       "Name": "MPPT_flag",
-      "Description": "1: enable MPPT for Vdc*, requires VI_flag=I and Vdc_flag=1",
+      "Description": "1: enable MPPT for Vdc*, requires VI_flag=1 and Vdc_flag=1",
       "Unit": "pu/pu",
       "DataType": 9,
       "FixedValue": 0,
@@ -459,7 +473,7 @@
     },
     {
       "Name": "Tp_droop",
-      "Description": "Time constant for first order lag block in Pf control",
+      "Description": "Time constant for first order lag block in P-f control",
       "Unit": "s",
       "DataType": 9,
       "FixedValue": 0,
@@ -469,7 +483,7 @@
     },
     {
       "Name": "Vdc_flag",
-      "Description": "dc control flag (1: enable, 0: const. PQ)",
+      "Description": "Vdc control flag (1: enable, 0: const. PQ)",
       "Unit": "N/A",
       "DataType": 9,
       "FixedValue": 0,
@@ -529,7 +543,7 @@
     },
     {
       "Name": "Kv_i",
-      "Description": "Proportional gain for terminal voltage PI controller",
+      "Description": "Integral gain for terminal voltage PI controller",
       "Unit": "pu",
       "DataType": 9,
       "FixedValue": 0,

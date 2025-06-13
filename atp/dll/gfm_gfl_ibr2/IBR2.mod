@@ -57,9 +57,9 @@ DATA
   Lchoke       {dflt: 0.000100}
   IR_flag      {dflt: 1.000000}
 OUTPUT
-  m_a,m_b,m_c,FreqPLL,Id1,Iq1,Id2,Iq2,Vtd1,Vtq1,Vtd2,Vtq2,FRT_Flag
+  m_a,m_b,m_c,FreqPLL,Id1,Iq1,Id2,Iq2,Vtd1,Vtq1,Vtd2,Vtq2,FRT_Flag,Pout,Qout
 VAR
-  m_a,m_b,m_c,FreqPLL,Id1,Iq1,Id2,Iq2,Vtd1,Vtq1,Vtd2,Vtq2,FRT_Flag
+  m_a,m_b,m_c,FreqPLL,Id1,Iq1,Id2,Iq2,Vtd1,Vtq1,Vtd2,Vtq2,FRT_Flag,Pout,Qout
 INIT
   m_a:=0.0
   m_b:=0.0
@@ -74,8 +74,10 @@ INIT
   Vtd2:=0.0
   Vtq2:=0.0
   FRT_Flag:=0.0
+  Pout:=0.0
+  Qout:=0.0
 ENDINIT
-MODEL m1 FOREIGN GFM_GFL_IBR2 {ixdata:54, ixin:16, ixout:13, ixvar:0}
+MODEL m1 FOREIGN GFM_GFL_IBR2 {ixdata:54, ixin:16, ixout:15, ixvar:0}
 EXEC
   USE m1 AS m1
     DATA xdata[1] := VLLbase      -- V
@@ -144,8 +146,8 @@ EXEC
     INPUT xin[9] := I2c          -- kA
     INPUT xin[10] := Idc          -- kA
     INPUT xin[11] := VdcMPPT      -- kV
-    INPUT xin[12] := Pref         -- MW
-    INPUT xin[13] := Qref         -- Mvar
+    INPUT xin[12] := Pref         -- pu
+    INPUT xin[13] := Qref         -- pu
     INPUT xin[14] := Vdc_meas     -- kV
     INPUT xin[15] := t
     INPUT xin[16] := stoptime
@@ -163,6 +165,8 @@ EXEC
     OUTPUT Vtd2         := xout[11] -- pu
     OUTPUT Vtq2         := xout[12] -- pu
     OUTPUT FRT_Flag     := xout[13] -- N/A
+    OUTPUT Pout         := xout[14] -- pu
+    OUTPUT Qout         := xout[15] -- pu
   ENDUSE
 ENDEXEC
 ENDMODEL
