@@ -168,6 +168,7 @@ void dll_scrx9_m__(double xdata_ar[],
 //    printf("  trying a step at %lf with %lf, %lf\n", atp_time, xin_ar[0], xin_ar[1]);
     transfer_dll_inputs (pSCRX9, xin_ar);
 //    printf("  transferred inputs\n");
+    pSCRX9->pModel->Time = next_time;
     pSCRX9->Model_Outputs (pSCRX9->pModel);
 //    printf("  called the DLL step\n");
     extract_dll_outputs (pSCRX9, xout_ar);
@@ -244,6 +245,7 @@ void dll_hwpv_m__(double xdata_ar[],
 
   while (atp_time >= next_time) {
     transfer_dll_inputs (pHWPV, xin_ar);
+    pHWPV->pModel->Time = next_time;
     pHWPV->Model_Outputs (pHWPV->pModel);
     extract_dll_outputs (pHWPV, xout_ar);
     next_time += pHWPV->pInfo->FixedStepBaseSampleTime;
@@ -328,6 +330,7 @@ void dll_gfm_gfl_ibr_m__(double xdata_ar[],
     //printf("  trying a step at %lf with %lf, %lf\n", atp_time, xin_ar[0], xin_ar[1]);
     transfer_dll_inputs (pIBR, xin_ar);
     //printf("  transferred inputs\n");
+    pIBR->pModel->Time = next_time;
     pIBR->Model_Outputs (pIBR->pModel);
     //printf("  called the DLL step\n");
     extract_dll_outputs (pIBR, xout_ar);
@@ -402,15 +405,12 @@ void dll_gfm_gfl_ibr2_m__(double xdata_ar[],
     for (i=0; i < 11; i++) {
       xin_ar[i] *= 0.001;
     }
-    xin_ar[11] *= 0.000001;
-    xin_ar[12] *= 0.000001;
+    //xin_ar[11] *= 0.000001;
+    //xin_ar[12] *= 0.000001;
     xin_ar[13] *= 0.001;
   }
 
   if (atp_time <= 0.0) { // apply initial conditions here
-    //xin_ar[9] = 950.0;
-    //xin_ar[10] = -50.0;
-    //xin_ar[11] = 1.0;
     initialize_dll_outputs (pIBR2, xout_ar);
     transfer_dll_inputs (pIBR2, xin_ar);
     transfer_dll_parameters (pIBR2, xdata_ar);
@@ -422,6 +422,7 @@ void dll_gfm_gfl_ibr2_m__(double xdata_ar[],
     //printf("  trying a step at %lf with %lf, %lf\n", atp_time, xin_ar[0], xin_ar[1]);
     transfer_dll_inputs (pIBR2, xin_ar);
     //printf("  transferred inputs\n");
+    pIBR2->pModel->Time = next_time;
     pIBR2->Model_Outputs (pIBR2->pModel);
     //printf("  called the DLL step\n");
     extract_dll_outputs (pIBR2, xout_ar);
@@ -511,10 +512,10 @@ Input Signals (idx,size,offset,name,desc,units):
    6    8   48 12a          A phase current after capacitor                                        kA
    7    8   56 I2b          B phase current after capacitor                                        kA
    8    8   64 I2c          C phase current after capacitor                                        kA
-   9    8   72 Idc          Current from Primay Power Source                                       kA
+   9    8   72 Idc          Current from Primary Power Source                                      kA
   10    8   80 VdcMPPT      Maximum power point voltage                                            kV
-  11    8   88 Pref         Active power reference                                                 MW
-  12    8   96 Qref         Reactive power reference                                               Mvar
+  11    8   88 Pref         Active power reference                                                 pu
+  12    8   96 Qref         Reactive power reference                                               pu
   13    8  104 Vdc_meas     Measured DC Voltage                                                    kV
   14    8  112 currTime     Current Time                                                           s
 Output Signals (idx,size,offset,name,desc,units):
