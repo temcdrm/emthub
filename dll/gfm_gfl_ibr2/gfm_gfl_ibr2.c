@@ -108,7 +108,7 @@ IEEE_Cigre_DLLInterface_Signal InputSignals [] = {
   }, 
   [9] = {
     .Name = "Idc", 
-    .Description = "Current from Primay Power Source", 
+    .Description = "Current from Primary Power Source", 
     .Unit = "kA", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
@@ -123,14 +123,14 @@ IEEE_Cigre_DLLInterface_Signal InputSignals [] = {
   [11] = {
     .Name = "Pref" , 
     .Description = "Active power reference ", 
-    .Unit = "MW", 
+    .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [12] = { 
     .Name = "Qref" , 
     .Description = "Reactive power reference", 
-    .Unit = "Mvar", 
+    .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   },
@@ -1544,7 +1544,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double Oldf_PLL = instance->DoubleStates[48];
   double Oldfpu_flt = instance->DoubleStates[49];
   double OldVtd_1_y2 = instance->DoubleStates[50];
-  double OldVtd_1_y = instance->DoubleStates[5l];
+  double OldVtd_1_y = instance->DoubleStates[51];
   double OldIdref_droop_x = instance->DoubleStates[52];
   double OldIdref_droop = instance->DoubleStates[53];
   double OldId1ref_hold = instance->DoubleStates[54];
