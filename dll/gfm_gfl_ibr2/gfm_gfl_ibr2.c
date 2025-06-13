@@ -148,15 +148,17 @@ typedef struct _MyModelOutputs {
   real64_T m_b;
   real64_T m_c;
   real64_T FreqPLL;
-  real64_T Output_1;
-  real64_T Output_2;
-  real64_T Output_3;
-  real64_T Output_4;
-  real64_T Output_5;
-  real64_T Output_6;
-  real64_T Output_7;
-  real64_T Output_8;
-  real64_T Output_9;
+  real64_T ID1;
+  real64_T IQ1;
+  real64_T ID2;
+  real64_T IQ2;
+  real64_T VD1;
+  real64_T VQ1;
+  real64_T VD2;
+  real64_T VQ2;
+  real64_T FRT_flag;
+  real64_T Pout;
+  real64_T Qout;
 } MyModelOutputs;
 
 // Define Output Signals 
@@ -249,6 +251,20 @@ IEEE_Cigre_DLLInterface_Signal OutputSignals[] = {
     .Name = "FRT_Flag", 
     .Description = "Fault ride-through", 
     .Unit = "N/A", 
+    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
+    .Width = 1 
+  }, 
+  [13] = {
+    .Name = "Pout", 
+    .Description = "Active power output at terminal", 
+    .Unit = "pu", 
+    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
+    .Width = 1 
+  }, 
+  [14] = {
+    .Name = "Qout", 
+    .Description = "Reactive power output at terminal", 
+    .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   } 
@@ -865,16 +881,16 @@ IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
   .GeneralInformation= "General Information",   // General information
   .ModelCreated = "September 21, 2023",         // Model created on  
   .ModelCreator = "Vishal Verma",               // Model created by     
-  .ModelLastModifiedDate= "June 2, 2025",       // Model last modified on  
+  .ModelLastModifiedDate= "June 13, 2025",       // Model last modified on  
   .ModelLastModifiedBy = "Tom McDermott",       // Model last modified by 
-  .ModelModifiedComment = "Remove currTime input, edit parameter descriptions", // Model modified comment 
+  .ModelModifiedComment = "Remove currTime input, edit parameter descriptions, add Pout and Qout", // Model modified comment 
   .ModelModifiedHistory = "Second instance",    // Model modified history 
   .FixedStepBaseSampleTime = 0.00001,           // Time Step sampling time (sec)  
   // Inputs 
   .NumInputPorts = 14,                          // Number of Input Signals 
   .InputPortsInfo = InputSignals,               // Inputs structure defined above  
   // Outputs 
-  .NumOutputPorts = 13,                         // Number of Output Signals 
+  .NumOutputPorts = 15,                         // Number of Output Signals 
   .OutputPortsInfo = OutputSignals,             // Outputs structure defined above 
   // Parameters 
   .NumParameters = 54,                          // Number of Parameters 
@@ -1107,15 +1123,17 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
   double m_b = outputs->m_b;
   double m_c = outputs->m_c;
   double FreqPLL = outputs->FreqPLL;
-  double Output_1 = outputs->Output_1;
-  double Output_2 = outputs->Output_2;
-  double Output_3 = outputs->Output_3;
-  double Output_4 = outputs->Output_4;
-  double Output_5 = outputs->Output_5;
-  double Output_6 = outputs->Output_6;
-  double Output_7 = outputs->Output_7;
-  double Output_8 = outputs->Output_8;
-  double Output_9 = outputs->Output_9;
+  double ID1 = outputs->ID1;
+  double IQ1 = outputs->IQ1;
+  double ID2 = outputs->ID2;
+  double IQ2 = outputs->IQ2;
+  double VD1 = outputs->VD1;
+  double VQ1 = outputs->VQ1;
+  double VD2 = outputs->VD2;
+  double VQ2 = outputs->VQ2;
+  double FRT_flag = outputs->FRT_flag;
+  double Pout = outputs->Pout;
+  double Qout = outputs->Qout;
 
   ErrorMessage [0]= '\0';
 
@@ -1591,19 +1609,6 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double OldIq1_i_SH = instance->DoubleStates[92];
 
   MyModelOutputs* outputs = (MyModelOutputs*)instance->ExternalOutputs;
-  double m_a = outputs->m_a;
-  double m_b = outputs->m_b;
-  double m_c = outputs->m_c;
-  double FreqPLL = outputs->FreqPLL;
-  double Output_1 = outputs->Output_1;
-  double Output_2 = outputs->Output_2;
-  double Output_3 = outputs->Output_3;
-  double Output_4 = outputs->Output_4;
-  double Output_5 = outputs->Output_5;
-  double Output_6 = outputs->Output_6;
-  double Output_7 = outputs->Output_7;
-  double Output_8 = outputs->Output_8;
-  double Output_9 = outputs->Output_9;
 
   // local variables 
 
@@ -2030,15 +2035,17 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   outputs->m_b = Eb_m * 2.0 / Vdc_nom;
   outputs->m_c = Ec_m * 2.0 / Vdc_nom;
   outputs->FreqPLL = f_PLL;
-  outputs->Output_1 = Id_1;
-  outputs->Output_2 = Iq_1;
-  outputs->Output_3 = Id_2;
-  outputs->Output_4 = Iq_2;
-  outputs->Output_5 = Vtd_1;
-  outputs->Output_6 = Vtq_1;
-  outputs->Output_7 = Vtd_2;
-  outputs->Output_8 = Vtq_2;
-  outputs->Output_9 = FRT_flag;
+  outputs->ID1 = Id_1;
+  outputs->IQ1 = Iq_1;
+  outputs->ID2 = Id_2;
+  outputs->IQ2 = Iq_2;
+  outputs->VD1 = Vtd_1;
+  outputs->VQ1 = Vtq_1;
+  outputs->VD2 = Vtd_2;
+  outputs->VQ2 = Vtq_2;
+  outputs->FRT_flag = FRT_flag;
+  outputs->Pout = Ptab_pu;
+  outputs->Qout = Qtab_pu;
   // Added outputs for debugging 
 
   // save state variables 
