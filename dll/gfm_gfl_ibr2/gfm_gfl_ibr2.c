@@ -46,6 +46,7 @@ typedef struct _MyModelInputs {
 	real64_T Pref;
 	real64_T Qref;
 	real64_T Vdc_meas;
+  real64_T Vref;
 } MyModelInputs;
 
 // Define Input Signals 
@@ -145,6 +146,13 @@ IEEE_Cigre_DLLInterface_Signal InputSignals [] = {
     .Name = "Vdc_meas", 
     .Description = "Measured DC Voltage", 
     .Unit = "kV", 
+    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
+    .Width = 1 
+  },
+  [14] = { 
+    .Name = "Vref" , 
+    .Description = "Voltage magnitude reference", 
+    .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }
@@ -307,7 +315,6 @@ typedef struct _MyModelParameters {
   real64_T f_flag;
   real64_T Id_frz_flag;
   real64_T Ilim_pu;
-  real64_T Vt_ref;
   real64_T Kv_p;
   real64_T Kv_i;
   real64_T Qmin;
@@ -330,8 +337,12 @@ typedef struct _MyModelParameters {
   real64_T Lim_lowCC;
   real64_T Tau_Vff;
   real64_T Vff_flag;
-  real64_T Lchoke;
   real64_T IR_flag;
+  real64_T Tr;
+  real64_T Lchoke;
+  real64_T Rchoke;
+  real64_T Cfilt;
+  real64_T Rdamp;
 } MyModelParameters;
 
 // Define Parameters 
@@ -628,16 +639,6 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MaxValue.Real64_Val = 10.0 
   },
   [29] = {
-    .Name = "Vt_ref",
-    .Description = "pu reference voltage for Vt control", 
-    .Unit = "pu" , 
-    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-    .FixedValue = 0, 
-    .DefaultValue.Real64_Val = 1.01, 
-    .MinValue.Real64_Val = -10.0, 
-    .MaxValue.Real64_Val = 10.0 
-  },
-  [30] = {
     .Name = "Kv_p",
     .Description = "Proportional gain for terminal voltage PI controller", 
     .Unit = "pu", 
@@ -647,7 +648,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [31] = {
+  [30] = {
     .Name = "Kv_i", 
     .Description = "Integral gain for terminal voltage PI controller", 
     .Unit = "pu", 
@@ -657,7 +658,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [32] = {
+  [31] = {
     .Name = "Qmin", 
     .Description = "Minimum reactive power in pu", 
     .Unit = "pu",
@@ -667,7 +668,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = -1e8, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [33] = {
+  [32] = {
     .Name = "Qmax", 
     .Description = "Maximum reactive power in pu", 
     .Unit = "pu",
@@ -677,7 +678,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = -1e8, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [34] = {
+  [33] = {
     .Name = "Kq_p",
     .Description = "Q closed-loop proportional control gain", 
     .Unit = "pu", 
@@ -687,7 +688,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [35] = {
+  [34] = {
     .Name = "Kq_i", 
     .Description = "Q closed-loop integral control gain", 
     .Unit = "pu", 
@@ -697,7 +698,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [36] = {
+  [35] = {
     .Name = "dbhv_frt", 
     .Description = "Dead band LVRT +ve sequence HV", 
     .Unit = "pu", 
@@ -707,7 +708,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = -1e8, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [37] = {
+  [36] = {
     .Name = "dblv_frt", 
     .Description = "Dead band HVRT +ve sequence LV", 
     .Unit = "pu", 
@@ -717,7 +718,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = -1e8, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [38] = {
+  [37] = {
     .Name = "Kqv1" , 
     .Description = "Proportional gain for positive voltage dip", 
     .Unit = "pu", 
@@ -727,7 +728,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [39] = {
+  [38] = {
     .Name = "Qctl_CL_flag", 
     .Description = "1: enables closed loop Q control, 0: open loop", 
     .Unit = "N/A", 
@@ -737,7 +738,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1.0 
   },
-  [40] = {
+  [39] = {
     .Name = "Vt_flag", 
     .Description = "1: enable inverter term. voltage control, 0: Q control", 
     .Unit = "N/A", 
@@ -747,7 +748,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1.0 
   },
-  [41] = {
+  [40] = {
     .Name = "dbl_2", 
     .Description = "VRT dead band (negative)", 
     .Unit = "N/A", 
@@ -757,7 +758,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = -1e8, 
     .MaxValue.Real64_Val = 0.0 
   },
-  [42] = {
+  [41] = {
     .Name = "dbh_2", 
     .Description = "VRT dead band (positive)", 
     .Unit = "N/A", 
@@ -767,7 +768,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [43] = {
+  [42] = {
     .Name = "Kqv2", 
     .Description = "Proportional gain for -ve voltage deviation", 
     .Unit = "pu", 
@@ -777,7 +778,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [44] = {
+  [43] = {
     .Name = "V2_flag", 
     .Description = "1: enable V2 control during FRT", 
     .Unit = "pu" , 
@@ -787,7 +788,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val= 1.0 
   },
-  [45] = {
+  [44] = {
     .Name = "Ipramp_up", 
     .Description = "Ramp up rate for active current", 
     .Unit = "pu", 
@@ -797,7 +798,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [46] = {
+  [45] = {
     .Name = "Kcc_p", 
     .Description = "Proportional gain PI controller in current controller", 
     .Unit = "pu", 
@@ -807,7 +808,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [47] = {
+  [46] = {
     .Name = "Kcc_i", 
     .Description = "Integral gain PI controller in current controller", 
     .Unit = "pu", 
@@ -817,7 +818,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [48] = {
+  [47] = {
     .Name = "Lim_upCC" , 
     .Description = "Current controller's anti-windup upper limit", 
     .Unit = "pu", 
@@ -827,7 +828,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [49] = {
+  [48] = {
     .Name = "Lim_lowCC", 
     .Description = "Current controller's anti-windup lower limit", 
     .Unit = "pu" , 
@@ -837,7 +838,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = -1e8, 
     .MaxValue.Real64_Val = 0 
   },
-  [50] = {
+  [49] = {
     .Name = "Tau_Vff", 
     .Description = "Time constant of LPF for voltage current controller", 
     .Unit = "s", 
@@ -847,7 +848,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [51] = {
+  [50] = {
     .Name = "Vff_flag", 
     .Description = "Voltage filter flag (1 enable)", 
     .Unit = "N/A", 
@@ -857,55 +858,95 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1e8 
   },
-  [52] = {
-    .Name = "Lchoke", 
-    .Description = "Filter inductance", 
-    .Unit = "pu", 
-    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-    .FixedValue = 0, 
-    .DefaultValue.Real64_Val = 0.0001, 
-    .MinValue.Real64_Val = 0.000001, 
-    .MaxValue.Real64_Val = 10.0 
-  },
-  [53] = {
+  [51] = {
     .Name = "IR_flag", 
-    .Description = "Flag", 
+    .Description = "1: limit Iq2 to delta Id2, 0: limit Iq2 to Id2", 
     .Unit = "N/A", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue= 0, 
     .DefaultValue.Real64_Val = 1.0, 
     .MinValue.Real64_Val = 0.0, 
     .MaxValue.Real64_Val = 1.0 
-  }
+  },
+  [52] = {
+    .Name = "Tr", 
+    .Description = "Power measurement transducer time constant", 
+    .Unit = "s", 
+    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
+    .FixedValue = 0, 
+    .DefaultValue.Real64_Val = 0.001, 
+    .MinValue.Real64_Val = 0.0, 
+    .MaxValue.Real64_Val = 0.1 
+  },
+  [53] = {
+    .Name = "Lchoke", 
+    .Description = "Series filter inductance", 
+    .Unit = "pu", 
+    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
+    .FixedValue = 0, 
+    .DefaultValue.Real64_Val = 0.1047, 
+    .MinValue.Real64_Val = 0.000001, 
+    .MaxValue.Real64_Val = 10.0 
+  },
+  [54] = {
+    .Name = "Rchoke", 
+    .Description = "Series filter resistance", 
+    .Unit = "pu", 
+    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
+    .FixedValue = 0, 
+    .DefaultValue.Real64_Val = 0.0021, 
+    .MinValue.Real64_Val = 0.000001, 
+    .MaxValue.Real64_Val = 10.0 
+  },
+  [55] = {
+    .Name = "Cfilt", 
+    .Description = "Parallel filter capacitance", 
+    .Unit = "pu", 
+    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
+    .FixedValue = 0, 
+    .DefaultValue.Real64_Val = 0.2027, 
+    .MinValue.Real64_Val = 0.000001, 
+    .MaxValue.Real64_Val = 10.0 
+  },
+  [56] = {
+    .Name = "Rdamp", 
+    .Description = "Parallel filter series resistance", 
+    .Unit = "pu", 
+    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
+    .FixedValue = 0, 
+    .DefaultValue.Real64_Val = 0.0463, 
+    .MinValue.Real64_Val = 0.000001, 
+    .MaxValue.Real64_Val = 10.0 
+  },
 };
 
 IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
   .DLLInterfaceVersion = { 1, 1, 0, 1},         // Release number of the API 
   // used during code generation 
   .ModelName = "IBR-Average-Model",             // Model name   
-  .ModelVersion = "1.1.0.1",                    // Model version   
+  .ModelVersion = "1.1.0.2",                    // Model version   
   .ModelDescription = "GFD-IBR-Average",        // Model description 
   .GeneralInformation= "General Information",   // General information
   .ModelCreated = "September 21, 2023",         // Model created on  
   .ModelCreator = "Vishal Verma",               // Model created by     
-  .ModelLastModifiedDate= "June 13, 2025",       // Model last modified on  
+  .ModelLastModifiedDate= "June 16, 2025",       // Model last modified on  
   .ModelLastModifiedBy = "Tom McDermott",       // Model last modified by 
-  .ModelModifiedComment = "Remove currTime input, edit parameter descriptions, add Pout and Qout", // Model modified comment 
+  .ModelModifiedComment = "Remove currTime input, edit parameter descriptions, add Pout and Qout\nAdd Vref input signal and more filter parameters", // Model modified comment 
   .ModelModifiedHistory = "Second instance",    // Model modified history 
   .FixedStepBaseSampleTime = 0.00001,           // Time Step sampling time (sec)  
   // Inputs 
-  .NumInputPorts = 14,                          // Number of Input Signals 
+  .NumInputPorts = 15,                          // Number of Input Signals 
   .InputPortsInfo = InputSignals,               // Inputs structure defined above  
   // Outputs 
   .NumOutputPorts = 15,                         // Number of Output Signals 
   .OutputPortsInfo = OutputSignals,             // Outputs structure defined above 
   // Parameters 
-  .NumParameters = 54,                          // Number of Parameters 
+  .NumParameters = 57,                          // Number of Parameters 
   .ParametersInfo = Parameters,                 // Parameters structure defined above
    // Number of State Variables 
   .NumIntStates = 0,                            // Number of Integer states
   .NumFloatStates = 0,                          // Number of Float states
-  .NumDoubleStates = 93                         // Number of Double states
+  .NumDoubleStates = 97                         // Number of Double states
 };
 
 // Subroutines that can be called by the main power system program 
@@ -955,7 +996,6 @@ __declspec(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterf
   double f_flag = parameters->f_flag;
   double Id_frz_flag = parameters->Id_frz_flag;
   double Ilim_pu = parameters->Ilim_pu;
-  double Vt_ref = parameters->Vt_ref;
   double Kv_p = parameters->Kv_p;
   double Kv_i = parameters->Kv_i;
   double Qmin = parameters->Qmin;
@@ -978,7 +1018,11 @@ __declspec(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterf
   double Lim_lowCC = parameters->Lim_lowCC;
   double Tau_Vff = parameters->Tau_Vff;
   double Vff_flag = parameters->Vff_flag;
+  double Tr = parameters->Tr;
   double Lchoke = parameters->Lchoke;
+  double Rchoke = parameters->Rchoke;
+  double Cfilt = parameters->Cfilt;
+  double Rdamp = parameters->Rdamp;
   double IR_flag = parameters->IR_flag;
   // 
   double delt = Model_Info.FixedStepBaseSampleTime;
@@ -1079,7 +1123,6 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
   double f_flag = parameters->f_flag;
   double Id_frz_flag = parameters->Id_frz_flag;
   double Ilim_pu = parameters->Ilim_pu;
-  double Vt_ref = parameters->Vt_ref;
   double Kv_p = parameters->Kv_p;
   double Kv_i = parameters->Kv_i;
   double Qmin = parameters->Qmin;
@@ -1102,7 +1145,11 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
   double Lim_lowCC = parameters->Lim_lowCC;
   double Tau_Vff = parameters->Tau_Vff;
   double Vff_flag = parameters->Vff_flag;
+  double Tr = parameters->Tr;
   double Lchoke = parameters->Lchoke;
+  double Rchoke = parameters->Rchoke;
+  double Cfilt = parameters->Cfilt;
+  double Rdamp = parameters->Rdamp;
   double IR_flag = parameters->IR_flag;
 
   double delt = Model_Info.FixedStepBaseSampleTime;
@@ -1122,6 +1169,7 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
   double Pref = inputs->Pref;
   double Qref = inputs->Qref;
   double Vdc_meas = inputs->Vdc_meas;
+  double Vref = inputs->Vref;
 
   // Working back from initial output 
 
@@ -1238,6 +1286,10 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
   instance->DoubleStates[90] = 0.0;
   instance->DoubleStates[91] = 0.0;
   instance->DoubleStates[92] = 0.0;
+  instance->DoubleStates[93] = 0.0;
+  instance->DoubleStates[94] = 0.0;
+  instance->DoubleStates[95] = 0.0;
+  instance->DoubleStates[96] = 0.0;
 
   instance->LastGeneralMessage = ErrorMessage;
   return IEEE_Cigre_DLLInterface_Return_OK;
@@ -1471,7 +1523,6 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double f_flag = parameters->f_flag;
   double Id_frz_flag = parameters->Id_frz_flag;
   double Ilim_pu = parameters->Ilim_pu;
-  double Vt_ref = parameters->Vt_ref;
   double Kv_p = parameters->Kv_p;
   double Kv_i = parameters->Kv_i;
   double Qmin = parameters->Qmin;
@@ -1494,7 +1545,11 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double Lim_lowCC = parameters->Lim_lowCC;
   double Tau_Vff = parameters->Tau_Vff;
   double Vff_flag = parameters->Vff_flag;
+  double Tr = parameters->Tr;
   double Lchoke = parameters->Lchoke;
+  double Rchoke = parameters->Rchoke;
+  double Cfilt = parameters->Cfilt;
+  double Rdamp = parameters->Rdamp;
   double IR_flag = parameters->IR_flag;
 
   double delt = Model_Info.FixedStepBaseSampleTime;
@@ -1514,6 +1569,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double Pref = inputs->Pref;
   double Qref = inputs->Qref;
   double Vdc_meas = inputs->Vdc_meas;
+  double Vref = inputs->Vref;
   double currTIME = instance->Time;
 
   double OldTIME = instance->DoubleStates[0];  // not used
@@ -1614,6 +1670,10 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   // Added states for SH 
   double OldId1ref_hold_SH = instance->DoubleStates[91];
   double OldIq1_i_SH = instance->DoubleStates[92];
+  double OldPelec = instance->DoubleStates[93];
+  double OldPelec_meas = instance->DoubleStates[94];
+  double OldQelec = instance->DoubleStates[95];
+  double OldQelec_meas = instance->DoubleStates[96];
 
   MyModelOutputs* outputs = (MyModelOutputs*)instance->ExternalOutputs;
 
@@ -1645,7 +1705,8 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double Idq1_flt[2], Idq2_flt[2];
   double Id_1, Iq_1, Id_2, Iq_2;
   double I1_alphabeta[2], I2_alphabeta[2];
-  double Piab_pu, Qiab_pu, Ptab_pu, Qtab_pu;
+  //double Piab_pu, Qiab_pu, Ptab_pu, Qtab_pu;
+  double Pelec, Pelec_meas, Qelec, Qelec_meas;
   // P, Q block 
   double Vdq1;
   double FRT_flag;
@@ -1812,16 +1873,22 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   // ABC to ALPHA-BETA currents 
   ABC2ALPHABETA(I1a_flt, I1b_flt, I1c_flt, I1_alphabeta);
   ABC2ALPHABETA(I2a_flt, I2b_flt, I2c_flt, I2_alphabeta);
-  Piab_pu = REALPOWER(Vt_alpha, I1_alphabeta[0], Vt_beta, I1_alphabeta[1]);
-  Qiab_pu = REACTIVEPOWER(Vt_alpha, I1_alphabeta[0], Vt_beta, I1_alphabeta[1]);
-  Ptab_pu = REALPOWER(Vt_alpha, I2_alphabeta[0], Vt_beta, I2_alphabeta[1]);
-  Qtab_pu = REACTIVEPOWER(Vt_alpha, I2_alphabeta[0], Vt_beta, I2_alphabeta[1]);
+  if (Cur1_flag >= 0.99) {
+    Pelec = REALPOWER(Vt_alpha, I1_alphabeta[0], Vt_beta, I1_alphabeta[1]); // was Piab_pu
+    Qelec = REACTIVEPOWER(Vt_alpha, I1_alphabeta[0], Vt_beta, I1_alphabeta[1]); // was Qiab_pu
+  } else {
+    Pelec = REALPOWER(Vt_alpha, I2_alphabeta[0], Vt_beta, I2_alphabeta[1]); // was Ptab_pu
+    Qelec = REACTIVEPOWER(Vt_alpha, I2_alphabeta[0], Vt_beta, I2_alphabeta[1]); // was Qtab_pu
+  }
+  // Measurement transducer for power. TODO: Not used for control, output only?
+  Pelec_meas = REALPOLE(1.0, Tr, Pelec, OldPelec, OldPelec_meas, -1.0, 1.0, delt);
+  Qelec_meas = REALPOLE(1.0, Tr, Qelec, OldQelec, OldQelec_meas, -1.0, 1.0, delt);
 
   // Outer P,Q LOOP
   Vdq1 = sqrt(Vtd_1 * Vtd_1 + Vtq_1 * Vtq_1);
 
   // Input Flag to Current Controller, Vdip logic 
-  FRT_flag = (COMPARATOR((Vt_ref - Vtd_1), dblv_frt) + COMPARATOR(dbhv_frt, (Vt_ref - Vtd_1))) > 0;
+  FRT_flag = (COMPARATOR((Vref - Vtd_1), dblv_frt) + COMPARATOR(dbhv_frt, (Vref - Vtd_1))) > 0;
 
   // Start UP Flag 
   Startup_flag = COMPARATOR(tstart_up, currTIME);
@@ -1868,7 +1935,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   Id1ref = LIMITER(Ilim_pu, -Ilim_pu, Id1ref_nolimit);
 
   // Vt Closed Loop 
-  Iq_VtdCLe = SELECTOR(0, DEADBAND((Vt_ref - Vtd_1_y), 0.001, 1, 0), FRT_flag);
+  Iq_VtdCLe = SELECTOR(0, DEADBAND((Vref - Vtd_1_y), 0.001, 1, 0), FRT_flag);
 
   // Anti Wind Up Code Begin 
   Iq_VtdCLP= Iq_VtdCLe * Kv_p;  // Proportional term 
@@ -1880,7 +1947,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   // Anti Wind Up Code Ends
 
   // Q Closed Loop 
-  Qdq_x = Qtab_pu;
+  Qdq_x = Qelec_meas; // Qtab_pu;
   Qdq = REALPOLE(1, 0.005, Qdq_x, OldQdq_x, OldQdq, -999999, 999999, delt);
   Iq_QCLe = LIMITER(Qmax, Qmin, Qref) - Qdq;
 
@@ -1898,7 +1965,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
 
   // LVRT/ HVRT 
   Vdq1_y = REALPOLE(1, 0.002, Vdq1, OldVdq1, OldVdq1_y, -99999, 99999, delt);
-  Iq1_frt = DB(Vt_ref - Vtd_1 - 0.0001, dbhv_frt, dblv_frt) * -Kqv1;
+  Iq1_frt = DB(Vref - Vtd_1 - 0.0001, dbhv_frt, dblv_frt) * -Kqv1;
   Iq_Qctl = SELECTOR(Iq_QCL, Iq_QOL, Qctl_CL_flag);
   Iq1_icont = SELECTOR(Iq_VtdCL, Iq_Qctl, Vt_flag);
   Iq1_i_SH[1] = OldIq1_i_SH;
@@ -2016,15 +2083,15 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   uctrlq_2AWerr = uctrlq_2AW - uctrlq_2;  // Update AWerr for next time step 
   // Anti Wind Up Code Ends / 
 
-  // Generate Ed_1, Eq_1, Ed_2, and Eq_2 
+  // Generate Ed_1, Eq_1, Ed_2, and Eq_2 // TODO: check the per-unit conversions of DQ voltage drops
   Vtd_1y = REALPOLE(1, Tau_Vff, Vtd_1, OldVtd_1, OldVtd_1y, -99999, 99999, delt);
-  Ed_1 = SELECTOR(Vtd_1y, 0.0, Vff_flag) * Vdq_base - (Iq_1 * Lchoke * w_nom * Idq_base) + uctrld_1;
+  Ed_1 = SELECTOR(Vtd_1y, 0.0, Vff_flag) * Vdq_base + (-Iq_1*Lchoke*w_nom + Id_1*Rchoke) * Idq_base + uctrld_1;
   Vtq_1y = REALPOLE(1, Tau_Vff, Vtq_1, OldVtq_1, OldVtq_1y, -99999, 99999, delt);
-  Eq_1 = SELECTOR(Vtq_1y, 0.0, Vff_flag) * Vdq_base + (Id_1 * Lchoke * w_nom * Idq_base) + uctrlq_1;
+  Eq_1 = SELECTOR(Vtq_1y, 0.0, Vff_flag) * Vdq_base + ( Id_1*Lchoke*w_nom + Iq_1*Rchoke) * Idq_base + uctrlq_1;
   Vtd_2y = REALPOLE(1, Tau_Vff, Vtd_2, OldVtd_2, OldVtd_2y, -99999, 99999, delt);
-  Ed_2 = SELECTOR(Vtd_2y, 0.0, Vff_flag) * Vdq_base + (Iq_2 * Lchoke * w_nom * Idq_base) + uctrld_2;
+  Ed_2 = SELECTOR(Vtd_2y, 0.0, Vff_flag) * Vdq_base + ( Iq_2*Lchoke*w_nom + Id_2*Rchoke) * Idq_base + uctrld_2;
   Vtq_2y = REALPOLE(1, Tau_Vff, Vtq_2, OldVtq_2, OldVtq_2y, -99999, 99999, delt);
-  Eq_2 = SELECTOR(Vtq_2y, 0.0, Vff_flag) * Vdq_base - (Id_2 * Lchoke * w_nom * Idq_base) + uctrlq_2;
+  Eq_2 = SELECTOR(Vtq_2y, 0.0, Vff_flag) * Vdq_base + (-Id_2*Lchoke*w_nom + Iq_2*Rchoke) * Idq_base + uctrlq_2;
 
   // Generate output Ea1, Eb1, Ec1 
   DQ2ABC(Ed_1, Eq_1, Theta_PLL, Eabc_1);
@@ -2051,8 +2118,8 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   outputs->VD2 = Vtd_2;
   outputs->VQ2 = Vtq_2;
   outputs->FRT_flag = FRT_flag;
-  outputs->Pout = Ptab_pu;
-  outputs->Qout = Qtab_pu;
+  outputs->Pout = Pelec_meas; // Ptab_pu;
+  outputs->Qout = Qelec_meas; // Qtab_pu;
   // Added outputs for debugging 
 
   // save state variables 
@@ -2149,6 +2216,10 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   instance->DoubleStates[90] = FRT_flag;
   instance->DoubleStates[91] = Id1ref_hold_SH[1];
   instance->DoubleStates[92] = Iq1_i_SH[1];
+  instance->DoubleStates[93] = Pelec;
+  instance->DoubleStates[94] = Pelec_meas;
+  instance->DoubleStates[95] = Qelec;
+  instance->DoubleStates[96] = Qelec_meas;
   instance->LastGeneralMessage = ErrorMessage;
   return IEEE_Cigre_DLLInterface_Return_OK;
 };
