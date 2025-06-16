@@ -365,19 +365,9 @@ void dll_gfm_gfl_ibr2_i__(double xdata_ar[],
 {
   char *pData;
   if ((pIBR2 = CreateFirstDLLModel("gfm_gfl_ibr2.dll")) != NULL) {
-    //printf("created pIBR2\n");
     if (NULL != pIBR2->Model_FirstCall) {
       pIBR2->Model_FirstCall (pIBR2->pModel);
-      //printf("pIBR2 first call\n");
     }
-    //initialize_dll_outputs (pIBR2, xout_ar);
-    //printf("initialized pIBR2 outputs\n");
-    //transfer_dll_parameters (pIBR2, xdata_ar);
-    //printf("pIBR2 transfer parameters\n");
-    //pIBR2->Model_CheckParameters (pIBR2->pModel);
-    //printf("pIBR2 check parameters\n");
-    //pIBR2->Model_Initialize (pIBR2->pModel);
-    //printf("pIBR2 initialize\n");
   }
   if (pIBR2 != NULL) {
     //printf ("DLL: Initialized pIBR\n");
@@ -394,19 +384,17 @@ void dll_gfm_gfl_ibr2_m__(double xdata_ar[],
 {
   int i;
   static double next_time = 0.0;
-  double atp_time = xin_ar[14];
-  double atp_stop = xin_ar[15];
+  double atp_time = xin_ar[15];
+  double atp_stop = xin_ar[16];
   if (NULL == pIBR2) {
     return;
   }
 
-  // convert inputs to kV, kA, MW, MVAR
+  // convert inputs to kV, kA
   if (atp_time >= next_time) {
     for (i=0; i < 11; i++) {
       xin_ar[i] *= 0.001;
     }
-    //xin_ar[11] *= 0.000001;
-    //xin_ar[12] *= 0.000001;
     xin_ar[13] *= 0.001;
   }
 
@@ -463,7 +451,7 @@ Parameters (idx,size,offset,name,val,desc,units,default,min,max:
   12    8   96 tstart_up             1.9 Time for start up flag of Q and Vt closed loop                         s          1.9   0       1000
   13    8  104 Vdc_nom              1200 Nominal DC Link Voltage                                                kV         1200          0       10000
   14    8  112 VI_flag                 0 1: enable PPS VI characteristic, 0: constant I                         N/A        0     0       1
-  15    8  120 MPPT_flag               0 1: enable MPPT for Vdc*, requires VI_flag=I and Vdc_flag=1             pu/pu      0     0       1
+  15    8  120 MPPT_flag               0 1: enable MPPT for Vdc*, requires VI_flag=1 and Vdc_flag=1             pu/pu      0     0       1
   16    8  128 b_Vdc                0.56 Setpoint weight for DC voltage                                         N/A        0.56          0       100
   17    8  136 Kp_Vdc               5.18 Proportional gain for Vdc                                              pu/pu      5.18          0.001   1000
   18    8  144 Ki_Vdc              52.91 Integral gain for Vdc                                                  pu/pu      52.91         0       1000
@@ -472,44 +460,47 @@ Parameters (idx,size,offset,name,val,desc,units,default,min,max:
   21    8  168 fdbd2              0.0006 Upper deadband for frequency droop control                             N/A        0.0006        0       1e+08
   22    8  176 Ddn                    20 Inverse of droop for high frequency                                    ******     20    0       5000
   23    8  184 Dup                     0 Inverse of droop for low frequency                                     ******     0     0       100
-  24    8  192 Tp_droop            0.001 Time constant for first order lag block in Pf control                  s          0.001         0       100
-  25    8  200 Vdc_flag                0 dc control flag (1: enable, 0: const. PQ)                              N/A        0     0       1
+  24    8  192 Tp_droop            0.001 Time constant for first order lag block in P-f control                 s          0.001         0       100
+  25    8  200 Vdc_flag                0 Vdc control flag (1: enable, 0: const. PQ)                             N/A        0     0       1
   26    8  208 f_flag                  0 Frequency flag (1: enable frequency droop control)                     N/A        0     0       1
   27    8  216 Id_frz_flag             0 freeze Id during LVRT                                                  N/A        0     0       1
   28    8  224 Ilim_pu               1.1 Inverter Current limit                                                 pu         1.1   -10     10
-  29    8  232 Vt_ref               1.01 pu reference voltage for Vt control                                    pu         1.01          -10     10
-  30    8  240 Kv_p                    0 Proportional gain for terminal voltage PI controller                   pu         0     0       1e+08
-  31    8  248 Kv_i                  100 Proportional gain for terminal voltage PI controller                   pu         100   0       1e+08
-  32    8  256 Qmin                 -0.4 Minimum reactive power in pu                                           pu         -0.4          -1e+08          1e+08
-  33    8  264 Qmax                  0.4 Maximum reactive power in pu                                           pu         0.4   -1e+08          1e+08
-  34    8  272 Kq_p                    0 Q closed-loop proportional control gain                                pu         0     0       1e+08
-  35    8  280 Kq_i                   40 Q closed-loop integral control gain                                    pu         40    0       1e+08
-  36    8  288 dbhv_frt             -0.1 Dead band LVRT +ve sequence HV                                         pu         -0.1          -1e+08          1e+08
-  37    8  296 dblv_frt              0.1 Dead band HVRT +ve sequence LV                                         pu         0.1   -1e+08          1e+08
-  38    8  304 Kqv1                    2 Proportional gain for positive voltage dip                             pu         2     0       1e+08
-  39    8  312 Qctl_CL_flag            1 1: enables closed loop Q control, 0: open loop                         N/A        1     0       1
-  40    8  320 Vt_flag                 1 1: enable inverter term. voltage control, 0: Q control                 N/A        1     0       1
-  41    8  328 dbl_2                -0.1 VRT dead band (negative)                                               N/A        -0.1          -1e+08          0
-  42    8  336 dbh_2                 0.1 VRT dead band (positive)                                               N/A        0.1   0       1e+08
-  43    8  344 Kqv2                    2 Proportional gain for -ve voltage deviation                            pu         2     0       1e+08
-  44    8  352 V2_flag                 1 1: enable V2 control during FRT                                        pu         1     0       1
-  45    8  360 Ipramp_up               1 Ramp up rate for active current                                        pu         1     0       1e+08
-  46    8  368 Kcc_p             0.32325 Proportional gain PI controller in current controller                  pu         0.32325       0       1e+08
-  47    8  376 Kcc_i                 324 Integral gain PI controller in current controller                      pu         324   0       1e+08
-  48    8  384 Lim_upCC            99999 Current controller's anti-windup upper limit                           pu         99999         0       1e+08
-  49    8  392 Lim_lowCC          -99999 Current controller's anti-windup lower limit                           pu         -99999        -1e+08          0
-  50    8  400 Tau_Vff            0.0001 Time constant of LPF for voltage current controller                    s          0.0001        0       1e+08
-  51    8  408 Vff_flag                0 Voltage filter flag (1 enable)                                         N/A        0     0       1e+08
-  52    8  416 Lchoke             0.0001 Filter inductance                                                      pu         0.0001        1e-06   10
-  53    8  424 IR_flag                 1 Flag                                                                   N/A        1     0       1
+  29    8  232 Kv_p                    0 Proportional gain for terminal voltage PI controller                   pu         0     0       1e+08
+  30    8  240 Kv_i                  100 Integral gain for terminal voltage PI controller                       pu         100   0       1e+08
+  31    8  248 Qmin                 -0.4 Minimum reactive power in pu                                           pu         -0.4          -1e+08          1e+08
+  32    8  256 Qmax                  0.4 Maximum reactive power in pu                                           pu         0.4   -1e+08          1e+08
+  33    8  264 Kq_p                    0 Q closed-loop proportional control gain                                pu         0     0       1e+08
+  34    8  272 Kq_i                   40 Q closed-loop integral control gain                                    pu         40    0       1e+08
+  35    8  280 dbhv_frt             -0.1 Dead band LVRT +ve sequence HV                                         pu         -0.1          -1e+08          1e+08
+  36    8  288 dblv_frt              0.1 Dead band HVRT +ve sequence LV                                         pu         0.1   -1e+08          1e+08
+  37    8  296 Kqv1                    2 Proportional gain for positive voltage dip                             pu         2     0       1e+08
+  38    8  304 Qctl_CL_flag            1 1: enables closed loop Q control, 0: open loop                         N/A        1     0       1
+  39    8  312 Vt_flag                 1 1: enable inverter term. voltage control, 0: Q control                 N/A        1     0       1
+  40    8  320 dbl_2                -0.1 VRT dead band (negative)                                               N/A        -0.1          -1e+08          0
+  41    8  328 dbh_2                 0.1 VRT dead band (positive)                                               N/A        0.1   0       1e+08
+  42    8  336 Kqv2                    2 Proportional gain for -ve voltage deviation                            pu         2     0       1e+08
+  43    8  344 V2_flag                 1 1: enable V2 control during FRT                                        pu         1     0       1
+  44    8  352 Ipramp_up               1 Ramp up rate for active current                                        pu         1     0       1e+08
+  45    8  360 Kcc_p             0.32325 Proportional gain PI controller in current controller                  pu         0.32325       0       1e+08
+  46    8  368 Kcc_i                 324 Integral gain PI controller in current controller                      pu         324   0       1e+08
+  47    8  376 Lim_upCC            99999 Current controller's anti-windup upper limit                           pu         99999         0       1e+08
+  48    8  384 Lim_lowCC          -99999 Current controller's anti-windup lower limit                           pu         -99999        -1e+08          0
+  49    8  392 Tau_Vff            0.0001 Time constant of LPF for voltage current controller                    s          0.0001        0       1e+08
+  50    8  400 Vff_flag                0 Voltage filter flag (1 enable)                                         N/A        0     0       1e+08
+  51    8  408 IR_flag                 1 1: limit Iq2 to delta Id2, 0: limit Iq2 to Id2                         N/A        1     0       1
+  52    8  416 Tr                  0.001 Power measurement transducer time constant                             s          0.001         0       0.1
+  53    8  424 Lchoke             0.1047 Series filter inductance                                               pu         0.1047        1e-06   10
+  54    8  432 Rchoke             0.0021 Series filter resistance                                               pu         0.0021        1e-06   10
+  55    8  440 Cfilt              0.2027 Parallel filter capacitance                                            pu         0.2027        1e-06   10
+  56    8  448 Rdamp              0.0463 Parallel filter series resistance                                      pu         0.0463        1e-06   10
 Input Signals (idx,size,offset,name,desc,units):
    0    8    0 Vta          A phase terminal voltage                                               kV
    1    8    8 Vtb          B phase terminal voltage                                               kV
    2    8   16 Vtc          C phase terminal voltage                                               kV
    3    8   24 I1a          A phase VSC current                                                    kA
    4    8   32 I1b          B phase VSC current                                                    kA
-   5    8   40 Ilc          C phase VSC current                                                    kA
-   6    8   48 12a          A phase current after capacitor                                        kA
+   5    8   40 I1c          C phase VSC current                                                    kA
+   6    8   48 I2a          A phase current after capacitor                                        kA
    7    8   56 I2b          B phase current after capacitor                                        kA
    8    8   64 I2c          C phase current after capacitor                                        kA
    9    8   72 Idc          Current from Primary Power Source                                      kA
@@ -517,24 +508,24 @@ Input Signals (idx,size,offset,name,desc,units):
   11    8   88 Pref         Active power reference                                                 pu
   12    8   96 Qref         Reactive power reference                                               pu
   13    8  104 Vdc_meas     Measured DC Voltage                                                    kV
-  14    8  112 currTime     Current Time                                                           s
+  14    8  112 Vref         Voltage magnitude reference                                            pu
 Output Signals (idx,size,offset,name,desc,units):
    0    8    0 m_a          Phase A modulating signal                                              N/A
    1    8    8 m_b          Phase B modulating signal                                              N/A
    2    8   16 m_c          Phase C modulating signal                                              N/A
    3    8   24 FreqPLL      PLL frequency                                                          Hz
-   4    8   32 Id1          Positive Current d                                                     pu
-   5    8   40 Iq1          Positive Current q                                                     pu
-   6    8   48 Id2          Negative Current d                                                     pu
-   7    8   56 Iq2          Negative Current q                                                     pu
-   8    8   64 Vtd1         Positive Voltage d                                                     pu
-   9    8   72 Vtq1         Positive Voltage q                                                     pu
-  10    8   80 Vtd2         Negative Voltage d                                                     pu
-  11    8   88 Vtq2         Negative Voltage q                                                     pu
+   4    8   32 Id1          Positive Sequence Current d                                            pu
+   5    8   40 Iq1          Positive Sequence Current q                                            pu
+   6    8   48 Id2          Negative Sequence Current d                                            pu
+   7    8   56 Iq2          Negative Sequence Current q                                            pu
+   8    8   64 Vtd1         Positive Sequence Voltage d                                            pu
+   9    8   72 Vtq1         Positive Sequence Voltage q                                            pu
+  10    8   80 Vtd2         Negative Sequence Voltage d                                            pu
+  11    8   88 Vtq2         Negative Sequence Voltage q                                            pu
   12    8   96 FRT_Flag     Fault ride-through                                                     N/A
   13    8  104 Pout         Active power output at terminal                                        pu
   14    8  112 Qout         Reactive power output at terminal                                      pu
-Internal State Variables: 0 int, 0 float, 93 double
+Internal State Variables: 0 int, 0 float, 97 double
 */
 
 /* ========================= SCRX9 Model Info printout ============================================= 

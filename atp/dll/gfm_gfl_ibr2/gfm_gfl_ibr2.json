@@ -7,22 +7,22 @@
     1
   ],
   "ModelName": "IBR-Average-Model",
-  "ModelVersion": "1.1.0.1",
+  "ModelVersion": "1.1.0.2",
   "ModelDescription": "GFD-IBR-Average",
   "GeneralInformation": "General Information",
   "ModelCreated": "Vishal Verma",
   "ModelCreator": "September 21, 2023",
-  "ModelLastModifiedDate": "June 13, 2025",
+  "ModelLastModifiedDate": "June 16, 2025",
   "ModelLastModifiedBy": "Tom McDermott",
   "ModelModifiedHistory": "Second instance",
   "FixedStepBaseSampleTime": 1e-05,
   "EMT_RMS_Mode": 0,
-  "NumInputPorts": 14,
+  "NumInputPorts": 15,
   "NumOutputPorts": 15,
-  "NumParameters": 54,
+  "NumParameters": 57,
   "NumIntStates": 0,
   "NumFloatStates": 0,
-  "NumDoubleStates": 93,
+  "NumDoubleStates": 97,
   "InputPortsInfo": [
     {
       "Name": "Vta",
@@ -119,6 +119,13 @@
       "Name": "Vdc_meas",
       "Description": "Measured DC Voltage",
       "Unit": "kV",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Vref",
+      "Description": "Voltage magnitude reference",
+      "Unit": "pu",
       "DataType": 9,
       "Width": 1
     }
@@ -347,7 +354,7 @@
       "Unit": "rad/s",
       "DataType": 9,
       "FixedValue": 0,
-      "DefaultValue": 376.99111800000003,
+      "DefaultValue": 376.99111842,
       "MinValue": 1.0,
       "MaxValue": 100000000.0
     },
@@ -518,16 +525,6 @@
       "DataType": 9,
       "FixedValue": 0,
       "DefaultValue": 1.1,
-      "MinValue": -10.0,
-      "MaxValue": 10.0
-    },
-    {
-      "Name": "Vt_ref",
-      "Description": "pu reference voltage for Vt control",
-      "Unit": "pu",
-      "DataType": 9,
-      "FixedValue": 0,
-      "DefaultValue": 1.01,
       "MinValue": -10.0,
       "MaxValue": 10.0
     },
@@ -752,24 +749,64 @@
       "MaxValue": 100000000.0
     },
     {
-      "Name": "Lchoke",
-      "Description": "Filter inductance",
-      "Unit": "pu",
-      "DataType": 9,
-      "FixedValue": 0,
-      "DefaultValue": 0.0001,
-      "MinValue": 1e-06,
-      "MaxValue": 10.0
-    },
-    {
       "Name": "IR_flag",
-      "Description": "Flag",
+      "Description": "1: limit Iq2 to delta Id2, 0: limit Iq2 to Id2",
       "Unit": "N/A",
       "DataType": 9,
       "FixedValue": 0,
       "DefaultValue": 1.0,
       "MinValue": 0.0,
       "MaxValue": 1.0
+    },
+    {
+      "Name": "Tr",
+      "Description": "Power measurement transducer time constant",
+      "Unit": "s",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.001,
+      "MinValue": 0.0,
+      "MaxValue": 0.1
+    },
+    {
+      "Name": "Lchoke",
+      "Description": "Series filter inductance",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.1047,
+      "MinValue": 1e-06,
+      "MaxValue": 10.0
+    },
+    {
+      "Name": "Rchoke",
+      "Description": "Series filter resistance",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.0021,
+      "MinValue": 1e-06,
+      "MaxValue": 10.0
+    },
+    {
+      "Name": "Cfilt",
+      "Description": "Parallel filter capacitance",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.2027,
+      "MinValue": 1e-06,
+      "MaxValue": 10.0
+    },
+    {
+      "Name": "Rdamp",
+      "Description": "Parallel filter series resistance",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.0463,
+      "MinValue": 1e-06,
+      "MaxValue": 10.0
     }
   ]
 }

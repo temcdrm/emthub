@@ -1,6 +1,6 @@
 MODEL mIBR2
 INPUT
-  Vta,Vtb,Vtc,I1a,I1b,I1c,I2a,I2b,I2c,Idc,VdcMPPT,Pref,Qref,Vdc_meas
+  Vta,Vtb,Vtc,I1a,I1b,I1c,I2a,I2b,I2c,Idc,VdcMPPT,Pref,Qref,Vdc_meas,Vref
 DATA
   VLLbase      {dflt: 600.000000}
   Sbase        {dflt: 1000000.000000}
@@ -31,7 +31,6 @@ DATA
   f_flag       {dflt: 0.000000}
   Id_frz_flag  {dflt: 0.000000}
   Ilim_pu      {dflt: 1.100000}
-  Vt_ref       {dflt: 1.010000}
   Kv_p         {dflt: 0.000000}
   Kv_i         {dflt: 100.000000}
   Qmin         {dflt: -0.400000}
@@ -54,8 +53,12 @@ DATA
   Lim_lowCC    {dflt: -99999.000000}
   Tau_Vff      {dflt: 0.000100}
   Vff_flag     {dflt: 0.000000}
-  Lchoke       {dflt: 0.000100}
   IR_flag      {dflt: 1.000000}
+  Tr           {dflt: 0.001000}
+  Lchoke       {dflt: 0.104700}
+  Rchoke       {dflt: 0.002100}
+  Cfilt        {dflt: 0.202700}
+  Rdamp        {dflt: 0.046300}
 OUTPUT
   m_a,m_b,m_c,FreqPLL,Id1,Iq1,Id2,Iq2,Vtd1,Vtq1,Vtd2,Vtq2,FRT_Flag,Pout,Qout
 VAR
@@ -77,7 +80,7 @@ INIT
   Pout:=0.0
   Qout:=0.0
 ENDINIT
-MODEL m1 FOREIGN GFM_GFL_IBR2 {ixdata:54, ixin:16, ixout:15, ixvar:0}
+MODEL m1 FOREIGN GFM_GFL_IBR2 {ixdata:57, ixin:17, ixout:15, ixvar:0}
 EXEC
   USE m1 AS m1
     DATA xdata[1] := VLLbase      -- V
@@ -109,31 +112,34 @@ EXEC
     DATA xdata[27] := f_flag       -- N/A
     DATA xdata[28] := Id_frz_flag  -- N/A
     DATA xdata[29] := Ilim_pu      -- pu
-    DATA xdata[30] := Vt_ref       -- pu
-    DATA xdata[31] := Kv_p         -- pu
-    DATA xdata[32] := Kv_i         -- pu
-    DATA xdata[33] := Qmin         -- pu
-    DATA xdata[34] := Qmax         -- pu
-    DATA xdata[35] := Kq_p         -- pu
-    DATA xdata[36] := Kq_i         -- pu
-    DATA xdata[37] := dbhv_frt     -- pu
-    DATA xdata[38] := dblv_frt     -- pu
-    DATA xdata[39] := Kqv1         -- pu
-    DATA xdata[40] := Qctl_CL_flag -- N/A
-    DATA xdata[41] := Vt_flag      -- N/A
-    DATA xdata[42] := dbl_2        -- N/A
-    DATA xdata[43] := dbh_2        -- N/A
-    DATA xdata[44] := Kqv2         -- pu
-    DATA xdata[45] := V2_flag      -- pu
-    DATA xdata[46] := Ipramp_up    -- pu
-    DATA xdata[47] := Kcc_p        -- pu
-    DATA xdata[48] := Kcc_i        -- pu
-    DATA xdata[49] := Lim_upCC     -- pu
-    DATA xdata[50] := Lim_lowCC    -- pu
-    DATA xdata[51] := Tau_Vff      -- s
-    DATA xdata[52] := Vff_flag     -- N/A
-    DATA xdata[53] := Lchoke       -- pu
-    DATA xdata[54] := IR_flag      -- N/A
+    DATA xdata[30] := Kv_p         -- pu
+    DATA xdata[31] := Kv_i         -- pu
+    DATA xdata[32] := Qmin         -- pu
+    DATA xdata[33] := Qmax         -- pu
+    DATA xdata[34] := Kq_p         -- pu
+    DATA xdata[35] := Kq_i         -- pu
+    DATA xdata[36] := dbhv_frt     -- pu
+    DATA xdata[37] := dblv_frt     -- pu
+    DATA xdata[38] := Kqv1         -- pu
+    DATA xdata[39] := Qctl_CL_flag -- N/A
+    DATA xdata[40] := Vt_flag      -- N/A
+    DATA xdata[41] := dbl_2        -- N/A
+    DATA xdata[42] := dbh_2        -- N/A
+    DATA xdata[43] := Kqv2         -- pu
+    DATA xdata[44] := V2_flag      -- pu
+    DATA xdata[45] := Ipramp_up    -- pu
+    DATA xdata[46] := Kcc_p        -- pu
+    DATA xdata[47] := Kcc_i        -- pu
+    DATA xdata[48] := Lim_upCC     -- pu
+    DATA xdata[49] := Lim_lowCC    -- pu
+    DATA xdata[50] := Tau_Vff      -- s
+    DATA xdata[51] := Vff_flag     -- N/A
+    DATA xdata[52] := IR_flag      -- N/A
+    DATA xdata[53] := Tr           -- s
+    DATA xdata[54] := Lchoke       -- pu
+    DATA xdata[55] := Rchoke       -- pu
+    DATA xdata[56] := Cfilt        -- pu
+    DATA xdata[57] := Rdamp        -- pu
     -- the DLL will convert inputs to kV, kA as needed
     INPUT xin[1] := Vta          -- kV
     INPUT xin[2] := Vtb          -- kV
@@ -149,8 +155,9 @@ EXEC
     INPUT xin[12] := Pref         -- pu
     INPUT xin[13] := Qref         -- pu
     INPUT xin[14] := Vdc_meas     -- kV
-    INPUT xin[15] := t
-    INPUT xin[16] := stoptime
+    INPUT xin[15] := Vref         -- pu
+    INPUT xin[16] := t
+    INPUT xin[17] := stoptime
     -- the DLL will convert inverter voltages from kV to V
     OUTPUT m_a          := xout[1] -- N/A
     OUTPUT m_b          := xout[2] -- N/A
