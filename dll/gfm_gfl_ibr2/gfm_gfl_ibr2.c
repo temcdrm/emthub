@@ -14,7 +14,14 @@ September 21, 2023, Vishal Verma
 #include <windows.h> 
 #include <stdio.h> 
 #include <math.h> 
-#define PI 3.14159265 
+
+#define PI       3.141592654
+#define PI2      1.570796327
+#define TWOPI    6.283185307
+#define TWOPI3   2.094395102
+#define SQRT3    1.732050808
+#define SQRT23RD 0.816496581
+#define TWO3RD   0.666666667
 
 #include "IEEE_Cigre_DLLInterface.h" 
 char ErrorMessage[1000];
@@ -446,7 +453,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .Unit = "rad/s", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
     .FixedValue = 0, 
-    .DefaultValue.Real64_Val = 2 * PI * 60, 
+    .DefaultValue.Real64_Val = TWOPI * 60, 
     .MinValue.Real64_Val = 1.0, 
     .MaxValue.Real64_Val = 1e8 
   },
@@ -1157,7 +1164,7 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
   instance->DoubleStates[16] = 0.0;
   instance->DoubleStates[17] = 0.0;
   instance->DoubleStates[18] = 0.0;
-  instance->DoubleStates[19] = 2 * PI * 60;
+  instance->DoubleStates[19] = TWOPI * 60;
   instance->DoubleStates[20] = 0.0;
   instance->DoubleStates[21] = 0.0;
   instance->DoubleStates[22] = 0.0;
@@ -1307,7 +1314,7 @@ double LEADLAG(double G, double T1, double T2, double x, double x_old, double y_
 
 // rectangular to polar transformation 
 void RECTANGULAR2POLAR(double real, double imag, double* mag, double* ang) { 
-  *mag = sqrt (real*real + imag*imag);  // sqrt(pow(real, 2) + pow(imag, 2));
+  *mag = sqrt (real*real + imag*imag);
   *ang = atan2 (imag, real);
 };
 
@@ -1378,20 +1385,20 @@ double RATELIMITER(double f_input, double Oldf_output, double rate_up, double ra
 // to convert DQ quantities to ABC 
 void DQ2ABC(double fd, double fq, double phi, double* fabc) { 
   fabc[0] = (fd * cos(phi) - fq * sin(phi));
-  fabc[1] = (fd * cos(phi - (2.0*PI/3.0)) - fq * sin(phi - (2.0*PI/3.0)));
-  fabc[2] = (fd * cos(phi + (2.0*PI/3.0)) - fq * sin(phi + (2.0*PI/3.0)));
+  fabc[1] = (fd * cos(phi - TWOPI3) - fq * sin(phi - TWOPI3));
+  fabc[2] = (fd * cos(phi + TWOPI3) - fq * sin(phi + TWOPI3));
 };
 
 // to convert ABC quantities to Alpha-Beta 
 void ABC2ALPHABETA(double fa, double fb, double fc, double* alpha_beta) { 
-  alpha_beta[0] = (fa - 0.5 * fb - 0.5 * fc) * 2 / 3;
-  alpha_beta[1] = (fb * sqrt(3.0) / 2.0 - fc * sqrt (3.0) / 2.0) * 2.0 / 3.0;
+  alpha_beta[0] = (fa - 0.5 * fb - 0.5 * fc) * TWO3RD;
+  alpha_beta[1] = (fb * SQRT3/2.0 - fc * SQRT3/2.0) * TWO3RD;
 };
 
 // to convert ABC to DQ 
 void ABC2DQ(double fa, double fb, double fc, double phi, double* fDQ) { 
-  fDQ[0] = 2.0/3.0 * (cos(phi) * fa + cos(phi - (2.0*PI/3.0)) * fb + cos(phi + (2.0*PI/3.0)) * fc);
-  fDQ[1] = 2.0/3.0 * (-sin (phi) * fa - sin(phi - (2.0*PI/3.0)) * fb - sin(phi + (2.0*PI/3.0)) * fc);
+  fDQ[0] = 2.0/3.0 * (cos(phi) * fa + cos(phi - TWOPI3) * fb + cos(phi + TWOPI3) * fc);
+  fDQ[1] = 2.0/3.0 * (-sin (phi) * fa - sin(phi - TWOPI3) * fb - sin(phi + TWOPI3) * fc);
 };
 
 // to convert alpha beta to DQ 
@@ -1699,8 +1706,8 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
 
   // Signal Processing Block           
   // Per unit conversion             
-  Vdq_base = VLLbase * sqrt (2.0 / 3.0);
-  Idq_base = (Sbase / VLLbase) * sqrt(2.0 / 3.0);
+  Vdq_base = VLLbase * SQRT23RD;
+  Idq_base = (Sbase / VLLbase) * SQRT23RD;
   Vta_pu = Vta / Vdq_base * 1000;
   Vtb_pu = Vtb / Vdq_base * 1000;
   Vtc_pu = Vtc / Vdq_base * 1000;
@@ -1781,7 +1788,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
 
   Omega_PLL = w_nom + DelOmega;  // Output #5 
   Theta_DSOGIPLLcont = INTEGRATOR(1, Omega_PLL, OldOmega_PLL, OldTheta_DSOGIPLLcont, delt);
-  Theta_PLL = MODULO(Theta_DSOGIPLLcont, 2*PI);  // Since only DSOGI is used, Output #6 
+  Theta_PLL = MODULO(Theta_DSOGIPLLcont, TWOPI);  // Since only DSOGI is used, Output #6 
 
   // Currents block of Signal and Processing (DDSRF approach)         
   // Inputs:   Ia_flt   Ib_flt,   Ic_flt,   Iref (Idq12ref)         
@@ -1818,7 +1825,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
 
   // Start UP Flag 
   Startup_flag = COMPARATOR(tstart_up, currTIME);
-  Id1_FFin = 2.0 / 3.0 * Vdc_nom * Idc * 1000;
+  Id1_FFin = TWO3RD * Vdc_nom * Idc * 1000;
   Id1_FFnolimit = REALPOLE(1, 0.005, Id1_FFin, OldId1_FFin, OldId1_FFnolimit, -999999, 999999, delt);
   Id1_FF = LIMITER(Idq_base * Ilim_pu, -Idq_base * Ilim_pu, Id1_FFnolimit / Vdq_base);
   Vdc_ref = SELECTOR(VdcMPPT, Vdc_nom, (VI_flag * MPPT_flag));
@@ -1835,7 +1842,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   Id1ref_Vdc = (-Id1_Vdc + Id1_FF) / Idq_base;
 
   // Droop 
-  f_PLL = Omega_PLL / (2 * PI);
+  f_PLL = Omega_PLL / TWOPI;
   fpu_flt = REALPOLE(1, T_frq, f_PLL / 60.0, Oldf_PLL / 60.0, Oldfpu_flt, -999999.0, 999999.0, delt);
   Droop_down = DB(1 - fpu_flt, fdbd1, fdbd2) * Ddn;
   Droop_up = DB(1 - fpu_flt, fdbd1, fdbd2) * Dup;
@@ -1902,36 +1909,36 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   // V2 Control 
   RECTANGULAR2POLAR(Vtd_2, Vtq_2, &Vdq_2mag, &Vdq_2ang);
   Idq2_refmag = DB(Vdq_2mag, 0, dbh_2) * Kqv2;  //CHANGED dbl_2 to 0 on 4/19 
-  Idq2_refang = Vdq_2ang - (PI / 2);
+  Idq2_refang = Vdq_2ang - PI2;
   POLAR2RECTANGULAR(Idq2_refmag, Idq2_refang, &Id2ref, &Iq2ref);
 
   // Current Limit Logic Block
   // Generating Id1ref_L, Iq1ref_L, Idref_2_L, Iq2ref_L 
-  I2m_ref_upper = SELECTOR(SELECTOR(fabs(Iq1_frt), fabs(Iq1ref), IR_flag), 9999, 1);
+  I2m_ref_upper = SELECTOR(SELECTOR(fabs(Iq1_frt), fabs(Iq1ref), IR_flag), 9999, 1); // outer SELECTOR only to match PSCAD diagram, Fig 3-24 of PVMOD milestone report
   RECTANGULAR2POLAR(Id2ref, Iq2ref, &I2m_refmag, &Iq2ref_Lang);
   I2m_ref = LIMITER(I2m_ref_upper, 0, I2m_refmag);
-  I1m_ref = sqrt(Id1ref*Id1ref + Iq1ref*Iq1ref);  // sqrt(pow(Id1ref, 2) + pow(Iq1ref, 2));  // REVISIT
+  I1m_ref = sqrt(Id1ref*Id1ref + Iq1ref*Iq1ref);
   Ilim_L = SELECTOR((Ilim_pu - Iq1_i), (Ilim_pu + Iq1_i), COMPARATOR(Iq1_frt, 0));
   IROL_flag = COMPARATOR(fabs(Iq1ref) + fabs(I2m_ref), Ilim_pu);
   scale = SELECTOR((Ilim_L / (fabs(Iq1_frt) + I2m_ref)), 1, IROL_flag);
   I2m_ref_L = I2m_ref * scale;
   POLAR2RECTANGULAR(I2m_ref_L, Iq2ref_Lang, &Id2ref_L, &Iq2ref_L);
   Iq1ref_L = Iq1_i + (Iq1_frt * scale);
-  Id1max_FRT = sqrt(LIMITER(999999.0, 0.0, (pow((Ilim_pu - I2m_ref_L), 2) - pow(Iq1ref_L, 2))));
+  Id1max_FRT = sqrt(LIMITER(999999.0, 0.0, (pow((Ilim_pu - I2m_ref_L), 2) - Iq1ref_L*Iq1ref_L)));
   Id1ref_L = LIMITER(Id1max_FRT, -Id1max_FRT, Id1ref);
 
   // Calculation for Ilim_phmax 
-  MagIdq1 = sqrt(Id1ref_L*Id1ref_L + Iq1ref_L*Iq1ref_L);  // sqrt(pow(Id1ref_L, 2) + pow(Iq1ref_L, 2));
-  MagIdq2 = sqrt(Id2ref_L*Id2ref_L + Iq2ref_L*Iq2ref_L);  // sqrt(pow(Id2ref_L, 2) + pow(Iq2ref_L, 2));
+  MagIdq1 = sqrt(Id1ref_L*Id1ref_L + Iq1ref_L*Iq1ref_L);
+  MagIdq2 = sqrt(Id2ref_L*Id2ref_L + Iq2ref_L*Iq2ref_L);
   AngIdq_12 = atan2(Iq1ref_L, Id1ref_L) + atan2(Iq2ref_L, Id2ref_L);
 
   // Cont ..Calculate Ia_max , Ib_max, Ic_max 
   Ia_max = sqrt(MagIdq1*MagIdq1 + MagIdq2*MagIdq2 + 2*MagIdq1*MagIdq2*cos(AngIdq_12));
-  Ib_max = sqrt(MagIdq1*MagIdq1 + MagIdq2*MagIdq2 + 2*MagIdq1*MagIdq2*cos(AngIdq_12+(2*PI/3)));
-  Ic_max = sqrt(MagIdq1*MagIdq1 + MagIdq2*MagIdq2 + 2*MagIdq1*MagIdq2*cos(AngIdq_12-(2*PI/3)));
+  Ib_max = sqrt(MagIdq1*MagIdq1 + MagIdq2*MagIdq2 + 2*MagIdq1*MagIdq2*cos(AngIdq_12+TWOPI3));
+  Ic_max = sqrt(MagIdq1*MagIdq1 + MagIdq2*MagIdq2 + 2*MagIdq1*MagIdq2*cos(AngIdq_12-TWOPI3));
   Iph_max = fmax (Ia_max, fmax (Ib_max, Ic_max));
   IOL_flag = COMPARATOR(I1m_ref + I2m_ref, Ilim_pu);
-  Ilim_phmax = SELECTOR(LIMITER((Ilim_pu / 0.877), 1, Ilim_pu / Iph_max), 1, IOL_flag);
+  Ilim_phmax = SELECTOR(LIMITER((Ilim_pu / 0.877), 1, Ilim_pu / Iph_max), 1, IOL_flag); // TODO: where did 0.877 come from?
 
   // Generating Id1ref_L2, Iq1ref_L2, Idref_2_L2, Iq2ref_L2 
   scale_phmax = SELECTOR(Ilim_phmax, 1, 1 * IOL_flag);
