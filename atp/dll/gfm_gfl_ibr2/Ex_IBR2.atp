@@ -17,18 +17,6 @@ TACS HYBRID
 98PREF    = 900.0
 98QREF    = -50.0
 98VREF    = 1.0
-C 98VA      = 1.0
-C 98VB      = 1.0
-C 98VC      = 0.0
-C 98IA      = 0.0
-C 98IB      = 0.0
-C 98IC      = 0.0
-C 98IAL1    = 0.0
-C 98IBL1    = 0.0
-C 98ICL1    = 0.0
-C 98PREF    = 0.0
-C 98QREF    = 0.0
-C 98VREF    = 0.0
 /MODELS
 MODELS
 INPUT
@@ -61,6 +49,7 @@ INPUT
   Pref:=MM0010
   Qref:=MM0011
   Vdc_meas:=0.0
+  Vref:=MM0012
 ENDUSE
 RECORD mymodel.m_a AS m_a
        mymodel.m_b AS m_b
