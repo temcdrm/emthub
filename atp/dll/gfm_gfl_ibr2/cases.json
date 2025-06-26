@@ -1,0 +1,16 @@
+[
+    {"Fig":1, "Title": "AG Fault, V2FLG=0", "Parms":{"TAG1":4.0, "TAG2":4.2, "V2FLG":0.0}},
+    {"Fig":2, "Title": "BG Fault, V2FLG=0", "Parms":{"TBG1":4.0, "TBG2":4.2, "V2FLG":0.0}},
+    {"Fig":3, "Title": "CG Fault, V2FLG=0", "Parms":{"TCG1":4.0, "TCG2":4.2, "V2FLG":0.0}},
+    {"Fig":4, "Title": "AB Fault, V2FLG=0", "Parms":{"TAB1":4.0, "TAB2":4.2, "V2FLG":0.0}},
+    {"Fig":5, "Title": "BC Fault, V2FLG=0", "Parms":{"TBC1":4.0, "TBC2":4.2, "V2FLG":0.0}},
+    {"Fig":6, "Title": "CA Fault, V2FLG=0", "Parms":{"TAC1":4.0, "TAC2":4.2, "V2FLG":0.0}},
+    {"Fig":7, "Title": "ABCG Fault, V2FLG=0", "Parms":{"TAG1":4.0, "TAG2":4.2, "TBG1":4.0, "TBG2":4.2, "TCG1":4.0, "TCG2":4.2, "V2FLG":0.0}},
+    {"Fig":8, "Title": "AG Fault, V2FLG=1", "Parms":{"TAG1":4.0, "TAG2":4.2, "V2FLG":1.0}},
+    {"Fig":9, "Title": "BG Fault, V2FLG=1", "Parms":{"TBG1":4.0, "TBG2":4.2, "V2FLG":1.0}},
+    {"Fig":10, "Title": "CG Fault, V2FLG=1", "Parms":{"TCG1":4.0, "TCG2":4.2, "V2FLG":1.0}},
+    {"Fig":11, "Title": "AB Fault, V2FLG=1", "Parms":{"TAB1":4.0, "TAB2":4.2, "V2FLG":1.0}},
+    {"Fig":12, "Title": "BC Fault, V2FLG=1", "Parms":{"TBC1":4.0, "TBC2":4.2, "V2FLG":1.0}},
+    {"Fig":13, "Title": "CA Fault, V2FLG=1", "Parms":{"TAC1":4.0, "TAC2":4.2, "V2FLG":1.0}},
+    {"Fig":14, "Title": "ABCG Fault, V2FLG=1", "Parms":{"TAG1":4.0, "TAG2":4.2, "TBG1":4.0, "TBG2":4.2, "TCG1":4.0, "TCG2":4.2, "V2FLG":1.0}}
+]
