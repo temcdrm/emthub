@@ -100,7 +100,7 @@ def plot_page (grp, title, savename=None):
 
   if savename is not None:
     plt.savefig(savename)
-    plt.show()
+#    plt.show()
   else:
     plt.show()
   plt.close()

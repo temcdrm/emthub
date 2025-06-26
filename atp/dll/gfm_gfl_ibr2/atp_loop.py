@@ -19,6 +19,7 @@ import h5utils
 import numpy
 import copy
 import json
+import time
 
 atp_path = '.'
 
@@ -90,7 +91,7 @@ baseparms = {
   'MGAIN': 600.0,   
   'PHI0': 1.0E-6,   
   'PREF0': 0.9,     
-  'QCFLG': 0.0,     
+  'QCFLG': 1.0,
   'QREF0': 0.05,    
   'RCHOK': 1.0E-8,  
   'RDAMP': 0.05,    
@@ -115,7 +116,7 @@ baseparms = {
   'V2FLG': 1.0,     
   'VAMP0': 28169.13,
   'VREF0': 1.01,    
-  'VTFLG': 1.0}
+  'VTFLG': 0.0}
 
 def AtpFit10(x):
   if x == 0.0:
@@ -212,10 +213,11 @@ if __name__ == '__main__':
   pl4_file = '{:s}/{:s}.pl4'.format (pl4_path, atp_root)
   with open('cases.json', 'r') as f:
     cases = json.load(f)
-  print ('running {:s}, PL4 output to {:s}, hdf5 archive to {:s} with {:d} cases'.format (atp_root, pl4_file, hdf5_file, len(cases)))
+  print ('Running {:s}, PL4 output to {:s}, hdf5 archive to {:s} with {:d} cases'.format (atp_root, pl4_file, hdf5_file, len(cases)))
+  start_time = time.time()
   for idx in range(len(cases)):
     parms = copy.deepcopy (baseparms)
     for key, val in cases[idx]['Parms'].items():
       parms[key] = val
     add_training_set (idx+1, atp_root, pl4_file, hdf5_file, parms)
-
+  print ('Finished after {:.2f} seconds'.format (time.time() - start_time))
