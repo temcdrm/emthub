@@ -130,8 +130,8 @@ DATA
   Vff_flag     {dflt: 0.000000}
   IR_flag      {dflt: 1.000000}
   Tr           {dflt: 0.001000}
-  Lchoke       {dflt: 0.104700}
-  Rchoke       {dflt: 0.002100}
+  Lchoke       {dflt: 0.000100}
+  Rchoke       {dflt: 0.000750}
   Cfilt        {dflt: 0.202700}
   Rdamp        {dflt: 0.046300}
 OUTPUT
@@ -276,7 +276,7 @@ DATA
   Vflt_flag:=       1.
   Tflt_i:=    1.E-5
   Iflt_flag:=       1.
-  Cur1_flag:=      0.0
+  Cur1_flag:=       1.
   k_PLL:=       1.
   KpPLL:=     25.4
   KiPLL:=     324.
@@ -322,9 +322,9 @@ DATA
   Tau_Vff:=    1.E-4
   Vff_flag:=      0.0
   IR_flag:=       1.
-  Tr:=    0.001
+  Tr:=    0.01
   Lchoke:=    1.E-4
-  Rchoke:=      0.0
+  Rchoke:=   7.5E-4
   Cfilt:=      0.0
   Rdamp:=      0.0
 OUTPUT
@@ -372,9 +372,9 @@ C < n1 >< n2 ><ref1><ref2>< R  >< A  >< B  ><Leng><><>0
   MVB   INFB              8.76E5
   MVC   INFC                    165.88                                         0
   MVC   INFC              8.76E5
-  CHOKEAFILTA             RCHOK_LCHOK_                                         0
-  CHOKEBFILTB             RCHOK_LCHOK_                                         0
-  CHOKECFILTC             RCHOK_LCHOK_                                         0
+  CHOKEAFILTA             RCHOK_XCHOK_                                         0
+  CHOKEBFILTB             RCHOK_XCHOK_                                         0
+  CHOKECFILTC             RCHOK_XCHOK_                                         0
   TRANSFORMER               13.6   1.3STARA   144.                             0
             13.6             1.3
             9999

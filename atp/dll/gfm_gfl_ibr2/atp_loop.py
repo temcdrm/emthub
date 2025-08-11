@@ -39,7 +39,7 @@ KQV1____=KQV1
 KQV2____=KQV2
 KV_I____=KV_I
 KV_P____=KV_P
-LCHOK_=LCHOK
+XCHOK_=XCHOK
 MGAIN_=MGAIN
 PHI0______=PHI0
 PREF0_____=PREF0
@@ -70,7 +70,7 @@ VREF0_____=VREF0
 VTFLG___=VTFLG"""
 
 baseparms = {
-  'CFILT': 776.0,   
+  'CFILT': 500.0,   
   'DDN': 20.0,      
   'DFSRC': 0.05,    
   'DPHI': 0.1,      
@@ -87,13 +87,13 @@ baseparms = {
   'KQV2': 2.0,      
   'KV_I': 100.0,    
   'KV_P': 0.0,      
-  'LCHOK': 3.6E-5,  
+  'XCHOK': 1.0E-4,  
   'MGAIN': 600.0,   
   'PHI0': 1.0E-6,   
   'PREF0': 0.9,     
   'QCFLG': 1.0,
   'QREF0': 0.05,    
-  'RCHOK': 1.0E-8,  
+  'RCHOK': 7.5E-4,  
   'RDAMP': 0.05,    
   'TAB1': 999.0,    
   'TAB2': 1000.0,   

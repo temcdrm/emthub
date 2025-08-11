@@ -55,8 +55,8 @@ DATA
   Vff_flag     {dflt: 0.000000}
   IR_flag      {dflt: 1.000000}
   Tr           {dflt: 0.001000}
-  Lchoke       {dflt: 0.104700}
-  Rchoke       {dflt: 0.002100}
+  Lchoke       {dflt: 0.000100}
+  Rchoke       {dflt: 0.000750}
   Cfilt        {dflt: 0.202700}
   Rdamp        {dflt: 0.046300}
 OUTPUT
