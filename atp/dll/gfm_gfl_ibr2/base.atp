@@ -132,8 +132,8 @@ DATA
   Tr           {dflt: 0.001000}
   Lchoke       {dflt: 0.000100}
   Rchoke       {dflt: 0.000750}
-  Cfilt        {dflt: 0.202700}
-  Rdamp        {dflt: 0.046300}
+  Cfilt        {dflt: 0.001500}
+  Rdamp        {dflt: 0.016667}
 OUTPUT
   m_a,m_b,m_c,FreqPLL,Id1,Iq1,Id2,Iq2,Vtd1,Vtq1,Vtd2,Vtq2,FRT_Flag,Pout,Qout
 VAR
@@ -322,11 +322,11 @@ DATA
   Tau_Vff:=    1.E-4
   Vff_flag:=      0.0
   IR_flag:=       1.
-  Tr:=    0.01
+  Tr:=    0.001
   Lchoke:=    1.E-4
   Rchoke:=   7.5E-4
-  Cfilt:=      0.0
-  Rdamp:=      0.0
+  Cfilt:=      0.0015
+  Rdamp:=      0.016667
 OUTPUT
   XX0013:=m_a
   XX0014:=m_b

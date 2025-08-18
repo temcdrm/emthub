@@ -5,7 +5,7 @@ import h5py
 import os
 import json
 
-LSIZE = 10
+LSIZE = 14
 
 def plot_channel (ax, t, y, label, bLabelX = False):
   ax.plot (t, y)
@@ -93,10 +93,10 @@ def plot_page (grp, title, savename=None):
   plot_channel (ax[1,1], tplot, iq2[i1:i2], 'Iq2 [pu]', bLabelX = True)
 
   ax = subfigs[1,1].subplots(2,2)
-  plot_channel (ax[0,0], tplot, vd1[i1:i2], 'Vd1 [pu]')
-  plot_channel (ax[1,0], tplot, vq1[i1:i2], 'Vq1 [pu]', bLabelX = True)
-  plot_channel (ax[0,1], tplot, vd2[i1:i2], 'Vd2 [pu]')
-  plot_channel (ax[1,1], tplot, vq2[i1:i2], 'Vq2 [pu]', bLabelX = True)
+  plot_channel (ax[0,0], tplot, vd1[i1:i2], 'Vtd1 [pu]')
+  plot_channel (ax[1,0], tplot, vq1[i1:i2], 'Vtq1 [pu]', bLabelX = True)
+  plot_channel (ax[0,1], tplot, vd2[i1:i2], 'Vtd2 [pu]')
+  plot_channel (ax[1,1], tplot, vq2[i1:i2], 'Vtq2 [pu]', bLabelX = True)
 
   if savename is not None:
     plt.savefig(savename)
@@ -122,5 +122,6 @@ if __name__ == '__main__':
     savename = 'fig{:d}.png'.format(fignum)
     grp = f['fig{:d}'.format(fignum)]
     title = 'Figure A-{:d}: {:s}'.format (fignum, cases[idx]['Title'])
+    #savename=None
     plot_page (grp, title, savename=savename)
 

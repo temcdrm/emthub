@@ -57,8 +57,8 @@ DATA
   Tr           {dflt: 0.001000}
   Lchoke       {dflt: 0.000100}
   Rchoke       {dflt: 0.000750}
-  Cfilt        {dflt: 0.202700}
-  Rdamp        {dflt: 0.046300}
+  Cfilt        {dflt: 0.001500}
+  Rdamp        {dflt: 0.016667}
 OUTPUT
   m_a,m_b,m_c,FreqPLL,Id1,Iq1,Id2,Iq2,Vtd1,Vtq1,Vtd2,Vtq2,FRT_Flag,Pout,Qout
 VAR

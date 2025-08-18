@@ -87,7 +87,7 @@ baseparms = {
   'KQV2': 2.0,      
   'KV_I': 100.0,    
   'KV_P': 0.0,      
-  'XCHOK': 1.0E-4,  
+  'XCHOK': 0.0377,  
   'MGAIN': 600.0,   
   'PHI0': 1.0E-6,   
   'PREF0': 0.9,     
