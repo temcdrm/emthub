@@ -1,9 +1,9 @@
 ﻿/* 
 
 This model has.
-- 14 inputs (input current time has been removed) 
-- 13 outputs (3 ouputs are essential, rest 1O outputs can be used for debugging) 
-- 54 parameters 
+- 15 inputs (input current time has been removed, Vref added) 
+- 15 outputs (3 ouputs are essential, others can be used for debugging) 
+- 57 parameters 
 
 This model will be compiled into a DLL, and then can be used in ANY power system 
 simulation program by running the "DLLImport" tool that comes with each program 
@@ -22,6 +22,7 @@ September 21, 2023, Vishal Verma
 #define SQRT3    1.732050808
 #define SQRT23RD 0.816496581
 #define TWO3RD   0.666666667
+#define SQRT3H   0.866025404
 
 #include "IEEE_Cigre_DLLInterface.h" 
 char ErrorMessage[1000];
@@ -31,7 +32,7 @@ char ErrorMessage[1000];
 // to be called by the DLLimport Tool 
 // ---------------------------------------------------------------------- 
 
-typedef struct _MyModelInputs {
+typedef struct _MyModelInputs { // removed currTIME
 	real64_T Vta;
 	real64_T Vtb;
 	real64_T Vtc;
@@ -46,7 +47,7 @@ typedef struct _MyModelInputs {
 	real64_T Pref;
 	real64_T Qref;
 	real64_T Vdc_meas;
-  real64_T Vref;
+  real64_T Vref; // new
 } MyModelInputs;
 
 // Define Input Signals 
@@ -131,14 +132,14 @@ IEEE_Cigre_DLLInterface_Signal InputSignals [] = {
   [11] = {
     .Name = "Pref" , 
     .Description = "Active power reference ", 
-    .Unit = "pu", 
+    .Unit = "pu", // was MW
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [12] = { 
     .Name = "Qref" , 
     .Description = "Reactive power reference", 
-    .Unit = "pu", 
+    .Unit = "pu", // was Mvar
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   },
@@ -150,7 +151,7 @@ IEEE_Cigre_DLLInterface_Signal InputSignals [] = {
     .Width = 1 
   },
   [14] = { 
-    .Name = "Vref" , 
+    .Name = "Vref", // new
     .Description = "Voltage magnitude reference", 
     .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
@@ -172,8 +173,8 @@ typedef struct _MyModelOutputs {
   real64_T VD2;
   real64_T VQ2;
   real64_T FRT_flag;
-  real64_T Pout;
-  real64_T Qout;
+  real64_T Pout; // new
+  real64_T Qout; // new
 } MyModelOutputs;
 
 // Define Output Signals 
@@ -270,14 +271,14 @@ IEEE_Cigre_DLLInterface_Signal OutputSignals[] = {
     .Width = 1 
   }, 
   [13] = {
-    .Name = "Pout", 
+    .Name = "Pout", // new 
     .Description = "Active power output at terminal", 
     .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .Width = 1 
   }, 
   [14] = {
-    .Name = "Qout", 
+    .Name = "Qout", // new
     .Description = "Reactive power output at terminal", 
     .Unit = "pu", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
@@ -285,7 +286,7 @@ IEEE_Cigre_DLLInterface_Signal OutputSignals[] = {
   } 
 };
 
-typedef struct _MyModelParameters {
+typedef struct _MyModelParameters { // removed Vt_ref
   real64_T VLLbase;
   real64_T Sbase;
   real64_T Tflt_v;
@@ -338,11 +339,11 @@ typedef struct _MyModelParameters {
   real64_T Tau_Vff;
   real64_T Vff_flag;
   real64_T IR_flag;
-  real64_T Tr;
+  real64_T Tr;     // new
   real64_T Lchoke;
-  real64_T Rchoke;
-  real64_T Cfilt;
-  real64_T Rdamp;
+  real64_T Rchoke; // new
+  real64_T Cfilt;  // new
+  real64_T Rdamp;  // new
 } MyModelParameters;
 
 // Define Parameters 
@@ -869,7 +870,7 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MaxValue.Real64_Val = 1.0 
   },
   [52] = {
-    .Name = "Tr", 
+    .Name = "Tr", // new
     .Description = "Power measurement transducer time constant", 
     .Unit = "s", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
@@ -881,57 +882,57 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
   [53] = {
     .Name = "Lchoke", 
     .Description = "Series filter inductance", 
-    .Unit = "pu", 
+    .Unit = "H", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
-    .DefaultValue.Real64_Val = 0.1047, 
+    .DefaultValue.Real64_Val = 0.0001, 
     .MinValue.Real64_Val = 0.000001, 
     .MaxValue.Real64_Val = 10.0 
   },
   [54] = {
-    .Name = "Rchoke", 
+    .Name = "Rchoke", // new
     .Description = "Series filter resistance", 
-    .Unit = "pu", 
+    .Unit = "Ohm", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
-    .DefaultValue.Real64_Val = 0.0021, 
+    .DefaultValue.Real64_Val = 0.00075, 
     .MinValue.Real64_Val = 0.000001, 
     .MaxValue.Real64_Val = 10.0 
   },
   [55] = {
-    .Name = "Cfilt", 
-    .Description = "Parallel filter capacitance", 
-    .Unit = "pu", 
+    .Name = "Cfilt", // new
+    .Description = "Parallel wye filter capacitance", 
+    .Unit = "F", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
-    .DefaultValue.Real64_Val = 0.2027, 
+    .DefaultValue.Real64_Val = 0.0015, 
     .MinValue.Real64_Val = 0.000001, 
     .MaxValue.Real64_Val = 10.0 
   },
   [56] = {
-    .Name = "Rdamp", 
-    .Description = "Parallel filter series resistance", 
-    .Unit = "pu", 
+    .Name = "Rdamp", // new
+    .Description = "Parallel wye filter series resistance", 
+    .Unit = "Ohm", 
     .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
     .FixedValue = 0, 
-    .DefaultValue.Real64_Val = 0.0463, 
+    .DefaultValue.Real64_Val = 0.01667, 
     .MinValue.Real64_Val = 0.000001, 
     .MaxValue.Real64_Val = 10.0 
   },
 };
 
 IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
-  .DLLInterfaceVersion = { 1, 1, 0, 1},         // Release number of the API 
+  .DLLInterfaceVersion = { 1, 1, 0, 0},         // Release number of the API 
   // used during code generation 
   .ModelName = "IBR-Average-Model",             // Model name   
-  .ModelVersion = "1.1.0.2",                    // Model version   
+  .ModelVersion = "1.1.0.3",                    // Model version   
   .ModelDescription = "GFD-IBR-Average",        // Model description 
   .GeneralInformation= "General Information",   // General information
   .ModelCreated = "September 21, 2023",         // Model created on  
   .ModelCreator = "Vishal Verma",               // Model created by     
-  .ModelLastModifiedDate= "June 16, 2025",       // Model last modified on  
+  .ModelLastModifiedDate= "August 15, 2025",       // Model last modified on  
   .ModelLastModifiedBy = "Tom McDermott",       // Model last modified by 
-  .ModelModifiedComment = "Remove currTime input, edit parameter descriptions, add Pout and Qout\nAdd Vref input signal and more filter parameters", // Model modified comment 
+  .ModelModifiedComment = "Remove currTime input, edit parameter descriptions, add Pout and Qout\nAdd Vref input signal and more filter parameters\nFix choke units, Q control", // Model modified comment 
   .ModelModifiedHistory = "Second instance",    // Model modified history 
   .FixedStepBaseSampleTime = 0.00001,           // Time Step sampling time (sec)  
   // Inputs 
@@ -1308,7 +1309,7 @@ double INTEGRATORRESET(double T, double rst_flag, double rst_val, double x, doub
   double y;
   double Kint = (delt * 0.5) / T;
   y = y_old + Kint * (x + x_old);
-  if (rst_flag) { 
+  if (rst_flag) {
     y = rst_val;
   }
   return y;
@@ -1376,7 +1377,7 @@ void POLAR2RECTANGULAR(double mag, double ang, double* real, double* imag) {
   *imag = mag * sin(ang);
 };
 
-// comparatror to compare two inputs 
+// comparator to compare two inputs 
 double COMPARATOR(double input_A, double input_B) {
   return ((input_A > input_B) ? 1 : 0);
 };
@@ -1444,13 +1445,13 @@ void DQ2ABC(double fd, double fq, double phi, double* fabc) {
 // to convert ABC quantities to Alpha-Beta 
 void ABC2ALPHABETA(double fa, double fb, double fc, double* alpha_beta) { 
   alpha_beta[0] = (fa - 0.5 * fb - 0.5 * fc) * TWO3RD;
-  alpha_beta[1] = (fb * SQRT3/2.0 - fc * SQRT3/2.0) * TWO3RD;
+  alpha_beta[1] = (fb * SQRT3H - fc * SQRT3H) * TWO3RD;
 };
 
 // to convert ABC to DQ 
 void ABC2DQ(double fa, double fb, double fc, double phi, double* fDQ) { 
-  fDQ[0] = 2.0/3.0 * (cos(phi) * fa + cos(phi - TWOPI3) * fb + cos(phi + TWOPI3) * fc);
-  fDQ[1] = 2.0/3.0 * (-sin (phi) * fa - sin(phi - TWOPI3) * fb - sin(phi + TWOPI3) * fc);
+  fDQ[0] = TWO3RD * (cos(phi) * fa + cos(phi - TWOPI3) * fb + cos(phi + TWOPI3) * fc);
+  fDQ[1] = TWO3RD * (-sin (phi) * fa - sin(phi - TWOPI3) * fb - sin(phi + TWOPI3) * fc);
 };
 
 // to convert alpha beta to DQ 
@@ -1608,7 +1609,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double OldOldId1_ref = instance->DoubleStates[32];
   double OldId1r_flt = instance->DoubleStates[33];
   double OldIq1_ref = instance->DoubleStates[34];
-  double OldOldIq1_ref = instance->DoubleStates [35];
+  double OldOldIq1_ref = instance->DoubleStates[35];
   double OldIq1r_flt = instance->DoubleStates[36];
   double OldId2_ref = instance->DoubleStates[37];
   double OldOldId2_ref = instance->DoubleStates[38];
@@ -1670,6 +1671,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   // Added states for SH 
   double OldId1ref_hold_SH = instance->DoubleStates[91];
   double OldIq1_i_SH = instance->DoubleStates[92];
+  // added states for P, Q measurement
   double OldPelec = instance->DoubleStates[93];
   double OldPelec_meas = instance->DoubleStates[94];
   double OldQelec = instance->DoubleStates[95];
@@ -1718,7 +1720,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double f_PLL;
   double Droop_down, Droop_up;
   double Pref_droop;
-  double Vtd_1_y, Vtd_1_y2 = 0;
+  double Vtd_1_y, Vtd_1_y2 = 0; // Vtd_1_y2 not used but kept in state vector
   double Idref_droop_x, Idref_droop;
   double Id1ref_P;
   double Id_droop1, Id_droop;
@@ -1830,15 +1832,15 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
 
   // ALPHA-BETA to DQ Block 
   ALPHABETA2DQ(Vt_alpha_pos, Vt_beta_pos, OldTheta_PLL, Vtdq_1);
-  Vtd_1 = Vtdq_1[0];  // Output #1
-  Vtq_1 = Vtdq_1[1];  // Output #2 
+  Vtd_1 = Vtdq_1[0];  // Output #8, Vtd_1
+  Vtq_1 = Vtdq_1[1];  // Output #9, Vtq_1 
 
   // ALPHA-BETA to DQ Block 
   ALPHABETA2DQ(Vt_alpha_neg, Vt_beta_neg, -OldTheta_PLL, Vtdq_2);
-  Vtd_2 = Vtdq_2[0];  // Output #3 
-  Vtq_2 = Vtdq_2[1];  // Output #4 
+  Vtd_2 = Vtdq_2[0];  // Output #10, Vtd_2 
+  Vtq_2 = Vtdq_2[1];  // Output #11, Vtq_2 
 
-  // Anti Wind Up Code Begin
+  // Anti Wind Up Code Begin for Omega from Vtq_1
   DelOmegaP = Vtq_1 * KpPLL;  // Proportional term 
   DelOmegaIin = (Vtq_1 - OldDelOmegaAWerr) * KiPLL;  // Input to Integral Controller 
   DelOmegaI = INTEGRATORRESET(1, 0, 0, DelOmegaIin, OldDelOmegaIin, OldDelOmegaI, delt);
@@ -1847,9 +1849,9 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   DelOmegaAWerr = DelOmegaAW - DelOmega;  // Update DelOmegaAWerr for next time step 
   // Anti Wind Up Code Ends 
 
-  Omega_PLL = w_nom + DelOmega;  // Output #5 
+  Omega_PLL = w_nom + DelOmega;  // Output #3, Freq_PLL*TWPI 
   Theta_DSOGIPLLcont = INTEGRATOR(1, Omega_PLL, OldOmega_PLL, OldTheta_DSOGIPLLcont, delt);
-  Theta_PLL = MODULO(Theta_DSOGIPLLcont, TWOPI);  // Since only DSOGI is used, Output #6 
+  Theta_PLL = MODULO(Theta_DSOGIPLLcont, TWOPI);  // Since only DSOGI is used
 
   // Currents block of Signal and Processing (DDSRF approach)         
   // Inputs:   Ia_flt   Ib_flt,   Ic_flt,   Iref (Idq12ref)         
@@ -1873,14 +1875,14 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   // ABC to ALPHA-BETA currents 
   ABC2ALPHABETA(I1a_flt, I1b_flt, I1c_flt, I1_alphabeta);
   ABC2ALPHABETA(I2a_flt, I2b_flt, I2c_flt, I2_alphabeta);
-  if (Cur1_flag >= 0.99) {
+  if (Cur1_flag >= 0.99) { // before LCL
     Pelec = REALPOWER(Vt_alpha, I1_alphabeta[0], Vt_beta, I1_alphabeta[1]); // was Piab_pu
     Qelec = REACTIVEPOWER(Vt_alpha, I1_alphabeta[0], Vt_beta, I1_alphabeta[1]); // was Qiab_pu
-  } else {
+  } else { // after LCL
     Pelec = REALPOWER(Vt_alpha, I2_alphabeta[0], Vt_beta, I2_alphabeta[1]); // was Ptab_pu
     Qelec = REACTIVEPOWER(Vt_alpha, I2_alphabeta[0], Vt_beta, I2_alphabeta[1]); // was Qtab_pu
   }
-  // Measurement transducer for power. TODO: Not used for control, output only?
+  // Measurement transducer for power. TODO: Not used for control, output only? Proper limits?
   Pelec_meas = REALPOLE(1.0, Tr, Pelec, OldPelec, OldPelec_meas, -1.0, 1.0, delt);
   Qelec_meas = REALPOLE(1.0, Tr, Qelec, OldQelec, OldQelec_meas, -1.0, 1.0, delt);
 
@@ -1895,17 +1897,14 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   Id1_FFin = TWO3RD * Vdc_nom * Idc * 1000;
   Id1_FFnolimit = REALPOLE(1, 0.005, Id1_FFin, OldId1_FFin, OldId1_FFnolimit, -999999, 999999, delt);
   Id1_FF = LIMITER(Idq_base * Ilim_pu, -Idq_base * Ilim_pu, Id1_FFnolimit / Vdq_base);
-  Vdc_ref = SELECTOR(VdcMPPT, Vdc_nom, (VI_flag * MPPT_flag));
 
-  // Anti Wind Up Code Begin 
+  Vdc_ref = SELECTOR(VdcMPPT, Vdc_nom, (VI_flag * MPPT_flag));
   Id1_VdcP = (Vdc_ref * b_Vdc - Vdc_meas * 1000) * Kp_Vdc;  // Proportional term 
   Id1_VdcIin = (Vdc_ref - Vdc_meas * 1000 - OldId1_VdcAWerr) * Ki_Vdc;  // Input to Integral Controller 
   Id1_VdcI = INTEGRATORRESET(1, Startup_flag, 0, Id1_VdcIin, OldId1_VdcIin, OldId1_VdcI, delt);
   Id1_VdcAW = Id1_VdcP + Id1_VdcI;
   Id1_Vdc = LIMITER(Idq_base * Ilim_pu, -Idq_base * Ilim_pu, Id1_VdcAW);
   Id1_VdcAWerr = Id1_VdcAW - Id1_Vdc;  // Update Id1_VdcAWerr for next time step
-  // Anti Wind Up Code Ends 
-
   Id1ref_Vdc = (-Id1_Vdc + Id1_FF) / Idq_base;
 
   // Droop 
@@ -1936,35 +1935,29 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
 
   // Vt Closed Loop 
   Iq_VtdCLe = SELECTOR(0, DEADBAND((Vref - Vtd_1_y), 0.001, 1, 0), FRT_flag);
-
-  // Anti Wind Up Code Begin 
   Iq_VtdCLP= Iq_VtdCLe * Kv_p;  // Proportional term 
   Iq_VtdCLIin = (Iq_VtdCLe - OldIq_VtdCLAWerr) * Kv_i;  // Input to Integral Controller 
   Iq_VtdCLI = INTEGRATORRESET(1, Startup_flag, 0, Iq_VtdCLIin, OldIq_VtdCLIin, OldIq_VtdCLI, delt);
   Iq_VtdCLAW = Iq_VtdCLP + Iq_VtdCLI;
   Iq_VtdCL = LIMITER(Qmax, Qmin, Iq_VtdCLAW);
   Iq_VtdCLAWerr = Iq_VtdCLAW - Iq_VtdCL;  // Update AWerr for next time step 
-  // Anti Wind Up Code Ends
 
   // Q Closed Loop 
-  Qdq_x = Qelec_meas; // Qtab_pu;
-  Qdq = REALPOLE(1, 0.005, Qdq_x, OldQdq_x, OldQdq, -999999, 999999, delt);
+  Qdq_x = Qelec_meas; // TODO: was hard-wired to control Qtab_pu, now it may control Qiab_pu
+  Qdq = REALPOLE(1, 0.005, Qdq_x, OldQdq_x, OldQdq, -99999, 99999, delt);
   Iq_QCLe = LIMITER(Qmax, Qmin, Qref) - Qdq;
-
-  // Anti Wind Up Code Begin 
   Iq_QCLP = Iq_QCLe * Kq_p;  // Proportional term 
   Iq_QCLIin = (Iq_QCLe - OldIq_QCLAWerr) * Kq_i;  // Input to Integral Controller 
   Iq_QCLI = INTEGRATORRESET(1, Startup_flag, 0, Iq_QCLIin, OldIq_QCLIin, OldIq_QCLI, delt);
   Iq_QCLAW = Iq_QCLP + Iq_QCLI;
   Iq_QCL = LIMITER(Qmax, Qmin, Iq_QCLAW);
   Iq_QCLAWerr = Iq_QCLAW - Iq_QCL;  // Update AWerr for next time step 
-  // Anti Wind Up Code Ends w 
 
   // Q Open Loop 
   Iq_QOL = LIMITER(Qmax, Qmin, Qref) / (Vtd_1_y + 0.0001);
 
   // LVRT/ HVRT 
-  Vdq1_y = REALPOLE(1, 0.002, Vdq1, OldVdq1, OldVdq1_y, -99999, 99999, delt);
+  Vdq1_y = REALPOLE(1, 0.002, Vdq1, OldVdq1, OldVdq1_y, -99999, 99999, delt);  // TODO: why is this not used?
   Iq1_frt = DB(Vref - Vtd_1 - 0.0001, dbhv_frt, dblv_frt) * -Kqv1;
   Iq_Qctl = SELECTOR(Iq_QCL, Iq_QOL, Qctl_CL_flag);
   Iq1_icont = SELECTOR(Iq_VtdCL, Iq_Qctl, Vt_flag);
@@ -1975,7 +1968,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
 
   // V2 Control 
   RECTANGULAR2POLAR(Vtd_2, Vtq_2, &Vdq_2mag, &Vdq_2ang);
-  Idq2_refmag = DB(Vdq_2mag, 0, dbh_2) * Kqv2;  //CHANGED dbl_2 to 0 on 4/19 
+  Idq2_refmag = DB(Vdq_2mag, 0.0, dbh_2) * Kqv2;  // CHANGED dbl_2 to 0 on 4/19 {TODO: investigate the impact}
   Idq2_refang = Vdq_2ang - PI2;
   POLAR2RECTANGULAR(Idq2_refmag, Idq2_refang, &Id2ref, &Iq2ref);
 
@@ -1991,7 +1984,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   I2m_ref_L = I2m_ref * scale;
   POLAR2RECTANGULAR(I2m_ref_L, Iq2ref_Lang, &Id2ref_L, &Iq2ref_L);
   Iq1ref_L = Iq1_i + (Iq1_frt * scale);
-  Id1max_FRT = sqrt(LIMITER(999999.0, 0.0, (pow((Ilim_pu - I2m_ref_L), 2) - Iq1ref_L*Iq1ref_L)));
+  Id1max_FRT = sqrt(LIMITER(999999.0, 0.0, (Ilim_pu - I2m_ref_L)*(Ilim_pu - I2m_ref_L) - Iq1ref_L*Iq1ref_L));
   Id1ref_L = LIMITER(Id1max_FRT, -Id1max_FRT, Id1ref);
 
   // Calculation for Ilim_phmax 
@@ -2037,51 +2030,39 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   Iramp_up = SELECTOR(99, Ipramp_up, FRT_flag);
   Id1_ref = RATELIMITER(Idref_1, OldId1_ref, Iramp_up, 1000, delt);
   Id1_e = (Id1_ref - Id_1) * Idq_base;
-
-  // Anti Wind Up Code Begin 
   uctrld_1P = Id1_e * Kcc_p;  // Proportional term 
   uctrld_1Iin = (Id1_e - Olductrld_1AWerr) * Kcc_i;  // Input to Integral Controller 
   uctrld_1I = INTEGRATORRESET(1, 0, 0, uctrld_1Iin, Olductrld_1Iin, Olductrld_1I, delt);
   uctrld_1AW = uctrld_1P + uctrld_1I;  // Input to AW 
   uctrld_1 = LIMITER(Lim_upCC, Lim_lowCC, uctrld_1AW);
   uctrld_1AWerr = uctrld_1AW - uctrld_1;  // Update AWerr for next time step 
-  // Anti Wind Up Code Ends w 
 
   Iq1_ref = RATELIMITER(Iqref_1, OldIq1_ref, 99999, 99999, delt);
   Iq1_e = (Iq1_ref - Iq_1) * Idq_base;
-
-  // Anti Wind Up Code Begin 
   uctrlq_1P = Iq1_e * Kcc_p;  // Proportional term 
   uctrlq_1Iin = (Iq1_e - Olductrlq_1AWerr) * Kcc_i;  // Input to Integral Controller 
   uctrlq_1I = INTEGRATORRESET(1, 0, 0, uctrlq_1Iin, Olductrlq_1Iin, Olductrlq_lI, delt);
   uctrlq_1AW = uctrlq_1P + uctrlq_1I;  // Input to AW 
   uctrlq_1 = LIMITER(Lim_upCC, Lim_lowCC, uctrlq_1AW);
   uctrlq_1AWerr = uctrlq_1AW - uctrlq_1;  // Update AWerr for next time step 
-  // Anti Wind Up Code Ends w
 
   Id2_ref = RATELIMITER(Idref_2, OldId2_ref, 99999, 99999, delt);
   Id2_e = (Id2_ref - Id_2) * Idq_base;
-
-  // Anti Wind Up Code Begin
   uctrld_2P = Id2_e * Kcc_p;  // Proportional term 
   uctrld_2Iin = (Id2_e - Olductrld_2AWerr) * Kcc_i;  // Input to Integral Controller 
   uctrld_2I = INTEGRATORRESET(1, 0, 0, uctrld_2Iin, Olductrld_2Iin, Olductrld_2I, delt);
   uctrld_2AW = uctrld_2P + uctrld_2I;  // Input to AW 
   uctrld_2 = LIMITER(Lim_upCC, Lim_lowCC, uctrld_2AW);
   uctrld_2AWerr = uctrld_2AW - uctrld_2;  // Update AWerr for next time step 
-// Anti Wind Up Code Ends
 
   Iq2_ref = RATELIMITER(Iqref_2, OldIq2_ref, 99999, 99999, delt);
   Iq2_e = (Iq2_ref - Iq_2) * Idq_base;
-
-  // Anti Wind Up Code Begin
   uctrlq_2P = Iq2_e * Kcc_p;  // Proportional term 
   uctrlq_2Iin = (Iq2_e - Olductrlq_2AWerr) * Kcc_i;  // Input to Integral Controller 
   uctrlq_2I = INTEGRATORRESET(1, 0, 0, uctrlq_2Iin, Olductrlq_2Iin, Olductrlq_2I, delt);
   uctrlq_2AW = uctrlq_2P + uctrlq_2I;  // Input to AW 
   uctrlq_2 = LIMITER(Lim_upCC, Lim_lowCC, uctrlq_2AW);
   uctrlq_2AWerr = uctrlq_2AW - uctrlq_2;  // Update AWerr for next time step 
-  // Anti Wind Up Code Ends / 
 
   // Generate Ed_1, Eq_1, Ed_2, and Eq_2 // TODO: check the per-unit conversions of DQ voltage drops
   Vtd_1y = REALPOLE(1, Tau_Vff, Vtd_1, OldVtd_1, OldVtd_1y, -99999, 99999, delt);
@@ -2109,17 +2090,17 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   outputs->m_b = Eb_m * 2.0 / Vdc_nom;
   outputs->m_c = Ec_m * 2.0 / Vdc_nom;
   outputs->FreqPLL = f_PLL;
-  outputs->ID1 = Id_1;
+  outputs->ID1 = Iq_Qctl; // Id_1;
   outputs->IQ1 = Iq_1;
-  outputs->ID2 = Id_2;
-  outputs->IQ2 = Iq_2;
+  outputs->ID2 = Iq_QCLIin; // Id_2;
+  outputs->IQ2 = Iq_QCLAWerr; // Iq_2;
   outputs->VD1 = Vtd_1;
   outputs->VQ1 = Vtq_1;
   outputs->VD2 = Vtd_2;
   outputs->VQ2 = Vtq_2;
-  outputs->FRT_flag = FRT_flag;
-  outputs->Pout = Pelec_meas; // Ptab_pu;
-  outputs->Qout = Qelec_meas; // Qtab_pu;
+  outputs->FRT_flag = Iq_QCLAW; // FRT_flag;
+  outputs->Pout = Pelec_meas;
+  outputs->Qout = Qelec_meas;
   // Added outputs for debugging 
 
   // save state variables 
