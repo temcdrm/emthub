@@ -3,7 +3,7 @@
 This model has.
 - 15 inputs (input current time has been removed, Vref added) 
 - 15 outputs (3 ouputs are essential, others can be used for debugging) 
-- 57 parameters 
+- 58 parameters 
 
 This model will be compiled into a DLL, and then can be used in ANY power system 
 simulation program by running the "DLLImport" tool that comes with each program 
@@ -344,6 +344,7 @@ typedef struct _MyModelParameters { // removed Vt_ref
   real64_T Rchoke; // new
   real64_T Cfilt;  // new
   real64_T Rdamp;  // new
+  real64_T Tv;     // new
 } MyModelParameters;
 
 // Define Parameters 
@@ -919,20 +920,30 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     .MinValue.Real64_Val = 0.000001, 
     .MaxValue.Real64_Val = 10.0 
   },
+  [57] = {
+    .Name = "Tv", // new
+    .Description = "Voltage control filter time constant", 
+    .Unit = "s", 
+    .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
+    .FixedValue = 0, 
+    .DefaultValue.Real64_Val = 0.010, 
+    .MinValue.Real64_Val = 0.0, 
+    .MaxValue.Real64_Val = 0.1 
+  }
 };
 
 IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
   .DLLInterfaceVersion = { 1, 1, 0, 0},         // Release number of the API 
   // used during code generation 
   .ModelName = "IBR-Average-Model",             // Model name   
-  .ModelVersion = "1.1.0.3",                    // Model version   
+  .ModelVersion = "1.1.0.4",                    // Model version   
   .ModelDescription = "GFD-IBR-Average",        // Model description 
   .GeneralInformation= "General Information",   // General information
   .ModelCreated = "September 21, 2023",         // Model created on  
   .ModelCreator = "Vishal Verma",               // Model created by     
-  .ModelLastModifiedDate= "August 15, 2025",       // Model last modified on  
+  .ModelLastModifiedDate= "August 25, 2025",       // Model last modified on  
   .ModelLastModifiedBy = "Tom McDermott",       // Model last modified by 
-  .ModelModifiedComment = "Remove currTime input, edit parameter descriptions, add Pout and Qout\nAdd Vref input signal and more filter parameters\nFix choke units, Q control, AW clamps", // Model modified comment 
+  .ModelModifiedComment = "Remove currTime input, edit parameter descriptions, add Pout and Qout\nAdd Vref input signal and more filter parameters\nFix choke units, Q control, AW clamps\nPre-windup protection for Qcl, added Tv", // Model modified comment 
   .ModelModifiedHistory = "Second instance",    // Model modified history 
   .FixedStepBaseSampleTime = 0.00001,           // Time Step sampling time (sec)  
   // Inputs 
@@ -942,7 +953,7 @@ IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
   .NumOutputPorts = 15,                         // Number of Output Signals 
   .OutputPortsInfo = OutputSignals,             // Outputs structure defined above 
   // Parameters 
-  .NumParameters = 57,                          // Number of Parameters 
+  .NumParameters = 58,                          // Number of Parameters 
   .ParametersInfo = Parameters,                 // Parameters structure defined above
    // Number of State Variables 
   .NumIntStates = 0,                            // Number of Integer states
@@ -1025,6 +1036,7 @@ __declspec(dllexport) int32_T __cdecl Model_CheckParameters(IEEE_Cigre_DLLInterf
   double Cfilt = parameters->Cfilt;
   double Rdamp = parameters->Rdamp;
   double IR_flag = parameters->IR_flag;
+  double Tv = parameters->Tv;
   // 
   double delt = Model_Info.FixedStepBaseSampleTime;
 
@@ -1152,6 +1164,7 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
   double Cfilt = parameters->Cfilt;
   double Rdamp = parameters->Rdamp;
   double IR_flag = parameters->IR_flag;
+  double Tv = parameters->Tv;
 
   double delt = Model_Info.FixedStepBaseSampleTime;
  
@@ -1549,6 +1562,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double Cfilt = parameters->Cfilt;
   double Rdamp = parameters->Rdamp;
   double IR_flag = parameters->IR_flag;
+  double Tv = parameters->Tv;
 
   double delt = Model_Info.FixedStepBaseSampleTime;
 
@@ -1893,7 +1907,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   Droop_down = DB(1 - fpu_flt, fdbd1, fdbd2) * Ddn;
   Droop_up = DB(1 - fpu_flt, fdbd1, fdbd2) * Dup;
   Pref_droop = LIMITER(0, -9999, Droop_down) + LIMITER(9999, 0, Droop_up);
-  Vtd_1_y = REALPOLE(1.0, 0.01, Vtd_1, OldVtd_1, OldVtd_1_y, -99999.0, 99999.0, delt);  // TODO: make 0.01 adjustable as Tv
+  Vtd_1_y = REALPOLE(1.0, Tv, Vtd_1, OldVtd_1, OldVtd_1_y, -99999.0, 99999.0, delt);  // 0.01 is now adjustable as Tv
   Idref_droop_x = Pref_droop / (Vtd_1_y + 0.0001);
   Idref_droop = REALPOLE(1.0, Tp_droop, Idref_droop_x, OldIdref_droop_x, OldIdref_droop, 
                          -99999, 99999, delt);
