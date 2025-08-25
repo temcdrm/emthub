@@ -947,7 +947,7 @@ IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
    // Number of State Variables 
   .NumIntStates = 0,                            // Number of Integer states
   .NumFloatStates = 0,                          // Number of Float states
-  .NumDoubleStates = 87                         // Number of Double states
+  .NumDoubleStates = 84                         // Number of Double states
 };
 
 // Subroutines that can be called by the main power system program 
@@ -1278,9 +1278,6 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
   instance->DoubleStates[81] = 0.0;
   instance->DoubleStates[82] = 0.0;
   instance->DoubleStates[83] = 0.0;
-  instance->DoubleStates[84] = 0.0;
-  instance->DoubleStates[85] = 0.0;
-  instance->DoubleStates[86] = 0.0;
 
   instance->LastGeneralMessage = ErrorMessage;
   return IEEE_Cigre_DLLInterface_Return_OK;
@@ -1388,11 +1385,8 @@ double SELECTOR(double input_A, double input_B, double FLAG) {
 
 // sample and hold block to hold the output to its last value if a flag is provided 
 void SAMPLEHOLD(double signal_in , double FLAG, double FLAG_OLD, double* sample_hold) {
-  // sample_hold[0] = output (signal_out) 
-  // sample_hold[1] = hold value (signal_hold) 
   if (FLAG_OLD == 1 && FLAG == 1) { 
     sample_hold[0] = sample_hold[1];
-    sample_hold[1] = sample_hold[1];
   } else { 
     sample_hold[0] = signal_in;
     sample_hold[1] = signal_in;
@@ -1473,11 +1467,14 @@ double REACTIVEPOWER(double v_alpha, double i_alpha, double v_beta, double i_bet
 
 // anti-windup clamp if PI output (y) has been limited, and the integrator output is same sign as its input
 double AWCLAMP(double ki, double y, double ymax, double ymin, double iin, double iout) {
-  if (y > ymax || y < ymin) {
-    if (iin * iout > 0.0) {
-      return 0.0;
-    }
-  }
+//  if (y >= ymax || y <= ymin) {
+//    if (iin * iout > 0.0) {
+//      return 0.0;
+//    }
+//  }
+  double next_iin = ki * iin;
+  if (y >= ymax && next_iin > 0.0) return 0.0;
+  if (y <= ymin && next_iin < 0.0) return 0.0;
   return ki;
 }
 
@@ -1623,49 +1620,46 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double OldId1_VdcI = instance->DoubleStates[45];
   double Oldf_PLL = instance->DoubleStates[46];
   double Oldfpu_flt = instance->DoubleStates[47];
-  double OldVtd_1_y2 = instance->DoubleStates[48];
-  double OldVtd_1_y = instance->DoubleStates[49];
-  double OldIdref_droop_x = instance->DoubleStates[50];
-  double OldIdref_droop = instance->DoubleStates[51];
-  double OldId1ref_hold = instance->DoubleStates[52];
-  double OldIq_VtdCLIin = instance->DoubleStates[53];
-  double OldIq_VtdCLI = instance ->DoubleStates[54];
-  double OldIq_QCLIin = instance->DoubleStates[55];
-  double OldIq_QCLI = instance->DoubleStates[56];
-  double OldVdq1 = instance->DoubleStates[57];
-  double OldVdq1_y = instance->DoubleStates[58];
-  double OldIq1_i = instance->DoubleStates[59];
+  double OldVtd_1_y = instance->DoubleStates[48];
+  double OldIdref_droop_x = instance->DoubleStates[49];
+  double OldIdref_droop = instance->DoubleStates[50];
+  double OldId1ref_hold = instance->DoubleStates[51];
+  double OldIq_VtdCLIin = instance->DoubleStates[52];
+  double OldIq_VtdCLI = instance ->DoubleStates[53];
+  double OldIq_QCLIin = instance->DoubleStates[54];
+  double OldIq_QCLI = instance->DoubleStates[55];
+  double OldIq1_i = instance->DoubleStates[56];
   // Current Control 
-  double OldIdref_1 = instance->DoubleStates[60];
-  double Olductrld_1Iin = instance->DoubleStates[61];
-  double Olductrld_1I = instance->DoubleStates[62];
-  double OldIqref_1 = instance ->DoubleStates[63];
-  double Olductrlq_1Iin = instance->DoubleStates[64];
-  double Olductrlq_1I = instance->DoubleStates[65];
-  double OldIdref_2 = instance->DoubleStates[66];
-  double Olductrld_2Iin = instance->DoubleStates[67];
-  double Olductrld_2I = instance->DoubleStates[68];
-  double OldIqref_2 = instance->DoubleStates[69];
-  double Olductrlq_2Iin = instance->DoubleStates[70];
-  double Olductrlq_2I = instance->DoubleStates[71];
-  double OldVtd_1 = instance->DoubleStates[72];
-  double OldVtd_1y = instance->DoubleStates[73];
-  double OldVtq_1 = instance ->DoubleStates[74];
-  double OldVtq_1y = instance->DoubleStates[75];
-  double OldVtd_2 = instance->DoubleStates[76];
-  double OldVtd_2y = instance->DoubleStates[77];
-  double OldVtq_2 = instance->DoubleStates[78];
-  double OldVtq_2y = instance->DoubleStates[79];
+  double OldIdref_1 = instance->DoubleStates[57];
+  double Olductrld_1Iin = instance->DoubleStates[58];
+  double Olductrld_1I = instance->DoubleStates[59];
+  double OldIqref_1 = instance ->DoubleStates[60];
+  double Olductrlq_1Iin = instance->DoubleStates[61];
+  double Olductrlq_1I = instance->DoubleStates[62];
+  double OldIdref_2 = instance->DoubleStates[63];
+  double Olductrld_2Iin = instance->DoubleStates[64];
+  double Olductrld_2I = instance->DoubleStates[65];
+  double OldIqref_2 = instance->DoubleStates[66];
+  double Olductrlq_2Iin = instance->DoubleStates[67];
+  double Olductrlq_2I = instance->DoubleStates[68];
+  double OldVtd_1 = instance->DoubleStates[69];
+  double OldVtd_1y = instance->DoubleStates[70];
+  double OldVtq_1 = instance ->DoubleStates[71];
+  double OldVtq_1y = instance->DoubleStates[72];
+  double OldVtd_2 = instance->DoubleStates[73];
+  double OldVtd_2y = instance->DoubleStates[74];
+  double OldVtq_2 = instance->DoubleStates[75];
+  double OldVtq_2y = instance->DoubleStates[76];
   // Flags for SH 
-  double OldFRT_flag = instance->DoubleStates[80];
+  double OldFRT_flag = instance->DoubleStates[77];
   // Added states for SH 
-  double OldId1ref_hold_SH = instance->DoubleStates[81];
-  double OldIq1_i_SH = instance->DoubleStates[82];
+  double OldId1ref_hold_SH = instance->DoubleStates[78];
+  double OldIq1_i_SH = instance->DoubleStates[79];
   // added states for P, Q measurement
-  double OldPelec = instance->DoubleStates[83];
-  double OldPelec_meas = instance->DoubleStates[84];
-  double OldQelec = instance->DoubleStates[85];
-  double OldQelec_meas = instance->DoubleStates[86];
+  double OldPelec = instance->DoubleStates[80];
+  double OldPelec_meas = instance->DoubleStates[81];
+  double OldQelec = instance->DoubleStates[82];
+  double OldQelec_meas = instance->DoubleStates[83];
 
   MyModelOutputs* outputs = (MyModelOutputs*)instance->ExternalOutputs;
 
@@ -1710,7 +1704,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double f_PLL;
   double Droop_down, Droop_up;
   double Pref_droop;
-  double Vtd_1_y, Vtd_1_y2 = 0; // Vtd_1_y2 not used but kept in state vector
+  double Vtd_1_y; 
   double Idref_droop_x, Idref_droop;
   double Id1ref_P;
   double Id_droop1, Id_droop;
@@ -1718,7 +1712,6 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double Iq_VtdCLe, Iq_VtdCLP, Iq_VtdCLIin, Iq_VtdCLI, Iq_VtdCL;
   double Iq_QCLe, Iq_QCLP, Iq_QCLIin, Iq_QCLI, Iq_QCL;
   double Iq_QOL;
-  double Vdq1_y;
   double Iq1_frt;
   double Iq_Qctl;
   double Iq1_icont, Iq1_i, Iq1_i_SH[2];
@@ -1841,7 +1834,8 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   Theta_PLL = MODULO(Theta_DSOGIPLLcont, TWOPI);  // Since only DSOGI is used
 
   // Currents block of Signal and Processing (DDSRF approach)         
-  // Inputs:   Ia_flt   Ib_flt,   Ic_flt,   Iref (Idq12ref)         
+  // Inputs:   Ia_flt   Ib_flt,   Ic_flt,   Iref (Idq12ref) 
+  // 1/3142 corresponds to the time constant for 500 Hz low-pass filter        
   Id1r_flt = REALPOLE(1, 1.0/3142.0, OldId1_ref, OldOldId1_ref, OldId1r_flt, -1e8, 1e8, delt);
   Iq1r_flt = REALPOLE(1, 1.0/3142.0, OldIq1_ref, OldOldIq1_ref, OldIq1r_flt, -1e8, 1e8, delt);
   Id2r_flt = REALPOLE(1, 1.0/3142.0, OldId2_ref, OldOldId2_ref, OldId2r_flt, -1e8, 1e8, delt);
@@ -1899,8 +1893,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   Droop_down = DB(1 - fpu_flt, fdbd1, fdbd2) * Ddn;
   Droop_up = DB(1 - fpu_flt, fdbd1, fdbd2) * Dup;
   Pref_droop = LIMITER(0, -9999, Droop_down) + LIMITER(9999, 0, Droop_up);
-  Vtd_1_y = REALPOLE(1.0, 0.01, Vtd_1, OldVtd_1, OldVtd_1_y, -99999.0, 99999.0, delt);
-  // Vtd_1_y2 = REALPOLE(1.0, 0.002, Vtd_1, OldVtd_1, OldVtd_1_y2, -99999.0, 99999.0, delt);
+  Vtd_1_y = REALPOLE(1.0, 0.01, Vtd_1, OldVtd_1, OldVtd_1_y, -99999.0, 99999.0, delt);  // TODO: make 0.01 adjustable as Tv
   Idref_droop_x = Pref_droop / (Vtd_1_y + 0.0001);
   Idref_droop = REALPOLE(1.0, Tp_droop, Idref_droop_x, OldIdref_droop_x, OldIdref_droop, 
                          -99999, 99999, delt);
@@ -1927,7 +1920,8 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   Iq_VtdCL = LIMITER(Qmax, Qmin, Iq_VtdCLP + Iq_VtdCLI);
 
   // Q Closed Loop
-  Iq_QCLe = LIMITER(Qmax, Qmin, Qref) - Qelec_meas;
+  //Iq_QCLe = LIMITER(Qmax, Qmin, Qref) - Qelec_meas;
+  Iq_QCLe = SELECTOR(0.0, LIMITER(Qmax, Qmin, Qref) - Qelec_meas, FRT_flag); // REVISIT: added pre-windup protection per figure 2-16
   Iq_QCLP = Iq_QCLe * Kq_p;
   Iq_QCLIin = Iq_QCLe * AWCLAMP (Kq_i, Iq_QCLP + OldIq_QCLI, Qmax, Qmin, Iq_QCLe, OldIq_QCLI);
   Iq_QCLI = INTEGRATORRESET(1, Startup_flag, 0, Iq_QCLIin, OldIq_QCLIin, OldIq_QCLI, delt);
@@ -1937,8 +1931,7 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   Iq_QOL = LIMITER(Qmax, Qmin, Qref) / (Vtd_1_y + 0.0001);
 
   // LVRT/ HVRT 
-  Vdq1_y = REALPOLE(1, 0.002, Vdq1, OldVdq1, OldVdq1_y, -99999, 99999, delt);  // TODO: why is this not used?
-  Iq1_frt = DB(Vref - Vtd_1 - 0.0001, dbhv_frt, dblv_frt) * -Kqv1;
+  Iq1_frt = DB(Vref - Vtd_1 - 0.0001, dbhv_frt, dblv_frt) * -Kqv1; // TODO: should this be Vtd_1 or Vtd_1_y?
   Iq_Qctl = SELECTOR(Iq_QCL, Iq_QOL, Qctl_CL_flag);
   Iq1_icont = SELECTOR(Iq_VtdCL, Iq_Qctl, Vt_flag);
   Iq1_i_SH[1] = OldIq1_i_SH;
@@ -2124,45 +2117,42 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   instance->DoubleStates[45] = Id1_VdcI;
   instance->DoubleStates[46] = f_PLL;
   instance->DoubleStates[47] = fpu_flt;
-  instance->DoubleStates[48] = Vtd_1_y2;
-  instance->DoubleStates[49] = Vtd_1_y;
-  instance->DoubleStates[50] = Idref_droop_x;
-  instance->DoubleStates[51] = Idref_droop;
-  instance->DoubleStates[52] = Id1ref_hold;
-  instance->DoubleStates[53] = Iq_VtdCLIin;
-  instance->DoubleStates[54] = Iq_VtdCLI;
-  instance->DoubleStates[55] = Iq_QCLIin;
-  instance->DoubleStates[56] = Iq_QCLI;
-  instance->DoubleStates[57] = Vdq1;
-  instance->DoubleStates[58] = Vdq1_y;
-  instance->DoubleStates[59] = Iq1_i;
-  instance->DoubleStates[60] = Idref_1;
-  instance->DoubleStates[61] = uctrld_1Iin;
-  instance->DoubleStates[62] = uctrld_1I;
-  instance->DoubleStates[63] = Iqref_1;
-  instance->DoubleStates[64] = uctrlq_1Iin;
-  instance->DoubleStates[65] = uctrlq_1I;
-  instance->DoubleStates[66] = Idref_2;
-  instance->DoubleStates[67] = uctrld_2Iin;
-  instance->DoubleStates[68] = uctrld_2I;
-  instance->DoubleStates[69] = Iqref_2;
-  instance->DoubleStates[70] = uctrlq_2Iin;
-  instance->DoubleStates[71] = uctrlq_2I;
-  instance->DoubleStates[72] = Vtd_1;
-  instance->DoubleStates[73] = Vtd_1y;
-  instance->DoubleStates[74] = Vtq_1;
-  instance->DoubleStates[75] = Vtq_1y;
-  instance->DoubleStates[76] = Vtd_2;
-  instance->DoubleStates[77] = Vtd_2y; 
-  instance->DoubleStates[78] = Vtq_2;
-  instance->DoubleStates[79] = Vtq_2y;
-  instance->DoubleStates[80] = FRT_flag;
-  instance->DoubleStates[81] = Id1ref_hold_SH[1];
-  instance->DoubleStates[82] = Iq1_i_SH[1];
-  instance->DoubleStates[83] = Pelec;
-  instance->DoubleStates[84] = Pelec_meas;
-  instance->DoubleStates[85] = Qelec;
-  instance->DoubleStates[86] = Qelec_meas;
+  instance->DoubleStates[48] = Vtd_1_y;
+  instance->DoubleStates[49] = Idref_droop_x;
+  instance->DoubleStates[50] = Idref_droop;
+  instance->DoubleStates[51] = Id1ref_hold;
+  instance->DoubleStates[52] = Iq_VtdCLIin;
+  instance->DoubleStates[53] = Iq_VtdCLI;
+  instance->DoubleStates[54] = Iq_QCLIin;
+  instance->DoubleStates[55] = Iq_QCLI;
+  instance->DoubleStates[56] = Iq1_i;
+  instance->DoubleStates[57] = Idref_1;
+  instance->DoubleStates[58] = uctrld_1Iin;
+  instance->DoubleStates[59] = uctrld_1I;
+  instance->DoubleStates[60] = Iqref_1;
+  instance->DoubleStates[61] = uctrlq_1Iin;
+  instance->DoubleStates[62] = uctrlq_1I;
+  instance->DoubleStates[63] = Idref_2;
+  instance->DoubleStates[64] = uctrld_2Iin;
+  instance->DoubleStates[65] = uctrld_2I;
+  instance->DoubleStates[66] = Iqref_2;
+  instance->DoubleStates[67] = uctrlq_2Iin;
+  instance->DoubleStates[68] = uctrlq_2I;
+  instance->DoubleStates[69] = Vtd_1;
+  instance->DoubleStates[70] = Vtd_1y;
+  instance->DoubleStates[71] = Vtq_1;
+  instance->DoubleStates[72] = Vtq_1y;
+  instance->DoubleStates[73] = Vtd_2;
+  instance->DoubleStates[74] = Vtd_2y; 
+  instance->DoubleStates[75] = Vtq_2;
+  instance->DoubleStates[76] = Vtq_2y;
+  instance->DoubleStates[77] = FRT_flag;
+  instance->DoubleStates[78] = Id1ref_hold_SH[0]; // was [1]
+  instance->DoubleStates[79] = Iq1_i_SH[0];       // was [1]
+  instance->DoubleStates[80] = Pelec;
+  instance->DoubleStates[81] = Pelec_meas;
+  instance->DoubleStates[82] = Qelec;
+  instance->DoubleStates[83] = Qelec_meas;
   instance->LastGeneralMessage = ErrorMessage;
   return IEEE_Cigre_DLLInterface_Return_OK;
 };
