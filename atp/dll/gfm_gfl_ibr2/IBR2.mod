@@ -58,7 +58,8 @@ DATA
   Lchoke       {dflt: 0.000100}
   Rchoke       {dflt: 0.000750}
   Cfilt        {dflt: 0.001500}
-  Rdamp        {dflt: 0.016667}
+  Rdamp        {dflt: 0.016670}
+  Tv           {dflt: 0.010000}
 OUTPUT
   m_a,m_b,m_c,FreqPLL,Id1,Iq1,Id2,Iq2,Vtd1,Vtq1,Vtd2,Vtq2,FRT_Flag,Pout,Qout
 VAR
@@ -80,7 +81,7 @@ INIT
   Pout:=0.0
   Qout:=0.0
 ENDINIT
-MODEL m1 FOREIGN GFM_GFL_IBR2 {ixdata:57, ixin:17, ixout:15, ixvar:0}
+MODEL m1 FOREIGN GFM_GFL_IBR2 {ixdata:58, ixin:17, ixout:15, ixvar:0}
 EXEC
   USE m1 AS m1
     DATA xdata[1] := VLLbase      -- V
@@ -136,10 +137,11 @@ EXEC
     DATA xdata[51] := Vff_flag     -- N/A
     DATA xdata[52] := IR_flag      -- N/A
     DATA xdata[53] := Tr           -- s
-    DATA xdata[54] := Lchoke       -- pu
-    DATA xdata[55] := Rchoke       -- pu
-    DATA xdata[56] := Cfilt        -- pu
-    DATA xdata[57] := Rdamp        -- pu
+    DATA xdata[54] := Lchoke       -- H
+    DATA xdata[55] := Rchoke       -- Ohm
+    DATA xdata[56] := Cfilt        -- F
+    DATA xdata[57] := Rdamp        -- Ohm
+    DATA xdata[58] := Tv           -- s
     -- the DLL will convert inputs to kV, kA as needed
     INPUT xin[1] := Vta          -- kV
     INPUT xin[2] := Vtb          -- kV

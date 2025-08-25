@@ -70,7 +70,7 @@ VREF0_____=VREF0
 VTFLG___=VTFLG"""
 
 baseparms = {
-  'CFILT': 500.0,   
+  'CFILT': 1500.0,   
   'DDN': 20.0,      
   'DFSRC': 0.05,    
   'DPHI': 0.1,      

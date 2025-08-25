@@ -493,6 +493,7 @@ Parameters (idx,size,offset,name,val,desc,units,default,min,max:
   54    8  432 Rchoke             0.0021 Series filter resistance                                               pu         0.0021        1e-06   10
   55    8  440 Cfilt              0.2027 Parallel filter capacitance                                            pu         0.2027        1e-06   10
   56    8  448 Rdamp              0.0463 Parallel filter series resistance                                      pu         0.0463        1e-06   10
+  57    8  456 Tv                   0.01 Voltage control filter time constant                                   s          0.01          0       0.1
 Input Signals (idx,size,offset,name,desc,units):
    0    8    0 Vta          A phase terminal voltage                                               kV
    1    8    8 Vtb          B phase terminal voltage                                               kV

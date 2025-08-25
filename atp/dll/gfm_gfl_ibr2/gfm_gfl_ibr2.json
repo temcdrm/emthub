@@ -4,25 +4,25 @@
     1,
     1,
     0,
-    1
+    0
   ],
   "ModelName": "IBR-Average-Model",
-  "ModelVersion": "1.1.0.2",
+  "ModelVersion": "1.1.0.4",
   "ModelDescription": "GFD-IBR-Average",
   "GeneralInformation": "General Information",
   "ModelCreated": "Vishal Verma",
   "ModelCreator": "September 21, 2023",
-  "ModelLastModifiedDate": "June 16, 2025",
+  "ModelLastModifiedDate": "August 25, 2025",
   "ModelLastModifiedBy": "Tom McDermott",
   "ModelModifiedHistory": "Second instance",
   "FixedStepBaseSampleTime": 1e-05,
   "EMT_RMS_Mode": 0,
   "NumInputPorts": 15,
   "NumOutputPorts": 15,
-  "NumParameters": 57,
+  "NumParameters": 58,
   "NumIntStates": 0,
   "NumFloatStates": 0,
-  "NumDoubleStates": 97,
+  "NumDoubleStates": 84,
   "InputPortsInfo": [
     {
       "Name": "Vta",
@@ -771,42 +771,52 @@
     {
       "Name": "Lchoke",
       "Description": "Series filter inductance",
-      "Unit": "pu",
+      "Unit": "H",
       "DataType": 9,
       "FixedValue": 0,
-      "DefaultValue": 0.1047,
+      "DefaultValue": 0.0001,
       "MinValue": 1e-06,
       "MaxValue": 10.0
     },
     {
       "Name": "Rchoke",
       "Description": "Series filter resistance",
-      "Unit": "pu",
+      "Unit": "Ohm",
       "DataType": 9,
       "FixedValue": 0,
-      "DefaultValue": 0.0021,
+      "DefaultValue": 0.00075,
       "MinValue": 1e-06,
       "MaxValue": 10.0
     },
     {
       "Name": "Cfilt",
-      "Description": "Parallel filter capacitance",
-      "Unit": "pu",
+      "Description": "Parallel wye filter capacitance",
+      "Unit": "F",
       "DataType": 9,
       "FixedValue": 0,
-      "DefaultValue": 0.2027,
+      "DefaultValue": 0.0015,
       "MinValue": 1e-06,
       "MaxValue": 10.0
     },
     {
       "Name": "Rdamp",
-      "Description": "Parallel filter series resistance",
-      "Unit": "pu",
+      "Description": "Parallel wye filter series resistance",
+      "Unit": "Ohm",
       "DataType": 9,
       "FixedValue": 0,
-      "DefaultValue": 0.0463,
+      "DefaultValue": 0.01667,
       "MinValue": 1e-06,
       "MaxValue": 10.0
+    },
+    {
+      "Name": "Tv",
+      "Description": "Voltage control filter time constant",
+      "Unit": "s",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.01,
+      "MinValue": 0.0,
+      "MaxValue": 0.1
     }
   ]
 }
