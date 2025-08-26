@@ -23,13 +23,17 @@ TACS HYBRID
 98VSCC    = MGAIN_ * XX0015
 90PREF                                                                      1.E3
 90VREF                                                                      1.E3
-99INFA    =VAMPL*COS(2*PI*FSRC*TIMEX+PHI)
-99INFB    =VAMPL*COS(2*PI*FSRC*TIMEX+PHI-2*PI/3)
-99INFC    =VAMPL*COS(2*PI*FSRC*TIMEX+PHI+2*PI/3)
+99INFA    =VAMPL*COS(THETA+PHI)
+99INFB    =VAMPL*COS(THETA+PHI-2*PI/3)
+99INFC    =VAMPL*COS(THETA+PHI+2*PI/3)
 90QREF                                                                      1.E3
 90VAMPL                                                                     1.E3
 90FSRC                                                                      1.E3
 90PHI                                                                       1.E3
+98WC      =2*PI*FSRC
+ 1THETA   +WC                                         1.
+        1.
+                  1.
 33POCA  
 33POCB  
 33POCC  
