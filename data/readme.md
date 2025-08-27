@@ -7,12 +7,12 @@ scripts per IEEE 2800 and/or NERC MOD-026-2.
 
 The files include:
 
-1. _base.hdf5_, all ATP simulation outputs at a 10-microsecond time step, for 150 cases.
-2. _prepped.hdf5_, down-sampled traces of P, Q, f, V1, and V2 for model evaluation.
+1. _downsample.hdf5_, all ATP simulation outputs, downsampled from a 10-microsecond time step to a 100-microsecond time step, for 150 cases.
+2. _prepped.hdf5_, downsampled traces of P, Q, f, V1, and V2 for model evaluation.
 3. _plot_atp.py_, creates 150 PNG files from _base.hdf5_.
 4. _MakeDocx.py_, assembles 150 PNG files into a Word document.
 5. _gfm_gfl_ibr2_tests.docx_ contains 150 cases plotted, as in Appendix A of https://www.epri.com/research/products/3002028322.
-6. _prep_atp.py_ creates _prepped.hdf5_ from _base.hdf5_.
+6. _prep_atp.py_ creates _prepped.hdf5_ and _downsample.hdf5_ from _base.hdf5_. Due to GitHub size restrictions, _base.hdf5_ cannot be published here.
 7. _process_atp.py_ plots one case from _prepped.hdf5_. Code to be developed will tabulate quantitative metrics for the case plotted.
 8. _cases.json_ describes the parameter variations in 150 test cases.
 
@@ -34,7 +34,7 @@ The DLL parameters were set at default values, except as varied in _cases.json_.
 circuit parameters are:
 
 * **Transformer** is wye/delta, 0.6/34.5 kV, 1 MVA, Z=0.6 + j6%, core loss = 0.25%, magnetizing current = 1%, neutral resistance = 1e6 Ohms.
-* **Grid Impedance** j165.88 Ohms in parallel with a numerical damping resistance of 8.76e5 Ohms.  **TODO:** should have been the power-frequency equivalent of 16.667 + j165.85.
+* **Grid Impedance** j167.55 Ohms in parallel with 1667.6 Ohms.
 * **Series Filter** 0.75 milliOhms in series with j0.0377 Ohms, i.e., 0.1 mH.
 * **Shunt Filter** not implemented yet.
 * **Faulting Switches** controlled by times TAC1 (close) and TAC2 (open) for phase A-C faults, etc. When active, faults occur from 4.0 to 4.2s of the simulation.
