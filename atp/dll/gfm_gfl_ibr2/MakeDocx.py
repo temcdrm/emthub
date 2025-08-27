@@ -49,20 +49,20 @@ def Figure(paragraph):
   fldChar.set(qn('w:fldCharType'), 'begin')
   r.append(fldChar)
   instrText = OxmlElement('w:instrText')
-  instrText.text = ' SEQ Figure \* ARABIC'
+  instrText.text = ' SEQ Figure \\* ARABIC'
   r.append(instrText)
   fldChar = OxmlElement('w:fldChar')
   fldChar.set(qn('w:fldCharType'), 'end')
   r.append(fldChar)
 
 def Table(paragraph):
-  run = run = paragraph.add_run()
+  run = paragraph.add_run()
   r = run._r
   fldChar = OxmlElement('w:fldChar')
   fldChar.set(qn('w:fldCharType'), 'begin')
   r.append(fldChar)
   instrText = OxmlElement('w:instrText')
-  instrText.text = ' SEQ Table \* ARABIC'
+  instrText.text = ' SEQ Table \\* ARABIC'
   r.append(instrText)
   fldChar = OxmlElement('w:fldChar')
   fldChar.set(qn('w:fldCharType'), 'end')
@@ -72,23 +72,6 @@ def cellval(tok):
   if float(tok) > 0:
     return tok
   return 'n/a'
-
-document = Document()
-if bWide:
-  for section in document.sections:
-    section.orientation = WD_ORIENT.LANDSCAPE
-    section.page_width = Inches(11)
-    section.page_height = Inches(8.5)
-    section.left_margin = Inches(0.75)
-    section.right_margin = Inches(0.75)
-    section.top_margin = Inches(0.75)
-    section.bottom_margin = Inches(0.75)
-else:
-  for section in document.sections:
-    section.left_margin = Inches(1.0)
-    section.right_margin = Inches(1.0)
-    section.top_margin = Inches(0.75)
-    section.bottom_margin = Inches(0.75)
 
 #table = document.add_table(rows=1, cols=8)
 #hdr_cells = table.rows[0].cells
@@ -115,28 +98,47 @@ else:
 #document.add_page_break()
 
 #files = sorted(glob.glob ('*.png'))
-with open('cases.json', 'r') as f:
-  cases = json.load(f)
 
-bPageBreak = False # page break after every two plots
-
-for idx in range(len(cases)):
-  fignum = cases[idx]['Fig']
-  title = cases[idx]['Title']
-  fname = 'fig{:d}.png'.format(fignum)
+if __name__ == '__main__':
+  document = Document()
   if bWide:
-    document.add_picture(fname, width=Inches(9.5))
+    for section in document.sections:
+      section.orientation = WD_ORIENT.LANDSCAPE
+      section.page_width = Inches(11)
+      section.page_height = Inches(8.5)
+      section.left_margin = Inches(0.75)
+      section.right_margin = Inches(0.75)
+      section.top_margin = Inches(0.75)
+      section.bottom_margin = Inches(0.75)
   else:
-    document.add_picture(fname, width=Inches(6.5))
-  # adding a cross-reference enabled caption
-  paragraph = document.add_paragraph('Figure ', style='Caption')
-  Figure (paragraph)
-  paragraph.add_run(': {:s}'.format (title))
-  #document.add_paragraph('Figure ' + str(fignum) + ': ' + title, style=document.styles['Caption'])
-  if bPageBreak:
-#    document.add_page_break()
-    bPageBreak = False
-  else:
-    bPageBreak = True
+    for section in document.sections:
+      section.left_margin = Inches(1.0)
+      section.right_margin = Inches(1.0)
+      section.top_margin = Inches(0.75)
+      section.bottom_margin = Inches(0.75)
 
-document.save('plots_new.docx')
+  with open('cases.json', 'r') as f:
+    cases = json.load(f)
+
+  bPageBreak = False # page break after every two plots
+
+  for idx in range(len(cases)):
+    fignum = cases[idx]['Fig']
+    title = cases[idx]['Title']
+    fname = 'fig{:d}.png'.format(fignum)
+    if bWide:
+      document.add_picture(fname, width=Inches(9.5))
+    else:
+      document.add_picture(fname, width=Inches(6.5))
+    # adding a cross-reference enabled caption
+    paragraph = document.add_paragraph('Figure ', style='Caption')
+    Figure (paragraph)
+    paragraph.add_run(': {:s}'.format (title))
+    #document.add_paragraph('Figure ' + str(fignum) + ': ' + title, style=document.styles['Caption'])
+    if bPageBreak:
+  #    document.add_page_break()
+      bPageBreak = False
+    else:
+      bPageBreak = True
+
+  document.save('plots_new.docx')
