@@ -80,6 +80,7 @@ def process_group (grp):
 if __name__ == '__main__':
   f1 = h5py.File('base.hdf5', 'r')
   f2 = h5py.File('prepped.hdf5', 'w')
+  f3 = h5py.File('downsample.hdf5', 'w')
   ncases = len(f1.items())
   print ('Processing', ncases, 'cases')
   for grp_name, grp in f1.items():
@@ -92,4 +93,14 @@ if __name__ == '__main__':
     grp2.create_dataset ('F', data=f, compression='gzip')
     grp2.create_dataset ('P', data=p, compression='gzip')
     grp2.create_dataset ('Q', data=q, compression='gzip')
+
+    # downsample all signals
+    grp3 = f3.create_group (grp_name)
+    dlen = grp['t'].len()
+    y = np.zeros(dlen)
+    for key in grp: # picks up t, too
+      grp[key].read_direct(y)
+      ynew = my_decimate (y, 10, 'slice')
+      grp3.create_dataset (key, data=ynew, compression='gzip')
+      
 
