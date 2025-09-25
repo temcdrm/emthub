@@ -6,12 +6,12 @@ C ATPDraw developed by H. K. Høidalen at NTNU - NORWAY 1999-2022
 C ------------------------------------------------------------------------------
 $DUMMY, XYZ000
 C  dT  >< Tmax >< Xopt >< Copt ><Epsiln>
-   5.E-5     10.     60.                
+   5.E-5     30.     60.                
    50000       3       0       1       0       0       0       1       0
 /TACS
 TACS HYBRID
 11WREF            1.                                               -1.      1.E3
-11PREF           .95                                               -1.      1.E3
+11PREF            1.                                               -1.      1.E3
 90GENA                                                             -1.      1.E3
 90GENB                                                             -1.      1.E3
 90GENC                                                             -1.      1.E3
@@ -286,14 +286,14 @@ C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >
   H0                                                  MEASURING                0
   B400A OHLA                                          MEASURING                1
   B400B OHLB                                          MEASURING                1
-  B400C OHLC         -1.     21.05        5.          RECLOSE                  1
-                   21.75      1.E3
+  B400C OHLC         -1.     11.05        5.          RECLOSE                  1
+                   11.75      1.E3
                    9999.
-  X0045CXX0003       21.      21.2                                             0
+  X0045CXX0003       11.      11.2                                             0
   X0002AX0044A                                        MEASURING                0
   X0002BX0044B                                        MEASURING                0
-  X0002CX0044C       -1.     21.05        5.          RECLOSE                  0
-                   21.55      1.E3
+  X0002CX0044C       -1.     11.05        5.          RECLOSE                  0
+                   11.55      1.E3
                    9999.
   GENA  B22A                                          MEASURING                0
   GENB  B22B                                          MEASURING                0
