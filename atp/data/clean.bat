@@ -8,6 +8,7 @@ del commands.script
 del *.log
 del *.tmp
 del *.bin
+del LT*.pch
 del README.html
 del wecc240.hdf5
 del ieee118.hdf5
