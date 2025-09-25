@@ -466,7 +466,7 @@ machine_dynamic_template = """$INCLUDE,SYNCMACH.PCH,{sbus},{sname} $$
   ,{tqopp},{x0},{rn},{xn},{xcan},{hico} $$
   ,{dsd} $$
   ,{ikv0},{kvini},{ifini},{ifnom} $$
-  ,{kgov},{t2},{t1t3},{t1pt3},{pmax} $$
+  ,{kgov},{t2},{t1pt3},{t1t3},{pmax} $$
   ,{kc},{ilr},{klr},{vrmin},{vrmax} $$
   ,{v0pu},{ka},{ta},{tb},{tc},{tled} $$
   ,{tlag},{kfbk},{tfbk} $$
