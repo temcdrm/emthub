@@ -150,7 +150,8 @@ C 98_IBASE  =   27273.
  0_IQCMD  +_NDFLG +_IQINJ                 +_IQFLG     1.            _IQMIN_IQMAX
 98__IMAX  =      1.2
 98_PQFLG  =      0.0
-98_IQLIM  =SQRT(__IMAX*__IMAX - _PQFLG*_IPCMD*_IPCMD)
+C  Delay start of reactive power control
+98_IQLIM  =SQRT(__IMAX*__IMAX - _PQFLG*_IPCMD*_IPCMD)*(TIMEX.GT.1)
 98_IPLIM  =SQRT(__IMAX*__IMAX - (1-_PQFLG)*_IQCMD*_IQCMD)
 98_IQMAX63        +__VDL1         +_IQLIM                  -1.
 98_IPMAX63        +__VDL2         +_IPLIM                  -1.
@@ -237,8 +238,8 @@ C
 77__VGPU  ____VREFPU
 77_VFILT  ____VREFPU
 77_VCLAG  ____VREFPU
-77__QEX3  ____VREFPU
-77__QEX4  ____VREFPU
+C 77__QEX3  ____VREFPU
+C 77__QEX4  ____VREFPU
 77__OUTF    376.9911
 77__OUTP          0.
 77__OUTQ          0.
