@@ -14,7 +14,7 @@ dynamics link library (DLL) interfaces.
 Background
 ----------
 
-For an overview, see `2024 Panel Presentation <_static/24PESGM2411.pdf>`_.
+For an overview, see `IEEE P3743 Introduction <_static/IEEE_P3743_Introduction.pdf>`_.
 
 - For general background on **EMT modeling**, with a focus on IBR, see `IEEE Electrification Special Issue <https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=10334426&punumber=6508996>`_.
 - For background on the North American Electric Reliability Corporation (**NERC**) guidelines on EMT modeling for IBR, see its `Reliability Guideline <https://www.nerc.com/comm/RSTC_Reliability_Guidelines/Reliability_Guideline-EMT_Modeling_and_Simulations.pdf>`_ and its `EMT Task Force <https://www.nerc.com/comm/RSTC/Pages/EMTTF.aspx>`_.
