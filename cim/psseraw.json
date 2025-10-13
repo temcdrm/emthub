@@ -1,0 +1,195 @@
+{
+    "version": "?",
+    "sections": {
+        "BUS": {
+            "column_count": 9,
+            "columns": [
+                {
+                    "Name": "Number",
+                    "Index": 0,
+                    "Type": "Integer"
+                },
+                {
+                    "Name": "Name",
+                    "Index": 1,
+                    "Type": "String"
+                },
+                {
+                    "Name": "BaseKV",
+                    "Index": 2,
+                    "Type": "Float"
+                }
+            ]
+        },
+        "LOAD": {
+            "column_count": 13,
+            "columns": [
+                {
+                    "Name": "Bus",
+                    "Index": 0,
+                    "Type": "Integer"
+                },
+                {
+                    "Name": "Status",
+                    "Index": 2,
+                    "Type": "Integer"
+                },
+                {
+                    "Name": "PconstP",
+                    "Index": 5,
+                    "Type": "Float"
+                },
+                {
+                    "Name": "QconstP",
+                    "Index": 6,
+                    "Type": "Float"
+                }
+            ]
+        },
+        "FIXED SHUNT": {
+            "column_count": 5,
+            "columns": [
+                {
+                    "Name": "Bus",
+                    "Index": 0,
+                    "Type": "Integer"
+                },
+                {
+                    "Name": "Status",
+                    "Index": 2,
+                    "Type": "Integer"
+                },
+                {
+                    "Name": "P",
+                    "Index": 3,
+                    "Type": "Float"
+                },
+                {
+                    "Name": "Q",
+                    "Index": 4,
+                    "Type": "Float"
+                }
+            ]
+        },
+        "GENERATOR": {
+            "column_count": 28,
+            "columns": [
+                {
+                    "Name": "Bus",
+                    "Index": 0,
+                    "Type": "Integer"
+                },
+                {
+                    "Name": "ID",
+                    "Index": 1,
+                    "Type": "String"
+                },
+                {
+                    "Name": "P",
+                    "Index": 2,
+                    "Type": "Float"
+                },
+                {
+                    "Name": "Q",
+                    "Index": 3,
+                    "Type": "Float"
+                },
+                {
+                    "Name": "BaseMVA",
+                    "Index": 8,
+                    "Type": "Float"
+                },
+                {
+                    "Name": "Status",
+                    "Index": 14,
+                    "Type": "Integer"
+                }
+            ]
+        },
+        "BRANCH": {
+            "column_count": 24,
+            "columns": [
+                {
+                    "Name": "Bus1",
+                    "Index": 0,
+                    "Type": "Integer"
+                },
+                {
+                    "Name": "Bus2",
+                    "Index": 1,
+                    "Type": "Integer"
+                },
+                {
+                    "Name": "Circuit",
+                    "Index": 2,
+                    "Type": "String"
+                },
+                {
+                    "Name": "R",
+                    "Index": 3,
+                    "Type": "Float"
+                },
+                {
+                    "Name": "X",
+                    "Index": 4,
+                    "Type": "Float"
+                },
+                {
+                    "Name": "B",
+                    "Index": 5,
+                    "Type": "Float"
+                }
+            ]
+        },
+        "TRANSFORMER": {
+            "column_count": 41,
+            "columns": [
+                {
+                    "Name": "Bus1",
+                    "Index": 0,
+                    "Type": "Integer"
+                },
+                {
+                    "Name": "Bus2",
+                    "Index": 1,
+                    "Type": "Integer"
+                },
+                {
+                    "Name": "Bus3",
+                    "Index": 2,
+                    "Type": "Integer"
+                },
+                {
+                    "Name": "Circuit",
+                    "Index": 3,
+                    "Type": "String"
+                },
+                {
+                    "Name": "ID",
+                    "Index": 10,
+                    "Type": "String"
+                },
+                {
+                    "Name": "Status",
+                    "Index": 11,
+                    "Type": "Integer"
+                },
+                {
+                    "Name": "R12",
+                    "Index": 20,
+                    "Type": "Float"
+                },
+                {
+                    "Name": "X12",
+                    "Index": 21,
+                    "Type": "Float"
+                },
+                {
+                    "Name": "S12",
+                    "Index": 22,
+                    "Type": "Float"
+                }
+            ]
+        }
+    }
+}
