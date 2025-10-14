@@ -3,7 +3,7 @@
 import json
 import csv
 
-RAWFILE = '../../cimhub/bes/raw/ieee118/ieee-118-bus-v4.raw'
+RAWFILE = 'raw/ieee-118-bus-v4.raw'
 METAFILE = 'psseraw.json'
 
 tables = {}
