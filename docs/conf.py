@@ -28,7 +28,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'emthub'
-copyright = '2024, Meltran, Inc'
+copyright = '2024-25, Meltran, Inc'
 author = 'Meltran, Inc'
 version = '0.0.1'
 release = '0.0.1'
