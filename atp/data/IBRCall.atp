@@ -1,0 +1,74 @@
+BEGIN NEW DATA CASE
+$DUMMY, XYZ000
+C  dT  >< Tmax >< Xopt >< Copt ><Epsiln>
+   1.E-6      2.     60.                
+   65535      11       0       1       0       0       0       1       0
+$PARAMETER
+TFALT =3.0 $$
+TCLER =3.2 $$
+TOPN1 =1000.0 $$
+TREC1 =2000.0 $$
+TOPN2 =1000.0 $$
+TREC2 =2000.0 $$
+RFAUL1 =0.25 $$
+SECLE1 =0.18 $$
+TREC2_____=TREC2
+TREC1_____=TREC1
+TOPN2_____=TOPN2
+TOPN1_____=TOPN1
+TFALT_____=TFALT
+TCLER_____=TCLER
+SECLEN=SECLE1
+RFAULT=RFAUL1
+BLANK $PARAMETER
+/TACS
+TACS HYBRID
+C        1         2         3         4         5         6         7         8
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+/BRANCH
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  >
+C < n1 >< n2 ><ref1><ref2>< R  >< A  >< B  ><Leng><><>0
+  IBR01CSENDC                           .001                                   0
+  FLTR                    RFAULT                                               1
+  RECC  THEVC                           .001                                   0
+-1SENDA FAULTA                .1  800. 1.3E5SECLEN 1 0                         0
+-2SENDB FAULTB               .01  400. 1.8E5SECLEN 1 0                         0
+-3SENDC FAULTC                                                                 0
+-1FAULTARECA                  .1  800. 1.3E5SECLEN 1 0                         0
+-2FAULTBRECB                 .01  400. 1.8E5SECLEN 1 0                         0
+-3FAULTCRECC                                                                   0
+/SWITCH
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >
+  IBR01ASENDA                                         MEASURING                1
+  IBR01BSENDB                                         MEASURING                1
+  IBR01CSENDC        -1.TOPN1_____        5.          RECLOSE                  1
+              TREC1_____      1.E3
+                   9999.
+  FAULTCFLTR  TFALT_____TCLER_____                                             0
+  RECA  THEVA                                         MEASURING                0
+  RECB  THEVB                                         MEASURING                0
+  RECC  THEVC        -1.TOPN2_____        5.          RECLOSE                  0
+              TREC2_____      1.E3
+                   9999.
+/SOURCE
+C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >
+14THEVA   20058.4224       60.       45.                           -1.      1.E3
+14THEVB   20058.4224       60.      -75.                           -1.      1.E3
+14THEVC   20058.4224       60.     -195.                           -1.      1.E3
+/TACS
+$INCLUDE,IBR.PCH,IBR01,IBR01 $$
+  ,2.200000E4,6.000000E8,27273.0000,0.83670000,-0.0132000,1.02500000
+/TACS
+33IBR01F
+33IBR01P
+33IBR01Q
+/OUTPUT
+  FAULTAFAULTBFAULTC
+BLANK TACS
+BLANK BRANCH
+BLANK SWITCH
+BLANK SOURCE
+BLANK OUTPUT
+BLANK PLOT
+BEGIN NEW DATA CASE
+BLANK

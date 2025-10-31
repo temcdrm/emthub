@@ -1,0 +1,110 @@
+BEGIN NEW DATA CASE --NOSORT--
+DATA BASE MODULE
+$ERASE
+ARG __PCC, __OUT, WTOTAL, ILIMIT, UVLEVL, UVTIME, _PFANG, _VBASE, VBASE2, VBBYWC
+NUM WTOTAL, ILIMIT, UVLEVL, UVTIME, _PFANG, _VBASE, VBASE2, VBBYWC
+DUM _DERIA, _DERIB, _DERIC, VALPHA, _VBETA, __VPAP, __VPBN, __VPBP, __VPAN
+DUM ___RWP, VPALPH, VPBETA, EPSVAL, EPSVBE, __ZVPA, INTEPS, EFALPH, EFBETA
+DUM INTALP, QVPALP, __ZPVB, ERRBET, _ZBETA, INTBET, QVPBET, _GEPSF, ERRALP
+DUM ZALPHA, _SCALE, RSCALE, ___DEN, ___UV2, UVTRIP, __TRIP, __ANGR, ___ANG
+DUM ___WDV, WDVLIM, IRMSMX, __IMAG, _THETA, WPTRIP, __UV2T, HALFBC, __ZVPB
+DUM ____WC, __RMSA, __RMSB, __RMSC
+/TACS
+90__PCCA                                                                    1.E3
+90__PCCB                                                                    1.E3
+90__PCCC                                                                    1.E3
+11IRMSMX      ILIMIT                                              -1.0      1.E3
+11____WC    376.9911                                              -1.0      1.E3
+ 0__OUTA  +__PCCA                                     1.
+ 0__OUTB  +__PCCB                                     1.
+ 0__OUTC  +__PCCC                                     1.
+ 0_VBETA          +__PCCB         -__PCCC          .7071                  
+ 0VALPHA          -HALFBC         +__PCCA          .8165                  
+ 0HALFBC          +__PCCB         +__PCCC             .5                  
+ 0_SCALE  +RSCALE                                     1.                  
+ 0__VPAP          +VPALPH         -QVPBET             .5                  
+ 0__VPBN          +VPBETA         -QVPALP             .5                  
+ 0__VPBP          +VPBETA         +QVPALP             .5                  
+ 0__VPAN          +VPALPH         +QVPBET             .5                  
+ 0___RWP          +INTEPS         +____WC             1.                  
+ 0__OUTW  +___RWP                                     1.                  
+ 0VPALPH  +__ZVPA                                     1.                  
+ 0VPBETA  +__ZVPB                                     1.                  
+ 0EPSVAL          +VALPHA         -VPALPH             1.                  
+ 0EPSVBE          +_VBETA         -VPBETA             1.                  
+ 1__IMAG  +WDVLIM                                     1.                  
+        1.          
+        1.      .002
+88__ZVPA58+ERRALP                                     1.          1.      
+88INTEPS58                +_GEPSF                                 1.      
+88EFALPH  =EPSVAL * QVPALP
+88EFBETA  =EPSVBE * QVPBET
+88INTALP58+VPALPH                                     1.          1.      
+88QVPALP  =__OUTW * INTALP
+88__ZVPB58+ERRBET                                     1.          1.      
+88ERRBET  =__OUTW * _ZBETA
+88_ZBETA  =1.41421 * EPSVBE - QVPBET
+88INTBET58+VPBETA                                     1.          1.      
+88QVPBET  =__OUTW * INTBET
+88_GEPSF  =-23 * (EFALPH+EFBETA) * _SCALE
+88ERRALP  =__OUTW * ZALPHA
+88ZALPHA  =1.41421 * EPSVAL - QVPALP
+88RSCALE  =1.41421 * __OUTW / (10+___DEN)
+88___DEN  =__VPAP*__VPAP + __VPBP*__VPBP + 0.001
+88__OUTV  =SQRT(___DEN)
+88___WDV  =WTOTAL / __OUTV / 1.73205
+88WDVLIM60+___WDV +___WDV +IRMSMX                                   ___WDVIRMSMX
+98WPTRIP  =((__OUTW.LT.301.6).OR.(__OUTW.GT.452.4)).AND.(TIMEX.GT.0.01)
+98__UV2T58                +___UV2                     1.          1.___UV2
+98__RMSA66                +__PCCA                    60.
+98__RMSB66                +__PCCB                    60.
+98__RMSC66                +__PCCC                    60.
+98___UV2  =(__RMSA.LT.UVLEVL).OR.(__RMSB.LT.UVLEVL).OR.(__RMSC.LT.UVLEVL)
+98UVTRIP  =(__UV2T.GE.UVTIME).AND.(TIMEX.GT.0.01)
+98__TRIP64        +WPTRIP         +UVTRIP                   1.                  
+98__OUTI  =__IMAG*(.NOT.__TRIP)
+98__ANGR  =ATAN(__VPBP/__VPAP)+PI*(__VPAP.LT.0)*(__VPBP.GE.0)
+98___ANG  =__ANGR-PI*(__VPAP.LT.0)*(__VPBP.LT.0)
+98_THETA  =___ANG + 0.5*PI + (PI*_PFANG/180.0)
+98_DERIA  =1.41421 * __OUTI * SIN(_THETA)
+98_DERIB  =1.41421 * __OUTI * SIN(_THETA-2*PI/3)
+98_DERIC  =1.41421 * __OUTI * SIN(_THETA+2*PI/3)
+98__OUTX  =_DERIA
+98__OUTY  =_DERIB
+98__OUTZ  =_DERIC
+C 33__OUTV
+C 33__OUTA
+C 33__OUTB
+C 33__OUTC
+C 33__OUTW
+C 33__OUTI
+C 33__OUTX
+C 33__OUTY
+C 33__OUTZ
+77__ZVPA      _VBASE
+77INTBET     -VBBYWC
+77__OUTW    376.9911
+77VPALPH      _VBASE
+77QVPBET     -_VBASE
+77__VPAP      _VBASE
+77___DEN      VBASE2
+77___RWP    376.9911
+C        1         2         3         4         5         6         7         8
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+/BRANCH
+  __PCCA_DERIA              .001                                               0
+  __PCCB_DERIB              .001                                               0
+  __PCCC_DERIC              .001                                               0
+  _DERIA                    1.E8                                               0
+  _DERIB                    1.E8                                               0
+  _DERIC                    1.E8                                               0
+/SOURCE
+C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >
+60_DERIA-1                                                                  1.E3
+60_DERIB-1                                                                  1.E3
+60_DERIC-1                                                                  1.E3
+BEGIN NEW DATA CASE
+C 
+$PUNCH
+BEGIN NEW DATA CASE
+BLANK

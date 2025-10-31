@@ -1,0 +1,75 @@
+BEGIN NEW DATA CASE
+C  dT  >< Tmax >< Xopt >< Copt >
+   1.E-3    10.0                
+     500       1       1       1       1       0       0       1       0
+/MODELS
+MODELS
+MODEL Ex_SCRX9
+VAR
+  EFD, VT
+INIT
+  EFD:=1.0
+  VT:=1.0
+ENDINIT
+FUNCTION vterm POINTLIST
+--   t     v
+  ( 0.00, 1.0)
+  ( 1.99, 1.0)
+  ( 2.00, 0.5)
+  ( 2.15, 0.5)
+  ( 2.16, 1.0)
+  (20.00, 1.0)
+MODEL m1 FOREIGN SCRX9 {ixdata:8, ixin:9, ixout:1, ixvar:0}
+EXEC
+  VT := vterm(t)
+  EFD := 1.0
+  USE m1 AS m1
+    DATA xdata[1]:=0.1   -- TAdTB
+    DATA xdata[2]:=10.0  -- TB
+    DATA xdata[3]:=100.0 -- K
+    DATA xdata[4]:=0.05  -- TE
+    DATA xdata[5]:=-5.0  -- Emin
+    DATA xdata[6]:=5.0   -- Emax
+    DATA xdata[7]:=1.0   -- Cswitch
+    DATA xdata[8]:=10.0  -- RCdRFD
+    INPUT xin[1]:=1.0    -- Vref
+    INPUT xin[2]:=VT     -- Ec
+    INPUT xin[3]:=0.0    -- Vs
+    INPUT xin[4]:=0.0    -- IFD
+    INPUT xin[5]:=VT     -- VT
+    INPUT xin[6]:=-5.0   -- VUEL
+    INPUT xin[7]:=5.0    -- VOEL
+    INPUT xin[8]:=t
+    INPUT xin[9]:=stoptime
+    OUTPUT EFD:=xout[1]
+C    write ("efd=",efd)
+  ENDUSE
+ENDEXEC
+ENDMODEL
+USE Ex_SCRX9 AS mymodel
+ENDUSE
+RECORD mymodel.EFD AS EFD
+       mymodel.VT AS VT
+ENDMODELS
+C        1         2         3         4         5         6         7         8
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+/BRANCH
+C < n 1>< n 2><ref1><ref2>< R  >< L  >< C  >
+C < n 1>< n 2><ref1><ref2>< R  >< A  >< B  ><Leng><><>0
+  XX0001                    1.E3                                               2
+/SWITCH
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >
+/SOURCE
+C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >
+14XX0001 0      1.E4       60.                                     -1.       10.
+/INITIAL
+/OUTPUT
+BLANK MODELS
+BLANK BRANCH
+BLANK SWITCH
+BLANK SOURCE
+BLANK INITIAL
+BLANK OUTPUT
+BLANK PLOT
+BEGIN NEW DATA CASE
+BLANK

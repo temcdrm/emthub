@@ -1,0 +1,10 @@
+del *.bin
+del *.cfg
+del *.dat
+del *.dbg
+del *.lis
+del *.log
+del *.pl4
+del *.png
+del base.hdf5
+del plots_new.docx

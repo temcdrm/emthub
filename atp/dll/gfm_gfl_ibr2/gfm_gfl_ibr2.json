@@ -1,0 +1,822 @@
+{
+  "location": "c:/src/emthub/dll/bin/gfm_gfl_ibr2.dll",
+  "DLLInterfaceVersion": [
+    1,
+    1,
+    0,
+    0
+  ],
+  "ModelName": "IBR-Average-Model",
+  "ModelVersion": "1.1.0.4",
+  "ModelDescription": "GFD-IBR-Average",
+  "GeneralInformation": "General Information",
+  "ModelCreated": "Vishal Verma",
+  "ModelCreator": "September 21, 2023",
+  "ModelLastModifiedDate": "August 25, 2025",
+  "ModelLastModifiedBy": "Tom McDermott",
+  "ModelModifiedHistory": "Second instance",
+  "FixedStepBaseSampleTime": 1e-05,
+  "EMT_RMS_Mode": 0,
+  "NumInputPorts": 15,
+  "NumOutputPorts": 15,
+  "NumParameters": 58,
+  "NumIntStates": 0,
+  "NumFloatStates": 0,
+  "NumDoubleStates": 84,
+  "InputPortsInfo": [
+    {
+      "Name": "Vta",
+      "Description": "A phase terminal voltage",
+      "Unit": "kV",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Vtb",
+      "Description": "B phase terminal voltage",
+      "Unit": "kV",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Vtc",
+      "Description": "C phase terminal voltage",
+      "Unit": "kV",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "I1a",
+      "Description": "A phase VSC current",
+      "Unit": "kA",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "I1b",
+      "Description": "B phase VSC current",
+      "Unit": "kA",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "I1c",
+      "Description": "C phase VSC current",
+      "Unit": "kA",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "I2a",
+      "Description": "A phase current after capacitor",
+      "Unit": "kA",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "I2b",
+      "Description": "B phase current after capacitor",
+      "Unit": "kA",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "I2c",
+      "Description": "C phase current after capacitor",
+      "Unit": "kA",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Idc",
+      "Description": "Current from Primary Power Source",
+      "Unit": "kA",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "VdcMPPT",
+      "Description": "Maximum power point voltage",
+      "Unit": "kV",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Pref",
+      "Description": "Active power reference ",
+      "Unit": "pu",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Qref",
+      "Description": "Reactive power reference",
+      "Unit": "pu",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Vdc_meas",
+      "Description": "Measured DC Voltage",
+      "Unit": "kV",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Vref",
+      "Description": "Voltage magnitude reference",
+      "Unit": "pu",
+      "DataType": 9,
+      "Width": 1
+    }
+  ],
+  "OutputPortsInfo": [
+    {
+      "Name": "m_a",
+      "Description": "Phase A modulating signal",
+      "Unit": "N/A",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "m_b",
+      "Description": "Phase B modulating signal",
+      "Unit": "N/A",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "m_c",
+      "Description": "Phase C modulating signal",
+      "Unit": "N/A",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "FreqPLL",
+      "Description": "PLL frequency",
+      "Unit": "Hz",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Id1",
+      "Description": "Positive Sequence Current d",
+      "Unit": "pu",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Iq1",
+      "Description": "Positive Sequence Current q",
+      "Unit": "pu",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Id2",
+      "Description": "Negative Sequence Current d",
+      "Unit": "pu",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Iq2",
+      "Description": "Negative Sequence Current q",
+      "Unit": "pu",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Vtd1",
+      "Description": "Positive Sequence Voltage d",
+      "Unit": "pu",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Vtq1",
+      "Description": "Positive Sequence Voltage q",
+      "Unit": "pu",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Vtd2",
+      "Description": "Negative Sequence Voltage d",
+      "Unit": "pu",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Vtq2",
+      "Description": "Negative Sequence Voltage q",
+      "Unit": "pu",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "FRT_Flag",
+      "Description": "Fault ride-through",
+      "Unit": "N/A",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Pout",
+      "Description": "Active power output at terminal",
+      "Unit": "pu",
+      "DataType": 9,
+      "Width": 1
+    },
+    {
+      "Name": "Qout",
+      "Description": "Reactive power output at terminal",
+      "Unit": "pu",
+      "DataType": 9,
+      "Width": 1
+    }
+  ],
+  "ParametersInfo": [
+    {
+      "Name": "VLLbase",
+      "Description": "RMS L-L base voltage",
+      "Unit": "V",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 600.0,
+      "MinValue": 0.001,
+      "MaxValue": 1000.0
+    },
+    {
+      "Name": "Sbase",
+      "Description": "VA base",
+      "Unit": "VA",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 1000000.0,
+      "MinValue": 0.001,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "Tflt_v",
+      "Description": "LPF time constant for voltage ",
+      "Unit": "s",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 1e-05,
+      "MinValue": 0.0,
+      "MaxValue": 10.0
+    },
+    {
+      "Name": "Vflt_flag",
+      "Description": "Flag for voltage filter",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 1.0,
+      "MinValue": 0.0,
+      "MaxValue": 1.0
+    },
+    {
+      "Name": "Tflt_i",
+      "Description": "LPF time constant for current",
+      "Unit": "s",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 1e-05,
+      "MinValue": 0.0,
+      "MaxValue": 10.0
+    },
+    {
+      "Name": "Iflt_flag",
+      "Description": "Flag for currrent filter",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 1.0,
+      "MinValue": 0.0,
+      "MaxValue": 1.0
+    },
+    {
+      "Name": "Cur1_flag",
+      "Description": "Current control at (1: before LCL, 0: after LCL)",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 1.0,
+      "MinValue": 0.0,
+      "MaxValue": 1.0
+    },
+    {
+      "Name": "k_PLL",
+      "Description": "Damping constant for SOGI filter",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 1.0,
+      "MinValue": 0.0,
+      "MaxValue": 1000.0
+    },
+    {
+      "Name": "KpPLL",
+      "Description": "Proportional gain for PLL",
+      "Unit": "pu/pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 25.4,
+      "MinValue": 0.0,
+      "MaxValue": 1000.0
+    },
+    {
+      "Name": "KiPLL",
+      "Description": "Integral gain for PLL",
+      "Unit": "pu/pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 324.0,
+      "MinValue": 0.001,
+      "MaxValue": 1000.0
+    },
+    {
+      "Name": "Lim_PLL",
+      "Description": "Windup limit for PLL",
+      "Unit": "pu/pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 70.0,
+      "MinValue": 0.0,
+      "MaxValue": 1000.0
+    },
+    {
+      "Name": "w_nom",
+      "Description": "Nominal angular frequency",
+      "Unit": "rad/s",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 376.99111842,
+      "MinValue": 1.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "tstart_up",
+      "Description": "Time for start up flag of Q and Vt closed loop",
+      "Unit": "s",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 1.9,
+      "MinValue": 0.0,
+      "MaxValue": 1000.0
+    },
+    {
+      "Name": "Vdc_nom",
+      "Description": "Nominal DC Link Voltage",
+      "Unit": "kV",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 1200.0,
+      "MinValue": 0.0,
+      "MaxValue": 10000.0
+    },
+    {
+      "Name": "VI_flag",
+      "Description": "1: enable PPS VI characteristic, 0: constant I",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.0,
+      "MinValue": 0.0,
+      "MaxValue": 1.0
+    },
+    {
+      "Name": "MPPT_flag",
+      "Description": "1: enable MPPT for Vdc*, requires VI_flag=1 and Vdc_flag=1",
+      "Unit": "pu/pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.0,
+      "MinValue": 0.0,
+      "MaxValue": 1.0
+    },
+    {
+      "Name": "b_Vdc",
+      "Description": "Setpoint weight for DC voltage",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.56,
+      "MinValue": 0.0,
+      "MaxValue": 100.0
+    },
+    {
+      "Name": "Kp_Vdc",
+      "Description": "Proportional gain for Vdc",
+      "Unit": "pu/pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 5.18,
+      "MinValue": 0.001,
+      "MaxValue": 1000.0
+    },
+    {
+      "Name": "Ki_Vdc",
+      "Description": "Integral gain for Vdc",
+      "Unit": "pu/pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 52.91,
+      "MinValue": 0.0,
+      "MaxValue": 1000.0
+    },
+    {
+      "Name": "T_frq",
+      "Description": "Time constant for PLL frequency",
+      "Unit": "s",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.1,
+      "MinValue": 0.0,
+      "MaxValue": 1.0
+    },
+    {
+      "Name": "fdbd1",
+      "Description": "Lower deadband for frequency droop control",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": -0.0006,
+      "MinValue": -100000000.0,
+      "MaxValue": 0.0
+    },
+    {
+      "Name": "fdbd2",
+      "Description": "Upper deadband for frequency droop control",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.0006,
+      "MinValue": 0.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "Ddn",
+      "Description": "Inverse of droop for high frequency",
+      "Unit": "******",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 20.0,
+      "MinValue": 0.0,
+      "MaxValue": 5000.0
+    },
+    {
+      "Name": "Dup",
+      "Description": "Inverse of droop for low frequency",
+      "Unit": "******",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.0,
+      "MinValue": 0.0,
+      "MaxValue": 100.0
+    },
+    {
+      "Name": "Tp_droop",
+      "Description": "Time constant for first order lag block in P-f control",
+      "Unit": "s",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.001,
+      "MinValue": 0.0,
+      "MaxValue": 100.0
+    },
+    {
+      "Name": "Vdc_flag",
+      "Description": "Vdc control flag (1: enable, 0: const. PQ)",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.0,
+      "MinValue": 0.0,
+      "MaxValue": 1.0
+    },
+    {
+      "Name": "f_flag",
+      "Description": "Frequency flag (1: enable frequency droop control)",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.0,
+      "MinValue": 0.0,
+      "MaxValue": 1.0
+    },
+    {
+      "Name": "Id_frz_flag",
+      "Description": "freeze Id during LVRT",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.0,
+      "MinValue": 0.0,
+      "MaxValue": 1.0
+    },
+    {
+      "Name": "Ilim_pu",
+      "Description": "Inverter Current limit",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 1.1,
+      "MinValue": -10.0,
+      "MaxValue": 10.0
+    },
+    {
+      "Name": "Kv_p",
+      "Description": "Proportional gain for terminal voltage PI controller",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.0,
+      "MinValue": 0.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "Kv_i",
+      "Description": "Integral gain for terminal voltage PI controller",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 100.0,
+      "MinValue": 0.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "Qmin",
+      "Description": "Minimum reactive power in pu",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": -0.4,
+      "MinValue": -100000000.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "Qmax",
+      "Description": "Maximum reactive power in pu",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.4,
+      "MinValue": -100000000.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "Kq_p",
+      "Description": "Q closed-loop proportional control gain",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.0,
+      "MinValue": 0.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "Kq_i",
+      "Description": "Q closed-loop integral control gain",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 40.0,
+      "MinValue": 0.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "dbhv_frt",
+      "Description": "Dead band LVRT +ve sequence HV",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": -0.1,
+      "MinValue": -100000000.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "dblv_frt",
+      "Description": "Dead band HVRT +ve sequence LV",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.1,
+      "MinValue": -100000000.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "Kqv1",
+      "Description": "Proportional gain for positive voltage dip",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 2.0,
+      "MinValue": 0.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "Qctl_CL_flag",
+      "Description": "1: enables closed loop Q control, 0: open loop",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 1.0,
+      "MinValue": 0.0,
+      "MaxValue": 1.0
+    },
+    {
+      "Name": "Vt_flag",
+      "Description": "1: enable inverter term. voltage control, 0: Q control",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 1.0,
+      "MinValue": 0.0,
+      "MaxValue": 1.0
+    },
+    {
+      "Name": "dbl_2",
+      "Description": "VRT dead band (negative)",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": -0.1,
+      "MinValue": -100000000.0,
+      "MaxValue": 0.0
+    },
+    {
+      "Name": "dbh_2",
+      "Description": "VRT dead band (positive)",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.1,
+      "MinValue": 0.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "Kqv2",
+      "Description": "Proportional gain for -ve voltage deviation",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 2.0,
+      "MinValue": 0.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "V2_flag",
+      "Description": "1: enable V2 control during FRT",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 1.0,
+      "MinValue": 0.0,
+      "MaxValue": 1.0
+    },
+    {
+      "Name": "Ipramp_up",
+      "Description": "Ramp up rate for active current",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 1.0,
+      "MinValue": 0.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "Kcc_p",
+      "Description": "Proportional gain PI controller in current controller",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.32325,
+      "MinValue": 0.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "Kcc_i",
+      "Description": "Integral gain PI controller in current controller",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 324.0,
+      "MinValue": 0.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "Lim_upCC",
+      "Description": "Current controller's anti-windup upper limit",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 99999.0,
+      "MinValue": 0.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "Lim_lowCC",
+      "Description": "Current controller's anti-windup lower limit",
+      "Unit": "pu",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": -99999.0,
+      "MinValue": -100000000.0,
+      "MaxValue": 0.0
+    },
+    {
+      "Name": "Tau_Vff",
+      "Description": "Time constant of LPF for voltage current controller",
+      "Unit": "s",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.0001,
+      "MinValue": 0.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "Vff_flag",
+      "Description": "Voltage filter flag (1 enable)",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.0,
+      "MinValue": 0.0,
+      "MaxValue": 100000000.0
+    },
+    {
+      "Name": "IR_flag",
+      "Description": "1: limit Iq2 to delta Id2, 0: limit Iq2 to Id2",
+      "Unit": "N/A",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 1.0,
+      "MinValue": 0.0,
+      "MaxValue": 1.0
+    },
+    {
+      "Name": "Tr",
+      "Description": "Power measurement transducer time constant",
+      "Unit": "s",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.001,
+      "MinValue": 0.0,
+      "MaxValue": 0.1
+    },
+    {
+      "Name": "Lchoke",
+      "Description": "Series filter inductance",
+      "Unit": "H",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.0001,
+      "MinValue": 1e-06,
+      "MaxValue": 10.0
+    },
+    {
+      "Name": "Rchoke",
+      "Description": "Series filter resistance",
+      "Unit": "Ohm",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.00075,
+      "MinValue": 1e-06,
+      "MaxValue": 10.0
+    },
+    {
+      "Name": "Cfilt",
+      "Description": "Parallel wye filter capacitance",
+      "Unit": "F",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.0015,
+      "MinValue": 1e-06,
+      "MaxValue": 10.0
+    },
+    {
+      "Name": "Rdamp",
+      "Description": "Parallel wye filter series resistance",
+      "Unit": "Ohm",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.01667,
+      "MinValue": 1e-06,
+      "MaxValue": 10.0
+    },
+    {
+      "Name": "Tv",
+      "Description": "Voltage control filter time constant",
+      "Unit": "s",
+      "DataType": 9,
+      "FixedValue": 0,
+      "DefaultValue": 0.01,
+      "MinValue": 0.0,
+      "MaxValue": 0.1
+    }
+  ]
+}

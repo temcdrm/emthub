@@ -1,0 +1,64 @@
+BEGIN NEW DATA CASE --NOSORT--
+DATA BASE MODULE
+$ERASE
+ARG __PCCA, __OUT, WTOTAL, ILIMIT, UVLEVL, UVTIME, _PFANG
+NUM WTOTAL, ILIMIT, UVLEVL, UVTIME, _PFANG
+DUM _DERIA, ____VP, ____X2, ____X3, _SCALE, _KEPSV, _SEPSF, ___ZVP, __ZQVP
+DUM ___ZWP, ___QVP, ___VP1, ___VP2, __EPSV, __EPSF, RSCALE, ___DEN
+DUM ___ANG, ___WDV, WDVLIM, IRMSMX, __IMAG, _THETA, WPTRIP, __UV2T
+DUM ___UV2, UVTRIP, __TRIP, __ANGR
+/TACS
+90__PCCA                                                                    1.E3
+11IRMSMX      ILIMIT                                              -1.0      1.E3
+ 0__OUTA  +__PCCA                                     1.
+ 0__EPSV          +__PCCA         -___ZVP             1.
+ 0_SCALE  +RSCALE                                1.41421
+ 0_KEPSV  +__EPSV                                1.41421
+ 0___ZVP  +____VP                                     1.                  
+ 0__ZQVP  +___QVP                                     1.                  
+ 0___ZWP  +__OUTW                                     1.                  
+ 1__IMAG  +WDVLIM                                     1.                  
+        1.          
+        1.      .002
+88____VP58                +___VP2                     1.          1.      
+88____X258                +___ZVP                     1.          1.      
+88____X358                +_SEPSF                   -46.          1.      
+88_SEPSF  =__EPSF*_SCALE
+88__OUTW  =____X3+376.9911
+88___QVP  =____X2*___ZWP
+88___VP2  =___VP1*___ZWP
+88___VP1  =_KEPSV-__ZQVP
+88__EPSF  =__ZQVP*__EPSV
+88RSCALE  =___ZWP/___DEN
+88___DEN  =___ZVP*___ZVP + __ZQVP*__ZQVP + 0.001
+88__OUTV  =SQRT(___DEN)/1.41421
+88___WDV  =WTOTAL / __OUTV
+88WDVLIM60+___WDV +___WDV +IRMSMX                                   ___WDVIRMSMX
+98__ANGR  =ATAN(___QVP/____VP) + PI*(____VP.LT.0)*(___QVP.GE.0)
+98___ANG  =__ANGR - PI*(____VP.LT.0)*(___QVP.LT.0)
+98_THETA  =___ANG + 0.5*PI + (PI*_PFANG/180.0)
+98WPTRIP  =((__OUTW.LT.301.6).OR.(__OUTW.GT.452.4)).AND.(TIMEX.GT.0.01)
+98___UV2  =__OUTV.LT.UVLEVL
+98__UV2T58                +___UV2                     1.          1.___UV2   
+98UVTRIP  =(__UV2T.GE.UVTIME).AND.(TIMEX.GT.0.01)
+98__TRIP64        +WPTRIP         +UVTRIP                   1.                  
+98__OUTI  =__IMAG*(.NOT.__TRIP)
+98_DERIA  =1.41421 * __OUTI * SIN(_THETA)
+98__OUTX  =_DERIA
+C 33__OUTV  
+C 33__OUTA
+C 33__OUTW 
+C 33__OUTI
+C 33__OUTX
+C        1         2         3         4         5         6         7         8
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+/BRANCH
+  __PCCA_DERIA              .001                                               0
+  _DERIA                    1.E8                                               0
+/SOURCE
+60_DERIA-1                                                                  1.E3
+BEGIN NEW DATA CASE
+C 
+$PUNCH
+BEGIN NEW DATA CASE
+BLANK
