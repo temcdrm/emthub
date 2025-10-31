@@ -12,7 +12,7 @@ Use the Green Code button to download.
 
 ## Users
 
-The Blazegraph triple-store database is required, but unlike [CIMHub](https://github.com/GRIDAPPSD/CIMHub/tree/feature/SETO), Java, Docker, and OpenDSS are not required.
+The Blazegraph triple-store database is required for some features, but unlike [CIMHub](https://github.com/GRIDAPPSD/CIMHub/tree/feature/SETO), Java, Docker, and OpenDSS are not required.
 
 - Install Blazegraph 2.1.6 from [Blazegraph Releases](https://github.com/blazegraph/database/releases).
 - Invoke `pip install emthub --upgrade`.

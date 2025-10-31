@@ -31,7 +31,7 @@ DLL_OBJS =dllfunc.o sample.o
 
 DLL_NAME    = c:/atp/atpmingw/Dllfunc.dll
 
-CFLAGS =  -DUNDERSCORE -DATP_MINGW -O2 -I../../../emthub/dll/include
+CFLAGS =  -DUNDERSCORE -DATP_MINGW -O2 -I../../dll/include
 FFLAGS = -O2
 IMAGE=c:/atp/atpmingw/mytpbig.exe
 
@@ -45,14 +45,14 @@ all:	$(DLL_NAME) $(IMAGE)
 .c.o:
 	$(CC) -c $(CFLAGS) $<
 
-IEEE_Cigre_DLLWrapper.o: ../../../emthub/dll/wrapper/IEEE_Cigre_DLLWrapper.c
-	$(CC) -c $(CFLAGS) ../../../emthub/dll/wrapper/IEEE_Cigre_DLLWrapper.c
+IEEE_Cigre_DLLWrapper.o: ../../dll/wrapper/IEEE_Cigre_DLLWrapper.c
+	$(CC) -c $(CFLAGS) ../../dll/wrapper/IEEE_Cigre_DLLWrapper.c
 
 $(IMAGE) : $(OBJECTS) $(INSFILE)
 	copy c:\atp\atpmingw\make\MinGW\lib\crt2.o > null
 	$(FOR) -s -o $(IMAGE) $(OBJECTS) $(LIBRARY)
 	del crt2.o > null
-	copy /y c:\src\emthub\dll\bin32\*.dll c:\atp\atpmingw
+	copy /y ..\..\dll\bin32\*.dll c:\atp\atpmingw
 
 dllfunc.o: dllfunc.c
 	$(CC) -c $(CFLAGS) dllfunc.c
