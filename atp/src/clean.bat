@@ -1,0 +1,14 @@
+del *.lis
+del *.dbg
+del fort.*
+del *.dat
+del *.cfg
+del *.pl4
+del commands.script
+del *.log
+del *.tmp
+del *.bin
+del README.html
+del wecc240.hdf5
+del ieee118.hdf5
+del ibrcall.hdf5

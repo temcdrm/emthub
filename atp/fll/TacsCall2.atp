@@ -1,0 +1,80 @@
+BEGIN NEW DATA CASE
+C  dT  >< Tmax >< Xopt >< Copt ><Epsiln>
+   1.E-5      .4     60.                
+   65535       1       1       1       1       0       0       1       0
+$PARAMETER
+RFI =1.0 $$
+RSNUBI =50.0 $$
+CSNUBI =0.25 $$
+TCLAI =0.05 $$
+TOPAI =0.30 $$
+TCLBI =9.05 $$
+TCLCI =9.05 $$
+TOPA______=TOPAI
+TCLC______=TCLCI
+TCLB______=TCLBI
+TCLA______=TCLAI
+RSNUB_=RSNUBI
+RF____=RFI
+CSNUB_=CSNUBI
+BLANK $PARAMETER
+/TACS
+TACS HYBRID
+$INCLUDE, TACSPV2.PCH, FLL2A#, FLL2B#, PV002, 20.0E3, 100.0, 108.0, 0.16, 0.0
+C        1         2         3         4         5         6         7         8
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+/BRANCH
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  >
+C < n1 >< n2 ><ref1><ref2>< R  >< A  >< B  ><Leng><><>0
+-1FLTA  PCCA                  .5  800.2.4E-5    3. 2 0                         0
+-2FLTB  PCCB                  .1  400.1.6E-5    3. 2 0                         0
+-3FLTC  PCCC                                                                   0
+-1SRCEA FLTA                  .5  800.2.4E-5    3. 2 0                         0
+-2SRCEB FLTB                  .1  400.1.6E-5    3. 2 0                         0
+-3SRCEC FLTC                                                                   0
+  FRESA                   RF____                                               0
+  FRESB                   RF____                                               0
+  FRESC                   RF____                                               0
+  PCCA                    RSNUB_      CSNUB_                                   0
+  PCCB                    RSNUB_      CSNUB_                                   0
+  PCCC                    RSNUB_      CSNUB_                                   0
+$VINTAGE, 1,
+ 1PCCA                     144003.09813599
+  USE RL
+$UNITS, 0.60E+02 , 0.
+ 1PCCA                     .01728000009839 10726.008053058
+ 2      FLL2B                          0.0 536.30038330083
+                           .86399994257E-4 26.816481268521
+ 3FLL2A                                0.0 536.30038330083
+                                       0.0 26.815999352378
+                           .86399994257E-4 26.816481268521
+$VINTAGE, -1,
+$UNITS, -1.,-1.
+  USE OLD
+  FLL2A FLL2B               1.E4                                               2
+/SWITCH
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >
+  FLTA  FRESA TCLA______TOPA______                                             0
+  FLTB  FRESB TCLB______      1.E3                                             0
+  FLTC  FRESC TCLC______      1.E3                                             0
+/SOURCE
+C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >
+14SRCEA   3394.11255       60.                                     -1.     100.5
+14SRCEB   3394.11255       60.     -120.                           -1.     100.5
+14SRCEC   3394.11255       60.     -240.                           -1.     100.5
+/TACS
+33PV002V
+33PV002I
+33PV002W
+33PV002A
+33PV002X
+/OUTPUT
+  SRCEA SRCEB SRCEC PCCA  PCCB  PCCC  FLL2A FLL2B  
+BLANK TACS
+BLANK BRANCH
+BLANK SWITCH
+BLANK SOURCE
+BLANK OUTPUT
+BLANK PLOT
+BEGIN NEW DATA CASE
+BLANK
