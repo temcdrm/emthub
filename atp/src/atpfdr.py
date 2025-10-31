@@ -1,3 +1,5 @@
+# Copyright (C) 2021-2023 Battelle Memorial Institute
+# Copyright (C) 2024-2025 Meltran, Inc
 import cimhub.api as cimhub
 import numpy as np
 import math
