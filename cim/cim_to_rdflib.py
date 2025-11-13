@@ -24,3 +24,7 @@ if __name__ == '__main__':
     cls = nscls[idx+1:]
     print('{:30s} {:30s} {:5d}'.format (ns, cls, int(r['cnt'])))
 
+  print("--- printing raw triples ---")
+  for s, p, o in g:
+    print((s, p, o))
+

@@ -711,101 +711,6 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
-      <div id="DiagramObject" class="group">
-         <a href="#DiagramObject">
-            <h2 class="concrete">DiagramObject</h2>
-         </a>
-         <p class="package">DiagramLayout</p>
-         <p class="comment">An object that defines one or more points in a given space. This object can be associated with anything that specializes IdentifiedObject. For single line diagrams such objects typically include such items as analog values, breakers, disconnectors, power transformers, and transmission lines.</p>
-         <h3>Native Members</h3>
-         <table>
-            <tr>
-               <th>
-                  <p class="name" id="DiagramObject.drawingOrder">drawingOrder</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Integer">Integer</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The drawing order of this element. The higher the number, the later the element is drawn in sequence. This is used to ensure that elements that overlap are rendered in the correct order.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="DiagramObject.isPolygon">isPolygon</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Boolean">Boolean</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">Defines whether or not the diagram objects points define the boundaries of a polygon or the routing of a polyline. If this value is true then a receiving application should consider the first and last points to be connected.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="DiagramObject.IdentifiedObject">IdentifiedObject</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#IdentifiedObject">IdentifiedObject</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The domain object to which this diagram object is associated.</p>
-               </td>
-            </tr>
-         </table>
-         <h3>Inherited Members</h3>
-         <table>
-            <tr>
-               <th>
-                  <p class="name">mRID</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#String">String</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">name</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#String">String</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
-      </div>
       <div id="DiagramObjectPoint" class="group">
          <a href="#DiagramObjectPoint">
             <h2 class="concrete">DiagramObjectPoint</h2>
@@ -4408,6 +4313,122 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="TextDiagramObject" class="group">
+         <a href="#TextDiagramObject">
+            <h2 class="concrete">TextDiagramObject</h2>
+         </a>
+         <p class="package">DiagramLayout</p>
+         <p class="comment">A diagram object for placing free-text or text derived from an associated domain object.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="TextDiagramObject.text">text</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The text that is displayed by this text diagram object.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">drawingOrder</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#DiagramObject.drawingOrder">DiagramObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">isPolygon</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#DiagramObject.isPolygon">DiagramObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">IdentifiedObject</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IdentifiedObject">IdentifiedObject</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#DiagramObject.IdentifiedObject">DiagramObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
       <div id="ThermalGeneratingUnit" class="group">
          <a href="#ThermalGeneratingUnit">
             <h2 class="concrete">ThermalGeneratingUnit</h2>
@@ -7125,6 +7146,101 @@ p.package { position: absolute; right: 10px; top: 0px}
          </a>
          <p class="package">Core</p>
          <p class="comment">A multi-purpose curve or functional relationship between an independent variable (X-axis) and dependent (Y-axis) variables.</p>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="DiagramObject" class="group">
+         <a href="#DiagramObject">
+            <h2 class="abstract">DiagramObject</h2>
+         </a>
+         <p class="package">DiagramLayout</p>
+         <p class="comment">An object that defines one or more points in a given space. This object can be associated with anything that specializes IdentifiedObject. For single line diagrams such objects typically include such items as analog values, breakers, disconnectors, power transformers, and transmission lines.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="DiagramObject.drawingOrder">drawingOrder</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The drawing order of this element. The higher the number, the later the element is drawn in sequence. This is used to ensure that elements that overlap are rendered in the correct order.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="DiagramObject.isPolygon">isPolygon</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Defines whether or not the diagram objects points define the boundaries of a polygon or the routing of a polyline. If this value is true then a receiving application should consider the first and last points to be connected.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="DiagramObject.IdentifiedObject">IdentifiedObject</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IdentifiedObject">IdentifiedObject</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The domain object to which this diagram object is associated.</p>
+               </td>
+            </tr>
+         </table>
          <h3>Inherited Members</h3>
          <table>
             <tr>

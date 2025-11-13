@@ -9,6 +9,22 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xml:base="http://www.ucaiug.org/profile" > 
+  <rdf:Description rdf:nodeID="Xd2X2630427eXa3X19a7917d510Xa3X-79e9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#TextDiagramObject.text"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X2630427eXa3X19a7917d510Xa3X-79ea">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X2630427eXa3X19a7917d510Xa3X-79eb"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#TextDiagramObject.text"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X2630427eXa3X19a7917d510Xa3X-79eb">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>text</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
   <rdf:Description rdf:nodeID="Xd2X2630427eXa3X19a7917d510Xa3X-7e2b">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
@@ -4492,7 +4508,6 @@
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#CurveData"/>
   </rdf:Description>
   <rdf:Description rdf:about="#DiagramObject">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:nodeID="Xd2X2630427eXa3X19a7917d510Xa3X-7f5a"/>
     <rdfs:subClassOf rdf:nodeID="Xd2X2630427eXa3X19a7917d510Xa3X-7f5b"/>
@@ -4968,6 +4983,14 @@
     <rdfs:subClassOf rdf:nodeID="Xd2X2630427eXa3X19a7917d510Xa3X-7ea4"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#SynchronousMachineTimeConstantReactance"/>
     <rdfs:subClassOf rdf:resource="#SynchronousMachineDetailed"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#TextDiagramObject">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X2630427eXa3X19a7917d510Xa3X-79e9"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X2630427eXa3X19a7917d510Xa3X-79ea"/>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#TextDiagramObject"/>
+    <rdfs:subClassOf rdf:resource="#DiagramObject"/>
   </rdf:Description>
   <rdf:Description rdf:about="#ThermalGeneratingUnit">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>

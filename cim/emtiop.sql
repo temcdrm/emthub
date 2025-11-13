@@ -1111,6 +1111,15 @@ CREATE TABLE "SynchronousMachineTimeConstantReactance"
     "xQuadTrans" DOUBLE PRECISION NOT NULL
 );
 
+-- A diagram object for placing free-text or text derived from an associated
+-- domain object.
+CREATE TABLE "TextDiagramObject"
+(
+    "mRID" VARCHAR(36) PRIMARY KEY,
+    -- The text that is displayed by this text diagram object.
+    "text" VARCHAR(255) NOT NULL
+);
+
 -- A generating unit whose prime mover could be a steam turbine, combustion
 -- turbine, or diesel engine.
 CREATE TABLE "ThermalGeneratingUnit"
@@ -1673,6 +1682,9 @@ ALTER TABLE "SynchronousMachineDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "
 
 -- Inheritance subclass-superclass constraint for table "SynchronousMachineTimeConstantReactance"
 ALTER TABLE "SynchronousMachineTimeConstantReactance" ADD FOREIGN KEY ( "mRID" ) REFERENCES "SynchronousMachineDetailed" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "TextDiagramObject"
+ALTER TABLE "TextDiagramObject" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DiagramObject" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "TransformerCoreAdmittance"
 ALTER TABLE "TransformerCoreAdmittance" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
