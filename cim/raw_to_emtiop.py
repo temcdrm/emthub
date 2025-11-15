@@ -7,6 +7,7 @@ import os
 import re
 import uuid
 import networkx
+import math
 
 CIM_NS = 'http://www.ucaiug.org/profile#'
 
@@ -20,6 +21,8 @@ METAFILE = 'psseraw.json'
 CIMFILE = 'ieee118.xml'
 LOCFILE = 'raw/ieee118_network.json'
 MRIDFILE = 'raw/ieee118mrids.dat'
+WFREQ = 2.0 * math.pi * 60.0
+M_PER_MILE = 1609.344
 
 tables = {}
 baseMVA = -1.0
@@ -47,7 +50,7 @@ def GetCIMID(cls, nm, uuids, identify=False):
         return uuids[key]
     return str(uuid.uuid4()).upper() # for unidentified CIM instances
 
-def create_cim_xml (tables, kvbases, bus_kvbases, location_file, cim_file):
+def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, location_file, cim_file):
   g = rdflib.Graph()
   CIM = rdflib.Namespace (CIM_NS)
   g.bind('cim', CIM)
@@ -75,6 +78,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, location_file, cim_file):
   g.add ((eq, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(CASES[0]['id'])))
 
   # write the base voltages
+  kvbase_ids = {}
   for kvname, kv in kvbases.items():
     print (kvname)
     ID = GetCIMID('BaseVoltage', kvname, uuids)
@@ -83,6 +87,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, location_file, cim_file):
     g.add ((bv, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(kvname)))
     g.add ((bv, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID)))
     g.add ((bv, rdflib.URIRef (CIM_NS + 'BaseVoltage.nominalVoltage'), rdflib.Literal(str(kv))))
+    kvbase_ids[str(kv)] = ID
 
   # write the connectivity nodes
   busids = {}
@@ -115,6 +120,63 @@ def create_cim_xml (tables, kvbases, bus_kvbases, location_file, cim_file):
     g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.sequenceNumber'), rdflib.Literal('1')))
     g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.xPosition'), rdflib.Literal(str(xy[0]))))
     g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.yPosition'), rdflib.Literal(str(xy[1]))))
+
+  # write the branches
+  for row in tables['BRANCH']['data']:
+    bus1 = rdflib.URIRef(busids[str(row[0])])
+    bus2 = rdflib.URIRef(busids[str(row[1])])
+    ckt = int(row[2])
+    key = '{:d}_{:d}_{:d}'.format (row[0], row[1], ckt)
+    ID = GetCIMID('ACLineSegment', key, uuids)
+    kvbase = bus_kvbases[row[0]]
+    zbase = kvbase * kvbase / baseMVA
+    rpu = row[3]
+    xpu = row[4]
+    bpu = row[5]
+    r1 = rpu * zbase
+    x1 = xpu * zbase
+    l1 = x1 / WFREQ
+    if bpu > 0.0:
+      c1 = bpu / WFREQ / zbase
+      z1 = math.sqrt (l1/c1)
+    else:
+      z1 = 400.0
+      c1 = l1 / z1 / z1
+    b1ch = c1 * WFREQ
+    if z1 >= 100.0 : # overhead
+      r0 = 2.0 * r1
+      x0 = 3.0 * x1
+      b0ch = 0.6 * b1ch
+      if kvbase >= 345.0:
+        length = x1 / 0.6
+      else:
+        length = x1 / 0.8
+    else: # underground
+      r0 = r1
+      x0 = x1
+      b0ch = b1ch
+      length = x1 / 0.2
+    length *= M_PER_MILE
+    vel1 = length / math.sqrt(l1*c1) / 3.0e8 # wave velocity normalized to speed of light
+    ac = rdflib.URIRef (ID)
+    bv = rdflib.URIRef (kvbase_ids[str(kvbase)])
+    g.add ((ac, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'ACLineSegment')))
+    g.add ((ac, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key)))
+    g.add ((ac, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID)))
+    g.add ((ac, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
+    g.add ((ac, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True)))
+    g.add ((ac, rdflib.URIRef (CIM_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
+    g.add ((ac, rdflib.URIRef (CIM_NS + 'ConductingEquipment.ToConnectivityNode'), bus2))
+    g.add ((ac, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
+    g.add ((ac, rdflib.URIRef (CIM_NS + 'Conductor.length'), rdflib.Literal (length)))
+    g.add ((ac, rdflib.URIRef (CIM_NS + 'ACLineSegment.r'), rdflib.Literal (r1)))
+    g.add ((ac, rdflib.URIRef (CIM_NS + 'ACLineSegment.x'), rdflib.Literal (x1)))
+    g.add ((ac, rdflib.URIRef (CIM_NS + 'ACLineSegment.bch'), rdflib.Literal (b1ch)))
+    g.add ((ac, rdflib.URIRef (CIM_NS + 'ACLineSegment.r0'), rdflib.Literal (r0)))
+    g.add ((ac, rdflib.URIRef (CIM_NS + 'ACLineSegment.x0'), rdflib.Literal (x0)))
+    g.add ((ac, rdflib.URIRef (CIM_NS + 'ACLineSegment.bch0'), rdflib.Literal (b0ch)))
+    if vel1 >= 1.0:
+      print ('check line data for {:s} kv={:2f} z1={:.2f} vel1={:.3f}c'.format (key, kvbase, z1, vel1))
 
   # save the XML with mRIDs for re-use
   g.serialize (destination=cim_file, format='pretty-xml', max_depth=1)
@@ -202,7 +264,7 @@ if __name__ == '__main__':
 
   print ('All kV Bases =', kvbases)
 
-  create_cim_xml (tables, kvbases, bus_kvbases, LOCFILE, CIMFILE)
+  create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, LOCFILE, CIMFILE)
 #  print ('Bus kV Bases =', bus_kvbases)
   
 
