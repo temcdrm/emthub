@@ -17,10 +17,27 @@ EMT_NS = 'http://opensource.ieee.org/emtiop#'
 CASES = [
   {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 
    'name': 'IEEE118', 
-   'rawfile':'raw/ieee-118-bus-v4.raw', 'cimfile':'ieee118.xml', 'locfile': 'raw/ieee118_network.json', 'mridfile':'raw/ieee118mrids.dat'},
+   'rawfile':'raw/ieee-118-bus-v4.raw', 'cimfile':'ieee118.xml', 'locfile': 'raw/ieee118_network.json', 'mridfile':'raw/ieee118mrids.dat',
+   'wind_units': ['132_W', '136_W', '138_W', '168_W', '180_W'],
+   'solar_units': ['126_S', '128_S', '130_S', '140_S', '149_S', 
+                   '151_S', '159_S', '165_S', '175_S', '179_S', 
+                   '183_S', '185_S', '188_S', '191_S'],
+   'hydro_units': [], 'nuclear_units': []},
   {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 
    'name': 'WECC240',
-   'rawfile':'raw/240busWECC_2018_PSS.raw', 'cimfile':'wecc240.xml', 'locfile': 'raw/wecc240_network.json', 'mridfile':'raw/wecc240mrids.dat'}
+   'rawfile':'raw/240busWECC_2018_PSS.raw', 'cimfile':'wecc240.xml', 'locfile': 'raw/wecc240_network.json', 'mridfile':'raw/wecc240mrids.dat',
+   'wind_units': ['1032_S', '1034_W', '1333_S', '2130_G', '2332_S', 
+                  '2431_S', '2434_S', '2438_RG', '2438_SW', '2439_S'],
+   'solar_units': ['2533_S', '2631_S', '3234_NW', '3433_S', '3835_NG', 
+                   '3932_S', '3933_CG', '3933_NB', '4031_H', '4031_S', 
+                   '4035_C', '4039_W', '4131_W', '4232_H', '5032_C', 
+                   '5032_W', '6132_H', '6132_W', '6235_H', '6333_W', 
+                   '6433_W', '6533_C', '6533_G', '7031_P', '7032_G'],
+   'hydro_units': ['1232_H', '1331_H', '2130_H', '2637_H', '2638_H', 
+                   '4035_H', '4039_H', '4131_H', '4132_H', '4231_H', 
+                   '5031_H', '6335_H', '6533_H', '7032_H', '8033_H', 
+                   '8034_H'],
+   'nuclear_units': ['1431_N', '4132_N']}
 ]
 
 METAFILE = 'psseraw.json'
@@ -484,6 +501,38 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.Curve'), sat))
     g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.xvalue'), rdflib.Literal(i2, datatype=CIM.Float)))
     g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.y1value'), rdflib.Literal(f2, datatype=CIM.Float)))
+
+  # write the generators: synchronous machine, generating unit, exciter, governor, stabilizer
+  nsolar = 0
+  nwind = 0
+  nthermal = 0
+  nhydro = 0
+  nnuclear = 0
+  for row in tables['GENERATOR']['data']:
+    if row[5] < 1:
+      continue
+    bus1 = rdflib.URIRef(busids[str(row[0])])
+    kvbase = bus_kvbases[row[0]]
+    ckt = row[1].strip()
+    key = '{:d}_{:s}'.format (row[0], ckt)
+    ftype = 'Thermal'
+    if key in case['wind_units']:
+      ftype = 'Wind'
+      nwind += 1
+    elif key in case['solar_units']:
+      ftype = 'Solar'
+      nsolar += 1
+    elif key in case['hydro_units']:
+      ftype = 'Hydro'
+      nhydro += 1
+    elif key in case['nuclear_units']:
+      ftype = 'Nuclear'
+      nnuclear += 1
+    else:
+      nthermal += 1
+
+    print ('Gen {:s} Fuel={:s}'.format (key, ftype))
+  print ('{:d} thermal, {:d} hydro, {:d} nuclear, {:d} solar, {:d} wind generators'.format (nthermal, nhydro, nnuclear, nsolar, nwind))
 
   # save the XML with mRIDs for re-use
   g.serialize (destination=case['cimfile'], format='pretty-xml', max_depth=1)
