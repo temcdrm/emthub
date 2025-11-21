@@ -277,7 +277,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((ec, rdflib.URIRef (CIM_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
     g.add ((ec, rdflib.URIRef (CIM_NS + 'ConductingEquipment.ToConnectivityNode'), bus1))
     g.add ((ec, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
-    g.add ((ec, rdflib.URIRef (CIM_NS + 'EnergyConsumer.LoadResponseCharacteristic'), rdflib.URIRef (LRmRID)))
+    g.add ((ec, rdflib.URIRef (CIM_NS + 'EnergyConsumer.LoadResponse'), rdflib.URIRef (LRmRID)))
     g.add ((ec, rdflib.URIRef (CIM_NS + 'EnergyConsumer.p'), rdflib.Literal (p, datatype=CIM.ActivePower)))
     g.add ((ec, rdflib.URIRef (CIM_NS + 'EnergyConsumer.q'), rdflib.Literal (q, datatype=CIM.ReactivePower)))
 
@@ -325,6 +325,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.nomU'), rdflib.Literal (kvbase * 1000.0, datatype=CIM.Voltage)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.sections'), rdflib.Literal (sectionCount, datatype=CIM.Integer)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.maximumSections'), rdflib.Literal (sectionMax, datatype=CIM.Integer)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.grounded'), rdflib.Literal (True, datatype=CIM.Boolean)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator.bPerSection'), rdflib.Literal (sectionB, datatype=CIM.Susceptance)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator.gPerSection'), rdflib.Literal (sectionG, datatype=CIM.Conductance)))
   for row in tables['SWITCHED SHUNT']['data']:
@@ -351,6 +352,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.nomU'), rdflib.Literal (kvbase * 1000.0, datatype=CIM.Voltage)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.sections'), rdflib.Literal (sectionCount, datatype=CIM.Integer)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.maximumSections'), rdflib.Literal (sectionMax, datatype=CIM.Integer)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.grounded'), rdflib.Literal (True, datatype=CIM.Boolean)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator.bPerSection'), rdflib.Literal (sectionB, datatype=CIM.Susceptance)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator.gPerSection'), rdflib.Literal (sectionG, datatype=CIM.Conductance)))
 
