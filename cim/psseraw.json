@@ -85,6 +85,11 @@
                         "Type": "Integer"
                     },
                     {
+                        "Name": "ID",
+                        "Index": 1,
+                        "Type": "String"
+                    },
+                    {
                         "Name": "Status",
                         "Index": 2,
                         "Type": "Integer"
@@ -97,6 +102,36 @@
                     {
                         "Name": "Q",
                         "Index": 4,
+                        "Type": "Float"
+                    }
+                ]
+            },
+            "SWITCHED SHUNT": {
+                "column_count": 27,
+                "columns": [
+                    {
+                        "Name": "Bus",
+                        "Index": 0,
+                        "Type": "Integer"
+                    },
+                    {
+                        "Name": "Status",
+                        "Index": 3,
+                        "Type": "Integer"
+                    },
+                    {
+                        "Name": "BINIT",
+                        "Index": 9,
+                        "Type": "Float"
+                    },
+                    {
+                        "Name": "N1",
+                        "Index": 10,
+                        "Type": "Integer"
+                    },
+                    {
+                        "Name": "B1",
+                        "Index": 11,
                         "Type": "Float"
                     }
                 ]
@@ -292,6 +327,11 @@
                         "Type": "Integer"
                     },
                     {
+                        "Name": "ID",
+                        "Index": 1,
+                        "Type": "String"
+                    },
+                    {
                         "Name": "Status",
                         "Index": 2,
                         "Type": "Integer"
@@ -304,6 +344,36 @@
                     {
                         "Name": "Q",
                         "Index": 4,
+                        "Type": "Float"
+                    }
+                ]
+            },
+            "SWITCHED SHUNT": {
+                "column_count": 12,
+                "columns": [
+                    {
+                        "Name": "Bus",
+                        "Index": 0,
+                        "Type": "Integer"
+                    },
+                    {
+                        "Name": "Status",
+                        "Index": 3,
+                        "Type": "Integer"
+                    },
+                    {
+                        "Name": "BINIT",
+                        "Index": 9,
+                        "Type": "Float"
+                    },
+                    {
+                        "Name": "N1",
+                        "Index": 10,
+                        "Type": "Integer"
+                    },
+                    {
+                        "Name": "B1",
+                        "Index": 11,
                         "Type": "Float"
                     }
                 ]

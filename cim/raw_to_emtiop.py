@@ -93,7 +93,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((bv, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'BaseVoltage')))
     g.add ((bv, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(kvname, datatype=CIM.String)))
     g.add ((bv, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
-    g.add ((bv, rdflib.URIRef (CIM_NS + 'BaseVoltage.nominalVoltage'), rdflib.Literal(kv, datatype=CIM.Voltage)))
+    g.add ((bv, rdflib.URIRef (CIM_NS + 'BaseVoltage.nominalVoltage'), rdflib.Literal(kv * 1000.0, datatype=CIM.Voltage)))
     kvbase_ids[str(kv)] = ID
 
   # write the connectivity nodes
@@ -273,6 +273,61 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((lr, rdflib.URIRef (CIM_NS + 'LoadResponseCharacteristic.qConstantCurrent'), rdflib.Literal(row['Iq'], datatype=CIM.Float)))
     g.add ((lr, rdflib.URIRef (CIM_NS + 'LoadResponseCharacteristic.qConstantPower'), rdflib.Literal(row['Pq'], datatype=CIM.Float)))
 
+  # shunt compensators
+  for row in tables['FIXED SHUNT']['data']:
+    if row[2] < 1:
+      continue
+    bus1 = rdflib.URIRef(busids[str(row[0])])
+    kvbase = bus_kvbases[row[0]]
+    ckt = int(row[1])
+    key = '{:d}_{:d}'.format (row[0], ckt)
+    ID = GetCIMID('LinearShuntCompensator', key, uuids)
+    sc = rdflib.URIRef (ID)
+    bv = rdflib.URIRef (kvbase_ids[str(kvbase)])
+    sectionMax = 1
+    sectionCount = 1
+    sectionG = row[3]/kvbase/kvbase
+    sectionB = row[4]/kvbase/kvbase
+    g.add ((sc, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator')))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype='cim:Boolean')))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'ConductingEquipment.ToConnectivityNode'), bus1))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.nomU'), rdflib.Literal (kvbase * 1000.0, datatype=CIM.Voltage)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.sections'), rdflib.Literal (sectionCount, datatype=CIM.Integer)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.maximumSections'), rdflib.Literal (sectionMax, datatype=CIM.Integer)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator.bPerSection'), rdflib.Literal (sectionB, datatype=CIM.Susceptance)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator.gPerSection'), rdflib.Literal (sectionG, datatype=CIM.Conductance)))
+  for row in tables['SWITCHED SHUNT']['data']:
+    if row[1] < 1:
+      continue
+    bus1 = rdflib.URIRef(busids[str(row[0])])
+    kvbase = bus_kvbases[row[0]]
+    key = '{:d}'.format (row[0])
+    ID = GetCIMID('LinearShuntCompensator', key, uuids)
+    sc = rdflib.URIRef (ID)
+    bv = rdflib.URIRef (kvbase_ids[str(kvbase)])
+    sectionG = 0.0
+    sectionMax = row[3]
+    sectionB = row[4]/kvbase/kvbase
+    sectionCount = int((row[2]+0.1*row[4])/row[4])
+    g.add ((sc, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator')))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype='cim:Boolean')))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'ConductingEquipment.ToConnectivityNode'), bus1))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.nomU'), rdflib.Literal (kvbase * 1000.0, datatype=CIM.Voltage)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.sections'), rdflib.Literal (sectionCount, datatype=CIM.Integer)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.maximumSections'), rdflib.Literal (sectionMax, datatype=CIM.Integer)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator.bPerSection'), rdflib.Literal (sectionB, datatype=CIM.Susceptance)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator.gPerSection'), rdflib.Literal (sectionG, datatype=CIM.Conductance)))
+
   # save the XML with mRIDs for re-use
   g.serialize (destination=case['cimfile'], format='pretty-xml', max_depth=1)
 
@@ -313,7 +368,7 @@ def read_version_33_34(rdr,sections,bTwoTitles):
   table = None
   bTransformer = False
   for row in reader:
-    print (row)
+    #print (row)
     if '@!' in row[0]:
       continue
     if len(row) > 1 and 'END OF' in row[0] and 'BEGIN' in row[1]: # start a new table
@@ -359,9 +414,9 @@ def read_version_33_34(rdr,sections,bTwoTitles):
         else:
           data.append(val.strip('\' '))
       if bTransformer: # impedance and winding data is provided on extra lines
-        print (data)
+        #print (data)
         row = next(reader)
-        print (row)
+        #print (row)
         ncol_read = len(row)
         if data[2] > 0.0:
           if ncol_read > 8:
@@ -392,12 +447,13 @@ def read_version_33_34(rdr,sections,bTwoTitles):
         table['winding_data'].append (winding_data)
       table['data'].append (data)
 
-# print_table ('BUS')
-# print_table ('LOAD')
-# print_table ('FIXED SHUNT')
-# print_table ('GENERATOR')
-# print_table ('BRANCH')
-# print_table ('TRANSFORMER')
+#  print_table ('BUS')
+#  print_table ('LOAD')
+#  print_table ('FIXED SHUNT')
+#  print_table ('SWITCHED SHUNT')
+#  print_table ('GENERATOR')
+#  print_table ('BRANCH')
+#  print_table ('TRANSFORMER')
 
 if __name__ == '__main__':
   case_id = 0
