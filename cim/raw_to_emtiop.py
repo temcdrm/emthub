@@ -346,6 +346,24 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((sc, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator.bPerSection'), rdflib.Literal (sectionB, datatype=CIM.Susceptance)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator.gPerSection'), rdflib.Literal (sectionG, datatype=CIM.Conductance)))
 
+  # write the transformers, assumed to be 2-winding
+  # TODO: 3-winding
+  # TODO: handle the taps
+  for idx in range(len(tables['TRANSFORMER']['data'])):
+    row = tables['TRANSFORMER']['data'][idx]
+    if row[4] < 1:
+      continue
+    key = '{:d}_{:d}_{:d}_{:d}'.format (row[0], row[1], row[2], int(row[3]))
+    wdg = tables['TRANSFORMER']['winding_data'][idx]
+    mva = max(wdg['mvas'])
+    if mva <= 0.0:
+      mva = wdg['s12']
+    for i in range(wdg['nwdgs']):
+      if wdg['kvs'][i] <= 0.0:
+        wdg['kvs'][i] = bus_kvbases[row[i]]
+    print (key, wdg['nwdgs'], wdg['r12'], wdg['x12'], wdg['s12'], wdg['taps'], wdg['kvs'], mva)
+    ID = GetCIMID('PowerTransformer', key, uuids)
+
   # save the XML with mRIDs for re-use
   g.serialize (destination=case['cimfile'], format='pretty-xml', max_depth=1)
 
