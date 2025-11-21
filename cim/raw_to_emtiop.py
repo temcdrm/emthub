@@ -26,6 +26,8 @@ CASES = [
 METAFILE = 'psseraw.json'
 WFREQ = 2.0 * math.pi * 60.0
 M_PER_MILE = 1609.344
+SQRT3 = math.sqrt(3.0)
+SQRT2 = math.sqrt(2.0)
 
 XFMR_IMAG_PU = 0.01
 XFMR_INLL_PU = 0.0025
@@ -402,10 +404,10 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.phaseAngleClock'), rdflib.Literal(clocks[idx], datatype=CIM.Integer)))
       g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.endNumber'), rdflib.Literal(idx+1, datatype=CIM.Integer)))
       if clocks[idx] != 0:
-        g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.connectionKind'), rdflib.URIRef (CIM_NS + 'WindingConnecion.D')))  # TODO: cim:WindingConnection.D?
+        g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.connectionKind'), rdflib.URIRef (CIM_NS + 'WindingConnection.D')))  # TODO: cim:WindingConnection.D?
         g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.grounded'), rdflib.Literal(False, datatype=CIM.Boolean)))
       else:
-        g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.connectionKind'), rdflib.URIRef (CIM_NS + 'WindingConnecion.Y')))  # TODO: cim:WindingConnection.Y?
+        g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.connectionKind'), rdflib.URIRef (CIM_NS + 'WindingConnection.Y')))  # TODO: cim:WindingConnection.Y?
         g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.grounded'), rdflib.Literal(True, datatype=CIM.Boolean)))
       g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.rground'), rdflib.Literal(0.0, datatype=CIM.Resistance)))
       g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.xground'), rdflib.Literal(0.0, datatype=CIM.Reactance)))
@@ -433,7 +435,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((mesh, rdflib.URIRef (CIM_NS + 'TransformerMeshImpedance.x0'), rdflib.Literal(xmesh, datatype=CIM.Reactance)))
 
     # write default core branch
-    kvbase = wdg['kvs'][0]
+    kvbase = wdg['kvs'][1]
     ybase = mva / kvbase / kvbase  #TODO: the default core parameters are based on actual MVA rating, not the 100-MVA system base
     bcore = XFMR_IMAG_PU * ybase
     gcore = XFMR_INLL_PU * ybase
@@ -448,6 +450,38 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((core, rdflib.URIRef (CIM_NS + 'TransformerCoreAdmittance.g0'), rdflib.Literal(gcore, datatype=CIM.Conductance)))
     g.add ((core, rdflib.URIRef (CIM_NS + 'TransformerCoreAdmittance.b'), rdflib.Literal(bcore, datatype=CIM.Susceptance)))
     g.add ((core, rdflib.URIRef (CIM_NS + 'TransformerCoreAdmittance.b0'), rdflib.Literal(bcore, datatype=CIM.Susceptance)))
+
+    # write default saturation curve
+    satname = '{:s}_Sat'.format (key)
+    ID = GetCIMID('TransformerSaturation', satname, uuids)
+    sat = rdflib.URIRef (ID)
+    g.add ((sat, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'TransformerSaturation')))
+    g.add ((sat, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(satname, datatype=CIM.String)))
+    g.add ((sat, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+    g.add ((sat, rdflib.URIRef (CIM_NS + 'TransformerSaturation.TransformerCoreAdmittance'), core))
+    g.add ((sat, rdflib.URIRef (CIM_NS + 'Curve.curveStyle'), rdflib.URIRef (CIM_NS + 'CurveStyle.straightLineYValues')))
+    g.add ((sat, rdflib.URIRef (CIM_NS + 'Curve.xUnit'), rdflib.URIRef (CIM_NS + 'UnitSymbol.A')))
+    g.add ((sat, rdflib.URIRef (CIM_NS + 'Curve.y1Unit'), rdflib.URIRef (CIM_NS + 'UnitSymbol.Vs')))
+    g.add ((sat, rdflib.URIRef (CIM_NS + 'Curve.xMultiplier'), rdflib.URIRef (CIM_NS + 'UnitMultiplier.none')))
+    g.add ((sat, rdflib.URIRef (CIM_NS + 'Curve.y1Multiplier'), rdflib.URIRef (CIM_NS + 'UnitMultiplier.none')))
+    ibase_peak = 1.0e3 * XFMR_IMAG_PU * SQRT2 * mva / kvbase / SQRT3
+    fbase_peak = 1.0e3 * SQRT2 * kvbase / SQRT3 / WFREQ
+    i1 = XFMR_VSAT_PU * ibase_peak
+    f1 = XFMR_VSAT_PU * fbase_peak
+    aircore = XFMR_AIRCORE * wdg['x12']* kvbase * kvbase / wdg['s12'] / WFREQ  # leakage inductance referred to this lower-voltage winding
+    i2 = i1 + 100.0
+    f2 = f1 + 100.0 * aircore
+    #print ('SAT: Ib={:.6f} Fb={:.6f} Lac={:.6f} I1={:.6f} I2={:.6f} F1={:.6f} F2={:.6f}'.format (ibase_peak, fbase_peak, aircore, i1, i2, f1, f2))
+    pt = rdflib.BNode()
+    g.add ((pt, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'CurveData')))
+    g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.Curve'), sat))
+    g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.xvalue'), rdflib.Literal(i1, datatype=CIM.Float)))
+    g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.y1value'), rdflib.Literal(f1, datatype=CIM.Float)))
+    pt = rdflib.BNode()
+    g.add ((pt, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'CurveData')))
+    g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.Curve'), sat))
+    g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.xvalue'), rdflib.Literal(i2, datatype=CIM.Float)))
+    g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.y1value'), rdflib.Literal(f2, datatype=CIM.Float)))
 
   # save the XML with mRIDs for re-use
   g.serialize (destination=case['cimfile'], format='pretty-xml', max_depth=1)
