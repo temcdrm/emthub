@@ -61,6 +61,24 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
   g.bind('emt', EMT)
 #  g.bind('xsd', rdflib.namespace.XSD)
 #  g.namespace_manager.bind('xsd', XSD)
+
+  # hard-wire the prefixes for rdf:datatype
+  CIM.ActivePower = 'cim:ActivePower'
+  CIM.AngleDegrees = 'cim:AngleDegrees'
+  CIM.ApparentPower = 'cim:ApparentPower'
+  CIM.Boolean = 'cim:Boolean'
+  CIM.Conductance = 'cim:Conductance'
+  CIM.Float = 'cim:Float'
+  CIM.Integer = 'cim:Integer'
+  CIM.Length = 'cim:Length'
+  CIM.PU = 'cim:PU'
+  CIM.Reactance = 'cim:Reactance'
+  CIM.ReactivePower = 'cim:ReactivePower'
+  CIM.RealEnergy = 'cim:RealEnergy'
+  CIM.Resistance = 'cim:Resistance'
+  CIM.Seconds = 'cim:Seconds'
+  CIM.Susceptance = 'cim:Susceptance'
+  CIM.Voltage = 'cim:Voltage'
   
   # read the existing mRID map for persistence
   uuids = {}
