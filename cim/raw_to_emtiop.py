@@ -27,6 +27,11 @@ METAFILE = 'psseraw.json'
 WFREQ = 2.0 * math.pi * 60.0
 M_PER_MILE = 1609.344
 
+XFMR_IMAG_PU = 0.01
+XFMR_INLL_PU = 0.0025
+XFMR_VSAT_PU = 1.1
+XFMR_AIRCORE = 2.0
+
 tables = {}
 baseMVA = -1.0
 bus_kvbases = {}
@@ -77,6 +82,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
   CIM.RealEnergy = 'cim:RealEnergy'
   CIM.Resistance = 'cim:Resistance'
   CIM.Seconds = 'cim:Seconds'
+  CIM.String = 'cim:String'
   CIM.Susceptance = 'cim:Susceptance'
   CIM.Voltage = 'cim:Voltage'
   
@@ -166,10 +172,10 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       ac = rdflib.URIRef (ID)
       bv = rdflib.URIRef (kvbase_ids[str(kvbase)])
       g.add ((ac, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'SeriesCompensator')))
-      g.add ((ac, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key)))
-      g.add ((ac, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID)))
+      g.add ((ac, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+      g.add ((ac, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
       g.add ((ac, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
-      g.add ((ac, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype='cim:Boolean')))
+      g.add ((ac, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
       g.add ((ac, rdflib.URIRef (CIM_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
       g.add ((ac, rdflib.URIRef (CIM_NS + 'ConductingEquipment.ToConnectivityNode'), bus2))
       g.add ((ac, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
@@ -205,10 +211,10 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       ac = rdflib.URIRef (ID)
       bv = rdflib.URIRef (kvbase_ids[str(kvbase)])
       g.add ((ac, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'ACLineSegment')))
-      g.add ((ac, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key)))
-      g.add ((ac, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID)))
+      g.add ((ac, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+      g.add ((ac, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
       g.add ((ac, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
-      g.add ((ac, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype='cim:Boolean')))
+      g.add ((ac, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
       g.add ((ac, rdflib.URIRef (CIM_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
       g.add ((ac, rdflib.URIRef (CIM_NS + 'ConductingEquipment.ToConnectivityNode'), bus2))
       g.add ((ac, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
@@ -262,10 +268,10 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     ec = rdflib.URIRef (ID)
     bv = rdflib.URIRef (kvbase_ids[str(kvbase)])
     g.add ((ec, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'EnergyConsumer')))
-    g.add ((ec, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key)))
-    g.add ((ec, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID)))
+    g.add ((ec, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+    g.add ((ec, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
     g.add ((ec, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
-    g.add ((ec, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype='cim:Boolean')))
+    g.add ((ec, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
     g.add ((ec, rdflib.URIRef (CIM_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
     g.add ((ec, rdflib.URIRef (CIM_NS + 'ConductingEquipment.ToConnectivityNode'), bus1))
     g.add ((ec, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
@@ -277,8 +283,8 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
   for key, row in LoadResponseCharacteristics.items():
     lr = rdflib.URIRef (row['mRID'])
     g.add ((lr, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'LoadResponseCharacteristic')))
-    g.add ((lr, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key)))
-    g.add ((lr, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(row['mRID'])))
+    g.add ((lr, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+    g.add ((lr, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(row['mRID'], datatype=CIM.String)))
     g.add ((lr, rdflib.URIRef (CIM_NS + 'LoadResponseCharacteristic.exponentModel'), rdflib.Literal(False, datatype=CIM.Boolean)))
     g.add ((lr, rdflib.URIRef (CIM_NS + 'LoadResponseCharacteristic.pFrequencyExponent'), rdflib.Literal(0.0, datatype=CIM.Float)))
     g.add ((lr, rdflib.URIRef (CIM_NS + 'LoadResponseCharacteristic.qFrequencyExponent'), rdflib.Literal(0.0, datatype=CIM.Float)))
@@ -307,10 +313,10 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     sectionG = row[3]/kvbase/kvbase
     sectionB = row[4]/kvbase/kvbase
     g.add ((sc, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator')))
-    g.add ((sc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key)))
-    g.add ((sc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
-    g.add ((sc, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype='cim:Boolean')))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ConductingEquipment.ToConnectivityNode'), bus1))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
@@ -333,10 +339,10 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     sectionB = row[4]/kvbase/kvbase
     sectionCount = int((row[2]+0.1*row[4])/row[4])
     g.add ((sc, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator')))
-    g.add ((sc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key)))
-    g.add ((sc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
-    g.add ((sc, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype='cim:Boolean')))
+    g.add ((sc, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ConductingEquipment.ToConnectivityNode'), bus1))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
@@ -349,6 +355,8 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
   # write the transformers, assumed to be 2-winding
   # TODO: 3-winding
   # TODO: handle the taps
+  # TODO: sort windings in order of descending voltage
+  # TODO: write inService False for equipment out of service
   for idx in range(len(tables['TRANSFORMER']['data'])):
     row = tables['TRANSFORMER']['data'][idx]
     if row[4] < 1:
@@ -363,6 +371,83 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
         wdg['kvs'][i] = bus_kvbases[row[i]]
     print (key, wdg['nwdgs'], wdg['r12'], wdg['x12'], wdg['s12'], wdg['taps'], wdg['kvs'], mva)
     ID = GetCIMID('PowerTransformer', key, uuids)
+    pt = rdflib.URIRef (ID)
+    g.add ((pt, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'PowerTransformer')))
+    g.add ((pt, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+    g.add ((pt, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+    g.add ((pt, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
+    g.add ((pt, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
+    if min(wdg['kvs']) > 20.0:
+      bGSU = False
+      vgrp = 'Yy'
+      clocks = [0, 0]
+    else:
+      bGSU = True
+      vgrp = 'Yd1'
+      clocks = [0, 1]
+    g.add ((pt, rdflib.URIRef (CIM_NS + 'PowerTransformer.vectorGroup'), rdflib.Literal (vgrp, datatype=CIM.String)))
+    # write 2 ends, assuming they are in correct order by descending voltage
+    ends = []
+    for idx in range(2):
+      endkey = '{:s}_End_{:d}'.format (key, idx+1)
+      endID = GetCIMID('PowerTransformerEnd', endkey, uuids)
+      end = rdflib.URIRef (endID)
+      ends.append (end)
+      g.add ((end, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd')))
+      g.add ((end, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(endkey, datatype=CIM.String)))
+      g.add ((end, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(endID, datatype=CIM.String)))
+      g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.PowerTransformer'), pt))
+      g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.ratedS'), rdflib.Literal(mva*1.0e6, datatype=CIM.ApparentPower)))
+      g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.ratedU'), rdflib.Literal(wdg['kvs'][idx]*1.0e3, datatype=CIM.Voltage)))
+      g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.phaseAngleClock'), rdflib.Literal(clocks[idx], datatype=CIM.Integer)))
+      g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.endNumber'), rdflib.Literal(idx+1, datatype=CIM.Integer)))
+      if clocks[idx] != 0:
+        g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.connectionKind'), rdflib.URIRef (CIM_NS + 'WindingConnecion.D')))  # TODO: cim:WindingConnection.D?
+        g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.grounded'), rdflib.Literal(False, datatype=CIM.Boolean)))
+      else:
+        g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.connectionKind'), rdflib.URIRef (CIM_NS + 'WindingConnecion.Y')))  # TODO: cim:WindingConnection.Y?
+        g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.grounded'), rdflib.Literal(True, datatype=CIM.Boolean)))
+      g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.rground'), rdflib.Literal(0.0, datatype=CIM.Resistance)))
+      g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.xground'), rdflib.Literal(0.0, datatype=CIM.Reactance)))
+      bv = rdflib.URIRef (kvbase_ids[str(wdg['kvs'][idx])])
+      g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.BaseVoltage'), bv))
+      bus1 = rdflib.URIRef(busids[str(row[0])])
+      g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.ConnectivityNode'), bus1))
+
+    # write mesh impedance
+    kvbase = wdg['kvs'][0]
+    zbase = kvbase * kvbase / wdg['s12']
+    rmesh = zbase * wdg['r12']
+    xmesh = zbase * wdg['x12']
+    meshname = '{:s}_Mesh'.format (key)
+    ID = GetCIMID('TransformerMeshImpedance', meshname, uuids)
+    mesh = rdflib.URIRef (ID)
+    g.add ((mesh, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'TransformerMeshImpedance')))
+    g.add ((mesh, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(meshname, datatype=CIM.String)))
+    g.add ((mesh, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+    g.add ((mesh, rdflib.URIRef (CIM_NS + 'TransformerMeshImpedance.FromTransformerEnd'), ends[0]))
+    g.add ((mesh, rdflib.URIRef (CIM_NS + 'TransformerMeshImpedance.ToTransformerEnd'), ends[1]))
+    g.add ((mesh, rdflib.URIRef (CIM_NS + 'TransformerMeshImpedance.r'), rdflib.Literal(rmesh, datatype=CIM.Resistance)))
+    g.add ((mesh, rdflib.URIRef (CIM_NS + 'TransformerMeshImpedance.r0'), rdflib.Literal(rmesh, datatype=CIM.Resistance)))
+    g.add ((mesh, rdflib.URIRef (CIM_NS + 'TransformerMeshImpedance.x'), rdflib.Literal(xmesh, datatype=CIM.Reactance)))
+    g.add ((mesh, rdflib.URIRef (CIM_NS + 'TransformerMeshImpedance.x0'), rdflib.Literal(xmesh, datatype=CIM.Reactance)))
+
+    # write default core branch
+    kvbase = wdg['kvs'][0]
+    ybase = mva / kvbase / kvbase  #TODO: the default core parameters are based on actual MVA rating, not the 100-MVA system base
+    bcore = XFMR_IMAG_PU * ybase
+    gcore = XFMR_INLL_PU * ybase
+    corename = '{:s}_Core'.format (key)
+    ID = GetCIMID('TransformerCoreAdmittance', corename, uuids)
+    core = rdflib.URIRef (ID)
+    g.add ((core, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'TransformerCoreAdmittance')))
+    g.add ((core, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(corename, datatype=CIM.String)))
+    g.add ((core, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+    g.add ((core, rdflib.URIRef (CIM_NS + 'TransformerCoreAdmittance.TransformerEnd'), ends[1]))
+    g.add ((core, rdflib.URIRef (CIM_NS + 'TransformerCoreAdmittance.g'), rdflib.Literal(gcore, datatype=CIM.Conductance)))
+    g.add ((core, rdflib.URIRef (CIM_NS + 'TransformerCoreAdmittance.g0'), rdflib.Literal(gcore, datatype=CIM.Conductance)))
+    g.add ((core, rdflib.URIRef (CIM_NS + 'TransformerCoreAdmittance.b'), rdflib.Literal(bcore, datatype=CIM.Susceptance)))
+    g.add ((core, rdflib.URIRef (CIM_NS + 'TransformerCoreAdmittance.b0'), rdflib.Literal(bcore, datatype=CIM.Susceptance)))
 
   # save the XML with mRIDs for re-use
   g.serialize (destination=case['cimfile'], format='pretty-xml', max_depth=1)
