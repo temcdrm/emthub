@@ -51,6 +51,10 @@ XFMR_INLL_PU = 0.0025
 XFMR_VSAT_PU = 1.1
 XFMR_AIRCORE = 2.0
 
+IBR_IFAULT = 1.2
+
+DYNAMIC_SETTINGS_FILE = 'dynamics_defaults.json'
+
 tables = {}
 baseMVA = -1.0
 bus_kvbases = {}
@@ -76,6 +80,33 @@ def GetCIMID(cls, nm, uuids, identify=False):
             print('Found existing ID for ', key)
         return uuids[key]
     return str(uuid.uuid4()).upper() # for unidentified CIM instances
+
+def append_wecc_dynamics (g, key, ID, pec, leaf_class, dyn_settings):
+  leaf = rdflib.URIRef (ID)
+  g.add ((leaf, rdflib.RDF.type, rdflib.URIRef (CIM_NS + leaf_class)))
+  g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype='cim:String')))  #TODO: pass namespace?
+  g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype='cim:String')))
+  g.add ((leaf, rdflib.URIRef (CIM_NS + 'WeccDynamics.PowerElectronicsConnection'), pec))
+  for tag in dyn_settings['DynamicsFunctionBlock']:
+    row = dyn_settings['DynamicsFunctionBlock'][tag]
+    g.add ((leaf, rdflib.URIRef (CIM_NS + 'DynamicsFunctionBlock.{:s}'.format(tag)), rdflib.Literal(row[0], datatype='cim:' + row[1])))
+  for tag in dyn_settings[leaf_class]:
+    row = dyn_settings[leaf_class][tag]
+    g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(leaf_class, tag)), rdflib.Literal(row[0], datatype='cim:' + row[1])))
+
+def create_machine_dynamics (g, leaf_class, key, uuids):
+  ID = GetCIMID (leaf_class, key, uuids)
+  leaf = rdflib.URIRef (ID)
+  g.add ((leaf, rdflib.RDF.type, rdflib.URIRef (CIM_NS + leaf_class)))
+  g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype='cim:String')))  #TODO: pass namespace?
+  g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype='cim:String')))
+  return leaf
+
+def append_dynamic_parameters (g, leaf, dyn_settings, sections):
+  for sect in sections:
+    for tag in dyn_settings[sect]:
+      row = dyn_settings[sect][tag]
+      g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(sect, tag)), rdflib.Literal(row[0], datatype='cim:' + row[1])))
 
 def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
   g = rdflib.Graph()
@@ -390,7 +421,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     for i in range(wdg['nwdgs']):
       if wdg['kvs'][i] <= 0.0:
         wdg['kvs'][i] = bus_kvbases[row[i]]
-    print (key, wdg['nwdgs'], wdg['r12'], wdg['x12'], wdg['s12'], wdg['taps'], wdg['kvs'], mva)
+    #print (key, wdg['nwdgs'], wdg['r12'], wdg['x12'], wdg['s12'], wdg['taps'], wdg['kvs'], mva)
     ID = GetCIMID('PowerTransformer', key, uuids)
     pt = rdflib.URIRef (ID)
     g.add ((pt, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'PowerTransformer')))
@@ -503,35 +534,136 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.y1value'), rdflib.Literal(f2, datatype=CIM.Float)))
 
   # write the generators: synchronous machine, generating unit, exciter, governor, stabilizer
+  with open(DYNAMIC_SETTINGS_FILE, 'r') as file:
+    dyn_settings = json.load (file)
   nsolar = 0
   nwind = 0
   nthermal = 0
   nhydro = 0
   nnuclear = 0
   for row in tables['GENERATOR']['data']:
-    if row[5] < 1:
+    if row[7] < 1:
       continue
     bus1 = rdflib.URIRef(busids[str(row[0])])
     kvbase = bus_kvbases[row[0]]
+    mvabase = row[6]
+    bv = rdflib.URIRef (kvbase_ids[str(kvbase)])
     ckt = row[1].strip()
     key = '{:d}_{:s}'.format (row[0], ckt)
-    ftype = 'Thermal'
+    ftype = 'ThermalGeneratingUnit'
     if key in case['wind_units']:
-      ftype = 'Wind'
+      ftype = 'PowerElectronicsWindUnit'
       nwind += 1
     elif key in case['solar_units']:
-      ftype = 'Solar'
+      ftype = 'PhotovoltaicUnit'
       nsolar += 1
     elif key in case['hydro_units']:
-      ftype = 'Hydro'
+      ftype = 'HydroGeneratingUnit'
       nhydro += 1
     elif key in case['nuclear_units']:
-      ftype = 'Nuclear'
+      ftype = 'NuclearGeneratingUnit'
       nnuclear += 1
     else:
       nthermal += 1
 
-    print ('Gen {:s} Fuel={:s}'.format (key, ftype))
+    if ftype in ['NuclearGeneratingUnit', 'ThermalGeneratingUnit', 'HydroGeneratingUnit']:
+      unitID = GetCIMID(ftype, key, uuids)
+      un = rdflib.URIRef (unitID)
+      g.add ((un, rdflib.RDF.type, rdflib.URIRef (CIM_NS + ftype)))
+      g.add ((un, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+      g.add ((un, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(unitID, datatype=CIM.String)))
+      g.add ((un, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
+      g.add ((un, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
+      g.add ((un, rdflib.URIRef (CIM_NS + 'GeneratingUnit.minOperatingP'), rdflib.Literal (0.0, datatype=CIM.ActivePower)))
+      g.add ((un, rdflib.URIRef (CIM_NS + 'GeneratingUnit.maxOperatingP'), rdflib.Literal (1.0e6 * mvabase, datatype=CIM.ActivePower)))
+      ID = GetCIMID('SynchronousMachine', key, uuids)
+      sm = rdflib.URIRef (ID)
+      g.add ((sm, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'SynchronousMachine')))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'ConductingEquipment.ToConnectivityNode'), bus1))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'RotatingMachine.GeneratingUnit'), un))
+      maxQ = row[4]
+      if maxQ <= 0.0:
+        maxQ = 0.3122 * mvabase # 0.95 pf
+      minQ = row[5]
+      if minQ >= 0.0:
+        minQ = -0.3122 * mvabase
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'RotatingMachine.p'), rdflib.Literal (1.0e6*row[2], datatype=CIM.ActivePower)))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'RotatingMachine.q'), rdflib.Literal (1.0e6*row[3], datatype=CIM.ReactivePower)))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'RotatingMachine.ratedS'), rdflib.Literal (1.0e6*mvabase, datatype=CIM.ApparentPower)))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'RotatingMachine.ratedU'), rdflib.Literal (1.0e3*kvbase, datatype=CIM.Voltage)))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.earthing'), rdflib.Literal (False, datatype=CIM.Boolean)))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.earthingStarPointR'), rdflib.Literal (0.0, datatype=CIM.Resistance)))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.earthingStarPointX'), rdflib.Literal (0.0, datatype=CIM.Reactance)))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.maxQ'), rdflib.Literal (1.0e6*maxQ, datatype=CIM.ReactivePower)))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.minQ'), rdflib.Literal (1.0e6*minQ, datatype=CIM.ReactivePower)))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.operatingMode'), rdflib.URIRef (CIM_NS + 'SynchronousMachineOperatingMode.generator')))
+      g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.type'), rdflib.URIRef (CIM_NS + 'SynchronousMachineKind.generator')))
+      dynID = GetCIMID('SynchronousMachineTimeConstantReactance', key, uuids)
+      dyn = create_machine_dynamics (g, 'SynchronousMachineTimeConstantReactance', key, uuids)
+      exc = create_machine_dynamics (g, 'ExcST1A', key, uuids)
+      pss = create_machine_dynamics (g, 'PssIEEE1A', key, uuids)
+      gov = create_machine_dynamics (g, 'GovSteamSGO', key, uuids)
+      append_dynamic_parameters (g, dyn, dyn_settings, ['SynchronousMachineTimeConstantReactance', 'SynchronousMachineDetailed', 
+                                                        'RotatingMachineDynamics', 'DynamicsFunctionBlock'])
+      append_dynamic_parameters (g, exc, dyn_settings, ['ExcST1A', 'DynamicsFunctionBlock'])
+      append_dynamic_parameters (g, pss, dyn_settings, ['PssIEEE1A', 'DynamicsFunctionBlock'])
+      append_dynamic_parameters (g, gov, dyn_settings, ['GovSteamSGO', 'DynamicsFunctionBlock'])
+      g.add ((pss, rdflib.URIRef (CIM_NS + 'PowerSystemStabilizerDynamics.ExcitationSystemDynamics'), exc))
+      g.add ((exc, rdflib.URIRef (CIM_NS + 'ExcitationSystemDynamics.SynchronousMachineDynamics'), dyn))
+      g.add ((gov, rdflib.URIRef (CIM_NS + 'TurbineGovernorDynamics.SynchronousMachineDynamics'), dyn))
+      g.add ((dyn, rdflib.URIRef (CIM_NS + 'SynchronousMachineDynamics.SynchronousMachine'), sm))
+    else:
+      ID = GetCIMID('PowerElectronicsConnection', key, uuids)
+      pec = rdflib.URIRef (ID)
+      g.add ((pec, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'PowerElectronicsConnection')))
+      g.add ((pec, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+      g.add ((pec, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+      g.add ((pec, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
+      g.add ((pec, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
+      g.add ((pec, rdflib.URIRef (CIM_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
+      g.add ((pec, rdflib.URIRef (CIM_NS + 'ConductingEquipment.ToConnectivityNode'), bus1))
+      g.add ((pec, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
+      g.add ((pec, rdflib.URIRef (CIM_NS + 'PowerElectronicsConnection.maxIFault'), rdflib.Literal (IBR_IFAULT, datatype=CIM.PU)))
+      maxQ = row[4]
+      if maxQ <= 0.0:
+        maxQ = mvabase
+      minQ = row[5]
+      if minQ >= 0.0:
+        minQ = -mvabase
+      g.add ((pec, rdflib.URIRef (CIM_NS + 'PowerElectronicsConnection.maxQ'), rdflib.Literal (1.0e6*maxQ, datatype=CIM.ReactivePower)))
+      g.add ((pec, rdflib.URIRef (CIM_NS + 'PowerElectronicsConnection.minQ'), rdflib.Literal (1.0e6*minQ, datatype=CIM.ReactivePower)))
+      g.add ((pec, rdflib.URIRef (CIM_NS + 'PowerElectronicsConnection.p'), rdflib.Literal (1.0e6*row[2], datatype=CIM.ActivePower)))
+      g.add ((pec, rdflib.URIRef (CIM_NS + 'PowerElectronicsConnection.q'), rdflib.Literal (1.0e6*row[3], datatype=CIM.ReactivePower)))
+      g.add ((pec, rdflib.URIRef (CIM_NS + 'PowerElectronicsConnection.ratedS'), rdflib.Literal (1.0e6*mvabase, datatype=CIM.ApparentPower)))
+      g.add ((pec, rdflib.URIRef (CIM_NS + 'PowerElectronicsConnection.ratedU'), rdflib.Literal (1.0e3*kvbase, datatype=CIM.Voltage)))
+      unitID = GetCIMID(ftype, key, uuids)
+      un = rdflib.URIRef (unitID)
+      g.add ((un, rdflib.RDF.type, rdflib.URIRef (CIM_NS + ftype)))
+      g.add ((un, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+      g.add ((un, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+      g.add ((un, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
+      g.add ((un, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
+      g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.PowerElectronics'), pec))
+      g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.maxP'), rdflib.Literal (1.0e6*row[6], datatype=CIM.ActivePower)))
+      g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.minP'), rdflib.Literal (0.0, datatype=CIM.ActivePower)))  # TODO: parse PT and PB
+      reecID = GetCIMID('WeccREECA', key, uuids)
+      append_wecc_dynamics (g, key, reecID, pec, 'WeccREECA', dyn_settings)
+      repcID = GetCIMID('WeccREPCA', key, uuids)
+      append_wecc_dynamics (g, key, repcID, pec, 'WeccREPCA', dyn_settings)
+      regcID = GetCIMID('WeccREGCA', key, uuids)
+      append_wecc_dynamics (g, key, regcID, pec, 'WeccREGCA', dyn_settings)
+      if ftype in ['PowerElectronicsWindUnit']:
+        araID = GetCIMID('WeccWTGARA', key, uuids)
+        append_wecc_dynamics (g, key, araID, pec, 'WeccWTGARA', dyn_settings)
+        taID = GetCIMID('WeccWTGTA', key, uuids)
+        append_wecc_dynamics (g, key, taID, pec, 'WeccWTGTA', dyn_settings)
+
   print ('{:d} thermal, {:d} hydro, {:d} nuclear, {:d} solar, {:d} wind generators'.format (nthermal, nhydro, nnuclear, nsolar, nwind))
 
   # save the XML with mRIDs for re-use

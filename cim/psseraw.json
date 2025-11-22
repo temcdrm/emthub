@@ -160,6 +160,16 @@
                         "Type": "Float"
                     },
                     {
+                        "Name": "QT",
+                        "Index": 4,
+                        "Type": "Float"
+                    },
+                    {
+                        "Name": "QB",
+                        "Index": 5,
+                        "Type": "Float"
+                    },
+                    {
                         "Name": "BaseMVA",
                         "Index": 8,
                         "Type": "Float"
@@ -399,6 +409,16 @@
                     {
                         "Name": "Q",
                         "Index": 3,
+                        "Type": "Float"
+                    },
+                    {
+                        "Name": "QT",
+                        "Index": 4,
+                        "Type": "Float"
+                    },
+                    {
+                        "Name": "QB",
+                        "Index": 5,
                         "Type": "Float"
                     },
                     {
