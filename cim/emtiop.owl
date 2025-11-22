@@ -9,37 +9,20 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xml:base="http://www.ucaiug.org/profile" > 
-  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-6ca0">
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-51e9">
+    <rdf:first rdf:resource="#SynchronousMachine"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-51ea">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
-    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#SeriesCompensator.r0"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-51eb"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#SynchronousMachineDynamics.SynchronousMachine"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-6ca1">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
-    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#SeriesCompensator.r"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-6ca2">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-6ca3"/>
-    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#SeriesCompensator.r"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-6ca3">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
-    <rdfs:label>r</rdfs:label>
-    <owl:equivalentClass rdf:resource="http://www.ucaiug.org/ns#Resistance"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-6ca4">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-6ca5"/>
-    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#SeriesCompensator.r0"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-6ca5">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
-    <rdfs:label>r0</rdfs:label>
-    <owl:equivalentClass rdf:resource="http://www.ucaiug.org/ns#Resistance"/>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-51eb">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SynchronousMachine</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#SynchronousMachine"/>
+    <owl:unionOf rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-51e9"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="X23X8826808Xa3X19a93817933Xa3X-7995">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
@@ -95,6 +78,100 @@
     <rdfs:label>FromConnectivityNode</rdfs:label>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ConnectivityNode"/>
     <owl:unionOf rdf:nodeID="X33X5840483Xa3X19aa21c868aXa3X-71c0"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-58a5">
+    <rdf:first rdf:resource="#SynchronousMachineDynamics"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-58a6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-58a7"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#TurbineGovernorDynamics.SynchronousMachineDynamics"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-58a7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SynchronousMachineDynamics</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#SynchronousMachineDynamics"/>
+    <owl:unionOf rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-58a5"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-58a8">
+    <rdf:first rdf:resource="#SynchronousMachineDynamics"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-58a9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-58aa"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#ExcitationSystemDynamics.SynchronousMachineDynamics"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-58aa">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SynchronousMachineDynamics</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#SynchronousMachineDynamics"/>
+    <owl:unionOf rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-58a8"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-5f58">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#GeneratingUnit.minOperatingP"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-5f59">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#GeneratingUnit.maxOperatingP"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-5f5a">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-5f5b"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#GeneratingUnit.minOperatingP"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-5f5b">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>minOperatingP</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.ucaiug.org/ns#ActivePower"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-5f5c">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-5f5d"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#GeneratingUnit.maxOperatingP"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-5f5d">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>maxOperatingP</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.ucaiug.org/ns#ActivePower"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-6ca0">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#SeriesCompensator.r0"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-6ca1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#SeriesCompensator.r"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-6ca2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-6ca3"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#SeriesCompensator.r"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-6ca3">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>r</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.ucaiug.org/ns#Resistance"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-6ca4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-6ca5"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#SeriesCompensator.r0"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-6ca5">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>r0</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.ucaiug.org/ns#Resistance"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-7361">
     <rdf:first rdf:resource="#UnitMultiplier"/>
@@ -4735,8 +4812,18 @@
   </rdf:Description>
   <rdf:Description rdf:about="#ExcitationSystemDynamics">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-58a9"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ExcitationSystemDynamics"/>
     <rdfs:subClassOf rdf:resource="#DynamicsFunctionBlock"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#GeneratingUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-5f58"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-5f59"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-5f5a"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-5f5c"/>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#GeneratingUnit"/>
+    <rdfs:subClassOf rdf:resource="#Equipment"/>
   </rdf:Description>
   <rdf:Description rdf:about="#GovSteamSGO">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
@@ -4772,6 +4859,7 @@
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#HydroGeneratingUnit"/>
+    <rdfs:subClassOf rdf:resource="#GeneratingUnit"/>
   </rdf:Description>
   <rdf:Description rdf:about="#IdentifiedObject">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -4834,6 +4922,7 @@
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#NuclearGeneratingUnit"/>
+    <rdfs:subClassOf rdf:resource="#GeneratingUnit"/>
   </rdf:Description>
   <rdf:Description rdf:about="#PSRType">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -5054,6 +5143,7 @@
   </rdf:Description>
   <rdf:Description rdf:about="#SynchronousMachineDynamics">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-51ea"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#SynchronousMachineDynamics"/>
     <rdfs:subClassOf rdf:resource="#RotatingMachineDynamics"/>
   </rdf:Description>
@@ -5118,6 +5208,7 @@
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ThermalGeneratingUnit"/>
+    <rdfs:subClassOf rdf:resource="#GeneratingUnit"/>
   </rdf:Description>
   <rdf:Description rdf:about="#TopologicalNode">
     <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
@@ -5192,6 +5283,7 @@
   </rdf:Description>
   <rdf:Description rdf:about="#TurbineGovernorDynamics">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X14d2ed1aXa3X19aa732b0b5Xa3X-58a6"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#TurbineGovernorDynamics"/>
     <rdfs:subClassOf rdf:resource="#DynamicsFunctionBlock"/>
   </rdf:Description>
@@ -5444,11 +5536,6 @@
     <rdfs:subClassOf rdf:nodeID="Xd2X53e9beb6Xa3X19a74d69061Xa3X-7e4c"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#WeccWTGTA"/>
     <rdfs:subClassOf rdf:resource="#WeccDynamics"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#WindGeneratingUnit">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#WindGeneratingUnit"/>
   </rdf:Description>
   <rdf:Description rdf:about="#WindingConnection">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>

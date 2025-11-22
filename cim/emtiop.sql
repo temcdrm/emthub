@@ -149,20 +149,27 @@ CREATE TABLE "BatteryUnit"
 CREATE TABLE "ConductingEquipment"
 (
     "mRID" VARCHAR(36) PRIMARY KEY,
-    -- FK column reference to table "BaseVoltage"
-    -- Base voltage of this conducting equipment. Use only when there is no voltage
-    -- level container used and only one base voltage applies. For example, not
-    -- used for transformers.
-    "BaseVoltage" VARCHAR(36) NOT NULL,
     -- FK column reference to table "ConnectivityNode"
     -- The "bus 1" ConnectivityNode for this ConductingEquipment, where the polarity
     -- dot is located for positive current flow within this ConductingEquipment.
-    "FromConnectivityNode" VARCHAR(36) NOT NULL,
+    "FromConnectivityNode" VARCHAR(36),
     -- FK column reference to table "ConnectivityNode"
     -- The "bus 2" ConnectivityNode for this ConductingEquipment. The polarity
     -- dot for positive current flow is located at the other end of this ConductingEquipment.
     -- Omit this for one-terminal ConductingEquipment.
-    "ToConnectivityNode" VARCHAR(36) NOT NULL
+    "ToConnectivityNode" VARCHAR(36)
+);
+
+-- The parts of the AC power system that are designed to carry current or
+-- that are conductively connected through terminals.
+CREATE TABLE "ConductingEquipment1"
+(
+    "mRID" VARCHAR(36) PRIMARY KEY,
+    -- FK column reference to table "BaseVoltage"
+    -- Base voltage of this conducting equipment. Use only when there is no voltage
+    -- level container used and only one base voltage applies. For example, not
+    -- used for transformers.
+    "BaseVoltage" VARCHAR(36)
 );
 
 -- Combination of conducting material with consistent electrical characteristics,
@@ -196,7 +203,17 @@ CREATE TABLE "ConnectivityNodeContainer"
 -- variable (X-axis) and dependent (Y-axis) variables.
 CREATE TABLE "Curve"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(36) PRIMARY KEY,
+    -- The style or shape of the curve.
+    "curveStyle" VARCHAR(50),
+    -- Multiplier for X-axis.
+    "xMultiplier" VARCHAR(50),
+    -- The X-axis units of measure.
+    "xUnit" VARCHAR(50),
+    -- Multiplier for Y1-axis.
+    "y1Multiplier" VARCHAR(50),
+    -- The Y1-axis units of measure.
+    "y1Unit" VARCHAR(50)
 );
 
 -- Multi-purpose data points for defining a curve. The use of this generic
@@ -213,6 +230,15 @@ CREATE TABLE "CurveData"
     -- The curve of this curve data point.
     "Curve" VARCHAR(36) NOT NULL
 );
+
+-- Style or shape of curve.
+CREATE TABLE "CurveStyle" ( "name" VARCHAR(50) UNIQUE );
+-- The Y-axis values are assumed constant until the next curve point and prior
+-- to the first curve point.
+INSERT INTO "CurveStyle" ( "name" ) VALUES ( 'constantYValue' );
+-- The Y-axis values are assumed to be a straight line between values. Also
+-- known as linear interpolation.
+INSERT INTO "CurveStyle" ( "name" ) VALUES ( 'straightLineYValues' );
 
 -- An object that defines one or more points in a given space. This object
 -- can be associated with anything that specializes IdentifiedObject. For
@@ -374,7 +400,27 @@ CREATE TABLE "ExcST1A"
 -- model.</font>
 CREATE TABLE "ExcitationSystemDynamics"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(36) PRIMARY KEY,
+    -- FK column reference to table "SynchronousMachineDynamics"
+    -- Synchronous machine model with which this excitation system model is associated.
+    "SynchronousMachineDynamics" VARCHAR(36)
+);
+
+-- A single or set of synchronous machines for converting mechanical power
+-- into alternating-current power. For example, individual machines within
+-- a set may be defined for scheduling purposes while a single control signal
+-- is derived for the set. In this case there would be a GeneratingUnit for
+-- each member of the set and an additional GeneratingUnit corresponding to
+-- the set.
+CREATE TABLE "GeneratingUnit"
+(
+    "mRID" VARCHAR(36) PRIMARY KEY,
+    -- This is the maximum operating active power limit the dispatcher can enter
+    -- for this unit.
+    "maxOperatingP" DOUBLE PRECISION NOT NULL,
+    -- This is the minimum operating active power limit the dispatcher can enter
+    -- for this unit.
+    "minOperatingP" DOUBLE PRECISION NOT NULL
 );
 
 -- Simplified steam turbine governor.
@@ -731,10 +777,6 @@ CREATE TABLE "PowerTransformerEnd"
     -- 1, is assumed to be zero. Note the transformer end number is not assumed
     -- to be the same as the terminal sequence number.
     "phaseAngleClock" INTEGER NOT NULL,
-    -- Resistance (star-model) of the transformer end.
-    -- The attribute shall be equal to or greater than zero for non-equivalent
-    -- transformers.
-    "r" DOUBLE PRECISION NOT NULL,
     -- Normal apparent power rating.
     -- The attribute shall be a positive value. For a two-winding transformer
     -- the values for the high and low voltage sides shall be identical.
@@ -864,6 +906,10 @@ INSERT INTO "RotorKind" ( "name" ) VALUES ( 'salientPole' );
 CREATE TABLE "SeriesCompensator"
 (
     "mRID" VARCHAR(36) PRIMARY KEY,
+    -- Positive sequence resistance.
+    "r" DOUBLE PRECISION NOT NULL,
+    -- Zero sequence resistance.
+    "r0" DOUBLE PRECISION NOT NULL,
     -- Positive sequence reactance.
     "x" DOUBLE PRECISION NOT NULL,
     -- Zero sequence reactance.
@@ -990,7 +1036,10 @@ CREATE TABLE "SynchronousMachineDetailed"
 -- </ol>
 CREATE TABLE "SynchronousMachineDynamics"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(36) PRIMARY KEY,
+    -- FK column reference to table "SynchronousMachine"
+    -- Synchronous machine to which synchronous machine dynamics model applies.
+    "SynchronousMachine" VARCHAR(36)
 );
 
 -- Synchronous machine type.
@@ -1171,7 +1220,14 @@ CREATE TABLE "TransformerEnd"
     "xground" DOUBLE PRECISION NOT NULL,
     -- FK column reference to table "BaseVoltage"
     -- Base voltage of the transformer end. This is essential for PU calculation.
-    "BaseVoltage" VARCHAR(36) NOT NULL,
+    "BaseVoltage" VARCHAR(36) NOT NULL
+);
+
+-- Allows for a direct connection between TransformerEnd and ConnectivityNode
+-- (bus), without using a Terminal.
+CREATE TABLE "TransformerEnd1"
+(
+    "mRID" VARCHAR(36) PRIMARY KEY,
     -- FK column reference to table "ConnectivityNode"
     -- The connection point (bus) for the TransformerEnd (winding).
     "ConnectivityNode" VARCHAR(36) NOT NULL
@@ -1232,8 +1288,432 @@ CREATE TABLE "TransformerSaturation"
 -- model.</font>
 CREATE TABLE "TurbineGovernorDynamics"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(36) PRIMARY KEY,
+    -- FK column reference to table "SynchronousMachineDynamics"
+    -- Synchronous machine model with which this turbine-governor model is associated.
+    -- TurbineGovernorDynamics shall have either an association to SynchronousMachineDynamics
+    -- or to AsynchronousMachineDynamics.
+    "SynchronousMachineDynamics" VARCHAR(36)
 );
+
+-- The unit multipliers defined for the CIM. When applied to unit symbols,
+-- the unit symbol is treated as a derived unit. Regardless of the contents
+-- of the unit symbol text, the unit symbol shall be treated as if it were
+-- a single-character unit symbol. Unit symbols should not contain multipliers,
+-- and it should be left to the multiplier to define the multiple for an entire
+-- data type.
+-- For example, if a unit symbol is "m2Pers" and the multiplier is "k", then
+-- the value is k(m**2/s), and the multiplier applies to the entire final
+-- value, not to any individual part of the value. This can be conceptualized
+-- by substituting a derived unit symbol for the unit type. If one imagines
+-- that the symbol "&#222;" represents the derived unit "m2Pers", then applying
+-- the multiplier "k" can be conceptualized simply as "k&#222;".
+-- For example, the SI unit for mass is "kg" and not "g". If the unit symbol
+-- is defined as "kg", then the multiplier is applied to "kg" as a whole and
+-- does not replace the "k" in front of the "g". In this case, the multiplier
+-- of "m" would be used with the unit symbol of "kg" to represent one gram.
+-- As a text string, this violates the instructions in IEC 80000-1. However,
+-- because the unit symbol in CIM is treated as a derived unit instead of
+-- as an SI unit, it makes more sense to conceptualize the "kg" as if it were
+-- replaced by one of the proposed replacements for the SI mass symbol. If
+-- one imagines that the "kg" were replaced by a symbol "&#222;", then it
+-- is easier to conceptualize the multiplier "m" as creating the proper unit
+-- "m&#222;", and not the forbidden unit "mkg".
+CREATE TABLE "UnitMultiplier" ( "name" VARCHAR(50) UNIQUE );
+-- Exa 10**18.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'E' );
+-- Giga 10**9.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'G' );
+-- Mega 10**6.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'M' );
+-- Peta 10**15.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'P' );
+-- Tera 10**12.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'T' );
+-- Yotta 10**24.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'Y' );
+-- Zetta 10**21.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'Z' );
+-- Atto 10**-18.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'a' );
+-- Centi 10**-2.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'c' );
+-- Deci 10**-1.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'd' );
+-- Deca 10**1.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'da' );
+-- Femto 10**-15.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'f' );
+-- Hecto 10**2.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'h' );
+-- Kilo 10**3.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'k' );
+-- Milli 10**-3.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'm' );
+-- Micro 10**-6.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'micro' );
+-- Nano 10**-9.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'n' );
+-- No multiplier or equivalently multiply by 1.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'none' );
+-- Pico 10**-12.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'p' );
+-- Yocto 10**-24.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'y' );
+-- Zepto 10**-21.
+INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'z' );
+
+-- The derived units defined for usage in the CIM. In some cases, the derived
+-- unit is equal to an SI unit. Whenever possible, the standard derived symbol
+-- is used instead of the formula for the derived unit. For example, the unit
+-- symbol Farad is defined as "F" instead of "CPerV". In cases where a standard
+-- symbol does not exist for a derived unit, the formula for the unit is used
+-- as the unit symbol. For example, density does not have a standard symbol
+-- and so it is represented as "kgPerm^3". With the exception of the "kg",
+-- which is an SI unit, the unit symbols do not contain multipliers and therefore
+-- represent the base derived unit to which a multiplier can be applied as
+-- a whole.
+-- Every unit symbol is treated as an unparseable text as if it were a single-letter
+-- symbol. The meaning of each unit symbol is defined by the accompanying
+-- descriptive text and not by the text contents of the unit symbol.
+-- To allow the widest possible range of serializations without requiring
+-- special character handling, several substitutions are made which deviate
+-- from the format described in IEC 80000-1. The division symbol "/" is replaced
+-- by the letters "Per". Exponents are written in plain text after the unit
+-- as "m^3". The letters "deg" are used instead of the degree symbol. Any
+-- clarification of the meaning for a substitution is included in the description
+-- for the unit symbol.
+-- Non-SI units are included in list of unit symbols to allow sources of data
+-- to be correctly labelled with their non-SI units (for example, a GPS sensor
+-- that is reporting numbers that represent feet instead of meters). This
+-- allows software to use the unit symbol information correctly convert and
+-- scale the raw data of those sources into SI-based units.
+-- The integer values are used for harmonization with IEC 61850.
+CREATE TABLE "UnitSymbol" ( "name" VARCHAR(50) UNIQUE );
+-- Current in amperes.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'A' );
+-- Amperes squared (A^2).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'A2' );
+-- Ampere-squared hour, ampere-squared hour.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'A2h' );
+-- Ampere squared time in square amperes (A^2*s).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'A2s' );
+-- Current, ratio of amperages.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'APerA' );
+-- Amperes per metre (A/m), magnetic field strength.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'APerm' );
+-- Ampere-hours, ampere-hours.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Ah' );
+-- Ampere seconds (A*s).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'As' );
+-- Radioactivity in becquerels (1/s).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Bq' );
+-- Energy, British Thermal Units.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Btu' );
+-- Electric charge in coulombs (A*s).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'C' );
+-- Exposure (x rays), coulombs per kilogram.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'CPerkg' );
+-- Surface charge density, coulombs per square metre.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'CPerm2' );
+-- Electric charge density, coulombs per cubic metre.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'CPerm3' );
+-- Electric capacitance in farads (C/V).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'F' );
+-- Permittivity, farads per metre.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'FPerm' );
+-- Magnetic flux density, gausses (1 G = 10e-4*T).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'G' );
+-- Absorbed dose in grays (J/kg).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Gy' );
+-- Absorbed dose rate, grays per second.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'GyPers' );
+-- Electric inductance in henrys (Wb/A).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'H' );
+-- Permeability, henrys per metre.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'HPerm' );
+-- Frequency in hertz (1/s).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Hz' );
+-- Frequency, rate of frequency change.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'HzPerHz' );
+-- Rate of change of frequency in hertz per second.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'HzPers' );
+-- Energy in joules (N*m = C*V = W*s).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'J' );
+-- Heat capacity in joules/kelvin.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'JPerK' );
+-- Specific energy, J/kg.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'JPerkg' );
+-- Specific heat capacity, specific entropy, joules per kilogram Kelvin.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'JPerkgK' );
+-- Insulation energy density, joules per square metre or watt second per square
+-- metre.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'JPerm2' );
+-- Energy density, joules per cubic metre.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'JPerm3' );
+-- Molar energy, joules per mole.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'JPermol' );
+-- Molar entropy, molar heat capacity, joules per mole kelvin.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'JPermolK' );
+-- Energy rate in joules per second (J/s).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'JPers' );
+-- Temperature in kelvins.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'K' );
+-- Temperature change rate in kelvins per second.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'KPers' );
+-- Length, nautical miles (1 M = 1852 m).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'M' );
+-- Magnetic flux, maxwells (1 Mx = 10-8 Wb).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Mx' );
+-- Force in newtons (kg*m/s^2).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'N' );
+-- Surface tension, newton per metre.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'NPerm' );
+-- Moment of force, newton metres.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Nm' );
+-- Magnetic field in oersteds, (1 Oe = (10^3/(4*pi)) A/m = 79.57747 A/m).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Oe' );
+-- Pressure in pascals (N/m^2). Note: the absolute or relative measurement
+-- of pressure is implied with this entry. See below for more explicit forms.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Pa' );
+-- Pressure change rate in pascals per second.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'PaPers' );
+-- Dynamic viscosity, pascal seconds.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Pas' );
+-- Quantity power, Q.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Q' );
+-- Quantity energy, Qh.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Qh' );
+-- Conductance in siemens.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'S' );
+-- Conductance per length (F/m).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'SPerm' );
+-- Dose equivalent in sieverts (J/kg).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Sv' );
+-- Magnetic flux density in teslas (Wb/m^2).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'T' );
+-- Electric potential in volts (W/A).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'V' );
+-- Volt squared (W^2/A^2).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'V2' );
+-- Volt-squared hour, volt-squared-hours.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'V2h' );
+-- Apparent power in volt amperes. See also real power and reactive power.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VA' );
+-- Apparent energy in volt ampere hours.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VAh' );
+-- Reactive power in volt amperes reactive. The "reactive" or "imaginary"
+-- component of electrical power (V*I*sin(phi)). (See also real power and
+-- apparent power).
+-- Note: Different meter designs use different methods to arrive at their
+-- results. Some meters may compute reactive power as an arithmetic value,
+-- while others compute the value vectorially. The data consumer should determine
+-- the method in use and the suitability of the measurement for the intended
+-- purpose.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VAr' );
+-- Reactive energy in volt ampere reactive hours.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VArh' );
+-- Magnetic flux in volt per hertz.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VPerHz' );
+-- Voltage, ratio of voltages.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VPerV' );
+-- Power factor, PF, the ratio of the active power to the apparent power.
+-- Note: The sign convention used for power factor will differ between IEC
+-- meters and EEI (ANSI) meters. It is assumed that the data consumers understand
+-- the type of meter being used and agree on the sign convention in use at
+-- any given utility.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VPerVA' );
+-- Power factor, PF, the ratio of the active power to the apparent power.
+-- Note: The sign convention used for power factor will differ between IEC
+-- meters and EEI (ANSI) meters. It is assumed that the data consumers understand
+-- the type of meter being used and agree on the sign convention in use at
+-- any given utility.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VPerVAr' );
+-- Electric field strength, volts per metre.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VPerm' );
+-- Volt-hour, Volt hours.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Vh' );
+-- Volt seconds (Ws/A).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Vs' );
+-- Real power in watts (J/s). Electrical power may have real and reactive
+-- components. The real portion of electrical power (I^2*R or V*I*cos(phi)),
+-- is expressed in Watts. See also apparent power and reactive power.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'W' );
+-- Active power per current flow, watts per Ampere.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'WPerA' );
+-- Signal Strength, ratio of power.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'WPerW' );
+-- Heat flux density, irradiance, watts per square metre.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'WPerm2' );
+-- Radiance, watts per square metre steradian.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'WPerm2sr' );
+-- Thermal conductivity in watt/metres kelvin.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'WPermK' );
+-- Ramp rate in watts per second.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'WPers' );
+-- Radiant intensity, watts per steradian.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'WPersr' );
+-- Magnetic flux in webers (V*s).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Wb' );
+-- Real energy in watt hours.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Wh' );
+-- Plane angle, minutes.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'anglemin' );
+-- Plane angle, seconds.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'anglesec' );
+-- Pressure in bars, (1 bar = 100 kPa).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'bar' );
+-- Luminous intensity in candelas.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'cd' );
+-- Data rate (baud) in characters per second.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'charPers' );
+-- Number of characters.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'character' );
+-- Power factor, dimensionless.
+-- Note 1: This definition of power factor only holds for balanced systems.
+-- See the alternative definition under code 153.
+-- Note 2 : Beware of differing sign conventions in use between the IEC and
+-- EEI. It is assumed that the data consumer understands the type of meter
+-- in use and the sign convention in use by the utility.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'cosPhi' );
+-- Amount of substance, counter value.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'count' );
+-- Time in days, day = 24 h = 86400 s.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'd' );
+-- Sound pressure level in decibels. Note: multiplier "d" is included in this
+-- unit symbol for compatibility with IEC 61850-7-3.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'dB' );
+-- Power level (logarithmic ratio of signal strength , Bel-mW), normalized
+-- to 1 mW. Note: multiplier "d" is included in this unit symbol for compatibility
+-- with IEC 61850-7-3.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'dBm' );
+-- Plane angle in degrees.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'deg' );
+-- Relative temperature in degrees Celsius (degC).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'degC' );
+-- Volume, cubic feet.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'ft3' );
+-- Concentration, The ratio of the mass of a solute divided by the mass of
+-- the solution.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'gPerg' );
+-- Volume in gallons, US gallon (1 gal = 231 in^3 = 128 fl ounce).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'gal' );
+-- Time in hours, hour = 60 min = 3600 s.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'h' );
+-- Area, hectares.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'ha' );
+-- Catalytic activity, katal = mol/s.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'kat' );
+-- Catalytic activity concentration, katals per cubic metre.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'katPerm3' );
+-- Mass in kilograms. Note: multiplier "k" is included in this unit symbol
+-- for compatibility with IEC 61850-7-3.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'kg' );
+-- Weight per energy in kilograms per joule (kg/J). Note: multiplier "k" is
+-- included in this unit symbol for compatibility with IEC 61850-7-3.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'kgPerJ' );
+-- Mass per length in kilogram/metres (kg/m). Note: multiplier "k" is included
+-- in this unit symbol for compatibility with mass datatype.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'kgPerm' );
+-- Density in kilogram/cubic metres (kg/m^3). Note: multiplier "k" is included
+-- in this unit symbol for compatibility with IEC 61850-7-3.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'kgPerm3' );
+-- Moment of mass in kilogram metres (kg*m) (first moment of mass). Note:
+-- multiplier "k" is included in this unit symbol for compatibility with IEC
+-- 61850-7-3.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'kgm' );
+-- Moment of mass in kilogram square metres (kg*m^2) (Second moment of mass,
+-- commonly called the moment of inertia). Note: multiplier "k" is included
+-- in this unit symbol for compatibility with IEC 61850-7-3.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'kgm2' );
+-- Speed, knots (1 kn = 1852/3600) m/s.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'kn' );
+-- Volume in litres, litre = dm^3 = m^3/1000.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'l' );
+-- Volumetric flow rate, litres per hour.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'lPerh' );
+-- Concentration, The ratio of the volume of a solute divided by the volume
+-- of the solution.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'lPerl' );
+-- Volumetric flow rate in litres per second.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'lPers' );
+-- Luminous flux in lumens (cd*sr).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'lm' );
+-- Illuminance in lux (lm/m^2).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'lx' );
+-- Length in metres.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm' );
+-- Area in square metres (m^2).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm2' );
+-- Viscosity in square metres/second (m^2/s).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm2Pers' );
+-- Volume in cubic metres (m^3).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm3' );
+-- Volume, cubic metres, with the value compensated for weather effects.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm3Compensated' );
+-- Volumetric flow rate, cubic metres per hour.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm3Perh' );
+-- Specific volume, cubic metres per kilogram, v.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm3Perkg' );
+-- Volumetric flow rate in cubic metres per second (m^3/s).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm3Pers' );
+-- Volume, cubic metres, with the value uncompensated for weather effects.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm3Uncompensated' );
+-- Fuel efficiency in metres per cubic metres (m/m^3).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'mPerm3' );
+-- Velocity in metres per second (m/s).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'mPers' );
+-- Acceleration in metres per second squared (m/s^2).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'mPers2' );
+-- Time in minutes, minute = 60 s.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'min' );
+-- Pressure, millimetres of mercury (1 mmHg is approximately 133.3 Pa).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'mmHg' );
+-- Amount of substance in moles.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'mol' );
+-- Concentration, Molality, the amount of solute in moles and the amount of
+-- solvent in kilograms.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'molPerkg' );
+-- Concentration, The amount of substance concentration, (c), the amount of
+-- solvent in moles divided by the volume of solution in m^3.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'molPerm3' );
+-- Concentration, Molar fraction, the ratio of the molar amount of a solute
+-- divided by the molar amount of the solution.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'molPermol' );
+-- Dimension less quantity, e.g. count, per unit, etc.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'none' );
+-- Electric resistance in ohms (V/A).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'ohm' );
+-- Electric resistance per length in ohms per metre ((V/A)/m).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'ohmPerm' );
+-- Resistivity, ohm metres, (rho).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'ohmm' );
+-- Reciprocal of frequency (1/Hz).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'onePerHz' );
+-- Wavenumber, reciprocal metres, (1/m).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'onePerm' );
+-- Concentration in parts per million.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'ppm' );
+-- Plane angle in radians (m/m).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'rad' );
+-- Angular velocity in radians per second (rad/s).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'radPers' );
+-- Angular acceleration, radians per second squared.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'radPers2' );
+-- Amount of rotation, revolutions.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'rev' );
+-- Rotations per second (1/s). See also Hz (1/s).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'rotPers' );
+-- Time in seconds.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 's' );
+-- Time, Ratio of time.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'sPers' );
+-- Solid angle in steradians (m^2/m^2).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'sr' );
+-- Energy, therms.
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'therm' );
+-- Mass in tons, "tonne" or "metric ton" (1000 kg = 1 Mg).
+INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'tonne' );
 
 -- Parent class supporting relationships to WECC standard models.
 CREATE TABLE "WeccDynamics"
@@ -1544,13 +2024,6 @@ CREATE TABLE "WeccWTGTA"
     "kshaft" DOUBLE PRECISION NOT NULL
 );
 
--- A wind driven generating unit, connected to the grid by means of a rotating
--- machine. May be used to represent a single turbine or an aggregation.
-CREATE TABLE "WindGeneratingUnit"
-(
-    "mRID" VARCHAR(36) PRIMARY KEY
-);
-
 -- Winding connection type.
 CREATE TABLE "WindingConnection" ( "name" VARCHAR(50) UNIQUE );
 -- Autotransformer common winding.
@@ -1581,11 +2054,8 @@ ALTER TABLE "BaseVoltage" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObjec
 -- Inheritance subclass-superclass constraint for table "BatteryUnit"
 ALTER TABLE "BatteryUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerElectronicsUnit" ( "mRID" );
 
--- Inheritance subclass-superclass constraint for table "ConductingEquipment"
-ALTER TABLE "ConductingEquipment" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
-
 -- Inheritance subclass-superclass constraint for table "Conductor"
-ALTER TABLE "Conductor" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" );
+ALTER TABLE "Conductor" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "ConnectivityNode"
 ALTER TABLE "ConnectivityNode" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
@@ -1603,7 +2073,7 @@ ALTER TABLE "DiagramObject" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObj
 ALTER TABLE "DynamicsFunctionBlock" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "EnergyConnection"
-ALTER TABLE "EnergyConnection" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" );
+ALTER TABLE "EnergyConnection" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "EnergyConsumer"
 ALTER TABLE "EnergyConsumer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "EnergyConnection" ( "mRID" );
@@ -1620,14 +2090,23 @@ ALTER TABLE "ExcST1A" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ExcitationSystemDyn
 -- Inheritance subclass-superclass constraint for table "ExcitationSystemDynamics"
 ALTER TABLE "ExcitationSystemDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "GeneratingUnit"
+ALTER TABLE "GeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "GovSteamSGO"
 ALTER TABLE "GovSteamSGO" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TurbineGovernorDynamics" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "HydroGeneratingUnit"
+ALTER TABLE "HydroGeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "GeneratingUnit" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "LinearShuntCompensator"
 ALTER TABLE "LinearShuntCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ShuntCompensator" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "LoadResponseCharacteristic"
 ALTER TABLE "LoadResponseCharacteristic" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "NuclearGeneratingUnit"
+ALTER TABLE "NuclearGeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "GeneratingUnit" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "PhotoVoltaicUnit"
 ALTER TABLE "PhotoVoltaicUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerElectronicsUnit" ( "mRID" );
@@ -1648,7 +2127,7 @@ ALTER TABLE "PowerSystemResource" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Identif
 ALTER TABLE "PowerSystemStabilizerDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "PowerTransformer"
-ALTER TABLE "PowerTransformer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" );
+ALTER TABLE "PowerTransformer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "PowerTransformerEnd"
 ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TransformerEnd" ( "mRID" );
@@ -1666,7 +2145,7 @@ ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RegulatingC
 ALTER TABLE "RotatingMachineDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "SeriesCompensator"
-ALTER TABLE "SeriesCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" );
+ALTER TABLE "SeriesCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "ShuntCompensator"
 ALTER TABLE "ShuntCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RegulatingCondEq" ( "mRID" );
@@ -1685,6 +2164,9 @@ ALTER TABLE "SynchronousMachineTimeConstantReactance" ADD FOREIGN KEY ( "mRID" )
 
 -- Inheritance subclass-superclass constraint for table "TextDiagramObject"
 ALTER TABLE "TextDiagramObject" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DiagramObject" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "ThermalGeneratingUnit"
+ALTER TABLE "ThermalGeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "GeneratingUnit" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "TransformerCoreAdmittance"
 ALTER TABLE "TransformerCoreAdmittance" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
@@ -1724,9 +2206,11 @@ ALTER TABLE "WeccWTGTA" ADD FOREIGN KEY ( "mRID" ) REFERENCES "WeccDynamics" ( "
 ------------------------------------------------------------------------------
 
 -- Foreign keys for table "ConductingEquipment"
-ALTER TABLE "ConductingEquipment" ADD FOREIGN KEY ( "BaseVoltage" ) REFERENCES "BaseVoltage" ( "mRID" );
 ALTER TABLE "ConductingEquipment" ADD FOREIGN KEY ( "FromConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
 ALTER TABLE "ConductingEquipment" ADD FOREIGN KEY ( "ToConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
+
+-- Foreign keys for table "ConductingEquipment1"
+ALTER TABLE "ConductingEquipment1" ADD FOREIGN KEY ( "BaseVoltage" ) REFERENCES "BaseVoltage" ( "mRID" );
 
 -- Foreign keys for table "ConnectivityNode"
 ALTER TABLE "ConnectivityNode" ADD FOREIGN KEY ( "ConnectivityNodeContainer" ) REFERENCES "ConnectivityNodeContainer" ( "mRID" );
@@ -1746,6 +2230,9 @@ ALTER TABLE "EnergyConsumer" ADD FOREIGN KEY ( "LoadResponse" ) REFERENCES "Load
 -- Foreign keys for table "Equipment"
 ALTER TABLE "Equipment" ADD FOREIGN KEY ( "EquipmentContainer" ) REFERENCES "EquipmentContainer" ( "mRID" );
 
+-- Foreign keys for table "ExcitationSystemDynamics"
+ALTER TABLE "ExcitationSystemDynamics" ADD FOREIGN KEY ( "SynchronousMachineDynamics" ) REFERENCES "SynchronousMachineDynamics" ( "mRID" );
+
 -- Foreign keys for table "PowerElectronicsUnit"
 ALTER TABLE "PowerElectronicsUnit" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFERENCES "PowerElectronicsConnection" ( "mRID" );
 
@@ -1762,18 +2249,26 @@ ALTER TABLE "PssIEEE1A" ADD FOREIGN KEY ( "inputSignalType" ) REFERENCES "InputS
 -- Foreign keys for table "RotatingMachine"
 ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "GeneratingUnit" ) REFERENCES "GeneratingUnit" ( "mRID" );
 
+-- Foreign keys for table "SynchronousMachineDynamics"
+ALTER TABLE "SynchronousMachineDynamics" ADD FOREIGN KEY ( "SynchronousMachine" ) REFERENCES "SynchronousMachine" ( "mRID" );
+
 -- Foreign keys for table "TransformerCoreAdmittance"
 ALTER TABLE "TransformerCoreAdmittance" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
 
 -- Foreign keys for table "TransformerEnd"
 ALTER TABLE "TransformerEnd" ADD FOREIGN KEY ( "BaseVoltage" ) REFERENCES "BaseVoltage" ( "mRID" );
-ALTER TABLE "TransformerEnd" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
+
+-- Foreign keys for table "TransformerEnd1"
+ALTER TABLE "TransformerEnd1" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
 
 -- Foreign keys for table "TransformerMeshImpedance"
 ALTER TABLE "TransformerMeshImpedance" ADD FOREIGN KEY ( "FromTransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
 
 -- Foreign keys for table "TransformerSaturation"
 ALTER TABLE "TransformerSaturation" ADD FOREIGN KEY ( "TransformerCoreAdmittance" ) REFERENCES "TransformerCoreAdmittance" ( "mRID" );
+
+-- Foreign keys for table "TurbineGovernorDynamics"
+ALTER TABLE "TurbineGovernorDynamics" ADD FOREIGN KEY ( "SynchronousMachineDynamics" ) REFERENCES "SynchronousMachineDynamics" ( "mRID" );
 
 -- Foreign keys for table "WeccDynamics"
 ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFERENCES "PowerElectronicsConnection" ( "mRID" );
@@ -1789,6 +2284,8 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 
 -- Cascade deletes for compounds referenced in table "ConductingEquipment"
 
+-- Cascade deletes for compounds referenced in table "ConductingEquipment1"
+
 -- Cascade deletes for compounds referenced in table "ConnectivityNode"
 
 -- Cascade deletes for compounds referenced in table "CurveData"
@@ -1801,6 +2298,8 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 
 -- Cascade deletes for compounds referenced in table "Equipment"
 
+-- Cascade deletes for compounds referenced in table "ExcitationSystemDynamics"
+
 -- Cascade deletes for compounds referenced in table "PowerElectronicsUnit"
 
 -- Cascade deletes for compounds referenced in table "PowerSystemStabilizerDynamics"
@@ -1811,13 +2310,19 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 
 -- Cascade deletes for compounds referenced in table "RotatingMachine"
 
+-- Cascade deletes for compounds referenced in table "SynchronousMachineDynamics"
+
 -- Cascade deletes for compounds referenced in table "TransformerCoreAdmittance"
 
 -- Cascade deletes for compounds referenced in table "TransformerEnd"
 
+-- Cascade deletes for compounds referenced in table "TransformerEnd1"
+
 -- Cascade deletes for compounds referenced in table "TransformerMeshImpedance"
 
 -- Cascade deletes for compounds referenced in table "TransformerSaturation"
+
+-- Cascade deletes for compounds referenced in table "TurbineGovernorDynamics"
 
 -- Cascade deletes for compounds referenced in table "WeccDynamics"
 
@@ -1825,24 +2330,27 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 -- Foreign key column indexes for optimized queries and joins
 ------------------------------------------------------------------------------
 
-CREATE INDEX ix_ConductingEquipment_BaseVoltage ON "ConductingEquipment" ( "BaseVoltage" );
 CREATE INDEX ix_ConductingEquipment_FromConnectivityNode ON "ConductingEquipment" ( "FromConnectivityNode" );
 CREATE INDEX ix_ConductingEquipment_ToConnectivityNode ON "ConductingEquipment" ( "ToConnectivityNode" );
+CREATE INDEX ix_ConductingEquipment1_BaseVoltage ON "ConductingEquipment1" ( "BaseVoltage" );
 CREATE INDEX ix_ConnectivityNode_ConnectivityNodeContainer ON "ConnectivityNode" ( "ConnectivityNodeContainer" );
 CREATE INDEX ix_CurveData_Curve ON "CurveData" ( "Curve" );
 CREATE INDEX ix_DiagramObject_IdentifiedObject ON "DiagramObject" ( "IdentifiedObject" );
 CREATE INDEX ix_DiagramObjectPoint_DiagramObject ON "DiagramObjectPoint" ( "DiagramObject" );
 CREATE INDEX ix_EnergyConsumer_LoadResponse ON "EnergyConsumer" ( "LoadResponse" );
 CREATE INDEX ix_Equipment_EquipmentContainer ON "Equipment" ( "EquipmentContainer" );
+CREATE INDEX ix_ExcitationSystemDynamics_SynchronousMachineDynamics ON "ExcitationSystemDynamics" ( "SynchronousMachineDynamics" );
 CREATE INDEX ix_PowerElectronicsUnit_PowerElectronicsConnection ON "PowerElectronicsUnit" ( "PowerElectronicsConnection" );
 CREATE INDEX ix_PowerSystemStabilizerDynamics_ExcitationSystemDynamics ON "PowerSystemStabilizerDynamics" ( "ExcitationSystemDynamics" );
 CREATE INDEX ix_PowerTransformerEnd_connectionKind ON "PowerTransformerEnd" ( "connectionKind" );
 CREATE INDEX ix_PowerTransformerEnd_PowerTransformer ON "PowerTransformerEnd" ( "PowerTransformer" );
 CREATE INDEX ix_PssIEEE1A_inputSignalType ON "PssIEEE1A" ( "inputSignalType" );
 CREATE INDEX ix_RotatingMachine_GeneratingUnit ON "RotatingMachine" ( "GeneratingUnit" );
+CREATE INDEX ix_SynchronousMachineDynamics_SynchronousMachine ON "SynchronousMachineDynamics" ( "SynchronousMachine" );
 CREATE INDEX ix_TransformerCoreAdmittance_TransformerEnd ON "TransformerCoreAdmittance" ( "TransformerEnd" );
 CREATE INDEX ix_TransformerEnd_BaseVoltage ON "TransformerEnd" ( "BaseVoltage" );
-CREATE INDEX ix_TransformerEnd_ConnectivityNode ON "TransformerEnd" ( "ConnectivityNode" );
+CREATE INDEX ix_TransformerEnd1_ConnectivityNode ON "TransformerEnd1" ( "ConnectivityNode" );
 CREATE INDEX ix_TransformerMeshImpedance_FromTransformerEnd ON "TransformerMeshImpedance" ( "FromTransformerEnd" );
 CREATE INDEX ix_TransformerSaturation_TransformerCoreAdmittance ON "TransformerSaturation" ( "TransformerCoreAdmittance" );
+CREATE INDEX ix_TurbineGovernorDynamics_SynchronousMachineDynamics ON "TurbineGovernorDynamics" ( "SynchronousMachineDynamics" );
 CREATE INDEX ix_WeccDynamics_PowerElectronicsConnection ON "WeccDynamics" ( "PowerElectronicsConnection" );

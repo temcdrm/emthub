@@ -106,7 +106,10 @@ def append_dynamic_parameters (g, leaf, dyn_settings, sections):
   for sect in sections:
     for tag in dyn_settings[sect]:
       row = dyn_settings[sect][tag]
-      g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(sect, tag)), rdflib.Literal(row[0], datatype='cim:' + row[1])))
+      if row[1].endswith('Kind'):
+        g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(sect, tag)), rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(row[1], row[0]))))
+      else:
+        g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(sect, tag)), rdflib.Literal(row[0], datatype='cim:' + row[1])))
 
 def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
   g = rdflib.Graph()
@@ -555,7 +558,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       ftype = 'PowerElectronicsWindUnit'
       nwind += 1
     elif key in case['solar_units']:
-      ftype = 'PhotovoltaicUnit'
+      ftype = 'PhotoVoltaicUnit'
       nsolar += 1
     elif key in case['hydro_units']:
       ftype = 'HydroGeneratingUnit'
@@ -618,6 +621,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((exc, rdflib.URIRef (CIM_NS + 'ExcitationSystemDynamics.SynchronousMachineDynamics'), dyn))
       g.add ((gov, rdflib.URIRef (CIM_NS + 'TurbineGovernorDynamics.SynchronousMachineDynamics'), dyn))
       g.add ((dyn, rdflib.URIRef (CIM_NS + 'SynchronousMachineDynamics.SynchronousMachine'), sm))
+      g.add ((gov, rdflib.URIRef (CIM_NS + 'GovSteamSGO.mwbase'), rdflib.Literal (mvabase, datatype=CIM.ActivePower)))
     else:
       ID = GetCIMID('PowerElectronicsConnection', key, uuids)
       pec = rdflib.URIRef (ID)
@@ -649,7 +653,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((un, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
       g.add ((un, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
       g.add ((un, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
-      g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.PowerElectronics'), pec))
+      g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.PowerElectronicsConnection'), pec))
       g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.maxP'), rdflib.Literal (1.0e6*row[6], datatype=CIM.ActivePower)))
       g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.minP'), rdflib.Literal (0.0, datatype=CIM.ActivePower)))  # TODO: parse PT and PB
       reecID = GetCIMID('WeccREECA', key, uuids)

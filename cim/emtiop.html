@@ -217,59 +217,6 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
-                  <p class="name">BaseVoltage</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#BaseVoltage">BaseVoltage</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.BaseVoltage">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">FromConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.FromConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">ToConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.ToConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
-         <table>
-            <tr>
-               <th>
                   <p class="name">inService</p>
                </th>
                <td>
@@ -852,59 +799,6 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
-                  <p class="name">BaseVoltage</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#BaseVoltage">BaseVoltage</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.BaseVoltage">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">FromConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.FromConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">ToConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.ToConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
-         <table>
-            <tr>
-               <th>
                   <p class="name">inService</p>
                </th>
                <td>
@@ -1320,7 +1214,26 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
          <h3>Inherited Members</h3>
-         <table/>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">SynchronousMachineDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#SynchronousMachineDynamics">SynchronousMachineDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass"
+                        href="#ExcitationSystemDynamics.SynchronousMachineDynamics">ExcitationSystemDynamics</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
          <table>
             <tr>
                <th>
@@ -1579,7 +1492,26 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
          <h3>Inherited Members</h3>
-         <table/>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">SynchronousMachineDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#SynchronousMachineDynamics">SynchronousMachineDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass"
+                        href="#TurbineGovernorDynamics.SynchronousMachineDynamics">TurbineGovernorDynamics</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
          <table>
             <tr>
                <th>
@@ -1642,6 +1574,116 @@ p.package { position: absolute; right: 10px; top: 0px}
          </a>
          <p class="package">Production</p>
          <p class="comment">A generating unit whose prime mover is a hydraulic turbine (e.g. Francis, Pelton, Kaplan).</p>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">maxOperatingP</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ActivePower">ActivePower</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#GeneratingUnit.maxOperatingP">GeneratingUnit</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">minOperatingP</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ActivePower">ActivePower</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#GeneratingUnit.minOperatingP">GeneratingUnit</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">inService</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#Equipment.inService">Equipment</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">EquipmentContainer</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#EquipmentContainer">EquipmentContainer</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#Equipment.EquipmentContainer">Equipment</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table/>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
       </div>
       <div id="LinearShuntCompensator" class="group">
          <a href="#LinearShuntCompensator">
@@ -1757,59 +1799,6 @@ p.package { position: absolute; right: 10px; top: 0px}
          </table>
          <table/>
          <table/>
-         <table>
-            <tr>
-               <th>
-                  <p class="name">BaseVoltage</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#BaseVoltage">BaseVoltage</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.BaseVoltage">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">FromConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.FromConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">ToConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.ToConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
          <table>
             <tr>
                <th>
@@ -2144,6 +2133,116 @@ p.package { position: absolute; right: 10px; top: 0px}
          </a>
          <p class="package">Production</p>
          <p class="comment">A nuclear generating unit.</p>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">maxOperatingP</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ActivePower">ActivePower</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#GeneratingUnit.maxOperatingP">GeneratingUnit</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">minOperatingP</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ActivePower">ActivePower</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#GeneratingUnit.minOperatingP">GeneratingUnit</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">inService</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#Equipment.inService">Equipment</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">EquipmentContainer</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#EquipmentContainer">EquipmentContainer</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#Equipment.EquipmentContainer">Equipment</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table/>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
       </div>
       <div id="PhotoVoltaicUnit" class="group">
          <a href="#PhotoVoltaicUnit">
@@ -2411,59 +2510,6 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
-                  <p class="name">BaseVoltage</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#BaseVoltage">BaseVoltage</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.BaseVoltage">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">FromConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.FromConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">ToConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.ToConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
-         <table>
-            <tr>
-               <th>
                   <p class="name">inService</p>
                </th>
                <td>
@@ -2705,59 +2751,6 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
-                  <p class="name">BaseVoltage</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#BaseVoltage">BaseVoltage</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.BaseVoltage">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">FromConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.FromConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">ToConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.ToConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
-         <table>
-            <tr>
-               <th>
                   <p class="name">inService</p>
                </th>
                <td>
@@ -2873,23 +2866,6 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p class="comment">Terminal voltage phase angle displacement where 360 degrees are represented with clock hours. The valid values are 0 to 11. For example, for the secondary side end of a transformer with vector group code of 'Dyn11', specify the connection kind as wye with neutral and specify the phase angle of the clock as 11.  The clock value of the transformer end number specified as 1, is assumed to be zero.  Note the transformer end number is not assumed to be the same as the terminal sequence number.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="PowerTransformerEnd.r">r</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Resistance">Resistance</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">Resistance (star-model) of the transformer end.</p>
-                  <p class="comment">The attribute shall be equal to or greater than zero for non-equivalent transformers.</p>
                </td>
             </tr>
             <tr>
@@ -3028,23 +3004,6 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p>see <a class="superclass" href="#TransformerEnd.BaseVoltage">TransformerEnd</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">ConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#TransformerEnd.ConnectivityNode">TransformerEnd</a>
                   </p>
                </td>
             </tr>
@@ -3341,6 +3300,38 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
+                  <p class="name" id="SeriesCompensator.r">r</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Resistance">Resistance</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Positive sequence resistance.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="SeriesCompensator.r0">r0</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Resistance">Resistance</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Zero sequence resistance.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
                   <p class="name" id="SeriesCompensator.x">x</p>
                </th>
                <td>
@@ -3373,59 +3364,6 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
          <h3>Inherited Members</h3>
-         <table>
-            <tr>
-               <th>
-                  <p class="name">BaseVoltage</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#BaseVoltage">BaseVoltage</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.BaseVoltage">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">FromConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.FromConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">ToConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.ToConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
          <table>
             <tr>
                <th>
@@ -3711,59 +3649,6 @@ p.package { position: absolute; right: 10px; top: 0px}
          </table>
          <table/>
          <table/>
-         <table>
-            <tr>
-               <th>
-                  <p class="name">BaseVoltage</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#BaseVoltage">BaseVoltage</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.BaseVoltage">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">FromConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.FromConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">ToConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.ToConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
          <table>
             <tr>
                <th>
@@ -4185,7 +4070,26 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
             </tr>
          </table>
-         <table/>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">SynchronousMachine</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#SynchronousMachine">SynchronousMachine</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass"
+                        href="#SynchronousMachineDynamics.SynchronousMachine">SynchronousMachineDynamics</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
          <table>
             <tr>
                <th>
@@ -4435,6 +4339,116 @@ p.package { position: absolute; right: 10px; top: 0px}
          </a>
          <p class="package">Production</p>
          <p class="comment">A generating unit whose prime mover could be a steam turbine, combustion turbine, or diesel engine.</p>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">maxOperatingP</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ActivePower">ActivePower</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#GeneratingUnit.maxOperatingP">GeneratingUnit</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">minOperatingP</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ActivePower">ActivePower</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#GeneratingUnit.minOperatingP">GeneratingUnit</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">inService</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#Equipment.inService">Equipment</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">EquipmentContainer</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#EquipmentContainer">EquipmentContainer</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#Equipment.EquipmentContainer">Equipment</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table/>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
       </div>
       <div id="TransformerCoreAdmittance" class="group">
          <a href="#TransformerCoreAdmittance">
@@ -4739,7 +4753,93 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
          <h3>Inherited Members</h3>
-         <table/>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">curveStyle</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#CurveStyle">CurveStyle</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#Curve.curveStyle">Curve</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">xMultiplier</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#UnitMultiplier">UnitMultiplier</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#Curve.xMultiplier">Curve</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">xUnit</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#UnitSymbol">UnitSymbol</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#Curve.xUnit">Curve</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">y1Multiplier</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#UnitMultiplier">UnitMultiplier</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#Curve.y1Multiplier">Curve</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">y1Unit</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#UnitSymbol">UnitSymbol</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#Curve.y1Unit">Curve</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
          <table>
             <tr>
                <th>
@@ -6792,13 +6892,6 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
-      <div id="WindGeneratingUnit" class="group">
-         <a href="#WindGeneratingUnit">
-            <h2 class="concrete">WindGeneratingUnit</h2>
-         </a>
-         <p class="package">Production</p>
-         <p class="comment">A wind driven generating unit, connected to the grid by means of a rotating machine.  May be used to represent a single turbine or an aggregation.</p>
-      </div>
       <h1>Abstract Classes</h1>
       <div id="AsynchronousMachine" class="group">
          <a href="#AsynchronousMachine">
@@ -6811,7 +6904,7 @@ p.package { position: absolute; right: 10px; top: 0px}
          <a href="#ConductingEquipment">
             <h2 class="abstract">ConductingEquipment</h2>
          </a>
-         <p class="package">Core</p>
+         <p class="package">Emtiop</p>
          <p class="comment">Allows for direct connection between ConductingEquipment and ConnectivityNode (bus) without using a Terminal.</p>
          <p class="comment">Two-terminal devices, e.g., ACLineSegment, use FromConnectivityNode and ToConnectivityNode, and the polarity dot for positive current flow is at the FromConnectivityNode end.</p>
          <p class="comment">One-terminal devices, e.g., TransformerEnd, EnergyConnection, ShuntCompensator, use FromConnectivityNode. The ToConnectivityNode should be omitted, specified the same as FromConnectivityNode, or set as the reference (ground) node if such has been defined in the network model.</p>
@@ -6820,26 +6913,10 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
-                  <p class="name" id="ConductingEquipment.BaseVoltage">BaseVoltage</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#BaseVoltage">BaseVoltage</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">Base voltage of this conducting equipment.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
                   <p class="name" id="ConductingEquipment.FromConnectivityNode">FromConnectivityNode</p>
                </th>
                <td>
-                  <p class="cardinality">1..1</p>
+                  <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
@@ -6855,7 +6932,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name" id="ConductingEquipment.ToConnectivityNode">ToConnectivityNode</p>
                </th>
                <td>
-                  <p class="cardinality">1..1</p>
+                  <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
@@ -6867,77 +6944,29 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
             </tr>
          </table>
-         <h3>Inherited Members</h3>
+      </div>
+      <div id="ConductingEquipment1" class="group">
+         <a href="#ConductingEquipment1">
+            <h2 class="abstract">ConductingEquipment1</h2>
+         </a>
+         <p class="package">Core</p>
+         <p class="comment">The parts of the AC power system that are designed to carry current or that are conductively connected through terminals.</p>
+         <h3>Native Members</h3>
          <table>
             <tr>
                <th>
-                  <p class="name">inService</p>
+                  <p class="name" id="ConductingEquipment1.BaseVoltage">BaseVoltage</p>
                </th>
                <td>
-                  <p class="cardinality">1..1</p>
+                  <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Boolean">Boolean</a>
+                     <a href="#BaseVoltage">BaseVoltage</a>
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#Equipment.inService">Equipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">EquipmentContainer</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#EquipmentContainer">EquipmentContainer</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#Equipment.EquipmentContainer">Equipment</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
-         <table/>
-         <table>
-            <tr>
-               <th>
-                  <p class="name">mRID</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#String">String</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">name</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#String">String</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
-                  </p>
+                  <p class="comment">Base voltage of this conducting equipment.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.</p>
                </td>
             </tr>
          </table>
@@ -6968,59 +6997,6 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
          <h3>Inherited Members</h3>
-         <table>
-            <tr>
-               <th>
-                  <p class="name">BaseVoltage</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#BaseVoltage">BaseVoltage</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.BaseVoltage">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">FromConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.FromConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">ToConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.ToConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
          <table>
             <tr>
                <th>
@@ -7146,6 +7122,89 @@ p.package { position: absolute; right: 10px; top: 0px}
          </a>
          <p class="package">Core</p>
          <p class="comment">A multi-purpose curve or functional relationship between an independent variable (X-axis) and dependent (Y-axis) variables.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="Curve.curveStyle">curveStyle</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#CurveStyle">CurveStyle</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The style or shape of the curve.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Curve.xMultiplier">xMultiplier</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#UnitMultiplier">UnitMultiplier</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Multiplier for X-axis.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Curve.xUnit">xUnit</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#UnitSymbol">UnitSymbol</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The X-axis units of measure.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Curve.y1Multiplier">y1Multiplier</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#UnitMultiplier">UnitMultiplier</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Multiplier for Y1-axis.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Curve.y1Unit">y1Unit</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#UnitSymbol">UnitSymbol</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The Y1-axis units of measure.</p>
+               </td>
+            </tr>
+         </table>
          <h3>Inherited Members</h3>
          <table>
             <tr>
@@ -7354,59 +7413,6 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
-                  <p class="name">BaseVoltage</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#BaseVoltage">BaseVoltage</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.BaseVoltage">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">FromConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.FromConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">ToConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.ToConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
-         <table>
-            <tr>
-               <th>
                   <p class="name">inService</p>
                </th>
                <td>
@@ -7564,6 +7570,25 @@ p.package { position: absolute; right: 10px; top: 0px}
          </a>
          <p class="package">ExcitationSystemDynamics</p>
          <p class="comment">Excitation system function block whose behaviour is described by reference to a standard model &lt;font color="#0f0f0f"&gt;or by definition of a user-defined model.&lt;/font&gt;</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="ExcitationSystemDynamics.SynchronousMachineDynamics">SynchronousMachineDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#SynchronousMachineDynamics">SynchronousMachineDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Synchronous machine model with which this excitation system model is associated.</p>
+               </td>
+            </tr>
+         </table>
          <h3>Inherited Members</h3>
          <table>
             <tr>
@@ -7584,6 +7609,122 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
             </tr>
          </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="GeneratingUnit" class="group">
+         <a href="#GeneratingUnit">
+            <h2 class="abstract">GeneratingUnit</h2>
+         </a>
+         <p class="package">Production</p>
+         <p class="comment">A single or set of synchronous machines for converting mechanical power into alternating-current power. For example, individual machines within a set may be defined for scheduling purposes while a single control signal is derived for the set. In this case there would be a GeneratingUnit for each member of the set and an additional GeneratingUnit corresponding to the set.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="GeneratingUnit.maxOperatingP">maxOperatingP</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ActivePower">ActivePower</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">This is the maximum operating active power limit the dispatcher can enter for this unit.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GeneratingUnit.minOperatingP">minOperatingP</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ActivePower">ActivePower</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">This is the minimum operating active power limit the dispatcher can enter for this unit.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">inService</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#Equipment.inService">Equipment</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">EquipmentContainer</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#EquipmentContainer">EquipmentContainer</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#Equipment.EquipmentContainer">Equipment</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table/>
          <table>
             <tr>
                <th>
@@ -7941,59 +8082,6 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
-                  <p class="name">BaseVoltage</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#BaseVoltage">BaseVoltage</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.BaseVoltage">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">FromConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.FromConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">ToConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.ToConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
-         <table>
-            <tr>
-               <th>
                   <p class="name">inService</p>
                </th>
                <td>
@@ -8161,59 +8249,6 @@ p.package { position: absolute; right: 10px; top: 0px}
          <h3>Inherited Members</h3>
          <table/>
          <table/>
-         <table>
-            <tr>
-               <th>
-                  <p class="name">BaseVoltage</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#BaseVoltage">BaseVoltage</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.BaseVoltage">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">FromConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.FromConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">ToConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.ToConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
          <table>
             <tr>
                <th>
@@ -8499,59 +8534,6 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
-                  <p class="name">BaseVoltage</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#BaseVoltage">BaseVoltage</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.BaseVoltage">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">FromConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.FromConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">ToConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#ConductingEquipment.ToConnectivityNode">ConductingEquipment</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
-         <table>
-            <tr>
-               <th>
                   <p class="name">inService</p>
                </th>
                <td>
@@ -8734,7 +8716,26 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
          <h3>Inherited Members</h3>
-         <table/>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">SynchronousMachine</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#SynchronousMachine">SynchronousMachine</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass"
+                        href="#SynchronousMachineDynamics.SynchronousMachine">SynchronousMachineDynamics</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
          <table>
             <tr>
                <th>
@@ -8877,6 +8878,25 @@ p.package { position: absolute; right: 10px; top: 0px}
          <p class="comment">&lt;ol&gt;</p>
          <p class="comment">	&lt;li&gt;&lt;font color="#0f0f0f"&gt;Synchronous machine parameters such as &lt;i&gt;Xl, Xd, Xp&lt;/i&gt; etc. are actually used as inductances in the models,&lt;/font&gt; but are commonly referred to as reactances since, at nominal frequency, the PU values are the same. However, some references use the symbol &lt;i&gt;L&lt;/i&gt; instead of &lt;i&gt;X&lt;/i&gt;.&lt;/li&gt;</p>
          <p class="comment">&lt;/ol&gt;</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="SynchronousMachineDynamics.SynchronousMachine">SynchronousMachine</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#SynchronousMachine">SynchronousMachine</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Synchronous machine to which synchronous machine dynamics model applies.</p>
+               </td>
+            </tr>
+         </table>
          <h3>Inherited Members</h3>
          <table>
             <tr>
@@ -9093,9 +9113,19 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="comment">Base voltage of the transformer end. This is essential for PU calculation.</p>
                </td>
             </tr>
+         </table>
+      </div>
+      <div id="TransformerEnd1" class="group">
+         <a href="#TransformerEnd1">
+            <h2 class="abstract">TransformerEnd1</h2>
+         </a>
+         <p class="package">Emtiop</p>
+         <p class="comment">Allows for a direct connection between TransformerEnd and ConnectivityNode (bus), without using a Terminal.</p>
+         <h3>Native Members</h3>
+         <table>
             <tr>
                <th>
-                  <p class="name" id="TransformerEnd.ConnectivityNode">ConnectivityNode</p>
+                  <p class="name" id="TransformerEnd1.ConnectivityNode">ConnectivityNode</p>
                </th>
                <td>
                   <p class="cardinality">1..1</p>
@@ -9117,6 +9147,25 @@ p.package { position: absolute; right: 10px; top: 0px}
          </a>
          <p class="package">TurbineGovernorDynamics</p>
          <p class="comment">Turbine-governor function block whose behaviour is described by reference to a standard model &lt;font color="#0f0f0f"&gt;or by definition of a user-defined model.&lt;/font&gt;</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="TurbineGovernorDynamics.SynchronousMachineDynamics">SynchronousMachineDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#SynchronousMachineDynamics">SynchronousMachineDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Synchronous machine model with which this turbine-governor model is associated. TurbineGovernorDynamics shall have either an association to SynchronousMachineDynamics or to AsynchronousMachineDynamics.</p>
+               </td>
+            </tr>
+         </table>
          <h3>Inherited Members</h3>
          <table>
             <tr>
@@ -9384,6 +9433,31 @@ p.package { position: absolute; right: 10px; top: 0px}
                </th>
                <td>
                   <p class="comment">Neither charging nor discharging, but able to do so.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="CurveStyle" class="group">
+         <a href="#CurveStyle">
+            <h2 class="enumerated">CurveStyle</h2>
+         </a>
+         <p class="package">Core</p>
+         <p class="comment">Style or shape of curve.</p>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">constantYValue</p>
+               </th>
+               <td>
+                  <p class="comment">The Y-axis values are assumed constant until the next curve point and prior to the first curve point.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">straightLineYValues</p>
+               </th>
+               <td>
+                  <p class="comment">The Y-axis values are assumed to be a straight line between values. Also known as linear interpolation.</p>
                </td>
             </tr>
          </table>
@@ -9695,6 +9769,1337 @@ p.package { position: absolute; right: 10px; top: 0px}
                </th>
                <td>
                   <p class="comment">Operating as motor.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="UnitMultiplier" class="group">
+         <a href="#UnitMultiplier">
+            <h2 class="enumerated">UnitMultiplier</h2>
+         </a>
+         <p class="package">Domain</p>
+         <p class="comment">The unit multipliers defined for the CIM. When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type.</p>
+         <p class="comment">For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "&amp;#222;" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "k&amp;#222;".</p>
+         <p class="comment">For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "&amp;#222;", then it is easier to conceptualize the multiplier "m" as creating the proper unit "m&amp;#222;", and not the forbidden unit "mkg".</p>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">E</p>
+               </th>
+               <td>
+                  <p class="comment">Exa 10**18.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">G</p>
+               </th>
+               <td>
+                  <p class="comment">Giga 10**9.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">M</p>
+               </th>
+               <td>
+                  <p class="comment">Mega 10**6.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">P</p>
+               </th>
+               <td>
+                  <p class="comment">Peta 10**15.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">T</p>
+               </th>
+               <td>
+                  <p class="comment">Tera 10**12.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Y</p>
+               </th>
+               <td>
+                  <p class="comment">Yotta 10**24.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Z</p>
+               </th>
+               <td>
+                  <p class="comment">Zetta 10**21.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">a</p>
+               </th>
+               <td>
+                  <p class="comment">Atto 10**-18.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">c</p>
+               </th>
+               <td>
+                  <p class="comment">Centi 10**-2.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">d</p>
+               </th>
+               <td>
+                  <p class="comment">Deci 10**-1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">da</p>
+               </th>
+               <td>
+                  <p class="comment">Deca 10**1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">f</p>
+               </th>
+               <td>
+                  <p class="comment">Femto 10**-15.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">h</p>
+               </th>
+               <td>
+                  <p class="comment">Hecto 10**2.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">k</p>
+               </th>
+               <td>
+                  <p class="comment">Kilo 10**3.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">m</p>
+               </th>
+               <td>
+                  <p class="comment">Milli 10**-3.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">micro</p>
+               </th>
+               <td>
+                  <p class="comment">Micro 10**-6.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">n</p>
+               </th>
+               <td>
+                  <p class="comment">Nano 10**-9.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">none</p>
+               </th>
+               <td>
+                  <p class="comment">No multiplier or equivalently multiply by 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">p</p>
+               </th>
+               <td>
+                  <p class="comment">Pico 10**-12.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">y</p>
+               </th>
+               <td>
+                  <p class="comment">Yocto 10**-24.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">z</p>
+               </th>
+               <td>
+                  <p class="comment">Zepto 10**-21.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="UnitSymbol" class="group">
+         <a href="#UnitSymbol">
+            <h2 class="enumerated">UnitSymbol</h2>
+         </a>
+         <p class="package">Domain</p>
+         <p class="comment">The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm^3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole.</p>
+         <p class="comment">Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.</p>
+         <p class="comment">To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m^3". The letters "deg" are used instead of the degree symbol. Any clarification of the meaning for a substitution is included in the description for the unit symbol.</p>
+         <p class="comment">Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units.</p>
+         <p class="comment">The integer values are used for harmonization with IEC 61850.</p>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">A</p>
+               </th>
+               <td>
+                  <p class="comment">Current in amperes.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">A2</p>
+               </th>
+               <td>
+                  <p class="comment">Amperes squared (A^2).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">A2h</p>
+               </th>
+               <td>
+                  <p class="comment">Ampere-squared hour, ampere-squared hour.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">A2s</p>
+               </th>
+               <td>
+                  <p class="comment">Ampere squared time in square amperes (A^2*s).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">APerA</p>
+               </th>
+               <td>
+                  <p class="comment">Current, ratio of amperages.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">APerm</p>
+               </th>
+               <td>
+                  <p class="comment">Amperes per metre (A/m), magnetic field strength.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Ah</p>
+               </th>
+               <td>
+                  <p class="comment">Ampere-hours, ampere-hours.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">As</p>
+               </th>
+               <td>
+                  <p class="comment">Ampere seconds (A*s).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Bq</p>
+               </th>
+               <td>
+                  <p class="comment">Radioactivity in becquerels (1/s).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Btu</p>
+               </th>
+               <td>
+                  <p class="comment">Energy, British Thermal Units.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">C</p>
+               </th>
+               <td>
+                  <p class="comment">Electric charge in coulombs (A*s).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">CPerkg</p>
+               </th>
+               <td>
+                  <p class="comment">Exposure (x rays), coulombs per kilogram.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">CPerm2</p>
+               </th>
+               <td>
+                  <p class="comment">Surface charge density, coulombs per square metre.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">CPerm3</p>
+               </th>
+               <td>
+                  <p class="comment">Electric charge density, coulombs per cubic metre.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">F</p>
+               </th>
+               <td>
+                  <p class="comment">Electric capacitance in farads (C/V).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">FPerm</p>
+               </th>
+               <td>
+                  <p class="comment">Permittivity, farads per metre.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">G</p>
+               </th>
+               <td>
+                  <p class="comment">Magnetic flux density, gausses (1 G = 10e-4*T).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Gy</p>
+               </th>
+               <td>
+                  <p class="comment">Absorbed dose in grays (J/kg).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">GyPers</p>
+               </th>
+               <td>
+                  <p class="comment">Absorbed dose rate, grays per second.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">H</p>
+               </th>
+               <td>
+                  <p class="comment">Electric inductance in henrys (Wb/A).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">HPerm</p>
+               </th>
+               <td>
+                  <p class="comment">Permeability, henrys per metre.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Hz</p>
+               </th>
+               <td>
+                  <p class="comment">Frequency in hertz (1/s).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">HzPerHz</p>
+               </th>
+               <td>
+                  <p class="comment">Frequency, rate of frequency change.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">HzPers</p>
+               </th>
+               <td>
+                  <p class="comment">Rate of change of frequency in hertz per second.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">J</p>
+               </th>
+               <td>
+                  <p class="comment">Energy in joules (N*m = C*V = W*s).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">JPerK</p>
+               </th>
+               <td>
+                  <p class="comment">Heat capacity in joules/kelvin.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">JPerkg</p>
+               </th>
+               <td>
+                  <p class="comment">Specific energy, J/kg.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">JPerkgK</p>
+               </th>
+               <td>
+                  <p class="comment">Specific heat capacity, specific entropy, joules per kilogram Kelvin.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">JPerm2</p>
+               </th>
+               <td>
+                  <p class="comment">Insulation energy density, joules per square metre or watt second per square metre.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">JPerm3</p>
+               </th>
+               <td>
+                  <p class="comment">Energy density, joules per cubic metre.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">JPermol</p>
+               </th>
+               <td>
+                  <p class="comment">Molar energy, joules per mole.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">JPermolK</p>
+               </th>
+               <td>
+                  <p class="comment">Molar entropy, molar heat capacity, joules per mole kelvin.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">JPers</p>
+               </th>
+               <td>
+                  <p class="comment">Energy rate in joules per second (J/s).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">K</p>
+               </th>
+               <td>
+                  <p class="comment">Temperature in kelvins.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">KPers</p>
+               </th>
+               <td>
+                  <p class="comment">Temperature change rate in kelvins per second.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">M</p>
+               </th>
+               <td>
+                  <p class="comment">Length, nautical miles (1 M = 1852 m).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Mx</p>
+               </th>
+               <td>
+                  <p class="comment">Magnetic flux, maxwells (1 Mx = 10-8 Wb).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">N</p>
+               </th>
+               <td>
+                  <p class="comment">Force in newtons (kg*m/s^2).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">NPerm</p>
+               </th>
+               <td>
+                  <p class="comment">Surface tension, newton per metre.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Nm</p>
+               </th>
+               <td>
+                  <p class="comment">Moment of force, newton metres.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Oe</p>
+               </th>
+               <td>
+                  <p class="comment">Magnetic field in oersteds, (1 Oe = (10^3/(4*pi)) A/m = 79.57747 A/m).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Pa</p>
+               </th>
+               <td>
+                  <p class="comment">Pressure in pascals (N/m^2). Note: the absolute or relative measurement of pressure is implied with this entry. See below for more explicit forms.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">PaPers</p>
+               </th>
+               <td>
+                  <p class="comment">Pressure change rate in pascals per second.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Pas</p>
+               </th>
+               <td>
+                  <p class="comment">Dynamic viscosity, pascal seconds.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Q</p>
+               </th>
+               <td>
+                  <p class="comment">Quantity power, Q.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Qh</p>
+               </th>
+               <td>
+                  <p class="comment">Quantity energy, Qh.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">S</p>
+               </th>
+               <td>
+                  <p class="comment">Conductance in siemens.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">SPerm</p>
+               </th>
+               <td>
+                  <p class="comment">Conductance per length (F/m).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Sv</p>
+               </th>
+               <td>
+                  <p class="comment">Dose equivalent in sieverts (J/kg).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">T</p>
+               </th>
+               <td>
+                  <p class="comment">Magnetic flux density in teslas (Wb/m^2).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">V</p>
+               </th>
+               <td>
+                  <p class="comment">Electric potential in volts (W/A).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">V2</p>
+               </th>
+               <td>
+                  <p class="comment">Volt squared (W^2/A^2).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">V2h</p>
+               </th>
+               <td>
+                  <p class="comment">Volt-squared hour, volt-squared-hours.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">VA</p>
+               </th>
+               <td>
+                  <p class="comment">Apparent power in volt amperes. See also real power and reactive power.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">VAh</p>
+               </th>
+               <td>
+                  <p class="comment">Apparent energy in volt ampere hours.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">VAr</p>
+               </th>
+               <td>
+                  <p class="comment">Reactive power in volt amperes reactive. The "reactive" or "imaginary" component of electrical power (V*I*sin(phi)). (See also real power and apparent power).</p>
+                  <p class="comment">Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">VArh</p>
+               </th>
+               <td>
+                  <p class="comment">Reactive energy in volt ampere reactive hours.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">VPerHz</p>
+               </th>
+               <td>
+                  <p class="comment">Magnetic flux in volt per hertz.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">VPerV</p>
+               </th>
+               <td>
+                  <p class="comment">Voltage, ratio of voltages.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">VPerVA</p>
+               </th>
+               <td>
+                  <p class="comment">Power factor, PF, the ratio of the active power to the apparent power.  Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">VPerVAr</p>
+               </th>
+               <td>
+                  <p class="comment">Power factor, PF, the ratio of the active power to the apparent power. Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">VPerm</p>
+               </th>
+               <td>
+                  <p class="comment">Electric field strength, volts per metre.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Vh</p>
+               </th>
+               <td>
+                  <p class="comment">Volt-hour, Volt hours.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Vs</p>
+               </th>
+               <td>
+                  <p class="comment">Volt seconds (Ws/A).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">W</p>
+               </th>
+               <td>
+                  <p class="comment">Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I^2*R or V*I*cos(phi)), is expressed in Watts. See also apparent power and reactive power.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">WPerA</p>
+               </th>
+               <td>
+                  <p class="comment">Active power per current flow, watts per Ampere.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">WPerW</p>
+               </th>
+               <td>
+                  <p class="comment">Signal Strength, ratio of power.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">WPerm2</p>
+               </th>
+               <td>
+                  <p class="comment">Heat flux density, irradiance, watts per square metre.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">WPerm2sr</p>
+               </th>
+               <td>
+                  <p class="comment">Radiance, watts per square metre steradian.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">WPermK</p>
+               </th>
+               <td>
+                  <p class="comment">Thermal conductivity in watt/metres kelvin.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">WPers</p>
+               </th>
+               <td>
+                  <p class="comment">Ramp rate in watts per second.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">WPersr</p>
+               </th>
+               <td>
+                  <p class="comment">Radiant intensity, watts per steradian.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Wb</p>
+               </th>
+               <td>
+                  <p class="comment">Magnetic flux in webers (V*s).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Wh</p>
+               </th>
+               <td>
+                  <p class="comment">Real energy in watt hours.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">anglemin</p>
+               </th>
+               <td>
+                  <p class="comment">Plane angle, minutes.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">anglesec</p>
+               </th>
+               <td>
+                  <p class="comment">Plane angle, seconds.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">bar</p>
+               </th>
+               <td>
+                  <p class="comment">Pressure in bars, (1 bar = 100 kPa).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">cd</p>
+               </th>
+               <td>
+                  <p class="comment">Luminous intensity in candelas.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">charPers</p>
+               </th>
+               <td>
+                  <p class="comment">Data rate (baud) in characters per second.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">character</p>
+               </th>
+               <td>
+                  <p class="comment">Number of characters.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">cosPhi</p>
+               </th>
+               <td>
+                  <p class="comment">Power factor, dimensionless.</p>
+                  <p class="comment">Note 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.</p>
+                  <p class="comment">Note 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">count</p>
+               </th>
+               <td>
+                  <p class="comment">Amount of substance, counter value.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">d</p>
+               </th>
+               <td>
+                  <p class="comment">Time in days, day = 24 h = 86400 s.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">dB</p>
+               </th>
+               <td>
+                  <p class="comment">Sound pressure level in decibels. Note:  multiplier "d" is included in this unit symbol for compatibility with IEC 61850-7-3.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">dBm</p>
+               </th>
+               <td>
+                  <p class="comment">Power level (logarithmic ratio of signal strength , Bel-mW), normalized to 1 mW. Note:  multiplier "d" is included in this unit symbol for compatibility with IEC 61850-7-3.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">deg</p>
+               </th>
+               <td>
+                  <p class="comment">Plane angle in degrees.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">degC</p>
+               </th>
+               <td>
+                  <p class="comment">Relative temperature in degrees Celsius (degC).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">ft3</p>
+               </th>
+               <td>
+                  <p class="comment">Volume, cubic feet.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">gPerg</p>
+               </th>
+               <td>
+                  <p class="comment">Concentration, The ratio of the mass of a solute divided by the mass of  the solution.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">gal</p>
+               </th>
+               <td>
+                  <p class="comment">Volume in gallons, US gallon (1 gal = 231 in^3 = 128 fl ounce).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">h</p>
+               </th>
+               <td>
+                  <p class="comment">Time in hours, hour = 60 min = 3600 s.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">ha</p>
+               </th>
+               <td>
+                  <p class="comment">Area, hectares.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">kat</p>
+               </th>
+               <td>
+                  <p class="comment">Catalytic activity, katal = mol/s.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">katPerm3</p>
+               </th>
+               <td>
+                  <p class="comment">Catalytic activity concentration, katals per cubic metre.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">kg</p>
+               </th>
+               <td>
+                  <p class="comment">Mass in kilograms. Note: multiplier "k" is included in this unit symbol for compatibility with IEC 61850-7-3.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">kgPerJ</p>
+               </th>
+               <td>
+                  <p class="comment">Weight per energy in kilograms per joule (kg/J). Note: multiplier "k" is included in this unit symbol for compatibility with IEC 61850-7-3.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">kgPerm</p>
+               </th>
+               <td>
+                  <p class="comment">Mass per length in kilogram/metres (kg/m). Note: multiplier "k" is included in this unit symbol for compatibility with mass datatype.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">kgPerm3</p>
+               </th>
+               <td>
+                  <p class="comment">Density in kilogram/cubic metres (kg/m^3). Note: multiplier "k" is included in this unit symbol for compatibility with IEC 61850-7-3.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">kgm</p>
+               </th>
+               <td>
+                  <p class="comment">Moment of mass in kilogram metres (kg*m) (first moment of mass). Note: multiplier "k" is included in this unit symbol for compatibility with IEC 61850-7-3.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">kgm2</p>
+               </th>
+               <td>
+                  <p class="comment">Moment of mass in kilogram square metres (kg*m^2) (Second moment of mass, commonly called the moment of inertia). Note: multiplier "k" is included in this unit symbol for compatibility with IEC 61850-7-3.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">kn</p>
+               </th>
+               <td>
+                  <p class="comment">Speed, knots (1 kn = 1852/3600) m/s.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">l</p>
+               </th>
+               <td>
+                  <p class="comment">Volume in litres, litre = dm^3 = m^3/1000.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">lPerh</p>
+               </th>
+               <td>
+                  <p class="comment">Volumetric flow rate, litres per hour.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">lPerl</p>
+               </th>
+               <td>
+                  <p class="comment">Concentration, The ratio of the volume of a solute divided by the volume of  the solution.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">lPers</p>
+               </th>
+               <td>
+                  <p class="comment">Volumetric flow rate in litres per second.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">lm</p>
+               </th>
+               <td>
+                  <p class="comment">Luminous flux in lumens (cd*sr).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">lx</p>
+               </th>
+               <td>
+                  <p class="comment">Illuminance in lux (lm/m^2).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">m</p>
+               </th>
+               <td>
+                  <p class="comment">Length in metres.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">m2</p>
+               </th>
+               <td>
+                  <p class="comment">Area in square metres (m^2).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">m2Pers</p>
+               </th>
+               <td>
+                  <p class="comment">Viscosity in square metres/second (m^2/s).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">m3</p>
+               </th>
+               <td>
+                  <p class="comment">Volume in cubic metres (m^3).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">m3Compensated</p>
+               </th>
+               <td>
+                  <p class="comment">Volume, cubic metres, with the value compensated for weather effects.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">m3Perh</p>
+               </th>
+               <td>
+                  <p class="comment">Volumetric flow rate, cubic metres per hour.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">m3Perkg</p>
+               </th>
+               <td>
+                  <p class="comment">Specific volume, cubic metres per kilogram, v.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">m3Pers</p>
+               </th>
+               <td>
+                  <p class="comment">Volumetric flow rate in cubic metres per second (m^3/s).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">m3Uncompensated</p>
+               </th>
+               <td>
+                  <p class="comment">Volume, cubic metres, with the value uncompensated for weather effects.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">mPerm3</p>
+               </th>
+               <td>
+                  <p class="comment">Fuel efficiency in metres per cubic metres (m/m^3).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">mPers</p>
+               </th>
+               <td>
+                  <p class="comment">Velocity in metres per second (m/s).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">mPers2</p>
+               </th>
+               <td>
+                  <p class="comment">Acceleration in metres per second squared (m/s^2).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">min</p>
+               </th>
+               <td>
+                  <p class="comment">Time in minutes, minute  = 60 s.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">mmHg</p>
+               </th>
+               <td>
+                  <p class="comment">Pressure, millimetres of mercury (1 mmHg is approximately 133.3 Pa).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">mol</p>
+               </th>
+               <td>
+                  <p class="comment">Amount of substance in moles.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">molPerkg</p>
+               </th>
+               <td>
+                  <p class="comment">Concentration, Molality, the amount of solute in moles and the amount of solvent in kilograms.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">molPerm3</p>
+               </th>
+               <td>
+                  <p class="comment">Concentration, The amount of substance concentration, (c), the amount of solvent in moles divided by the volume of solution in m^3.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">molPermol</p>
+               </th>
+               <td>
+                  <p class="comment">Concentration, Molar fraction, the ratio of the molar amount of a solute divided by the molar amount of the solution.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">none</p>
+               </th>
+               <td>
+                  <p class="comment">Dimension less quantity, e.g. count, per unit, etc.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">ohm</p>
+               </th>
+               <td>
+                  <p class="comment">Electric resistance in ohms (V/A).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">ohmPerm</p>
+               </th>
+               <td>
+                  <p class="comment">Electric resistance per length in ohms per metre ((V/A)/m).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">ohmm</p>
+               </th>
+               <td>
+                  <p class="comment">Resistivity, ohm metres, (rho).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">onePerHz</p>
+               </th>
+               <td>
+                  <p class="comment">Reciprocal of frequency (1/Hz).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">onePerm</p>
+               </th>
+               <td>
+                  <p class="comment">Wavenumber, reciprocal metres,  (1/m).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">ppm</p>
+               </th>
+               <td>
+                  <p class="comment">Concentration in parts per million.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">rad</p>
+               </th>
+               <td>
+                  <p class="comment">Plane angle in radians (m/m).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">radPers</p>
+               </th>
+               <td>
+                  <p class="comment">Angular velocity in radians per second (rad/s).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">radPers2</p>
+               </th>
+               <td>
+                  <p class="comment">Angular acceleration, radians per second squared.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">rev</p>
+               </th>
+               <td>
+                  <p class="comment">Amount of rotation, revolutions.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">rotPers</p>
+               </th>
+               <td>
+                  <p class="comment">Rotations per second (1/s). See also Hz (1/s).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">s</p>
+               </th>
+               <td>
+                  <p class="comment">Time in seconds.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">sPers</p>
+               </th>
+               <td>
+                  <p class="comment">Time, Ratio of time.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">sr</p>
+               </th>
+               <td>
+                  <p class="comment">Solid angle in steradians (m^2/m^2).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">therm</p>
+               </th>
+               <td>
+                  <p class="comment">Energy, therms.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">tonne</p>
+               </th>
+               <td>
+                  <p class="comment">Mass in tons, "tonne" or "metric ton" (1000 kg = 1 Mg).</p>
                </td>
             </tr>
          </table>
