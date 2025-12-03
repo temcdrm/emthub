@@ -1,237 +1,79 @@
 <?xml  version='1.0' encoding='windows-1252' ?>
-<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20161101" xmlns:umldi="http://www.omg.org/spec/UML/20161101/UMLDI" xmlns:dc="http://www.omg.org/spec/UML/20161101/UMLDC" xmlns:thecustomprofile="http://www.sparxsystems.com/profiles/thecustomprofile/1.0">
-	<xmi:Documentation exporter="Enterprise Architect" exporterVersion="6.5" exporterID="1628"/>
-	<uml:Model xmi:type="uml:Model" name="EA_Model">
-		<packagedElement xmi:type="uml:Package" xmi:id="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" name="Emtiop">
+<xmi:XMI xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1" xmlns:thecustomprofile="http://www.sparxsystems.com/profiles/thecustomprofile/1.0">
+	<xmi:Documentation exporter="Enterprise Architect" exporterVersion="6.5" exporterID="1714"/>
+	<uml:Model xmi:type="uml:Model" name="EA_Model" visibility="public">
+		<packagedElement xmi:type="uml:Package" xmi:id="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" name="Emtiop" visibility="public">
 			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_8271D14C_510B_49d6_AC80_3C8C2898A131" body="These extensions eliminate Terminal objects from the IEEE P3743. Instead, ConductingEquipment and TransformerEnd extension instances associate directly to ConnectivityNode. Another extension represents non-linear transformer core effects, through a piecewise-linear TransformerSaturation instance, which associates to linear TransformerCoreAdmittance and then to TransformerEnd.">
 				<annotatedElement xmi:idref="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A"/>
 			</ownedComment>
-			<packagedElement xmi:type="uml:Class" xmi:id="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3" name="ConductingEquipment"/>
-			<packagedElement xmi:type="uml:Association" xmi:id="EAID_BC1FDB6F_1C1E_4dd0_A183_02B0AB55BF52">
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3" name="ConductingEquipment" visibility="public"/>
+			<packagedElement xmi:type="uml:Association" xmi:id="EAID_BC1FDB6F_1C1E_4dd0_A183_02B0AB55BF52" visibility="public">
 				<memberEnd xmi:idref="EAID_dst1FDB6F_1C1E_4dd0_A183_02B0AB55BF52"/>
-				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst1FDB6F_1C1E_4dd0_A183_02B0AB55BF52" name="FromConnectivityNode" association="EAID_BC1FDB6F_1C1E_4dd0_A183_02B0AB55BF52">
+				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst1FDB6F_1C1E_4dd0_A183_02B0AB55BF52" name="FromConnectivityNode" visibility="public" association="EAID_BC1FDB6F_1C1E_4dd0_A183_02B0AB55BF52" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2"/>
 					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000001__1C1E_4dd0_A183_02B0AB55BF52" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000002__1C1E_4dd0_A183_02B0AB55BF52" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000002__1C1E_4dd0_A183_02B0AB55BF52" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_src1FDB6F_1C1E_4dd0_A183_02B0AB55BF52"/>
-				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src1FDB6F_1C1E_4dd0_A183_02B0AB55BF52" name="ConductingEquipment" association="EAID_BC1FDB6F_1C1E_4dd0_A183_02B0AB55BF52">
+				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src1FDB6F_1C1E_4dd0_A183_02B0AB55BF52" name="ConductingEquipment" visibility="public" association="EAID_BC1FDB6F_1C1E_4dd0_A183_02B0AB55BF52" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3"/>
 					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000003__1C1E_4dd0_A183_02B0AB55BF52" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000004__1C1E_4dd0_A183_02B0AB55BF52" value="*"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000004__1C1E_4dd0_A183_02B0AB55BF52" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
-			<packagedElement xmi:type="uml:Association" xmi:id="EAID_D5C5364E_06F7_47d3_BD6B_625C306C381E">
+			<packagedElement xmi:type="uml:Association" xmi:id="EAID_D5C5364E_06F7_47d3_BD6B_625C306C381E" visibility="public">
 				<memberEnd xmi:idref="EAID_dstC5364E_06F7_47d3_BD6B_625C306C381E"/>
-				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dstC5364E_06F7_47d3_BD6B_625C306C381E" name="ToConnectivityNode" association="EAID_D5C5364E_06F7_47d3_BD6B_625C306C381E">
+				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dstC5364E_06F7_47d3_BD6B_625C306C381E" name="ToConnectivityNode" visibility="public" association="EAID_D5C5364E_06F7_47d3_BD6B_625C306C381E" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2"/>
 					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000005__06F7_47d3_BD6B_625C306C381E" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000006__06F7_47d3_BD6B_625C306C381E" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000006__06F7_47d3_BD6B_625C306C381E" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_srcC5364E_06F7_47d3_BD6B_625C306C381E"/>
-				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_srcC5364E_06F7_47d3_BD6B_625C306C381E" name="ConductingEquipment" association="EAID_D5C5364E_06F7_47d3_BD6B_625C306C381E">
+				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_srcC5364E_06F7_47d3_BD6B_625C306C381E" name="ConductingEquipment" visibility="public" association="EAID_D5C5364E_06F7_47d3_BD6B_625C306C381E" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3"/>
 					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000007__06F7_47d3_BD6B_625C306C381E" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000008__06F7_47d3_BD6B_625C306C381E" value="*"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000008__06F7_47d3_BD6B_625C306C381E" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
-			<packagedElement xmi:type="uml:Class" xmi:id="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF" name="TransformerEnd"/>
-			<packagedElement xmi:type="uml:Association" xmi:id="EAID_F81EF705_C28A_4bff_86E7_FCACF42F1BD5">
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF" name="TransformerEnd" visibility="public"/>
+			<packagedElement xmi:type="uml:Association" xmi:id="EAID_F81EF705_C28A_4bff_86E7_FCACF42F1BD5" visibility="public">
 				<memberEnd xmi:idref="EAID_dst1EF705_C28A_4bff_86E7_FCACF42F1BD5"/>
-				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst1EF705_C28A_4bff_86E7_FCACF42F1BD5" name="ConnectivityNode" association="EAID_F81EF705_C28A_4bff_86E7_FCACF42F1BD5">
+				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst1EF705_C28A_4bff_86E7_FCACF42F1BD5" name="ConnectivityNode" visibility="public" association="EAID_F81EF705_C28A_4bff_86E7_FCACF42F1BD5" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2"/>
 					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000009__C28A_4bff_86E7_FCACF42F1BD5" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000010__C28A_4bff_86E7_FCACF42F1BD5" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000010__C28A_4bff_86E7_FCACF42F1BD5" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_src1EF705_C28A_4bff_86E7_FCACF42F1BD5"/>
-				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src1EF705_C28A_4bff_86E7_FCACF42F1BD5" name="TransformerEnd" association="EAID_F81EF705_C28A_4bff_86E7_FCACF42F1BD5">
+				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src1EF705_C28A_4bff_86E7_FCACF42F1BD5" name="TransformerEnd" visibility="public" association="EAID_F81EF705_C28A_4bff_86E7_FCACF42F1BD5" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
 					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000011__C28A_4bff_86E7_FCACF42F1BD5" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000012__C28A_4bff_86E7_FCACF42F1BD5" value="*"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000012__C28A_4bff_86E7_FCACF42F1BD5" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
-			<packagedElement xmi:type="uml:Class" xmi:id="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C" name="TransformerSaturation">
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C" name="TransformerSaturation" visibility="public">
 				<generalization xmi:type="uml:Generalization" xmi:id="EAID_53C66C17_A275_4e92_88D0_0DCAD87C1B0E" general="EAID_73A500A6_E7FF_4abe_8FDA_E68B4E60FF9F" isSubstitutable="true"/>
 			</packagedElement>
-			<packagedElement xmi:type="uml:Association" xmi:id="EAID_01543B00_E80C_455e_A952_12EA8E441602">
+			<packagedElement xmi:type="uml:Association" xmi:id="EAID_01543B00_E80C_455e_A952_12EA8E441602" visibility="public">
 				<memberEnd xmi:idref="EAID_dst543B00_E80C_455e_A952_12EA8E441602"/>
 				<memberEnd xmi:idref="EAID_src543B00_E80C_455e_A952_12EA8E441602"/>
-				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src543B00_E80C_455e_A952_12EA8E441602" name="TransformerCoreAdmittance" association="EAID_01543B00_E80C_455e_A952_12EA8E441602">
+				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src543B00_E80C_455e_A952_12EA8E441602" name="TransformerCoreAdmittance" visibility="public" association="EAID_01543B00_E80C_455e_A952_12EA8E441602" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_25B2D790_161A_45c8_8551_E77A34DE684C"/>
 					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000013__E80C_455e_A952_12EA8E441602" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000014__E80C_455e_A952_12EA8E441602" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000014__E80C_455e_A952_12EA8E441602" value="1"/>
 				</ownedEnd>
-				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst543B00_E80C_455e_A952_12EA8E441602" name="TransformerSaturation" association="EAID_01543B00_E80C_455e_A952_12EA8E441602">
+				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst543B00_E80C_455e_A952_12EA8E441602" name="TransformerSaturation" visibility="public" association="EAID_01543B00_E80C_455e_A952_12EA8E441602" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C"/>
 					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000015__E80C_455e_A952_12EA8E441602" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000016__E80C_455e_A952_12EA8E441602" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000016__E80C_455e_A952_12EA8E441602" value="1"/>
 				</ownedEnd>
 			</packagedElement>
 		</packagedElement>
-		<umldi:Diagram xmi:type="umldi:UMLClassDiagram" xmi:id="EAID_E91A8704_D3A3_4229_B0A1_B67365DAB7F1" isFrame="false" modelElement="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A">
-			<ownedElement xmi:type="umldi:UMLClassifierShape" xmi:id="EAID_E91A8704_D3A3_4229_A2AE_CFDF43731FC2" modelElement="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2">
-				<ownedElement xmi:type="umldi:UMLNameLabel" xmi:id="EAID_NL000000_D3A3_4229_A2AE_CFDF43731FC2" text="ConnectivityNode"/>
-				<bounds xmi:type="dc:bounds" xmi:id="EAID_DB000000_D3A3_4229_A2AE_CFDF43731FC2" x="414" y="239" width="213" height="70"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLClassifierShape" xmi:id="EAID_E91A8704_D3A3_4229_8E53_BDCF7EBCE4C1" modelElement="EAID_7C5F19FB_5253_430c_8E53_BDCF7EBCE4C1">
-				<ownedElement xmi:type="umldi:UMLNameLabel" xmi:id="EAID_NL000000_D3A3_4229_8E53_BDCF7EBCE4C1" text="ConductingEquipment"/>
-				<bounds xmi:type="dc:bounds" xmi:id="EAID_DB000000_D3A3_4229_8E53_BDCF7EBCE4C1" x="71" y="82" width="210" height="70"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLClassifierShape" xmi:id="EAID_E91A8704_D3A3_4229_8E74_08970A4E6D95" modelElement="EAID_6E6AF445_8CD5_434b_8E74_08970A4E6D95">
-				<ownedElement xmi:type="umldi:UMLNameLabel" xmi:id="EAID_NL000000_D3A3_4229_8E74_08970A4E6D95" text="TransformerEnd"/>
-				<bounds xmi:type="dc:bounds" xmi:id="EAID_DB000000_D3A3_4229_8E74_08970A4E6D95" x="71" y="408" width="254" height="146"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLClassifierShape" xmi:id="EAID_E91A8704_D3A3_4229_8551_E77A34DE684C" modelElement="EAID_25B2D790_161A_45c8_8551_E77A34DE684C">
-				<ownedElement xmi:type="umldi:UMLNameLabel" xmi:id="EAID_NL000000_D3A3_4229_8551_E77A34DE684C" text="TransformerCoreAdmittance"/>
-				<bounds xmi:type="dc:bounds" xmi:id="EAID_DB000000_D3A3_4229_8551_E77A34DE684C" x="71" y="591" width="254" height="118"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLClassifierShape" xmi:id="EAID_E91A8704_D3A3_4229_8FDA_E68B4E60FF9F" modelElement="EAID_73A500A6_E7FF_4abe_8FDA_E68B4E60FF9F">
-				<ownedElement xmi:type="umldi:UMLNameLabel" xmi:id="EAID_NL000000_D3A3_4229_8FDA_E68B4E60FF9F" text="Curve"/>
-				<bounds xmi:type="dc:bounds" xmi:id="EAID_DB000000_D3A3_4229_8FDA_E68B4E60FF9F" x="679" y="309" width="199" height="174"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLClassifierShape" xmi:id="EAID_E91A8704_D3A3_4229_A86B_6BE155BB7193" modelElement="EAID_49452B3C_BB66_4c7a_A86B_6BE155BB7193">
-				<ownedElement xmi:type="umldi:UMLNameLabel" xmi:id="EAID_NL000000_D3A3_4229_A86B_6BE155BB7193" text="CurveData"/>
-				<bounds xmi:type="dc:bounds" xmi:id="EAID_DB000000_D3A3_4229_A86B_6BE155BB7193" x="690" y="82" width="188" height="93"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLClassifierShape" xmi:id="EAID_E91A8704_D3A3_4229_9080_478CAA5A006C" modelElement="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C">
-				<ownedElement xmi:type="umldi:UMLKeywordLabel" xmi:id="EAID_KL000000_D3A3_4229_9080_478CAA5A006C" text="CIMExtension"/>
-				<ownedElement xmi:type="umldi:UMLNameLabel" xmi:id="EAID_NL000000_D3A3_4229_9080_478CAA5A006C" text="TransformerSaturation"/>
-				<bounds xmi:type="dc:bounds" xmi:id="EAID_DB000000_D3A3_4229_9080_478CAA5A006C" x="484" y="631" width="163" height="78"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLClassifierShape" xmi:id="EAID_E91A8704_D3A3_4229_A38D_EE1F583151A3" modelElement="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3">
-				<ownedElement xmi:type="umldi:UMLKeywordLabel" xmi:id="EAID_KL000000_D3A3_4229_A38D_EE1F583151A3" text="CIMExtension"/>
-				<ownedElement xmi:type="umldi:UMLNameLabel" xmi:id="EAID_NL000000_D3A3_4229_A38D_EE1F583151A3" text="ConductingEquipment"/>
-				<bounds xmi:type="dc:bounds" xmi:id="EAID_DB000000_D3A3_4229_A38D_EE1F583151A3" x="414" y="82" width="213" height="70"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLClassifierShape" xmi:id="EAID_E91A8704_D3A3_4229_9D8B_5769EB5C74FF" modelElement="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF">
-				<ownedElement xmi:type="umldi:UMLKeywordLabel" xmi:id="EAID_KL000000_D3A3_4229_9D8B_5769EB5C74FF" text="CIMExtension"/>
-				<ownedElement xmi:type="umldi:UMLNameLabel" xmi:id="EAID_NL000000_D3A3_4229_9D8B_5769EB5C74FF" text="TransformerEnd"/>
-				<bounds xmi:type="dc:bounds" xmi:id="EAID_DB000000_D3A3_4229_9D8B_5769EB5C74FF" x="434" y="408" width="174" height="70"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLShape" xmi:id="EAID_E91A8704_D3A3_4229_AC80_3C8C2898A131" modelElement="EAID_8271D14C_510B_49d6_AC80_3C8C2898A131">
-				<bounds xmi:type="dc:bounds" xmi:id="EAID_DB000000_D3A3_4229_AC80_3C8C2898A131" x="71" y="210" width="243" height="159"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLEdge" xmi:id="EAID_E91A8704_D3A3_4229_A9CD_FACE70090D7F" source="EAID_7C5F19FB_5253_430c_8E53_BDCF7EBCE4C1" target="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3" modelElement="EAID_75A196FC_7B42_459b_A9CD_FACE70090D7F">
-				<ownedElement xmi:type="umldi:UMLKeywordLabel" xmi:id="EAID_KL000000_D3A3_4229_A9CD_FACE70090D7F" text="CIMExtension">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBKL000000_D3A3_4229_A9CD_FACE70090D7F" x="295" y="121" width="76" height="15"/>
-				</ownedElement>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000000_D3A3_4229_A9CD_FACE70090D7F" x="281" y="117"/>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000001_D3A3_4229_A9CD_FACE70090D7F" x="414" y="117"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLEdge" xmi:id="EAID_E91A8704_D3A3_4229_A1FE_D4E685132B93" source="EAID_6E6AF445_8CD5_434b_8E74_08970A4E6D95" target="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF" modelElement="EAID_0371D4E2_9916_470e_A1FE_D4E685132B93">
-				<ownedElement xmi:type="umldi:UMLKeywordLabel" xmi:id="EAID_KL000000_D3A3_4229_A1FE_D4E685132B93" text="CIMExtension">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBKL000000_D3A3_4229_A1FE_D4E685132B93" x="325" y="454" width="76" height="15"/>
-				</ownedElement>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000000_D3A3_4229_A1FE_D4E685132B93" x="325" y="442"/>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000001_D3A3_4229_A1FE_D4E685132B93" x="434" y="442"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLEdge" xmi:id="EAID_E91A8704_D3A3_4229_83D1_BF12F521B593" source="EAID_25B2D790_161A_45c8_8551_E77A34DE684C" target="EAID_6E6AF445_8CD5_434b_8E74_08970A4E6D95" modelElement="EAID_DE4C9D0B_23BA_4ce9_83D1_BF12F521B593">
-				<ownedElement xmi:type="umldi:UMLAssociationEndLabel" xmi:id="EAID_SEL000000_D3A3_4229_83D1_BF12F521B593" text="+CoreAdmittance" modelElement="EAID_src4C9D0B_23BA_4ce9_83D1_BF12F521B593">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBSEL000000_D3A3_4229_83D1_BF12F521B593" x="72" y="568" width="86" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLMultiplicityLabel" xmi:id="EAID_SML000000_D3A3_4229_83D1_BF12F521B593" text="0..1" modelElement="EAID_src4C9D0B_23BA_4ce9_83D1_BF12F521B593">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBSML000000_D3A3_4229_83D1_BF12F521B593" x="201" y="568" width="19" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLAssociationEndLabel" xmi:id="EAID_TEL000000_D3A3_4229_83D1_BF12F521B593" text="+TransformerEnd" modelElement="EAID_dst4C9D0B_23BA_4ce9_83D1_BF12F521B593">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBTEL000000_D3A3_4229_83D1_BF12F521B593" x="74" y="559" width="87" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLMultiplicityLabel" xmi:id="EAID_TML000000_D3A3_4229_83D1_BF12F521B593" text="0..*" modelElement="EAID_dst4C9D0B_23BA_4ce9_83D1_BF12F521B593">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBTML000000_D3A3_4229_83D1_BF12F521B593" x="202" y="562" width="18" height="15"/>
-				</ownedElement>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000000_D3A3_4229_83D1_BF12F521B593" x="198" y="591"/>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000001_D3A3_4229_83D1_BF12F521B593" x="198" y="554"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLEdge" xmi:id="EAID_E91A8704_D3A3_4229_A952_12EA8E441602" source="EAID_25B2D790_161A_45c8_8551_E77A34DE684C" target="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C" modelElement="EAID_01543B00_E80C_455e_A952_12EA8E441602">
-				<ownedElement xmi:type="umldi:UMLAssociationEndLabel" xmi:id="EAID_SEL000000_D3A3_4229_A952_12EA8E441602" text="+TransformerCoreAdmittance" modelElement="EAID_src543B00_E80C_455e_A952_12EA8E441602">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBSEL000000_D3A3_4229_A952_12EA8E441602" x="326" y="585" width="147" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLMultiplicityLabel" xmi:id="EAID_SML000000_D3A3_4229_A952_12EA8E441602" text="0..1" modelElement="EAID_src543B00_E80C_455e_A952_12EA8E441602">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBSML000000_D3A3_4229_A952_12EA8E441602" x="329" y="626" width="19" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLAssociationEndLabel" xmi:id="EAID_TEL000000_D3A3_4229_A952_12EA8E441602" text="+TransformerSaturation" modelElement="EAID_dst543B00_E80C_455e_A952_12EA8E441602">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBTEL000000_D3A3_4229_A952_12EA8E441602" x="400" y="708" width="121" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLMultiplicityLabel" xmi:id="EAID_TML000000_D3A3_4229_A952_12EA8E441602" text="0..1" modelElement="EAID_dst543B00_E80C_455e_A952_12EA8E441602">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBTML000000_D3A3_4229_A952_12EA8E441602" x="457" y="700" width="19" height="15"/>
-				</ownedElement>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000000_D3A3_4229_A952_12EA8E441602" x="325" y="604"/>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000001_D3A3_4229_A952_12EA8E441602" x="484" y="695"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLEdge" xmi:id="EAID_E91A8704_D3A3_4229_BCB8_293A9781EFC4" source="EAID_49452B3C_BB66_4c7a_A86B_6BE155BB7193" target="EAID_73A500A6_E7FF_4abe_8FDA_E68B4E60FF9F" modelElement="EAID_21D1EA17_DE1A_4a12_BCB8_293A9781EFC4">
-				<ownedElement xmi:type="umldi:UMLAssociationEndLabel" xmi:id="EAID_SEL000000_D3A3_4229_BCB8_293A9781EFC4" text="+CurveDatas" modelElement="EAID_srcD1EA17_DE1A_4a12_BCB8_293A9781EFC4">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBSEL000000_D3A3_4229_BCB8_293A9781EFC4" x="691" y="180" width="66" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLMultiplicityLabel" xmi:id="EAID_SML000000_D3A3_4229_BCB8_293A9781EFC4" text="0..*" modelElement="EAID_srcD1EA17_DE1A_4a12_BCB8_293A9781EFC4">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBSML000000_D3A3_4229_BCB8_293A9781EFC4" x="790" y="180" width="18" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLAssociationEndLabel" xmi:id="EAID_TEL000000_D3A3_4229_BCB8_293A9781EFC4" text="+Curve" modelElement="EAID_dstD1EA17_DE1A_4a12_BCB8_293A9781EFC4">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBTEL000000_D3A3_4229_BCB8_293A9781EFC4" x="726" y="285" width="38" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLMultiplicityLabel" xmi:id="EAID_TML000000_D3A3_4229_BCB8_293A9781EFC4" text="1" modelElement="EAID_dstD1EA17_DE1A_4a12_BCB8_293A9781EFC4">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBTML000000_D3A3_4229_BCB8_293A9781EFC4" x="787" y="285" width="7" height="15"/>
-				</ownedElement>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000000_D3A3_4229_BCB8_293A9781EFC4" x="782" y="175"/>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000001_D3A3_4229_BCB8_293A9781EFC4" x="779" y="309"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLEdge" xmi:id="EAID_E91A8704_D3A3_4229_88D0_0DCAD87C1B0E" source="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C" target="EAID_73A500A6_E7FF_4abe_8FDA_E68B4E60FF9F" modelElement="EAID_53C66C17_A275_4e92_88D0_0DCAD87C1B0E">
-				<ownedElement xmi:type="umldi:UMLKeywordLabel" xmi:id="EAID_KL000000_D3A3_4229_88D0_0DCAD87C1B0E" text="CIMExtension">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBKL000000_D3A3_4229_88D0_0DCAD87C1B0E" x="644" y="581" width="76" height="15"/>
-				</ownedElement>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000000_D3A3_4229_88D0_0DCAD87C1B0E" x="647" y="672"/>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000001_D3A3_4229_88D0_0DCAD87C1B0E" x="746" y="483"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLEdge" xmi:id="EAID_E91A8704_D3A3_4229_A183_02B0AB55BF52" source="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3" target="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2" modelElement="EAID_BC1FDB6F_1C1E_4dd0_A183_02B0AB55BF52">
-				<ownedElement xmi:type="umldi:UMLAssociationEndLabel" xmi:id="EAID_SEL000000_D3A3_4229_A183_02B0AB55BF52" text="+ConductingEquipment" modelElement="EAID_src1FDB6F_1C1E_4dd0_A183_02B0AB55BF52">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBSEL000000_D3A3_4229_A183_02B0AB55BF52" x="291" y="160" width="113" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLMultiplicityLabel" xmi:id="EAID_SML000000_D3A3_4229_A183_02B0AB55BF52" text="0..*" modelElement="EAID_src1FDB6F_1C1E_4dd0_A183_02B0AB55BF52">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBSML000000_D3A3_4229_A183_02B0AB55BF52" x="460" y="157" width="18" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLAssociationEndLabel" xmi:id="EAID_TEL000000_D3A3_4229_A183_02B0AB55BF52" text="+FromConnectivityNode" modelElement="EAID_dst1FDB6F_1C1E_4dd0_A183_02B0AB55BF52">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBTEL000000_D3A3_4229_A183_02B0AB55BF52" x="290" y="215" width="118" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLMultiplicityLabel" xmi:id="EAID_TML000000_D3A3_4229_A183_02B0AB55BF52" text="0..1" modelElement="EAID_dst1FDB6F_1C1E_4dd0_A183_02B0AB55BF52">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBTML000000_D3A3_4229_A183_02B0AB55BF52" x="460" y="215" width="19" height="15"/>
-				</ownedElement>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000000_D3A3_4229_A183_02B0AB55BF52" x="452" y="152"/>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000001_D3A3_4229_A183_02B0AB55BF52" x="452" y="239"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLEdge" xmi:id="EAID_E91A8704_D3A3_4229_BD6B_625C306C381E" source="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3" target="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2" modelElement="EAID_D5C5364E_06F7_47d3_BD6B_625C306C381E">
-				<ownedElement xmi:type="umldi:UMLAssociationEndLabel" xmi:id="EAID_SEL000000_D3A3_4229_BD6B_625C306C381E" text="+ConductingEquipment" modelElement="EAID_srcC5364E_06F7_47d3_BD6B_625C306C381E">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBSEL000000_D3A3_4229_BD6B_625C306C381E" x="459" y="157" width="113" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLMultiplicityLabel" xmi:id="EAID_SML000000_D3A3_4229_BD6B_625C306C381E" text="0..*" modelElement="EAID_srcC5364E_06F7_47d3_BD6B_625C306C381E">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBSML000000_D3A3_4229_BD6B_625C306C381E" x="628" y="157" width="18" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLAssociationEndLabel" xmi:id="EAID_TEL000000_D3A3_4229_BD6B_625C306C381E" text="+ToConnectivityNode" modelElement="EAID_dstC5364E_06F7_47d3_BD6B_625C306C381E">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBTEL000000_D3A3_4229_BD6B_625C306C381E" x="474" y="215" width="106" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLMultiplicityLabel" xmi:id="EAID_TML000000_D3A3_4229_BD6B_625C306C381E" text="0..1" modelElement="EAID_dstC5364E_06F7_47d3_BD6B_625C306C381E">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBTML000000_D3A3_4229_BD6B_625C306C381E" x="628" y="215" width="19" height="15"/>
-				</ownedElement>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000000_D3A3_4229_BD6B_625C306C381E" x="620" y="152"/>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000001_D3A3_4229_BD6B_625C306C381E" x="620" y="239"/>
-			</ownedElement>
-			<ownedElement xmi:type="umldi:UMLEdge" xmi:id="EAID_E91A8704_D3A3_4229_86E7_FCACF42F1BD5" source="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF" target="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2" modelElement="EAID_F81EF705_C28A_4bff_86E7_FCACF42F1BD5">
-				<ownedElement xmi:type="umldi:UMLAssociationEndLabel" xmi:id="EAID_SEL000000_D3A3_4229_86E7_FCACF42F1BD5" text="+TransformerEnd" modelElement="EAID_src1EF705_C28A_4bff_86E7_FCACF42F1BD5">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBSEL000000_D3A3_4229_86E7_FCACF42F1BD5" x="393" y="385" width="87" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLMultiplicityLabel" xmi:id="EAID_SML000000_D3A3_4229_86E7_FCACF42F1BD5" text="0..*" modelElement="EAID_src1EF705_C28A_4bff_86E7_FCACF42F1BD5">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBSML000000_D3A3_4229_86E7_FCACF42F1BD5" x="523" y="385" width="18" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLAssociationEndLabel" xmi:id="EAID_TEL000000_D3A3_4229_86E7_FCACF42F1BD5" text="+ConnectivityNode" modelElement="EAID_dst1EF705_C28A_4bff_86E7_FCACF42F1BD5">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBTEL000000_D3A3_4229_86E7_FCACF42F1BD5" x="382" y="314" width="94" height="15"/>
-				</ownedElement>
-				<ownedElement xmi:type="umldi:UMLMultiplicityLabel" xmi:id="EAID_TML000000_D3A3_4229_86E7_FCACF42F1BD5" text="0..1" modelElement="EAID_dst1EF705_C28A_4bff_86E7_FCACF42F1BD5">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBTML000000_D3A3_4229_86E7_FCACF42F1BD5" x="526" y="314" width="19" height="15"/>
-				</ownedElement>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000000_D3A3_4229_86E7_FCACF42F1BD5" x="520" y="408"/>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000001_D3A3_4229_86E7_FCACF42F1BD5" x="520" y="309"/>
-			</ownedElement>
-		</umldi:Diagram>
-		<profileApplication xmi:type="uml:ProfileApplication" xmi:id="profileap_thecustomprofile">
-			<appliedProfile xmi:type="uml:Profile" href="http://www.sparxsystems.com/profiles/thecustomprofile/1.0#thecustomprofile"/>
-		</profileApplication>
+		<thecustomprofile:CIMExtension base_Class="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3"/>
+		<thecustomprofile:CIMExtension base_Class="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
+		<thecustomprofile:CIMExtension base_Class="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C"/>
+		<thecustomprofile:CIMExtension base_Generalization="EAID_53C66C17_A275_4e92_88D0_0DCAD87C1B0E"/>
+		<thecustomprofile:baseuri base_Package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" baseuri="http://opensource.ieee.org/emtiop#"/>
+		<thecustomprofile:CIMExtension base_Package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A"/>
 	</uml:Model>
 	<xmi:Extension extender="Enterprise Architect" extenderID="6.5">
 		<elements>
@@ -241,28 +83,33 @@
 				<project author="tom" version="1.0" phase="1.0" created="2025-10-31 16:09:43" modified="2025-10-31 17:24:26" complexity="1" status="Proposed"/>
 				<code gentype="Java"/>
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
+				<tags>
+					<tag xmi:id="EAID_688DA1E2_E93D_4aa2_9DED_227A5B0DBC71" name="baseuri" value="http://opensource.ieee.org/emtiop#" modelElement="EAID_68F3A560_E3C8_422e_8A8A_D3464C8A967A"/>
+				</tags>
 				<xrefs value="$XREFPROP=$XID={CA171E2B-E750-4d4f-83D5-19BD24E0E7C0}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;GUID={BB4B9F8B-9916-4072-9F6D-C104013B573F};@ENDSTEREO;$DES;$CLT={68F3A560-E3C8-422e-8A8A-D3464C8A967A}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 				<extendedProperties tagged="0" package_name="CIM"/>
-				<packageproperties version="1.0"/>
+				<packageproperties version="1.0" tpos="0"/>
 				<paths/>
-				<times created="2025-10-31 16:09:43" modified="2025-10-31 17:24:26"/>
-				<flags iscontrolled="0" isprotected="0" usedtd="0" logxml="0"/>
+				<times created="2025-10-31 16:09:43" modified="2025-11-11 14:47:24" lastloaddate="2025-11-11 14:47:23" lastsavedate="2025-11-11 14:47:23"/>
+				<flags iscontrolled="0" isprotected="0" batchsave="0" batchload="0" usedtd="0" logxml="0"/>
 			</element>
 			<element xmi:idref="EAID_8271D14C_510B_49d6_AC80_3C8C2898A131" xmi:type="uml:Note" scope="public">
-				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8609" ea_eleType="element"/>
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8606" ea_eleType="element"/>
 				<properties documentation="These extensions eliminate Terminal objects from the IEEE P3743. Instead, ConductingEquipment and TransformerEnd extension instances associate directly to ConnectivityNode. Another extension represents non-linear transformer core effects, through a piecewise-linear TransformerSaturation instance, which associates to linear TransformerCoreAdmittance and then to TransformerEnd." isSpecification="false" sType="Note" nType="0" scope="public"/>
-				<project author="tom" version="1.0" phase="1.0" created="2025-11-03 18:11:18" modified="2025-11-03 18:13:21" complexity="1" status="Proposed"/>
+				<project author="tom" version="1.0" phase="1.0" created="2025-11-03 18:11:18" modified="2025-11-11 14:47:23" complexity="1" status="Proposed"/>
 				<code gentype="&lt;none&gt;"/>
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
 				<xrefs/>
 				<extendedProperties tagged="0" package_name="Emtiop"/>
+				<links>
+					<NoteLink xmi:id="EAID_CC054591_3E5A_4270_BB6B_D11B3C6EFCFA" start="EAID_8271D14C_510B_49d6_AC80_3C8C2898A131" end="EAID_68F3A560_E3C8_422e_8A8A_D3464C8A967A"/>
+				</links>
 			</element>
 			<element xmi:idref="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3" xmi:type="uml:Class" name="ConductingEquipment" scope="public">
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8607" ea_eleType="element"/>
 				<properties documentation="Allows for direct connection between ConductingEquipment and ConnectivityNode (bus) without using a Terminal. &#xA;Two-terminal devices, e.g., ACLineSegment, use FromConnectivityNode and ToConnectivityNode, and the polarity dot for positive current flow is at the FromConnectivityNode end. &#xA;One-terminal devices, e.g., TransformerEnd, EnergyConnection, ShuntCompensator, use FromConnectivityNode. The ToConnectivityNode should be omitted, specified the same as FromConnectivityNode, or set as the reference (ground) node if such has been defined in the network model.&#xA;Three-terminal devices are not supported. Note that multi-winding PowerTransformers are comprised of multiple TransformerEnds, each of which has one association to a ConnectivityNode." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
-				<project author="tom" version="1.0" phase="1.0" created="2025-10-31 16:33:59" modified="2025-11-02 01:16:48" complexity="1" status="Proposed"/>
+				<project author="tom" version="1.0" phase="1.0" created="2025-10-31 16:33:59" modified="2025-11-11 14:47:24" complexity="1" status="Proposed"/>
 				<code gentype="Java"/>
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
@@ -277,7 +124,7 @@
 			<element xmi:idref="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF" xmi:type="uml:Class" name="TransformerEnd" scope="public">
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8608" ea_eleType="element"/>
 				<properties documentation="Allows for a direct connection between TransformerEnd and ConnectivityNode (bus), without using a Terminal." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
-				<project author="tom" version="1.0" phase="1.0" created="2025-10-31 16:34:11" modified="2025-11-02 01:17:10" complexity="1" status="Proposed"/>
+				<project author="tom" version="1.0" phase="1.0" created="2025-10-31 16:34:11" modified="2025-11-11 14:47:24" complexity="1" status="Proposed"/>
 				<code gentype="Java"/>
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
@@ -289,9 +136,9 @@
 				</links>
 			</element>
 			<element xmi:idref="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C" xmi:type="uml:Class" name="TransformerSaturation" scope="public">
-				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8606" ea_eleType="element"/>
-				<properties documentation="Represents a piecewise linear transformer saturation characteristic. It's connected to the same TransformerEnd as the TransformerCoreAdmittance, which is typically the lowest voltage winding other than a tertiary.  The attached Curve is a piecewise linear magnetization characteristic, plotted as core flux linkage vs. magnetizing current. This replaces the linear magnetizing characteristic defined by TransformerCoreAdmittance.b and TransformerCoreAdmittance.b0. The TransformerSaturation characteristic does not include hysteresis. The TransformerCoreAdmittance.g and TransformerCoreAdmittance.g0 should still be used to model core losses.&#xA;This data is of most interest to electromagnetic transient analysis, which typically uses SI units without multipliers.&#xA;xMultiplier inherited attribute should be UnitMultiplier.none&#xA;xUnit inherited attribute should be UnitSymbol.A&#xA;y1Multiplier inherited attribute should be UnitMultiplier.none&#xA;y1Unit inherited attribute should be UnitSymbol.Vs&#xA;xvalue in associated CurveData should be magnetizing current in peak A (not RMS), referenced to the TransformerEnd associated through TransformerCoreAdmittance.&#xA;y1value in associated CurveData should be core flux linkage in peak Vs (not RMS), referenced to the TransformerEnd associated through TransformerCoreAdmittance." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
-				<project author="tom" version="1.0" phase="1.0" created="2025-10-31 16:33:05" modified="2025-11-02 01:16:16" complexity="1" status="Proposed"/>
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8609" ea_eleType="element"/>
+				<properties documentation="Represents a piecewise linear transformer saturation characteristic. It's connected to the same TransformerEnd as the TransformerCoreAdmittance, which is typically the lowest voltage winding other than a tertiary.  The attached Curve is a piecewise linear magnetization characteristic, plotted as core flux linkage vs. magnetizing current. This replaces the linear magnetizing characteristic defined by TransformerCoreAdmittance.b and TransformerCoreAdmittance.b0. The TransformerSaturation characteristic does not include hysteresis, i.e., the origin point [0,0] is implied. The TransformerCoreAdmittance.g and TransformerCoreAdmittance.g0 should still be used to model core losses.&#xA;This data is of most interest to electromagnetic transient analysis, which typically uses SI units without multipliers.&#xA;xMultiplier inherited attribute should be UnitMultiplier.none&#xA;xUnit inherited attribute should be UnitSymbol.A&#xA;y1Multiplier inherited attribute should be UnitMultiplier.none&#xA;y1Unit inherited attribute should be UnitSymbol.Vs&#xA;xvalue in associated CurveData should be magnetizing current in peak A (not RMS), referenced to the TransformerEnd associated through TransformerCoreAdmittance. Do not enter the origin point [0,0].&#xA;y1value in associated CurveData should be core flux linkage in peak Vs (not RMS), referenced to the TransformerEnd associated through TransformerCoreAdmittance. Do not enter the origin point [0,0]." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="tom" version="1.0" phase="1.0" created="2025-10-31 16:33:05" modified="2025-11-21 13:24:32" complexity="1" status="Proposed"/>
 				<code gentype="Java"/>
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
@@ -304,6 +151,40 @@
 			</element>
 		</elements>
 		<connectors>
+			<connector xmi:idref="EAID_CC054591_3E5A_4270_BB6B_D11B3C6EFCFA">
+				<source xmi:idref="EAID_8271D14C_510B_49d6_AC80_3C8C2898A131">
+					<model ea_localid="8606" type="Note"/>
+					<role visibility="Public"/>
+					<type aggregation="none"/>
+					<constraints/>
+					<modifiers isOrdered="false" isNavigable="false"/>
+					<style/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_68F3A560_E3C8_422e_8A8A_D3464C8A967A">
+					<model ea_localid="8605" type="Package" name="Emtiop"/>
+					<role visibility="Public"/>
+					<type aggregation="none"/>
+					<constraints/>
+					<modifiers isOrdered="false" isNavigable="false"/>
+					<style/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="11048"/>
+				<properties ea_type="NoteLink" direction="Source -&gt; Destination"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<documentation/>
+				<appearance linemode="3" linecolor="0" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels/>
+				<extendedProperties/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
 			<connector xmi:idref="EAID_BC1FDB6F_1C1E_4dd0_A183_02B0AB55BF52">
 				<source xmi:idref="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3">
 					<model ea_localid="8607" type="Class" name="ConductingEquipment"/>
@@ -327,7 +208,7 @@
 					<xrefs/>
 					<tags/>
 				</target>
-				<model ea_localid="11051"/>
+				<model ea_localid="11054"/>
 				<properties ea_type="Association" direction="Unspecified"/>
 				<modifiers isRoot="false" isLeaf="false"/>
 				<parameterSubstitutions/>
@@ -362,7 +243,7 @@
 					<xrefs/>
 					<tags/>
 				</target>
-				<model ea_localid="11055"/>
+				<model ea_localid="11053"/>
 				<properties ea_type="Association" direction="Unspecified"/>
 				<modifiers isRoot="false" isLeaf="false"/>
 				<parameterSubstitutions/>
@@ -397,7 +278,7 @@
 					<xrefs/>
 					<tags/>
 				</target>
-				<model ea_localid="11048"/>
+				<model ea_localid="11055"/>
 				<properties ea_type="Generalization" direction="Source -&gt; Destination"/>
 				<parameterSubstitutions/>
 				<documentation/>
@@ -431,7 +312,7 @@
 					<xrefs/>
 					<tags/>
 				</target>
-				<model ea_localid="11050"/>
+				<model ea_localid="11051"/>
 				<properties ea_type="Association" direction="Unspecified"/>
 				<modifiers isRoot="false" isLeaf="false"/>
 				<parameterSubstitutions/>
@@ -466,7 +347,7 @@
 					<xrefs/>
 					<tags/>
 				</target>
-				<model ea_localid="11049"/>
+				<model ea_localid="11052"/>
 				<properties ea_type="Generalization" stereotype="CIMExtension" direction="Source -&gt; Destination"/>
 				<parameterSubstitutions/>
 				<documentation/>
@@ -479,7 +360,7 @@
 			</connector>
 			<connector xmi:idref="EAID_53C66C17_A275_4e92_88D0_0DCAD87C1B0E">
 				<source xmi:idref="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C">
-					<model ea_localid="8606" type="Class" name="TransformerSaturation"/>
+					<model ea_localid="8609" type="Class" name="TransformerSaturation"/>
 					<role visibility="Public" targetScope="instance"/>
 					<type aggregation="none" containment="Unspecified"/>
 					<constraints/>
@@ -500,7 +381,7 @@
 					<xrefs/>
 					<tags/>
 				</target>
-				<model ea_localid="11056"/>
+				<model ea_localid="11050"/>
 				<properties ea_type="Generalization" stereotype="CIMExtension" direction="Source -&gt; Destination"/>
 				<parameterSubstitutions/>
 				<documentation/>
@@ -524,7 +405,7 @@
 					<tags/>
 				</source>
 				<target xmi:idref="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C">
-					<model ea_localid="8606" type="Class" name="TransformerSaturation"/>
+					<model ea_localid="8609" type="Class" name="TransformerSaturation"/>
 					<role name="TransformerSaturation" visibility="Public" targetScope="instance"/>
 					<type multiplicity="0..1" aggregation="none" containment="Unspecified"/>
 					<constraints/>
@@ -534,7 +415,7 @@
 					<xrefs/>
 					<tags/>
 				</target>
-				<model ea_localid="11053"/>
+				<model ea_localid="11049"/>
 				<properties ea_type="Association" direction="Unspecified"/>
 				<modifiers isRoot="false" isLeaf="false"/>
 				<parameterSubstitutions/>
@@ -548,19 +429,30 @@
 			</connector>
 		</connectors>
 		<primitivetypes>
-			<packagedElement xmi:type="uml:Package" xmi:id="EAPrimitiveTypesPackage" name="EA_PrimitiveTypes_Package"/>
+			<packagedElement xmi:type="uml:Package" xmi:id="EAPrimitiveTypesPackage" name="EA_PrimitiveTypes_Package" visibility="public"/>
 		</primitivetypes>
 		<profiles>
-			<uml:Profile xmlns:uml="http://www.omg.org/spec/UML/20161101" xmlns:xmi="http://www.omg.org/spec/XMI/20161101" xmi:id="thecustomprofile" nsPrefix="thecustomprofile" name="thecustomprofile" metamodelReference="mmref01">
+			<uml:Profile xmlns:uml="http://schema.omg.org/spec/UML/2.1/" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:version="2.1" xmi:id="thecustomprofile" nsPrefix="thecustomprofile" name="thecustomprofile" metamodelReference="mmref01">
 				<ownedComment xmi:type="uml:Comment" xmi:id="comment01" annotatedElement="thecustomprofile">
 					<body> Version:1.0</body>
 				</ownedComment>
 				<packageImport xmi:id="mmref01">
-					<importedPackage href="http://www.omg.org/spec/UML/20161101"/>
+					<importedPackage href="http://schema.omg.org/spec/UML/2.1/"/>
 				</packageImport>
+				<packagedElement xmi:type="uml:Stereotype" xmi:id="baseuri" name="baseuri">
+					<ownedAttribute xmi:type="uml:Property" xmi:id="baseuri-base_Package" name="base_Package" association="Package_baseuri">
+						<type href="http://schema.omg.org/spec/UML/2.1/Package"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="baseuri-baseuri" name="baseuri">
+						<type href="http://schema.omg.org/spec/UML/2.1/String"/>
+					</ownedAttribute>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Extension" xmi:id="Package_baseuri" name="A_Package_baseuri" memberEnd="extension_baseuri baseuri-base_Package">
+					<ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="extension_baseuri" name="extension_baseuri" type="baseuri" isComposite="true" lower="0" upper="1" memberEnd="extension_baseuri baseuri-base_Package"/>
+				</packagedElement>
 				<packagedElement xmi:type="uml:Stereotype" xmi:id="CIMExtension" name="CIMExtension">
 					<ownedAttribute xmi:type="uml:Property" xmi:id="CIMExtension-base_Class" name="base_Class" association="Class_CIMExtension">
-						<type href="http://www.omg.org/spec/UML/20161101/UML.xmi#Class"/>
+						<type href="http://schema.omg.org/spec/UML/2.1/Class"/>
 					</ownedAttribute>
 				</packagedElement>
 				<packagedElement xmi:type="uml:Extension" xmi:id="Class_CIMExtension" name="A_Class_CIMExtension" memberEnd="extension_CIMExtension CIMExtension-base_Class">
@@ -574,7 +466,7 @@
 				<properties name="DocEmtiop" type="Logical"/>
 				<project author="tom" version="1.0" created="2025-10-31 16:22:07" modified="2025-11-03 18:13:46"/>
 				<style1 value="ShowPrivate=1;ShowProtected=1;ShowPublic=1;HideRelationships=0;Locked=0;Border=1;HighlightForeign=1;PackageContents=1;SequenceNotes=0;ScalePrintImage=0;PPgs.cx=0;PPgs.cy=0;DocSize.cx=819;DocSize.cy=1059;ShowDetails=0;Orientation=P;Zoom=100;ShowTags=0;OpParams=1;VisibleAttributeDetail=0;ShowOpRetType=1;ShowIcons=1;CollabNums=0;HideProps=0;ShowReqs=0;ShowCons=0;PaperSize=1;HideParents=0;UseAlias=0;HideAtts=0;HideOps=0;HideStereo=0;HideElemStereo=0;ShowTests=0;ShowMaint=0;ConnectorNotation=UML 2.1;ExplicitNavigability=0;ShowShape=1;AllDockable=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;ShowNotes=0;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;"/>
-				<style2 value="ExcludeRTF=0;DocAll=0;HideQuals=0;AttPkg=1;ShowTests=0;ShowMaint=0;SuppressFOC=1;MatrixActive=0;SwimlanesActive=1;KanbanActive=0;MatrixLineWidth=1;MatrixLineClr=0;MatrixLocked=0;TConnectorNotation=UML 2.1;TExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;MDGDgm=;STBLDgm=;ShowNotes=0;VisibleAttributeDetail=0;ShowOpRetType=1;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;SuppressedCompartments=;Theme=:119;SaveTag=E4795182;"/>
+				<style2 value="SaveTag=55E12EC1;ExcludeRTF=0;DocAll=0;HideQuals=0;AttPkg=1;ShowTests=0;ShowMaint=0;SuppressFOC=1;MatrixActive=0;SwimlanesActive=1;KanbanActive=0;MatrixLineWidth=1;MatrixLineClr=0;MatrixLocked=0;TConnectorNotation=UML 2.1;TExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;MDGDgm=;STBLDgm=;ShowNotes=0;VisibleAttributeDetail=0;ShowOpRetType=1;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;SuppressedCompartments=;Theme=:119;"/>
 				<swimlanes value="locked=false;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;"/>
 				<matrixitems value="locked=false;matrixactive=false;swimlanesactive=true;kanbanactive=false;width=1;clrLine=0;"/>
 				<extendedProperties/>
@@ -591,22 +483,17 @@
 					<element geometry="Left=71;Top=408;Right=325;Bottom=554;" subject="EAID_6E6AF445_8CD5_434b_8E74_08970A4E6D95" seqno="8" style="DUID=96850687;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
 					<element geometry="Left=71;Top=82;Right=281;Bottom=152;" subject="EAID_7C5F19FB_5253_430c_8E53_BDCF7EBCE4C1" seqno="9" style="DUID=3FA81AF2;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
 					<element geometry="Left=414;Top=239;Right=627;Bottom=309;" subject="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2" seqno="10" style="DUID=9932AD96;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
-					<element geometry="SX=0;SY=0;EX=0;EY=0;EDGE=2;$LLB=;LLT=;LMT=;LMB=CX=76:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_75A196FC_7B42_459b_A9CD_FACE70090D7F" style="Mode=3;EOID=73B15098;SOID=3FA81AF2;Color=-1;LWidth=0;Hidden=0;"/>
-					<element geometry="SX=126;SY=39;EX=5;EY=1;EDGE=2;$LLB=;LLT=;LMT=;LMB=CX=76:CY=15:OX=-2:OY=8:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_0371D4E2_9916_470e_A1FE_D4E685132B93" style="Mode=3;EOID=4EF525C9;SOID=96850687;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=0;SY=0;EX=0;EY=0;EDGE=1;$LLB=CX=18:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=87:CY=15:OX=-13:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=94:CY=15:OX=-8:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=-6:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_F81EF705_C28A_4bff_86E7_FCACF42F1BD5" style="Mode=3;EOID=9932AD96;SOID=4EF525C9;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=100;SY=-9;EX=100;EY=-9;EDGE=3;$LLB=CX=18:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=113:CY=15:OX=-3:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=106:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_D5C5364E_06F7_47d3_BD6B_625C306C381E" style="Mode=3;EOID=9932AD96;SOID=73B15098;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=-68;SY=-5;EX=-68;EY=-5;EDGE=3;$LLB=CX=18:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=113:CY=15:OX=-3:OY=3:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=118:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_BC1FDB6F_1C1E_4dd0_A183_02B0AB55BF52" style="Mode=3;EOID=9932AD96;SOID=73B15098;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=81;SY=-4;EX=-2;EY=-32;EDGE=2;$LLB=;LLT=;LMT=;LMB=CX=76:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_53C66C17_A275_4e92_88D0_0DCAD87C1B0E" style="Mode=3;EOID=CACA2D58;SOID=31054D7D;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="EDGE=3;$LLB=CX=18:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=66:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=38:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=7:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_21D1EA17_DE1A_4a12_BCB8_293A9781EFC4" style="Mode=3;EOID=CACA2D58;SOID=D82D263B;Color=-1;LWidth=0;Hidden=0;"/>
 					<element geometry="EDGE=1;$LLB=CX=19:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=86:CY=15:OX=-11:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=87:CY=15:OX=-5:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=18:CY=15:OX=-8:OY=3:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_DE4C9D0B_23BA_4ce9_83D1_BF12F521B593" style="Mode=3;EOID=96850687;SOID=0C92F000;Color=-1;LWidth=0;Hidden=0;"/>
 					<element geometry="SX=126;SY=46;EX=-80;EY=-26;EDGE=2;$LLB=CX=19:CY=15:OX=1:OY=17:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=147:CY=15:OX=-2:OY=5:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=121:CY=15:OX=72:OY=37:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_01543B00_E80C_455e_A952_12EA8E441602" style="Mode=3;EOID=31054D7D;SOID=0C92F000;Color=-1;LWidth=0;Hidden=0;"/>
-					<element geometry="EDGE=3;$LLB=CX=18:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=66:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=38:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=7:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_21D1EA17_DE1A_4a12_BCB8_293A9781EFC4" style="Mode=3;EOID=CACA2D58;SOID=D82D263B;Color=-1;LWidth=0;Hidden=0;"/>
-					<element geometry="SX=81;SY=-4;EX=-2;EY=-32;EDGE=2;$LLB=;LLT=;LMT=;LMB=CX=76:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_53C66C17_A275_4e92_88D0_0DCAD87C1B0E" style="Mode=3;EOID=CACA2D58;SOID=31054D7D;Color=-1;LWidth=0;Hidden=0;"/>
-					<element geometry="SX=-68;SY=-5;EX=-68;EY=-5;EDGE=3;$LLB=CX=18:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=113:CY=15:OX=-3:OY=3:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=118:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_BC1FDB6F_1C1E_4dd0_A183_02B0AB55BF52" style="Mode=3;EOID=9932AD96;SOID=73B15098;Color=-1;LWidth=0;Hidden=0;"/>
-					<element geometry="SX=100;SY=-9;EX=100;EY=-9;EDGE=3;$LLB=CX=18:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=113:CY=15:OX=-3:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=106:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_D5C5364E_06F7_47d3_BD6B_625C306C381E" style="Mode=3;EOID=9932AD96;SOID=73B15098;Color=-1;LWidth=0;Hidden=0;"/>
-					<element geometry="SX=0;SY=0;EX=0;EY=0;EDGE=1;$LLB=CX=18:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=87:CY=15:OX=-13:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=94:CY=15:OX=-8:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=-6:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_F81EF705_C28A_4bff_86E7_FCACF42F1BD5" style="Mode=3;EOID=9932AD96;SOID=4EF525C9;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=126;SY=39;EX=5;EY=1;EDGE=2;$LLB=;LLT=;LMT=;LMB=CX=76:CY=15:OX=-2:OY=8:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_0371D4E2_9916_470e_A1FE_D4E685132B93" style="Mode=3;EOID=4EF525C9;SOID=96850687;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=0;SY=0;EX=0;EY=0;EDGE=2;$LLB=;LLT=;LMT=;LMB=CX=76:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_75A196FC_7B42_459b_A9CD_FACE70090D7F" style="Mode=3;EOID=73B15098;SOID=3FA81AF2;Color=-1;LWidth=0;Hidden=0;"/>
 				</elements>
 			</diagram>
 		</diagrams>
 	</xmi:Extension>
-	<thecustomprofile:CIMExtension base_Class="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3"/>
-	<thecustomprofile:CIMExtension base_Class="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
-	<thecustomprofile:CIMExtension base_Class="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C"/>
-	<thecustomprofile:CIMExtension base_Generalization="EAID_53C66C17_A275_4e92_88D0_0DCAD87C1B0E"/>
-	<thecustomprofile:CIMExtension base_Package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A"/>
 </xmi:XMI>
