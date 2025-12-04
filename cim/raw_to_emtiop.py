@@ -467,8 +467,8 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.xground'), rdflib.Literal(0.0, datatype=CIM.Reactance)))
       bv = rdflib.URIRef (kvbase_ids[str(wdg['kvs'][idx])])
       g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.BaseVoltage'), bv))
-      bus1 = rdflib.URIRef(busids[str(row[0])])
-      g.add ((end, rdflib.URIRef (EMT_NS + 'TransformerEnd.ConnectivityNode'), bus1))
+      bus_wdg = rdflib.URIRef(busids[str(row[idx])])
+      g.add ((end, rdflib.URIRef (EMT_NS + 'TransformerEnd.ConnectivityNode'), bus_wdg))
 
     # write mesh impedance
     kvbase = wdg['kvs'][0]
