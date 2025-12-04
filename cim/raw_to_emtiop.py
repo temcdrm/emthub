@@ -156,11 +156,11 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
         uuids[key] = val
     fuid.close()
 
-  eq = rdflib.URIRef (CASES[0]['id']) # no prefix with urn:uuid:
+  eq = rdflib.URIRef (case['id']) # no prefix with urn:uuid:
 
   g.add ((eq, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'EquipmentContainer')))
-  g.add ((eq, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(CASES[0]['name'], datatype=CIM.String)))
-  g.add ((eq, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(CASES[0]['id'], datatype=CIM.String)))
+  g.add ((eq, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(case['name'], datatype=CIM.String)))
+  g.add ((eq, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(case['id'], datatype=CIM.String)))
 
   # write the base voltages
   kvbase_ids = {}
