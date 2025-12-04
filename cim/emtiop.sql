@@ -766,9 +766,8 @@ CREATE TABLE "PowerTransformer"
 CREATE TABLE "PowerTransformerEnd"
 (
     "mRID" VARCHAR(36) PRIMARY KEY,
-    -- FK column reference to table "WindingConnection"
     -- Kind of connection.
-    "connectionKind" VARCHAR(36) NOT NULL,
+    "connectionKind" VARCHAR(50) NOT NULL,
     -- Terminal voltage phase angle displacement where 360 degrees are represented
     -- with clock hours. The valid values are 0 to 11. For example, for the secondary
     -- side end of a transformer with vector group code of 'Dyn11', specify the
@@ -808,10 +807,9 @@ CREATE TABLE "PssIEEE1A"
     -- PSS signal conditioning frequency filter constant (<i>A2</i>). Typical
     -- value = 0,0017.
     "a2" DOUBLE PRECISION NOT NULL,
-    -- FK column reference to table "InputSignalKind"
     -- Type of input signal (rotorAngularFrequencyDeviation, generatorElectricalPower,
     -- rotorSpeed, busFrequency or busFrequencyDeviation). Typical value = rotorAngularFrequencyDeviation.
-    "inputSignalType" VARCHAR(36) NOT NULL,
+    "inputSignalType" VARCHAR(50) NOT NULL,
     -- Stabilizer gain (<i>Ks</i>). Typical value = 5.
     "ks" DOUBLE PRECISION NOT NULL,
     -- Lead/lag time constant (<i>T1</i>) (&gt;= 0). Typical value = 0,3.
@@ -1189,16 +1187,26 @@ CREATE TABLE "TransformerCoreAdmittance"
     "g" DOUBLE PRECISION NOT NULL,
     -- Zero sequence magnetizing branch conductance.
     "g0" DOUBLE PRECISION NOT NULL,
-    -- FK column reference to table "TransformerEnd"
+    -- FK column reference to table "TransformerEnd1"
     -- All transformer ends having this core admittance.
     "TransformerEnd" VARCHAR(36) NOT NULL
+);
+
+-- Allows for a direct connection between TransformerEnd and ConnectivityNode
+-- (bus), without using a Terminal.
+CREATE TABLE "TransformerEnd"
+(
+    "mRID" VARCHAR(36) PRIMARY KEY,
+    -- FK column reference to table "ConnectivityNode"
+    -- The connection point (bus) for the TransformerEnd (winding).
+    "ConnectivityNode" VARCHAR(36) NOT NULL
 );
 
 -- A conducting connection point of a power transformer. It corresponds to
 -- a physical transformer winding terminal. In earlier CIM versions, the TransformerWinding
 -- class served a similar purpose, but this class is more flexible because
 -- it associates to terminal but is not a specialization of ConductingEquipment.
-CREATE TABLE "TransformerEnd"
+CREATE TABLE "TransformerEnd1"
 (
     "mRID" VARCHAR(36) PRIMARY KEY,
     -- Number for this transformer end, corresponding to the end's order in the
@@ -1223,16 +1231,6 @@ CREATE TABLE "TransformerEnd"
     "BaseVoltage" VARCHAR(36) NOT NULL
 );
 
--- Allows for a direct connection between TransformerEnd and ConnectivityNode
--- (bus), without using a Terminal.
-CREATE TABLE "TransformerEnd1"
-(
-    "mRID" VARCHAR(36) PRIMARY KEY,
-    -- FK column reference to table "ConnectivityNode"
-    -- The connection point (bus) for the TransformerEnd (winding).
-    "ConnectivityNode" VARCHAR(36) NOT NULL
-);
-
 -- Transformer mesh impedance (Delta-model) between transformer ends.
 -- The typical case is that this class describes the impedance between two
 -- transformer ends pair-wise, i.e. the cardinalities at both transformer
@@ -1251,7 +1249,7 @@ CREATE TABLE "TransformerMeshImpedance"
     -- Zero-sequence reactance between the 'from' and the 'to' end, seen from
     -- the 'from' end.
     "x0" DOUBLE PRECISION NOT NULL,
-    -- FK column reference to table "TransformerEnd"
+    -- FK column reference to table "TransformerEnd1"
     -- From end this mesh impedance is connected to. It determines the voltage
     -- reference.
     "FromTransformerEnd" VARCHAR(36) NOT NULL
@@ -2048,14 +2046,21 @@ INSERT INTO "WindingConnection" ( "name" ) VALUES ( 'Zn' );
 -- Inheritance subclass-superclass constraint for table "ACLineSegment"
 ALTER TABLE "ACLineSegment" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Conductor" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "AsynchronousMachine"
+ALTER TABLE "AsynchronousMachine" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RotatingMachine" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "BaseVoltage"
 ALTER TABLE "BaseVoltage" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "BatteryUnit"
 ALTER TABLE "BatteryUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerElectronicsUnit" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "ConductingEquipment1"
+ALTER TABLE "ConductingEquipment1" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" );
+ALTER TABLE "ConductingEquipment1" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "Conductor"
-ALTER TABLE "Conductor" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
+ALTER TABLE "Conductor" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment1" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "ConnectivityNode"
 ALTER TABLE "ConnectivityNode" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
@@ -2073,7 +2078,7 @@ ALTER TABLE "DiagramObject" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObj
 ALTER TABLE "DynamicsFunctionBlock" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "EnergyConnection"
-ALTER TABLE "EnergyConnection" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
+ALTER TABLE "EnergyConnection" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment1" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "EnergyConsumer"
 ALTER TABLE "EnergyConsumer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "EnergyConnection" ( "mRID" );
@@ -2108,6 +2113,9 @@ ALTER TABLE "LoadResponseCharacteristic" ADD FOREIGN KEY ( "mRID" ) REFERENCES "
 -- Inheritance subclass-superclass constraint for table "NuclearGeneratingUnit"
 ALTER TABLE "NuclearGeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "GeneratingUnit" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "PSRType"
+ALTER TABLE "PSRType" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "PhotoVoltaicUnit"
 ALTER TABLE "PhotoVoltaicUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerElectronicsUnit" ( "mRID" );
 
@@ -2127,10 +2135,10 @@ ALTER TABLE "PowerSystemResource" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Identif
 ALTER TABLE "PowerSystemStabilizerDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "PowerTransformer"
-ALTER TABLE "PowerTransformer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
+ALTER TABLE "PowerTransformer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment1" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "PowerTransformerEnd"
-ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TransformerEnd" ( "mRID" );
+ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TransformerEnd1" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "PssIEEE1A"
 ALTER TABLE "PssIEEE1A" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemStabilizerDynamics" ( "mRID" );
@@ -2145,7 +2153,7 @@ ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RegulatingC
 ALTER TABLE "RotatingMachineDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "SeriesCompensator"
-ALTER TABLE "SeriesCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
+ALTER TABLE "SeriesCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment1" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "ShuntCompensator"
 ALTER TABLE "ShuntCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RegulatingCondEq" ( "mRID" );
@@ -2170,6 +2178,10 @@ ALTER TABLE "ThermalGeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Gener
 
 -- Inheritance subclass-superclass constraint for table "TransformerCoreAdmittance"
 ALTER TABLE "TransformerCoreAdmittance" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "TransformerEnd1"
+ALTER TABLE "TransformerEnd1" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+ALTER TABLE "TransformerEnd1" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TransformerEnd" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "TransformerMeshImpedance"
 ALTER TABLE "TransformerMeshImpedance" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
@@ -2240,11 +2252,8 @@ ALTER TABLE "PowerElectronicsUnit" ADD FOREIGN KEY ( "PowerElectronicsConnection
 ALTER TABLE "PowerSystemStabilizerDynamics" ADD FOREIGN KEY ( "ExcitationSystemDynamics" ) REFERENCES "ExcitationSystemDynamics" ( "mRID" );
 
 -- Foreign keys for table "PowerTransformerEnd"
-ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "connectionKind" ) REFERENCES "WindingConnection" ( "mRID" );
+ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "connectionKind" ) REFERENCES "connectionKind" ( "name" );
 ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "PowerTransformer" ) REFERENCES "PowerTransformer" ( "mRID" );
-
--- Foreign keys for table "PssIEEE1A"
-ALTER TABLE "PssIEEE1A" ADD FOREIGN KEY ( "inputSignalType" ) REFERENCES "InputSignalKind" ( "mRID" );
 
 -- Foreign keys for table "RotatingMachine"
 ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "GeneratingUnit" ) REFERENCES "GeneratingUnit" ( "mRID" );
@@ -2253,16 +2262,16 @@ ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "GeneratingUnit" ) REFERENCES "G
 ALTER TABLE "SynchronousMachineDynamics" ADD FOREIGN KEY ( "SynchronousMachine" ) REFERENCES "SynchronousMachine" ( "mRID" );
 
 -- Foreign keys for table "TransformerCoreAdmittance"
-ALTER TABLE "TransformerCoreAdmittance" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
+ALTER TABLE "TransformerCoreAdmittance" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd1" ( "mRID" );
 
 -- Foreign keys for table "TransformerEnd"
-ALTER TABLE "TransformerEnd" ADD FOREIGN KEY ( "BaseVoltage" ) REFERENCES "BaseVoltage" ( "mRID" );
+ALTER TABLE "TransformerEnd" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
 
 -- Foreign keys for table "TransformerEnd1"
-ALTER TABLE "TransformerEnd1" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
+ALTER TABLE "TransformerEnd1" ADD FOREIGN KEY ( "BaseVoltage" ) REFERENCES "BaseVoltage" ( "mRID" );
 
 -- Foreign keys for table "TransformerMeshImpedance"
-ALTER TABLE "TransformerMeshImpedance" ADD FOREIGN KEY ( "FromTransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
+ALTER TABLE "TransformerMeshImpedance" ADD FOREIGN KEY ( "FromTransformerEnd" ) REFERENCES "TransformerEnd1" ( "mRID" );
 
 -- Foreign keys for table "TransformerSaturation"
 ALTER TABLE "TransformerSaturation" ADD FOREIGN KEY ( "TransformerCoreAdmittance" ) REFERENCES "TransformerCoreAdmittance" ( "mRID" );
@@ -2306,8 +2315,6 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 
 -- Cascade deletes for compounds referenced in table "PowerTransformerEnd"
 
--- Cascade deletes for compounds referenced in table "PssIEEE1A"
-
 -- Cascade deletes for compounds referenced in table "RotatingMachine"
 
 -- Cascade deletes for compounds referenced in table "SynchronousMachineDynamics"
@@ -2342,14 +2349,12 @@ CREATE INDEX ix_Equipment_EquipmentContainer ON "Equipment" ( "EquipmentContaine
 CREATE INDEX ix_ExcitationSystemDynamics_SynchronousMachineDynamics ON "ExcitationSystemDynamics" ( "SynchronousMachineDynamics" );
 CREATE INDEX ix_PowerElectronicsUnit_PowerElectronicsConnection ON "PowerElectronicsUnit" ( "PowerElectronicsConnection" );
 CREATE INDEX ix_PowerSystemStabilizerDynamics_ExcitationSystemDynamics ON "PowerSystemStabilizerDynamics" ( "ExcitationSystemDynamics" );
-CREATE INDEX ix_PowerTransformerEnd_connectionKind ON "PowerTransformerEnd" ( "connectionKind" );
 CREATE INDEX ix_PowerTransformerEnd_PowerTransformer ON "PowerTransformerEnd" ( "PowerTransformer" );
-CREATE INDEX ix_PssIEEE1A_inputSignalType ON "PssIEEE1A" ( "inputSignalType" );
 CREATE INDEX ix_RotatingMachine_GeneratingUnit ON "RotatingMachine" ( "GeneratingUnit" );
 CREATE INDEX ix_SynchronousMachineDynamics_SynchronousMachine ON "SynchronousMachineDynamics" ( "SynchronousMachine" );
 CREATE INDEX ix_TransformerCoreAdmittance_TransformerEnd ON "TransformerCoreAdmittance" ( "TransformerEnd" );
-CREATE INDEX ix_TransformerEnd_BaseVoltage ON "TransformerEnd" ( "BaseVoltage" );
-CREATE INDEX ix_TransformerEnd1_ConnectivityNode ON "TransformerEnd1" ( "ConnectivityNode" );
+CREATE INDEX ix_TransformerEnd_ConnectivityNode ON "TransformerEnd" ( "ConnectivityNode" );
+CREATE INDEX ix_TransformerEnd1_BaseVoltage ON "TransformerEnd1" ( "BaseVoltage" );
 CREATE INDEX ix_TransformerMeshImpedance_FromTransformerEnd ON "TransformerMeshImpedance" ( "FromTransformerEnd" );
 CREATE INDEX ix_TransformerSaturation_TransformerCoreAdmittance ON "TransformerSaturation" ( "TransformerCoreAdmittance" );
 CREATE INDEX ix_TurbineGovernorDynamics_SynchronousMachineDynamics ON "TurbineGovernorDynamics" ( "SynchronousMachineDynamics" );
