@@ -84,22 +84,22 @@ def GetCIMID(cls, nm, uuids, identify=False):
 def append_wecc_dynamics (g, key, ID, pec, leaf_class, dyn_settings):
   leaf = rdflib.URIRef (ID)
   g.add ((leaf, rdflib.RDF.type, rdflib.URIRef (CIM_NS + leaf_class)))
-  g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype='cim:String')))  #TODO: pass namespace?
-  g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype='cim:String')))
+  g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM_NS+'String')))
+  g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM_NS+'String')))
   g.add ((leaf, rdflib.URIRef (CIM_NS + 'WeccDynamics.PowerElectronicsConnection'), pec))
   for tag in dyn_settings['DynamicsFunctionBlock']:
     row = dyn_settings['DynamicsFunctionBlock'][tag]
-    g.add ((leaf, rdflib.URIRef (CIM_NS + 'DynamicsFunctionBlock.{:s}'.format(tag)), rdflib.Literal(row[0], datatype='cim:' + row[1])))
+    g.add ((leaf, rdflib.URIRef (CIM_NS + 'DynamicsFunctionBlock.{:s}'.format(tag)), rdflib.Literal(row[0], datatype=CIM_NS+row[1])))
   for tag in dyn_settings[leaf_class]:
     row = dyn_settings[leaf_class][tag]
-    g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(leaf_class, tag)), rdflib.Literal(row[0], datatype='cim:' + row[1])))
+    g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(leaf_class, tag)), rdflib.Literal(row[0], datatype=CIM_NS+row[1])))
 
 def create_machine_dynamics (g, leaf_class, key, uuids):
   ID = GetCIMID (leaf_class, key, uuids)
   leaf = rdflib.URIRef (ID)
   g.add ((leaf, rdflib.RDF.type, rdflib.URIRef (CIM_NS + leaf_class)))
-  g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype='cim:String')))  #TODO: pass namespace?
-  g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype='cim:String')))
+  g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM_NS+'String')))
+  g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM_NS+'String')))
   return leaf
 
 def append_dynamic_parameters (g, leaf, dyn_settings, sections):
@@ -109,7 +109,7 @@ def append_dynamic_parameters (g, leaf, dyn_settings, sections):
       if row[1].endswith('Kind'):
         g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(sect, tag)), rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(row[1], row[0]))))
       else:
-        g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(sect, tag)), rdflib.Literal(row[0], datatype='cim:' + row[1])))
+        g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(sect, tag)), rdflib.Literal(row[0], datatype=CIM_NS+row[1])))
 
 def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
   g = rdflib.Graph()
@@ -121,23 +121,24 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
 #  g.namespace_manager.bind('xsd', XSD)
 
   # hard-wire the prefixes for rdf:datatype
-  CIM.ActivePower = 'cim:ActivePower'
-  CIM.AngleDegrees = 'cim:AngleDegrees'
-  CIM.ApparentPower = 'cim:ApparentPower'
-  CIM.Boolean = 'cim:Boolean'
-  CIM.Conductance = 'cim:Conductance'
-  CIM.Float = 'cim:Float'
-  CIM.Integer = 'cim:Integer'
-  CIM.Length = 'cim:Length'
-  CIM.PU = 'cim:PU'
-  CIM.Reactance = 'cim:Reactance'
-  CIM.ReactivePower = 'cim:ReactivePower'
-  CIM.RealEnergy = 'cim:RealEnergy'
-  CIM.Resistance = 'cim:Resistance'
-  CIM.Seconds = 'cim:Seconds'
-  CIM.String = 'cim:String'
-  CIM.Susceptance = 'cim:Susceptance'
-  CIM.Voltage = 'cim:Voltage'
+  if False: # but standard RDF doesn't allow prefixes in datatype
+    CIM.ActivePower = 'cim:ActivePower'
+    CIM.AngleDegrees = 'cim:AngleDegrees'
+    CIM.ApparentPower = 'cim:ApparentPower'
+    CIM.Boolean = 'cim:Boolean'
+    CIM.Conductance = 'cim:Conductance'
+    CIM.Float = 'cim:Float'
+    CIM.Integer = 'cim:Integer'
+    CIM.Length = 'cim:Length'
+    CIM.PU = 'cim:PU'
+    CIM.Reactance = 'cim:Reactance'
+    CIM.ReactivePower = 'cim:ReactivePower'
+    CIM.RealEnergy = 'cim:RealEnergy'
+    CIM.Resistance = 'cim:Resistance'
+    CIM.Seconds = 'cim:Seconds'
+    CIM.String = 'cim:String'
+    CIM.Susceptance = 'cim:Susceptance'
+    CIM.Voltage = 'cim:Voltage'
   
   # read the existing mRID map for persistence
   uuids = {}
