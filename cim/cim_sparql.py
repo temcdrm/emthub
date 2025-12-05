@@ -3,6 +3,7 @@
 import rdflib
 import time
 import xml.etree.ElementTree as ET
+import sys
 
 PREFIX = None
 DELIM = ':'
@@ -120,7 +121,10 @@ def load_emt_dict (g, xml_file, sysid):
   return dict
 
 if __name__ == '__main__':
-  case = CASES[1]
+  idx = 0
+  if len(sys.argv) > 1:
+    idx = int(sys.argv[1])
+  case = CASES[idx]
   g = rdflib.Graph()
   fname = case['name'] + '.xml'
   g.parse (fname)
