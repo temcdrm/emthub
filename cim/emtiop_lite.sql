@@ -1,3 +1,5 @@
+-- REVISIT: Manually added "TransformerMeshImpedance.ToTransformerEnd" from the UML
+
 CREATE TABLE "BatteryStateKind" ( "name" VARCHAR(100) UNIQUE );
 INSERT INTO "BatteryStateKind" ( "name" ) VALUES ( 'charging' );
 INSERT INTO "BatteryStateKind" ( "name" ) VALUES ( 'discharging' );
@@ -646,7 +648,6 @@ CREATE TABLE "TransformerCoreAdmittance"
     FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" )
 );
 
--- REVISIT: Manually added "ToTransformerEnd" from the UML
 CREATE TABLE "TransformerMeshImpedance"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
