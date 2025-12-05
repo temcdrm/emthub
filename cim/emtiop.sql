@@ -71,7 +71,7 @@
 -- </ul>
 CREATE TABLE "ACLineSegment"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Zero sequence shunt (charging) susceptance, uniformly distributed, of the
     -- entire line segment.
     "b0ch" DOUBLE PRECISION NOT NULL,
@@ -94,21 +94,21 @@ CREATE TABLE "ACLineSegment"
 -- the rotor windings, e.g. squirrel-cage induction machine.
 CREATE TABLE "AsynchronousMachine"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- Defines a system base voltage which is referenced. This may be different
 -- than the rated voltage.
 CREATE TABLE "BaseVoltage"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- The power system resource's base voltage, expressed on a phase-to-phase
     -- (line-to-line) basis. Shall be a positive value and not zero.
     "nominalVoltage" DOUBLE PRECISION NOT NULL
 );
 
 -- The state of the battery unit.
-CREATE TABLE "BatteryStateKind" ( "name" VARCHAR(50) UNIQUE );
+CREATE TABLE "BatteryStateKind" ( "name" VARCHAR(100) UNIQUE );
 -- Stored energy is increasing.
 INSERT INTO "BatteryStateKind" ( "name" ) VALUES ( 'charging' );
 -- Stored energy is decreasing.
@@ -123,9 +123,10 @@ INSERT INTO "BatteryStateKind" ( "name" ) VALUES ( 'waiting' );
 -- An electrochemical energy storage device.
 CREATE TABLE "BatteryUnit"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- The current state of the battery (charging, full, etc.).
-    "batteryState" VARCHAR(50) NOT NULL,
+    -- FK column reference to table representing the "BatteryStateKind" enumeration
+    "batteryState" VARCHAR(100) NOT NULL,
     -- Full energy storage capacity of the battery. The attribute shall be a positive
     -- value.
     "ratedE" DOUBLE PRECISION NOT NULL,
@@ -134,42 +135,25 @@ CREATE TABLE "BatteryUnit"
     "storedE" DOUBLE PRECISION NOT NULL
 );
 
--- Allows for direct connection between ConductingEquipment and ConnectivityNode
--- (bus) without using a Terminal.
--- Two-terminal devices, e.g., ACLineSegment, use FromConnectivityNode and
--- ToConnectivityNode, and the polarity dot for positive current flow is at
--- the FromConnectivityNode end.
--- One-terminal devices, e.g., TransformerEnd, EnergyConnection, ShuntCompensator,
--- use FromConnectivityNode. The ToConnectivityNode should be omitted, specified
--- the same as FromConnectivityNode, or set as the reference (ground) node
--- if such has been defined in the network model.
--- Three-terminal devices are not supported. Note that multi-winding PowerTransformers
--- are comprised of multiple TransformerEnds, each of which has one association
--- to a ConnectivityNode.
-CREATE TABLE "ConductingEquipment"
-(
-    "mRID" VARCHAR(36) PRIMARY KEY,
-    -- FK column reference to table "ConnectivityNode"
-    -- The "bus 1" ConnectivityNode for this ConductingEquipment, where the polarity
-    -- dot is located for positive current flow within this ConductingEquipment.
-    "FromConnectivityNode" VARCHAR(36),
-    -- FK column reference to table "ConnectivityNode"
-    -- The "bus 2" ConnectivityNode for this ConductingEquipment. The polarity
-    -- dot for positive current flow is located at the other end of this ConductingEquipment.
-    -- Omit this for one-terminal ConductingEquipment.
-    "ToConnectivityNode" VARCHAR(36)
-);
-
 -- The parts of the AC power system that are designed to carry current or
 -- that are conductively connected through terminals.
-CREATE TABLE "ConductingEquipment1"
+CREATE TABLE "ConductingEquipment"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
-    -- FK column reference to table "BaseVoltage"
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Base voltage of this conducting equipment. Use only when there is no voltage
     -- level container used and only one base voltage applies. For example, not
     -- used for transformers.
-    "BaseVoltage" VARCHAR(36)
+    -- FK column reference to table representing the "BaseVoltage" class
+    "BaseVoltage" VARCHAR(100),
+    -- The "bus 1" ConnectivityNode for this ConductingEquipment, where the polarity
+    -- dot is located for positive current flow within this ConductingEquipment.
+    -- FK column reference to table representing the "ConnectivityNode" class
+    "FromConnectivityNode" VARCHAR(100),
+    -- The "bus 2" ConnectivityNode for this ConductingEquipment. The polarity
+    -- dot for positive current flow is located at the other end of this ConductingEquipment.
+    -- Omit this for one-terminal ConductingEquipment.
+    -- FK column reference to table representing the "ConnectivityNode" class
+    "ToConnectivityNode" VARCHAR(100)
 );
 
 -- Combination of conducting material with consistent electrical characteristics,
@@ -177,7 +161,7 @@ CREATE TABLE "ConductingEquipment1"
 -- in the power system.
 CREATE TABLE "Conductor"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Segment length for calculating line segment capabilities.
     "length" DOUBLE PRECISION NOT NULL
 );
@@ -186,34 +170,39 @@ CREATE TABLE "Conductor"
 -- are connected together with zero impedance.
 CREATE TABLE "ConnectivityNode"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
-    -- FK column reference to table "ConnectivityNodeContainer"
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Container of this connectivity node.
-    "ConnectivityNodeContainer" VARCHAR(36) NOT NULL
+    -- FK column reference to table representing the "ConnectivityNodeContainer" class
+    "ConnectivityNodeContainer" VARCHAR(100) NOT NULL
 );
 
 -- A base class for all objects that may contain connectivity nodes or topological
 -- nodes.
 CREATE TABLE "ConnectivityNodeContainer"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- A multi-purpose curve or functional relationship between an independent
 -- variable (X-axis) and dependent (Y-axis) variables.
 CREATE TABLE "Curve"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- The style or shape of the curve.
-    "curveStyle" VARCHAR(50),
+    -- FK column reference to table representing the "CurveStyle" enumeration
+    "curveStyle" VARCHAR(100),
     -- Multiplier for X-axis.
-    "xMultiplier" VARCHAR(50),
+    -- FK column reference to table representing the "UnitMultiplier" enumeration
+    "xMultiplier" VARCHAR(100),
     -- The X-axis units of measure.
-    "xUnit" VARCHAR(50),
+    -- FK column reference to table representing the "UnitSymbol" enumeration
+    "xUnit" VARCHAR(100),
     -- Multiplier for Y1-axis.
-    "y1Multiplier" VARCHAR(50),
+    -- FK column reference to table representing the "UnitMultiplier" enumeration
+    "y1Multiplier" VARCHAR(100),
     -- The Y1-axis units of measure.
-    "y1Unit" VARCHAR(50)
+    -- FK column reference to table representing the "UnitSymbol" enumeration
+    "y1Unit" VARCHAR(100)
 );
 
 -- Multi-purpose data points for defining a curve. The use of this generic
@@ -221,18 +210,18 @@ CREATE TABLE "Curve"
 -- X and Y axis values along with their specific data types.
 CREATE TABLE "CurveData"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- The data value of the X-axis variable, depending on the X-axis units.
     "xvalue" DOUBLE PRECISION NOT NULL,
     -- The data value of the first Y-axis variable, depending on the Y-axis units.
     "y1value" DOUBLE PRECISION NOT NULL,
-    -- FK column reference to table "Curve"
     -- The curve of this curve data point.
-    "Curve" VARCHAR(36) NOT NULL
+    -- FK column reference to table representing the "Curve" class
+    "Curve" VARCHAR(100) NOT NULL
 );
 
 -- Style or shape of curve.
-CREATE TABLE "CurveStyle" ( "name" VARCHAR(50) UNIQUE );
+CREATE TABLE "CurveStyle" ( "name" VARCHAR(100) UNIQUE );
 -- The Y-axis values are assumed constant until the next curve point and prior
 -- to the first curve point.
 INSERT INTO "CurveStyle" ( "name" ) VALUES ( 'constantYValue' );
@@ -246,7 +235,7 @@ INSERT INTO "CurveStyle" ( "name" ) VALUES ( 'straightLineYValues' );
 -- values, breakers, disconnectors, power transformers, and transmission lines.
 CREATE TABLE "DiagramObject"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- The drawing order of this element. The higher the number, the later the
     -- element is drawn in sequence. This is used to ensure that elements that
     -- overlap are rendered in the correct order.
@@ -254,10 +243,10 @@ CREATE TABLE "DiagramObject"
     -- Defines whether or not the diagram objects points define the boundaries
     -- of a polygon or the routing of a polyline. If this value is true then a
     -- receiving application should consider the first and last points to be connected.
-    "isPolygon" INTEGER NOT NULL DEFAULT 1 CHECK (isPolygon IN (0, 1)) NOT NULL,
-    -- FK column reference to table "IdentifiedObject"
+    "isPolygon" INTEGER NOT NULL DEFAULT 1 CHECK ("isPolygon" IN (0, 1)) NOT NULL,
     -- The domain object to which this diagram object is associated.
-    "IdentifiedObject" VARCHAR(36) NOT NULL
+    -- FK column reference to table representing the "IdentifiedObject" class
+    "IdentifiedObject" VARCHAR(100) NOT NULL
 );
 
 -- A point in a given space defined by 3 coordinates and associated to a diagram
@@ -265,7 +254,7 @@ CREATE TABLE "DiagramObject"
 -- not have to be in the corner of a diagram.
 CREATE TABLE "DiagramObjectPoint"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- The sequence position of the point, used for defining the order of points
     -- for diagram objects acting as a polyline or polygon with more than one
     -- point. The attribute shall be a positive value.
@@ -274,25 +263,25 @@ CREATE TABLE "DiagramObjectPoint"
     "xPosition" DOUBLE PRECISION NOT NULL,
     -- The Y coordinate of this point.
     "yPosition" DOUBLE PRECISION NOT NULL,
-    -- FK column reference to table "DiagramObject"
     -- The diagram object with which the points are associated.
-    "DiagramObject" VARCHAR(36) NOT NULL
+    -- FK column reference to table representing the "DiagramObject" class
+    "DiagramObject" VARCHAR(100) NOT NULL
 );
 
 -- Abstract parent class for all Dynamics function blocks.
 CREATE TABLE "DynamicsFunctionBlock"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Function block used indicator.
     -- true = use of function block is enabled
     -- false = use of function block is disabled.
-    "enabled" INTEGER NOT NULL DEFAULT 1 CHECK (enabled IN (0, 1)) NOT NULL
+    "enabled" INTEGER NOT NULL DEFAULT 1 CHECK ("enabled" IN (0, 1)) NOT NULL
 );
 
 -- A connection of energy generation or consumption on the power system model.
 CREATE TABLE "EnergyConnection"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- Generic user of energy - a point of consumption on the power system model.
@@ -301,7 +290,7 @@ CREATE TABLE "EnergyConnection"
 -- or if LoadResponseCharacteristic.exponentModel is set to False.
 CREATE TABLE "EnergyConsumer"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Active power of the load. Load sign convention is used, i.e. positive sign
     -- means flow out from a node.
     -- For voltage dependent loads the value is at rated voltage.
@@ -312,37 +301,37 @@ CREATE TABLE "EnergyConsumer"
     -- For voltage dependent loads the value is at rated voltage.
     -- Starting value for a steady state solution.
     "q" DOUBLE PRECISION NOT NULL,
-    -- FK column reference to table "LoadResponseCharacteristic"
     -- The load response characteristic of this load. If missing, this load is
     -- assumed to be constant power.
-    "LoadResponse" VARCHAR(36) NOT NULL
+    -- FK column reference to table representing the "LoadResponseCharacteristic" class
+    "LoadResponse" VARCHAR(100) NOT NULL
 );
 
 -- The parts of a power system that are physical devices, electronic or mechanical.
 CREATE TABLE "Equipment"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Specifies the availability of the equipment. True means the equipment is
     -- available for topology processing, which determines if the equipment is
     -- energized or not. False means that the equipment is treated by network
     -- applications as if it is not in the model.
-    "inService" INTEGER NOT NULL DEFAULT 1 CHECK (inService IN (0, 1)) NOT NULL,
-    -- FK column reference to table "EquipmentContainer"
+    "inService" INTEGER NOT NULL DEFAULT 1 CHECK ("inService" IN (0, 1)) NOT NULL,
     -- Container of this equipment.
-    "EquipmentContainer" VARCHAR(36) NOT NULL
+    -- FK column reference to table representing the "EquipmentContainer" class
+    "EquipmentContainer" VARCHAR(100) NOT NULL
 );
 
 -- A modelling construct to provide a root class for containing equipment.
 CREATE TABLE "EquipmentContainer"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- Modification of an old IEEE ST1A static excitation system without overexcitation
 -- limiter (OEL) and underexcitation limiter (UEL).
 CREATE TABLE "ExcST1A"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Exciter output current limit reference (<i>Ilr</i>). Typical value = 0.
     "ilr" DOUBLE PRECISION NOT NULL,
     -- Voltage regulator gain (<i>Ka</i>) (&gt; 0). Typical value = 190.
@@ -400,10 +389,10 @@ CREATE TABLE "ExcST1A"
 -- model.</font>
 CREATE TABLE "ExcitationSystemDynamics"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
-    -- FK column reference to table "SynchronousMachineDynamics"
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Synchronous machine model with which this excitation system model is associated.
-    "SynchronousMachineDynamics" VARCHAR(36)
+    -- FK column reference to table representing the "SynchronousMachineDynamics" class
+    "SynchronousMachineDynamics" VARCHAR(100)
 );
 
 -- A single or set of synchronous machines for converting mechanical power
@@ -414,7 +403,7 @@ CREATE TABLE "ExcitationSystemDynamics"
 -- the set.
 CREATE TABLE "GeneratingUnit"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- This is the maximum operating active power limit the dispatcher can enter
     -- for this unit.
     "maxOperatingP" DOUBLE PRECISION NOT NULL,
@@ -426,7 +415,7 @@ CREATE TABLE "GeneratingUnit"
 -- Simplified steam turbine governor.
 CREATE TABLE "GovSteamSGO"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- One / PU regulation (<i>K1</i>).
     "k1" DOUBLE PRECISION NOT NULL,
     -- Fraction (<i>K2</i>).
@@ -459,21 +448,18 @@ CREATE TABLE "GovSteamSGO"
 -- Pelton, Kaplan).
 CREATE TABLE "HydroGeneratingUnit"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- This is a class that provides common identification for all classes needing
 -- identification and naming attributes.
 CREATE TABLE "IdentifiedObject"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
-    -- The name is any free human readable and possibly non unique text naming
-    -- the object.
-    "name" VARCHAR(255) NOT NULL
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- Excitation base system mode.
-CREATE TABLE "IfdBaseKind" ( "name" VARCHAR(50) UNIQUE );
+CREATE TABLE "IfdBaseKind" ( "name" VARCHAR(100) UNIQUE );
 -- Air gap line mode.
 INSERT INTO "IfdBaseKind" ( "name" ) VALUES ( 'ifag' );
 -- Full load system mode.
@@ -483,7 +469,7 @@ INSERT INTO "IfdBaseKind" ( "name" ) VALUES ( 'ifnl' );
 
 -- Types of input signals. In dynamics modelling, commonly represented by
 -- the <i>j</i> parameter.
-CREATE TABLE "InputSignalKind" ( "name" VARCHAR(50) UNIQUE );
+CREATE TABLE "InputSignalKind" ( "name" VARCHAR(100) UNIQUE );
 -- Input signal is amplitude of remote branch current.
 INSERT INTO "InputSignalKind" ( "name" ) VALUES ( 'branchCurrent' );
 -- Input signal is bus voltage fr<font color="#0f0f0f">equency. This could
@@ -515,7 +501,7 @@ INSERT INTO "InputSignalKind" ( "name" ) VALUES ( 'rotorSpeed' );
 -- values.
 CREATE TABLE "LinearShuntCompensator"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Positive sequence shunt (charging) susceptance per section.
     "bPerSection" DOUBLE PRECISION NOT NULL,
     -- Positive sequence shunt (charging) conductance per section.
@@ -559,7 +545,7 @@ CREATE TABLE "LinearShuntCompensator"
 -- is connected.
 CREATE TABLE "LoadResponseCharacteristic"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Indicates the exponential voltage dependency model is to be used. If false,
     -- the coefficient model is to be used.
     -- The exponential voltage dependency model consist of the attributes:
@@ -578,7 +564,7 @@ CREATE TABLE "LoadResponseCharacteristic"
     -- equal 1.
     -- The sum of qConstantImpedance, qConstantCurrent and qConstantPower shall
     -- equal 1.
-    "exponentModel" INTEGER NOT NULL DEFAULT 1 CHECK (exponentModel IN (0, 1)) NOT NULL,
+    "exponentModel" INTEGER NOT NULL DEFAULT 1 CHECK ("exponentModel" IN (0, 1)) NOT NULL,
     -- Portion of active power load modelled as constant current.
     "pConstantCurrent" DOUBLE PRECISION NOT NULL,
     -- Portion of active power load modelled as constant impedance.
@@ -601,10 +587,18 @@ CREATE TABLE "LoadResponseCharacteristic"
     "qVoltageExponent" DOUBLE PRECISION NOT NULL
 );
 
+-- The Name class, in possible combination with a name type and a naming authority
+-- provides the means to define any number of names or alternative identifiers
+-- for an object.
+CREATE TABLE "Name"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
 -- A nuclear generating unit.
 CREATE TABLE "NuclearGeneratingUnit"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- Classifying instances of the same class, e.g. overhead and underground
@@ -613,20 +607,20 @@ CREATE TABLE "NuclearGeneratingUnit"
 -- non standard.
 CREATE TABLE "PSRType"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- A photovoltaic device or an aggregation of such devices.
 CREATE TABLE "PhotoVoltaicUnit"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- A connection to the AC network for energy production or consumption that
 -- uses power electronics rather than rotating machines.
 CREATE TABLE "PowerElectronicsConnection"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Maximum fault current this device will contribute, in per-unit of rated
     -- current, before the converter protection will trip or bypass.
     "maxIFault" DOUBLE PRECISION NOT NULL,
@@ -657,23 +651,23 @@ CREATE TABLE "PowerElectronicsConnection"
 -- using power electronics rather than rotating machines.
 CREATE TABLE "PowerElectronicsUnit"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Maximum active power limit. This is the maximum (nameplate) limit for the
     -- unit.
     "maxP" DOUBLE PRECISION NOT NULL,
     -- Minimum active power limit. This is the minimum (nameplate) limit for the
     -- unit.
     "minP" DOUBLE PRECISION NOT NULL,
-    -- FK column reference to table "PowerElectronicsConnection"
     -- A power electronics unit has a connection to the AC network.
-    "PowerElectronicsConnection" VARCHAR(36) NOT NULL
+    -- FK column reference to table representing the "PowerElectronicsConnection" class
+    "PowerElectronicsConnection" VARCHAR(100) NOT NULL
 );
 
 -- A wind generating unit that connects to the AC network with power electronics
 -- rather than rotating machines or an aggregation of such units.
 CREATE TABLE "PowerElectronicsWindUnit"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- A power system resource (PSR) can be an item of equipment such as a switch,
@@ -682,7 +676,7 @@ CREATE TABLE "PowerElectronicsWindUnit"
 -- Power system resources can have measurements associated.
 CREATE TABLE "PowerSystemResource"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- Power system stabilizer function block whose behaviour is described by
@@ -690,11 +684,11 @@ CREATE TABLE "PowerSystemResource"
 -- a user-defined model.</font>
 CREATE TABLE "PowerSystemStabilizerDynamics"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
-    -- FK column reference to table "ExcitationSystemDynamics"
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Excitation system model with which this power system stabilizer model is
     -- associated.
-    "ExcitationSystemDynamics" VARCHAR(36) NOT NULL
+    -- FK column reference to table representing the "ExcitationSystemDynamics" class
+    "ExcitationSystemDynamics" VARCHAR(100) NOT NULL
 );
 
 -- An electrical device consisting of two or more coupled windings, with or
@@ -712,7 +706,7 @@ CREATE TABLE "PowerSystemStabilizerDynamics"
 -- instead.
 CREATE TABLE "PowerTransformer"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Vector group of the transformer for protective relaying, e.g., Dyn1. For
     -- unbalanced transformers, this may not be simply determined from the constituent
     -- winding connections and phase angle displacements.
@@ -765,9 +759,10 @@ CREATE TABLE "PowerTransformer"
 -- EquipmentContainer (Substation, VoltageLevel, etc).
 CREATE TABLE "PowerTransformerEnd"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Kind of connection.
-    "connectionKind" VARCHAR(50) NOT NULL,
+    -- FK column reference to table representing the "WindingConnection" enumeration
+    "connectionKind" VARCHAR(100) NOT NULL,
     -- Terminal voltage phase angle displacement where 360 degrees are represented
     -- with clock hours. The valid values are 0 to 11. For example, for the secondary
     -- side end of a transformer with vector group code of 'Dyn11', specify the
@@ -786,9 +781,9 @@ CREATE TABLE "PowerTransformerEnd"
     -- ratedU that is greater than or equal to ratedU for the lower voltage sides.
     -- The attribute shall be a positive value.
     "ratedU" DOUBLE PRECISION NOT NULL,
-    -- FK column reference to table "PowerTransformer"
     -- The power transformer of this power transformer end.
-    "PowerTransformer" VARCHAR(36) NOT NULL
+    -- FK column reference to table representing the "PowerTransformer" class
+    "PowerTransformer" VARCHAR(100) NOT NULL
 );
 
 -- IEEE type PSS1A power system stabilizer model. PSS1A is the generalized
@@ -800,7 +795,7 @@ CREATE TABLE "PowerTransformerEnd"
 -- Vstmax and Vstmin defined by IEEE 421.5-2016, 9.2.
 CREATE TABLE "PssIEEE1A"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- PSS signal conditioning frequency filter constant (<i>A1</i>). Typical
     -- value = 0,061.
     "a1" DOUBLE PRECISION NOT NULL,
@@ -809,7 +804,8 @@ CREATE TABLE "PssIEEE1A"
     "a2" DOUBLE PRECISION NOT NULL,
     -- Type of input signal (rotorAngularFrequencyDeviation, generatorElectricalPower,
     -- rotorSpeed, busFrequency or busFrequencyDeviation). Typical value = rotorAngularFrequencyDeviation.
-    "inputSignalType" VARCHAR(50) NOT NULL,
+    -- FK column reference to table representing the "InputSignalKind" enumeration
+    "inputSignalType" VARCHAR(100) NOT NULL,
     -- Stabilizer gain (<i>Ks</i>). Typical value = 5.
     "ks" DOUBLE PRECISION NOT NULL,
     -- Lead/lag time constant (<i>T1</i>) (&gt;= 0). Typical value = 0,3.
@@ -836,13 +832,13 @@ CREATE TABLE "PssIEEE1A"
 -- or flow) at a specific point in the network.
 CREATE TABLE "RegulatingCondEq"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- A rotating machine which may be used as a generator or motor.
 CREATE TABLE "RotatingMachine"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Active power injection. Load sign convention is used, i.e. positive sign
     -- means flow out from a node.
     -- Starting value for a steady state solution.
@@ -858,17 +854,17 @@ CREATE TABLE "RotatingMachine"
     -- for short circuit data exchange according to IEC 60909.
     -- The attribute shall be a positive value.
     "ratedU" DOUBLE PRECISION NOT NULL,
-    -- FK column reference to table "GeneratingUnit"
     -- A synchronous machine may operate as a generator and as such becomes a
     -- member of a generating unit.
-    "GeneratingUnit" VARCHAR(36) NOT NULL
+    -- FK column reference to table representing the "GeneratingUnit" class
+    "GeneratingUnit" VARCHAR(100) NOT NULL
 );
 
 -- Abstract parent class for all synchronous and asynchronous machine standard
 -- models.
 CREATE TABLE "RotatingMachineDynamics"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Damping torque coefficient (D) (&gt;= 0) in pu torque/pu speed deviation
     -- (differential type). A proportionality constant that, when multiplied by
     -- the angular velocity of the rotor poles with respect to the magnetic field
@@ -893,7 +889,7 @@ CREATE TABLE "RotatingMachineDynamics"
 );
 
 -- Type of rotor on physical machine.
-CREATE TABLE "RotorKind" ( "name" VARCHAR(50) UNIQUE );
+CREATE TABLE "RotorKind" ( "name" VARCHAR(100) UNIQUE );
 -- Round rotor type of synchronous machine.
 INSERT INTO "RotorKind" ( "name" ) VALUES ( 'roundRotor' );
 -- Salient pole type of synchronous machine.
@@ -903,7 +899,7 @@ INSERT INTO "RotorKind" ( "name" ) VALUES ( 'salientPole' );
 -- line without charging susceptance. It is a two terminal device.
 CREATE TABLE "SeriesCompensator"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Positive sequence resistance.
     "r" DOUBLE PRECISION NOT NULL,
     -- Zero sequence resistance.
@@ -920,10 +916,10 @@ CREATE TABLE "SeriesCompensator"
 -- is a reactor. ShuntCompensator is a single terminal device. Ground is implied.
 CREATE TABLE "ShuntCompensator"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Required for Yn and I connections (as represented by ShuntCompensator.phaseConnection).
     -- True if the neutral is solidly grounded.
-    "grounded" INTEGER NOT NULL DEFAULT 1 CHECK (grounded IN (0, 1)) NOT NULL,
+    "grounded" INTEGER NOT NULL DEFAULT 1 CHECK ("grounded" IN (0, 1)) NOT NULL,
     -- The maximum number of sections that may be switched in.
     "maximumSections" INTEGER NOT NULL,
     -- The voltage at which the nominal reactive power may be calculated. This
@@ -950,10 +946,10 @@ CREATE TABLE "ShuntCompensator"
 -- or synchronous condenser or pump.
 CREATE TABLE "SynchronousMachine"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Indicates whether or not the generator is earthed. Used for short circuit
     -- data exchange according to IEC 60909.
-    "earthing" INTEGER NOT NULL DEFAULT 1 CHECK (earthing IN (0, 1)) NOT NULL,
+    "earthing" INTEGER NOT NULL DEFAULT 1 CHECK ("earthing" IN (0, 1)) NOT NULL,
     -- Generator star point earthing resistance (Re). Used for short circuit data
     -- exchange according to IEC 60909.
     "earthingStarPointR" DOUBLE PRECISION NOT NULL,
@@ -966,9 +962,11 @@ CREATE TABLE "SynchronousMachine"
     -- Minimum reactive power limit for the unit.
     "minQ" DOUBLE PRECISION NOT NULL,
     -- Current mode of operation.
-    "operatingMode" VARCHAR(50) NOT NULL,
+    -- FK column reference to table representing the "SynchronousMachineOperatingMode" enumeration
+    "operatingMode" VARCHAR(100) NOT NULL,
     -- Modes that this synchronous machine can operate in.
-    "type" VARCHAR(50) NOT NULL
+    -- FK column reference to table representing the "SynchronousMachineKind" enumeration
+    "type" VARCHAR(100) NOT NULL
 );
 
 -- All synchronous machine detailed types use a subset of the same data parameters
@@ -985,7 +983,7 @@ CREATE TABLE "SynchronousMachine"
 -- so model substitutions are often acceptable.
 CREATE TABLE "SynchronousMachineDetailed"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Ratio (exciter voltage/generator voltage) of <i>Efd</i> bases of exciter
     -- and generator models (&gt; 0). Typical value = 1.
     "efdBaseRatio" DOUBLE PRECISION NOT NULL,
@@ -993,7 +991,8 @@ CREATE TABLE "SynchronousMachineDetailed"
     -- given by the user. <i>WLMDV</i> is the PU ratio between the field voltage
     -- and the excitation current: <i>Efd</i> = <i>WLMDV</i> x <i>Ifd</i>. Typical
     -- value = ifag.
-    "ifdBaseType" VARCHAR(50) NOT NULL,
+    -- FK column reference to table representing the "IfdBaseKind" enumeration
+    "ifdBaseType" VARCHAR(100) NOT NULL,
     -- Saturation factor at rated terminal voltage (<i>S1</i>) (&gt;= 0). Defined
     -- by defined by <i>S</i>(<i>E1</i>) in the SynchronousMachineSaturationParameters
     -- diagram. Typical value = 0,02.
@@ -1034,14 +1033,14 @@ CREATE TABLE "SynchronousMachineDetailed"
 -- </ol>
 CREATE TABLE "SynchronousMachineDynamics"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
-    -- FK column reference to table "SynchronousMachine"
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Synchronous machine to which synchronous machine dynamics model applies.
-    "SynchronousMachine" VARCHAR(36)
+    -- FK column reference to table representing the "SynchronousMachine" class
+    "SynchronousMachine" VARCHAR(100)
 );
 
 -- Synchronous machine type.
-CREATE TABLE "SynchronousMachineKind" ( "name" VARCHAR(50) UNIQUE );
+CREATE TABLE "SynchronousMachineKind" ( "name" VARCHAR(100) UNIQUE );
 -- Indicates the synchronous machine can operate as a condenser.
 INSERT INTO "SynchronousMachineKind" ( "name" ) VALUES ( 'condenser' );
 -- Indicates the synchronous machine can operate as a generator.
@@ -1059,7 +1058,7 @@ INSERT INTO "SynchronousMachineKind" ( "name" ) VALUES ( 'motor' );
 INSERT INTO "SynchronousMachineKind" ( "name" ) VALUES ( 'motorOrCondenser' );
 
 -- Type of synchronous machine model used in dynamic simulation applications.
-CREATE TABLE "SynchronousMachineModelKind" ( "name" VARCHAR(50) UNIQUE );
+CREATE TABLE "SynchronousMachineModelKind" ( "name" VARCHAR(100) UNIQUE );
 -- Subtransient synchronous machine model.
 -- In order to model type SubtransientSilentPole standard model type the SynchronousMachineTimeConstantReactance.modelType
 -- shall be set to subtransient, .rotorType shall be set to salientPole and
@@ -1092,7 +1091,7 @@ INSERT INTO "SynchronousMachineModelKind" ( "name" ) VALUES ( 'subtransientTypeF
 INSERT INTO "SynchronousMachineModelKind" ( "name" ) VALUES ( 'subtransientTypeJ' );
 
 -- Synchronous machine operating mode.
-CREATE TABLE "SynchronousMachineOperatingMode" ( "name" VARCHAR(50) UNIQUE );
+CREATE TABLE "SynchronousMachineOperatingMode" ( "name" VARCHAR(100) UNIQUE );
 -- Operating as condenser.
 INSERT INTO "SynchronousMachineOperatingMode" ( "name" ) VALUES ( 'condenser' );
 -- Operating as generator.
@@ -1110,14 +1109,16 @@ INSERT INTO "SynchronousMachineOperatingMode" ( "name" ) VALUES ( 'motor' );
 -- </ol>
 CREATE TABLE "SynchronousMachineTimeConstantReactance"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Saturation loading correction factor (<i>Ks</i>) (&gt;= 0). Used only by
     -- type J model. Typical value = 0.
     "ks" DOUBLE PRECISION NOT NULL,
     -- Type of synchronous machine model used in dynamic simulation applications.
-    "modelType" VARCHAR(50) NOT NULL,
+    -- FK column reference to table representing the "SynchronousMachineModelKind" enumeration
+    "modelType" VARCHAR(100) NOT NULL,
     -- Type of rotor on physical machine.
-    "rotorType" VARCHAR(50) NOT NULL,
+    -- FK column reference to table representing the "RotorKind" enumeration
+    "rotorType" VARCHAR(100) NOT NULL,
     -- Damping time constant for “Canay” reactance (&gt;= 0). Typical value =
     -- 0.
     "tc" DOUBLE PRECISION NOT NULL,
@@ -1162,7 +1163,7 @@ CREATE TABLE "SynchronousMachineTimeConstantReactance"
 -- domain object.
 CREATE TABLE "TextDiagramObject"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- The text that is displayed by this text diagram object.
     "text" VARCHAR(255) NOT NULL
 );
@@ -1171,14 +1172,14 @@ CREATE TABLE "TextDiagramObject"
 -- turbine, or diesel engine.
 CREATE TABLE "ThermalGeneratingUnit"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- The transformer core admittance. Used to specify the core admittance of
 -- a transformer in a manner that can be shared among power transformers.
 CREATE TABLE "TransformerCoreAdmittance"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Magnetizing branch susceptance (B mag). The value can be positive or negative.
     "b" DOUBLE PRECISION NOT NULL,
     -- Zero sequence magnetizing branch susceptance.
@@ -1187,28 +1188,18 @@ CREATE TABLE "TransformerCoreAdmittance"
     "g" DOUBLE PRECISION NOT NULL,
     -- Zero sequence magnetizing branch conductance.
     "g0" DOUBLE PRECISION NOT NULL,
-    -- FK column reference to table "TransformerEnd1"
     -- All transformer ends having this core admittance.
-    "TransformerEnd" VARCHAR(36) NOT NULL
-);
-
--- Allows for a direct connection between TransformerEnd and ConnectivityNode
--- (bus), without using a Terminal.
-CREATE TABLE "TransformerEnd"
-(
-    "mRID" VARCHAR(36) PRIMARY KEY,
-    -- FK column reference to table "ConnectivityNode"
-    -- The connection point (bus) for the TransformerEnd (winding).
-    "ConnectivityNode" VARCHAR(36) NOT NULL
+    -- FK column reference to table representing the "TransformerEnd" class
+    "TransformerEnd" VARCHAR(100) NOT NULL
 );
 
 -- A conducting connection point of a power transformer. It corresponds to
 -- a physical transformer winding terminal. In earlier CIM versions, the TransformerWinding
 -- class served a similar purpose, but this class is more flexible because
 -- it associates to terminal but is not a specialization of ConductingEquipment.
-CREATE TABLE "TransformerEnd1"
+CREATE TABLE "TransformerEnd"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Number for this transformer end, corresponding to the end's order in the
     -- power transformer vector group or phase angle clock number. Highest voltage
     -- winding should be 1. Each end within a power transformer should have a
@@ -1219,16 +1210,19 @@ CREATE TABLE "TransformerEnd1"
     -- If true, the neutral is grounded and attributes TransformerEnd.rground
     -- and TransformerEnd.xground are required. If false, the attributes TransformerEnd.rground
     -- and TransformerEnd.xground are not considered.
-    "grounded" INTEGER NOT NULL DEFAULT 1 CHECK (grounded IN (0, 1)) NOT NULL,
+    "grounded" INTEGER NOT NULL DEFAULT 1 CHECK ("grounded" IN (0, 1)) NOT NULL,
     -- Resistance part of neutral impedance. Zero indicates solidly grounded or
     -- grounded through a reactor.
     "rground" DOUBLE PRECISION NOT NULL,
     -- Reactance part of neutral impedance. Zero indicates solidly grounded or
     -- grounded through a reactor.
     "xground" DOUBLE PRECISION NOT NULL,
-    -- FK column reference to table "BaseVoltage"
     -- Base voltage of the transformer end. This is essential for PU calculation.
-    "BaseVoltage" VARCHAR(36) NOT NULL
+    -- FK column reference to table representing the "BaseVoltage" class
+    "BaseVoltage" VARCHAR(100) NOT NULL,
+    -- The connection point (bus) for the TransformerEnd (winding).
+    -- FK column reference to table representing the "ConnectivityNode" class
+    "ConnectivityNode" VARCHAR(100) NOT NULL
 );
 
 -- Transformer mesh impedance (Delta-model) between transformer ends.
@@ -1238,7 +1232,7 @@ CREATE TABLE "TransformerEnd1"
 -- ends are modelled the cardinalities are larger than 1.
 CREATE TABLE "TransformerMeshImpedance"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Resistance between the 'from' and the 'to' end, seen from the 'from' end.
     "r" DOUBLE PRECISION NOT NULL,
     -- Zero-sequence resistance between the 'from' and the 'to' end, seen from
@@ -1249,10 +1243,10 @@ CREATE TABLE "TransformerMeshImpedance"
     -- Zero-sequence reactance between the 'from' and the 'to' end, seen from
     -- the 'from' end.
     "x0" DOUBLE PRECISION NOT NULL,
-    -- FK column reference to table "TransformerEnd1"
     -- From end this mesh impedance is connected to. It determines the voltage
     -- reference.
-    "FromTransformerEnd" VARCHAR(36) NOT NULL
+    -- FK column reference to table representing the "TransformerEnd" class
+    "FromTransformerEnd" VARCHAR(100) NOT NULL
 );
 
 -- Represents a piecewise linear transformer saturation characteristic. It's
@@ -1261,9 +1255,9 @@ CREATE TABLE "TransformerMeshImpedance"
 -- attached Curve is a piecewise linear magnetization characteristic, plotted
 -- as core flux linkage vs. magnetizing current. This replaces the linear
 -- magnetizing characteristic defined by TransformerCoreAdmittance.b and TransformerCoreAdmittance.b0.
--- The TransformerSaturation characteristic does not include hysteresis. The
--- TransformerCoreAdmittance.g and TransformerCoreAdmittance.g0 should still
--- be used to model core losses.
+-- The TransformerSaturation characteristic does not include hysteresis, i.e.,
+-- the origin point [0,0] is implied. The TransformerCoreAdmittance.g and
+-- TransformerCoreAdmittance.g0 should still be used to model core losses.
 -- This data is of most interest to electromagnetic transient analysis, which
 -- typically uses SI units without multipliers.
 -- xMultiplier inherited attribute should be UnitMultiplier.none
@@ -1272,13 +1266,15 @@ CREATE TABLE "TransformerMeshImpedance"
 -- y1Unit inherited attribute should be UnitSymbol.Vs
 -- xvalue in associated CurveData should be magnetizing current in peak A
 -- (not RMS), referenced to the TransformerEnd associated through TransformerCoreAdmittance.
+-- Do not enter the origin point [0,0].
 -- y1value in associated CurveData should be core flux linkage in peak Vs
 -- (not RMS), referenced to the TransformerEnd associated through TransformerCoreAdmittance.
+-- Do not enter the origin point [0,0].
 CREATE TABLE "TransformerSaturation"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
-    -- FK column reference to table "TransformerCoreAdmittance"
-    "TransformerCoreAdmittance" VARCHAR(36) NOT NULL
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- FK column reference to table representing the "TransformerCoreAdmittance" class
+    "TransformerCoreAdmittance" VARCHAR(100) NOT NULL
 );
 
 -- Turbine-governor function block whose behaviour is described by reference
@@ -1286,12 +1282,12 @@ CREATE TABLE "TransformerSaturation"
 -- model.</font>
 CREATE TABLE "TurbineGovernorDynamics"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
-    -- FK column reference to table "SynchronousMachineDynamics"
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Synchronous machine model with which this turbine-governor model is associated.
     -- TurbineGovernorDynamics shall have either an association to SynchronousMachineDynamics
     -- or to AsynchronousMachineDynamics.
-    "SynchronousMachineDynamics" VARCHAR(36)
+    -- FK column reference to table representing the "SynchronousMachineDynamics" class
+    "SynchronousMachineDynamics" VARCHAR(100)
 );
 
 -- The unit multipliers defined for the CIM. When applied to unit symbols,
@@ -1317,7 +1313,7 @@ CREATE TABLE "TurbineGovernorDynamics"
 -- one imagines that the "kg" were replaced by a symbol "&#222;", then it
 -- is easier to conceptualize the multiplier "m" as creating the proper unit
 -- "m&#222;", and not the forbidden unit "mkg".
-CREATE TABLE "UnitMultiplier" ( "name" VARCHAR(50) UNIQUE );
+CREATE TABLE "UnitMultiplier" ( "name" VARCHAR(100) UNIQUE );
 -- Exa 10**18.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'E' );
 -- Giga 10**9.
@@ -1387,7 +1383,7 @@ INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'z' );
 -- allows software to use the unit symbol information correctly convert and
 -- scale the raw data of those sources into SI-based units.
 -- The integer values are used for harmonization with IEC 61850.
-CREATE TABLE "UnitSymbol" ( "name" VARCHAR(50) UNIQUE );
+CREATE TABLE "UnitSymbol" ( "name" VARCHAR(100) UNIQUE );
 -- Current in amperes.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'A' );
 -- Amperes squared (A^2).
@@ -1716,17 +1712,17 @@ INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'tonne' );
 -- Parent class supporting relationships to WECC standard models.
 CREATE TABLE "WeccDynamics"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
-    -- FK column reference to table "PowerElectronicsConnection"
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Power electronics connection model with which this WECC dynamics model
     -- is associated.
-    "PowerElectronicsConnection" VARCHAR(36) NOT NULL
+    -- FK column reference to table representing the "PowerElectronicsConnection" class
+    "PowerElectronicsConnection" VARCHAR(100) NOT NULL
 );
 
 -- WECC PQ Controller and Current Limit Logic.
 CREATE TABLE "WeccREEC"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- WECC PQ Controller and Current Limit Logic.
@@ -1734,7 +1730,7 @@ CREATE TABLE "WeccREEC"
 -- EPRI, Palo Alto, CA: 2018, 3002014083.
 CREATE TABLE "WeccREECA"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Voltage deadband for overvoltage iq injection (db1). Typical value = -0,05.
     "db1" DOUBLE PRECISION NOT NULL,
     -- Voltage deadband for undervoltage iq injection (db2). Typical value = 0,05.
@@ -1765,20 +1761,20 @@ CREATE TABLE "WeccREECA"
     "kvp" DOUBLE PRECISION NOT NULL,
     -- Power factor flag: 1 (true) = pf control, 0 (false) = Q control (PfFlag).
     -- Typical value = 0 (false).
-    "pfFlag" INTEGER NOT NULL DEFAULT 1 CHECK (pfFlag IN (0, 1)) NOT NULL,
+    "pfFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("pfFlag" IN (0, 1)) NOT NULL,
     -- Power control flag: 0 (false) = P reference, 1 (true) = Speed reference
     -- (PFlag). Typical value = 1 (true).
-    "pFlag" INTEGER NOT NULL DEFAULT 1 CHECK (pFlag IN (0, 1)) NOT NULL,
+    "pFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("pFlag" IN (0, 1)) NOT NULL,
     -- Maximum power reference (Pmax). Typical value = 1.
     "pmax" DOUBLE PRECISION NOT NULL,
     -- Minimum power reference (Pmin). Typical value = 0.
     "pmin" DOUBLE PRECISION NOT NULL,
     -- Priority flag on current limit: 1 (true) = P, 0 (false) = Q priority (PqFlag).
     -- Typical value = 0 (false).
-    "pqFlag" INTEGER NOT NULL DEFAULT 1 CHECK (pqFlag IN (0, 1)) NOT NULL,
+    "pqFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("pqFlag" IN (0, 1)) NOT NULL,
     -- Q control flag: 1 (true) = voltage/Q, 0 (false) = constant power factor
     -- or Q control (QFlag). Typical value = 0 (false).
-    "qFlag" INTEGER NOT NULL DEFAULT 1 CHECK (qFlag IN (0, 1)) NOT NULL,
+    "qFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("qFlag" IN (0, 1)) NOT NULL,
     -- Reactive power limit maximum (Qmax). Typical value = 0,436.
     "qmax" DOUBLE PRECISION NOT NULL,
     -- Reactive power limit minimum (Qmin). Typical value = -0,436.
@@ -1866,7 +1862,7 @@ CREATE TABLE "WeccREECA"
     "vdip" DOUBLE PRECISION NOT NULL,
     -- Voltage control flag: 1 (true) = Q control, 0 (false) = voltage control
     -- (VFlag). Typical value = 1 (true).
-    "vFlag" INTEGER NOT NULL DEFAULT 1 CHECK (vFlag IN (0, 1)) NOT NULL,
+    "vFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("vFlag" IN (0, 1)) NOT NULL,
     -- Voltage control maximum (Vmax). Typical value = 1,1.
     "vmax" DOUBLE PRECISION NOT NULL,
     -- Voltage control minimum (Vmin). Typical value = 0,9.
@@ -1886,7 +1882,7 @@ CREATE TABLE "WeccREECA"
 -- EPRI, Palo Alto, CA: 2018, 3002014083.
 CREATE TABLE "WeccREGCA"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- LVPL breakpoint (brkpt). Typical value = 0,9.
     "brkpt" DOUBLE PRECISION NOT NULL,
     -- Current limit for high voltage clamp logic (Iolim). Typical value = -1,1.
@@ -1899,7 +1895,7 @@ CREATE TABLE "WeccREGCA"
     "ivpl1" DOUBLE PRECISION NOT NULL,
     -- Low voltage power logic switch: 1 (true) -Curve/0-Zero (Lvplsw). Typical
     -- value = 1 (true).
-    "ivplsw" INTEGER NOT NULL DEFAULT 1 CHECK (ivplsw IN (0, 1)) NOT NULL,
+    "ivplsw" INTEGER NOT NULL DEFAULT 1 CHECK ("ivplsw" IN (0, 1)) NOT NULL,
     -- Minimum low voltage active current breakpoint (lvpnt0). Typical value =
     -- 0,4.
     "ivpnt0" DOUBLE PRECISION NOT NULL,
@@ -1925,7 +1921,7 @@ CREATE TABLE "WeccREGCA"
 -- EPRI, Palo Alto, CA: 2018, 3002014083.
 CREATE TABLE "WeccREPCA"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Deadband in reactive power or voltage control (db). Typical value = 0,002.
     "db" DOUBLE PRECISION NOT NULL,
     -- Down regulation droop gain (Ddn). Typical value = 20.
@@ -1946,7 +1942,7 @@ CREATE TABLE "WeccREPCA"
     "femin" DOUBLE PRECISION NOT NULL,
     -- Active power control: 0 (false) means disabled, 1 (true) means enabled
     -- (FrqFlag). Typical value = 1 (true).
-    "frqFlag" INTEGER NOT NULL DEFAULT 1 CHECK (frqFlag IN (0, 1)) NOT NULL,
+    "frqFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("frqFlag" IN (0, 1)) NOT NULL,
     -- Reactive droop gain (Kc). Typical value = 10.
     "kc" DOUBLE PRECISION NOT NULL,
     -- Volt/VAR regulator integral gain (Ki). Typical value = 5.
@@ -1969,7 +1965,7 @@ CREATE TABLE "WeccREPCA"
     "rc" DOUBLE PRECISION NOT NULL,
     -- Reference flag. 0 (false) means reactive power control, 1 (true) means
     -- voltage control (RefFlag). Typical value = 0 (false).
-    "refFlag" INTEGER NOT NULL DEFAULT 1 CHECK (refFlag IN (0, 1)) NOT NULL,
+    "refFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("refFlag" IN (0, 1)) NOT NULL,
     -- Voltage and reactive power filter time constant (Tfltr) (>=0). Typical
     -- value = 0,02.
     "tfltr" DOUBLE PRECISION NOT NULL,
@@ -1986,7 +1982,7 @@ CREATE TABLE "WeccREPCA"
     "tp" DOUBLE PRECISION NOT NULL,
     -- Compensation flag. 0 (false) means reactive droop, 1 (true) means line
     -- drop compensation (VcmpFlag). Typical value = 0 (false).
-    "vcmpFlag" INTEGER NOT NULL DEFAULT 1 CHECK (vcmpFlag IN (0, 1)) NOT NULL,
+    "vcmpFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("vcmpFlag" IN (0, 1)) NOT NULL,
     -- Voltage for freezing Volt/VAR regulator integrator (Vfrz). Typical value
     -- = 0,7.
     "vfrz" DOUBLE PRECISION NOT NULL,
@@ -1999,7 +1995,7 @@ CREATE TABLE "WeccREPCA"
 -- EPRI, Palo Alto, CA: 2018, 3002014083.
 CREATE TABLE "WeccWTGARA"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Aero-dynamic gain factor (Ka). Typical value = 0,007.
     "ka" DOUBLE PRECISION NOT NULL,
     -- Initial pitch angle (T0). Typical value = 0.
@@ -2011,7 +2007,7 @@ CREATE TABLE "WeccWTGARA"
 -- EPRI, Palo Alto, CA: 2018, 3002014083.
 CREATE TABLE "WeccWTGTA"
 (
-    "mRID" VARCHAR(36) PRIMARY KEY,
+    "mRID" VARCHAR(100) PRIMARY KEY,
     -- Damping coefficient (Dshaft). Typical value = 0,3.
     "dshaft" DOUBLE PRECISION NOT NULL,
     -- Generator inertia (Hg) (>=0). Typical value = 1.
@@ -2023,7 +2019,7 @@ CREATE TABLE "WeccWTGTA"
 );
 
 -- Winding connection type.
-CREATE TABLE "WindingConnection" ( "name" VARCHAR(50) UNIQUE );
+CREATE TABLE "WindingConnection" ( "name" VARCHAR(100) UNIQUE );
 -- Autotransformer common winding.
 INSERT INTO "WindingConnection" ( "name" ) VALUES ( 'A' );
 -- Delta.
@@ -2055,12 +2051,11 @@ ALTER TABLE "BaseVoltage" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObjec
 -- Inheritance subclass-superclass constraint for table "BatteryUnit"
 ALTER TABLE "BatteryUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerElectronicsUnit" ( "mRID" );
 
--- Inheritance subclass-superclass constraint for table "ConductingEquipment1"
-ALTER TABLE "ConductingEquipment1" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" );
-ALTER TABLE "ConductingEquipment1" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
+-- Inheritance subclass-superclass constraint for table "ConductingEquipment"
+ALTER TABLE "ConductingEquipment" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "Conductor"
-ALTER TABLE "Conductor" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment1" ( "mRID" );
+ALTER TABLE "Conductor" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "ConnectivityNode"
 ALTER TABLE "ConnectivityNode" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
@@ -2078,7 +2073,7 @@ ALTER TABLE "DiagramObject" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObj
 ALTER TABLE "DynamicsFunctionBlock" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "EnergyConnection"
-ALTER TABLE "EnergyConnection" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment1" ( "mRID" );
+ALTER TABLE "EnergyConnection" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "EnergyConsumer"
 ALTER TABLE "EnergyConsumer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "EnergyConnection" ( "mRID" );
@@ -2135,10 +2130,10 @@ ALTER TABLE "PowerSystemResource" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Identif
 ALTER TABLE "PowerSystemStabilizerDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "PowerTransformer"
-ALTER TABLE "PowerTransformer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment1" ( "mRID" );
+ALTER TABLE "PowerTransformer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "PowerTransformerEnd"
-ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TransformerEnd1" ( "mRID" );
+ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TransformerEnd" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "PssIEEE1A"
 ALTER TABLE "PssIEEE1A" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemStabilizerDynamics" ( "mRID" );
@@ -2153,7 +2148,7 @@ ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RegulatingC
 ALTER TABLE "RotatingMachineDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "SeriesCompensator"
-ALTER TABLE "SeriesCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment1" ( "mRID" );
+ALTER TABLE "SeriesCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "ShuntCompensator"
 ALTER TABLE "ShuntCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RegulatingCondEq" ( "mRID" );
@@ -2179,9 +2174,8 @@ ALTER TABLE "ThermalGeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Gener
 -- Inheritance subclass-superclass constraint for table "TransformerCoreAdmittance"
 ALTER TABLE "TransformerCoreAdmittance" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
--- Inheritance subclass-superclass constraint for table "TransformerEnd1"
-ALTER TABLE "TransformerEnd1" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
-ALTER TABLE "TransformerEnd1" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TransformerEnd" ( "mRID" );
+-- Inheritance subclass-superclass constraint for table "TransformerEnd"
+ALTER TABLE "TransformerEnd" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "TransformerMeshImpedance"
 ALTER TABLE "TransformerMeshImpedance" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
@@ -2218,11 +2212,9 @@ ALTER TABLE "WeccWTGTA" ADD FOREIGN KEY ( "mRID" ) REFERENCES "WeccDynamics" ( "
 ------------------------------------------------------------------------------
 
 -- Foreign keys for table "ConductingEquipment"
+ALTER TABLE "ConductingEquipment" ADD FOREIGN KEY ( "BaseVoltage" ) REFERENCES "BaseVoltage" ( "mRID" );
 ALTER TABLE "ConductingEquipment" ADD FOREIGN KEY ( "FromConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
 ALTER TABLE "ConductingEquipment" ADD FOREIGN KEY ( "ToConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
-
--- Foreign keys for table "ConductingEquipment1"
-ALTER TABLE "ConductingEquipment1" ADD FOREIGN KEY ( "BaseVoltage" ) REFERENCES "BaseVoltage" ( "mRID" );
 
 -- Foreign keys for table "ConnectivityNode"
 ALTER TABLE "ConnectivityNode" ADD FOREIGN KEY ( "ConnectivityNodeContainer" ) REFERENCES "ConnectivityNodeContainer" ( "mRID" );
@@ -2252,7 +2244,7 @@ ALTER TABLE "PowerElectronicsUnit" ADD FOREIGN KEY ( "PowerElectronicsConnection
 ALTER TABLE "PowerSystemStabilizerDynamics" ADD FOREIGN KEY ( "ExcitationSystemDynamics" ) REFERENCES "ExcitationSystemDynamics" ( "mRID" );
 
 -- Foreign keys for table "PowerTransformerEnd"
-ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "connectionKind" ) REFERENCES "connectionKind" ( "name" );
+ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "connectionKind" ) REFERENCES "WindingConnection" ( "name" );
 ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "PowerTransformer" ) REFERENCES "PowerTransformer" ( "mRID" );
 
 -- Foreign keys for table "RotatingMachine"
@@ -2262,16 +2254,14 @@ ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "GeneratingUnit" ) REFERENCES "G
 ALTER TABLE "SynchronousMachineDynamics" ADD FOREIGN KEY ( "SynchronousMachine" ) REFERENCES "SynchronousMachine" ( "mRID" );
 
 -- Foreign keys for table "TransformerCoreAdmittance"
-ALTER TABLE "TransformerCoreAdmittance" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd1" ( "mRID" );
+ALTER TABLE "TransformerCoreAdmittance" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
 
 -- Foreign keys for table "TransformerEnd"
+ALTER TABLE "TransformerEnd" ADD FOREIGN KEY ( "BaseVoltage" ) REFERENCES "BaseVoltage" ( "mRID" );
 ALTER TABLE "TransformerEnd" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
 
--- Foreign keys for table "TransformerEnd1"
-ALTER TABLE "TransformerEnd1" ADD FOREIGN KEY ( "BaseVoltage" ) REFERENCES "BaseVoltage" ( "mRID" );
-
 -- Foreign keys for table "TransformerMeshImpedance"
-ALTER TABLE "TransformerMeshImpedance" ADD FOREIGN KEY ( "FromTransformerEnd" ) REFERENCES "TransformerEnd1" ( "mRID" );
+ALTER TABLE "TransformerMeshImpedance" ADD FOREIGN KEY ( "FromTransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
 
 -- Foreign keys for table "TransformerSaturation"
 ALTER TABLE "TransformerSaturation" ADD FOREIGN KEY ( "TransformerCoreAdmittance" ) REFERENCES "TransformerCoreAdmittance" ( "mRID" );
@@ -2292,8 +2282,6 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 -- that of its parent data.
 
 -- Cascade deletes for compounds referenced in table "ConductingEquipment"
-
--- Cascade deletes for compounds referenced in table "ConductingEquipment1"
 
 -- Cascade deletes for compounds referenced in table "ConnectivityNode"
 
@@ -2323,8 +2311,6 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 
 -- Cascade deletes for compounds referenced in table "TransformerEnd"
 
--- Cascade deletes for compounds referenced in table "TransformerEnd1"
-
 -- Cascade deletes for compounds referenced in table "TransformerMeshImpedance"
 
 -- Cascade deletes for compounds referenced in table "TransformerSaturation"
@@ -2337,9 +2323,9 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 -- Foreign key column indexes for optimized queries and joins
 ------------------------------------------------------------------------------
 
+CREATE INDEX ix_ConductingEquipment_BaseVoltage ON "ConductingEquipment" ( "BaseVoltage" );
 CREATE INDEX ix_ConductingEquipment_FromConnectivityNode ON "ConductingEquipment" ( "FromConnectivityNode" );
 CREATE INDEX ix_ConductingEquipment_ToConnectivityNode ON "ConductingEquipment" ( "ToConnectivityNode" );
-CREATE INDEX ix_ConductingEquipment1_BaseVoltage ON "ConductingEquipment1" ( "BaseVoltage" );
 CREATE INDEX ix_ConnectivityNode_ConnectivityNodeContainer ON "ConnectivityNode" ( "ConnectivityNodeContainer" );
 CREATE INDEX ix_CurveData_Curve ON "CurveData" ( "Curve" );
 CREATE INDEX ix_DiagramObject_IdentifiedObject ON "DiagramObject" ( "IdentifiedObject" );
@@ -2353,8 +2339,8 @@ CREATE INDEX ix_PowerTransformerEnd_PowerTransformer ON "PowerTransformerEnd" ( 
 CREATE INDEX ix_RotatingMachine_GeneratingUnit ON "RotatingMachine" ( "GeneratingUnit" );
 CREATE INDEX ix_SynchronousMachineDynamics_SynchronousMachine ON "SynchronousMachineDynamics" ( "SynchronousMachine" );
 CREATE INDEX ix_TransformerCoreAdmittance_TransformerEnd ON "TransformerCoreAdmittance" ( "TransformerEnd" );
+CREATE INDEX ix_TransformerEnd_BaseVoltage ON "TransformerEnd" ( "BaseVoltage" );
 CREATE INDEX ix_TransformerEnd_ConnectivityNode ON "TransformerEnd" ( "ConnectivityNode" );
-CREATE INDEX ix_TransformerEnd1_BaseVoltage ON "TransformerEnd1" ( "BaseVoltage" );
 CREATE INDEX ix_TransformerMeshImpedance_FromTransformerEnd ON "TransformerMeshImpedance" ( "FromTransformerEnd" );
 CREATE INDEX ix_TransformerSaturation_TransformerCoreAdmittance ON "TransformerSaturation" ( "TransformerCoreAdmittance" );
 CREATE INDEX ix_TurbineGovernorDynamics_SynchronousMachineDynamics ON "TurbineGovernorDynamics" ( "SynchronousMachineDynamics" );
