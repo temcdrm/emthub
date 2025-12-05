@@ -1,48 +1,27 @@
-# deletes everything
-DROP ALL
-
-# enumerates all classes found; see appendix of Learning SPARQL for more useful cookbook recipes
-SELECT ?class (COUNT(?class) as ?cnt)
-WHERE {
-  ?s a ?class .
-} group by ?class order by ?class
-
-# discover the attributes of each class
-SELECT DISTINCT ?class ?attr 
-WHERE {
-  ?s a ?class .
-  ?s ?attr ?val
-} ORDER BY ?class ?attr
-
-# lists all triples; should be none after clearing all circuits
-SELECT ?s ?attr ?val where {
-  ?s ?attr ?val.
-} order by ?s ?attr
-
-##################################################
-
-
-PREFIX r:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX c:  <http://www.ucaiug.org/ns#>
-PREFIX e:  <http://opensource.ieee.org/emtiop#>
-#PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-##################################################
-
-# EMTContainer
-# IEEE118	1783D2A8-1204-4781-A0B4-7A73A2FA6038
-# WECC240	2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3
-SELECT ?name ?id WHERE {
- ?s r:type c:EquipmentContainer.
- ?s c:IdentifiedObject.name ?name.
- ?s c:IdentifiedObject.mRID ?id.
-}
-ORDER by ?name
-
-# EMTBus
+<?xml version="1.0" encoding="UTF-8" ?>
+<queries>
+<nsCIM>
+<![CDATA[
+http://www.ucaiug.org/ns#
+]]>
+</nsCIM>
+<nsRDF>
+<![CDATA[
+http://www.w3.org/1999/02/22-rdf-syntax-ns#
+]]>
+</nsRDF>
+<nsEMT>
+<![CDATA[
+http://opensource.ieee.org/emtiop#
+]]>
+</nsEMT>
+<query>
+<id>EMTBus</id>
+<keyfld>name</keyfld>
+<description></description>
+<value>
+<![CDATA[
 SELECT DISTINCT ?name ?id ?nomv WHERE {
- VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
-# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s c:ConnectivityNode.ConnectivityNodeContainer ?sys.
  ?s r:type c:ConnectivityNode.
@@ -65,11 +44,16 @@ SELECT DISTINCT ?name ?id ?nomv WHERE {
  ?bv c:BaseVoltage.nominalVoltage ?nomv.
 }
 ORDER by ?name
-
-# EMTBusXY
+]]>
+</value>
+</query>
+<query>
+<id>EMTBusXY</id>
+<keyfld>name</keyfld>
+<description></description>
+<value>
+<![CDATA[
 SELECT DISTINCT ?name ?text ?cnid ?seq ?x ?y WHERE {
- VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
-# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s c:ConnectivityNode.ConnectivityNodeContainer ?sys.
  ?s r:type c:ConnectivityNode.
@@ -83,228 +67,18 @@ SELECT DISTINCT ?name ?text ?cnid ?seq ?x ?y WHERE {
  ?pt c:DiagramObjectPoint.yPosition ?y.
 }
 ORDER by ?name ?seq
-
-# EMTBaseVoltage
-SELECT DISTINCT ?vnom WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
-# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
- ?sys c:IdentifiedObject.mRID ?sysid.
- ?s c:Equipment.EquipmentContainer ?sys.
- {?s c:ConductingEquipment.BaseVoltage ?lev.}
-  UNION
- { ?end c:PowerTransformerEnd.PowerTransformer ?s.
-   ?end c:TransformerEnd.BaseVoltage ?lev.}
- ?lev r:type c:BaseVoltage.
- ?lev c:BaseVoltage.nominalVoltage ?vstr.
-  bind(xsd:string(?vstr) as ?xsdstr)
-  bind(xsd:float(?xsdstr) as ?vnom)
-}
-ORDER BY ?vnom
-
-# EMTLine
-SELECT ?name ?id ?basev ?bus1 ?bus2 ?len ?r ?x ?b ?r0 ?x0 ?b0 ?sysid ?cn1id ?cn2id WHERE {
- ?s r:type c:ACLineSegment.
- VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
-# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
- ?sys c:IdentifiedObject.mRID ?sysid.
- ?s c:Equipment.EquipmentContainer ?sys.
- ?s c:IdentifiedObject.mRID ?id.
- ?s c:IdentifiedObject.name ?name.
- ?s c:ConductingEquipment.BaseVoltage ?bv.
- ?bv c:BaseVoltage.nominalVoltage ?basev.
- ?s c:Conductor.length ?len.
- ?s c:ACLineSegment.r ?r.
- ?s c:ACLineSegment.x ?x.
- ?s c:ACLineSegment.bch ?b.
- ?s c:ACLineSegment.r0 ?r0.
- ?s c:ACLineSegment.x0 ?x0.
- ?s c:ACLineSegment.b0ch ?b0.
- ?s e:ConductingEquipment.FromConnectivityNode ?cn1.
- ?s e:ConductingEquipment.ToConnectivityNode ?cn2.
- ?cn1 c:IdentifiedObject.mRID ?cn1id.
- ?cn1 c:IdentifiedObject.name ?bus1.
- ?cn2 c:IdentifiedObject.mRID ?cn2id.
- ?cn2 c:IdentifiedObject.name ?bus2
-}
-ORDER BY ?name
-
-# EMTLoad
-SELECT ?name ?id ?bus ?basev ?p ?q ?pz ?qz ?pi ?qi ?pp ?qp ?pe ?qe ?sysid ?cn1id WHERE {
- ?s r:type c:EnergyConsumer.
- VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
-# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
- ?sys c:IdentifiedObject.mRID ?sysid.
- ?s c:Equipment.EquipmentContainer ?sys.
- ?s c:IdentifiedObject.name ?name.
- ?s c:IdentifiedObject.mRID ?id.
- ?s c:ConductingEquipment.BaseVoltage ?bv.
- ?bv c:BaseVoltage.nominalVoltage ?basev.
- ?s c:EnergyConsumer.p ?p.
- ?s c:EnergyConsumer.q ?q.
- ?s c:EnergyConsumer.LoadResponse ?lr.
- ?lr c:LoadResponseCharacteristic.pConstantImpedance ?pz.
- ?lr c:LoadResponseCharacteristic.qConstantImpedance ?qz.
- ?lr c:LoadResponseCharacteristic.pConstantCurrent ?pi.
- ?lr c:LoadResponseCharacteristic.qConstantCurrent ?qi.
- ?lr c:LoadResponseCharacteristic.pConstantPower ?pp.
- ?lr c:LoadResponseCharacteristic.qConstantPower ?qp.
- OPTIONAL {?lr c:LoadResponseCharacteristic.pVoltageExponent ?pe.}
- OPTIONAL {?lr c:LoadResponseCharacteristic.qVoltageExponent ?qe.}
- ?s e:ConductingEquipment.FromConnectivityNode ?cn. 
- ?s c:IdentifiedObject.mRID ?cn1id. 
- ?cn c:IdentifiedObject.name ?bus
-}
-ORDER by ?name
-
-# EMTCountPowerXfmrWinding
-SELECT ?key (count(?p) as ?count) WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
- ?sys c:IdentifiedObject.mRID ?sysid.
- ?p c:Equipment.EquipmentContainer ?sys.
- ?p r:type c:PowerTransformer.
- ?p c:IdentifiedObject.name ?key.
- ?end c:PowerTransformerEnd.PowerTransformer ?p.
-}
-GROUP BY ?key
-ORDER BY ?key
-
-# EMTPowerXfmrWinding
-SELECT ?pname ?vgrp ?enum ?bus ?basev ?conn ?ratedS ?ratedU ?ang ?grounded ?rground ?xground ?cn1id ?pid WHERE {
- VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
-# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
- ?sys c:IdentifiedObject.mRID ?sysid.
- ?p c:Equipment.EquipmentContainer ?sys.
- ?p r:type c:PowerTransformer.
- ?p c:IdentifiedObject.name ?pname.
- ?p c:IdentifiedObject.mRID ?pid.
- ?p c:PowerTransformer.vectorGroup ?vgrp.
- ?end c:PowerTransformerEnd.PowerTransformer ?p.
- ?end c:TransformerEnd.endNumber ?enum.
- ?end c:PowerTransformerEnd.ratedS ?ratedS.
- ?end c:PowerTransformerEnd.ratedU ?ratedU.
- ?end c:PowerTransformerEnd.phaseAngleClock ?ang.
- ?end c:PowerTransformerEnd.connectionKind ?connraw.  
-  bind(strafter(str(?connraw),"WindingConnection.") as ?conn)
- ?end c:TransformerEnd.grounded ?grounded.
- OPTIONAL {?end c:TransformerEnd.rground ?rground.}
- OPTIONAL {?end c:TransformerEnd.xground ?xground.}
- ?end e:TransformerEnd.ConnectivityNode ?cn. 
- ?cn c:IdentifiedObject.mRID ?cn1id. 
- ?cn c:IdentifiedObject.name ?bus.
- ?end c:TransformerEnd.BaseVoltage ?bv.
- ?bv c:BaseVoltage.nominalVoltage ?basev
-}
-ORDER BY ?pname ?enum
-
-# EMTPowerXfmrCore
-SELECT ?pname ?enum ?b ?g WHERE {
- VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
-# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
- ?sys c:IdentifiedObject.mRID ?sysid.
- ?p c:Equipment.EquipmentContainer ?sys.
- ?p r:type c:PowerTransformer.
- ?p c:IdentifiedObject.name ?pname.
- ?end c:PowerTransformerEnd.PowerTransformer ?p.
- ?adm c:TransformerCoreAdmittance.TransformerEnd ?end.
- ?end c:TransformerEnd.endNumber ?enum.
- ?adm c:TransformerCoreAdmittance.b ?b.
- ?adm c:TransformerCoreAdmittance.g ?g.
-}
-ORDER BY ?pname
-
-# EMTPowerXfmrMesh
-SELECT ?pname ?fnum ?tnum ?r ?x WHERE {
- VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
-# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
- ?sys c:IdentifiedObject.mRID ?sysid.
- ?p c:Equipment.EquipmentContainer ?sys.
- ?p r:type c:PowerTransformer.
- ?p c:IdentifiedObject.name ?pname.
- ?from c:PowerTransformerEnd.PowerTransformer ?p.
- ?imp c:TransformerMeshImpedance.FromTransformerEnd ?from.
- ?imp c:TransformerMeshImpedance.ToTransformerEnd ?to.
- ?imp c:TransformerMeshImpedance.r ?r.
- ?imp c:TransformerMeshImpedance.x ?x.
- ?from c:TransformerEnd.endNumber ?fnum.
- ?to c:TransformerEnd.endNumber ?tnum.
-}
-ORDER BY ?pname ?fnum ?tnum
-
-# EMTXfmrSaturation
-SELECT ?pname ?admid ?amps ?vs WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
- ?sys c:IdentifiedObject.mRID ?sysid.
- ?p c:Equipment.EquipmentContainer ?sys.
- ?p r:type c:PowerTransformer.
- ?p c:IdentifiedObject.name ?pname.
- ?end c:PowerTransformerEnd.PowerTransformer ?p.
- ?adm c:TransformerCoreAdmittance.TransformerEnd ?end.
- ?adm c:IdentifiedObject.mRID ?admid.
- ?sat e:TransformerSaturation.TransformerCoreAdmittance ?adm.
- ?crv c:CurveData.Curve ?sat.
- ?crv c:CurveData.xvalue ?xvalue.
- ?crv c:CurveData.y1value ?y1value.
-  bind(xsd:string(?xvalue) as ?xstr)
-  bind(xsd:float(?xstr) as ?amps)
-  bind(xsd:string(?y1value) as ?ystr)
-  bind(xsd:float(?ystr) as ?vs)
-}
-ORDER BY ?pname ?amps ?vs
-
-# EMTCompShunt may be capacitor or reactor
-SELECT ?name ?basev ?nomu ?gsection ?bsection ?sections ?maxsections ?bus ?id ?sysid ?cn1id WHERE {
- ?s r:type c:LinearShuntCompensator.
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
- ?sys c:IdentifiedObject.mRID ?sysid.
- ?s c:Equipment.EquipmentContainer ?sys.
- ?s c:IdentifiedObject.name ?name.
- ?s c:ConductingEquipment.BaseVoltage ?bv.
- ?bv c:BaseVoltage.nominalVoltage ?basev.
- ?s c:ShuntCompensator.nomU ?nomu. 
- ?s c:LinearShuntCompensator.gPerSection ?gsection. 
- ?s c:LinearShuntCompensator.bPerSection ?bsection. 
- ?s c:ShuntCompensator.sections ?sections. 
- ?s c:ShuntCompensator.maximumSections ?maxsections. 
- ?s c:IdentifiedObject.mRID ?id. 
- ?s e:ConductingEquipment.FromConnectivityNode ?cn. 
- ?cn c:IdentifiedObject.mRID ?cn1id.
- ?cn c:IdentifiedObject.name ?bus
-}
-ORDER by ?name
-
-# EMTCompSeries may be capacitor or reactor
-SELECT ?name ?bus1 ?bus2 ?basev ?r ?r0 ?x ?x0 ?id ?sysid ?cn1id ?cn2id WHERE {
- ?s r:type c:SeriesCompensator.
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
- ?sys c:IdentifiedObject.mRID ?sysid.
- ?s c:Equipment.EquipmentContainer ?sys.
- ?s c:IdentifiedObject.name ?name.
- ?s c:IdentifiedObject.mRID ?id. 
- ?s c:ConductingEquipment.BaseVoltage ?bv.
- ?bv c:BaseVoltage.nominalVoltage ?basev.
- ?s c:SeriesCompensator.r ?r. 
- ?s c:SeriesCompensator.r0 ?r0. 
- ?s c:SeriesCompensator.x ?x. 
- ?s c:SeriesCompensator.x0 ?x0. 
- ?s e:ConductingEquipment.FromConnectivityNode ?cn1.
- ?s e:ConductingEquipment.ToConnectivityNode ?cn2.
- ?cn1 c:IdentifiedObject.mRID ?cn1id.
- ?cn1 c:IdentifiedObject.name ?bus1.
- ?cn2 c:IdentifiedObject.mRID ?cn2id.
- ?cn2 c:IdentifiedObject.name ?bus2
-}
-ORDER by ?name
-
-# EMTSyncMachine
+]]>
+</value>
+</query>
+<query>
+<id>EMTSyncMachine</id>
+<keyfld>name</keyfld>
+<description></description>
+<value>
+<![CDATA[
 SELECT ?name ?type ?bus ?ratedS ?ratedU ?p ?q ?maxP ?minP ?maxQ ?minQ
        ?inertia ?Xd ?Xdp ?Xdpp ?Xq ?Xqp ?Xqpp ?Ra ?Xl
        ?Tdop ?Tdopp ?Tqop ?Tqopp ?id ?uid ?sysid ?cn1id WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s r:type c:SynchronousMachine.
  ?s c:Equipment.EquipmentContainer ?sys.
@@ -342,11 +116,196 @@ SELECT ?name ?type ?bus ?ratedS ?ratedU ?p ?q ?maxP ?minP ?maxQ ?minQ
  ?cn c:IdentifiedObject.name ?bus
 }
 ORDER by ?name
-
-# EMTSolar
+]]>
+</value>
+</query>
+<query>
+<id>EMTLine</id>
+<keyfld>name</keyfld>
+<description></description>
+<value>
+<![CDATA[
+SELECT ?name ?id ?basev ?bus1 ?bus2 ?len ?r ?x ?b ?r0 ?x0 ?b0 ?sysid ?cn1id ?cn2id WHERE {
+ ?s r:type c:ACLineSegment.
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s c:Equipment.EquipmentContainer ?sys.
+ ?s c:IdentifiedObject.mRID ?id.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:ConductingEquipment.BaseVoltage ?bv.
+ ?bv c:BaseVoltage.nominalVoltage ?basev.
+ ?s c:Conductor.length ?len.
+ ?s c:ACLineSegment.r ?r.
+ ?s c:ACLineSegment.x ?x.
+ ?s c:ACLineSegment.bch ?b.
+ ?s c:ACLineSegment.r0 ?r0.
+ ?s c:ACLineSegment.x0 ?x0.
+ ?s c:ACLineSegment.b0ch ?b0.
+ ?s e:ConductingEquipment.FromConnectivityNode ?cn1.
+ ?s e:ConductingEquipment.ToConnectivityNode ?cn2.
+ ?cn1 c:IdentifiedObject.mRID ?cn1id.
+ ?cn1 c:IdentifiedObject.name ?bus1.
+ ?cn2 c:IdentifiedObject.mRID ?cn2id.
+ ?cn2 c:IdentifiedObject.name ?bus2
+}
+ORDER BY ?name
+]]>
+</value>
+</query>
+s<query>
+<id>EMTCompSeries</id>
+<keyfld>name</keyfld>
+<description>series capacitor or reactor</description>
+<value>
+<![CDATA[
+SELECT ?name ?bus1 ?bus2 ?basev ?r ?r0 ?x ?x0 ?id ?sysid ?cn1id ?cn2id WHERE {
+ ?s r:type c:SeriesCompensator.
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s c:Equipment.EquipmentContainer ?sys.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?id. 
+ ?s c:ConductingEquipment.BaseVoltage ?bv.
+ ?bv c:BaseVoltage.nominalVoltage ?basev.
+ ?s c:SeriesCompensator.r ?r. 
+ ?s c:SeriesCompensator.r0 ?r0. 
+ ?s c:SeriesCompensator.x ?x. 
+ ?s c:SeriesCompensator.x0 ?x0. 
+ ?s e:ConductingEquipment.FromConnectivityNode ?cn1.
+ ?s e:ConductingEquipment.ToConnectivityNode ?cn2.
+ ?cn1 c:IdentifiedObject.mRID ?cn1id.
+ ?cn1 c:IdentifiedObject.name ?bus1.
+ ?cn2 c:IdentifiedObject.mRID ?cn2id.
+ ?cn2 c:IdentifiedObject.name ?bus2
+}
+ORDER by ?name
+]]>
+</value>
+</query>
+<query>
+<id>EMTPowerXfmrWinding</id>
+<keyfld>pname:enum</keyfld>
+<description>Power transformers on their own, without catalog reference.</description>
+<value>
+<![CDATA[
+SELECT ?pname ?vgrp ?enum ?bus ?basev ?conn ?ratedS ?ratedU ?ang ?grounded ?rground ?xground ?cn1id ?pid WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?p c:Equipment.EquipmentContainer ?sys.
+ ?p r:type c:PowerTransformer.
+ ?p c:IdentifiedObject.name ?pname.
+ ?p c:IdentifiedObject.mRID ?pid.
+ ?p c:PowerTransformer.vectorGroup ?vgrp.
+ ?end c:PowerTransformerEnd.PowerTransformer ?p.
+ ?end c:TransformerEnd.endNumber ?enum.
+ ?end c:PowerTransformerEnd.ratedS ?ratedS.
+ ?end c:PowerTransformerEnd.ratedU ?ratedU.
+ ?end c:PowerTransformerEnd.phaseAngleClock ?ang.
+ ?end c:PowerTransformerEnd.connectionKind ?connraw.  
+  bind(strafter(str(?connraw),"WindingConnection.") as ?conn)
+ ?end c:TransformerEnd.grounded ?grounded.
+ OPTIONAL {?end c:TransformerEnd.rground ?rground.}
+ OPTIONAL {?end c:TransformerEnd.xground ?xground.}
+ ?end e:TransformerEnd.ConnectivityNode ?cn. 
+ ?cn c:IdentifiedObject.mRID ?cn1id. 
+ ?cn c:IdentifiedObject.name ?bus.
+ ?end c:TransformerEnd.BaseVoltage ?bv.
+ ?bv c:BaseVoltage.nominalVoltage ?basev
+}
+ORDER BY ?pname ?enum
+]]>
+</value>
+</query>
+<query>
+<id>EMTPowerXfmrCore</id>
+<keyfld>pname</keyfld>
+<description></description>
+<value>
+<![CDATA[
+SELECT ?pname ?enum ?b ?g WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?p c:Equipment.EquipmentContainer ?sys.
+ ?p r:type c:PowerTransformer.
+ ?p c:IdentifiedObject.name ?pname.
+ ?end c:PowerTransformerEnd.PowerTransformer ?p.
+ ?adm c:TransformerCoreAdmittance.TransformerEnd ?end.
+ ?end c:TransformerEnd.endNumber ?enum.
+ ?adm c:TransformerCoreAdmittance.b ?b.
+ ?adm c:TransformerCoreAdmittance.g ?g.
+}
+ORDER BY ?pname
+]]>
+</value>
+</query>
+<query>
+<id>EMTPowerXfmrMesh</id>
+<keyfld>pname:fnum:tnum</keyfld>
+<description></description>
+<value>
+<![CDATA[
+SELECT ?pname ?fnum ?tnum ?r ?x WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?p c:Equipment.EquipmentContainer ?sys.
+ ?p r:type c:PowerTransformer.
+ ?p c:IdentifiedObject.name ?pname.
+ ?from c:PowerTransformerEnd.PowerTransformer ?p.
+ ?imp c:TransformerMeshImpedance.FromTransformerEnd ?from.
+ ?imp c:TransformerMeshImpedance.ToTransformerEnd ?to.
+ ?imp c:TransformerMeshImpedance.r ?r.
+ ?imp c:TransformerMeshImpedance.x ?x.
+ ?from c:TransformerEnd.endNumber ?fnum.
+ ?to c:TransformerEnd.endNumber ?tnum.
+}
+ORDER BY ?pname ?fnum ?tnum
+]]>
+</value>
+</query>
+<query>
+<id>EMTXfmrSaturation</id>
+<keyfld>pname:amps</keyfld>
+<description></description>
+<value>
+<![CDATA[
+SELECT ?pname ?admid ?amps ?vs WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?p c:Equipment.EquipmentContainer ?sys.
+ ?p r:type c:PowerTransformer.
+ ?p c:IdentifiedObject.name ?pname.
+ ?end c:PowerTransformerEnd.PowerTransformer ?p.
+ ?adm c:TransformerCoreAdmittance.TransformerEnd ?end.
+ ?adm c:IdentifiedObject.mRID ?admid.
+ ?sat e:TransformerSaturation.TransformerCoreAdmittance ?adm.
+ ?crv c:CurveData.Curve ?sat.
+ ?crv c:CurveData.xvalue ?xvalue.
+ ?crv c:CurveData.y1value ?y1value.
+  bind(xsd:string(?xvalue) as ?xstr)
+  bind(xsd:float(?xstr) as ?amps)
+  bind(xsd:string(?y1value) as ?ystr)
+  bind(xsd:float(?ystr) as ?vs)
+}
+ORDER BY ?pname ?amps ?vs
+]]>
+</value>
+</query>
+<query>
+<id>EMTContainer</id>
+<keyfld>name</keyfld>
+<description>list all the transmission systems</description>
+<value>
+<![CDATA[
+SELECT ?name ?id WHERE {
+ ?s r:type c:EquipmentContainer.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?id.
+}
+ORDER by ?name
+]]>
+</value>
+</query>
+<query>
+<id>EMTSolar</id>
+<keyfld>name</keyfld>
+<description></description>
+<value>
+<![CDATA[
 SELECT ?name ?bus ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?ipu ?p ?q ?sysid ?pecid ?id ?cn1id WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s r:type c:PhotoVoltaicUnit.
  ?s c:IdentifiedObject.name ?name.
@@ -368,11 +327,16 @@ SELECT ?name ?bus ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?ipu ?p ?q ?sysid ?pec
  ?cn c:IdentifiedObject.name ?bus
 }
 ORDER by ?name
-
-# EMTWind
+]]>
+</value>
+</query>
+<query>
+<id>EMTWind</id>
+<keyfld>name</keyfld>
+<description></description>
+<value>
+<![CDATA[
 SELECT ?name ?bus ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?ipu ?p ?q ?sysid ?pecid ?id ?cn1id WHERE {
- VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
-# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s r:type c:PowerElectronicsWindUnit.
  ?s c:IdentifiedObject.name ?name.
@@ -394,40 +358,17 @@ SELECT ?name ?bus ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?ipu ?p ?q ?sysid ?pec
  ?cn c:IdentifiedObject.name ?bus
 }
 ORDER by ?name
-
-# EMTGovSteamSGO
-SELECT ?name ?k1 ?k2 ?k3 ?pmin ?pmax ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?mwbase ?id ?eqid ?sysid
-WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
- ?sys c:IdentifiedObject.mRID ?sysid.
- ?s r:type c:GovSteamSGO.
- ?s c:TurbineGovernorDynamics.SynchronousMachineDynamics ?dyn.
- ?dyn c:SynchronousMachineDynamics.SynchronousMachine ?eq.
- ?eq c:Equipment.EquipmentContainer ?sys.
- ?eq c:IdentifiedObject.mRID ?eqid.
- ?s r:type c:GovSteamSGO.
- ?s c:IdentifiedObject.name ?name.
- ?s c:IdentifiedObject.mRID ?id.
- ?s c:GovSteamSGO.k1 ?k1.
- ?s c:GovSteamSGO.k2 ?k2.
- ?s c:GovSteamSGO.k3 ?k3.
- ?s c:GovSteamSGO.pmin ?pmin.
- ?s c:GovSteamSGO.pmax ?pmax.
- ?s c:GovSteamSGO.t1 ?t1.
- ?s c:GovSteamSGO.t2 ?t2.
- ?s c:GovSteamSGO.t3 ?t3.
- ?s c:GovSteamSGO.t4 ?t4.
- ?s c:GovSteamSGO.t5 ?t5.
- ?s c:GovSteamSGO.t6 ?t6.
- ?s c:GovSteamSGO.mwbase ?mwbase.
-} ORDER BY ?name
-
-# EMTExcST1A
+]]>
+</value>
+</query>
+<query>
+<id>EMTExcST1A</id>
+<keyfld>name</keyfld>
+<description></description>
+<value>
+<![CDATA[
 SELECT ?name ?ilr ?ka ?kc ?kf ?klr ?ta ?tb ?tb1 ?tc ?tc1 ?tf ?vamax ?vamin
 ?vimax ?vimin ?vrmax ?vrmin ?xe ?id ?eqid ?sysid WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s r:type c:ExcST1A.
  ?s c:ExcitationSystemDynamics.SynchronousMachineDynamics ?dyn.
@@ -456,12 +397,50 @@ SELECT ?name ?ilr ?ka ?kc ?kf ?klr ?ta ?tb ?tb1 ?tc ?tc1 ?tf ?vamax ?vamin
  ?s c:ExcST1A.vrmin ?vrmin.
  ?s c:ExcST1A.xe ?xe.
 } ORDER BY ?name
-
-# EMTPssIEEE1A
+]]>
+</value>
+</query>
+<query>
+<id>EMTGovSteamSGO</id>
+<keyfld>name</keyfld>
+<description></description>
+<value>
+<![CDATA[
+SELECT ?name ?k1 ?k2 ?k3 ?pmin ?pmax ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?mwbase ?id ?eqid ?sysid
+WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s r:type c:GovSteamSGO.
+ ?s c:TurbineGovernorDynamics.SynchronousMachineDynamics ?dyn.
+ ?dyn c:SynchronousMachineDynamics.SynchronousMachine ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?s r:type c:GovSteamSGO.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?id.
+ ?s c:GovSteamSGO.k1 ?k1.
+ ?s c:GovSteamSGO.k2 ?k2.
+ ?s c:GovSteamSGO.k3 ?k3.
+ ?s c:GovSteamSGO.pmin ?pmin.
+ ?s c:GovSteamSGO.pmax ?pmax.
+ ?s c:GovSteamSGO.t1 ?t1.
+ ?s c:GovSteamSGO.t2 ?t2.
+ ?s c:GovSteamSGO.t3 ?t3.
+ ?s c:GovSteamSGO.t4 ?t4.
+ ?s c:GovSteamSGO.t5 ?t5.
+ ?s c:GovSteamSGO.t6 ?t6.
+ ?s c:GovSteamSGO.mwbase ?mwbase.
+} ORDER BY ?name
+]]>
+</value>
+</query>
+<query>
+<id>EMTPssIEEE1A</id>
+<keyfld>name</keyfld>
+<description></description>
+<value>
+<![CDATA[
 SELECT ?name ?a1 ?a2 ?inputSignalType ?ks ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?vrmax ?vrmin
 ?id ?eqid ?sysid WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s r:type c:PssIEEE1A.
  ?s c:PowerSystemStabilizerDynamics.ExcitationSystemDynamics ?exc.
@@ -486,12 +465,17 @@ SELECT ?name ?a1 ?a2 ?inputSignalType ?ks ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?vrmax ?vrmin
  ?s c:PssIEEE1A.vrmax ?vrmax.
  ?s c:PssIEEE1A.vrmin ?vrmin.
 } ORDER BY ?name
-
-# EMTWeccREGCA
+]]>
+</value>
+</query>
+<query>
+<id>EMTWeccREGCA</id>
+<keyfld>name</keyfld>
+<description></description>
+<value>
+<![CDATA[
 SELECT ?name ?brkpt ?iolim ?iqrmax ?iqrmin ?ivpl1 ?ivplsw ?ivpnt0 ?ivpnt1 ?khv
 ?rrpwr ?tfltr ?tg ?volim ?zerox ?id ?eqid ?sysid WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s r:type c:WeccREGCA.
  ?s c:WeccDynamics.PowerElectronicsConnection ?eq.
@@ -515,15 +499,20 @@ SELECT ?name ?brkpt ?iolim ?iqrmax ?iqrmin ?ivpl1 ?ivplsw ?ivpnt0 ?ivpnt1 ?khv
  ?s c:WeccREGCA.volim ?volim.
  ?s c:WeccREGCA.zerox ?zerox.
 } ORDER BY ?name
-
-# EMTWeccREECA
+]]>
+</value>
+</query>
+<query>
+<id>EMTWeccREECA</id>
+<keyfld>name</keyfld>
+<description></description>
+<value>
+<![CDATA[
 SELECT ?name ?db1 ?db2 ?dPmax ?dPmin ?imax ?iqfrz ?iqh1 ?iql1 ?kqi ?kqp ?kqv
 ?kvi ?kvp ?pfFlag ?pFlag ?pmax ?pmin ?pqFlag ?qFlag ?qmax ?qmin ?thld ?thld2
 ?tiq ?tp ?tpord ?trv ?vdi1i1 ?vdi1i2 ?vdi1i3 ?vdi1i4 ?vdi1v1 ?vdi1v2 ?vdi1v3
 ?vdi1v4 ?vdi2i1 ?vdi2i2 ?vdi2i3 ?vdi2i4 ?vdi2v1 ?vdi2v2 ?vdi2v3 ?vdi2v4 ?vdip
 ?vFlag ?vmax ?vmin ?vref0 ?vref1 ?vup ?id ?eqid ?sysid WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s r:type c:WeccREECA.
  ?s c:WeccDynamics.PowerElectronicsConnection ?eq.
@@ -583,13 +572,18 @@ SELECT ?name ?db1 ?db2 ?dPmax ?dPmin ?imax ?iqfrz ?iqh1 ?iql1 ?kqi ?kqp ?kqv
  ?s c:WeccREECA.vref1 ?vref1.
  ?s c:WeccREECA.vup ?vup.
 } ORDER BY ?name
-
-# EMTWeccREPCA
+]]>
+</value>
+</query>
+<query>
+<id>EMTWeccREPCA</id>
+<keyfld>name</keyfld>
+<description></description>
+<value>
+<![CDATA[
 SELECT ?name ?db ?ddn ?dup ?emax ?emin ?fdbd1 ?fdbd2 ?femax ?femin ?frqFlag ?kc
 ?ki ?kig ?kp ?kpg ?pmax ?pmin ?qmax ?qmin ?rc ?refFlag ?tfltr ?tft ?tfv ?tlag
 ?tp ?vcmpFlag ?vfrz ?xc ?id ?eqid ?sysid WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s r:type c:WeccREPCA.
  ?s c:WeccDynamics.PowerElectronicsConnection ?eq.
@@ -628,11 +622,16 @@ SELECT ?name ?db ?ddn ?dup ?emax ?emin ?fdbd1 ?fdbd2 ?femax ?femin ?frqFlag ?kc
  ?s c:WeccREPCA.vfrz ?vfrz.
  ?s c:WeccREPCA.xc ?xc.
 } ORDER BY ?name
-
-# EMTWeccWTGTA
+]]>
+</value>
+</query>
+<query>
+<id>EMTWeccWTGTA</id>
+<keyfld>name</keyfld>
+<description></description>
+<value>
+<![CDATA[
 SELECT ?name ?dshaft ?hg ?ht ?kshaft ?id ?eqid ?sysid WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s r:type c:WeccWTGTA.
  ?s c:WeccDynamics.PowerElectronicsConnection ?eq.
@@ -646,11 +645,16 @@ SELECT ?name ?dshaft ?hg ?ht ?kshaft ?id ?eqid ?sysid WHERE {
  ?s c:WeccWTGTA.ht ?ht.
  ?s c:WeccWTGTA.kshaft ?kshaft.
 } ORDER BY ?name
-
-# EMTWeccWTGARA
+]]>
+</value>
+</query>
+<query>
+<id>EMTWeccWTGARA</id>
+<keyfld>name</keyfld>
+<description></description>
+<value>
+<![CDATA[
 SELECT ?name ?ka ?t0 ?id ?eqid ?sysid WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s r:type c:WeccWTGARA.
  ?s c:WeccDynamics.PowerElectronicsConnection ?eq.
@@ -662,4 +666,107 @@ SELECT ?name ?ka ?t0 ?id ?eqid ?sysid WHERE {
  ?s c:WeccWTGARA.ka ?ka.
  ?s c:WeccWTGARA.t0 ?t0.
 } ORDER BY ?name
-
+]]>
+</value>
+</query>
+<query>
+<id>EMTBaseVoltage</id>
+<keyfld>vnom</keyfld>
+<description></description>
+<value>
+<![CDATA[
+SELECT DISTINCT ?vnom WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s c:Equipment.EquipmentContainer ?sys.
+ {?s c:ConductingEquipment.BaseVoltage ?lev.}
+  UNION
+ { ?end c:PowerTransformerEnd.PowerTransformer ?s.
+   ?end c:TransformerEnd.BaseVoltage ?lev.}
+ ?lev r:type c:BaseVoltage.
+ ?lev c:BaseVoltage.nominalVoltage ?vstr.
+  bind(xsd:string(?vstr) as ?xsdstr)
+  bind(xsd:float(?xsdstr) as ?vnom)
+}
+ORDER BY ?vnom
+]]>
+</value>
+</query>
+<query>
+<id>EMTCompShunt</id>
+<keyfld>name</keyfld>
+<description>Shunt reactor or capacitor</description>
+<value>
+<![CDATA[
+SELECT ?name ?basev ?nomu ?gsection ?bsection ?sections ?maxsections ?bus ?id ?sysid ?cn1id WHERE {
+ ?s r:type c:LinearShuntCompensator.
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s c:Equipment.EquipmentContainer ?sys.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:ConductingEquipment.BaseVoltage ?bv.
+ ?bv c:BaseVoltage.nominalVoltage ?basev.
+ ?s c:ShuntCompensator.nomU ?nomu. 
+ ?s c:LinearShuntCompensator.gPerSection ?gsection. 
+ ?s c:LinearShuntCompensator.bPerSection ?bsection. 
+ ?s c:ShuntCompensator.sections ?sections. 
+ ?s c:ShuntCompensator.maximumSections ?maxsections. 
+ ?s c:IdentifiedObject.mRID ?id. 
+ ?s e:ConductingEquipment.FromConnectivityNode ?cn. 
+ ?cn c:IdentifiedObject.mRID ?cn1id.
+ ?cn c:IdentifiedObject.name ?bus
+}
+ORDER by ?name
+]]>
+</value>
+</query>
+<query>
+<id>EMTLoad</id>
+<keyfld>name</keyfld>
+<description>Balanced on three phases</description>
+<value>
+<![CDATA[
+SELECT ?name ?id ?bus ?basev ?p ?q ?pz ?qz ?pi ?qi ?pp ?qp ?pe ?qe ?sysid ?cn1id WHERE {
+ ?s r:type c:EnergyConsumer.
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s c:Equipment.EquipmentContainer ?sys.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?id.
+ ?s c:ConductingEquipment.BaseVoltage ?bv.
+ ?bv c:BaseVoltage.nominalVoltage ?basev.
+ ?s c:EnergyConsumer.p ?p.
+ ?s c:EnergyConsumer.q ?q.
+ ?s c:EnergyConsumer.LoadResponse ?lr.
+ ?lr c:LoadResponseCharacteristic.pConstantImpedance ?pz.
+ ?lr c:LoadResponseCharacteristic.qConstantImpedance ?qz.
+ ?lr c:LoadResponseCharacteristic.pConstantCurrent ?pi.
+ ?lr c:LoadResponseCharacteristic.qConstantCurrent ?qi.
+ ?lr c:LoadResponseCharacteristic.pConstantPower ?pp.
+ ?lr c:LoadResponseCharacteristic.qConstantPower ?qp.
+ OPTIONAL {?lr c:LoadResponseCharacteristic.pVoltageExponent ?pe.}
+ OPTIONAL {?lr c:LoadResponseCharacteristic.qVoltageExponent ?qe.}
+ ?s e:ConductingEquipment.FromConnectivityNode ?cn. 
+ ?s c:IdentifiedObject.mRID ?cn1id. 
+ ?cn c:IdentifiedObject.name ?bus
+}
+ORDER by ?name
+]]>
+</value>
+</query>
+<query>
+<id>EMTCountPowerXfmrWindings</id>
+<keyfld>key</keyfld>
+<description>for EMTPowerXfmrWinding</description>
+<value>
+<![CDATA[
+SELECT ?key (count(?p) as ?count) WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?p c:Equipment.EquipmentContainer ?sys.
+ ?p r:type c:PowerTransformer.
+ ?p c:IdentifiedObject.name ?key.
+ ?end c:PowerTransformerEnd.PowerTransformer ?p.
+}
+GROUP BY ?key
+ORDER BY ?key
+]]>
+</value>
+</query>
+</queries>
