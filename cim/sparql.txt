@@ -128,11 +128,11 @@ SELECT ?name ?id ?basev ?bus1 ?bus2 ?len ?r ?x ?b ?r0 ?x0 ?b0 ?sysid ?cn1id ?cn2
 }
 ORDER BY ?name
 
-# BESLoad
-SELECT ?name ?id ?bus ?basev ?p ?q ?pz ?qz ?pi ?qi ?pp ?qp ?pe ?qe ?sysid ?t1id WHERE {
+# EMTLoad
+SELECT ?name ?id ?bus ?basev ?p ?q ?pz ?qz ?pi ?qi ?pp ?qp ?pe ?qe ?sysid ?cn1id WHERE {
  ?s r:type c:EnergyConsumer.
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s c:Equipment.EquipmentContainer ?sys.
  ?s c:IdentifiedObject.name ?name.
@@ -150,14 +150,13 @@ SELECT ?name ?id ?bus ?basev ?p ?q ?pz ?qz ?pi ?qi ?pp ?qp ?pe ?qe ?sysid ?t1id 
  ?lr c:LoadResponseCharacteristic.qConstantPower ?qp.
  OPTIONAL {?lr c:LoadResponseCharacteristic.pVoltageExponent ?pe.}
  OPTIONAL {?lr c:LoadResponseCharacteristic.qVoltageExponent ?qe.}
- ?t c:Terminal.ConductingEquipment ?s.
- ?t c:Terminal.ConnectivityNode ?cn. 
- ?t c:IdentifiedObject.mRID ?t1id. 
+ ?s e:ConductingEquipment.FromConnectivityNode ?cn. 
+ ?s c:IdentifiedObject.mRID ?cn1id. 
  ?cn c:IdentifiedObject.name ?bus
 }
 ORDER by ?name
 
-# BESCountPowerXfmrWinding
+# EMTCountPowerXfmrWinding
 SELECT ?key (count(?p) as ?count) WHERE {
 # VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
  VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
@@ -170,10 +169,10 @@ SELECT ?key (count(?p) as ?count) WHERE {
 GROUP BY ?key
 ORDER BY ?key
 
-# BESPowerXfmrWinding
-SELECT ?pname ?vgrp ?enum ?bus ?basev ?conn ?ratedS ?ratedU ?r ?ang ?grounded ?rground ?xground ?fdrid ?t1id ?pid WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+# EMTPowerXfmrWinding
+SELECT ?pname ?vgrp ?enum ?bus ?basev ?conn ?ratedS ?ratedU ?r ?ang ?grounded ?rground ?xground ?cn1id ?pid WHERE {
+ VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?p c:Equipment.EquipmentContainer ?sys.
  ?p r:type c:PowerTransformer.
@@ -184,26 +183,24 @@ SELECT ?pname ?vgrp ?enum ?bus ?basev ?conn ?ratedS ?ratedU ?r ?ang ?grounded ?r
  ?end c:TransformerEnd.endNumber ?enum.
  ?end c:PowerTransformerEnd.ratedS ?ratedS.
  ?end c:PowerTransformerEnd.ratedU ?ratedU.
- ?end c:PowerTransformerEnd.r ?r.
  ?end c:PowerTransformerEnd.phaseAngleClock ?ang.
  ?end c:PowerTransformerEnd.connectionKind ?connraw.  
   bind(strafter(str(?connraw),"WindingConnection.") as ?conn)
  ?end c:TransformerEnd.grounded ?grounded.
  OPTIONAL {?end c:TransformerEnd.rground ?rground.}
  OPTIONAL {?end c:TransformerEnd.xground ?xground.}
- ?end c:TransformerEnd.Terminal ?trm.
- ?trm c:Terminal.ConnectivityNode ?cn. 
- ?trm c:IdentifiedObject.mRID ?t1id. 
+ ?end e:TransformerEnd.ConnectivityNode ?cn. 
+ ?cn c:IdentifiedObject.mRID ?cn1id. 
  ?cn c:IdentifiedObject.name ?bus.
  ?end c:TransformerEnd.BaseVoltage ?bv.
  ?bv c:BaseVoltage.nominalVoltage ?basev
 }
 ORDER BY ?pname ?enum
 
-# BESPowerXfmrCore
+# EMTPowerXfmrCore
 SELECT ?pname ?enum ?b ?g WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?p c:Equipment.EquipmentContainer ?sys.
  ?p r:type c:PowerTransformer.
@@ -216,10 +213,10 @@ SELECT ?pname ?enum ?b ?g WHERE {
 }
 ORDER BY ?pname
 
-# BESPowerXfmrMesh
+# EMTPowerXfmrMesh
 SELECT ?pname ?fnum ?tnum ?r ?x WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?p c:Equipment.EquipmentContainer ?sys.
  ?p r:type c:PowerTransformer.
@@ -234,10 +231,78 @@ SELECT ?pname ?fnum ?tnum ?r ?x WHERE {
 }
 ORDER BY ?pname ?fnum ?tnum
 
-# BESSyncMachine
+# EMTXfmrSaturation
+SELECT ?pname ?admid ?amps ?vs WHERE {
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+ VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?p c:Equipment.EquipmentContainer ?sys.
+ ?p r:type c:PowerTransformer.
+ ?p c:IdentifiedObject.name ?pname.
+ ?end c:PowerTransformerEnd.PowerTransformer ?p.
+ ?adm c:TransformerCoreAdmittance.TransformerEnd ?end.
+ ?adm c:IdentifiedObject.mRID ?admid.
+ ?sat e:TransformerSaturation.TransformerCoreAdmittance ?adm.
+ ?crv c:CurveData.Curve ?sat.
+ ?crv c:CurveData.xvalue ?xvalue.
+ ?crv c:CurveData.y1value ?y1value.
+  bind(xsd:string(?xvalue) as ?xstr)
+  bind(xsd:float(?xstr) as ?amps)
+  bind(xsd:string(?y1value) as ?ystr)
+  bind(xsd:float(?ystr) as ?vs)
+}
+ORDER BY ?pname ?amps ?vs
+
+# EMTCompShunt may be capacitor or reactor
+SELECT ?name ?basev ?nomu ?gsection ?bsection ?sections ?maxsections ?bus ?id ?sysid ?cn1id WHERE {
+ ?s r:type c:LinearShuntCompensator.
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+ VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s c:Equipment.EquipmentContainer ?sys.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:ConductingEquipment.BaseVoltage ?bv.
+ ?bv c:BaseVoltage.nominalVoltage ?basev.
+ ?s c:ShuntCompensator.nomU ?nomu. 
+ ?s c:LinearShuntCompensator.gPerSection ?gsection. 
+ ?s c:LinearShuntCompensator.bPerSection ?bsection. 
+ ?s c:ShuntCompensator.sections ?sections. 
+ ?s c:ShuntCompensator.maximumSections ?maxsections. 
+ ?s c:IdentifiedObject.mRID ?id. 
+ ?s e:ConductingEquipment.FromConnectivityNode ?cn. 
+ ?cn c:IdentifiedObject.mRID ?cn1id.
+ ?cn c:IdentifiedObject.name ?bus
+}
+ORDER by ?name
+
+# EMTCompSeries may be capacitor or reactor
+SELECT ?name ?bus1 ?bus2 ?basev ?r ?r0 ?x ?x0 ?id ?sysid ?cn1id ?cn2id WHERE {
+ ?s r:type c:SeriesCompensator.
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+ VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s c:Equipment.EquipmentContainer ?sys.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?id. 
+ ?s c:ConductingEquipment.BaseVoltage ?bv.
+ ?bv c:BaseVoltage.nominalVoltage ?basev.
+ ?s c:SeriesCompensator.r ?r. 
+ ?s c:SeriesCompensator.r0 ?r0. 
+ ?s c:SeriesCompensator.x ?x. 
+ ?s c:SeriesCompensator.x0 ?x0. 
+ ?s e:ConductingEquipment.FromConnectivityNode ?cn1.
+ ?s e:ConductingEquipment.ToConnectivityNode ?cn2.
+ ?cn1 c:IdentifiedObject.mRID ?cn1id.
+ ?cn1 c:IdentifiedObject.name ?bus1.
+ ?cn2 c:IdentifiedObject.mRID ?cn2id.
+ ?cn2 c:IdentifiedObject.name ?bus2
+}
+ORDER by ?name
+
+# EMTSyncMachine
 SELECT ?name ?type ?bus ?ratedS ?ratedU ?p ?q ?maxP ?minP ?maxQ ?minQ
-       ?Xd ?Xdp ?Xdpp ?Xq ?Xqp ?Xqpp ?Ra ?Xl ?X0
-       ?Tdop ?Tdopp ?Tqop ?Tqopp ?id ?uid ?sysid ?t1id WHERE {
+       ?inertia ?Xd ?Xdp ?Xdpp ?Xq ?Xqp ?Xqpp ?Ra ?Xl
+       ?Tdop ?Tdopp ?Tqop ?Tqopp ?id ?uid ?sysid ?cn1id WHERE {
 # VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
  VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
@@ -258,87 +323,63 @@ SELECT ?name ?type ?bus ?ratedS ?ratedU ?p ?q ?maxP ?minP ?maxQ ?minQ
   bind(strbefore(str(?postfix),"GeneratingUnit") as ?type)}
  ?s c:SynchronousMachine.maxQ ?maxQ.
  ?s c:SynchronousMachine.minQ ?minQ.
- ?s c:SynchronousMachine.satDirectSyncX ?Xd.
- ?s c:SynchronousMachine.satDirectTransX ?Xdp.
- ?s c:SynchronousMachine.satDirectSubtransX ?Xdpp.
- ?s c:SynchronousMachine.Ra ?Ra.
- ?s c:SynchronousMachine.X0 ?X0.
- ?s c:SynchronousMachine.X1 ?Xl.
- ?s c:SynchronousMachine.Xq ?Xq.
- ?s c:SynchronousMachine.Xqp ?Xqp.
- ?s c:SynchronousMachine.Xqpp ?Xqpp.
- ?s c:SynchronousMachine.Tdop ?Tdop.
- ?s c:SynchronousMachine.Tdopp ?Tdopp.
- ?s c:SynchronousMachine.Tqop ?Tqop.
- ?s c:SynchronousMachine.Tqopp ?Tqopp.
- ?t c:Terminal.ConductingEquipment ?s.
- ?t c:Terminal.ConnectivityNode ?cn. 
- ?t c:IdentifiedObject.mRID ?t1id.
+ ?dyn c:SynchronousMachineDynamics.SynchronousMachine ?s.
+ ?dyn c:RotatingMachineDynamics.inertia ?inertia.
+ ?dyn c:RotatingMachineDynamics.statorResistance ?Ra.
+ ?dyn c:RotatingMachineDynamics.statorLeakageReactance ?Xl.
+ ?dyn c:SynchronousMachineTimeConstantReactance.xDirectSync ?Xd.
+ ?dyn c:SynchronousMachineTimeConstantReactance.xDirectTrans ?Xdp.
+ ?dyn c:SynchronousMachineTimeConstantReactance.xDirectSubtrans ?Xdpp.
+ ?dyn c:SynchronousMachineTimeConstantReactance.xQuadSync ?Xq.
+ ?dyn c:SynchronousMachineTimeConstantReactance.xQuadTrans ?Xqp.
+ ?dyn c:SynchronousMachineTimeConstantReactance.xQuadSubtrans ?Xqpp.
+ ?dyn c:SynchronousMachineTimeConstantReactance.tpdo ?Tdop.
+ ?dyn c:SynchronousMachineTimeConstantReactance.tppdo ?Tdopp.
+ ?dyn c:SynchronousMachineTimeConstantReactance.tpqo ?Tqop.
+ ?dyn c:SynchronousMachineTimeConstantReactance.tppqo ?Tqopp.
+ ?s e:ConductingEquipment.FromConnectivityNode ?cn.
+ ?cn c:IdentifiedObject.mRID ?cn1id.
  ?cn c:IdentifiedObject.name ?bus
 }
 ORDER by ?name
 
-# BESCompShunt may be capacitor or reactor
-SELECT ?name ?basev ?nomu ?gsection ?bsection ?sections ?maxsections ?bus ?id ?sysid ?t1id WHERE {
- ?s r:type c:LinearShuntCompensator.
+# EMTSolar
+SELECT ?name ?bus ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?ipu ?p ?q ?sysid ?pecid ?id ?cn1id WHERE {
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+ VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s r:type c:PhotoVoltaicUnit.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?id.
+ ?s c:PowerElectronicsUnit.maxP ?maxP.
+ ?s c:PowerElectronicsUnit.minP ?minP.
+ ?s c:PowerElectronicsUnit.PowerElectronicsConnection ?pec.
+ ?pec c:Equipment.EquipmentContainer ?sys.
+ ?pec c:PowerElectronicsConnection.ratedS ?ratedS.
+ ?pec c:PowerElectronicsConnection.ratedU ?ratedU.
+ ?pec c:PowerElectronicsConnection.maxIFault ?ipu.
+ ?pec c:PowerElectronicsConnection.p ?p.
+ ?pec c:PowerElectronicsConnection.q ?q.
+ ?pec c:PowerElectronicsConnection.minQ ?minQ.
+ ?pec c:PowerElectronicsConnection.maxQ ?maxQ.
+ ?pec c:IdentifiedObject.mRID ?pecid.
+ ?pec e:ConductingEquipment.FromConnectivityNode ?cn. 
+ ?cn c:IdentifiedObject.mRID ?cn1id.
+ ?cn c:IdentifiedObject.name ?bus
+}
+ORDER by ?name
+
+# EMTWind
+SELECT ?name ?bus ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?ipu ?p ?q ?sysid ?pecid ?id ?cn1id WHERE {
  VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
 # VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
- ?s c:Equipment.EquipmentContainer ?sys.
- ?s c:IdentifiedObject.name ?name.
- ?s c:ConductingEquipment.BaseVoltage ?bv.
- ?bv c:BaseVoltage.nominalVoltage ?basev.
- ?s c:ShuntCompensator.nomU ?nomu. 
- ?s c:LinearShuntCompensator.gPerSection ?gsection. 
- ?s c:LinearShuntCompensator.bPerSection ?bsection. 
- ?s c:ShuntCompensator.sections ?sections. 
- ?s c:ShuntCompensator.maximumSections ?maxsections. 
- ?s c:IdentifiedObject.mRID ?id. 
- ?t c:Terminal.ConductingEquipment ?s.
- ?t c:Terminal.ConnectivityNode ?cn. 
- ?t c:IdentifiedObject.mRID ?t1id.
- ?cn c:IdentifiedObject.name ?bus
-}
-ORDER by ?name
-
-# BESCompSeries may be capacitor or reactor
-SELECT ?name ?bus1 ?bus2 ?basev ?r ?r0 ?x ?x0 ?id ?sysid ?t1id ?t2id WHERE {
- ?s r:type c:SeriesCompensator.
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
- ?sys c:IdentifiedObject.mRID ?sysid.
- ?s c:Equipment.EquipmentContainer ?sys.
- ?s c:IdentifiedObject.name ?name.
- ?s c:IdentifiedObject.mRID ?id. 
- ?s c:ConductingEquipment.BaseVoltage ?bv.
- ?bv c:BaseVoltage.nominalVoltage ?basev.
- ?s c:SeriesCompensator.r ?r. 
- ?s c:SeriesCompensator.r0 ?r0. 
- ?s c:SeriesCompensator.x ?x. 
- ?s c:SeriesCompensator.x0 ?x0. 
- ?t1 c:Terminal.ConductingEquipment ?s.
- ?t1 c:Terminal.ConnectivityNode ?cn1.
- ?t1 c:ACDCTerminal.sequenceNumber "1".
- ?t1 c:IdentifiedObject.mRID ?t1id.
- ?cn1 c:IdentifiedObject.name ?bus1.
- ?t2 c:Terminal.ConductingEquipment ?s.
- ?t2 c:Terminal.ConnectivityNode ?cn2.
- ?t2 c:ACDCTerminal.sequenceNumber "2".
- ?t2 c:IdentifiedObject.mRID ?t2id.
- ?cn2 c:IdentifiedObject.name ?bus2
-}
-ORDER by ?name
-
-# BESSolar
-SELECT ?name ?bus ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?ipu ?p ?q ?sysid ?pecid ?id ?t1id WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
- ?sys c:IdentifiedObject.mRID ?sysid.
- ?s r:type c:PhotovoltaicUnit.
+ ?s r:type c:PowerElectronicsWindUnit.
  ?s c:IdentifiedObject.name ?name.
  ?s c:IdentifiedObject.mRID ?id.
  ?s c:PowerElectronicsUnit.maxP ?maxP.
  ?s c:PowerElectronicsUnit.minP ?minP.
- ?pec c:PowerElectronicsConnection.PowerElectronicsUnit ?s.
+ ?s c:PowerElectronicsUnit.PowerElectronicsConnection ?pec.
  ?pec c:Equipment.EquipmentContainer ?sys.
  ?pec c:PowerElectronicsConnection.ratedS ?ratedS.
  ?pec c:PowerElectronicsConnection.ratedU ?ratedU.
@@ -348,57 +389,36 @@ SELECT ?name ?bus ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?ipu ?p ?q ?sysid ?pec
  ?pec c:PowerElectronicsConnection.minQ ?minQ.
  ?pec c:PowerElectronicsConnection.maxQ ?maxQ.
  ?pec c:IdentifiedObject.mRID ?pecid.
- ?t c:Terminal.ConductingEquipment ?pec.
- ?t c:Terminal.ConnectivityNode ?cn. 
- ?t c:IdentifiedObject.mRID ?t1id.
+ ?pec e:ConductingEquipment.FromConnectivityNode ?cn. 
+ ?cn c:IdentifiedObject.mRID ?cn1id.
  ?cn c:IdentifiedObject.name ?bus
 }
 ORDER by ?name
 
-# BESWind
-SELECT ?name ?bus ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?ipu ?p ?q ?sysid ?pecid ?id ?t1id WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+# EMTGovSteamSGO
+SELECT ?name ?k1 ?k2 ?k3 ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?pmax ?pmin ?mwbase ?id ?machid ?sysid WHERE {
+ VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
- ?s r:type c:WindGeneratingUnit.
- ?s c:IdentifiedObject.name ?name.
- ?s c:IdentifiedObject.mRID ?id.
- ?s c:PowerElectronicsUnit.maxP ?maxP.
- ?s c:PowerElectronicsUnit.minP ?minP.
- ?pec c:PowerElectronicsConnection.PowerElectronicsUnit ?s.
- ?pec c:Equipment.EquipmentContainer ?sys.
- ?pec c:PowerElectronicsConnection.ratedS ?ratedS.
- ?pec c:PowerElectronicsConnection.ratedU ?ratedU.
- ?pec c:PowerElectronicsConnection.maxIFault ?ipu.
- ?pec c:PowerElectronicsConnection.p ?p.
- ?pec c:PowerElectronicsConnection.q ?q.
- ?pec c:PowerElectronicsConnection.minQ ?minQ.
- ?pec c:PowerElectronicsConnection.maxQ ?maxQ.
- ?pec c:IdentifiedObject.mRID ?pecid.
- ?t c:Terminal.ConductingEquipment ?pec.
- ?t c:Terminal.ConnectivityNode ?cn. 
- ?t c:IdentifiedObject.mRID ?t1id.
- ?cn c:IdentifiedObject.name ?bus
-}
-ORDER by ?name
-
-# BESGovernor
-SELECT ?name ?k1 ?t1 ?t2 ?t3 ?pmax ?pmin ?id ?machid ?sysid WHERE {
-# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
- ?sys c:IdentifiedObject.mRID ?sysid.
- ?s r:type c:TurbineGovernor.
- ?s c:TurbineGovernor.SynchronousMachine ?mach.
+ ?s r:type c:GovSteamSGO.
+ ?s c:TurbineGovernorDynamics.SynchronousMachineDynamics ?dyn.
+ ?dyn c:SynchronousMachineDynamics.SynchronousMachine ?mach.
  ?mach c:Equipment.EquipmentContainer ?sys.
  ?mach c:IdentifiedObject.mRID ?machid.
  ?s c:IdentifiedObject.name ?name.
  ?s c:IdentifiedObject.mRID ?id.
- ?s c:TurbineGovernor.k1 ?k1.
- ?s c:TurbineGovernor.t1 ?t1.
- ?s c:TurbineGovernor.t2 ?t2.
- ?s c:TurbineGovernor.t3 ?t3.
- ?s c:TurbineGovernor.pmax ?pmax.
- ?s c:TurbineGovernor.pmin ?pmin.
+ ?s c:GovSteamSGO.k1 ?k1.
+ ?s c:GovSteamSGO.k2 ?k2.
+ ?s c:GovSteamSGO.k3 ?k3.
+ ?s c:GovSteamSGO.t1 ?t1.
+ ?s c:GovSteamSGO.t2 ?t2.
+ ?s c:GovSteamSGO.t3 ?t3.
+ ?s c:GovSteamSGO.t1 ?t4.
+ ?s c:GovSteamSGO.t2 ?t5.
+ ?s c:GovSteamSGO.t3 ?t6.
+ ?s c:GovSteamSGO.pmax ?pmax.
+ ?s c:GovSteamSGO.pmin ?pmin.
+ ?s c:GovSteamSGO.mwbase ?mwbase.
 }
 ORDER by ?name
 
