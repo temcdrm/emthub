@@ -396,104 +396,110 @@ SELECT ?name ?bus ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?ipu ?p ?q ?sysid ?pec
 ORDER by ?name
 
 # EMTGovSteamSGO
-SELECT ?name ?k1 ?k2 ?k3 ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?pmax ?pmin ?mwbase ?id ?machid ?sysid WHERE {
- VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
-# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+SELECT ?name ?k1 ?k2 ?k3 ?pmin ?pmax ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?mwbase ?id ?eqid ?sysid
+WHERE {
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+ VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s r:type c:GovSteamSGO.
  ?s c:TurbineGovernorDynamics.SynchronousMachineDynamics ?dyn.
- ?dyn c:SynchronousMachineDynamics.SynchronousMachine ?mach.
- ?mach c:Equipment.EquipmentContainer ?sys.
- ?mach c:IdentifiedObject.mRID ?machid.
+ ?dyn c:SynchronousMachineDynamics.SynchronousMachine ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?s r:type c:GovSteamSGO.
  ?s c:IdentifiedObject.name ?name.
  ?s c:IdentifiedObject.mRID ?id.
  ?s c:GovSteamSGO.k1 ?k1.
  ?s c:GovSteamSGO.k2 ?k2.
  ?s c:GovSteamSGO.k3 ?k3.
+ ?s c:GovSteamSGO.pmin ?pmin.
+ ?s c:GovSteamSGO.pmax ?pmax.
  ?s c:GovSteamSGO.t1 ?t1.
  ?s c:GovSteamSGO.t2 ?t2.
  ?s c:GovSteamSGO.t3 ?t3.
- ?s c:GovSteamSGO.t1 ?t4.
- ?s c:GovSteamSGO.t2 ?t5.
- ?s c:GovSteamSGO.t3 ?t6.
- ?s c:GovSteamSGO.pmax ?pmax.
- ?s c:GovSteamSGO.pmin ?pmin.
+ ?s c:GovSteamSGO.t4 ?t4.
+ ?s c:GovSteamSGO.t5 ?t5.
+ ?s c:GovSteamSGO.t6 ?t6.
  ?s c:GovSteamSGO.mwbase ?mwbase.
-}
-ORDER by ?name
+} ORDER BY ?name
 
-# BESExciter
-SELECT ?name ?ilr ?ka ?kc ?kf ?klr ?ta ?tb ?tb1 ?tc ?tc1 ?tf
-  ?vamax ?vamin ?vimax ?vimin ?vrmax ?vrmin ?id ?machid ?sysid WHERE {
+# EMTExcST1A
+SELECT ?name ?ilr ?ka ?kc ?kf ?klr ?ta ?tb ?tb1 ?tc ?tc1 ?tf ?vamax ?vamin
+?vimax ?vimin ?vrmax ?vrmin ?xe ?id ?eqid ?sysid WHERE {
 # VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
  VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
- ?s r:type c:ExcitationSystem.
- ?s c:ExcitationSystem.SynchronousMachine ?mach.
- ?mach c:Equipment.EquipmentContainer ?sys.
- ?mach c:IdentifiedObject.mRID ?machid.
+ ?s r:type c:ExcST1A.
+ ?s c:ExcitationSystemDynamics.SynchronousMachineDynamics ?dyn.
+ ?dyn c:SynchronousMachineDynamics.SynchronousMachine ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?s r:type c:ExcST1A.
  ?s c:IdentifiedObject.name ?name.
  ?s c:IdentifiedObject.mRID ?id.
- ?s c:ExcitationSystem.ilr ?ilr.
- ?s c:ExcitationSystem.ka ?ka.
- ?s c:ExcitationSystem.kc ?kc.
- ?s c:ExcitationSystem.kf ?kf.
- ?s c:ExcitationSystem.klr ?klr.
- ?s c:ExcitationSystem.ta ?ta.
- ?s c:ExcitationSystem.tb ?tb.
- ?s c:ExcitationSystem.tb1 ?tb1.
- ?s c:ExcitationSystem.tc ?tc.
- ?s c:ExcitationSystem.tc1 ?tc1.
- ?s c:ExcitationSystem.tf ?tf.
- ?s c:ExcitationSystem.vamax ?vamax.
- ?s c:ExcitationSystem.vamin ?vamin.
- ?s c:ExcitationSystem.vimax ?vimax.
- ?s c:ExcitationSystem.vimin ?vimin.
- ?s c:ExcitationSystem.vrmax ?vrmax.
- ?s c:ExcitationSystem.vrmin ?vrmin.
-}
-ORDER by ?name
+ ?s c:ExcST1A.ilr ?ilr.
+ ?s c:ExcST1A.ka ?ka.
+ ?s c:ExcST1A.kc ?kc.
+ ?s c:ExcST1A.kf ?kf.
+ ?s c:ExcST1A.klr ?klr.
+ ?s c:ExcST1A.ta ?ta.
+ ?s c:ExcST1A.tb ?tb.
+ ?s c:ExcST1A.tb1 ?tb1.
+ ?s c:ExcST1A.tc ?tc.
+ ?s c:ExcST1A.tc1 ?tc1.
+ ?s c:ExcST1A.tf ?tf.
+ ?s c:ExcST1A.vamax ?vamax.
+ ?s c:ExcST1A.vamin ?vamin.
+ ?s c:ExcST1A.vimax ?vimax.
+ ?s c:ExcST1A.vimin ?vimin.
+ ?s c:ExcST1A.vrmax ?vrmax.
+ ?s c:ExcST1A.vrmin ?vrmin.
+ ?s c:ExcST1A.xe ?xe.
+} ORDER BY ?name
 
-# BESStabilizer
-SELECT ?name ?a1 ?a2 ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?vstmax ?vstmin ?ks ?id ?machid ?excid ?sysid WHERE {
+# EMTPssIEEE1A
+SELECT ?name ?a1 ?a2 ?inputSignalType ?ks ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?vrmax ?vrmin
+?id ?eqid ?sysid WHERE {
 # VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
  VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
- ?s r:type c:PowerSystemStabilizer.
- ?s c:PowerSystemStabilizer.ExcitationSystem ?exc.
- ?exc c:ExcitationSystem.SynchronousMachine ?mach.
- ?mach c:Equipment.EquipmentContainer ?sys.
- ?mach c:IdentifiedObject.mRID ?machid.
- ?exc c:IdentifiedObject.mRID ?excid.
+ ?s r:type c:PssIEEE1A.
+ ?s c:PowerSystemStabilizerDynamics.ExcitationSystemDynamics ?exc.
+ ?exc c:ExcitationSystemDynamics.SynchronousMachineDynamics ?dyn.
+ ?dyn c:SynchronousMachineDynamics.SynchronousMachine ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?s r:type c:PssIEEE1A.
  ?s c:IdentifiedObject.name ?name.
  ?s c:IdentifiedObject.mRID ?id.
- ?s c:PowerSystemStabilizer.a1 ?a1.
- ?s c:PowerSystemStabilizer.a2 ?a2.
- ?s c:PowerSystemStabilizer.t1 ?t1.
- ?s c:PowerSystemStabilizer.t2 ?t2.
- ?s c:PowerSystemStabilizer.t3 ?t3.
- ?s c:PowerSystemStabilizer.t4 ?t4.
- ?s c:PowerSystemStabilizer.t5 ?t5.
- ?s c:PowerSystemStabilizer.t6 ?t6.
- ?s c:PowerSystemStabilizer.vstmax ?vstmax.
- ?s c:PowerSystemStabilizer.vstmin ?vstmin.
- ?s c:PowerSystemStabilizer.ks ?ks.
-}
-ORDER by ?name
+ ?s c:PssIEEE1A.a1 ?a1.
+ ?s c:PssIEEE1A.a2 ?a2.
+ ?s c:PssIEEE1A.inputSignalType ?inputSignalRaw.
+    bind(strafter(str(?inputSignalRaw),"InputSignalKind.") as ?inputSignalType)
+ ?s c:PssIEEE1A.ks ?ks.
+ ?s c:PssIEEE1A.t1 ?t1.
+ ?s c:PssIEEE1A.t2 ?t2.
+ ?s c:PssIEEE1A.t3 ?t3.
+ ?s c:PssIEEE1A.t4 ?t4.
+ ?s c:PssIEEE1A.t5 ?t5.
+ ?s c:PssIEEE1A.t6 ?t6.
+ ?s c:PssIEEE1A.vrmax ?vrmax.
+ ?s c:PssIEEE1A.vrmin ?vrmin.
+} ORDER BY ?name
 
-# BESWeccREGCA
-SELECT ?name ?mvab ?brkpt ?iolim ?iqrmax ?iqrmin ?ivpl1 ?ivplsw
- ?ivpnt0 ?ivpnt1 ?khv ?rrpwr ?tfltr ?tg ?volim ?zerox ?id ?pecid ?sysid WHERE {
+# EMTWeccREGCA
+SELECT ?name ?brkpt ?iolim ?iqrmax ?iqrmin ?ivpl1 ?ivplsw ?ivpnt0 ?ivpnt1 ?khv
+?rrpwr ?tfltr ?tg ?volim ?zerox ?id ?eqid ?sysid WHERE {
 # VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
  VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s r:type c:WeccREGCA.
- ?s c:WeccREGCA.PowerElectronicsConnection ?pec.
- ?pec c:Equipment.EquipmentContainer ?sys.
- ?pec c:IdentifiedObject.mRID ?pecid.
+ ?s c:WeccDynamics.PowerElectronicsConnection ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?s r:type c:WeccREGCA.
  ?s c:IdentifiedObject.name ?name.
  ?s c:IdentifiedObject.mRID ?id.
- ?s c:WeccREGCA.mvab ?mvab.
  ?s c:WeccREGCA.brkpt ?brkpt.
  ?s c:WeccREGCA.iolim ?iolim.
  ?s c:WeccREGCA.iqrmax ?iqrmax.
@@ -508,29 +514,24 @@ SELECT ?name ?mvab ?brkpt ?iolim ?iqrmax ?iqrmin ?ivpl1 ?ivplsw
  ?s c:WeccREGCA.tg ?tg.
  ?s c:WeccREGCA.volim ?volim.
  ?s c:WeccREGCA.zerox ?zerox.
-}
-ORDER by ?name
+} ORDER BY ?name
 
-# BESWeccREECA
-SELECT ?name ?id ?mvab ?db1 ?db2 ?dPmax ?dPmin ?imax ?iqfrz ?iqh1 ?iql1
- ?kqi ?kqp ?kqv ?kvi ?kvp ?pfFlag ?pFlag ?pqFlag ?qFlag ?vFlag
- ?pmax ?pmin ?qmax ?qmin ?thld ?thld2 ?tiq ?tp ?tpord ?trv
- ?vdi1i1 ?vdi1i2 ?vdi1i3 ?vdi1i4 ?vdi1v1 ?vdi1v2 ?vdi1v3 ?vdi1v4
- ?vdi2i1 ?vdi2i2 ?vdi2i3 ?vdi2i4 ?vdi2v1 ?vdi2v2 ?vdi2v3 ?vdi2v4
- ?vdip ?vmax ?vmin ?vref0 ?vref1 ?vup
- ?pecid ?regid ?sysid WHERE {
+# EMTWeccREECA
+SELECT ?name ?db1 ?db2 ?dPmax ?dPmin ?imax ?iqfrz ?iqh1 ?iql1 ?kqi ?kqp ?kqv
+?kvi ?kvp ?pfFlag ?pFlag ?pmax ?pmin ?pqFlag ?qFlag ?qmax ?qmin ?thld ?thld2
+?tiq ?tp ?tpord ?trv ?vdi1i1 ?vdi1i2 ?vdi1i3 ?vdi1i4 ?vdi1v1 ?vdi1v2 ?vdi1v3
+?vdi1v4 ?vdi2i1 ?vdi2i2 ?vdi2i3 ?vdi2i4 ?vdi2v1 ?vdi2v2 ?vdi2v3 ?vdi2v4 ?vdip
+?vFlag ?vmax ?vmin ?vref0 ?vref1 ?vup ?id ?eqid ?sysid WHERE {
 # VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
  VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s r:type c:WeccREECA.
- ?s c:WeccREECA.WeccREGCA ?reg.
- ?reg c:WeccREGCA.PowerElectronicsConnection ?pec.
- ?reg c:IdentifiedObject.mRID ?regid.
- ?pec c:Equipment.EquipmentContainer ?sys.
- ?pec c:IdentifiedObject.mRID ?pecid.
+ ?s c:WeccDynamics.PowerElectronicsConnection ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?s r:type c:WeccREECA.
  ?s c:IdentifiedObject.name ?name.
  ?s c:IdentifiedObject.mRID ?id.
- ?s c:WeccREECA.mvab ?mvab.
  ?s c:WeccREECA.db1 ?db1.
  ?s c:WeccREECA.db2 ?db2.
  ?s c:WeccREECA.dPmax ?dPmax.
@@ -546,11 +547,10 @@ SELECT ?name ?id ?mvab ?db1 ?db2 ?dPmax ?dPmin ?imax ?iqfrz ?iqh1 ?iql1
  ?s c:WeccREECA.kvp ?kvp.
  ?s c:WeccREECA.pfFlag ?pfFlag.
  ?s c:WeccREECA.pFlag ?pFlag.
- ?s c:WeccREECA.pqFlag ?pqFlag.
- ?s c:WeccREECA.qFlag ?qFlag.
- ?s c:WeccREECA.vFlag ?vFlag.
  ?s c:WeccREECA.pmax ?pmax.
  ?s c:WeccREECA.pmin ?pmin.
+ ?s c:WeccREECA.pqFlag ?pqFlag.
+ ?s c:WeccREECA.qFlag ?qFlag.
  ?s c:WeccREECA.qmax ?qmax.
  ?s c:WeccREECA.qmin ?qmin.
  ?s c:WeccREECA.thld ?thld.
@@ -576,33 +576,28 @@ SELECT ?name ?id ?mvab ?db1 ?db2 ?dPmax ?dPmin ?imax ?iqfrz ?iqh1 ?iql1
  ?s c:WeccREECA.vdi2v3 ?vdi2v3.
  ?s c:WeccREECA.vdi2v4 ?vdi2v4.
  ?s c:WeccREECA.vdip ?vdip.
+ ?s c:WeccREECA.vFlag ?vFlag.
  ?s c:WeccREECA.vmax ?vmax.
  ?s c:WeccREECA.vmin ?vmin.
  ?s c:WeccREECA.vref0 ?vref0.
  ?s c:WeccREECA.vref1 ?vref1.
  ?s c:WeccREECA.vup ?vup.
-}
-ORDER by ?name
+} ORDER BY ?name
 
-# BESWeccREPCA
-SELECT ?name ?id ?mvab ?db ?ddn ?dup ?emax ?emin ?fdbd1 ?fdbd2 ?femax ?femin
- ?frqFlag ?refFlag ?vcmpFlag ?kc ?ki ?kig ?kp ?kpg ?pmax ?pmin ?qmax ?qmin
- ?rc ?vfrz ?xc ?tfltr ?tft ?tfv ?tlag ?tp
- ?pecid ?regid ?reeid ?sysid WHERE {
+# EMTWeccREPCA
+SELECT ?name ?db ?ddn ?dup ?emax ?emin ?fdbd1 ?fdbd2 ?femax ?femin ?frqFlag ?kc
+?ki ?kig ?kp ?kpg ?pmax ?pmin ?qmax ?qmin ?rc ?refFlag ?tfltr ?tft ?tfv ?tlag
+?tp ?vcmpFlag ?vfrz ?xc ?id ?eqid ?sysid WHERE {
 # VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
  VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s r:type c:WeccREPCA.
- ?s c:WeccREPCA.WeccREECA ?ree.
- ?ree c:WeccREECA.WeccREGCA ?reg.
- ?reg c:WeccREGCA.PowerElectronicsConnection ?pec.
- ?pec c:Equipment.EquipmentContainer ?sys.
- ?pec c:IdentifiedObject.mRID ?pecid.
- ?reg c:IdentifiedObject.mRID ?regid.
- ?ree c:IdentifiedObject.mRID ?reeid.
+ ?s c:WeccDynamics.PowerElectronicsConnection ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?s r:type c:WeccREPCA.
  ?s c:IdentifiedObject.name ?name.
  ?s c:IdentifiedObject.mRID ?id.
- ?s c:WeccREPCA.mvab ?mvab.
  ?s c:WeccREPCA.db ?db.
  ?s c:WeccREPCA.ddn ?ddn.
  ?s c:WeccREPCA.dup ?dup.
@@ -613,8 +608,6 @@ SELECT ?name ?id ?mvab ?db ?ddn ?dup ?emax ?emin ?fdbd1 ?fdbd2 ?femax ?femin
  ?s c:WeccREPCA.femax ?femax.
  ?s c:WeccREPCA.femin ?femin.
  ?s c:WeccREPCA.frqFlag ?frqFlag.
- ?s c:WeccREPCA.refFlag ?refFlag.
- ?s c:WeccREPCA.vcmpFlag ?vcmpFlag.
  ?s c:WeccREPCA.kc ?kc.
  ?s c:WeccREPCA.ki ?ki.
  ?s c:WeccREPCA.kig ?kig.
@@ -625,60 +618,48 @@ SELECT ?name ?id ?mvab ?db ?ddn ?dup ?emax ?emin ?fdbd1 ?fdbd2 ?femax ?femin
  ?s c:WeccREPCA.qmax ?qmax.
  ?s c:WeccREPCA.qmin ?qmin.
  ?s c:WeccREPCA.rc ?rc.
- ?s c:WeccREPCA.vfrz ?vfrz.
- ?s c:WeccREPCA.xc ?xc.
+ ?s c:WeccREPCA.refFlag ?refFlag.
  ?s c:WeccREPCA.tfltr ?tfltr.
  ?s c:WeccREPCA.tft ?tft.
  ?s c:WeccREPCA.tfv ?tfv.
  ?s c:WeccREPCA.tlag ?tlag.
  ?s c:WeccREPCA.tp ?tp.
-}
-ORDER by ?name
+ ?s c:WeccREPCA.vcmpFlag ?vcmpFlag.
+ ?s c:WeccREPCA.vfrz ?vfrz.
+ ?s c:WeccREPCA.xc ?xc.
+} ORDER BY ?name
 
-# BESWeccWTGTA
-SELECT ?name ?id ?mvab ?dshaft ?kshaft ?hg ?ht ?wo ?pecid ?regid ?reeid ?sysid WHERE {
+# EMTWeccWTGTA
+SELECT ?name ?dshaft ?hg ?ht ?kshaft ?id ?eqid ?sysid WHERE {
 # VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
  VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s r:type c:WeccWTGTA.
- ?s c:WeccWTGTA.WeccREECA ?ree.
- ?ree c:WeccREECA.WeccREGCA ?reg.
- ?reg c:WeccREGCA.PowerElectronicsConnection ?pec.
- ?pec c:Equipment.EquipmentContainer ?sys.
- ?pec c:IdentifiedObject.mRID ?pecid.
- ?reg c:IdentifiedObject.mRID ?regid.
- ?ree c:IdentifiedObject.mRID ?reeid.
+ ?s c:WeccDynamics.PowerElectronicsConnection ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?s r:type c:WeccWTGTA.
  ?s c:IdentifiedObject.name ?name.
  ?s c:IdentifiedObject.mRID ?id.
- ?s c:WeccWTGTA.mvab ?mvab.
  ?s c:WeccWTGTA.dshaft ?dshaft.
- ?s c:WeccWTGTA.kshaft ?kshaft.
  ?s c:WeccWTGTA.hg ?hg.
  ?s c:WeccWTGTA.ht ?ht.
- ?s c:WeccWTGTA.wo ?wo.
-}
-ORDER by ?name
+ ?s c:WeccWTGTA.kshaft ?kshaft.
+} ORDER BY ?name
 
-# BESWeccWTGAA
-SELECT ?name ?id ?mvab ?ka ?Theta0 ?pecid ?regid ?reeid ?wtgid ?sysid WHERE {
+# EMTWeccWTGARA
+SELECT ?name ?ka ?t0 ?id ?eqid ?sysid WHERE {
 # VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
  VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
- ?s r:type c:WeccWTGAA.
- ?s c:WeccWTGAA.WeccWTGTA ?wtg.
- ?wtg c:WeccWTGTA.WeccREECA ?ree.
- ?ree c:WeccREECA.WeccREGCA ?reg.
- ?reg c:WeccREGCA.PowerElectronicsConnection ?pec.
- ?pec c:Equipment.EquipmentContainer ?sys.
- ?pec c:IdentifiedObject.mRID ?pecid.
- ?reg c:IdentifiedObject.mRID ?regid.
- ?ree c:IdentifiedObject.mRID ?reeid.
- ?wtg c:IdentifiedObject.mRID ?wtgid.
+ ?s r:type c:WeccWTGARA.
+ ?s c:WeccDynamics.PowerElectronicsConnection ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?s r:type c:WeccWTGARA.
  ?s c:IdentifiedObject.name ?name.
  ?s c:IdentifiedObject.mRID ?id.
- ?s c:WeccWTGAA.mvab ?mvab.
- ?s c:WeccWTGAA.ka ?ka.
- ?s c:WeccWTGAA.Theta0 ?Theta0.
-}
-ORDER by ?name
+ ?s c:WeccWTGARA.ka ?ka.
+ ?s c:WeccWTGARA.t0 ?t0.
+} ORDER BY ?name
 
