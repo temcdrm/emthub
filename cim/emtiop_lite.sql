@@ -1,4 +1,5 @@
 -- REVISIT: Manually added "TransformerMeshImpedance.ToTransformerEnd" from the UML
+PRAGMA foreign_keys = ON;
 
 CREATE TABLE "BatteryStateKind" ( "name" VARCHAR(100) UNIQUE );
 INSERT INTO "BatteryStateKind" ( "name" ) VALUES ( 'charging' );
