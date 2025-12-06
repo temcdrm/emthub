@@ -358,15 +358,18 @@ def AtpStarEquivalent(wdgs, meshes, regs):
   return r, x, v
 
 def AtpStarCore(wdgs, core):
-  core_b = core['b']
-  core_g = core['g']
-  core_e = core['enum'] - 1
-  core_e = 0 # TODO: verify CIM places core admittance on highest voltage winding
+  cim_b = core['b']
+  cim_g = core['g']
+  cim_e = core['enum'] - 1  # This may not be 0 in the CIM. For ATP, transform this to end 0
+  cim_v = wdgs[cim_e]['ratedU']
+  core_e = 0 # ATP saturation branch always goes with first winding
   core_v = wdgs[core_e]['ratedU']
   core_s = wdgs[core_e]['ratedS']
   core_c = wdgs[core_e]['conn']
   core_s /= 3.0
-#  print (core_b, core_g, core_e, core_v, core_s, core_c)
+  ratio = core_v * core_v / cim_v / cim_v
+  core_b = cim_b / ratio
+  core_g = cim_g / ratio
   if core_c == 'Y':
     core_v /= SQRT3
   Fss = core_v / OMEGA * SQRT2

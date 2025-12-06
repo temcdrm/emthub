@@ -46,8 +46,8 @@ M_PER_MILE = 1609.344
 SQRT3 = math.sqrt(3.0)
 SQRT2 = math.sqrt(2.0)
 
-XFMR_IMAG_PU = 0.01
-XFMR_INLL_PU = 0.0025
+XFMR_IMAG_PU = 0.0100 # was 0.00015
+XFMR_INLL_PU = 0.0025 # was 0.00010
 XFMR_VSAT_PU = 1.1
 XFMR_AIRCORE = 2.0
 
@@ -249,7 +249,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       b1ch = c1 * WFREQ
       if z1 >= 100.0 : # overhead
         r0 = 2.0 * r1
-        x0 = 3.0 * x1
+        x0 = 3.0 * x1 # was 2.0 * x1
         b0ch = 0.6 * b1ch
         if kvbase >= 345.0:
           length = x1 / 0.6
