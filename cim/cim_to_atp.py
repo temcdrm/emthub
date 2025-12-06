@@ -16,7 +16,7 @@ DELIM = ':'
 CASES = [
   {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 
    'name': 'IEEE118', 
-   'rawfile':'raw/ieee-118-bus-v4.raw', 'cimfile':'ieee118.xml', 'locfile': 'raw/ieee118_network.json', 'mridfile':'raw/ieee118mrids.dat',
+   'rawfile':'raw/ieee-118-bus-v4.raw', 'xmlfile':'ieee118.xml', 'locfile': 'raw/ieee118_network.json', 'mridfile':'raw/ieee118mrids.dat', 'ttlfile': 'ieee118.ttl',
    'wind_units': ['132_W', '136_W', '138_W', '168_W', '180_W'],
    'solar_units': ['126_S', '128_S', '130_S', '140_S', '149_S', 
                    '151_S', '159_S', '165_S', '175_S', '179_S', 
@@ -28,7 +28,7 @@ CASES = [
    'load': 0.6748},
   {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 
    'name': 'WECC240',
-   'rawfile':'raw/240busWECC_2018_PSS.raw', 'cimfile':'wecc240.xml', 'locfile': 'raw/wecc240_network.json', 'mridfile':'raw/wecc240mrids.dat',
+   'rawfile':'raw/240busWECC_2018_PSS.raw', 'xmlfile':'wecc240.xml', 'locfile': 'raw/wecc240_network.json', 'mridfile':'raw/wecc240mrids.dat', 'ttlfile': 'wecc240.ttl',
    'wind_units': ['1032_S', '1034_W', '1333_S', '2130_G', '2332_S', 
                   '2431_S', '2434_S', '2438_RG', '2438_SW', '2439_S'],
    'solar_units': ['2533_S', '2631_S', '3234_NW', '3433_S', '3835_NG', 
@@ -1176,7 +1176,7 @@ if __name__ == '__main__':
     idx = int(sys.argv[1])
   case = CASES[idx]
   g = rdflib.Graph()
-  fname = case['name'] + '.xml'
+  fname = case['ttlfile']
   g.parse (fname)
   print ('read', len(g), 'statements from', fname)
   #summarize_graph (g)

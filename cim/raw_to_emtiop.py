@@ -18,7 +18,7 @@ EMT_NS = 'http://opensource.ieee.org/emtiop#'
 CASES = [
   {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 
    'name': 'IEEE118', 
-   'rawfile':'raw/ieee-118-bus-v4.raw', 'cimfile':'ieee118.xml', 'locfile': 'raw/ieee118_network.json', 'mridfile':'raw/ieee118mrids.dat',
+   'rawfile':'raw/ieee-118-bus-v4.raw', 'xmlfile':'ieee118.xml', 'locfile': 'raw/ieee118_network.json', 'mridfile':'raw/ieee118mrids.dat', 'ttlfile': 'ieee118.ttl',
    'wind_units': ['132_W', '136_W', '138_W', '168_W', '180_W'],
    'solar_units': ['126_S', '128_S', '130_S', '140_S', '149_S', 
                    '151_S', '159_S', '165_S', '175_S', '179_S', 
@@ -26,7 +26,7 @@ CASES = [
    'hydro_units': [], 'nuclear_units': []},
   {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 
    'name': 'WECC240',
-   'rawfile':'raw/240busWECC_2018_PSS.raw', 'cimfile':'wecc240.xml', 'locfile': 'raw/wecc240_network.json', 'mridfile':'raw/wecc240mrids.dat',
+   'rawfile':'raw/240busWECC_2018_PSS.raw', 'xmlfile':'wecc240.xml', 'locfile': 'raw/wecc240_network.json', 'mridfile':'raw/wecc240mrids.dat', 'ttlfile': 'wecc240.ttl',
    'wind_units': ['1032_S', '1034_W', '1333_S', '2130_G', '2332_S', 
                   '2431_S', '2434_S', '2438_RG', '2438_SW', '2439_S'],
    'solar_units': ['2533_S', '2631_S', '3234_NW', '3433_S', '3835_NG', 
@@ -202,7 +202,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.drawingOrder'), rdflib.Literal (1, datatype=CIM.Integer)))
     g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.isPolygon'), rdflib.Literal (False, datatype=CIM.Boolean)))
     g.add ((td, rdflib.URIRef (CIM_NS + 'TextDiagramObject.text'), rdflib.Literal(busname, datatype=CIM.String)))
-    pt = rdflib.BNode()
+    pt = rdflib.URIRef (ID+'_pt1') # rdflib.BNode()
     g.add ((pt, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint')))
     g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.DiagramObject'), td))
     g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.sequenceNumber'), rdflib.Literal(1, datatype=CIM.Integer)))
@@ -527,12 +527,12 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     i2 = i1 + 100.0
     f2 = f1 + 100.0 * aircore
     #print ('SAT: Ib={:.6f} Fb={:.6f} Lac={:.6f} I1={:.6f} I2={:.6f} F1={:.6f} F2={:.6f}'.format (ibase_peak, fbase_peak, aircore, i1, i2, f1, f2))
-    pt = rdflib.BNode()
+    pt = rdflib.URIRef (ID+'_pt1') # rdflib.BNode()
     g.add ((pt, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'CurveData')))
     g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.Curve'), sat))
     g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.xvalue'), rdflib.Literal(i1, datatype=CIM.Float)))
     g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.y1value'), rdflib.Literal(f1, datatype=CIM.Float)))
-    pt = rdflib.BNode()
+    pt = rdflib.URIRef (ID+'_pt2') # rdflib.BNode()
     g.add ((pt, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'CurveData')))
     g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.Curve'), sat))
     g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.xvalue'), rdflib.Literal(i2, datatype=CIM.Float)))
@@ -673,7 +673,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
   print ('{:d} thermal, {:d} hydro, {:d} nuclear, {:d} solar, {:d} wind generators'.format (nthermal, nhydro, nnuclear, nsolar, nwind))
 
   # save the XML with mRIDs for re-use
-  g.serialize (destination=case['cimfile'], format='pretty-xml', max_depth=1)
+  g.serialize (destination=case['xmlfile'], format='pretty-xml', max_depth=1)
 
   #g.serialize (destination='test1.ttl', format='turtle')
 
@@ -712,7 +712,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     CIM.DiagramObjectPoint,
     CIM.CurveData
   ]
-  with open('test.ttl', 'wb') as fp:
+  with open(case['ttlfile'], 'wb') as fp:
     serializer.serialize(fp)
 
   #print("Bound Namespaces:")
