@@ -76,7 +76,7 @@ def query_for_values (g, tbl, sysid):
     for i in range(1, len(keyflds)):
       key = key + DELIM + str(b[keyflds[i]])
     for fld in vars:
-      if fld in ['name', 'conn', 'sysid', 'bus1', 'bus2', 'id', 'eqid']:
+      if fld in ['name', 'conn', 'sysid', 'bus', 'bus1', 'bus2', 'id', 'eqid']:
         row[fld] = str(b[fld])
       else:
         try:
