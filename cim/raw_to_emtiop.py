@@ -10,6 +10,7 @@ import uuid
 import networkx
 import math
 from rdflib.namespace import XSD
+from otsrdflib import OrderedTurtleSerializer
 
 CIM_NS = 'http://www.ucaiug.org/ns#'
 EMT_NS = 'http://opensource.ieee.org/emtiop#'
@@ -673,6 +674,46 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
 
   # save the XML with mRIDs for re-use
   g.serialize (destination=case['cimfile'], format='pretty-xml', max_depth=1)
+
+  #g.serialize (destination='test1.ttl', format='turtle')
+
+  serializer = OrderedTurtleSerializer(g)
+  serializer.class_order = [
+    CIM.EquipmentContainer,
+    CIM.BaseVoltage,
+    CIM.ConnectivityNode,
+    CIM.ACLineSegment,
+    CIM.LinearShuntCompensator,
+    CIM.SeriesCompensator,
+    CIM.EnergyConsumer,
+    CIM.LoadResponseCharacteristic,
+    CIM.SynchronousMachine,
+    CIM.HydroGeneratingUnit,
+    CIM.NuclearGeneratingUnit,
+    CIM.ThermalGeneratingUnit,
+    CIM.SynchronousMachineTimeConstantReactance,
+    CIM.GovSteamSGO,
+    CIM.ExcST1A,
+    CIM.PssIEEE1A,
+    CIM.PowerElectronicsConnection,
+    CIM.PhotoVoltaicUnit,
+    CIM.PowerElectronicsWindUnit,
+    CIM.WeccREECA,
+    CIM.WeccREGCA,
+    CIM.WeccREPCA,
+    CIM.WeccWTGARA,
+    CIM.WeccWTGTA,
+    CIM.PowerTransformer,
+    CIM.PowerTransformerEnd,
+    CIM.TransformerMeshImpedance,
+    CIM.TransformerCoreAdmittance,
+    EMT.TransformerSaturation,
+    CIM.TextDiagramObject,
+    CIM.DiagramObjectPoint,
+    CIM.CurveData
+  ]
+  with open('test.ttl', 'wb') as fp:
+    serializer.serialize(fp)
 
   #print("Bound Namespaces:")
   #for prefix, namespace_uri in g.namespaces():
