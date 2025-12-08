@@ -71,18 +71,10 @@ def load_sql_emt_dict (db_file, sysid):  # TODO: filter on sysid
     'SELECT io.mRID, io.name, bv.nominalVoltage from BaseVoltage as bv INNER JOIN IdentifiedObject as io ON bv.mRID = io.mRID')
   dict['ConnectivityNode'] = load_one_dict (cur, ['name', 'container'], 
     'SELECT io.mRID, io.name, cn.ConnectivityNodeContainer from ConnectivityNode as cn INNER JOIN IdentifiedObject as io ON cn.mRID = io.mRID')
-  dict['ACLineSegment'] = load_one_dict (cur, ['name', 'from', 'to', 'r1', 'x1', 'b1ch', 'r0', 'x0', 'b0ch', 'length'], 
-    'SELECT io.mRID, io.name, eq.FromConnectivityNode, eq.ToConnectivityNode, ac.r, ac.x, ac.bch, ac.r0, ac.x0, ac.b0ch, cd.length from ACLineSegment as ac INNER JOIN IdentifiedObject as io ON ac.mRID = io.mRID INNER JOIN Conductor as cd on ac.mRID = cd.mRID INNER JOIN ConductingEquipment as eq on ac.mRID = eq.mRID')
-  dict['SeriesCompensator'] = load_one_dict (cur, ['name', 'from', 'to', 'r1', 'x1', 'r0', 'x0'], 
-    'SELECT io.mRID, io.name, eq.FromConnectivityNode, eq.ToConnectivityNode, sc.r, sc.x, sc.r0, sc.x0 from SeriesCompensator as sc INNER JOIN IdentifiedObject as io ON sc.mRID = io.mRID INNER JOIN ConductingEquipment as eq on sc.mRID = eq.mRID')
-
-# print ('ACLineSegment:')
-# for row in cur.execute ('SELECT io.mRID, io.name, eq.FromConnectivityNode, eq.ToConnectivityNode, ac.r, ac.x, ac.bch, ac.r0, ac.x0, ac.b0ch, cd.length from ACLineSegment as ac INNER JOIN IdentifiedObject as io ON ac.mRID = io.mRID INNER JOIN Conductor as cd on ac.mRID = cd.mRID INNER JOIN ConductingEquipment as eq on ac.mRID = eq.mRID'):
-#   print ('  ', row)
-#
-# print ('SeriesCompensator:')
-# for row in cur.execute ('SELECT io.mRID, io.name, eq.FromConnectivityNode, eq.ToConnectivityNode, sc.r, sc.x, sc.r0, sc.x0 from SeriesCompensator as sc INNER JOIN IdentifiedObject as io ON sc.mRID = io.mRID INNER JOIN ConductingEquipment as eq on sc.mRID = eq.mRID'):
-#   print ('  ', row)
+  dict['ACLineSegment'] = load_one_dict (cur, ['name', 'from', 'to', 'bv', 'r1', 'x1', 'b1ch', 'r0', 'x0', 'b0ch', 'length'], 
+    'SELECT io.mRID, io.name, eq.FromConnectivityNode, eq.ToConnectivityNode, eq.BaseVoltage, ac.r, ac.x, ac.bch, ac.r0, ac.x0, ac.b0ch, cd.length from ACLineSegment as ac INNER JOIN IdentifiedObject as io ON ac.mRID = io.mRID INNER JOIN Conductor as cd on ac.mRID = cd.mRID INNER JOIN ConductingEquipment as eq on ac.mRID = eq.mRID')
+  dict['SeriesCompensator'] = load_one_dict (cur, ['name', 'from', 'to', 'bv', 'r1', 'x1', 'r0', 'x0'], 
+    'SELECT io.mRID, io.name, eq.FromConnectivityNode, eq.ToConnectivityNode, eq.BaseVoltage, sc.r, sc.x, sc.r0, sc.x0 from SeriesCompensator as sc INNER JOIN IdentifiedObject as io ON sc.mRID = io.mRID INNER JOIN ConductingEquipment as eq on sc.mRID = eq.mRID')
 
   con.close()
   return dict
