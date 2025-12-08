@@ -44,7 +44,7 @@ CASES = [
    'name':'XfmrSat', 
    'rawfile':'raw/XfmrSat.raw', 'xmlfile':'XfmrSat.xml', 'mridfile': 'raw/XfmrSatmrids.dat', 'ttlfile': 'XfmrSat.ttl',
    'wind_units':[], 'solar_units':[], 'hydro_units':[], 'nuclear_units':[],
-   'swing_bus': '1'}
+   'swingbus': '1'}
 ]
 
 METAFILE = 'psseraw.json'
@@ -827,13 +827,13 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
 
   print ('{:d} thermal, {:d} hydro, {:d} nuclear, {:d} solar, {:d} wind generators'.format (nthermal, nhydro, nnuclear, nsolar, nwind))
   if nthermal+nhydro+nnuclear+nsolar+nwind < 1:
-    if 'swing_bus' in case:
-      swing_bus = int(case['swing_bus'])
-      print ('No Generators, need to write an EnergySource for swing_bus', swing_bus)
-      bus1 = rdflib.URIRef(busids[case['swing_bus']])
-      kvbase = bus_kvbases[swing_bus]
+    if 'swingbus' in case:
+      swingbus = int(case['swingbus'])
+      print ('No Generators, need to write an EnergySource for swingbus', swingbus)
+      bus1 = rdflib.URIRef(busids[case['swingbus']])
+      kvbase = bus_kvbases[swingbus]
       bv = rdflib.URIRef (kvbase_ids[str(kvbase)])
-      key = '{:d}_1'.format (swing_bus)
+      key = '{:d}_1'.format (swingbus)
       ID = GetCIMID('EnergySource', key, uuids)
       es = rdflib.URIRef (ID)
       g.add ((es, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'EnergySource')))

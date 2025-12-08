@@ -44,7 +44,12 @@ CASES = [
    'bus_ic': 'c:/src/cimhub/bes/wecc240mb.txt',
    'gen_ic': 'c:/src/cimhub/bes/wecc240mg.txt',
    'swingbus':'2438', 
-   'load': 1.0425}
+   'load': 1.0425},
+  {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
+   'name':'XfmrSat', 
+   'rawfile':'raw/XfmrSat.raw', 'xmlfile':'XfmrSat.xml', 'mridfile': 'raw/XfmrSatmrids.dat', 'ttlfile': 'XfmrSat.ttl',
+   'wind_units':[], 'solar_units':[], 'hydro_units':[], 'nuclear_units':[],
+   'swingbus': '1'}
 ]
 
 BUS_VMAG_IDX = 0
@@ -106,7 +111,10 @@ def reset_globals(case):
   """
   global LOAD_MULT, DUM_NODES, LOAD_TOTAL, PV_COUNT, PV_TOTAL, SM_COUNT, SM_TOTAL, WND_COUNT, WND_TOTAL
   global NEXT_BUSNUM, DR_COUNT, DR_TOTAL
-  LOAD_MULT = case['load']
+  if 'load' in case:
+    LOAD_MULT = case['load']
+  else:
+    LOAD_MULT = 1.0
   LOAD_TOTAL = 0.0
   DUM_NODES = 0
   DR_COUNT = 0
@@ -758,11 +766,11 @@ def convert_one_atp_model (d, fpath, case):
   fname=case['name']
   swingbus=case['swingbus']
   bus_ic = None
-  if os.path.exists(case['bus_ic']):
+  if 'bus_ic' in case and os.path.exists(case['bus_ic']):
     print ('Initial bus voltages and angles from', case['bus_ic'])
     bus_ic = np.loadtxt (case['bus_ic'], delimiter=',')
   gen_ic = None
-  if os.path.exists(case['gen_ic']):
+  if 'gen_ic' in case and os.path.exists(case['gen_ic']):
     print ('Generator bus, p, q, and types [0=ST,1=PV,2=WT] from', case['gen_ic'])
     gen_ic = np.loadtxt (case['gen_ic'], delimiter=',')
     print (gen_ic.shape, gen_ic[9,GEN_BUS_IDX], gen_ic[9,GEN_P_IDX], gen_ic[9,GEN_Q_IDX], gen_ic[9,GEN_TYPE_IDX])
@@ -1171,7 +1179,7 @@ def convert_one_atp_model (d, fpath, case):
   print ('  Estimated {:d} TACS dummy nodes, limit is {:d}'.format (DUM_NODES, DUM_NODE_LIMIT))
 
 if __name__ == '__main__':
-  idx = 0
+  idx = 2
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
   case = CASES[idx]
