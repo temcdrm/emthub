@@ -39,7 +39,12 @@ CASES = [
                    '4035_H', '4039_H', '4131_H', '4132_H', '4231_H', 
                    '5031_H', '6335_H', '6533_H', '7032_H', '8033_H', 
                    '8034_H'],
-   'nuclear_units': ['1431_N', '4132_N']}
+   'nuclear_units': ['1431_N', '4132_N']},
+  {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
+   'name':'XfmrSat', 
+   'rawfile':'raw/XfmrSat.raw', 'xmlfile':'XfmrSat.xml', 'mridfile': 'raw/XfmrSatmrids.dat', 'ttlfile': 'XfmrSat.ttl',
+   'wind_units':[], 'solar_units':[], 'hydro_units':[], 'nuclear_units':[],
+   'swing_bus': '1'}
 ]
 
 METAFILE = 'psseraw.json'
@@ -316,26 +321,27 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((cn, rdflib.URIRef (CIM_NS + 'ConnectivityNode.ConnectivityNodeContainer'), eq))
 
   # write the diagram layout
-  busxy = load_bus_coordinates (case['locfile'])
-  for row in tables['BUS']['data']:
-    key = str(row[0])
-    busname = '{:d} {:s} {:.2f} kV'.format (row[0], row[1], row[2])
-    xy = busxy[key]
-    ID = GetCIMID('TextDiagramObject', key, uuids)
-    td = rdflib.URIRef (ID)
-    g.add ((td, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'TextDiagramObject')))
-    g.add ((td, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
-    g.add ((td, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
-    g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.IdentifiedObject'), rdflib.URIRef (busids[key])))
-    g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.drawingOrder'), rdflib.Literal (1, datatype=CIM.Integer)))
-    g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.isPolygon'), rdflib.Literal (False, datatype=CIM.Boolean)))
-    g.add ((td, rdflib.URIRef (CIM_NS + 'TextDiagramObject.text'), rdflib.Literal(busname, datatype=CIM.String)))
-    pt = rdflib.URIRef (ID+'_pt1') # rdflib.BNode()
-    g.add ((pt, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint')))
-    g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.DiagramObject'), td))
-    g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.sequenceNumber'), rdflib.Literal(1, datatype=CIM.Integer)))
-    g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.xPosition'), rdflib.Literal(xy[0], datatype=CIM.Float)))
-    g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.yPosition'), rdflib.Literal(xy[1], datatype=CIM.Float)))
+  if 'locfile' in case:
+    busxy = load_bus_coordinates (case['locfile'])
+    for row in tables['BUS']['data']:
+      key = str(row[0])
+      busname = '{:d} {:s} {:.2f} kV'.format (row[0], row[1], row[2])
+      xy = busxy[key]
+      ID = GetCIMID('TextDiagramObject', key, uuids)
+      td = rdflib.URIRef (ID)
+      g.add ((td, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'TextDiagramObject')))
+      g.add ((td, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+      g.add ((td, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+      g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.IdentifiedObject'), rdflib.URIRef (busids[key])))
+      g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.drawingOrder'), rdflib.Literal (1, datatype=CIM.Integer)))
+      g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.isPolygon'), rdflib.Literal (False, datatype=CIM.Boolean)))
+      g.add ((td, rdflib.URIRef (CIM_NS + 'TextDiagramObject.text'), rdflib.Literal(busname, datatype=CIM.String)))
+      pt = rdflib.URIRef (ID+'_pt1') # rdflib.BNode()
+      g.add ((pt, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint')))
+      g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.DiagramObject'), td))
+      g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.sequenceNumber'), rdflib.Literal(1, datatype=CIM.Integer)))
+      g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.xPosition'), rdflib.Literal(xy[0], datatype=CIM.Float)))
+      g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.yPosition'), rdflib.Literal(xy[1], datatype=CIM.Float)))
 
   # write the branches
   for row in tables['BRANCH']['data']:
@@ -410,6 +416,27 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((ac, rdflib.URIRef (CIM_NS + 'ACLineSegment.b0ch'), rdflib.Literal (b0ch, datatype=CIM.Susceptance)))
       if vel1 >= 1.0:
         print ('check line data for {:s} kv={:2f} z1={:.2f} vel1={:.3f}c'.format (key, kvbase, z1, vel1))
+
+  # write the switches (TODO: is this non-standard rawfile usage?)
+  # write the branches
+  if 'SYSTEM SWITCHING DEVICE' in tables:
+    for row in tables['SYSTEM SWITCHING DEVICE']['data']:
+      bus1 = rdflib.URIRef(busids[str(row[0])])
+      bus2 = rdflib.URIRef(busids[str(row[1])])
+      ckt = int(row[2])
+      key = '{:d}_{:d}_{:d}'.format (row[0], row[1], ckt)
+      ID = GetCIMID('DisconnectingCircuitBreaker', key, uuids)
+      cb = rdflib.URIRef (ID)
+      kvbase = bus_kvbases[row[0]]
+      bv = rdflib.URIRef (kvbase_ids[str(kvbase)])
+      g.add ((cb, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'DisconnectingCircuitBreaker')))
+      g.add ((cb, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+      g.add ((cb, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+      g.add ((cb, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
+      g.add ((cb, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
+      g.add ((cb, rdflib.URIRef (EMT_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
+      g.add ((cb, rdflib.URIRef (EMT_NS + 'ConductingEquipment.ToConnectivityNode'), bus2))
+      g.add ((cb, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
 
   # write Load and load response characteristics
   LoadResponseCharacteristics = {}
@@ -799,6 +826,31 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
         append_xml_wecc_dynamics (g, key, taID, pec, 'WeccWTGTA', dyn_settings)
 
   print ('{:d} thermal, {:d} hydro, {:d} nuclear, {:d} solar, {:d} wind generators'.format (nthermal, nhydro, nnuclear, nsolar, nwind))
+  if nthermal+nhydro+nnuclear+nsolar+nwind < 1:
+    if 'swing_bus' in case:
+      swing_bus = int(case['swing_bus'])
+      print ('No Generators, need to write an EnergySource for swing_bus', swing_bus)
+      bus1 = rdflib.URIRef(busids[case['swing_bus']])
+      kvbase = bus_kvbases[swing_bus]
+      bv = rdflib.URIRef (kvbase_ids[str(kvbase)])
+      key = '{:d}_1'.format (swing_bus)
+      ID = GetCIMID('EnergySource', key, uuids)
+      es = rdflib.URIRef (ID)
+      g.add ((es, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'EnergySource')))
+      g.add ((es, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+      g.add ((es, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+      g.add ((es, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
+      g.add ((es, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
+      g.add ((es, rdflib.URIRef (EMT_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
+      g.add ((es, rdflib.URIRef (EMT_NS + 'ConductingEquipment.ToConnectivityNode'), bus1))
+      g.add ((es, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
+      g.add ((es, rdflib.URIRef (CIM_NS + 'EnergySource.nominalVoltage'), rdflib.Literal(1000.0 * kvbase, datatype=CIM.Voltage)))
+      g.add ((es, rdflib.URIRef (CIM_NS + 'EnergySource.voltageMagnitude'), rdflib.Literal(1000.0 * kvbase, datatype=CIM.Voltage)))
+      g.add ((es, rdflib.URIRef (CIM_NS + 'EnergySource.voltageAngle'), rdflib.Literal(0.0, datatype=CIM.AngleRadians)))
+      g.add ((es, rdflib.URIRef (CIM_NS + 'EnergySource.r'), rdflib.Literal(0.0, datatype=CIM.Resistance)))
+      g.add ((es, rdflib.URIRef (CIM_NS + 'EnergySource.x'), rdflib.Literal(0.001, datatype=CIM.Reactance)))
+      g.add ((es, rdflib.URIRef (CIM_NS + 'EnergySource.r0'), rdflib.Literal(0.0, datatype=CIM.Resistance)))
+      g.add ((es, rdflib.URIRef (CIM_NS + 'EnergySource.x0'), rdflib.Literal(0.001, datatype=CIM.Reactance)))
 
   # save the XML with mRIDs for re-use
   g.serialize (destination=case['xmlfile'], format='pretty-xml', max_depth=1)
@@ -811,10 +863,12 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     CIM.BaseVoltage,
     CIM.ConnectivityNode,
     CIM.ACLineSegment,
+    CIM.DisconnectingCircuitBreaker,
     CIM.LinearShuntCompensator,
     CIM.SeriesCompensator,
     CIM.EnergyConsumer,
     CIM.LoadResponseCharacteristic,
+    CIM.EnergySource,
     CIM.SynchronousMachine,
     CIM.HydroGeneratingUnit,
     CIM.NuclearGeneratingUnit,
@@ -880,7 +934,7 @@ def read_version_33_34(rdr,sections,bTwoTitles):
   table = None
   bTransformer = False
   for row in reader:
-    #print (row)
+    print (row)
     if '@!' in row[0]:
       continue
     if len(row) > 1 and 'END OF' in row[0] and 'BEGIN' in row[1]: # start a new table
@@ -966,9 +1020,10 @@ def read_version_33_34(rdr,sections,bTwoTitles):
 #  print_table ('GENERATOR')
 #  print_table ('BRANCH')
 #  print_table ('TRANSFORMER')
+#  print_table ('SYSTEM SWITCHING DEVICE')
 
 if __name__ == '__main__':
-  case_id = 0
+  case_id = 2
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
 
@@ -996,7 +1051,7 @@ if __name__ == '__main__':
   print ('All kV Bases =', kvbases)
 
   create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case)
-  create_cim_sql (tables, kvbases, bus_kvbases, baseMVA, case)
+#  create_cim_sql (tables, kvbases, bus_kvbases, baseMVA, case)
 #  print ('Bus kV Bases =', bus_kvbases)
   
 

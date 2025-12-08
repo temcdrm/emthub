@@ -1,0 +1,181 @@
+@prefix cim: <http://www.ucaiug.org/ns#> .
+@prefix emt: <http://opensource.ieee.org/emtiop#> .
+
+<93EA6BF1-A569-4190-9590-98A62780489E> a cim:EquipmentContainer ;
+    cim:IdentifiedObject.mRID "93EA6BF1-A569-4190-9590-98A62780489E"^^cim:String ;
+    cim:IdentifiedObject.name "XfmrSat"^^cim:String .
+
+<BA3C73D0-7839-42AB-BF0F-5AC8D50F3FF2> a cim:BaseVoltage ;
+    cim:BaseVoltage.nominalVoltage "345000.0"^^cim:Voltage ;
+    cim:IdentifiedObject.mRID "BA3C73D0-7839-42AB-BF0F-5AC8D50F3FF2"^^cim:String ;
+    cim:IdentifiedObject.name "BV_345.00"^^cim:String .
+
+<C48EDDC7-CBEE-4DB1-8FFB-82F247D75939> a cim:BaseVoltage ;
+    cim:BaseVoltage.nominalVoltage "138000.0"^^cim:Voltage ;
+    cim:IdentifiedObject.mRID "C48EDDC7-CBEE-4DB1-8FFB-82F247D75939"^^cim:String ;
+    cim:IdentifiedObject.name "BV_138.00"^^cim:String .
+
+<279B26FB-59BC-4ADE-AAEA-3196D3F50D6B> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <93EA6BF1-A569-4190-9590-98A62780489E> ;
+    cim:IdentifiedObject.mRID "279B26FB-59BC-4ADE-AAEA-3196D3F50D6B"^^cim:String ;
+    cim:IdentifiedObject.name "2"^^cim:String .
+
+<88A4F4AC-BD63-4844-8966-56E4264B6D5D> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <93EA6BF1-A569-4190-9590-98A62780489E> ;
+    cim:IdentifiedObject.mRID "88A4F4AC-BD63-4844-8966-56E4264B6D5D"^^cim:String ;
+    cim:IdentifiedObject.name "3"^^cim:String .
+
+<AA3ED44D-03F7-4832-B039-3B71B9D2B8C4> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <93EA6BF1-A569-4190-9590-98A62780489E> ;
+    cim:IdentifiedObject.mRID "AA3ED44D-03F7-4832-B039-3B71B9D2B8C4"^^cim:String ;
+    cim:IdentifiedObject.name "4"^^cim:String .
+
+<F91CB074-D0B6-40DE-9BC6-BC7FC417945E> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <93EA6BF1-A569-4190-9590-98A62780489E> ;
+    cim:IdentifiedObject.mRID "F91CB074-D0B6-40DE-9BC6-BC7FC417945E"^^cim:String ;
+    cim:IdentifiedObject.name "1"^^cim:String .
+
+<646904EB-7395-42CC-A637-77CECAC32983> a cim:ACLineSegment ;
+    emt:ConductingEquipment.FromConnectivityNode <F91CB074-D0B6-40DE-9BC6-BC7FC417945E> ;
+    emt:ConductingEquipment.ToConnectivityNode <279B26FB-59BC-4ADE-AAEA-3196D3F50D6B> ;
+    cim:ACLineSegment.b0ch "0.0007561436672967862"^^cim:Susceptance ;
+    cim:ACLineSegment.bch "0.0012602394454946438"^^cim:Susceptance ;
+    cim:ACLineSegment.r "6.00005025"^^cim:Resistance ;
+    cim:ACLineSegment.r0 "12.0001005"^^cim:Resistance ;
+    cim:ACLineSegment.x "113.0999355"^^cim:Reactance ;
+    cim:ACLineSegment.x0 "339.2998065"^^cim:Reactance ;
+    cim:ConductingEquipment.BaseVoltage <BA3C73D0-7839-42AB-BF0F-5AC8D50F3FF2> ;
+    cim:Conductor.length "303361.17099552"^^cim:Length ;
+    cim:Equipment.EquipmentContainer <93EA6BF1-A569-4190-9590-98A62780489E> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "646904EB-7395-42CC-A637-77CECAC32983"^^cim:String ;
+    cim:IdentifiedObject.name "1_2_1"^^cim:String .
+
+<BD704998-9EF2-4544-81C0-B091EECCEB16> a cim:DisconnectingCircuitBreaker ;
+    emt:ConductingEquipment.FromConnectivityNode <88A4F4AC-BD63-4844-8966-56E4264B6D5D> ;
+    emt:ConductingEquipment.ToConnectivityNode <AA3ED44D-03F7-4832-B039-3B71B9D2B8C4> ;
+    cim:ConductingEquipment.BaseVoltage <C48EDDC7-CBEE-4DB1-8FFB-82F247D75939> ;
+    cim:Equipment.EquipmentContainer <93EA6BF1-A569-4190-9590-98A62780489E> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "BD704998-9EF2-4544-81C0-B091EECCEB16"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_1"^^cim:String .
+
+<F1605759-40BC-40C4-8A75-617257DC65E6> a cim:EnergyConsumer ;
+    emt:ConductingEquipment.FromConnectivityNode <AA3ED44D-03F7-4832-B039-3B71B9D2B8C4> ;
+    emt:ConductingEquipment.ToConnectivityNode <AA3ED44D-03F7-4832-B039-3B71B9D2B8C4> ;
+    cim:ConductingEquipment.BaseVoltage <C48EDDC7-CBEE-4DB1-8FFB-82F247D75939> ;
+    cim:EnergyConsumer.LoadResponse <680C5C0E-D747-435A-9DE3-47D77C5F49D1> ;
+    cim:EnergyConsumer.p "400000000.0"^^cim:ActivePower ;
+    cim:EnergyConsumer.q "0.0"^^cim:ReactivePower ;
+    cim:Equipment.EquipmentContainer <93EA6BF1-A569-4190-9590-98A62780489E> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "F1605759-40BC-40C4-8A75-617257DC65E6"^^cim:String ;
+    cim:IdentifiedObject.name "4_1"^^cim:String .
+
+<680C5C0E-D747-435A-9DE3-47D77C5F49D1> a cim:LoadResponseCharacteristic ;
+    cim:IdentifiedObject.mRID "680C5C0E-D747-435A-9DE3-47D77C5F49D1"^^cim:String ;
+    cim:IdentifiedObject.name "LoadResp_Zp=100.000_Ip=0.000_Pp=0.000_Zq=100.000_Iq=0.000_Pq=0.000"^^cim:String ;
+    cim:LoadResponseCharacteristic.exponentModel "false"^^cim:Boolean ;
+    cim:LoadResponseCharacteristic.pConstantCurrent "0.0"^^cim:Float ;
+    cim:LoadResponseCharacteristic.pConstantImpedance "100.0"^^cim:Float ;
+    cim:LoadResponseCharacteristic.pConstantPower "0.0"^^cim:Float ;
+    cim:LoadResponseCharacteristic.pFrequencyExponent "0.0"^^cim:Float ;
+    cim:LoadResponseCharacteristic.pVoltageExponent "0.0"^^cim:Float ;
+    cim:LoadResponseCharacteristic.qConstantCurrent "0.0"^^cim:Float ;
+    cim:LoadResponseCharacteristic.qConstantImpedance "100.0"^^cim:Float ;
+    cim:LoadResponseCharacteristic.qConstantPower "0.0"^^cim:Float ;
+    cim:LoadResponseCharacteristic.qFrequencyExponent "0.0"^^cim:Float ;
+    cim:LoadResponseCharacteristic.qVoltageExponent "0.0"^^cim:Float .
+
+<87F33EEF-8292-48CC-AF60-645F7394D83C> a cim:EnergySource ;
+    emt:ConductingEquipment.FromConnectivityNode <F91CB074-D0B6-40DE-9BC6-BC7FC417945E> ;
+    emt:ConductingEquipment.ToConnectivityNode <F91CB074-D0B6-40DE-9BC6-BC7FC417945E> ;
+    cim:ConductingEquipment.BaseVoltage <BA3C73D0-7839-42AB-BF0F-5AC8D50F3FF2> ;
+    cim:EnergySource.nominalVoltage "345000.0"^^cim:Voltage ;
+    cim:EnergySource.r "0.0"^^cim:Resistance ;
+    cim:EnergySource.r0 "0.0"^^cim:Resistance ;
+    cim:EnergySource.voltageAngle "0.0"^^cim:AngleRadians ;
+    cim:EnergySource.voltageMagnitude "345000.0"^^cim:Voltage ;
+    cim:EnergySource.x "0.001"^^cim:Reactance ;
+    cim:EnergySource.x0 "0.001"^^cim:Reactance ;
+    cim:Equipment.EquipmentContainer <93EA6BF1-A569-4190-9590-98A62780489E> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "87F33EEF-8292-48CC-AF60-645F7394D83C"^^cim:String ;
+    cim:IdentifiedObject.name "1_1"^^cim:String .
+
+<C143A9DB-D610-4AD4-AB66-01ADBB8BF2EF> a cim:PowerTransformer ;
+    cim:Equipment.EquipmentContainer <93EA6BF1-A569-4190-9590-98A62780489E> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "C143A9DB-D610-4AD4-AB66-01ADBB8BF2EF"^^cim:String ;
+    cim:IdentifiedObject.name "2_3_0_1"^^cim:String ;
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
+
+<3D7FC934-65DA-4804-B067-1ADAEECDFD6A> a cim:PowerTransformerEnd ;
+    emt:TransformerEnd.ConnectivityNode <88A4F4AC-BD63-4844-8966-56E4264B6D5D> ;
+    cim:IdentifiedObject.mRID "3D7FC934-65DA-4804-B067-1ADAEECDFD6A"^^cim:String ;
+    cim:IdentifiedObject.name "2_3_0_1_End_2"^^cim:String ;
+    cim:PowerTransformerEnd.PowerTransformer <C143A9DB-D610-4AD4-AB66-01ADBB8BF2EF> ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
+    cim:PowerTransformerEnd.ratedS "500000000.0"^^cim:ApparentPower ;
+    cim:PowerTransformerEnd.ratedU "138000.0"^^cim:Voltage ;
+    cim:TransformerEnd.BaseVoltage <C48EDDC7-CBEE-4DB1-8FFB-82F247D75939> ;
+    cim:TransformerEnd.endNumber "2"^^cim:Integer ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
+    cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
+    cim:TransformerEnd.xground "0.0"^^cim:Reactance .
+
+<55765358-0EF6-4930-94B2-6745D6CBA5E1> a cim:PowerTransformerEnd ;
+    emt:TransformerEnd.ConnectivityNode <279B26FB-59BC-4ADE-AAEA-3196D3F50D6B> ;
+    cim:IdentifiedObject.mRID "55765358-0EF6-4930-94B2-6745D6CBA5E1"^^cim:String ;
+    cim:IdentifiedObject.name "2_3_0_1_End_1"^^cim:String ;
+    cim:PowerTransformerEnd.PowerTransformer <C143A9DB-D610-4AD4-AB66-01ADBB8BF2EF> ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
+    cim:PowerTransformerEnd.ratedS "500000000.0"^^cim:ApparentPower ;
+    cim:PowerTransformerEnd.ratedU "345000.0"^^cim:Voltage ;
+    cim:TransformerEnd.BaseVoltage <BA3C73D0-7839-42AB-BF0F-5AC8D50F3FF2> ;
+    cim:TransformerEnd.endNumber "1"^^cim:Integer ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
+    cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
+    cim:TransformerEnd.xground "0.0"^^cim:Reactance .
+
+<B76DCD4B-4853-491C-AE21-ECB47F1AA196> a cim:TransformerMeshImpedance ;
+    cim:IdentifiedObject.mRID "B76DCD4B-4853-491C-AE21-ECB47F1AA196"^^cim:String ;
+    cim:IdentifiedObject.name "2_3_0_1_Mesh"^^cim:String ;
+    cim:TransformerMeshImpedance.FromTransformerEnd <55765358-0EF6-4930-94B2-6745D6CBA5E1> ;
+    cim:TransformerMeshImpedance.ToTransformerEnd <3D7FC934-65DA-4804-B067-1ADAEECDFD6A> ;
+    cim:TransformerMeshImpedance.r "2.3805"^^cim:Resistance ;
+    cim:TransformerMeshImpedance.r0 "2.3805"^^cim:Resistance ;
+    cim:TransformerMeshImpedance.x "19.044"^^cim:Reactance ;
+    cim:TransformerMeshImpedance.x0 "19.044"^^cim:Reactance .
+
+<DC9BD8F5-BD5F-4AEF-AAC0-516D4C263917> a cim:TransformerCoreAdmittance ;
+    cim:IdentifiedObject.mRID "DC9BD8F5-BD5F-4AEF-AAC0-516D4C263917"^^cim:String ;
+    cim:IdentifiedObject.name "2_3_0_1_Core"^^cim:String ;
+    cim:TransformerCoreAdmittance.TransformerEnd <3D7FC934-65DA-4804-B067-1ADAEECDFD6A> ;
+    cim:TransformerCoreAdmittance.b "0.00026254988447805085"^^cim:Susceptance ;
+    cim:TransformerCoreAdmittance.b0 "0.00026254988447805085"^^cim:Susceptance ;
+    cim:TransformerCoreAdmittance.g "6.563747111951271e-05"^^cim:Conductance ;
+    cim:TransformerCoreAdmittance.g0 "6.563747111951271e-05"^^cim:Conductance .
+
+<7AA0C77C-A53E-4ECD-8027-36D08DF088CB> a emt:TransformerSaturation ;
+    emt:TransformerSaturation.TransformerCoreAdmittance <DC9BD8F5-BD5F-4AEF-AAC0-516D4C263917> ;
+    cim:Curve.curveStyle cim:CurveStyle.straightLineYValues ;
+    cim:Curve.xMultiplier cim:UnitMultiplier.none ;
+    cim:Curve.xUnit cim:UnitSymbol.A ;
+    cim:Curve.y1Multiplier cim:UnitMultiplier.none ;
+    cim:Curve.y1Unit cim:UnitSymbol.Vs ;
+    cim:IdentifiedObject.mRID "7AA0C77C-A53E-4ECD-8027-36D08DF088CB"^^cim:String ;
+    cim:IdentifiedObject.name "2_3_0_1_Sat"^^cim:String .
+
+<7AA0C77C-A53E-4ECD-8027-36D08DF088CB_pt1> a cim:CurveData ;
+    cim:CurveData.Curve <7AA0C77C-A53E-4ECD-8027-36D08DF088CB> ;
+    cim:CurveData.xvalue "32.541530399293435"^^cim:Float ;
+    cim:CurveData.y1value "328.77215118686684"^^cim:Float .
+
+<7AA0C77C-A53E-4ECD-8027-36D08DF088CB_pt2> a cim:CurveData ;
+    cim:CurveData.Curve <7AA0C77C-A53E-4ECD-8027-36D08DF088CB> ;
+    cim:CurveData.xvalue "132.54153039929344"^^cim:Float ;
+    cim:CurveData.y1value "330.3886561128626"^^cim:Float .
+

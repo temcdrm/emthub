@@ -18,6 +18,11 @@
                         "Name": "BaseKV",
                         "Index": 2,
                         "Type": "Float"
+                    },
+                    {
+                        "Name": "Type",
+                        "Index": 3,
+                        "Type": "Integer"
                     }
                 ]
             },
@@ -221,6 +226,36 @@
                     }
                 ]
             },
+            "SYSTEM SWITCHING DEVICE": {
+                "column_count": 21,
+                "columns": [
+                    {
+                        "Name": "Bus1",
+                        "Index": 0,
+                        "Type": "Integer"
+                    },
+                    {
+                        "Name": "Bus2",
+                        "Index": 1,
+                        "Type": "Integer"
+                    },
+                    {
+                        "Name": "Circuit",
+                        "Index": 2,
+                        "Type": "String"
+                    },
+                    {
+                        "Name": "X",
+                        "Index": 4,
+                        "Type": "Float"
+                    },
+                    {
+                        "Name": "Status",
+                        "Index": 16,
+                        "Type": "Integer"
+                    }
+                ]
+            },
             "TRANSFORMER": {
                 "column_count": 22,
                 "columns": [
@@ -270,8 +305,12 @@
                         "Name": "BaseKV",
                         "Index": 2,
                         "Type": "Float"
-                    }
-                ]
+                    },
+{
+                        "Name": "Type",
+                        "Index": 3,
+                        "Type": "Integer"
+                    }                ]
             },
             "LOAD": {
                 "column_count": 13,
