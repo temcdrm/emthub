@@ -307,6 +307,35 @@ CREATE TABLE "EnergyConsumer"
     "LoadResponse" VARCHAR(100) NOT NULL
 );
 
+-- A generic equivalent for an energy supplier on a transmission or distribution
+-- voltage level.
+CREATE TABLE "EnergySource"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Phase-to-phase nominal voltage.
+    "nominalVoltage" DOUBLE PRECISION NOT NULL,
+    -- Positive sequence Thevenin resistance.
+    "r" DOUBLE PRECISION NOT NULL,
+    -- Zero sequence Thevenin resistance.
+    "r0" DOUBLE PRECISION NOT NULL,
+    -- Phase angle of a-phase open circuit used when voltage characteristics need
+    -- to be imposed at the node associated with the terminal of the energy source,
+    -- such as when voltages and angles from the transmission level are used as
+    -- input to the distribution network. The attribute shall be a positive value
+    -- or zero.
+    "voltageAngle" DOUBLE PRECISION NOT NULL,
+    -- Phase-to-phase open circuit voltage magnitude used when voltage characteristics
+    -- need to be imposed at the node associated with the terminal of the energy
+    -- source, such as when voltages and angles from the transmission level are
+    -- used as input to the distribution network. The attribute shall be a positive
+    -- value or zero.
+    "voltageMagnitude" DOUBLE PRECISION NOT NULL,
+    -- Positive sequence Thevenin reactance.
+    "x" DOUBLE PRECISION NOT NULL,
+    -- Zero sequence Thevenin reactance.
+    "x0" DOUBLE PRECISION NOT NULL
+);
+
 -- The parts of a power system that are physical devices, electronic or mechanical.
 CREATE TABLE "Equipment"
 (
@@ -2077,6 +2106,9 @@ ALTER TABLE "EnergyConnection" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Conducting
 
 -- Inheritance subclass-superclass constraint for table "EnergyConsumer"
 ALTER TABLE "EnergyConsumer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "EnergyConnection" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "EnergySource"
+ALTER TABLE "EnergySource" ADD FOREIGN KEY ( "mRID" ) REFERENCES "EnergyConnection" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "Equipment"
 ALTER TABLE "Equipment" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemResource" ( "mRID" );

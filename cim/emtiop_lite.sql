@@ -321,6 +321,19 @@ CREATE TABLE "EnergyConnection"
     FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" )
 );
 
+CREATE TABLE "EnergySource"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    "nominalVoltage" DOUBLE PRECISION NOT NULL,
+    "r" DOUBLE PRECISION NOT NULL,
+    "r0" DOUBLE PRECISION NOT NULL,
+    "voltageAngle" DOUBLE PRECISION NOT NULL,
+    "voltageMagnitude" DOUBLE PRECISION NOT NULL,
+    "x" DOUBLE PRECISION NOT NULL,
+    "x0" DOUBLE PRECISION NOT NULL,
+    FOREIGN KEY ( "mRID" ) REFERENCES "EnergyConnection" ( "mRID" )
+);
+
 CREATE TABLE "LoadResponseCharacteristic"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,

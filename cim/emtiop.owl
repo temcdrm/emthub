@@ -9,6 +9,118 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xml:base="http://www.ucaiug.org/profile" > 
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7fe7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#EnergySource.x0"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7fe8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#EnergySource.x"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7fe9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#EnergySource.voltageMagnitude"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7fea">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#EnergySource.voltageAngle"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7feb">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#EnergySource.r0"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7fec">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#EnergySource.r"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7fed">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#EnergySource.nominalVoltage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7fee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7fef"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#EnergySource.x"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7fef">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>x</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.ucaiug.org/ns#Reactance"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff0">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff1"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#EnergySource.x0"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff1">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>x0</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.ucaiug.org/ns#Reactance"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff3"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#EnergySource.voltageMagnitude"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff3">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>voltageMagnitude</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.ucaiug.org/ns#Voltage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff5"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#EnergySource.voltageAngle"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff5">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>voltageAngle</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.ucaiug.org/ns#AngleRadians"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff7"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#EnergySource.r"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff7">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>r</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.ucaiug.org/ns#Resistance"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff9"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#EnergySource.r0"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff9">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>r0</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.ucaiug.org/ns#Resistance"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ffa">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ffb"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#EnergySource.nominalVoltage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ffb">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>nominalVoltage</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.ucaiug.org/ns#Voltage"/>
+  </rdf:Description>
   <rdf:Description rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7bb0">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
@@ -6255,6 +6367,26 @@
     <rdfs:subClassOf rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7d5e"/>
     <rdfs:subClassOf rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7d5f"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#EnergyConsumer"/>
+    <rdfs:subClassOf rdf:resource="#EnergyConnection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#EnergySource">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7fe7"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7fe8"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7fe9"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7fea"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7feb"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7fec"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7fed"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7fee"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff0"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff2"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff4"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff6"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ff8"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5a7bcfe9Xa3X19affae1f18Xa3X-7ffa"/>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#EnergySource"/>
     <rdfs:subClassOf rdf:resource="#EnergyConnection"/>
   </rdf:Description>
   <rdf:Description rdf:about="#Equipment">

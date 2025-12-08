@@ -976,6 +976,256 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="EnergySource" class="group">
+         <a href="#EnergySource">
+            <h2 class="concrete">EnergySource</h2>
+         </a>
+         <p class="package">Wires</p>
+         <p class="comment">A generic equivalent for an energy supplier on a transmission or distribution voltage level.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="EnergySource.nominalVoltage">nominalVoltage</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Voltage">Voltage</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Phase-to-phase nominal voltage.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="EnergySource.r">r</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Resistance">Resistance</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Positive sequence Thevenin resistance.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="EnergySource.r0">r0</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Resistance">Resistance</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Zero sequence Thevenin resistance.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="EnergySource.voltageAngle">voltageAngle</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#AngleRadians">AngleRadians</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Phase angle of a-phase open circuit used when voltage characteristics need to be imposed at the node associated with the terminal of the energy source, such as when voltages and angles from the transmission level are used as input to the distribution network. The attribute shall be a positive value or zero.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="EnergySource.voltageMagnitude">voltageMagnitude</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Voltage">Voltage</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Phase-to-phase open circuit voltage magnitude used when voltage characteristics need to be imposed at the node associated with the terminal of the energy source, such as when voltages and angles from the transmission level are used as input to the distribution network. The attribute shall be a positive value or zero.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="EnergySource.x">x</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Reactance">Reactance</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Positive sequence Thevenin reactance.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="EnergySource.x0">x0</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Reactance">Reactance</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Zero sequence Thevenin reactance.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table/>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">BaseVoltage</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#BaseVoltage">BaseVoltage</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#ConductingEquipment.BaseVoltage">ConductingEquipment</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">FromConnectivityNode</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ConnectivityNode">ConnectivityNode</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#ConductingEquipment.FromConnectivityNode">ConductingEquipment</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">ToConnectivityNode</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ConnectivityNode">ConnectivityNode</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#ConductingEquipment.ToConnectivityNode">ConductingEquipment</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">inService</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#Equipment.inService">Equipment</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">EquipmentContainer</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#EquipmentContainer">EquipmentContainer</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#Equipment.EquipmentContainer">Equipment</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table/>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..unbounded</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Name">Name</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
       <div id="EquipmentContainer" class="group">
          <a href="#EquipmentContainer">
             <h2 class="concrete">EquipmentContainer</h2>
@@ -12224,6 +12474,15 @@ p.package { position: absolute; right: 10px; top: 0px}
          </a>
          <p class="package">Domain</p>
          <p class="comment">Measurement of angle in degrees.</p>
+         <p class="declaration">XSD type: <span class="xsdtype">float</span>
+         </p>
+      </div>
+      <div id="AngleRadians" class="group">
+         <a href="#AngleRadians">
+            <h2 class="domain">AngleRadians</h2>
+         </a>
+         <p class="package">Domain</p>
+         <p class="comment">Phase angle in radians.</p>
          <p class="declaration">XSD type: <span class="xsdtype">float</span>
          </p>
       </div>
