@@ -11,6 +11,7 @@ import networkx
 import math
 from rdflib.namespace import XSD
 from otsrdflib import OrderedTurtleSerializer
+import sqlite3
 
 CIM_NS = 'http://www.ucaiug.org/ns#'
 EMT_NS = 'http://opensource.ieee.org/emtiop#'
@@ -82,7 +83,7 @@ def GetCIMID(cls, nm, uuids, identify=False):
         return uuids[key]
     return str(uuid.uuid4()).upper() # for unidentified CIM instances
 
-def append_wecc_dynamics (g, key, ID, pec, leaf_class, dyn_settings):
+def append_xml_wecc_dynamics (g, key, ID, pec, leaf_class, dyn_settings):
   leaf = rdflib.URIRef (ID)
   g.add ((leaf, rdflib.RDF.type, rdflib.URIRef (CIM_NS + leaf_class)))
   g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM_NS+'String')))
@@ -95,7 +96,7 @@ def append_wecc_dynamics (g, key, ID, pec, leaf_class, dyn_settings):
     row = dyn_settings[leaf_class][tag]
     g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(leaf_class, tag)), rdflib.Literal(row[0], datatype=CIM_NS+row[1])))
 
-def create_machine_dynamics (g, leaf_class, key, uuids):
+def create_xml_machine_dynamics (g, leaf_class, key, uuids):
   ID = GetCIMID (leaf_class, key, uuids)
   leaf = rdflib.URIRef (ID)
   g.add ((leaf, rdflib.RDF.type, rdflib.URIRef (CIM_NS + leaf_class)))
@@ -103,7 +104,7 @@ def create_machine_dynamics (g, leaf_class, key, uuids):
   g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM_NS+'String')))
   return leaf
 
-def append_dynamic_parameters (g, leaf, dyn_settings, sections):
+def append_xml_dynamic_parameters (g, leaf, dyn_settings, sections):
   for sect in sections:
     for tag in dyn_settings[sect]:
       row = dyn_settings[sect][tag]
@@ -111,6 +112,133 @@ def append_dynamic_parameters (g, leaf, dyn_settings, sections):
         g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(sect, tag)), rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(row[1], row[0]))))
       else:
         g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(sect, tag)), rdflib.Literal(row[0], datatype=CIM_NS+row[1])))
+
+def create_cim_sql (tables, kvbases, bus_kvbases, baseMVA, case):
+  # read the existing mRID map for persistence
+  # TODO: consolidate this step with XML export
+  uuids = {}
+  fuidname = case['mridfile']
+  if os.path.exists(fuidname):
+    print ('reading instance mRIDs from ', fuidname)
+    fuid = open (fuidname, 'r')
+    for uuid_ln in fuid.readlines():
+      uuid_toks = re.split('[,\s]+', uuid_ln)
+      if len(uuid_toks) > 2 and not uuid_toks[0].startswith('//'):
+        cls = uuid_toks[0]
+        nm = uuid_toks[1]
+        key = cls + ':' + nm
+        val = uuid_toks[2]
+        uuids[key] = val
+    fuid.close()
+
+  con = sqlite3.connect ('emtiop.db')
+  cur = con.cursor()
+  # clean out existing tables, in an order that should maintain referential integrity
+  # TODO: see if deleting from IdentifiedObject is enough, i.e., cascading deletes will clean out the other tables
+  for table_name in ['WeccWTGTA', 'WeccWTGARA', 'WeccREPCA', 'WeccREGCA', 'WeccREECA', 'WeccREEC', 'WeccDynamics',
+                     'GovSteamSGO', 'TurbineGovernorDynamics', 'PssIEEE1A', 'PowerSystemStabilizerDynamics',
+                     'ExcST1A', 'ExcitationSystemDynamics', 'TransformerSaturation', 'TransformerMeshImpedance',
+                     'TransformerCoreAdmittance', 'ThermalGeneratingUnit', 'TextDiagramObject', 'SynchronousMachineTimeConstantReactance',
+                     'SynchronousMachineDetailed', 'SynchronousMachineDynamics', 'SeriesCompensator', 'RotatingMachineDynamics',
+                     'PowerTransformerEnd', 'PowerTransformer', 'PowerElectronicsWindUnit', 'PhotoVoltaicUnit',
+                     'PSRType', 'NuclearGeneratingUnit', 'LinearShuntCompensator', 'HydroGeneratingUnit', 'EnergyConsumer',
+                     'DynamicsFunctionBlock', 'DiagramObjectPoint', 'DiagramObject', 'CurveData', 'Curve', 'BatteryUnit',
+                     'AsynchronousMachine', 'RotatingMachine', 'ShuntCompensator', 'PowerElectronicsUnit', 'PowerElectronicsConnection',
+                     'RegulatingCondEq', 'ACLineSegment', 'Conductor', 'LoadResponseCharacteristic', 'EnergyConnection',
+                     'ConductingEquipment', 'GeneratingUnit', 'TransformerEnd', 'Equipment', 'EquipmentContainer',
+                     'ConnectivityNode', 'ConnectivityNodeContainer', 'PowerSystemResource', 'BaseVoltage', 'IdentifiedObject']:
+    cur.execute ('DELETE from {:s}'.format (table_name))
+    con.commit()
+
+  # write the EquipmentContainer->ConnectivityNodeContainer->PowerSystemResource->IdentifiedObject
+  eq_id = case['id']
+  cur.execute ("INSERT into IdentifiedObject (mRID, name) VALUES ('{:s}', '{:s}')".format (eq_id, case['name']))
+  cur.execute ("INSERT into PowerSystemResource (mRID) VALUES ('{:s}')".format (eq_id))
+  cur.execute ("INSERT into ConnectivityNodeContainer (mRID) VALUES ('{:s}')".format (eq_id))
+  cur.execute ("INSERT into EquipmentContainer (mRID) VALUES ('{:s}')".format (eq_id))
+  con.commit()
+  # BaseVoltage(s)->IdentifiedObject
+  kvbase_ids = {}
+  for kvname, kv in kvbases.items():
+    print (kvname)
+    ID = GetCIMID('BaseVoltage', kvname, uuids)
+    cur.execute ("INSERT into IdentifiedObject (mRID, name) VALUES ('{:s}', '{:s}')".format (ID, kvname))
+    cur.execute ("INSERT into BaseVoltage (mRID, nominalVoltage) VALUES ('{:s}', {:.3f})".format (ID, kv * 1000.0))
+    kvbase_ids[str(kv)] = ID
+    con.commit()
+  # ConnectivityNode(s)->IdentifiedObject
+  busids = {}
+  for row in tables['BUS']['data']:
+    busname = str(row[0])
+    ID = GetCIMID('ConnectivityNode', busname, uuids)
+    busids[busname] = ID
+    cur.execute ("INSERT into IdentifiedObject (mRID, name) VALUES ('{:s}', '{:s}')".format (ID, busname))
+    cur.execute ("INSERT into ConnectivityNode (mRID, ConnectivityNodeContainer) VALUES ('{:s}', '{:s}')".format (ID, eq_id))
+    con.commit()
+  # ACLineSegment(s)->Conductor->ConductingEquipment->Equipment->PowerSystemResource->IdentifiedObject
+  # SeriesCompensator(s)->ConductingEquipment->Equipment->PowerSystemResource->IdentifiedObject
+  for row in tables['BRANCH']['data']:
+    bus1 = busids[str(row[0])]
+    bus2 = busids[str(row[1])]
+    ckt = int(row[2])
+    key = '{:d}_{:d}_{:d}'.format (row[0], row[1], ckt)
+    kvbase = bus_kvbases[row[0]]
+    bv = kvbase_ids[str(kvbase)]
+    zbase = kvbase * kvbase / baseMVA
+    rpu = row[3]
+    xpu = row[4]
+    bpu = row[5]
+    r1 = rpu * zbase
+    x1 = xpu * zbase
+    if x1 < 0.0:
+      ID = GetCIMID('SeriesCompensator', key, uuids)
+      cur.execute ("INSERT into IdentifiedObject (mRID, name) VALUES ('{:s}', '{:s}')".format (ID, key))
+      cur.execute ("INSERT into PowerSystemResource (mRID) VALUES ('{:s}')".format (ID))
+      cur.execute ("INSERT into Equipment (mRID, inService, EquipmentContainer) VALUES ('{:s}',{:d},'{:s}')".format (ID, 1, eq_id))
+      cur.execute ("INSERT into ConductingEquipment (mRID, BaseVoltage, FromConnectivityNode, ToConnectivityNode) VALUES ('{:s}','{:s}','{:s}','{:s}')".format (ID, bv, bus1, bus2))
+      cur.execute ("INSERT into SeriesCompensator (mRID, r, x, r0, x0) VALUES ('{:s}',{:.6f},{:.6f},{:.6f},{:.6f})".format (ID, r1, x1, r1, x1))
+    else:
+      ID = GetCIMID('ACLineSegment', key, uuids)
+      cur.execute ("INSERT into IdentifiedObject (mRID, name) VALUES ('{:s}', '{:s}')".format (ID, key))
+      cur.execute ("INSERT into PowerSystemResource (mRID) VALUES ('{:s}')".format (ID))
+      cur.execute ("INSERT into Equipment (mRID, inService, EquipmentContainer) VALUES ('{:s}',{:d},'{:s}')".format (ID, 1, eq_id))
+      cur.execute ("INSERT into ConductingEquipment (mRID, BaseVoltage, FromConnectivityNode, ToConnectivityNode) VALUES ('{:s}','{:s}','{:s}','{:s}')".format (ID, bv, bus1, bus2))
+      l1 = x1 / WFREQ
+      if bpu > 0.0:
+        c1 = bpu / WFREQ / zbase
+        z1 = math.sqrt (l1/c1)
+      else:
+        z1 = 400.0
+        c1 = l1 / z1 / z1
+      b1ch = c1 * WFREQ
+      if z1 >= 100.0 : # overhead
+        r0 = 2.0 * r1
+        x0 = 3.0 * x1 # was 2.0 * x1
+        b0ch = 0.6 * b1ch
+        if kvbase >= 345.0:
+          length = x1 / 0.6
+        else:
+          length = x1 / 0.8
+      else: # underground
+        r0 = r1
+        x0 = x1
+        b0ch = b1ch
+        length = x1 / 0.2
+      length *= M_PER_MILE
+      vel1 = length / math.sqrt(l1*c1) / 3.0e8 # wave velocity normalized to speed of light
+      cur.execute ("INSERT into Conductor (mRID, length) VALUES ('{:s}',{:.6f})".format (ID, length))
+      cur.execute ("INSERT into ACLineSegment (mRID, r, x, bch, r0, x0, b0ch) VALUES ('{:s}',{:f},{:f},{:f},{:f},{:f},{:f})".format (ID, r1, x1, b1ch, r0, x0, b0ch))
+      if vel1 >= 1.0:
+        print ('check line data for {:s} kv={:2f} z1={:.2f} vel1={:.3f}c'.format (key, kvbase, z1, vel1))
+    con.commit()
+
+  con.close()
+  # TODO: consolidate this step with XML export
+  print('saving instance mRIDs to ', fuidname)
+  fuid = open(fuidname, 'w')
+  for key, val in uuids.items():
+      print('{:s},{:s}'.format(key.replace(':', ',', 1), val), file=fuid)
+  fuid.close()
 
 def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
   g = rdflib.Graph()
@@ -610,15 +738,15 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.operatingMode'), rdflib.URIRef (CIM_NS + 'SynchronousMachineOperatingMode.generator')))
       g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.type'), rdflib.URIRef (CIM_NS + 'SynchronousMachineKind.generator')))
       dynID = GetCIMID('SynchronousMachineTimeConstantReactance', key, uuids)
-      dyn = create_machine_dynamics (g, 'SynchronousMachineTimeConstantReactance', key, uuids)
-      exc = create_machine_dynamics (g, 'ExcST1A', key, uuids)
-      pss = create_machine_dynamics (g, 'PssIEEE1A', key, uuids)
-      gov = create_machine_dynamics (g, 'GovSteamSGO', key, uuids)
-      append_dynamic_parameters (g, dyn, dyn_settings, ['SynchronousMachineTimeConstantReactance', 'SynchronousMachineDetailed', 
+      dyn = create_xml_machine_dynamics (g, 'SynchronousMachineTimeConstantReactance', key, uuids)
+      exc = create_xml_machine_dynamics (g, 'ExcST1A', key, uuids)
+      pss = create_xml_machine_dynamics (g, 'PssIEEE1A', key, uuids)
+      gov = create_xml_machine_dynamics (g, 'GovSteamSGO', key, uuids)
+      append_xml_dynamic_parameters (g, dyn, dyn_settings, ['SynchronousMachineTimeConstantReactance', 'SynchronousMachineDetailed', 
                                                         'RotatingMachineDynamics', 'DynamicsFunctionBlock'])
-      append_dynamic_parameters (g, exc, dyn_settings, ['ExcST1A', 'DynamicsFunctionBlock'])
-      append_dynamic_parameters (g, pss, dyn_settings, ['PssIEEE1A', 'DynamicsFunctionBlock'])
-      append_dynamic_parameters (g, gov, dyn_settings, ['GovSteamSGO', 'DynamicsFunctionBlock'])
+      append_xml_dynamic_parameters (g, exc, dyn_settings, ['ExcST1A', 'DynamicsFunctionBlock'])
+      append_xml_dynamic_parameters (g, pss, dyn_settings, ['PssIEEE1A', 'DynamicsFunctionBlock'])
+      append_xml_dynamic_parameters (g, gov, dyn_settings, ['GovSteamSGO', 'DynamicsFunctionBlock'])
       g.add ((pss, rdflib.URIRef (CIM_NS + 'PowerSystemStabilizerDynamics.ExcitationSystemDynamics'), exc))
       g.add ((exc, rdflib.URIRef (CIM_NS + 'ExcitationSystemDynamics.SynchronousMachineDynamics'), dyn))
       g.add ((gov, rdflib.URIRef (CIM_NS + 'TurbineGovernorDynamics.SynchronousMachineDynamics'), dyn))
@@ -659,16 +787,16 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.maxP'), rdflib.Literal (1.0e6*row[6], datatype=CIM.ActivePower)))
       g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.minP'), rdflib.Literal (0.0, datatype=CIM.ActivePower)))  # TODO: parse PT and PB
       reecID = GetCIMID('WeccREECA', key, uuids)
-      append_wecc_dynamics (g, key, reecID, pec, 'WeccREECA', dyn_settings)
+      append_xml_wecc_dynamics (g, key, reecID, pec, 'WeccREECA', dyn_settings)
       repcID = GetCIMID('WeccREPCA', key, uuids)
-      append_wecc_dynamics (g, key, repcID, pec, 'WeccREPCA', dyn_settings)
+      append_xml_wecc_dynamics (g, key, repcID, pec, 'WeccREPCA', dyn_settings)
       regcID = GetCIMID('WeccREGCA', key, uuids)
-      append_wecc_dynamics (g, key, regcID, pec, 'WeccREGCA', dyn_settings)
+      append_xml_wecc_dynamics (g, key, regcID, pec, 'WeccREGCA', dyn_settings)
       if ftype in ['PowerElectronicsWindUnit']:
         araID = GetCIMID('WeccWTGARA', key, uuids)
-        append_wecc_dynamics (g, key, araID, pec, 'WeccWTGARA', dyn_settings)
+        append_xml_wecc_dynamics (g, key, araID, pec, 'WeccWTGARA', dyn_settings)
         taID = GetCIMID('WeccWTGTA', key, uuids)
-        append_wecc_dynamics (g, key, taID, pec, 'WeccWTGTA', dyn_settings)
+        append_xml_wecc_dynamics (g, key, taID, pec, 'WeccWTGTA', dyn_settings)
 
   print ('{:d} thermal, {:d} hydro, {:d} nuclear, {:d} solar, {:d} wind generators'.format (nthermal, nhydro, nnuclear, nsolar, nwind))
 
@@ -868,6 +996,7 @@ if __name__ == '__main__':
   print ('All kV Bases =', kvbases)
 
   create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case)
+  create_cim_sql (tables, kvbases, bus_kvbases, baseMVA, case)
 #  print ('Bus kV Bases =', bus_kvbases)
   
 

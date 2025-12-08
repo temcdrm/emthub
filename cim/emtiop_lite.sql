@@ -1,4 +1,6 @@
 -- REVISIT: Manually added "TransformerMeshImpedance.ToTransformerEnd" from the UML
+-- REVISIT: Manually added IdentifiedObject.name, which is not unique, but should be within each UML class
+-- REVISIT: Should remove unused PSRType
 PRAGMA foreign_keys = ON;
 
 CREATE TABLE "BatteryStateKind" ( "name" VARCHAR(100) UNIQUE );
@@ -233,7 +235,8 @@ INSERT INTO "WindingConnection" ( "name" ) VALUES ( 'Zn' );
 
 CREATE TABLE "IdentifiedObject"
 (
-    "mRID" VARCHAR(100) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    "name" VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE "BaseVoltage"
@@ -497,10 +500,10 @@ CREATE TABLE "LinearShuntCompensator"
     FOREIGN KEY ( "mRID" ) REFERENCES "ShuntCompensator" ( "mRID" )
 );
 
-CREATE TABLE "Name"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY
-);
+--CREATE TABLE "Name"
+--(
+--    "mRID" VARCHAR(100) PRIMARY KEY
+--);
 
 CREATE TABLE "NuclearGeneratingUnit"
 (
@@ -508,11 +511,11 @@ CREATE TABLE "NuclearGeneratingUnit"
     FOREIGN KEY ( "mRID" ) REFERENCES "GeneratingUnit" ( "mRID" )
 );
 
-CREATE TABLE "PSRType"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" )
-);
+--CREATE TABLE "PSRType"
+--(
+--    "mRID" VARCHAR(100) PRIMARY KEY,
+--    FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" )
+--);
 
 CREATE TABLE "PhotoVoltaicUnit"
 (
