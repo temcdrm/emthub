@@ -1737,6 +1737,22 @@
     cim:IdentifiedObject.mRID "432FEFAB-449B-4ECA-8260-D9CA3ABE534C"^^cim:String ;
     cim:IdentifiedObject.name "69_75_1"^^cim:String .
 
+<44F4E630-2A30-42EA-B878-BC1388813AAB> a cim:ACLineSegment ;
+    emt:ConductingEquipment.FromConnectivityNode <8437DFEF-68D9-4BFF-AA7B-EBA864F79C36> ;
+    emt:ConductingEquipment.ToConnectivityNode <686B1CD1-21E6-40AC-A05B-7C65A71F6C83> ;
+    cim:ACLineSegment.b0ch "0.0002709514807813484"^^cim:Susceptance ;
+    cim:ACLineSegment.bch "0.0004515858013022474"^^cim:Susceptance ;
+    cim:ACLineSegment.r "13.616459999999998"^^cim:Resistance ;
+    cim:ACLineSegment.r0 "27.232919999999996"^^cim:Resistance ;
+    cim:ACLineSegment.x "61.51212"^^cim:Reactance ;
+    cim:ACLineSegment.x0 "184.53636"^^cim:Reactance ;
+    cim:ConductingEquipment.BaseVoltage <E2DE96D0-BC3F-4E89-A3CA-224FE2DEB7BC> ;
+    cim:Conductor.length "123742.70156160001"^^cim:Length ;
+    cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "44F4E630-2A30-42EA-B878-BC1388813AAB"^^cim:String ;
+    cim:IdentifiedObject.name "42_49_2"^^cim:String .
+
 <483DD85B-B122-4C0B-AABB-E7E28462BB38> a cim:ACLineSegment ;
     emt:ConductingEquipment.FromConnectivityNode <9A0C592D-3424-4EA2-96CB-98FE1BEBA52C> ;
     emt:ConductingEquipment.ToConnectivityNode <8DFC5E82-6987-4CDC-A143-210F22564C8D> ;
@@ -2328,6 +2344,22 @@
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "7DC1806C-9068-40BA-AE94-895CF961E7C1"^^cim:String ;
     cim:IdentifiedObject.name "56_59_2"^^cim:String .
+
+<821E713F-DFEA-4AEF-A621-E02C8C202A53> a cim:ACLineSegment ;
+    emt:ConductingEquipment.FromConnectivityNode <686B1CD1-21E6-40AC-A05B-7C65A71F6C83> ;
+    emt:ConductingEquipment.ToConnectivityNode <0669852C-2576-4F88-A164-23F0E16EBE6F> ;
+    cim:ACLineSegment.b0ch "7.813484562066791e-05"^^cim:Susceptance ;
+    cim:ACLineSegment.bch "0.0001302247427011132"^^cim:Susceptance ;
+    cim:ACLineSegment.r "3.42792"^^cim:Resistance ;
+    cim:ACLineSegment.r0 "6.85584"^^cim:Resistance ;
+    cim:ACLineSegment.x "17.501435999999998"^^cim:Reactance ;
+    cim:ACLineSegment.x0 "52.504307999999995"^^cim:Reactance ;
+    cim:ConductingEquipment.BaseVoltage <E2DE96D0-BC3F-4E89-A3CA-224FE2DEB7BC> ;
+    cim:Conductor.length "35207.288772479995"^^cim:Length ;
+    cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "821E713F-DFEA-4AEF-A621-E02C8C202A53"^^cim:String ;
+    cim:IdentifiedObject.name "49_66_2"^^cim:String .
 
 <82588AC2-35DB-444C-BEF1-EB94F03C3452> a cim:ACLineSegment ;
     emt:ConductingEquipment.FromConnectivityNode <B5F5DE6C-0F4A-424A-9649-65E4BAD10FAE> ;
