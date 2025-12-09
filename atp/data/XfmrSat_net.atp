@@ -1,0 +1,66 @@
+C file: XfmrSat, Load Mult=1.000
+$VINTAGE,0
+C =============================================================================
+C Swing Bus 1 at 1
+/SOURCE
+C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >
+14THEV_A  281691.320    60.000   -30.000                        -1.000  9999.000
+14THEV_B  281691.320    60.000  -150.000                        -1.000  9999.000
+14THEV_C  281691.320    60.000  -270.000                        -1.000  9999.000
+/BRANCH
+C < n1 >< n2 ><ref1><ref2>< R  >< X  >< C  >
+51THEV_ASBUS_A            0.59515.9513
+52THEV_BSBUS_B            0.59515.9513
+53THEV_CSBUS_C
+/SWITCH
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
+  SBUS_AB1___A    -1.000  9990.000                    MEASURING                1
+  SBUS_BB1___B    -1.000  9990.000                    MEASURING                1
+  SBUS_CB1___C    -1.000  9990.000                    MEASURING                1
+/BRANCH
+C =============================================================================
+C transformer 3_4_0_1, 2 windings from 3
+C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
+  TRANSFORMER             11.833747.21X1___X952.E2
+          11.833          747.21
+            9999
+C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
+ 1B3___A                  1.19039.5220199.19
+ 2B4___A                  0.19041.523579.674
+  TRANSFORMER X1___X                  X1___Y
+ 1B3___B      
+ 2B4___B      
+  TRANSFORMER X1___X                  X1___Z
+ 1B3___C      
+ 2B4___C      
+C =============================================================================
+C line 1_2_1 from 1 to 2
+C   per-instance sequence parameters for 303.36km
+$VINTAGE,1
+C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
+-1B1___AB2___A            3.955714e-026.698686e+021.343578e-033.033612e+02 2 0 0
+-2B1___BB2___B            1.977857e-022.995744e+021.001444e-033.033612e+02 2 0 0
+-3B1___CB2___C
+$VINTAGE,0
+/SWITCH
+C =============================================================================
+C Breaker 2_3_1 from 2 to 3 numbered 0 for timing
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
+  B2___AB3___A_TCLOSE0___TOPEN0___                                             1
+  B2___BB3___B_TCLOSE0___TOPEN0___                                             1
+  B2___CB3___C_TCLOSE0___TOPEN0___                                             1
+C =============================================================================
+C Breaker 4_5_1 from 4 to 5 numbered 1 for timing
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
+  B4___AB5___A_TCLOSE1___TOPEN1___                                             1
+  B4___BB5___B_TCLOSE1___TOPEN1___                                             1
+  B4___CB5___C_TCLOSE1___TOPEN1___                                             1
+/BRANCH
+C =============================================================================
+C load 5_1 at 5 is 400000.000 + j0.000 kVA
+C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
+$VINTAGE,1
+  B5___A                      4.761000e+01
+  B5___B                      4.761000e+01
+  B5___C                      4.761000e+01
+$VINTAGE,0

@@ -39,7 +39,12 @@ CASES = [
    'bus_ic': 'c:/src/cimhub/bes/wecc240mb.txt',
    'gen_ic': 'c:/src/cimhub/bes/wecc240mg.txt',
    'swingbus':'2438', 
-   'load': 1.0425}
+   'load': 1.0425},
+  {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
+   'name':'XfmrSat', 
+   'rawfile':'raw/XfmrSat.raw', 'xmlfile':'XfmrSat.xml', 'mridfile': 'raw/XfmrSatmrids.dat', 'ttlfile': 'XfmrSat.ttl',
+   'wind_units':[], 'solar_units':[], 'hydro_units':[], 'nuclear_units':[],
+   'swingbus': '1'}
 ]
 
 def summarize_graph (g):
@@ -121,7 +126,7 @@ def load_emt_dict (g, xml_file, sysid):
               'EMTPowerXfmrMesh', 'EMTXfmrSaturation', 'EMTCompShunt', 'EMTCompSeries',
               'EMTSyncMachine', 'EMTSolar', 'EMTWind', 'EMTGovSteamSGO', 'EMTExcST1A',
               'EMTPssIEEE1A', 'EMTWeccREGCA', 'EMTWeccREECA', 'EMTWeccREPCA',
-              'EMTWeccWTGTA', 'EMTWeccWTGARA']:
+              'EMTWeccWTGTA', 'EMTWeccWTGARA', 'EMTEnergySource', 'EMTDisconnectingCircuitBreaker']:
     start_time = time.time()
     query_for_values (g, dict[key], sysid)
     print ('  Running {:40s} took {:6.3f} s for {:5d} rows'.format (key, time.time() - start_time, len(dict[key]['vals'])))
@@ -129,7 +134,7 @@ def load_emt_dict (g, xml_file, sysid):
   return dict
 
 if __name__ == '__main__':
-  idx = 0
+  idx = 2
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
   case = CASES[idx]
@@ -143,4 +148,6 @@ if __name__ == '__main__':
   d = load_emt_dict (g, 'sparql_queries.xml', case['id'])
   print ('Total query time {:6.3f} s'.format (time.time() - start_time))
 
+  for key in ['EMTEnergySource', 'EMTDisconnectingCircuitBreaker']:
+    list_dict_table (d, key)
 

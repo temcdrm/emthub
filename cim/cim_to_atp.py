@@ -25,7 +25,7 @@ CASES = [
    'bus_ic': 'c:/src/cimhub/bes/ieee118mb.txt',
    'gen_ic': 'c:/src/cimhub/bes/ieee118mg.txt',
    'swingbus':'131', 
-   'load': 0.6748},
+   'load': 0.6748, 'UseXfmrSaturation': False},
   {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 
    'name': 'WECC240',
    'rawfile':'raw/240busWECC_2018_PSS.raw', 'xmlfile':'wecc240.xml', 'locfile': 'raw/wecc240_network.json', 'mridfile':'raw/wecc240mrids.dat', 'ttlfile': 'wecc240.ttl',
@@ -44,12 +44,12 @@ CASES = [
    'bus_ic': 'c:/src/cimhub/bes/wecc240mb.txt',
    'gen_ic': 'c:/src/cimhub/bes/wecc240mg.txt',
    'swingbus':'2438', 
-   'load': 1.0425},
+   'load': 1.0425, 'UseXfmrSaturation': False},
   {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
    'name':'XfmrSat', 
    'rawfile':'raw/XfmrSat.raw', 'xmlfile':'XfmrSat.xml', 'mridfile': 'raw/XfmrSatmrids.dat', 'ttlfile': 'XfmrSat.ttl',
    'wind_units':[], 'solar_units':[], 'hydro_units':[], 'nuclear_units':[],
-   'swingbus': '1'}
+   'swingbus': '1', 'UseXfmrSaturation': True}
 ]
 
 BUS_VMAG_IDX = 0
@@ -365,7 +365,11 @@ def AtpStarEquivalent(wdgs, meshes, regs):
       x[i] *= 3.0
   return r, x, v
 
-def AtpStarCore(wdgs, core):
+def AtpStarCore(wdgs, dict, pname, bUseSaturation):
+  core = dict['EMTPowerXfmrCore']['vals'][pname]
+  sat = dict['EMTXfmrSaturation']
+  Imag = []
+  Fmag = []
   cim_b = core['b']
   cim_g = core['g']
   cim_e = core['enum'] - 1  # This may not be 0 in the CIM. For ATP, transform this to end 0
@@ -389,7 +393,9 @@ def AtpStarCore(wdgs, core):
     Iss = SQRT2 * core_b * core_v
   else:
     Iss = MIN_IMAG * SQRT2 * core_s / core_v
-  return Iss, Fss, Rmag
+  Imag.append (Iss)
+  Fmag.append (Fss)
+  return Imag, Fmag, Rmag
 
 def AtpLoadXfmr(zb, v):
   if zb < 0.001:
@@ -739,7 +745,7 @@ def load_emt_dict (g, xml_file, sysid):
               'EMTPowerXfmrMesh', 'EMTXfmrSaturation', 'EMTCompShunt', 'EMTCompSeries',
               'EMTSyncMachine', 'EMTSolar', 'EMTWind', 'EMTGovSteamSGO', 'EMTExcST1A',
               'EMTPssIEEE1A', 'EMTWeccREGCA', 'EMTWeccREECA', 'EMTWeccREPCA',
-              'EMTWeccWTGTA', 'EMTWeccWTGARA']:
+              'EMTWeccWTGTA', 'EMTWeccWTGARA', 'EMTEnergySource', 'EMTDisconnectingCircuitBreaker']:
     start_time = time.time()
     query_for_values (g, dict[key], sysid)
     print ('  Running {:40s} took {:6.3f} s for {:5d} rows'.format (key, time.time() - start_time, len(dict[key]['vals'])))
@@ -892,7 +898,7 @@ def convert_one_atp_model (d, fpath, case):
       print ('C *** too many windings for saturable transformer component', file=ap)
       print ('*** Transformer {:s} has {:d} windings, but only 2 or 3 supported'.format(pname, nwdg))
       continue
-    Iss, Fss, Rmag = AtpStarCore (wdgs, d['EMTPowerXfmrCore']['vals'][pname])
+    Imag, Fmag, Rmag = AtpStarCore (wdgs, d, pname, case['UseXfmrSaturation'])
     xfbus = 'X' + str(xfbusnum)
     if wdgs[0]['conn'] == 'D':
       bEnd1Delta = True
@@ -901,11 +907,12 @@ def convert_one_atp_model (d, fpath, case):
     r, x, v = AtpStarEquivalent (wdgs, meshes, regs)
     for ph in ['A', 'B', 'C']:
       if ph == 'A':
-        print ('C TRANSFORMER             < Iss>< Fss><BusT><Rmag>', file=ap)
-        print ('  TRANSFORMER             {:s}{:s}{:s}{:s}'.format (AtpFit6 (Iss), AtpFit6 (Fss), 
+        print ('C TRANSFORMER             <Imag><Fmag><BusT><Rmag>', file=ap)
+        print ('  TRANSFORMER             {:s}{:s}{:s}{:s}'.format (AtpFit6 (Imag[0]), AtpFit6 (Fmag[0]), 
                                                                     AtpNode (xfbus, 'X'),
                                                                     AtpFit6 (Rmag)), file=ap)
-        print ('{:>16s}{:>16s}'.format (AtpFit6 (Iss), AtpFit6 (Fss)), file=ap)
+        for idx in range(len(Imag)):
+          print ('{:>16s}{:>16s}'.format (AtpFit6 (Imag[idx]), AtpFit6 (Fmag[idx])), file=ap)
         print ('            9999', file=ap)
         print ('C < n 1>< n 2><ref1><ref2><   R><   X><  KV>', file=ap)
         for i in range(nwdg):
@@ -970,6 +977,25 @@ def convert_one_atp_model (d, fpath, case):
       print (PadBlanks(26) + AtpRXC(rm, xm, cm), file=ap)
       print (PadBlanks(26) + AtpRXC(rs, xs, cs), file=ap)
       print ('$VINTAGE,0', file=ap)
+
+  if len(d['EMTDisconnectingCircuitBreaker']['vals']) > 0:
+    nbrkr = 0
+    print ('/SWITCH', file=ap)
+    for key, row in d['EMTDisconnectingCircuitBreaker']['vals'].items():
+      bus1 = AtpBus(atp_buses[row['bus1']])
+      bus2 = AtpBus(atp_buses[row['bus2']])
+      sClose = '_TCLOSE{:d}'.format (nbrkr).ljust (10, '_')
+      sOpen = '_TOPEN{:d}'.format (nbrkr).ljust (10, '_')
+      print ('C =============================================================================', file=ap)
+      print ('C Breaker {:s} from {:s} to {:s} numbered {:d} for timing'.format (key, row['bus1'], row['bus2'], nbrkr), file=ap)
+      print ('C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1', file=ap)
+      for ph in ['A', 'B', 'C']:
+        print ('  {:6s}{:6s}{:10s}{:10s}                                             1'.format (AtpNode (bus1, ph), 
+          AtpNode (bus2, ph), sClose, sOpen), file=ap)
+#        print ('  {:6s}{:6s}{:10.3f}{:10.3f}                                             0'.format (AtpNode (bus1, ph), 
+#          AtpNode (bus2, ph), -1.0, TOPEN), file=ap)
+      nbrkr += 1
+    print ('/BRANCH', file=ap)
 
   for key, row in d['EMTCompSeries']['vals'].items():
     bus1 = AtpBus(atp_buses[row['bus1']])
@@ -1169,7 +1195,7 @@ def convert_one_atp_model (d, fpath, case):
 #  print ('C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1', file=ap)
 
   ap.close()
-  with open('{:s}_dgen.json'.format(fname), 'w') as jp: 
+  with open('{:s}{:s}_dgen.json'.format(fpath, fname), 'w') as jp: 
     json.dump(dgens, jp)
 
   print ('Wrote {:s}_net.atp to {:s}'.format(fname, fpath))
@@ -1193,6 +1219,9 @@ if __name__ == '__main__':
   d = load_emt_dict (g, 'sparql_queries.xml', case['id'])
   print ('Total query time {:6.3f} s'.format (time.time() - start_time))
 
+  list_dict_table (d, 'EMTPowerXfmrCore')
+  list_dict_table (d, 'EMTXfmrSaturation')
+
   reset_globals (case)
-  convert_one_atp_model (d, fpath = './', case=case)
+  convert_one_atp_model (d, fpath = '../atp/data/', case=case)
 

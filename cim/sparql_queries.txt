@@ -32,12 +32,58 @@ PREFIX e:  <http://opensource.ieee.org/emtiop#>
 # EMTContainer
 # IEEE118	1783D2A8-1204-4781-A0B4-7A73A2FA6038
 # WECC240	2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3
+# XfmrSat       93EA6BF1-A569-4190-9590-98A62780489E
 SELECT ?name ?id WHERE {
  ?s r:type c:EquipmentContainer.
  ?s c:IdentifiedObject.name ?name.
  ?s c:IdentifiedObject.mRID ?id.
 }
 ORDER by ?name
+
+# EMTDisconnectingCircuitBreaker
+SELECT ?name ?bus1 ?bus2 ?basev ?id ?sysid ?cn1id ?cn2id WHERE {
+ ?s r:type c:DisconnectingCircuitBreaker.
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ VALUES ?sysid {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s c:Equipment.EquipmentContainer ?sys.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?id. 
+ ?s c:ConductingEquipment.BaseVoltage ?bv.
+ ?bv c:BaseVoltage.nominalVoltage ?basev.
+ ?s e:ConductingEquipment.FromConnectivityNode ?cn1.
+ ?s e:ConductingEquipment.ToConnectivityNode ?cn2.
+ ?cn1 c:IdentifiedObject.mRID ?cn1id.
+ ?cn1 c:IdentifiedObject.name ?bus1.
+ ?cn2 c:IdentifiedObject.mRID ?cn2id.
+ ?cn2 c:IdentifiedObject.name ?bus2
+}
+ORDER by ?name
+
+# EMTEnergySource
+SELECT ?name ?id ?bus ?basev ?r ?x ?r0 ?x0 ?nomv ?vmag ?vang ?sysid ?cn1id WHERE {
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ VALUES ?sysid {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
+ ?s r:type c:EnergySource.
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s c:Equipment.EquipmentContainer ?sys.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?id.
+ ?s c:ConductingEquipment.BaseVoltage ?bv.
+ ?bv c:BaseVoltage.nominalVoltage ?basev.
+ ?s c:EnergySource.r ?r.
+ ?s c:EnergySource.x ?x.
+ ?s c:EnergySource.r0 ?r0.
+ ?s c:EnergySource.x0 ?x0.
+ ?s c:EnergySource.nominalVoltage ?nomv.
+ ?s c:EnergySource.voltageMagnitude ?vmag.
+ ?s c:EnergySource.voltageAngle ?vang.
+ ?s e:ConductingEquipment.FromConnectivityNode ?cn. 
+ ?cn c:IdentifiedObject.mRID ?cn1id. 
+ ?cn c:IdentifiedObject.name ?bus
+} ORDER by ?name
 
 # EMTBus
 SELECT DISTINCT ?name ?id ?nomv WHERE {
@@ -151,7 +197,7 @@ SELECT ?name ?id ?bus ?basev ?p ?q ?pz ?qz ?pi ?qi ?pp ?qp ?pe ?qe ?sysid ?cn1id
  OPTIONAL {?lr c:LoadResponseCharacteristic.pVoltageExponent ?pe.}
  OPTIONAL {?lr c:LoadResponseCharacteristic.qVoltageExponent ?qe.}
  ?s e:ConductingEquipment.FromConnectivityNode ?cn. 
- ?s c:IdentifiedObject.mRID ?cn1id. 
+ ?cn c:IdentifiedObject.mRID ?cn1id. 
  ?cn c:IdentifiedObject.name ?bus
 }
 ORDER by ?name

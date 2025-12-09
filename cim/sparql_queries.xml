@@ -151,7 +151,60 @@ ORDER BY ?name
 ]]>
 </value>
 </query>
-s<query>
+<query>
+<id>EMTDisconnectingCircuitBreaker</id>
+<keyfld>name</keyfld>
+<description></description>
+<value>
+<![CDATA[
+SELECT ?name ?bus1 ?bus2 ?basev ?id ?sysid ?cn1id ?cn2id WHERE {
+ ?s r:type c:DisconnectingCircuitBreaker.
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s c:Equipment.EquipmentContainer ?sys.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?id. 
+ ?s c:ConductingEquipment.BaseVoltage ?bv.
+ ?bv c:BaseVoltage.nominalVoltage ?basev.
+ ?s e:ConductingEquipment.FromConnectivityNode ?cn1.
+ ?s e:ConductingEquipment.ToConnectivityNode ?cn2.
+ ?cn1 c:IdentifiedObject.mRID ?cn1id.
+ ?cn1 c:IdentifiedObject.name ?bus1.
+ ?cn2 c:IdentifiedObject.mRID ?cn2id.
+ ?cn2 c:IdentifiedObject.name ?bus2
+}
+ORDER by ?name
+]]>
+</value>
+</query>
+<query>
+<id>EMTEnergySource</id>
+<keyfld>name</keyfld>
+<description></description>
+<value>
+<![CDATA[
+SELECT ?name ?id ?bus ?basev ?r ?x ?r0 ?x0 ?nomv ?vmag ?vang ?sysid ?cn1id WHERE {
+ ?s r:type c:EnergySource.
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s c:Equipment.EquipmentContainer ?sys.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?id.
+ ?s c:ConductingEquipment.BaseVoltage ?bv.
+ ?bv c:BaseVoltage.nominalVoltage ?basev.
+ ?s c:EnergySource.r ?r.
+ ?s c:EnergySource.x ?x.
+ ?s c:EnergySource.r0 ?r0.
+ ?s c:EnergySource.x0 ?x0.
+ ?s c:EnergySource.nominalVoltage ?nomv.
+ ?s c:EnergySource.voltageMagnitude ?vmag.
+ ?s c:EnergySource.voltageAngle ?vang.
+ ?s e:ConductingEquipment.FromConnectivityNode ?cn. 
+ ?cn c:IdentifiedObject.mRID ?cn1id. 
+ ?cn c:IdentifiedObject.name ?bus
+} ORDER by ?name
+]]>
+</value>
+</query>
+<query>
 <id>EMTCompSeries</id>
 <keyfld>name</keyfld>
 <description>series capacitor or reactor</description>
@@ -744,7 +797,7 @@ SELECT ?name ?id ?bus ?basev ?p ?q ?pz ?qz ?pi ?qi ?pp ?qp ?pe ?qe ?sysid ?cn1id
  OPTIONAL {?lr c:LoadResponseCharacteristic.pVoltageExponent ?pe.}
  OPTIONAL {?lr c:LoadResponseCharacteristic.qVoltageExponent ?qe.}
  ?s e:ConductingEquipment.FromConnectivityNode ?cn. 
- ?s c:IdentifiedObject.mRID ?cn1id. 
+ ?cn c:IdentifiedObject.mRID ?cn1id. 
  ?cn c:IdentifiedObject.name ?bus
 }
 ORDER by ?name
