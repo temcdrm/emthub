@@ -15,6 +15,7 @@ plt.rcParams['savefig.directory'] = os.getcwd()
 CASES = [
   {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 'name': 'IEEE118'},
   {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 'name': 'WECC240'},
+  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56', 'name': 'IEEE39'}
 ]
 
 nodeTypes = {
