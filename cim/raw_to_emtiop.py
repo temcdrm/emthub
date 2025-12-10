@@ -44,7 +44,11 @@ CASES = [
    'name':'XfmrSat', 
    'rawfile':'raw/XfmrSat.raw', 'xmlfile':'XfmrSat.xml', 'mridfile': 'raw/XfmrSatmrids.dat', 'ttlfile': 'XfmrSat.ttl',
    'wind_units':[], 'solar_units':[], 'hydro_units':[], 'nuclear_units':[],
-   'swingbus': '1'}
+   'swingbus': '1'},
+  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56',
+   'name': 'IEEE39',
+   'rawfile': 'raw/ieee39_1ibr.raw', 'xmlfile':'ieee39.xml', 'locfile': 'raw/ieee39_network.json', 'mridfile':'raw/ieee39mrids.dat', 'ttlfile': 'ieee39.ttl',
+   'wind_units': [], 'solar_units': ['30_1'], 'hydro_units': [], 'nuclear_units': []}
 ]
 
 METAFILE = 'psseraw.json'
@@ -322,26 +326,27 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
 
   # write the diagram layout
   if 'locfile' in case:
-    busxy = load_bus_coordinates (case['locfile'])
-    for row in tables['BUS']['data']:
-      key = str(row[0])
-      busname = '{:d} {:s} {:.2f} kV'.format (row[0], row[1], row[2])
-      xy = busxy[key]
-      ID = GetCIMID('TextDiagramObject', key, uuids)
-      td = rdflib.URIRef (ID)
-      g.add ((td, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'TextDiagramObject')))
-      g.add ((td, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
-      g.add ((td, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
-      g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.IdentifiedObject'), rdflib.URIRef (busids[key])))
-      g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.drawingOrder'), rdflib.Literal (1, datatype=CIM.Integer)))
-      g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.isPolygon'), rdflib.Literal (False, datatype=CIM.Boolean)))
-      g.add ((td, rdflib.URIRef (CIM_NS + 'TextDiagramObject.text'), rdflib.Literal(busname, datatype=CIM.String)))
-      pt = rdflib.URIRef (ID+'_pt1') # rdflib.BNode()
-      g.add ((pt, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint')))
-      g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.DiagramObject'), td))
-      g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.sequenceNumber'), rdflib.Literal(1, datatype=CIM.Integer)))
-      g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.xPosition'), rdflib.Literal(xy[0], datatype=CIM.Float)))
-      g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.yPosition'), rdflib.Literal(xy[1], datatype=CIM.Float)))
+    if os.path.exists(case['locfile']):
+      busxy = load_bus_coordinates (case['locfile'])
+      for row in tables['BUS']['data']:
+        key = str(row[0])
+        busname = '{:d} {:s} {:.2f} kV'.format (row[0], row[1], row[2])
+        xy = busxy[key]
+        ID = GetCIMID('TextDiagramObject', key, uuids)
+        td = rdflib.URIRef (ID)
+        g.add ((td, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'TextDiagramObject')))
+        g.add ((td, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+        g.add ((td, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+        g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.IdentifiedObject'), rdflib.URIRef (busids[key])))
+        g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.drawingOrder'), rdflib.Literal (1, datatype=CIM.Integer)))
+        g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.isPolygon'), rdflib.Literal (False, datatype=CIM.Boolean)))
+        g.add ((td, rdflib.URIRef (CIM_NS + 'TextDiagramObject.text'), rdflib.Literal(busname, datatype=CIM.String)))
+        pt = rdflib.URIRef (ID+'_pt1') # rdflib.BNode()
+        g.add ((pt, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint')))
+        g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.DiagramObject'), td))
+        g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.sequenceNumber'), rdflib.Literal(1, datatype=CIM.Integer)))
+        g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.xPosition'), rdflib.Literal(xy[0], datatype=CIM.Float)))
+        g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.yPosition'), rdflib.Literal(xy[1], datatype=CIM.Float)))
 
   # write the branches
   for row in tables['BRANCH']['data']:
@@ -934,7 +939,7 @@ def read_version_33_34(rdr,sections,bTwoTitles):
   table = None
   bTransformer = False
   for row in reader:
-    print (row)
+#    print (row)
     if '@!' in row[0]:
       continue
     if len(row) > 1 and 'END OF' in row[0] and 'BEGIN' in row[1]: # start a new table
@@ -1023,7 +1028,7 @@ def read_version_33_34(rdr,sections,bTwoTitles):
 #  print_table ('SYSTEM SWITCHING DEVICE')
 
 if __name__ == '__main__':
-  case_id = 2
+  case_id = 3
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
 
@@ -1034,12 +1039,17 @@ if __name__ == '__main__':
   with open(case['rawfile'], 'r') as csvfile:
     reader = csv.reader(csvfile, quotechar="'") # don't use " because it causes problems for CSV reader in title lines
     row = next(reader)
+    while row[0].startswith ('@!'):
+      row = next(reader)
     baseMVA = float(row[1])
     raw_version = int(row[2])
+    print (baseMVA, raw_version)
     if raw_version == 33:
       read_version_33_34 (reader, meta['version_sections']['33'], bTwoTitles=False)
     elif raw_version == 34:
       read_version_33_34 (reader, meta['version_sections']['34'], bTwoTitles=True)
+    elif raw_version == 35:
+      read_version_33_34 (reader, meta['version_sections']['35'], bTwoTitles=True)
     else:
       print ('Unknown RAW File Version = {:d} from {:s}'.format (raw_version, case['rawfile']))
       quit()
