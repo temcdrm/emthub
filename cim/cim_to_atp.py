@@ -366,10 +366,8 @@ def AtpStarEquivalent(wdgs, meshes, regs):
   return r, x, v
 
 def AtpStarCore(wdgs, dict, pname, bUseSaturation):
+  # determine steady-state exciting branch from the core admittance attributes
   core = dict['EMTPowerXfmrCore']['vals'][pname]
-  sat = dict['EMTXfmrSaturation']
-  Imag = []
-  Fmag = []
   cim_b = core['b']
   cim_g = core['g']
   cim_e = core['enum'] - 1  # This may not be 0 in the CIM. For ATP, transform this to end 0
@@ -380,21 +378,38 @@ def AtpStarCore(wdgs, dict, pname, bUseSaturation):
   core_c = wdgs[core_e]['conn']
   core_s /= 3.0
   ratio = core_v * core_v / cim_v / cim_v
+  print ('ratio', ratio, core_v, cim_v)
   core_b = cim_b / ratio
   core_g = cim_g / ratio
-  if core_c == 'Y':
-    core_v /= SQRT3
-  Fss = core_v / OMEGA * SQRT2
-  if core_g > 0.0:
-    Rmag = 1.0 / core_g
-  else:
-    Rmag = core_v * core_v / MIN_PNLL / core_s
   if core_b > 0.0:
     Iss = SQRT2 * core_b * core_v
   else:
     Iss = MIN_IMAG * SQRT2 * core_s / core_v
-  Imag.append (Iss)
-  Fmag.append (Fss)
+  if core_c == 'Y':
+    cim_v /= SQRT3
+    core_v /= SQRT3
+  Fss = core_v / OMEGA * SQRT2
+  # this represents the core losses
+  if core_g > 0.0:
+    Rmag = 1.0 / core_g
+  else:
+    Rmag = core_v * core_v / MIN_PNLL / core_s
+
+  # create a saturable current-flux curve if available, or use the steady-state parameters if not
+  sat = dict['EMTXfmrSaturation']
+  Imag = []
+  Fmag = []
+  for key in sat['vals']:
+    toks = key.split(':')
+    if toks[0] == pname:
+      ival = float(toks[1]) * cim_v / core_v
+      fval = sat['vals'][key]['vs'] * core_v / cim_v
+      print (toks[0], ival, fval)
+      Imag.append (ival)
+      Fmag.append (fval)
+  if len(Imag) < 1:
+    Imag.append (Iss)
+    Fmag.append (Fss)
   return Imag, Fmag, Rmag
 
 def AtpLoadXfmr(zb, v):

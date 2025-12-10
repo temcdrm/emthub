@@ -21,8 +21,9 @@ C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
 C =============================================================================
 C transformer 3_4_0_1, 2 windings from 3
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
-  TRANSFORMER             11.833747.21X1___X952.E2
-          11.833          747.21
+  TRANSFORMER             13.017821.93X1___X952.E2
+          13.017          821.93
+          53.017          825.97
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B3___A                  1.19039.5220199.19
@@ -35,11 +36,11 @@ C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  2B4___C      
 C =============================================================================
 C line 1_2_1 from 1 to 2
-C   per-instance sequence parameters for 303.36km
+C   per-instance sequence parameters for 505.60km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B1___AB2___A            3.955714e-026.698686e+021.343578e-033.033612e+02 2 0 0
--2B1___BB2___B            1.977857e-022.995744e+021.001444e-033.033612e+02 2 0 0
+-1B1___AB2___A            7.911271e-026.712124e+022.234813e-035.056020e+02 2 0 0
+-2B1___BB2___B            3.955636e-023.001753e+021.665732e-035.056020e+02 2 0 0
 -3B1___CB2___C
 $VINTAGE,0
 /SWITCH

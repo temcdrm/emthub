@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import os
 import math
+from scipy import signal
 
 plt.rcParams['savefig.directory'] = os.getcwd()
 lsize = 22
@@ -19,6 +20,8 @@ SQRT3H = math.sqrt(3.0) / 2.0
 TWOTHIRDS = 2.0 / 3.0
 SQRT23 = math.sqrt(TWOTHIRDS)
 
+b, a = signal.butter (2, 1.0 / 2048.0, btype='low', analog=False)
+
 def summarize_df (df, label):
   print ('Column                         Min           Max {:s}'.format (label))
   for lbl, data in df.items():
@@ -31,9 +34,9 @@ if __name__ == '__main__':
   fig, ax = plt.subplots (1, 3, sharex = 'col', figsize=(21,9), constrained_layout=True)
   # fig.suptitle ('Transformer Saturation Case', fontsize=lsize+4)
   t = np.array(df.index)
-  va = df['V:B2A']
-  vb = df['V:B2B']
-  vc = df['V:B2C']
+  va = df['V:B3A']
+  vb = df['V:B3B']
+  vc = df['V:B3C']
   ia = df['I:B2A:B3A']
   ib = df['I:B2B:B3B']
   ic = df['I:B2C:B3C']
@@ -47,6 +50,10 @@ if __name__ == '__main__':
   p_alphabeta = valpha*ialpha + vbeta*ibeta
   q_alphabeta = -valpha*ibeta + vbeta*ialpha
 
+  # filter the P and Q signals
+  p = signal.lfilter (b, a, p_alphabeta)
+  q = signal.lfilter (b, a, q_alphabeta)
+
   ax[0].set_title ('Xfmr Voltages [pu]', fontsize=lsize+4)
   ax[0].plot (t, va/vbase, label='Va')
   ax[0].plot (t, vb/vbase, label='Vb')
@@ -58,8 +65,8 @@ if __name__ == '__main__':
   ax[1].plot (t, 0.001*ic, label='Ic')
 
   ax[2].set_title ('Xfmr Powers [MVA]', fontsize=lsize+4)
-  ax[2].plot (t, p_alphabeta/1.0e6, label='Active')
-  ax[2].plot (t, q_alphabeta/1.0e6, label='Reactive')
+  ax[2].plot (t, p/1.0e6, label='Active')
+  ax[2].plot (t, q/1.0e6, label='Reactive')
 
   for i in range(3):
     ax[i].grid()
