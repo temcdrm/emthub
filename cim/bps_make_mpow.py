@@ -1,10 +1,14 @@
 # Copyright (C) 2023-2024 Battelle Memorial Institute
 # Copyright (C) 2025 Meltran, Inc
 
-import cimhub.api as cimhub
-import cimhub.CIMHubConfig as CIMHubConfig
 import sys
 import os
+import rdflib
+import time
+import xml.etree.ElementTree as ET
+
+PREFIX = None
+DELIM = ':'
 
 CASES = [
   {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 'name': 'IEEE118', 'swingbus':'131'},
@@ -22,6 +26,78 @@ FUELS = {
 
 # global constants
 MVA_BASE = 100.0
+
+def list_dict_table(dict, tag):
+  tbl = dict[tag]
+  print ('\n{:s}: key,{:s}'.format(tag, str(tbl['columns'])))
+  for key, row in tbl['vals'].items():
+    print ('{:s},{:s}'.format (key, ','.join(str(row[c]) for c in tbl['columns'])))
+
+def build_query (prefix, base, sysid):
+  if sysid is not None:
+    idx = base.find('WHERE {') + 8
+    return prefix + '\n' + base[:idx] + """ VALUES ?sysid {{"{:s}"^^c:String}}\n""".format (sysid) + base[idx:]
+  return prefix + '\n' + base
+
+def query_for_values (g, tbl, sysid):
+  keyflds = tbl['keyfld'].split(':')
+  q = build_query (PREFIX, tbl['sparql'], sysid)
+ # print ('===================')
+ # print (q)
+  result = g.query(q)
+  vars = [str(item) for item in result.vars]
+  for akey in keyflds:
+    vars.remove (akey)
+  tbl['columns'] = vars
+  for b in result:
+    row = {}
+    key = str(b[keyflds[0]])
+    for i in range(1, len(keyflds)):
+      key = key + DELIM + str(b[keyflds[i]])
+    for fld in vars:
+      if fld in ['name', 'conn', 'sysid', 'bus', 'bus1', 'bus2', 'id', 'eqid']:
+        row[fld] = str(b[fld])
+      else:
+        try:
+          row[fld] = int(b[fld])
+        except ValueError:
+          try:
+            row[fld] = float(b[fld])
+          except ValueError:
+            row[fld] = str(b[fld])
+    tbl['vals'][key] = row
+
+def load_emt_dict (g, xml_file, sysid):
+  global PREFIX
+  # read the queries into dict
+  tree = ET.parse(xml_file)
+  root = tree.getroot()
+  nsCIM = root.find('nsCIM').text.strip()
+  nsRDF = root.find('nsRDF').text.strip()
+  nsEMT = root.find('nsEMT').text.strip()
+  PREFIX = """PREFIX r: <{:s}>\nPREFIX c: <{:s}>\nPREFIX e: <{:s}>""".format (nsRDF, nsCIM, nsEMT)
+  #print (PREFIX)
+  dict = {}
+  for query in root.findall('query'):
+    qid = query.find('id').text.strip()
+    dict[qid] = {}
+    dict[qid]['keyfld'] = query.find('keyfld').text
+    dict[qid]['sparql'] = query.find('value').text.strip()
+    dict[qid]['columns'] = []
+    dict[qid]['vals'] = {}
+    #print (' ', qid, dict[qid]['keyfld'])
+
+  for key in ['EMTContainer', 'EMTBus', 'EMTBusXY', 'EMTBaseVoltage', 'EMTLine', 'EMTLoad',
+              'EMTCountPowerXfmrWindings', 'EMTPowerXfmrWinding', 'EMTPowerXfmrCore',
+              'EMTPowerXfmrMesh', 'EMTXfmrSaturation', 'EMTCompShunt', 'EMTCompSeries',
+              'EMTSyncMachine', 'EMTSolar', 'EMTWind', 'EMTGovSteamSGO', 'EMTExcST1A',
+              'EMTPssIEEE1A', 'EMTWeccREGCA', 'EMTWeccREECA', 'EMTWeccREPCA',
+              'EMTWeccWTGTA', 'EMTWeccWTGARA', 'EMTEnergySource', 'EMTDisconnectingCircuitBreaker']:
+    start_time = time.time()
+    query_for_values (g, dict[key], sysid)
+    print ('  Running {:40s} took {:6.3f} s for {:5d} rows'.format (key, time.time() - start_time, len(dict[key]['vals'])))
+ #   list_dict_table (dict, key)
+  return dict
 
 def get_gencosts(fuel):
   c2 = 0.0
@@ -64,14 +140,14 @@ def add_mpc_generator (gens, data, bus_numbers, bus_generation, bus_headroom):
 
 def build_bus_lists (d):
   bNumeric = True
-  for key in d['BESBus']['vals']:
+  for key in d['EMTBus']['vals']:
     if not key.isdigit():
       bNumeric = False
       break
   if bNumeric:
-    ordered_buses = dict(sorted(d['BESBus']['vals'].items(), key=lambda x:int(x[0])))
+    ordered_buses = dict(sorted(d['EMTBus']['vals'].items(), key=lambda x:int(x[0])))
   else:
-    ordered_buses = d['BESBus']['vals']
+    ordered_buses = d['EMTBus']['vals']
   bus_numbers = {}
   busnum = 1
   for key, data in ordered_buses.items():
@@ -110,13 +186,13 @@ mpc.bus = [""", file=fp)
     mpc_bus_names.append (key)
   # add loads and shunts to buses
   total_load = 0.0
-  for key, data in d['BESLoad']['vals'].items():
+  for key, data in d['EMTLoad']['vals'].items():
     idx = bus_numbers[data['bus']]-1
     Pd = data['p'] / 1.0e6
     total_load += Pd
     mpc_buses[idx]['Pd'] += Pd
     mpc_buses[idx]['Qd'] += data['q'] / 1.0e6
-  for key, data in d['BESCompShunt']['vals'].items():
+  for key, data in d['EMTCompShunt']['vals'].items():
     idx = bus_numbers[data['bus']]-1
     scale = data['sections']*data['nomu']*data['nomu']/1.0e6
     mpc_buses[idx]['Gs'] += data['gsection']*scale
@@ -127,7 +203,7 @@ mpc.bus = [""", file=fp)
   mpc_gentypes = []
   bus_generation = {}
   bus_headroom = {}
-  for key, data in d['BESMachine']['vals'].items():
+  for key, data in d['EMTSyncMachine']['vals'].items():
     idx = bus_numbers[data['bus']]-1
     mpc_buses[idx]['type'] = 2
     add_mpc_generator (mpc_generators, data, bus_numbers, bus_generation, bus_headroom)
@@ -140,13 +216,13 @@ mpc.bus = [""", file=fp)
     else:
       mpc_genfuels.append('ng')
       mpc_gentypes.append('ST')
-  for key, data in d['BESSolar']['vals'].items():
+  for key, data in d['EMTSolar']['vals'].items():
     idx = bus_numbers[data['bus']]-1
     mpc_buses[idx]['type'] = 2
     add_mpc_generator (mpc_generators, data, bus_numbers, bus_generation, bus_headroom)
     mpc_genfuels.append('solar')
     mpc_gentypes.append('PV')
-  for key, data in d['BESWind']['vals'].items():
+  for key, data in d['EMTWind']['vals'].items():
     idx = bus_numbers[data['bus']]-1
     mpc_buses[idx]['type'] = 2
     add_mpc_generator (mpc_generators, data, bus_numbers, bus_generation, bus_headroom)
@@ -169,7 +245,7 @@ mpc.bus = [""", file=fp)
   print ('];', file=fp)
 
   print ("""
-%% generator data - BESMachine+BESSolar+BESWind
+%% generator data - SyncMachine+Solar+Wind
 %	bus Pg Qg Qmax Qmin Vg mBase status Pmax Pmin Pc1 Pc2 Qc1min Qc1max Qc2min Qc2max ramp_agc ramp_10 ramp_30 ramp_q apf
 mpc.gen = [""", file=fp)
   total_gen = 0.0
@@ -183,7 +259,7 @@ mpc.gen = [""", file=fp)
 
   # accumulate the transformer windings into transformers
   xfmrs = {}
-  for key, data in d['BESPowerXfmrWinding']['vals'].items():
+  for key, data in d['EMTPowerXfmrWinding']['vals'].items():
     toks = key.split(':')
     pname = toks[0]
     bus = bus_numbers[data['bus']]
@@ -191,7 +267,7 @@ mpc.gen = [""", file=fp)
       mva = data['ratedS'] / 1.0e6
       kv = data['ratedU'] / 1.0e3
       zbase = kv*kv / MVA_BASE # mva # on system MVA base, not on transformer MVA
-      mesh = d['BESPowerXfmrMesh']['vals']['{:s}:1:2'.format(pname)]
+      mesh = d['EMTPowerXfmrMesh']['vals']['{:s}:1:2'.format(pname)]
       r = mesh['r'] / zbase
       x = mesh['x'] / zbase
       xfmrs[pname] = {'from':bus, 'mva':mva, 'r':r, 'x': x}
@@ -202,7 +278,7 @@ mpc.gen = [""", file=fp)
 %% branch data - BESLine+BESCompSeries+collected transformers
 %	fbus tbus r x b rateA rateB rateC ratio angle status angmin angmax
 mpc.branch = [""", file=fp)
-  for key, data in d['BESLine']['vals'].items():
+  for key, data in d['EMTLine']['vals'].items():
     bus1 = bus_numbers[data['bus1']]
     bus2 = bus_numbers[data['bus2']]
     kvbase = data['basev']/1000.0
@@ -212,7 +288,7 @@ mpc.branch = [""", file=fp)
     x = data['x']/zbase
     b = q/MVA_BASE
     print (' {:5d} {:5d} {:9.6f} {:9.6f} {:9.6f} 0.0 0.0 0.0 0.0 0.0 1 0.0 0.0;'.format (bus1, bus2, r, x, b), file=fp)
-  for key, data in d['BESCompSeries']['vals'].items():
+  for key, data in d['EMTCompSeries']['vals'].items():
     bus1 = bus_numbers[data['bus1']]
     bus2 = bus_numbers[data['bus2']]
     kvbase = data['basev']/1000.0
@@ -272,25 +348,25 @@ mpc.bus_name = {""", file=fp)
   print ('suggest mpc = scale_load ({:.4f}, mpc)'.format(total_gen/total_load))
 
 if __name__ == '__main__':
-  CIMHubConfig.ConfigFromJsonFile ('cimhubconfig.json')
   case_id = 0
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
-  sys_id = CASES[case_id]['id']
-  sys_name = CASES[case_id]['name']
-  fp = open (sys_name + '.m', 'w')
+  case = CASES[case_id]
+  sys_id = case['id']
+  sys_name = case['name']
 
-  d = cimhub.load_bes_dict ('qbes.xml', sys_id, bTime=False)
-  cimhub.summarize_bes_dict (d)
-#  cimhub.list_dict_table (d, 'BESContainer')
-#  cimhub.list_dict_table (d, 'BESBaseVoltage')
-#  cimhub.list_dict_table (d, 'BESWind')
-#  cimhub.list_dict_table (d, 'BESSolar')
-#  cimhub.list_dict_table (d, 'BESMachine')
-#  cimhub.list_dict_table (d, 'BESPowerXfmrMesh')
-#  cimhub.list_dict_table (d, 'BESBus')
-#  cimhub.list_dict_table (d, 'BESCompShunt')
+  g = rdflib.Graph()
+  fname = sys_name + '.ttl'
+  g.parse (fname)
+  print ('read', len(g), 'statements from', fname)
+  #summarize_graph (g)
 
+  start_time = time.time()
+  d = load_emt_dict (g, 'sparql_queries.xml', case['id'])
+  print ('Total query time {:6.3f} s'.format (time.time() - start_time))
+  #list_dict_table (d, 'EMTBus')
+
+  fp = open ('../matpower/' + sys_name + '.m', 'w')
   build_matpower (d, sys_name, fp, CASES[case_id]['swingbus'])
   fp.close()
 
