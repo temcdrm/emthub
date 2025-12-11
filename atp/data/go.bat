@@ -6,7 +6,8 @@ rem call c:\atp\atpgnu\runtpgig IBRCall.atp > nul
 
 rem call c:\atp\atpgnu\runtpgig IEEE118.atp > nul
 rem call c:\atp\atpgnu\runtpgig WECC240.atp > nul
+call c:\atp\atpgnu\runtpgig IEEE39.atp > nul
 
-call c:\atp\atpgnu\runtpgig XfmrSat.atp > nul
+rem call c:\atp\atpgnu\runtpgig XfmrSat.atp > nul
 
 

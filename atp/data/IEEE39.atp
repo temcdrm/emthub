@@ -1,0 +1,77 @@
+BEGIN NEW DATA CASE
+$INCLUDE, IEEE39.prm
+C  dT  >< Tmax >< Xopt >< Copt ><Epsiln>
+__DELTAT____TMAX    60.0
+   65535       1       1       1       1       0       0       1
+C        1         2         3         4         5         6         7         8
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+/TACS
+TACS HYBRID
+/BRANCH
+C < n1 >< n2 ><ref1><ref2>< R  >< A  >< B  ><Leng><><>0
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  >
+$INCLUDE, IEEE39_net.atp
+C FAULTA                   0.001                                               1
+C FAULTB                   0.001                                               1
+  FAULTC                   0.001                                               1
+C FALTBC_FLT_C             0.001                                               1
+/SWITCH
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >
+C _FLT_AFAULTA_TFAULTA___TOPENA___
+C _FLT_BFAULTB_TFAULTB___TOPENB___
+  _FLT_CFAULTC_TFAULTC___TOPENC___
+C _FLT_BFALTBC_TFAULTBC__TOPENBC__
+/TACS
+33SM002V
+33SM003V
+33SM004V
+33SM005V
+33SM006V
+33SM007V
+33SM008V
+33SM009V
+C 
+33SM002P
+33SM003P
+33SM004P
+33SM005P
+33SM006P
+33SM007P
+33SM008P
+33SM009P
+C 
+33SM002W
+33SM003W
+33SM004W
+33SM005W
+33SM006W
+33SM007W
+33SM008W
+33SM009W
+C 
+33SM002F
+33SM003F
+33SM004F
+33SM005F
+33SM006F
+33SM007F
+33SM008F
+33SM009F
+C
+C for IBR
+C
+33IBR01F
+33IBR01P
+33IBR01Q
+C 
+/OUTPUT
+C SBUS_ASBUS_BSBUS_C
+  B38__AB38__BB38__C
+BLANK TACS
+BLANK BRANCH
+BLANK SWITCH
+BLANK SOURCE
+BLANK OUTPUT
+BLANK PLOT
+BEGIN NEW DATA CASE
+BLANK
