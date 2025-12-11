@@ -22,8 +22,8 @@ CASES = [
                    '151_S', '159_S', '165_S', '175_S', '179_S', 
                    '183_S', '185_S', '188_S', '191_S'],
    'hydro_units': [], 'nuclear_units': [],   
-   'bus_ic': 'c:/src/cimhub/bes/ieee118mb.txt',
-   'gen_ic': 'c:/src/cimhub/bes/ieee118mg.txt',
+   'bus_ic': '../matpower/ieee118mb.txt',
+   'gen_ic': '../matpower/ieee118mg.txt',
    'swingbus':'131', 
    'load': 0.6748, 'UseXfmrSaturation': False},
   {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 
@@ -41,10 +41,18 @@ CASES = [
                    '5031_H', '6335_H', '6533_H', '7032_H', '8033_H', 
                    '8034_H'],
    'nuclear_units': ['1431_N', '4132_N'],
-   'bus_ic': 'c:/src/cimhub/bes/wecc240mb.txt',
-   'gen_ic': 'c:/src/cimhub/bes/wecc240mg.txt',
+   'bus_ic': '../matpower/wecc240mb.txt',
+   'gen_ic': '../matpower/wecc240mg.txt',
    'swingbus':'2438', 
    'load': 1.0425, 'UseXfmrSaturation': False},
+  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56',
+   'name': 'IEEE39',
+   'rawfile': 'raw/ieee39_1ibr.raw', 'xmlfile':'ieee39.xml', 'locfile': 'raw/ieee39_network.json', 'mridfile':'raw/ieee39mrids.dat', 'ttlfile': 'ieee39.ttl',
+   'wind_units': [], 'solar_units': ['30_1'], 'hydro_units': [], 'nuclear_units': [],
+   'bus_ic': '../matpower/ieee39mb.txt',
+   'gen_ic': '../matpower/ieee39mg.txt',
+   'swingbus':'31', 
+   'load': 1.0, 'UseXfmrSaturation': False},
   {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
    'name':'XfmrSat', 
    'rawfile':'raw/XfmrSat.raw', 'xmlfile':'XfmrSat.xml', 'mridfile': 'raw/XfmrSatmrids.dat', 'ttlfile': 'XfmrSat.ttl',
@@ -378,35 +386,36 @@ def AtpStarCore(wdgs, dict, pname, bUseSaturation):
   core_c = wdgs[core_e]['conn']
   core_s /= 3.0
   ratio = core_v * core_v / cim_v / cim_v
-  print ('ratio', ratio, core_v, cim_v)
+  #print ('ratio', ratio, core_v, cim_v)
   core_b = cim_b / ratio
   core_g = cim_g / ratio
+  if core_c == 'Y':
+    cim_v /= SQRT3
+    core_v /= SQRT3
   if core_b > 0.0:
     Iss = SQRT2 * core_b * core_v
   else:
     Iss = MIN_IMAG * SQRT2 * core_s / core_v
-  if core_c == 'Y':
-    cim_v /= SQRT3
-    core_v /= SQRT3
   Fss = core_v / OMEGA * SQRT2
-  # this represents the core losses
+  # this represents the core losses, TODO: check validity for a delta connection
   if core_g > 0.0:
     Rmag = 1.0 / core_g
   else:
     Rmag = core_v * core_v / MIN_PNLL / core_s
 
   # create a saturable current-flux curve if available, or use the steady-state parameters if not
-  sat = dict['EMTXfmrSaturation']
   Imag = []
   Fmag = []
-  for key in sat['vals']:
-    toks = key.split(':')
-    if toks[0] == pname:
-      ival = float(toks[1]) * cim_v / core_v
-      fval = sat['vals'][key]['vs'] * core_v / cim_v
-      print (toks[0], ival, fval)
-      Imag.append (ival)
-      Fmag.append (fval)
+  if bUseSaturation:
+    sat = dict['EMTXfmrSaturation']
+    for key in sat['vals']:
+      toks = key.split(':')
+      if toks[0] == pname:
+        ival = float(toks[1]) * cim_v / core_v
+        fval = sat['vals'][key]['vs'] * core_v / cim_v
+        #print (toks[0], ival, fval)
+        Imag.append (ival)
+        Fmag.append (fval)
   if len(Imag) < 1:
     Imag.append (Iss)
     Fmag.append (Fss)
@@ -1234,8 +1243,8 @@ if __name__ == '__main__':
   d = load_emt_dict (g, 'sparql_queries.xml', case['id'])
   print ('Total query time {:6.3f} s'.format (time.time() - start_time))
 
-  list_dict_table (d, 'EMTPowerXfmrCore')
-  list_dict_table (d, 'EMTXfmrSaturation')
+  #list_dict_table (d, 'EMTPowerXfmrCore')
+  #list_dict_table (d, 'EMTXfmrSaturation')
 
   reset_globals (case)
   convert_one_atp_model (d, fpath = '../atp/data/', case=case)

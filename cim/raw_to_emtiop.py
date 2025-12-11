@@ -40,15 +40,16 @@ CASES = [
                    '5031_H', '6335_H', '6533_H', '7032_H', '8033_H', 
                    '8034_H'],
    'nuclear_units': ['1431_N', '4132_N']},
+  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56',
+   'name': 'IEEE39',
+   'rawfile': 'raw/ieee39_1ibr.raw', 'xmlfile':'ieee39.xml', 'locfile': 'raw/ieee39_network.json', 'mridfile':'raw/ieee39mrids.dat', 'ttlfile': 'ieee39.ttl',
+   'wind_units': [], 'solar_units': ['30_1'], 'hydro_units': [], 'nuclear_units': [],
+   'swingbus': '31'},
   {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
    'name':'XfmrSat', 
    'rawfile':'raw/XfmrSat.raw', 'xmlfile':'XfmrSat.xml', 'mridfile': 'raw/XfmrSatmrids.dat', 'ttlfile': 'XfmrSat.ttl',
    'wind_units':[], 'solar_units':[], 'hydro_units':[], 'nuclear_units':[],
-   'swingbus': '1'},
-  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56',
-   'name': 'IEEE39',
-   'rawfile': 'raw/ieee39_1ibr.raw', 'xmlfile':'ieee39.xml', 'locfile': 'raw/ieee39_network.json', 'mridfile':'raw/ieee39mrids.dat', 'ttlfile': 'ieee39.ttl',
-   'wind_units': [], 'solar_units': ['30_1'], 'hydro_units': [], 'nuclear_units': []}
+   'swingbus': '1'}
 ]
 
 METAFILE = 'psseraw.json'
