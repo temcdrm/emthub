@@ -13,9 +13,9 @@ import matplotlib.patches as patches
 plt.rcParams['savefig.directory'] = os.getcwd()
 
 CASES = [
-  {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 'name': 'IEEE118'},
-  {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 'name': 'WECC240'},
-  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56', 'name': 'IEEE39'}
+  {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 'name': 'IEEE118', 'legend_loc': 'best'},
+  {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 'name': 'WECC240', 'legend_loc': 'best'},
+  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56', 'name': 'IEEE39', 'legend_loc': 'lower right'}
 ]
 
 nodeTypes = {
@@ -109,7 +109,7 @@ def get_node_mnemonic(nclass):
     return nodeTypes[nclass]['tag']
   return 'Unknown'
 
-def plot_system_graph (G, sys_name, plot_labels):
+def plot_system_graph (G, sys_name, plot_labels, loc):
   reset_type_counts()
   # assign node colors
   plotNodes = []
@@ -175,7 +175,7 @@ def plot_system_graph (G, sys_name, plot_labels):
     [lines.Line2D(xdata, ydata, color=get_node_color(n), marker='o') for n in legendNodes]
   labs = [get_edge_mnemonic (e) for e in legendEdges] + [get_node_mnemonic (n) for n in legendNodes]
   ax.tick_params(left=True, bottom=True, labelleft=True, labelbottom=True)
-  ax.legend(lns, labs, loc='lower left')
+  ax.legend(lns, labs, loc=loc)
   plt.show()
 
 def load_system_graph (fname):
@@ -192,8 +192,10 @@ if __name__ == '__main__':
     if len(sys.argv) > 2:
       if int(sys.argv[2]) > 0:
         plot_labels = True
-  sys_name = CASES[case_id]['name']
+  case = CASES[case_id]
+  sys_name = case['name']
+  loc = case['legend_loc']
   G = load_system_graph ('./raw/{:s}_Network.json'.format(sys_name))
-  plot_system_graph (G, sys_name, plot_labels)
+  plot_system_graph (G, sys_name, plot_labels, loc)
 
 
