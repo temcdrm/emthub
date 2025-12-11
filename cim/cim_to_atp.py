@@ -1229,7 +1229,7 @@ def convert_one_atp_model (d, fpath, case):
   print ('  Estimated {:d} TACS dummy nodes, limit is {:d}'.format (DUM_NODES, DUM_NODE_LIMIT))
 
 if __name__ == '__main__':
-  idx = 2
+  idx = 1
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
   case = CASES[idx]

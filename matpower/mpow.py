@@ -187,7 +187,7 @@ def summarize_overloads(d):
         print ('  Branch {:d} from {:d}-{:d} has {:.2f} MVA > {:.2f} MVA'.format (i+1, int(b[i][mpow.F_BUS]), int(b[i][mpow.T_BUS]), smax, b[i][mpow.RATE_A]))
 
 if __name__ == '__main__':
-  case_id = 0
+  case_id = 1
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
   sys_name = CASES[case_id]['name']

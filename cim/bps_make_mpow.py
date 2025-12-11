@@ -349,7 +349,7 @@ mpc.bus_name = {""", file=fp)
   print ('suggest mpc = scale_load ({:.4f}, mpc)'.format(total_gen/total_load))
 
 if __name__ == '__main__':
-  case_id = 0
+  case_id = 1
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
   case = CASES[case_id]
