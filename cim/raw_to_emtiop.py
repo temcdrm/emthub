@@ -16,6 +16,7 @@ import sqlite3
 CIM_NS = 'http://www.ucaiug.org/ns#'
 EMT_NS = 'http://opensource.ieee.org/emtiop#'
 
+#  'locfile': 'raw/wecc240_network.json',
 CASES = [
   {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 
    'name': 'IEEE118', 
@@ -27,7 +28,7 @@ CASES = [
    'hydro_units': [], 'nuclear_units': []},
   {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 
    'name': 'WECC240',
-   'rawfile':'raw/240busWECC_2018_PSS.raw', 'xmlfile':'wecc240.xml', 'locfile': 'raw/wecc240_network.json', 'mridfile':'raw/wecc240mrids.dat', 'ttlfile': 'wecc240.ttl',
+   'rawfile':'raw/WECC240.raw', 'xmlfile':'wecc240.xml', 'mridfile':'raw/wecc240mrids.dat', 'ttlfile': 'wecc240.ttl',
    'wind_units': ['1032_S', '1034_W', '1333_S', '2130_G', '2332_S', 
                   '2431_S', '2434_S', '2438_RG', '2438_SW', '2439_S'],
    'solar_units': ['2533_S', '2631_S', '3234_NW', '3433_S', '3835_NG', 
@@ -1029,7 +1030,7 @@ def read_version_33_34(rdr,sections,bTwoTitles):
 #  print_table ('SYSTEM SWITCHING DEVICE')
 
 if __name__ == '__main__':
-  case_id = 3
+  case_id = 1
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
 
