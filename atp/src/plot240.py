@@ -104,7 +104,7 @@ if __name__ == '__main__':
       ax[i,j].grid()
       ax[i,j].set_xlim (tmin, tmax)
 
-# plt.savefig('ex22a.png')
+  plt.savefig('WECC240.png')
   plt.show()
   plt.close()
 

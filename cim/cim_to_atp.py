@@ -242,7 +242,7 @@ def AtpFit6(x):
     return '0.0000'
   elif x >= 10000:
     exp = 0
-    while x >= 1000:
+    while x >= 999.0:
       x /= 10.0
       exp += 1
     xstr = '{:3d}.E{:d}'.format(int(round(x, 3)), exp)
@@ -419,6 +419,7 @@ def AtpStarCore(wdgs, dict, pname, bUseSaturation):
   if len(Imag) < 1:
     Imag.append (Iss)
     Fmag.append (Fss)
+
   return Imag, Fmag, Rmag
 
 def AtpLoadXfmr(zb, v):
