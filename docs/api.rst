@@ -3,98 +3,28 @@ API
 
 .. automodule:: emthub.__init__
 
-First ``import emthub``, then invoke a function like ``emthub.ClearDB.clear_db()``
+First ``import emthub.api as emthub``, then invoke a function like ``emthub.print_cim_summaries([filename_roots])``
 
-ClearDB
--------
+TODO: many functions are being moved from the cim, matpower, and atp repository subdirectories into this module.
 
-.. automodule:: emthub.ClearDB
-   :members:
-   :special-members:
-..   :member-order: bysource
-   :exclude-members: __init__, __weakref__, forward
-
-CountClasses
-------------
-
-.. automodule:: emthub.CountClasses
-   :members:
-   :special-members:
-..   :member-order: bysource
-   :exclude-members: __init__, __weakref__, forward
-
-EMTHubConfig
-------------
-
-.. automodule:: emthub.EMTHubConfig
-   :members:
-   :special-members:
-..   :member-order: bysource
-   :exclude-members: __init__, __weakref__, forward
-
-ListBES
--------
-
-.. automodule:: emthub.ListBES
-   :members:
-   :special-members:
-..   :member-order: bysource
-   :exclude-members: __init__, __weakref__, forward
-
-ListFeeders
+cim_summary
 -----------
 
-.. automodule:: emthub.ListFeeders
+.. automodule:: emthub.cim_summary
    :members:
    :special-members:
 ..   :member-order: bysource
    :exclude-members: __init__, __weakref__, forward
 
-RawToXML
---------
 
-.. automodule:: emthub.RawToXML
+mpow_utilities
+--------------
+
+.. automodule:: emthub.mpow_utilities
    :members:
    :special-members:
 ..   :member-order: bysource
    :exclude-members: __init__, __weakref__, forward
 
-SPARQL_Dict
------------
-
-.. automodule:: emthub.SPARQL_Dict
-   :members:
-   :special-members:
-..   :member-order: bysource
-   :exclude-members: __init__, __weakref__, forward
-
-SummarizeDB
------------
-
-.. automodule:: emthub.SummarizeDB
-   :members:
-   :special-members:
-..   :member-order: bysource
-   :exclude-members: __init__, __weakref__, forward
-
-XMLtoCIM
---------
-
-.. automodule:: emthub.XMLtoCIM
-   :members:
-   :special-members:
-..   :member-order: bysource
-   :exclude-members: __init__, __weakref__, forward
-
-atpbes
-------
-
-**Requires an ATP user license.**
-
-.. automodule:: emthub.atpbes
-   :members:
-   :special-members:
-..   :member-order: bysource
-   :exclude-members: __init__, __weakref__, forward
 
 

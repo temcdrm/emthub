@@ -37,7 +37,11 @@ To install the Python package::
 Quick Start
 -----------
 
-TBD; running `IEEE118 and WECC240 Examples <https://github.com/GRIDAPPSD/CIMHub/tree/feature/SETO/BES>`_.
+TBD; running examples in this order:
+
+- `CIM <https://github.com/temcdrm/emthub/cim>`_.
+- `MATPOWER <https://github.com/temcdrm/emthub/matpower>`_.
+- `ATP <https://github.com/temcdrm/emthub/atp/data>`_.
 
 Repository
 ----------

@@ -6,7 +6,7 @@ import os
 import math
 import subprocess
 import numpy as np
-import i2x.mpow_utilities as mpow
+import emthub.mpow_utilities as mpow
 
 CASES = [
   {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 
