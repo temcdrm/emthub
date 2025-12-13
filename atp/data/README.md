@@ -29,15 +29,49 @@ Supporting files, of interest to experienced ATP users:
 This example disconnects 400 MW of load from the end of a 500-km transformer-terminated line. It
 demonstrates the CIM extension for transformer saturation.
 
+### Saturating Transformer Core
+
 ![Results with Saturation of Transformer Core](XfmrSat.png)
+
+### Linear Transformer Core
 
 ![Results with Linear Transformer Core](XfmrLinear.png)
 
 ## IEEE 39-bus Example with IBR
 
+This example demonstrates a single-line-to-ground fault (SLGF) applied and 
+cleared on the IEEE 39-bus test system, which is generally representative 
+of New England. It includes 9 synchronous machines and 1 IBR. The purpose 
+of this example is to demonstrate CIM extensions to remove the CIM 
+_Terminal_ class and the _Wecc_ dynamic models for IBR. 
+
+![SLGF Fault Results](IEEE39.png)
+
 ## IEEE 118-bus Example with IBR
 
+This example demonstrates a SLGF applied and cleared on the IEEE 118-bus 
+test system, which is generally representative of the Midwestern United 
+States circa 1962. This example has 193 buses so that each generator has 
+its own generator stepup transformer (GSU), i.e., no generators are 
+paralleled on the same bus. It includes 56 synchronous machines and 19 
+IBR. The purpose of this example is to demonstrate CIM extensions to 
+remove the CIM _Terminal_ class and the _Wecc_ dynamic models for IBR. 
+
+![SLGF Fault Results](IEEE118_IBR_12pctP.png)
+
 ## WECC 240-bus Example with IBR
+
+This example demonstrates a SLGF applied and cleared on the WECC 240-bus 
+test system, which is generally representative of the Western United 
+States. This example has 333 buses so that each generator has its own 
+generator stepup transformer (GSU), i.e., no generators are paralleled on 
+the same bus. It includes **129** synchronous machines and **11** IBR. The purpose 
+of this example is to demonstrate CIM extensions to remove the CIM 
+_Terminal_ class and the _Wecc_ dynamic models for IBR.
+ 
+**TODO: this example has known errors under investigation.** 
+
+![SLGF Fault Results](WECC240.png)
 
 
 Copyright &copy; 2024-25, Meltran, Inc
