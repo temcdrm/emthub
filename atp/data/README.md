@@ -45,6 +45,8 @@ of New England. It includes 9 synchronous machines and 1 IBR. The purpose
 of this example is to demonstrate CIM extensions to remove the CIM 
 _Terminal_ class and the _Wecc_ dynamic models for IBR. 
 
+![IEEE39 Network](ieee39_network.png)
+
 ![SLGF Fault Results](IEEE39.png)
 
 ## IEEE 118-bus Example with IBR
@@ -56,6 +58,8 @@ its own generator stepup transformer (GSU), i.e., no generators are
 paralleled on the same bus. It includes 56 synchronous machines and 19 
 IBR. The purpose of this example is to demonstrate CIM extensions to 
 remove the CIM _Terminal_ class and the _Wecc_ dynamic models for IBR. 
+
+![IEEE118 Network](ieee118_network.png)
 
 ![SLGF Fault Results](IEEE118_IBR_12pctP.png)
 
@@ -70,6 +74,8 @@ of this example is to demonstrate CIM extensions to remove the CIM
 _Terminal_ class and the _Wecc_ dynamic models for IBR.
  
 **TODO: this example has known errors under investigation.** 
+
+![WECC240 Network](wecc240_network.png)
 
 ![SLGF Fault Results](WECC240.png)
 
