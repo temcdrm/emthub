@@ -29,6 +29,8 @@ Supporting files, of interest to experienced ATP users:
 This example disconnects 400 MW of load from the end of a 500-km transformer-terminated line. It
 demonstrates the CIM extension for transformer saturation.
 
+![Transformer Network](XfmrSat_network.svg)
+
 ### Saturating Transformer Core
 
 ![Results with Saturation of Transformer Core](XfmrSat.png)
