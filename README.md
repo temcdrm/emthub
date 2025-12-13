@@ -12,8 +12,9 @@ Use the Green Code button to download.
 
 ## Users
 
-The Blazegraph triple-store database is required for some features, but unlike [CIMHub](https://github.com/GRIDAPPSD/CIMHub/tree/feature/SETO), Java, Docker, and OpenDSS are not required.
+Python is required.
 
+- Install [Python](https://www.python.org/).
 - Invoke `pip install emthub --upgrade`.
 
 ## Examples
@@ -42,7 +43,8 @@ Some examples require a license to run them in ATP. See [ATP Web Site](https://a
 Use `pip install -e .` to install the Python emthub package from your git clone.
 
 Queries are performed using the built-in Python packages _rdflib_ and/or _sqlite3_. In developing new SPARQL queries,
-the optional [Blazegraph](https://github.com/blazegraph/database/releases) triple-store is often convenient because it enables interactive SPARQL in a Web browser. 
+the optional [Blazegraph](https://github.com/blazegraph/database/releases) triple-store is often convenient because it enables interactive SPARQL in a Web browser.
+However, Blazegraph does require a local Java installation. 
 
 To deploy the project on PyPi, staring in the directory of your git clone, where `setup.py` is located:
 
