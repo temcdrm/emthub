@@ -39,9 +39,9 @@ Quick Start
 
 TBD; running examples in this order:
 
-- `CIM <https://github.com/temcdrm/emthub/cim>`_.
-- `MATPOWER <https://github.com/temcdrm/emthub/matpower>`_.
-- `ATP <https://github.com/temcdrm/emthub/atp/data>`_.
+- `CIM <https://github.com/temcdrm/emthub/tree/main/cim>`_.
+- `MATPOWER <https://github.com/temcdrm/emthub/tree/main/matpower>`_.
+- `ATP <https://github.com/temcdrm/emthub/tree/main/atp/data>`_.
 
 Repository
 ----------
