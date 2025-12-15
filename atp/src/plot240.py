@@ -5,7 +5,7 @@ import pandas as pd
 import os
 import math
 
-NMACH = 87
+NMACH = 105
 NDER = 2
 NIBR = 35
 OMEGA = 2.0 * 60.0 * math.pi

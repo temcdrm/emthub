@@ -71,7 +71,7 @@ This example demonstrates a SLGF applied and cleared on the WECC 240-bus
 test system, which is generally representative of the Western United 
 States. This example has 333 buses so that each generator has its own 
 generator stepup transformer (GSU), i.e., no generators are paralleled on 
-the same bus. It includes **87** synchronous machines and **35** IBR. The purpose 
+the same bus. It includes 105 synchronous machines and 35 IBR. The purpose 
 of this example is to demonstrate CIM extensions to remove the CIM 
 _Terminal_ class and the _Wecc_ dynamic models for IBR.
  
