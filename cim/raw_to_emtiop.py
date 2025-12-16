@@ -63,6 +63,8 @@ XFMR_INLL_PU = 0.0025 # was 0.00010
 XFMR_VSAT_PU = 1.1
 XFMR_AIRCORE = 2.0
 
+PU_WAVE_SPEED = 0.965
+
 IBR_IFAULT = 1.2
 
 DYNAMIC_SETTINGS_FILE = 'dynamics_defaults.json'
@@ -392,16 +394,17 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
         r0 = 2.0 * r1
         x0 = 3.0 * x1 # was 2.0 * x1
         b0ch = 0.6 * b1ch
-        if kvbase >= 345.0:
-          length = x1 / 0.6
-        else:
-          length = x1 / 0.8
+#        if kvbase >= 345.0:
+#          length = M_PER_MILE * x1 / 0.6
+#        else:
+#          length = M_PER_MILE * x1 / 0.8
+        tau1 = math.sqrt (x1 * b1ch) / WFREQ
+        length = tau1 * 3.0e8 * PU_WAVE_SPEED
       else: # underground
         r0 = r1
         x0 = x1
         b0ch = b1ch
-        length = x1 / 0.2
-      length *= M_PER_MILE
+        length = M_PER_MILE * x1 / 0.2
       vel1 = length / math.sqrt(l1*c1) / 3.0e8 # wave velocity normalized to speed of light
       ac = rdflib.URIRef (ID)
       bv = rdflib.URIRef (kvbase_ids[str(kvbase)])

@@ -1505,7 +1505,7 @@ C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
   B176_C                  1000.0         1.0
 C =============================================================================
 C line 100_101_1 from 100 to 101
-C   per-instance sequence parameters for 48.35km
+C   per-instance sequence parameters for 49.41km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B100_AB101_A                7.033584e+00    4.005588e+01    3.959466e-01
@@ -1517,7 +1517,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 100_103_1 from 100 to 103
-C   per-instance sequence parameters for 20.11km
+C   per-instance sequence parameters for 40.74km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B100_AB103_A                4.062720e+00    1.666350e+01    6.470347e-01
@@ -1529,25 +1529,25 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 100_104_1 from 100 to 104
-C   per-instance sequence parameters for 78.15km
+C   per-instance sequence parameters for 80.67km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B100_AB104_A            2.197948e-018.269126e+023.738685e-047.815329e+01 2 0 0
--2B100_BB104_B            1.098974e-013.698066e+022.786651e-047.815329e+01 2 0 0
+-1B100_AB104_A            2.129284e-018.269126e+023.738685e-048.067355e+01 2 0 0
+-2B100_BB104_B            1.064642e-013.698066e+022.786651e-048.067355e+01 2 0 0
 -3B100_CB104_C
 $VINTAGE,0
 C =============================================================================
 C line 100_106_1 from 100 to 106
-C   per-instance sequence parameters for 87.73km
+C   per-instance sequence parameters for 91.50km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B100_AB106_A            2.626582e-018.183990e+024.240516e-048.773089e+01 2 0 0
--2B100_BB106_B            1.313291e-013.659991e+023.160694e-048.773089e+01 2 0 0
+-1B100_AB106_A            2.518329e-018.183990e+024.240516e-049.150209e+01 2 0 0
+-2B100_BB106_B            1.259165e-013.659991e+023.160694e-049.150209e+01 2 0 0
 -3B100_CB106_C
 $VINTAGE,0
 C =============================================================================
 C line 101_102_1 from 101 to 102
-C   per-instance sequence parameters for 42.91km
+C   per-instance sequence parameters for 44.07km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B101_AB102_A                6.246432e+00    3.554880e+01    3.549034e-01
@@ -1559,34 +1559,34 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 103_104_1 from 103 to 104
-C   per-instance sequence parameters for 60.68km
+C   per-instance sequence parameters for 61.66km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B103_AB104_A            2.924838e-018.400856e+022.857458e-046.068373e+01 2 0 0
--2B103_BB104_B            1.462419e-013.756977e+022.129824e-046.068373e+01 2 0 0
+-1B103_AB104_A            2.878603e-018.400856e+022.857458e-046.165840e+01 2 0 0
+-2B103_BB104_B            1.439302e-013.756977e+022.129824e-046.165840e+01 2 0 0
 -3B103_CB104_C
 $VINTAGE,0
 C =============================================================================
 C line 103_105_1 from 103 to 105
-C   per-instance sequence parameters for 62.25km
+C   per-instance sequence parameters for 62.53km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B103_AB105_A            3.273192e-018.498451e+022.897757e-046.225446e+01 2 0 0
--2B103_BB105_B            1.636596e-013.800623e+022.159860e-046.225446e+01 2 0 0
+-1B103_AB105_A            3.258875e-018.498451e+022.897757e-046.252795e+01 2 0 0
+-2B103_BB105_B            1.629438e-013.800623e+022.159860e-046.252795e+01 2 0 0
 -3B103_CB105_C
 $VINTAGE,0
 C =============================================================================
 C line 103_110_1 from 103 to 110
-C   per-instance sequence parameters for 69.46km
+C   per-instance sequence parameters for 70.20km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B103_AB110_A            2.141931e-018.444844e+023.253528e-046.945682e+01 2 0 0
--2B103_BB110_B            1.070966e-013.776649e+022.425036e-046.945682e+01 2 0 0
+-1B103_AB110_A            2.119110e-018.444844e+023.253528e-047.020480e+01 2 0 0
+-2B103_BB110_B            1.059555e-013.776649e+022.425036e-047.020480e+01 2 0 0
 -3B103_CB110_C
 $VINTAGE,0
 C =============================================================================
 C line 104_105_1 from 104 to 105
-C   per-instance sequence parameters for 14.48km
+C   per-instance sequence parameters for 14.83km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B104_AB105_A                2.523965e+00    1.199772e+01    1.190254e-01
@@ -1598,7 +1598,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 105_106_1 from 105 to 106
-C   per-instance sequence parameters for 20.96km
+C   per-instance sequence parameters for 21.51km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B105_AB106_A                3.554880e+00    1.736178e+01    1.731059e-01
@@ -1610,16 +1610,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 105_107_1 from 105 to 107
-C   per-instance sequence parameters for 70.11km
+C   per-instance sequence parameters for 71.37km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B105_AB107_A            2.879359e-018.384897e+023.307514e-047.010809e+01 2 0 0
--2B105_BB107_B            1.439680e-013.749840e+022.465275e-047.010809e+01 2 0 0
+-1B105_AB107_A            2.828460e-018.384897e+023.307514e-047.136972e+01 2 0 0
+-2B105_BB107_B            1.414230e-013.749840e+022.465275e-047.136972e+01 2 0 0
 -3B105_CB107_C
 $VINTAGE,0
 C =============================================================================
 C line 105_108_1 from 105 to 108
-C   per-instance sequence parameters for 26.93km
+C   per-instance sequence parameters for 27.65km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B105_AB108_A                6.627312e+00    2.231322e+01    2.225993e-01
@@ -1631,16 +1631,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 106_107_1 from 106 to 107
-C   per-instance sequence parameters for 70.11km
+C   per-instance sequence parameters for 71.37km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B106_AB107_A            2.879359e-018.384897e+023.307514e-047.010809e+01 2 0 0
--2B106_BB107_B            1.439680e-013.749840e+022.465275e-047.010809e+01 2 0 0
+-1B106_AB107_A            2.828460e-018.384897e+023.307514e-047.136972e+01 2 0 0
+-2B106_BB107_B            1.414230e-013.749840e+022.465275e-047.136972e+01 2 0 0
 -3B106_CB107_C
 $VINTAGE,0
 C =============================================================================
 C line 108_109_1 from 108 to 109
-C   per-instance sequence parameters for 11.03km
+C   per-instance sequence parameters for 11.36km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B108_AB109_A                2.666160e+00    9.141120e+00    9.174373e-02
@@ -1652,7 +1652,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 109_110_1 from 109 to 110
-C   per-instance sequence parameters for 29.19km
+C   per-instance sequence parameters for 30.13km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B109_AB110_A                7.058976e+00    2.418588e+01    2.438452e-01
@@ -1664,7 +1664,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 110_111_1 from 110 to 111
-C   per-instance sequence parameters for 28.92km
+C   per-instance sequence parameters for 29.84km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B110_AB111_A                5.586240e+00    2.396370e+01    2.414309e-01
@@ -1676,7 +1676,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 110_112_1 from 110 to 112
-C   per-instance sequence parameters for 24.52km
+C   per-instance sequence parameters for 48.37km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B110_AB112_A                6.271824e+00    2.031360e+01    7.484357e-01
@@ -1688,7 +1688,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 114_115_1 from 114 to 115
-C   per-instance sequence parameters for 3.98km
+C   per-instance sequence parameters for 4.11km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B114_AB115_A                5.840160e-01    3.300960e+00    3.331746e-02
@@ -1700,7 +1700,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 11_12_1 from 11 to 12
-C   per-instance sequence parameters for 7.51km
+C   per-instance sequence parameters for 7.62km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B11__AB12__A                1.510824e+00    6.221040e+00    6.059915e-02
@@ -1712,7 +1712,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 11_13_1 from 11 to 13
-C   per-instance sequence parameters for 28.00km
+C   per-instance sequence parameters for 28.44km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B11__AB13__A                5.649720e+00    2.320194e+01    2.264622e-01
@@ -1724,7 +1724,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 12_117_1 from 12 to 117
-C   per-instance sequence parameters for 53.63km
+C   per-instance sequence parameters for 54.37km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B12__AB117_A                8.353968e+00    4.443600e+01    4.321613e-01
@@ -1736,7 +1736,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 12_14_1 from 12 to 14
-C   per-instance sequence parameters for 27.09km
+C   per-instance sequence parameters for 27.52km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B12__AB14__A                5.459280e+00    2.244018e+01    2.192192e-01
@@ -1748,7 +1748,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 12_16_1 from 12 to 16
-C   per-instance sequence parameters for 31.95km
+C   per-instance sequence parameters for 32.44km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B12__AB16__A                5.383104e+00    2.647116e+01    2.583310e-01
@@ -1760,25 +1760,25 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 13_15_1 from 13 to 15
-C   per-instance sequence parameters for 93.63km
+C   per-instance sequence parameters for 95.05km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B13__AB15__A            3.026515e-018.408708e+024.404739e-049.363070e+01 2 0 0
--2B13__BB15__B            1.513258e-013.760489e+023.283099e-049.363070e+01 2 0 0
+-1B13__AB15__A            2.981457e-018.408708e+024.404739e-049.504572e+01 2 0 0
+-2B13__BB15__B            1.490729e-013.760489e+023.283099e-049.504572e+01 2 0 0
 -3B13__CB15__C
 $VINTAGE,0
 C =============================================================================
 C line 14_15_1 from 14 to 15
-C   per-instance sequence parameters for 74.71km
+C   per-instance sequence parameters for 75.98km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B14__AB15__A            3.033566e-018.392834e+023.521067e-047.470535e+01 2 0 0
--2B14__BB15__B            1.516783e-013.753389e+022.624448e-047.470535e+01 2 0 0
+-1B14__AB15__A            2.982761e-018.392834e+023.521067e-047.597778e+01 2 0 0
+-2B14__BB15__B            1.491381e-013.753389e+022.624448e-047.597778e+01 2 0 0
 -3B14__CB15__C
 $VINTAGE,0
 C =============================================================================
 C line 15_17_1 from 15 to 17
-C   per-instance sequence parameters for 16.74km
+C   per-instance sequence parameters for 33.83km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B15__AB17__A                3.351744e+00    1.387038e+01    5.359765e-01
@@ -1790,7 +1790,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 15_19_1 from 15 to 19
-C   per-instance sequence parameters for 15.09km
+C   per-instance sequence parameters for 15.32km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B15__AB19__A                3.047040e+00    1.250556e+01    1.219226e-01
@@ -1802,7 +1802,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 15_33_1 from 15 to 33
-C   per-instance sequence parameters for 47.66km
+C   per-instance sequence parameters for 48.41km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B15__AB33__A                9.648960e+00    3.948456e+01    3.855651e-01
@@ -1814,16 +1814,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 16_17_1 from 16 to 17
-C   per-instance sequence parameters for 69.00km
+C   per-instance sequence parameters for 70.35km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B16__AB17__A            2.506186e-018.371573e+023.260280e-046.899709e+01 2 0 0
--2B16__BB17__B            1.253093e-013.743881e+022.430070e-046.899709e+01 2 0 0
+-1B16__AB17__A            2.457971e-018.371573e+023.260280e-047.035051e+01 2 0 0
+-2B16__BB17__B            1.228986e-013.743881e+022.430070e-047.035051e+01 2 0 0
 -3B16__CB17__C
 $VINTAGE,0
 C =============================================================================
 C line 17_113_1 from 17 to 113
-C   per-instance sequence parameters for 11.53km
+C   per-instance sequence parameters for 11.68km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B17__AB113_A                2.318290e+00    9.553740e+00    9.270945e-02
@@ -1835,7 +1835,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 17_18_1 from 17 to 18
-C   per-instance sequence parameters for 19.35km
+C   per-instance sequence parameters for 19.66km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B17__AB18__A                3.123216e+00    1.602870e+01    1.566886e-01
@@ -1847,16 +1847,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 17_31_1 from 17 to 31
-C   per-instance sequence parameters for 59.88km
+C   per-instance sequence parameters for 60.64km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B17__AB31__A            3.015022e-018.428227e+022.810419e-045.987921e+01 2 0 0
--2B17__BB31__B            1.507511e-013.769218e+022.094763e-045.987921e+01 2 0 0
+-1B17__AB31__A            2.977029e-018.428227e+022.810419e-046.064338e+01 2 0 0
+-2B17__BB31__B            1.488515e-013.769218e+022.094763e-046.064338e+01 2 0 0
 -3B17__CB31__C
 $VINTAGE,0
 C =============================================================================
 C line 18_19_1 from 18 to 19
-C   per-instance sequence parameters for 18.89km
+C   per-instance sequence parameters for 18.22km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B18__AB19__A                2.841365e+00    1.564782e+01    1.378570e-01
@@ -1868,7 +1868,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 19_20_1 from 19 to 20
-C   per-instance sequence parameters for 44.82km
+C   per-instance sequence parameters for 45.34km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B19__AB20__A                6.398784e+00    3.713580e+01    3.597320e-01
@@ -1880,16 +1880,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 19_34_1 from 19 to 34
-C   per-instance sequence parameters for 94.63km
+C   per-instance sequence parameters for 95.95km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B19__AB34__A            3.026858e-018.418469e+024.446437e-049.462677e+01 2 0 0
--2B19__BB34__B            1.513429e-013.764854e+023.314179e-049.462677e+01 2 0 0
+-1B19__AB34__A            2.985256e-018.418469e+024.446437e-049.594547e+01 2 0 0
+-2B19__BB34__B            1.492628e-013.764854e+023.314179e-049.594547e+01 2 0 0
 -3B19__CB34__C
 $VINTAGE,0
 C =============================================================================
 C line 1_2_1 from 1 to 2
-C   per-instance sequence parameters for 38.27km
+C   per-instance sequence parameters for 38.68km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B1___AB2___A                7.693776e+00    3.170826e+01    3.066172e-01
@@ -1901,7 +1901,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 1_3_1 from 1 to 3
-C   per-instance sequence parameters for 16.24km
+C   per-instance sequence parameters for 16.45km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B1___AB3___A                3.275568e+00    1.345776e+01    1.306141e-01
@@ -1913,7 +1913,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 20_21_1 from 20 to 21
-C   per-instance sequence parameters for 32.53km
+C   per-instance sequence parameters for 32.89km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B20__AB21__A                4.646736e+00    2.694726e+01    2.607453e-01
@@ -1925,7 +1925,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 21_22_1 from 21 to 22
-C   per-instance sequence parameters for 37.16km
+C   per-instance sequence parameters for 37.51km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B21__AB22__A                5.306928e+00    3.078780e+01    2.969600e-01
@@ -1937,16 +1937,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 22_23_1 from 22 to 23
-C   per-instance sequence parameters for 60.91km
+C   per-instance sequence parameters for 61.55km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B22__AB23__A            2.138455e-018.447945e+022.852295e-046.091359e+01 2 0 0
--2B22__BB23__B            1.069227e-013.778036e+022.125975e-046.091359e+01 2 0 0
+-1B22__AB23__A            2.116448e-018.447945e+022.852295e-046.154697e+01 2 0 0
+-2B22__BB23__B            1.058224e-013.778036e+022.125975e-046.154697e+01 2 0 0
 -3B22__CB23__C
 $VINTAGE,0
 C =============================================================================
 C line 23_24_1 from 23 to 24
-C   per-instance sequence parameters for 18.85km
+C   per-instance sequence parameters for 38.01km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B23__AB24__A                3.427920e+00    1.561608e+01    6.011629e-01
@@ -1958,61 +1958,61 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 23_25_1 from 23 to 25
-C   per-instance sequence parameters for 30.65km
+C   per-instance sequence parameters for 63.84km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B23__AB25__A            1.938678e-014.097616e+022.958741e-043.064835e+01 2 0 0
--2B23__BB25__B            9.693391e-021.832510e+022.205316e-043.064835e+01 2 0 0
+-1B23__AB25__A            9.306652e-024.097616e+022.958741e-046.384389e+01 2 0 0
+-2B23__BB25__B            4.653326e-021.832510e+022.205316e-046.384389e+01 2 0 0
 -3B23__CB25__C
 $VINTAGE,0
 C =============================================================================
 C line 23_32_1 from 23 to 32
-C   per-instance sequence parameters for 44.17km
+C   per-instance sequence parameters for 89.31km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B23__AB32__A            2.733387e-014.221909e+024.138746e-044.417193e+01 2 0 0
--2B23__BB32__B            1.366693e-011.888095e+023.084839e-044.417193e+01 2 0 0
+-1B23__AB32__A            1.351968e-014.221909e+024.138746e-048.930610e+01 2 0 0
+-2B23__BB32__B            6.759839e-021.888095e+023.084839e-048.930610e+01 2 0 0
 -3B23__CB32__C
 $VINTAGE,0
 C =============================================================================
 C line 24_70_1 from 24 to 70
-C   per-instance sequence parameters for 157.65km
+C   per-instance sequence parameters for 157.31km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B24__AB70__A            5.339413e-038.554026e+027.290336e-041.576474e+02 2 0 0
--2B24__BB70__B            2.669707e-033.825477e+025.433896e-041.576474e+02 2 0 0
+-1B24__AB70__A            5.350823e-038.554026e+027.290336e-041.573113e+02 2 0 0
+-2B24__BB70__B            2.675411e-033.825477e+025.433896e-041.573113e+02 2 0 0
 -3B24__CB70__C
 $VINTAGE,0
 C =============================================================================
 C line 24_72_1 from 24 to 72
-C   per-instance sequence parameters for 75.09km
+C   per-instance sequence parameters for 75.10km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B24__AB72__A            2.475340e-018.534170e+023.480512e-047.508845e+01 2 0 0
--2B24__BB72__B            1.237670e-013.816597e+022.594220e-047.508845e+01 2 0 0
+-1B24__AB72__A            2.474871e-018.534170e+023.480512e-047.510267e+01 2 0 0
+-2B24__BB72__B            1.237436e-013.816597e+022.594220e-047.510267e+01 2 0 0
 -3B24__CB72__C
 $VINTAGE,0
 C =============================================================================
 C line 25_27_1 from 25 to 27
-C   per-instance sequence parameters for 62.45km
+C   per-instance sequence parameters for 130.21km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B25__AB27__A            1.939593e-014.093433e+026.034596e-046.244601e+01 2 0 0
--2B25__BB27__B            9.697965e-021.830639e+024.497923e-046.244601e+01 2 0 0
+-1B25__AB27__A            9.301538e-024.093433e+026.034596e-041.302149e+02 2 0 0
+-2B25__BB27__B            4.650769e-021.830639e+024.497923e-041.302149e+02 2 0 0
 -3B25__CB27__C
 $VINTAGE,0
 C =============================================================================
 C line 26_30_1 from 26 to 30
-C   per-instance sequence parameters for 274.56km
+C   per-instance sequence parameters for 214.59km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B26__AB30__A            6.927566e-028.190860e+029.944828e-042.745581e+02 2 0 0
--2B26__BB30__B            3.463783e-023.663064e+027.412437e-042.745581e+02 2 0 0
+-1B26__AB30__A            8.863502e-028.190860e+029.944828e-042.145901e+02 2 0 0
+-2B26__BB30__B            4.431751e-023.663064e+027.412437e-042.145901e+02 2 0 0
 -3B26__CB30__C
 $VINTAGE,0
 C =============================================================================
 C line 27_115_1 from 27 to 115
-C   per-instance sequence parameters for 28.39km
+C   per-instance sequence parameters for 29.35km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B27__AB115_A                4.164288e+00    2.351934e+01    2.380508e-01
@@ -2024,7 +2024,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 27_28_1 from 27 to 28
-C   per-instance sequence parameters for 32.76km
+C   per-instance sequence parameters for 33.00km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B27__AB28__A                4.857490e+00    2.713770e+01    2.607453e-01
@@ -2036,7 +2036,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 27_32_1 from 27 to 32
-C   per-instance sequence parameters for 28.92km
+C   per-instance sequence parameters for 29.28km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B27__AB32__A                5.814768e+00    2.396370e+01    2.324979e-01
@@ -2048,7 +2048,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 28_29_1 from 28 to 29
-C   per-instance sequence parameters for 36.13km
+C   per-instance sequence parameters for 36.38km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B28__AB29__A                6.017904e+00    2.993082e+01    2.873027e-01
@@ -2060,7 +2060,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 29_31_1 from 29 to 31
-C   per-instance sequence parameters for 12.68km
+C   per-instance sequence parameters for 12.73km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B29__AB31__A                2.742336e+00    1.050594e+01    1.001938e-01
@@ -2072,7 +2072,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 2_12_1 from 2 to 12
-C   per-instance sequence parameters for 23.60km
+C   per-instance sequence parameters for 23.90km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B2___AB12__A                4.748304e+00    1.955184e+01    1.897647e-01
@@ -2084,16 +2084,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 30_38_1 from 30 to 38
-C   per-instance sequence parameters for 172.40km
+C   per-instance sequence parameters for 115.92km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B30__AB38__A            6.407027e-029.520590e+025.372275e-041.723970e+02 2 0 0
--2B30__BB38__B            3.203514e-024.257737e+024.004257e-041.723970e+02 2 0 0
+-1B30__AB38__A            9.528304e-029.520590e+025.372275e-041.159233e+02 2 0 0
+-2B30__BB38__B            4.764152e-024.257737e+024.004257e-041.159233e+02 2 0 0
 -3B30__CB38__C
 $VINTAGE,0
 C =============================================================================
 C line 31_32_1 from 31 to 32
-C   per-instance sequence parameters for 37.74km
+C   per-instance sequence parameters for 38.18km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B31__AB32__A                7.566816e+00    3.126390e+01    3.029957e-01
@@ -2105,16 +2105,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 32_113_1 from 32 to 113
-C   per-instance sequence parameters for 77.77km
+C   per-instance sequence parameters for 78.75km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B32__AB113_A            3.011967e-018.429976e+023.649371e-047.777018e+01 2 0 0
--2B32__BB113_B            1.505983e-013.770000e+022.720081e-047.777018e+01 2 0 0
+-1B32__AB113_A            2.974630e-018.429976e+023.649371e-047.874633e+01 2 0 0
+-2B32__BB113_B            1.487315e-013.770000e+022.720081e-047.874633e+01 2 0 0
 -3B32__CB113_C
 $VINTAGE,0
 C =============================================================================
 C line 32_114_1 from 32 to 114
-C   per-instance sequence parameters for 23.45km
+C   per-instance sequence parameters for 24.24km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B32__AB114_A                3.427920e+00    1.942488e+01    1.965247e-01
@@ -2126,7 +2126,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 33_37_1 from 33 to 37
-C   per-instance sequence parameters for 54.40km
+C   per-instance sequence parameters for 55.36km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B33__AB37__A                1.053768e+01    4.507080e+01    4.418185e-01
@@ -2138,7 +2138,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 34_36_1 from 34 to 36
-C   per-instance sequence parameters for 10.27km
+C   per-instance sequence parameters for 9.47km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B34__AB36__A                2.211643e+00    8.506320e+00    6.856637e-02
@@ -2150,7 +2150,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 34_37_1 from 34 to 37
-C   per-instance sequence parameters for 3.60km
+C   per-instance sequence parameters for 7.39km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B34__AB37__A                6.500352e-01    2.983560e+00    1.187840e-01
@@ -2162,16 +2162,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 34_43_1 from 34 to 43
-C   per-instance sequence parameters for 64.40km
+C   per-instance sequence parameters for 64.72km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B34__AB43__A            2.442606e-018.493023e+022.999534e-046.439984e+01 2 0 0
--2B34__BB43__B            1.221303e-013.798195e+022.235720e-046.439984e+01 2 0 0
+-1B34__AB43__A            2.430369e-018.493023e+022.999534e-046.472410e+01 2 0 0
+-2B34__BB43__B            1.215184e-013.798195e+022.235720e-046.472410e+01 2 0 0
 -3B34__CB43__C
 $VINTAGE,0
 C =============================================================================
 C line 35_36_1 from 35 to 36
-C   per-instance sequence parameters for 3.91km
+C   per-instance sequence parameters for 4.01km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B35__AB36__A                5.687808e-01    3.237480e+00    3.235174e-02
@@ -2183,7 +2183,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 35_37_1 from 35 to 37
-C   per-instance sequence parameters for 19.04km
+C   per-instance sequence parameters for 19.65km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B35__AB37__A                2.793120e+00    1.577478e+01    1.591029e-01
@@ -2195,7 +2195,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 37_39_1 from 37 to 39
-C   per-instance sequence parameters for 40.61km
+C   per-instance sequence parameters for 41.08km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B37__AB39__A                8.150832e+00    3.364440e+01    3.259317e-01
@@ -2207,25 +2207,25 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 37_40_1 from 37 to 40
-C   per-instance sequence parameters for 64.36km
+C   per-instance sequence parameters for 64.51km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B37__AB40__A            3.509268e-018.516736e+022.989403e-046.436153e+01 2 0 0
--2B37__BB40__B            1.754634e-013.808800e+022.228169e-046.436153e+01 2 0 0
+-1B37__AB40__A            3.501435e-018.516736e+022.989403e-046.450550e+01 2 0 0
+-2B37__BB40__B            1.750718e-013.808800e+022.228169e-046.450550e+01 2 0 0
 -3B37__CB40__C
 $VINTAGE,0
 C =============================================================================
 C line 38_65_1 from 38 to 65
-C   per-instance sequence parameters for 314.78km
+C   per-instance sequence parameters for 246.62km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B38__AB65__A            6.813657e-028.171388e+021.142903e-033.147841e+02 2 0 0
--2B38__BB65__B            3.406828e-023.654356e+028.518697e-043.147841e+02 2 0 0
+-1B38__AB65__A            8.697035e-028.171388e+021.142903e-032.466163e+02 2 0 0
+-2B38__BB65__B            4.348518e-023.654356e+028.518697e-042.466163e+02 2 0 0
 -3B38__CB65__C
 $VINTAGE,0
 C =============================================================================
 C line 39_40_1 from 39 to 40
-C   per-instance sequence parameters for 23.18km
+C   per-instance sequence parameters for 23.53km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B39__AB40__A                4.672128e+00    1.920270e+01    1.873504e-01
@@ -2237,16 +2237,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 3_12_1 from 3 to 12
-C   per-instance sequence parameters for 61.30km
+C   per-instance sequence parameters for 61.89km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B3___AB12__A            3.007437e-018.453570e+022.868324e-046.129669e+01 2 0 0
--2B3___BB12__B            1.503718e-013.780551e+022.137922e-046.129669e+01 2 0 0
+-1B3___AB12__A            2.978469e-018.453570e+022.868324e-046.189285e+01 2 0 0
+-2B3___BB12__B            1.489234e-013.780551e+022.137922e-046.189285e+01 2 0 0
 -3B3___CB12__C
 $VINTAGE,0
 C =============================================================================
 C line 3_5_1 from 3 to 5
-C   per-instance sequence parameters for 41.38km
+C   per-instance sequence parameters for 42.53km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B3___AB5___A                6.119472e+00    3.427920e+01    3.428318e-01
@@ -2258,7 +2258,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 40_41_1 from 40 to 41
-C   per-instance sequence parameters for 18.66km
+C   per-instance sequence parameters for 18.73km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B40__AB41__A                3.681840e+00    1.545738e+01    1.475143e-01
@@ -2270,16 +2270,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 40_42_1 from 40 to 42
-C   per-instance sequence parameters for 70.11km
+C   per-instance sequence parameters for 70.91km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B40__AB42__A            3.015178e-018.438704e+023.286424e-047.010809e+01 2 0 0
--2B40__BB42__B            1.507589e-013.773903e+022.449556e-047.010809e+01 2 0 0
+-1B40__AB42__A            2.980885e-018.438704e+023.286424e-047.091465e+01 2 0 0
+-2B40__BB42__B            1.490442e-013.773903e+022.449556e-047.091465e+01 2 0 0
 -3B40__CB42__C
 $VINTAGE,0
 C =============================================================================
 C line 41_42_1 from 41 to 42
-C   per-instance sequence parameters for 51.72km
+C   per-instance sequence parameters for 52.33km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B41__AB42__A                1.041072e+01    4.284900e+01    4.152611e-01
@@ -2291,34 +2291,34 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 42_49_1 from 42 to 49
-C   per-instance sequence parameters for 123.74km
+C   per-instance sequence parameters for 127.99km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B42__AB49__A            2.200770e-018.252684e+025.931378e-041.237427e+02 2 0 0
--2B42__BB49__B            1.100385e-013.690712e+024.420988e-041.237427e+02 2 0 0
+-1B42__AB49__A            2.127778e-018.252684e+025.931378e-041.279876e+02 2 0 0
+-2B42__BB49__B            1.063889e-013.690712e+024.420988e-041.279876e+02 2 0 0
 -3B42__CB49__C
 $VINTAGE,0
 C =============================================================================
 C line 42_49_2 from 42 to 49
-C   per-instance sequence parameters for 123.74km
+C   per-instance sequence parameters for 127.99km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B42__AB49__A            2.200770e-018.252684e+025.931378e-041.237427e+02 2 0 0
--2B42__BB49__B            1.100385e-013.690712e+024.420988e-041.237427e+02 2 0 0
+-1B42__AB49__A            2.127778e-018.252684e+025.931378e-041.279876e+02 2 0 0
+-2B42__BB49__B            1.063889e-013.690712e+024.420988e-041.279876e+02 2 0 0
 -3B42__CB49__C
 $VINTAGE,0
 C =============================================================================
 C line 43_44_1 from 43 to 44
-C   per-instance sequence parameters for 94.01km
+C   per-instance sequence parameters for 93.71km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B43__AB44__A            2.463203e-018.563626e+024.342754e-049.401380e+01 2 0 0
--2B43__BB44__B            1.231601e-013.829770e+023.236897e-049.401380e+01 2 0 0
+-1B43__AB44__A            2.471236e-018.563626e+024.342754e-049.370818e+01 2 0 0
+-2B43__BB44__B            1.235618e-013.829770e+023.236897e-049.370818e+01 2 0 0
 -3B43__CB44__C
 $VINTAGE,0
 C =============================================================================
 C line 44_45_1 from 44 to 45
-C   per-instance sequence parameters for 34.52km
+C   per-instance sequence parameters for 34.50km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B44__AB45__A                5.687808e+00    2.859774e+01    2.704026e-01
@@ -2330,7 +2330,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 45_46_1 from 45 to 46
-C   per-instance sequence parameters for 51.95km
+C   per-instance sequence parameters for 51.52km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B45__AB46__A                1.015680e+01    4.303944e+01    4.007752e-01
@@ -2342,11 +2342,11 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 45_49_1 from 45 to 49
-C   per-instance sequence parameters for 71.26km
+C   per-instance sequence parameters for 69.79km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B45__AB49__A            3.656068e-018.715818e+023.234097e-047.125741e+01 2 0 0
--2B45__BB49__B            1.828034e-013.897832e+022.410554e-047.125741e+01 2 0 0
+-1B45__AB49__A            3.733179e-018.715818e+023.234097e-046.978553e+01 2 0 0
+-2B45__BB49__B            1.866590e-013.897832e+022.410554e-046.978553e+01 2 0 0
 -3B45__CB49__C
 $VINTAGE,0
 C =============================================================================
@@ -2363,16 +2363,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 46_48_1 from 46 to 48
-C   per-instance sequence parameters for 72.41km
+C   per-instance sequence parameters for 72.53km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B46__AB48__A            3.161431e-018.521246e+023.361298e-047.240672e+01 2 0 0
--2B46__BB48__B            1.580716e-013.810817e+022.505364e-047.240672e+01 2 0 0
+-1B46__AB48__A            3.156046e-018.521246e+023.361298e-047.253028e+01 2 0 0
+-2B46__BB48__B            1.578023e-013.810817e+022.505364e-047.253028e+01 2 0 0
 -3B46__CB48__C
 $VINTAGE,0
 C =============================================================================
 C line 47_49_1 from 47 to 49
-C   per-instance sequence parameters for 23.94km
+C   per-instance sequence parameters for 24.31km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B47__AB49__A                4.849872e+00    1.983750e+01    1.936276e-01
@@ -2384,16 +2384,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 47_69_1 from 47 to 69
-C   per-instance sequence parameters for 106.43km
+C   per-instance sequence parameters for 107.79km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B47__AB69__A            3.020517e-018.428008e+024.995231e-041.064264e+02 2 0 0
--2B47__BB69__B            1.510259e-013.769120e+023.723226e-041.064264e+02 2 0 0
+-1B47__AB69__A            2.982378e-018.428008e+024.995231e-041.077874e+02 2 0 0
+-2B47__BB69__B            1.491189e-013.769120e+023.723226e-041.077874e+02 2 0 0
 -3B47__CB69__C
 $VINTAGE,0
 C =============================================================================
 C line 48_49_1 from 48 to 49
-C   per-instance sequence parameters for 19.35km
+C   per-instance sequence parameters for 19.36km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B48__AB49__A                4.545168e+00    1.602870e+01    1.518600e-01
@@ -2405,7 +2405,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 49_50_1 from 49 to 50
-C   per-instance sequence parameters for 28.81km
+C   per-instance sequence parameters for 28.83km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B49__AB50__A                6.779664e+00    2.386848e+01    2.262207e-01
@@ -2417,7 +2417,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 49_51_1 from 49 to 51
-C   per-instance sequence parameters for 52.49km
+C   per-instance sequence parameters for 52.56km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B49__AB51__A                1.234051e+01    4.348380e+01    4.128468e-01
@@ -2429,25 +2429,25 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 49_54_1 from 49 to 54
-C   per-instance sequence parameters for 110.72km
+C   per-instance sequence parameters for 112.15km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B49__AB54__A            2.511286e-018.426824e+025.197353e-041.107172e+02 2 0 0
--2B49__BB54__B            1.255643e-013.768590e+023.873878e-041.107172e+02 2 0 0
+-1B49__AB54__A            2.479228e-018.426824e+025.197353e-041.121488e+02 2 0 0
+-2B49__BB54__B            1.239614e-013.768590e+023.873878e-041.121488e+02 2 0 0
 -3B49__CB54__C
 $VINTAGE,0
 C =============================================================================
 C line 49_54_2 from 49 to 54
-C   per-instance sequence parameters for 111.48km
+C   per-instance sequence parameters for 111.92km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B49__AB54__A            2.968916e-018.502140e+025.186962e-041.114834e+02 2 0 0
--2B49__BB54__B            1.484458e-013.802272e+023.866133e-041.114834e+02 2 0 0
+-1B49__AB54__A            2.957213e-018.502140e+025.186962e-041.119246e+02 2 0 0
+-2B49__BB54__B            1.478606e-013.802272e+023.866133e-041.119246e+02 2 0 0
 -3B49__CB54__C
 $VINTAGE,0
 C =============================================================================
 C line 49_66_1 from 49 to 66
-C   per-instance sequence parameters for 35.21km
+C   per-instance sequence parameters for 36.66km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B49__AB66__A                4.570560e+00    2.916906e+01    2.993743e-01
@@ -2459,7 +2459,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 49_66_2 from 49 to 66
-C   per-instance sequence parameters for 35.21km
+C   per-instance sequence parameters for 36.66km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B49__AB66__A                4.570560e+00    2.916906e+01    2.993743e-01
@@ -2471,16 +2471,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 49_69_1 from 49 to 69
-C   per-instance sequence parameters for 124.13km
+C   per-instance sequence parameters for 125.78km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B49__AB69__A            3.022472e-018.423654e+025.828983e-041.241258e+02 2 0 0
--2B49__BB69__B            1.511236e-013.767173e+024.344668e-041.241258e+02 2 0 0
+-1B49__AB69__A            2.982767e-018.423654e+025.828983e-041.257781e+02 2 0 0
+-2B49__BB69__B            1.491383e-013.767173e+024.344668e-041.257781e+02 2 0 0
 -3B49__CB69__C
 $VINTAGE,0
 C =============================================================================
 C line 4_11_1 from 4 to 11
-C   per-instance sequence parameters for 26.36km
+C   per-instance sequence parameters for 26.63km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B4___AB11__A                5.306928e+00    2.183712e+01    2.110106e-01
@@ -2492,7 +2492,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 4_5_1 from 4 to 5
-C   per-instance sequence parameters for 3.06km
+C   per-instance sequence parameters for 3.14km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B4___AB5___A                4.468992e-01    2.532852e+00    2.535024e-02
@@ -2504,7 +2504,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 50_57_1 from 50 to 57
-C   per-instance sequence parameters for 51.34km
+C   per-instance sequence parameters for 51.22km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B50__AB57__A                1.203581e+01    4.253160e+01    4.007752e-01
@@ -2516,7 +2516,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 51_52_1 from 51 to 52
-C   per-instance sequence parameters for 22.53km
+C   per-instance sequence parameters for 22.00km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B51__AB52__A                5.154576e+00    1.866312e+01    1.685187e-01
@@ -2528,7 +2528,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 51_58_1 from 51 to 58
-C   per-instance sequence parameters for 27.55km
+C   per-instance sequence parameters for 27.53km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B51__AB58__A                6.474960e+00    2.282106e+01    2.158392e-01
@@ -2540,16 +2540,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 52_53_1 from 52 to 53
-C   per-instance sequence parameters for 62.64km
+C   per-instance sequence parameters for 62.55km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B52__AB53__A            2.462682e-018.547636e+022.898812e-046.263756e+01 2 0 0
--2B52__BB53__B            1.231341e-013.822619e+022.160647e-046.263756e+01 2 0 0
+-1B52__AB53__A            2.466101e-018.547636e+022.898812e-046.255073e+01 2 0 0
+-2B52__BB53__B            1.233050e-013.822619e+022.160647e-046.255073e+01 2 0 0
 -3B52__CB53__C
 $VINTAGE,0
 C =============================================================================
 C line 53_54_1 from 53 to 54
-C   per-instance sequence parameters for 46.74km
+C   per-instance sequence parameters for 47.23km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B53__AB54__A                6.678096e+00    3.872280e+01    3.742178e-01
@@ -2561,7 +2561,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 54_55_1 from 54 to 55
-C   per-instance sequence parameters for 27.09km
+C   per-instance sequence parameters for 29.02km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B54__AB55__A                4.291248e+00    2.244018e+01    2.438452e-01
@@ -2573,7 +2573,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 54_56_1 from 54 to 56
-C   per-instance sequence parameters for 3.66km
+C   per-instance sequence parameters for 6.42km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B54__AB56__A                6.982800e-01    3.031170e+00    8.836370e-02
@@ -2585,16 +2585,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 54_59_1 from 54 to 59
-C   per-instance sequence parameters for 87.85km
+C   per-instance sequence parameters for 89.92km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B54__AB59__A            2.180896e-018.338628e+024.167329e-048.784582e+01 2 0 0
--2B54__BB59__B            1.090448e-013.729148e+023.106143e-048.784582e+01 2 0 0
+-1B54__AB59__A            2.130522e-018.338628e+024.167329e-048.992285e+01 2 0 0
+-2B54__BB59__B            1.065261e-013.729148e+023.106143e-048.992285e+01 2 0 0
 -3B54__CB59__C
 $VINTAGE,0
 C =============================================================================
 C line 55_56_1 from 55 to 56
-C   per-instance sequence parameters for 5.78km
+C   per-instance sequence parameters for 5.77km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B55__AB56__A                1.239130e+00    4.792740e+00    4.514757e-02
@@ -2606,16 +2606,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 55_59_1 from 55 to 59
-C   per-instance sequence parameters for 82.67km
+C   per-instance sequence parameters for 84.76km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B55__AB59__A            2.183265e-018.325273e+023.928270e-048.267392e+01 2 0 0
--2B55__BB59__B            1.091632e-013.723175e+022.927959e-048.267392e+01 2 0 0
+-1B55__AB59__A            2.129420e-018.325273e+023.928270e-048.476442e+01 2 0 0
+-2B55__BB59__B            1.064710e-013.723175e+022.927959e-048.476442e+01 2 0 0
 -3B55__CB59__C
 $VINTAGE,0
 C =============================================================================
 C line 56_57_1 from 56 to 57
-C   per-instance sequence parameters for 37.01km
+C   per-instance sequence parameters for 37.13km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B56__AB57__A                8.709456e+00    3.066084e+01    2.921314e-01
@@ -2627,7 +2627,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 56_58_1 from 56 to 58
-C   per-instance sequence parameters for 37.01km
+C   per-instance sequence parameters for 37.13km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B56__AB58__A                8.709456e+00    3.066084e+01    2.921314e-01
@@ -2639,25 +2639,25 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 56_59_1 from 56 to 59
-C   per-instance sequence parameters for 96.16km
+C   per-instance sequence parameters for 91.77km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B56__AB59__A            3.267769e-018.943838e+024.253027e-049.615919e+01 2 0 0
--2B56__BB59__B            1.633884e-013.999806e+023.170019e-049.615919e+01 2 0 0
+-1B56__AB59__A            3.423984e-018.943838e+024.253027e-049.177205e+01 2 0 0
+-2B56__BB59__B            1.711992e-013.999806e+023.170019e-049.177205e+01 2 0 0
 -3B56__CB59__C
 $VINTAGE,0
 C =============================================================================
 C line 56_59_2 from 56 to 59
-C   per-instance sequence parameters for 91.56km
+C   per-instance sequence parameters for 86.92km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B56__AB59__A            3.340325e-018.992071e+024.027972e-049.156194e+01 2 0 0
--2B56__BB59__B            1.670163e-014.021376e+023.002273e-049.156194e+01 2 0 0
+-1B56__AB59__A            3.518884e-018.992071e+024.027972e-048.691581e+01 2 0 0
+-2B56__BB59__B            1.759442e-014.021376e+023.002273e-048.691581e+01 2 0 0
 -3B56__CB59__C
 $VINTAGE,0
 C =============================================================================
 C line 59_60_1 from 59 to 60
-C   per-instance sequence parameters for 55.55km
+C   per-instance sequence parameters for 56.70km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B59__AB60__A                8.049264e+00    4.602300e+01    4.538900e-01
@@ -2669,16 +2669,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 59_61_1 from 59 to 61
-C   per-instance sequence parameters for 57.47km
+C   per-instance sequence parameters for 58.58km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B59__AB61__A            2.173971e-018.372843e+022.714980e-045.746565e+01 2 0 0
--2B59__BB61__B            1.086985e-013.744449e+022.023627e-045.746565e+01 2 0 0
+-1B59__AB61__A            2.132471e-018.372843e+022.714980e-045.858399e+01 2 0 0
+-2B59__BB61__B            1.066235e-013.744449e+022.023627e-045.858399e+01 2 0 0
 -3B59__CB61__C
 $VINTAGE,0
 C =============================================================================
 C line 5_11_1 from 5 to 11
-C   per-instance sequence parameters for 26.13km
+C   per-instance sequence parameters for 26.44km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B5___AB11__A                5.154576e+00    2.164668e+01    2.098034e-01
@@ -2690,7 +2690,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 5_6_1 from 5 to 6
-C   per-instance sequence parameters for 20.69km
+C   per-instance sequence parameters for 21.31km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B5___AB6___A                3.021648e+00    1.713960e+01    1.721402e-01
@@ -2702,7 +2702,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 60_61_1 from 60 to 61
-C   per-instance sequence parameters for 5.17km
+C   per-instance sequence parameters for 10.77km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B60__AB61__A                6.703488e-01    4.284900e+00    1.757617e-01
@@ -2714,7 +2714,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 60_62_1 from 60 to 62
-C   per-instance sequence parameters for 21.49km
+C   per-instance sequence parameters for 22.04km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B60__AB62__A                3.123216e+00    1.780614e+01    1.772103e-01
@@ -2726,7 +2726,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 61_62_1 from 61 to 62
-C   per-instance sequence parameters for 14.40km
+C   per-instance sequence parameters for 14.74km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B61__AB62__A                2.092301e+00    1.193424e+01    1.183011e-01
@@ -2738,16 +2738,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 62_66_1 from 62 to 66
-C   per-instance sequence parameters for 83.52km
+C   per-instance sequence parameters for 86.20km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B62__AB66__A            2.198172e-018.270038e+023.994821e-048.351675e+01 2 0 0
--2B62__BB66__B            1.099086e-013.698473e+022.977564e-048.351675e+01 2 0 0
+-1B62__AB66__A            2.129735e-018.270038e+023.994821e-048.620047e+01 2 0 0
+-2B62__BB66__B            1.064868e-013.698473e+022.977564e-048.620047e+01 2 0 0
 -3B62__CB66__C
 $VINTAGE,0
 C =============================================================================
 C line 62_67_1 from 62 to 67
-C   per-instance sequence parameters for 44.82km
+C   per-instance sequence parameters for 46.25km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B62__AB67__A                6.551136e+00    3.713580e+01    3.742178e-01
@@ -2759,7 +2759,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 63_64_1 from 63 to 64
-C   per-instance sequence parameters for 63.85km
+C   per-instance sequence parameters for 50.47km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B63__AB64__A                2.729640e+00    3.967500e+01    4.171925e-01
@@ -2771,25 +2771,25 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 64_65_1 from 64 to 65
-C   per-instance sequence parameters for 96.41km
+C   per-instance sequence parameters for 82.26km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B64__AB65__A            6.641676e-027.502999e+023.812417e-049.641459e+01 2 0 0
--2B64__BB65__B            3.320838e-023.355443e+022.841608e-049.641459e+01 2 0 0
+-1B64__AB65__A            7.784088e-027.502999e+023.812417e-048.226455e+01 2 0 0
+-2B64__BB65__B            3.892044e-023.355443e+022.841608e-048.226455e+01 2 0 0
 -3B64__CB65__C
 $VINTAGE,0
 C =============================================================================
 C line 65_68_1 from 65 to 68
-C   per-instance sequence parameters for 51.08km
+C   per-instance sequence parameters for 77.59km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B65__AB68__A            6.431192e-024.214760e+023.595634e-045.108058e+01 2 0 0
--2B65__BB68__B            3.215596e-021.884898e+022.680027e-045.108058e+01 2 0 0
+-1B65__AB68__A            4.234084e-024.214760e+023.595634e-047.758679e+01 2 0 0
+-2B65__BB68__B            2.117042e-021.884898e+022.680027e-047.758679e+01 2 0 0
 -3B65__CB68__C
 $VINTAGE,0
 C =============================================================================
 C line 66_67_1 from 66 to 67
-C   per-instance sequence parameters for 38.89km
+C   per-instance sequence parameters for 40.07km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B66__AB67__A                5.687808e+00    3.221610e+01    3.237588e-01
@@ -2801,7 +2801,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 68_116_1 from 68 to 116
-C   per-instance sequence parameters for 12.93km
+C   per-instance sequence parameters for 19.79km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B68__AB116_A                5.395800e-01    8.034187e+00    3.167573e-01
@@ -2813,43 +2813,43 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 68_81_1 from 68 to 81
-C   per-instance sequence parameters for 64.49km
+C   per-instance sequence parameters for 98.11km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B68__AB81__A            6.459800e-024.208169e+024.546597e-046.448923e+01 2 0 0
--2B68__BB81__B            3.229900e-021.881950e+023.388834e-046.448923e+01 2 0 0
+-1B68__AB81__A            4.246268e-024.208169e+024.546597e-049.810673e+01 2 0 0
+-2B68__BB81__B            2.123134e-021.881950e+023.388834e-049.810673e+01 2 0 0
 -3B68__CB81__C
 $VINTAGE,0
 C =============================================================================
 C line 69_70_1 from 69 to 70
-C   per-instance sequence parameters for 48.65km
+C   per-instance sequence parameters for 95.59km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B69__AB70__A            2.348490e-014.344753e+024.429828e-044.865425e+01 2 0 0
--2B69__BB70__B            1.174245e-011.943033e+023.301799e-044.865425e+01 2 0 0
+-1B69__AB70__A            1.195392e-014.344753e+024.429828e-049.558709e+01 2 0 0
+-2B69__BB70__B            5.976958e-021.943033e+023.301799e-049.558709e+01 2 0 0
 -3B69__CB70__C
 $VINTAGE,0
 C =============================================================================
 C line 69_75_1 from 69 to 75
-C   per-instance sequence parameters for 46.74km
+C   per-instance sequence parameters for 94.45km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B69__AB75__A            3.300398e-014.223887e+024.377195e-044.673873e+01 2 0 0
--2B69__BB75__B            1.650199e-011.888980e+023.262569e-044.673873e+01 2 0 0
+-1B69__AB75__A            1.633184e-014.223887e+024.377195e-049.445136e+01 2 0 0
+-2B69__BB75__B            8.165918e-021.888980e+023.262569e-049.445136e+01 2 0 0
 -3B69__CB75__C
 $VINTAGE,0
 C =============================================================================
 C line 69_77_1 from 69 to 77
-C   per-instance sequence parameters for 38.69km
+C   per-instance sequence parameters for 78.63km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B69__AB77__A            3.041643e-014.200541e+023.643884e-043.869354e+01 2 0 0
--2B69__BB77__B            1.520821e-011.878539e+022.715990e-043.869354e+01 2 0 0
+-1B69__AB77__A            1.496821e-014.200541e+023.643884e-047.862792e+01 2 0 0
+-2B69__BB77__B            7.484104e-021.878539e+022.715990e-047.862792e+01 2 0 0
 -3B69__CB77__C
 $VINTAGE,0
 C =============================================================================
 C line 6_7_1 from 6 to 7
-C   per-instance sequence parameters for 7.97km
+C   per-instance sequence parameters for 8.21km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B6___AB7___A                1.165493e+00    6.601920e+00    6.639349e-02
@@ -2861,7 +2861,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 70_71_1 from 70 to 71
-C   per-instance sequence parameters for 13.60km
+C   per-instance sequence parameters for 13.56km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B70__AB71__A                2.239574e+00    1.126770e+01    1.059882e-01
@@ -2873,7 +2873,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 70_74_1 from 70 to 74
-C   per-instance sequence parameters for 50.68km
+C   per-instance sequence parameters for 51.26km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B70__AB74__A                1.018219e+01    4.199202e+01    4.065696e-01
@@ -2885,7 +2885,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 70_75_1 from 70 to 75
-C   per-instance sequence parameters for 54.02km
+C   per-instance sequence parameters for 54.71km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B70__AB75__A                1.086778e+01    4.475340e+01    4.345756e-01
@@ -2897,16 +2897,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 71_72_1 from 71 to 72
-C   per-instance sequence parameters for 68.96km
+C   per-instance sequence parameters for 68.68km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B71__AB72__A            2.463392e-018.570229e+023.182940e-046.895878e+01 2 0 0
--2B71__BB72__B            1.231696e-013.832723e+022.372423e-046.895878e+01 2 0 0
+-1B71__AB72__A            2.473331e-018.570229e+023.182940e-046.868165e+01 2 0 0
+-2B71__BB72__B            1.236666e-013.832723e+022.372423e-046.868165e+01 2 0 0
 -3B71__CB72__C
 $VINTAGE,0
 C =============================================================================
 C line 71_73_1 from 71 to 73
-C   per-instance sequence parameters for 17.39km
+C   per-instance sequence parameters for 17.76km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B71__AB73__A                2.198947e+00    1.440996e+01    1.422028e-01
@@ -2918,7 +2918,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 74_75_1 from 74 to 75
-C   per-instance sequence parameters for 15.55km
+C   per-instance sequence parameters for 15.73km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B74__AB75__A                3.123216e+00    1.288644e+01    1.248198e-01
@@ -2942,16 +2942,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 75_77_1 from 75 to 77
-C   per-instance sequence parameters for 76.58km
+C   per-instance sequence parameters for 76.60km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B75__AB77__A            2.989047e-018.533400e+023.550087e-047.658256e+01 2 0 0
--2B75__BB77__B            1.494524e-013.816253e+022.646079e-047.658256e+01 2 0 0
+-1B75__AB77__A            2.988212e-018.533400e+023.550087e-047.660397e+01 2 0 0
+-2B75__BB77__B            1.494106e-013.816253e+022.646079e-047.660397e+01 2 0 0
 -3B75__CB77__C
 $VINTAGE,0
 C =============================================================================
 C line 76_118_1 from 76 to 118
-C   per-instance sequence parameters for 20.84km
+C   per-instance sequence parameters for 20.86km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B76__AB118_A                4.164288e+00    1.726656e+01    1.636901e-01
@@ -2963,7 +2963,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 76_77_1 from 76 to 77
-C   per-instance sequence parameters for 56.70km
+C   per-instance sequence parameters for 56.67km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B76__AB77__A                1.127405e+01    4.697520e+01    4.442328e-01
@@ -2975,7 +2975,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 77_78_1 from 77 to 78
-C   per-instance sequence parameters for 4.75km
+C   per-instance sequence parameters for 9.61km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B77__AB78__A                9.547392e-01    3.935760e+00    1.525843e-01
@@ -2987,7 +2987,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 77_80_1 from 77 to 80
-C   per-instance sequence parameters for 18.58km
+C   per-instance sequence parameters for 36.74km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B77__AB80__A                4.316640e+00    1.539390e+01    5.697769e-01
@@ -2999,7 +2999,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 77_80_2 from 77 to 80
-C   per-instance sequence parameters for 40.23km
+C   per-instance sequence parameters for 37.57km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B77__AB80__A                7.465248e+00    3.332700e+01    2.752312e-01
@@ -3011,16 +3011,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 77_82_1 from 77 to 82
-C   per-instance sequence parameters for 32.68km
+C   per-instance sequence parameters for 64.12km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B77__AB82__A            3.473268e-014.350111e+022.971645e-043.267880e+01 2 0 0
--2B77__BB82__B            1.736634e-011.945429e+022.214934e-043.267880e+01 2 0 0
+-1B77__AB82__A            1.770089e-014.350111e+022.971645e-046.412233e+01 2 0 0
+-2B77__BB82__B            8.850446e-021.945429e+022.214934e-046.412233e+01 2 0 0
 -3B77__CB82__C
 $VINTAGE,0
 C =============================================================================
 C line 78_79_1 from 78 to 79
-C   per-instance sequence parameters for 9.35km
+C   per-instance sequence parameters for 9.66km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B78__AB79__A                1.386403e+00    7.744560e+00    7.822360e-02
@@ -3032,7 +3032,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 79_80_1 from 79 to 80
-C   per-instance sequence parameters for 26.97km
+C   per-instance sequence parameters for 27.86km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B79__AB80__A                3.961152e+00    2.234496e+01    2.257379e-01
@@ -3044,7 +3044,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 7_12_1 from 7 to 12
-C   per-instance sequence parameters for 13.03km
+C   per-instance sequence parameters for 13.24km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B7___AB12__A                2.188790e+00    1.079160e+01    1.055053e-01
@@ -3056,16 +3056,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 80_96_1 from 80 to 96
-C   per-instance sequence parameters for 69.72km
+C   per-instance sequence parameters for 72.81km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B80__AB96__A            1.944687e-018.173638e+023.374460e-046.972499e+01 2 0 0
--2B80__BB96__B            9.723435e-023.655362e+022.515174e-046.972499e+01 2 0 0
+-1B80__AB96__A            1.862180e-018.173638e+023.374460e-047.281429e+01 2 0 0
+-2B80__BB96__B            9.310898e-023.655362e+022.515174e-047.281429e+01 2 0 0
 -3B80__CB96__C
 $VINTAGE,0
 C =============================================================================
 C line 80_97_1 from 80 to 97
-C   per-instance sequence parameters for 35.78km
+C   per-instance sequence parameters for 37.40km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B80__AB97__A                4.646736e+00    2.964516e+01    3.066172e-01
@@ -3077,7 +3077,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 80_98_1 from 80 to 98
-C   per-instance sequence parameters for 41.38km
+C   per-instance sequence parameters for 42.68km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B80__AB98__A                6.043296e+00    3.427920e+01    3.452461e-01
@@ -3089,16 +3089,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 80_99_1 from 80 to 99
-C   per-instance sequence parameters for 78.92km
+C   per-instance sequence parameters for 81.44km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B80__AB99__A            2.191088e-018.271427e+023.774288e-047.891949e+01 2 0 0
--2B80__BB99__B            1.095544e-013.699095e+022.813188e-047.891949e+01 2 0 0
+-1B80__AB99__A            2.123228e-018.271427e+023.774288e-048.144180e+01 2 0 0
+-2B80__BB99__B            1.061614e-013.699095e+022.813188e-048.144180e+01 2 0 0
 -3B80__CB99__C
 $VINTAGE,0
 C =============================================================================
 C line 82_83_1 from 82 to 83
-C   per-instance sequence parameters for 14.04km
+C   per-instance sequence parameters for 28.64km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B82__AB83__A                2.843904e+00    1.163271e+01    4.582358e-01
@@ -3110,7 +3110,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 82_96_1 from 82 to 96
-C   per-instance sequence parameters for 20.30km
+C   per-instance sequence parameters for 41.23km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B82__AB96__A                4.113504e+00    1.682220e+01    6.566920e-01
@@ -3122,7 +3122,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 83_84_1 from 83 to 84
-C   per-instance sequence parameters for 50.57km
+C   per-instance sequence parameters for 44.81km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B83__AB84__A                1.587000e+01    4.189680e+01    3.114458e-01
@@ -3134,7 +3134,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 83_85_1 from 83 to 85
-C   per-instance sequence parameters for 56.70km
+C   per-instance sequence parameters for 55.11km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B83__AB85__A                1.091856e+01    4.697520e+01    4.200897e-01
@@ -3146,7 +3146,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 84_85_1 from 84 to 85
-C   per-instance sequence parameters for 24.56km
+C   per-instance sequence parameters for 21.60km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B84__AB85__A                7.668384e+00    2.034534e+01    1.489628e-01
@@ -3158,7 +3158,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 85_86_1 from 85 to 86
-C   per-instance sequence parameters for 47.12km
+C   per-instance sequence parameters for 44.74km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B85__AB86__A                8.887200e+00    3.904020e+01    3.331746e-01
@@ -3170,7 +3170,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 85_88_1 from 85 to 88
-C   per-instance sequence parameters for 39.08km
+C   per-instance sequence parameters for 40.74km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B85__AB88__A                5.078400e+00    3.237480e+01    3.331746e-01
@@ -3182,25 +3182,25 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 85_89_1 from 85 to 89
-C   per-instance sequence parameters for 66.28km
+C   per-instance sequence parameters for 69.25km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B85__AB89__A            1.373482e-018.169910e+023.209055e-046.627705e+01 2 0 0
--2B85__BB89__B            6.867409e-023.653695e+022.391888e-046.627705e+01 2 0 0
+-1B85__AB89__A            1.314609e-018.169910e+023.209055e-046.924516e+01 2 0 0
+-2B85__BB89__B            6.573046e-023.653695e+022.391888e-046.924516e+01 2 0 0
 -3B85__CB89__C
 $VINTAGE,0
 C =============================================================================
 C line 86_87_1 from 86 to 87
-C   per-instance sequence parameters for 79.46km
+C   per-instance sequence parameters for 73.77km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B86__AB87__A            1.355632e-019.193218e+023.418925e-047.945584e+01 2 0 0
--2B86__BB87__B            6.778159e-024.111332e+022.548316e-047.945584e+01 2 0 0
+-1B86__AB87__A            1.460043e-019.193218e+023.418925e-047.377375e+01 2 0 0
+-2B86__BB87__B            7.300217e-024.111332e+022.548316e-047.377375e+01 2 0 0
 -3B86__CB87__C
 $VINTAGE,0
 C =============================================================================
 C line 88_89_1 from 88 to 89
-C   per-instance sequence parameters for 27.28km
+C   per-instance sequence parameters for 28.50km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B88__AB89__A                3.529488e+00    2.259888e+01    2.334637e-01
@@ -3212,25 +3212,25 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 89_90_1 from 89 to 90
-C   per-instance sequence parameters for 72.02km
+C   per-instance sequence parameters for 76.51km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B89__AB90__A            2.739322e-018.035356e+023.545692e-047.202362e+01 2 0 0
--2B89__BB90__B            1.369661e-013.593521e+022.642803e-047.202362e+01 2 0 0
+-1B89__AB90__A            2.578722e-018.035356e+023.545692e-047.650914e+01 2 0 0
+-2B89__BB90__B            1.289361e-013.593521e+022.642803e-047.650914e+01 2 0 0
 -3B89__CB90__C
 $VINTAGE,0
 C =============================================================================
 C line 89_90_2 from 89 to 90
-C   per-instance sequence parameters for 38.20km
+C   per-instance sequence parameters for 78.94km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B89__AB90__A            2.373301e-014.129884e+023.658522e-043.819550e+01 2 0 0
--2B89__BB90__B            1.186651e-011.846940e+022.726901e-043.819550e+01 2 0 0
+-1B89__AB90__A            1.148278e-014.129884e+023.658522e-047.894379e+01 2 0 0
+-2B89__BB90__B            5.741392e-021.846940e+022.726901e-047.894379e+01 2 0 0
 -3B89__CB90__C
 $VINTAGE,0
 C =============================================================================
 C line 89_92_1 from 89 to 92
-C   per-instance sequence parameters for 19.35km
+C   per-instance sequence parameters for 40.40km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B89__AB92__A                2.513808e+00    1.602870e+01    6.615206e-01
@@ -3242,34 +3242,34 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 89_92_2 from 89 to 92
-C   per-instance sequence parameters for 60.57km
+C   per-instance sequence parameters for 62.13km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B89__AB92__A            2.471336e-018.321640e+022.879196e-046.056880e+01 2 0 0
--2B89__BB92__B            1.235668e-013.721551e+022.146026e-046.056880e+01 2 0 0
+-1B89__AB92__A            2.409335e-018.321640e+022.879196e-046.212745e+01 2 0 0
+-2B89__BB92__B            1.204667e-013.721551e+022.146026e-046.212745e+01 2 0 0
 -3B89__CB92__C
 $VINTAGE,0
 C =============================================================================
 C line 8_30_1 from 8 to 30
-C   per-instance sequence parameters for 160.90km
+C   per-instance sequence parameters for 123.60km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B8___AB30__A            6.376452e-028.334065e+025.727986e-041.609038e+02 2 0 0
--2B8___BB30__B            3.188226e-023.727107e+024.269389e-041.609038e+02 2 0 0
+-1B8___AB30__A            8.301015e-028.334065e+025.727986e-041.235988e+02 2 0 0
+-2B8___BB30__B            4.150507e-023.727107e+024.269389e-041.235988e+02 2 0 0
 -3B8___CB30__C
 $VINTAGE,0
 C =============================================================================
 C line 8_9_1 from 8 to 9
-C   per-instance sequence parameters for 97.37km
+C   per-instance sequence parameters for 144.57km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B8___AB9___A            5.965163e-024.311914e+026.699743e-049.737235e+01 2 0 0
--2B8___BB9___B            2.982582e-021.928346e+024.993693e-049.737235e+01 2 0 0
+-1B8___AB9___A            4.017793e-024.311914e+026.699743e-041.445674e+02 2 0 0
+-2B8___BB9___B            2.008897e-021.928346e+024.993693e-041.445674e+02 2 0 0
 -3B8___CB9___C
 $VINTAGE,0
 C =============================================================================
 C line 90_91_1 from 90 to 91
-C   per-instance sequence parameters for 32.03km
+C   per-instance sequence parameters for 32.48km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B90__AB91__A                6.449568e+00    2.653464e+01    2.583310e-01
@@ -3281,7 +3281,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 91_92_1 from 91 to 92
-C   per-instance sequence parameters for 48.73km
+C   per-instance sequence parameters for 49.51km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B91__AB92__A                9.826704e+00    4.037328e+01    3.944980e-01
@@ -3293,16 +3293,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 92_100_1 from 92 to 100
-C   per-instance sequence parameters for 113.02km
+C   per-instance sequence parameters for 90.61km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B92__AB100_A            2.183856e-011.064592e+034.199399e-041.130158e+02 2 0 0
--2B92__BB100_B            1.091928e-014.761000e+023.130047e-041.130158e+02 2 0 0
+-1B92__AB100_A            2.723728e-011.064592e+034.199399e-049.061487e+01 2 0 0
+-2B92__BB100_B            1.361864e-014.761000e+023.130047e-049.061487e+01 2 0 0
 -3B92__CB100_C
 $VINTAGE,0
 C =============================================================================
 C line 92_102_1 from 92 to 102
-C   per-instance sequence parameters for 21.42km
+C   per-instance sequence parameters for 21.97km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B92__AB102_A                3.123216e+00    1.774266e+01    1.767274e-01
@@ -3314,7 +3314,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 92_93_1 from 92 to 93
-C   per-instance sequence parameters for 32.49km
+C   per-instance sequence parameters for 33.02km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B92__AB93__A                6.551136e+00    2.691552e+01    2.631596e-01
@@ -3326,16 +3326,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 92_94_1 from 92 to 94
-C   per-instance sequence parameters for 60.53km
+C   per-instance sequence parameters for 61.50km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B92__AB94__A            3.026628e-018.400569e+022.850340e-046.053049e+01 2 0 0
--2B92__BB94__B            1.513314e-013.756849e+022.124518e-046.053049e+01 2 0 0
+-1B92__AB94__A            2.978683e-018.400569e+022.850340e-046.150480e+01 2 0 0
+-2B92__BB94__B            1.489341e-013.756849e+022.124518e-046.150480e+01 2 0 0
 -3B92__CB94__C
 $VINTAGE,0
 C =============================================================================
 C line 93_94_1 from 93 to 94
-C   per-instance sequence parameters for 28.04km
+C   per-instance sequence parameters for 28.46km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B93__AB94__A                5.662416e+00    2.323368e+01    2.264622e-01
@@ -3347,7 +3347,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 94_100_1 from 94 to 100
-C   per-instance sequence parameters for 22.22km
+C   per-instance sequence parameters for 45.45km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B94__AB100_A                4.519776e+00    1.840920e+01    7.291212e-01
@@ -3359,7 +3359,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 94_95_1 from 94 to 95
-C   per-instance sequence parameters for 16.63km
+C   per-instance sequence parameters for 16.85km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B94__AB95__A                3.351744e+00    1.377516e+01    1.339941e-01
@@ -3371,7 +3371,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 94_96_1 from 94 to 96
-C   per-instance sequence parameters for 33.29km
+C   per-instance sequence parameters for 34.33km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B94__AB96__A                6.830448e+00    2.758206e+01    2.776455e-01
@@ -3383,7 +3383,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 95_96_1 from 95 to 96
-C   per-instance sequence parameters for 20.96km
+C   per-instance sequence parameters for 21.81km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B95__AB96__A                4.342032e+00    1.736178e+01    1.779346e-01
@@ -3395,7 +3395,7 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 96_97_1 from 96 to 97
-C   per-instance sequence parameters for 33.90km
+C   per-instance sequence parameters for 35.39km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B96__AB97__A                4.392816e+00    2.808990e+01    2.897170e-01
@@ -3407,16 +3407,16 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 98_100_1 from 98 to 100
-C   per-instance sequence parameters for 68.58km
+C   per-instance sequence parameters for 70.88km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B98__AB100_A            2.205000e-018.257835e+023.284998e-046.857568e+01 2 0 0
--2B98__BB100_B            1.102500e-013.693016e+022.448493e-046.857568e+01 2 0 0
+-1B98__AB100_A            2.133198e-018.257835e+023.284998e-047.088387e+01 2 0 0
+-2B98__BB100_B            1.066599e-013.693016e+022.448493e-047.088387e+01 2 0 0
 -3B98__CB100_C
 $VINTAGE,0
 C =============================================================================
 C line 99_100_1 from 99 to 100
-C   per-instance sequence parameters for 31.15km
+C   per-instance sequence parameters for 32.18km
 $VINTAGE,1
 C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 1 B99__AB100_A                4.570560e+00    2.580462e+01    2.607453e-01
@@ -3428,11 +3428,11 @@ C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
 $VINTAGE,0
 C =============================================================================
 C line 9_10_1 from 9 to 10
-C   per-instance sequence parameters for 102.80km
+C   per-instance sequence parameters for 152.83km
 $VINTAGE,1
 C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
--1B9___AB10__A            5.974426e-024.306243e+027.082484e-041.027997e+02 2 0 0
--2B9___BB10__B            2.987213e-021.925811e+025.278972e-041.027997e+02 2 0 0
+-1B9___AB10__A            4.018740e-024.306243e+027.082484e-041.528262e+02 2 0 0
+-2B9___BB10__B            2.009370e-021.925811e+025.278972e-041.528262e+02 2 0 0
 -3B9___CB10__C
 $VINTAGE,0
 C =============================================================================

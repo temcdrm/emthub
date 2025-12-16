@@ -33,7 +33,7 @@ demonstrates the CIM extension for transformer saturation.
 
 ### Saturating Transformer Core
 
-![Results with Saturation of Transformer Core](XfmrSat.png)
+![Results with Saturation of Transformer Core](XfmrNonlinear.png)
 
 ### Linear Transformer Core
 
