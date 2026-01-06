@@ -323,7 +323,7 @@ def AtpXfmrNodes(xfbus, enum, wdgrow, bEnd1Delta, ph, atp_buses=None):
 def AtpXfmr(r, x, v, tap=1.0):
   return AtpFit6(r) + AtpFit6(x) + AtpFit6(v*tap)
 
-def AtpStarEquivalent(wdgs, meshes, regs):
+def AtpStarEquivalent(wdgs, meshes, taps):
   nwdgs = len(wdgs)
   r = []
   x = []
@@ -361,11 +361,9 @@ def AtpStarEquivalent(wdgs, meshes, regs):
     x[0] = 0.5 * (x12pu + x13pu - x23pu) * zbase1
     x[1] = 0.5 * (x12pu + x23pu - x13pu) * zbase2
     x[2] = 0.5 * (x13pu + x23pu - x12pu) * zbase3
-  # use incr (%) instead of neutralU; we don't know if exporters account for DY connections
-  for reg in regs:
-    i = reg['wnum'] - 1
-    tap = 1.0 + 0.01 * reg['incr'] * (reg['step'] - reg['neutralStep'])
-    v[i] *= tap
+  # TODO: account for DY connections? account for effect of taps on impedance?
+  for i in range(nwdgs):
+    v[i] *= taps[i]
   # multiply any delta-connected impedances by 3
   for i in range(nwdgs):
     if wdgs[i]['conn'] == 'D':
@@ -375,6 +373,7 @@ def AtpStarEquivalent(wdgs, meshes, regs):
 
 def AtpStarCore(wdgs, dict, pname, bUseSaturation):
   # determine steady-state exciting branch from the core admittance attributes
+  # TODO: account fo effect of taps on core admittance and saturation?
   core = dict['EMTPowerXfmrCore']['vals'][pname]
   cim_b = core['b']
   cim_g = core['g']
@@ -899,7 +898,7 @@ def convert_one_atp_model (d, fpath, case):
       AtpNode (bus, ph), -1.0, TOPEN), file=ap)
   print ('/BRANCH', file=ap)
 
-  # organize the balanced PowerTransformers (no regulators are supported yet)
+  # organize the balanced PowerTransformers, including fixed off-nominal taps
   PowerXfmrs = {}
   xfbusnum = 1
   for key in d['EMTPowerXfmrWinding']['vals']:
@@ -907,13 +906,20 @@ def convert_one_atp_model (d, fpath, case):
     if pname in PowerXfmrs:
       PowerXfmrs[pname]['nwdg'] += 1
     else:
-      PowerXfmrs[pname] = {'nwdg':1, 'regs': []}
+      PowerXfmrs[pname] = {'nwdg':1, 'taps': []}
   for pname, row in PowerXfmrs.items():
     nwdg = row['nwdg']
-    regs = row['regs']
+    taps = row['taps']
     wdgs = []
     meshes = []
     for i in range(nwdg):
+      # look for an off-nominal tap, which may not be present
+      tap = 1.0
+      key = '{:s}{:s}{:d}'.format(pname, DELIM, i+1)
+      if key in d['EMTXfmrTap']['vals']:
+        tap = 1.0 + (d['EMTXfmrTap']['vals'][key]['svi']*d['EMTXfmrTap']['vals'][key]['step']) / 100.0
+      taps.append (tap)
+      # look for the mesh impedances, which must always be present
       wdgs.append (d['EMTPowerXfmrWinding']['vals']['{:s}{:s}{:d}'.format(pname, DELIM, i+1)])
       for j in range(i+1, nwdg):
         meshes.append (d['EMTPowerXfmrMesh']['vals']['{:s}{:s}{:d}{:s}{:d}'.format(pname, DELIM, i+1, DELIM, j+1)])
@@ -929,7 +935,7 @@ def convert_one_atp_model (d, fpath, case):
       bEnd1Delta = True
     else:
       bEnd1Delta = False
-    r, x, v = AtpStarEquivalent (wdgs, meshes, regs)
+    r, x, v = AtpStarEquivalent (wdgs, meshes, taps)
     for ph in ['A', 'B', 'C']:
       if ph == 'A':
         print ('C TRANSFORMER             <Imag><Fmag><BusT><Rmag>', file=ap)
