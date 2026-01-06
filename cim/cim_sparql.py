@@ -1,4 +1,4 @@
-# Copyright (C) 2025 Meltran, Inc
+# Copyright (C) 2025-26 Meltran, Inc
 
 import rdflib
 import time
@@ -40,6 +40,11 @@ CASES = [
    'gen_ic': 'c:/src/cimhub/bes/wecc240mg.txt',
    'swingbus':'2438', 
    'load': 1.0425},
+  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56',
+   'name': 'IEEE39',
+   'rawfile': 'raw/ieee39_1ibr.raw', 'xmlfile':'ieee39.xml', 'locfile': 'raw/ieee39_network.json', 'mridfile':'raw/ieee39mrids.dat', 'ttlfile': 'ieee39.ttl',
+   'wind_units': [], 'solar_units': ['30_1'], 'hydro_units': [], 'nuclear_units': [],
+   'swingbus': '31'},
   {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
    'name':'XfmrSat', 
    'rawfile':'raw/XfmrSat.raw', 'xmlfile':'XfmrSat.xml', 'mridfile': 'raw/XfmrSatmrids.dat', 'ttlfile': 'XfmrSat.ttl',
@@ -123,7 +128,7 @@ def load_emt_dict (g, xml_file, sysid):
 
   for key in ['EMTContainer', 'EMTBus', 'EMTBusXY', 'EMTBaseVoltage', 'EMTLine', 'EMTLoad',
               'EMTCountPowerXfmrWindings', 'EMTPowerXfmrWinding', 'EMTPowerXfmrCore',
-              'EMTPowerXfmrMesh', 'EMTXfmrSaturation', 'EMTCompShunt', 'EMTCompSeries',
+              'EMTPowerXfmrMesh', 'EMTXfmrTap', 'EMTXfmrSaturation', 'EMTCompShunt', 'EMTCompSeries',
               'EMTSyncMachine', 'EMTSolar', 'EMTWind', 'EMTGovSteamSGO', 'EMTExcST1A',
               'EMTPssIEEE1A', 'EMTWeccREGCA', 'EMTWeccREECA', 'EMTWeccREPCA',
               'EMTWeccWTGTA', 'EMTWeccWTGARA', 'EMTEnergySource', 'EMTDisconnectingCircuitBreaker']:
@@ -148,6 +153,6 @@ if __name__ == '__main__':
   d = load_emt_dict (g, 'sparql_queries.xml', case['id'])
   print ('Total query time {:6.3f} s'.format (time.time() - start_time))
 
-  for key in ['EMTEnergySource', 'EMTDisconnectingCircuitBreaker']:
+  for key in ['EMTEnergySource', 'EMTDisconnectingCircuitBreaker', 'EMTXfmrTap']:
     list_dict_table (d, key)
 

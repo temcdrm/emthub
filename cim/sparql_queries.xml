@@ -288,6 +288,28 @@ ORDER BY ?pname
 </value>
 </query>
 <query>
+<id>EMTXfmrTap</id>
+<keyfld>pname:enum</keyfld>
+<description>Off-nominal tap in percent.</description>
+<value>
+<![CDATA[
+SELECT ?pname ?enum ?svi ?step ?endid WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?p c:Equipment.EquipmentContainer ?sys.
+ ?p c:IdentifiedObject.name ?pname.
+ ?rtc r:type c:RatioTapChanger.
+ ?rtc c:RatioTapChanger.TransformerEnd ?end.
+ ?end c:PowerTransformerEnd.PowerTransformer ?p.
+ ?end c:TransformerEnd.endNumber ?enum.
+ ?rtc c:RatioTapChanger.stepVoltageIncrement ?svi.
+ ?rtc c:TapChanger.step ?step.
+ ?end c:IdentifiedObject.mRID ?endid.
+}
+ORDER BY ?pname ?enum
+]]>
+</value>
+</query>
+<query>
 <id>EMTPowerXfmrMesh</id>
 <keyfld>pname:fnum:tnum</keyfld>
 <description></description>

@@ -30,6 +30,7 @@ PREFIX e:  <http://opensource.ieee.org/emtiop#>
 ##################################################
 
 # EMTContainer
+# IEEE39	6477751A-0472-4FD6-B3C3-3AD4945CBE56
 # IEEE118	1783D2A8-1204-4781-A0B4-7A73A2FA6038
 # WECC240	2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3
 # XfmrSat       93EA6BF1-A569-4190-9590-98A62780489E
@@ -43,6 +44,7 @@ ORDER by ?name
 # EMTDisconnectingCircuitBreaker
 SELECT ?name ?bus1 ?bus2 ?basev ?id ?sysid ?cn1id ?cn2id WHERE {
  ?s r:type c:DisconnectingCircuitBreaker.
+# VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 # VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
 # VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  VALUES ?sysid {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
@@ -258,6 +260,24 @@ SELECT ?pname ?enum ?b ?g WHERE {
  ?adm c:TransformerCoreAdmittance.g ?g.
 }
 ORDER BY ?pname
+
+# EMTXfmrTap
+SELECT ?pname ?enum ?svi ?step ?endid WHERE {
+ VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?p c:Equipment.EquipmentContainer ?sys.
+ ?p c:IdentifiedObject.name ?pname.
+ ?rtc r:type c:RatioTapChanger.
+ ?rtc c:RatioTapChanger.TransformerEnd ?end.
+ ?end c:PowerTransformerEnd.PowerTransformer ?p.
+ ?end c:TransformerEnd.endNumber ?enum.
+ ?rtc c:RatioTapChanger.stepVoltageIncrement ?svi.
+ ?rtc c:TapChanger.step ?step.
+ ?end c:IdentifiedObject.mRID ?endid.
+}
+ORDER BY ?pname ?enum
 
 # EMTPowerXfmrMesh
 SELECT ?pname ?fnum ?tnum ?r ?x WHERE {
