@@ -1,4 +1,4 @@
-# Copyright (C) 2025 Meltran, Inc
+# Copyright (C) 2025-2026 Meltran, Inc
 """Summarizes the class counts in Turtle files
 """
 import rdflib

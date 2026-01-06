@@ -1,5 +1,5 @@
 # Copyright (C) 2021-2023 Battelle Memorial Institute
-# Copyright (C) 2024-2025 Meltran, Inc
+# Copyright (C) 2024-2026 Meltran, Inc
 """Write Alternative Transients Program (ATP) netlist from CIM.
 
 These functions require an ATP user license.

@@ -35,4 +35,4 @@ Then follow these instructions to make 64-bit and 32-bit versions of the DLL:
 - _test.c_ is a test harness, mimicking the DLL import and calling functions of a simulation tool
 - _test_scrx9.c_ is a test harness, invoking the DLL through an EMTHub wrapper that supports all IEEE/Cigre DLLs
 
-Copyright &copy; 2024-25, Meltran, Inc
+Copyright &copy; 2024-26, Meltran, Inc

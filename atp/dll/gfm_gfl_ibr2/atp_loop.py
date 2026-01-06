@@ -1,4 +1,4 @@
-# Copyright (C) 2025 Meltran, Inc
+# Copyright (C) 2025-2026 Meltran, Inc
 # file: atp_loop.py
 """ Run all ATP test cases for EPRI IBR2 model report.
 

@@ -1,4 +1,4 @@
-# Copyright (C) 2025 Meltran, Inc
+# Copyright (C) 2025-2026 Meltran, Inc
 # file: MakeDocx.py
 """ Assembles PNG plots into a document.
 

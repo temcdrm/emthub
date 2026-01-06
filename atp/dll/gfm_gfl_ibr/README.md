@@ -7,5 +7,5 @@ Files to run this example:
 - _ibr.atp_: an ATP netlist, produced from ATPDraw, with the IBR connected to a network.
 - _ibr.mod_: the IBR component for ATP's MODELS, suitable for use in ATPDraw.
 
-Copyright &copy; 2024-25, Meltran, Inc
+Copyright &copy; 2024-26, Meltran, Inc
 

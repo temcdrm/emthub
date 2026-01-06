@@ -82,4 +82,4 @@ _Terminal_ class and the _Wecc_ dynamic models for IBR.
 ![SLGF Fault Results](WECC240.png)
 
 
-Copyright &copy; 2024-25, Meltran, Inc
+Copyright &copy; 2024-26, Meltran, Inc

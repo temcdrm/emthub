@@ -1,4 +1,4 @@
-// Copyright (C) 2024 Meltran, Inc
+// Copyright (C) 2024-26 Meltran, Inc
 
 /*
 This is an example of a power system model written in C, according to the IEEE/Cigre DLL Modeling Standard (API V2).

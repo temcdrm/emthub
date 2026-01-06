@@ -17,4 +17,4 @@ Files of interest include:
 - _clean.bat_: Deletes MATPOWER temporary files.
 - _matpower_gen_type.m_: Support function that will move to the _emthub_ Python package.
 
-Copyright &copy; 2024-25, Meltran, Inc
+Copyright &copy; 2024-26, Meltran, Inc

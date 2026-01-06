@@ -7,5 +7,5 @@ Files to run this example:
 - _scrx9.atp_: an ATP netlist, produced from ATPDraw, with the SCRX9 connected to a machine.
 - _scrx9.mod_: the SCRX9 component for ATP's MODELS, suitable for use in ATPDraw.
 
-Copyright &copy; 2024-25, Meltran, Inc
+Copyright &copy; 2024-26, Meltran, Inc
 

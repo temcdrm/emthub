@@ -1,4 +1,4 @@
-// Copyright (C) 2024-25 Meltran, Inc
+// Copyright (C) 2024-26 Meltran, Inc
 
 #ifndef __IEEE_Cigre_DLLWrapper__
 #define __IEEE_Cigre_DLLWrapper__

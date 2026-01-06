@@ -45,4 +45,4 @@ Then follow these instructions to make 64-bit and 32-bit versions of the DLL:
 - _hwpv.c_ implements forward evaluation of the trained generalized block diagram model
 - _test_hwpv.c_ is a test harness, mimicking the DLL import and calling functions of a simulation tool
 
-Copyright &copy; 2024-25, Meltran, Inc
+Copyright &copy; 2024-26, Meltran, Inc

@@ -30,4 +30,4 @@ Then follow these instructions to make 64-bit and 32-bit versions of the DLL:
 - _GFM_GFL_IBR.c_ is the unmodified example file from Deepak Ramasubramanian of EPRI
 - _test_ibr.c_ is a test harness, mimicking the DLL import and calling functions of a simulation tool
 
-Copyright &copy; 2024-25, Meltran, Inc
+Copyright &copy; 2024-26, Meltran, Inc

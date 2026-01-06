@@ -1,5 +1,5 @@
 # Copyright (C) 2020-2023 Battelle Memorial Institute
-# Copyright (C) 2025 Meltran, Inc
+# Copyright (C) 2025-2026 Meltran, Inc
 
 # file: mpow_utilities.py
 """Reads MATPOWER and MOST cases/results into Python.

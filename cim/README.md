@@ -47,4 +47,4 @@ In the rawfile subdirectory:
 - _raw/\*.raw_: Raw files with power flow data.
 - _raw/XfmrSat.dat_: Parameter calculations for the transformer saturation example.
 
-Copyright &copy; 2024-25, Meltran, Inc
+Copyright &copy; 2024-26, Meltran, Inc

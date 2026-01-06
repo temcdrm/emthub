@@ -1,4 +1,4 @@
-# Copyright (C) 2025 Meltran, Inc
+# Copyright (C) 2025-2026 Meltran, Inc
 # file: h5utils.py
 """ Loads ATP simulation results from COMTRADE files, saves to HDF.
 

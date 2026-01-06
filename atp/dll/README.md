@@ -70,5 +70,5 @@ You will not be able to build or run these examples. There may be some value in 
 - _hwpv/\*.mod_ and _\*.atp_: test circuit inputs for a data-driven Hammerstein-Wiener Photovoltaic (HWPV) model as described in [paper](https://ieeexplore.ieee.org/document/10842890), [report](https://www.osti.gov/servlets/purl/2481660/), and [pecblocks repository](https://pecblocks.readthedocs.io/en/latest/).
 - _scrx9/\*.mod_ and _\*.atp_: test circuit inputs for a synchronous machine exciter example as presented in Cigre TB 958 and [Modelica paper](https://ecp.ep.liu.se/index.php/modelica/article/view/1132) with [repository](https://github.com/embeddedhao/OpenIPSL/tree/cigre_dll_pr).
 
-Copyright &copy; 2024-25, Meltran, Inc
+Copyright &copy; 2024-26, Meltran, Inc
 

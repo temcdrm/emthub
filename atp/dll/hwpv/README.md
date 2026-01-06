@@ -14,5 +14,5 @@ These files are not essential, but provide some context for the example:
 - _pv1_osg.acp_: an ATPDraw file with a single-phase, switching model of an IBR, used to train a different HWPV model. This may be used for testing the DLL at a later time. The HWPV model takes approximately the same simulation time as the average model used to train it, for the same time step. The HWPV model is expected to run much faster than a switching model used to train it.
 - _pv1_osg.atp_: an ATP netlist, produced from ATPDraw, tiwht a single-phase switching model IBR.
 
-Copyright &copy; 2024-25, Meltran, Inc
+Copyright &copy; 2024-26, Meltran, Inc
 

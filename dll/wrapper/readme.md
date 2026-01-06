@@ -27,4 +27,4 @@ Then follow these instructions to make 64-bit and 32-bit versions of the wrapper
 - _CMakeLists.txt_ generates the detailed build instructions
 - _IEEE_Cigre_DLLWrapper.c_ encapsulates the IEEE Cigre DLL interface for static linking
 
-Copyright &copy; 2024-25, Meltran, Inc
+Copyright &copy; 2024-26, Meltran, Inc

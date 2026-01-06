@@ -1,4 +1,4 @@
-// Copyright (C) 2024-25 Meltran, Inc
+// Copyright (C) 2024-26 Meltran, Inc
 
 // see https://learn.microsoft.com/en-us/windows/win32/dlls/using-run-time-dynamic-linking
 

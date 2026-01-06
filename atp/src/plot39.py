@@ -1,3 +1,5 @@
+# Copyright (C) 2025-2026 Meltran, Inc
+
 import sys
 import matplotlib.pyplot as plt
 import numpy as np

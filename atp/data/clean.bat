@@ -11,5 +11,5 @@ del *.bin
 del LT*.pch
 del README.html
 rem del wecc240.hdf5
-del ieee118.hdf5
-del ibrcall.hdf5
+rem del ieee118.hdf5
+rem del ibrcall.hdf5

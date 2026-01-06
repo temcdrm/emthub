@@ -14,4 +14,4 @@ in the following order.
 
 The build instructions will produce 64-bit and 32-bit versions of all example DLLs, test harnesses, and support libraries. A 32-bit simulator, such as ATP, will need the 32-bit DLLs.
 
-Copyright &copy; 2025, Meltran, Inc
+Copyright &copy; 2025-26, Meltran, Inc

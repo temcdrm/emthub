@@ -79,8 +79,8 @@ MIN_BERGERON_TAU = 200.0e-6
 DUM_NODES = 0
 PV3_DUM_NODES = 49
 MACHINE_DUM_NODES = 31
-SOLAR_DUM_NODES = 115
-WIND_DUM_NODES = 115
+SOLAR_DUM_NODES = 114
+WIND_DUM_NODES = 114
 DUM_NODE_LIMIT = 9999
 
 DELIM = ':'
@@ -447,7 +447,7 @@ def TheveninVoltage (vpu, deg, rpu, xpu, p_mw, q_mvar, mva_base):
   return abs(vs), cmath.phase(vs) * RAD_TO_DEG
 
 solar_template = """$INCLUDE,IBR.PCH,{sbus},{sname} $$
-  ,{vbase},{sbase},{ibase},{ppu},{qpu},{vpu}"""
+  ,{vbase},{sbase},{ibase},{ppu},{qpu},{vpu},{theta}"""
 
 def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count):
   sbus = AtpBus (bus)
@@ -458,7 +458,8 @@ def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count):
                                ibase = AtpFit10 (ibase),
                                ppu = AtpFit10 (ppu),
                                qpu = AtpFit10 (qpu),
-                               vpu = AtpFit10 (vpu)), 
+                               vpu = AtpFit10 (vpu),
+                               theta = AtpFit10 (1.8)), 
          file=ap)
 
 def AppendType14Generator (bus, vbase, rmva, Xdp, Ra, bus_ic, mw, mvar, ap):
@@ -688,6 +689,7 @@ def InitializeIBR (row, gen_ic, ibr_type):
     if int(ic[3]) == ibr_type:
       if int(ic[0]) == bus:
         row['p'] = 1.0e6 * ic[1]
+        row['q'] = 1.0e6 * ic[2]
         return
 
 def summarize_graph (g):
@@ -1165,7 +1167,7 @@ def convert_one_atp_model (d, fpath, case):
       pfang = 0.0
     sPF = AtpFit6 (pfang)
     print ('C =============================================================================', file=ap)
-    print ('C solar {:s} at {:s} is {:.3f} MVA producing {:.3f} MW'.format (key, row['bus'], sbase*1e-6, wtotal*1e-6), file=ap)
+    print ('C solar {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (key, row['bus'], sbase*1e-6, wtotal*1e-6, row['q']*1e-6), file=ap)
     AppendSolar (bus, vbase, sbase, ibase=sbase/vbase, ppu=wtotal/sbase, qpu=row['q']/sbase, vpu=1.0, ap=ap, ibr_count=PV_COUNT+WND_COUNT)
     dgens[key] = {'Type':'Solar', 'Source':None, 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
     DUM_NODES += SOLAR_DUM_NODES
@@ -1181,7 +1183,7 @@ def convert_one_atp_model (d, fpath, case):
     WND_TOTAL += 1e-6 * wtotal
     WND_COUNT += 1
     print ('C =============================================================================', file=ap)
-    print ('C wind {:s} at {:s} is {:.3f} MVA producing {:.3f} MW'.format (key, row['bus'], sbase*1e-6, wtotal*1e-6), file=ap)
+    print ('C wind {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (key, row['bus'], sbase*1e-6, wtotal*1e-6, row['q']*1e-6), file=ap)
     AppendSolar (bus, vbase, sbase, ibase=sbase/vbase, ppu=wtotal/sbase, qpu=row['q']/sbase, vpu=1.0, ap=ap, ibr_count=PV_COUNT+WND_COUNT)
     dgens[key] = {'Type':'Wind', 'Source':None, 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
     DUM_NODES += WIND_DUM_NODES

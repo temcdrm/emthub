@@ -9,4 +9,4 @@ Directories:
 - _atp/fll_: ATP models for inverter-based resources and relay trip functions
 - _atp/src_: Python code to plot ATP outputs and create ATP models from common information model (CIM) data
 
-Copyright &copy; 2024-25, Meltran, Inc
+Copyright &copy; 2024-26, Meltran, Inc
