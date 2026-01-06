@@ -9,10 +9,13 @@ plt.rcParams['savefig.directory'] = os.getcwd()
 #tmin = 40.0
 #tmax = 50.0
 tmin = 0.0
-tmax = 10.0
+#tmax = 2.0
+tmax = 20.0
 #tticks = [40.0, 42.0, 44.0, 46.0, 48.0, 50.0]
 #tticks = [20.0, 22.0, 24.0, 26.0, 28.0, 30.0]
-tticks = [0.0, 2.0, 4.0, 6.0, 8.0, 10.0]
+#tticks = [0.0, 2.0, 4.0, 6.0, 8.0, 10.0]
+#tticks = [0.0, 0.4, 0.8, 1.2, 1.6, 2.0]
+tticks = [0.0, 4.0, 8.0, 12.0, 16.0, 20.0]
 
 def summarize_df (df, label):
   print ('Column                         Min           Max {:s}'.format (label))
