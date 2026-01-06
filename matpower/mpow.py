@@ -1,5 +1,5 @@
 # Copyright (C) 2023-2024 Battelle Memorial Institute
-# Copyright (C) 2025 Meltran, Inc
+# Copyright (C) 2025-2026 Meltran, Inc
 
 import sys
 import os
@@ -9,6 +9,17 @@ import numpy as np
 import emthub.mpow_utilities as mpow
 
 CASES = [
+  {'id': None,
+   'name': 'IEEE39',
+   'swingbus':'31',
+   'load_scale':1.0000,
+   'softlims': False,
+   'glpk_opts': None,
+   'min_kv_to_upgrade': 500.0,
+   'min_contingency_mva': 1000.0,
+   'mva_upgrades': None,
+   'gen_PG': None,
+   'edits': None},
   {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 
    'name': 'IEEE118', 
    'swingbus':'131',
@@ -69,17 +80,6 @@ CASES = [
      {'branch_number':442, 'new_mva':1000.0},
      {'branch_number':443, 'new_mva':1000.0},
      {'branch_number':449, 'new_mva':1500.0}],
-   'gen_PG': None,
-   'edits': None},
-  {'id': None,
-   'name': 'IEEE39',
-   'swingbus':'31',
-   'load_scale':1.0000,
-   'softlims': False,
-   'glpk_opts': None,
-   'min_kv_to_upgrade': 500.0,
-   'min_contingency_mva': 1000.0,
-   'mva_upgrades': None,
    'gen_PG': None,
    'edits': None}
   ]
@@ -175,19 +175,26 @@ def summarize_overloads(d):
   b = d['branch']
   nb = b.shape[0]
 
+  nover = 0
   for i in range(ng):
     if g[i][mpow.PG] > g[i][mpow.PMAX]:
+      nover += 1
       print ('  Generator {:d} at {:d} has {:.2f} MW > {:.2f} MW'.format (i+1, int(g[i][mpow.GEN_BUS]), g[i][mpow.PG], g[i][mpow.PMAX]))
+  print ('  {:d} generators overloaded'.format (nover))
+
+  nover = 0
   for i in range(nb):
     if b[i][mpow.RATE_A] > 0.0:
       s1 = math.sqrt (b[i][mpow.PF]*b[i][mpow.PF] + b[i][mpow.QF]*b[i][mpow.QF])
       s2 = math.sqrt (b[i][mpow.PT]*b[i][mpow.PT] + b[i][mpow.QT]*b[i][mpow.QT])
       smax = max(s1, s2)
-      if smax > b[i][mpow.RATE_A]: 
+      if smax > b[i][mpow.RATE_A]:
+        nover += 1
         print ('  Branch {:d} from {:d}-{:d} has {:.2f} MVA > {:.2f} MVA'.format (i+1, int(b[i][mpow.F_BUS]), int(b[i][mpow.T_BUS]), smax, b[i][mpow.RATE_A]))
+  print ('  {:d} branches overloaded'.format (nover))
 
 if __name__ == '__main__':
-  case_id = 1
+  case_id = 0
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
   sys_name = CASES[case_id]['name']

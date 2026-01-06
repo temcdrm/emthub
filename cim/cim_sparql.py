@@ -1,4 +1,4 @@
-# Copyright (C) 2025-26 Meltran, Inc
+# Copyright (C) 2025-2026 Meltran, Inc
 
 import rdflib
 import time
@@ -9,6 +9,11 @@ PREFIX = None
 DELIM = ':'
 
 CASES = [
+  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56',
+   'name': 'IEEE39',
+   'rawfile': 'raw/ieee39_1ibr.raw', 'xmlfile':'ieee39.xml', 'locfile': 'raw/ieee39_network.json', 'mridfile':'raw/ieee39mrids.dat', 'ttlfile': 'ieee39.ttl',
+   'wind_units': [], 'solar_units': ['30_1'], 'hydro_units': [], 'nuclear_units': [],
+   'swingbus': '31'},
   {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 
    'name': 'IEEE118', 
    'rawfile':'raw/ieee-118-bus-v4.raw', 'xmlfile':'ieee118.xml', 'locfile': 'raw/ieee118_network.json', 'mridfile':'raw/ieee118mrids.dat', 'ttlfile': 'ieee118.ttl',
@@ -40,11 +45,6 @@ CASES = [
    'gen_ic': 'c:/src/cimhub/bes/wecc240mg.txt',
    'swingbus':'2438', 
    'load': 1.0425},
-  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56',
-   'name': 'IEEE39',
-   'rawfile': 'raw/ieee39_1ibr.raw', 'xmlfile':'ieee39.xml', 'locfile': 'raw/ieee39_network.json', 'mridfile':'raw/ieee39mrids.dat', 'ttlfile': 'ieee39.ttl',
-   'wind_units': [], 'solar_units': ['30_1'], 'hydro_units': [], 'nuclear_units': [],
-   'swingbus': '31'},
   {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
    'name':'XfmrSat', 
    'rawfile':'raw/XfmrSat.raw', 'xmlfile':'XfmrSat.xml', 'mridfile': 'raw/XfmrSatmrids.dat', 'ttlfile': 'XfmrSat.ttl',
@@ -139,7 +139,7 @@ def load_emt_dict (g, xml_file, sysid):
   return dict
 
 if __name__ == '__main__':
-  idx = 2
+  idx = 0
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
   case = CASES[idx]

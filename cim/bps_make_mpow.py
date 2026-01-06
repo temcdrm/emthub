@@ -1,5 +1,5 @@
 # Copyright (C) 2023-2024 Battelle Memorial Institute
-# Copyright (C) 2025 Meltran, Inc
+# Copyright (C) 2025-2026 Meltran, Inc
 
 import sys
 import os
@@ -11,9 +11,9 @@ PREFIX = None
 DELIM = ':'
 
 CASES = [
+  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56', 'name': 'IEEE39', 'swingbus':'31'},
   {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 'name': 'IEEE118', 'swingbus':'131'},
-  {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 'name': 'WECC240', 'swingbus':'2438'},
-  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56', 'name': 'IEEE39', 'swingbus':'31'}
+  {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 'name': 'WECC240', 'swingbus':'2438'}
 ]
 
 FUELS = {
@@ -90,7 +90,7 @@ def load_emt_dict (g, xml_file, sysid):
 
   for key in ['EMTContainer', 'EMTBus', 'EMTBusXY', 'EMTBaseVoltage', 'EMTLine', 'EMTLoad',
               'EMTCountPowerXfmrWindings', 'EMTPowerXfmrWinding', 'EMTPowerXfmrCore',
-              'EMTPowerXfmrMesh', 'EMTXfmrSaturation', 'EMTCompShunt', 'EMTCompSeries',
+              'EMTPowerXfmrMesh', 'EMTXfmrTap', 'EMTXfmrSaturation', 'EMTCompShunt', 'EMTCompSeries',
               'EMTSyncMachine', 'EMTSolar', 'EMTWind', 'EMTGovSteamSGO', 'EMTExcST1A',
               'EMTPssIEEE1A', 'EMTWeccREGCA', 'EMTWeccREECA', 'EMTWeccREPCA',
               'EMTWeccWTGTA', 'EMTWeccWTGARA', 'EMTEnergySource', 'EMTDisconnectingCircuitBreaker']:
@@ -258,20 +258,24 @@ mpc.gen = [""", file=fp)
       data['ramp_agc'], data['ramp_10'], data['ramp_30'], data['ramp_q'], data['apf']), file=fp)
   print ('];', file=fp)
 
-  # accumulate the transformer windings into transformers
+  # accumulate the transformer windings and taps into transformers
   xfmrs = {}
   for key, data in d['EMTPowerXfmrWinding']['vals'].items():
     toks = key.split(':')
     pname = toks[0]
     bus = bus_numbers[data['bus']]
     if pname not in xfmrs:
+      ratio = 1.0
+      if key in d['EMTXfmrTap']['vals']:
+        ratio = 1.0 + (d['EMTXfmrTap']['vals'][key]['svi']*d['EMTXfmrTap']['vals'][key]['step']) / 100.0
+        print (' * found tap={:8.6f} for winding {:s}'.format (ratio, key))
       mva = data['ratedS'] / 1.0e6
       kv = data['ratedU'] / 1.0e3
       zbase = kv*kv / MVA_BASE # mva # on system MVA base, not on transformer MVA
       mesh = d['EMTPowerXfmrMesh']['vals']['{:s}:1:2'.format(pname)]
       r = mesh['r'] / zbase
       x = mesh['x'] / zbase
-      xfmrs[pname] = {'from':bus, 'mva':mva, 'r':r, 'x': x}
+      xfmrs[pname] = {'from':bus, 'mva':mva, 'r':r, 'x': x, 'ratio': ratio}
     else:
       xfmrs[pname]['to'] = bus
 
@@ -301,8 +305,8 @@ mpc.branch = [""", file=fp)
     rateA = data['mva']
     rateB = rateA * 4.0 / 3.0
     rateC = rateA * 5.0 / 3.0
-    print (' {:5d} {:5d} {:9.6f} {:9.6f} 0.0 {:8.3f} {:8.3f} {:8.3f} 1.0 0.0 1 0.0 0.0;'.format (data['from'], 
-      data['to'], data['r'], data['x'], rateA, rateB, rateC), file=fp)
+    print (' {:5d} {:5d} {:9.6f} {:9.6f} 0.0 {:8.3f} {:8.3f} {:8.3f} {:8.6f} 0.0 1 0.0 0.0;'.format (data['from'], 
+      data['to'], data['r'], data['x'], rateA, rateB, rateC, data['ratio']), file=fp)
   print ('];', file=fp)
 
   print ("""
@@ -349,7 +353,7 @@ mpc.bus_name = {""", file=fp)
   print ('suggest mpc = scale_load ({:.4f}, mpc)'.format(total_gen/total_load))
 
 if __name__ == '__main__':
-  case_id = 1
+  case_id = 0
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
   case = CASES[case_id]

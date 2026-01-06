@@ -1,8 +1,8 @@
 results.success = 1
 results.iterations = 4
-results.et = 0.0651
+results.et = 0.0117
 
-Converged in 0.07 seconds
+Converged in 0.01 seconds
 ================================================================================
 |     System Summary                                                           |
 ================================================================================
@@ -11,19 +11,19 @@ How many?                How much?              P (MW)            Q (MVAr)
 ---------------------    -------------------  -------------  -----------------
 Buses            193     Total Gen Capacity    8619.1       -4368.0 to 5266.2
 Generators        75     On-line Capacity      8619.1       -4368.0 to 5266.2
-Committed Gens    75     Generation (actual)   2914.3              -2.1
+Committed Gens    75     Generation (actual)   2915.2              49.0
 Loads             99     Load                  2862.5             970.4
   Fixed           99       Fixed               2862.5             970.4
   Dispatchable     0       Dispatchable          -0.0 of -0.0      -0.0
-Shunts            14     Shunt (inj)             -0.0              85.5
-Branches         261     Losses (I^2 * Z)        51.82            493.37
-Transformers      84     Branch Charging (inj)     -             1380.4
+Shunts            14     Shunt (inj)             -0.0              86.6
+Branches         261     Losses (I^2 * Z)        52.70            505.51
+Transformers      84     Branch Charging (inj)     -             1340.3
 Inter-ties         0     Total Inter-tie Flow     0.0               0.0
 Areas              1
 
                           Minimum                      Maximum
                  -------------------------  --------------------------------
-Voltage Magnitude   0.976 p.u. @ bus 41         1.057 p.u. @ bus 9   
-Voltage Angle     -13.94 deg   @ bus 41        14.93 deg   @ bus 189 
-P Losses (I^2*R)             -                  2.55 MW    @ line 94-100
-Q Losses (I^2*X)             -                 21.90 MVAr  @ line 10-123
+Voltage Magnitude   0.969 p.u. @ bus 63         1.043 p.u. @ bus 9   
+Voltage Angle     -14.06 deg   @ bus 41        14.96 deg   @ bus 189 
+P Losses (I^2*R)             -                  2.54 MW    @ line 94-100
+Q Losses (I^2*X)             -                 21.89 MVAr  @ line 26-30

@@ -1,4 +1,4 @@
-# Copyright (C) 2025-26 Meltran, Inc
+# Copyright (C) 2025-2026 Meltran, Inc
 
 import json
 import csv
@@ -17,6 +17,11 @@ CIM_NS = 'http://www.ucaiug.org/ns#'
 EMT_NS = 'http://opensource.ieee.org/emtiop#'
 
 CASES = [
+  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56',
+   'name': 'IEEE39',
+   'rawfile': 'raw/ieee39_1ibr.raw', 'xmlfile':'ieee39.xml', 'locfile': 'raw/ieee39_network.json', 'mridfile':'raw/ieee39mrids.dat', 'ttlfile': 'ieee39.ttl',
+   'wind_units': [], 'solar_units': ['30_1'], 'hydro_units': [], 'nuclear_units': [],
+   'swingbus': '31'},
   {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 
    'name': 'IEEE118', 
    'rawfile':'raw/ieee-118-bus-v4.raw', 'xmlfile':'ieee118.xml', 'locfile': 'raw/ieee118_network.json', 'mridfile':'raw/ieee118mrids.dat', 'ttlfile': 'ieee118.ttl',
@@ -40,11 +45,6 @@ CASES = [
                    '50311_H', '63352_H', '65332_H', '70322_H', '8033_H', 
                    '80341_H'],
    'nuclear_units': ['14311_N', '41322_N']},
-  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56',
-   'name': 'IEEE39',
-   'rawfile': 'raw/ieee39_1ibr.raw', 'xmlfile':'ieee39.xml', 'locfile': 'raw/ieee39_network.json', 'mridfile':'raw/ieee39mrids.dat', 'ttlfile': 'ieee39.ttl',
-   'wind_units': [], 'solar_units': ['30_1'], 'hydro_units': [], 'nuclear_units': [],
-   'swingbus': '31'},
   {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
    'name':'XfmrSat', 
    'rawfile':'raw/XfmrSat.raw', 'xmlfile':'XfmrSat.xml', 'mridfile': 'raw/XfmrSatmrids.dat', 'ttlfile': 'XfmrSat.ttl',
@@ -1058,7 +1058,7 @@ def read_version_33_34(rdr,sections,bTwoTitles):
 #  print_table ('SYSTEM SWITCHING DEVICE')
 
 if __name__ == '__main__':
-  case_id = 2
+  case_id = 0
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
 

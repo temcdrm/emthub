@@ -1,6 +1,6 @@
 results.success = 1
 results.iterations = 4
-results.et = 0.0098
+results.et = 0.0099
 
 Converged in 0.01 seconds
 ================================================================================
@@ -11,19 +11,19 @@ How many?                How much?              P (MW)            Q (MVAr)
 ---------------------    -------------------  -------------  -----------------
 Buses             39     Total Gen Capacity   15920.0       -12052.6 to 12396.4
 Generators        10     On-line Capacity     15920.0       -12052.6 to 12396.4
-Committed Gens    10     Generation (actual)   6145.8            1445.8
+Committed Gens    10     Generation (actual)   6143.3            1362.3
 Loads             19     Load                  6097.5            1408.9
   Fixed           19       Fixed               6097.5            1408.9
   Dispatchable     0       Dispatchable          -0.0 of -0.0      -0.0
 Shunts             0     Shunt (inj)             -0.0               0.0
-Branches          46     Losses (I^2 * Z)        48.31           1026.68
-Transformers      12     Branch Charging (inj)     -              989.8
+Branches          46     Losses (I^2 * Z)        45.81           1006.15
+Transformers      12     Branch Charging (inj)     -             1052.7
 Inter-ties         0     Total Inter-tie Flow     0.0               0.0
 Areas              1
 
                           Minimum                      Maximum
                  -------------------------  --------------------------------
-Voltage Magnitude   0.937 p.u. @ bus 12         1.004 p.u. @ bus 1   
-Voltage Angle     -10.78 deg   @ bus 8         10.89 deg   @ bus 36  
-P Losses (I^2*R)             -                  5.55 MW    @ line 29-38
-Q Losses (I^2*X)             -                108.14 MVAr  @ line 29-38
+Voltage Magnitude   0.979 p.u. @ bus 20         1.038 p.u. @ bus 19  
+Voltage Angle     -10.55 deg   @ bus 8         10.10 deg   @ bus 36  
+P Losses (I^2*R)             -                  5.53 MW    @ line 29-38
+Q Losses (I^2*X)             -                107.74 MVAr  @ line 29-38

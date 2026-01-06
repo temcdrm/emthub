@@ -1,4 +1,4 @@
-# Copyright (C) 2025 Meltran, Inc
+# Copyright (C) 2025-2026 Meltran, Inc
 
 import rdflib
 import time
@@ -14,6 +14,14 @@ PREFIX = None
 DELIM = ':'
 
 CASES = [
+  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56',
+   'name': 'IEEE39',
+   'rawfile': 'raw/ieee39_1ibr.raw', 'xmlfile':'ieee39.xml', 'locfile': 'raw/ieee39_network.json', 'mridfile':'raw/ieee39mrids.dat', 'ttlfile': 'ieee39.ttl',
+   'wind_units': [], 'solar_units': ['30_1'], 'hydro_units': [], 'nuclear_units': [],
+   'bus_ic': '../matpower/ieee39mb.txt',
+   'gen_ic': '../matpower/ieee39mg.txt',
+   'swingbus':'31', 
+   'load': 1.0, 'UseXfmrSaturation': False},
   {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 
    'name': 'IEEE118', 
    'rawfile':'raw/ieee-118-bus-v4.raw', 'xmlfile':'ieee118.xml', 'locfile': 'raw/ieee118_network.json', 'mridfile':'raw/ieee118mrids.dat', 'ttlfile': 'ieee118.ttl',
@@ -45,14 +53,6 @@ CASES = [
    'gen_ic': '../matpower/wecc240mg.txt',
    'swingbus':'2438', 
    'load': 1.0425, 'UseXfmrSaturation': False},
-  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56',
-   'name': 'IEEE39',
-   'rawfile': 'raw/ieee39_1ibr.raw', 'xmlfile':'ieee39.xml', 'locfile': 'raw/ieee39_network.json', 'mridfile':'raw/ieee39mrids.dat', 'ttlfile': 'ieee39.ttl',
-   'wind_units': [], 'solar_units': ['30_1'], 'hydro_units': [], 'nuclear_units': [],
-   'bus_ic': '../matpower/ieee39mb.txt',
-   'gen_ic': '../matpower/ieee39mg.txt',
-   'swingbus':'31', 
-   'load': 1.0, 'UseXfmrSaturation': False},
   {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
    'name':'XfmrSat', 
    'rawfile':'raw/XfmrSat.raw', 'xmlfile':'XfmrSat.xml', 'mridfile': 'raw/XfmrSatmrids.dat', 'ttlfile': 'XfmrSat.ttl',
@@ -767,7 +767,7 @@ def load_emt_dict (g, xml_file, sysid):
 
   for key in ['EMTContainer', 'EMTBus', 'EMTBusXY', 'EMTBaseVoltage', 'EMTLine', 'EMTLoad',
               'EMTCountPowerXfmrWindings', 'EMTPowerXfmrWinding', 'EMTPowerXfmrCore',
-              'EMTPowerXfmrMesh', 'EMTXfmrSaturation', 'EMTCompShunt', 'EMTCompSeries',
+              'EMTPowerXfmrMesh', 'EMTXfmrTap', 'EMTXfmrSaturation', 'EMTCompShunt', 'EMTCompSeries',
               'EMTSyncMachine', 'EMTSolar', 'EMTWind', 'EMTGovSteamSGO', 'EMTExcST1A',
               'EMTPssIEEE1A', 'EMTWeccREGCA', 'EMTWeccREECA', 'EMTWeccREPCA',
               'EMTWeccWTGTA', 'EMTWeccWTGARA', 'EMTEnergySource', 'EMTDisconnectingCircuitBreaker']:
@@ -1065,7 +1065,6 @@ def convert_one_atp_model (d, fpath, case):
         print ('  ' + AtpNode (bus, ph) + PadBlanks(34) + '{:16e}'.format(xshunt), file=ap)
       print ('$VINTAGE,0', file=ap)
 
-
   for key, row in d['EMTLoad']['vals'].items():
     bus = atp_buses[row['bus']]
     phases = GetAtpPhaseList ('ABC')
@@ -1230,7 +1229,7 @@ def convert_one_atp_model (d, fpath, case):
   print ('  Estimated {:d} TACS dummy nodes, limit is {:d}'.format (DUM_NODES, DUM_NODE_LIMIT))
 
 if __name__ == '__main__':
-  idx = 1
+  idx = 0
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
   case = CASES[idx]
