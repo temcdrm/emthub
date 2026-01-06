@@ -168,8 +168,9 @@ def write_edits(edits, root):
   fp.close()
   return '{:s}_edits'.format (root)
 
-def summarize_overloads(d):
-  print ('Overloads:')
+def append_overloads_to_summary(fname, d):
+  fp = open (fname, 'a')
+  print ('\nOverloads:', file=fp)
   g = d['gen']
   ng = g.shape[0]
   b = d['branch']
@@ -179,8 +180,8 @@ def summarize_overloads(d):
   for i in range(ng):
     if g[i][mpow.PG] > g[i][mpow.PMAX]:
       nover += 1
-      print ('  Generator {:d} at {:d} has {:.2f} MW > {:.2f} MW'.format (i+1, int(g[i][mpow.GEN_BUS]), g[i][mpow.PG], g[i][mpow.PMAX]))
-  print ('  {:d} generators overloaded'.format (nover))
+      print ('  Generator {:d} at {:d} has {:.2f} MW > {:.2f} MW'.format (i+1, int(g[i][mpow.GEN_BUS]), g[i][mpow.PG], g[i][mpow.PMAX]), file=fp)
+  print ('  {:d} generators overloaded'.format (nover), file=fp)
 
   nover = 0
   for i in range(nb):
@@ -190,8 +191,9 @@ def summarize_overloads(d):
       smax = max(s1, s2)
       if smax > b[i][mpow.RATE_A]:
         nover += 1
-        print ('  Branch {:d} from {:d}-{:d} has {:.2f} MVA > {:.2f} MVA'.format (i+1, int(b[i][mpow.F_BUS]), int(b[i][mpow.T_BUS]), smax, b[i][mpow.RATE_A]))
-  print ('  {:d} branches overloaded'.format (nover))
+        print ('  Branch {:d} from {:d}-{:d} has {:.2f} MVA > {:.2f} MVA'.format (i+1, int(b[i][mpow.F_BUS]), int(b[i][mpow.T_BUS]), smax, b[i][mpow.RATE_A]), file=fp)
+  print ('  {:d} branches overloaded'.format (nover), file=fp)
+  fp.close()
 
 if __name__ == '__main__':
   case_id = 0
@@ -210,7 +212,6 @@ if __name__ == '__main__':
 
   mpow.run_matpower_and_wait (fscript)
 
-  mpow.print_solution_summary (fsummary, details=True)
   r = mpow.read_matpower_casefile (fsolved)
   mpow.summarize_casefile (r, 'Solved')
   print ('Min and max bus voltages=[{:.4f},{:.4f}]'.format (np.min(r['bus'][:,mpow.VM]),np.max(r['bus'][:,mpow.VM])))
@@ -222,5 +223,7 @@ if __name__ == '__main__':
   qgmax = np.sum(r['gen'][:,mpow.QMAX], where=gen_online)
   qgmin = np.sum(r['gen'][:,mpow.QMIN], where=gen_online)
   print ('Online capacity = {:.2f} MW, {:.2f} to {:.2f} MVAR'.format (pgmax, qgmin, qgmax))
-  summarize_overloads (r)
+  append_overloads_to_summary (fsummary, r)
+
+  mpow.print_solution_summary (fsummary, details=True)
 

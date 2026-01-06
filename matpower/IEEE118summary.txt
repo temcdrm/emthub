@@ -1,6 +1,6 @@
 results.success = 1
 results.iterations = 4
-results.et = 0.0117
+results.et = 0.0113
 
 Converged in 0.01 seconds
 ================================================================================
@@ -27,3 +27,12 @@ Voltage Magnitude   0.969 p.u. @ bus 63         1.043 p.u. @ bus 9
 Voltage Angle     -14.06 deg   @ bus 41        14.96 deg   @ bus 189 
 P Losses (I^2*R)             -                  2.54 MW    @ line 94-100
 Q Losses (I^2*X)             -                 21.89 MVAr  @ line 26-30
+
+Overloads:
+  0 generators overloaded
+  Branch 211 from 30-17 has 123.92 MVA > 100.00 MVA
+  Branch 218 from 38-37 has 182.65 MVA > 100.00 MVA
+  Branch 233 from 63-59 has 106.75 MVA > 100.00 MVA
+  Branch 239 from 69-158 has 157.70 MVA > 155.00 MVA
+  Branch 256 from 8-5 has 235.21 MVA > 100.00 MVA
+  5 branches overloaded

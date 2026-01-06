@@ -1,6 +1,6 @@
 results.success = 1
 results.iterations = 6
-results.et = 0.0164
+results.et = 0.0161
 
 Converged in 0.02 seconds
 ================================================================================
@@ -27,3 +27,54 @@ Voltage Magnitude   0.907 p.u. @ bus 213        1.091 p.u. @ bus 161
 Voltage Angle     -58.42 deg   @ bus 233       25.36 deg   @ bus 216 
 P Losses (I^2*R)             -                118.88 MW    @ line 187-188
 Q Losses (I^2*X)             -                959.42 MVAr  @ line 212-213
+
+Overloads:
+  Generator 28 at 47 has 2448.04 MW > 2292.00 MW
+  1 generators overloaded
+  Branch 330 from 1-2 has 375.25 MVA > 100.00 MVA
+  Branch 331 from 1-2 has 375.25 MVA > 100.00 MVA
+  Branch 332 from 2-3 has 1175.12 MVA > 430.00 MVA
+  Branch 333 from 2-3 has 1166.66 MVA > 430.00 MVA
+  Branch 340 from 7-8 has 1033.80 MVA > 100.00 MVA
+  Branch 341 from 7-8 has 1033.80 MVA > 100.00 MVA
+  Branch 345 from 11-12 has 2800.03 MVA > 2000.00 MVA
+  Branch 355 from 18-21 has 5174.50 MVA > 3066.00 MVA
+  Branch 362 from 24-33 has 923.40 MVA > 430.00 MVA
+  Branch 363 from 26-27 has 385.72 MVA > 100.00 MVA
+  Branch 364 from 26-27 has 385.72 MVA > 100.00 MVA
+  Branch 368 from 30-31 has 416.22 MVA > 100.00 MVA
+  Branch 369 from 30-31 has 416.22 MVA > 100.00 MVA
+  Branch 370 from 31-32 has 904.00 MVA > 100.00 MVA
+  Branch 371 from 34-45 has 1373.13 MVA > 100.00 MVA
+  Branch 376 from 38-72 has 1920.68 MVA > 100.00 MVA
+  Branch 384 from 41-47 has 2454.79 MVA > 2300.00 MVA
+  Branch 385 from 42-48 has 1051.81 MVA > 100.00 MVA
+  Branch 386 from 44-46 has 556.57 MVA > 100.00 MVA
+  Branch 387 from 49-50 has 392.67 MVA > 100.00 MVA
+  Branch 388 from 49-50 has 392.67 MVA > 100.00 MVA
+  Branch 389 from 49-50 has 392.67 MVA > 100.00 MVA
+  Branch 390 from 51-52 has 1903.82 MVA > 100.00 MVA
+  Branch 391 from 54-65 has 154.65 MVA > 100.00 MVA
+  Branch 395 from 57-77 has 1538.66 MVA > 100.00 MVA
+  Branch 398 from 61-79 has 202.05 MVA > 100.00 MVA
+  Branch 399 from 63-75 has 2284.14 MVA > 100.00 MVA
+  Branch 400 from 64-76 has 234.09 MVA > 100.00 MVA
+  Branch 401 from 65-78 has 120.59 MVA > 100.00 MVA
+  Branch 402 from 67-74 has 152.49 MVA > 100.00 MVA
+  Branch 403 from 67-74 has 151.35 MVA > 100.00 MVA
+  Branch 404 from 83-85 has 302.49 MVA > 250.00 MVA
+  Branch 426 from 112-113 has 374.51 MVA > 100.00 MVA
+  Branch 429 from 114-120 has 2156.99 MVA > 100.00 MVA
+  Branch 436 from 119-122 has 697.41 MVA > 100.00 MVA
+  Branch 439 from 131-157 has 1431.51 MVA > 100.00 MVA
+  Branch 471 from 180-295 has 7420.45 MVA > 5000.00 MVA
+  Branch 478 from 182-183 has 2178.07 MVA > 100.00 MVA
+  Branch 487 from 193-194 has 718.98 MVA > 100.00 MVA
+  Branch 499 from 200-201 has 1268.08 MVA > 100.00 MVA
+  Branch 500 from 203-205 has 341.56 MVA > 100.00 MVA
+  Branch 507 from 210-212 has 1380.52 MVA > 100.00 MVA
+  Branch 508 from 211-213 has 1413.69 MVA > 100.00 MVA
+  Branch 520 from 222-231 has 406.69 MVA > 100.00 MVA
+  Branch 521 from 222-231 has 406.69 MVA > 100.00 MVA
+  Branch 539 from 239-242 has 1216.87 MVA > 100.00 MVA
+  46 branches overloaded
