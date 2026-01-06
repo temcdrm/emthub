@@ -3858,6 +3858,192 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="RatioTapChanger" class="group">
+         <a href="#RatioTapChanger">
+            <h2 class="concrete">RatioTapChanger</h2>
+         </a>
+         <p class="package">Wires</p>
+         <p class="comment">A tap changer that changes the voltage ratio impacting the voltage magnitude but not the phase angle across the transformer.</p>
+         <p class="comment">Angle sign convention (general): Positive value indicates a positive phase shift from the winding where the tap is located to the other winding (for a two-winding transformer).</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="RatioTapChanger.stepVoltageIncrement">stepVoltageIncrement</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PerCent">PerCent</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Tap step increment, in per cent of rated voltage of the power transformer end, per step position.</p>
+                  <p class="comment">When the increment is negative, the voltage decreases when the tap step increases.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RatioTapChanger.TransformerEnd">TransformerEnd</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#TransformerEnd">TransformerEnd</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The transformer end for this additional ratio tap changer.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">highStep</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#TapChanger.highStep">TapChanger</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">lowStep</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#TapChanger.lowStep">TapChanger</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">neutralStep</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#TapChanger.neutralStep">TapChanger</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">neutralU</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Voltage">Voltage</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#TapChanger.neutralU">TapChanger</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">normalStep</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#TapChanger.normalStep">TapChanger</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">step</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Float">Float</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#TapChanger.step">TapChanger</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table/>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..unbounded</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Name">Name</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
       <div id="SeriesCompensator" class="group">
          <a href="#SeriesCompensator">
             <h2 class="concrete">SeriesCompensator</h2>
@@ -10286,6 +10472,157 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="TapChanger" class="group">
+         <a href="#TapChanger">
+            <h2 class="abstract">TapChanger</h2>
+         </a>
+         <p class="package">Wires</p>
+         <p class="comment">Mechanism for changing transformer winding tap positions.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="TapChanger.highStep">highStep</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Highest possible tap step position, advance from neutral.</p>
+                  <p class="comment">The attribute shall be greater than lowStep.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="TapChanger.lowStep">lowStep</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Lowest possible tap step position, retard from neutral.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="TapChanger.neutralStep">neutralStep</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The neutral tap step position for this winding.</p>
+                  <p class="comment">The attribute shall be equal to or greater than lowStep and equal or less than highStep.</p>
+                  <p class="comment">It is the step position where the voltage is neutralU when the other terminals of the transformer are at the ratedU. If there are other tap changers on the transformer those taps are kept constant at their neutralStep.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="TapChanger.neutralU">neutralU</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Voltage">Voltage</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Voltage at which the winding operates at the neutral tap setting. It is the voltage at the terminal of the PowerTransformerEnd associated with the tap changer when all tap changers on the transformer are at their neutralStep position.  Normally neutralU of the tap changer is the same as ratedU of the PowerTransformerEnd, but it can differ in special cases such as when the tapping mechanism is separate from the winding more common on lower voltage transformers.</p>
+                  <p class="comment">This attribute is not relevant for PhaseTapChangerAsymmetrical, PhaseTapChangerSymmetrical and PhaseTapChangerLinear.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="TapChanger.normalStep">normalStep</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The tap step position used in "normal" network operation for this winding. For a "Fixed" tap changer indicates the current physical tap setting.</p>
+                  <p class="comment">The attribute shall be equal to or greater than lowStep and equal to or less than highStep.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="TapChanger.step">step</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Float">Float</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Tap changer position.</p>
+                  <p class="comment">Starting step for a steady state solution. Non integer values are allowed to support continuous tap variables. The reasons for continuous value are to support study cases where no discrete tap changer has yet been designed, a solution where a narrow voltage band forces the tap step to oscillate or to accommodate for a continuous solution as input.</p>
+                  <p class="comment">The attribute shall be equal to or greater than lowStep and equal to or less than highStep.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table/>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..unbounded</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Name">Name</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
       <div id="TransformerEnd" class="group">
          <a href="#TransformerEnd">
             <h2 class="abstract">TransformerEnd</h2>
@@ -12519,6 +12856,15 @@ p.package { position: absolute; right: 10px; top: 0px}
          </a>
          <p class="package">Domain</p>
          <p class="comment">Per Unit - a positive or negative value referred to a defined base. Values typically range from -10 to +10.</p>
+         <p class="declaration">XSD type: <span class="xsdtype">float</span>
+         </p>
+      </div>
+      <div id="PerCent" class="group">
+         <a href="#PerCent">
+            <h2 class="domain">PerCent</h2>
+         </a>
+         <p class="package">Domain</p>
+         <p class="comment">Percentage on a defined base. For example, specify as 100 to indicate at the defined base.</p>
          <p class="declaration">XSD type: <span class="xsdtype">float</span>
          </p>
       </div>

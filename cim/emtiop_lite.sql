@@ -562,6 +562,27 @@ CREATE TABLE "PowerTransformerEnd"
     FOREIGN KEY ( "connectionKind" ) REFERENCES "WindingConnection" ( "name" )
 );
 
+CREATE TABLE "TapChanger"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    "highStep" INTEGER,
+    "lowStep" INTEGER,
+    "neutralStep" INTEGER,
+    "neutralU" DOUBLE PRECISION,
+    "normalStep" INTEGER,
+    "step" DOUBLE PRECISION NOT NULL,
+    FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemResource" ( "mRID" )
+);
+
+CREATE TABLE "RatioTapChanger"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    "stepVoltageIncrement" DOUBLE PRECISION NOT NULL,
+    "TransformerEnd" VARCHAR(100) NOT NULL,
+    FOREIGN KEY ( "mRID" ) REFERENCES "TapChanger" ( "mRID" ),
+    FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" )
+);
+
 CREATE TABLE "RotatingMachineDynamics"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
@@ -932,6 +953,7 @@ CREATE INDEX ix_ExcitationSystemDynamics_SynchronousMachineDynamics ON "Excitati
 CREATE INDEX ix_PowerElectronicsUnit_PowerElectronicsConnection ON "PowerElectronicsUnit" ( "PowerElectronicsConnection" );
 CREATE INDEX ix_PowerSystemStabilizerDynamics_ExcitationSystemDynamics ON "PowerSystemStabilizerDynamics" ( "ExcitationSystemDynamics" );
 CREATE INDEX ix_PowerTransformerEnd_PowerTransformer ON "PowerTransformerEnd" ( "PowerTransformer" );
+CREATE INDEX ix_RatioTapChanger_TransformerEnd ON "RatioTapChanger" ( "TransformerEnd" );
 CREATE INDEX ix_RotatingMachine_GeneratingUnit ON "RotatingMachine" ( "GeneratingUnit" );
 CREATE INDEX ix_SynchronousMachineDynamics_SynchronousMachine ON "SynchronousMachineDynamics" ( "SynchronousMachine" );
 CREATE INDEX ix_TransformerCoreAdmittance_TransformerEnd ON "TransformerCoreAdmittance" ( "TransformerEnd" );

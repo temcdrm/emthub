@@ -1,4 +1,4 @@
-# Copyright (C) 2025 Meltran, Inc
+# Copyright (C) 2025-26 Meltran, Inc
 
 import json
 import csv
@@ -68,6 +68,10 @@ PU_WAVE_SPEED = 0.965
 IBR_IFAULT = 1.2
 
 DYNAMIC_SETTINGS_FILE = 'dynamics_defaults.json'
+
+STEP_VOLTAGE_INCREMENT = 0.625
+HIGH_STEP = 16
+LOW_STEP = -16
 
 tables = {}
 baseMVA = -1.0
@@ -634,6 +638,27 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.BaseVoltage'), bv))
       bus_wdg = rdflib.URIRef(busids[str(row[idx])])
       g.add ((end, rdflib.URIRef (EMT_NS + 'TransformerEnd.ConnectivityNode'), bus_wdg))
+      tap = wdg['taps'][idx]
+      if abs(1.0-tap) > 1.0e-8:
+        rtcID = GetCIMID('RatioTapChanger', endkey, uuids)
+        rtc = rdflib.URIRef (rtcID)
+        step = (tap - 1.0) * 100.0 / STEP_VOLTAGE_INCREMENT
+        if step > HIGH_STEP:
+          step = HIGH_STEP
+        elif step < LOW_STEP:
+          step = LOW_STEP
+        normalStep = round(step)
+        g.add ((rtc, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'RatioTapChanger')))
+        g.add ((rtc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(endkey, datatype=CIM.String)))
+        g.add ((rtc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(rtcID, datatype=CIM.String)))
+        g.add ((rtc, rdflib.URIRef (CIM_NS + 'TapChanger.highStep'), rdflib.Literal(HIGH_STEP, datatype=CIM.Integer)))
+        g.add ((rtc, rdflib.URIRef (CIM_NS + 'TapChanger.lowStep'), rdflib.Literal(LOW_STEP, datatype=CIM.Integer)))
+        g.add ((rtc, rdflib.URIRef (CIM_NS + 'TapChanger.neutralStep'), rdflib.Literal(0, datatype=CIM.Integer)))
+        g.add ((rtc, rdflib.URIRef (CIM_NS + 'TapChanger.neutralU'), rdflib.Literal(wdg['kvs'][idx]*1.0e3, datatype=CIM.Voltage)))
+        g.add ((rtc, rdflib.URIRef (CIM_NS + 'TapChanger.normalStep'), rdflib.Literal(normalStep, datatype=CIM.Integer)))
+        g.add ((rtc, rdflib.URIRef (CIM_NS + 'TapChanger.step'), rdflib.Literal(step, datatype=CIM.Float)))
+        g.add ((rtc, rdflib.URIRef (CIM_NS + 'RatioTapChanger.stepVoltageIncrement'), rdflib.Literal(STEP_VOLTAGE_INCREMENT, datatype=CIM.PerCent)))
+        g.add ((rtc, rdflib.URIRef (CIM_NS + 'RatioTapChanger.TransformerEnd'), end))
 
     # write mesh impedance
     kvbase = wdg['kvs'][0]
@@ -896,6 +921,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     CIM.WeccWTGTA,
     CIM.PowerTransformer,
     CIM.PowerTransformerEnd,
+    CIM.RatioTapChanger,
     CIM.TransformerMeshImpedance,
     CIM.TransformerCoreAdmittance,
     EMT.TransformerSaturation,
@@ -1032,7 +1058,7 @@ def read_version_33_34(rdr,sections,bTwoTitles):
 #  print_table ('SYSTEM SWITCHING DEVICE')
 
 if __name__ == '__main__':
-  case_id = 1
+  case_id = 2
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
 

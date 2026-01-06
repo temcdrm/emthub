@@ -857,6 +857,24 @@ CREATE TABLE "PssIEEE1A"
     "vrmin" DOUBLE PRECISION NOT NULL
 );
 
+-- A tap changer that changes the voltage ratio impacting the voltage magnitude
+-- but not the phase angle across the transformer.
+-- Angle sign convention (general): Positive value indicates a positive phase
+-- shift from the winding where the tap is located to the other winding (for
+-- a two-winding transformer).
+CREATE TABLE "RatioTapChanger"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Tap step increment, in per cent of rated voltage of the power transformer
+    -- end, per step position.
+    -- When the increment is negative, the voltage decreases when the tap step
+    -- increases.
+    "stepVoltageIncrement" DOUBLE PRECISION NOT NULL,
+    -- The transformer end for this additional ratio tap changer.
+    -- FK column reference to table representing the "TransformerEnd" class
+    "TransformerEnd" VARCHAR(100) NOT NULL
+);
+
 -- A type of conducting equipment that can regulate a quantity (i.e. voltage
 -- or flow) at a specific point in the network.
 CREATE TABLE "RegulatingCondEq"
@@ -1186,6 +1204,48 @@ CREATE TABLE "SynchronousMachineTimeConstantReactance"
     -- Quadrature-axis transient reactance (<i>X'q</i>) (&gt;= SynchronousMachineTimeConstantReactance.xQuadSubtrans).
     -- Typical value = 0,3.
     "xQuadTrans" DOUBLE PRECISION NOT NULL
+);
+
+-- Mechanism for changing transformer winding tap positions.
+CREATE TABLE "TapChanger"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Highest possible tap step position, advance from neutral.
+    -- The attribute shall be greater than lowStep.
+    "highStep" INTEGER,
+    -- Lowest possible tap step position, retard from neutral.
+    "lowStep" INTEGER,
+    -- The neutral tap step position for this winding.
+    -- The attribute shall be equal to or greater than lowStep and equal or less
+    -- than highStep.
+    -- It is the step position where the voltage is neutralU when the other terminals
+    -- of the transformer are at the ratedU. If there are other tap changers on
+    -- the transformer those taps are kept constant at their neutralStep.
+    "neutralStep" INTEGER,
+    -- Voltage at which the winding operates at the neutral tap setting. It is
+    -- the voltage at the terminal of the PowerTransformerEnd associated with
+    -- the tap changer when all tap changers on the transformer are at their neutralStep
+    -- position. Normally neutralU of the tap changer is the same as ratedU of
+    -- the PowerTransformerEnd, but it can differ in special cases such as when
+    -- the tapping mechanism is separate from the winding more common on lower
+    -- voltage transformers.
+    -- This attribute is not relevant for PhaseTapChangerAsymmetrical, PhaseTapChangerSymmetrical
+    -- and PhaseTapChangerLinear.
+    "neutralU" DOUBLE PRECISION,
+    -- The tap step position used in "normal" network operation for this winding.
+    -- For a "Fixed" tap changer indicates the current physical tap setting.
+    -- The attribute shall be equal to or greater than lowStep and equal to or
+    -- less than highStep.
+    "normalStep" INTEGER,
+    -- Tap changer position.
+    -- Starting step for a steady state solution. Non integer values are allowed
+    -- to support continuous tap variables. The reasons for continuous value are
+    -- to support study cases where no discrete tap changer has yet been designed,
+    -- a solution where a narrow voltage band forces the tap step to oscillate
+    -- or to accommodate for a continuous solution as input.
+    -- The attribute shall be equal to or greater than lowStep and equal to or
+    -- less than highStep.
+    "step" DOUBLE PRECISION NOT NULL
 );
 
 -- A diagram object for placing free-text or text derived from an associated
@@ -2170,6 +2230,9 @@ ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Transfo
 -- Inheritance subclass-superclass constraint for table "PssIEEE1A"
 ALTER TABLE "PssIEEE1A" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemStabilizerDynamics" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "RatioTapChanger"
+ALTER TABLE "RatioTapChanger" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TapChanger" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "RegulatingCondEq"
 ALTER TABLE "RegulatingCondEq" ADD FOREIGN KEY ( "mRID" ) REFERENCES "EnergyConnection" ( "mRID" );
 
@@ -2196,6 +2259,9 @@ ALTER TABLE "SynchronousMachineDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "
 
 -- Inheritance subclass-superclass constraint for table "SynchronousMachineTimeConstantReactance"
 ALTER TABLE "SynchronousMachineTimeConstantReactance" ADD FOREIGN KEY ( "mRID" ) REFERENCES "SynchronousMachineDetailed" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "TapChanger"
+ALTER TABLE "TapChanger" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemResource" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "TextDiagramObject"
 ALTER TABLE "TextDiagramObject" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DiagramObject" ( "mRID" );
@@ -2279,6 +2345,9 @@ ALTER TABLE "PowerSystemStabilizerDynamics" ADD FOREIGN KEY ( "ExcitationSystemD
 ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "connectionKind" ) REFERENCES "WindingConnection" ( "name" );
 ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "PowerTransformer" ) REFERENCES "PowerTransformer" ( "mRID" );
 
+-- Foreign keys for table "RatioTapChanger"
+ALTER TABLE "RatioTapChanger" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
+
 -- Foreign keys for table "RotatingMachine"
 ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "GeneratingUnit" ) REFERENCES "GeneratingUnit" ( "mRID" );
 
@@ -2335,6 +2404,8 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 
 -- Cascade deletes for compounds referenced in table "PowerTransformerEnd"
 
+-- Cascade deletes for compounds referenced in table "RatioTapChanger"
+
 -- Cascade deletes for compounds referenced in table "RotatingMachine"
 
 -- Cascade deletes for compounds referenced in table "SynchronousMachineDynamics"
@@ -2368,6 +2439,7 @@ CREATE INDEX ix_ExcitationSystemDynamics_SynchronousMachineDynamics ON "Excitati
 CREATE INDEX ix_PowerElectronicsUnit_PowerElectronicsConnection ON "PowerElectronicsUnit" ( "PowerElectronicsConnection" );
 CREATE INDEX ix_PowerSystemStabilizerDynamics_ExcitationSystemDynamics ON "PowerSystemStabilizerDynamics" ( "ExcitationSystemDynamics" );
 CREATE INDEX ix_PowerTransformerEnd_PowerTransformer ON "PowerTransformerEnd" ( "PowerTransformer" );
+CREATE INDEX ix_RatioTapChanger_TransformerEnd ON "RatioTapChanger" ( "TransformerEnd" );
 CREATE INDEX ix_RotatingMachine_GeneratingUnit ON "RotatingMachine" ( "GeneratingUnit" );
 CREATE INDEX ix_SynchronousMachineDynamics_SynchronousMachine ON "SynchronousMachineDynamics" ( "SynchronousMachine" );
 CREATE INDEX ix_TransformerCoreAdmittance_TransformerEnd ON "TransformerCoreAdmittance" ( "TransformerEnd" );

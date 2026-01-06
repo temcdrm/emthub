@@ -17691,6 +17691,114 @@
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
+<2C2265A5-B288-456C-9779-AF3EB714EA0A> a cim:RatioTapChanger ;
+    cim:IdentifiedObject.mRID "2C2265A5-B288-456C-9779-AF3EB714EA0A"^^cim:String ;
+    cim:IdentifiedObject.name "81_80_0_1_End_1"^^cim:String ;
+    cim:RatioTapChanger.TransformerEnd <0B980F2F-F829-4AE5-9D07-132F765FB4BD> ;
+    cim:RatioTapChanger.stepVoltageIncrement "0.625"^^cim:PerCent ;
+    cim:TapChanger.highStep "16"^^cim:Integer ;
+    cim:TapChanger.lowStep "-16"^^cim:Integer ;
+    cim:TapChanger.neutralStep "0"^^cim:Integer ;
+    cim:TapChanger.neutralU "345000.0"^^cim:Voltage ;
+    cim:TapChanger.normalStep "-10"^^cim:Integer ;
+    cim:TapChanger.step "-10.399999999999991"^^cim:Float .
+
+<4B309A6C-17B6-4214-8455-39E5AD305C64> a cim:RatioTapChanger ;
+    cim:IdentifiedObject.mRID "4B309A6C-17B6-4214-8455-39E5AD305C64"^^cim:String ;
+    cim:IdentifiedObject.name "38_37_0_1_End_1"^^cim:String ;
+    cim:RatioTapChanger.TransformerEnd <D0DE8C9C-8F25-43BF-B00B-39F971ACFE19> ;
+    cim:RatioTapChanger.stepVoltageIncrement "0.625"^^cim:PerCent ;
+    cim:TapChanger.highStep "16"^^cim:Integer ;
+    cim:TapChanger.lowStep "-16"^^cim:Integer ;
+    cim:TapChanger.neutralStep "0"^^cim:Integer ;
+    cim:TapChanger.neutralU "345000.0"^^cim:Voltage ;
+    cim:TapChanger.normalStep "-10"^^cim:Integer ;
+    cim:TapChanger.step "-10.399999999999991"^^cim:Float .
+
+<50175E6F-F58C-433F-AA67-C742940EE479> a cim:RatioTapChanger ;
+    cim:IdentifiedObject.mRID "50175E6F-F58C-433F-AA67-C742940EE479"^^cim:String ;
+    cim:IdentifiedObject.name "68_69_0_1_End_1"^^cim:String ;
+    cim:RatioTapChanger.TransformerEnd <BE56CCF5-D329-4E6F-B7AC-348D868C2566> ;
+    cim:RatioTapChanger.stepVoltageIncrement "0.625"^^cim:PerCent ;
+    cim:TapChanger.highStep "16"^^cim:Integer ;
+    cim:TapChanger.lowStep "-16"^^cim:Integer ;
+    cim:TapChanger.neutralStep "0"^^cim:Integer ;
+    cim:TapChanger.neutralU "345000.0"^^cim:Voltage ;
+    cim:TapChanger.normalStep "-10"^^cim:Integer ;
+    cim:TapChanger.step "-10.399999999999991"^^cim:Float .
+
+<8E070719-C754-48AD-B926-8257C63908DC> a cim:RatioTapChanger ;
+    cim:IdentifiedObject.mRID "8E070719-C754-48AD-B926-8257C63908DC"^^cim:String ;
+    cim:IdentifiedObject.name "65_66_0_1_End_1"^^cim:String ;
+    cim:RatioTapChanger.TransformerEnd <954FA634-CEEA-4615-89B3-6EAA61ED085D> ;
+    cim:RatioTapChanger.stepVoltageIncrement "0.625"^^cim:PerCent ;
+    cim:TapChanger.highStep "16"^^cim:Integer ;
+    cim:TapChanger.lowStep "-16"^^cim:Integer ;
+    cim:TapChanger.neutralStep "0"^^cim:Integer ;
+    cim:TapChanger.neutralU "345000.0"^^cim:Voltage ;
+    cim:TapChanger.normalStep "-10"^^cim:Integer ;
+    cim:TapChanger.step "-10.399999999999991"^^cim:Float .
+
+<A3C116FB-0D23-420D-AB12-46AEB11A8B4E> a cim:RatioTapChanger ;
+    cim:IdentifiedObject.mRID "A3C116FB-0D23-420D-AB12-46AEB11A8B4E"^^cim:String ;
+    cim:IdentifiedObject.name "8_5_0_1_End_1"^^cim:String ;
+    cim:RatioTapChanger.TransformerEnd <2A1230B2-4C48-4D92-9241-99F12510B6FE> ;
+    cim:RatioTapChanger.stepVoltageIncrement "0.625"^^cim:PerCent ;
+    cim:TapChanger.highStep "16"^^cim:Integer ;
+    cim:TapChanger.lowStep "-16"^^cim:Integer ;
+    cim:TapChanger.neutralStep "0"^^cim:Integer ;
+    cim:TapChanger.neutralU "345000.0"^^cim:Voltage ;
+    cim:TapChanger.normalStep "-2"^^cim:Integer ;
+    cim:TapChanger.step "-2.400000000000002"^^cim:Float .
+
+<AAAC9598-170C-4BAB-A2EA-031CDE033546> a cim:RatioTapChanger ;
+    cim:IdentifiedObject.mRID "AAAC9598-170C-4BAB-A2EA-031CDE033546"^^cim:String ;
+    cim:IdentifiedObject.name "30_17_0_1_End_1"^^cim:String ;
+    cim:RatioTapChanger.TransformerEnd <A0E34DAA-E6D3-4BDB-9ACA-817726A73815> ;
+    cim:RatioTapChanger.stepVoltageIncrement "0.625"^^cim:PerCent ;
+    cim:TapChanger.highStep "16"^^cim:Integer ;
+    cim:TapChanger.lowStep "-16"^^cim:Integer ;
+    cim:TapChanger.neutralStep "0"^^cim:Integer ;
+    cim:TapChanger.neutralU "345000.0"^^cim:Voltage ;
+    cim:TapChanger.normalStep "-6"^^cim:Integer ;
+    cim:TapChanger.step "-6.400000000000006"^^cim:Float .
+
+<D08CC5B4-1FE4-46D1-8661-AC8E41E758EE> a cim:RatioTapChanger ;
+    cim:IdentifiedObject.mRID "D08CC5B4-1FE4-46D1-8661-AC8E41E758EE"^^cim:String ;
+    cim:IdentifiedObject.name "26_25_0_1_End_1"^^cim:String ;
+    cim:RatioTapChanger.TransformerEnd <A38213EF-90E1-447B-9C29-0790AC9635E7> ;
+    cim:RatioTapChanger.stepVoltageIncrement "0.625"^^cim:PerCent ;
+    cim:TapChanger.highStep "16"^^cim:Integer ;
+    cim:TapChanger.lowStep "-16"^^cim:Integer ;
+    cim:TapChanger.neutralStep "0"^^cim:Integer ;
+    cim:TapChanger.neutralU "345000.0"^^cim:Voltage ;
+    cim:TapChanger.normalStep "-6"^^cim:Integer ;
+    cim:TapChanger.step "-6.400000000000006"^^cim:Float .
+
+<E1CDB0F3-C960-4471-9376-DB884B4873F7> a cim:RatioTapChanger ;
+    cim:IdentifiedObject.mRID "E1CDB0F3-C960-4471-9376-DB884B4873F7"^^cim:String ;
+    cim:IdentifiedObject.name "63_59_0_1_End_1"^^cim:String ;
+    cim:RatioTapChanger.TransformerEnd <D56B43BB-D304-45A3-B5E3-785C566785B7> ;
+    cim:RatioTapChanger.stepVoltageIncrement "0.625"^^cim:PerCent ;
+    cim:TapChanger.highStep "16"^^cim:Integer ;
+    cim:TapChanger.lowStep "-16"^^cim:Integer ;
+    cim:TapChanger.neutralStep "0"^^cim:Integer ;
+    cim:TapChanger.neutralU "345000.0"^^cim:Voltage ;
+    cim:TapChanger.normalStep "-6"^^cim:Integer ;
+    cim:TapChanger.step "-6.400000000000006"^^cim:Float .
+
+<E7B4FBE4-D6B5-41C6-85F4-99ADD75BA397> a cim:RatioTapChanger ;
+    cim:IdentifiedObject.mRID "E7B4FBE4-D6B5-41C6-85F4-99ADD75BA397"^^cim:String ;
+    cim:IdentifiedObject.name "64_61_0_1_End_1"^^cim:String ;
+    cim:RatioTapChanger.TransformerEnd <F5DD04E3-C227-48D4-B663-08D9B55EFF51> ;
+    cim:RatioTapChanger.stepVoltageIncrement "0.625"^^cim:PerCent ;
+    cim:TapChanger.highStep "16"^^cim:Integer ;
+    cim:TapChanger.lowStep "-16"^^cim:Integer ;
+    cim:TapChanger.neutralStep "0"^^cim:Integer ;
+    cim:TapChanger.neutralU "345000.0"^^cim:Voltage ;
+    cim:TapChanger.normalStep "-2"^^cim:Integer ;
+    cim:TapChanger.step "-2.400000000000002"^^cim:Float .
+
 <00A3AE9C-88DA-4330-A2A1-7C78CF09530E> a cim:TransformerMeshImpedance ;
     cim:IdentifiedObject.mRID "00A3AE9C-88DA-4330-A2A1-7C78CF09530E"^^cim:String ;
     cim:IdentifiedObject.name "27_135_0_1_Mesh"^^cim:String ;
