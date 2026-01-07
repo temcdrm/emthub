@@ -5,7 +5,7 @@ C from project C:\src\emthub\atp\data\PLLSRF.acp
 C ATPDraw developed by H. K. Høidalen at NTNU - NORWAY 1999-2022
 C ------------------------------------------------------------------------------
 C  dT  >< Tmax >< Xopt >< Copt ><Epsiln>
-   5.E-5     .05     60.                
+   5.E-5     10.     60.                
    65535      11       0       1       0       0       0       1       0
 $PARAMETER
 TFALT =100.0 $$
@@ -19,19 +19,21 @@ VFRQ2 =60.0 $$
 ANGA2 =45.0 $$
 ANGB2 =ANGA2-120.0 $$
 ANGC2 =ANGA2-240.0 $$
-RFAUL0 =0.25 $$
-SECLE0 =0.18 $$
+RFAUL1 =0.25 $$
+SECLE1 =0.18 $$
 VTHV1 =18412.0 $$
 QSTDY =0.117 $$
 PSTDY =0.8367 $$
+THETA1 =2.4416 $$
 VTHV1_____=VTHV1
 TREC2_____=TREC2
 TREC1_____=TREC1
 TOPN2_____=TOPN2
 TOPN1_____=TOPN1
+THETA0____=THETA1
 TFALT_____=TFALT
 TCLER_____=TCLER
-RFAULT=RFAUL0
+RFAULT=RFAUL1
 QSTDY_____=QSTDY
 PSTDY_____=PSTDY
 BLANK $PARAMETER
@@ -308,12 +310,14 @@ TACS HYBRID
 33_IQFLG
 33____IQ
 33_VFGIN
+33_SINTH
+33_COSTH
 77__VGPU       1.025
 77_VFILT       1.025
 77_VCLAG       1.025
 77__QEX3  QSTDY_____
 77__QEX4  QSTDY_____
-77_THETA        2.36
+77_THETA  THETA0____
 77____WE    376.9911
 77____DW            
 C        1         2         3         4         5         6         7         8

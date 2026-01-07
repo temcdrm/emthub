@@ -197,7 +197,7 @@ $ERASE
  0_IQCMD  +_NDFLG +_IQINJ                 +_IQFLG     1.            _IQMIN_IQMAX
 98__IMAX  =      1.2
 98_PQFLG  =      0.0
-98_IQLIM  =SQRT(__IMAX*__IMAX - _PQFLG*_IPCMD*_IPCMD)*(TIMEX.GT.0.1)
+98_IQLIM  =SQRT(__IMAX*__IMAX - _PQFLG*_IPCMD*_IPCMD)*(TIMEX.GT.0.25)
 98_IPLIM  =SQRT(__IMAX*__IMAX - (1-_PQFLG)*_IQCMD*_IQCMD)
 98_IQMAX63        +__VDL1         +_IQLIM                  -1.
 98_IPMAX63        +__VDL2         +_IPLIM                  -1.
@@ -241,8 +241,8 @@ $ERASE
              999             999
             2000             999
            9999.
- 1__QEX3                  +__QEX2                    .25   -.7    .7
-        5.       10.
+ 1__QEX3                  +__QEX2                     1.   -.7    .7
+        8.       20.
                   1.
  1__QEX4  +__QEX3                                     1.
         1.
@@ -270,7 +270,7 @@ $ERASE
 99_NDFLG  =_NDFLT * (1.0 - _QFLAG)
 99_IQFLG  =_IQRAW * _QFLAG
 98____IQ  =     1. * _IQREF
-98_VFLAG  =       1.
+98_VFLAG  =       0.
 99_VFGIN  =__QREG * _VFLAG + __QEXT * (1.0-_VFLAG) * (1.0-_PFFLG)
 98__OUTF  =____WE
 98__OUTP  =__PDQ0
@@ -301,7 +301,7 @@ $ERASE
 60____IA-1                                                         -1.      1.E3
 60____IB-1                                                         -1.      1.E3
 60____IC-1                                                         -1.      1.E3
-$EOF   User-supplied header cards follow.         07-Jan-26  13:54:01
+$EOF   User-supplied header cards follow.         07-Jan-26  17:49:04
 ARG __PCC, __OUT
 ARG __VOLTBASE, _POWERBASE, __CURRBASE, _______PPU, _______QPU, ____VREFPU
 ARG ___ICTHETA
