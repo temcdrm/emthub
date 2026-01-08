@@ -151,6 +151,7 @@ def write_solve_file (root, load_scale=1.0, editfile=None, pg=None):
   print ("""mb=[results.bus(:,VM),results.bus(:,VA)];""", file=fp)
   print ("""csvwrite('{:s}mg.txt',mg);""".format (root), file=fp)
   print ("""csvwrite('{:s}mb.txt',mb);""".format (root), file=fp)
+  #print ("""mpver;""", file=fp)
   print ("""exit;""", file=fp)
   fp.close()
   return fscript, fsolved, fsummary
