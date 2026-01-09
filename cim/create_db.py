@@ -16,7 +16,7 @@ if __name__ == '__main__':
   print('All tables dropped successfully.')
 
   # create the profile tables in correct order for the foreign keys?
-  with open ('emtiop_lite.sql', 'r', encoding='utf8') as file:
+  with open ('emtiop_sqlite.sql', 'r', encoding='utf8') as file:
     script = file.read()
   cur.executescript (script)
   print('Table Creation Result', cur.fetchall())
