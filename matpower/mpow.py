@@ -52,7 +52,7 @@ CASES = [
      [75, 30.0]
      ],
    'edits': None,
-   'edits_dont': [
+   'skipped_edits': [
      [1, 1.0, 'CT_TGEN', 31, 'PG', 'CT_REP', 150.0]]
   },
   {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 
