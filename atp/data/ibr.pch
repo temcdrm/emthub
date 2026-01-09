@@ -242,7 +242,7 @@ $ERASE
             2000             999
            9999.
  1__QEX3                  +__QEX2                     1.   -.7    .7
-        1.       10.
+        8.      0.04
                   1.
  1__QEX4  +__QEX3                                     1.
         1.
@@ -301,7 +301,7 @@ $ERASE
 60____IA-1                                                         -1.      1.E3
 60____IB-1                                                         -1.      1.E3
 60____IC-1                                                         -1.      1.E3
-$EOF   User-supplied header cards follow.         07-Jan-26  18:48:51
+$EOF   User-supplied header cards follow.         09-Jan-26  17:26:38
 ARG __PCC, __OUT
 ARG __VOLTBASE, _POWERBASE, __CURRBASE, _______PPU, _______QPU, ____VREFPU
 ARG ___ICTHETA
