@@ -11,7 +11,7 @@ Support for SQL is partially implemented via Python's _sqlite3_ module.
 *IdentifiedObject.name* as the primary key, but this is not guaranteed to be unique
 in the CIM, not even within types. These queries will be changed to use
 *IdentifiedObject.mRID* as the primary key. Do not base new Python code or SPARQL
-queries on the examples in this repository, until this notice is removed.:construction:
+queries on the examples in this repository, until this notice is removed. :construction:
 
 For example, to process the _IEEE39_ network, invoke the following steps in order:
 
