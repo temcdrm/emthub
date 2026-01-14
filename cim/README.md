@@ -6,11 +6,12 @@ Outputs are written to sibling _../../atp/data_ and _../matpower_ directories.
 The scripts fully support RDF XML and Turtle (TTL) files via Python's _rdflib_ module.
 Support for SQL is partially implemented via Python's _sqlite3_ module.
 
-<span style="color:red">**Caveat**</span>: The SPARQL currently implemented uses
+
+:construction:**Caveat**: The SPARQL currently implemented uses
 *IdentifiedObject.name* as the primary key, but this is not guaranteed to be unique
 in the CIM, not even within types. These queries will be changed to use
 *IdentifiedObject.mRID* as the primary key. Do not base new Python code or SPARQL
-queries on the examples in this repository, until this notice is removed.
+queries on the examples in this repository, until this notice is removed.:construction:
 
 For example, to process the _IEEE39_ network, invoke the following steps in order:
 
