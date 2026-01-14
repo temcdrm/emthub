@@ -92,7 +92,7 @@ MVA_BASE = 100.0
 
 # example in Octave:
 
-# cd c:\src\cimhub\bes
+# cd c:\src\emthub\matpower
 # mpc = loadcase(WECC240);
 # case_info(mpc)
 # mpc = scale_load(1.0425,mpc);
@@ -101,8 +101,10 @@ MVA_BASE = 100.0
 # codes=matpower_gen_type(results.gentype);
 # mg=[results.gen(:,GEN_BUS),results.gen(:,PG),results.gen(:,QG),codes]
 # mb=[results.bus(:,VM),results.bus(:,VA)]
+# mbr=[results.branch(:,F_BUS),results.branch(:,T_BUS),results.branch(:,PF),results.branch(:,QF)]
 # csvwrite('wecc240mg.txt',mg)
 # csvwrite('wecc240mb.txt',mb)
+# csvwrite('wecc240mbr.txt',mbr)
 
 # mpc = loadcase(IEEE118);
 # case_info(mpc)

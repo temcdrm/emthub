@@ -156,7 +156,7 @@ def run_matpower_and_wait (fscript, quiet=False):
 
   """
   if sys.platform == 'win32':
-    octave = '"C:\Program Files\GNU Octave\Octave-8.3.0\octave-launch.exe" --no-gui'
+    octave = '"C:\Program Files\GNU Octave\Octave-10.3.0\octave-launch.exe" --no-gui'
   else:
     octave = 'octave --no-window-system --no-gui >octave.log 2>&1 '
   cmdline = '{:s} {:s}'.format(octave, fscript)
