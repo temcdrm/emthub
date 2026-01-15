@@ -1042,7 +1042,7 @@ def read_version_33_34(rdr,sections,bTwoTitles):
           winding_data['taps'].append(float(row[0]))
           winding_data['kvs'].append(float(row[1])) # this may be zero, in which case take from the bus nominal voltages
           if ncol_read > 5:
-            winding_data['mvas'].append(float(row[5])) # this may still be zero in the rawfile
+            winding_data['mvas'].append(float(row[3])) # this may still be zero in the rawfile, TODO: verify index 3 or 5
           else:
             winding_data['mvas'].append(0.0)
         table['winding_data'].append (winding_data)
