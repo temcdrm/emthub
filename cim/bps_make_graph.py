@@ -1,5 +1,5 @@
 # Copyright (C) 2023 Battelle Memorial Institute
-# Copyright (C) 2025 Meltran, Inc
+# Copyright (C) 2025-2026 Meltran, Inc
 
 import sys
 import math
@@ -52,7 +52,7 @@ def query_for_values (g, tbl, sysid):
     for i in range(1, len(keyflds)):
       key = key + DELIM + str(b[keyflds[i]])
     for fld in vars:
-      if fld in ['name', 'conn', 'sysid', 'bus', 'bus1', 'bus2', 'id', 'eqid']:
+      if fld in ['pname', 'name', 'conn', 'sysid', 'bus', 'bus1', 'bus2', 'id', 'eqid']:
         row[fld] = str(b[fld])
       else:
         try:
@@ -111,13 +111,13 @@ def build_system_graph (d):
   # accumulate loads and generation onto the buses
   buses = d['EMTBus']['vals']
   for key, data in d['EMTLoad']['vals'].items():
-    buses[data['bus']]['has_load'] = True
+    buses[data['cn1id']]['has_load'] = True
   for key, data in d['EMTSyncMachine']['vals'].items():
-    buses[data['bus']]['has_gen'] = True
+    buses[data['cn1id']]['has_gen'] = True
   for key, data in d['EMTSolar']['vals'].items():
-    buses[data['bus']]['has_solar'] = True
+    buses[data['cn1id']]['has_solar'] = True
   for key, data in d['EMTWind']['vals'].items():
-    buses[data['bus']]['has_wind'] = True
+    buses[data['cn1id']]['has_wind'] = True
   G = nx.Graph()
   for key, data in buses.items():
     if 'has_solar' in data:
@@ -130,29 +130,30 @@ def build_system_graph (d):
       nclass='load'
     else:
       nclass='bus'
-    G.add_node (key, nclass=nclass, ndata={'kv':0.001*data['nomv']})
+    G.add_node (key, nclass=nclass, ndata={'kv':0.001*data['nomv'],'name':data['name']})
   # accumulate the transformer windings into transformers
   xfmrs = {}
   for key, data in d['EMTPowerXfmrWinding']['vals'].items():
     toks = key.split(':')
     pname = toks[0]
-    busnum = 'bus{:s}'.format(toks[1])
+    busnum = 'cn{:s}id'.format(toks[1])
     if pname not in xfmrs:
-      xfmrs[pname] = {busnum:data['bus']}
+      xfmrs[pname] = {busnum:data['cn1id']}
+      xfmrs[pname]['name'] = data['pname']
     else:
-      xfmrs[pname][busnum] = data['bus']
+      xfmrs[pname][busnum] = data['cn1id']
 
   # add line, transformer, series compensator branches
   for key, data in d['EMTLine']['vals'].items():
     km = round(0.001*data['len'],3)
-    G.add_edge(data['bus1'],data['bus2'],eclass='line',ename=key,
-               edata={'km':km, 'kv':0.001*data['basev']}, weight=km)
+    G.add_edge(data['cn1id'],data['cn2id'],eclass='line',eid=key,
+               edata={'km':km, 'kv':0.001*data['basev'], 'name':data['name']}, weight=km)
   for key, data in xfmrs.items():
-    G.add_edge(data['bus1'],data['bus2'],eclass='transformer',ename=key,
-               edata={'km':1.0}, weight=1.0)
+    G.add_edge(data['cn1id'],data['cn2id'],eclass='transformer',eid=key,
+               edata={'km':1.0, 'name':data['name']}, weight=1.0)
   for key, data in d['EMTCompSeries']['vals'].items():
-    G.add_edge(data['bus1'],data['bus2'],eclass='series',ename=key,
-               edata={'km':1.0, 'kv':0.001*data['basev']}, weight=1.0)
+    G.add_edge(data['cn1id'],data['cn2id'],eclass='series',eid=key,
+               edata={'km':1.0, 'kv':0.001*data['basev'], 'name':data['name']}, weight=1.0)
 
   # create XY coordinates for the buses
   dist = {}
@@ -178,7 +179,7 @@ def save_system_graph (G, fname):
   fp.close()
 
 if __name__ == '__main__':
-  case_id = 0
+  case_id = 2
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
   case = CASES[case_id]
@@ -194,7 +195,7 @@ if __name__ == '__main__':
   start_time = time.time()
   d = load_emt_dict (g, 'sparql_queries.xml', case['id'])
   print ('Total query time {:6.3f} s'.format (time.time() - start_time))
-  #list_dict_table (d, 'EMTBus')
+  #list_dict_table (d, 'EMTPowerXfmrWinding')
   #quit()
 
   G = build_system_graph (d)

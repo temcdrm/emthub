@@ -115,7 +115,7 @@ SELECT DISTINCT ?name ?id ?nomv WHERE {
 ORDER by ?name
 
 # EMTBusXY
-SELECT DISTINCT ?name ?text ?cnid ?seq ?x ?y WHERE {
+SELECT DISTINCT ?name ?id ?text ?cnid ?seq ?x ?y WHERE {
  VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
 # VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
@@ -125,6 +125,7 @@ SELECT DISTINCT ?name ?text ?cnid ?seq ?x ?y WHERE {
  ?tdo c:DiagramObject.IdentifiedObject ?s.
  ?tdo c:TextDiagramObject.text ?text.
  ?tdo c:IdentifiedObject.name ?name.
+ ?tdo c:IdentifiedObject.mRID ?id.
  ?pt c:DiagramObjectPoint.DiagramObject ?tdo.
  ?pt c:DiagramObjectPoint.sequenceNumber ?seq.
  ?pt c:DiagramObjectPoint.xPosition ?x.
@@ -205,20 +206,20 @@ SELECT ?name ?id ?bus ?basev ?p ?q ?pz ?qz ?pi ?qi ?pp ?qp ?pe ?qe ?sysid ?cn1id
 ORDER by ?name
 
 # EMTCountPowerXfmrWinding
-SELECT ?key (count(?p) as ?count) WHERE {
+SELECT ?id (count(?p) as ?count) WHERE {
 # VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
  VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?p c:Equipment.EquipmentContainer ?sys.
  ?p r:type c:PowerTransformer.
- ?p c:IdentifiedObject.name ?key.
+ ?p c:IdentifiedObject.mRID ?id.
  ?end c:PowerTransformerEnd.PowerTransformer ?p.
 }
-GROUP BY ?key
-ORDER BY ?key
+GROUP BY ?id
+ORDER BY ?id
 
 # EMTPowerXfmrWinding
-SELECT ?pname ?vgrp ?enum ?bus ?basev ?conn ?ratedS ?ratedU ?ang ?grounded ?rground ?xground ?cn1id ?pid WHERE {
+SELECT ?id ?pname ?vgrp ?enum ?bus ?basev ?conn ?ratedS ?ratedU ?ang ?grounded ?rground ?xground ?cn1id ?pid WHERE {
  VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
 # VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
@@ -237,6 +238,7 @@ SELECT ?pname ?vgrp ?enum ?bus ?basev ?conn ?ratedS ?ratedU ?ang ?grounded ?rgro
  ?end c:TransformerEnd.grounded ?grounded.
  OPTIONAL {?end c:TransformerEnd.rground ?rground.}
  OPTIONAL {?end c:TransformerEnd.xground ?xground.}
+ ?end c:IdentifiedObject.mRID ?id.
  ?end e:TransformerEnd.ConnectivityNode ?cn. 
  ?cn c:IdentifiedObject.mRID ?cn1id. 
  ?cn c:IdentifiedObject.name ?bus.
@@ -246,7 +248,7 @@ SELECT ?pname ?vgrp ?enum ?bus ?basev ?conn ?ratedS ?ratedU ?ang ?grounded ?rgro
 ORDER BY ?pname ?enum
 
 # EMTPowerXfmrCore
-SELECT ?pname ?enum ?b ?g WHERE {
+SELECT ?pname ?enum ?b ?g ?id ?eid ?pid WHERE {
  VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
 # VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
@@ -258,11 +260,14 @@ SELECT ?pname ?enum ?b ?g WHERE {
  ?end c:TransformerEnd.endNumber ?enum.
  ?adm c:TransformerCoreAdmittance.b ?b.
  ?adm c:TransformerCoreAdmittance.g ?g.
+ ?p c:IdentifiedObject.mRID ?pid.
+ ?end c:IdentifiedObject.mRID ?eid.
+ ?adm c:IdentifiedObject.mRID ?id
 }
 ORDER BY ?pname
 
 # EMTXfmrTap
-SELECT ?pname ?enum ?svi ?step ?endid WHERE {
+SELECT ?pname ?enum ?svi ?step ?eid WHERE {
  VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 # VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
 # VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
@@ -275,12 +280,12 @@ SELECT ?pname ?enum ?svi ?step ?endid WHERE {
  ?end c:TransformerEnd.endNumber ?enum.
  ?rtc c:RatioTapChanger.stepVoltageIncrement ?svi.
  ?rtc c:TapChanger.step ?step.
- ?end c:IdentifiedObject.mRID ?endid.
+ ?end c:IdentifiedObject.mRID ?eid
 }
 ORDER BY ?pname ?enum
 
 # EMTPowerXfmrMesh
-SELECT ?pname ?fnum ?tnum ?r ?x WHERE {
+SELECT ?pname ?fnum ?tnum ?r ?x ?pid ?fid ?tid ?id WHERE {
  VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
 # VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
@@ -294,17 +299,22 @@ SELECT ?pname ?fnum ?tnum ?r ?x WHERE {
  ?imp c:TransformerMeshImpedance.x ?x.
  ?from c:TransformerEnd.endNumber ?fnum.
  ?to c:TransformerEnd.endNumber ?tnum.
+ ?p c:IdentifiedObject.mRID ?pid.
+ ?from c:IdentifiedObject.mRID ?fid.
+ ?to c:IdentifiedObject.mRID ?tid.
+ ?imp c:IdentifiedObject.mRID ?id
 }
 ORDER BY ?pname ?fnum ?tnum
 
 # EMTXfmrSaturation
-SELECT ?pname ?admid ?amps ?vs WHERE {
+SELECT ?pname ?pid ?admid ?amps ?vs WHERE {
 # VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
  VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?p c:Equipment.EquipmentContainer ?sys.
  ?p r:type c:PowerTransformer.
  ?p c:IdentifiedObject.name ?pname.
+ ?p c:IdentifiedObject.mRID ?pid.
  ?end c:PowerTransformerEnd.PowerTransformer ?p.
  ?adm c:TransformerCoreAdmittance.TransformerEnd ?end.
  ?adm c:IdentifiedObject.mRID ?admid.
@@ -317,7 +327,7 @@ SELECT ?pname ?admid ?amps ?vs WHERE {
   bind(xsd:string(?y1value) as ?ystr)
   bind(xsd:float(?ystr) as ?vs)
 }
-ORDER BY ?pname ?amps ?vs
+ORDER BY ?pid ?amps ?vs
 
 # EMTCompShunt may be capacitor or reactor
 SELECT ?name ?basev ?nomu ?gsection ?bsection ?sections ?maxsections ?bus ?id ?sysid ?cn1id WHERE {

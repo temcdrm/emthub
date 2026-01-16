@@ -17,7 +17,7 @@ http://opensource.ieee.org/emtiop#
 </nsEMT>
 <query>
 <id>EMTBus</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description></description>
 <value>
 <![CDATA[
@@ -49,11 +49,11 @@ ORDER by ?name
 </query>
 <query>
 <id>EMTBusXY</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description></description>
 <value>
 <![CDATA[
-SELECT DISTINCT ?name ?text ?cnid ?seq ?x ?y WHERE {
+SELECT DISTINCT ?name ?id ?text ?cnid ?seq ?x ?y WHERE {
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s c:ConnectivityNode.ConnectivityNodeContainer ?sys.
  ?s r:type c:ConnectivityNode.
@@ -61,6 +61,7 @@ SELECT DISTINCT ?name ?text ?cnid ?seq ?x ?y WHERE {
  ?tdo c:DiagramObject.IdentifiedObject ?s.
  ?tdo c:TextDiagramObject.text ?text.
  ?tdo c:IdentifiedObject.name ?name.
+ ?tdo c:IdentifiedObject.mRID ?id.
  ?pt c:DiagramObjectPoint.DiagramObject ?tdo.
  ?pt c:DiagramObjectPoint.sequenceNumber ?seq.
  ?pt c:DiagramObjectPoint.xPosition ?x.
@@ -72,7 +73,7 @@ ORDER by ?name ?seq
 </query>
 <query>
 <id>EMTSyncMachine</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description></description>
 <value>
 <![CDATA[
@@ -121,7 +122,7 @@ ORDER by ?name
 </query>
 <query>
 <id>EMTLine</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description></description>
 <value>
 <![CDATA[
@@ -153,7 +154,7 @@ ORDER BY ?name
 </query>
 <query>
 <id>EMTDisconnectingCircuitBreaker</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description></description>
 <value>
 <![CDATA[
@@ -178,7 +179,7 @@ ORDER by ?name
 </query>
 <query>
 <id>EMTEnergySource</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description></description>
 <value>
 <![CDATA[
@@ -206,7 +207,7 @@ SELECT ?name ?id ?bus ?basev ?r ?x ?r0 ?x0 ?nomv ?vmag ?vang ?sysid ?cn1id WHERE
 </query>
 <query>
 <id>EMTCompSeries</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description>series capacitor or reactor</description>
 <value>
 <![CDATA[
@@ -235,11 +236,11 @@ ORDER by ?name
 </query>
 <query>
 <id>EMTPowerXfmrWinding</id>
-<keyfld>pname:enum</keyfld>
+<keyfld>pid:enum</keyfld>
 <description>Power transformers on their own, without catalog reference.</description>
 <value>
 <![CDATA[
-SELECT ?pname ?vgrp ?enum ?bus ?basev ?conn ?ratedS ?ratedU ?ang ?grounded ?rground ?xground ?cn1id ?pid WHERE {
+SELECT ?id ?pname ?vgrp ?enum ?bus ?basev ?conn ?ratedS ?ratedU ?ang ?grounded ?rground ?xground ?cn1id ?pid WHERE {
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?p c:Equipment.EquipmentContainer ?sys.
  ?p r:type c:PowerTransformer.
@@ -256,6 +257,7 @@ SELECT ?pname ?vgrp ?enum ?bus ?basev ?conn ?ratedS ?ratedU ?ang ?grounded ?rgro
  ?end c:TransformerEnd.grounded ?grounded.
  OPTIONAL {?end c:TransformerEnd.rground ?rground.}
  OPTIONAL {?end c:TransformerEnd.xground ?xground.}
+ ?end c:IdentifiedObject.mRID ?id.
  ?end e:TransformerEnd.ConnectivityNode ?cn. 
  ?cn c:IdentifiedObject.mRID ?cn1id. 
  ?cn c:IdentifiedObject.name ?bus.
@@ -268,11 +270,11 @@ ORDER BY ?pname ?enum
 </query>
 <query>
 <id>EMTPowerXfmrCore</id>
-<keyfld>pname</keyfld>
+<keyfld>eid</keyfld>
 <description></description>
 <value>
 <![CDATA[
-SELECT ?pname ?enum ?b ?g WHERE {
+SELECT ?pname ?enum ?b ?g ?id ?eid ?pid WHERE {
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?p c:Equipment.EquipmentContainer ?sys.
  ?p r:type c:PowerTransformer.
@@ -282,6 +284,9 @@ SELECT ?pname ?enum ?b ?g WHERE {
  ?end c:TransformerEnd.endNumber ?enum.
  ?adm c:TransformerCoreAdmittance.b ?b.
  ?adm c:TransformerCoreAdmittance.g ?g.
+ ?p c:IdentifiedObject.mRID ?pid.
+ ?end c:IdentifiedObject.mRID ?eid.
+ ?adm c:IdentifiedObject.mRID ?id
 }
 ORDER BY ?pname
 ]]>
@@ -289,11 +294,11 @@ ORDER BY ?pname
 </query>
 <query>
 <id>EMTXfmrTap</id>
-<keyfld>pname:enum</keyfld>
+<keyfld>eid</keyfld>
 <description>Off-nominal tap in percent.</description>
 <value>
 <![CDATA[
-SELECT ?pname ?enum ?svi ?step ?endid WHERE {
+SELECT ?pname ?enum ?svi ?step ?eid WHERE {
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?p c:Equipment.EquipmentContainer ?sys.
  ?p c:IdentifiedObject.name ?pname.
@@ -303,7 +308,7 @@ SELECT ?pname ?enum ?svi ?step ?endid WHERE {
  ?end c:TransformerEnd.endNumber ?enum.
  ?rtc c:RatioTapChanger.stepVoltageIncrement ?svi.
  ?rtc c:TapChanger.step ?step.
- ?end c:IdentifiedObject.mRID ?endid.
+ ?end c:IdentifiedObject.mRID ?eid.
 }
 ORDER BY ?pname ?enum
 ]]>
@@ -311,11 +316,11 @@ ORDER BY ?pname ?enum
 </query>
 <query>
 <id>EMTPowerXfmrMesh</id>
-<keyfld>pname:fnum:tnum</keyfld>
+<keyfld>fid:tid</keyfld>
 <description></description>
 <value>
 <![CDATA[
-SELECT ?pname ?fnum ?tnum ?r ?x WHERE {
+SELECT ?pname ?fnum ?tnum ?r ?x ?pid ?fid ?tid ?id WHERE {
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?p c:Equipment.EquipmentContainer ?sys.
  ?p r:type c:PowerTransformer.
@@ -327,6 +332,10 @@ SELECT ?pname ?fnum ?tnum ?r ?x WHERE {
  ?imp c:TransformerMeshImpedance.x ?x.
  ?from c:TransformerEnd.endNumber ?fnum.
  ?to c:TransformerEnd.endNumber ?tnum.
+ ?p c:IdentifiedObject.mRID ?pid.
+ ?from c:IdentifiedObject.mRID ?fid.
+ ?to c:IdentifiedObject.mRID ?tid.
+ ?imp c:IdentifiedObject.mRID ?id
 }
 ORDER BY ?pname ?fnum ?tnum
 ]]>
@@ -334,15 +343,16 @@ ORDER BY ?pname ?fnum ?tnum
 </query>
 <query>
 <id>EMTXfmrSaturation</id>
-<keyfld>pname:amps</keyfld>
+<keyfld>pid:amps</keyfld>
 <description></description>
 <value>
 <![CDATA[
-SELECT ?pname ?admid ?amps ?vs WHERE {
+SELECT ?pname ?admid ?amps ?vs ?pid WHERE {
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?p c:Equipment.EquipmentContainer ?sys.
  ?p r:type c:PowerTransformer.
  ?p c:IdentifiedObject.name ?pname.
+ ?p c:IdentifiedObject.mRID ?pid.
  ?end c:PowerTransformerEnd.PowerTransformer ?p.
  ?adm c:TransformerCoreAdmittance.TransformerEnd ?end.
  ?adm c:IdentifiedObject.mRID ?admid.
@@ -355,13 +365,13 @@ SELECT ?pname ?admid ?amps ?vs WHERE {
   bind(xsd:string(?y1value) as ?ystr)
   bind(xsd:float(?ystr) as ?vs)
 }
-ORDER BY ?pname ?amps ?vs
+ORDER BY ?pid ?amps ?vs
 ]]>
 </value>
 </query>
 <query>
 <id>EMTContainer</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description>list all the transmission systems</description>
 <value>
 <![CDATA[
@@ -376,7 +386,7 @@ ORDER by ?name
 </query>
 <query>
 <id>EMTSolar</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description></description>
 <value>
 <![CDATA[
@@ -407,7 +417,7 @@ ORDER by ?name
 </query>
 <query>
 <id>EMTWind</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description></description>
 <value>
 <![CDATA[
@@ -438,7 +448,7 @@ ORDER by ?name
 </query>
 <query>
 <id>EMTExcST1A</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description></description>
 <value>
 <![CDATA[
@@ -477,7 +487,7 @@ SELECT ?name ?ilr ?ka ?kc ?kf ?klr ?ta ?tb ?tb1 ?tc ?tc1 ?tf ?vamax ?vamin
 </query>
 <query>
 <id>EMTGovSteamSGO</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description></description>
 <value>
 <![CDATA[
@@ -510,7 +520,7 @@ WHERE {
 </query>
 <query>
 <id>EMTPssIEEE1A</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description></description>
 <value>
 <![CDATA[
@@ -545,7 +555,7 @@ SELECT ?name ?a1 ?a2 ?inputSignalType ?ks ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?vrmax ?vrmin
 </query>
 <query>
 <id>EMTWeccREGCA</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description></description>
 <value>
 <![CDATA[
@@ -579,7 +589,7 @@ SELECT ?name ?brkpt ?iolim ?iqrmax ?iqrmin ?ivpl1 ?ivplsw ?ivpnt0 ?ivpnt1 ?khv
 </query>
 <query>
 <id>EMTWeccREECA</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description></description>
 <value>
 <![CDATA[
@@ -652,7 +662,7 @@ SELECT ?name ?db1 ?db2 ?dPmax ?dPmin ?imax ?iqfrz ?iqh1 ?iql1 ?kqi ?kqp ?kqv
 </query>
 <query>
 <id>EMTWeccREPCA</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description></description>
 <value>
 <![CDATA[
@@ -702,7 +712,7 @@ SELECT ?name ?db ?ddn ?dup ?emax ?emin ?fdbd1 ?fdbd2 ?femax ?femin ?frqFlag ?kc
 </query>
 <query>
 <id>EMTWeccWTGTA</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description></description>
 <value>
 <![CDATA[
@@ -725,7 +735,7 @@ SELECT ?name ?dshaft ?hg ?ht ?kshaft ?id ?eqid ?sysid WHERE {
 </query>
 <query>
 <id>EMTWeccWTGARA</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description></description>
 <value>
 <![CDATA[
@@ -768,7 +778,7 @@ ORDER BY ?vnom
 </query>
 <query>
 <id>EMTCompShunt</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description>Shunt reactor or capacitor</description>
 <value>
 <![CDATA[
@@ -795,7 +805,7 @@ ORDER by ?name
 </query>
 <query>
 <id>EMTLoad</id>
-<keyfld>name</keyfld>
+<keyfld>id</keyfld>
 <description>Balanced on three phases</description>
 <value>
 <![CDATA[
@@ -828,19 +838,19 @@ ORDER by ?name
 </query>
 <query>
 <id>EMTCountPowerXfmrWindings</id>
-<keyfld>key</keyfld>
+<keyfld>id</keyfld>
 <description>for EMTPowerXfmrWinding</description>
 <value>
 <![CDATA[
-SELECT ?key (count(?p) as ?count) WHERE {
+SELECT ?id (count(?p) as ?count) WHERE {
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?p c:Equipment.EquipmentContainer ?sys.
  ?p r:type c:PowerTransformer.
- ?p c:IdentifiedObject.name ?key.
+ ?p c:IdentifiedObject.name ?id.
  ?end c:PowerTransformerEnd.PowerTransformer ?p.
 }
-GROUP BY ?key
-ORDER BY ?key
+GROUP BY ?id
+ORDER BY ?id
 ]]>
 </value>
 </query>

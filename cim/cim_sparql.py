@@ -153,6 +153,6 @@ if __name__ == '__main__':
   d = load_emt_dict (g, 'sparql_queries.xml', case['id'])
   print ('Total query time {:6.3f} s'.format (time.time() - start_time))
 
-  for key in ['EMTEnergySource', 'EMTDisconnectingCircuitBreaker', 'EMTXfmrTap']:
+  for key in ['EMTPowerXfmrWinding']:
     list_dict_table (d, key)
 
