@@ -21,8 +21,8 @@ C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
 C =============================================================================
 C transformer 10_32_0_1, 2 windings from 10
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
-  TRANSFORMER             2.3667747.21X1___X476.E3
-          2.3667          747.21
+  TRANSFORMER             21.300747.21X1___X529.E2
+          21.300          747.21
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B10__A                  0.000011.902213.13
@@ -36,8 +36,8 @@ C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
 C =============================================================================
 C transformer 12_11_0_1, 2 windings from 12
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
-  TRANSFORMER             5.3019333.54X2___X948.E2
-          5.3019          333.54
+  TRANSFORMER             26.510333.54X2___X189.E2
+          26.510          333.54
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B12__A                  0.18975.158289.445
@@ -51,8 +51,8 @@ C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
 C =============================================================================
 C transformer 12_13_0_1, 2 windings from 12
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
-  TRANSFORMER             5.3019333.54X3___X948.E2
-          5.3019          333.54
+  TRANSFORMER             26.510333.54X3___X189.E2
+          26.510          333.54
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B12__A                  0.18975.158289.445
@@ -66,8 +66,8 @@ C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
 C =============================================================================
 C transformer 19_20_0_1, 2 windings from 19
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
-  TRANSFORMER             2.3667747.21X4___X476.E3
-          2.3667          747.21
+  TRANSFORMER             21.300747.21X4___X529.E2
+          21.300          747.21
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B19__A                  0.41668.2127211.14
@@ -81,8 +81,8 @@ C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
 C =============================================================================
 C transformer 19_33_0_1, 2 windings from 19
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
-  TRANSFORMER             2.3667747.21X5___X476.E3
-          2.3667          747.21
+  TRANSFORMER             21.300747.21X5___X529.E2
+          21.300          747.21
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B19__A                  0.41668.4508213.13
@@ -96,8 +96,8 @@ C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
 C =============================================================================
 C transformer 20_34_0_1, 2 windings from 20
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
-  TRANSFORMER             2.3667747.21X6___X476.E3
-          2.3667          747.21
+  TRANSFORMER             21.300747.21X6___X529.E2
+          21.300          747.21
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B20__A                  0.535610.712200.98
@@ -111,8 +111,8 @@ C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
 C =============================================================================
 C transformer 22_35_0_1, 2 windings from 22
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
-  TRANSFORMER             2.3667747.21X7___X476.E3
-          2.3667          747.21
+  TRANSFORMER             21.300747.21X7___X529.E2
+          21.300          747.21
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B22__A                  0.00008.5103204.17
@@ -126,8 +126,8 @@ C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
 C =============================================================================
 C transformer 23_36_0_1, 2 windings from 23
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
-  TRANSFORMER             2.3667747.21X8___X476.E3
-          2.3667          747.21
+  TRANSFORMER             21.300747.21X8___X529.E2
+          21.300          747.21
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B23__A                  0.297616.187199.19
@@ -141,8 +141,8 @@ C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
 C =============================================================================
 C transformer 25_37_0_1, 2 windings from 25
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
-  TRANSFORMER             2.3667747.21X9___X476.E3
-          2.3667          747.21
+  TRANSFORMER             21.300747.21X9___X529.E2
+          21.300          747.21
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B25__A                  0.357113.807204.17
@@ -156,8 +156,8 @@ C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
 C =============================================================================
 C transformer 29_38_0_1, 2 windings from 29
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
-  TRANSFORMER             2.3667747.21X10__X476.E3
-          2.3667          747.21
+  TRANSFORMER             28.400747.21X10__X396.E2
+          28.400          747.21
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B29__A                  0.47619.2839204.17
@@ -171,8 +171,8 @@ C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
 C =============================================================================
 C transformer 2_30_0_1, 2 windings from 2
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
-  TRANSFORMER             2.3667747.21X11__X476.E3
-          2.3667          747.21
+  TRANSFORMER             21.300747.21X11__X529.E2
+          21.300          747.21
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B2___A                  0.000010.772204.17
@@ -186,8 +186,8 @@ C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
 C =============================================================================
 C transformer 6_31_0_1, 2 windings from 6
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
-  TRANSFORMER             2.3667747.21X12__X476.E3
-          2.3667          747.21
+  TRANSFORMER             42.600747.21X12__X264.E2
+          42.600          747.21
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B6___A                  0.000014.878212.88

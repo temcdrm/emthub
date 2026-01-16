@@ -270,7 +270,7 @@ ORDER BY ?pname ?enum
 </query>
 <query>
 <id>EMTPowerXfmrCore</id>
-<keyfld>eid</keyfld>
+<keyfld>pid</keyfld>
 <description></description>
 <value>
 <![CDATA[

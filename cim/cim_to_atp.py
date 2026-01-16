@@ -298,7 +298,7 @@ def AtpXfmrNeutralImpedance(xfbus, enum, wdgrow):
 
 # this is for balanced PowerTransformer; ph can be A, B, C for Y or D
 def AtpXfmrNodes(xfbus, enum, wdgrow, bEnd1Delta, ph, atp_buses=None):
-  bus = wdgrow['bus']
+  bus = wdgrow['cn1id']
   if atp_buses:
     bus = atp_buses[bus]
   if wdgrow['conn'] == 'Y':
@@ -371,10 +371,10 @@ def AtpStarEquivalent(wdgs, meshes, taps):
       x[i] *= 3.0
   return r, x, v
 
-def AtpStarCore(wdgs, dict, pname, bUseSaturation):
+def AtpStarCore(wdgs, dict, pid, bUseSaturation):
   # determine steady-state exciting branch from the core admittance attributes
   # TODO: account fo effect of taps on core admittance and saturation?
-  core = dict['EMTPowerXfmrCore']['vals'][pname]
+  core = dict['EMTPowerXfmrCore']['vals'][pid]
   cim_b = core['b']
   cim_g = core['g']
   cim_e = core['enum'] - 1  # This may not be 0 in the CIM. For ATP, transform this to end 0
@@ -409,7 +409,7 @@ def AtpStarCore(wdgs, dict, pname, bUseSaturation):
     sat = dict['EMTXfmrSaturation']
     for key in sat['vals']:
       toks = key.split(':')
-      if toks[0] == pname:
+      if toks[0] == pid:
         ival = float(toks[1]) * cim_v / core_v
         fval = sat['vals'][key]['vs'] * core_v / cim_v
         #print (toks[0], ival, fval)
@@ -649,7 +649,7 @@ def ParallelMachines (d, gen_ic, bus_ic, atp_buses):
   bus_generators = {}
   gen_ic_idx = 0
   for key, row in d.items():
-    bus = row['bus']
+    bus = row['cn1id']
     row['p'] = 1e6 * gen_ic[gen_ic_idx][GEN_P_IDX]
     row['q'] = 1e6 * gen_ic[gen_ic_idx][GEN_Q_IDX]
     gen_ic_idx += 1
@@ -674,7 +674,7 @@ def ParallelMachines (d, gen_ic, bus_ic, atp_buses):
           par[parkey][tag] += row[tag]
   print ('Generator  Bus           MVA          P      Vpu     Vdeg')
   for key, row in par.items():
-    print ('{:10s} {:6s} {:10.2f} {:10.2f} {:8.4f} {:8.4f}'.format (key, 
+    print ('{:10s} {:6s} {:10.2f} {:10.2f} {:8.4f} {:8.4f}'.format (row['name'], 
                                                                     row['bus'], 
                                                                     row['ratedS']*1e-6, 
                                                                     row['p']*1e-6,
@@ -734,7 +734,7 @@ def query_for_values (g, tbl, sysid):
     for i in range(1, len(keyflds)):
       key = key + DELIM + str(b[keyflds[i]])
     for fld in vars:
-      if fld in ['name', 'conn', 'sysid', 'bus', 'bus1', 'bus2', 'id', 'eqid']:
+      if fld in ['pname', 'name', 'conn', 'sysid', 'bus', 'bus1', 'bus2', 'id', 'eqid']:
         row[fld] = str(b[fld])
       else:
         try:
@@ -778,6 +778,11 @@ def load_emt_dict (g, xml_file, sysid):
  #   list_dict_table (dict, key)
   return dict
 
+def get_swingbus_id (ordered_buses, swingbus):
+  for cnid, data in ordered_buses.items():
+    if data['name'] == swingbus:
+      return cnid
+
 def convert_one_atp_model (d, fpath, case):
   """Export one BES network model to ATP.
 
@@ -807,16 +812,17 @@ def convert_one_atp_model (d, fpath, case):
     gen_ic = np.loadtxt (case['gen_ic'], delimiter=',')
     print (gen_ic.shape, gen_ic[9,GEN_BUS_IDX], gen_ic[9,GEN_P_IDX], gen_ic[9,GEN_Q_IDX], gen_ic[9,GEN_TYPE_IDX])
 
-  atp_buses = {}  # find the ATP bus number from the CIM ConnectivityNode name
-  cim_buses = {}  # find the CIM ConnectivityNode name from the ATP bus number
-  bus_kv = {}     # nominal voltage (line-to-line kV) from the CIM ConnectivityNode name
+  atp_buses = {}  # find the ATP bus number from the CIM ConnectivityNode id
+  cim_bus_ids = {}  # find the CIM ConnectivityNode id from the ATP bus number
+  cim_bus_names = {} # find the CIM ConnectivityNode name from the ATP bus number
+  bus_kv = {}     # nominal voltage (line-to-line kV) from the CIM ConnectivityNode id
   bNumeric = True
-  for key in d['EMTBus']['vals']:
-    if not key.isdigit():
+  for key, data in d['EMTBus']['vals'].items():
+    if not data['name'].isdigit():
       bNumeric = False
       break
   if bNumeric:
-    ordered_buses = dict(sorted(d['EMTBus']['vals'].items(), key=lambda x:int(x[0])))
+    ordered_buses = dict(sorted(d['EMTBus']['vals'].items(), key=lambda x:int(x[1]['name'])))
     print ('numeric ordered buses')
   else:
     ordered_buses = d['EMTBus']['vals']
@@ -825,17 +831,19 @@ def convert_one_atp_model (d, fpath, case):
   for key, data in ordered_buses.items():
     bus = str(idx)
     atp_buses[key] = bus
-    cim_buses[bus] = key
+    cim_bus_ids[bus] = key
+    cim_bus_names[key] = data['name']
     bus_kv[key] = 0.001 * data['nomv']
     idx += 1
   print ('Mapping {:d} buses to {:s}.atpmap'.format (idx-1, fname))
   fp = open (fpath + fname + '.atpmap', mode='w')
-  print ('ATP Bus   CIM Bus               Bus kV', file=fp)
-  for key in cim_buses:
-    print ('{:6s}    {:20s} {:7.3f}'.format (key, cim_buses[key], bus_kv[cim_buses[key]]), file=fp)
-  print ('\nCIM Bus              ATP Bus    Bus kV', file=fp)
+  print ('ATP Bus CIM ID                               CIM Bus               Bus kV', file=fp)
+  for key in cim_bus_ids:
+    cnid = cim_bus_ids[key]
+    print ('{:6s}  {:36s} {:20s} {:7.3f}'.format (key, cnid, cim_bus_names[cnid], bus_kv[cnid]), file=fp)
+  print ('\nCIM ID                               CIM Bus              ATP Bus  Bus kV', file=fp)
   for key in atp_buses:
-    print ('{:20s} {:6s}    {:7.3f}'.format (key, atp_buses[key], bus_kv[key]), file=fp)
+    print ('{:36s} {:20s} {:6s}  {:7.3f}'.format (key, cim_bus_names[key], atp_buses[key], bus_kv[key]), file=fp)
   fp.close()
 
   machines = ParallelMachines (d['EMTSyncMachine']['vals'], gen_ic, bus_ic, atp_buses)
@@ -844,8 +852,9 @@ def convert_one_atp_model (d, fpath, case):
   print ('C file: {:s}, Load Mult={:.3f}'.format (fname, LOAD_MULT), file=ap)
   print ('$VINTAGE,0', file=ap)
 
-  bus = atp_buses[swingbus]
-  kv = bus_kv[swingbus]
+  swing_id = get_swingbus_id (ordered_buses, swingbus)
+  bus = atp_buses[swing_id]
+  kv = bus_kv[swing_id]
   x1pu_swing = 0.050
   r1pu_swing = 0.005
   mva_swing = 1000.0
@@ -855,7 +864,7 @@ def convert_one_atp_model (d, fpath, case):
   vang = 0.0
   if len(machines) > 0: # find the swing bus
     for key, row in machines.items():
-      if bus == atp_buses[row['bus']]:
+      if bus == atp_buses[row['cn1id']]:
         mva_swing = 1.0e-6 * row['ratedS']
         x1pu_swing = row['Xdp']
         r1pu_swing = row['Ra']
@@ -903,13 +912,15 @@ def convert_one_atp_model (d, fpath, case):
   # organize the balanced PowerTransformers, including fixed off-nominal taps
   PowerXfmrs = {}
   xfbusnum = 1
-  for key in d['EMTPowerXfmrWinding']['vals']:
-    pname = key.split(DELIM)[0]
-    if pname in PowerXfmrs:
-      PowerXfmrs[pname]['nwdg'] += 1
+  for key, row in d['EMTPowerXfmrWinding']['vals'].items():
+    pid = key.split(DELIM)[0]
+    if pid in PowerXfmrs:
+      PowerXfmrs[pid]['nwdg'] += 1
     else:
-      PowerXfmrs[pname] = {'nwdg':1, 'taps': []}
-  for pname, row in PowerXfmrs.items():
+      PowerXfmrs[pid] = {'nwdg':1, 'taps': [], 'ends': []}
+    PowerXfmrs[pid]['ends'].append (row['id'])
+  #print (PowerXfmrs)
+  for pid, row in PowerXfmrs.items():
     nwdg = row['nwdg']
     taps = row['taps']
     wdgs = []
@@ -917,21 +928,21 @@ def convert_one_atp_model (d, fpath, case):
     for i in range(nwdg):
       # look for an off-nominal tap, which may not be present
       tap = 1.0
-      key = '{:s}{:s}{:d}'.format(pname, DELIM, i+1)
+      key = row['ends'][i]
       if key in d['EMTXfmrTap']['vals']:
         tap = 1.0 + (d['EMTXfmrTap']['vals'][key]['svi']*d['EMTXfmrTap']['vals'][key]['step']) / 100.0
       taps.append (tap)
       # look for the mesh impedances, which must always be present
-      wdgs.append (d['EMTPowerXfmrWinding']['vals']['{:s}{:s}{:d}'.format(pname, DELIM, i+1)])
+      wdgs.append (d['EMTPowerXfmrWinding']['vals']['{:s}{:s}{:d}'.format(pid, DELIM, i+1)])
       for j in range(i+1, nwdg):
-        meshes.append (d['EMTPowerXfmrMesh']['vals']['{:s}{:s}{:d}{:s}{:d}'.format(pname, DELIM, i+1, DELIM, j+1)])
+        meshes.append (d['EMTPowerXfmrMesh']['vals']['{:s}{:s}{:s}'.format(row['ends'][i], DELIM, row['ends'][j])])
     print ('C =============================================================================', file=ap)
-    print ('C transformer {:s}, {:d} windings from {:s}'.format (pname, nwdg, wdgs[0]['bus']), file=ap)
+    print ('C transformer {:s}, {:d} windings from {:s}'.format (wdgs[0]['pname'], nwdg, wdgs[0]['bus']), file=ap)
     if nwdg > 3:
       print ('C *** too many windings for saturable transformer component', file=ap)
       print ('*** Transformer {:s} has {:d} windings, but only 2 or 3 supported'.format(pname, nwdg))
       continue
-    Imag, Fmag, Rmag = AtpStarCore (wdgs, d, pname, case['UseXfmrSaturation'])
+    Imag, Fmag, Rmag = AtpStarCore (wdgs, d, pid, case['UseXfmrSaturation'])
     xfbus = 'X' + str(xfbusnum)
     if wdgs[0]['conn'] == 'D':
       bEnd1Delta = True
@@ -959,13 +970,13 @@ def convert_one_atp_model (d, fpath, case):
     for i in range(nwdg):
       if wdgs[i]['conn'] == 'D':
         for ph in ['A', 'B', 'C']:
-          print ('  {:s}                  1000.0         1.0'.format (AtpNode (atp_buses[wdgs[i]['bus']], ph)), file=ap)
+          print ('  {:s}                  1000.0         1.0'.format (AtpNode (atp_buses[wdgs[i]['cn1id']], ph)), file=ap)
 
     xfbusnum += 1
 
   for key, row in d['EMTLine']['vals'].items():
-    bus1 = AtpBus(atp_buses[row['bus1']])
-    bus2 = AtpBus(atp_buses[row['bus2']])
+    bus1 = AtpBus(atp_buses[row['cn1id']])
+    bus2 = AtpBus(atp_buses[row['cn2id']])
     rs = (row['r0']+2.0*row['r']) / 3.0
     rm = (row['r0']-row['r']) / 3.0
     xs = (row['x0']+2.0*row['x']) / 3.0
@@ -991,7 +1002,7 @@ def convert_one_atp_model (d, fpath, case):
       if min(tau0, tau1) >= MIN_BERGERON_TAU:
         bergeron = True
     print ('C =============================================================================', file=ap)
-    print ('C line {:s} from {:s} to {:s}'.format (key, row['bus1'], row['bus2']), file=ap)
+    print ('C line {:s} from {:s} to {:s}'.format (row['name'], row['bus1'], row['bus2']), file=ap)
     print ('C   per-instance sequence parameters for {:.2f}km'.format(km), file=ap)
     if bergeron:
       print ('$VINTAGE,1', file=ap)
@@ -1015,12 +1026,12 @@ def convert_one_atp_model (d, fpath, case):
     nbrkr = 0
     print ('/SWITCH', file=ap)
     for key, row in d['EMTDisconnectingCircuitBreaker']['vals'].items():
-      bus1 = AtpBus(atp_buses[row['bus1']])
-      bus2 = AtpBus(atp_buses[row['bus2']])
+      bus1 = AtpBus(atp_buses[row['cn1id']])
+      bus2 = AtpBus(atp_buses[row['cn2id']])
       sClose = '_TCLOSE{:d}'.format (nbrkr).ljust (10, '_')
       sOpen = '_TOPEN{:d}'.format (nbrkr).ljust (10, '_')
       print ('C =============================================================================', file=ap)
-      print ('C Breaker {:s} from {:s} to {:s} numbered {:d} for timing'.format (key, row['bus1'], row['bus2'], nbrkr), file=ap)
+      print ('C Breaker {:s} from {:s} to {:s} numbered {:d} for timing'.format (row['name'], row['bus1'], row['bus2'], nbrkr), file=ap)
       print ('C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1', file=ap)
       for ph in ['A', 'B', 'C']:
         print ('  {:6s}{:6s}{:10s}{:10s}                                             1'.format (AtpNode (bus1, ph), 
@@ -1031,11 +1042,11 @@ def convert_one_atp_model (d, fpath, case):
     print ('/BRANCH', file=ap)
 
   for key, row in d['EMTCompSeries']['vals'].items():
-    bus1 = AtpBus(atp_buses[row['bus1']])
-    bus2 = AtpBus(atp_buses[row['bus2']])
+    bus1 = AtpBus(atp_buses[row['cn1id']])
+    bus2 = AtpBus(atp_buses[row['cn2id']])
     if row['x'] > 0.0:
       print ('C =============================================================================', file=ap)
-      print ('C series reactor {:s} from {:s} to {:s}'.format (key, row['bus1'], row['bus2']), file=ap)
+      print ('C series reactor {:s} from {:s} to {:s}'.format (row['name'], row['bus1'], row['bus2']), file=ap)
       print ('C < n1 >< n2 ><ref1><ref2>< R  >< X  >< C  >', file=ap)
       print ('51{:5s}A{:5s}A            {:s}{:s}'.format (bus1, bus2, AtpFit6 (row['r0']), AtpFit6 (row['x0'])), file=ap)
       print ('52{:5s}B{:5s}B            {:s}{:s}'.format (bus1, bus2, AtpFit6 (row['r']), AtpFit6 (row['x'])), file=ap)
@@ -1043,7 +1054,7 @@ def convert_one_atp_model (d, fpath, case):
     else:
       cuf = -1.0e6 / row['x'] / OMEGA
       print ('C =============================================================================', file=ap)
-      print ('C series capacitor {:s} from {:s} to {:s}'.format (key, row['bus1'], row['bus2']), file=ap)
+      print ('C series capacitor {:s} from {:s} to {:s}'.format (row['name'], row['bus1'], row['bus2']), file=ap)
       print ('C < n1 >< n2 ><ref1><ref2>< R  >< X  >< C  >', file=ap)
       print ('  {:5s}A{:5s}A                        {:s}'.format (bus1, bus2, AtpFit6 (cuf)), file=ap)
       print ('  {:5s}B{:5s}B                        {:s}'.format (bus1, bus2, AtpFit6 (cuf)), file=ap)
@@ -1054,9 +1065,9 @@ def convert_one_atp_model (d, fpath, case):
     kvar = 1000.0 * row['bsection'] * row['sections'] * kv * kv
     if kvar > 0.0:
       cuf = 1000.0 * kvar / kv / kv / OMEGA
-      bus = atp_buses[row['bus']]
+      bus = atp_buses[row['cn1id']]
       print ('C =============================================================================', file=ap)
-      print ('C capacitor {:s} at {:s} is {:.2f} kVAR'.format (key, row['bus'], kvar), file=ap)
+      print ('C capacitor {:s} at {:s} is {:.2f} kVAR'.format (row['name'], row['bus'], kvar), file=ap)
       print ('C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >', file=ap)
       print ('$VINTAGE,1', file=ap)
       for ph in GetAtpPhaseList ('ABC'):
@@ -1064,9 +1075,9 @@ def convert_one_atp_model (d, fpath, case):
       print ('$VINTAGE,0', file=ap)
     elif kvar < 0.0:
       xshunt = -1000.0 * kv * kv / kvar
-      bus = atp_buses[row['bus']]
+      bus = atp_buses[row['cn1id']]
       print ('C =============================================================================', file=ap)
-      print ('C reactor {:s} at {:s} is {:.2f} kVAR'.format (key, row['bus'], -kvar), file=ap)
+      print ('C reactor {:s} at {:s} is {:.2f} kVAR'.format (row['name'], row['bus'], -kvar), file=ap)
       print ('C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >', file=ap)
       print ('$VINTAGE,1', file=ap)
       for ph in GetAtpPhaseList ('ABC'):
@@ -1074,7 +1085,7 @@ def convert_one_atp_model (d, fpath, case):
       print ('$VINTAGE,0', file=ap)
 
   for key, row in d['EMTLoad']['vals'].items():
-    bus = atp_buses[row['bus']]
+    bus = atp_buses[row['cn1id']]
     phases = GetAtpPhaseList ('ABC')
     nph = len(phases)
     kv = 0.001 * row['basev']
@@ -1114,13 +1125,13 @@ def convert_one_atp_model (d, fpath, case):
       sVWc = AtpFit6 (vbase/376.9911)
       sPF = AtpFit6 (pfang)
       print ('C =============================================================================', file=ap)
-      print ('C DER {:s} at {:s} is {:.2f} MVA producing {:.2f} MW'.format (key, row['bus'], 1e-6*sbase, 1e-6*wtotal), file=ap)
+      print ('C DER {:s} at {:s} is {:.2f} MVA producing {:.2f} MW'.format (row['name'], row['bus'], 1e-6*sbase, 1e-6*wtotal), file=ap)
       print ('$INCLUDE,TACSPV3.PCH,{:s},{:s},{:s},{:s},{:s},{:s},{:s} $$'.format(sBus, sName, sW, sImax, sUV, sUT, sPF), file=ap)
       print ('  ,{:s},{:s},{:s}'.format(sV0, sV02, sVWc), file=ap)
       print ('/BRANCH', file=ap)
     else:
       print ('C =============================================================================', file=ap)
-      print ('C load {:s} at {:s} is {:.3f} + j{:.3f} kVA'.format (key, row['bus'], kw, kvar), file=ap)
+      print ('C load {:s} at {:s} is {:.3f} + j{:.3f} kVA'.format (row['name'], row['bus'], kw, kvar), file=ap)
       print ('C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >', file=ap)
       print ('$VINTAGE,1', file=ap)
       for ph in phases:
@@ -1135,7 +1146,7 @@ def convert_one_atp_model (d, fpath, case):
   dgens = {}
 
   for key, row in d['EMTSolar']['vals'].items():
-    bus = atp_buses[row['bus']]
+    bus = atp_buses[row['cn1id']]
     phases = GetAtpPhaseList ('ABC')
     nph = len(phases)
     vbase = row['ratedU']
@@ -1167,13 +1178,13 @@ def convert_one_atp_model (d, fpath, case):
       pfang = 0.0
     sPF = AtpFit6 (pfang)
     print ('C =============================================================================', file=ap)
-    print ('C solar {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (key, row['bus'], sbase*1e-6, wtotal*1e-6, row['q']*1e-6), file=ap)
+    print ('C solar {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (row['name'], row['bus'], sbase*1e-6, wtotal*1e-6, row['q']*1e-6), file=ap)
     AppendSolar (bus, vbase, sbase, ibase=sbase/vbase, ppu=wtotal/sbase, qpu=row['q']/sbase, vpu=1.0, ap=ap, ibr_count=PV_COUNT+WND_COUNT)
-    dgens[key] = {'Type':'Solar', 'Source':None, 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
+    dgens[key] = {'Type':'Solar', 'Source':None, 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
     DUM_NODES += SOLAR_DUM_NODES
 
   for key, row in d['EMTWind']['vals'].items():
-    bus = atp_buses[row['bus']]
+    bus = atp_buses[row['cn1id']]
     phases = GetAtpPhaseList ('ABC')
     nph = len(phases)
     vbase = row['ratedU']
@@ -1183,16 +1194,16 @@ def convert_one_atp_model (d, fpath, case):
     WND_TOTAL += 1e-6 * wtotal
     WND_COUNT += 1
     print ('C =============================================================================', file=ap)
-    print ('C wind {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (key, row['bus'], sbase*1e-6, wtotal*1e-6, row['q']*1e-6), file=ap)
+    print ('C wind {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (row['name'], row['bus'], sbase*1e-6, wtotal*1e-6, row['q']*1e-6), file=ap)
     AppendSolar (bus, vbase, sbase, ibase=sbase/vbase, ppu=wtotal/sbase, qpu=row['q']/sbase, vpu=1.0, ap=ap, ibr_count=PV_COUNT+WND_COUNT)
-    dgens[key] = {'Type':'Wind', 'Source':None, 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
+    dgens[key] = {'Type':'Wind', 'Source':None, 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
     DUM_NODES += WIND_DUM_NODES
 
   ic_idx = 0
   if len(machines) > 0: # ATP requires these come after all other sources
     lastKey = list(machines.keys())[-1]
     for key, row in machines.items():
-      bus = atp_buses[row['bus']]
+      bus = atp_buses[row['cn1id']]
       phases = GetAtpPhaseList ('ABC')
       nph = len(phases)
       vbase = row['ratedU']
@@ -1206,20 +1217,20 @@ def convert_one_atp_model (d, fpath, case):
         print ('** Machine', key, 'has negative resistance')
       if row['bus'] == swingbus:
         print ('C =============================================================================', file=ap)
-        print ('C SyncMachine {:s} at {:s} is {:.2f} MVA, part of Swing Bus'.format (key, row['bus'], rmva), file=ap)
+        print ('C SyncMachine {:s} at {:s} is {:.2f} MVA, part of Swing Bus'.format (row['name'], row['bus'], rmva), file=ap)
       else:
         print ('C =============================================================================', file=ap)
-        print ('C SyncMachine {:s} at {:s} is {:.2f} MVA, {:.2f} MW, {:.2f} MVAR'.format (key, row['bus'], rmva, mw, mvar), file=ap)
+        print ('C SyncMachine {:s} at {:s} is {:.2f} MVA, {:.2f} MW, {:.2f} MVAR'.format (row['name'], row['bus'], rmva, mw, mvar), file=ap)
         if USE_TYPE_14_MACHINES: #  or (key != lastKey):
           genbus = AppendType14Generator (bus, vbase, rmva, row['Xdp'], row['Ra'], bus_ic, mw, mvar, ap)
-          dgens[key] = {'Type':'SyncMach', 'Source':'14', 'Bus':genbus, 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
+          dgens[key] = {'Type':'SyncMach', 'Source':'14', 'Name':row['name'], 'Bus':genbus, 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
         else:
-          gov = GetMachineDynamic (d['EMTGovSteamSGO']['vals'], row['id'])
-          exc = GetMachineDynamic (d['EMTExcST1A']['vals'], row['id'])
-          pss = GetMachineDynamic (d['EMTPssIEEE1A']['vals'], row['id'])
+          gov = GetMachineDynamic (d['EMTGovSteamSGO']['vals'], key)
+          exc = GetMachineDynamic (d['EMTExcST1A']['vals'], key)
+          pss = GetMachineDynamic (d['EMTPssIEEE1A']['vals'], key)
           AppendMachineDynamics (bus=bus, vpu=row['vpu'], deg=row['deg'], mach=row, gov=gov, exc=exc, pss=pss, ap=ap)
           DUM_NODES += MACHINE_DUM_NODES
-          dgens[key] = {'Type':'SyncMach', 'Source':'59', 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
+          dgens[key] = {'Type':'SyncMach', 'Source':'59', 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
     print ('/BRANCH', file=ap)
 
 #  no CIM breakers in the BES queries
@@ -1251,7 +1262,7 @@ if __name__ == '__main__':
   d = load_emt_dict (g, 'sparql_queries.xml', case['id'])
   print ('Total query time {:6.3f} s'.format (time.time() - start_time))
 
-  #list_dict_table (d, 'EMTPowerXfmrCore')
+  #list_dict_table (d, 'EMTSyncMachine')
   #list_dict_table (d, 'EMTXfmrSaturation')
 
   reset_globals (case)
