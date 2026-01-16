@@ -56,7 +56,7 @@ def query_for_values (g, tbl, sysid):
     for i in range(1, len(keyflds)):
       key = key + DELIM + str(b[keyflds[i]])
     for fld in vars:
-      if fld in ['name', 'conn', 'sysid', 'bus', 'bus1', 'bus2', 'id', 'eqid']:
+      if fld in ['pname', 'name', 'conn', 'sysid', 'bus', 'bus1', 'bus2', 'id', 'eqid']:
         row[fld] = str(b[fld])
       else:
         try:
@@ -111,7 +111,7 @@ def get_gencosts(fuel):
   return c2, c1, c0
 
 def add_mpc_generator (gens, data, bus_numbers, bus_generation, bus_headroom):
-  busnum = int(data['bus'])
+  busnum = bus_numbers[data['cn1id']]
   Pg = data['p']/1.0e6
   Pmax = data['maxP']/1.0e6
   Pheadroom = Pmax - Pg
@@ -126,7 +126,7 @@ def add_mpc_generator (gens, data, bus_numbers, bus_generation, bus_headroom):
   status = 1
   if Pg <= 0.0:
     status = 1
-  gens.append ({'bus':bus_numbers[data['bus']],
+  gens.append ({'bus':busnum,
                 'Pg':Pg,
                 'Qg':data['q']/1.0e6,
                 'Qmax':data['maxQ']/1.0e6,
@@ -141,20 +141,25 @@ def add_mpc_generator (gens, data, bus_numbers, bus_generation, bus_headroom):
 
 def build_bus_lists (d):
   bNumeric = True
-  for key in d['EMTBus']['vals']:
-    if not key.isdigit():
+  for key, data in d['EMTBus']['vals'].items():
+    if not data['name'].isdigit():
       bNumeric = False
       break
   if bNumeric:
-    ordered_buses = dict(sorted(d['EMTBus']['vals'].items(), key=lambda x:int(x[0])))
+    ordered_buses = dict(sorted(d['EMTBus']['vals'].items(), key=lambda x:int(x[1]['name'])))
   else:
     ordered_buses = d['EMTBus']['vals']
   bus_numbers = {}
   busnum = 1
-  for key, data in ordered_buses.items():
+  for key, data in ordered_buses.items(): # data has name and nomv
     bus_numbers[key] = busnum
     busnum += 1
   return ordered_buses, bus_numbers
+
+def get_swingbus_id (ordered_buses, swingbus):
+  for cnid, data in ordered_buses.items():
+    if data['name'] == swingbus:
+      return cnid
 
 def build_matpower (d, sys_name, fp, swingbus):
   print ('function mpc = {:s}'.format(sys_name), file=fp)
@@ -184,17 +189,17 @@ mpc.bus = [""", file=fp)
                        'zone':1,
                        'Vmax':1.1,
                        'Vmin':0.9})
-    mpc_bus_names.append (key)
+    mpc_bus_names.append (data['name']) # (key)
   # add loads and shunts to buses
   total_load = 0.0
   for key, data in d['EMTLoad']['vals'].items():
-    idx = bus_numbers[data['bus']]-1
+    idx = bus_numbers[data['cn1id']]-1
     Pd = data['p'] / 1.0e6
     total_load += Pd
     mpc_buses[idx]['Pd'] += Pd
     mpc_buses[idx]['Qd'] += data['q'] / 1.0e6
   for key, data in d['EMTCompShunt']['vals'].items():
-    idx = bus_numbers[data['bus']]-1
+    idx = bus_numbers[data['cn1id']]-1
     scale = data['sections']*data['nomu']*data['nomu']/1.0e6
     mpc_buses[idx]['Gs'] += data['gsection']*scale
     mpc_buses[idx]['Bs'] += data['bsection']*scale
@@ -205,7 +210,7 @@ mpc.bus = [""", file=fp)
   bus_generation = {}
   bus_headroom = {}
   for key, data in d['EMTSyncMachine']['vals'].items():
-    idx = bus_numbers[data['bus']]-1
+    idx = bus_numbers[data['cn1id']]-1
     mpc_buses[idx]['type'] = 2
     add_mpc_generator (mpc_generators, data, bus_numbers, bus_generation, bus_headroom)
     if data['type'] == 'Hydro':
@@ -218,13 +223,13 @@ mpc.bus = [""", file=fp)
       mpc_genfuels.append('ng')
       mpc_gentypes.append('ST')
   for key, data in d['EMTSolar']['vals'].items():
-    idx = bus_numbers[data['bus']]-1
+    idx = bus_numbers[data['cn1id']]-1
     mpc_buses[idx]['type'] = 2
     add_mpc_generator (mpc_generators, data, bus_numbers, bus_generation, bus_headroom)
     mpc_genfuels.append('solar')
     mpc_gentypes.append('PV')
   for key, data in d['EMTWind']['vals'].items():
-    idx = bus_numbers[data['bus']]-1
+    idx = bus_numbers[data['cn1id']]-1
     mpc_buses[idx]['type'] = 2
     add_mpc_generator (mpc_generators, data, bus_numbers, bus_generation, bus_headroom)
     mpc_genfuels.append('wind')
@@ -237,7 +242,7 @@ mpc.bus = [""", file=fp)
   print ('bus {:d} has maximum headroom of {:.2f} MW and generation of {:.2f} MW'.format (head_bus, 
                                                                                           bus_headroom[head_bus], 
                                                                                           bus_generation[head_bus]))
-  swingbus_num = bus_numbers[swingbus]
+  swingbus_num = bus_numbers[get_swingbus_id(ordered_buses, swingbus)]
   mpc_buses[swingbus_num-1]['type'] = 3
   for data in mpc_buses:
     print (' {:5d} {:2d} {:9.3f} {:9.3f} {:9.3f} {:9.3f} {:3d} {:7.4f} {:7.4f} {:7.3f} {:3d} {:6.3f} {:6.3f};'.format(
@@ -263,29 +268,33 @@ mpc.gen = [""", file=fp)
   for key, data in d['EMTPowerXfmrWinding']['vals'].items():
     toks = key.split(':')
     pname = toks[0]
-    bus = bus_numbers[data['bus']]
+    bus = bus_numbers[data['cn1id']]
     if pname not in xfmrs:
+      fid = data['id']
       ratio = 1.0
-      if key in d['EMTXfmrTap']['vals']:
-        ratio = 1.0 + (d['EMTXfmrTap']['vals'][key]['svi']*d['EMTXfmrTap']['vals'][key]['step']) / 100.0
-        print (' * found tap={:8.6f} for winding {:s}'.format (ratio, key))
+      if fid in d['EMTXfmrTap']['vals']:
+        ratio = 1.0 + (d['EMTXfmrTap']['vals'][fid]['svi']*d['EMTXfmrTap']['vals'][fid]['step']) / 100.0
+        print (' * found tap={:8.6f} for winding {:s}'.format (ratio, fid))
       mva = data['ratedS'] / 1.0e6
       kv = data['ratedU'] / 1.0e3
       zbase = kv*kv / MVA_BASE # mva # on system MVA base, not on transformer MVA
-      mesh = d['EMTPowerXfmrMesh']['vals']['{:s}:1:2'.format(pname)]
-      r = mesh['r'] / zbase
-      x = mesh['x'] / zbase
-      xfmrs[pname] = {'from':bus, 'mva':mva, 'r':r, 'x': x, 'ratio': ratio}
+      xfmrs[pname] = {'from':bus, 'mva':mva, 'ratio': ratio}
     else:
       xfmrs[pname]['to'] = bus
+      tid = data['id']
+      mesh = d['EMTPowerXfmrMesh']['vals']['{:s}:{:s}'.format(fid, tid)]
+      r = mesh['r'] / zbase
+      x = mesh['x'] / zbase
+      xfmrs[pname]['r'] = r
+      xfmrs[pname]['x'] = x
 
   print ("""
 %% branch data - BESLine+BESCompSeries+collected transformers
 %	fbus tbus r x b rateA rateB rateC ratio angle status angmin angmax
 mpc.branch = [""", file=fp)
   for key, data in d['EMTLine']['vals'].items():
-    bus1 = bus_numbers[data['bus1']]
-    bus2 = bus_numbers[data['bus2']]
+    bus1 = bus_numbers[data['cn1id']]
+    bus2 = bus_numbers[data['cn2id']]
     kvbase = data['basev']/1000.0
     zbase = kvbase*kvbase/MVA_BASE
     q = data['b']*kvbase*kvbase
@@ -294,8 +303,8 @@ mpc.branch = [""", file=fp)
     b = q/MVA_BASE
     print (' {:5d} {:5d} {:9.6f} {:9.6f} {:9.6f} 0.0 0.0 0.0 0.0 0.0 1 0.0 0.0;'.format (bus1, bus2, r, x, b), file=fp)
   for key, data in d['EMTCompSeries']['vals'].items():
-    bus1 = bus_numbers[data['bus1']]
-    bus2 = bus_numbers[data['bus2']]
+    bus1 = bus_numbers[data['cn1id']]
+    bus2 = bus_numbers[data['cn2id']]
     kvbase = data['basev']/1000.0
     zbase = kvbase*kvbase/MVA_BASE
     r = data['r']/zbase
@@ -369,7 +378,8 @@ if __name__ == '__main__':
   start_time = time.time()
   d = load_emt_dict (g, 'sparql_queries.xml', case['id'])
   print ('Total query time {:6.3f} s'.format (time.time() - start_time))
-  #list_dict_table (d, 'EMTBus')
+  #list_dict_table (d, 'EMTPowerXfmrWinding')
+  #list_dict_table (d, 'EMTXfmrTap')
 
   fp = open ('../matpower/' + sys_name + '.m', 'w')
   build_matpower (d, sys_name, fp, CASES[case_id]['swingbus'])

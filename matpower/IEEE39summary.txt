@@ -1,8 +1,8 @@
 results.success = 1
 results.iterations = 4
-results.et = 0.0090
+results.et = 0.1701
 
-Converged in 0.01 seconds
+Converged in 0.17 seconds
 ================================================================================
 |     System Summary                                                           |
 ================================================================================
@@ -30,14 +30,4 @@ Q Losses (I^2*X)             -                107.74 MVAr  @ line 29-38
 
 Overloads:
   0 generators overloaded
-  Branch 35 from 10-32 has 715.38 MVA > 100.00 MVA
-  Branch 38 from 19-20 has 122.74 MVA > 100.00 MVA
-  Branch 39 from 19-33 has 664.58 MVA > 100.00 MVA
-  Branch 40 from 20-34 has 532.76 MVA > 100.00 MVA
-  Branch 41 from 22-35 has 672.81 MVA > 100.00 MVA
-  Branch 42 from 23-36 has 561.72 MVA > 100.00 MVA
-  Branch 43 from 25-37 has 540.40 MVA > 100.00 MVA
-  Branch 44 from 29-38 has 831.05 MVA > 100.00 MVA
-  Branch 45 from 2-30 has 258.29 MVA > 100.00 MVA
-  Branch 46 from 6-31 has 584.75 MVA > 100.00 MVA
-  10 branches overloaded
+  0 branches overloaded
