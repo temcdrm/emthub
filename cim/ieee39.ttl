@@ -3133,6 +3133,715 @@
     cim:IdentifiedObject.mRID "E44145A3-8AF5-4822-BAEE-E187CBE8FD78"^^cim:String ;
     cim:IdentifiedObject.name "12_13_0_1_Sat"^^cim:String .
 
+<1FFEF24B-B18D-4358-A86B-7F9794183C20> a cim:OperationalLimitType ;
+    cim:IdentifiedObject.mRID "1FFEF24B-B18D-4358-A86B-7F9794183C20"^^cim:String ;
+    cim:IdentifiedObject.name "ShortTerm"^^cim:String ;
+    cim:OperationalLimitType.acceptableDuration "14400.0"^^cim:Seconds ;
+    cim:OperationalLimitType.direction cim:OperationalLimitDirectionKind.absoluteValue ;
+    cim:OperationalLimitType.isInfiniteDuration "false"^^cim:Boolean .
+
+<6CB877FE-23FB-4740-ACAE-3A110BECAEC8> a cim:OperationalLimitType ;
+    cim:IdentifiedObject.mRID "6CB877FE-23FB-4740-ACAE-3A110BECAEC8"^^cim:String ;
+    cim:IdentifiedObject.name "Normal"^^cim:String ;
+    cim:OperationalLimitType.direction cim:OperationalLimitDirectionKind.absoluteValue ;
+    cim:OperationalLimitType.isInfiniteDuration "true"^^cim:Boolean .
+
+<088737EF-75AF-4AA6-84F1-FAE5D1B2C7D5> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "088737EF-75AF-4AA6-84F1-FAE5D1B2C7D5"^^cim:String ;
+    cim:IdentifiedObject.name "26_28_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <0B5D0660-00F2-47A9-9855-59DC93552B9F> .
+
+<0C995E63-F6BC-43BF-A431-911E713A41C8> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "0C995E63-F6BC-43BF-A431-911E713A41C8"^^cim:String ;
+    cim:IdentifiedObject.name "22_23_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <2181AA34-4CF8-4037-8C9B-90F0D744F888> .
+
+<136A61D1-1C87-4915-BE10-1AF1B69FC7ED> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "136A61D1-1C87-4915-BE10-1AF1B69FC7ED"^^cim:String ;
+    cim:IdentifiedObject.name "9_39_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <B43B21CC-C758-46B7-9DB5-42E6E00EC934> .
+
+<14DF1212-0BF5-4743-817F-D92DB85CB413> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "14DF1212-0BF5-4743-817F-D92DB85CB413"^^cim:String ;
+    cim:IdentifiedObject.name "6_31_0_1_End_2"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <D3B855BA-6721-44E8-80E8-4D400C990800> .
+
+<190CDBA4-869A-422A-B532-4CAA3A3C98B4> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "190CDBA4-869A-422A-B532-4CAA3A3C98B4"^^cim:String ;
+    cim:IdentifiedObject.name "19_33_0_1_End_1"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <C877E3F9-2889-4CB8-9E0B-47A77BE0B01E> .
+
+<228C6F13-868E-4364-AC06-5E6000636456> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "228C6F13-868E-4364-AC06-5E6000636456"^^cim:String ;
+    cim:IdentifiedObject.name "16_24_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <6AD479AD-D268-49A9-8CC4-77022521B429> .
+
+<28BB4E9E-D193-4E73-A754-46DD9B40CB31> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "28BB4E9E-D193-4E73-A754-46DD9B40CB31"^^cim:String ;
+    cim:IdentifiedObject.name "1_39_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <5D9810EC-95A7-4F86-A165-65648B12E9F0> .
+
+<358A1524-6267-4780-8826-18C8CE497A78> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "358A1524-6267-4780-8826-18C8CE497A78"^^cim:String ;
+    cim:IdentifiedObject.name "10_13_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <9031CCFF-C9A4-436C-9610-CF88C0430709> .
+
+<374AD9EC-3501-4BAC-882B-B161F9B35283> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "374AD9EC-3501-4BAC-882B-B161F9B35283"^^cim:String ;
+    cim:IdentifiedObject.name "12_13_0_1_End_1"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <291DC5CE-CE56-464C-8F11-092DF56EB55F> .
+
+<3D46A862-BE01-465F-82D1-F30E5BB24667> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "3D46A862-BE01-465F-82D1-F30E5BB24667"^^cim:String ;
+    cim:IdentifiedObject.name "3_18_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <325FD2AC-6CC0-47FE-8FE2-F576DA4BA067> .
+
+<4C3E3436-2552-42F2-84BF-17A61EA5D6DC> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "4C3E3436-2552-42F2-84BF-17A61EA5D6DC"^^cim:String ;
+    cim:IdentifiedObject.name "12_11_0_1_End_1"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <EAAE0188-20CA-4C2E-BDDD-C48F799771D2> .
+
+<5151C953-0E62-4873-ADFF-DD5BEF34A334> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "5151C953-0E62-4873-ADFF-DD5BEF34A334"^^cim:String ;
+    cim:IdentifiedObject.name "22_35_0_1_End_1"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <FF66CB51-D066-46F8-9105-D959D8BE4351> .
+
+<5316EA94-F631-48B6-80E9-5D90939DC756> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "5316EA94-F631-48B6-80E9-5D90939DC756"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <9BD8A8F7-39FC-40C4-8AEE-68ED9F74BC93> .
+
+<557CECC0-BB1B-4DD2-80A1-9156A7E34C23> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "557CECC0-BB1B-4DD2-80A1-9156A7E34C23"^^cim:String ;
+    cim:IdentifiedObject.name "5_6_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <DB4CF0DB-7E8D-43A7-8244-4C56D7AE51CE> .
+
+<59155B0B-E503-468D-941B-820A8EE1D222> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "59155B0B-E503-468D-941B-820A8EE1D222"^^cim:String ;
+    cim:IdentifiedObject.name "25_37_0_1_End_1"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <6B24C8C4-E0CE-401A-AB9E-28A973AE7541> .
+
+<5C3A18B1-F0DD-4BB8-BBA4-131A539F65A1> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "5C3A18B1-F0DD-4BB8-BBA4-131A539F65A1"^^cim:String ;
+    cim:IdentifiedObject.name "17_27_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <3FB39096-AF68-4FDF-8F67-E86880AE3459> .
+
+<687D29D3-AE9B-450E-B38A-D1C96C73F8D4> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "687D29D3-AE9B-450E-B38A-D1C96C73F8D4"^^cim:String ;
+    cim:IdentifiedObject.name "2_3_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <AE7B39FE-2F8C-4BF6-B5BE-BDB490A7B802> .
+
+<7201D17A-A20A-42C5-878F-C836D21C3D84> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "7201D17A-A20A-42C5-878F-C836D21C3D84"^^cim:String ;
+    cim:IdentifiedObject.name "7_8_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <D08CA395-BC57-45BF-81FB-DD43B1123716> .
+
+<73150872-37E1-40FC-A30C-E00FFE8865F1> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "73150872-37E1-40FC-A30C-E00FFE8865F1"^^cim:String ;
+    cim:IdentifiedObject.name "10_32_0_1_End_1"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <6067EFD2-B593-4CD9-B1BF-9B2426EAC724> .
+
+<76A814FD-6D42-4B40-B593-521D0D3D5671> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "76A814FD-6D42-4B40-B593-521D0D3D5671"^^cim:String ;
+    cim:IdentifiedObject.name "13_14_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <37359B47-C812-495F-BCDE-2DF08C0ADB93> .
+
+<76C54770-9E30-4A92-ABCC-522C91BB8C9E> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "76C54770-9E30-4A92-ABCC-522C91BB8C9E"^^cim:String ;
+    cim:IdentifiedObject.name "12_13_0_1_End_2"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <2F440339-A956-40FB-8498-1F344F90E279> .
+
+<784AB589-FF98-4221-B4F3-861FC61A84A3> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "784AB589-FF98-4221-B4F3-861FC61A84A3"^^cim:String ;
+    cim:IdentifiedObject.name "23_36_0_1_End_1"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <BD1D892A-3BE2-47AF-A3CD-B68B87C78B4F> .
+
+<7ED15456-CD14-482C-B063-05291144F34E> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "7ED15456-CD14-482C-B063-05291144F34E"^^cim:String ;
+    cim:IdentifiedObject.name "28_29_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <E38E17FC-FB0F-441B-9BF2-9A4617A33DB4> .
+
+<7F76D34F-9D9F-43FE-ABF4-DD7BCCAEDC33> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "7F76D34F-9D9F-43FE-ABF4-DD7BCCAEDC33"^^cim:String ;
+    cim:IdentifiedObject.name "17_18_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <39D36C9C-1489-4492-B23C-AE8A6968CEE7> .
+
+<82CEE775-B824-4244-A6F8-59A0FC663DBE> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "82CEE775-B824-4244-A6F8-59A0FC663DBE"^^cim:String ;
+    cim:IdentifiedObject.name "5_8_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <DBD9327B-3824-435F-9142-C8E9CD5C7BC0> .
+
+<89D5C7EE-2EA1-4C2C-B64A-8AAA27B88B21> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "89D5C7EE-2EA1-4C2C-B64A-8AAA27B88B21"^^cim:String ;
+    cim:IdentifiedObject.name "19_20_0_1_End_2"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <F3AAE9E5-5A51-4ED3-AA59-420027F79194> .
+
+<8DB13699-1B7E-4666-8CBA-3835EA2A7253> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "8DB13699-1B7E-4666-8CBA-3835EA2A7253"^^cim:String ;
+    cim:IdentifiedObject.name "16_19_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <194CC57F-D0E8-47AB-8068-7B1A08207BCC> .
+
+<8E65375A-73CC-4881-AB57-61AABB322B63> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "8E65375A-73CC-4881-AB57-61AABB322B63"^^cim:String ;
+    cim:IdentifiedObject.name "29_38_0_1_End_1"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <D1A4361E-AD89-4156-9638-CB6910D6E71A> .
+
+<8E6AB7B1-B2B1-4C3D-8D6C-EB5430DA85C8> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "8E6AB7B1-B2B1-4C3D-8D6C-EB5430DA85C8"^^cim:String ;
+    cim:IdentifiedObject.name "16_21_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <2F8BDA88-35FF-4982-AEF1-A93BEDD974AD> .
+
+<8EDC257D-9522-4915-AB48-7E3D294E9FAF> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "8EDC257D-9522-4915-AB48-7E3D294E9FAF"^^cim:String ;
+    cim:IdentifiedObject.name "10_11_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <0D3E2176-CA47-45F1-9E13-D1B349F116DC> .
+
+<90CEC2DC-5043-4C5E-992A-D6BA9B4241C4> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "90CEC2DC-5043-4C5E-992A-D6BA9B4241C4"^^cim:String ;
+    cim:IdentifiedObject.name "6_7_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <FE2A5722-4BC2-465E-95E3-06318E30E910> .
+
+<9324AD7A-6C25-495D-B7DC-701FAA2C00E2> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "9324AD7A-6C25-495D-B7DC-701FAA2C00E2"^^cim:String ;
+    cim:IdentifiedObject.name "22_35_0_1_End_2"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <2E0BE3F6-A1AC-4A43-AEC5-BD32E72F93DC> .
+
+<96F98508-E7CF-4FDD-97B1-E21E3EF9C51C> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "96F98508-E7CF-4FDD-97B1-E21E3EF9C51C"^^cim:String ;
+    cim:IdentifiedObject.name "25_26_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <DD650028-F696-44F0-8EBE-E780C23BDF9B> .
+
+<97F5F1E1-0C12-4925-90BC-D3FB1065851F> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "97F5F1E1-0C12-4925-90BC-D3FB1065851F"^^cim:String ;
+    cim:IdentifiedObject.name "26_27_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <FC571C2F-57DB-4C14-B1FD-5885E0177A7F> .
+
+<998C9E4A-8804-454F-9B6F-70F5D794AF73> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "998C9E4A-8804-454F-9B6F-70F5D794AF73"^^cim:String ;
+    cim:IdentifiedObject.name "20_34_0_1_End_2"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <7FD9B07A-93E7-4ABC-9480-AC3173E9CC20> .
+
+<A0FDCEAC-B58F-4662-ADFC-7C65B42D4D18> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "A0FDCEAC-B58F-4662-ADFC-7C65B42D4D18"^^cim:String ;
+    cim:IdentifiedObject.name "25_37_0_1_End_2"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <7E8B034F-E562-4112-8A10-F3A321B71DD6> .
+
+<A507D0C4-73A5-4866-BF07-828472A9BD58> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "A507D0C4-73A5-4866-BF07-828472A9BD58"^^cim:String ;
+    cim:IdentifiedObject.name "19_33_0_1_End_2"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <C271703C-501B-4410-8D2F-3DEA58555FFE> .
+
+<A856CDB6-1BF7-40D9-95A1-E7B9D4DE54AF> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "A856CDB6-1BF7-40D9-95A1-E7B9D4DE54AF"^^cim:String ;
+    cim:IdentifiedObject.name "12_11_0_1_End_2"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <8AE15448-6BFC-4460-8403-309DA2CE5F9C> .
+
+<A9979CDE-3552-4192-9469-AF407A58DF32> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "A9979CDE-3552-4192-9469-AF407A58DF32"^^cim:String ;
+    cim:IdentifiedObject.name "23_36_0_1_End_2"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <2DF1CDF3-5E0C-4198-BAC5-09935382BFBB> .
+
+<B813F77C-43A3-4F50-A0CE-7F19DA32A461> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "B813F77C-43A3-4F50-A0CE-7F19DA32A461"^^cim:String ;
+    cim:IdentifiedObject.name "10_32_0_1_End_2"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <62041EF9-0511-4CD8-A6CD-5E20792E121A> .
+
+<B95AFE8A-84CE-4C1C-98E6-331C30DC25C8> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "B95AFE8A-84CE-4C1C-98E6-331C30DC25C8"^^cim:String ;
+    cim:IdentifiedObject.name "6_31_0_1_End_1"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <45DDF979-B540-47BD-8BDE-C78CCBFE4627> .
+
+<BA151966-3005-4D7A-87EB-E541B644FDBE> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "BA151966-3005-4D7A-87EB-E541B644FDBE"^^cim:String ;
+    cim:IdentifiedObject.name "2_25_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <DC9A39E0-49F9-4821-A85A-2F78F0CFEF68> .
+
+<BA3217F7-A088-48EC-9A61-C8CBA32638A7> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "BA3217F7-A088-48EC-9A61-C8CBA32638A7"^^cim:String ;
+    cim:IdentifiedObject.name "8_9_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <FCDB9E91-83A2-4DD8-A9F1-39CABFED8D3B> .
+
+<BF74BD59-FDB4-45CE-8F82-ECB1F5480302> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "BF74BD59-FDB4-45CE-8F82-ECB1F5480302"^^cim:String ;
+    cim:IdentifiedObject.name "23_24_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <91427565-6C09-4B58-AC5D-4DB5D6D0F475> .
+
+<BFD4B0C8-983C-49FC-9C0E-76D67FBA5307> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "BFD4B0C8-983C-49FC-9C0E-76D67FBA5307"^^cim:String ;
+    cim:IdentifiedObject.name "14_15_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <43548FA7-7A98-423D-A096-9E48317B8BB8> .
+
+<C037F3C8-2154-48FA-9407-6F0CF1B60B20> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "C037F3C8-2154-48FA-9407-6F0CF1B60B20"^^cim:String ;
+    cim:IdentifiedObject.name "29_38_0_1_End_2"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <BADE5DF6-C0A0-4C8E-8CF6-D3E635127016> .
+
+<C0A498E4-A93D-4937-9466-8692DD015101> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "C0A498E4-A93D-4937-9466-8692DD015101"^^cim:String ;
+    cim:IdentifiedObject.name "26_29_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <CAC940CE-B458-4D92-A155-474FDB4BF8BB> .
+
+<C1A911E8-E946-4405-AA50-05EDBB59308A> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "C1A911E8-E946-4405-AA50-05EDBB59308A"^^cim:String ;
+    cim:IdentifiedObject.name "2_30_0_1_End_2"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <4DE0953B-23C5-437B-862C-D70750C4401D> .
+
+<CA97616A-DE94-4CCA-B20E-A736D26C08E1> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "CA97616A-DE94-4CCA-B20E-A736D26C08E1"^^cim:String ;
+    cim:IdentifiedObject.name "1_2_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <BA863D34-1DC7-4AD0-8E12-B28E633A16A4> .
+
+<CD774BAB-CF30-49A1-97FA-21678D84604F> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "CD774BAB-CF30-49A1-97FA-21678D84604F"^^cim:String ;
+    cim:IdentifiedObject.name "16_17_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <D627B7C3-8E70-4E29-93CC-4AEDCA07044A> .
+
+<D1F3A47D-08F4-40B6-88C8-8A5E54FE6D00> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "D1F3A47D-08F4-40B6-88C8-8A5E54FE6D00"^^cim:String ;
+    cim:IdentifiedObject.name "2_30_0_1_End_1"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <049DE9C1-9503-4383-8228-589E562A2470> .
+
+<D2AE8E94-D2B3-495D-80D9-DCBBACBAB04E> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "D2AE8E94-D2B3-495D-80D9-DCBBACBAB04E"^^cim:String ;
+    cim:IdentifiedObject.name "20_34_0_1_End_1"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <1E0963A3-B3AD-4317-8F47-E1310304AC9D> .
+
+<DB25B7D3-CB41-4390-BF81-0CF238A77B58> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "DB25B7D3-CB41-4390-BF81-0CF238A77B58"^^cim:String ;
+    cim:IdentifiedObject.name "6_11_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <5C6181B4-6FE6-45B4-800D-FD28AB64FA05> .
+
+<DC87B1EF-BACD-4891-89FE-66D41935CE6F> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "DC87B1EF-BACD-4891-89FE-66D41935CE6F"^^cim:String ;
+    cim:IdentifiedObject.name "21_22_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <3725E4B4-88A0-4A37-B96C-B4409C12500E> .
+
+<E259E96C-082D-46DA-91ED-9B4492EB9739> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "E259E96C-082D-46DA-91ED-9B4492EB9739"^^cim:String ;
+    cim:IdentifiedObject.name "19_20_0_1_End_1"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <5602225D-2EC1-41E6-B279-02685BA6134F> .
+
+<E39AF762-8588-4B99-8F5F-2E88CDCE3710> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "E39AF762-8588-4B99-8F5F-2E88CDCE3710"^^cim:String ;
+    cim:IdentifiedObject.name "4_5_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <D82CA7E9-3A4B-4DCF-9546-D724C6D27FA9> .
+
+<EF266502-7AFE-4C92-80F3-50352B818BDD> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "EF266502-7AFE-4C92-80F3-50352B818BDD"^^cim:String ;
+    cim:IdentifiedObject.name "15_16_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <03B54FCF-54D2-4908-9263-D5E232165FD3> .
+
+<FD16BAD2-83CF-4E76-8391-6D1CB3A210C6> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "FD16BAD2-83CF-4E76-8391-6D1CB3A210C6"^^cim:String ;
+    cim:IdentifiedObject.name "4_14_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <71C67751-A509-46BF-B41E-CCE1AD689084> .
+
+<04EF5C1E-E8F8-4368-AE17-1FF74365A472> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "04EF5C1E-E8F8-4368-AE17-1FF74365A472"^^cim:String ;
+    cim:IdentifiedObject.name "2_30_0_1_End_2_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <C1A911E8-E946-4405-AA50-05EDBB59308A> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<098250D3-7F99-464A-8477-629781253AB5> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "098250D3-7F99-464A-8477-629781253AB5"^^cim:String ;
+    cim:IdentifiedObject.name "7_8_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <7201D17A-A20A-42C5-878F-C836D21C3D84> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<0B4EA1A5-D9A6-4E0F-9D5A-BF2946BF74F9> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "0B4EA1A5-D9A6-4E0F-9D5A-BF2946BF74F9"^^cim:String ;
+    cim:IdentifiedObject.name "26_28_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <088737EF-75AF-4AA6-84F1-FAE5D1B2C7D5> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<0E441075-4E1E-4486-9220-F730FE93F82A> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "500000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "0E441075-4E1E-4486-9220-F730FE93F82A"^^cim:String ;
+    cim:IdentifiedObject.name "12_11_0_1_End_1_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <4C3E3436-2552-42F2-84BF-17A61EA5D6DC> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<13E38FF2-A943-4C28-9C3C-6F7772108CE5> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "13E38FF2-A943-4C28-9C3C-6F7772108CE5"^^cim:String ;
+    cim:IdentifiedObject.name "5_8_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <82CEE775-B824-4244-A6F8-59A0FC663DBE> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<14CF4546-3B91-4D6B-A5A6-017E509F503F> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "500000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "14CF4546-3B91-4D6B-A5A6-017E509F503F"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <5316EA94-F631-48B6-80E9-5D90939DC756> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<16A5EB16-A09C-4008-8C64-E0EFFC249CBD> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "500000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "16A5EB16-A09C-4008-8C64-E0EFFC249CBD"^^cim:String ;
+    cim:IdentifiedObject.name "4_14_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <FD16BAD2-83CF-4E76-8391-6D1CB3A210C6> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<1E2928B8-5D1C-401D-8A0A-0CD9F95D76EB> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "1200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "1E2928B8-5D1C-401D-8A0A-0CD9F95D76EB"^^cim:String ;
+    cim:IdentifiedObject.name "29_38_0_1_End_1_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <8E65375A-73CC-4881-AB57-61AABB322B63> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<1FA06D66-8713-44AB-8516-A2EA02BB6995> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "1FA06D66-8713-44AB-8516-A2EA02BB6995"^^cim:String ;
+    cim:IdentifiedObject.name "14_15_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <BFD4B0C8-983C-49FC-9C0E-76D67FBA5307> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<30870850-0390-4DDC-B921-6DDFEDDEB3E2> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "30870850-0390-4DDC-B921-6DDFEDDEB3E2"^^cim:String ;
+    cim:IdentifiedObject.name "28_29_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <7ED15456-CD14-482C-B063-05291144F34E> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<33150797-416B-4583-9358-839D90C8F0E8> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "33150797-416B-4583-9358-839D90C8F0E8"^^cim:String ;
+    cim:IdentifiedObject.name "19_33_0_1_End_2_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <A507D0C4-73A5-4866-BF07-828472A9BD58> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<39840C8B-A86C-4D2D-BCD8-77B0CEEE5806> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "39840C8B-A86C-4D2D-BCD8-77B0CEEE5806"^^cim:String ;
+    cim:IdentifiedObject.name "23_36_0_1_End_2_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <A9979CDE-3552-4192-9469-AF407A58DF32> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<3DCFE175-27F7-4A3B-BC45-E27D424ACE42> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "3DCFE175-27F7-4A3B-BC45-E27D424ACE42"^^cim:String ;
+    cim:IdentifiedObject.name "16_24_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <228C6F13-868E-4364-AC06-5E6000636456> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<3E45182F-CBE0-4A60-BC4E-069652E11000> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "1000000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "3E45182F-CBE0-4A60-BC4E-069652E11000"^^cim:String ;
+    cim:IdentifiedObject.name "1_39_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <28BB4E9E-D193-4E73-A754-46DD9B40CB31> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<3ED0EE94-D2EE-4A38-A089-007CE1A9217C> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "3ED0EE94-D2EE-4A38-A089-007CE1A9217C"^^cim:String ;
+    cim:IdentifiedObject.name "25_37_0_1_End_1_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <59155B0B-E503-468D-941B-820A8EE1D222> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<42040E4F-3F0C-4AB7-AB50-0D9A44812F8C> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "42040E4F-3F0C-4AB7-AB50-0D9A44812F8C"^^cim:String ;
+    cim:IdentifiedObject.name "8_9_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <BA3217F7-A088-48EC-9A61-C8CBA32638A7> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<42172C12-B168-45E2-8005-6A6EF5FE7CC5> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "42172C12-B168-45E2-8005-6A6EF5FE7CC5"^^cim:String ;
+    cim:IdentifiedObject.name "19_20_0_1_End_1_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <E259E96C-082D-46DA-91ED-9B4492EB9739> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<460A819D-0576-446D-9D5B-9894E2FD776B> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "1200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "460A819D-0576-446D-9D5B-9894E2FD776B"^^cim:String ;
+    cim:IdentifiedObject.name "5_6_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <557CECC0-BB1B-4DD2-80A1-9156A7E34C23> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<4D78F5D6-013C-400B-BD04-48BB99464991> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "4D78F5D6-013C-400B-BD04-48BB99464991"^^cim:String ;
+    cim:IdentifiedObject.name "16_17_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <CD774BAB-CF30-49A1-97FA-21678D84604F> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<4ED04BD1-AA5A-4A65-8E88-0DA435C03886> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "4ED04BD1-AA5A-4A65-8E88-0DA435C03886"^^cim:String ;
+    cim:IdentifiedObject.name "6_7_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <90CEC2DC-5043-4C5E-992A-D6BA9B4241C4> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<663E1ADB-79B9-4C6C-AF7F-60D5E2F9D10C> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "663E1ADB-79B9-4C6C-AF7F-60D5E2F9D10C"^^cim:String ;
+    cim:IdentifiedObject.name "9_39_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <136A61D1-1C87-4915-BE10-1AF1B69FC7ED> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<66A0B22E-32BD-4575-9209-0D41F0BEE461> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "500000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "66A0B22E-32BD-4575-9209-0D41F0BEE461"^^cim:String ;
+    cim:IdentifiedObject.name "12_11_0_1_End_2_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <A856CDB6-1BF7-40D9-95A1-E7B9D4DE54AF> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<689F22FD-D04A-42F3-BF32-2F39F7CE5972> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "689F22FD-D04A-42F3-BF32-2F39F7CE5972"^^cim:String ;
+    cim:IdentifiedObject.name "20_34_0_1_End_1_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <D2AE8E94-D2B3-495D-80D9-DCBBACBAB04E> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<6B8D441F-EE8F-4306-8FFA-262BF8C662B0> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "6B8D441F-EE8F-4306-8FFA-262BF8C662B0"^^cim:String ;
+    cim:IdentifiedObject.name "19_20_0_1_End_2_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <89D5C7EE-2EA1-4C2C-B64A-8AAA27B88B21> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<6C33100D-AB74-4AD8-BB3A-4ED68157D801> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "6C33100D-AB74-4AD8-BB3A-4ED68157D801"^^cim:String ;
+    cim:IdentifiedObject.name "10_32_0_1_End_1_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <73150872-37E1-40FC-A30C-E00FFE8865F1> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<78574B8B-5A4E-4BAA-8400-A5218345868E> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "500000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "78574B8B-5A4E-4BAA-8400-A5218345868E"^^cim:String ;
+    cim:IdentifiedObject.name "2_3_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <687D29D3-AE9B-450E-B38A-D1C96C73F8D4> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<7A80362E-0E08-45C5-A5DA-27F7868BF0C3> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "7A80362E-0E08-45C5-A5DA-27F7868BF0C3"^^cim:String ;
+    cim:IdentifiedObject.name "23_36_0_1_End_1_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <784AB589-FF98-4221-B4F3-861FC61A84A3> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<81234502-E1E7-46B6-AF3D-E6132E86AB21> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "500000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "81234502-E1E7-46B6-AF3D-E6132E86AB21"^^cim:String ;
+    cim:IdentifiedObject.name "12_13_0_1_End_2_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <76C54770-9E30-4A92-ABCC-522C91BB8C9E> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<882D2D02-9481-48A6-B866-937BF16A836A> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "882D2D02-9481-48A6-B866-937BF16A836A"^^cim:String ;
+    cim:IdentifiedObject.name "23_24_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <BF74BD59-FDB4-45CE-8F82-ECB1F5480302> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<90F355A1-EF38-45FA-AC8E-CE1ED921E762> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "90F355A1-EF38-45FA-AC8E-CE1ED921E762"^^cim:String ;
+    cim:IdentifiedObject.name "22_35_0_1_End_2_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <9324AD7A-6C25-495D-B7DC-701FAA2C00E2> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<91A3873E-CA69-42A2-A422-E5226AF64DD7> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "1200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "91A3873E-CA69-42A2-A422-E5226AF64DD7"^^cim:String ;
+    cim:IdentifiedObject.name "29_38_0_1_End_2_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <C037F3C8-2154-48FA-9407-6F0CF1B60B20> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<922ED46F-4740-46CC-B549-2E0F2AF93C97> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "922ED46F-4740-46CC-B549-2E0F2AF93C97"^^cim:String ;
+    cim:IdentifiedObject.name "16_21_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <8E6AB7B1-B2B1-4C3D-8D6C-EB5430DA85C8> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<9290262B-5C3F-40D2-BA5E-6A7FDFF912C9> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "500000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "9290262B-5C3F-40D2-BA5E-6A7FDFF912C9"^^cim:String ;
+    cim:IdentifiedObject.name "2_25_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <BA151966-3005-4D7A-87EB-E541B644FDBE> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<99BD1B83-5B51-4BA7-A0DA-782C1CE52D5C> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "99BD1B83-5B51-4BA7-A0DA-782C1CE52D5C"^^cim:String ;
+    cim:IdentifiedObject.name "1_2_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <CA97616A-DE94-4CCA-B20E-A736D26C08E1> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<A99D5098-A925-45AE-8021-5D63E206428A> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "A99D5098-A925-45AE-8021-5D63E206428A"^^cim:String ;
+    cim:IdentifiedObject.name "26_29_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <C0A498E4-A93D-4937-9466-8692DD015101> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<AA43521C-1018-4D4E-9A81-BA2FE6929C5F> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "AA43521C-1018-4D4E-9A81-BA2FE6929C5F"^^cim:String ;
+    cim:IdentifiedObject.name "19_33_0_1_End_1_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <190CDBA4-869A-422A-B532-4CAA3A3C98B4> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<AB0BF5FF-9224-4048-A65B-A9E79A7DF5CB> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "AB0BF5FF-9224-4048-A65B-A9E79A7DF5CB"^^cim:String ;
+    cim:IdentifiedObject.name "20_34_0_1_End_2_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <998C9E4A-8804-454F-9B6F-70F5D794AF73> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<AC44E114-2B1B-4D6A-A54A-E356F857FF2B> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "AC44E114-2B1B-4D6A-A54A-E356F857FF2B"^^cim:String ;
+    cim:IdentifiedObject.name "17_27_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <5C3A18B1-F0DD-4BB8-BBA4-131A539F65A1> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<AD914C98-05D5-456E-942C-67AF6B3BD6E8> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "1800000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "AD914C98-05D5-456E-942C-67AF6B3BD6E8"^^cim:String ;
+    cim:IdentifiedObject.name "6_31_0_1_End_1_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <B95AFE8A-84CE-4C1C-98E6-331C30DC25C8> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<B13EDC39-F22A-4CC2-8212-FED03FAEBB6B> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "B13EDC39-F22A-4CC2-8212-FED03FAEBB6B"^^cim:String ;
+    cim:IdentifiedObject.name "22_23_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <0C995E63-F6BC-43BF-A431-911E713A41C8> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<B67EED9E-54B0-4F31-AF13-07D30D76B37D> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "B67EED9E-54B0-4F31-AF13-07D30D76B37D"^^cim:String ;
+    cim:IdentifiedObject.name "2_30_0_1_End_1_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <D1F3A47D-08F4-40B6-88C8-8A5E54FE6D00> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<C8C8F950-AC40-45C4-9093-203C27A75646> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "480000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "C8C8F950-AC40-45C4-9093-203C27A75646"^^cim:String ;
+    cim:IdentifiedObject.name "6_11_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <DB25B7D3-CB41-4390-BF81-0CF238A77B58> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<CC70FD88-A563-47D8-B8AF-3000BD677916> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "CC70FD88-A563-47D8-B8AF-3000BD677916"^^cim:String ;
+    cim:IdentifiedObject.name "26_27_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <97F5F1E1-0C12-4925-90BC-D3FB1065851F> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<CD139CC1-24B0-4C8F-9DB2-22AEFB736959> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "CD139CC1-24B0-4C8F-9DB2-22AEFB736959"^^cim:String ;
+    cim:IdentifiedObject.name "25_26_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <96F98508-E7CF-4FDD-97B1-E21E3EF9C51C> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<CF4FA761-5B61-4C5B-A530-B410006F0219> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "CF4FA761-5B61-4C5B-A530-B410006F0219"^^cim:String ;
+    cim:IdentifiedObject.name "16_19_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <8DB13699-1B7E-4666-8CBA-3835EA2A7253> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<CF564A6C-8F1C-4FD5-A618-D961E5870D2B> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "500000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "CF564A6C-8F1C-4FD5-A618-D961E5870D2B"^^cim:String ;
+    cim:IdentifiedObject.name "12_13_0_1_End_1_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <374AD9EC-3501-4BAC-882B-B161F9B35283> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<D35C95F5-F8F4-4E8C-B991-F351FC5AA459> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "500000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "D35C95F5-F8F4-4E8C-B991-F351FC5AA459"^^cim:String ;
+    cim:IdentifiedObject.name "3_18_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <3D46A862-BE01-465F-82D1-F30E5BB24667> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<D4AD35BC-38AC-4478-A693-A0EE153D0929> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "D4AD35BC-38AC-4478-A693-A0EE153D0929"^^cim:String ;
+    cim:IdentifiedObject.name "17_18_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <7F76D34F-9D9F-43FE-ABF4-DD7BCCAEDC33> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<DC6F5965-686E-4303-8003-0169E1ACDBCF> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "DC6F5965-686E-4303-8003-0169E1ACDBCF"^^cim:String ;
+    cim:IdentifiedObject.name "22_35_0_1_End_1_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <5151C953-0E62-4873-ADFF-DD5BEF34A334> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<E49E9894-175C-439B-9074-81BED97018CE> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "E49E9894-175C-439B-9074-81BED97018CE"^^cim:String ;
+    cim:IdentifiedObject.name "13_14_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <76A814FD-6D42-4B40-B593-521D0D3D5671> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<E4DF387E-AD7C-411D-8F8A-5B58CD311984> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "E4DF387E-AD7C-411D-8F8A-5B58CD311984"^^cim:String ;
+    cim:IdentifiedObject.name "15_16_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <EF266502-7AFE-4C92-80F3-50352B818BDD> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<E59CFEE5-D55A-43E3-B026-6B68FC7C23C2> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "E59CFEE5-D55A-43E3-B026-6B68FC7C23C2"^^cim:String ;
+    cim:IdentifiedObject.name "21_22_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <DC87B1EF-BACD-4891-89FE-66D41935CE6F> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<E9DECA53-1C91-4D06-BA71-E409126E2F52> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "1800000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "E9DECA53-1C91-4D06-BA71-E409126E2F52"^^cim:String ;
+    cim:IdentifiedObject.name "6_31_0_1_End_2_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <14DF1212-0BF5-4743-817F-D92DB85CB413> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<EA4D4389-AD8D-47F4-BB2D-849E42C79756> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "EA4D4389-AD8D-47F4-BB2D-849E42C79756"^^cim:String ;
+    cim:IdentifiedObject.name "10_13_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <358A1524-6267-4780-8826-18C8CE497A78> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<EEEF06A9-065F-4092-8574-6609FEA311AA> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "EEEF06A9-065F-4092-8574-6609FEA311AA"^^cim:String ;
+    cim:IdentifiedObject.name "25_37_0_1_End_2_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <A0FDCEAC-B58F-4662-ADFC-7C65B42D4D18> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<F60F19CB-3060-4150-834A-5E0392481204> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "F60F19CB-3060-4150-834A-5E0392481204"^^cim:String ;
+    cim:IdentifiedObject.name "4_5_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <E39AF762-8588-4B99-8F5F-2E88CDCE3710> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<F863EF5C-CFB1-4064-BF21-96B36052A01A> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "F863EF5C-CFB1-4064-BF21-96B36052A01A"^^cim:String ;
+    cim:IdentifiedObject.name "10_11_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <8EDC257D-9522-4915-AB48-7E3D294E9FAF> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
+<FAD2CB19-10B3-4D35-8B93-8EBD85E33982> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "900000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "FAD2CB19-10B3-4D35-8B93-8EBD85E33982"^^cim:String ;
+    cim:IdentifiedObject.name "10_32_0_1_End_2_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <B813F77C-43A3-4F50-A0CE-7F19DA32A461> ;
+    cim:OperationalLimit.OperationalLimitType <6CB877FE-23FB-4740-ACAE-3A110BECAEC8> .
+
 <0671123C-0388-43BB-85A3-6625DC6A5A60> a cim:TextDiagramObject ;
     cim:DiagramObject.IdentifiedObject <46E66A22-13BB-40EC-BBC5-E916DB51EC91> ;
     cim:DiagramObject.drawingOrder "1"^^cim:Integer ;
@@ -3448,236 +4157,236 @@
 <0671123C-0388-43BB-85A3-6625DC6A5A60_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <0671123C-0388-43BB-85A3-6625DC6A5A60> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.40721865392970114"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.3289018024947075"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.393814555257073"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.3063931668871084"^^cim:Float .
 
 <0AD1225E-C421-4C81-AD8B-2A23F0D873B2_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <0AD1225E-C421-4C81-AD8B-2A23F0D873B2> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.25145616438150464"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.20229059637877767"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.24611668093890318"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.20095068674182506"^^cim:Float .
 
 <0BE37DFC-130A-42B5-B174-4F0C89D89229_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <0BE37DFC-130A-42B5-B174-4F0C89D89229> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.594362367138863"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.2646778366402439"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.5768666154714529"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.29996198940670504"^^cim:Float .
 
 <11C0C317-B200-4AD1-91C3-9E32416D437A_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <11C0C317-B200-4AD1-91C3-9E32416D437A> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.3944178746221995"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.2731881795584646"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.37307206882858734"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.25354734136463"^^cim:Float .
 
 <1F92C152-0D24-4D30-9A46-E53807E54AA6_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <1F92C152-0D24-4D30-9A46-E53807E54AA6> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.48022558039768926"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.15316229461818553"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.42372504752623813"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.11694517597247761"^^cim:Float .
 
 <2F8F7A49-F501-4AC3-AA71-CFAC2E3CA0DC_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <2F8F7A49-F501-4AC3-AA71-CFAC2E3CA0DC> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.3444951570563101"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "-0.14829909526336224"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.331635149255217"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "-0.1510643573894666"^^cim:Float .
 
 <3157822D-1DF6-4039-B7E2-446E4F3F9671_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <3157822D-1DF6-4039-B7E2-446E4F3F9671> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.39085084945208126"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.2751134081536249"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.3698894157964843"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.25607251136041226"^^cim:Float .
 
 <31DDE22A-0BEE-49A6-83EE-5710677CD23C_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <31DDE22A-0BEE-49A6-83EE-5710677CD23C> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "1.0"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "-0.21689030637014392"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.9481486633852148"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.0456270013618679"^^cim:Float .
 
 <37E7D222-EBE6-4A17-867D-D8718C8554CE_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <37E7D222-EBE6-4A17-867D-D8718C8554CE> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.09245488922982473"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "-0.339038155108492"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.10537728942309489"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "-0.30015897083752663"^^cim:Float .
 
 <3B531E25-9AEF-4021-AE70-48F07EFFCF9B_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <3B531E25-9AEF-4021-AE70-48F07EFFCF9B> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.9294964483529551"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "-0.9953990335922174"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.8912532328710461"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "-0.9811163025648731"^^cim:Float .
 
 <4EBD7D7D-CA74-4BC0-A477-4C8C33E24AB3_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <4EBD7D7D-CA74-4BC0-A477-4C8C33E24AB3> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.8058434965492931"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "-0.8522309026854815"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.7682617724835437"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "-0.8418767378225972"^^cim:Float .
 
 <52BD118E-73BC-4276-9B42-8697FC0C7E80_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <52BD118E-73BC-4276-9B42-8697FC0C7E80> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.2411025489899555"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.24346139374215855"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.23079711162657457"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.2073945891184346"^^cim:Float .
 
 <52F26816-911C-4856-9E08-43CE830B581A_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <52F26816-911C-4856-9E08-43CE830B581A> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.40872127263532415"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.2099487102549085"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.39918628935320855"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.2132242142168209"^^cim:Float .
 
 <54140383-A7EF-40EB-871A-7D2F5CF619E5_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <54140383-A7EF-40EB-871A-7D2F5CF619E5> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.2399280463546334"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.4794250872736217"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.23363881769100234"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.4739073940108588"^^cim:Float .
 
 <590D4378-D12E-49C2-A5EB-67FB35792B2E_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <590D4378-D12E-49C2-A5EB-67FB35792B2E> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.09021717958864732"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "-0.45196093492658124"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.10650796971982085"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "-0.41297608866022045"^^cim:Float .
 
 <5E504AB0-085A-4877-8533-F68C32D81350_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <5E504AB0-085A-4877-8533-F68C32D81350> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.3982719044644726"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.27204875473159357"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.3767370806523751"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.2518791796443165"^^cim:Float .
 
 <5EC2D22D-B986-4F79-95FB-BE6EEC76D847_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <5EC2D22D-B986-4F79-95FB-BE6EEC76D847> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.9191066369132043"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "-0.585803451697762"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "1.0"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "-0.6312260605197191"^^cim:Float .
 
 <61572BDB-3F7B-4559-A0A1-CF839E152BE2_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <61572BDB-3F7B-4559-A0A1-CF839E152BE2> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.06612811535780629"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "-0.12076000151936782"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.08894429263969839"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "-0.0780696670737999"^^cim:Float .
 
 <6471DA53-F3AA-4ECF-8FF7-893BFAF54262_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <6471DA53-F3AA-4ECF-8FF7-893BFAF54262> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.4064943514357156"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.32518551222996167"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.39265013300771734"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.30277076761322547"^^cim:Float .
 
 <7428D80C-650D-4987-9F34-4F155F364432_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <7428D80C-650D-4987-9F34-4F155F364432> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.3781193756741461"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "-0.35740152457491475"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.35242535937041414"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "-0.354115091345737"^^cim:Float .
 
 <75230820-64D8-482B-A385-BC5C706E13D1_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <75230820-64D8-482B-A385-BC5C706E13D1> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.4864029860747626"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.1881282323244867"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.4369533121706632"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.1496770675979422"^^cim:Float .
 
 <7A8BA93B-AC55-4078-9237-5B77E2FE1829_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <7A8BA93B-AC55-4078-9237-5B77E2FE1829> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.24182144248915835"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.47613753630320815"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.23059784570139027"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.47160757760740885"^^cim:Float .
 
 <7F978492-AD43-4FAB-A7F9-565732586DFC_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <7F978492-AD43-4FAB-A7F9-565732586DFC> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.5946067866586255"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.26090095028163535"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.5782628452727235"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.3035019310092216"^^cim:Float .
 
 <8AD18773-17F7-4DC6-A8DC-2C07A8B953A4_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <8AD18773-17F7-4DC6-A8DC-2C07A8B953A4> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.10850767274085191"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "-0.016260938096723607"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.08972457408454725"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.01132559942648505"^^cim:Float .
 
 <90C7A11D-75BD-4074-BC2F-AF108E009CFF_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <90C7A11D-75BD-4074-BC2F-AF108E009CFF> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.23873566469726554"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.4830276308366019"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.23614045730905175"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.476786569637397"^^cim:Float .
 
 <98B83193-A293-4B09-A0B9-46400857063F_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <98B83193-A293-4B09-A0B9-46400857063F> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.3202639891379127"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.05833785918077654"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.2903235000559625"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.061783954505160964"^^cim:Float .
 
 <AD91A89D-90E7-458B-9D32-8892B7F03114_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <AD91A89D-90E7-458B-9D32-8892B7F03114> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.7094234299067511"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.30891027831141554"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.64767895470724"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.20529920282714387"^^cim:Float .
 
 <B4D11EE7-B5D7-4A82-B5B6-952F4509088B_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <B4D11EE7-B5D7-4A82-B5B6-952F4509088B> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.07454540953803993"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.24710361258772467"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.07197492592598966"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.25116501263899416"^^cim:Float .
 
 <B5B9EB3A-E6D9-4D42-83C1-0B90524CCCBB_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <B5B9EB3A-E6D9-4D42-83C1-0B90524CCCBB> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.2379438030850681"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.4867352019619512"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.23829555149764847"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.4799291118227652"^^cim:Float .
 
 <B93CD2DB-E72F-49CD-BE22-2394DAF13591_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <B93CD2DB-E72F-49CD-BE22-2394DAF13591> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.5679618258624015"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "-0.7145705141886266"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.5158088317204683"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "-0.7335063359348895"^^cim:Float .
 
 <BB0C5044-747E-4ED3-A7B0-EF792AD41A97_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <BB0C5044-747E-4ED3-A7B0-EF792AD41A97> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.09186012463355989"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "-0.45537148773280656"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.10810458272117524"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "-0.41642947646186496"^^cim:Float .
 
 <C29AFE99-CBED-4E62-BA91-9FBEE314D19D_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <C29AFE99-CBED-4E62-BA91-9FBEE314D19D> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.7128892119083788"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.3104326334635731"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.6513591156533446"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.2043348198972745"^^cim:Float .
 
 <CE09F7D9-F776-46F4-AD6E-9C91AE4ABFE6_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <CE09F7D9-F776-46F4-AD6E-9C91AE4ABFE6> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.6079449534094716"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.16768489662285088"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.5380009127538596"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.12497078505980168"^^cim:Float .
 
 <D73F2F33-FC7B-4595-A517-FF22D6F5A6B2_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <D73F2F33-FC7B-4595-A517-FF22D6F5A6B2> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.6339127451097302"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.11792340627013045"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.5576922787516639"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.07311427712356207"^^cim:Float .
 
 <DB416C22-7C63-461A-97A6-DD975572F512_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <DB416C22-7C63-461A-97A6-DD975572F512> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.18528472180631395"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.06659346169821659"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.17468499330381257"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.0824541051492517"^^cim:Float .
 
 <E4CB7880-8939-488A-9D47-2FDD0805B72D_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <E4CB7880-8939-488A-9D47-2FDD0805B72D> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.4835035372874206"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.18569221529941543"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.43369574727906685"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.14771462818207706"^^cim:Float .
 
 <EEB1DD05-D89D-4657-9EA9-138279C7C677_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <EEB1DD05-D89D-4657-9EA9-138279C7C677> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "0.09573299086910637"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "-0.33714724545968006"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "0.10875218952076626"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "-0.2984067760437877"^^cim:Float .
 
 <F39B4916-90A3-44BE-BFF7-8DBCBA278548_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <F39B4916-90A3-44BE-BFF7-8DBCBA278548> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.19085111093762744"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "0.19864139294038108"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.19212212372467005"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.2048422924420245"^^cim:Float .
 
 <F44DA7CA-5CF1-490F-BE4F-E65AAD82B04B_pt1> a cim:DiagramObjectPoint ;
     cim:DiagramObjectPoint.DiagramObject <F44DA7CA-5CF1-490F-BE4F-E65AAD82B04B> ;
     cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
-    cim:DiagramObjectPoint.xPosition "-0.9270401548545525"^^cim:Float ;
-    cim:DiagramObjectPoint.yPosition "-0.9925192929424551"^^cim:Float .
+    cim:DiagramObjectPoint.xPosition "-0.8887696782212983"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "-0.9782350879707117"^^cim:Float .
 
 <03A4E4E1-1698-4F68-BF80-8CEAB00BBEFB_pt1> a cim:CurveData ;
     cim:CurveData.Curve <03A4E4E1-1698-4F68-BF80-8CEAB00BBEFB> ;
