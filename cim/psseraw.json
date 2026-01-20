@@ -220,6 +220,11 @@
                       "Type": "Float"
                   },
                   {
+                      "Name": "RATE1",
+                      "Index": 7,
+                      "Type": "Float"
+                  },
+                  {
                       "Name": "Status",
                       "Index": 23,
                       "Type": "Integer"
@@ -507,6 +512,11 @@
                         "Type": "Float"
                     },
                     {
+                        "Name": "RATE1",
+                        "Index": 7,
+                        "Type": "Float"
+                    },
+                    {
                         "Name": "Status",
                         "Index": 23,
                         "Type": "Integer"
@@ -790,6 +800,11 @@
                     {
                         "Name": "B",
                         "Index": 5,
+                        "Type": "Float"
+                    },
+                    {
+                        "Name": "RATE1",
+                        "Index": 6,
                         "Type": "Float"
                     },
                     {

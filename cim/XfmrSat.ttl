@@ -183,6 +183,132 @@
     cim:IdentifiedObject.mRID "A4548015-D844-4B79-8468-97B6B75936AB"^^cim:String ;
     cim:IdentifiedObject.name "3_4_0_1_Sat"^^cim:String .
 
+<864DF75A-01F5-4786-ACA8-8BAD51C85A69> a cim:OperationalLimitType ;
+    cim:IdentifiedObject.mRID "864DF75A-01F5-4786-ACA8-8BAD51C85A69"^^cim:String ;
+    cim:IdentifiedObject.name "ShortTerm"^^cim:String ;
+    cim:OperationalLimitType.acceptableDuration "14400.0"^^cim:Seconds ;
+    cim:OperationalLimitType.direction cim:OperationalLimitDirectionKind.absoluteValue ;
+    cim:OperationalLimitType.isInfiniteDuration "false"^^cim:Boolean .
+
+<9B53D10B-5004-45B0-B977-BF08C85D9DA7> a cim:OperationalLimitType ;
+    cim:IdentifiedObject.mRID "9B53D10B-5004-45B0-B977-BF08C85D9DA7"^^cim:String ;
+    cim:IdentifiedObject.name "Normal"^^cim:String ;
+    cim:OperationalLimitType.direction cim:OperationalLimitDirectionKind.absoluteValue ;
+    cim:OperationalLimitType.isInfiniteDuration "true"^^cim:Boolean .
+
+<0A8F26A9-8D80-4BDE-8066-B38274DD0E16> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "0A8F26A9-8D80-4BDE-8066-B38274DD0E16"^^cim:String ;
+    cim:IdentifiedObject.name "1_2_1"^^cim:String ;
+    cim:OperationalLimitSet.ConductingEquipment <68B79170-F5A8-481F-9792-6838B2D02849> .
+
+<92E48490-212F-4EEE-81A2-27E9A45FC58F> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "92E48490-212F-4EEE-81A2-27E9A45FC58F"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_0_1_End_2"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <B4ED2857-F5D2-471F-9764-FC6799526E55> .
+
+<F889E8D1-860B-43E1-9FC5-9EDD7ACB232E> a cim:OperationalLimitSet ;
+    cim:IdentifiedObject.mRID "F889E8D1-860B-43E1-9FC5-9EDD7ACB232E"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_0_1_End_1"^^cim:String ;
+    cim:OperationalLimitSet.TransformerEnd <7507DEC9-7F4B-4C0C-ABC1-477372339EBF> .
+
+<0674DBE6-3CD3-47FB-B17D-215870733DA6> a cim:ApparentPowerLimit ;
+    cim:IdentifiedObject.mRID "0674DBE6-3CD3-47FB-B17D-215870733DA6"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_0_1_End_1_ONAN_ShortTerm"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <F889E8D1-860B-43E1-9FC5-9EDD7ACB232E> ;
+    cim:OperationalLimit.OperationalLimitType <864DF75A-01F5-4786-ACA8-8BAD51C85A69> ;
+    cim:OperationalLimit.value "600000000.0"^^cim:ApparentPower .
+
+<2B2F6C6A-A6E7-4EC1-AF7F-42F53003636E> a cim:ApparentPowerLimit ;
+    cim:IdentifiedObject.mRID "2B2F6C6A-A6E7-4EC1-AF7F-42F53003636E"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_0_1_End_2_ONAF"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <92E48490-212F-4EEE-81A2-27E9A45FC58F> ;
+    cim:OperationalLimit.OperationalLimitType <9B53D10B-5004-45B0-B977-BF08C85D9DA7> ;
+    cim:OperationalLimit.value "666666666.6666666"^^cim:ApparentPower .
+
+<2B508360-A84D-4632-B168-97A7597517D1> a cim:ApparentPowerLimit ;
+    cim:IdentifiedObject.mRID "2B508360-A84D-4632-B168-97A7597517D1"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_0_1_End_1_ONAF"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <F889E8D1-860B-43E1-9FC5-9EDD7ACB232E> ;
+    cim:OperationalLimit.OperationalLimitType <9B53D10B-5004-45B0-B977-BF08C85D9DA7> ;
+    cim:OperationalLimit.value "666666666.6666666"^^cim:ApparentPower .
+
+<31828FEA-8F15-4407-B179-10E2AA9544FA> a cim:ApparentPowerLimit ;
+    cim:IdentifiedObject.mRID "31828FEA-8F15-4407-B179-10E2AA9544FA"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_0_1_End_1_ONAF_ShortTerm"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <F889E8D1-860B-43E1-9FC5-9EDD7ACB232E> ;
+    cim:OperationalLimit.OperationalLimitType <864DF75A-01F5-4786-ACA8-8BAD51C85A69> ;
+    cim:OperationalLimit.value "799999999.9999999"^^cim:ApparentPower .
+
+<33A71D31-0E3E-475D-AB81-2BC2B03CB191> a cim:ApparentPowerLimit ;
+    cim:IdentifiedObject.mRID "33A71D31-0E3E-475D-AB81-2BC2B03CB191"^^cim:String ;
+    cim:IdentifiedObject.name "1_2_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <0A8F26A9-8D80-4BDE-8066-B38274DD0E16> ;
+    cim:OperationalLimit.OperationalLimitType <9B53D10B-5004-45B0-B977-BF08C85D9DA7> ;
+    cim:OperationalLimit.value "600000000.0"^^cim:ApparentPower .
+
+<35614308-6C00-4B25-981A-08F538EDD5FB> a cim:ApparentPowerLimit ;
+    cim:IdentifiedObject.mRID "35614308-6C00-4B25-981A-08F538EDD5FB"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_0_1_End_2_ONAN_ShortTerm"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <92E48490-212F-4EEE-81A2-27E9A45FC58F> ;
+    cim:OperationalLimit.OperationalLimitType <864DF75A-01F5-4786-ACA8-8BAD51C85A69> ;
+    cim:OperationalLimit.value "600000000.0"^^cim:ApparentPower .
+
+<4180C87E-0559-4884-BCE4-9F17477C6236> a cim:ApparentPowerLimit ;
+    cim:IdentifiedObject.mRID "4180C87E-0559-4884-BCE4-9F17477C6236"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_0_1_End_1_OFAF_ShortTerm"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <F889E8D1-860B-43E1-9FC5-9EDD7ACB232E> ;
+    cim:OperationalLimit.OperationalLimitType <864DF75A-01F5-4786-ACA8-8BAD51C85A69> ;
+    cim:OperationalLimit.value "1000000000.0"^^cim:ApparentPower .
+
+<625A2878-8C4E-4B36-8E42-B4FFC996C70E> a cim:ApparentPowerLimit ;
+    cim:IdentifiedObject.mRID "625A2878-8C4E-4B36-8E42-B4FFC996C70E"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_0_1_End_2_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <92E48490-212F-4EEE-81A2-27E9A45FC58F> ;
+    cim:OperationalLimit.OperationalLimitType <9B53D10B-5004-45B0-B977-BF08C85D9DA7> ;
+    cim:OperationalLimit.value "500000000.0"^^cim:ApparentPower .
+
+<7BDA09A9-6260-471A-9F40-E1DC563010E2> a cim:ApparentPowerLimit ;
+    cim:IdentifiedObject.mRID "7BDA09A9-6260-471A-9F40-E1DC563010E2"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_0_1_End_1_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <F889E8D1-860B-43E1-9FC5-9EDD7ACB232E> ;
+    cim:OperationalLimit.OperationalLimitType <9B53D10B-5004-45B0-B977-BF08C85D9DA7> ;
+    cim:OperationalLimit.value "500000000.0"^^cim:ApparentPower .
+
+<7CFD2971-198C-4768-961D-3B9BE3FE6333> a cim:ApparentPowerLimit ;
+    cim:IdentifiedObject.mRID "7CFD2971-198C-4768-961D-3B9BE3FE6333"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_0_1_End_2_OFAF"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <92E48490-212F-4EEE-81A2-27E9A45FC58F> ;
+    cim:OperationalLimit.OperationalLimitType <9B53D10B-5004-45B0-B977-BF08C85D9DA7> ;
+    cim:OperationalLimit.value "833333333.3333334"^^cim:ApparentPower .
+
+<B1CA609A-0885-4AEB-A4F0-36E2B548ABDA> a cim:ApparentPowerLimit ;
+    cim:IdentifiedObject.mRID "B1CA609A-0885-4AEB-A4F0-36E2B548ABDA"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_0_1_End_1_OFAF"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <F889E8D1-860B-43E1-9FC5-9EDD7ACB232E> ;
+    cim:OperationalLimit.OperationalLimitType <9B53D10B-5004-45B0-B977-BF08C85D9DA7> ;
+    cim:OperationalLimit.value "833333333.3333334"^^cim:ApparentPower .
+
+<D2D6E90D-5259-4A30-B0B2-D2EE72815C3D> a cim:ApparentPowerLimit ;
+    cim:IdentifiedObject.mRID "D2D6E90D-5259-4A30-B0B2-D2EE72815C3D"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_0_1_End_2_OFAF_ShortTerm"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <92E48490-212F-4EEE-81A2-27E9A45FC58F> ;
+    cim:OperationalLimit.OperationalLimitType <864DF75A-01F5-4786-ACA8-8BAD51C85A69> ;
+    cim:OperationalLimit.value "1000000000.0"^^cim:ApparentPower .
+
+<DB835BE6-1B69-4F1D-8971-8C003169FA0E> a cim:ApparentPowerLimit ;
+    cim:IdentifiedObject.mRID "DB835BE6-1B69-4F1D-8971-8C003169FA0E"^^cim:String ;
+    cim:IdentifiedObject.name "1_2_1_ShortTerm"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <0A8F26A9-8D80-4BDE-8066-B38274DD0E16> ;
+    cim:OperationalLimit.OperationalLimitType <864DF75A-01F5-4786-ACA8-8BAD51C85A69> ;
+    cim:OperationalLimit.value "720000000.0"^^cim:ApparentPower .
+
+<DCFF0DF4-8A95-438B-9AC0-5981EA9B2FEB> a cim:ApparentPowerLimit ;
+    cim:IdentifiedObject.mRID "DCFF0DF4-8A95-438B-9AC0-5981EA9B2FEB"^^cim:String ;
+    cim:IdentifiedObject.name "3_4_0_1_End_2_ONAF_ShortTerm"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <92E48490-212F-4EEE-81A2-27E9A45FC58F> ;
+    cim:OperationalLimit.OperationalLimitType <864DF75A-01F5-4786-ACA8-8BAD51C85A69> ;
+    cim:OperationalLimit.value "799999999.9999999"^^cim:ApparentPower .
+
 <A4548015-D844-4B79-8468-97B6B75936AB_pt1> a cim:CurveData ;
     cim:CurveData.Curve <A4548015-D844-4B79-8468-97B6B75936AB> ;
     cim:CurveData.xvalue "32.541530399293435"^^cim:Float ;
