@@ -91,7 +91,7 @@ def load_bus_coordinates (fname):
   for n, data in G.nodes(data=True):
     ndata = data['ndata']
     if ('x' in ndata) and ('y' in ndata):
-      xy[n] = [float(ndata['x']), float(ndata['y'])]
+      xy[ndata['name']] = [float(ndata['x']), float(ndata['y'])]
   return xy
 
 def GetCIMID(cls, nm, uuids, identify=False):
@@ -468,7 +468,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((al, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(alID, datatype=CIM.String)))
     g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitSet'), ols))
     g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitType'), olNormal))
-    g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.value'), rdflib.Literal(rate1mva*1.0e6, datatype=CIM.ApparentPower)))
+    g.add ((al, rdflib.URIRef (CIM_NS + 'ApparentPowerLimit.value'), rdflib.Literal(rate1mva*1.0e6, datatype=CIM.ApparentPower)))
     if 'emergency_ratings' in case:
       if case['emergency_ratings'] == True:
         alkey = '{:s}_ShortTerm'.format(key)
@@ -479,7 +479,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
         g.add ((al, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(alID, datatype=CIM.String)))
         g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitSet'), ols))
         g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitType'), olShortTerm))
-        g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.value'), rdflib.Literal(rate1mva*1.0e6*SHORT_TERM_SCALE, datatype=CIM.ApparentPower)))
+        g.add ((al, rdflib.URIRef (CIM_NS + 'ApparentPowerLimit.value'), rdflib.Literal(rate1mva*1.0e6*SHORT_TERM_SCALE, datatype=CIM.ApparentPower)))
 
 
   # write the switches (TODO: is this non-standard rawfile usage?)
@@ -725,7 +725,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((al, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(alID, datatype=CIM.String)))
       g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitSet'), ols))
       g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitType'), olNormal))
-      g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.value'), rdflib.Literal(mva*1.0e6, datatype=CIM.ApparentPower)))
+      g.add ((al, rdflib.URIRef (CIM_NS + 'ApparentPowerLimit.value'), rdflib.Literal(mva*1.0e6, datatype=CIM.ApparentPower)))
       if 'emergency_ratings' in case:
         if case['emergency_ratings'] == True:
           alkey = '{:s}_ONAN_ShortTerm'.format(endkey)
@@ -736,7 +736,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
           g.add ((al, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(alID, datatype=CIM.String)))
           g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitSet'), ols))
           g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitType'), olShortTerm))
-          g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.value'), rdflib.Literal(mva*1.0e6*SHORT_TERM_SCALE, datatype=CIM.ApparentPower)))
+          g.add ((al, rdflib.URIRef (CIM_NS + 'ApparentPowerLimit.value'), rdflib.Literal(mva*1.0e6*SHORT_TERM_SCALE, datatype=CIM.ApparentPower)))
           alkey = '{:s}_ONAF'.format(endkey)
           alID = GetCIMID('ApparentPowerLimit', alkey, uuids)
           al = rdflib.URIRef (alID)
@@ -745,7 +745,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
           g.add ((al, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(alID, datatype=CIM.String)))
           g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitSet'), ols))
           g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitType'), olNormal))
-          g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.value'), rdflib.Literal(mva*1.0e6*ONAF_SCALE, datatype=CIM.ApparentPower)))
+          g.add ((al, rdflib.URIRef (CIM_NS + 'ApparentPowerLimit.value'), rdflib.Literal(mva*1.0e6*ONAF_SCALE, datatype=CIM.ApparentPower)))
           alkey = '{:s}_ONAF_ShortTerm'.format(endkey)
           alID = GetCIMID('ApparentPowerLimit', alkey, uuids)
           al = rdflib.URIRef (alID)
@@ -754,7 +754,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
           g.add ((al, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(alID, datatype=CIM.String)))
           g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitSet'), ols))
           g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitType'), olShortTerm))
-          g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.value'), rdflib.Literal(mva*1.0e6*ONAF_SCALE*SHORT_TERM_SCALE, datatype=CIM.ApparentPower)))
+          g.add ((al, rdflib.URIRef (CIM_NS + 'ApparentPowerLimit.value'), rdflib.Literal(mva*1.0e6*ONAF_SCALE*SHORT_TERM_SCALE, datatype=CIM.ApparentPower)))
           alkey = '{:s}_OFAF'.format(endkey)
           alID = GetCIMID('ApparentPowerLimit', alkey, uuids)
           al = rdflib.URIRef (alID)
@@ -763,7 +763,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
           g.add ((al, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(alID, datatype=CIM.String)))
           g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitSet'), ols))
           g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitType'), olNormal))
-          g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.value'), rdflib.Literal(mva*1.0e6*OFAF_SCALE, datatype=CIM.ApparentPower)))
+          g.add ((al, rdflib.URIRef (CIM_NS + 'ApparentPowerLimit.value'), rdflib.Literal(mva*1.0e6*OFAF_SCALE, datatype=CIM.ApparentPower)))
           alkey = '{:s}_OFAF_ShortTerm'.format(endkey)
           alID = GetCIMID('ApparentPowerLimit', alkey, uuids)
           al = rdflib.URIRef (alID)
@@ -772,7 +772,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
           g.add ((al, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(alID, datatype=CIM.String)))
           g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitSet'), ols))
           g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitType'), olShortTerm))
-          g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.value'), rdflib.Literal(mva*1.0e6*OFAF_SCALE*SHORT_TERM_SCALE, datatype=CIM.ApparentPower)))
+          g.add ((al, rdflib.URIRef (CIM_NS + 'ApparentPowerLimit.value'), rdflib.Literal(mva*1.0e6*OFAF_SCALE*SHORT_TERM_SCALE, datatype=CIM.ApparentPower)))
 
     # write mesh impedance
     kvbase = wdg['kvs'][0]
@@ -1170,8 +1170,8 @@ def read_version_33_34(rdr,sections,bTwoTitles):
 #  print_table ('FIXED SHUNT')
 #  print_table ('SWITCHED SHUNT')
 #  print_table ('GENERATOR')
-  print_table ('BRANCH')
-  print_table ('TRANSFORMER')
+#  print_table ('BRANCH')
+#  print_table ('TRANSFORMER')
 #  print_table ('SYSTEM SWITCHING DEVICE')
 
 if __name__ == '__main__':

@@ -739,3 +739,58 @@ SELECT ?name ?ka ?t0 ?id ?eqid ?sysid WHERE {
  ?s c:WeccWTGARA.t0 ?t0.
 } ORDER BY ?name
 
+# EMTXfmrLimit
+SELECT DISTINCT ?id ?name ?endid ?tname ?value ?dur ?inf ?dir WHERE {
+# VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ VALUES ?sysid {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?p c:Equipment.EquipmentContainer ?sys.
+ ?end c:PowerTransformerEnd.PowerTransformer ?p.
+ ?end c:IdentifiedObject.mRID ?endid.
+ ?ols c:OperationalLimitSet.TransformerEnd ?end.
+ ?s c:OperationalLimit.OperationalLimitSet ?ols.
+ ?s c:OperationalLimit.OperationalLimitType ?olt.
+ ?s r:type c:ApparentPowerLimit.
+ ?s c:IdentifiedObject.mRID ?id.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:ApparentPowerLimit.value ?valstr.
+  bind(xsd:string(?valstr) as ?xsdstr)
+  bind(xsd:float(?xsdstr) as ?value)
+ ?olt c:IdentifiedObject.name ?tname.
+ ?olt c:OperationalLimitType.isInfiniteDuration ?inf.
+ ?olt c:OperationalLimitType.direction ?rawdir.
+  bind(strafter(str(?rawdir), "OperationalLimitDirectionKind.") as ?dir)
+ OPTIONAL {?olt c:OperationalLimitType.acceptableDuration ?dur.}
+}
+ORDER BY ?endid ?inf ?tname ?inf ?value
+
+# EMTBranchLimit
+SELECT DISTINCT ?id ?name ?eqid ?eqtype ?tname ?value ?dur ?inf ?dir WHERE {
+# VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ VALUES ?sysid {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?eq r:type ?typeraw.
+  bind(strafter(str(?typeraw),"#") as ?eqtype)
+ ?ols c:OperationalLimitSet.ConductingEquipment ?eq.
+ ?s c:OperationalLimit.OperationalLimitSet ?ols.
+ ?s c:OperationalLimit.OperationalLimitType ?olt.
+ ?s r:type c:ApparentPowerLimit.
+ ?s c:IdentifiedObject.mRID ?id.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:ApparentPowerLimit.value ?valstr.
+  bind(xsd:string(?valstr) as ?xsdstr)
+  bind(xsd:float(?xsdstr) as ?value)
+ ?olt c:IdentifiedObject.name ?tname.
+ ?olt c:OperationalLimitType.isInfiniteDuration ?inf.
+ ?olt c:OperationalLimitType.direction ?rawdir.
+  bind(strafter(str(?rawdir), "OperationalLimitDirectionKind.") as ?dir)
+ OPTIONAL {?olt c:OperationalLimitType.acceptableDuration ?dur.}
+}
+ORDER BY ?eqid ?inf ?tname ?inf ?value
+

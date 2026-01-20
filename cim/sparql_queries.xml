@@ -854,4 +854,65 @@ ORDER BY ?id
 ]]>
 </value>
 </query>
+<query>
+<id>EMTXfmrLimit</id>
+<keyfld>id</keyfld>
+<description>operational limits for transformer windings</description>
+<value>
+<![CDATA[
+SELECT DISTINCT ?id ?name ?endid ?tname ?value ?dur ?inf ?dir WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?p c:Equipment.EquipmentContainer ?sys.
+ ?end c:PowerTransformerEnd.PowerTransformer ?p.
+ ?end c:IdentifiedObject.mRID ?endid.
+ ?ols c:OperationalLimitSet.TransformerEnd ?end.
+ ?s c:OperationalLimit.OperationalLimitSet ?ols.
+ ?s c:OperationalLimit.OperationalLimitType ?olt.
+ ?s r:type c:ApparentPowerLimit.
+ ?s c:IdentifiedObject.mRID ?id.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:ApparentPowerLimit.value ?valstr.
+  bind(xsd:string(?valstr) as ?xsdstr)
+  bind(xsd:float(?xsdstr) as ?value)
+ ?olt c:IdentifiedObject.name ?tname.
+ ?olt c:OperationalLimitType.isInfiniteDuration ?inf.
+ ?olt c:OperationalLimitType.direction ?rawdir.
+  bind(strafter(str(?rawdir), "OperationalLimitDirectionKind.") as ?dir)
+ OPTIONAL {?olt c:OperationalLimitType.acceptableDuration ?dur.}
+}
+ORDER BY ?endid ?inf ?tname ?inf ?value
+]]>
+</value>
+</query>
+<query>
+<id>EMTBranchLimit</id>
+<keyfld>id</keyfld>
+<description>operational limits for conducting equipment</description>
+<value>
+<![CDATA[
+SELECT DISTINCT ?id ?name ?eqid ?eqtype ?tname ?value ?dur ?inf ?dir WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?eq r:type ?typeraw.
+  bind(strafter(str(?typeraw),"#") as ?eqtype)
+ ?ols c:OperationalLimitSet.ConductingEquipment ?eq.
+ ?s c:OperationalLimit.OperationalLimitSet ?ols.
+ ?s c:OperationalLimit.OperationalLimitType ?olt.
+ ?s r:type c:ApparentPowerLimit.
+ ?s c:IdentifiedObject.mRID ?id.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:ApparentPowerLimit.value ?valstr.
+  bind(xsd:string(?valstr) as ?xsdstr)
+  bind(xsd:float(?xsdstr) as ?value)
+ ?olt c:IdentifiedObject.name ?tname.
+ ?olt c:OperationalLimitType.isInfiniteDuration ?inf.
+ ?olt c:OperationalLimitType.direction ?rawdir.
+  bind(strafter(str(?rawdir), "OperationalLimitDirectionKind.") as ?dir)
+ OPTIONAL {?olt c:OperationalLimitType.acceptableDuration ?dur.}
+}
+ORDER BY ?eqid ?inf ?tname ?inf ?value
+]]>
+</value>
+</query>
 </queries>
