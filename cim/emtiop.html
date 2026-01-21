@@ -327,11 +327,110 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="ApparentPowerLimit" class="group">
+         <a href="#ApparentPowerLimit">
+            <h2 class="concrete">ApparentPowerLimit</h2>
+         </a>
+         <p class="package">OperationalLimits</p>
+         <p class="comment">Apparent power limit.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="ApparentPowerLimit.value">value</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ApparentPower">ApparentPower</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The apparent power limit. The attribute shall be a positive value or zero.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">OperationalLimitSet</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#OperationalLimitSet">OperationalLimitSet</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#OperationalLimit.OperationalLimitSet">OperationalLimit</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">OperationalLimitType</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#OperationalLimitType">OperationalLimitType</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#OperationalLimit.OperationalLimitType">OperationalLimit</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -390,11 +489,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -576,11 +675,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -639,11 +738,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -784,6 +883,13 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
             </tr>
          </table>
+      </div>
+      <div id="DisconnectingCircuitBreaker" class="group">
+         <a href="#DisconnectingCircuitBreaker">
+            <h2 class="concrete">DisconnectingCircuitBreaker</h2>
+         </a>
+         <p class="package">Wires</p>
+         <p class="comment">A circuit breaking device including disconnecting function, eliminating the need for separate disconnectors.</p>
       </div>
       <div id="EnergyConsumer" class="group">
          <a href="#EnergyConsumer">
@@ -962,11 +1068,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -1212,11 +1318,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -1258,11 +1364,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -1632,11 +1738,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -1910,11 +2016,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -2027,16 +2133,460 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
                   <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
                   </p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="IBRPlant" class="group">
+         <a href="#IBRPlant">
+            <h2 class="concrete">IBRPlant</h2>
+         </a>
+         <p class="package">Emtiop</p>
+         <p class="comment">An inverter-based resource (IBR) plant comprising a collection of components, with additional attributes not represented by other CIM network components. For example, AC and DC filter characteristics, pulse width modulation (PWM) switching characteristics, etc.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="IBRPlant.acFilterCapacitance">acFilterCapacitance</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Capacitance">Capacitance</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Shunt capacitance of the AC tee filter, wye equivalent value.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IBRPlant.acFilterLbridge">acFilterLbridge</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Inductance">Inductance</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Inverter bridge-side inductance of the AC tee filter.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IBRPlant.acFilterLgrid">acFilterLgrid</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Inductance">Inductance</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Grid-side inductance of the AC tee filter.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IBRPlant.acFilterRbridge">acFilterRbridge</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Resistance">Resistance</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Inverter bridge-side resistance of the AC tee filter.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IBRPlant.acFilterRgrid">acFilterRgrid</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Resistance">Resistance</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Grid-side resistance of the AC tee filter.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IBRPlant.dcLinkCapacitance">dcLinkCapacitance</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Capacitance">Capacitance</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Capacitance (plus to minus) of the DC bus, if applicable.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IBRPlant.dcLinkVoltage">dcLinkVoltage</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Voltage">Voltage</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Voltage of the DC bus, if applicable.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IBRPlant.switchingFrequency">switchingFrequency</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Frequency">Frequency</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">PWM switching frequency.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">Equipments</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..unbounded</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Equipment">Equipment</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#GeneratingPlant.Equipments">GeneratingPlant</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table/>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="IEEECigreDLL" class="group">
+         <a href="#IEEECigreDLL">
+            <h2 class="concrete">IEEECigreDLL</h2>
+         </a>
+         <p class="package">Emtiop</p>
+         <p class="comment">A dynamic link library (DLL) interface for inverter-based resource (IBR) control, as defined in Cigre Technical Brochure TB 958 and IEEE Standards Association P3597.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLL.firmwareInstalled">firmwareInstalled</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#DateTime">DateTime</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Date and time of the firmware installation at the IBR plant. The DLL is expected to represent this version of the firmware.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLL.firmwareVersion">firmwareVersion</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Version of the hardware provider's firmware, or the model provider's code.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLL.supportsEMT">supportsEMT</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">True if the DLL supports EMT simulation.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLL.supportsRMS">supportsRMS</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">True if the DLL supports RMS, i.e., phasor domain, simulation.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLL.timestep">timestep</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Hard-coded simulation time step for this DLL.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLL.uri">uri</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Location of the DLL, e.g., a universal resource identifier or network-accessible filename.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLL.vendorName">vendorName</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Name of the model (code) provider.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLL.PowerElectronicsConnection">PowerElectronicsConnection</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PowerElectronicsConnection">PowerElectronicsConnection</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The PowerElectronicsConnection controlled by this DLL.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="IEEECigreDLLParameter" class="group">
+         <a href="#IEEECigreDLLParameter">
+            <h2 class="concrete">IEEECigreDLLParameter</h2>
+         </a>
+         <p class="package">Emtiop</p>
+         <p class="comment">A single value in the array of DLL input values. The meaning of this parameter is discoverable through the DLL's application program interface (API) and/or documentation provided with the DLL. This CIM class maintains only the essential parameter setting and location/size in the array of DLL inputs.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLParameter.parameterKind">parameterKind</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreDLLParameterKind">IEEECigreDLLParameterKind</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The C type of this parameter as expected by the DLL application program interface (API). This also determines the memory size of this parameter in the array of DLL inputs.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLParameter.sequenceNumber">sequenceNumber</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The zero-based array index for this parameter, as expected in the DLL's application program interface (API).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLParameter.value">value</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The parameter value, to be parsed from string format according to the parameterKind.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLParameter.IEEECigreDLL">IEEECigreDLL</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreDLL">IEEECigreDLL</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The DLL associated with this parameter.</p>
                </td>
             </tr>
          </table>
@@ -2268,11 +2818,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -2522,11 +3072,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -2639,16 +3189,116 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
                   <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
                   </p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="OperationalLimitSet" class="group">
+         <a href="#OperationalLimitSet">
+            <h2 class="concrete">OperationalLimitSet</h2>
+         </a>
+         <p class="package">OperationalLimits</p>
+         <p class="comment">A set of limits associated with equipment. Sets of limits might apply to a specific temperature, or season for example. A set of limits may contain different severities of limit levels that would apply to the same equipment. The set may contain limits of different types such as apparent power and current limits or high and low voltage limits that are logically applied together as a set.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="OperationalLimitSet.ConductingEquipment">ConductingEquipment</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ConductingEquipment">ConductingEquipment</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The ConductingEquipment associated with this limit set. Mutually exclusive with the TransformerEnd association.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="OperationalLimitSet.TransformerEnd">TransformerEnd</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#TransformerEnd">TransformerEnd</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The TransformerEnd associated with this limit set. Mutually exclusive with the ConductingEquipment assocation.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="OperationalLimitType" class="group">
+         <a href="#OperationalLimitType">
+            <h2 class="concrete">OperationalLimitType</h2>
+         </a>
+         <p class="package">OperationalLimits</p>
+         <p class="comment">The operational meaning of a category of limits.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="OperationalLimitType.acceptableDuration">acceptableDuration</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The nominal acceptable duration of the limit. Limits are commonly expressed in terms of the time limit for which the limit is normally acceptable. The actual acceptable duration of a specific limit may depend on other local factors such as temperature or wind speed. The attribute has meaning only if the flag isInfiniteDuration is set to false, hence it shall not be exchanged when isInfiniteDuration is set to true.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="OperationalLimitType.direction">direction</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#OperationalLimitDirectionKind">OperationalLimitDirectionKind</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The direction of the limit.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="OperationalLimitType.isInfiniteDuration">isInfiniteDuration</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Defines if the operational limit type has infinite duration. If true, the limit has infinite duration. If false, the limit has definite duration which is defined by the attribute acceptableDuration.</p>
                </td>
             </tr>
          </table>
@@ -2774,11 +3424,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -3029,11 +3679,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -3164,11 +3814,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -3323,11 +3973,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -3563,11 +4213,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -3844,11 +4494,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -4030,11 +4680,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -4231,11 +4881,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -4569,11 +5219,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -5063,11 +5713,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -5179,11 +5829,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -5296,11 +5946,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -5423,11 +6073,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -5568,11 +6218,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -5723,11 +6373,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -6610,11 +7260,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -6920,11 +7570,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -7470,11 +8120,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -7588,11 +8238,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -7738,11 +8388,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -7753,6 +8403,13 @@ p.package { position: absolute; right: 10px; top: 0px}
          </table>
       </div>
       <h1>Abstract Classes</h1>
+      <div id="ACDCTerminal" class="group">
+         <a href="#ACDCTerminal">
+            <h2 class="abstract">ACDCTerminal</h2>
+         </a>
+         <p class="package">Core</p>
+         <p class="comment">An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes.</p>
+      </div>
       <div id="AsynchronousMachine" class="group">
          <a href="#AsynchronousMachine">
             <h2 class="abstract">AsynchronousMachine</h2>
@@ -7962,11 +8619,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -8094,11 +8751,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -8247,11 +8904,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -8292,11 +8949,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -8419,11 +9076,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -8514,11 +9171,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -8579,11 +9236,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -8713,11 +9370,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -8793,11 +9450,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -8875,11 +9532,76 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="GeneratingPlant" class="group">
+         <a href="#GeneratingPlant">
+            <h2 class="abstract">GeneratingPlant</h2>
+         </a>
+         <p class="package">Emtiop</p>
+         <p class="comment">A collection of components that comprise a generating plant, e.g., SynchronousMachine with associated controls and GeneratingUnit, a PowerTransformer, and a DisconnectingCircuitBreaker for thermal and hydro plants. For inverter-based resource (IBR) plants, a PowerElectronicsConnection with associated controls and GeneratingUnit, one or more PowerTransformers, one or more DisconnectingCircuitBreakers, and one or more ACLineSegments.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="GeneratingPlant.Equipments">Equipments</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..<item>*</item>
+                  </p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Equipment">Equipment</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The Equipments associated with this GeneratingPlant.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table/>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -8991,11 +9713,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -9035,26 +9757,99 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name" id="IdentifiedObject.name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..<item>*</item>
-                  </p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
-                  <p class="comment">All names of this identified object. Names may be but are not guaranteed to be unique.</p>
+                  <p class="comment">The name is any free human readable and possibly non unique text naming the object.</p>
                </td>
             </tr>
          </table>
       </div>
-      <div id="Name" class="group">
-         <a href="#Name">
-            <h2 class="abstract">Name</h2>
+      <div id="OperationalLimit" class="group">
+         <a href="#OperationalLimit">
+            <h2 class="abstract">OperationalLimit</h2>
          </a>
-         <p class="package">Core</p>
-         <p class="comment">The Name class, in possible combination with a name type and a naming authority provides the means to define any number of names or alternative identifiers for an object.</p>
+         <p class="package">OperationalLimits</p>
+         <p class="comment">A value and normal value associated with a specific kind of limit.</p>
+         <p class="comment">The sub class value and normalValue attributes vary inversely to the associated OperationalLimitType.acceptableDuration (acceptableDuration for short).</p>
+         <p class="comment">If a particular piece of equipment has multiple operational limits of the same kind (apparent power, current, etc.), the limit with the greatest acceptableDuration shall have the smallest limit value and the limit with the smallest acceptableDuration shall have the largest limit value.  Note: A large current can only be allowed to flow through a piece of equipment for a short duration without causing damage, but a lesser current can be allowed to flow for a longer duration.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="OperationalLimit.OperationalLimitSet">OperationalLimitSet</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#OperationalLimitSet">OperationalLimitSet</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The limit set to which the limit values belong.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="OperationalLimit.OperationalLimitType">OperationalLimitType</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#OperationalLimitType">OperationalLimitType</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The limit type associated with this limit.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
       </div>
       <div id="PSRType" class="group">
          <a href="#PSRType">
@@ -9086,11 +9881,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -9218,11 +10013,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -9262,11 +10057,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -9345,11 +10140,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -9480,11 +10275,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -9703,11 +10498,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -9833,11 +10628,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -10038,11 +10833,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -10051,6 +10846,149 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
             </tr>
          </table>
+      </div>
+      <div id="StateVariable" class="group">
+         <a href="#StateVariable">
+            <h2 class="abstract">StateVariable</h2>
+         </a>
+         <p class="package">StateVariables</p>
+         <p class="comment">An abstract class for state variables.</p>
+      </div>
+      <div id="SvPowerFlow" class="group">
+         <a href="#SvPowerFlow">
+            <h2 class="abstract">SvPowerFlow</h2>
+         </a>
+         <p class="package">StateVariables</p>
+         <p class="comment">State variable for power flow. Load convention is used for flow direction. This means flow out from the TopologicalNode into the equipment is positive.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="SvPowerFlow.p">p</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ActivePower">ActivePower</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The active power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="SvPowerFlow.q">q</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ReactivePower">ReactivePower</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The reactive power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="SvPowerFlow.ConductingEquipment">ConductingEquipment</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ConductingEquipment">ConductingEquipment</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The ConductingEquipment associated with this State PowerFlow. Positive flow direction is into the ConductingEquipment's FromConnectivityNode.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="SvPowerFlow.TransformerEnd">TransformerEnd</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#TransformerEnd">TransformerEnd</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The TransformerEnd associated with this State PowerFlow. Positive flow into the TransformerEnd's ConnectivityNode.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table/>
+      </div>
+      <div id="SvVoltage" class="group">
+         <a href="#SvVoltage">
+            <h2 class="abstract">SvVoltage</h2>
+         </a>
+         <p class="package">StateVariables</p>
+         <p class="comment">State variable for voltage.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="SvVoltage.angle">angle</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#AngleDegrees">AngleDegrees</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The voltage angle of the topological node complex voltage with respect to system reference.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="SvVoltage.v">v</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Voltage">Voltage</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The voltage magnitude at the topological node. The attribute shall be a positive value.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="SvVoltage.ConnectivityNode">ConnectivityNode</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ConnectivityNode">ConnectivityNode</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The ConnectivityNode associated with this State Voltage.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table/>
       </div>
       <div id="SynchronousMachineDetailed" class="group">
          <a href="#SynchronousMachineDetailed">
@@ -10296,11 +11234,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -10458,11 +11396,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -10609,11 +11547,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -10622,6 +11560,23 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
             </tr>
          </table>
+      </div>
+      <div id="Terminal" class="group">
+         <a href="#Terminal">
+            <h2 class="abstract">Terminal</h2>
+         </a>
+         <p class="package">Core</p>
+         <p class="comment">An AC electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes.</p>
+         <h3>Inherited Members</h3>
+         <table/>
+      </div>
+      <div id="TopologicalNode" class="group">
+         <a href="#TopologicalNode">
+            <h2 class="abstract">TopologicalNode</h2>
+         </a>
+         <p class="package">Topology</p>
+         <p class="comment">For a detailed substation model a topological node is a set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes change as the current network state changes (i.e., switches, breakers, etc. change state).</p>
+         <p class="comment">For a planning model, switch statuses are not used to form topological nodes. Instead they are manually created or deleted in a model builder tool. Topological nodes maintained this way are also called "busses".</p>
       </div>
       <div id="TransformerEnd" class="group">
          <a href="#TransformerEnd">
@@ -10752,11 +11707,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -10834,11 +11789,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -10916,11 +11871,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -10998,11 +11953,11 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">name</p>
                </th>
                <td>
-                  <p class="cardinality">1..unbounded</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#Name">Name</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
@@ -11084,6 +12039,74 @@ p.package { position: absolute; right: 10px; top: 0px}
                <td>
                   <p class="comment">The Y-axis values are assumed to be a straight line between values. Also known as linear interpolation.</p>
                </td>
+            </tr>
+         </table>
+      </div>
+      <div id="IEEECigreDLLParameterKind" class="group">
+         <a href="#IEEECigreDLLParameterKind">
+            <h2 class="enumerated">IEEECigreDLLParameterKind</h2>
+         </a>
+         <p class="package">Emtiop</p>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">Char_Ptr</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Char_Val</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Int16_Val</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Int32_Val</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Int8_Val</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Real32_Val</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Real64_Val</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Uint16_Val</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Uint32_Val</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Uint8_Val</p>
+               </th>
+               <td/>
             </tr>
          </table>
       </div>
@@ -11217,6 +12240,150 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="LimitKind" class="group">
+         <a href="#LimitKind">
+            <h2 class="enumerated">LimitKind</h2>
+         </a>
+         <p class="package">OperationalLimits</p>
+         <p class="comment">Limit kinds.</p>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">alarmVoltage</p>
+               </th>
+               <td>
+                  <p class="comment">Voltage alarm.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">highVoltage</p>
+               </th>
+               <td>
+                  <p class="comment">Referring to the rating of the equipments, a voltage too high can lead to accelerated ageing or the destruction of the equipment.</p>
+                  <p class="comment">This limit type may or may not have duration.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">lowVoltage</p>
+               </th>
+               <td>
+                  <p class="comment">A too low voltage can disturb the normal operation of some protections and transformer equipped with on-load tap changers, electronic power devices or can affect the behaviour of the auxiliaries of generation units.</p>
+                  <p class="comment">This limit type may or may not have duration.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">operationalVoltageLimit</p>
+               </th>
+               <td>
+                  <p class="comment">Operational voltage limit.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">patl</p>
+               </th>
+               <td>
+                  <p class="comment">The Permanent Admissible Transmission Loading (PATL) is the loading in amperes, MVA or MW that can be accepted by a network branch for an unlimited duration without any risk for the material.</p>
+                  <p class="comment">The OperationnalLimitType.isInfiniteDuration is set to true. There shall be only one OperationalLimitType of kind PATL per OperationalLimitSet if the PATL is ApparentPowerLimit, ActivePowerLimit, or CurrentLimit for a given Terminal or Equipment.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">patlt</p>
+               </th>
+               <td>
+                  <p class="comment">Permanent Admissible Transmission Loading Threshold  (PATLT) is a value in engineering units defined for PATL and calculated using a percentage less than 100 % of the PATL type intended to alert operators of an arising condition. The percentage should be given in the name of the OperationalLimitSet. The aceptableDuration is another way to express the severity of the limit.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">stability</p>
+               </th>
+               <td>
+                  <p class="comment">Stability.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">tatl</p>
+               </th>
+               <td>
+                  <p class="comment">Temporarily Admissible Transmission Loading (TATL) which is the loading in amperes, MVA or MW that can be accepted by a branch for a certain limited duration.</p>
+                  <p class="comment">The TATL can be defined in different ways:</p>
+                  <p class="comment">&lt;ul&gt;</p>
+                  <p class="comment">	&lt;li&gt;as a fixed percentage of the PATL for a given time (for example, 115% of the PATL that can be accepted during 15 minutes),&lt;/li&gt;</p>
+                  <p class="comment">&lt;/ul&gt;</p>
+                  <p class="comment">&lt;ul&gt;</p>
+                  <p class="comment">	&lt;li&gt;pairs of TATL type and Duration calculated for each line taking into account its particular configuration and conditions of functioning (for example, it can define a TATL acceptable during 20 minutes and another one acceptable during 10 minutes).&lt;/li&gt;</p>
+                  <p class="comment">&lt;/ul&gt;</p>
+                  <p class="comment">Such a definition of TATL can depend on the initial operating conditions of the network element (sag situation of a line).</p>
+                  <p class="comment">The duration attribute can be used to define several TATL limit types. Hence multiple TATL limit values may exist having different durations.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">tc</p>
+               </th>
+               <td>
+                  <p class="comment">Tripping Current (TC) is the ultimate intensity without any delay. It is defined as the threshold the line will trip without any possible remedial actions.</p>
+                  <p class="comment">The tripping of the network element is ordered by protections against short circuits or by overload protections, but in any case, the activation delay of these protections is not compatible with the reaction delay of an operator (less than one minute).</p>
+                  <p class="comment">The duration is always zero if the OperationalLimitType.acceptableDuration is exchanged. Only one limit value exists for the TC type.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">tct</p>
+               </th>
+               <td>
+                  <p class="comment">Tripping Current Threshold  (TCT) is a value in engineering units defined for TC and calculated using a percentage less than 100 % of the TC type intended to alert operators of an arising condition. The percentage should be given in the name of the OperationalLimitSet. The aceptableDuration is another way to express the severity of the limit.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">warningVoltage</p>
+               </th>
+               <td>
+                  <p class="comment">Voltage warning.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="OperationalLimitDirectionKind" class="group">
+         <a href="#OperationalLimitDirectionKind">
+            <h2 class="enumerated">OperationalLimitDirectionKind</h2>
+         </a>
+         <p class="package">OperationalLimits</p>
+         <p class="comment">The direction attribute describes the side of  a limit that is a violation.</p>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">absoluteValue</p>
+               </th>
+               <td>
+                  <p class="comment">An absoluteValue limit means that a monitored absolute value above the limit value is a violation.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">high</p>
+               </th>
+               <td>
+                  <p class="comment">High means that a monitored value above the limit value is a violation.   If applied to a terminal flow, the positive direction is into the terminal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">low</p>
+               </th>
+               <td>
+                  <p class="comment">Low means a monitored value below the limit is a violation.  If applied to a terminal flow, the positive direction is into the terminal.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
       <div id="RotorKind" class="group">
          <a href="#RotorKind">
             <h2 class="enumerated">RotorKind</h2>
@@ -11238,6 +12405,64 @@ p.package { position: absolute; right: 10px; top: 0px}
                </th>
                <td>
                   <p class="comment">Salient pole type of synchronous machine.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="SinglePhaseKind" class="group">
+         <a href="#SinglePhaseKind">
+            <h2 class="enumerated">SinglePhaseKind</h2>
+         </a>
+         <p class="package">Wires</p>
+         <p class="comment">Enumeration of phase identifiers used to designate the specific phase of conducting equipment modelled as individual unbalanced phases.</p>
+         <p class="comment">Allows designation of specific phases for transmission and distribution equipment, circuits and loads.</p>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">A</p>
+               </th>
+               <td>
+                  <p class="comment">Phase A.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">B</p>
+               </th>
+               <td>
+                  <p class="comment">Phase B.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">C</p>
+               </th>
+               <td>
+                  <p class="comment">Phase C.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">N</p>
+               </th>
+               <td>
+                  <p class="comment">Neutral.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">s1</p>
+               </th>
+               <td>
+                  <p class="comment">Secondary phase 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">s2</p>
+               </th>
+               <td>
+                  <p class="comment">Secondary phase 2.</p>
                </td>
             </tr>
          </table>
@@ -12832,12 +14057,39 @@ p.package { position: absolute; right: 10px; top: 0px}
          <p class="declaration">XSD type: <span class="xsdtype">float</span>
          </p>
       </div>
+      <div id="Capacitance" class="group">
+         <a href="#Capacitance">
+            <h2 class="domain">Capacitance</h2>
+         </a>
+         <p class="package">Domain</p>
+         <p class="comment">Capacitive part of reactance (imaginary part of impedance), at rated frequency.</p>
+         <p class="declaration">XSD type: <span class="xsdtype">float</span>
+         </p>
+      </div>
       <div id="Conductance" class="group">
          <a href="#Conductance">
             <h2 class="domain">Conductance</h2>
          </a>
          <p class="package">Domain</p>
          <p class="comment">Factor by which voltage must be multiplied to give corresponding power lost from a circuit. Real part of admittance.</p>
+         <p class="declaration">XSD type: <span class="xsdtype">float</span>
+         </p>
+      </div>
+      <div id="Frequency" class="group">
+         <a href="#Frequency">
+            <h2 class="domain">Frequency</h2>
+         </a>
+         <p class="package">Domain</p>
+         <p class="comment">Cycles per second.</p>
+         <p class="declaration">XSD type: <span class="xsdtype">float</span>
+         </p>
+      </div>
+      <div id="Inductance" class="group">
+         <a href="#Inductance">
+            <h2 class="domain">Inductance</h2>
+         </a>
+         <p class="package">Domain</p>
+         <p class="comment">Inductive part of reactance (imaginary part of impedance), at rated frequency.</p>
          <p class="declaration">XSD type: <span class="xsdtype">float</span>
          </p>
       </div>
@@ -12939,6 +14191,15 @@ p.package { position: absolute; right: 10px; top: 0px}
          <p class="package">Domain</p>
          <p class="comment">A type with the value space "true" and "false".</p>
          <p class="declaration">XSD type: <span class="xsdtype">boolean</span>
+         </p>
+      </div>
+      <div id="DateTime" class="group">
+         <a href="#DateTime">
+            <h2 class="domain">DateTime</h2>
+         </a>
+         <p class="package">Domain</p>
+         <p class="comment">Date and time as "yyyy-mm-ddThh:mm:ss.sss", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddThh:mm:ss.sssZ". A local timezone relative UTC is specified as "yyyy-mm-ddThh:mm:ss.sss-hh:mm". The second component (shown here as "ss.sss") could have any number of digits in its fractional part to allow any kind of precision beyond seconds.</p>
+         <p class="declaration">XSD type: <span class="xsdtype">dateTime</span>
          </p>
       </div>
       <div id="Float" class="group">

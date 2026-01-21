@@ -28,6 +28,14 @@
 -- ==========================================================================================
 --
 
+-- An electrical connection point (AC or DC) to a piece of conducting equipment.
+-- Terminals are connected at physical connection points called connectivity
+-- nodes.
+CREATE TABLE "ACDCTerminal"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
 -- A line segment is a conductor or combination of conductors, with consistent
 -- electrical characteristics along its length, building a single electrical
 -- system that carries alternating current between two points in the power
@@ -87,6 +95,14 @@ CREATE TABLE "ACLineSegment"
     "x" DOUBLE PRECISION NOT NULL,
     -- Zero sequence series reactance of the entire line segment.
     "x0" DOUBLE PRECISION NOT NULL
+);
+
+-- Apparent power limit.
+CREATE TABLE "ApparentPowerLimit"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The apparent power limit. The attribute shall be a positive value or zero.
+    "value" DOUBLE PRECISION
 );
 
 -- A rotating machine whose shaft rotates asynchronously with the electrical
@@ -268,6 +284,13 @@ CREATE TABLE "DiagramObjectPoint"
     "DiagramObject" VARCHAR(100) NOT NULL
 );
 
+-- A circuit breaking device including disconnecting function, eliminating
+-- the need for separate disconnectors.
+CREATE TABLE "DisconnectingCircuitBreaker"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
 -- Abstract parent class for all Dynamics function blocks.
 CREATE TABLE "DynamicsFunctionBlock"
 (
@@ -424,6 +447,17 @@ CREATE TABLE "ExcitationSystemDynamics"
     "SynchronousMachineDynamics" VARCHAR(100)
 );
 
+-- A collection of components that comprise a generating plant, e.g., SynchronousMachine
+-- with associated controls and GeneratingUnit, a PowerTransformer, and a
+-- DisconnectingCircuitBreaker for thermal and hydro plants. For inverter-based
+-- resource (IBR) plants, a PowerElectronicsConnection with associated controls
+-- and GeneratingUnit, one or more PowerTransformers, one or more DisconnectingCircuitBreakers,
+-- and one or more ACLineSegments.
+CREATE TABLE "GeneratingPlant"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
 -- A single or set of synchronous machines for converting mechanical power
 -- into alternating-current power. For example, individual machines within
 -- a set may be defined for scheduling purposes while a single control signal
@@ -480,11 +514,100 @@ CREATE TABLE "HydroGeneratingUnit"
     "mRID" VARCHAR(100) PRIMARY KEY
 );
 
+-- An inverter-based resource (IBR) plant comprising a collection of components,
+-- with additional attributes not represented by other CIM network components.
+-- For example, AC and DC filter characteristics, pulse width modulation (PWM)
+-- switching characteristics, etc.
+CREATE TABLE "IBRPlant"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Shunt capacitance of the AC tee filter, wye equivalent value.
+    "acFilterCapacitance" DOUBLE PRECISION,
+    -- Inverter bridge-side inductance of the AC tee filter.
+    "acFilterLbridge" DOUBLE PRECISION,
+    -- Grid-side inductance of the AC tee filter.
+    "acFilterLgrid" DOUBLE PRECISION,
+    -- Inverter bridge-side resistance of the AC tee filter.
+    "acFilterRbridge" DOUBLE PRECISION,
+    -- Grid-side resistance of the AC tee filter.
+    "acFilterRgrid" DOUBLE PRECISION,
+    -- Capacitance (plus to minus) of the DC bus, if applicable.
+    "dcLinkCapacitance" DOUBLE PRECISION,
+    -- Voltage of the DC bus, if applicable.
+    "dcLinkVoltage" DOUBLE PRECISION,
+    -- PWM switching frequency.
+    "switchingFrequency" DOUBLE PRECISION
+);
+
+-- A dynamic link library (DLL) interface for inverter-based resource (IBR)
+-- control, as defined in Cigre Technical Brochure TB 958 and IEEE Standards
+-- Association P3597.
+CREATE TABLE "IEEECigreDLL"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Date and time of the firmware installation at the IBR plant. The DLL is
+    -- expected to represent this version of the firmware.
+    "firmwareInstalled" TIMESTAMP,
+    -- Version of the hardware provider's firmware, or the model provider's code.
+    "firmwareVersion" VARCHAR(255),
+    -- True if the DLL supports EMT simulation.
+    "supportsEMT" INTEGER NOT NULL DEFAULT 1 CHECK ("supportsEMT" IN (0, 1)),
+    -- True if the DLL supports RMS, i.e., phasor domain, simulation.
+    "supportsRMS" INTEGER NOT NULL DEFAULT 1 CHECK ("supportsRMS" IN (0, 1)),
+    -- Hard-coded simulation time step for this DLL.
+    "timestep" DOUBLE PRECISION,
+    -- Location of the DLL, e.g., a universal resource identifier or network-accessible
+    -- filename.
+    "uri" VARCHAR(255),
+    -- Name of the model (code) provider.
+    "vendorName" VARCHAR(255),
+    -- The PowerElectronicsConnection controlled by this DLL.
+    -- FK column reference to table representing the "PowerElectronicsConnection" class
+    "PowerElectronicsConnection" VARCHAR(100)
+);
+
+-- A single value in the array of DLL input values. The meaning of this parameter
+-- is discoverable through the DLL's application program interface (API) and/or
+-- documentation provided with the DLL. This CIM class maintains only the
+-- essential parameter setting and location/size in the array of DLL inputs.
+CREATE TABLE "IEEECigreDLLParameter"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The C type of this parameter as expected by the DLL application program
+    -- interface (API). This also determines the memory size of this parameter
+    -- in the array of DLL inputs.
+    -- FK column reference to table representing the "IEEECigreDLLParameterKind" enumeration
+    "parameterKind" VARCHAR(100),
+    -- The zero-based array index for this parameter, as expected in the DLL's
+    -- application program interface (API).
+    "sequenceNumber" INTEGER,
+    -- The parameter value, to be parsed from string format according to the parameterKind.
+    "value" VARCHAR(255),
+    -- The DLL associated with this parameter.
+    -- FK column reference to table representing the "IEEECigreDLL" class
+    "IEEECigreDLL" VARCHAR(100)
+);
+
+CREATE TABLE "IEEECigreDLLParameterKind" ( "name" VARCHAR(100) UNIQUE );
+INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Char_Ptr' );
+INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Char_Val' );
+INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Int16_Val' );
+INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Int32_Val' );
+INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Int8_Val' );
+INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Real32_Val' );
+INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Real64_Val' );
+INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Uint16_Val' );
+INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Uint32_Val' );
+INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Uint8_Val' );
+
 -- This is a class that provides common identification for all classes needing
 -- identification and naming attributes.
 CREATE TABLE "IdentifiedObject"
 (
-    "mRID" VARCHAR(100) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255) NOT NULL
 );
 
 -- Excitation base system mode.
@@ -525,6 +648,75 @@ INSERT INTO "InputSignalKind" ( "name" ) VALUES ( 'generatorMechanicalPower' );
 INSERT INTO "InputSignalKind" ( "name" ) VALUES ( 'rotorAngularFrequencyDeviation' );
 -- Input signal is rotor or shaft speed (angular frequency).
 INSERT INTO "InputSignalKind" ( "name" ) VALUES ( 'rotorSpeed' );
+
+-- Limit kinds.
+CREATE TABLE "LimitKind" ( "name" VARCHAR(100) UNIQUE );
+-- Voltage alarm.
+INSERT INTO "LimitKind" ( "name" ) VALUES ( 'alarmVoltage' );
+-- Referring to the rating of the equipments, a voltage too high can lead
+-- to accelerated ageing or the destruction of the equipment.
+-- This limit type may or may not have duration.
+INSERT INTO "LimitKind" ( "name" ) VALUES ( 'highVoltage' );
+-- A too low voltage can disturb the normal operation of some protections
+-- and transformer equipped with on-load tap changers, electronic power devices
+-- or can affect the behaviour of the auxiliaries of generation units.
+-- This limit type may or may not have duration.
+INSERT INTO "LimitKind" ( "name" ) VALUES ( 'lowVoltage' );
+-- Operational voltage limit.
+INSERT INTO "LimitKind" ( "name" ) VALUES ( 'operationalVoltageLimit' );
+-- The Permanent Admissible Transmission Loading (PATL) is the loading in
+-- amperes, MVA or MW that can be accepted by a network branch for an unlimited
+-- duration without any risk for the material.
+-- The OperationnalLimitType.isInfiniteDuration is set to true. There shall
+-- be only one OperationalLimitType of kind PATL per OperationalLimitSet if
+-- the PATL is ApparentPowerLimit, ActivePowerLimit, or CurrentLimit for a
+-- given Terminal or Equipment.
+INSERT INTO "LimitKind" ( "name" ) VALUES ( 'patl' );
+-- Permanent Admissible Transmission Loading Threshold (PATLT) is a value
+-- in engineering units defined for PATL and calculated using a percentage
+-- less than 100 % of the PATL type intended to alert operators of an arising
+-- condition. The percentage should be given in the name of the OperationalLimitSet.
+-- The aceptableDuration is another way to express the severity of the limit.
+INSERT INTO "LimitKind" ( "name" ) VALUES ( 'patlt' );
+-- Stability.
+INSERT INTO "LimitKind" ( "name" ) VALUES ( 'stability' );
+-- Temporarily Admissible Transmission Loading (TATL) which is the loading
+-- in amperes, MVA or MW that can be accepted by a branch for a certain limited
+-- duration.
+-- The TATL can be defined in different ways:
+-- <ul>
+-- <li>as a fixed percentage of the PATL for a given time (for example, 115%
+-- of the PATL that can be accepted during 15 minutes),</li>
+-- </ul>
+-- <ul>
+-- <li>pairs of TATL type and Duration calculated for each line taking into
+-- account its particular configuration and conditions of functioning (for
+-- example, it can define a TATL acceptable during 20 minutes and another
+-- one acceptable during 10 minutes).</li>
+-- </ul>
+-- Such a definition of TATL can depend on the initial operating conditions
+-- of the network element (sag situation of a line).
+-- The duration attribute can be used to define several TATL limit types.
+-- Hence multiple TATL limit values may exist having different durations.
+INSERT INTO "LimitKind" ( "name" ) VALUES ( 'tatl' );
+-- Tripping Current (TC) is the ultimate intensity without any delay. It is
+-- defined as the threshold the line will trip without any possible remedial
+-- actions.
+-- The tripping of the network element is ordered by protections against short
+-- circuits or by overload protections, but in any case, the activation delay
+-- of these protections is not compatible with the reaction delay of an operator
+-- (less than one minute).
+-- The duration is always zero if the OperationalLimitType.acceptableDuration
+-- is exchanged. Only one limit value exists for the TC type.
+INSERT INTO "LimitKind" ( "name" ) VALUES ( 'tc' );
+-- Tripping Current Threshold (TCT) is a value in engineering units defined
+-- for TC and calculated using a percentage less than 100 % of the TC type
+-- intended to alert operators of an arising condition. The percentage should
+-- be given in the name of the OperationalLimitSet. The aceptableDuration
+-- is another way to express the severity of the limit.
+INSERT INTO "LimitKind" ( "name" ) VALUES ( 'tct' );
+-- Voltage warning.
+INSERT INTO "LimitKind" ( "name" ) VALUES ( 'warningVoltage' );
 
 -- A linear shunt compensator has banks or sections with equal admittance
 -- values.
@@ -616,18 +808,82 @@ CREATE TABLE "LoadResponseCharacteristic"
     "qVoltageExponent" DOUBLE PRECISION NOT NULL
 );
 
--- The Name class, in possible combination with a name type and a naming authority
--- provides the means to define any number of names or alternative identifiers
--- for an object.
-CREATE TABLE "Name"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY
-);
-
 -- A nuclear generating unit.
 CREATE TABLE "NuclearGeneratingUnit"
 (
     "mRID" VARCHAR(100) PRIMARY KEY
+);
+
+-- A value and normal value associated with a specific kind of limit.
+-- The sub class value and normalValue attributes vary inversely to the associated
+-- OperationalLimitType.acceptableDuration (acceptableDuration for short).
+-- If a particular piece of equipment has multiple operational limits of the
+-- same kind (apparent power, current, etc.), the limit with the greatest
+-- acceptableDuration shall have the smallest limit value and the limit with
+-- the smallest acceptableDuration shall have the largest limit value. Note:
+-- A large current can only be allowed to flow through a piece of equipment
+-- for a short duration without causing damage, but a lesser current can be
+-- allowed to flow for a longer duration.
+CREATE TABLE "OperationalLimit"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The limit set to which the limit values belong.
+    -- FK column reference to table representing the "OperationalLimitSet" class
+    "OperationalLimitSet" VARCHAR(100),
+    -- The limit type associated with this limit.
+    -- FK column reference to table representing the "OperationalLimitType" class
+    "OperationalLimitType" VARCHAR(100)
+);
+
+-- The direction attribute describes the side of a limit that is a violation.
+CREATE TABLE "OperationalLimitDirectionKind" ( "name" VARCHAR(100) UNIQUE );
+-- An absoluteValue limit means that a monitored absolute value above the
+-- limit value is a violation.
+INSERT INTO "OperationalLimitDirectionKind" ( "name" ) VALUES ( 'absoluteValue' );
+-- High means that a monitored value above the limit value is a violation.
+-- If applied to a terminal flow, the positive direction is into the terminal.
+INSERT INTO "OperationalLimitDirectionKind" ( "name" ) VALUES ( 'high' );
+-- Low means a monitored value below the limit is a violation. If applied
+-- to a terminal flow, the positive direction is into the terminal.
+INSERT INTO "OperationalLimitDirectionKind" ( "name" ) VALUES ( 'low' );
+
+-- A set of limits associated with equipment. Sets of limits might apply to
+-- a specific temperature, or season for example. A set of limits may contain
+-- different severities of limit levels that would apply to the same equipment.
+-- The set may contain limits of different types such as apparent power and
+-- current limits or high and low voltage limits that are logically applied
+-- together as a set.
+CREATE TABLE "OperationalLimitSet"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The ConductingEquipment associated with this limit set. Mutually exclusive
+    -- with the TransformerEnd association.
+    -- FK column reference to table representing the "ConductingEquipment" class
+    "ConductingEquipment" VARCHAR(100),
+    -- The TransformerEnd associated with this limit set. Mutually exclusive with
+    -- the ConductingEquipment assocation.
+    -- FK column reference to table representing the "TransformerEnd" class
+    "TransformerEnd" VARCHAR(100)
+);
+
+-- The operational meaning of a category of limits.
+CREATE TABLE "OperationalLimitType"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The nominal acceptable duration of the limit. Limits are commonly expressed
+    -- in terms of the time limit for which the limit is normally acceptable.
+    -- The actual acceptable duration of a specific limit may depend on other
+    -- local factors such as temperature or wind speed. The attribute has meaning
+    -- only if the flag isInfiniteDuration is set to false, hence it shall not
+    -- be exchanged when isInfiniteDuration is set to true.
+    "acceptableDuration" DOUBLE PRECISION,
+    -- The direction of the limit.
+    -- FK column reference to table representing the "OperationalLimitDirectionKind" enumeration
+    "direction" VARCHAR(100),
+    -- Defines if the operational limit type has infinite duration. If true, the
+    -- limit has infinite duration. If false, the limit has definite duration
+    -- which is defined by the attribute acceptableDuration.
+    "isInfiniteDuration" INTEGER NOT NULL DEFAULT 1 CHECK ("isInfiniteDuration" IN (0, 1))
 );
 
 -- Classifying instances of the same class, e.g. overhead and underground
@@ -988,6 +1244,66 @@ CREATE TABLE "ShuntCompensator"
     "sections" DOUBLE PRECISION NOT NULL
 );
 
+-- Enumeration of phase identifiers used to designate the specific phase of
+-- conducting equipment modelled as individual unbalanced phases.
+-- Allows designation of specific phases for transmission and distribution
+-- equipment, circuits and loads.
+CREATE TABLE "SinglePhaseKind" ( "name" VARCHAR(100) UNIQUE );
+-- Phase A.
+INSERT INTO "SinglePhaseKind" ( "name" ) VALUES ( 'A' );
+-- Phase B.
+INSERT INTO "SinglePhaseKind" ( "name" ) VALUES ( 'B' );
+-- Phase C.
+INSERT INTO "SinglePhaseKind" ( "name" ) VALUES ( 'C' );
+-- Neutral.
+INSERT INTO "SinglePhaseKind" ( "name" ) VALUES ( 'N' );
+-- Secondary phase 1.
+INSERT INTO "SinglePhaseKind" ( "name" ) VALUES ( 's1' );
+-- Secondary phase 2.
+INSERT INTO "SinglePhaseKind" ( "name" ) VALUES ( 's2' );
+
+-- An abstract class for state variables.
+CREATE TABLE "StateVariable"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
+-- State variable for power flow. Load convention is used for flow direction.
+-- This means flow out from the TopologicalNode into the equipment is positive.
+CREATE TABLE "SvPowerFlow"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The active power flow. Load sign convention is used, i.e. positive sign
+    -- means flow out from a TopologicalNode (bus) into the conducting equipment.
+    "p" DOUBLE PRECISION,
+    -- The reactive power flow. Load sign convention is used, i.e. positive sign
+    -- means flow out from a TopologicalNode (bus) into the conducting equipment.
+    "q" DOUBLE PRECISION,
+    -- The ConductingEquipment associated with this State PowerFlow. Positive
+    -- flow direction is into the ConductingEquipment's FromConnectivityNode.
+    -- FK column reference to table representing the "ConductingEquipment" class
+    "ConductingEquipment" VARCHAR(100),
+    -- The TransformerEnd associated with this State PowerFlow. Positive flow
+    -- into the TransformerEnd's ConnectivityNode.
+    -- FK column reference to table representing the "TransformerEnd" class
+    "TransformerEnd" VARCHAR(100)
+);
+
+-- State variable for voltage.
+CREATE TABLE "SvVoltage"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The voltage angle of the topological node complex voltage with respect
+    -- to system reference.
+    "angle" DOUBLE PRECISION,
+    -- The voltage magnitude at the topological node. The attribute shall be a
+    -- positive value.
+    "v" DOUBLE PRECISION,
+    -- The ConnectivityNode associated with this State Voltage.
+    -- FK column reference to table representing the "ConnectivityNode" class
+    "ConnectivityNode" VARCHAR(100)
+);
+
 -- An electromechanical device that operates with shaft rotating synchronously
 -- with the network. It is a single machine operating either as a generator
 -- or synchronous condenser or pump.
@@ -1248,6 +1564,13 @@ CREATE TABLE "TapChanger"
     "step" DOUBLE PRECISION NOT NULL
 );
 
+-- An AC electrical connection point to a piece of conducting equipment. Terminals
+-- are connected at physical connection points called connectivity nodes.
+CREATE TABLE "Terminal"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
 -- A diagram object for placing free-text or text derived from an associated
 -- domain object.
 CREATE TABLE "TextDiagramObject"
@@ -1260,6 +1583,19 @@ CREATE TABLE "TextDiagramObject"
 -- A generating unit whose prime mover could be a steam turbine, combustion
 -- turbine, or diesel engine.
 CREATE TABLE "ThermalGeneratingUnit"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
+-- For a detailed substation model a topological node is a set of connectivity
+-- nodes that, in the current network state, are connected together through
+-- any type of closed switches, including jumpers. Topological nodes change
+-- as the current network state changes (i.e., switches, breakers, etc. change
+-- state).
+-- For a planning model, switch statuses are not used to form topological
+-- nodes. Instead they are manually created or deleted in a model builder
+-- tool. Topological nodes maintained this way are also called "busses".
+CREATE TABLE "TopologicalNode"
 (
     "mRID" VARCHAR(100) PRIMARY KEY
 );
@@ -2131,6 +2467,9 @@ INSERT INTO "WindingConnection" ( "name" ) VALUES ( 'Zn' );
 -- Inheritance subclass-superclass constraint for table "ACLineSegment"
 ALTER TABLE "ACLineSegment" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Conductor" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "ApparentPowerLimit"
+ALTER TABLE "ApparentPowerLimit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "OperationalLimit" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "AsynchronousMachine"
 ALTER TABLE "AsynchronousMachine" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RotatingMachine" ( "mRID" );
 
@@ -2182,6 +2521,9 @@ ALTER TABLE "ExcST1A" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ExcitationSystemDyn
 -- Inheritance subclass-superclass constraint for table "ExcitationSystemDynamics"
 ALTER TABLE "ExcitationSystemDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "GeneratingPlant"
+ALTER TABLE "GeneratingPlant" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemResource" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "GeneratingUnit"
 ALTER TABLE "GeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
 
@@ -2191,6 +2533,12 @@ ALTER TABLE "GovSteamSGO" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TurbineGovernor
 -- Inheritance subclass-superclass constraint for table "HydroGeneratingUnit"
 ALTER TABLE "HydroGeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "GeneratingUnit" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "IBRPlant"
+ALTER TABLE "IBRPlant" ADD FOREIGN KEY ( "mRID" ) REFERENCES "GeneratingPlant" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "IEEECigreDLL"
+ALTER TABLE "IEEECigreDLL" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "LinearShuntCompensator"
 ALTER TABLE "LinearShuntCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ShuntCompensator" ( "mRID" );
 
@@ -2199,6 +2547,9 @@ ALTER TABLE "LoadResponseCharacteristic" ADD FOREIGN KEY ( "mRID" ) REFERENCES "
 
 -- Inheritance subclass-superclass constraint for table "NuclearGeneratingUnit"
 ALTER TABLE "NuclearGeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "GeneratingUnit" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "OperationalLimit"
+ALTER TABLE "OperationalLimit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "PSRType"
 ALTER TABLE "PSRType" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
@@ -2248,6 +2599,12 @@ ALTER TABLE "SeriesCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Conductin
 -- Inheritance subclass-superclass constraint for table "ShuntCompensator"
 ALTER TABLE "ShuntCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RegulatingCondEq" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "SvPowerFlow"
+ALTER TABLE "SvPowerFlow" ADD FOREIGN KEY ( "mRID" ) REFERENCES "StateVariable" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "SvVoltage"
+ALTER TABLE "SvVoltage" ADD FOREIGN KEY ( "mRID" ) REFERENCES "StateVariable" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "SynchronousMachine"
 ALTER TABLE "SynchronousMachine" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RotatingMachine" ( "mRID" );
 
@@ -2262,6 +2619,9 @@ ALTER TABLE "SynchronousMachineTimeConstantReactance" ADD FOREIGN KEY ( "mRID" )
 
 -- Inheritance subclass-superclass constraint for table "TapChanger"
 ALTER TABLE "TapChanger" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemResource" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "Terminal"
+ALTER TABLE "Terminal" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ACDCTerminal" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "TextDiagramObject"
 ALTER TABLE "TextDiagramObject" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DiagramObject" ( "mRID" );
@@ -2309,6 +2669,9 @@ ALTER TABLE "WeccWTGTA" ADD FOREIGN KEY ( "mRID" ) REFERENCES "WeccDynamics" ( "
 -- Standard foreign key constraint definitions
 ------------------------------------------------------------------------------
 
+-- Foreign keys for table "BatteryUnit"
+ALTER TABLE "BatteryUnit" ADD FOREIGN KEY ( "batteryState" ) REFERENCES "BatteryStateKind" ( "name" );
+
 -- Foreign keys for table "ConductingEquipment"
 ALTER TABLE "ConductingEquipment" ADD FOREIGN KEY ( "BaseVoltage" ) REFERENCES "BaseVoltage" ( "mRID" );
 ALTER TABLE "ConductingEquipment" ADD FOREIGN KEY ( "FromConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
@@ -2316,6 +2679,13 @@ ALTER TABLE "ConductingEquipment" ADD FOREIGN KEY ( "ToConnectivityNode" ) REFER
 
 -- Foreign keys for table "ConnectivityNode"
 ALTER TABLE "ConnectivityNode" ADD FOREIGN KEY ( "ConnectivityNodeContainer" ) REFERENCES "ConnectivityNodeContainer" ( "mRID" );
+
+-- Foreign keys for table "Curve"
+ALTER TABLE "Curve" ADD FOREIGN KEY ( "curveStyle" ) REFERENCES "CurveStyle" ( "name" );
+ALTER TABLE "Curve" ADD FOREIGN KEY ( "xMultiplier" ) REFERENCES "UnitMultiplier" ( "name" );
+ALTER TABLE "Curve" ADD FOREIGN KEY ( "xUnit" ) REFERENCES "UnitSymbol" ( "name" );
+ALTER TABLE "Curve" ADD FOREIGN KEY ( "y1Multiplier" ) REFERENCES "UnitMultiplier" ( "name" );
+ALTER TABLE "Curve" ADD FOREIGN KEY ( "y1Unit" ) REFERENCES "UnitSymbol" ( "name" );
 
 -- Foreign keys for table "CurveData"
 ALTER TABLE "CurveData" ADD FOREIGN KEY ( "Curve" ) REFERENCES "Curve" ( "mRID" );
@@ -2335,6 +2705,24 @@ ALTER TABLE "Equipment" ADD FOREIGN KEY ( "EquipmentContainer" ) REFERENCES "Equ
 -- Foreign keys for table "ExcitationSystemDynamics"
 ALTER TABLE "ExcitationSystemDynamics" ADD FOREIGN KEY ( "SynchronousMachineDynamics" ) REFERENCES "SynchronousMachineDynamics" ( "mRID" );
 
+-- Foreign keys for table "IEEECigreDLL"
+ALTER TABLE "IEEECigreDLL" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFERENCES "PowerElectronicsConnection" ( "mRID" );
+
+-- Foreign keys for table "IEEECigreDLLParameter"
+ALTER TABLE "IEEECigreDLLParameter" ADD FOREIGN KEY ( "parameterKind" ) REFERENCES "IEEECigreDLLParameterKind" ( "name" );
+ALTER TABLE "IEEECigreDLLParameter" ADD FOREIGN KEY ( "IEEECigreDLL" ) REFERENCES "IEEECigreDLL" ( "mRID" );
+
+-- Foreign keys for table "OperationalLimit"
+ALTER TABLE "OperationalLimit" ADD FOREIGN KEY ( "OperationalLimitSet" ) REFERENCES "OperationalLimitSet" ( "mRID" );
+ALTER TABLE "OperationalLimit" ADD FOREIGN KEY ( "OperationalLimitType" ) REFERENCES "OperationalLimitType" ( "mRID" );
+
+-- Foreign keys for table "OperationalLimitSet"
+ALTER TABLE "OperationalLimitSet" ADD FOREIGN KEY ( "ConductingEquipment" ) REFERENCES "ConductingEquipment" ( "mRID" );
+ALTER TABLE "OperationalLimitSet" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
+
+-- Foreign keys for table "OperationalLimitType"
+ALTER TABLE "OperationalLimitType" ADD FOREIGN KEY ( "direction" ) REFERENCES "OperationalLimitDirectionKind" ( "name" );
+
 -- Foreign keys for table "PowerElectronicsUnit"
 ALTER TABLE "PowerElectronicsUnit" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFERENCES "PowerElectronicsConnection" ( "mRID" );
 
@@ -2345,14 +2733,35 @@ ALTER TABLE "PowerSystemStabilizerDynamics" ADD FOREIGN KEY ( "ExcitationSystemD
 ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "connectionKind" ) REFERENCES "WindingConnection" ( "name" );
 ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "PowerTransformer" ) REFERENCES "PowerTransformer" ( "mRID" );
 
+-- Foreign keys for table "PssIEEE1A"
+ALTER TABLE "PssIEEE1A" ADD FOREIGN KEY ( "inputSignalType" ) REFERENCES "InputSignalKind" ( "name" );
+
 -- Foreign keys for table "RatioTapChanger"
 ALTER TABLE "RatioTapChanger" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
 
 -- Foreign keys for table "RotatingMachine"
 ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "GeneratingUnit" ) REFERENCES "GeneratingUnit" ( "mRID" );
 
+-- Foreign keys for table "SvPowerFlow"
+ALTER TABLE "SvPowerFlow" ADD FOREIGN KEY ( "ConductingEquipment" ) REFERENCES "ConductingEquipment" ( "mRID" );
+ALTER TABLE "SvPowerFlow" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
+
+-- Foreign keys for table "SvVoltage"
+ALTER TABLE "SvVoltage" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
+
+-- Foreign keys for table "SynchronousMachine"
+ALTER TABLE "SynchronousMachine" ADD FOREIGN KEY ( "operatingMode" ) REFERENCES "SynchronousMachineOperatingMode" ( "name" );
+ALTER TABLE "SynchronousMachine" ADD FOREIGN KEY ( "type" ) REFERENCES "SynchronousMachineKind" ( "name" );
+
+-- Foreign keys for table "SynchronousMachineDetailed"
+ALTER TABLE "SynchronousMachineDetailed" ADD FOREIGN KEY ( "ifdBaseType" ) REFERENCES "IfdBaseKind" ( "name" );
+
 -- Foreign keys for table "SynchronousMachineDynamics"
 ALTER TABLE "SynchronousMachineDynamics" ADD FOREIGN KEY ( "SynchronousMachine" ) REFERENCES "SynchronousMachine" ( "mRID" );
+
+-- Foreign keys for table "SynchronousMachineTimeConstantReactance"
+ALTER TABLE "SynchronousMachineTimeConstantReactance" ADD FOREIGN KEY ( "modelType" ) REFERENCES "SynchronousMachineModelKind" ( "name" );
+ALTER TABLE "SynchronousMachineTimeConstantReactance" ADD FOREIGN KEY ( "rotorType" ) REFERENCES "RotorKind" ( "name" );
 
 -- Foreign keys for table "TransformerCoreAdmittance"
 ALTER TABLE "TransformerCoreAdmittance" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
@@ -2382,9 +2791,13 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 -- Compound data. Such child data will be deleted concurrently to
 -- that of its parent data.
 
+-- Cascade deletes for compounds referenced in table "BatteryUnit"
+
 -- Cascade deletes for compounds referenced in table "ConductingEquipment"
 
 -- Cascade deletes for compounds referenced in table "ConnectivityNode"
+
+-- Cascade deletes for compounds referenced in table "Curve"
 
 -- Cascade deletes for compounds referenced in table "CurveData"
 
@@ -2398,17 +2811,39 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 
 -- Cascade deletes for compounds referenced in table "ExcitationSystemDynamics"
 
+-- Cascade deletes for compounds referenced in table "IEEECigreDLL"
+
+-- Cascade deletes for compounds referenced in table "IEEECigreDLLParameter"
+
+-- Cascade deletes for compounds referenced in table "OperationalLimit"
+
+-- Cascade deletes for compounds referenced in table "OperationalLimitSet"
+
+-- Cascade deletes for compounds referenced in table "OperationalLimitType"
+
 -- Cascade deletes for compounds referenced in table "PowerElectronicsUnit"
 
 -- Cascade deletes for compounds referenced in table "PowerSystemStabilizerDynamics"
 
 -- Cascade deletes for compounds referenced in table "PowerTransformerEnd"
 
+-- Cascade deletes for compounds referenced in table "PssIEEE1A"
+
 -- Cascade deletes for compounds referenced in table "RatioTapChanger"
 
 -- Cascade deletes for compounds referenced in table "RotatingMachine"
 
+-- Cascade deletes for compounds referenced in table "SvPowerFlow"
+
+-- Cascade deletes for compounds referenced in table "SvVoltage"
+
+-- Cascade deletes for compounds referenced in table "SynchronousMachine"
+
+-- Cascade deletes for compounds referenced in table "SynchronousMachineDetailed"
+
 -- Cascade deletes for compounds referenced in table "SynchronousMachineDynamics"
+
+-- Cascade deletes for compounds referenced in table "SynchronousMachineTimeConstantReactance"
 
 -- Cascade deletes for compounds referenced in table "TransformerCoreAdmittance"
 
@@ -2436,11 +2871,20 @@ CREATE INDEX ix_DiagramObjectPoint_DiagramObject ON "DiagramObjectPoint" ( "Diag
 CREATE INDEX ix_EnergyConsumer_LoadResponse ON "EnergyConsumer" ( "LoadResponse" );
 CREATE INDEX ix_Equipment_EquipmentContainer ON "Equipment" ( "EquipmentContainer" );
 CREATE INDEX ix_ExcitationSystemDynamics_SynchronousMachineDynamics ON "ExcitationSystemDynamics" ( "SynchronousMachineDynamics" );
+CREATE INDEX ix_IEEECigreDLL_PowerElectronicsConnection ON "IEEECigreDLL" ( "PowerElectronicsConnection" );
+CREATE INDEX ix_IEEECigreDLLParameter_IEEECigreDLL ON "IEEECigreDLLParameter" ( "IEEECigreDLL" );
+CREATE INDEX ix_OperationalLimit_OperationalLimitSet ON "OperationalLimit" ( "OperationalLimitSet" );
+CREATE INDEX ix_OperationalLimit_OperationalLimitType ON "OperationalLimit" ( "OperationalLimitType" );
+CREATE INDEX ix_OperationalLimitSet_ConductingEquipment ON "OperationalLimitSet" ( "ConductingEquipment" );
+CREATE INDEX ix_OperationalLimitSet_TransformerEnd ON "OperationalLimitSet" ( "TransformerEnd" );
 CREATE INDEX ix_PowerElectronicsUnit_PowerElectronicsConnection ON "PowerElectronicsUnit" ( "PowerElectronicsConnection" );
 CREATE INDEX ix_PowerSystemStabilizerDynamics_ExcitationSystemDynamics ON "PowerSystemStabilizerDynamics" ( "ExcitationSystemDynamics" );
 CREATE INDEX ix_PowerTransformerEnd_PowerTransformer ON "PowerTransformerEnd" ( "PowerTransformer" );
 CREATE INDEX ix_RatioTapChanger_TransformerEnd ON "RatioTapChanger" ( "TransformerEnd" );
 CREATE INDEX ix_RotatingMachine_GeneratingUnit ON "RotatingMachine" ( "GeneratingUnit" );
+CREATE INDEX ix_SvPowerFlow_ConductingEquipment ON "SvPowerFlow" ( "ConductingEquipment" );
+CREATE INDEX ix_SvPowerFlow_TransformerEnd ON "SvPowerFlow" ( "TransformerEnd" );
+CREATE INDEX ix_SvVoltage_ConnectivityNode ON "SvVoltage" ( "ConnectivityNode" );
 CREATE INDEX ix_SynchronousMachineDynamics_SynchronousMachine ON "SynchronousMachineDynamics" ( "SynchronousMachine" );
 CREATE INDEX ix_TransformerCoreAdmittance_TransformerEnd ON "TransformerCoreAdmittance" ( "TransformerEnd" );
 CREATE INDEX ix_TransformerEnd_BaseVoltage ON "TransformerEnd" ( "BaseVoltage" );
