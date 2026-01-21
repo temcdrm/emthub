@@ -81,7 +81,8 @@ CASES = [
      {'branch_number':443, 'new_mva':1000.0},
      {'branch_number':449, 'new_mva':1500.0}],
    'gen_PG': None,
-   'edits': None}
+   'edits': None},
+  {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 'name': 'XfmrSat', 'swingbus':'1', 'load_scale': 1.0, 'gen_PG':None, 'edits':None}
   ]
 
 

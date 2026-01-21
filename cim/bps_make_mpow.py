@@ -13,7 +13,8 @@ DELIM = ':'
 CASES = [
   {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56', 'name': 'IEEE39', 'swingbus':'31'},
   {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 'name': 'IEEE118', 'swingbus':'131'},
-  {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 'name': 'WECC240', 'swingbus':'2438'}
+  {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 'name': 'WECC240', 'swingbus':'2438'},
+  {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 'name': 'XFMRSAT', 'swingbus':'1'}
 ]
 
 FUELS = {
@@ -95,7 +96,8 @@ def load_emt_dict (g, xml_file, sysid):
               'EMTPowerXfmrMesh', 'EMTXfmrTap', 'EMTXfmrSaturation', 'EMTCompShunt', 'EMTCompSeries',
               'EMTSyncMachine', 'EMTSolar', 'EMTWind', 'EMTGovSteamSGO', 'EMTExcST1A',
               'EMTPssIEEE1A', 'EMTWeccREGCA', 'EMTWeccREECA', 'EMTWeccREPCA',
-              'EMTWeccWTGTA', 'EMTWeccWTGARA', 'EMTEnergySource', 'EMTDisconnectingCircuitBreaker']:
+              'EMTWeccWTGTA', 'EMTWeccWTGARA', 'EMTEnergySource', 'EMTDisconnectingCircuitBreaker',
+              'EMTXfmrLimit', 'EMTBranchLimit']:
     start_time = time.time()
     query_for_values (g, dict[key], sysid)
     print ('  Running {:40s} took {:6.3f} s for {:5d} rows'.format (key, time.time() - start_time, len(dict[key]['vals'])))
@@ -162,6 +164,15 @@ def get_swingbus_id (ordered_buses, swingbus):
   for cnid, data in ordered_buses.items():
     if data['name'] == swingbus:
       return cnid
+
+def find_branch_normal_rating (eqid, d):
+  val = 0.0
+  for key, data in d['EMTBranchLimit']['vals'].items():
+    if eqid == data['eqid']:
+      if data['inf'] == 'true':
+        val = data['value']
+        return val / 1.0e6
+  return val
 
 def build_matpower (d, sys_name, fp, swingbus):
   print ('function mpc = {:s}'.format(sys_name), file=fp)
@@ -236,15 +247,23 @@ mpc.bus = [""", file=fp)
     add_mpc_generator (mpc_generators, data, bus_numbers, bus_generation, bus_headroom)
     mpc_genfuels.append('wind')
     mpc_gentypes.append('WT')
-  max_bus = max(bus_generation, key=bus_generation.get)
-  print ('bus {:d} has maximum generation of {:.2f} MW and headroom of {:.2f} MW'.format (max_bus, 
-                                                                                          bus_generation[max_bus], 
-                                                                                          bus_headroom[max_bus]))
-  head_bus = max(bus_headroom, key=bus_headroom.get)
-  print ('bus {:d} has maximum headroom of {:.2f} MW and generation of {:.2f} MW'.format (head_bus, 
-                                                                                          bus_headroom[head_bus], 
-                                                                                          bus_generation[head_bus]))
+  if len(bus_generation) > 0:
+    max_bus = max(bus_generation, key=bus_generation.get)
+    print ('bus {:d} has maximum generation of {:.2f} MW and headroom of {:.2f} MW'.format (max_bus, 
+                                                                                            bus_generation[max_bus], 
+                                                                                            bus_headroom[max_bus]))
+  if len(bus_headroom) > 0:                                                                 
+    head_bus = max(bus_headroom, key=bus_headroom.get)
+    print ('bus {:d} has maximum headroom of {:.2f} MW and generation of {:.2f} MW'.format (head_bus, 
+                                                                                            bus_headroom[head_bus], 
+                                                                                            bus_generation[head_bus]))
   swingbus_num = bus_numbers[get_swingbus_id(ordered_buses, swingbus)]
+  if len(mpc_generators) < 1:
+    mpc_generators.append ({'bus':swingbus_num, 'Pg':total_load, 'Qg':0.0, 'Qmax':total_load, 'Qmin':-total_load,
+                  'Vg':1.0, 'mBase':2*total_load, 'status':1, 'Pmax':2*total_load, 'Pmin':0.0,
+                  'Pc1':0.0, 'Pc2':0.0, 'Qc1min':0.0, 'Qc1max':0.0, 'Qc2min':0.0, 'Qc2max':0.0,
+                  'ramp_agc':0.0, 'ramp_10':0.0, 'ramp_30':0.0, 'ramp_q':0.0, 'apf':0.0})
+
   mpc_buses[swingbus_num-1]['type'] = 3
   for data in mpc_buses:
     print (' {:5d} {:2d} {:9.3f} {:9.3f} {:9.3f} {:9.3f} {:3d} {:7.4f} {:7.4f} {:7.3f} {:3d} {:6.3f} {:6.3f};'.format(
@@ -295,6 +314,7 @@ mpc.gen = [""", file=fp)
 %	fbus tbus r x b rateA rateB rateC ratio angle status angmin angmax
 mpc.branch = [""", file=fp)
   for key, data in d['EMTLine']['vals'].items():
+    rateA = find_branch_normal_rating (key, d)
     bus1 = bus_numbers[data['cn1id']]
     bus2 = bus_numbers[data['cn2id']]
     kvbase = data['basev']/1000.0
@@ -303,15 +323,16 @@ mpc.branch = [""", file=fp)
     r = data['r']/zbase
     x = data['x']/zbase
     b = q/MVA_BASE
-    print (' {:5d} {:5d} {:9.6f} {:9.6f} {:9.6f} 0.0 0.0 0.0 0.0 0.0 1 0.0 0.0;'.format (bus1, bus2, r, x, b), file=fp)
+    print (' {:5d} {:5d} {:9.6f} {:9.6f} {:9.6f} {:8.3f} 0.0 0.0 0.0 0.0 1 0.0 0.0;'.format (bus1, bus2, r, x, b, rateA), file=fp)
   for key, data in d['EMTCompSeries']['vals'].items():
+    rateA = find_branch_normal_rating (key, d)
     bus1 = bus_numbers[data['cn1id']]
     bus2 = bus_numbers[data['cn2id']]
     kvbase = data['basev']/1000.0
     zbase = kvbase*kvbase/MVA_BASE
     r = data['r']/zbase
     x = data['x']/zbase
-    print (' {:5d} {:5d} {:9.6f} {:9.6f} 0.0 0.0 0.0 0.0 0.0 0.0 1 0.0 0.0;'.format (bus1, bus2, r, x), file=fp)
+    print (' {:5d} {:5d} {:9.6f} {:9.6f} 0.0 {:8.3f} 0.0 0.0 0.0 0.0 1 0.0 0.0;'.format (bus1, bus2, r, x, rateA), file=fp)
   for key, data in xfmrs.items():
     rateA = data['mva']
     rateB = rateA * 4.0 / 3.0
@@ -364,7 +385,7 @@ mpc.bus_name = {""", file=fp)
   print ('suggest mpc = scale_load ({:.4f}, mpc)'.format(total_gen/total_load))
 
 if __name__ == '__main__':
-  case_id = 0
+  case_id = 2
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
   case = CASES[case_id]
@@ -380,8 +401,8 @@ if __name__ == '__main__':
   start_time = time.time()
   d = load_emt_dict (g, 'sparql_queries.xml', case['id'])
   print ('Total query time {:6.3f} s'.format (time.time() - start_time))
-  #list_dict_table (d, 'EMTPowerXfmrWinding')
-  #list_dict_table (d, 'EMTXfmrTap')
+#  list_dict_table (d, 'EMTBranchLimit')
+#  list_dict_table (d, 'EMTLine')
 
   fp = open ('../matpower/' + sys_name + '.m', 'w')
   build_matpower (d, sys_name, fp, CASES[case_id]['swingbus'])
