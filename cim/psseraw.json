@@ -251,6 +251,11 @@
                   },
                   {
                       "Name": "X",
+                      "Index": 3,
+                      "Type": "Float"
+                  },
+                  {
+                      "Name": "RATE1",
                       "Index": 4,
                       "Type": "Float"
                   },
@@ -543,6 +548,11 @@
                     },
                     {
                         "Name": "X",
+                        "Index": 3,
+                        "Type": "Float"
+                    },
+                    {
+                        "Name": "RATE1",
                         "Index": 4,
                         "Type": "Float"
                     },

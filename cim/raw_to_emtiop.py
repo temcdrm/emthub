@@ -502,6 +502,23 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((cb, rdflib.URIRef (EMT_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
       g.add ((cb, rdflib.URIRef (EMT_NS + 'ConductingEquipment.ToConnectivityNode'), bus2))
       g.add ((cb, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
+      # operational limits on this branch
+      rate1mva = row[4]
+      olsID = GetCIMID('OperationalLimitSet', key, uuids)
+      ols = rdflib.URIRef (olsID)
+      g.add ((ols, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'OperationalLimitSet')))
+      g.add ((ols, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+      g.add ((ols, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(olsID, datatype=CIM.String)))
+      g.add ((ols, rdflib.URIRef (CIM_NS + 'OperationalLimitSet.ConductingEquipment'), cb))
+      alkey = '{:s}_Normal'.format(key)
+      alID = GetCIMID('ApparentPowerLimit', alkey, uuids)
+      al = rdflib.URIRef (alID)
+      g.add ((al, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'ApparentPowerLimit')))
+      g.add ((al, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(alkey, datatype=CIM.String)))
+      g.add ((al, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(alID, datatype=CIM.String)))
+      g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitSet'), ols))
+      g.add ((al, rdflib.URIRef (CIM_NS + 'OperationalLimit.OperationalLimitType'), olNormal))
+      g.add ((al, rdflib.URIRef (CIM_NS + 'ApparentPowerLimit.value'), rdflib.Literal(rate1mva*1.0e6, datatype=CIM.ApparentPower)))
 
   # write Load and load response characteristics
   LoadResponseCharacteristics = {}
@@ -1060,10 +1077,10 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
   fuid.close()
 
 def print_table (table_name):
-  table = tables[table_name]
-  if table is None:
+  if table_name not in tables:
     print ('***', table_name, 'not found')
     return
+  table = tables[table_name]
   print (table_name, 'has', len(table['data']), 'rows of', table['col_names'])
   if table_name == 'TRANSFORMER':
     for i in range (len(table['data'])):
@@ -1172,7 +1189,7 @@ def read_version_33_34(rdr,sections,bTwoTitles):
 #  print_table ('GENERATOR')
 #  print_table ('BRANCH')
 #  print_table ('TRANSFORMER')
-#  print_table ('SYSTEM SWITCHING DEVICE')
+  print_table ('SYSTEM SWITCHING DEVICE')
 
 if __name__ == '__main__':
   case_id = 0

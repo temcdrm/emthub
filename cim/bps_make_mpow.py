@@ -333,6 +333,12 @@ mpc.branch = [""", file=fp)
     r = data['r']/zbase
     x = data['x']/zbase
     print (' {:5d} {:5d} {:9.6f} {:9.6f} 0.0 {:8.3f} 0.0 0.0 0.0 0.0 1 0.0 0.0;'.format (bus1, bus2, r, x, rateA), file=fp)
+  for key, data in d['EMTDisconnectingCircuitBreaker']['vals'].items():
+    rateA = find_branch_normal_rating (key, d)
+    bus1 = bus_numbers[data['cn1id']]
+    bus2 = bus_numbers[data['cn2id']]
+    print (' {:5d} {:5d} 0.0 1.0e-6 0.0 {:8.3f} 0.0 0.0 0.0 0.0 1 0.0 0.0;'.format (bus1, bus2, rateA), file=fp)
+
   for key, data in xfmrs.items():
     rateA = data['mva']
     rateB = rateA * 4.0 / 3.0
@@ -401,8 +407,9 @@ if __name__ == '__main__':
   start_time = time.time()
   d = load_emt_dict (g, 'sparql_queries.xml', case['id'])
   print ('Total query time {:6.3f} s'.format (time.time() - start_time))
-#  list_dict_table (d, 'EMTBranchLimit')
-#  list_dict_table (d, 'EMTLine')
+  list_dict_table (d, 'EMTBranchLimit')
+  #list_dict_table (d, 'EMTLine')
+  #list_dict_table (d, 'EMTDisconnectingCircuitBreaker')
 
   fp = open ('../matpower/' + sys_name + '.m', 'w')
   build_matpower (d, sys_name, fp, CASES[case_id]['swingbus'])
