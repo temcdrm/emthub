@@ -3,13 +3,13 @@
 	<xmi:Documentation exporter="Enterprise Architect" exporterVersion="6.5" exporterID="1714"/>
 	<uml:Model xmi:type="uml:Model" name="EA_Model" visibility="public">
 		<packagedElement xmi:type="uml:Package" xmi:id="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" name="Emtiop" visibility="public">
-			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_70BE4C77_7C67_4da4_918F_11E741E8FAF5" body="This extension represents non-linear transformer core effects, through a piecewise-linear TransformerSaturation instance, which associates to linear TransformerCoreAdmittance and then to TransformerEnd."/>
 			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_8271D14C_510B_49d6_AC80_3C8C2898A131" body="These extensions eliminate Terminal objects from the IEEE P3743. Instead, ConductingEquipment and TransformerEnd extension instances associate directly to ConnectivityNode. Another extension represents non-linear transformer core effects, through a piecewise-linear TransformerSaturation instance, which associates to linear TransformerCoreAdmittance and then to TransformerEnd.">
 				<annotatedElement xmi:idref="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A"/>
 			</ownedComment>
+			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_70BE4C77_7C67_4da4_918F_11E741E8FAF5" body="This extension represents non-linear transformer core effects, through a piecewise-linear TransformerSaturation instance, which associates to linear TransformerCoreAdmittance and then to TransformerEnd."/>
+			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_37686F36_5816_4b4e_957A_C860E89CFC65" body="These classes associate a set of power flow ratings to ConductingEquipment or TransformerEnd instead of Equipment or Terminal. Voltage ratings are not included."/>
 			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_5567A377_5F25_4983_8492_59C5F34B7B45" body="These extensions associate SvVoltage to ConnectivityNode instead of TopologicalNode, and SvPowerFlow to either ConductingEquipment or TransformerEnd. &#xA;&#xA;For ConductingEquipment, positive power flow is into the equipment from the associated FromConnectivityNode. Flow at the ToConnectivityNode may be calculated as needed. For TransformerEnd, positive power flow is into the transformer from the associated ConnectivityNode.&#xA;&#xA;SvSwitch, SvStatus, SvTapStep, and SvShuntCompensatorSections are unchanged from the core CIM. SvInjection is not used."/>
 			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_0FB50C00_5BAC_4d9c_A43B_007185071E81" body="These classes define attributes and sets of Equipment associated with generating plants."/>
-			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_37686F36_5816_4b4e_957A_C860E89CFC65" body="These classes associate a set of power flow ratings to ConductingEquipment or TransformerEnd instead of Equipment or Terminal. Voltage ratings are not included."/>
 			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_118938DF_7E6A_4cdc_AC05_F82C84BFD8C5" body="These classes associate &quot;real-code&quot; dynamic link libraries (DLLs) to inverters, per Cigre TB 958. &lt;font color=&quot;#ff0000&quot;&gt;TODO&lt;/font&gt;: define signal connections to the network."/>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3" name="ConductingEquipment" visibility="public"/>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_BC1FDB6F_1C1E_4dd0_A183_02B0AB55BF52" visibility="public">
@@ -211,6 +211,18 @@
 					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000058_160D_4ff6_97AE_87F21A37F6E2" value="1"/>
 				</ownedAttribute>
 			</packagedElement>
+			<packagedElement xmi:type="uml:Enumeration" xmi:id="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B" name="IEEECigreDLLParameterKind" visibility="public" isAbstract="true">
+				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_C758A914_85B1_4ce5_9844_4AFDB305ED73" name="Char_Val" visibility="public"/>
+				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_EB532907_214C_4ee1_8AB7_7741A80043D3" name="Char_Ptr" visibility="public"/>
+				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_1C4FD353_F11C_454e_8839_E620B510A23F" name="Int8_Val" visibility="public"/>
+				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_C269E3A7_68C1_4dfe_A551_61021EA742F2" name="Int16_Val" visibility="public"/>
+				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_EE9405EC_13FA_4366_9EB2_03CF99C4E7E0" name="Int32_Val" visibility="public"/>
+				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_E1E44CFA_2496_4eff_BDC0_9CFD81807B47" name="Uint8_Val" visibility="public"/>
+				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_2CE05840_BC99_4fe7_94CB_7924B55178C1" name="Uint16_Val" visibility="public"/>
+				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_B2F08779_AFA2_4cb4_B933_AAAB9E24229E" name="Uint32_Val" visibility="public"/>
+				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_AC18A790_F8C8_4d20_8094_7AEF7B7FCD46" name="Real32_Val" visibility="public"/>
+				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_6A178E59_E15D_47c5_B09D_D15D746763F5" name="Real64_Val" visibility="public"/>
+			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F" name="OperationalLimitSet" visibility="public"/>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_0E30FF9A_B8C1_4908_8FB5_5D8AFEEF603D" visibility="public">
 				<memberEnd xmi:idref="EAID_dst30FF9A_B8C1_4908_8FB5_5D8AFEEF603D"/>
@@ -288,31 +300,20 @@
 					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000084__E80C_455e_A952_12EA8E441602" value="1"/>
 				</ownedEnd>
 			</packagedElement>
-			<packagedElement xmi:type="uml:Enumeration" xmi:id="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B" name="IEEECigreDLLParameterKind" visibility="public">
-				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_C758A914_85B1_4ce5_9844_4AFDB305ED73" name="Char_Val" visibility="public"/>
-				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_EB532907_214C_4ee1_8AB7_7741A80043D3" name="Char_Ptr" visibility="public"/>
-				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_1C4FD353_F11C_454e_8839_E620B510A23F" name="Int8_Val" visibility="public"/>
-				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_C269E3A7_68C1_4dfe_A551_61021EA742F2" name="Int16_Val" visibility="public"/>
-				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_EE9405EC_13FA_4366_9EB2_03CF99C4E7E0" name="Int32_Val" visibility="public"/>
-				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_E1E44CFA_2496_4eff_BDC0_9CFD81807B47" name="Uint8_Val" visibility="public"/>
-				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_2CE05840_BC99_4fe7_94CB_7924B55178C1" name="Uint16_Val" visibility="public"/>
-				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_B2F08779_AFA2_4cb4_B933_AAAB9E24229E" name="Uint32_Val" visibility="public"/>
-				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_AC18A790_F8C8_4d20_8094_7AEF7B7FCD46" name="Real32_Val" visibility="public"/>
-				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_6A178E59_E15D_47c5_B09D_D15D746763F5" name="Real64_Val" visibility="public"/>
-			</packagedElement>
 		</packagedElement>
 		<thecustomprofile:CIMExtension base_Class="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_0C440DC4_4D78_4d54_B3B1_6BC0BA88FEBB"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_42038FD2_A349_48b5_9779_D40E62A25373"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_FE82DEC1_98ED_4d75_B9F9_082E4B494C70"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_87EA71F2_114B_4dad_8692_E78C27AD3A12"/>
+		<thecustomprofile:enumeration base_Enumeration="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B"/>
+		<thecustomprofile:CIMExtension base_Enumeration="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_6C833C4F_109F_47f5_B80B_F3E4F2F9BEC7"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C"/>
 		<thecustomprofile:CIMExtension base_Generalization="EAID_53C66C17_A275_4e92_88D0_0DCAD87C1B0E"/>
-		<thecustomprofile:CIMExtension base_Enumeration="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B"/>
 		<thecustomprofile:baseuri base_Package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" baseuri="http://opensource.ieee.org/emtiop#"/>
 		<thecustomprofile:CIMExtension base_Package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A"/>
 	</uml:Model>
@@ -344,16 +345,6 @@
 				<xrefs/>
 				<extendedProperties tagged="0" package_name="Emtiop"/>
 			</element>
-			<element xmi:idref="EAID_37686F36_5816_4b4e_957A_C860E89CFC65" xmi:type="uml:Note" scope="public">
-				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8611" ea_eleType="element"/>
-				<properties documentation="These classes associate a set of power flow ratings to ConductingEquipment or TransformerEnd instead of Equipment or Terminal. Voltage ratings are not included." isSpecification="false" sType="Note" nType="0" scope="public"/>
-				<project author="tom" version="1.0" phase="1.0" created="2026-01-12 13:35:15" modified="2026-01-15 11:24:41" complexity="1" status="Proposed"/>
-				<code gentype="&lt;none&gt;"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
-				<xrefs/>
-				<extendedProperties tagged="0" package_name="Emtiop"/>
-			</element>
 			<element xmi:idref="EAID_0FB50C00_5BAC_4d9c_A43B_007185071E81" xmi:type="uml:Note" scope="public">
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8621" ea_eleType="element"/>
 				<properties documentation="These classes define attributes and sets of Equipment associated with generating plants." isSpecification="false" sType="Note" nType="0" scope="public"/>
@@ -374,6 +365,26 @@
 				<xrefs/>
 				<extendedProperties tagged="0" package_name="Emtiop"/>
 			</element>
+			<element xmi:idref="EAID_37686F36_5816_4b4e_957A_C860E89CFC65" xmi:type="uml:Note" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8611" ea_eleType="element"/>
+				<properties documentation="These classes associate a set of power flow ratings to ConductingEquipment or TransformerEnd instead of Equipment or Terminal. Voltage ratings are not included." isSpecification="false" sType="Note" nType="0" scope="public"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-01-12 13:35:15" modified="2026-01-15 11:24:41" complexity="1" status="Proposed"/>
+				<code gentype="&lt;none&gt;"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="Emtiop"/>
+			</element>
+			<element xmi:idref="EAID_70BE4C77_7C67_4da4_918F_11E741E8FAF5" xmi:type="uml:Note" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8610" ea_eleType="element"/>
+				<properties documentation="This extension represents non-linear transformer core effects, through a piecewise-linear TransformerSaturation instance, which associates to linear TransformerCoreAdmittance and then to TransformerEnd." isSpecification="false" sType="Note" nType="0" scope="public"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-01-12 13:21:43" modified="2026-01-12 13:22:05" complexity="1" status="Proposed"/>
+				<code gentype="&lt;none&gt;"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="Emtiop"/>
+			</element>
 			<element xmi:idref="EAID_8271D14C_510B_49d6_AC80_3C8C2898A131" xmi:type="uml:Note" scope="public">
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8606" ea_eleType="element"/>
 				<properties documentation="These extensions eliminate Terminal objects from the IEEE P3743. Instead, ConductingEquipment and TransformerEnd extension instances associate directly to ConnectivityNode. Another extension represents non-linear transformer core effects, through a piecewise-linear TransformerSaturation instance, which associates to linear TransformerCoreAdmittance and then to TransformerEnd." isSpecification="false" sType="Note" nType="0" scope="public"/>
@@ -386,16 +397,6 @@
 				<links>
 					<NoteLink xmi:id="EAID_CC054591_3E5A_4270_BB6B_D11B3C6EFCFA" start="EAID_8271D14C_510B_49d6_AC80_3C8C2898A131" end="EAID_68F3A560_E3C8_422e_8A8A_D3464C8A967A"/>
 				</links>
-			</element>
-			<element xmi:idref="EAID_70BE4C77_7C67_4da4_918F_11E741E8FAF5" xmi:type="uml:Note" scope="public">
-				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8610" ea_eleType="element"/>
-				<properties documentation="This extension represents non-linear transformer core effects, through a piecewise-linear TransformerSaturation instance, which associates to linear TransformerCoreAdmittance and then to TransformerEnd." isSpecification="false" sType="Note" nType="0" scope="public"/>
-				<project author="tom" version="1.0" phase="1.0" created="2026-01-12 13:21:43" modified="2026-01-12 13:22:05" complexity="1" status="Proposed"/>
-				<code gentype="&lt;none&gt;"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
-				<xrefs/>
-				<extendedProperties tagged="0" package_name="Emtiop"/>
 			</element>
 			<element xmi:idref="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3" xmi:type="uml:Class" name="ConductingEquipment" scope="public">
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8607" ea_eleType="element"/>
@@ -746,88 +747,14 @@
 					<Association xmi:id="EAID_B0DB49EB_59F9_466c_84BF_2A07AD648520" start="EAID_FE82DEC1_98ED_4d75_B9F9_082E4B494C70" end="EAID_87EA71F2_114B_4dad_8692_E78C27AD3A12"/>
 				</links>
 			</element>
-			<element xmi:idref="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F" xmi:type="uml:Class" name="OperationalLimitSet" scope="public">
-				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8617" ea_eleType="element"/>
-				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
-				<project author="tom" version="1.0" phase="1.0" created="2026-01-15 12:22:21" modified="2026-01-15 12:22:53" complexity="1" status="Proposed"/>
-				<code product_name="Java" gentype="Java"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
-				<xrefs value="$XREFPROP=$XID={D3700791-8E8C-4195-9472-59DE73157274}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;@ENDSTEREO;$DES;$CLT={19CBA492-2B24-40ea-843A-E4ED518F309F}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-				<extendedProperties tagged="0" package_name="Emtiop"/>
-				<links>
-					<Association xmi:id="EAID_0E30FF9A_B8C1_4908_8FB5_5D8AFEEF603D" start="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F" end="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
-					<Association xmi:id="EAID_1CF0E448_2490_42a8_8023_3574E17777F9" start="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F" end="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3"/>
-					<Generalization xmi:id="EAID_29415406_079C_4e21_9708_770F340EA7D7" start="EAID_B0D1133E_CFA4_467d_81D1_75719BF02976" end="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F"/>
-				</links>
-			</element>
-			<element xmi:idref="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6" xmi:type="uml:Class" name="SvPowerFlow" scope="public">
-				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8614" ea_eleType="element"/>
-				<properties documentation="Allows for associating State PowerFlow with ConductingEquipment or TransformerEnd." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
-				<project author="tom" version="1.0" phase="1.0" created="2026-01-15 10:44:31" modified="2026-01-15 11:06:16" complexity="1" status="Proposed"/>
-				<code gentype="Java"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
-				<xrefs value="$XREFPROP=$XID={EB1A9E84-E691-48a0-BDA0-1C8302246507}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;GUID={C8C977C1-4CBD-40f3-A3D5-DD1D291A3921};@ENDSTEREO;$DES;$CLT={F2C521CC-47B1-4d36-B228-0CA63D96BAA6}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-				<extendedProperties tagged="0" package_name="Emtiop"/>
-				<links>
-					<Association xmi:id="EAID_AF27276C_41C5_4d19_89FF_184413BECC00" start="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6" end="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3"/>
-					<Association xmi:id="EAID_C16ED186_CD69_421e_8DFB_7B487E67D3BD" start="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6" end="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
-					<Generalization xmi:id="EAID_8A894D0C_8ABF_48df_A57A_CFB034041F20" start="EAID_0289223C_1161_4047_84EC_201D00A0CD92" end="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6"/>
-				</links>
-			</element>
-			<element xmi:idref="EAID_6C833C4F_109F_47f5_B80B_F3E4F2F9BEC7" xmi:type="uml:Class" name="SvVoltage" scope="public">
-				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8613" ea_eleType="element"/>
-				<properties documentation="Allows for associating State Voltage with ConnectivityNode." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
-				<project author="tom" version="1.0" phase="1.0" created="2026-01-15 10:44:22" modified="2026-01-15 11:06:07" complexity="1" status="Proposed"/>
-				<code product_name="Java" gentype="Java"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
-				<xrefs value="$XREFPROP=$XID={03422AEC-6DE9-4823-A4E7-5ED21032A45E}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;@ENDSTEREO;$DES;$CLT={6C833C4F-109F-47f5-B80B-F3E4F2F9BEC7}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-				<extendedProperties tagged="0" package_name="Emtiop"/>
-				<links>
-					<Association xmi:id="EAID_DEE2E1B6_088A_4410_A913_00284C69F3E8" start="EAID_6C833C4F_109F_47f5_B80B_F3E4F2F9BEC7" end="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2"/>
-					<Generalization xmi:id="EAID_76C11639_002D_416b_84DE_BCA1F6D396EC" start="EAID_22A26B24_0A8E_402a_895E_AFAE18292542" end="EAID_6C833C4F_109F_47f5_B80B_F3E4F2F9BEC7"/>
-				</links>
-			</element>
-			<element xmi:idref="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF" xmi:type="uml:Class" name="TransformerEnd" scope="public">
-				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8608" ea_eleType="element"/>
-				<properties documentation="Allows for a direct connection between TransformerEnd and ConnectivityNode (bus), without using a Terminal." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
-				<project author="tom" version="1.0" phase="1.0" created="2025-10-31 16:34:11" modified="2025-11-11 14:47:24" complexity="1" status="Proposed"/>
-				<code gentype="Java"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
-				<xrefs value="$XREFPROP=$XID={AFD23409-A0B8-44c9-9F34-C7CEA7ED82D4}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;@ENDSTEREO;$DES;$CLT={6C66120F-256B-4964-9D8B-5769EB5C74FF}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-				<extendedProperties tagged="0" package_name="Emtiop"/>
-				<links>
-					<Association xmi:id="EAID_F81EF705_C28A_4bff_86E7_FCACF42F1BD5" start="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF" end="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2"/>
-					<Generalization xmi:id="EAID_0371D4E2_9916_470e_A1FE_D4E685132B93" start="EAID_6E6AF445_8CD5_434b_8E74_08970A4E6D95" end="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
-					<Association xmi:id="EAID_0E30FF9A_B8C1_4908_8FB5_5D8AFEEF603D" start="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F" end="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
-					<Association xmi:id="EAID_C16ED186_CD69_421e_8DFB_7B487E67D3BD" start="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6" end="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
-				</links>
-			</element>
-			<element xmi:idref="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C" xmi:type="uml:Class" name="TransformerSaturation" scope="public">
-				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8609" ea_eleType="element"/>
-				<properties documentation="Represents a piecewise linear transformer saturation characteristic. It's connected to the same TransformerEnd as the TransformerCoreAdmittance, which is typically the lowest voltage winding other than a tertiary.  The attached Curve is a piecewise linear magnetization characteristic, plotted as core flux linkage vs. magnetizing current. This replaces the linear magnetizing characteristic defined by TransformerCoreAdmittance.b and TransformerCoreAdmittance.b0. The TransformerSaturation characteristic does not include hysteresis, i.e., the origin point [0,0] is implied. The TransformerCoreAdmittance.g and TransformerCoreAdmittance.g0 should still be used to model core losses.&#xA;This data is of most interest to electromagnetic transient analysis, which typically uses SI units without multipliers.&#xA;xMultiplier inherited attribute should be UnitMultiplier.none&#xA;xUnit inherited attribute should be UnitSymbol.A&#xA;y1Multiplier inherited attribute should be UnitMultiplier.none&#xA;y1Unit inherited attribute should be UnitSymbol.Vs&#xA;xvalue in associated CurveData should be magnetizing current in peak A (not RMS), referenced to the TransformerEnd associated through TransformerCoreAdmittance. Do not enter the origin point [0,0].&#xA;y1value in associated CurveData should be core flux linkage in peak Vs (not RMS), referenced to the TransformerEnd associated through TransformerCoreAdmittance. Do not enter the origin point [0,0]." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
-				<project author="tom" version="1.0" phase="1.0" created="2025-10-31 16:33:05" modified="2025-11-21 13:24:32" complexity="1" status="Proposed"/>
-				<code gentype="Java"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
-				<xrefs value="$XREFPROP=$XID={6F133498-2618-49d4-9F9F-504278558BB0}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;GUID={C22E7F9F-8573-4f50-A005-70FE36AB7DC1};@ENDSTEREO;$DES;$CLT={C6EEFAD4-B447-40ce-9080-478CAA5A006C}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-				<extendedProperties tagged="0" package_name="Emtiop"/>
-				<links>
-					<Generalization xmi:id="EAID_53C66C17_A275_4e92_88D0_0DCAD87C1B0E" start="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C" end="EAID_73A500A6_E7FF_4abe_8FDA_E68B4E60FF9F"/>
-					<Association xmi:id="EAID_01543B00_E80C_455e_A952_12EA8E441602" start="EAID_25B2D790_161A_45c8_8551_E77A34DE684C" end="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C"/>
-				</links>
-			</element>
-			<element xmi:idref="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B" xmi:type="uml:Enumeration" name="IEEECigreDLLParameterKind" scope="public">
+			<element xmi:idref="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B" xmi:type="uml:Class" name="IEEECigreDLLParameterKind" scope="public">
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8620" ea_eleType="element"/>
-				<properties isSpecification="false" sType="Enumeration" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false"/>
-				<project author="tom" version="1.0" phase="1.0" created="2026-01-15 12:49:19" modified="2026-01-15 12:50:00" complexity="1" status="Proposed"/>
+				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="enumeration" isRoot="false" isLeaf="false" isAbstract="true" isActive="false"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-01-15 12:49:19" modified="2026-01-16 19:50:05" complexity="1" status="Proposed"/>
 				<code gentype="Java"/>
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
-				<xrefs value="$XREFPROP=$XID={8A1D76BF-1C64-4696-8C9A-EF38F1540B1F}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;GUID={9700AC88-B2BF-4302-AE88-22067536055C};@ENDSTEREO;$DES;$CLT={8A4C296F-C2FC-4c7d-8ECC-EE048DD0356B}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<xrefs value="$XREFPROP=$XID={B9EE8627-8AE3-429c-85E0-EF30D20E9C97}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enumeration;GUID={89162AAF-C7E6-4d3c-A102-5516F22896C6};@ENDSTEREO;@STEREO;Name=CIMExtension;GUID={9700AC88-B2BF-4302-AE88-22067536055C};@ENDSTEREO;$DES;$CLT={8A4C296F-C2FC-4c7d-8ECC-EE048DD0356B}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 				<extendedProperties tagged="0" package_name="Emtiop" ea_attsclassified="{083DDE7F-0C4A-4eb3-A900-06F6596D4FF6}"/>
 				<attributes>
 					<attribute xmi:idref="EAID_C758A914_85B1_4ce5_9844_4AFDB305ED73" name="Char_Val" scope="Public">
@@ -981,6 +908,80 @@
 						<xrefs value="$XREFPROP=$XID={E207C5F2-0A6D-4941-9AFE-DD4213CD3AA7}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={6A178E59-E15D-47c5-B09D-D15D746763F5}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 					</attribute>
 				</attributes>
+			</element>
+			<element xmi:idref="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F" xmi:type="uml:Class" name="OperationalLimitSet" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8617" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-01-15 12:22:21" modified="2026-01-15 12:22:53" complexity="1" status="Proposed"/>
+				<code product_name="Java" gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={D3700791-8E8C-4195-9472-59DE73157274}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;@ENDSTEREO;$DES;$CLT={19CBA492-2B24-40ea-843A-E4ED518F309F}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Emtiop"/>
+				<links>
+					<Association xmi:id="EAID_0E30FF9A_B8C1_4908_8FB5_5D8AFEEF603D" start="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F" end="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
+					<Association xmi:id="EAID_1CF0E448_2490_42a8_8023_3574E17777F9" start="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F" end="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3"/>
+					<Generalization xmi:id="EAID_29415406_079C_4e21_9708_770F340EA7D7" start="EAID_B0D1133E_CFA4_467d_81D1_75719BF02976" end="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6" xmi:type="uml:Class" name="SvPowerFlow" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8614" ea_eleType="element"/>
+				<properties documentation="Allows for associating State PowerFlow with ConductingEquipment or TransformerEnd." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-01-15 10:44:31" modified="2026-01-15 11:06:16" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={EB1A9E84-E691-48a0-BDA0-1C8302246507}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;GUID={C8C977C1-4CBD-40f3-A3D5-DD1D291A3921};@ENDSTEREO;$DES;$CLT={F2C521CC-47B1-4d36-B228-0CA63D96BAA6}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Emtiop"/>
+				<links>
+					<Association xmi:id="EAID_AF27276C_41C5_4d19_89FF_184413BECC00" start="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6" end="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3"/>
+					<Association xmi:id="EAID_C16ED186_CD69_421e_8DFB_7B487E67D3BD" start="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6" end="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
+					<Generalization xmi:id="EAID_8A894D0C_8ABF_48df_A57A_CFB034041F20" start="EAID_0289223C_1161_4047_84EC_201D00A0CD92" end="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_6C833C4F_109F_47f5_B80B_F3E4F2F9BEC7" xmi:type="uml:Class" name="SvVoltage" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8613" ea_eleType="element"/>
+				<properties documentation="Allows for associating State Voltage with ConnectivityNode." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-01-15 10:44:22" modified="2026-01-15 11:06:07" complexity="1" status="Proposed"/>
+				<code product_name="Java" gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={03422AEC-6DE9-4823-A4E7-5ED21032A45E}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;@ENDSTEREO;$DES;$CLT={6C833C4F-109F-47f5-B80B-F3E4F2F9BEC7}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Emtiop"/>
+				<links>
+					<Association xmi:id="EAID_DEE2E1B6_088A_4410_A913_00284C69F3E8" start="EAID_6C833C4F_109F_47f5_B80B_F3E4F2F9BEC7" end="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2"/>
+					<Generalization xmi:id="EAID_76C11639_002D_416b_84DE_BCA1F6D396EC" start="EAID_22A26B24_0A8E_402a_895E_AFAE18292542" end="EAID_6C833C4F_109F_47f5_B80B_F3E4F2F9BEC7"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF" xmi:type="uml:Class" name="TransformerEnd" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8608" ea_eleType="element"/>
+				<properties documentation="Allows for a direct connection between TransformerEnd and ConnectivityNode (bus), without using a Terminal." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="tom" version="1.0" phase="1.0" created="2025-10-31 16:34:11" modified="2025-11-11 14:47:24" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={AFD23409-A0B8-44c9-9F34-C7CEA7ED82D4}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;@ENDSTEREO;$DES;$CLT={6C66120F-256B-4964-9D8B-5769EB5C74FF}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Emtiop"/>
+				<links>
+					<Association xmi:id="EAID_F81EF705_C28A_4bff_86E7_FCACF42F1BD5" start="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF" end="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2"/>
+					<Generalization xmi:id="EAID_0371D4E2_9916_470e_A1FE_D4E685132B93" start="EAID_6E6AF445_8CD5_434b_8E74_08970A4E6D95" end="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
+					<Association xmi:id="EAID_0E30FF9A_B8C1_4908_8FB5_5D8AFEEF603D" start="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F" end="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
+					<Association xmi:id="EAID_C16ED186_CD69_421e_8DFB_7B487E67D3BD" start="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6" end="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C" xmi:type="uml:Class" name="TransformerSaturation" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8609" ea_eleType="element"/>
+				<properties documentation="Represents a piecewise linear transformer saturation characteristic. It's connected to the same TransformerEnd as the TransformerCoreAdmittance, which is typically the lowest voltage winding other than a tertiary.  The attached Curve is a piecewise linear magnetization characteristic, plotted as core flux linkage vs. magnetizing current. This replaces the linear magnetizing characteristic defined by TransformerCoreAdmittance.b and TransformerCoreAdmittance.b0. The TransformerSaturation characteristic does not include hysteresis, i.e., the origin point [0,0] is implied. The TransformerCoreAdmittance.g and TransformerCoreAdmittance.g0 should still be used to model core losses.&#xA;This data is of most interest to electromagnetic transient analysis, which typically uses SI units without multipliers.&#xA;xMultiplier inherited attribute should be UnitMultiplier.none&#xA;xUnit inherited attribute should be UnitSymbol.A&#xA;y1Multiplier inherited attribute should be UnitMultiplier.none&#xA;y1Unit inherited attribute should be UnitSymbol.Vs&#xA;xvalue in associated CurveData should be magnetizing current in peak A (not RMS), referenced to the TransformerEnd associated through TransformerCoreAdmittance. Do not enter the origin point [0,0].&#xA;y1value in associated CurveData should be core flux linkage in peak Vs (not RMS), referenced to the TransformerEnd associated through TransformerCoreAdmittance. Do not enter the origin point [0,0]." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="tom" version="1.0" phase="1.0" created="2025-10-31 16:33:05" modified="2025-11-21 13:24:32" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={6F133498-2618-49d4-9F9F-504278558BB0}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;GUID={C22E7F9F-8573-4f50-A005-70FE36AB7DC1};@ENDSTEREO;$DES;$CLT={C6EEFAD4-B447-40ce-9080-478CAA5A006C}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Emtiop"/>
+				<links>
+					<Generalization xmi:id="EAID_53C66C17_A275_4e92_88D0_0DCAD87C1B0E" start="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C" end="EAID_73A500A6_E7FF_4abe_8FDA_E68B4E60FF9F"/>
+					<Association xmi:id="EAID_01543B00_E80C_455e_A952_12EA8E441602" start="EAID_25B2D790_161A_45c8_8551_E77A34DE684C" end="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C"/>
+				</links>
 			</element>
 		</elements>
 		<connectors>
@@ -1767,6 +1768,14 @@
 				<packagedElement xmi:type="uml:Extension" xmi:id="Package_baseuri" name="A_Package_baseuri" memberEnd="extension_baseuri baseuri-base_Package">
 					<ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="extension_baseuri" name="extension_baseuri" type="baseuri" isComposite="true" lower="0" upper="1" memberEnd="extension_baseuri baseuri-base_Package"/>
 				</packagedElement>
+				<packagedElement xmi:type="uml:Stereotype" xmi:id="enumeration" name="enumeration">
+					<ownedAttribute xmi:type="uml:Property" xmi:id="enumeration-base_Enumeration" name="base_Enumeration" association="Enumeration_enumeration">
+						<type href="http://schema.omg.org/spec/UML/2.1/Enumeration"/>
+					</ownedAttribute>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Extension" xmi:id="Enumeration_enumeration" name="A_Enumeration_enumeration" memberEnd="extension_enumeration enumeration-base_Enumeration">
+					<ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="extension_enumeration" name="extension_enumeration" type="enumeration" isComposite="true" lower="0" upper="1" memberEnd="extension_enumeration enumeration-base_Enumeration"/>
+				</packagedElement>
 				<packagedElement xmi:type="uml:Stereotype" xmi:id="CIMExtension" name="CIMExtension">
 					<ownedAttribute xmi:type="uml:Property" xmi:id="CIMExtension-base_Class" name="base_Class" association="Class_CIMExtension">
 						<type href="http://schema.omg.org/spec/UML/2.1/Class"/>
@@ -1832,28 +1841,29 @@
 			<diagram xmi:id="EAID_1389B726_D9C5_4b7a_ABAC_CA1733B0A8FF">
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" localID="1300" owner="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A"/>
 				<properties name="DocEmtiopLimits" type="Logical"/>
-				<project author="tom" version="1.0" created="2026-01-12 13:35:15" modified="2026-01-15 12:44:51"/>
+				<project author="tom" version="1.0" created="2026-01-12 13:35:15" modified="2026-01-16 19:14:06"/>
 				<style1 value="ShowPrivate=1;ShowProtected=1;ShowPublic=1;HideRelationships=0;Locked=0;Border=1;HighlightForeign=1;PackageContents=1;SequenceNotes=0;ScalePrintImage=0;PPgs.cx=0;PPgs.cy=0;DocSize.cx=819;DocSize.cy=1059;ShowDetails=0;Orientation=P;Zoom=100;ShowTags=0;OpParams=1;VisibleAttributeDetail=0;ShowOpRetType=1;ShowIcons=1;CollabNums=0;HideProps=0;ShowReqs=0;ShowCons=0;PaperSize=1;HideParents=0;UseAlias=0;HideAtts=0;HideOps=0;HideStereo=0;HideElemStereo=0;ShowTests=0;ShowMaint=0;ConnectorNotation=UML 2.1;ExplicitNavigability=0;ShowShape=1;AllDockable=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;ShowNotes=0;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;"/>
-				<style2 value="ExcludeRTF=0;DocAll=0;HideQuals=0;AttPkg=1;ShowTests=0;ShowMaint=0;SuppressFOC=1;MatrixActive=0;SwimlanesActive=1;KanbanActive=0;MatrixLineWidth=1;MatrixLineClr=0;MatrixLocked=0;TConnectorNotation=UML 2.1;TExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;MDGDgm=;STBLDgm=;ShowNotes=0;VisibleAttributeDetail=0;ShowOpRetType=1;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;SuppressedCompartments=;Theme=:119;SaveTag=D7BB7692;"/>
+				<style2 value="ExcludeRTF=0;DocAll=0;HideQuals=0;AttPkg=1;ShowTests=0;ShowMaint=0;SuppressFOC=1;MatrixActive=0;SwimlanesActive=1;KanbanActive=0;MatrixLineWidth=1;MatrixLineClr=0;MatrixLocked=0;TConnectorNotation=UML 2.1;TExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;MDGDgm=;STBLDgm=;ShowNotes=0;VisibleAttributeDetail=0;ShowOpRetType=1;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;SuppressedCompartments=;Theme=:119;SaveTag=4C0D8643;"/>
 				<swimlanes value="locked=false;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;"/>
 				<matrixitems value="locked=false;matrixactive=false;swimlanesactive=true;kanbanactive=false;width=1;clrLine=0;"/>
 				<extendedProperties/>
-				<persistentstyle value="DGS=On=0:CNT=8:W=120:H=40:SG=0:SGH=0:AEB=0:;AR=0;DCL=0;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;Swimlanes=locked=false;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;"/>
+				<persistentstyle value="DGS=On=0:CNT=8:W=120:H=40:SG=0:SGH=0:AEB=0:;AR=0;DCL=0;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;Swimlanes=locked=false;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;"/>
 				<xrefs/>
 				<elements>
-					<element geometry="Left=414;Top=331;Right=556;Bottom=401;" subject="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F" seqno="1" style="DUID=EB7C53FA;"/>
-					<element geometry="Left=60;Top=178;Right=218;Bottom=223;" subject="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3" seqno="2" style="DUID=14013E85;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
-					<element geometry="Left=60;Top=337;Right=218;Bottom=401;" subject="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF" seqno="3" style="DUID=5A7332B5;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
-					<element geometry="Left=651;Top=331;Right=863;Bottom=401;" subject="EAID_B0D1133E_CFA4_467d_81D1_75719BF02976" seqno="4" style="DUID=53F85B3F;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
-					<element geometry="Left=332;Top=41;Right=584;Bottom=195;" subject="EAID_B5E14C75_6C8D_4e7e_9FAF_D49F3BE177B9" seqno="5" style="DUID=FC9978DD;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
-					<element geometry="Left=651;Top=207;Right=863;Bottom=277;" subject="EAID_2E614D04_0107_4d78_B959_28ECD475219C" seqno="6" style="DUID=8EA618D3;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
-					<element geometry="Left=651;Top=50;Right=849;Bottom=140;" subject="EAID_4A84BEAD_A18F_4474_B5D6_471216783A07" seqno="7" style="DUID=835932DA;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
-					<element geometry="Left=60;Top=41;Right=303;Bottom=122;" subject="EAID_37686F36_5816_4b4e_957A_C860E89CFC65" seqno="8" style="DUID=6198F374;"/>
+					<element geometry="Left=60;Top=126;Right=244;Bottom=234;" subject="EAID_2C9E3AFE_268D_41c7_9BC9_29548EF57F5E" seqno="1" style="DUID=B5944B57;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;HideIcon=0;"/>
+					<element geometry="Left=414;Top=331;Right=556;Bottom=401;" subject="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F" seqno="2" style="DUID=EB7C53FA;"/>
+					<element geometry="Left=60;Top=238;Right=218;Bottom=283;" subject="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3" seqno="3" style="DUID=14013E85;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
+					<element geometry="Left=60;Top=337;Right=218;Bottom=401;" subject="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF" seqno="4" style="DUID=5A7332B5;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
+					<element geometry="Left=651;Top=331;Right=863;Bottom=401;" subject="EAID_B0D1133E_CFA4_467d_81D1_75719BF02976" seqno="5" style="DUID=53F85B3F;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
+					<element geometry="Left=332;Top=41;Right=584;Bottom=195;" subject="EAID_B5E14C75_6C8D_4e7e_9FAF_D49F3BE177B9" seqno="6" style="DUID=FC9978DD;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
+					<element geometry="Left=651;Top=207;Right=863;Bottom=277;" subject="EAID_2E614D04_0107_4d78_B959_28ECD475219C" seqno="7" style="DUID=8EA618D3;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
+					<element geometry="Left=651;Top=50;Right=849;Bottom=140;" subject="EAID_4A84BEAD_A18F_4474_B5D6_471216783A07" seqno="8" style="DUID=835932DA;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
+					<element geometry="Left=60;Top=41;Right=303;Bottom=122;" subject="EAID_37686F36_5816_4b4e_957A_C860E89CFC65" seqno="9" style="DUID=6198F374;"/>
 					<element geometry="SX=-39;SY=-44;EDGE=3;EX=-46;EY=31;$LLB=;LLT=;LMT=;LMB=CX=109:CY=15:OX=63:OY=-10:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_48EEA02B_A59B_45a0_942D_1139202CD734" style="Mode=3;EOID=8EA618D3;SOID=835932DA;Color=-1;LWidth=0;Hidden=0;"/>
 					<element geometry="EDGE=4;EX=-40;EY=-76;SX=-96;SY=-11;$LLB=CX=18:CY=15:OX=-4:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=90:CY=15:OX=-6:OY=3:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=113:CY=15:OX=124:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=-5:OY=14:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=417:-252$;" subject="EAID_E3D73666_E647_4b0a_B020_0700E4FCDECC" style="Mode=3;EOID=FC9978DD;SOID=8EA618D3;Color=-1;LWidth=0;Hidden=0;"/>
 					<element geometry="EDGE=3;SX=-47;SY=-34;EX=-47;EY=-21;$LLB=CX=18:CY=15:OX=-32:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=117:CY=15:OX=129:OY=1:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=104:CY=15:OX=118:OY=-1:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=7:CY=15:OX=-24:OY=1:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_8BCBC221_2A8A_471f_B995_9BAA421EABE0" style="Mode=3;EOID=53F85B3F;SOID=8EA618D3;Color=-1;LWidth=0;Hidden=0;"/>
 					<element geometry="SX=0;SY=0;EX=0;EY=0;EDGE=4;$LLB=;LLT=;LMT=;LMB=;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_29415406_079C_4e21_9708_770F340EA7D7" style="Mode=3;EOID=EB7C53FA;SOID=53F85B3F;Color=-1;LWidth=0;Hidden=0;"/>
-					<element geometry="SX=-35;SY=34;EX=-16;EY=-22;EDGE=1;$LLB=CX=18:CY=15:OX=-28:OY=-2:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=109:CY=15:OX=113:OY=-3:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=113:CY=15:OX=126:OY=16:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=-6:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=450:-291$123:-291$;" subject="EAID_1CF0E448_2490_42a8_8023_3574E17777F9" style="Mode=3;EOID=14013E85;SOID=EB7C53FA;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=-35;SY=34;EX=-16;EY=-22;EDGE=1;$LLB=CX=18:CY=15:OX=-28:OY=-2:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=109:CY=15:OX=113:OY=-3:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=113:CY=15:OX=123:OY=1:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=-34:OY=2:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=450:-305$123:-305$;" subject="EAID_1CF0E448_2490_42a8_8023_3574E17777F9" style="Mode=3;EOID=14013E85;SOID=EB7C53FA;Color=-1;LWidth=0;Hidden=0;"/>
 					<element geometry="SX=-70;SY=-17;EX=-26;EY=-14;EDGE=4;$LLB=CX=18:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=109:CY=15:OX=-9:OY=1:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=87:CY=15:OX=2:OY=25:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=2:OY=-23:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_0E30FF9A_B8C1_4908_8FB5_5D8AFEEF603D" style="Mode=3;EOID=5A7332B5;SOID=EB7C53FA;Color=-1;LWidth=0;Hidden=0;"/>
 				</elements>
 			</diagram>
@@ -1913,18 +1923,18 @@
 			<diagram xmi:id="EAID_7EBBBB47_6C05_4fca_903A_AE5BECF08C30">
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" localID="1303" owner="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A"/>
 				<properties name="DocEmtiopDLLInterface" type="Logical"/>
-				<project author="tom" version="1.0" created="2026-01-15 12:45:34" modified="2026-01-15 13:25:07"/>
+				<project author="tom" version="1.0" created="2026-01-15 12:45:34" modified="2026-01-16 19:47:25"/>
 				<style1 value="ShowPrivate=1;ShowProtected=1;ShowPublic=1;HideRelationships=0;Locked=0;Border=1;HighlightForeign=1;PackageContents=1;SequenceNotes=0;ScalePrintImage=0;PPgs.cx=0;PPgs.cy=0;DocSize.cx=819;DocSize.cy=1059;ShowDetails=0;Orientation=P;Zoom=100;ShowTags=0;OpParams=1;VisibleAttributeDetail=0;ShowOpRetType=1;ShowIcons=1;CollabNums=0;HideProps=0;ShowReqs=0;ShowCons=0;PaperSize=1;HideParents=0;UseAlias=0;HideAtts=0;HideOps=0;HideStereo=0;HideElemStereo=0;ShowTests=0;ShowMaint=0;ConnectorNotation=UML 2.1;ExplicitNavigability=0;ShowShape=1;AllDockable=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;ShowNotes=0;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;"/>
-				<style2 value="ExcludeRTF=0;DocAll=0;HideQuals=0;AttPkg=1;ShowTests=0;ShowMaint=0;SuppressFOC=1;MatrixActive=0;SwimlanesActive=1;KanbanActive=0;MatrixLineWidth=1;MatrixLineClr=0;MatrixLocked=0;TConnectorNotation=UML 2.1;TExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;MDGDgm=;STBLDgm=;ShowNotes=0;VisibleAttributeDetail=0;ShowOpRetType=1;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;SuppressedCompartments=;Theme=:119;SaveTag=26662BF2;"/>
+				<style2 value="ExcludeRTF=0;DocAll=0;HideQuals=0;AttPkg=1;ShowTests=0;ShowMaint=0;SuppressFOC=1;MatrixActive=0;SwimlanesActive=1;KanbanActive=0;MatrixLineWidth=1;MatrixLineClr=0;MatrixLocked=0;TConnectorNotation=UML 2.1;TExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;MDGDgm=;STBLDgm=;ShowNotes=0;VisibleAttributeDetail=0;ShowOpRetType=1;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;SuppressedCompartments=;Theme=:119;SaveTag=920A8FEF;"/>
 				<swimlanes value="locked=false;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;"/>
 				<matrixitems value="locked=false;matrixactive=false;swimlanesactive=true;kanbanactive=false;width=1;clrLine=0;"/>
 				<extendedProperties/>
-				<persistentstyle value="DGS=On=0:CNT=8:W=120:H=40:SG=0:SGH=0:AEB=0:;AR=0;DCL=0;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;Swimlanes=locked=false;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;"/>
+				<persistentstyle value="DGS=On=0:CNT=8:W=120:H=40:SG=0:SGH=0:AEB=0:;AR=0;DCL=0;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;Swimlanes=locked=false;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;"/>
 				<xrefs/>
 				<elements>
 					<element geometry="Left=580;Top=249;Right=761;Bottom=415;" subject="EAID_AEF4A2AB_D126_4311_B299_CAB7D826A16E" seqno="1" style="DUID=6622BE66;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
 					<element geometry="Left=49;Top=39;Right=234;Bottom=189;" subject="EAID_055C5806_E9D8_4a7a_9307_DAF7C31763C7" seqno="2" style="DUID=AA16EF24;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
-					<element geometry="Left=580;Top=33;Right=765;Bottom=222;" subject="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B" seqno="3" style="DUID=35884762;"/>
+					<element geometry="Left=578;Top=31;Right=763;Bottom=237;" subject="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B" seqno="3" style="DUID=35884762;"/>
 					<element geometry="Left=49;Top=404;Right=566;Bottom=451;" subject="EAID_118938DF_7E6A_4cdc_AC05_F82C84BFD8C5" seqno="4" style="DUID=06C1AB86;ImageID=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;"/>
 					<element geometry="Left=292;Top=39;Right=533;Bottom=129;" subject="EAID_87EA71F2_114B_4dad_8692_E78C27AD3A12" seqno="5" style="DUID=687DDBE8;"/>
 					<element geometry="Left=49;Top=240;Right=234;Bottom=386;" subject="EAID_FE82DEC1_98ED_4d75_B9F9_082E4B494C70" seqno="6" style="DUID=835EC465;"/>
