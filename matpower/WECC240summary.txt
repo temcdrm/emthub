@@ -1,6 +1,6 @@
 results.success = 1
 results.iterations = 6
-results.et = 0.1934
+results.et = 0.1904
 
 Converged in 0.19 seconds
 ================================================================================
@@ -31,6 +31,29 @@ Q Losses (I^2*X)             -                959.42 MVAr  @ line 212-213
 Overloads:
   Generator 28 at 47 has 2448.03 MW > 2292.00 MW
   1 generators overloaded
+  Branch 3 from 2-4 has 3460.76 MVA > 1084.00 MVA
+  Branch 4 from 2-8 has 1126.17 MVA > 1084.00 MVA
+  Branch 5 from 2-8 has 1126.17 MVA > 1084.00 MVA
+  Branch 50 from 39-41 has 729.75 MVA > 600.00 MVA
+  Branch 52 from 40-41 has 1767.43 MVA > 600.00 MVA
+  Branch 56 from 41-50 has 1293.61 MVA > 600.00 MVA
+  Branch 82 from 63-69 has 625.16 MVA > 600.00 MVA
+  Branch 111 from 84-92 has 659.34 MVA > 600.00 MVA
+  Branch 112 from 84-92 has 659.34 MVA > 600.00 MVA
+  Branch 193 from 136-152 has 806.17 MVA > 600.00 MVA
+  Branch 211 from 142-152 has 746.51 MVA > 600.00 MVA
+  Branch 253 from 180-186 has 1883.01 MVA > 1800.00 MVA
+  Branch 254 from 180-186 has 1883.01 MVA > 1800.00 MVA
+  Branch 257 from 181-187 has 3143.62 MVA > 1800.00 MVA
+  Branch 258 from 181-187 has 3143.62 MVA > 1800.00 MVA
+  Branch 264 from 187-188 has 4274.05 MVA > 1800.00 MVA
+  Branch 268 from 199-200 has 1540.14 MVA > 1084.00 MVA
+  Branch 281 from 205-213 has 622.03 MVA > 600.00 MVA
+  Branch 282 from 206-207 has 743.86 MVA > 600.00 MVA
+  Branch 284 from 212-213 has 977.30 MVA > 600.00 MVA
+  Branch 287 from 214-231 has 1171.50 MVA > 600.00 MVA
+  Branch 288 from 214-231 has 1171.69 MVA > 600.00 MVA
+  Branch 315 from 233-234 has 1303.44 MVA > 1084.00 MVA
   Branch 332 from 2-3 has 1175.12 MVA > 600.00 MVA
   Branch 333 from 2-3 has 1166.66 MVA > 600.00 MVA
   Branch 340 from 7-8 has 1033.80 MVA > 550.00 MVA
@@ -46,4 +69,4 @@ Overloads:
   Branch 507 from 210-212 has 1380.52 MVA > 440.00 MVA
   Branch 508 from 211-213 has 1413.69 MVA > 440.00 MVA
   Branch 538 from 238-241 has 703.67 MVA > 460.00 MVA
-  15 branches overloaded
+  38 branches overloaded

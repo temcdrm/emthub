@@ -174,6 +174,11 @@ def find_branch_normal_rating (eqid, d):
         return val / 1.0e6
   return val
 
+def constant_impedance (z, i, p):
+  if z > (i+p):
+    return True
+  return False
+
 def build_matpower (d, sys_name, fp, swingbus):
   print ('function mpc = {:s}'.format(sys_name), file=fp)
   print ('mpc.version = "2";', file=fp)
@@ -208,9 +213,16 @@ mpc.bus = [""", file=fp)
   for key, data in d['EMTLoad']['vals'].items():
     idx = bus_numbers[data['cn1id']]-1
     Pd = data['p'] / 1.0e6
+    Qd = data['q'] / 1.0e6
     total_load += Pd
-    mpc_buses[idx]['Pd'] += Pd
-    mpc_buses[idx]['Qd'] += data['q'] / 1.0e6
+    if constant_impedance (data['pz'], data['pi'], data['pp']):
+      mpc_buses[idx]['Gs'] += Pd
+    else:
+      mpc_buses[idx]['Pd'] += Pd
+    if constant_impedance (data['qz'], data['qi'], data['qz']):
+      mpc_buses[idx]['Bs'] -= Qd
+    else:
+      mpc_buses[idx]['Qd'] += Qd
   for key, data in d['EMTCompShunt']['vals'].items():
     idx = bus_numbers[data['cn1id']]-1
     scale = data['sections']*data['nomu']*data['nomu']/1.0e6
@@ -391,7 +403,7 @@ mpc.bus_name = {""", file=fp)
   print ('suggest mpc = scale_load ({:.4f}, mpc)'.format(total_gen/total_load))
 
 if __name__ == '__main__':
-  case_id = 2
+  case_id = 3
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
   case = CASES[case_id]
@@ -407,8 +419,8 @@ if __name__ == '__main__':
   start_time = time.time()
   d = load_emt_dict (g, 'sparql_queries.xml', case['id'])
   print ('Total query time {:6.3f} s'.format (time.time() - start_time))
-  list_dict_table (d, 'EMTBranchLimit')
-  #list_dict_table (d, 'EMTLine')
+  #list_dict_table (d, 'EMTBranchLimit')
+  #list_dict_table (d, 'EMTLoad')
   #list_dict_table (d, 'EMTDisconnectingCircuitBreaker')
 
   fp = open ('../matpower/' + sys_name + '.m', 'w')

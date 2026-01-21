@@ -197,29 +197,29 @@
     cim:OperationalLimitType.isInfiniteDuration "true"^^cim:Boolean .
 
 <0A8F26A9-8D80-4BDE-8066-B38274DD0E16> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <68B79170-F5A8-481F-9792-6838B2D02849> ;
     cim:IdentifiedObject.mRID "0A8F26A9-8D80-4BDE-8066-B38274DD0E16"^^cim:String ;
-    cim:IdentifiedObject.name "1_2_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <68B79170-F5A8-481F-9792-6838B2D02849> .
+    cim:IdentifiedObject.name "1_2_1"^^cim:String .
 
 <92E48490-212F-4EEE-81A2-27E9A45FC58F> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <B4ED2857-F5D2-471F-9764-FC6799526E55> ;
     cim:IdentifiedObject.mRID "92E48490-212F-4EEE-81A2-27E9A45FC58F"^^cim:String ;
-    cim:IdentifiedObject.name "3_4_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <B4ED2857-F5D2-471F-9764-FC6799526E55> .
+    cim:IdentifiedObject.name "3_4_0_1_End_2"^^cim:String .
 
 <9FC8F4AB-ADFB-4E97-B6A0-3E77571DF9A4> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <AD792DFF-2C58-4BBF-8D75-2F72CFAB796B> ;
     cim:IdentifiedObject.mRID "9FC8F4AB-ADFB-4E97-B6A0-3E77571DF9A4"^^cim:String ;
-    cim:IdentifiedObject.name "4_5_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <AD792DFF-2C58-4BBF-8D75-2F72CFAB796B> .
+    cim:IdentifiedObject.name "4_5_1"^^cim:String .
 
 <C88A0588-F2CA-4474-9E1A-E0F7F855F89C> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <8952618F-8852-4420-9850-514793565B23> ;
     cim:IdentifiedObject.mRID "C88A0588-F2CA-4474-9E1A-E0F7F855F89C"^^cim:String ;
-    cim:IdentifiedObject.name "2_3_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <8952618F-8852-4420-9850-514793565B23> .
+    cim:IdentifiedObject.name "2_3_1"^^cim:String .
 
 <F889E8D1-860B-43E1-9FC5-9EDD7ACB232E> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <7507DEC9-7F4B-4C0C-ABC1-477372339EBF> ;
     cim:IdentifiedObject.mRID "F889E8D1-860B-43E1-9FC5-9EDD7ACB232E"^^cim:String ;
-    cim:IdentifiedObject.name "3_4_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <7507DEC9-7F4B-4C0C-ABC1-477372339EBF> .
+    cim:IdentifiedObject.name "3_4_0_1_End_1"^^cim:String .
 
 <0674DBE6-3CD3-47FB-B17D-215870733DA6> a cim:ApparentPowerLimit ;
     cim:ApparentPowerLimit.value "600000000.0"^^cim:ApparentPower ;

@@ -20249,1729 +20249,1729 @@
     cim:OperationalLimitType.isInfiniteDuration "false"^^cim:Boolean .
 
 <004946CE-4226-4B19-87D9-73F50F6ABE92> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <73D16C7A-B626-4F42-8366-1093E3900C43> ;
     cim:IdentifiedObject.mRID "004946CE-4226-4B19-87D9-73F50F6ABE92"^^cim:String ;
-    cim:IdentifiedObject.name "26_134_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <73D16C7A-B626-4F42-8366-1093E3900C43> .
+    cim:IdentifiedObject.name "26_134_0_1_End_1"^^cim:String .
 
 <00827F56-D042-4438-94A9-7AF31769968F> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <0FD7FDCB-E319-45A9-8540-FF698028CCC5> ;
     cim:IdentifiedObject.mRID "00827F56-D042-4438-94A9-7AF31769968F"^^cim:String ;
-    cim:IdentifiedObject.name "75_118_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <0FD7FDCB-E319-45A9-8540-FF698028CCC5> .
+    cim:IdentifiedObject.name "75_118_1"^^cim:String .
 
 <0194AFC5-E46D-4E1C-BD0E-DA4D43324E2B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <BC176A36-79C5-4C1F-98BE-043F5387C099> ;
     cim:IdentifiedObject.mRID "0194AFC5-E46D-4E1C-BD0E-DA4D43324E2B"^^cim:String ;
-    cim:IdentifiedObject.name "83_85_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <BC176A36-79C5-4C1F-98BE-043F5387C099> .
+    cim:IdentifiedObject.name "83_85_1"^^cim:String .
 
 <0216D581-851F-4362-9A37-289AEA2576BE> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <9B4CF52C-3569-4839-826B-332E5B0D63BF> ;
     cim:IdentifiedObject.mRID "0216D581-851F-4362-9A37-289AEA2576BE"^^cim:String ;
-    cim:IdentifiedObject.name "77_82_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <9B4CF52C-3569-4839-826B-332E5B0D63BF> .
+    cim:IdentifiedObject.name "77_82_1"^^cim:String .
 
 <025D630D-89A5-41F1-9338-D67D2FA201EF> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <D7CCC666-E338-4FC4-897A-46FD80EA3CDD> ;
     cim:IdentifiedObject.mRID "025D630D-89A5-41F1-9338-D67D2FA201EF"^^cim:String ;
-    cim:IdentifiedObject.name "80_98_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <D7CCC666-E338-4FC4-897A-46FD80EA3CDD> .
+    cim:IdentifiedObject.name "80_98_1"^^cim:String .
 
 <033B0745-35C1-47CB-A1F2-6351949D72F4> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <F500A9FD-FF78-45C2-9F1F-D0CDB2A05D31> ;
     cim:IdentifiedObject.mRID "033B0745-35C1-47CB-A1F2-6351949D72F4"^^cim:String ;
-    cim:IdentifiedObject.name "113_192_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <F500A9FD-FF78-45C2-9F1F-D0CDB2A05D31> .
+    cim:IdentifiedObject.name "113_192_0_1_End_1"^^cim:String .
 
 <05C951AF-1771-4048-A786-4D7EE95E99D8> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <D2DD66EC-E3D8-4AE4-8E06-1CF0DDB060BA> ;
     cim:IdentifiedObject.mRID "05C951AF-1771-4048-A786-4D7EE95E99D8"^^cim:String ;
-    cim:IdentifiedObject.name "13_15_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <D2DD66EC-E3D8-4AE4-8E06-1CF0DDB060BA> .
+    cim:IdentifiedObject.name "13_15_1"^^cim:String .
 
 <074F8703-3192-41F0-BC19-8F521FEA50E9> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <5D7762B6-FC3E-42DB-B562-C98DFCAAB66A> ;
     cim:IdentifiedObject.mRID "074F8703-3192-41F0-BC19-8F521FEA50E9"^^cim:String ;
-    cim:IdentifiedObject.name "100_178_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <5D7762B6-FC3E-42DB-B562-C98DFCAAB66A> .
+    cim:IdentifiedObject.name "100_178_0_1_End_1"^^cim:String .
 
 <08187CEE-E1D5-4053-B310-8FC3F4CDEE91> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <B2702D50-8FAC-45CB-9736-4AA1DE2F14E0> ;
     cim:IdentifiedObject.mRID "08187CEE-E1D5-4053-B310-8FC3F4CDEE91"^^cim:String ;
-    cim:IdentifiedObject.name "49_66_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <B2702D50-8FAC-45CB-9736-4AA1DE2F14E0> .
+    cim:IdentifiedObject.name "49_66_1"^^cim:String .
 
 <0874F917-CA4F-4D0F-8144-02FCF3738619> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <22EB7BD5-9EA4-4CEF-93B6-0156A6ED4D81> ;
     cim:IdentifiedObject.mRID "0874F917-CA4F-4D0F-8144-02FCF3738619"^^cim:String ;
-    cim:IdentifiedObject.name "105_107_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <22EB7BD5-9EA4-4CEF-93B6-0156A6ED4D81> .
+    cim:IdentifiedObject.name "105_107_1"^^cim:String .
 
 <09A78559-1A03-4A8E-833B-749D8524568E> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <44208288-6210-44D4-8AC6-DFD4382D54C7> ;
     cim:IdentifiedObject.mRID "09A78559-1A03-4A8E-833B-749D8524568E"^^cim:String ;
-    cim:IdentifiedObject.name "104_182_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <44208288-6210-44D4-8AC6-DFD4382D54C7> .
+    cim:IdentifiedObject.name "104_182_0_1_End_2"^^cim:String .
 
 <09A79605-C56C-4DF2-AFCB-A4A0E9AC8139> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <8FE49A25-5118-477A-8C12-732E233E247E> ;
     cim:IdentifiedObject.mRID "09A79605-C56C-4DF2-AFCB-A4A0E9AC8139"^^cim:String ;
-    cim:IdentifiedObject.name "104_182_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <8FE49A25-5118-477A-8C12-732E233E247E> .
+    cim:IdentifiedObject.name "104_182_0_1_End_1"^^cim:String .
 
 <0A8F725D-71EE-4042-93A8-239F74CDD0F0> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <205001A4-DE41-42F1-981E-8D986982C042> ;
     cim:IdentifiedObject.mRID "0A8F725D-71EE-4042-93A8-239F74CDD0F0"^^cim:String ;
-    cim:IdentifiedObject.name "54_147_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <205001A4-DE41-42F1-981E-8D986982C042> .
+    cim:IdentifiedObject.name "54_147_0_1_End_2"^^cim:String .
 
 <0C946ABD-C633-4697-9E38-3EA7FB1512D1> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <6B9C2EBC-519B-4300-901F-CD11A3D41B6F> ;
     cim:IdentifiedObject.mRID "0C946ABD-C633-4697-9E38-3EA7FB1512D1"^^cim:String ;
-    cim:IdentifiedObject.name "60_61_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <6B9C2EBC-519B-4300-901F-CD11A3D41B6F> .
+    cim:IdentifiedObject.name "60_61_1"^^cim:String .
 
 <0CBF892E-772B-4F98-B884-8EB8DA3D7588> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <44F4E630-2A30-42EA-B878-BC1388813AAB> ;
     cim:IdentifiedObject.mRID "0CBF892E-772B-4F98-B884-8EB8DA3D7588"^^cim:String ;
-    cim:IdentifiedObject.name "42_49_2"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <44F4E630-2A30-42EA-B878-BC1388813AAB> .
+    cim:IdentifiedObject.name "42_49_2"^^cim:String .
 
 <0D3A03FA-94B0-41D3-BBB8-FC427E4B4A5C> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <4141584E-178E-43FD-AB37-DF0D242423C9> ;
     cim:IdentifiedObject.mRID "0D3A03FA-94B0-41D3-BBB8-FC427E4B4A5C"^^cim:String ;
-    cim:IdentifiedObject.name "35_37_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <4141584E-178E-43FD-AB37-DF0D242423C9> .
+    cim:IdentifiedObject.name "35_37_1"^^cim:String .
 
 <0E8CAB1F-2219-4A6B-B42F-C28634C90BEB> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <2EB6C154-FF94-4BF5-A7FA-52864C9E397A> ;
     cim:IdentifiedObject.mRID "0E8CAB1F-2219-4A6B-B42F-C28634C90BEB"^^cim:String ;
-    cim:IdentifiedObject.name "15_19_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <2EB6C154-FF94-4BF5-A7FA-52864C9E397A> .
+    cim:IdentifiedObject.name "15_19_1"^^cim:String .
 
 <0FC29330-B41F-4266-8E09-0A2A4A4CF57B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <00441EE6-E688-4174-9D3B-E0FE03B401E2> ;
     cim:IdentifiedObject.mRID "0FC29330-B41F-4266-8E09-0A2A4A4CF57B"^^cim:String ;
-    cim:IdentifiedObject.name "61_154_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <00441EE6-E688-4174-9D3B-E0FE03B401E2> .
+    cim:IdentifiedObject.name "61_154_0_1_End_1"^^cim:String .
 
 <10C36B49-6528-46DE-875E-0D18F9B45F2A> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <AF6C4B4F-9072-463E-BD2A-B90F3AE80D4A> ;
     cim:IdentifiedObject.mRID "10C36B49-6528-46DE-875E-0D18F9B45F2A"^^cim:String ;
-    cim:IdentifiedObject.name "103_110_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <AF6C4B4F-9072-463E-BD2A-B90F3AE80D4A> .
+    cim:IdentifiedObject.name "103_110_1"^^cim:String .
 
 <1144150D-5230-4833-9307-6A0C25812C40> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <D0DE8C9C-8F25-43BF-B00B-39F971ACFE19> ;
     cim:IdentifiedObject.mRID "1144150D-5230-4833-9307-6A0C25812C40"^^cim:String ;
-    cim:IdentifiedObject.name "38_37_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <D0DE8C9C-8F25-43BF-B00B-39F971ACFE19> .
+    cim:IdentifiedObject.name "38_37_0_1_End_1"^^cim:String .
 
 <1190149B-305B-4F6B-8F89-EDAF702603CB> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <FE9310C8-2C64-4252-8A07-75FC9E40BBAA> ;
     cim:IdentifiedObject.mRID "1190149B-305B-4F6B-8F89-EDAF702603CB"^^cim:String ;
-    cim:IdentifiedObject.name "95_96_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <FE9310C8-2C64-4252-8A07-75FC9E40BBAA> .
+    cim:IdentifiedObject.name "95_96_1"^^cim:String .
 
 <12555B70-C553-42AE-BF17-B24F50A2A7DB> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <A1FBAF99-E039-4662-B9CC-83F802C0766D> ;
     cim:IdentifiedObject.mRID "12555B70-C553-42AE-BF17-B24F50A2A7DB"^^cim:String ;
-    cim:IdentifiedObject.name "100_179_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <A1FBAF99-E039-4662-B9CC-83F802C0766D> .
+    cim:IdentifiedObject.name "100_179_0_1_End_2"^^cim:String .
 
 <12EB3913-3D48-45A6-87A4-DF734D38BA43> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <77EDFCDB-EB51-41D4-BA75-69FF244AA928> ;
     cim:IdentifiedObject.mRID "12EB3913-3D48-45A6-87A4-DF734D38BA43"^^cim:String ;
-    cim:IdentifiedObject.name "12_124_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <77EDFCDB-EB51-41D4-BA75-69FF244AA928> .
+    cim:IdentifiedObject.name "12_124_0_1_End_1"^^cim:String .
 
 <15D6F993-C730-42C5-9689-D6EA158E5BD8> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <3F7E489E-C015-4137-9546-F7F524FAC6DA> ;
     cim:IdentifiedObject.mRID "15D6F993-C730-42C5-9689-D6EA158E5BD8"^^cim:String ;
-    cim:IdentifiedObject.name "85_169_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <3F7E489E-C015-4137-9546-F7F524FAC6DA> .
+    cim:IdentifiedObject.name "85_169_0_1_End_1"^^cim:String .
 
 <16520923-C850-4356-BD24-CC52BDC10D56> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <9EBD2A10-74CB-4E4E-98B0-E062F3458B55> ;
     cim:IdentifiedObject.mRID "16520923-C850-4356-BD24-CC52BDC10D56"^^cim:String ;
-    cim:IdentifiedObject.name "42_144_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <9EBD2A10-74CB-4E4E-98B0-E062F3458B55> .
+    cim:IdentifiedObject.name "42_144_0_1_End_1"^^cim:String .
 
 <16BE6E8D-CBFD-4D08-A48E-EC7B6608B577> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <3E550FFD-B27B-42DE-98E0-F158C721917A> ;
     cim:IdentifiedObject.mRID "16BE6E8D-CBFD-4D08-A48E-EC7B6608B577"^^cim:String ;
-    cim:IdentifiedObject.name "100_177_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <3E550FFD-B27B-42DE-98E0-F158C721917A> .
+    cim:IdentifiedObject.name "100_177_0_1_End_1"^^cim:String .
 
 <16EB7B07-5AEF-4F53-824C-DCBAFB78A6C6> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <368A957E-6545-4101-8808-88DF657746C0> ;
     cim:IdentifiedObject.mRID "16EB7B07-5AEF-4F53-824C-DCBAFB78A6C6"^^cim:String ;
-    cim:IdentifiedObject.name "54_56_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <368A957E-6545-4101-8808-88DF657746C0> .
+    cim:IdentifiedObject.name "54_56_1"^^cim:String .
 
 <1821D772-6760-4C88-B69A-C43891DE6A75> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <E0C7B0DD-2A0C-48C6-95CE-1F42CEE0ADA3> ;
     cim:IdentifiedObject.mRID "1821D772-6760-4C88-B69A-C43891DE6A75"^^cim:String ;
-    cim:IdentifiedObject.name "23_25_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <E0C7B0DD-2A0C-48C6-95CE-1F42CEE0ADA3> .
+    cim:IdentifiedObject.name "23_25_1"^^cim:String .
 
 <189A00FF-8DA4-43E3-9870-AF4C59CFC8EA> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <349D1526-7E87-442F-BC09-C8A839FD7D67> ;
     cim:IdentifiedObject.mRID "189A00FF-8DA4-43E3-9870-AF4C59CFC8EA"^^cim:String ;
-    cim:IdentifiedObject.name "82_168_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <349D1526-7E87-442F-BC09-C8A839FD7D67> .
+    cim:IdentifiedObject.name "82_168_0_1_End_1"^^cim:String .
 
 <19524DDE-D3F2-4E06-9AF0-CF2299F3005D> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <432FEFAB-449B-4ECA-8260-D9CA3ABE534C> ;
     cim:IdentifiedObject.mRID "19524DDE-D3F2-4E06-9AF0-CF2299F3005D"^^cim:String ;
-    cim:IdentifiedObject.name "69_75_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <432FEFAB-449B-4ECA-8260-D9CA3ABE534C> .
+    cim:IdentifiedObject.name "69_75_1"^^cim:String .
 
 <19F0FB3B-4955-4A35-9A44-85947DD424D5> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <24783AE0-93AF-4A9D-A817-88927DCDCD4B> ;
     cim:IdentifiedObject.mRID "19F0FB3B-4955-4A35-9A44-85947DD424D5"^^cim:String ;
-    cim:IdentifiedObject.name "94_100_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <24783AE0-93AF-4A9D-A817-88927DCDCD4B> .
+    cim:IdentifiedObject.name "94_100_1"^^cim:String .
 
 <1B28A72C-BCCA-42E1-9213-DDC2E9B77E5E> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <2BCC81B5-CF63-44C4-ABFC-45CF448CD155> ;
     cim:IdentifiedObject.mRID "1B28A72C-BCCA-42E1-9213-DDC2E9B77E5E"^^cim:String ;
-    cim:IdentifiedObject.name "105_106_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <2BCC81B5-CF63-44C4-ABFC-45CF448CD155> .
+    cim:IdentifiedObject.name "105_106_1"^^cim:String .
 
 <1B3BD7C5-7C7F-429F-A1C0-2F10422E5E95> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <A1EAD333-91D6-4E68-AF2D-ABBECA19FFC9> ;
     cim:IdentifiedObject.mRID "1B3BD7C5-7C7F-429F-A1C0-2F10422E5E95"^^cim:String ;
-    cim:IdentifiedObject.name "53_54_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <A1EAD333-91D6-4E68-AF2D-ABBECA19FFC9> .
+    cim:IdentifiedObject.name "53_54_1"^^cim:String .
 
 <1D053D0B-5311-41CB-B73F-D1A5AAF9E875> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <9E1017BC-F757-4485-8878-AECCF82675B4> ;
     cim:IdentifiedObject.mRID "1D053D0B-5311-41CB-B73F-D1A5AAF9E875"^^cim:String ;
-    cim:IdentifiedObject.name "100_180_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <9E1017BC-F757-4485-8878-AECCF82675B4> .
+    cim:IdentifiedObject.name "100_180_0_1_End_1"^^cim:String .
 
 <1D99E4AF-BA0A-4E28-B183-587096E5BC8B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <1AADCD06-4F92-4D1D-9B90-4DE959BBDCB6> ;
     cim:IdentifiedObject.mRID "1D99E4AF-BA0A-4E28-B183-587096E5BC8B"^^cim:String ;
-    cim:IdentifiedObject.name "105_108_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <1AADCD06-4F92-4D1D-9B90-4DE959BBDCB6> .
+    cim:IdentifiedObject.name "105_108_1"^^cim:String .
 
 <1E140725-5E25-412D-A815-DD911437FE04> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <F8B9C016-AC35-44EF-8BF8-AB68A4D53E86> ;
     cim:IdentifiedObject.mRID "1E140725-5E25-412D-A815-DD911437FE04"^^cim:String ;
-    cim:IdentifiedObject.name "55_151_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <F8B9C016-AC35-44EF-8BF8-AB68A4D53E86> .
+    cim:IdentifiedObject.name "55_151_0_1_End_2"^^cim:String .
 
 <20A59BDE-3F9D-4EFF-AAE8-2E10C749BC86> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <6DFFC276-3537-4461-999B-B84C71E1107A> ;
     cim:IdentifiedObject.mRID "20A59BDE-3F9D-4EFF-AAE8-2E10C749BC86"^^cim:String ;
-    cim:IdentifiedObject.name "27_135_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <6DFFC276-3537-4461-999B-B84C71E1107A> .
+    cim:IdentifiedObject.name "27_135_0_1_End_2"^^cim:String .
 
 <20E6F0DB-8E58-4BF8-AABC-70E4E2DC76F2> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <07EC0B35-72F8-40D7-958B-47CF13280401> ;
     cim:IdentifiedObject.mRID "20E6F0DB-8E58-4BF8-AABC-70E4E2DC76F2"^^cim:String ;
-    cim:IdentifiedObject.name "63_64_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <07EC0B35-72F8-40D7-958B-47CF13280401> .
+    cim:IdentifiedObject.name "63_64_1"^^cim:String .
 
 <21EB1383-08CB-414C-A788-1C7B56DB55F0> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <D21737A8-88E5-4EC1-B4AC-972FDD4080A5> ;
     cim:IdentifiedObject.mRID "21EB1383-08CB-414C-A788-1C7B56DB55F0"^^cim:String ;
-    cim:IdentifiedObject.name "100_177_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <D21737A8-88E5-4EC1-B4AC-972FDD4080A5> .
+    cim:IdentifiedObject.name "100_177_0_1_End_2"^^cim:String .
 
 <22F99C24-E3AB-4852-9750-85508E43A4B6> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <408EDC19-5FD9-4913-9CBB-19A16AAAB4D8> ;
     cim:IdentifiedObject.mRID "22F99C24-E3AB-4852-9750-85508E43A4B6"^^cim:String ;
-    cim:IdentifiedObject.name "80_96_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <408EDC19-5FD9-4913-9CBB-19A16AAAB4D8> .
+    cim:IdentifiedObject.name "80_96_1"^^cim:String .
 
 <24255A4C-F53F-4F68-BB92-0B8E6E054FF7> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <BDB2F71D-5E56-49EB-A814-7404791FBD48> ;
     cim:IdentifiedObject.mRID "24255A4C-F53F-4F68-BB92-0B8E6E054FF7"^^cim:String ;
-    cim:IdentifiedObject.name "83_84_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <BDB2F71D-5E56-49EB-A814-7404791FBD48> .
+    cim:IdentifiedObject.name "83_84_1"^^cim:String .
 
 <2485E105-2ADC-4659-816F-6D82CB217049> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <C5B418F6-ECB7-49AA-B186-65E8A49DDFAC> ;
     cim:IdentifiedObject.mRID "2485E105-2ADC-4659-816F-6D82CB217049"^^cim:String ;
-    cim:IdentifiedObject.name "56_59_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <C5B418F6-ECB7-49AA-B186-65E8A49DDFAC> .
+    cim:IdentifiedObject.name "56_59_1"^^cim:String .
 
 <24E17DC7-1E9C-4980-AF60-36210D95777E> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <34B29909-5AAE-4CCA-8FE8-E2E10C1EE282> ;
     cim:IdentifiedObject.mRID "24E17DC7-1E9C-4980-AF60-36210D95777E"^^cim:String ;
-    cim:IdentifiedObject.name "76_164_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <34B29909-5AAE-4CCA-8FE8-E2E10C1EE282> .
+    cim:IdentifiedObject.name "76_164_0_1_End_2"^^cim:String .
 
 <256A073E-59BF-4660-BADD-FC76849BE799> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <8F50C9AD-A0C4-444C-AB0A-3E5A165FB459> ;
     cim:IdentifiedObject.mRID "256A073E-59BF-4660-BADD-FC76849BE799"^^cim:String ;
-    cim:IdentifiedObject.name "8_9_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <8F50C9AD-A0C4-444C-AB0A-3E5A165FB459> .
+    cim:IdentifiedObject.name "8_9_1"^^cim:String .
 
 <284A5015-182A-48BD-AF28-9F36C0AB8E5C> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <6F7D6678-B0BC-4813-8759-3998FF9B1B7C> ;
     cim:IdentifiedObject.mRID "284A5015-182A-48BD-AF28-9F36C0AB8E5C"^^cim:String ;
-    cim:IdentifiedObject.name "18_128_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <6F7D6678-B0BC-4813-8759-3998FF9B1B7C> .
+    cim:IdentifiedObject.name "18_128_0_1_End_2"^^cim:String .
 
 <28806414-46E5-4573-81B2-551E44B948CC> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <8D170689-22A3-4A63-AB8E-0968890B805F> ;
     cim:IdentifiedObject.mRID "28806414-46E5-4573-81B2-551E44B948CC"^^cim:String ;
-    cim:IdentifiedObject.name "110_111_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <8D170689-22A3-4A63-AB8E-0968890B805F> .
+    cim:IdentifiedObject.name "110_111_1"^^cim:String .
 
 <2950ABEF-A11B-4023-B772-3E7E39227C89> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <FB86D588-F6A7-4DAF-B3AE-7F03441D7CAD> ;
     cim:IdentifiedObject.mRID "2950ABEF-A11B-4023-B772-3E7E39227C89"^^cim:String ;
-    cim:IdentifiedObject.name "103_105_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <FB86D588-F6A7-4DAF-B3AE-7F03441D7CAD> .
+    cim:IdentifiedObject.name "103_105_1"^^cim:String .
 
 <2960895D-751B-4358-BAFB-49EC2F6EE4B4> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <359E8AD9-6A0B-4DAC-AF1F-DB266571EAAA> ;
     cim:IdentifiedObject.mRID "2960895D-751B-4358-BAFB-49EC2F6EE4B4"^^cim:String ;
-    cim:IdentifiedObject.name "104_105_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <359E8AD9-6A0B-4DAC-AF1F-DB266571EAAA> .
+    cim:IdentifiedObject.name "104_105_1"^^cim:String .
 
 <298EA8F8-9421-4E77-BFC7-2EB3169CA0CD> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <F211B008-1999-4692-B793-AAA6FC2B7A5A> ;
     cim:IdentifiedObject.mRID "298EA8F8-9421-4E77-BFC7-2EB3169CA0CD"^^cim:String ;
-    cim:IdentifiedObject.name "99_176_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <F211B008-1999-4692-B793-AAA6FC2B7A5A> .
+    cim:IdentifiedObject.name "99_176_0_1_End_2"^^cim:String .
 
 <2AE30F7B-CCD0-4D25-AB9D-6C912AF6D06E> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <97F530E8-CCB7-41A0-B463-D2CDF04985D2> ;
     cim:IdentifiedObject.mRID "2AE30F7B-CCD0-4D25-AB9D-6C912AF6D06E"^^cim:String ;
-    cim:IdentifiedObject.name "18_127_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <97F530E8-CCB7-41A0-B463-D2CDF04985D2> .
+    cim:IdentifiedObject.name "18_127_0_1_End_1"^^cim:String .
 
 <2B54CB58-8935-4162-A54B-5BF8CC152FB7> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <9CBE4964-AE66-469A-A36D-C164F39F316F> ;
     cim:IdentifiedObject.mRID "2B54CB58-8935-4162-A54B-5BF8CC152FB7"^^cim:String ;
-    cim:IdentifiedObject.name "100_104_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <9CBE4964-AE66-469A-A36D-C164F39F316F> .
+    cim:IdentifiedObject.name "100_104_1"^^cim:String .
 
 <2BE14886-46ED-4F86-A652-FE0634DF50C9> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <98E083DC-1560-436E-95B5-83E276BBC1FE> ;
     cim:IdentifiedObject.mRID "2BE14886-46ED-4F86-A652-FE0634DF50C9"^^cim:String ;
-    cim:IdentifiedObject.name "62_155_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <98E083DC-1560-436E-95B5-83E276BBC1FE> .
+    cim:IdentifiedObject.name "62_155_0_1_End_1"^^cim:String .
 
 <2BF0BD7F-30E5-4D6F-9A30-26D40846C92B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <ABD27037-CECF-4F57-8003-71CDCAE4B2C4> ;
     cim:IdentifiedObject.mRID "2BF0BD7F-30E5-4D6F-9A30-26D40846C92B"^^cim:String ;
-    cim:IdentifiedObject.name "45_46_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <ABD27037-CECF-4F57-8003-71CDCAE4B2C4> .
+    cim:IdentifiedObject.name "45_46_1"^^cim:String .
 
 <2C60B53F-2E27-4145-A9B5-A6BD9DC5848E> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <1090BE5C-0BD3-44F5-AE14-E5494C7A999B> ;
     cim:IdentifiedObject.mRID "2C60B53F-2E27-4145-A9B5-A6BD9DC5848E"^^cim:String ;
-    cim:IdentifiedObject.name "30_17_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <1090BE5C-0BD3-44F5-AE14-E5494C7A999B> .
+    cim:IdentifiedObject.name "30_17_0_1_End_2"^^cim:String .
 
 <2D2E5A8D-0BD1-44C2-84F4-78C4AB4DE254> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <2E3C2D02-8863-40E7-9A9A-D62A491E5916> ;
     cim:IdentifiedObject.mRID "2D2E5A8D-0BD1-44C2-84F4-78C4AB4DE254"^^cim:String ;
-    cim:IdentifiedObject.name "49_54_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <2E3C2D02-8863-40E7-9A9A-D62A491E5916> .
+    cim:IdentifiedObject.name "49_54_1"^^cim:String .
 
 <2D4A29B2-56D5-42B6-8BAC-940DEF8600DE> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <ADB18EFC-D038-4A14-ABCD-96D668467A69> ;
     cim:IdentifiedObject.mRID "2D4A29B2-56D5-42B6-8BAC-940DEF8600DE"^^cim:String ;
-    cim:IdentifiedObject.name "40_143_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <ADB18EFC-D038-4A14-ABCD-96D668467A69> .
+    cim:IdentifiedObject.name "40_143_0_1_End_2"^^cim:String .
 
 <2EE17521-4774-4EB2-A3A0-E2ADC6BB26A2> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <460B1758-F120-47A8-B45D-02FB0852AE97> ;
     cim:IdentifiedObject.mRID "2EE17521-4774-4EB2-A3A0-E2ADC6BB26A2"^^cim:String ;
-    cim:IdentifiedObject.name "110_187_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <460B1758-F120-47A8-B45D-02FB0852AE97> .
+    cim:IdentifiedObject.name "110_187_0_1_End_1"^^cim:String .
 
 <2F6EE0FE-779D-4971-B298-DF550A5DEEB3> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <D7B81D09-DCFF-4ACE-80A5-4C6E451B89C1> ;
     cim:IdentifiedObject.mRID "2F6EE0FE-779D-4971-B298-DF550A5DEEB3"^^cim:String ;
-    cim:IdentifiedObject.name "76_164_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <D7B81D09-DCFF-4ACE-80A5-4C6E451B89C1> .
+    cim:IdentifiedObject.name "76_164_0_1_End_1"^^cim:String .
 
 <31FA0CCC-D36B-434A-851C-3113ECD43D8A> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <7D630C20-275E-4C34-97E4-C646D664B90C> ;
     cim:IdentifiedObject.mRID "31FA0CCC-D36B-434A-851C-3113ECD43D8A"^^cim:String ;
-    cim:IdentifiedObject.name "70_160_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <7D630C20-275E-4C34-97E4-C646D664B90C> .
+    cim:IdentifiedObject.name "70_160_0_1_End_1"^^cim:String .
 
 <32E36FA8-54F6-4A0A-8AED-079FF3A2FB9C> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <66773F24-42C9-47D5-A182-E48D7C08794E> ;
     cim:IdentifiedObject.mRID "32E36FA8-54F6-4A0A-8AED-079FF3A2FB9C"^^cim:String ;
-    cim:IdentifiedObject.name "40_42_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <66773F24-42C9-47D5-A182-E48D7C08794E> .
+    cim:IdentifiedObject.name "40_42_1"^^cim:String .
 
 <347D83A8-B583-4E8F-BC37-C7865FE84EB2> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <8B3A2270-EA50-4C1B-80F7-CCE58B86205A> ;
     cim:IdentifiedObject.mRID "347D83A8-B583-4E8F-BC37-C7865FE84EB2"^^cim:String ;
-    cim:IdentifiedObject.name "105_185_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <8B3A2270-EA50-4C1B-80F7-CCE58B86205A> .
+    cim:IdentifiedObject.name "105_185_0_1_End_2"^^cim:String .
 
 <34B94FDF-D39C-4376-865C-50DF6F136B32> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <7C05114A-F364-4AA8-9517-BD0FFA8588B9> ;
     cim:IdentifiedObject.mRID "34B94FDF-D39C-4376-865C-50DF6F136B32"^^cim:String ;
-    cim:IdentifiedObject.name "56_57_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <7C05114A-F364-4AA8-9517-BD0FFA8588B9> .
+    cim:IdentifiedObject.name "56_57_1"^^cim:String .
 
 <352A0D54-16D0-481F-ACC0-BBCAD2404F7B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <669BF484-0202-4923-8037-6DBAC883260F> ;
     cim:IdentifiedObject.mRID "352A0D54-16D0-481F-ACC0-BBCAD2404F7B"^^cim:String ;
-    cim:IdentifiedObject.name "5_11_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <669BF484-0202-4923-8037-6DBAC883260F> .
+    cim:IdentifiedObject.name "5_11_1"^^cim:String .
 
 <3585C524-A5AD-41F9-8128-C6DD02658D1F> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <A0E34DAA-E6D3-4BDB-9ACA-817726A73815> ;
     cim:IdentifiedObject.mRID "3585C524-A5AD-41F9-8128-C6DD02658D1F"^^cim:String ;
-    cim:IdentifiedObject.name "30_17_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <A0E34DAA-E6D3-4BDB-9ACA-817726A73815> .
+    cim:IdentifiedObject.name "30_17_0_1_End_1"^^cim:String .
 
 <35FBB467-AFCE-4DA4-8DDC-8C5B082F432A> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <4C70722E-F4C1-4F32-8F77-68C2B72CDC2A> ;
     cim:IdentifiedObject.mRID "35FBB467-AFCE-4DA4-8DDC-8C5B082F432A"^^cim:String ;
-    cim:IdentifiedObject.name "54_149_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <4C70722E-F4C1-4F32-8F77-68C2B72CDC2A> .
+    cim:IdentifiedObject.name "54_149_0_1_End_2"^^cim:String .
 
 <3663E85B-69F8-4BBE-8AEF-CC57A8792E0F> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <0C020584-FAFC-4296-9F06-5572312E6BE3> ;
     cim:IdentifiedObject.mRID "3663E85B-69F8-4BBE-8AEF-CC57A8792E0F"^^cim:String ;
-    cim:IdentifiedObject.name "54_148_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <0C020584-FAFC-4296-9F06-5572312E6BE3> .
+    cim:IdentifiedObject.name "54_148_0_1_End_1"^^cim:String .
 
 <36A0224B-018A-4730-AEB9-22906AB00E94> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <B392B67E-7729-46D6-ABD8-37D391BDD51C> ;
     cim:IdentifiedObject.mRID "36A0224B-018A-4730-AEB9-22906AB00E94"^^cim:String ;
-    cim:IdentifiedObject.name "12_14_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <B392B67E-7729-46D6-ABD8-37D391BDD51C> .
+    cim:IdentifiedObject.name "12_14_1"^^cim:String .
 
 <36D6CBAB-C86E-4FD3-A01F-109C3389B56B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <BAD6ED2C-454E-471A-868A-CF21DD4048D7> ;
     cim:IdentifiedObject.mRID "36D6CBAB-C86E-4FD3-A01F-109C3389B56B"^^cim:String ;
-    cim:IdentifiedObject.name "8_30_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <BAD6ED2C-454E-471A-868A-CF21DD4048D7> .
+    cim:IdentifiedObject.name "8_30_1"^^cim:String .
 
 <3794DF92-D9D6-4754-BCD8-74B40FC1E706> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <2F86DFDB-F956-45D5-B744-367158BE76A7> ;
     cim:IdentifiedObject.mRID "3794DF92-D9D6-4754-BCD8-74B40FC1E706"^^cim:String ;
-    cim:IdentifiedObject.name "61_154_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <2F86DFDB-F956-45D5-B744-367158BE76A7> .
+    cim:IdentifiedObject.name "61_154_0_1_End_2"^^cim:String .
 
 <38405A45-82E8-4893-8D46-1F0CBA3014DE> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <C7C00C3D-1B5C-4693-858D-EBB72CE8FD89> ;
     cim:IdentifiedObject.mRID "38405A45-82E8-4893-8D46-1F0CBA3014DE"^^cim:String ;
-    cim:IdentifiedObject.name "74_163_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <C7C00C3D-1B5C-4693-858D-EBB72CE8FD89> .
+    cim:IdentifiedObject.name "74_163_0_1_End_2"^^cim:String .
 
 <392F7441-94BA-4B2A-9FAD-4BD53AD041BD> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <20462DB8-9588-4936-B5CB-5A32E7ADB165> ;
     cim:IdentifiedObject.mRID "392F7441-94BA-4B2A-9FAD-4BD53AD041BD"^^cim:String ;
-    cim:IdentifiedObject.name "46_48_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <20462DB8-9588-4936-B5CB-5A32E7ADB165> .
+    cim:IdentifiedObject.name "46_48_1"^^cim:String .
 
 <3993BBE5-78D0-45D5-95B6-14D3F2191285> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <79229E64-A38E-4464-BDCA-6EB75B68182D> ;
     cim:IdentifiedObject.mRID "3993BBE5-78D0-45D5-95B6-14D3F2191285"^^cim:String ;
-    cim:IdentifiedObject.name "69_158_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <79229E64-A38E-4464-BDCA-6EB75B68182D> .
+    cim:IdentifiedObject.name "69_158_0_1_End_2"^^cim:String .
 
 <39970B5E-B4AC-4BA9-9A42-DFF41BAAAE04> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <1A972F71-676B-4151-9419-3E3C4690391D> ;
     cim:IdentifiedObject.mRID "39970B5E-B4AC-4BA9-9A42-DFF41BAAAE04"^^cim:String ;
-    cim:IdentifiedObject.name "32_140_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <1A972F71-676B-4151-9419-3E3C4690391D> .
+    cim:IdentifiedObject.name "32_140_0_1_End_2"^^cim:String .
 
 <3A877C24-AAF2-4545-B5D4-E50EBDAC46F4> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <0AF1FFF6-9BA3-443D-BD92-1301D91427AB> ;
     cim:IdentifiedObject.mRID "3A877C24-AAF2-4545-B5D4-E50EBDAC46F4"^^cim:String ;
-    cim:IdentifiedObject.name "21_22_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <0AF1FFF6-9BA3-443D-BD92-1301D91427AB> .
+    cim:IdentifiedObject.name "21_22_1"^^cim:String .
 
 <3AA7174A-5467-416A-A5D6-BF966B234D72> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <71CB6F36-AB03-4F44-B71D-CFCAD0BD03C5> ;
     cim:IdentifiedObject.mRID "3AA7174A-5467-416A-A5D6-BF966B234D72"^^cim:String ;
-    cim:IdentifiedObject.name "82_83_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <71CB6F36-AB03-4F44-B71D-CFCAD0BD03C5> .
+    cim:IdentifiedObject.name "82_83_1"^^cim:String .
 
 <3B221C39-264C-4194-9126-69D44E8BD843> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <89F2EFAE-EC03-4BAF-8F47-EF91EE3CC664> ;
     cim:IdentifiedObject.mRID "3B221C39-264C-4194-9126-69D44E8BD843"^^cim:String ;
-    cim:IdentifiedObject.name "116_193_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <89F2EFAE-EC03-4BAF-8F47-EF91EE3CC664> .
+    cim:IdentifiedObject.name "116_193_0_1_End_1"^^cim:String .
 
 <3B74337F-40F5-4E91-A832-7B4A47338A0F> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <CCD2A9B8-A6A2-4B39-85E9-DC9521E0984E> ;
     cim:IdentifiedObject.mRID "3B74337F-40F5-4E91-A832-7B4A47338A0F"^^cim:String ;
-    cim:IdentifiedObject.name "84_85_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <CCD2A9B8-A6A2-4B39-85E9-DC9521E0984E> .
+    cim:IdentifiedObject.name "84_85_1"^^cim:String .
 
 <3BDAC420-DEC5-4E7C-96A4-60AD3DD657FC> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <04CA514F-C2AF-4183-B6EE-0317729291F3> ;
     cim:IdentifiedObject.mRID "3BDAC420-DEC5-4E7C-96A4-60AD3DD657FC"^^cim:String ;
-    cim:IdentifiedObject.name "64_65_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <04CA514F-C2AF-4183-B6EE-0317729291F3> .
+    cim:IdentifiedObject.name "64_65_1"^^cim:String .
 
 <3DB0D212-6D90-4174-9484-1580C986FAD5> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <6D807D57-C83E-478A-8521-EFC48081935C> ;
     cim:IdentifiedObject.mRID "3DB0D212-6D90-4174-9484-1580C986FAD5"^^cim:String ;
-    cim:IdentifiedObject.name "108_109_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <6D807D57-C83E-478A-8521-EFC48081935C> .
+    cim:IdentifiedObject.name "108_109_1"^^cim:String .
 
 <3E08C8BB-9B24-4066-876E-CAD445E91DEA> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <FEAE28AE-1843-46C7-B3C3-5620A0F7B5AD> ;
     cim:IdentifiedObject.mRID "3E08C8BB-9B24-4066-876E-CAD445E91DEA"^^cim:String ;
-    cim:IdentifiedObject.name "85_86_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <FEAE28AE-1843-46C7-B3C3-5620A0F7B5AD> .
+    cim:IdentifiedObject.name "85_86_1"^^cim:String .
 
 <3EE3F496-1CC2-4BEA-AD8D-20A9CBC831EC> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <00426FAC-0708-461A-84CA-87591734B6E1> ;
     cim:IdentifiedObject.mRID "3EE3F496-1CC2-4BEA-AD8D-20A9CBC831EC"^^cim:String ;
-    cim:IdentifiedObject.name "36_142_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <00426FAC-0708-461A-84CA-87591734B6E1> .
+    cim:IdentifiedObject.name "36_142_0_1_End_1"^^cim:String .
 
 <3EF72500-DCC7-4B4A-8028-ACB544A295C4> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <16359CA4-FFA0-42A0-9D88-4D4A5B015D63> ;
     cim:IdentifiedObject.mRID "3EF72500-DCC7-4B4A-8028-ACB544A295C4"^^cim:String ;
-    cim:IdentifiedObject.name "1_3_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <16359CA4-FFA0-42A0-9D88-4D4A5B015D63> .
+    cim:IdentifiedObject.name "1_3_1"^^cim:String .
 
 <402E1A33-598F-4BDC-B601-D33A30AA1A7B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <F5CFA959-F259-4CA4-8E99-887B1DE76122> ;
     cim:IdentifiedObject.mRID "402E1A33-598F-4BDC-B601-D33A30AA1A7B"^^cim:String ;
-    cim:IdentifiedObject.name "111_189_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <F5CFA959-F259-4CA4-8E99-887B1DE76122> .
+    cim:IdentifiedObject.name "111_189_0_1_End_1"^^cim:String .
 
 <4105135B-55B9-45AF-B393-6BDFAAE822B7> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <535E5655-4522-48A2-9402-AF5F5B1BCEBE> ;
     cim:IdentifiedObject.mRID "4105135B-55B9-45AF-B393-6BDFAAE822B7"^^cim:String ;
-    cim:IdentifiedObject.name "110_188_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <535E5655-4522-48A2-9402-AF5F5B1BCEBE> .
+    cim:IdentifiedObject.name "110_188_0_1_End_2"^^cim:String .
 
 <41282DF6-1F6A-4A51-8463-44CF8A757797> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <1BA68786-8DE2-4629-A099-475B9BB849A5> ;
     cim:IdentifiedObject.mRID "41282DF6-1F6A-4A51-8463-44CF8A757797"^^cim:String ;
-    cim:IdentifiedObject.name "66_67_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <1BA68786-8DE2-4629-A099-475B9BB849A5> .
+    cim:IdentifiedObject.name "66_67_1"^^cim:String .
 
 <4131E66A-D16B-4335-BF58-2BF3F78687C2> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <D1713FF9-79FF-4E42-9465-9FEA5BE29D7D> ;
     cim:IdentifiedObject.mRID "4131E66A-D16B-4335-BF58-2BF3F78687C2"^^cim:String ;
-    cim:IdentifiedObject.name "74_75_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <D1713FF9-79FF-4E42-9465-9FEA5BE29D7D> .
+    cim:IdentifiedObject.name "74_75_1"^^cim:String .
 
 <4143F469-FB85-466D-BD3D-F54DFB4F6502> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <DC12458A-C195-4A21-AE31-21F4EA44AAEF> ;
     cim:IdentifiedObject.mRID "4143F469-FB85-466D-BD3D-F54DFB4F6502"^^cim:String ;
-    cim:IdentifiedObject.name "92_175_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <DC12458A-C195-4A21-AE31-21F4EA44AAEF> .
+    cim:IdentifiedObject.name "92_175_0_1_End_1"^^cim:String .
 
 <41798E6D-FF01-4E9B-A949-92BA114191B5> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <4F74455D-00C4-49CD-A127-09B58451D5FB> ;
     cim:IdentifiedObject.mRID "41798E6D-FF01-4E9B-A949-92BA114191B5"^^cim:String ;
-    cim:IdentifiedObject.name "92_100_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <4F74455D-00C4-49CD-A127-09B58451D5FB> .
+    cim:IdentifiedObject.name "92_100_1"^^cim:String .
 
 <426759C6-EB9E-44FF-A021-8473EDAE74BE> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <64488A62-3EFF-462C-A7CD-405BD7DC714C> ;
     cim:IdentifiedObject.mRID "426759C6-EB9E-44FF-A021-8473EDAE74BE"^^cim:String ;
-    cim:IdentifiedObject.name "85_89_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <64488A62-3EFF-462C-A7CD-405BD7DC714C> .
+    cim:IdentifiedObject.name "85_89_1"^^cim:String .
 
 <429F22D4-B2DE-4188-B8EB-D601985508DA> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <899A2042-2A33-4D26-BA7A-F1E43F0977BE> ;
     cim:IdentifiedObject.mRID "429F22D4-B2DE-4188-B8EB-D601985508DA"^^cim:String ;
-    cim:IdentifiedObject.name "31_137_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <899A2042-2A33-4D26-BA7A-F1E43F0977BE> .
+    cim:IdentifiedObject.name "31_137_0_1_End_2"^^cim:String .
 
 <43A0745B-9528-441B-9DA8-55C0655E6931> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <9D0B474A-F3DF-415C-9F78-5FA697F8CA62> ;
     cim:IdentifiedObject.mRID "43A0745B-9528-441B-9DA8-55C0655E6931"^^cim:String ;
-    cim:IdentifiedObject.name "1_2_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <9D0B474A-F3DF-415C-9F78-5FA697F8CA62> .
+    cim:IdentifiedObject.name "1_2_1"^^cim:String .
 
 <43B5BBC9-39D1-43CD-BA4C-644D4CEE6051> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <0FA54901-48B1-4F32-B341-9833C20C6CBB> ;
     cim:IdentifiedObject.mRID "43B5BBC9-39D1-43CD-BA4C-644D4CEE6051"^^cim:String ;
-    cim:IdentifiedObject.name "100_179_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <0FA54901-48B1-4F32-B341-9833C20C6CBB> .
+    cim:IdentifiedObject.name "100_179_0_1_End_1"^^cim:String .
 
 <441B1E82-467A-4FE9-A912-4171DD516972> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <F1162848-A89A-4E80-ADD3-DADEA6924B9E> ;
     cim:IdentifiedObject.mRID "441B1E82-467A-4FE9-A912-4171DD516972"^^cim:String ;
-    cim:IdentifiedObject.name "66_157_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <F1162848-A89A-4E80-ADD3-DADEA6924B9E> .
+    cim:IdentifiedObject.name "66_157_0_1_End_1"^^cim:String .
 
 <44669F81-6E89-4DD7-BC96-20B74D1D5275> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <065F7D64-A8FD-441C-82A2-ADD3872A72D8> ;
     cim:IdentifiedObject.mRID "44669F81-6E89-4DD7-BC96-20B74D1D5275"^^cim:String ;
-    cim:IdentifiedObject.name "38_37_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <065F7D64-A8FD-441C-82A2-ADD3872A72D8> .
+    cim:IdentifiedObject.name "38_37_0_1_End_2"^^cim:String .
 
 <45015AB7-9D0F-4B0F-8953-93586C1037DA> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <C2C4253C-6C16-4D63-A302-0BE4CC6C1A95> ;
     cim:IdentifiedObject.mRID "45015AB7-9D0F-4B0F-8953-93586C1037DA"^^cim:String ;
-    cim:IdentifiedObject.name "90_172_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <C2C4253C-6C16-4D63-A302-0BE4CC6C1A95> .
+    cim:IdentifiedObject.name "90_172_0_1_End_1"^^cim:String .
 
 <46EA47CF-A1F2-42D4-8C2A-B8F4D7263CE3> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <3A54EA18-A60F-4C70-8C70-4BB35A616B18> ;
     cim:IdentifiedObject.mRID "46EA47CF-A1F2-42D4-8C2A-B8F4D7263CE3"^^cim:String ;
-    cim:IdentifiedObject.name "17_18_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <3A54EA18-A60F-4C70-8C70-4BB35A616B18> .
+    cim:IdentifiedObject.name "17_18_1"^^cim:String .
 
 <48998358-304F-4392-A51E-28B2197859C3> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <2DB13849-62DD-447A-B98A-2B66F88ACB44> ;
     cim:IdentifiedObject.mRID "48998358-304F-4392-A51E-28B2197859C3"^^cim:String ;
-    cim:IdentifiedObject.name "55_56_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <2DB13849-62DD-447A-B98A-2B66F88ACB44> .
+    cim:IdentifiedObject.name "55_56_1"^^cim:String .
 
 <4950EF2F-11AC-4961-B2C6-538E5D54C53F> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <A25B20CF-0679-4467-B98F-CED414DE4904> ;
     cim:IdentifiedObject.mRID "4950EF2F-11AC-4961-B2C6-538E5D54C53F"^^cim:String ;
-    cim:IdentifiedObject.name "92_175_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <A25B20CF-0679-4467-B98F-CED414DE4904> .
+    cim:IdentifiedObject.name "92_175_0_1_End_2"^^cim:String .
 
 <49CBFFD7-8DCA-4798-9A16-EA32AD7663CD> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <2C386B8A-47CD-4C9A-BA8C-10B3A2BB4D4D> ;
     cim:IdentifiedObject.mRID "49CBFFD7-8DCA-4798-9A16-EA32AD7663CD"^^cim:String ;
-    cim:IdentifiedObject.name "4_120_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <2C386B8A-47CD-4C9A-BA8C-10B3A2BB4D4D> .
+    cim:IdentifiedObject.name "4_120_0_1_End_2"^^cim:String .
 
 <4A7B7FE2-1F4A-4AEA-9F08-3C8599C0BC77> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <C1F309F2-CD86-4DE2-8950-D03BE4759233> ;
     cim:IdentifiedObject.mRID "4A7B7FE2-1F4A-4AEA-9F08-3C8599C0BC77"^^cim:String ;
-    cim:IdentifiedObject.name "94_95_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <C1F309F2-CD86-4DE2-8950-D03BE4759233> .
+    cim:IdentifiedObject.name "94_95_1"^^cim:String .
 
 <4CBD7320-E2FB-4443-ACAB-EA528CB9C4B3> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <1ABC88DA-FFA7-4AB3-923C-A2CDF07AB4EE> ;
     cim:IdentifiedObject.mRID "4CBD7320-E2FB-4443-ACAB-EA528CB9C4B3"^^cim:String ;
-    cim:IdentifiedObject.name "20_21_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <1ABC88DA-FFA7-4AB3-923C-A2CDF07AB4EE> .
+    cim:IdentifiedObject.name "20_21_1"^^cim:String .
 
 <4CF3A79D-3D97-4019-B0F9-5696AB91045E> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <DD04FF77-FB21-41DA-91B2-32CC74C7F805> ;
     cim:IdentifiedObject.mRID "4CF3A79D-3D97-4019-B0F9-5696AB91045E"^^cim:String ;
-    cim:IdentifiedObject.name "25_133_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <DD04FF77-FB21-41DA-91B2-32CC74C7F805> .
+    cim:IdentifiedObject.name "25_133_0_1_End_2"^^cim:String .
 
 <51E68C89-A9D3-4F44-B17C-BFF8C443A81B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <1F901A7A-DD7A-4D0E-A091-A3DD082E77FF> ;
     cim:IdentifiedObject.mRID "51E68C89-A9D3-4F44-B17C-BFF8C443A81B"^^cim:String ;
-    cim:IdentifiedObject.name "80_97_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <1F901A7A-DD7A-4D0E-A091-A3DD082E77FF> .
+    cim:IdentifiedObject.name "80_97_1"^^cim:String .
 
 <5213DB38-C82D-4819-A229-CD8CCA4091AC> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <B88A11BA-9C57-4399-B87E-476C32DA8DBE> ;
     cim:IdentifiedObject.mRID "5213DB38-C82D-4819-A229-CD8CCA4091AC"^^cim:String ;
-    cim:IdentifiedObject.name "77_166_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <B88A11BA-9C57-4399-B87E-476C32DA8DBE> .
+    cim:IdentifiedObject.name "77_166_0_1_End_1"^^cim:String .
 
 <53C57836-2D50-43C6-B2BC-2F2C50483383> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <55E8E6C1-ADC2-4C98-8E59-7C0A40DC1896> ;
     cim:IdentifiedObject.mRID "53C57836-2D50-43C6-B2BC-2F2C50483383"^^cim:String ;
-    cim:IdentifiedObject.name "26_30_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <55E8E6C1-ADC2-4C98-8E59-7C0A40DC1896> .
+    cim:IdentifiedObject.name "26_30_1"^^cim:String .
 
 <54D4ED56-EB44-4E70-ACCB-AF2791D37D3F> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <CEC5A2EE-2138-499D-9A09-B7AE477E35AA> ;
     cim:IdentifiedObject.mRID "54D4ED56-EB44-4E70-ACCB-AF2791D37D3F"^^cim:String ;
-    cim:IdentifiedObject.name "55_59_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <CEC5A2EE-2138-499D-9A09-B7AE477E35AA> .
+    cim:IdentifiedObject.name "55_59_1"^^cim:String .
 
 <5511D2F1-33FC-469A-A680-B9768AFAB4F2> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <7DC1806C-9068-40BA-AE94-895CF961E7C1> ;
     cim:IdentifiedObject.mRID "5511D2F1-33FC-469A-A680-B9768AFAB4F2"^^cim:String ;
-    cim:IdentifiedObject.name "56_59_2"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <7DC1806C-9068-40BA-AE94-895CF961E7C1> .
+    cim:IdentifiedObject.name "56_59_2"^^cim:String .
 
 <5585B3EB-36C9-48CC-8363-6B0FA21D947C> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <67AC299D-2F0D-4F3A-8F95-20C5DCDCA953> ;
     cim:IdentifiedObject.mRID "5585B3EB-36C9-48CC-8363-6B0FA21D947C"^^cim:String ;
-    cim:IdentifiedObject.name "100_106_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <67AC299D-2F0D-4F3A-8F95-20C5DCDCA953> .
+    cim:IdentifiedObject.name "100_106_1"^^cim:String .
 
 <560CA585-2EB6-4568-8E0E-EBAA47C26A52> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <D4BB1D1B-C6AF-424F-9F0C-79430D820B53> ;
     cim:IdentifiedObject.mRID "560CA585-2EB6-4568-8E0E-EBAA47C26A52"^^cim:String ;
-    cim:IdentifiedObject.name "24_131_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <D4BB1D1B-C6AF-424F-9F0C-79430D820B53> .
+    cim:IdentifiedObject.name "24_131_0_1_End_1"^^cim:String .
 
 <56E268DA-94B8-45C3-B588-D13A7D53C3A5> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <6F24DAAA-652B-488A-87E8-CD7B415C8911> ;
     cim:IdentifiedObject.mRID "56E268DA-94B8-45C3-B588-D13A7D53C3A5"^^cim:String ;
-    cim:IdentifiedObject.name "61_62_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <6F24DAAA-652B-488A-87E8-CD7B415C8911> .
+    cim:IdentifiedObject.name "61_62_1"^^cim:String .
 
 <574F403D-E3B3-4C1B-AE02-61FEFA1A9AA5> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <9D43FC86-6ACE-465F-9B5C-5D4D7C36A258> ;
     cim:IdentifiedObject.mRID "574F403D-E3B3-4C1B-AE02-61FEFA1A9AA5"^^cim:String ;
-    cim:IdentifiedObject.name "63_59_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <9D43FC86-6ACE-465F-9B5C-5D4D7C36A258> .
+    cim:IdentifiedObject.name "63_59_0_1_End_2"^^cim:String .
 
 <57E2F198-EE73-4DA8-AB06-791BDBF3FED4> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <24D4E185-6E04-48D6-9BDA-F2E7B493FA18> ;
     cim:IdentifiedObject.mRID "57E2F198-EE73-4DA8-AB06-791BDBF3FED4"^^cim:String ;
-    cim:IdentifiedObject.name "49_54_2"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <24D4E185-6E04-48D6-9BDA-F2E7B493FA18> .
+    cim:IdentifiedObject.name "49_54_2"^^cim:String .
 
 <57F27214-1341-452B-8526-AB4966B98B99> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <E5BF4159-64CC-4AAB-B6D2-6E496525E21D> ;
     cim:IdentifiedObject.mRID "57F27214-1341-452B-8526-AB4966B98B99"^^cim:String ;
-    cim:IdentifiedObject.name "49_146_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <E5BF4159-64CC-4AAB-B6D2-6E496525E21D> .
+    cim:IdentifiedObject.name "49_146_0_1_End_1"^^cim:String .
 
 <5A7612FA-B783-4485-94F5-87633391419E> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <0B980F2F-F829-4AE5-9D07-132F765FB4BD> ;
     cim:IdentifiedObject.mRID "5A7612FA-B783-4485-94F5-87633391419E"^^cim:String ;
-    cim:IdentifiedObject.name "81_80_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <0B980F2F-F829-4AE5-9D07-132F765FB4BD> .
+    cim:IdentifiedObject.name "81_80_0_1_End_1"^^cim:String .
 
 <5A801990-6490-4743-9468-90374CFC98EC> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <6D8E51ED-78DD-4B9F-8D3B-E2CAD20106AD> ;
     cim:IdentifiedObject.mRID "5A801990-6490-4743-9468-90374CFC98EC"^^cim:String ;
-    cim:IdentifiedObject.name "75_77_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <6D8E51ED-78DD-4B9F-8D3B-E2CAD20106AD> .
+    cim:IdentifiedObject.name "75_77_1"^^cim:String .
 
 <5AC95C2E-FB0B-482C-83B5-46B30D2DCB52> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <36C272F5-8E54-4D5D-9216-14AAF928CEF0> ;
     cim:IdentifiedObject.mRID "5AC95C2E-FB0B-482C-83B5-46B30D2DCB52"^^cim:String ;
-    cim:IdentifiedObject.name "65_68_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <36C272F5-8E54-4D5D-9216-14AAF928CEF0> .
+    cim:IdentifiedObject.name "65_68_1"^^cim:String .
 
 <5AD0B77F-73BB-4520-AB29-8684DC85B0F2> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <BEB27675-3917-4768-811C-D77188C19DC3> ;
     cim:IdentifiedObject.mRID "5AD0B77F-73BB-4520-AB29-8684DC85B0F2"^^cim:String ;
-    cim:IdentifiedObject.name "76_77_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <BEB27675-3917-4768-811C-D77188C19DC3> .
+    cim:IdentifiedObject.name "76_77_1"^^cim:String .
 
 <5BFA4F2B-03F3-4DF0-8474-37550C9FB6F7> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <B2000984-5D49-40C0-8647-590B0AA951D7> ;
     cim:IdentifiedObject.mRID "5BFA4F2B-03F3-4DF0-8474-37550C9FB6F7"^^cim:String ;
-    cim:IdentifiedObject.name "27_136_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <B2000984-5D49-40C0-8647-590B0AA951D7> .
+    cim:IdentifiedObject.name "27_136_0_1_End_1"^^cim:String .
 
 <5C07018A-AE82-4BB0-8D38-E920C2D2634F> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <CAA4F5F4-75D5-446A-8D1F-C5027C8CCEE7> ;
     cim:IdentifiedObject.mRID "5C07018A-AE82-4BB0-8D38-E920C2D2634F"^^cim:String ;
-    cim:IdentifiedObject.name "18_19_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <CAA4F5F4-75D5-446A-8D1F-C5027C8CCEE7> .
+    cim:IdentifiedObject.name "18_19_1"^^cim:String .
 
 <5CD769D9-E8C6-4FCE-9AFB-654FAF2997DE> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <AF376178-ADA1-4142-9CCA-0AE26D0AAB45> ;
     cim:IdentifiedObject.mRID "5CD769D9-E8C6-4FCE-9AFB-654FAF2997DE"^^cim:String ;
-    cim:IdentifiedObject.name "34_37_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <AF376178-ADA1-4142-9CCA-0AE26D0AAB45> .
+    cim:IdentifiedObject.name "34_37_1"^^cim:String .
 
 <5CDC8DEB-2C5E-4035-A50D-58889142A1C4> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <669658F9-8C99-40AA-AB61-E3E2A0530BE2> ;
     cim:IdentifiedObject.mRID "5CDC8DEB-2C5E-4035-A50D-58889142A1C4"^^cim:String ;
-    cim:IdentifiedObject.name "69_158_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <669658F9-8C99-40AA-AB61-E3E2A0530BE2> .
+    cim:IdentifiedObject.name "69_158_0_1_End_1"^^cim:String .
 
 <5D8CBA17-DEA3-4D1D-A820-8081EC4F5ED2> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <BE56CCF5-D329-4E6F-B7AC-348D868C2566> ;
     cim:IdentifiedObject.mRID "5D8CBA17-DEA3-4D1D-A820-8081EC4F5ED2"^^cim:String ;
-    cim:IdentifiedObject.name "68_69_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <BE56CCF5-D329-4E6F-B7AC-348D868C2566> .
+    cim:IdentifiedObject.name "68_69_0_1_End_1"^^cim:String .
 
 <5E28BE03-EFAF-4154-A0F0-42FF483A7D9E> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <E5A51C57-A145-4E26-AAC0-FD7769DF5870> ;
     cim:IdentifiedObject.mRID "5E28BE03-EFAF-4154-A0F0-42FF483A7D9E"^^cim:String ;
-    cim:IdentifiedObject.name "93_94_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <E5A51C57-A145-4E26-AAC0-FD7769DF5870> .
+    cim:IdentifiedObject.name "93_94_1"^^cim:String .
 
 <5E370D8B-515C-4231-B49A-44FC540609F4> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <85980EB3-FE39-4538-B9B1-E497A7BBB09C> ;
     cim:IdentifiedObject.mRID "5E370D8B-515C-4231-B49A-44FC540609F4"^^cim:String ;
-    cim:IdentifiedObject.name "71_73_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <85980EB3-FE39-4538-B9B1-E497A7BBB09C> .
+    cim:IdentifiedObject.name "71_73_1"^^cim:String .
 
 <5EDB33A2-096B-4FC2-BE12-F4BE6518FC69> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <7C40D5BF-DBC9-479C-99DC-3432338C33D4> ;
     cim:IdentifiedObject.mRID "5EDB33A2-096B-4FC2-BE12-F4BE6518FC69"^^cim:String ;
-    cim:IdentifiedObject.name "37_40_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <7C40D5BF-DBC9-479C-99DC-3432338C33D4> .
+    cim:IdentifiedObject.name "37_40_1"^^cim:String .
 
 <5FA0E8B5-E8DE-4F80-A256-F3B1D699325D> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <53224FB5-31D6-4C1E-B2FD-75A713D8BD5A> ;
     cim:IdentifiedObject.mRID "5FA0E8B5-E8DE-4F80-A256-F3B1D699325D"^^cim:String ;
-    cim:IdentifiedObject.name "76_118_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <53224FB5-31D6-4C1E-B2FD-75A713D8BD5A> .
+    cim:IdentifiedObject.name "76_118_1"^^cim:String .
 
 <610D1BBD-50D9-47CC-B5E0-D4A6D44CF270> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <605A69E7-7499-4605-84D5-221C38C11DAC> ;
     cim:IdentifiedObject.mRID "610D1BBD-50D9-47CC-B5E0-D4A6D44CF270"^^cim:String ;
-    cim:IdentifiedObject.name "50_57_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <605A69E7-7499-4605-84D5-221C38C11DAC> .
+    cim:IdentifiedObject.name "50_57_1"^^cim:String .
 
 <6136933E-3595-4B82-8021-11404BE381E0> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <95B99790-0BFD-46D1-BBD9-31FA34F10032> ;
     cim:IdentifiedObject.mRID "6136933E-3595-4B82-8021-11404BE381E0"^^cim:String ;
-    cim:IdentifiedObject.name "8_5_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <95B99790-0BFD-46D1-BBD9-31FA34F10032> .
+    cim:IdentifiedObject.name "8_5_0_1_End_2"^^cim:String .
 
 <631CB765-F96E-4FB4-855F-C6CCD0CA33E1> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <2D227E0A-19E1-4CB3-A84A-6C587D61EEE6> ;
     cim:IdentifiedObject.mRID "631CB765-F96E-4FB4-855F-C6CCD0CA33E1"^^cim:String ;
-    cim:IdentifiedObject.name "81_80_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <2D227E0A-19E1-4CB3-A84A-6C587D61EEE6> .
+    cim:IdentifiedObject.name "81_80_0_1_End_2"^^cim:String .
 
 <6350627E-3DD6-424A-860B-9205C4EB3749> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <DB3B0FCE-648A-4F5D-9B50-9D163CF7E1F4> ;
     cim:IdentifiedObject.mRID "6350627E-3DD6-424A-860B-9205C4EB3749"^^cim:String ;
-    cim:IdentifiedObject.name "103_181_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <DB3B0FCE-648A-4F5D-9B50-9D163CF7E1F4> .
+    cim:IdentifiedObject.name "103_181_0_1_End_1"^^cim:String .
 
 <6390C575-BB45-4C11-A696-2DB64103598E> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <124DC4F7-E349-49C2-99F4-0F1BBE0C51D0> ;
     cim:IdentifiedObject.mRID "6390C575-BB45-4C11-A696-2DB64103598E"^^cim:String ;
-    cim:IdentifiedObject.name "65_66_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <124DC4F7-E349-49C2-99F4-0F1BBE0C51D0> .
+    cim:IdentifiedObject.name "65_66_0_1_End_2"^^cim:String .
 
 <63950D15-378A-4889-B525-8B5985CBDB04> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <E24B8296-EB59-4183-AF04-993B559F854A> ;
     cim:IdentifiedObject.mRID "63950D15-378A-4889-B525-8B5985CBDB04"^^cim:String ;
-    cim:IdentifiedObject.name "76_165_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <E24B8296-EB59-4183-AF04-993B559F854A> .
+    cim:IdentifiedObject.name "76_165_0_1_End_2"^^cim:String .
 
 <63AC9CB5-D67F-474D-91C3-3F36A4B981A9> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <A4C72F5F-45D6-4667-AED1-C6C35C8C38F5> ;
     cim:IdentifiedObject.mRID "63AC9CB5-D67F-474D-91C3-3F36A4B981A9"^^cim:String ;
-    cim:IdentifiedObject.name "15_126_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <A4C72F5F-45D6-4667-AED1-C6C35C8C38F5> .
+    cim:IdentifiedObject.name "15_126_0_1_End_1"^^cim:String .
 
 <63E7AC63-3FF7-47B0-B6DD-DB168D0D6180> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <DEDFCDFB-851A-42F0-9054-65DE4409961D> ;
     cim:IdentifiedObject.mRID "63E7AC63-3FF7-47B0-B6DD-DB168D0D6180"^^cim:String ;
-    cim:IdentifiedObject.name "54_59_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <DEDFCDFB-851A-42F0-9054-65DE4409961D> .
+    cim:IdentifiedObject.name "54_59_1"^^cim:String .
 
 <64F2320E-C591-4881-9557-AAA183228233> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <EB400C42-0BDD-4A90-9719-33A9705650FE> ;
     cim:IdentifiedObject.mRID "64F2320E-C591-4881-9557-AAA183228233"^^cim:String ;
-    cim:IdentifiedObject.name "24_132_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <EB400C42-0BDD-4A90-9719-33A9705650FE> .
+    cim:IdentifiedObject.name "24_132_0_1_End_1"^^cim:String .
 
 <65351680-3705-4BD7-A536-7C1235451DB6> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <FE56C1E7-0D37-4638-8941-110C69E96896> ;
     cim:IdentifiedObject.mRID "65351680-3705-4BD7-A536-7C1235451DB6"^^cim:String ;
-    cim:IdentifiedObject.name "7_12_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <FE56C1E7-0D37-4638-8941-110C69E96896> .
+    cim:IdentifiedObject.name "7_12_1"^^cim:String .
 
 <6615D408-AAA3-4B56-8B39-92E5429403D7> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <5E517EAF-0A10-4A9F-9F12-33D0A702D624> ;
     cim:IdentifiedObject.mRID "6615D408-AAA3-4B56-8B39-92E5429403D7"^^cim:String ;
-    cim:IdentifiedObject.name "15_125_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <5E517EAF-0A10-4A9F-9F12-33D0A702D624> .
+    cim:IdentifiedObject.name "15_125_0_1_End_1"^^cim:String .
 
 <66FFAC54-DFC4-46E3-BC65-BE839EFBDB01> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <9535DC10-1D69-4A2E-95A8-1010CB4AADF5> ;
     cim:IdentifiedObject.mRID "66FFAC54-DFC4-46E3-BC65-BE839EFBDB01"^^cim:String ;
-    cim:IdentifiedObject.name "48_49_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <9535DC10-1D69-4A2E-95A8-1010CB4AADF5> .
+    cim:IdentifiedObject.name "48_49_1"^^cim:String .
 
 <6713D1DC-38A9-42D8-A8ED-D7069A6B73B7> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <DBCC86E4-3210-4D48-9F80-31035A61D67F> ;
     cim:IdentifiedObject.mRID "6713D1DC-38A9-42D8-A8ED-D7069A6B73B7"^^cim:String ;
-    cim:IdentifiedObject.name "55_150_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <DBCC86E4-3210-4D48-9F80-31035A61D67F> .
+    cim:IdentifiedObject.name "55_150_0_1_End_1"^^cim:String .
 
 <67CCAE48-956C-4FBF-9DA3-FC2EF2FE0911> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <529D6621-A13E-44DA-888D-BE7CAA111EE1> ;
     cim:IdentifiedObject.mRID "67CCAE48-956C-4FBF-9DA3-FC2EF2FE0911"^^cim:String ;
-    cim:IdentifiedObject.name "49_50_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <529D6621-A13E-44DA-888D-BE7CAA111EE1> .
+    cim:IdentifiedObject.name "49_50_1"^^cim:String .
 
 <680BBAEB-4789-4E56-A202-9F8846AABAD1> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <D3F8A89C-1131-453B-BAD4-ADED9E4879F2> ;
     cim:IdentifiedObject.mRID "680BBAEB-4789-4E56-A202-9F8846AABAD1"^^cim:String ;
-    cim:IdentifiedObject.name "56_58_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <D3F8A89C-1131-453B-BAD4-ADED9E4879F2> .
+    cim:IdentifiedObject.name "56_58_1"^^cim:String .
 
 <68B694B3-213C-49DA-BD2A-AC5300C5BF06> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <0F2D0CBB-0C33-4E50-B5A0-AED082448E4C> ;
     cim:IdentifiedObject.mRID "68B694B3-213C-49DA-BD2A-AC5300C5BF06"^^cim:String ;
-    cim:IdentifiedObject.name "92_102_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <0F2D0CBB-0C33-4E50-B5A0-AED082448E4C> .
+    cim:IdentifiedObject.name "92_102_1"^^cim:String .
 
 <68C3B15C-2A79-446F-9D1C-62B51B0582E9> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <072E5ED9-147D-42B8-B103-DCCD53595341> ;
     cim:IdentifiedObject.mRID "68C3B15C-2A79-446F-9D1C-62B51B0582E9"^^cim:String ;
-    cim:IdentifiedObject.name "69_159_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <072E5ED9-147D-42B8-B103-DCCD53595341> .
+    cim:IdentifiedObject.name "69_159_0_1_End_1"^^cim:String .
 
 <69082356-162F-4A42-A6E9-64FE1569CE82> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <844F6A87-0744-4960-B5F4-4DA81AAB7F6C> ;
     cim:IdentifiedObject.mRID "69082356-162F-4A42-A6E9-64FE1569CE82"^^cim:String ;
-    cim:IdentifiedObject.name "98_100_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <844F6A87-0744-4960-B5F4-4DA81AAB7F6C> .
+    cim:IdentifiedObject.name "98_100_1"^^cim:String .
 
 <69D2065B-7851-415A-9C74-B0EFF5F4511B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <4C8832FD-14F2-4138-82C3-235819E1A4C9> ;
     cim:IdentifiedObject.mRID "69D2065B-7851-415A-9C74-B0EFF5F4511B"^^cim:String ;
-    cim:IdentifiedObject.name "56_152_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <4C8832FD-14F2-4138-82C3-235819E1A4C9> .
+    cim:IdentifiedObject.name "56_152_0_1_End_2"^^cim:String .
 
 <6A19751F-975C-4A86-A9B2-9C59CA6032D5> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <C79DC743-421E-4219-AB03-53AE64ED1742> ;
     cim:IdentifiedObject.mRID "6A19751F-975C-4A86-A9B2-9C59CA6032D5"^^cim:String ;
-    cim:IdentifiedObject.name "27_32_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <C79DC743-421E-4219-AB03-53AE64ED1742> .
+    cim:IdentifiedObject.name "27_32_1"^^cim:String .
 
 <6BA7ADE6-245B-41BC-9D1E-CB1B301859EF> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <0B2C437F-0C22-47E6-A15F-9ABB2F67CCF4> ;
     cim:IdentifiedObject.mRID "6BA7ADE6-245B-41BC-9D1E-CB1B301859EF"^^cim:String ;
-    cim:IdentifiedObject.name "85_88_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <0B2C437F-0C22-47E6-A15F-9ABB2F67CCF4> .
+    cim:IdentifiedObject.name "85_88_1"^^cim:String .
 
 <6C2630A1-5860-4922-84B0-2439FA6AC1A4> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <F7C9B019-483C-4978-B70E-A6B0259F30B7> ;
     cim:IdentifiedObject.mRID "6C2630A1-5860-4922-84B0-2439FA6AC1A4"^^cim:String ;
-    cim:IdentifiedObject.name "34_141_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <F7C9B019-483C-4978-B70E-A6B0259F30B7> .
+    cim:IdentifiedObject.name "34_141_0_1_End_2"^^cim:String .
 
 <6C4F677C-D8DA-4AB1-9EEE-53F1EFD0D075> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <6DD56C5B-06C7-4185-8542-C38F0B977AF3> ;
     cim:IdentifiedObject.mRID "6C4F677C-D8DA-4AB1-9EEE-53F1EFD0D075"^^cim:String ;
-    cim:IdentifiedObject.name "1_119_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <6DD56C5B-06C7-4185-8542-C38F0B977AF3> .
+    cim:IdentifiedObject.name "1_119_0_1_End_2"^^cim:String .
 
 <6CD13027-AC1D-4BA2-9834-73E143E4BFF1> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <72FF07E8-E469-4B63-A265-97005192904C> ;
     cim:IdentifiedObject.mRID "6CD13027-AC1D-4BA2-9834-73E143E4BFF1"^^cim:String ;
-    cim:IdentifiedObject.name "69_70_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <72FF07E8-E469-4B63-A265-97005192904C> .
+    cim:IdentifiedObject.name "69_70_1"^^cim:String .
 
 <6E975C82-A44C-4E50-8B52-40B1E1666675> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <6FB634AF-9D69-4EF1-B9B7-A2249168F7E1> ;
     cim:IdentifiedObject.mRID "6E975C82-A44C-4E50-8B52-40B1E1666675"^^cim:String ;
-    cim:IdentifiedObject.name "12_117_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <6FB634AF-9D69-4EF1-B9B7-A2249168F7E1> .
+    cim:IdentifiedObject.name "12_117_1"^^cim:String .
 
 <70BA0BD7-FBF1-49ED-A551-9502D190E0B8> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <AB5B246D-99AB-442A-85B3-34A9D61970AA> ;
     cim:IdentifiedObject.mRID "70BA0BD7-FBF1-49ED-A551-9502D190E0B8"^^cim:String ;
-    cim:IdentifiedObject.name "18_128_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <AB5B246D-99AB-442A-85B3-34A9D61970AA> .
+    cim:IdentifiedObject.name "18_128_0_1_End_1"^^cim:String .
 
 <71D7815F-3CBD-4F14-B330-2DE3717B0816> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <82588AC2-35DB-444C-BEF1-EB94F03C3452> ;
     cim:IdentifiedObject.mRID "71D7815F-3CBD-4F14-B330-2DE3717B0816"^^cim:String ;
-    cim:IdentifiedObject.name "82_96_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <82588AC2-35DB-444C-BEF1-EB94F03C3452> .
+    cim:IdentifiedObject.name "82_96_1"^^cim:String .
 
 <72A08D86-7986-4850-9C9D-45E515165FF5> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <C58B2F6B-2864-47B0-AEBF-BDD1215BF821> ;
     cim:IdentifiedObject.mRID "72A08D86-7986-4850-9C9D-45E515165FF5"^^cim:String ;
-    cim:IdentifiedObject.name "27_28_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <C58B2F6B-2864-47B0-AEBF-BDD1215BF821> .
+    cim:IdentifiedObject.name "27_28_1"^^cim:String .
 
 <7325098A-B3F3-4C83-8A4D-05F2A037E8BE> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <9BF195C3-297C-4884-AEFD-ADE88D8554D9> ;
     cim:IdentifiedObject.mRID "7325098A-B3F3-4C83-8A4D-05F2A037E8BE"^^cim:String ;
-    cim:IdentifiedObject.name "24_70_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <9BF195C3-297C-4884-AEFD-ADE88D8554D9> .
+    cim:IdentifiedObject.name "24_70_1"^^cim:String .
 
 <73A2A4FC-311A-4F3D-9DBF-F8CCB367CD09> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <D56B43BB-D304-45A3-B5E3-785C566785B7> ;
     cim:IdentifiedObject.mRID "73A2A4FC-311A-4F3D-9DBF-F8CCB367CD09"^^cim:String ;
-    cim:IdentifiedObject.name "63_59_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <D56B43BB-D304-45A3-B5E3-785C566785B7> .
+    cim:IdentifiedObject.name "63_59_0_1_End_1"^^cim:String .
 
 <744DD26B-800A-4276-A8C3-132E1A3AA497> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <59935DA8-801A-47B2-8BC5-6A6DCFE591AF> ;
     cim:IdentifiedObject.mRID "744DD26B-800A-4276-A8C3-132E1A3AA497"^^cim:String ;
-    cim:IdentifiedObject.name "31_32_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <59935DA8-801A-47B2-8BC5-6A6DCFE591AF> .
+    cim:IdentifiedObject.name "31_32_1"^^cim:String .
 
 <76705B88-99D2-421E-9E4F-06E6687F5D2E> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <D30BABAD-C60B-499F-B845-98CEF0F72EF9> ;
     cim:IdentifiedObject.mRID "76705B88-99D2-421E-9E4F-06E6687F5D2E"^^cim:String ;
-    cim:IdentifiedObject.name "27_115_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <D30BABAD-C60B-499F-B845-98CEF0F72EF9> .
+    cim:IdentifiedObject.name "27_115_1"^^cim:String .
 
 <76CA6206-A646-42C8-8A68-423FB219ECC1> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <8732EE2F-EA4D-4D9D-AED6-E1EE4A903275> ;
     cim:IdentifiedObject.mRID "76CA6206-A646-42C8-8A68-423FB219ECC1"^^cim:String ;
-    cim:IdentifiedObject.name "11_13_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <8732EE2F-EA4D-4D9D-AED6-E1EE4A903275> .
+    cim:IdentifiedObject.name "11_13_1"^^cim:String .
 
 <772D3ACD-9663-4BED-B357-B2FA94F4A7ED> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <2A1230B2-4C48-4D92-9241-99F12510B6FE> ;
     cim:IdentifiedObject.mRID "772D3ACD-9663-4BED-B357-B2FA94F4A7ED"^^cim:String ;
-    cim:IdentifiedObject.name "8_5_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <2A1230B2-4C48-4D92-9241-99F12510B6FE> .
+    cim:IdentifiedObject.name "8_5_0_1_End_1"^^cim:String .
 
 <77438F33-6E34-41A6-932C-A60505E196AA> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <DBC8B3F2-A4EC-47C2-9E4E-752B88B08D06> ;
     cim:IdentifiedObject.mRID "77438F33-6E34-41A6-932C-A60505E196AA"^^cim:String ;
-    cim:IdentifiedObject.name "89_171_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <DBC8B3F2-A4EC-47C2-9E4E-752B88B08D06> .
+    cim:IdentifiedObject.name "89_171_0_1_End_2"^^cim:String .
 
 <78C04D98-972C-412C-BE1E-D8E8F9EBBDF0> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <EFE81E59-47A0-4E8D-B997-F8391C7C3E51> ;
     cim:IdentifiedObject.mRID "78C04D98-972C-412C-BE1E-D8E8F9EBBDF0"^^cim:String ;
-    cim:IdentifiedObject.name "23_32_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <EFE81E59-47A0-4E8D-B997-F8391C7C3E51> .
+    cim:IdentifiedObject.name "23_32_1"^^cim:String .
 
 <7947EA6C-59F2-4FB2-B353-58C9B1DCFFA7> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <5A246992-B1F7-4280-B4BE-C8439D8201A5> ;
     cim:IdentifiedObject.mRID "7947EA6C-59F2-4FB2-B353-58C9B1DCFFA7"^^cim:String ;
-    cim:IdentifiedObject.name "22_23_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <5A246992-B1F7-4280-B4BE-C8439D8201A5> .
+    cim:IdentifiedObject.name "22_23_1"^^cim:String .
 
 <79760B96-B2AA-4C9E-9123-06F84C442027> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <94133CCF-0C88-439E-94F3-10A4E781A42F> ;
     cim:IdentifiedObject.mRID "79760B96-B2AA-4C9E-9123-06F84C442027"^^cim:String ;
-    cim:IdentifiedObject.name "62_67_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <94133CCF-0C88-439E-94F3-10A4E781A42F> .
+    cim:IdentifiedObject.name "62_67_1"^^cim:String .
 
 <7C096FD4-D34D-41E7-8288-2CF6B0D3DF40> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <CB790DFC-E534-4DB0-9C82-613877848BAC> ;
     cim:IdentifiedObject.mRID "7C096FD4-D34D-41E7-8288-2CF6B0D3DF40"^^cim:String ;
-    cim:IdentifiedObject.name "91_173_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <CB790DFC-E534-4DB0-9C82-613877848BAC> .
+    cim:IdentifiedObject.name "91_173_0_1_End_1"^^cim:String .
 
 <7D0209E7-0B1E-480E-9921-7E5A333EDB0B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <44F7375A-09C6-4E3A-9F03-84557CBD59FD> ;
     cim:IdentifiedObject.mRID "7D0209E7-0B1E-480E-9921-7E5A333EDB0B"^^cim:String ;
-    cim:IdentifiedObject.name "80_167_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <44F7375A-09C6-4E3A-9F03-84557CBD59FD> .
+    cim:IdentifiedObject.name "80_167_0_1_End_2"^^cim:String .
 
 <7E7EF649-3D73-407E-8F9F-85F76760582A> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <B66AF57E-C8C6-41DE-AD67-0C96482DB7C7> ;
     cim:IdentifiedObject.mRID "7E7EF649-3D73-407E-8F9F-85F76760582A"^^cim:String ;
-    cim:IdentifiedObject.name "100_178_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <B66AF57E-C8C6-41DE-AD67-0C96482DB7C7> .
+    cim:IdentifiedObject.name "100_178_0_1_End_2"^^cim:String .
 
 <7FE9F55D-4762-4A2D-A00F-F77B83F70D55> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <C9EA864B-92A4-4B05-86A0-E4E5B64021B7> ;
     cim:IdentifiedObject.mRID "7FE9F55D-4762-4A2D-A00F-F77B83F70D55"^^cim:String ;
-    cim:IdentifiedObject.name "32_139_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <C9EA864B-92A4-4B05-86A0-E4E5B64021B7> .
+    cim:IdentifiedObject.name "32_139_0_1_End_1"^^cim:String .
 
 <809D8E5F-DAA3-40BB-9E40-D630F453DC72> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <0F3167C7-A3FE-4295-8704-C25F72DABF1E> ;
     cim:IdentifiedObject.mRID "809D8E5F-DAA3-40BB-9E40-D630F453DC72"^^cim:String ;
-    cim:IdentifiedObject.name "42_144_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <0F3167C7-A3FE-4295-8704-C25F72DABF1E> .
+    cim:IdentifiedObject.name "42_144_0_1_End_2"^^cim:String .
 
 <80AD08F6-EB74-4838-B60E-070025939686> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <17F4026E-6B90-4351-B904-8731DCBE7AF7> ;
     cim:IdentifiedObject.mRID "80AD08F6-EB74-4838-B60E-070025939686"^^cim:String ;
-    cim:IdentifiedObject.name "110_112_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <17F4026E-6B90-4351-B904-8731DCBE7AF7> .
+    cim:IdentifiedObject.name "110_112_1"^^cim:String .
 
 <82077B6B-C953-4777-BED3-3DD33A69DBF4> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <FE94B045-17CD-4697-BBF7-9DB05798C071> ;
     cim:IdentifiedObject.mRID "82077B6B-C953-4777-BED3-3DD33A69DBF4"^^cim:String ;
-    cim:IdentifiedObject.name "38_65_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <FE94B045-17CD-4697-BBF7-9DB05798C071> .
+    cim:IdentifiedObject.name "38_65_1"^^cim:String .
 
 <82359E80-BED9-40B4-A9C1-A3A947B843C9> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <C3CC35BB-39D4-4C5C-A49D-EDD362F32CF0> ;
     cim:IdentifiedObject.mRID "82359E80-BED9-40B4-A9C1-A3A947B843C9"^^cim:String ;
-    cim:IdentifiedObject.name "11_12_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <C3CC35BB-39D4-4C5C-A49D-EDD362F32CF0> .
+    cim:IdentifiedObject.name "11_12_1"^^cim:String .
 
 <82DB9E21-DF57-4A9A-A579-B03B53BC7CF6> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <F79DDCB3-383E-41D8-9F29-F17D1444E1B0> ;
     cim:IdentifiedObject.mRID "82DB9E21-DF57-4A9A-A579-B03B53BC7CF6"^^cim:String ;
-    cim:IdentifiedObject.name "104_183_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <F79DDCB3-383E-41D8-9F29-F17D1444E1B0> .
+    cim:IdentifiedObject.name "104_183_0_1_End_2"^^cim:String .
 
 <84D9E947-DA07-449F-9D8A-B72A519DE8FF> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <E365EDD4-6293-4D16-9C6D-9717301FF219> ;
     cim:IdentifiedObject.mRID "84D9E947-DA07-449F-9D8A-B72A519DE8FF"^^cim:String ;
-    cim:IdentifiedObject.name "101_102_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <E365EDD4-6293-4D16-9C6D-9717301FF219> .
+    cim:IdentifiedObject.name "101_102_1"^^cim:String .
 
 <85BC2512-7E1D-42E1-AD79-1FA4433EE4F7> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <60904B21-FA52-443A-8A76-F7EA730C9ACE> ;
     cim:IdentifiedObject.mRID "85BC2512-7E1D-42E1-AD79-1FA4433EE4F7"^^cim:String ;
-    cim:IdentifiedObject.name "92_174_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <60904B21-FA52-443A-8A76-F7EA730C9ACE> .
+    cim:IdentifiedObject.name "92_174_0_1_End_1"^^cim:String .
 
 <85EE75FF-CBB3-4717-9A19-871E2BFC5A74> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <239E84C5-5A79-4715-AF8A-FB7D32D2D5B8> ;
     cim:IdentifiedObject.mRID "85EE75FF-CBB3-4717-9A19-871E2BFC5A74"^^cim:String ;
-    cim:IdentifiedObject.name "34_36_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <239E84C5-5A79-4715-AF8A-FB7D32D2D5B8> .
+    cim:IdentifiedObject.name "34_36_1"^^cim:String .
 
 <8717EB19-C3CE-4B0F-96BA-E610525F477D> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <41589065-7EE0-4BE4-91EF-57E5537B361E> ;
     cim:IdentifiedObject.mRID "8717EB19-C3CE-4B0F-96BA-E610525F477D"^^cim:String ;
-    cim:IdentifiedObject.name "24_132_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <41589065-7EE0-4BE4-91EF-57E5537B361E> .
+    cim:IdentifiedObject.name "24_132_0_1_End_2"^^cim:String .
 
 <87CA34B9-528D-4D5C-AE77-4D9FF91E1756> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <5B97688A-F5DE-487D-8A3D-366057840794> ;
     cim:IdentifiedObject.mRID "87CA34B9-528D-4D5C-AE77-4D9FF91E1756"^^cim:String ;
-    cim:IdentifiedObject.name "107_186_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <5B97688A-F5DE-487D-8A3D-366057840794> .
+    cim:IdentifiedObject.name "107_186_0_1_End_2"^^cim:String .
 
 <89472B58-0CEA-40F4-A8CB-F73F87739E61> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <04F0B42B-5C87-471E-B13A-7649E1CB20F1> ;
     cim:IdentifiedObject.mRID "89472B58-0CEA-40F4-A8CB-F73F87739E61"^^cim:String ;
-    cim:IdentifiedObject.name "25_133_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <04F0B42B-5C87-471E-B13A-7649E1CB20F1> .
+    cim:IdentifiedObject.name "25_133_0_1_End_1"^^cim:String .
 
 <89650824-3904-4784-BEF7-26ED11BD51D3> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <231960D0-F806-47C9-AC6D-313F2EDF7E7D> ;
     cim:IdentifiedObject.mRID "89650824-3904-4784-BEF7-26ED11BD51D3"^^cim:String ;
-    cim:IdentifiedObject.name "33_37_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <231960D0-F806-47C9-AC6D-313F2EDF7E7D> .
+    cim:IdentifiedObject.name "33_37_1"^^cim:String .
 
 <89AE7F2C-7535-4C19-9AE2-72AE90403F4F> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <7140F5B4-0738-45FD-89CE-D6EB45A89CBC> ;
     cim:IdentifiedObject.mRID "89AE7F2C-7535-4C19-9AE2-72AE90403F4F"^^cim:String ;
-    cim:IdentifiedObject.name "116_193_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <7140F5B4-0738-45FD-89CE-D6EB45A89CBC> .
+    cim:IdentifiedObject.name "116_193_0_1_End_2"^^cim:String .
 
 <8B114F5A-1E3F-4B1C-BD0F-9F7333E37606> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <9858FE92-88BB-4CF1-B7E9-F15A6F0422F3> ;
     cim:IdentifiedObject.mRID "8B114F5A-1E3F-4B1C-BD0F-9F7333E37606"^^cim:String ;
-    cim:IdentifiedObject.name "55_151_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <9858FE92-88BB-4CF1-B7E9-F15A6F0422F3> .
+    cim:IdentifiedObject.name "55_151_0_1_End_1"^^cim:String .
 
 <8B19C6B5-3A00-4FAE-B843-7AF8916FD594> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <B57A6655-110C-4487-A96E-608297EE51FC> ;
     cim:IdentifiedObject.mRID "8B19C6B5-3A00-4FAE-B843-7AF8916FD594"^^cim:String ;
-    cim:IdentifiedObject.name "8_122_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <B57A6655-110C-4487-A96E-608297EE51FC> .
+    cim:IdentifiedObject.name "8_122_0_1_End_1"^^cim:String .
 
 <8B4598E3-B84B-4DB2-AE40-253539E67926> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <1CE324FA-28A6-4334-B833-B63ED2A195A9> ;
     cim:IdentifiedObject.mRID "8B4598E3-B84B-4DB2-AE40-253539E67926"^^cim:String ;
-    cim:IdentifiedObject.name "76_165_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <1CE324FA-28A6-4334-B833-B63ED2A195A9> .
+    cim:IdentifiedObject.name "76_165_0_1_End_1"^^cim:String .
 
 <8C4CC407-0791-45DD-B3FD-385D767FEF8B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <D12FEE6C-1A6F-48F2-8D37-C438C124D3B7> ;
     cim:IdentifiedObject.mRID "8C4CC407-0791-45DD-B3FD-385D767FEF8B"^^cim:String ;
-    cim:IdentifiedObject.name "85_169_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <D12FEE6C-1A6F-48F2-8D37-C438C124D3B7> .
+    cim:IdentifiedObject.name "85_169_0_1_End_2"^^cim:String .
 
 <8C86C57E-F2E6-47E5-ADE8-43B781D1F717> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <E4E83A3C-DA9A-49EC-B9A9-C52D013E19F0> ;
     cim:IdentifiedObject.mRID "8C86C57E-F2E6-47E5-ADE8-43B781D1F717"^^cim:String ;
-    cim:IdentifiedObject.name "15_33_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <E4E83A3C-DA9A-49EC-B9A9-C52D013E19F0> .
+    cim:IdentifiedObject.name "15_33_1"^^cim:String .
 
 <8E24727C-78EE-424A-9E2D-4ED237FDEF5B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <FC7B4A0F-7B94-44F3-A7F0-922876C4BA6C> ;
     cim:IdentifiedObject.mRID "8E24727C-78EE-424A-9E2D-4ED237FDEF5B"^^cim:String ;
-    cim:IdentifiedObject.name "89_92_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <FC7B4A0F-7B94-44F3-A7F0-922876C4BA6C> .
+    cim:IdentifiedObject.name "89_92_1"^^cim:String .
 
 <8EBFACA1-3C08-46CB-9AF7-B59197BEF707> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <A350F0DB-072D-424F-B14F-ED6472AD1816> ;
     cim:IdentifiedObject.mRID "8EBFACA1-3C08-46CB-9AF7-B59197BEF707"^^cim:String ;
-    cim:IdentifiedObject.name "10_123_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <A350F0DB-072D-424F-B14F-ED6472AD1816> .
+    cim:IdentifiedObject.name "10_123_0_1_End_2"^^cim:String .
 
 <8F216728-6CE0-45EE-82A9-E3FF8FB24CED> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <4A0E5710-59D5-4F37-ABCD-DF6D5B570628> ;
     cim:IdentifiedObject.mRID "8F216728-6CE0-45EE-82A9-E3FF8FB24CED"^^cim:String ;
-    cim:IdentifiedObject.name "89_90_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <4A0E5710-59D5-4F37-ABCD-DF6D5B570628> .
+    cim:IdentifiedObject.name "89_90_1"^^cim:String .
 
 <91479D15-5800-4897-8CCC-AB19BC95339C> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <6467E8FE-B954-4602-8580-2CBFDFADAE11> ;
     cim:IdentifiedObject.mRID "91479D15-5800-4897-8CCC-AB19BC95339C"^^cim:String ;
-    cim:IdentifiedObject.name "45_49_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <6467E8FE-B954-4602-8580-2CBFDFADAE11> .
+    cim:IdentifiedObject.name "45_49_1"^^cim:String .
 
 <91518CF2-FE36-4601-AA97-548E46B36652> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <5A9D618F-F27F-4593-B4C9-A6A194A48A58> ;
     cim:IdentifiedObject.mRID "91518CF2-FE36-4601-AA97-548E46B36652"^^cim:String ;
-    cim:IdentifiedObject.name "26_134_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <5A9D618F-F27F-4593-B4C9-A6A194A48A58> .
+    cim:IdentifiedObject.name "26_134_0_1_End_2"^^cim:String .
 
 <91C316C1-94B6-41C7-897D-BB8D90B73970> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <86D6EF1A-FA18-43B0-A8B2-CA8F4194CAF6> ;
     cim:IdentifiedObject.mRID "91C316C1-94B6-41C7-897D-BB8D90B73970"^^cim:String ;
-    cim:IdentifiedObject.name "31_138_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <86D6EF1A-FA18-43B0-A8B2-CA8F4194CAF6> .
+    cim:IdentifiedObject.name "31_138_0_1_End_2"^^cim:String .
 
 <91D9C431-9EAA-4F75-8A37-1B9446859977> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <E2758803-6340-4DA2-B120-6576A3E30389> ;
     cim:IdentifiedObject.mRID "91D9C431-9EAA-4F75-8A37-1B9446859977"^^cim:String ;
-    cim:IdentifiedObject.name "19_34_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <E2758803-6340-4DA2-B120-6576A3E30389> .
+    cim:IdentifiedObject.name "19_34_1"^^cim:String .
 
 <9271A388-1E06-4F98-8132-141BB225BBE7> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <9CF5E112-0751-475C-A35A-49C0DBEC6209> ;
     cim:IdentifiedObject.mRID "9271A388-1E06-4F98-8132-141BB225BBE7"^^cim:String ;
-    cim:IdentifiedObject.name "19_129_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <9CF5E112-0751-475C-A35A-49C0DBEC6209> .
+    cim:IdentifiedObject.name "19_129_0_1_End_1"^^cim:String .
 
 <93C220AD-0973-4C4F-914F-20316DEA5A76> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <5356A44C-F519-4C41-B9EB-D04540D44BC2> ;
     cim:IdentifiedObject.mRID "93C220AD-0973-4C4F-914F-20316DEA5A76"^^cim:String ;
-    cim:IdentifiedObject.name "72_161_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <5356A44C-F519-4C41-B9EB-D04540D44BC2> .
+    cim:IdentifiedObject.name "72_161_0_1_End_2"^^cim:String .
 
 <95887F71-E550-42DC-A007-6787B85C8B54> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <994B88F0-EF29-4986-AC4D-3461F8BD4264> ;
     cim:IdentifiedObject.mRID "95887F71-E550-42DC-A007-6787B85C8B54"^^cim:String ;
-    cim:IdentifiedObject.name "18_127_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <994B88F0-EF29-4986-AC4D-3461F8BD4264> .
+    cim:IdentifiedObject.name "18_127_0_1_End_2"^^cim:String .
 
 <95DE718A-04D6-4ED9-8C32-AE599AA2A835> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <CD1A7876-741E-4147-8A46-9CB6CABD3A25> ;
     cim:IdentifiedObject.mRID "95DE718A-04D6-4ED9-8C32-AE599AA2A835"^^cim:String ;
-    cim:IdentifiedObject.name "91_173_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <CD1A7876-741E-4147-8A46-9CB6CABD3A25> .
+    cim:IdentifiedObject.name "91_173_0_1_End_2"^^cim:String .
 
 <96536671-3D0B-46B9-A122-B40E38ABB0DB> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <30C0278B-9C9F-433A-BCCB-93E44F73BF3F> ;
     cim:IdentifiedObject.mRID "96536671-3D0B-46B9-A122-B40E38ABB0DB"^^cim:String ;
-    cim:IdentifiedObject.name "110_187_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <30C0278B-9C9F-433A-BCCB-93E44F73BF3F> .
+    cim:IdentifiedObject.name "110_187_0_1_End_2"^^cim:String .
 
 <9733DB01-F9DB-4211-8099-F4A875DE33EC> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <808E65E9-FD6F-4E6B-9A36-785CE2E90066> ;
     cim:IdentifiedObject.mRID "9733DB01-F9DB-4211-8099-F4A875DE33EC"^^cim:String ;
-    cim:IdentifiedObject.name "87_170_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <808E65E9-FD6F-4E6B-9A36-785CE2E90066> .
+    cim:IdentifiedObject.name "87_170_0_1_End_2"^^cim:String .
 
 <97A868AC-0EBD-4E4B-B7FF-EB4C1119DA02> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <F93916BA-DB24-4F69-996B-B777CDE12BB7> ;
     cim:IdentifiedObject.mRID "97A868AC-0EBD-4E4B-B7FF-EB4C1119DA02"^^cim:String ;
-    cim:IdentifiedObject.name "42_49_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <F93916BA-DB24-4F69-996B-B777CDE12BB7> .
+    cim:IdentifiedObject.name "42_49_1"^^cim:String .
 
 <98085F13-BC45-4220-993C-091F46BD3696> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <DAE5AA5B-3BA3-433B-92BA-34247B7B43C2> ;
     cim:IdentifiedObject.mRID "98085F13-BC45-4220-993C-091F46BD3696"^^cim:String ;
-    cim:IdentifiedObject.name "65_156_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <DAE5AA5B-3BA3-433B-92BA-34247B7B43C2> .
+    cim:IdentifiedObject.name "65_156_0_1_End_2"^^cim:String .
 
 <986C6751-67AC-47C1-96CF-4C1A0DBCC6D0> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <60D6BE95-743D-447F-9091-F939F75FDDFA> ;
     cim:IdentifiedObject.mRID "986C6751-67AC-47C1-96CF-4C1A0DBCC6D0"^^cim:String ;
-    cim:IdentifiedObject.name "40_143_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <60D6BE95-743D-447F-9091-F939F75FDDFA> .
+    cim:IdentifiedObject.name "40_143_0_1_End_1"^^cim:String .
 
 <9883C36D-620E-4E8A-8D6D-24EFF6F67036> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <B561A521-A6BD-47DE-8EA8-27ECCD0A16E8> ;
     cim:IdentifiedObject.mRID "9883C36D-620E-4E8A-8D6D-24EFF6F67036"^^cim:String ;
-    cim:IdentifiedObject.name "90_172_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <B561A521-A6BD-47DE-8EA8-27ECCD0A16E8> .
+    cim:IdentifiedObject.name "90_172_0_1_End_2"^^cim:String .
 
 <9A2E1CA0-30C4-4030-9BA6-117CACB10E9E> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <691A9961-89CF-484C-834A-3DE9D7864B6A> ;
     cim:IdentifiedObject.mRID "9A2E1CA0-30C4-4030-9BA6-117CACB10E9E"^^cim:String ;
-    cim:IdentifiedObject.name "34_43_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <691A9961-89CF-484C-834A-3DE9D7864B6A> .
+    cim:IdentifiedObject.name "34_43_1"^^cim:String .
 
 <9A3383CF-33A2-4FCF-AB82-2C6AEC49A328> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <7C5AACAA-3BC2-46B3-9329-1779D8394A42> ;
     cim:IdentifiedObject.mRID "9A3383CF-33A2-4FCF-AB82-2C6AEC49A328"^^cim:String ;
-    cim:IdentifiedObject.name "32_140_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <7C5AACAA-3BC2-46B3-9329-1779D8394A42> .
+    cim:IdentifiedObject.name "32_140_0_1_End_1"^^cim:String .
 
 <9AA2EBBB-45C7-4125-89B8-7D747A77337D> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <FF3D0A14-CBA5-4186-A2BF-7C625A35B578> ;
     cim:IdentifiedObject.mRID "9AA2EBBB-45C7-4125-89B8-7D747A77337D"^^cim:String ;
-    cim:IdentifiedObject.name "32_139_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <FF3D0A14-CBA5-4186-A2BF-7C625A35B578> .
+    cim:IdentifiedObject.name "32_139_0_1_End_2"^^cim:String .
 
 <9AEFF62A-7B1D-4F73-8323-F7E4AEE0A071> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <CBB8E53F-5FF7-46E6-8490-754E687DFC28> ;
     cim:IdentifiedObject.mRID "9AEFF62A-7B1D-4F73-8323-F7E4AEE0A071"^^cim:String ;
-    cim:IdentifiedObject.name "32_113_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <CBB8E53F-5FF7-46E6-8490-754E687DFC28> .
+    cim:IdentifiedObject.name "32_113_1"^^cim:String .
 
 <9C1E287E-C3C0-4EB8-9B30-064780D4574B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <A38213EF-90E1-447B-9C29-0790AC9635E7> ;
     cim:IdentifiedObject.mRID "9C1E287E-C3C0-4EB8-9B30-064780D4574B"^^cim:String ;
-    cim:IdentifiedObject.name "26_25_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <A38213EF-90E1-447B-9C29-0790AC9635E7> .
+    cim:IdentifiedObject.name "26_25_0_1_End_1"^^cim:String .
 
 <9C91A5BD-CB69-48E7-BC38-E65F654DD5F9> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <558A25BF-B46F-49D9-9204-F048E00E53E6> ;
     cim:IdentifiedObject.mRID "9C91A5BD-CB69-48E7-BC38-E65F654DD5F9"^^cim:String ;
-    cim:IdentifiedObject.name "56_152_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <558A25BF-B46F-49D9-9204-F048E00E53E6> .
+    cim:IdentifiedObject.name "56_152_0_1_End_1"^^cim:String .
 
 <9D5CCDFA-D385-4B0D-A67E-DB8CEA0B911A> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <4E9F10EF-2C9C-40AB-99DF-5BF2DEF5DB6C> ;
     cim:IdentifiedObject.mRID "9D5CCDFA-D385-4B0D-A67E-DB8CEA0B911A"^^cim:String ;
-    cim:IdentifiedObject.name "43_44_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <4E9F10EF-2C9C-40AB-99DF-5BF2DEF5DB6C> .
+    cim:IdentifiedObject.name "43_44_1"^^cim:String .
 
 <9FC8990D-B493-4AE5-94E7-763DD564D4D2> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <CD3D62CD-FFEC-45C2-9110-B9398D19E425> ;
     cim:IdentifiedObject.mRID "9FC8990D-B493-4AE5-94E7-763DD564D4D2"^^cim:String ;
-    cim:IdentifiedObject.name "91_92_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <CD3D62CD-FFEC-45C2-9110-B9398D19E425> .
+    cim:IdentifiedObject.name "91_92_1"^^cim:String .
 
 <9FF67689-28F3-41A2-8DFC-6A00179E4C5A> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <83877686-83B3-4C63-9835-30C2EB623837> ;
     cim:IdentifiedObject.mRID "9FF67689-28F3-41A2-8DFC-6A00179E4C5A"^^cim:String ;
-    cim:IdentifiedObject.name "39_40_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <83877686-83B3-4C63-9835-30C2EB623837> .
+    cim:IdentifiedObject.name "39_40_1"^^cim:String .
 
 <A01B1FF2-35FD-4E19-9122-A941A36184D6> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <1218DE27-BA7A-4323-98FF-74DA35B42506> ;
     cim:IdentifiedObject.mRID "A01B1FF2-35FD-4E19-9122-A941A36184D6"^^cim:String ;
-    cim:IdentifiedObject.name "54_148_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <1218DE27-BA7A-4323-98FF-74DA35B42506> .
+    cim:IdentifiedObject.name "54_148_0_1_End_2"^^cim:String .
 
 <A069FE8C-DFA4-4B6D-B59B-C5A5E755223F> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <BA362D7A-F917-4025-A9C0-185B3AC1B53C> ;
     cim:IdentifiedObject.mRID "A069FE8C-DFA4-4B6D-B59B-C5A5E755223F"^^cim:String ;
-    cim:IdentifiedObject.name "26_25_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <BA362D7A-F917-4025-A9C0-185B3AC1B53C> .
+    cim:IdentifiedObject.name "26_25_0_1_End_2"^^cim:String .
 
 <A1174353-CA40-44A7-A487-850084A6895D> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <DCEB377D-223A-41E8-80AC-070076BCD240> ;
     cim:IdentifiedObject.mRID "A1174353-CA40-44A7-A487-850084A6895D"^^cim:String ;
-    cim:IdentifiedObject.name "96_97_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <DCEB377D-223A-41E8-80AC-070076BCD240> .
+    cim:IdentifiedObject.name "96_97_1"^^cim:String .
 
 <A131D607-9AA0-45D8-AC6A-DA486E41AE34> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <3C31CAAC-F563-4ADA-98F2-12D4205E4E5C> ;
     cim:IdentifiedObject.mRID "A131D607-9AA0-45D8-AC6A-DA486E41AE34"^^cim:String ;
-    cim:IdentifiedObject.name "46_145_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <3C31CAAC-F563-4ADA-98F2-12D4205E4E5C> .
+    cim:IdentifiedObject.name "46_145_0_1_End_2"^^cim:String .
 
 <A16777F8-C648-4B44-96BA-0438B485C7FE> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <55BD5071-69FF-45CB-BFA6-B4A945CD817E> ;
     cim:IdentifiedObject.mRID "A16777F8-C648-4B44-96BA-0438B485C7FE"^^cim:String ;
-    cim:IdentifiedObject.name "6_7_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <55BD5071-69FF-45CB-BFA6-B4A945CD817E> .
+    cim:IdentifiedObject.name "6_7_1"^^cim:String .
 
 <A229A8BD-8A75-4D3C-9B01-10A8AAFE46E1> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <E119CA73-0047-459B-B92B-CC47DF4EFDA9> ;
     cim:IdentifiedObject.mRID "A229A8BD-8A75-4D3C-9B01-10A8AAFE46E1"^^cim:String ;
-    cim:IdentifiedObject.name "114_115_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <E119CA73-0047-459B-B92B-CC47DF4EFDA9> .
+    cim:IdentifiedObject.name "114_115_1"^^cim:String .
 
 <A54EA870-7F8F-4EA7-87DB-D2399A9C798B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <024C1AF0-73F3-4F29-8BE0-5C6F14F3FADE> ;
     cim:IdentifiedObject.mRID "A54EA870-7F8F-4EA7-87DB-D2399A9C798B"^^cim:String ;
-    cim:IdentifiedObject.name "89_171_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <024C1AF0-73F3-4F29-8BE0-5C6F14F3FADE> .
+    cim:IdentifiedObject.name "89_171_0_1_End_1"^^cim:String .
 
 <A583B86A-2B38-4D39-A00E-5AA178AD0D20> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <B41CA4C8-38D3-4E5C-A859-C1B9ECB52EBB> ;
     cim:IdentifiedObject.mRID "A583B86A-2B38-4D39-A00E-5AA178AD0D20"^^cim:String ;
-    cim:IdentifiedObject.name "94_96_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <B41CA4C8-38D3-4E5C-A859-C1B9ECB52EBB> .
+    cim:IdentifiedObject.name "94_96_1"^^cim:String .
 
 <A61B38FE-26EE-4E56-9CFA-D2A4CE1BAD2A> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <2180218A-AB20-4647-9510-BBCF48C1AC61> ;
     cim:IdentifiedObject.mRID "A61B38FE-26EE-4E56-9CFA-D2A4CE1BAD2A"^^cim:String ;
-    cim:IdentifiedObject.name "70_160_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <2180218A-AB20-4647-9510-BBCF48C1AC61> .
+    cim:IdentifiedObject.name "70_160_0_1_End_2"^^cim:String .
 
 <A6D00981-B1AD-4AEC-828A-9F1A16E29586> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <8C86303A-4CD8-4D10-96F7-1208249E36E7> ;
     cim:IdentifiedObject.mRID "A6D00981-B1AD-4AEC-828A-9F1A16E29586"^^cim:String ;
-    cim:IdentifiedObject.name "82_168_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <8C86303A-4CD8-4D10-96F7-1208249E36E7> .
+    cim:IdentifiedObject.name "82_168_0_1_End_2"^^cim:String .
 
 <A6D2EB42-D392-4DA3-AE3A-FFB8833A26ED> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <BEE7D18B-7DB3-4E4D-A130-50AEB8AA6F0C> ;
     cim:IdentifiedObject.mRID "A6D2EB42-D392-4DA3-AE3A-FFB8833A26ED"^^cim:String ;
-    cim:IdentifiedObject.name "59_153_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <BEE7D18B-7DB3-4E4D-A130-50AEB8AA6F0C> .
+    cim:IdentifiedObject.name "59_153_0_1_End_2"^^cim:String .
 
 <A7FF1C87-863A-4F9D-A4D4-E83C76C28D38> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <0895EBEB-3CA4-4D2D-94D5-B45097D66754> ;
     cim:IdentifiedObject.mRID "A7FF1C87-863A-4F9D-A4D4-E83C76C28D38"^^cim:String ;
-    cim:IdentifiedObject.name "109_110_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <0895EBEB-3CA4-4D2D-94D5-B45097D66754> .
+    cim:IdentifiedObject.name "109_110_1"^^cim:String .
 
 <A92AA131-C4A4-4966-8ED7-03B0883F7388> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <C875B8B1-5F2D-4665-A618-1525F6F027BD> ;
     cim:IdentifiedObject.mRID "A92AA131-C4A4-4966-8ED7-03B0883F7388"^^cim:String ;
-    cim:IdentifiedObject.name "64_61_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <C875B8B1-5F2D-4665-A618-1525F6F027BD> .
+    cim:IdentifiedObject.name "64_61_0_1_End_2"^^cim:String .
 
 <A9613D3B-CC07-4AE3-B3D6-E115466676FE> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <25DB3931-1AC2-4364-93BC-4BAC2C820171> ;
     cim:IdentifiedObject.mRID "A9613D3B-CC07-4AE3-B3D6-E115466676FE"^^cim:String ;
-    cim:IdentifiedObject.name "17_113_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <25DB3931-1AC2-4364-93BC-4BAC2C820171> .
+    cim:IdentifiedObject.name "17_113_1"^^cim:String .
 
 <A9F480D6-41D8-43C0-BA72-5CF59C822DA3> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <A71E2215-6496-4322-AD40-64FAD7FE3DF8> ;
     cim:IdentifiedObject.mRID "A9F480D6-41D8-43C0-BA72-5CF59C822DA3"^^cim:String ;
-    cim:IdentifiedObject.name "65_156_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <A71E2215-6496-4322-AD40-64FAD7FE3DF8> .
+    cim:IdentifiedObject.name "65_156_0_1_End_1"^^cim:String .
 
 <AB0FDE64-AB68-4CFD-B553-A58E1637176D> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <2D219CF6-78D9-4287-A269-C79AF22A778C> ;
     cim:IdentifiedObject.mRID "AB0FDE64-AB68-4CFD-B553-A58E1637176D"^^cim:String ;
-    cim:IdentifiedObject.name "31_137_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <2D219CF6-78D9-4287-A269-C79AF22A778C> .
+    cim:IdentifiedObject.name "31_137_0_1_End_1"^^cim:String .
 
 <AB13745B-C141-4415-A4E0-7AB18244007A> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <60FB482C-2E26-4F38-90B3-9CBE1CBB871B> ;
     cim:IdentifiedObject.mRID "AB13745B-C141-4415-A4E0-7AB18244007A"^^cim:String ;
-    cim:IdentifiedObject.name "105_184_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <60FB482C-2E26-4F38-90B3-9CBE1CBB871B> .
+    cim:IdentifiedObject.name "105_184_0_1_End_1"^^cim:String .
 
 <AC135F69-6AEC-4CDB-AC1F-E36145022AC3> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <9B580429-7A18-4EDF-B81C-4EF1477FCC34> ;
     cim:IdentifiedObject.mRID "AC135F69-6AEC-4CDB-AC1F-E36145022AC3"^^cim:String ;
-    cim:IdentifiedObject.name "104_183_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <9B580429-7A18-4EDF-B81C-4EF1477FCC34> .
+    cim:IdentifiedObject.name "104_183_0_1_End_1"^^cim:String .
 
 <AEB14A32-6F6E-4F4B-B292-8F51BD87B9CA> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <B574811D-F468-4CA5-918F-4E6906A961D1> ;
     cim:IdentifiedObject.mRID "AEB14A32-6F6E-4F4B-B292-8F51BD87B9CA"^^cim:String ;
-    cim:IdentifiedObject.name "80_99_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <B574811D-F468-4CA5-918F-4E6906A961D1> .
+    cim:IdentifiedObject.name "80_99_1"^^cim:String .
 
 <AEDB796A-00E8-4AEB-BD85-8263E434353D> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <11C77506-AFB8-44A4-8C43-867DDB0D8841> ;
     cim:IdentifiedObject.mRID "AEDB796A-00E8-4AEB-BD85-8263E434353D"^^cim:String ;
-    cim:IdentifiedObject.name "103_104_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <11C77506-AFB8-44A4-8C43-867DDB0D8841> .
+    cim:IdentifiedObject.name "103_104_1"^^cim:String .
 
 <B07C7B04-445B-4B4B-A22F-7789778CC78B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <66137049-6B61-4B14-A036-1954EEFC7AED> ;
     cim:IdentifiedObject.mRID "B07C7B04-445B-4B4B-A22F-7789778CC78B"^^cim:String ;
-    cim:IdentifiedObject.name "34_141_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <66137049-6B61-4B14-A036-1954EEFC7AED> .
+    cim:IdentifiedObject.name "34_141_0_1_End_1"^^cim:String .
 
 <B0CA7120-3299-43F7-AFEE-A95F603FEE56> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <59C5E87C-DB0A-440E-88E5-DCED80C92CC5> ;
     cim:IdentifiedObject.mRID "B0CA7120-3299-43F7-AFEE-A95F603FEE56"^^cim:String ;
-    cim:IdentifiedObject.name "4_120_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <59C5E87C-DB0A-440E-88E5-DCED80C92CC5> .
+    cim:IdentifiedObject.name "4_120_0_1_End_1"^^cim:String .
 
 <B167DBD2-5369-483A-9F53-5E80D3056D56> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <FF76AFC1-0D76-4158-8037-EDF8E762F800> ;
     cim:IdentifiedObject.mRID "B167DBD2-5369-483A-9F53-5E80D3056D56"^^cim:String ;
-    cim:IdentifiedObject.name "80_167_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <FF76AFC1-0D76-4158-8037-EDF8E762F800> .
+    cim:IdentifiedObject.name "80_167_0_1_End_1"^^cim:String .
 
 <B1EC255B-503F-4DC6-B1D2-EB7D0CD61074> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <E7D7A044-8290-40D0-B087-EEF5182B4496> ;
     cim:IdentifiedObject.mRID "B1EC255B-503F-4DC6-B1D2-EB7D0CD61074"^^cim:String ;
-    cim:IdentifiedObject.name "30_38_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <E7D7A044-8290-40D0-B087-EEF5182B4496> .
+    cim:IdentifiedObject.name "30_38_1"^^cim:String .
 
 <B246B767-760B-4C33-AE29-4560A1738061> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <C37E8BAD-0E6A-4483-A084-DA36E485F1A1> ;
     cim:IdentifiedObject.mRID "B246B767-760B-4C33-AE29-4560A1738061"^^cim:String ;
-    cim:IdentifiedObject.name "110_188_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <C37E8BAD-0E6A-4483-A084-DA36E485F1A1> .
+    cim:IdentifiedObject.name "110_188_0_1_End_1"^^cim:String .
 
 <B2D91BE6-EAA0-4AF2-9C2A-96F47ECB3E5C> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <C14411C1-4117-4820-95BA-C0ECBD870494> ;
     cim:IdentifiedObject.mRID "B2D91BE6-EAA0-4AF2-9C2A-96F47ECB3E5C"^^cim:String ;
-    cim:IdentifiedObject.name "113_192_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <C14411C1-4117-4820-95BA-C0ECBD870494> .
+    cim:IdentifiedObject.name "113_192_0_1_End_2"^^cim:String .
 
 <B381873C-7450-46AD-A901-3E34BE623769> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <FEA4B950-F80A-4BA0-9066-4686B7CF2C59> ;
     cim:IdentifiedObject.mRID "B381873C-7450-46AD-A901-3E34BE623769"^^cim:String ;
-    cim:IdentifiedObject.name "106_107_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <FEA4B950-F80A-4BA0-9066-4686B7CF2C59> .
+    cim:IdentifiedObject.name "106_107_1"^^cim:String .
 
 <B4515D57-6629-4417-9326-A3C38DDE6B68> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <F783D49C-D805-40E5-A86B-00E1CB9B7763> ;
     cim:IdentifiedObject.mRID "B4515D57-6629-4417-9326-A3C38DDE6B68"^^cim:String ;
-    cim:IdentifiedObject.name "73_162_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <F783D49C-D805-40E5-A86B-00E1CB9B7763> .
+    cim:IdentifiedObject.name "73_162_0_1_End_1"^^cim:String .
 
 <B4AB6218-F797-45DC-B280-E2DB483D5D8E> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <A47F12B6-05FF-4A16-AE0F-AEF17E135131> ;
     cim:IdentifiedObject.mRID "B4AB6218-F797-45DC-B280-E2DB483D5D8E"^^cim:String ;
-    cim:IdentifiedObject.name "105_185_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <A47F12B6-05FF-4A16-AE0F-AEF17E135131> .
+    cim:IdentifiedObject.name "105_185_0_1_End_1"^^cim:String .
 
 <B57D1C4C-5C8C-46F3-9CE2-58C8CA2FB39F> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <F93C9938-AC53-4692-8AF7-4606C750370A> ;
     cim:IdentifiedObject.mRID "B57D1C4C-5C8C-46F3-9CE2-58C8CA2FB39F"^^cim:String ;
-    cim:IdentifiedObject.name "49_146_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <F93C9938-AC53-4692-8AF7-4606C750370A> .
+    cim:IdentifiedObject.name "49_146_0_1_End_2"^^cim:String .
 
 <B6BC404D-374C-4B3B-8D97-DEACA3B856FE> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <13E6AE4F-66B0-411C-9AE6-2967A6A67F5D> ;
     cim:IdentifiedObject.mRID "B6BC404D-374C-4B3B-8D97-DEACA3B856FE"^^cim:String ;
-    cim:IdentifiedObject.name "107_186_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <13E6AE4F-66B0-411C-9AE6-2967A6A67F5D> .
+    cim:IdentifiedObject.name "107_186_0_1_End_1"^^cim:String .
 
 <B808CE17-0F58-4718-8775-B22B2C4416D8> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <A52AC873-F360-4B20-AC8E-81F2AE63FCD6> ;
     cim:IdentifiedObject.mRID "B808CE17-0F58-4718-8775-B22B2C4416D8"^^cim:String ;
-    cim:IdentifiedObject.name "9_10_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <A52AC873-F360-4B20-AC8E-81F2AE63FCD6> .
+    cim:IdentifiedObject.name "9_10_1"^^cim:String .
 
 <B88B4C80-4920-4797-A717-A0E4438C124E> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <A14DD227-06BA-47DD-A214-704A8B19386C> ;
     cim:IdentifiedObject.mRID "B88B4C80-4920-4797-A717-A0E4438C124E"^^cim:String ;
-    cim:IdentifiedObject.name "5_6_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <A14DD227-06BA-47DD-A214-704A8B19386C> .
+    cim:IdentifiedObject.name "5_6_1"^^cim:String .
 
 <B8C18B18-55D8-4263-8AEC-6B569C99A455> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <D3C3662D-C8AE-4B74-9D01-50EAEF20F493> ;
     cim:IdentifiedObject.mRID "B8C18B18-55D8-4263-8AEC-6B569C99A455"^^cim:String ;
-    cim:IdentifiedObject.name "49_69_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <D3C3662D-C8AE-4B74-9D01-50EAEF20F493> .
+    cim:IdentifiedObject.name "49_69_1"^^cim:String .
 
 <B8CAE872-C817-4E73-A4FB-87A5928BCAB9> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <463FEE15-AA8F-4151-930A-2073B24C4AD0> ;
     cim:IdentifiedObject.mRID "B8CAE872-C817-4E73-A4FB-87A5928BCAB9"^^cim:String ;
-    cim:IdentifiedObject.name "100_180_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <463FEE15-AA8F-4151-930A-2073B24C4AD0> .
+    cim:IdentifiedObject.name "100_180_0_1_End_2"^^cim:String .
 
 <B99697CE-FC8A-4167-A2C6-2677682F89E3> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <2BC91AA4-CDB4-4EB4-9846-B4EEE88F2EFA> ;
     cim:IdentifiedObject.mRID "B99697CE-FC8A-4167-A2C6-2677682F89E3"^^cim:String ;
-    cim:IdentifiedObject.name "78_79_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <2BC91AA4-CDB4-4EB4-9846-B4EEE88F2EFA> .
+    cim:IdentifiedObject.name "78_79_1"^^cim:String .
 
 <B9A1DAF7-3E96-4AA5-8D26-D775EE3707AB> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <AD3FE04C-E96E-4D92-A371-24250F35A798> ;
     cim:IdentifiedObject.mRID "B9A1DAF7-3E96-4AA5-8D26-D775EE3707AB"^^cim:String ;
-    cim:IdentifiedObject.name "4_11_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <AD3FE04C-E96E-4D92-A371-24250F35A798> .
+    cim:IdentifiedObject.name "4_11_1"^^cim:String .
 
 <B9C49EB2-5C7E-4DF6-B584-1983725752DA> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <0AC98ED6-F54C-4B71-B0FA-8FFED93187C0> ;
     cim:IdentifiedObject.mRID "B9C49EB2-5C7E-4DF6-B584-1983725752DA"^^cim:String ;
-    cim:IdentifiedObject.name "2_12_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <0AC98ED6-F54C-4B71-B0FA-8FFED93187C0> .
+    cim:IdentifiedObject.name "2_12_1"^^cim:String .
 
 <BCCB0FC6-F278-4115-98AB-32530866060B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <65213F42-2CC0-4D5A-88E7-3DF6BEA79506> ;
     cim:IdentifiedObject.mRID "BCCB0FC6-F278-4115-98AB-32530866060B"^^cim:String ;
-    cim:IdentifiedObject.name "99_100_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <65213F42-2CC0-4D5A-88E7-3DF6BEA79506> .
+    cim:IdentifiedObject.name "99_100_1"^^cim:String .
 
 <C0807DE7-4615-4B7C-BDF9-9A9264C19E7D> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <2021A166-1C1B-49C7-A552-FBDA1E7451D5> ;
     cim:IdentifiedObject.mRID "C0807DE7-4615-4B7C-BDF9-9A9264C19E7D"^^cim:String ;
-    cim:IdentifiedObject.name "87_170_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <2021A166-1C1B-49C7-A552-FBDA1E7451D5> .
+    cim:IdentifiedObject.name "87_170_0_1_End_1"^^cim:String .
 
 <C0993F93-9537-4719-A858-54EA9F1CA359> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <16DE2C1B-62F5-4F07-96CB-396B5870FF13> ;
     cim:IdentifiedObject.mRID "C0993F93-9537-4719-A858-54EA9F1CA359"^^cim:String ;
-    cim:IdentifiedObject.name "72_161_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <16DE2C1B-62F5-4F07-96CB-396B5870FF13> .
+    cim:IdentifiedObject.name "72_161_0_1_End_1"^^cim:String .
 
 <C0D40F44-2FCE-4B51-8D7E-693962C6C2DB> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <A9D53F7A-B2FF-43F4-AC79-FDDA7A413A37> ;
     cim:IdentifiedObject.mRID "C0D40F44-2FCE-4B51-8D7E-693962C6C2DB"^^cim:String ;
-    cim:IdentifiedObject.name "70_74_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <A9D53F7A-B2FF-43F4-AC79-FDDA7A413A37> .
+    cim:IdentifiedObject.name "70_74_1"^^cim:String .
 
 <C1079385-71CB-4102-8D58-6ACE07043113> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <65200A65-95A1-4AF7-9BCE-D6C059DDAD48> ;
     cim:IdentifiedObject.mRID "C1079385-71CB-4102-8D58-6ACE07043113"^^cim:String ;
-    cim:IdentifiedObject.name "89_92_2"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <65200A65-95A1-4AF7-9BCE-D6C059DDAD48> .
+    cim:IdentifiedObject.name "89_92_2"^^cim:String .
 
 <C1DFD341-43C0-44A9-AEB6-D090F1210DB8> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <620AA2F2-E4E8-4CEB-9182-8CDDD9A65B21> ;
     cim:IdentifiedObject.mRID "C1DFD341-43C0-44A9-AEB6-D090F1210DB8"^^cim:String ;
-    cim:IdentifiedObject.name "8_122_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <620AA2F2-E4E8-4CEB-9182-8CDDD9A65B21> .
+    cim:IdentifiedObject.name "8_122_0_1_End_2"^^cim:String .
 
 <C1EAB88E-7BE1-45F1-983A-B3417EF87966> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <7A0CA967-9AB6-4D71-8F8E-7052BC141C9C> ;
     cim:IdentifiedObject.mRID "C1EAB88E-7BE1-45F1-983A-B3417EF87966"^^cim:String ;
-    cim:IdentifiedObject.name "10_123_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <7A0CA967-9AB6-4D71-8F8E-7052BC141C9C> .
+    cim:IdentifiedObject.name "10_123_0_1_End_1"^^cim:String .
 
 <C2081A71-1034-4C47-BBBA-84DEFF1501A4> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <8DA6C0E0-CBB6-485F-B0BC-3D7D3B7CF53C> ;
     cim:IdentifiedObject.mRID "C2081A71-1034-4C47-BBBA-84DEFF1501A4"^^cim:String ;
-    cim:IdentifiedObject.name "32_114_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <8DA6C0E0-CBB6-485F-B0BC-3D7D3B7CF53C> .
+    cim:IdentifiedObject.name "32_114_1"^^cim:String .
 
 <C3089C92-FD70-4AD9-BBFF-9B1652D0FB8F> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <A3E3ECDB-1855-49A3-A16F-9A273FFC80F3> ;
     cim:IdentifiedObject.mRID "C3089C92-FD70-4AD9-BBFF-9B1652D0FB8F"^^cim:String ;
-    cim:IdentifiedObject.name "16_17_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <A3E3ECDB-1855-49A3-A16F-9A273FFC80F3> .
+    cim:IdentifiedObject.name "16_17_1"^^cim:String .
 
 <C378B7A1-97BC-4EC6-8264-FE5EC3E6B8E8> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <2D34DA80-8D12-4181-8F44-6456EDF0AD5E> ;
     cim:IdentifiedObject.mRID "C378B7A1-97BC-4EC6-8264-FE5EC3E6B8E8"^^cim:String ;
-    cim:IdentifiedObject.name "35_36_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <2D34DA80-8D12-4181-8F44-6456EDF0AD5E> .
+    cim:IdentifiedObject.name "35_36_1"^^cim:String .
 
 <C5CB5B03-E5D5-418E-9F9B-2C84B46663CE> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <CBA90DE9-B3DD-415A-B9C0-ED05B5849BA0> ;
     cim:IdentifiedObject.mRID "C5CB5B03-E5D5-418E-9F9B-2C84B46663CE"^^cim:String ;
-    cim:IdentifiedObject.name "112_190_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <CBA90DE9-B3DD-415A-B9C0-ED05B5849BA0> .
+    cim:IdentifiedObject.name "112_190_0_1_End_1"^^cim:String .
 
 <C5EB9ACB-2D0D-432D-805F-6D225F107CAD> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <C2D01483-B0CF-4938-B79B-2B968E5043D1> ;
     cim:IdentifiedObject.mRID "C5EB9ACB-2D0D-432D-805F-6D225F107CAD"^^cim:String ;
-    cim:IdentifiedObject.name "49_51_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <C2D01483-B0CF-4938-B79B-2B968E5043D1> .
+    cim:IdentifiedObject.name "49_51_1"^^cim:String .
 
 <C676B9EF-D2FF-4F94-8EB9-47AB09DFC683> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <CDED6052-8AE9-4214-AADE-50A597C97634> ;
     cim:IdentifiedObject.mRID "C676B9EF-D2FF-4F94-8EB9-47AB09DFC683"^^cim:String ;
-    cim:IdentifiedObject.name "59_60_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <CDED6052-8AE9-4214-AADE-50A597C97634> .
+    cim:IdentifiedObject.name "59_60_1"^^cim:String .
 
 <C69FB513-71A1-44E9-ACE1-068E7179C194> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <4A8B168D-988B-44A8-82DF-461B711ABB6A> ;
     cim:IdentifiedObject.mRID "C69FB513-71A1-44E9-ACE1-068E7179C194"^^cim:String ;
-    cim:IdentifiedObject.name "6_121_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <4A8B168D-988B-44A8-82DF-461B711ABB6A> .
+    cim:IdentifiedObject.name "6_121_0_1_End_1"^^cim:String .
 
 <C72CCA1A-102B-4592-9F41-AB3496C5E134> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <F6D78C61-A554-45C2-89D5-BAA82DA32410> ;
     cim:IdentifiedObject.mRID "C72CCA1A-102B-4592-9F41-AB3496C5E134"^^cim:String ;
-    cim:IdentifiedObject.name "89_90_2"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <F6D78C61-A554-45C2-89D5-BAA82DA32410> .
+    cim:IdentifiedObject.name "89_90_2"^^cim:String .
 
 <C91D0FAC-0773-4416-90E6-3AA97BF61161> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <55812D82-7071-4153-85ED-1924B6B7767A> ;
     cim:IdentifiedObject.mRID "C91D0FAC-0773-4416-90E6-3AA97BF61161"^^cim:String ;
-    cim:IdentifiedObject.name "19_130_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <55812D82-7071-4153-85ED-1924B6B7767A> .
+    cim:IdentifiedObject.name "19_130_0_1_End_1"^^cim:String .
 
 <C9C97A1A-3DD1-4C3E-962E-4DCD22041983> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <1789A2E9-45D1-46B3-8682-C6364D824588> ;
     cim:IdentifiedObject.mRID "C9C97A1A-3DD1-4C3E-962E-4DCD22041983"^^cim:String ;
-    cim:IdentifiedObject.name "77_80_2"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <1789A2E9-45D1-46B3-8682-C6364D824588> .
+    cim:IdentifiedObject.name "77_80_2"^^cim:String .
 
 <CA5A1B2B-3B93-4112-9FF1-AEBAC73D2FBE> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <CD5D54AC-A0F4-4059-8DAC-3FCD28FF0639> ;
     cim:IdentifiedObject.mRID "CA5A1B2B-3B93-4112-9FF1-AEBAC73D2FBE"^^cim:String ;
-    cim:IdentifiedObject.name "24_131_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <CD5D54AC-A0F4-4059-8DAC-3FCD28FF0639> .
+    cim:IdentifiedObject.name "24_131_0_1_End_2"^^cim:String .
 
 <CAADDEBA-B8DF-4ECA-AD8F-DC174D548E1D> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <9028B88A-E1A4-4BB8-85FE-710158F0DB46> ;
     cim:IdentifiedObject.mRID "CAADDEBA-B8DF-4ECA-AD8F-DC174D548E1D"^^cim:String ;
-    cim:IdentifiedObject.name "92_93_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <9028B88A-E1A4-4BB8-85FE-710158F0DB46> .
+    cim:IdentifiedObject.name "92_93_1"^^cim:String .
 
 <CAC6E67B-2D84-45F6-8FB1-72224695AE0D> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <F621BCC0-6254-4960-B8D2-8F4AE5C8F70B> ;
     cim:IdentifiedObject.mRID "CAC6E67B-2D84-45F6-8FB1-72224695AE0D"^^cim:String ;
-    cim:IdentifiedObject.name "31_138_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <F621BCC0-6254-4960-B8D2-8F4AE5C8F70B> .
+    cim:IdentifiedObject.name "31_138_0_1_End_1"^^cim:String .
 
 <CBA493E6-6325-4BF4-8043-AAED5FE6182C> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <48ADFA67-3090-481D-90FA-7234F0DA6117> ;
     cim:IdentifiedObject.mRID "CBA493E6-6325-4BF4-8043-AAED5FE6182C"^^cim:String ;
-    cim:IdentifiedObject.name "46_47_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <48ADFA67-3090-481D-90FA-7234F0DA6117> .
+    cim:IdentifiedObject.name "46_47_1"^^cim:String .
 
 <CCB67FEC-EB3A-497E-B08B-EDB8CFD7678B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <26D1AC8A-6B67-4D00-A05C-4037E71A6815> ;
     cim:IdentifiedObject.mRID "CCB67FEC-EB3A-497E-B08B-EDB8CFD7678B"^^cim:String ;
-    cim:IdentifiedObject.name "25_27_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <26D1AC8A-6B67-4D00-A05C-4037E71A6815> .
+    cim:IdentifiedObject.name "25_27_1"^^cim:String .
 
 <CCF1BDBF-E9E6-420D-B120-E681884CE3AD> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <5D8CFDA6-45D5-46A0-815D-9ECF51F5E203> ;
     cim:IdentifiedObject.mRID "CCF1BDBF-E9E6-420D-B120-E681884CE3AD"^^cim:String ;
-    cim:IdentifiedObject.name "12_124_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <5D8CFDA6-45D5-46A0-815D-9ECF51F5E203> .
+    cim:IdentifiedObject.name "12_124_0_1_End_2"^^cim:String .
 
 <CEF3C322-5016-450A-BA73-9750AF73EA3C> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <A11B77D5-57CC-4062-8CAF-F619030B9F22> ;
     cim:IdentifiedObject.mRID "CEF3C322-5016-450A-BA73-9750AF73EA3C"^^cim:String ;
-    cim:IdentifiedObject.name "15_126_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <A11B77D5-57CC-4062-8CAF-F619030B9F22> .
+    cim:IdentifiedObject.name "15_126_0_1_End_2"^^cim:String .
 
 <CFFF4554-53E6-4EC5-B0CA-B2CDD265FC72> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <1EC4E698-C185-4544-BC23-8BCBA6BF43B9> ;
     cim:IdentifiedObject.mRID "CFFF4554-53E6-4EC5-B0CA-B2CDD265FC72"^^cim:String ;
-    cim:IdentifiedObject.name "70_75_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <1EC4E698-C185-4544-BC23-8BCBA6BF43B9> .
+    cim:IdentifiedObject.name "70_75_1"^^cim:String .
 
 <D0A66A81-635D-4E7A-9766-C5D2EA679B79> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <3C848686-7DE0-4E85-9A6A-C473D6C31E85> ;
     cim:IdentifiedObject.mRID "D0A66A81-635D-4E7A-9766-C5D2EA679B79"^^cim:String ;
-    cim:IdentifiedObject.name "24_72_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <3C848686-7DE0-4E85-9A6A-C473D6C31E85> .
+    cim:IdentifiedObject.name "24_72_1"^^cim:String .
 
 <D135D636-BE9A-4960-8DD9-92E422DFF9D2> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <EF8BB5D7-69B1-4A13-8B65-82F8DF3E8CDD> ;
     cim:IdentifiedObject.mRID "D135D636-BE9A-4960-8DD9-92E422DFF9D2"^^cim:String ;
-    cim:IdentifiedObject.name "44_45_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <EF8BB5D7-69B1-4A13-8B65-82F8DF3E8CDD> .
+    cim:IdentifiedObject.name "44_45_1"^^cim:String .
 
 <D19FDFBC-F8A4-4B15-9694-A050F83B79BA> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <B6FF086F-E66C-40E0-BDCE-9B015A3D206A> ;
     cim:IdentifiedObject.mRID "D19FDFBC-F8A4-4B15-9694-A050F83B79BA"^^cim:String ;
-    cim:IdentifiedObject.name "105_184_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <B6FF086F-E66C-40E0-BDCE-9B015A3D206A> .
+    cim:IdentifiedObject.name "105_184_0_1_End_2"^^cim:String .
 
 <D1EDBB0E-A9EF-4801-B48F-F90A53FA5B7C> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <961F1190-0E66-4E46-A79A-539DCBF50A5D> ;
     cim:IdentifiedObject.mRID "D1EDBB0E-A9EF-4801-B48F-F90A53FA5B7C"^^cim:String ;
-    cim:IdentifiedObject.name "68_69_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <961F1190-0E66-4E46-A79A-539DCBF50A5D> .
+    cim:IdentifiedObject.name "68_69_0_1_End_2"^^cim:String .
 
 <D4F74C44-914C-4D1E-B786-60CA8A005588> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <8C9370B2-BC2B-4A6E-9413-D347AA40DAEC> ;
     cim:IdentifiedObject.mRID "D4F74C44-914C-4D1E-B786-60CA8A005588"^^cim:String ;
-    cim:IdentifiedObject.name "77_166_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <8C9370B2-BC2B-4A6E-9413-D347AA40DAEC> .
+    cim:IdentifiedObject.name "77_166_0_1_End_2"^^cim:String .
 
 <D5A5D056-3371-4DD0-AF8C-E1DE45E8B7CA> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <CDCC60D6-6FBA-4D5A-817B-4B5E8D2255A9> ;
     cim:IdentifiedObject.mRID "D5A5D056-3371-4DD0-AF8C-E1DE45E8B7CA"^^cim:String ;
-    cim:IdentifiedObject.name "55_150_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <CDCC60D6-6FBA-4D5A-817B-4B5E8D2255A9> .
+    cim:IdentifiedObject.name "55_150_0_1_End_2"^^cim:String .
 
 <D6D77291-495F-4796-89BC-56FD7F64F54A> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <67FC3B80-D95B-492C-9634-F0C6CE75E44A> ;
     cim:IdentifiedObject.mRID "D6D77291-495F-4796-89BC-56FD7F64F54A"^^cim:String ;
-    cim:IdentifiedObject.name "66_157_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <67FC3B80-D95B-492C-9634-F0C6CE75E44A> .
+    cim:IdentifiedObject.name "66_157_0_1_End_2"^^cim:String .
 
 <D6F3C365-95AC-4342-A5EE-DC6495219248> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <3F7CDD0E-A553-4FD1-AF23-1886EEAC3E7A> ;
     cim:IdentifiedObject.mRID "D6F3C365-95AC-4342-A5EE-DC6495219248"^^cim:String ;
-    cim:IdentifiedObject.name "27_135_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <3F7CDD0E-A553-4FD1-AF23-1886EEAC3E7A> .
+    cim:IdentifiedObject.name "27_135_0_1_End_1"^^cim:String .
 
 <D7761DEC-0200-45F1-ADB5-CF84F1507EE1> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <8E61F4D3-1E63-455F-9177-BA283CC6F54C> ;
     cim:IdentifiedObject.mRID "D7761DEC-0200-45F1-ADB5-CF84F1507EE1"^^cim:String ;
-    cim:IdentifiedObject.name "77_80_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <8E61F4D3-1E63-455F-9177-BA283CC6F54C> .
+    cim:IdentifiedObject.name "77_80_1"^^cim:String .
 
 <D7C01C1C-A7D7-4806-A918-6C8E997386B4> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <284B4BEC-DD79-4D27-8E19-DFD571D73640> ;
     cim:IdentifiedObject.mRID "D7C01C1C-A7D7-4806-A918-6C8E997386B4"^^cim:String ;
-    cim:IdentifiedObject.name "100_101_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <284B4BEC-DD79-4D27-8E19-DFD571D73640> .
+    cim:IdentifiedObject.name "100_101_1"^^cim:String .
 
 <D7C8D778-86BB-4323-BB5F-3DFF1FEF815C> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <F3944D4C-E627-4714-97BF-797F85888DBA> ;
     cim:IdentifiedObject.mRID "D7C8D778-86BB-4323-BB5F-3DFF1FEF815C"^^cim:String ;
-    cim:IdentifiedObject.name "68_81_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <F3944D4C-E627-4714-97BF-797F85888DBA> .
+    cim:IdentifiedObject.name "68_81_1"^^cim:String .
 
 <D7DDBDF9-E924-47B5-9B07-2F4BB29C7069> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <FC57FAA4-F80D-460B-8528-64262C8DFF08> ;
     cim:IdentifiedObject.mRID "D7DDBDF9-E924-47B5-9B07-2F4BB29C7069"^^cim:String ;
-    cim:IdentifiedObject.name "92_94_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <FC57FAA4-F80D-460B-8528-64262C8DFF08> .
+    cim:IdentifiedObject.name "92_94_1"^^cim:String .
 
 <D8182E14-EAED-4F2F-91A1-44A46E116F2B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <D4DA5B56-AAFF-41A0-AE4C-D233EA52C682> ;
     cim:IdentifiedObject.mRID "D8182E14-EAED-4F2F-91A1-44A46E116F2B"^^cim:String ;
-    cim:IdentifiedObject.name "27_136_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <D4DA5B56-AAFF-41A0-AE4C-D233EA52C682> .
+    cim:IdentifiedObject.name "27_136_0_1_End_2"^^cim:String .
 
 <D835E619-1DD6-4AAF-90EA-AAA36BC0B0FD> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <F0A7EB86-1150-4BB6-A11D-DB4AEE608457> ;
     cim:IdentifiedObject.mRID "D835E619-1DD6-4AAF-90EA-AAA36BC0B0FD"^^cim:String ;
-    cim:IdentifiedObject.name "3_12_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <F0A7EB86-1150-4BB6-A11D-DB4AEE608457> .
+    cim:IdentifiedObject.name "3_12_1"^^cim:String .
 
 <D83AC798-2588-429B-9CEA-5FFD79EEEAB2> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <85736784-B6EC-4773-BE40-EF37F7EFA5B7> ;
     cim:IdentifiedObject.mRID "D83AC798-2588-429B-9CEA-5FFD79EEEAB2"^^cim:String ;
-    cim:IdentifiedObject.name "112_190_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <85736784-B6EC-4773-BE40-EF37F7EFA5B7> .
+    cim:IdentifiedObject.name "112_190_0_1_End_2"^^cim:String .
 
 <D85A9A0B-D058-44EC-9254-F70E4835BFD6> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <4120FEED-BC3E-48F1-8369-CFF2EF9CB579> ;
     cim:IdentifiedObject.mRID "D85A9A0B-D058-44EC-9254-F70E4835BFD6"^^cim:String ;
-    cim:IdentifiedObject.name "28_29_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <4120FEED-BC3E-48F1-8369-CFF2EF9CB579> .
+    cim:IdentifiedObject.name "28_29_1"^^cim:String .
 
 <D88D0FEA-B5F0-4DED-913C-50807C1C2070> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <81604D6E-DCB6-4B9C-8B74-64EF922E8DA0> ;
     cim:IdentifiedObject.mRID "D88D0FEA-B5F0-4DED-913C-50807C1C2070"^^cim:String ;
-    cim:IdentifiedObject.name "19_130_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <81604D6E-DCB6-4B9C-8B74-64EF922E8DA0> .
+    cim:IdentifiedObject.name "19_130_0_1_End_2"^^cim:String .
 
 <D8A76F3F-8BF1-475F-A99C-E6AACF878C05> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <C17DA2B5-1CA0-4F8C-88B6-A7CA58C5FF37> ;
     cim:IdentifiedObject.mRID "D8A76F3F-8BF1-475F-A99C-E6AACF878C05"^^cim:String ;
-    cim:IdentifiedObject.name "59_61_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <C17DA2B5-1CA0-4F8C-88B6-A7CA58C5FF37> .
+    cim:IdentifiedObject.name "59_61_1"^^cim:String .
 
 <D96D5E32-843B-478E-B18D-44C033E66170> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <46695C0C-0761-4DFD-ADA0-E0F0DDF5B972> ;
     cim:IdentifiedObject.mRID "D96D5E32-843B-478E-B18D-44C033E66170"^^cim:String ;
-    cim:IdentifiedObject.name "62_155_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <46695C0C-0761-4DFD-ADA0-E0F0DDF5B972> .
+    cim:IdentifiedObject.name "62_155_0_1_End_2"^^cim:String .
 
 <D9910E66-5516-4534-AF24-CCD94A92ACEB> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <15441BC9-5610-481D-92FD-AEC0CE48B2FF> ;
     cim:IdentifiedObject.mRID "D9910E66-5516-4534-AF24-CCD94A92ACEB"^^cim:String ;
-    cim:IdentifiedObject.name "86_87_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <15441BC9-5610-481D-92FD-AEC0CE48B2FF> .
+    cim:IdentifiedObject.name "86_87_1"^^cim:String .
 
 <D9F44409-8B86-449D-81BB-71567880AFC3> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <F5DD04E3-C227-48D4-B663-08D9B55EFF51> ;
     cim:IdentifiedObject.mRID "D9F44409-8B86-449D-81BB-71567880AFC3"^^cim:String ;
-    cim:IdentifiedObject.name "64_61_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <F5DD04E3-C227-48D4-B663-08D9B55EFF51> .
+    cim:IdentifiedObject.name "64_61_0_1_End_1"^^cim:String .
 
 <DB6D640D-5348-429C-97DB-9A23FE0F2D92> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <E2CF1D45-831B-4CCB-980C-6AA8D5D9DD27> ;
     cim:IdentifiedObject.mRID "DB6D640D-5348-429C-97DB-9A23FE0F2D92"^^cim:String ;
-    cim:IdentifiedObject.name "112_191_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <E2CF1D45-831B-4CCB-980C-6AA8D5D9DD27> .
+    cim:IdentifiedObject.name "112_191_0_1_End_2"^^cim:String .
 
 <DD82C19A-AA23-4083-A074-7243BC53A3F4> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <01D352DE-382B-40AA-A014-C403081FB569> ;
     cim:IdentifiedObject.mRID "DD82C19A-AA23-4083-A074-7243BC53A3F4"^^cim:String ;
-    cim:IdentifiedObject.name "46_145_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <01D352DE-382B-40AA-A014-C403081FB569> .
+    cim:IdentifiedObject.name "46_145_0_1_End_1"^^cim:String .
 
 <DDAFD5A2-F553-478F-BE4B-8BEC0A8D6ED7> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <DAB1B0D3-0884-4695-BA95-5C013E601CDE> ;
     cim:IdentifiedObject.mRID "DDAFD5A2-F553-478F-BE4B-8BEC0A8D6ED7"^^cim:String ;
-    cim:IdentifiedObject.name "103_181_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <DAB1B0D3-0884-4695-BA95-5C013E601CDE> .
+    cim:IdentifiedObject.name "103_181_0_1_End_2"^^cim:String .
 
 <DFE980C6-FAFB-487C-9895-9B4A0B35D09B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <A553B745-6610-4FA0-9A2A-8856E29A90C0> ;
     cim:IdentifiedObject.mRID "DFE980C6-FAFB-487C-9895-9B4A0B35D09B"^^cim:String ;
-    cim:IdentifiedObject.name "73_162_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <A553B745-6610-4FA0-9A2A-8856E29A90C0> .
+    cim:IdentifiedObject.name "73_162_0_1_End_2"^^cim:String .
 
 <E0882397-C397-4580-B130-21204AFA7845> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <D807DD77-FD55-47DF-B93F-70686F4B5B6C> ;
     cim:IdentifiedObject.mRID "E0882397-C397-4580-B130-21204AFA7845"^^cim:String ;
-    cim:IdentifiedObject.name "70_71_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <D807DD77-FD55-47DF-B93F-70686F4B5B6C> .
+    cim:IdentifiedObject.name "70_71_1"^^cim:String .
 
 <E2ECAB7D-A231-4CEA-AE50-596BD4CE8B43> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <7C2BFCB4-CBE8-4CA4-A9A4-55BB24CA24DA> ;
     cim:IdentifiedObject.mRID "E2ECAB7D-A231-4CEA-AE50-596BD4CE8B43"^^cim:String ;
-    cim:IdentifiedObject.name "29_31_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <7C2BFCB4-CBE8-4CA4-A9A4-55BB24CA24DA> .
+    cim:IdentifiedObject.name "29_31_1"^^cim:String .
 
 <E487F34C-D615-4F51-AB70-CFF2C84C4845> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <6D46755B-9CDA-44D6-8062-89F1FA933B4D> ;
     cim:IdentifiedObject.mRID "E487F34C-D615-4F51-AB70-CFF2C84C4845"^^cim:String ;
-    cim:IdentifiedObject.name "23_24_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <6D46755B-9CDA-44D6-8062-89F1FA933B4D> .
+    cim:IdentifiedObject.name "23_24_1"^^cim:String .
 
 <E4BBF3FC-953D-44C7-96F1-A05C7E389348> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <A5631322-2B14-4FA6-862F-6079D1DDF3E1> ;
     cim:IdentifiedObject.mRID "E4BBF3FC-953D-44C7-96F1-A05C7E389348"^^cim:String ;
-    cim:IdentifiedObject.name "68_116_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <A5631322-2B14-4FA6-862F-6079D1DDF3E1> .
+    cim:IdentifiedObject.name "68_116_1"^^cim:String .
 
 <E5D33612-EDFB-4BD1-9D7B-A3958BA4F71D> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <AE2FB735-1298-4496-9A3E-2781AC822E0E> ;
     cim:IdentifiedObject.mRID "E5D33612-EDFB-4BD1-9D7B-A3958BA4F71D"^^cim:String ;
-    cim:IdentifiedObject.name "54_147_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <AE2FB735-1298-4496-9A3E-2781AC822E0E> .
+    cim:IdentifiedObject.name "54_147_0_1_End_1"^^cim:String .
 
 <E5FCBDBD-D23F-4EF9-B0EA-495B71354F98> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <C56B3CED-C437-4D3D-9213-5BFB0BF78579> ;
     cim:IdentifiedObject.mRID "E5FCBDBD-D23F-4EF9-B0EA-495B71354F98"^^cim:String ;
-    cim:IdentifiedObject.name "111_189_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <C56B3CED-C437-4D3D-9213-5BFB0BF78579> .
+    cim:IdentifiedObject.name "111_189_0_1_End_2"^^cim:String .
 
 <E61B8DDC-AD21-486E-960D-E42551A24513> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <685CC860-87B9-4F9B-9DD4-4181107CB6E5> ;
     cim:IdentifiedObject.mRID "E61B8DDC-AD21-486E-960D-E42551A24513"^^cim:String ;
-    cim:IdentifiedObject.name "54_149_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <685CC860-87B9-4F9B-9DD4-4181107CB6E5> .
+    cim:IdentifiedObject.name "54_149_0_1_End_1"^^cim:String .
 
 <E6FFA59A-DB68-442A-A465-4670601D4F78> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <C39B0CF3-EB00-47F2-9DDD-AE9D2F4A1812> ;
     cim:IdentifiedObject.mRID "E6FFA59A-DB68-442A-A465-4670601D4F78"^^cim:String ;
-    cim:IdentifiedObject.name "3_5_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <C39B0CF3-EB00-47F2-9DDD-AE9D2F4A1812> .
+    cim:IdentifiedObject.name "3_5_1"^^cim:String .
 
 <E95EB90D-1F44-4D62-B431-072CC9E488B5> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <6567F65B-33C2-4C5D-9033-DAAC41F4398F> ;
     cim:IdentifiedObject.mRID "E95EB90D-1F44-4D62-B431-072CC9E488B5"^^cim:String ;
-    cim:IdentifiedObject.name "51_52_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <6567F65B-33C2-4C5D-9033-DAAC41F4398F> .
+    cim:IdentifiedObject.name "51_52_1"^^cim:String .
 
 <E9BEED3B-C1A6-4343-9399-7A72A6450E65> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <48B27B9D-4620-4191-B068-93AAEE0B25F6> ;
     cim:IdentifiedObject.mRID "E9BEED3B-C1A6-4343-9399-7A72A6450E65"^^cim:String ;
-    cim:IdentifiedObject.name "47_49_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <48B27B9D-4620-4191-B068-93AAEE0B25F6> .
+    cim:IdentifiedObject.name "47_49_1"^^cim:String .
 
 <E9EC0D2F-D286-4B09-BD87-465DD6DFB323> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <BFD5D4D1-2FF6-43A0-9259-16CB895A7360> ;
     cim:IdentifiedObject.mRID "E9EC0D2F-D286-4B09-BD87-465DD6DFB323"^^cim:String ;
-    cim:IdentifiedObject.name "54_55_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <BFD5D4D1-2FF6-43A0-9259-16CB895A7360> .
+    cim:IdentifiedObject.name "54_55_1"^^cim:String .
 
 <EA1EEB05-BF79-4E38-8479-38C14C22160F> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <F397DE10-5F1B-408B-A1AB-740467950189> ;
     cim:IdentifiedObject.mRID "EA1EEB05-BF79-4E38-8479-38C14C22160F"^^cim:String ;
-    cim:IdentifiedObject.name "52_53_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <F397DE10-5F1B-408B-A1AB-740467950189> .
+    cim:IdentifiedObject.name "52_53_1"^^cim:String .
 
 <EAEF7434-DFEC-4C65-A6EC-7A79FDB19806> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <E88FE283-4C3A-40DB-A923-0AFB7E9BE0DC> ;
     cim:IdentifiedObject.mRID "EAEF7434-DFEC-4C65-A6EC-7A79FDB19806"^^cim:String ;
-    cim:IdentifiedObject.name "79_80_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <E88FE283-4C3A-40DB-A923-0AFB7E9BE0DC> .
+    cim:IdentifiedObject.name "79_80_1"^^cim:String .
 
 <EB2EDDC8-4D77-43E1-B861-D14DAA656739> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <6E7594C5-B12D-4267-B383-8124D953357E> ;
     cim:IdentifiedObject.mRID "EB2EDDC8-4D77-43E1-B861-D14DAA656739"^^cim:String ;
-    cim:IdentifiedObject.name "47_69_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <6E7594C5-B12D-4267-B383-8124D953357E> .
+    cim:IdentifiedObject.name "47_69_1"^^cim:String .
 
 <EB63B3EC-9791-49F2-9038-817B7EB7B495> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <1FEC9727-985E-4976-A969-3E68BA967E23> ;
     cim:IdentifiedObject.mRID "EB63B3EC-9791-49F2-9038-817B7EB7B495"^^cim:String ;
-    cim:IdentifiedObject.name "92_174_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <1FEC9727-985E-4976-A969-3E68BA967E23> .
+    cim:IdentifiedObject.name "92_174_0_1_End_2"^^cim:String .
 
 <EC9E7C08-B200-4AF4-AD09-575EDE074811> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <F8C97102-3A7A-4534-967D-2EA81BE7D4F1> ;
     cim:IdentifiedObject.mRID "EC9E7C08-B200-4AF4-AD09-575EDE074811"^^cim:String ;
-    cim:IdentifiedObject.name "77_78_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <F8C97102-3A7A-4534-967D-2EA81BE7D4F1> .
+    cim:IdentifiedObject.name "77_78_1"^^cim:String .
 
 <ECA7A541-2A0B-448C-841E-0011DB461740> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <F5F0736E-4CD6-476B-8C83-EEB95C9560B4> ;
     cim:IdentifiedObject.mRID "ECA7A541-2A0B-448C-841E-0011DB461740"^^cim:String ;
-    cim:IdentifiedObject.name "100_103_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <F5F0736E-4CD6-476B-8C83-EEB95C9560B4> .
+    cim:IdentifiedObject.name "100_103_1"^^cim:String .
 
 <EDD4D2C1-5F19-4C96-8991-4C765705882C> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <E68D07EC-9AD9-4E1C-93D7-BA6EA8025306> ;
     cim:IdentifiedObject.mRID "EDD4D2C1-5F19-4C96-8991-4C765705882C"^^cim:String ;
-    cim:IdentifiedObject.name "12_16_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <E68D07EC-9AD9-4E1C-93D7-BA6EA8025306> .
+    cim:IdentifiedObject.name "12_16_1"^^cim:String .
 
 <EE588491-8B67-4AE1-A9F1-7B00517F686F> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <5BFADAD8-05D6-4F1B-8AB0-CB230CBC2A2A> ;
     cim:IdentifiedObject.mRID "EE588491-8B67-4AE1-A9F1-7B00517F686F"^^cim:String ;
-    cim:IdentifiedObject.name "69_159_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <5BFADAD8-05D6-4F1B-8AB0-CB230CBC2A2A> .
+    cim:IdentifiedObject.name "69_159_0_1_End_2"^^cim:String .
 
 <EE800CDA-10BA-4E2C-9DA1-C6FAA4B87548> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <C8A63FF2-2B9E-4685-9037-5C90FD52EFFA> ;
     cim:IdentifiedObject.mRID "EE800CDA-10BA-4E2C-9DA1-C6FAA4B87548"^^cim:String ;
-    cim:IdentifiedObject.name "88_89_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <C8A63FF2-2B9E-4685-9037-5C90FD52EFFA> .
+    cim:IdentifiedObject.name "88_89_1"^^cim:String .
 
 <EEADAFB2-7399-4277-81F5-C68E663C36FE> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <C927DC57-BDA6-4989-A5F8-034D458A8428> ;
     cim:IdentifiedObject.mRID "EEADAFB2-7399-4277-81F5-C68E663C36FE"^^cim:String ;
-    cim:IdentifiedObject.name "37_39_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <C927DC57-BDA6-4989-A5F8-034D458A8428> .
+    cim:IdentifiedObject.name "37_39_1"^^cim:String .
 
 <EEBC9308-3B0D-408D-B3CE-DBBCEDA23F83> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <0E1BC89A-BD88-4186-A614-34294B779ADE> ;
     cim:IdentifiedObject.mRID "EEBC9308-3B0D-408D-B3CE-DBBCEDA23F83"^^cim:String ;
-    cim:IdentifiedObject.name "41_42_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <0E1BC89A-BD88-4186-A614-34294B779ADE> .
+    cim:IdentifiedObject.name "41_42_1"^^cim:String .
 
 <EF11FBE3-7998-4DF2-8356-1EF0FB76CB5E> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <2ABC3281-7F4A-4A14-9562-DE8996F84FA9> ;
     cim:IdentifiedObject.mRID "EF11FBE3-7998-4DF2-8356-1EF0FB76CB5E"^^cim:String ;
-    cim:IdentifiedObject.name "112_191_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <2ABC3281-7F4A-4A14-9562-DE8996F84FA9> .
+    cim:IdentifiedObject.name "112_191_0_1_End_1"^^cim:String .
 
 <EF3BACAC-FE24-4394-97F2-43D9D5225D38> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <483DD85B-B122-4C0B-AABB-E7E28462BB38> ;
     cim:IdentifiedObject.mRID "EF3BACAC-FE24-4394-97F2-43D9D5225D38"^^cim:String ;
-    cim:IdentifiedObject.name "90_91_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <483DD85B-B122-4C0B-AABB-E7E28462BB38> .
+    cim:IdentifiedObject.name "90_91_1"^^cim:String .
 
 <EF669680-4A9F-4507-A58E-3F90F72C79B0> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <D3C5ADCC-039C-4C21-A6AA-4B32D7771FDA> ;
     cim:IdentifiedObject.mRID "EF669680-4A9F-4507-A58E-3F90F72C79B0"^^cim:String ;
-    cim:IdentifiedObject.name "74_163_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <D3C5ADCC-039C-4C21-A6AA-4B32D7771FDA> .
+    cim:IdentifiedObject.name "74_163_0_1_End_1"^^cim:String .
 
 <EF9B930D-0F6F-4C1F-BEEE-472E081B13F3> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <B16A4456-B9E6-4DF1-842F-AA5B322B0D22> ;
     cim:IdentifiedObject.mRID "EF9B930D-0F6F-4C1F-BEEE-472E081B13F3"^^cim:String ;
-    cim:IdentifiedObject.name "69_77_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <B16A4456-B9E6-4DF1-842F-AA5B322B0D22> .
+    cim:IdentifiedObject.name "69_77_1"^^cim:String .
 
 <F1252AE4-12A3-4DB2-848C-F05034965101> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <7AD9E393-EE79-4786-BEC3-522B9F3395A5> ;
     cim:IdentifiedObject.mRID "F1252AE4-12A3-4DB2-848C-F05034965101"^^cim:String ;
-    cim:IdentifiedObject.name "60_62_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <7AD9E393-EE79-4786-BEC3-522B9F3395A5> .
+    cim:IdentifiedObject.name "60_62_1"^^cim:String .
 
 <F1C667BE-CF25-4D16-944F-01A3AE52CC89> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <8331E2DA-AFDD-4431-9B38-BABDCAC13487> ;
     cim:IdentifiedObject.mRID "F1C667BE-CF25-4D16-944F-01A3AE52CC89"^^cim:String ;
-    cim:IdentifiedObject.name "19_20_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <8331E2DA-AFDD-4431-9B38-BABDCAC13487> .
+    cim:IdentifiedObject.name "19_20_1"^^cim:String .
 
 <F2F4F4BC-5407-4EEB-BB4F-9F78E74A8C2B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <94CFA115-DC6A-4B3D-AC36-017C3730DA4E> ;
     cim:IdentifiedObject.mRID "F2F4F4BC-5407-4EEB-BB4F-9F78E74A8C2B"^^cim:String ;
-    cim:IdentifiedObject.name "6_121_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <94CFA115-DC6A-4B3D-AC36-017C3730DA4E> .
+    cim:IdentifiedObject.name "6_121_0_1_End_2"^^cim:String .
 
 <F4F33419-96D5-406E-92DE-713E81047251> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <FFCC4BE3-1EF8-4C4A-9259-1B9C158346BE> ;
     cim:IdentifiedObject.mRID "F4F33419-96D5-406E-92DE-713E81047251"^^cim:String ;
-    cim:IdentifiedObject.name "19_129_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <FFCC4BE3-1EF8-4C4A-9259-1B9C158346BE> .
+    cim:IdentifiedObject.name "19_129_0_1_End_2"^^cim:String .
 
 <F5695EE6-E37F-4BCD-9B10-C677664309D1> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <97CA8705-0D19-4095-B9BB-A8E70BBB6F80> ;
     cim:IdentifiedObject.mRID "F5695EE6-E37F-4BCD-9B10-C677664309D1"^^cim:String ;
-    cim:IdentifiedObject.name "1_119_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <97CA8705-0D19-4095-B9BB-A8E70BBB6F80> .
+    cim:IdentifiedObject.name "1_119_0_1_End_1"^^cim:String .
 
 <F5B15689-385E-4769-A42C-23F73435F10A> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <954FA634-CEEA-4615-89B3-6EAA61ED085D> ;
     cim:IdentifiedObject.mRID "F5B15689-385E-4769-A42C-23F73435F10A"^^cim:String ;
-    cim:IdentifiedObject.name "65_66_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <954FA634-CEEA-4615-89B3-6EAA61ED085D> .
+    cim:IdentifiedObject.name "65_66_0_1_End_1"^^cim:String .
 
 <F5C3A14E-A48B-4B65-B853-0ADF2008D0BA> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <14ED79F4-BB74-4F59-8E18-009A7C379571> ;
     cim:IdentifiedObject.mRID "F5C3A14E-A48B-4B65-B853-0ADF2008D0BA"^^cim:String ;
-    cim:IdentifiedObject.name "71_72_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <14ED79F4-BB74-4F59-8E18-009A7C379571> .
+    cim:IdentifiedObject.name "71_72_1"^^cim:String .
 
 <F693A926-C19A-4534-BA67-D130F50E4142> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <0F68270C-37E0-4016-AF30-FE8709C4AE2C> ;
     cim:IdentifiedObject.mRID "F693A926-C19A-4534-BA67-D130F50E4142"^^cim:String ;
-    cim:IdentifiedObject.name "4_5_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <0F68270C-37E0-4016-AF30-FE8709C4AE2C> .
+    cim:IdentifiedObject.name "4_5_1"^^cim:String .
 
 <F7023268-223C-4743-BC95-0E77765C4DC8> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <D207391C-1449-49AE-990C-033D72908E99> ;
     cim:IdentifiedObject.mRID "F7023268-223C-4743-BC95-0E77765C4DC8"^^cim:String ;
-    cim:IdentifiedObject.name "17_31_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <D207391C-1449-49AE-990C-033D72908E99> .
+    cim:IdentifiedObject.name "17_31_1"^^cim:String .
 
 <FB029E64-5711-432D-9CDC-2B5A3EFABA07> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <0B78C60B-11C3-46E1-9BC7-69C0752B37D8> ;
     cim:IdentifiedObject.mRID "FB029E64-5711-432D-9CDC-2B5A3EFABA07"^^cim:String ;
-    cim:IdentifiedObject.name "14_15_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <0B78C60B-11C3-46E1-9BC7-69C0752B37D8> .
+    cim:IdentifiedObject.name "14_15_1"^^cim:String .
 
 <FB69BFBA-8A76-4FC2-9A7A-3A841106F052> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <821E713F-DFEA-4AEF-A621-E02C8C202A53> ;
     cim:IdentifiedObject.mRID "FB69BFBA-8A76-4FC2-9A7A-3A841106F052"^^cim:String ;
-    cim:IdentifiedObject.name "49_66_2"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <821E713F-DFEA-4AEF-A621-E02C8C202A53> .
+    cim:IdentifiedObject.name "49_66_2"^^cim:String .
 
 <FB99047B-097B-42C5-8114-06C078C648C6> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <54813958-769F-4944-924D-93B570558305> ;
     cim:IdentifiedObject.mRID "FB99047B-097B-42C5-8114-06C078C648C6"^^cim:String ;
-    cim:IdentifiedObject.name "99_176_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <54813958-769F-4944-924D-93B570558305> .
+    cim:IdentifiedObject.name "99_176_0_1_End_1"^^cim:String .
 
 <FC26D406-8E3A-4330-8730-FABA4AA9BA92> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <608B2B1F-C9B5-47E2-A1DE-F75005E9ED96> ;
     cim:IdentifiedObject.mRID "FC26D406-8E3A-4330-8730-FABA4AA9BA92"^^cim:String ;
-    cim:IdentifiedObject.name "15_125_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <608B2B1F-C9B5-47E2-A1DE-F75005E9ED96> .
+    cim:IdentifiedObject.name "15_125_0_1_End_2"^^cim:String .
 
 <FC2FC146-4C0D-4FB2-BC81-7183A526A8AC> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <0E0607B3-9656-4A5C-8650-09AA92A184F8> ;
     cim:IdentifiedObject.mRID "FC2FC146-4C0D-4FB2-BC81-7183A526A8AC"^^cim:String ;
-    cim:IdentifiedObject.name "51_58_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <0E0607B3-9656-4A5C-8650-09AA92A184F8> .
+    cim:IdentifiedObject.name "51_58_1"^^cim:String .
 
 <FC5FFA3E-EBA3-4F75-8570-828FD753635A> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <F86E1F5A-303D-4409-B0DF-CFDEE7855489> ;
     cim:IdentifiedObject.mRID "FC5FFA3E-EBA3-4F75-8570-828FD753635A"^^cim:String ;
-    cim:IdentifiedObject.name "62_66_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <F86E1F5A-303D-4409-B0DF-CFDEE7855489> .
+    cim:IdentifiedObject.name "62_66_1"^^cim:String .
 
 <FCF29116-6B0D-4549-9AAF-BA34B09BD32D> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <82F573DF-10E5-40E3-AED2-77E437BCA072> ;
     cim:IdentifiedObject.mRID "FCF29116-6B0D-4549-9AAF-BA34B09BD32D"^^cim:String ;
-    cim:IdentifiedObject.name "59_153_0_1_End_1"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <82F573DF-10E5-40E3-AED2-77E437BCA072> .
+    cim:IdentifiedObject.name "59_153_0_1_End_1"^^cim:String .
 
 <FF524838-1811-4739-9CF6-A346BA589815> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <B75FFCF7-C939-48A8-AA3F-CE2F89AF8F0D> ;
     cim:IdentifiedObject.mRID "FF524838-1811-4739-9CF6-A346BA589815"^^cim:String ;
-    cim:IdentifiedObject.name "36_142_0_1_End_2"^^cim:String ;
-    cim:OperationalLimitSet.TransformerEnd <B75FFCF7-C939-48A8-AA3F-CE2F89AF8F0D> .
+    cim:IdentifiedObject.name "36_142_0_1_End_2"^^cim:String .
 
 <FF58CFF5-5C46-41E7-A35F-304D117C09F7> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <B299941A-FD25-4473-9123-1FA6EFAAA47F> ;
     cim:IdentifiedObject.mRID "FF58CFF5-5C46-41E7-A35F-304D117C09F7"^^cim:String ;
-    cim:IdentifiedObject.name "40_41_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <B299941A-FD25-4473-9123-1FA6EFAAA47F> .
+    cim:IdentifiedObject.name "40_41_1"^^cim:String .
 
 <FFFC116F-9BD0-4A2B-8A7A-D282F15DAF2B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <5C95E28F-E8D2-4BB6-A535-9F1AC697CDC0> ;
     cim:IdentifiedObject.mRID "FFFC116F-9BD0-4A2B-8A7A-D282F15DAF2B"^^cim:String ;
-    cim:IdentifiedObject.name "15_17_1"^^cim:String ;
-    cim:OperationalLimitSet.ConductingEquipment <5C95E28F-E8D2-4BB6-A535-9F1AC697CDC0> .
+    cim:IdentifiedObject.name "15_17_1"^^cim:String .
 
 <002067AD-9A83-48D3-A552-DA4626BDF409> a cim:ApparentPowerLimit ;
     cim:ApparentPowerLimit.value "120000000.0"^^cim:ApparentPower ;

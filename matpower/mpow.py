@@ -82,7 +82,7 @@ CASES = [
      {'branch_number':449, 'new_mva':1500.0}],
    'gen_PG': None,
    'edits': None},
-  {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 'name': 'XfmrSat', 'swingbus':'1', 'load_scale': 1.0, 'gen_PG':None, 'edits':None}
+  {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 'name': 'XfmrSat', 'swingbus':'1', 'load_scale': 1.0, 'gen_PG':None, 'edits':None, 'radial': True}
   ]
 
 
@@ -152,9 +152,50 @@ def write_solve_file (root, load_scale=1.0, editfile=None, pg=None):
   print ("""codes=matpower_gen_type(results.gentype);""", file=fp)
   print ("""mg=[results.gen(:,GEN_BUS),results.gen(:,PG),results.gen(:,QG),codes];""", file=fp)
   print ("""mb=[results.bus(:,VM),results.bus(:,VA)];""", file=fp)
+  print ("""mbr=[results.branch(:,F_BUS),results.branch(:,T_BUS),results.branch(:,PF),results.branch(:,QF),results.branch(:,PT),results.branch(:,QT)];""", file=fp)
   print ("""csvwrite('{:s}mg.txt',mg);""".format (root), file=fp)
   print ("""csvwrite('{:s}mb.txt',mb);""".format (root), file=fp)
+  print ("""csvwrite('{:s}mbr.txt',mbr);""".format (root), file=fp)
   #print ("""mpver;""", file=fp)
+  print ("""exit;""", file=fp)
+  fp.close()
+  return fscript, fsolved, fsummary
+
+def write_radial_file (root, load_scale=1.0, editfile=None, pg=None):
+  fscript = 'solve{:s}.m'.format(root)
+  fsolved = '{:s}solved.m'.format(root)
+  fsummary = '{:s}summary.txt'.format(root)
+  fp = open (fscript, 'w')
+  print ("""clear;""", file=fp)
+  print ("""cd {:s}""".format (os.getcwd()), file=fp)
+  print ("""define_constants;""", file=fp)
+  if editfile is None:
+    print ("""mpc = loadcase({:s});""".format (root.upper()), file=fp)
+  else:
+    print("""mpcbase = loadcase({:s});""".format (root.upper()), file=fp)
+    print("""chgtab = {:s};""".format(editfile), file=fp)
+    print("""mpc = apply_changes (1, mpcbase, chgtab);""", file=fp)
+  if pg is not None:
+    for row in pg:
+      print ("""mpc.gen({:d},PG) = {:.2f};""".format (row[0], row[1]), file=fp)
+  print ("""mpc = scale_load({:.5f},mpc);""".format (load_scale), file=fp)
+  print ("""opt1 = mpoption('out.all', 0, 'verbose', 0, 'pf.alg', 'PQSUM', 'pf.radial.max_it', 100);""", file=fp)
+  print ("""results=radial_pf(mpc, opt1);""", file=fp)
+  print ("""opt2 = mpoption('out.sys_sum', 1, 'out.bus', 0, 'out.branch', 0);""", file=fp)
+  print ("""fd = fopen('{:s}', 'w');""".format (fsummary), file=fp)
+  print ("""fprintf(fd,'results.success = %d\\n', results.success);""", file=fp)
+  # radial_pf does not return iterations or et
+  print ("""results.et = 0;""", file=fp)
+  print ("""printpf(results, fd, opt2);""", file=fp)
+  print ("""fclose(fd);""", file=fp)
+  print ("""savecase('{:s}', results);""".format (fsolved), file=fp)
+  print ("""codes=matpower_gen_type(results.gentype);""", file=fp)
+  print ("""mg=[results.gen(:,GEN_BUS),results.gen(:,PG),results.gen(:,QG),codes];""", file=fp)
+  print ("""mb=[results.bus(:,VM),results.bus(:,VA)];""", file=fp)
+  print ("""mbr=[results.branch(:,F_BUS),results.branch(:,T_BUS),results.branch(:,PF),results.branch(:,QF),results.branch(:,PT),results.branch(:,QT)];""", file=fp)
+  print ("""csvwrite('{:s}mg.txt',mg);""".format (root), file=fp)
+  print ("""csvwrite('{:s}mb.txt',mb);""".format (root), file=fp)
+  print ("""csvwrite('{:s}mbr.txt',mbr);""".format (root), file=fp)
   print ("""exit;""", file=fp)
   fp.close()
   return fscript, fsolved, fsummary
@@ -212,7 +253,10 @@ if __name__ == '__main__':
     editfile = write_edits (edits, sys_name)
   else:
     editfile = None
-  fscript, fsolved, fsummary = write_solve_file (sys_name, load_scale, editfile, CASES[case_id]['gen_PG'])
+  if 'radial' in CASES[case_id] and CASES[case_id]['radial'] == True:
+    fscript, fsolved, fsummary = write_radial_file (sys_name)
+  else:
+    fscript, fsolved, fsummary = write_solve_file (sys_name, load_scale, editfile, CASES[case_id]['gen_PG'])
 
   mpow.run_matpower_and_wait (fscript)
 

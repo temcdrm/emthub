@@ -749,7 +749,7 @@ SELECT DISTINCT ?id ?name ?endid ?tname ?value ?dur ?inf ?dir WHERE {
  ?p c:Equipment.EquipmentContainer ?sys.
  ?end c:PowerTransformerEnd.PowerTransformer ?p.
  ?end c:IdentifiedObject.mRID ?endid.
- ?ols c:OperationalLimitSet.TransformerEnd ?end.
+ ?ols e:OperationalLimitSet.TransformerEnd ?end.
  ?s c:OperationalLimit.OperationalLimitSet ?ols.
  ?s c:OperationalLimit.OperationalLimitType ?olt.
  ?s r:type c:ApparentPowerLimit.
@@ -777,7 +777,7 @@ SELECT DISTINCT ?id ?name ?eqid ?eqtype ?tname ?value ?dur ?inf ?dir WHERE {
  ?eq c:IdentifiedObject.mRID ?eqid.
  ?eq r:type ?typeraw.
   bind(strafter(str(?typeraw),"#") as ?eqtype)
- ?ols c:OperationalLimitSet.ConductingEquipment ?eq.
+ ?ols e:OperationalLimitSet.ConductingEquipment ?eq.
  ?s c:OperationalLimit.OperationalLimitSet ?ols.
  ?s c:OperationalLimit.OperationalLimitType ?olt.
  ?s r:type c:ApparentPowerLimit.
