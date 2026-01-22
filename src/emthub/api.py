@@ -17,6 +17,10 @@ from __future__ import absolute_import
 
 from .cim_summary import print_cim_summaries
 
+from .cim_sparql import summarize_graph
+from .cim_sparql import load_emt_dict
+from .cim_sparql import list_dict_table
+
 from .version import __version__
 
 

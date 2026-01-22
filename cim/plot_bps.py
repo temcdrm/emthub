@@ -1,5 +1,5 @@
 # Copyright (C) 2023 Battelle Memorial Institute
-# Copyright (C) 2025 Meltran, Inc
+# Copyright (C) 2025-2026 Meltran, Inc
 
 import sys
 import math
@@ -9,14 +9,9 @@ import os
 import matplotlib.pyplot as plt 
 import matplotlib.lines as lines
 import matplotlib.patches as patches
+import cim_examples
 
 plt.rcParams['savefig.directory'] = os.getcwd()
-
-CASES = [
-  {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 'name': 'IEEE118', 'legend_loc': 'best'},
-  {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 'name': 'WECC240', 'legend_loc': 'best'},
-  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56', 'name': 'IEEE39', 'legend_loc': 'lower right'}
-]
 
 nodeTypes = {
   'load':  {'color':'green', 'tag':'Load',  'size':15},
@@ -29,6 +24,7 @@ nodeTypes = {
 edgeTypes = {
   'transformer': {'color':'gray',    'tag':'Xfmr'},
   'series':      {'color':'magenta', 'tag':'Cap'},
+  'cb':          {'color':'purple',  'tag':'CB'},
   'lineEHV':     {'color':'red',     'tag':'EHV'},
   'lineHV':      {'color':'orange',  'tag':'HV'},
   'lineMV':      {'color':'blue',    'tag':'MV'}
@@ -64,6 +60,10 @@ def get_edge_highlights(data):
     weight = 20.0
     color = edgeTypes['series']['color']
     edgeTypes['series']['count'] += 1
+  elif data['eclass'] == 'cb':
+    weight = 3.0
+    color = edgeTypes['cb']['color']
+    edgeTypes['cb']['count'] += 1
   else: # 'line'
     kv = data['edata']['kv']
     weight = 1.5
@@ -192,7 +192,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 2:
       if int(sys.argv[2]) > 0:
         plot_labels = True
-  case = CASES[case_id]
+  case = cim_examples.CASES[case_id]
   sys_name = case['name']
   loc = case['legend_loc']
   G = load_system_graph ('./raw/{:s}_Network.json'.format(sys_name))

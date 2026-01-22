@@ -4,18 +4,8 @@
 import sys
 import os
 import rdflib
-import time
-import xml.etree.ElementTree as ET
-
-PREFIX = None
-DELIM = ':'
-
-CASES = [
-  {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56', 'name': 'IEEE39', 'swingbus':'31'},
-  {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 'name': 'IEEE118', 'swingbus':'131'},
-  {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 'name': 'WECC240', 'swingbus':'2438'},
-  {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 'name': 'XFMRSAT', 'swingbus':'1'}
-]
+import emthub.api as emthub
+import cim_examples
 
 FUELS = {
   'hydro':  {'c2':1.0e-5, 'c1': 1.29, 'c0': 0.0},
@@ -28,81 +18,6 @@ FUELS = {
 
 # global constants
 MVA_BASE = 100.0
-
-def list_dict_table(dict, tag):
-  tbl = dict[tag]
-  print ('\n{:s}: key,{:s}'.format(tag, str(tbl['columns'])))
-  for key, row in tbl['vals'].items():
-    print ('{:s},{:s}'.format (key, ','.join(str(row[c]) for c in tbl['columns'])))
-
-def build_query (prefix, base, sysid):
-  if sysid is not None:
-    idx = base.find('WHERE {') + 8
-    return prefix + '\n' + base[:idx] + """ VALUES ?sysid {{"{:s}"^^c:String}}\n""".format (sysid) + base[idx:]
-  return prefix + '\n' + base
-
-def query_for_values (g, tbl, sysid):
-  keyflds = tbl['keyfld'].split(':')
-  q = build_query (PREFIX, tbl['sparql'], sysid)
- # print ('===================')
- # print (q)
-  result = g.query(q)
-  vars = [str(item) for item in result.vars]
-  for akey in keyflds:
-    vars.remove (akey)
-  tbl['columns'] = vars
-  for b in result:
-    row = {}
-    key = str(b[keyflds[0]])
-    for i in range(1, len(keyflds)):
-      key = key + DELIM + str(b[keyflds[i]])
-    for fld in vars:
-      if b[fld] is None:
-        row[fld] = None
-      elif fld in ['pname', 'name', 'conn', 'sysid', 'bus', 'bus1', 'bus2', 'id', 'eqid', 'endid']:
-        row[fld] = str(b[fld])
-      else:
-        try:
-          row[fld] = int(b[fld])
-        except ValueError:
-          try:
-            row[fld] = float(b[fld])
-          except ValueError:
-            row[fld] = str(b[fld])
-    tbl['vals'][key] = row
-
-def load_emt_dict (g, xml_file, sysid):
-  global PREFIX
-  # read the queries into dict
-  tree = ET.parse(xml_file)
-  root = tree.getroot()
-  nsCIM = root.find('nsCIM').text.strip()
-  nsRDF = root.find('nsRDF').text.strip()
-  nsEMT = root.find('nsEMT').text.strip()
-  PREFIX = """PREFIX r: <{:s}>\nPREFIX c: <{:s}>\nPREFIX e: <{:s}>""".format (nsRDF, nsCIM, nsEMT)
-  #print (PREFIX)
-  dict = {}
-  for query in root.findall('query'):
-    qid = query.find('id').text.strip()
-    dict[qid] = {}
-    dict[qid]['keyfld'] = query.find('keyfld').text
-    dict[qid]['sparql'] = query.find('value').text.strip()
-    dict[qid]['columns'] = []
-    dict[qid]['vals'] = {}
-    #print (' ', qid, dict[qid]['keyfld'])
-
-  for key in ['EMTContainer', 'EMTBus', 'EMTBusXY', 'EMTBaseVoltage', 'EMTLine', 'EMTLoad',
-              'EMTCountPowerXfmrWindings', 'EMTPowerXfmrWinding', 'EMTPowerXfmrCore',
-              'EMTPowerXfmrMesh', 'EMTXfmrTap', 'EMTXfmrSaturation', 'EMTCompShunt', 'EMTCompSeries',
-              'EMTSyncMachine', 'EMTSolar', 'EMTWind', 'EMTGovSteamSGO', 'EMTExcST1A',
-              'EMTPssIEEE1A', 'EMTWeccREGCA', 'EMTWeccREECA', 'EMTWeccREPCA',
-              'EMTWeccWTGTA', 'EMTWeccWTGARA', 'EMTEnergySource', 'EMTDisconnectingCircuitBreaker',
-              'EMTXfmrLimit', 'EMTBranchLimit']:
-    start_time = time.time()
-    query_for_values (g, dict[key], sysid)
-    print ('  Running {:40s} took {:6.3f} s for {:5d} rows'.format (key, time.time() - start_time, len(dict[key]['vals'])))
- #   list_dict_table (dict, key)
-  return dict
 
 def get_gencosts(fuel):
   c2 = 0.0
@@ -406,7 +321,7 @@ if __name__ == '__main__':
   case_id = 3
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
-  case = CASES[case_id]
+  case = cim_examples.CASES[case_id]
   sys_id = case['id']
   sys_name = case['name']
 
@@ -414,16 +329,9 @@ if __name__ == '__main__':
   fname = sys_name + '.ttl'
   g.parse (fname)
   print ('read', len(g), 'statements from', fname)
-  #summarize_graph (g)
-
-  start_time = time.time()
-  d = load_emt_dict (g, 'sparql_queries.xml', case['id'])
-  print ('Total query time {:6.3f} s'.format (time.time() - start_time))
-  #list_dict_table (d, 'EMTBranchLimit')
-  #list_dict_table (d, 'EMTLoad')
-  #list_dict_table (d, 'EMTDisconnectingCircuitBreaker')
+  d = emthub.load_emt_dict (g, case['id'], bTiming=True)
 
   fp = open ('../matpower/' + sys_name + '.m', 'w')
-  build_matpower (d, sys_name, fp, CASES[case_id]['swingbus'])
+  build_matpower (d, sys_name, fp, case['swingbus'])
   fp.close()
 

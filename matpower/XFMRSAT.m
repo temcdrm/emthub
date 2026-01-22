@@ -1,4 +1,4 @@
-function mpc = XFMRSAT
+function mpc = XfmrSat
 mpc.version = "2";
 mpc.baseMVA = 100.0;
 
