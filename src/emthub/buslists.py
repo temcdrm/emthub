@@ -9,8 +9,10 @@ def build_bus_lists (d):
       break
   if bNumeric:
     ordered_buses = dict(sorted(d['EMTBus']['vals'].items(), key=lambda x:int(x[1]['name'])))
+    print ('Numeric ordered buses')
   else:
     ordered_buses = d['EMTBus']['vals']
+    print ('Non-numeric ordered buses')
   bus_numbers = {}
   busnum = 1
   for key, data in ordered_buses.items(): # data has name and nomv

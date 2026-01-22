@@ -58,23 +58,6 @@ def add_mpc_generator (gens, data, bus_numbers, bus_generation, bus_headroom):
                 'Pc1':0.0, 'Pc2':0.0, 'Qc1min':0.0, 'Qc1max':0.0, 'Qc2min':0.0, 'Qc2max':0.0,
                 'ramp_agc':0.0, 'ramp_10':0.0, 'ramp_30':0.0, 'ramp_q':0.0, 'apf':0.0})
 
-def build_bus_lists (d):
-  bNumeric = True
-  for key, data in d['EMTBus']['vals'].items():
-    if not data['name'].isdigit():
-      bNumeric = False
-      break
-  if bNumeric:
-    ordered_buses = dict(sorted(d['EMTBus']['vals'].items(), key=lambda x:int(x[1]['name'])))
-  else:
-    ordered_buses = d['EMTBus']['vals']
-  bus_numbers = {}
-  busnum = 1
-  for key, data in ordered_buses.items(): # data has name and nomv
-    bus_numbers[key] = busnum
-    busnum += 1
-  return ordered_buses, bus_numbers
-
 def find_branch_normal_rating (eqid, d):
   val = 0.0
   for key, data in d['EMTBranchLimit']['vals'].items():
@@ -102,7 +85,7 @@ mpc.bus = [""", file=fp)
   mpc_bus_names = []
   # MATPOWER needs to number the buses as consecutive integers, and
   # we need to map the bus names (not necessarily integer) to MATPOWER bus numbers
-  ordered_buses, bus_numbers = build_bus_lists(d)
+  ordered_buses, bus_numbers = emthub.build_bus_lists(d)
   for key, data in ordered_buses.items():
     mpc_buses.append ({'bus_i':len(mpc_buses)+1,
                        'type':1,

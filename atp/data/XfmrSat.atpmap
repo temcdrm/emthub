@@ -1,13 +1,13 @@
-ATP Bus CIM ID                               CIM Bus               Bus kV
-1       D3C50564-2BA5-4B81-AFF0-BB99CE54E804 1                    345.000
-2       5A74B6F3-2B95-47DE-88FC-902A6643D37A 2                    345.000
-3       FA16A3CC-2849-410E-91E7-88674CCA513D 3                    345.000
-4       212BCE15-7CAE-4469-B001-5040D60466C6 4                    138.000
-5       1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E 5                    138.000
+ATP Bus CIM Bus               CIM ID                                Bus kV
+1       1                     D3C50564-2BA5-4B81-AFF0-BB99CE54E804 345.000
+2       2                     5A74B6F3-2B95-47DE-88FC-902A6643D37A 345.000
+3       3                     FA16A3CC-2849-410E-91E7-88674CCA513D 345.000
+4       4                     212BCE15-7CAE-4469-B001-5040D60466C6 138.000
+5       5                     1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E 138.000
 
-CIM ID                               CIM Bus              ATP Bus  Bus kV
-D3C50564-2BA5-4B81-AFF0-BB99CE54E804 1                    1       345.000
-5A74B6F3-2B95-47DE-88FC-902A6643D37A 2                    2       345.000
-FA16A3CC-2849-410E-91E7-88674CCA513D 3                    3       345.000
-212BCE15-7CAE-4469-B001-5040D60466C6 4                    4       138.000
-1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E 5                    5       138.000
+CIM Bus              ATP Bus  CIM ID                                Bus kV
+1                    1        D3C50564-2BA5-4B81-AFF0-BB99CE54E804 345.000
+2                    2        5A74B6F3-2B95-47DE-88FC-902A6643D37A 345.000
+3                    3        FA16A3CC-2849-410E-91E7-88674CCA513D 345.000
+4                    4        212BCE15-7CAE-4469-B001-5040D60466C6 138.000
+5                    5        1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E 138.000

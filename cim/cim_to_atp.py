@@ -671,21 +671,22 @@ def convert_one_atp_model (d, fpath, case):
     gen_ic = np.loadtxt (case['gen_ic'], delimiter=',')
     print (gen_ic.shape, gen_ic[9,GEN_BUS_IDX], gen_ic[9,GEN_P_IDX], gen_ic[9,GEN_Q_IDX], gen_ic[9,GEN_TYPE_IDX])
 
-  atp_buses = {}  # find the ATP bus number from the CIM ConnectivityNode id
+  atp_buses = {}  # find the ATP bus number (as a string) from the CIM ConnectivityNode id
   cim_bus_ids = {}  # find the CIM ConnectivityNode id from the ATP bus number
   cim_bus_names = {} # find the CIM ConnectivityNode name from the ATP bus number
   bus_kv = {}     # nominal voltage (line-to-line kV) from the CIM ConnectivityNode id
-  bNumeric = True
-  for key, data in d['EMTBus']['vals'].items():
-    if not data['name'].isdigit():
-      bNumeric = False
-      break
-  if bNumeric:
-    ordered_buses = dict(sorted(d['EMTBus']['vals'].items(), key=lambda x:int(x[1]['name'])))
-    print ('numeric ordered buses')
-  else:
-    ordered_buses = d['EMTBus']['vals']
-    print ('non-numeric ordered buses')
+  ordered_buses, atp_buses = emthub.build_bus_lists(d)
+# bNumeric = True
+# for key, data in d['EMTBus']['vals'].items():
+#   if not data['name'].isdigit():
+#     bNumeric = False
+#     break
+# if bNumeric:
+#   ordered_buses = dict(sorted(d['EMTBus']['vals'].items(), key=lambda x:int(x[1]['name'])))
+#   print ('numeric ordered buses')
+# else:
+#   ordered_buses = d['EMTBus']['vals']
+#   print ('non-numeric ordered buses')
   idx = 1
   for key, data in ordered_buses.items():
     bus = str(idx)
@@ -696,13 +697,13 @@ def convert_one_atp_model (d, fpath, case):
     idx += 1
   print ('Mapping {:d} buses to {:s}.atpmap'.format (idx-1, fname))
   fp = open (fpath + fname + '.atpmap', mode='w')
-  print ('ATP Bus CIM ID                               CIM Bus               Bus kV', file=fp)
+  print ('ATP Bus CIM Bus               CIM ID                                Bus kV', file=fp)
   for key in cim_bus_ids:
     cnid = cim_bus_ids[key]
-    print ('{:6s}  {:36s} {:20s} {:7.3f}'.format (key, cnid, cim_bus_names[cnid], bus_kv[cnid]), file=fp)
-  print ('\nCIM ID                               CIM Bus              ATP Bus  Bus kV', file=fp)
+    print ('{:6s}  {:20s}  {:36s} {:7.3f}'.format (key, cim_bus_names[cnid], cnid, bus_kv[cnid]), file=fp)
+  print ('\nCIM Bus              ATP Bus  CIM ID                                Bus kV', file=fp)
   for key in atp_buses:
-    print ('{:36s} {:20s} {:6s}  {:7.3f}'.format (key, cim_bus_names[key], atp_buses[key], bus_kv[key]), file=fp)
+    print ('{:20s} {:6s}   {:36s} {:7.3f}'.format (cim_bus_names[key], atp_buses[key], key, bus_kv[key]), file=fp)
   fp.close()
 
   machines = ParallelMachines (d['EMTSyncMachine']['vals'], gen_ic, bus_ic, atp_buses)
