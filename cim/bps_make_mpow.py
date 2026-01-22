@@ -75,11 +75,6 @@ def build_bus_lists (d):
     busnum += 1
   return ordered_buses, bus_numbers
 
-def get_swingbus_id (ordered_buses, swingbus):
-  for cnid, data in ordered_buses.items():
-    if data['name'] == swingbus:
-      return cnid
-
 def find_branch_normal_rating (eqid, d):
   val = 0.0
   for key, data in d['EMTBranchLimit']['vals'].items():
@@ -184,7 +179,7 @@ mpc.bus = [""", file=fp)
     print ('bus {:d} has maximum headroom of {:.2f} MW and generation of {:.2f} MW'.format (head_bus, 
                                                                                             bus_headroom[head_bus], 
                                                                                             bus_generation[head_bus]))
-  swingbus_num = bus_numbers[get_swingbus_id(ordered_buses, swingbus)]
+  swingbus_num = bus_numbers[emthub.get_swingbus_id(ordered_buses, swingbus)]
   if len(mpc_generators) < 1:
     mpc_generators.append ({'bus':swingbus_num, 'Pg':total_load, 'Qg':0.0, 'Qmax':total_load, 'Qmin':-total_load,
                   'Vg':1.0, 'mBase':2*total_load, 'status':1, 'Pmax':2*total_load, 'Pmin':0.0,

@@ -642,11 +642,6 @@ def InitializeIBR (row, gen_ic, ibr_type):
         row['q'] = 1.0e6 * ic[2]
         return
 
-def get_swingbus_id (ordered_buses, swingbus):
-  for cnid, data in ordered_buses.items():
-    if data['name'] == swingbus:
-      return cnid
-
 def convert_one_atp_model (d, fpath, case):
   """Export one BES network model to ATP.
 
@@ -716,7 +711,7 @@ def convert_one_atp_model (d, fpath, case):
   print ('C file: {:s}, Load Mult={:.3f}'.format (fname, LOAD_MULT), file=ap)
   print ('$VINTAGE,0', file=ap)
 
-  swing_id = get_swingbus_id (ordered_buses, swingbus)
+  swing_id = emthub.get_swingbus_id (ordered_buses, swingbus)
   bus = atp_buses[swing_id]
   kv = bus_kv[swing_id]
   x1pu_swing = 0.050
