@@ -7517,6 +7517,7 @@
     <rdfs:label>Susceptance</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="#SvPowerFlow">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-53eb"/>
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-53ee"/>
@@ -7526,6 +7527,7 @@
     <rdfs:subClassOf rdf:resource="#StateVariable"/>
   </rdf:Description>
   <rdf:Description rdf:about="#SvVoltage">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-53da"/>
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-53e0"/>

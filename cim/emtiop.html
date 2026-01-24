@@ -4895,6 +4895,142 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="SvPowerFlow" class="group">
+         <a href="#SvPowerFlow">
+            <h2 class="concrete">SvPowerFlow</h2>
+         </a>
+         <p class="package">StateVariables</p>
+         <p class="comment">State variable for power flow. Load convention is used for flow direction. This means flow out from the TopologicalNode into the equipment is positive.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="SvPowerFlow.p">p</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ActivePower">ActivePower</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The active power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="SvPowerFlow.q">q</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ReactivePower">ReactivePower</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The reactive power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="SvPowerFlow.ConductingEquipment">ConductingEquipment</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ConductingEquipment">ConductingEquipment</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The ConductingEquipment associated with this State PowerFlow. Positive flow direction is into the ConductingEquipment's FromConnectivityNode.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="SvPowerFlow.TransformerEnd">TransformerEnd</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#TransformerEnd">TransformerEnd</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The TransformerEnd associated with this State PowerFlow. Positive flow into the TransformerEnd's ConnectivityNode.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table/>
+      </div>
+      <div id="SvVoltage" class="group">
+         <a href="#SvVoltage">
+            <h2 class="concrete">SvVoltage</h2>
+         </a>
+         <p class="package">StateVariables</p>
+         <p class="comment">State variable for voltage.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="SvVoltage.angle">angle</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#AngleDegrees">AngleDegrees</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The voltage angle of the topological node complex voltage with respect to system reference.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="SvVoltage.v">v</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Voltage">Voltage</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The voltage magnitude at the topological node. The attribute shall be a positive value.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="SvVoltage.ConnectivityNode">ConnectivityNode</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ConnectivityNode">ConnectivityNode</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The ConnectivityNode associated with this State Voltage.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table/>
+      </div>
       <div id="SynchronousMachine" class="group">
          <a href="#SynchronousMachine">
             <h2 class="concrete">SynchronousMachine</h2>
@@ -10853,142 +10989,6 @@ p.package { position: absolute; right: 10px; top: 0px}
          </a>
          <p class="package">StateVariables</p>
          <p class="comment">An abstract class for state variables.</p>
-      </div>
-      <div id="SvPowerFlow" class="group">
-         <a href="#SvPowerFlow">
-            <h2 class="abstract">SvPowerFlow</h2>
-         </a>
-         <p class="package">StateVariables</p>
-         <p class="comment">State variable for power flow. Load convention is used for flow direction. This means flow out from the TopologicalNode into the equipment is positive.</p>
-         <h3>Native Members</h3>
-         <table>
-            <tr>
-               <th>
-                  <p class="name" id="SvPowerFlow.p">p</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ActivePower">ActivePower</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The active power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="SvPowerFlow.q">q</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ReactivePower">ReactivePower</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The reactive power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="SvPowerFlow.ConductingEquipment">ConductingEquipment</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConductingEquipment">ConductingEquipment</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The ConductingEquipment associated with this State PowerFlow. Positive flow direction is into the ConductingEquipment's FromConnectivityNode.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="SvPowerFlow.TransformerEnd">TransformerEnd</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#TransformerEnd">TransformerEnd</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The TransformerEnd associated with this State PowerFlow. Positive flow into the TransformerEnd's ConnectivityNode.</p>
-               </td>
-            </tr>
-         </table>
-         <h3>Inherited Members</h3>
-         <table/>
-      </div>
-      <div id="SvVoltage" class="group">
-         <a href="#SvVoltage">
-            <h2 class="abstract">SvVoltage</h2>
-         </a>
-         <p class="package">StateVariables</p>
-         <p class="comment">State variable for voltage.</p>
-         <h3>Native Members</h3>
-         <table>
-            <tr>
-               <th>
-                  <p class="name" id="SvVoltage.angle">angle</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#AngleDegrees">AngleDegrees</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The voltage angle of the topological node complex voltage with respect to system reference.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="SvVoltage.v">v</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Voltage">Voltage</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The voltage magnitude at the topological node. The attribute shall be a positive value.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="SvVoltage.ConnectivityNode">ConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The ConnectivityNode associated with this State Voltage.</p>
-               </td>
-            </tr>
-         </table>
-         <h3>Inherited Members</h3>
-         <table/>
       </div>
       <div id="SynchronousMachineDetailed" class="group">
          <a href="#SynchronousMachineDetailed">
