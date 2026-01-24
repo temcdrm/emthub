@@ -3,10 +3,10 @@ function write_ic = matpower_write_ic (mpc, fbus, fgen, fbranch)
     define_constants;
 
     fid=fopen(fbus, "w");
-    fprintf (fid, "Bus, Vpu, Vdeg, CN id\n");
+    fprintf (fid, "Bus, kVbase, Vpu, Vdeg, CN id\n");
     n=size(mpc.bus)(1);
     for i=1:n
-        fprintf (fid, "%d,%10.6f,%10.6f,%s\n", i, mpc.bus(i,VM), mpc.bus(i,VA), mpc.bus_id{i});
+        fprintf (fid, "%d,%8.3f,%10.6f,%10.6f,%s\n", i, mpc.bus(i,BASE_KV), mpc.bus(i,VM), mpc.bus(i,VA), mpc.bus_id{i});
     endfor
     fclose(fid);
 
