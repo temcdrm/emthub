@@ -794,3 +794,80 @@ SELECT DISTINCT ?id ?name ?eqid ?eqtype ?tname ?value ?dur ?inf ?dir WHERE {
 }
 ORDER BY ?eqid ?inf ?tname ?inf ?value
 
+# EMTBusVoltage
+SELECT DISTINCT ?cnid ?name ?vmag ?vdeg WHERE {
+# VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ VALUES ?sysid {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s c:ConnectivityNode.ConnectivityNodeContainer ?sys.
+ ?s c:IdentifiedObject.mRID ?cnid.
+ ?s c:IdentifiedObject.name ?name.
+ ?sv e:SvVoltage.ConnectivityNode ?s.
+ ?sv c:SvVoltage.v ?vmag.
+ ?sv c:SvVoltage.angle ?vdeg
+}
+ORDER BY ?name
+
+# EMTBranchFlow
+SELECT DISTINCT ?eqid ?eqtype ?eqname ?p ?q WHERE {
+# VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ VALUES ?sysid {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s c:Equipment.EquipmentContainer ?sys.
+ ?s c:IdentifiedObject.mRID ?eqid.
+ ?s c:IdentifiedObject.name ?eqname.
+ ?s r:type ?typeraw.
+  bind(strafter(str(?typeraw),"#") as ?eqtype)
+ ?sv e:SvPowerFlow.ConductingEquipment ?s.
+ ?sv c:SvPowerFlow.p ?p.
+ ?sv c:SvPowerFlow.q ?q
+}
+ORDER BY ?eqtype ?eqname
+
+# EMTXfmrFlow
+SELECT DISTINCT ?endid ?endtype ?endname ?p ?q WHERE {
+# VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ VALUES ?sysid {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?pxf c:Equipment.EquipmentContainer ?sys.
+ ?end c:PowerTransformerEnd.PowerTransformer ?pxf.
+ ?end c:IdentifiedObject.mRID ?endid.
+ ?end c:IdentifiedObject.name ?endname.
+ ?end r:type ?typeraw.
+  bind(strafter(str(?typeraw),"#") as ?endtype)
+ ?sv e:SvPowerFlow.TransformerEnd ?end.
+ ?sv c:SvPowerFlow.p ?p.
+ ?sv c:SvPowerFlow.q ?q
+}
+ORDER BY ?endtype ?endname
+
+# EMTBusVoltageIC
+SELECT DISTINCT ?cnid ?vmag ?vdeg WHERE {
+ ?sv e:SvVoltage.ConnectivityNode ?cn.
+  bind(substr(str(?cn),strlen(str(?cn))-35) as ?cnid)
+ ?sv c:SvVoltage.v ?vmag.
+ ?sv c:SvVoltage.angle ?vdeg
+} ORDER BY ?cnid
+
+# EMTBranchFlowIC
+SELECT DISTINCT ?eqid ?p ?q WHERE {
+ ?sv e:SvPowerFlow.ConductingEquipment ?eq.
+  bind(substr(str(?eq),strlen(str(?eq))-35) as ?eqid)
+ ?sv c:SvPowerFlow.p ?p.
+ ?sv c:SvPowerFlow.q ?q
+} ORDER BY ?eqid
+
+# EMTXfmrFlowIC
+SELECT DISTINCT ?endid ?p ?q WHERE {
+ ?sv e:SvPowerFlow.TransformerEnd ?end.
+  bind(substr(str(?end),strlen(str(?end))-35) as ?endid)
+ ?sv c:SvPowerFlow.p ?p.
+ ?sv c:SvPowerFlow.q ?q
+} ORDER BY ?endid
+

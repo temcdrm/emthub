@@ -94,12 +94,41 @@ def load_emt_dict (g, sysid, bTiming=False):
               'EMTSyncMachine', 'EMTSolar', 'EMTWind', 'EMTGovSteamSGO', 'EMTExcST1A',
               'EMTPssIEEE1A', 'EMTWeccREGCA', 'EMTWeccREECA', 'EMTWeccREPCA',
               'EMTWeccWTGTA', 'EMTWeccWTGARA', 'EMTEnergySource', 'EMTDisconnectingCircuitBreaker',
-              'EMTXfmrLimit', 'EMTBranchLimit']:
+              'EMTXfmrLimit', 'EMTBranchLimit', 'EMTBusVoltage', 'EMTBranchFlow', 'EMTXfmrFlow']:
     if bTiming:
       query_start_time = time.time()
     query_for_values (g, dict[key], sysid)
     if bTiming:
       print ('  Running {:40s} took {:6.3f} s for {:5d} rows'.format (key, time.time() - query_start_time, len(dict[key]['vals'])))
+  print ('Total query time {:6.3f} s'.format (time.time() - start_time))
+  return dict
+
+def load_ic_dict (g):
+  global PREFIX
+  start_time = time.time()
+  # read the queries into dict
+  xml_file = pkg.resource_filename (__name__, 'queries/{:s}'.format(XML_QUERY_FILE))
+  print ('SPARQL from', xml_file)
+  tree = ET.parse(xml_file)
+  root = tree.getroot()
+  nsCIM = root.find('nsCIM').text.strip()
+  nsRDF = root.find('nsRDF').text.strip()
+  nsEMT = root.find('nsEMT').text.strip()
+  PREFIX = """PREFIX r: <{:s}>\nPREFIX c: <{:s}>\nPREFIX e: <{:s}>""".format (nsRDF, nsCIM, nsEMT)
+  #print (PREFIX)
+  dict = {}
+  for query in root.findall('query'):
+    qid = query.find('id').text.strip()
+    dict[qid] = {}
+    dict[qid]['keyfld'] = query.find('keyfld').text
+    dict[qid]['sparql'] = query.find('value').text.strip()
+    dict[qid]['columns'] = []
+    dict[qid]['vals'] = {}
+    #print (' ', qid, dict[qid]['keyfld'])
+
+  for key in ['EMTBusVoltageIC', 'EMTBranchFlowIC', 'EMTXfmrFlowIC']:
+    query_for_values (g, dict[key], sysid=None)
+
   print ('Total query time {:6.3f} s'.format (time.time() - start_time))
   return dict
 

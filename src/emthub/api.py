@@ -13,6 +13,7 @@ Public Functions:
     :print_cim_summaries: Print class names and counts found in list of Turtle files.
     :summarize_graph: Count the class instances by namespace in an RDF graph.
     :load_emt_dict: Load an RDF graph into Python dictionary using packaged SPARQL queries.
+    :load_ic_dict: Load an RDF graph into Python dictionary from standalone power flow solution file.
     :list_dict_table: Print the fields and attributes of a Python dictionary loaded from SPARQL.
     :build_bus_lists: Order the buses (connectivity nodes) sequentially.
     :get_swingbus_id: Find the CIM ConnectivityNode ID by matching the Name/Number from the original raw file.
@@ -24,6 +25,7 @@ from .cim_summary import print_cim_summaries
 
 from .cim_sparql import summarize_graph
 from .cim_sparql import load_emt_dict
+from .cim_sparql import load_ic_dict
 from .cim_sparql import list_dict_table
 
 from .buslists import build_bus_lists
