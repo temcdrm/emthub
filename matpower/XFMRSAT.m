@@ -32,16 +32,19 @@ mpc.branch = [
 %	1 startup shutdown n x1 y1 ... xn yn
 %	2 startup shutdown n c(n-1) ... c0
 mpc.gencost = [
+  2 0 0 3 0.0060000 45.000 2230.000;
 ];
 
 %% generator unit type (see GENTYPES)
 % use WT, PV, HY, ST, CT, ST for corresponding GENFUELS
 % WT and PV will use WECC dynamics; the others will use Gov/Exc/PSS dynamics
 mpc.gentype = {
+  'ST';
 };
 
 %% generator fuel type (see GENFUELS); use wind, solar, hydro, nuclear, ng, coal
 mpc.genfuel = {
+  'ng';
 };
 
 %% bus names
@@ -51,4 +54,26 @@ mpc.bus_name = {
   '3';
   '4';
   '5';
+};
+
+%% bus ids
+mpc.bus_id = {
+  'D3C50564-2BA5-4B81-AFF0-BB99CE54E804';
+  '5A74B6F3-2B95-47DE-88FC-902A6643D37A';
+  'FA16A3CC-2849-410E-91E7-88674CCA513D';
+  '212BCE15-7CAE-4469-B001-5040D60466C6';
+  '1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E';
+};
+
+%% gen ids
+mpc.gen_id = {
+  '81D2A6A9-1FBB-440E-A92D-D71E703D650A';
+};
+
+%% branch ids
+mpc.branch_id = {
+  '68B79170-F5A8-481F-9792-6838B2D02849';
+  '8952618F-8852-4420-9850-514793565B23';
+  'AD792DFF-2C58-4BBF-8D75-2F72CFAB796B';
+  '7507DEC9-7F4B-4C0C-ABC1-477372339EBF';
 };

@@ -83,6 +83,7 @@ def build_matpower (d, sys_name, fp, swingbus):
 mpc.bus = [""", file=fp)
   mpc_buses = []
   mpc_bus_names = []
+  mpc_bus_ids = []
   # MATPOWER needs to number the buses as consecutive integers, and
   # we need to map the bus names (not necessarily integer) to MATPOWER bus numbers
   ordered_buses, bus_numbers = emthub.build_bus_lists(d)
@@ -101,6 +102,7 @@ mpc.bus = [""", file=fp)
                        'Vmax':1.1,
                        'Vmin':0.9})
     mpc_bus_names.append (data['name']) # (key)
+    mpc_bus_ids.append (key)
   # add loads and shunts to buses
   total_load = 0.0
   for key, data in d['EMTLoad']['vals'].items():
@@ -123,6 +125,7 @@ mpc.bus = [""", file=fp)
     mpc_buses[idx]['Bs'] += data['bsection']*scale
   # any bus with a generator is type 2; bus with most total generation is type 3
   mpc_generators = []
+  mpc_gen_ids = []
   mpc_genfuels = []
   mpc_gentypes = []
   bus_generation = {}
@@ -140,18 +143,21 @@ mpc.bus = [""", file=fp)
     else:
       mpc_genfuels.append('ng')
       mpc_gentypes.append('ST')
+    mpc_gen_ids.append(key)
   for key, data in d['EMTSolar']['vals'].items():
     idx = bus_numbers[data['cn1id']]-1
     mpc_buses[idx]['type'] = 2
     add_mpc_generator (mpc_generators, data, bus_numbers, bus_generation, bus_headroom)
     mpc_genfuels.append('solar')
     mpc_gentypes.append('PV')
+    mpc_gen_ids.append(key)
   for key, data in d['EMTWind']['vals'].items():
     idx = bus_numbers[data['cn1id']]-1
     mpc_buses[idx]['type'] = 2
     add_mpc_generator (mpc_generators, data, bus_numbers, bus_generation, bus_headroom)
     mpc_genfuels.append('wind')
     mpc_gentypes.append('WT')
+    mpc_gen_ids.append(key)
   if len(bus_generation) > 0:
     max_bus = max(bus_generation, key=bus_generation.get)
     print ('bus {:d} has maximum generation of {:.2f} MW and headroom of {:.2f} MW'.format (max_bus, 
@@ -163,11 +169,14 @@ mpc.bus = [""", file=fp)
                                                                                             bus_headroom[head_bus], 
                                                                                             bus_generation[head_bus]))
   swingbus_num = bus_numbers[emthub.get_swingbus_id(ordered_buses, swingbus)]
-  if len(mpc_generators) < 1:
+  if len(mpc_generators) < 1:  # there must be at least one EnergySource
     mpc_generators.append ({'bus':swingbus_num, 'Pg':total_load, 'Qg':0.0, 'Qmax':total_load, 'Qmin':-total_load,
                   'Vg':1.0, 'mBase':2*total_load, 'status':1, 'Pmax':2*total_load, 'Pmin':0.0,
                   'Pc1':0.0, 'Pc2':0.0, 'Qc1min':0.0, 'Qc1max':0.0, 'Qc2min':0.0, 'Qc2max':0.0,
                   'ramp_agc':0.0, 'ramp_10':0.0, 'ramp_30':0.0, 'ramp_q':0.0, 'apf':0.0})
+    mpc_genfuels.append('ng')
+    mpc_gentypes.append('ST')
+    mpc_gen_ids.append(next(iter(d['EMTEnergySource']['vals'])))
 
   mpc_buses[swingbus_num-1]['type'] = 3
   for data in mpc_buses:
@@ -204,7 +213,7 @@ mpc.gen = [""", file=fp)
       mva = data['ratedS'] / 1.0e6
       kv = data['ratedU'] / 1.0e3
       zbase = kv*kv / MVA_BASE # mva # on system MVA base, not on transformer MVA
-      xfmrs[pname] = {'from':bus, 'mva':mva, 'ratio': ratio}
+      xfmrs[pname] = {'from':bus, 'mva':mva, 'ratio': ratio, 'end1id': fid}
     else:
       xfmrs[pname]['to'] = bus
       tid = data['id']
@@ -214,6 +223,7 @@ mpc.gen = [""", file=fp)
       xfmrs[pname]['r'] = r
       xfmrs[pname]['x'] = x
 
+  mpc_branch_ids = []
   print ("""
 %% branch data - BESLine+BESCompSeries+collected transformers
 %	fbus tbus r x b rateA rateB rateC ratio angle status angmin angmax
@@ -229,6 +239,7 @@ mpc.branch = [""", file=fp)
     x = data['x']/zbase
     b = q/MVA_BASE
     print (' {:5d} {:5d} {:9.6f} {:9.6f} {:9.6f} {:8.3f} 0.0 0.0 0.0 0.0 1 0.0 0.0;'.format (bus1, bus2, r, x, b, rateA), file=fp)
+    mpc_branch_ids.append(key)
   for key, data in d['EMTCompSeries']['vals'].items():
     rateA = find_branch_normal_rating (key, d)
     bus1 = bus_numbers[data['cn1id']]
@@ -238,11 +249,13 @@ mpc.branch = [""", file=fp)
     r = data['r']/zbase
     x = data['x']/zbase
     print (' {:5d} {:5d} {:9.6f} {:9.6f} 0.0 {:8.3f} 0.0 0.0 0.0 0.0 1 0.0 0.0;'.format (bus1, bus2, r, x, rateA), file=fp)
+    mpc_branch_ids.append(key)
   for key, data in d['EMTDisconnectingCircuitBreaker']['vals'].items():
     rateA = find_branch_normal_rating (key, d)
     bus1 = bus_numbers[data['cn1id']]
     bus2 = bus_numbers[data['cn2id']]
     print (' {:5d} {:5d} 0.0 1.0e-6 0.0 {:8.3f} 0.0 0.0 0.0 0.0 1 0.0 0.0;'.format (bus1, bus2, rateA), file=fp)
+    mpc_branch_ids.append(key)
 
   for key, data in xfmrs.items():
     rateA = data['mva']
@@ -250,6 +263,7 @@ mpc.branch = [""", file=fp)
     rateC = rateA * 5.0 / 3.0
     print (' {:5d} {:5d} {:9.6f} {:9.6f} 0.0 {:8.3f} {:8.3f} {:8.3f} {:8.6f} 0.0 1 0.0 0.0;'.format (data['from'], 
       data['to'], data['r'], data['x'], rateA, rateB, rateC, data['ratio']), file=fp)
+    mpc_branch_ids.append(data['end1id'])
   print ('];', file=fp)
 
   print ("""
@@ -283,6 +297,27 @@ mpc.genfuel = {""", file=fp)
 %% bus names
 mpc.bus_name = {""", file=fp)
   for name in mpc_bus_names:
+    print ("""  '{:s}';""".format(name), file=fp)
+  print ('};', file=fp)
+
+  print ("""
+%% bus ids
+mpc.bus_id = {""", file=fp)
+  for name in mpc_bus_ids:
+    print ("""  '{:s}';""".format(name), file=fp)
+  print ('};', file=fp)
+
+  print ("""
+%% gen ids
+mpc.gen_id = {""", file=fp)
+  for name in mpc_gen_ids:
+    print ("""  '{:s}';""".format(name), file=fp)
+  print ('};', file=fp)
+
+  print ("""
+%% branch ids
+mpc.branch_id = {""", file=fp)
+  for name in mpc_branch_ids:
     print ("""  '{:s}';""".format(name), file=fp)
   print ('};', file=fp)
 
