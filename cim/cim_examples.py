@@ -45,7 +45,7 @@ CASES = [
    'br_ic': '../matpower/wecc240mbr.txt',
    'ttl_ic': 'wecc240_ic.ttl',
    'swingbus':'2438', 
-   'load': 1.0425, 'UseXfmrSaturation': False},
+   'load': 1.02, 'UseXfmrSaturation': False},
   {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
    'name':'XfmrSat', 'legend_loc': 'best', 
    'rawfile':'raw/XfmrSat.raw', 'xmlfile':'XfmrSat.xml', 'mridfile': 'raw/XfmrSatmrids.dat', 'ttlfile': 'XfmrSat.ttl',
