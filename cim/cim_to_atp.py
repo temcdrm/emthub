@@ -10,12 +10,6 @@ import json
 import cim_examples
 import emthub.api as emthub
 
-BUS_VMAG_IDX = 0
-BUS_VDEG_IDX = 1
-GEN_BUS_IDX = 0
-GEN_P_IDX = 1
-GEN_Q_IDX = 2
-GEN_TYPE_IDX = 3
 GEN_TYPE_ST = 0
 GEN_TYPE_PV = 1
 GEN_TYPE_WT = 2
@@ -385,10 +379,8 @@ def AtpLoadXfmr(zb, v):
   else:
     return ' 1.0E5 2.0E5{:6.2f}'.format(v)
 
-def TheveninVoltage (vpu, deg, rpu, xpu, p_mw, q_mvar, mva_base):
-  p = p_mw / mva_base
-  q = q_mvar / mva_base
-  s = complex(p, q)
+def TheveninVoltage (vpu, deg, rpu, xpu, ppu, qpu):
+  s = complex(ppu, qpu)
   z = complex(rpu, xpu)
   rad = deg / RAD_TO_DEG
   vt = complex(vpu*math.cos(rad), vpu*math.sin(rad))
@@ -412,14 +404,14 @@ def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count):
                                theta = AtpFit10 (1.8)), 
          file=ap)
 
-def AppendType14Generator (bus, vbase, rmva, Xdp, Ra, bus_ic, mw, mvar, ap):
+def AppendType14Generator (cn1id, bus, vbase, rmva, Xdp, Ra, icd, mw, mvar, ap):
   vpu = 1.0
   vdeg = 0.0
-  if bus_ic is not None:
-    idx = int(bus) - 1
-    vpu = bus_ic[idx,BUS_VMAG_IDX]
-    deg = bus_ic[idx,BUS_VDEG_IDX]
-  vpu, deg = TheveninVoltage (vpu, deg, Xdp, Ra, mw, mvar, rmva)
+  if icd is not None and cn1id in icd['EMTBusVoltageIC']['vals']:
+    ic = icd['EMTBusVoltageIC']['vals'][cn1id]
+    vpu = ic['vmag'] / vbase
+    deg = ic['vdeg']
+  vpu, deg = TheveninVoltage (vpu, deg, Xdp, Ra, mw/rmva, mvar/rmva)
   kv = vbase * 0.001
   zbase = kv * kv / rmva
   X1 = Xdp * zbase
@@ -594,18 +586,18 @@ def AppendMachineDynamics (bus, vpu, deg, mach, gov, exc, pss, ap):
 # parallel all machines at a bus, since they have identical controls and electrical parameters
 # (this avoids need for FINISH and FINISH PART input of the individual machines in parallel)
 # at the same time, assign initial conditions of P, Q, and voltage
-def ParallelMachines (d, gen_ic, bus_ic, atp_buses):
+def ParallelMachines (d, icd, atp_buses):
   par = {}
   bus_generators = {}
-  gen_ic_idx = 0
   for key, row in d.items():
+    vbase = row['ratedU']
     bus = row['cn1id']
-    row['p'] = 1e6 * gen_ic[gen_ic_idx][GEN_P_IDX]
-    row['q'] = 1e6 * gen_ic[gen_ic_idx][GEN_Q_IDX]
-    gen_ic_idx += 1
-    idx = int(atp_buses[bus]) - 1
-    row['vpu'] = bus_ic[idx, BUS_VMAG_IDX]
-    row['deg'] = bus_ic[idx, BUS_VDEG_IDX]
+    ic = icd['EMTBranchFlowIC']['vals'][key]
+    row['p'] = -ic['p'] # account for load convention of shunt power flows
+    row['q'] = -ic['q']
+    ic = icd['EMTBusVoltageIC']['vals'][bus]
+    row['vpu'] = ic['vmag'] / vbase
+    row['deg'] = ic['vdeg']
     if bus not in bus_generators:
       bus_generators[bus] = [key]
     else:
@@ -632,17 +624,13 @@ def ParallelMachines (d, gen_ic, bus_ic, atp_buses):
   return par
 
 # over-write the CIM power with initial conditions
-# each row of gen_ic has bus, p, q, ibr_type
-def InitializeIBR (row, gen_ic, ibr_type):
-  bus = int(row['bus'])
-  for ic in gen_ic:
-    if int(ic[3]) == ibr_type:
-      if int(ic[0]) == bus:
-        row['p'] = 1.0e6 * ic[1]
-        row['q'] = 1.0e6 * ic[2]
-        return
+def InitializeIBR (key, row, icd):
+  if icd is not None and key in icd['EMTBranchFlowIC']['vals']:
+    ic = icd['EMTBranchFlowIC']['vals'][key]
+    row['p'] = -ic['p'] # accounting for the load convention of shunt power flow
+    row['q'] = -ic['q']
 
-def convert_one_atp_model (d, fpath, case):
+def convert_one_atp_model (d, icd, fpath, case):
   """Export one BES network model to ATP.
 
   Writes a file ending in *_net.atp*, which references support files for machines,
@@ -652,6 +640,7 @@ def convert_one_atp_model (d, fpath, case):
 
   Args:
     d (dict): loaded from rdflib
+    icd (dict): power flow solution for initial conditions
     fpath (str): relative path for ATP netlist files
     case (dict): one of the CASES
   """
@@ -661,32 +650,12 @@ def convert_one_atp_model (d, fpath, case):
   sys_id=case['id']
   fname=case['name']
   swingbus=case['swingbus']
-  bus_ic = None
-  if 'bus_ic' in case and os.path.exists(case['bus_ic']):
-    print ('Initial bus voltages and angles from', case['bus_ic'])
-    bus_ic = np.loadtxt (case['bus_ic'], delimiter=',')
-  gen_ic = None
-  if 'gen_ic' in case and os.path.exists(case['gen_ic']):
-    print ('Generator bus, p, q, and types [0=ST,1=PV,2=WT] from', case['gen_ic'])
-    gen_ic = np.loadtxt (case['gen_ic'], delimiter=',')
-    print (gen_ic.shape, gen_ic[9,GEN_BUS_IDX], gen_ic[9,GEN_P_IDX], gen_ic[9,GEN_Q_IDX], gen_ic[9,GEN_TYPE_IDX])
 
   atp_buses = {}  # find the ATP bus number (as a string) from the CIM ConnectivityNode id
   cim_bus_ids = {}  # find the CIM ConnectivityNode id from the ATP bus number
   cim_bus_names = {} # find the CIM ConnectivityNode name from the ATP bus number
   bus_kv = {}     # nominal voltage (line-to-line kV) from the CIM ConnectivityNode id
   ordered_buses, atp_buses = emthub.build_bus_lists(d)
-# bNumeric = True
-# for key, data in d['EMTBus']['vals'].items():
-#   if not data['name'].isdigit():
-#     bNumeric = False
-#     break
-# if bNumeric:
-#   ordered_buses = dict(sorted(d['EMTBus']['vals'].items(), key=lambda x:int(x[1]['name'])))
-#   print ('numeric ordered buses')
-# else:
-#   ordered_buses = d['EMTBus']['vals']
-#   print ('non-numeric ordered buses')
   idx = 1
   for key, data in ordered_buses.items():
     bus = str(idx)
@@ -706,7 +675,7 @@ def convert_one_atp_model (d, fpath, case):
     print ('{:20s} {:6s}   {:36s} {:7.3f}'.format (cim_bus_names[key], atp_buses[key], key, bus_kv[key]), file=fp)
   fp.close()
 
-  machines = ParallelMachines (d['EMTSyncMachine']['vals'], gen_ic, bus_ic, atp_buses)
+  machines = ParallelMachines (d['EMTSyncMachine']['vals'], icd, atp_buses)
 
   ap = open (fpath + fname + '_net.atp', mode='w')
   print ('C file: {:s}, Load Mult={:.3f}'.format (fname, LOAD_MULT), file=ap)
@@ -745,7 +714,7 @@ def convert_one_atp_model (d, fpath, case):
   R1 = r1pu_swing * zbase
   X0 = X1
   R0 = R1
-  vmag, vang = TheveninVoltage (vmag, vang, R1, X1, p_swing, q_swing, mva_swing)
+  vmag, vang = TheveninVoltage (vmag, vang, R1, X1, p_swing/mva_swing, q_swing/mva_swing)  # TODO: should R1, X1 be perunit?
   vmag = vmag * kv * 1000.0 * SQRT2 / SQRT3
   vang = vang + GEN_SHIFT
   print ('C =============================================================================', file=ap)
@@ -1011,7 +980,7 @@ def convert_one_atp_model (d, fpath, case):
     nph = len(phases)
     vbase = row['ratedU']
     sbase = row['ratedS']
-    InitializeIBR (row, gen_ic, ibr_type=1)
+    InitializeIBR (key, row, icd)
     wtotal = row['p'] * 1.0 # PV_MULT
     PV_TOTAL += 1e-6 * wtotal
     PV_COUNT += 1
@@ -1049,7 +1018,7 @@ def convert_one_atp_model (d, fpath, case):
     nph = len(phases)
     vbase = row['ratedU']
     sbase = row['ratedS']
-    InitializeIBR (row, gen_ic, ibr_type=2)
+    InitializeIBR (key, row, icd)
     wtotal = row['p'] * 1.0 # PV_MULT
     WND_TOTAL += 1e-6 * wtotal
     WND_COUNT += 1
@@ -1082,7 +1051,7 @@ def convert_one_atp_model (d, fpath, case):
         print ('C =============================================================================', file=ap)
         print ('C SyncMachine {:s} at {:s} is {:.2f} MVA, {:.2f} MW, {:.2f} MVAR'.format (row['name'], row['bus'], rmva, mw, mvar), file=ap)
         if USE_TYPE_14_MACHINES: #  or (key != lastKey):
-          genbus = AppendType14Generator (bus, vbase, rmva, row['Xdp'], row['Ra'], bus_ic, mw, mvar, ap)
+          genbus = AppendType14Generator (row['cn1id'], bus, vbase, rmva, row['Xdp'], row['Ra'], icd, mw, mvar, ap)
           dgens[key] = {'Type':'SyncMach', 'Source':'14', 'Name':row['name'], 'Bus':genbus, 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
         else:
           gov = GetMachineDynamic (d['EMTGovSteamSGO']['vals'], key)
@@ -1092,10 +1061,6 @@ def convert_one_atp_model (d, fpath, case):
           DUM_NODES += MACHINE_DUM_NODES
           dgens[key] = {'Type':'SyncMach', 'Source':'59', 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
     print ('/BRANCH', file=ap)
-
-#  no CIM breakers in the BES queries
-#  print ('/SWITCH', file=ap)
-#  print ('C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1', file=ap)
 
   ap.close()
   with open('{:s}{:s}_dgen.json'.format(fpath, fname), 'w') as jp: 
@@ -1121,6 +1086,15 @@ if __name__ == '__main__':
   for key in ['EMTBaseVoltage']:
     emthub.list_dict_table (d, key)
 
+  icd = None
+  if 'ttl_ic' in case and os.path.exists(case['ttl_ic']):
+    g = rdflib.Graph()
+    fname = case['ttl_ic']
+    g.parse (fname)
+    print ('read', len(g), 'initial condition statements from', fname)
+    icd = emthub.load_ic_dict (g)
+    #emthub.list_dict_table (icd, 'EMTBusVoltageIC')
+
   reset_globals (case)
-  convert_one_atp_model (d, fpath = '../atp/data/', case=case)
+  convert_one_atp_model (d, icd, fpath = '../atp/data/', case=case)
 
