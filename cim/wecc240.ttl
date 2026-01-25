@@ -6825,6 +6825,21 @@
     cim:IdentifiedObject.mRID "FFDFCAAC-A3FA-4C59-92C8-E0FD4BD2C225"^^cim:String ;
     cim:IdentifiedObject.name "3303_3304_3"^^cim:String .
 
+<0139C39C-07B6-455D-BBEA-6C935A23CF31> a cim:LinearShuntCompensator ;
+    emt:ConductingEquipment.FromConnectivityNode <95530F9E-14D6-4512-A29F-13092A224B49> ;
+    emt:ConductingEquipment.ToConnectivityNode <95530F9E-14D6-4512-A29F-13092A224B49> ;
+    cim:ConductingEquipment.BaseVoltage <FB79F7ED-7D3F-4DDB-9391-6356811110BC> ;
+    cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "0139C39C-07B6-455D-BBEA-6C935A23CF31"^^cim:String ;
+    cim:IdentifiedObject.name "2902_1"^^cim:String ;
+    cim:LinearShuntCompensator.bPerSection "-0.0008"^^cim:Susceptance ;
+    cim:LinearShuntCompensator.gPerSection "0.0"^^cim:Conductance ;
+    cim:ShuntCompensator.grounded "true"^^cim:Boolean ;
+    cim:ShuntCompensator.maximumSections "1"^^cim:Integer ;
+    cim:ShuntCompensator.nomU "500000.0"^^cim:Voltage ;
+    cim:ShuntCompensator.sections "1"^^cim:Integer .
+
 <23CFF732-429C-4FD2-896E-C6CB1B708279> a cim:LinearShuntCompensator ;
     emt:ConductingEquipment.FromConnectivityNode <08D1C5E6-8AD4-44DD-88F4-C7D673A46263> ;
     emt:ConductingEquipment.ToConnectivityNode <08D1C5E6-8AD4-44DD-88F4-C7D673A46263> ;
@@ -6855,6 +6870,21 @@
     cim:ShuntCompensator.nomU "500000.0"^^cim:Voltage ;
     cim:ShuntCompensator.sections "0"^^cim:Integer .
 
+<573FF406-62D3-4197-8025-58A63E981F1D> a cim:LinearShuntCompensator ;
+    emt:ConductingEquipment.FromConnectivityNode <C670D9C0-79EB-4D73-A6C1-33A40C7CDA45> ;
+    emt:ConductingEquipment.ToConnectivityNode <C670D9C0-79EB-4D73-A6C1-33A40C7CDA45> ;
+    cim:ConductingEquipment.BaseVoltage <CCBE7426-69D5-4651-A703-4EF6F296CC23> ;
+    cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "573FF406-62D3-4197-8025-58A63E981F1D"^^cim:String ;
+    cim:IdentifiedObject.name "6510_1"^^cim:String ;
+    cim:LinearShuntCompensator.bPerSection "0.001890359168241966"^^cim:Susceptance ;
+    cim:LinearShuntCompensator.gPerSection "0.0"^^cim:Conductance ;
+    cim:ShuntCompensator.grounded "true"^^cim:Boolean ;
+    cim:ShuntCompensator.maximumSections "1"^^cim:Integer ;
+    cim:ShuntCompensator.nomU "230000.0"^^cim:Voltage ;
+    cim:ShuntCompensator.sections "1"^^cim:Integer .
+
 <687DE07A-468F-48FD-97EC-30E094C9903F> a cim:LinearShuntCompensator ;
     emt:ConductingEquipment.FromConnectivityNode <3983D153-CDC6-4A5E-A306-E74EBC545543> ;
     emt:ConductingEquipment.ToConnectivityNode <3983D153-CDC6-4A5E-A306-E74EBC545543> ;
@@ -6868,7 +6898,7 @@
     cim:ShuntCompensator.grounded "true"^^cim:Boolean ;
     cim:ShuntCompensator.maximumSections "5"^^cim:Integer ;
     cim:ShuntCompensator.nomU "345000.0"^^cim:Voltage ;
-    cim:ShuntCompensator.sections "3"^^cim:Integer .
+    cim:ShuntCompensator.sections "2"^^cim:Integer .
 
 <6CB13E79-43F0-4278-813F-03EB04BFDDAD> a cim:LinearShuntCompensator ;
     emt:ConductingEquipment.FromConnectivityNode <D528A2D0-639C-4BDC-BE15-F02A4216F7F3> ;
@@ -6884,6 +6914,21 @@
     cim:ShuntCompensator.maximumSections "5"^^cim:Integer ;
     cim:ShuntCompensator.nomU "345000.0"^^cim:Voltage ;
     cim:ShuntCompensator.sections "0"^^cim:Integer .
+
+<8216C4E4-E8CE-40C0-B591-CF3DE57BE991> a cim:LinearShuntCompensator ;
+    emt:ConductingEquipment.FromConnectivityNode <E91C9D2B-F153-4354-A6CD-F184ED24D961> ;
+    emt:ConductingEquipment.ToConnectivityNode <E91C9D2B-F153-4354-A6CD-F184ED24D961> ;
+    cim:ConductingEquipment.BaseVoltage <FB79F7ED-7D3F-4DDB-9391-6356811110BC> ;
+    cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "8216C4E4-E8CE-40C0-B591-CF3DE57BE991"^^cim:String ;
+    cim:IdentifiedObject.name "4003_1"^^cim:String ;
+    cim:LinearShuntCompensator.bPerSection "-0.0024"^^cim:Susceptance ;
+    cim:LinearShuntCompensator.gPerSection "0.0"^^cim:Conductance ;
+    cim:ShuntCompensator.grounded "true"^^cim:Boolean ;
+    cim:ShuntCompensator.maximumSections "1"^^cim:Integer ;
+    cim:ShuntCompensator.nomU "500000.0"^^cim:Voltage ;
+    cim:ShuntCompensator.sections "1"^^cim:Integer .
 
 <9FDA696A-56FD-45DE-9D0B-4418A20C0D26> a cim:LinearShuntCompensator ;
     emt:ConductingEquipment.FromConnectivityNode <1C936C47-98F8-45CE-99B7-A06B1B9A1F42> ;
@@ -6929,6 +6974,21 @@
     cim:ShuntCompensator.maximumSections "5"^^cim:Integer ;
     cim:ShuntCompensator.nomU "230000.0"^^cim:Voltage ;
     cim:ShuntCompensator.sections "4"^^cim:Integer .
+
+<EADCAB30-CE8B-482C-AAD5-E4C7B64F8A39> a cim:LinearShuntCompensator ;
+    emt:ConductingEquipment.FromConnectivityNode <60EEE2B6-810A-4A75-9A66-140D85243E06> ;
+    emt:ConductingEquipment.ToConnectivityNode <60EEE2B6-810A-4A75-9A66-140D85243E06> ;
+    cim:ConductingEquipment.BaseVoltage <CCBE7426-69D5-4651-A703-4EF6F296CC23> ;
+    cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "EADCAB30-CE8B-482C-AAD5-E4C7B64F8A39"^^cim:String ;
+    cim:IdentifiedObject.name "2407_1"^^cim:String ;
+    cim:LinearShuntCompensator.bPerSection "0.001890359168241966"^^cim:Susceptance ;
+    cim:LinearShuntCompensator.gPerSection "0.0"^^cim:Conductance ;
+    cim:ShuntCompensator.grounded "true"^^cim:Boolean ;
+    cim:ShuntCompensator.maximumSections "1"^^cim:Integer ;
+    cim:ShuntCompensator.nomU "230000.0"^^cim:Voltage ;
+    cim:ShuntCompensator.sections "1"^^cim:Integer .
 
 <1E951640-2834-4D9A-8D51-DB466667338A> a cim:SeriesCompensator ;
     emt:ConductingEquipment.FromConnectivityNode <6F3F9E99-2EBA-4478-B71D-EDC04C57CA9C> ;
@@ -34009,17 +34069,29 @@
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
-<A59E109D-25F6-4DBA-9814-435A50360FA8> a cim:RatioTapChanger ;
-    cim:IdentifiedObject.mRID "A59E109D-25F6-4DBA-9814-435A50360FA8"^^cim:String ;
-    cim:IdentifiedObject.name "6103_6104_0_1_End_1"^^cim:String ;
-    cim:RatioTapChanger.TransformerEnd <A9493C5E-62D1-4278-81FE-462834810706> ;
+<5FE8247C-D1C8-4CBF-BF97-F729E2D1A4BB> a cim:RatioTapChanger ;
+    cim:IdentifiedObject.mRID "5FE8247C-D1C8-4CBF-BF97-F729E2D1A4BB"^^cim:String ;
+    cim:IdentifiedObject.name "6501_6510_0_2_End_1"^^cim:String ;
+    cim:RatioTapChanger.TransformerEnd <1D834DCB-E211-4F69-837E-0555C808528E> ;
     cim:RatioTapChanger.stepVoltageIncrement "0.625"^^cim:PerCent ;
     cim:TapChanger.highStep "16"^^cim:Integer ;
     cim:TapChanger.lowStep "-16"^^cim:Integer ;
     cim:TapChanger.neutralStep "0"^^cim:Integer ;
     cim:TapChanger.neutralU "345000.0"^^cim:Voltage ;
-    cim:TapChanger.normalStep "1"^^cim:Integer ;
-    cim:TapChanger.step "0.5519999999999925"^^cim:Float .
+    cim:TapChanger.normalStep "-8"^^cim:Integer ;
+    cim:TapChanger.step "-8.000000000000007"^^cim:Float .
+
+<D6836897-E76A-4FE0-9479-809DF38193B9> a cim:RatioTapChanger ;
+    cim:IdentifiedObject.mRID "D6836897-E76A-4FE0-9479-809DF38193B9"^^cim:String ;
+    cim:IdentifiedObject.name "6501_6510_0_1_End_1"^^cim:String ;
+    cim:RatioTapChanger.TransformerEnd <CE2A9618-1B30-4BC0-9D38-2FE712E6A906> ;
+    cim:RatioTapChanger.stepVoltageIncrement "0.625"^^cim:PerCent ;
+    cim:TapChanger.highStep "16"^^cim:Integer ;
+    cim:TapChanger.lowStep "-16"^^cim:Integer ;
+    cim:TapChanger.neutralStep "0"^^cim:Integer ;
+    cim:TapChanger.neutralU "345000.0"^^cim:Voltage ;
+    cim:TapChanger.normalStep "-8"^^cim:Integer ;
+    cim:TapChanger.step "-8.000000000000007"^^cim:Float .
 
 <DFF31D70-A187-4BE6-A7F0-970000237DA0> a cim:RatioTapChanger ;
     cim:IdentifiedObject.mRID "DFF31D70-A187-4BE6-A7F0-970000237DA0"^^cim:String ;
@@ -34030,8 +34102,8 @@
     cim:TapChanger.lowStep "-16"^^cim:Integer ;
     cim:TapChanger.neutralStep "0"^^cim:Integer ;
     cim:TapChanger.neutralU "345000.0"^^cim:Voltage ;
-    cim:TapChanger.normalStep "0"^^cim:Integer ;
-    cim:TapChanger.step "0.45760000000001355"^^cim:Float .
+    cim:TapChanger.normalStep "-8"^^cim:Integer ;
+    cim:TapChanger.step "-8.000000000000007"^^cim:Float .
 
 <00FF4BE7-157F-4C94-8B46-F33652FA980E> a cim:TransformerMeshImpedance ;
     cim:IdentifiedObject.mRID "00FF4BE7-157F-4C94-8B46-F33652FA980E"^^cim:String ;
