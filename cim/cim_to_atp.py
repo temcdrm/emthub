@@ -714,7 +714,7 @@ def convert_one_atp_model (d, icd, fpath, case):
   R1 = r1pu_swing * zbase
   X0 = X1
   R0 = R1
-  vmag, vang = TheveninVoltage (vmag, vang, R1, X1, p_swing/mva_swing, q_swing/mva_swing)  # TODO: should R1, X1 be perunit?
+  vmag, vang = TheveninVoltage (vmag, vang, r1pu_swing, x1pu_swing, p_swing/mva_swing, q_swing/mva_swing)
   vmag = vmag * kv * 1000.0 * SQRT2 / SQRT3
   vang = vang + GEN_SHIFT
   print ('C =============================================================================', file=ap)
