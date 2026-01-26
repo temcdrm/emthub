@@ -928,7 +928,7 @@ def convert_one_atp_model (d, icd, fpath, case):
       bDelta = False
       kvld = kv / SQRT3
     rload = nph * 1000.0 * kvld * kvld / kw
-    if kvar > 0.0:
+    if kvar != 0.0:
       xload = nph * 1000.0 * kvld * kvld / kvar
     else:
       xload = 0.0
@@ -969,6 +969,9 @@ def convert_one_atp_model (d, icd, fpath, case):
         print ('  ' + bus_from + bus_to + PadBlanks(12) + '{:16e}'.format(rload), file=ap)
         if xload > 0.0:
           print ('  ' + bus_from + bus_to + PadBlanks(28) + '{:16e}'.format(xload), file=ap)
+        elif xload < 0.0:
+          cuf = -1.0e6 / xload / OMEGA
+          print ('  ' + bus_from + bus_to + PadBlanks(44) + '{:16e}'.format(cuf), file=ap)
       print ('$VINTAGE,0', file=ap)
 
   # dictionary of generators to track ratings and initial conditions
