@@ -7463,6 +7463,13 @@
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#RotatingMachineDynamics"/>
     <rdfs:subClassOf rdf:resource="#DynamicsFunctionBlock"/>
   </rdf:Description>
+  <rdf:Description rdf:about="#RotatingMachinePlant">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#RotatingMachinePlant"/>
+    <rdfs:subClassOf rdf:resource="#GeneratingPlant"/>
+  </rdf:Description>
   <rdf:Description rdf:about="#RotorKind">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>

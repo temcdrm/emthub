@@ -1191,6 +1191,11 @@ CREATE TABLE "RotatingMachineDynamics"
     "statorResistance" DOUBLE PRECISION NOT NULL
 );
 
+CREATE TABLE "RotatingMachinePlant"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
 -- Type of rotor on physical machine.
 CREATE TABLE "RotorKind" ( "name" VARCHAR(100) UNIQUE );
 -- Round rotor type of synchronous machine.
@@ -2592,6 +2597,9 @@ ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RegulatingC
 
 -- Inheritance subclass-superclass constraint for table "RotatingMachineDynamics"
 ALTER TABLE "RotatingMachineDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "RotatingMachinePlant"
+ALTER TABLE "RotatingMachinePlant" ADD FOREIGN KEY ( "mRID" ) REFERENCES "GeneratingPlant" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "SeriesCompensator"
 ALTER TABLE "SeriesCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" );
