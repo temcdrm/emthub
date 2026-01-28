@@ -94,6 +94,12 @@ MVA_BASE = 100.0
 # example in Octave:
 
 # cd c:\src\emthub\matpower
+# mpc = loadcase(XFMRSAT);
+# define_constants
+# opt1 = mpoption('out.all', 0, 'verbose', 0, 'pf.alg', 'PQSUM', 'pf.radial.max_it', 100);
+# results=radial_pf(mpc, opt1);
+
+# cd c:\src\emthub\matpower
 # mpc = loadcase(WECC240);
 # case_info(mpc)
 # mpc = scale_load(1.0425,mpc);
