@@ -26,6 +26,11 @@
     cim:SvPowerFlow.p "316401735.0"^^cim:ActivePower ;
     cim:SvPowerFlow.q "1266.0"^^cim:ReactivePower .
 
+<B4ED2857-F5D2-471F-9764-FC6799526E55_SvPF> a cim:SvPowerFlow ;
+    emt:SvPowerFlow.TransformerEnd <B4ED2857-F5D2-471F-9764-FC6799526E55> ;
+    cim:SvPowerFlow.p "-316401735.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "-1266.0"^^cim:ReactivePower .
+
 <1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E_SvV> a cim:SvVoltage ;
     emt:SvVoltage.ConnectivityNode <1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E> ;
     cim:SvVoltage.angle "-38.892773"^^cim:AngleDegrees ;

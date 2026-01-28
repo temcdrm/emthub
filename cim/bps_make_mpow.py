@@ -222,8 +222,10 @@ mpc.gen = [""", file=fp)
       x = mesh['x'] / zbase
       xfmrs[pname]['r'] = r
       xfmrs[pname]['x'] = x
+      xfmrs[pname]['end2id'] = tid
 
   mpc_branch_ids = []
+  mpc_xfsec_ids = []
   print ("""
 %% branch data - BESLine+BESCompSeries+collected transformers
 %	fbus tbus r x b rateA rateB rateC ratio angle status angmin angmax
@@ -240,6 +242,7 @@ mpc.branch = [""", file=fp)
     b = q/MVA_BASE
     print (' {:5d} {:5d} {:9.6f} {:9.6f} {:9.6f} {:8.3f} 0.0 0.0 0.0 0.0 1 0.0 0.0;'.format (bus1, bus2, r, x, b, rateA), file=fp)
     mpc_branch_ids.append(key)
+    mpc_xfsec_ids.append('')
   for key, data in d['EMTCompSeries']['vals'].items():
     rateA = find_branch_normal_rating (key, d)
     bus1 = bus_numbers[data['cn1id']]
@@ -250,12 +253,14 @@ mpc.branch = [""", file=fp)
     x = data['x']/zbase
     print (' {:5d} {:5d} {:9.6f} {:9.6f} 0.0 {:8.3f} 0.0 0.0 0.0 0.0 1 0.0 0.0;'.format (bus1, bus2, r, x, rateA), file=fp)
     mpc_branch_ids.append(key)
+    mpc_xfsec_ids.append('')
   for key, data in d['EMTDisconnectingCircuitBreaker']['vals'].items():
     rateA = find_branch_normal_rating (key, d)
     bus1 = bus_numbers[data['cn1id']]
     bus2 = bus_numbers[data['cn2id']]
     print (' {:5d} {:5d} 0.0 1.0e-6 0.0 {:8.3f} 0.0 0.0 0.0 0.0 1 0.0 0.0;'.format (bus1, bus2, rateA), file=fp)
     mpc_branch_ids.append(key)
+    mpc_xfsec_ids.append('')
 
   for key, data in xfmrs.items():
     rateA = data['mva']
@@ -264,6 +269,7 @@ mpc.branch = [""", file=fp)
     print (' {:5d} {:5d} {:9.6f} {:9.6f} 0.0 {:8.3f} {:8.3f} {:8.3f} {:8.6f} 0.0 1 0.0 0.0;'.format (data['from'], 
       data['to'], data['r'], data['x'], rateA, rateB, rateC, data['ratio']), file=fp)
     mpc_branch_ids.append(data['end1id'])
+    mpc_xfsec_ids.append(data['end2id'])
   print ('];', file=fp)
 
   print ("""
@@ -318,6 +324,13 @@ mpc.gen_id = {""", file=fp)
 %% branch ids
 mpc.branch_id = {""", file=fp)
   for name in mpc_branch_ids:
+    print ("""  '{:s}';""".format(name), file=fp)
+  print ('};', file=fp)
+
+  print ("""
+%% xfsec ids
+mpc.xfsec_id = {""", file=fp)
+  for name in mpc_xfsec_ids:
     print ("""  '{:s}';""".format(name), file=fp)
   print ('};', file=fp)
 

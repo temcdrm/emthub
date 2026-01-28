@@ -29,7 +29,7 @@ def create_cim_ic (case):
   if 'br_ic' in case and os.path.exists(case['br_ic']):
     br_ic = pd.read_csv (case['br_ic'])
     print ('Branch from, to, tap, pf, qf, pt, qt and EQ/XfEnd ids from', case['br_ic'], 'read', br_ic.shape)
-    #print (br_ic)
+    print (br_ic)
 
   g = rdflib.Graph()
   CIM = rdflib.Namespace (CIM_NS)

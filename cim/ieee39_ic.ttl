@@ -51,6 +51,21 @@
     cim:SvPowerFlow.p "-508000000.0"^^cim:ActivePower ;
     cim:SvPowerFlow.q "-160531640.0"^^cim:ReactivePower .
 
+<2DF1CDF3-5E0C-4198-BAC5-09935382BFBB_SvPF> a cim:SvPowerFlow ;
+    emt:SvPowerFlow.TransformerEnd <2DF1CDF3-5E0C-4198-BAC5-09935382BFBB> ;
+    cim:SvPowerFlow.p "560000000.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "43917726.0"^^cim:ReactivePower .
+
+<2E0BE3F6-A1AC-4A43-AEC5-BD32E72F93DC_SvPF> a cim:SvPowerFlow ;
+    emt:SvPowerFlow.TransformerEnd <2E0BE3F6-A1AC-4A43-AEC5-BD32E72F93DC> ;
+    cim:SvPowerFlow.p "650000000.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "173708458.0"^^cim:ReactivePower .
+
+<2F440339-A956-40FB-8498-1F344F90E279_SvPF> a cim:SvPowerFlow ;
+    emt:SvPowerFlow.TransformerEnd <2F440339-A956-40FB-8498-1F344F90E279> ;
+    cim:SvPowerFlow.p "7721952.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "44359190.0"^^cim:ReactivePower .
+
 <2F8BDA88-35FF-4982-AEF1-A93BEDD974AD_SvPF> a cim:SvPowerFlow ;
     emt:SvPowerFlow.ConductingEquipment <2F8BDA88-35FF-4982-AEF1-A93BEDD974AD> ;
     cim:SvPowerFlow.p "-329589829.0"^^cim:ActivePower ;
@@ -91,6 +106,11 @@
     cim:SvPowerFlow.p "-514108261.99999994"^^cim:ActivePower ;
     cim:SvPowerFlow.q "-193138814.0"^^cim:ReactivePower .
 
+<4DE0953B-23C5-437B-862C-D70750C4401D_SvPF> a cim:SvPowerFlow ;
+    emt:SvPowerFlow.TransformerEnd <4DE0953B-23C5-437B-862C-D70750C4401D> ;
+    cim:SvPowerFlow.p "250000000.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "64927601.99999999"^^cim:ReactivePower .
+
 <545E6435-603C-495F-889D-1EFF053CEA07_SvPF> a cim:SvPowerFlow ;
     emt:SvPowerFlow.ConductingEquipment <545E6435-603C-495F-889D-1EFF053CEA07> ;
     cim:SvPowerFlow.p "-650000000.0"^^cim:ActivePower ;
@@ -116,6 +136,11 @@
     cim:SvPowerFlow.p "-650000000.0"^^cim:ActivePower ;
     cim:SvPowerFlow.q "-196434781.0"^^cim:ReactivePower .
 
+<62041EF9-0511-4CD8-A6CD-5E20792E121A_SvPF> a cim:SvPowerFlow ;
+    emt:SvPowerFlow.TransformerEnd <62041EF9-0511-4CD8-A6CD-5E20792E121A> ;
+    cim:SvPowerFlow.p "650000000.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "298789857.0"^^cim:ReactivePower .
+
 <6AD479AD-D268-49A9-8CC4-77022521B429_SvPF> a cim:SvPowerFlow ;
     emt:SvPowerFlow.ConductingEquipment <6AD479AD-D268-49A9-8CC4-77022521B429> ;
     cim:SvPowerFlow.p "-42004070.0"^^cim:ActivePower ;
@@ -130,6 +155,21 @@
     emt:SvPowerFlow.ConductingEquipment <71C67751-A509-46BF-B41E-CCE1AD689084> ;
     cim:SvPowerFlow.p "-269532921.0"^^cim:ActivePower ;
     cim:SvPowerFlow.q "-58548068.0"^^cim:ReactivePower .
+
+<7E8B034F-E562-4112-8A10-F3A321B71DD6_SvPF> a cim:SvPowerFlow ;
+    emt:SvPowerFlow.TransformerEnd <7E8B034F-E562-4112-8A10-F3A321B71DD6> ;
+    cim:SvPowerFlow.p "540000000.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "20790351.0"^^cim:ReactivePower .
+
+<7FD9B07A-93E7-4ABC-9480-AC3173E9CC20_SvPF> a cim:SvPowerFlow ;
+    emt:SvPowerFlow.TransformerEnd <7FD9B07A-93E7-4ABC-9480-AC3173E9CC20> ;
+    cim:SvPowerFlow.p "508000000.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "160531640.0"^^cim:ReactivePower .
+
+<8AE15448-6BFC-4460-8403-309DA2CE5F9C_SvPF> a cim:SvPowerFlow ;
+    emt:SvPowerFlow.TransformerEnd <8AE15448-6BFC-4460-8403-309DA2CE5F9C> ;
+    cim:SvPowerFlow.p "-157863.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "45383211.0"^^cim:ReactivePower .
 
 <9031CCFF-C9A4-436C-9610-CF88C0430709_SvPF> a cim:SvPowerFlow ;
     emt:SvPowerFlow.ConductingEquipment <9031CCFF-C9A4-436C-9610-CF88C0430709> ;
@@ -181,10 +221,20 @@
     cim:SvPowerFlow.p "-123306548.0"^^cim:ActivePower ;
     cim:SvPowerFlow.q "-19648935.0"^^cim:ReactivePower .
 
+<BADE5DF6-C0A0-4C8E-8CF6-D3E635127016_SvPF> a cim:SvPowerFlow ;
+    emt:SvPowerFlow.TransformerEnd <BADE5DF6-C0A0-4C8E-8CF6-D3E635127016> ;
+    cim:SvPowerFlow.p "830000000.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "41669082.0"^^cim:ReactivePower .
+
 <BD1D892A-3BE2-47AF-A3CD-B68B87C78B4F_SvPF> a cim:SvPowerFlow ;
     emt:SvPowerFlow.TransformerEnd <BD1D892A-3BE2-47AF-A3CD-B68B87C78B4F> ;
     cim:SvPowerFlow.p "-558422356.0"^^cim:ActivePower ;
     cim:SvPowerFlow.q "41906099.0"^^cim:ReactivePower .
+
+<C271703C-501B-4410-8D2F-3DEA58555FFE_SvPF> a cim:SvPowerFlow ;
+    emt:SvPowerFlow.TransformerEnd <C271703C-501B-4410-8D2F-3DEA58555FFE> ;
+    cim:SvPowerFlow.p "632000000.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "205536560.0"^^cim:ReactivePower .
 
 <C877E3F9-2889-4CB8-9E0B-47A77BE0B01E_SvPF> a cim:SvPowerFlow ;
     emt:SvPowerFlow.TransformerEnd <C877E3F9-2889-4CB8-9E0B-47A77BE0B01E> ;
@@ -205,6 +255,11 @@
     emt:SvPowerFlow.TransformerEnd <D1A4361E-AD89-4156-9638-CB6910D6E71A> ;
     cim:SvPowerFlow.p "-824474910.0"^^cim:ActivePower ;
     cim:SvPowerFlow.q "66070183.0"^^cim:ReactivePower .
+
+<D3B855BA-6721-44E8-80E8-4D400C990800_SvPF> a cim:SvPowerFlow ;
+    emt:SvPowerFlow.TransformerEnd <D3B855BA-6721-44E8-80E8-4D400C990800> ;
+    cim:SvPowerFlow.p "514108261.99999994"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "278623388.0"^^cim:ReactivePower .
 
 <D627B7C3-8E70-4E29-93CC-4AEDCA07044A_SvPF> a cim:SvPowerFlow ;
     emt:SvPowerFlow.ConductingEquipment <D627B7C3-8E70-4E29-93CC-4AEDCA07044A> ;
@@ -255,6 +310,11 @@
     emt:SvPowerFlow.ConductingEquipment <EE10F878-5399-4F71-9C07-1D34B5408E8F> ;
     cim:SvPowerFlow.p "-540000000.0"^^cim:ActivePower ;
     cim:SvPowerFlow.q "-20790351.0"^^cim:ReactivePower .
+
+<F3AAE9E5-5A51-4ED3-AA59-420027F79194_SvPF> a cim:SvPowerFlow ;
+    emt:SvPowerFlow.TransformerEnd <F3AAE9E5-5A51-4ED3-AA59-420027F79194> ;
+    cim:SvPowerFlow.p "-122554510.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "6441447.0"^^cim:ReactivePower .
 
 <FC571C2F-57DB-4C14-B1FD-5885E0177A7F_SvPF> a cim:SvPowerFlow ;
     emt:SvPowerFlow.ConductingEquipment <FC571C2F-57DB-4C14-B1FD-5885E0177A7F> ;

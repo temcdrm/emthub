@@ -22,7 +22,13 @@ function write_ic = matpower_write_ic (mpc, fbus, fgen, fbranch)
     fprintf (fid, "From, To, Ratio, Pfrom, Qfrom, Pto, Qto, CEQ/XfEnd id\n");
     n=size(mpc.branch)(1);
     for i=1:n
-        fprintf (fid, "%d,%d,%6.4f,%12.6f,%12.6f,%12.6f,%12.6f,%s\n", mpc.branch(i,F_BUS), mpc.branch(i,T_BUS), mpc.branch(i,TAP), mpc.branch(i,PF), mpc.branch(i,QF), mpc.branch(i,PT), mpc.branch(i,QT), mpc.branch_id{i});
+        tap = mpc.branch(i,TAP);
+        if (tap > 0.0)
+            fprintf (fid, "%d,%d,%6.4f,%12.6f,%12.6f,%12.6f,%12.6f,%s\n", mpc.branch(i,F_BUS), mpc.branch(i,T_BUS), tap, mpc.branch(i,PF), mpc.branch(i,QF), mpc.branch(i,PT), mpc.branch(i,QT), mpc.branch_id{i});
+            fprintf (fid, "%d,%d,%6.4f,%12.6f,%12.6f,%12.6f,%12.6f,%s\n", mpc.branch(i,T_BUS), mpc.branch(i,F_BUS), tap, mpc.branch(i,PT), mpc.branch(i,QT), mpc.branch(i,PF), mpc.branch(i,QF), mpc.xfsec_id{i});
+        else
+            fprintf (fid, "%d,%d,%6.4f,%12.6f,%12.6f,%12.6f,%12.6f,%s\n", mpc.branch(i,F_BUS), mpc.branch(i,T_BUS), tap, mpc.branch(i,PF), mpc.branch(i,QF), mpc.branch(i,PT), mpc.branch(i,QT), mpc.branch_id{i});
+        endif
     endfor
     fclose(fid);
 endfunction

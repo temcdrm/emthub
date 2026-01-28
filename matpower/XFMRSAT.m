@@ -77,3 +77,11 @@ mpc.branch_id = {
   'AD792DFF-2C58-4BBF-8D75-2F72CFAB796B';
   '7507DEC9-7F4B-4C0C-ABC1-477372339EBF';
 };
+
+%% xfsec ids
+mpc.xfsec_id = {
+  '';
+  '';
+  '';
+  'B4ED2857-F5D2-471F-9764-FC6799526E55';
+};
