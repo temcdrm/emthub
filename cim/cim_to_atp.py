@@ -684,8 +684,9 @@ def convert_one_atp_model (d, icd, fpath, case):
   swing_id = emthub.get_swingbus_id (ordered_buses, swingbus)
   bus = atp_buses[swing_id]
   kv = bus_kv[swing_id]
-  x1pu_swing = 0.050
-  r1pu_swing = 0.005
+  # define an "infinite bus" for the case with no machines
+  x1pu_swing = 0.010
+  r1pu_swing = 0.001
   mva_swing = 1000.0
   p_swing = 0.0
   q_swing = 0.0
