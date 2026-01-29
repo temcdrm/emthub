@@ -18,6 +18,7 @@ FUELS = {
 
 # global constants
 MVA_BASE = 100.0
+ALWAYS_USE_Z_LOADS = True
 
 def get_gencosts(fuel):
   c2 = 0.0
@@ -68,12 +69,12 @@ def find_branch_normal_rating (eqid, d):
   return val
 
 def constant_impedance (z, i, p):
-  if z > (i+p):
+  if z > (i+p) or ALWAYS_USE_Z_LOADS:
     return True
   return False
 
 def build_matpower (d, sys_name, fp, swingbus):
-  print ('function mpc = {:s}'.format(sys_name), file=fp)
+  print ('function mpc = {:s}'.format(sys_name.upper()), file=fp)
   print ('mpc.version = "2";', file=fp)
   print ('mpc.baseMVA = {:.1f};'.format(MVA_BASE), file=fp)
 
