@@ -1,4 +1,4 @@
-function mpc = XfmrSat
+function mpc = XFMRSAT
 mpc.version = "2";
 mpc.baseMVA = 100.0;
 
@@ -21,7 +21,7 @@ mpc.gen = [
 %% branch data - BESLine+BESCompSeries+collected transformers
 %	fbus tbus r x b rateA rateB rateC ratio angle status angmin angmax
 mpc.branch = [
-     1     2  0.016803  0.158370  2.490000  600.000 0.0 0.0 0.0 0.0 1 0.0 0.0;
+     1     2  0.014659  0.148275  2.575146  600.000 0.0 0.0 0.0 0.0 1 0.0 0.0;
      2     3 0.0 1.0e-6 0.0  600.000 0.0 0.0 0.0 0.0 1 0.0 0.0;
      4     5 0.0 1.0e-6 0.0  600.000 0.0 0.0 0.0 0.0 1 0.0 0.0;
      3     4  0.002000  0.016000 0.0  500.000  666.667  833.333 1.000000 0.0 1 0.0 0.0;

@@ -6,6 +6,7 @@ import os
 import rdflib
 import emthub.api as emthub
 import cim_examples
+import cmath
 
 FUELS = {
   'hydro':  {'c2':1.0e-5, 'c1': 1.29, 'c0': 0.0},
@@ -19,6 +20,7 @@ FUELS = {
 # global constants
 MVA_BASE = 100.0
 ALWAYS_USE_Z_LOADS = True
+PREPARE_LONGLINE_PI = True
 
 def get_gencosts(fuel):
   c2 = 0.0
@@ -73,7 +75,7 @@ def constant_impedance (z, i, p):
     return True
   return False
 
-def build_matpower (d, sys_name, fp, swingbus):
+def build_matpower (d, sys_name, fp, swingbus, scale=1.0):
   print ('function mpc = {:s}'.format(sys_name.upper()), file=fp)
   print ('mpc.version = "2";', file=fp)
   print ('mpc.baseMVA = {:.1f};'.format(MVA_BASE), file=fp)
@@ -108,8 +110,8 @@ mpc.bus = [""", file=fp)
   total_load = 0.0
   for key, data in d['EMTLoad']['vals'].items():
     idx = bus_numbers[data['cn1id']]-1
-    Pd = data['p'] / 1.0e6
-    Qd = data['q'] / 1.0e6
+    Pd = scale * data['p'] / 1.0e6
+    Qd = scale * data['q'] / 1.0e6
     total_load += Pd
     if constant_impedance (data['pz'], data['pi'], data['pp']):
       mpc_buses[idx]['Gs'] += Pd
@@ -241,6 +243,15 @@ mpc.branch = [""", file=fp)
     r = data['r']/zbase
     x = data['x']/zbase
     b = q/MVA_BASE
+    if PREPARE_LONGLINE_PI and b > 0.0:  # convert nominal to long-line pi section
+      Z = complex (r, x)
+      Y = complex (0.0, b)
+      gammaL = cmath.sqrt(Z*Y)
+      Zpi = Z * cmath.sinh(gammaL) / gammaL
+      Ypi = Y * 2.0 * cmath.tanh(0.5*gammaL) / gammaL
+      r = Zpi.real
+      x = Zpi.imag
+      b = Ypi.imag
     print (' {:5d} {:5d} {:9.6f} {:9.6f} {:9.6f} {:8.3f} 0.0 0.0 0.0 0.0 1 0.0 0.0;'.format (bus1, bus2, r, x, b, rateA), file=fp)
     mpc_branch_ids.append(key)
     mpc_xfsec_ids.append('')
@@ -359,6 +370,6 @@ if __name__ == '__main__':
   d = emthub.load_emt_dict (g, case['id'], bTiming=True)
 
   fp = open ('../matpower/' + sys_name + '.m', 'w')
-  build_matpower (d, sys_name, fp, case['swingbus'])
+  build_matpower (d, sys_name, fp, case['swingbus'], case['load'])
   fp.close()
 

@@ -1,8 +1,8 @@
 results.success = 1
 results.iterations = 5
-results.et = 0.1244
+results.et = 0.1892
 
-Converged in 0.12 seconds
+Converged in 0.19 seconds
 ================================================================================
 |     System Summary                                                           |
 ================================================================================
@@ -11,61 +11,59 @@ How many?                How much?              P (MW)            Q (MVAr)
 ---------------------    -------------------  -------------  -----------------
 Buses            333     Total Gen Capacity   278987.2       -100384.0 to 108835.0
 Generators       140     On-line Capacity     278987.2       -100384.0 to 108835.0
-Committed Gens   140     Generation (actual)  139182.0           -5908.9
-Loads            139     Load                 137268.9           -13905.1
-  Fixed          139       Fixed              137268.9           -13905.1
+Committed Gens   140     Generation (actual)  139517.4           -7152.7
+Loads              0     Load                     0.0               0.0
+  Fixed            0       Fixed                  0.0               0.0
   Dispatchable     0       Dispatchable          -0.0 of -0.0      -0.0
-Shunts             9     Shunt (inj)             -0.0            1651.2
-Branches         541     Losses (I^2 * Z)      1913.06          30592.47
-Transformers     212     Branch Charging (inj)     -            20945.1
+Shunts           143     Shunt (inj)          -137695.8           15847.1
+Branches         541     Losses (I^2 * Z)      1821.60          29797.74
+Transformers     212     Branch Charging (inj)     -            21103.3
 Inter-ties         0     Total Inter-tie Flow     0.0               0.0
 Areas              1
 
                           Minimum                      Maximum
                  -------------------------  --------------------------------
-Voltage Magnitude   0.953 p.u. @ bus 231        1.040 p.u. @ bus 195 
-Voltage Angle     -12.63 deg   @ bus 28        70.47 deg   @ bus 216 
-P Losses (I^2*R)             -                137.83 MW    @ line 187-188
-Q Losses (I^2*X)             -                922.05 MVAr  @ line 212-213
+Voltage Magnitude   0.963 p.u. @ bus 8          1.043 p.u. @ bus 195 
+Voltage Angle     -15.75 deg   @ bus 28        63.13 deg   @ bus 216 
+P Losses (I^2*R)             -                126.38 MW    @ line 187-188
+Q Losses (I^2*X)             -                836.24 MVAr  @ line 181-187
 
 Overloads:
   0 generators overloaded
-  Branch 3 from 2-4 has 3753.23 MVA > 1084.00 MVA
-  Branch 4 from 2-8 has 1224.86 MVA > 1084.00 MVA
-  Branch 5 from 2-8 has 1224.86 MVA > 1084.00 MVA
-  Branch 52 from 40-41 has 1702.88 MVA > 600.00 MVA
-  Branch 82 from 63-69 has 623.30 MVA > 600.00 MVA
-  Branch 97 from 66-70 has 608.55 MVA > 600.00 MVA
-  Branch 111 from 84-92 has 669.95 MVA > 600.00 MVA
-  Branch 112 from 84-92 has 669.95 MVA > 600.00 MVA
-  Branch 130 from 91-92 has 618.66 MVA > 600.00 MVA
-  Branch 193 from 136-152 has 861.40 MVA > 600.00 MVA
-  Branch 211 from 142-152 has 685.73 MVA > 600.00 MVA
-  Branch 253 from 180-186 has 1849.58 MVA > 1800.00 MVA
-  Branch 254 from 180-186 has 1849.58 MVA > 1800.00 MVA
-  Branch 257 from 181-187 has 3255.92 MVA > 1800.00 MVA
-  Branch 258 from 181-187 has 3255.92 MVA > 1800.00 MVA
-  Branch 264 from 187-188 has 4589.86 MVA > 1800.00 MVA
-  Branch 268 from 199-200 has 1528.69 MVA > 1084.00 MVA
-  Branch 281 from 205-213 has 609.83 MVA > 600.00 MVA
-  Branch 282 from 206-207 has 748.04 MVA > 600.00 MVA
-  Branch 284 from 212-213 has 960.49 MVA > 600.00 MVA
-  Branch 287 from 214-231 has 1173.40 MVA > 600.00 MVA
-  Branch 288 from 214-231 has 1173.59 MVA > 600.00 MVA
-  Branch 315 from 233-234 has 1188.26 MVA > 1084.00 MVA
-  Branch 332 from 2-3 has 1149.76 MVA > 600.00 MVA
-  Branch 333 from 2-3 has 1141.48 MVA > 600.00 MVA
-  Branch 340 from 7-8 has 1142.10 MVA > 550.00 MVA
-  Branch 341 from 7-8 has 1142.10 MVA > 550.00 MVA
-  Branch 362 from 24-33 has 1005.59 MVA > 600.00 MVA
-  Branch 404 from 83-85 has 291.23 MVA > 250.00 MVA
-  Branch 442 from 134-151 has 805.28 MVA > 460.00 MVA
-  Branch 443 from 135-150 has 743.67 MVA > 460.00 MVA
-  Branch 478 from 182-183 has 2163.98 MVA > 800.00 MVA
-  Branch 499 from 200-201 has 1241.80 MVA > 440.00 MVA
-  Branch 507 from 210-212 has 1363.59 MVA > 440.00 MVA
-  Branch 508 from 211-213 has 1433.00 MVA > 440.00 MVA
-  Branch 520 from 222-231 has 445.23 MVA > 440.00 MVA
-  Branch 521 from 222-231 has 445.23 MVA > 440.00 MVA
-  Branch 538 from 238-241 has 621.75 MVA > 460.00 MVA
-  38 branches overloaded
+  Branch 3 from 2-4 has 3737.41 MVA > 1084.00 MVA
+  Branch 4 from 2-8 has 1217.24 MVA > 1084.00 MVA
+  Branch 5 from 2-8 has 1217.24 MVA > 1084.00 MVA
+  Branch 42 from 34-56 has 1807.80 MVA > 1800.00 MVA
+  Branch 52 from 40-41 has 1587.59 MVA > 600.00 MVA
+  Branch 82 from 63-69 has 623.25 MVA > 600.00 MVA
+  Branch 97 from 66-70 has 609.67 MVA > 600.00 MVA
+  Branch 111 from 84-92 has 668.68 MVA > 600.00 MVA
+  Branch 112 from 84-92 has 668.68 MVA > 600.00 MVA
+  Branch 130 from 91-92 has 609.80 MVA > 600.00 MVA
+  Branch 193 from 136-152 has 848.76 MVA > 600.00 MVA
+  Branch 211 from 142-152 has 702.31 MVA > 600.00 MVA
+  Branch 253 from 180-186 has 1865.38 MVA > 1800.00 MVA
+  Branch 254 from 180-186 has 1865.38 MVA > 1800.00 MVA
+  Branch 257 from 181-187 has 3198.40 MVA > 1800.00 MVA
+  Branch 258 from 181-187 has 3198.40 MVA > 1800.00 MVA
+  Branch 264 from 187-188 has 4399.88 MVA > 1800.00 MVA
+  Branch 268 from 199-200 has 1483.19 MVA > 1084.00 MVA
+  Branch 282 from 206-207 has 774.14 MVA > 600.00 MVA
+  Branch 284 from 212-213 has 912.11 MVA > 600.00 MVA
+  Branch 287 from 214-231 has 1124.10 MVA > 600.00 MVA
+  Branch 288 from 214-231 has 1124.29 MVA > 600.00 MVA
+  Branch 315 from 233-234 has 1228.35 MVA > 1084.00 MVA
+  Branch 332 from 2-3 has 1110.19 MVA > 600.00 MVA
+  Branch 333 from 2-3 has 1102.19 MVA > 600.00 MVA
+  Branch 340 from 7-8 has 1140.24 MVA > 550.00 MVA
+  Branch 341 from 7-8 has 1140.24 MVA > 550.00 MVA
+  Branch 362 from 24-33 has 1006.20 MVA > 600.00 MVA
+  Branch 404 from 83-85 has 301.55 MVA > 250.00 MVA
+  Branch 442 from 134-151 has 819.90 MVA > 460.00 MVA
+  Branch 443 from 135-150 has 750.88 MVA > 460.00 MVA
+  Branch 478 from 182-183 has 2201.88 MVA > 800.00 MVA
+  Branch 499 from 200-201 has 1341.46 MVA > 440.00 MVA
+  Branch 507 from 210-212 has 1397.47 MVA > 440.00 MVA
+  Branch 508 from 211-213 has 1308.10 MVA > 440.00 MVA
+  Branch 538 from 238-241 has 680.84 MVA > 460.00 MVA
+  36 branches overloaded

@@ -1,8 +1,8 @@
 results.success = 1
 results.iterations = 4
-results.et = 0.1720
+results.et = 1.3659
 
-Converged in 0.17 seconds
+Converged in 1.37 seconds
 ================================================================================
 |     System Summary                                                           |
 ================================================================================
@@ -11,22 +11,22 @@ How many?                How much?              P (MW)            Q (MVAr)
 ---------------------    -------------------  -------------  -----------------
 Buses             39     Total Gen Capacity   15920.0       -12052.6 to 12396.4
 Generators        10     On-line Capacity     15920.0       -12052.6 to 12396.4
-Committed Gens    10     Generation (actual)   6143.3            1362.3
-Loads             19     Load                  6097.5            1408.9
-  Fixed           19       Fixed               6097.5            1408.9
+Committed Gens    10     Generation (actual)   6138.9            1343.2
+Loads              0     Load                     0.0               0.0
+  Fixed            0       Fixed                  0.0               0.0
   Dispatchable     0       Dispatchable          -0.0 of -0.0      -0.0
-Shunts             0     Shunt (inj)             -0.0               0.0
-Branches          46     Losses (I^2 * Z)        45.81           1006.15
-Transformers      12     Branch Charging (inj)     -             1052.7
+Shunts            19     Shunt (inj)          -6094.0           -1398.5
+Branches          46     Losses (I^2 * Z)        44.90            999.73
+Transformers      12     Branch Charging (inj)     -             1055.1
 Inter-ties         0     Total Inter-tie Flow     0.0               0.0
 Areas              1
 
                           Minimum                      Maximum
                  -------------------------  --------------------------------
-Voltage Magnitude   0.979 p.u. @ bus 20         1.038 p.u. @ bus 19  
-Voltage Angle     -10.55 deg   @ bus 8         10.10 deg   @ bus 36  
+Voltage Magnitude   0.980 p.u. @ bus 20         1.039 p.u. @ bus 19  
+Voltage Angle     -10.44 deg   @ bus 8         10.15 deg   @ bus 36  
 P Losses (I^2*R)             -                  5.53 MW    @ line 29-38
-Q Losses (I^2*X)             -                107.74 MVAr  @ line 29-38
+Q Losses (I^2*X)             -                107.75 MVAr  @ line 29-38
 
 Overloads:
   0 generators overloaded

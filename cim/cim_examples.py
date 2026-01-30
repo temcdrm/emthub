@@ -54,7 +54,7 @@ CASES = [
    'gen_ic': '../matpower/XfmrSatmg.txt',
    'br_ic': '../matpower/XfmrSatmbr.txt',
    'ttl_ic': 'XfmrSat_ic.ttl',
-   'swingbus': '1', 'emergency_ratings': True, 'UseXfmrSaturation': True}
+   'swingbus': '1', 'load':1.0, 'emergency_ratings': True, 'UseXfmrSaturation': True}
 ]
 
 

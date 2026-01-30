@@ -9,8 +9,8 @@ C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >
 14THEV_C  281691.320    60.000  -270.000                        -1.000  9999.000
 /BRANCH
 C < n1 >< n2 ><ref1><ref2>< R  >< X  >< C  >
-51THEV_ASBUS_A            0.59515.9513
-52THEV_BSBUS_B            0.59515.9513
+51THEV_ASBUS_A            0.11901.1903
+52THEV_BSBUS_B            0.11901.1903
 53THEV_CSBUS_C
 /SWITCH
 C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1

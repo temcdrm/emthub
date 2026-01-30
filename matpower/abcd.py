@@ -8,9 +8,23 @@ USE_ATP_SOLN = False
 SQRT3 = math.sqrt(3.0)
 
 if __name__ == '__main__':
-  # ACLineSegment attributes for the total length
+  # ACLineSegment nominal attributes for the total length
   Z = complex(20.0, 188.5)
   Y = complex(0.0, 0.002092)
+  gammaL = cmath.sqrt(Z*Y)
+  Zc = cmath.sqrt(Z/Y)
+
+  # find the long-line adjusted pi parameters
+  print ('Nominal Z=', Z)
+  print ('Nominal Y=', Y)
+  Zpi = Z * cmath.sinh(gammaL) / gammaL
+  Ypi = Y * 2.0 * cmath.tanh(0.5*gammaL) / gammaL
+  print ('Long-line Z=', Zpi)
+  print ('Long-line Y=', Ypi)
+
+  # adjusted for long-line effects
+  Z = complex(17.4476, 176.4845)
+  Y = complex(0.0, 0.00216353) # NOTE: Y.real has a noticeable impact, compared with true long-line equations
 
   if USE_ATP_SOLN:
     s2 = complex(353330000.0,-3590000.0)
@@ -22,20 +36,21 @@ if __name__ == '__main__':
     print ('** Using ATP Phasor Solution')
   else:
     # known variables at the "from" bus, port 2 in the ABCD network
-    s2 = complex(341453311.0, 7543467.0)
+    #s2 = complex(341453311.0, 7543467.0) # from nominal pi MATPOWER
+    s2 = complex(355950166.0, -6724663.0)
     v2ln = complex(345000.0/SQRT3, 0.0) # this is now line-to-neutral
     i2 = (-s2/v2ln/3.0).conjugate() # i2 defined to flow out of port 2
     # known voltage and power at the "to" bus
-    v1solved = cmath.rect (309915.22500000003, math.radians(-35.25937))
-    s1solved = complex(-318932949.0, -20252242.0)
+    #v1solved = cmath.rect (309915.22500000003, math.radians(-35.25937)) # from nominal pi MATPOWER
+    #s1solved = complex(-318932949.0, -20252242.0) # from nominal pi MATPOWER
+    v1solved = cmath.rect (317717.745, math.radians(-33.619911))
+    s1solved = complex(-335194123.0, -21284827.0)
     print ('** Using MATPOWER Solution')
 
   print ('v2ln=', cmath.polar(v2ln))
   print ('i2=', cmath.polar(i2))
 
-  # line parameters
-  gammaL = cmath.sqrt(Z*Y)
-  Zc = cmath.sqrt(Z/Y)
+  # ABCD parameters
   if LONGLINE:
     A = cmath.cosh(gammaL)
     D = A

@@ -3,48 +3,48 @@
 
 <68B79170-F5A8-481F-9792-6838B2D02849_SvPF> a cim:SvPowerFlow ;
     emt:SvPowerFlow.ConductingEquipment <68B79170-F5A8-481F-9792-6838B2D02849> ;
-    cim:SvPowerFlow.p "341453311.0"^^cim:ActivePower ;
-    cim:SvPowerFlow.q "7543467.0"^^cim:ReactivePower .
+    cim:SvPowerFlow.p "355950166.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "-6724663.0"^^cim:ReactivePower .
 
 <7507DEC9-7F4B-4C0C-ABC1-477372339EBF_SvPF> a cim:SvPowerFlow ;
     emt:SvPowerFlow.TransformerEnd <7507DEC9-7F4B-4C0C-ABC1-477372339EBF> ;
-    cim:SvPowerFlow.p "318932949.0"^^cim:ActivePower ;
-    cim:SvPowerFlow.q "20250977.0"^^cim:ReactivePower .
+    cim:SvPowerFlow.p "335194123.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "21283497.0"^^cim:ReactivePower .
 
 <81D2A6A9-1FBB-440E-A92D-D71E703D650A_SvPF> a cim:SvPowerFlow ;
     emt:SvPowerFlow.ConductingEquipment <81D2A6A9-1FBB-440E-A92D-D71E703D650A> ;
-    cim:SvPowerFlow.p "-341453311.0"^^cim:ActivePower ;
-    cim:SvPowerFlow.q "-7543467.0"^^cim:ReactivePower .
+    cim:SvPowerFlow.p "-355950166.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "6724663.0"^^cim:ReactivePower .
 
 <8952618F-8852-4420-9850-514793565B23_SvPF> a cim:SvPowerFlow ;
     emt:SvPowerFlow.ConductingEquipment <8952618F-8852-4420-9850-514793565B23> ;
-    cim:SvPowerFlow.p "318932949.0"^^cim:ActivePower ;
-    cim:SvPowerFlow.q "20252242.0"^^cim:ReactivePower .
+    cim:SvPowerFlow.p "335194123.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "21284827.0"^^cim:ReactivePower .
 
 <AD792DFF-2C58-4BBF-8D75-2F72CFAB796B_SvPF> a cim:SvPowerFlow ;
     emt:SvPowerFlow.ConductingEquipment <AD792DFF-2C58-4BBF-8D75-2F72CFAB796B> ;
-    cim:SvPowerFlow.p "316401735.0"^^cim:ActivePower ;
-    cim:SvPowerFlow.q "1266.0"^^cim:ReactivePower .
+    cim:SvPowerFlow.p "332533853.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "1330.0"^^cim:ReactivePower .
 
 <B4ED2857-F5D2-471F-9764-FC6799526E55_SvPF> a cim:SvPowerFlow ;
     emt:SvPowerFlow.TransformerEnd <B4ED2857-F5D2-471F-9764-FC6799526E55> ;
-    cim:SvPowerFlow.p "-316401735.0"^^cim:ActivePower ;
-    cim:SvPowerFlow.q "-1266.0"^^cim:ReactivePower .
+    cim:SvPowerFlow.p "-332533853.0"^^cim:ActivePower ;
+    cim:SvPowerFlow.q "-1330.0"^^cim:ReactivePower .
 
 <1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E_SvV> a cim:SvVoltage ;
     emt:SvVoltage.ConnectivityNode <1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E> ;
-    cim:SvVoltage.angle "-38.892773"^^cim:AngleDegrees ;
-    cim:SvVoltage.v "122734.992"^^cim:Voltage .
+    cim:SvVoltage.angle "-37.253315"^^cim:AngleDegrees ;
+    cim:SvVoltage.v "125825.088"^^cim:Voltage .
 
 <212BCE15-7CAE-4469-B001-5040D60466C6_SvV> a cim:SvVoltage ;
     emt:SvVoltage.ConnectivityNode <212BCE15-7CAE-4469-B001-5040D60466C6> ;
-    cim:SvVoltage.angle "-38.892544"^^cim:AngleDegrees ;
-    cim:SvVoltage.v "122734.992"^^cim:Voltage .
+    cim:SvVoltage.angle "-37.253086"^^cim:AngleDegrees ;
+    cim:SvVoltage.v "125825.088"^^cim:Voltage .
 
 <5A74B6F3-2B95-47DE-88FC-902A6643D37A_SvV> a cim:SvVoltage ;
     emt:SvVoltage.ConnectivityNode <5A74B6F3-2B95-47DE-88FC-902A6643D37A> ;
-    cim:SvVoltage.angle "-35.25937"^^cim:AngleDegrees ;
-    cim:SvVoltage.v "309915.22500000003"^^cim:Voltage .
+    cim:SvVoltage.angle "-33.619911"^^cim:AngleDegrees ;
+    cim:SvVoltage.v "317717.745"^^cim:Voltage .
 
 <D3C50564-2BA5-4B81-AFF0-BB99CE54E804_SvV> a cim:SvVoltage ;
     emt:SvVoltage.ConnectivityNode <D3C50564-2BA5-4B81-AFF0-BB99CE54E804> ;
@@ -53,6 +53,6 @@
 
 <FA16A3CC-2849-410E-91E7-88674CCA513D_SvV> a cim:SvVoltage ;
     emt:SvVoltage.ConnectivityNode <FA16A3CC-2849-410E-91E7-88674CCA513D> ;
-    cim:SvVoltage.angle "-35.259596"^^cim:AngleDegrees ;
-    cim:SvVoltage.v "309915.22500000003"^^cim:Voltage .
+    cim:SvVoltage.angle "-33.620138"^^cim:AngleDegrees ;
+    cim:SvVoltage.v "317717.745"^^cim:Voltage .
 

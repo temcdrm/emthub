@@ -9,22 +9,22 @@ How many?                How much?              P (MW)            Q (MVAr)
 ---------------------    -------------------  -------------  -----------------
 Buses              5     Total Gen Capacity     800.0        -400.0 to 400.0
 Generators         1     On-line Capacity       800.0        -400.0 to 400.0
-Committed Gens     1     Generation (actual)    341.5               7.5
+Committed Gens     1     Generation (actual)    356.0              -6.7
 Loads              0     Load                     0.0               0.0
   Fixed            0       Fixed                  0.0               0.0
   Dispatchable     0       Dispatchable          -0.0 of -0.0      -0.0
-Shunts             1     Shunt (inj)           -316.4               0.0
-Branches           4     Losses (I^2 * Z)        25.05            232.51
-Transformers       1     Branch Charging (inj)     -              225.0
+Shunts             1     Shunt (inj)           -332.5               0.0
+Branches           4     Losses (I^2 * Z)        23.42            231.23
+Transformers       1     Branch Charging (inj)     -              238.0
 Inter-ties         0     Total Inter-tie Flow     0.0               0.0
 Areas              1
 
                           Minimum                      Maximum
                  -------------------------  --------------------------------
-Voltage Magnitude   0.889 p.u. @ bus 5          1.000 p.u. @ bus 1   
-Voltage Angle     -38.89 deg   @ bus 5          0.00 deg   @ bus 1   
-P Losses (I^2*R)             -                 22.52 MW    @ line 1-2
-Q Losses (I^2*X)             -                212.26 MVAr  @ line 1-2
+Voltage Magnitude   0.912 p.u. @ bus 5          1.000 p.u. @ bus 1   
+Voltage Angle     -37.25 deg   @ bus 5          0.00 deg   @ bus 1   
+P Losses (I^2*R)             -                 20.76 MW    @ line 1-2
+Q Losses (I^2*X)             -                209.95 MVAr  @ line 1-2
 
 Overloads:
   0 generators overloaded

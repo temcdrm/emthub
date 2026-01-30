@@ -144,7 +144,7 @@ def write_solve_file (root, load_scale=1.0, editfile=None, pg=None):
   if pg is not None:
     for row in pg:
       print ("""mpc.gen({:d},PG) = {:.2f};""".format (row[0], row[1]), file=fp)
-  print ("""mpc = scale_load({:.5f},mpc);""".format (load_scale), file=fp)
+  #print ("""mpc = scale_load({:.5f},mpc);""".format (load_scale), file=fp)
   print ("""opt1 = mpoption('out.all', 0, 'verbose', 0);""", file=fp)
   print ("""results=runpf(mpc, opt1);""", file=fp)
   print ("""opt2 = mpoption('out.sys_sum', 1, 'out.bus', 0, 'out.branch', 0);""", file=fp)
@@ -177,7 +177,7 @@ def write_radial_file (root, load_scale=1.0, editfile=None, pg=None):
   if pg is not None:
     for row in pg:
       print ("""mpc.gen({:d},PG) = {:.2f};""".format (row[0], row[1]), file=fp)
-  print ("""mpc = scale_load({:.5f},mpc);""".format (load_scale), file=fp)
+  #print ("""mpc = scale_load({:.5f},mpc);""".format (load_scale), file=fp)
   print ("""opt1 = mpoption('out.all', 0, 'verbose', 0, 'pf.alg', 'PQSUM', 'pf.radial.max_it', 100);""", file=fp)
   print ("""results=radial_pf(mpc, opt1);""", file=fp)
   print ("""opt2 = mpoption('out.sys_sum', 1, 'out.bus', 0, 'out.branch', 0);""", file=fp)
