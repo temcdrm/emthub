@@ -630,6 +630,17 @@ def InitializeIBR (key, row, icd):
     row['p'] = -ic['p'] # accounting for the load convention of shunt power flow
     row['q'] = -ic['q']
 
+def GetVectorGroup (d, key, dxf):
+  for plant, ary in d.items():
+    for row in ary:
+      if row['eqid'] == key:
+        for eqs in d[plant]:
+          if eqs['eqtype'] == 'PowerTransformer':
+            winding_key = eqs['eqid'] + ':1'
+            vgrp = dxf[winding_key]['vgrp']
+            return vgrp
+  return 'Yy'
+
 def convert_one_atp_model (d, icd, fpath, case):
   """Export one BES network model to ATP.
 
@@ -979,6 +990,7 @@ def convert_one_atp_model (d, icd, fpath, case):
   dgens = {}
 
   for key, row in d['EMTSolar']['vals'].items():
+    vgroup = GetVectorGroup (d['EMTIBRPlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
     bus = atp_buses[row['cn1id']]
     phases = GetAtpPhaseList ('ABC')
     nph = len(phases)
@@ -1017,6 +1029,7 @@ def convert_one_atp_model (d, icd, fpath, case):
     DUM_NODES += SOLAR_DUM_NODES
 
   for key, row in d['EMTWind']['vals'].items():
+    vgroup = GetVectorGroup (d['EMTIBRPlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
     bus = atp_buses[row['cn1id']]
     phases = GetAtpPhaseList ('ABC')
     nph = len(phases)
@@ -1036,6 +1049,7 @@ def convert_one_atp_model (d, icd, fpath, case):
   if len(machines) > 0: # ATP requires these come after all other sources
     lastKey = list(machines.keys())[-1]
     for key, row in machines.items():
+      vgroup = GetVectorGroup (d['EMTRotatingMachinePlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
       bus = atp_buses[row['cn1id']]
       phases = GetAtpPhaseList ('ABC')
       nph = len(phases)
@@ -1087,7 +1101,7 @@ if __name__ == '__main__':
   g.parse (fname)
   print ('read', len(g), 'statements from', fname)
   d = emthub.load_emt_dict (g, case['id'], bTiming=True)
-  for key in ['EMTBaseVoltage', 'EMTIBRPlant*', 'EMTRotatingMachinePlant*']:
+  for key in ['EMTBaseVoltage']: #, 'EMTIBRPlant*', 'EMTRotatingMachinePlant*']:
     emthub.list_dict_table (d, key)
 
   icd = None
