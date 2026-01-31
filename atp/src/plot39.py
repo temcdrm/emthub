@@ -11,6 +11,7 @@ plt.rcParams['savefig.directory'] = os.getcwd()
 #tmin = 40.0
 #tmax = 50.0
 tmin = 0.0
+tpll = 0.050
 #tmax = 2.0
 tmax = 20.0
 #tticks = [40.0, 42.0, 44.0, 46.0, 48.0, 50.0]
@@ -60,12 +61,15 @@ if __name__ == '__main__':
   fig, ax = plt.subplots (2, 4, sharex = 'col', figsize=(21,9), constrained_layout=True)
   fig.suptitle ('IEEE 39-bus Case')
   t = np.array(df.index)
+  fmin = np.where(t==tpll)
   amin = np.where(t==tmin)
   amax = np.where(t==tmax)
+  ifmin = int(fmin[0][0])
   imin = int(amin[0][0])
   imax = int(amax[0][0])
   print ('Plotting from', tmin, imin, t[imin], 'to', tmax, imax, t[imax])
   tplot = t[imin:imax] - tmin
+  tfreq = t[ifmin:imax] - tpll
 
   ax[0,0].set_title ('Machine Frequency [pu]')
   for i in range(sm_start, sm_end):
@@ -100,7 +104,7 @@ if __name__ == '__main__':
   for i in range(ibr_start, ibr_end):
     key = 'T:IBR{:02d}F'.format(i)
     if key in df:
-      ax[1,2].plot (tplot, np.array(df[key])[imin:imax] / 376.9911)
+      ax[1,2].plot (tfreq, np.array(df[key])[ifmin:imax] / 376.9911)
 
   ax[0,3].set_title ('IBR P [pu]')
   for i in range(ibr_start, ibr_end):

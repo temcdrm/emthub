@@ -14602,7 +14602,7 @@
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "0CF84A3A-1B8F-40B1-8B1B-57EAC50A2BD7"^^cim:String ;
     cim:IdentifiedObject.name "15_126_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <1251584C-A471-4517-ADF0-B8333C158A36> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
@@ -14658,7 +14658,7 @@
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "20BEE2AD-1481-45DE-B24E-F534DB24CAAD"^^cim:String ;
     cim:IdentifiedObject.name "105_185_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <211A01C6-95CB-45C0-B8F1-40DE853FF9FA> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
@@ -14742,7 +14742,7 @@
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "46CED5CE-9345-4B6A-9321-AEB951EA61D9"^^cim:String ;
     cim:IdentifiedObject.name "27_136_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <49138130-93D8-4259-98B4-8F5B83FA62DF> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
@@ -14777,7 +14777,7 @@
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "4E81DDE4-5BC2-4382-9084-EC34EE24CB47"^^cim:String ;
     cim:IdentifiedObject.name "100_180_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <4F5AC5EE-5651-4494-B111-5CB6E8D994AE> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
@@ -14847,7 +14847,7 @@
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "61069C6C-1018-46B7-B7B5-6658F568AA3D"^^cim:String ;
     cim:IdentifiedObject.name "76_165_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <62D48F71-AB2B-4BF9-BF12-0DB573CA46A7> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
@@ -14861,7 +14861,7 @@
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "638407D0-2318-4325-A384-115635E3F177"^^cim:String ;
     cim:IdentifiedObject.name "69_159_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <66F2053F-D978-463D-96FD-542F8B4EA881> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
@@ -14903,21 +14903,21 @@
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "6D3BE235-DB8F-4D7B-A0D2-375C6E5A4177"^^cim:String ;
     cim:IdentifiedObject.name "104_183_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <7123EA5F-9D36-4E31-B5DC-814F0DB03460> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "7123EA5F-9D36-4E31-B5DC-814F0DB03460"^^cim:String ;
     cim:IdentifiedObject.name "18_128_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <75C3FFC7-4ABB-449A-9820-735F24DBFCB5> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "75C3FFC7-4ABB-449A-9820-735F24DBFCB5"^^cim:String ;
     cim:IdentifiedObject.name "92_175_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <76687A3B-13EA-4EE5-AB06-9C358AE87A5F> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
@@ -14938,21 +14938,21 @@
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "78EF5DED-3077-484B-810E-4AC2FD265368"^^cim:String ;
     cim:IdentifiedObject.name "112_191_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <7C2C0402-52FA-46F6-B771-4191126C8AB2> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "7C2C0402-52FA-46F6-B771-4191126C8AB2"^^cim:String ;
     cim:IdentifiedObject.name "32_140_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <7FDB15D9-092A-4987-854F-7C590502C7C9> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "7FDB15D9-092A-4987-854F-7C590502C7C9"^^cim:String ;
     cim:IdentifiedObject.name "24_132_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <809E6108-419D-49BF-80AD-62BBC54A3539> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
@@ -14973,7 +14973,7 @@
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "8191E72F-7243-4A5D-8100-FDA49A19B895"^^cim:String ;
     cim:IdentifiedObject.name "82_168_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <882E6533-0643-480F-B7A1-C00A0B8BA153> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
@@ -15022,7 +15022,7 @@
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "AD35ADFE-B673-459D-ABBD-EC0634D40C85"^^cim:String ;
     cim:IdentifiedObject.name "110_188_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <B1E5E162-0BF1-45F9-8713-77CC7D6B8891> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
@@ -15036,7 +15036,7 @@
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "B20B3D63-12FF-4028-911A-D09074F3F7C7"^^cim:String ;
     cim:IdentifiedObject.name "55_151_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <B2ED9191-1A28-44BB-8522-6C30045D757F> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
@@ -15085,7 +15085,7 @@
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "C4700483-7D4F-420C-9E01-BEA067A69005"^^cim:String ;
     cim:IdentifiedObject.name "100_179_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <D13E94A3-2E89-4A23-8B9B-D2182215521A> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
@@ -15113,7 +15113,7 @@
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "D8DD8F30-F534-4812-899D-4EEB8FB59A9D"^^cim:String ;
     cim:IdentifiedObject.name "19_130_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <D9BDE1D2-0EE2-4E3B-AA7B-8DA7E6D5059E> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
@@ -15148,14 +15148,14 @@
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "FA6F1575-64EF-4637-A51D-32268B693FB0"^^cim:String ;
     cim:IdentifiedObject.name "54_149_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <FC0D53FF-D845-4485-AE53-99AF2E17CD54> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "FC0D53FF-D845-4485-AE53-99AF2E17CD54"^^cim:String ;
     cim:IdentifiedObject.name "31_138_0_1"^^cim:String ;
-    cim:PowerTransformer.vectorGroup "Yd1"^^cim:String .
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <FDB1737A-AF93-48E1-83AA-88CDA6E21B95> a cim:PowerTransformer ;
     cim:Equipment.EquipmentContainer <1783D2A8-1204-4781-A0B4-7A73A2FA6038> ;
@@ -15416,13 +15416,13 @@
     cim:IdentifiedObject.mRID "1A972F71-676B-4151-9419-3E3C4690391D"^^cim:String ;
     cim:IdentifiedObject.name "32_140_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <7C2C0402-52FA-46F6-B771-4191126C8AB2> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "300000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -15701,13 +15701,13 @@
     cim:IdentifiedObject.mRID "41589065-7EE0-4BE4-91EF-57E5537B361E"^^cim:String ;
     cim:IdentifiedObject.name "24_132_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <7FDB15D9-092A-4987-854F-7C590502C7C9> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "30000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -15761,13 +15761,13 @@
     cim:IdentifiedObject.mRID "463FEE15-AA8F-4151-930A-2073B24C4AD0"^^cim:String ;
     cim:IdentifiedObject.name "100_180_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <4E81DDE4-5BC2-4382-9084-EC34EE24CB47> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "175000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -15806,13 +15806,13 @@
     cim:IdentifiedObject.mRID "4C70722E-F4C1-4F32-8F77-68C2B72CDC2A"^^cim:String ;
     cim:IdentifiedObject.name "54_149_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <FA6F1575-64EF-4637-A51D-32268B693FB0> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "120000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -15851,13 +15851,13 @@
     cim:IdentifiedObject.mRID "535E5655-4522-48A2-9402-AF5F5B1BCEBE"^^cim:String ;
     cim:IdentifiedObject.name "110_188_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <AD35ADFE-B673-459D-ABBD-EC0634D40C85> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "120000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -15956,13 +15956,13 @@
     cim:IdentifiedObject.mRID "5BFADAD8-05D6-4F1B-8AB0-CB230CBC2A2A"^^cim:String ;
     cim:IdentifiedObject.name "69_159_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <638407D0-2318-4325-A384-115635E3F177> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "50000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -16181,13 +16181,13 @@
     cim:IdentifiedObject.mRID "6F7D6678-B0BC-4813-8759-3998FF9B1B7C"^^cim:String ;
     cim:IdentifiedObject.name "18_128_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <7123EA5F-9D36-4E31-B5DC-814F0DB03460> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "75000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -16316,13 +16316,13 @@
     cim:IdentifiedObject.mRID "81604D6E-DCB6-4B9C-8B74-64EF922E8DA0"^^cim:String ;
     cim:IdentifiedObject.name "19_130_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <D8DD8F30-F534-4812-899D-4EEB8FB59A9D> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "50000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -16361,13 +16361,13 @@
     cim:IdentifiedObject.mRID "86D6EF1A-FA18-43B0-A8B2-CA8F4194CAF6"^^cim:String ;
     cim:IdentifiedObject.name "31_138_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <FC0D53FF-D845-4485-AE53-99AF2E17CD54> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "75000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -16406,13 +16406,13 @@
     cim:IdentifiedObject.mRID "8B3A2270-EA50-4C1B-80F7-CCE58B86205A"^^cim:String ;
     cim:IdentifiedObject.name "105_185_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <20BEE2AD-1481-45DE-B24E-F534DB24CAAD> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "120000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -16421,13 +16421,13 @@
     cim:IdentifiedObject.mRID "8C86303A-4CD8-4D10-96F7-1208249E36E7"^^cim:String ;
     cim:IdentifiedObject.name "82_168_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <8191E72F-7243-4A5D-8100-FDA49A19B895> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "150000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -16691,13 +16691,13 @@
     cim:IdentifiedObject.mRID "A11B77D5-57CC-4062-8CAF-F619030B9F22"^^cim:String ;
     cim:IdentifiedObject.name "15_126_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <0CF84A3A-1B8F-40B1-8B1B-57EAC50A2BD7> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "60000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -16706,13 +16706,13 @@
     cim:IdentifiedObject.mRID "A1FBAF99-E039-4662-B9CC-83F802C0766D"^^cim:String ;
     cim:IdentifiedObject.name "100_179_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <C4700483-7D4F-420C-9E01-BEA067A69005> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "50000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -16721,13 +16721,13 @@
     cim:IdentifiedObject.mRID "A25B20CF-0679-4467-B98F-CED414DE4904"^^cim:String ;
     cim:IdentifiedObject.name "92_175_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <75C3FFC7-4ABB-449A-9820-735F24DBFCB5> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "225000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -17276,13 +17276,13 @@
     cim:IdentifiedObject.mRID "D4DA5B56-AAFF-41A0-AE4C-D233EA52C682"^^cim:String ;
     cim:IdentifiedObject.name "27_136_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <46CED5CE-9345-4B6A-9321-AEB951EA61D9> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "50000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -17426,13 +17426,13 @@
     cim:IdentifiedObject.mRID "E24B8296-EB59-4183-AF04-993B559F854A"^^cim:String ;
     cim:IdentifiedObject.name "76_165_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <61069C6C-1018-46B7-B7B5-6658F568AA3D> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "10000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -17441,13 +17441,13 @@
     cim:IdentifiedObject.mRID "E2CF1D45-831B-4CCB-980C-6AA8D5D9DD27"^^cim:String ;
     cim:IdentifiedObject.name "112_191_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <78EF5DED-3077-484B-810E-4AC2FD265368> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "75000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -17591,13 +17591,13 @@
     cim:IdentifiedObject.mRID "F79DDCB3-383E-41D8-9F29-F17D1444E1B0"^^cim:String ;
     cim:IdentifiedObject.name "104_183_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <6D3BE235-DB8F-4D7B-A0D2-375C6E5A4177> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "200000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
@@ -17621,13 +17621,13 @@
     cim:IdentifiedObject.mRID "F8B9C016-AC35-44EF-8BF8-AB68A4D53E86"^^cim:String ;
     cim:IdentifiedObject.name "55_151_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <B20B3D63-12FF-4028-911A-D09074F3F7C7> ;
-    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
-    cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
     cim:PowerTransformerEnd.ratedS "12000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
-    cim:TransformerEnd.grounded "false"^^cim:Boolean ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 

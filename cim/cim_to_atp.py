@@ -35,7 +35,6 @@ OMEGA = 2.0 * 60.0 * math.pi
 MIN_IMAG = 0.00015
 MIN_PNLL = 0.00010
 TOPEN = 9990.0
-GEN_SHIFT = -30.0
 
 MACHINE_NPOLES = 2.0
 MACHINE_H = 3.0
@@ -404,7 +403,7 @@ def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count):
                                theta = AtpFit10 (1.8)), 
          file=ap)
 
-def AppendType14Generator (cn1id, bus, vbase, rmva, Xdp, Ra, icd, mw, mvar, ap):
+def AppendType14Generator (cn1id, bus, vbase, rmva, Xdp, Ra, icd, mw, mvar, ap, gsu_ang):
   vpu = 1.0
   vdeg = 0.0
   if icd is not None and cn1id in icd['EMTBusVoltageIC']['vals']:
@@ -419,7 +418,7 @@ def AppendType14Generator (cn1id, bus, vbase, rmva, Xdp, Ra, icd, mw, mvar, ap):
   X0 = X1
   R0 = R1
   vmag = vpu * kv * 1000.0 * SQRT2 / SQRT3
-  vang = deg + GEN_SHIFT
+  vang = deg + gsu_ang
 
   genbus = GetNextScratchBus()
   bus = AtpBus(bus)
@@ -458,7 +457,7 @@ machine_dynamic_template = """$INCLUDE,SYNCMACH.PCH,{sbus},{sname} $$
   ,{psk5},{psa1},{psa2},{pst3},{pst4},{pst5} $$
   ,{pst6},{vstmn},{vstmx}"""
 
-def AppendMachineDynamics (bus, vpu, deg, mach, gov, exc, pss, ap):
+def AppendMachineDynamics (bus, vpu, deg, mach, gov, exc, pss, ap, gsu_ang):
   global SM_COUNT
   sbus = AtpBus (bus)
   sname = 'SM{:03d}'.format (SM_COUNT)
@@ -473,7 +472,7 @@ def AppendMachineDynamics (bus, vpu, deg, mach, gov, exc, pss, ap):
   s1d = 1.073 * abs(agline)
   s2d = 1.760 * abs(agline)
   vpk = 1000.0 * vpu * rkv * SQRT2 / SQRT3
-  ang0 = deg + GEN_SHIFT
+  ang0 = deg + gsu_ang
   ra = mach['Ra']
   xl = mach['Xl']
   xd = mach['Xd']
@@ -522,7 +521,7 @@ def AppendMachineDynamics (bus, vpu, deg, mach, gov, exc, pss, ap):
   pst6 = max(pss['t6'],1e-9)
   vstmn = pss['vrmin']
   vstmx = pss['vrmax']
-#  print ('58 at {:s}, V={:.2f} at {:.2f}, gov={:s}, exc={:s}, pss={:s}'.format(bus, vpu, deg+GEN_SHIFT, gov['id'], exc['id'], pss['id']), file=ap)
+#  print ('58 at {:s}, V={:.2f} at {:.2f}, gov={:s}, exc={:s}, pss={:s}'.format(bus, vpu, deg+gsu_ang, gov['id'], exc['id'], pss['id']), file=ap)
   print (machine_dynamic_template.format(sbus=sbus,
                                          sname=sname,
                                          rmva = AtpFit10 (rmva),
@@ -630,7 +629,7 @@ def InitializeIBR (key, row, icd):
     row['p'] = -ic['p'] # accounting for the load convention of shunt power flow
     row['q'] = -ic['q']
 
-def GetVectorGroup (d, key, dxf):
+def GetGSUPhaseShift (d, key, dxf):
   for plant, ary in d.items():
     for row in ary:
       if row['eqid'] == key:
@@ -638,8 +637,11 @@ def GetVectorGroup (d, key, dxf):
           if eqs['eqtype'] == 'PowerTransformer':
             winding_key = eqs['eqid'] + ':1'
             vgrp = dxf[winding_key]['vgrp']
-            return vgrp
-  return 'Yy'
+            if vgrp == 'Yd1':
+              return -30.0
+            else:
+              return 0.0
+  return 0.0
 
 def convert_one_atp_model (d, icd, fpath, case):
   """Export one BES network model to ATP.
@@ -703,6 +705,7 @@ def convert_one_atp_model (d, icd, fpath, case):
   q_swing = 0.0
   vmag = 1.0
   vang = 0.0
+  gsu_ang = 0.0
   if len(machines) > 0: # find the swing bus
     for key, row in machines.items():
       if bus == atp_buses[row['cn1id']]:
@@ -713,12 +716,13 @@ def convert_one_atp_model (d, icd, fpath, case):
         vang = row['deg']
         p_swing = 1.0e-6*row['p']
         q_swing = 1.0e-6*row['q']
+        gsu_ang = GetGSUPhaseShift (d['EMTRotatingMachinePlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals']) 
         print ('Swing Generator {:.2f} MVA, {:.2f} MW, {:.2f} MVAR, X1={:.6f} pu, R1={:.6f} pu'.format(mva_swing, 
                                                                                                        p_swing, 
                                                                                                        q_swing, 
                                                                                                        x1pu_swing, 
                                                                                                        r1pu_swing))
-        print ('   Swing bus V={:.4f} pu @ {:.3f} deg'.format (vmag, vang))
+        print ('   Swing bus V={:.4f} pu @ {:.3f} deg, GSU {:.3f} deg'.format (vmag, vang, gsu_ang))
         break
 
   zbase = kv * kv / mva_swing
@@ -728,7 +732,7 @@ def convert_one_atp_model (d, icd, fpath, case):
   R0 = R1
   vmag, vang = TheveninVoltage (vmag, vang, r1pu_swing, x1pu_swing, p_swing/mva_swing, q_swing/mva_swing)
   vmag = vmag * kv * 1000.0 * SQRT2 / SQRT3
-  vang = vang + GEN_SHIFT
+  vang = vang + gsu_ang
   print ('C =============================================================================', file=ap)
   print ('C Swing Bus {:s} at {:s}'.format (swingbus, bus), file=ap)
   print ('/SOURCE', file=ap)
@@ -990,7 +994,7 @@ def convert_one_atp_model (d, icd, fpath, case):
   dgens = {}
 
   for key, row in d['EMTSolar']['vals'].items():
-    vgroup = GetVectorGroup (d['EMTIBRPlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
+    gsu_ang = GetGSUPhaseShift (d['EMTIBRPlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
     bus = atp_buses[row['cn1id']]
     phases = GetAtpPhaseList ('ABC')
     nph = len(phases)
@@ -1029,7 +1033,7 @@ def convert_one_atp_model (d, icd, fpath, case):
     DUM_NODES += SOLAR_DUM_NODES
 
   for key, row in d['EMTWind']['vals'].items():
-    vgroup = GetVectorGroup (d['EMTIBRPlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
+    gsu_ang = GetGSUPhaseShift (d['EMTIBRPlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
     bus = atp_buses[row['cn1id']]
     phases = GetAtpPhaseList ('ABC')
     nph = len(phases)
@@ -1049,7 +1053,7 @@ def convert_one_atp_model (d, icd, fpath, case):
   if len(machines) > 0: # ATP requires these come after all other sources
     lastKey = list(machines.keys())[-1]
     for key, row in machines.items():
-      vgroup = GetVectorGroup (d['EMTRotatingMachinePlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
+      gsu_ang = GetGSUPhaseShift (d['EMTRotatingMachinePlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
       bus = atp_buses[row['cn1id']]
       phases = GetAtpPhaseList ('ABC')
       nph = len(phases)
@@ -1069,13 +1073,13 @@ def convert_one_atp_model (d, icd, fpath, case):
         print ('C =============================================================================', file=ap)
         print ('C SyncMachine {:s} at {:s} is {:.2f} MVA, {:.2f} MW, {:.2f} MVAR'.format (row['name'], row['bus'], rmva, mw, mvar), file=ap)
         if USE_TYPE_14_MACHINES: #  or (key != lastKey):
-          genbus = AppendType14Generator (row['cn1id'], bus, vbase, rmva, row['Xdp'], row['Ra'], icd, mw, mvar, ap)
+          genbus = AppendType14Generator (row['cn1id'], bus, vbase, rmva, row['Xdp'], row['Ra'], icd, mw, mvar, ap, gsu_ang)
           dgens[key] = {'Type':'SyncMach', 'Source':'14', 'Name':row['name'], 'Bus':genbus, 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
         else:
           gov = GetMachineDynamic (d['EMTGovSteamSGO']['vals'], key)
           exc = GetMachineDynamic (d['EMTExcST1A']['vals'], key)
           pss = GetMachineDynamic (d['EMTPssIEEE1A']['vals'], key)
-          AppendMachineDynamics (bus=bus, vpu=row['vpu'], deg=row['deg'], mach=row, gov=gov, exc=exc, pss=pss, ap=ap)
+          AppendMachineDynamics (bus=bus, vpu=row['vpu'], deg=row['deg'], mach=row, gov=gov, exc=exc, pss=pss, ap=ap, gsu_ang=gsu_ang)
           DUM_NODES += MACHINE_DUM_NODES
           dgens[key] = {'Type':'SyncMach', 'Source':'59', 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
     print ('/BRANCH', file=ap)

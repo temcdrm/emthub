@@ -11,6 +11,7 @@ NMACH = 105
 NDER = 2
 NIBR = 35
 OMEGA = 2.0 * 60.0 * math.pi
+tpll = 0.050
 
 plt.rcParams['savefig.directory'] = os.getcwd()
 
@@ -64,6 +65,9 @@ if __name__ == '__main__':
   t = df.index
   tmin = t[0]
   tmax = t[-1]
+  amin = np.where(t==tpll)
+  imin = int(amin[0][0])
+  tfreq = t[imin:-1] - tpll
 
   ax[0,0].set_title ('Machine Frequency [pu]')
   for i in range(NMACH):
@@ -104,7 +108,7 @@ if __name__ == '__main__':
   for i in range(NIBR):
     key = 'T:IBR{:02d}F'.format(i+1)
     if key in df:
-      ax[1,2].plot (t, df[key] / 376.9911)
+      ax[1,2].plot (tfreq, np.array(df[key])[imin:-1] / 376.9911)
 
   ax[1,3].set_title ('IBR Q [pu]')
   for i in range(NIBR):
