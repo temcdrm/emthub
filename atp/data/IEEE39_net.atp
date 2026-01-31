@@ -26,13 +26,16 @@ C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B10__A                  0.000011.902213.13
- 2B32__A                  0.00000.048412.702
+ 2B32__AB32__B            0.00000.145222.000
   TRANSFORMER X1___X                  X1___Y
  1B10__B      
- 2B32__B      
+ 2B32__BB32__C
   TRANSFORMER X1___X                  X1___Z
  1B10__C      
- 2B32__C      
+ 2B32__CB32__A
+  B32__A                  1000.0         1.0
+  B32__B                  1000.0         1.0
+  B32__C                  1000.0         1.0
 C =============================================================================
 C transformer 12_11_0_1, 2 windings from 12
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
@@ -86,13 +89,16 @@ C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B19__A                  0.41668.4508213.13
- 2B33__A                  0.00170.034412.702
+ 2B33__AB33__B            0.00510.103122.000
   TRANSFORMER X5___X                  X5___Y
  1B19__B      
- 2B33__B      
+ 2B33__BB33__C
   TRANSFORMER X5___X                  X5___Z
  1B19__C      
- 2B33__C      
+ 2B33__CB33__A
+  B33__A                  1000.0         1.0
+  B33__B                  1000.0         1.0
+  B33__C                  1000.0         1.0
 C =============================================================================
 C transformer 20_34_0_1, 2 windings from 20
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
@@ -101,13 +107,16 @@ C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B20__A                  0.535610.712200.98
- 2B34__A                  0.00220.043612.702
+ 2B34__AB34__B            0.00650.130722.000
   TRANSFORMER X6___X                  X6___Y
  1B20__B      
- 2B34__B      
+ 2B34__BB34__C
   TRANSFORMER X6___X                  X6___Z
  1B20__C      
- 2B34__C      
+ 2B34__CB34__A
+  B34__A                  1000.0         1.0
+  B34__B                  1000.0         1.0
+  B34__C                  1000.0         1.0
 C =============================================================================
 C transformer 22_35_0_1, 2 windings from 22
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
@@ -116,13 +125,16 @@ C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B22__A                  0.00008.5103204.17
- 2B35__A                  0.00000.034612.702
+ 2B35__AB35__B            0.00000.103822.000
   TRANSFORMER X7___X                  X7___Y
  1B22__B      
- 2B35__B      
+ 2B35__BB35__C
   TRANSFORMER X7___X                  X7___Z
  1B22__C      
- 2B35__C      
+ 2B35__CB35__A
+  B35__A                  1000.0         1.0
+  B35__B                  1000.0         1.0
+  B35__C                  1000.0         1.0
 C =============================================================================
 C transformer 23_36_0_1, 2 windings from 23
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
@@ -131,13 +143,16 @@ C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B23__A                  0.297616.187199.19
- 2B36__A                  0.00120.065812.702
+ 2B36__AB36__B            0.00360.197522.000
   TRANSFORMER X8___X                  X8___Y
  1B23__B      
- 2B36__B      
+ 2B36__BB36__C
   TRANSFORMER X8___X                  X8___Z
  1B23__C      
- 2B36__C      
+ 2B36__CB36__A
+  B36__A                  1000.0         1.0
+  B36__B                  1000.0         1.0
+  B36__C                  1000.0         1.0
 C =============================================================================
 C transformer 25_37_0_1, 2 windings from 25
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
@@ -146,13 +161,16 @@ C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B25__A                  0.357113.807204.17
- 2B37__A                  0.00150.056112.702
+ 2B37__AB37__B            0.00440.168422.000
   TRANSFORMER X9___X                  X9___Y
  1B25__B      
- 2B37__B      
+ 2B37__BB37__C
   TRANSFORMER X9___X                  X9___Z
  1B25__C      
- 2B37__C      
+ 2B37__CB37__A
+  B37__A                  1000.0         1.0
+  B37__B                  1000.0         1.0
+  B37__C                  1000.0         1.0
 C =============================================================================
 C transformer 29_38_0_1, 2 windings from 29
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
@@ -161,13 +179,16 @@ C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B29__A                  0.47619.2839204.17
- 2B38__A                  0.00190.037812.702
+ 2B38__AB38__B            0.00580.113322.000
   TRANSFORMER X10__X                  X10__Y
  1B29__B      
- 2B38__B      
+ 2B38__BB38__C
   TRANSFORMER X10__X                  X10__Z
  1B29__C      
- 2B38__C      
+ 2B38__CB38__A
+  B38__A                  1000.0         1.0
+  B38__B                  1000.0         1.0
+  B38__C                  1000.0         1.0
 C =============================================================================
 C transformer 2_30_0_1, 2 windings from 2
 C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
@@ -191,13 +212,16 @@ C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
             9999
 C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
  1B6___A                  0.000014.878212.88
- 2B31__A                  0.00000.060512.702
+ 2B31__AB31__B            0.00000.181522.000
   TRANSFORMER X12__X                  X12__Y
  1B6___B      
- 2B31__B      
+ 2B31__BB31__C
   TRANSFORMER X12__X                  X12__Z
  1B6___C      
- 2B31__C      
+ 2B31__CB31__A
+  B31__A                  1000.0         1.0
+  B31__B                  1000.0         1.0
+  B31__C                  1000.0         1.0
 C =============================================================================
 C line 10_11_1 from 10 to 11
 C   per-instance sequence parameters for 13.60km

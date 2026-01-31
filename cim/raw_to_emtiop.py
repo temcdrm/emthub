@@ -636,14 +636,8 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((pt, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
     g.add ((pt, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
     g.add ((pt, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
-    if min(wdg['kvs']) > 20.0:
-      bGSU = False
-      vgrp = 'Yy'
-      clocks = [0, 0]
-    else:
-      bGSU = True
-      vgrp = 'Yd1'
-      clocks = [0, 1]
+    vgrp = 'Yy'
+    clocks = [0, 0]
     g.add ((pt, rdflib.URIRef (CIM_NS + 'PowerTransformer.vectorGroup'), rdflib.Literal (vgrp, datatype=CIM.String)))
     # write 2 ends, assuming they are in correct order by descending voltage
     ends = []
@@ -661,10 +655,10 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.phaseAngleClock'), rdflib.Literal(clocks[idx], datatype=CIM.Integer)))
       g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.endNumber'), rdflib.Literal(idx+1, datatype=CIM.Integer)))
       if clocks[idx] != 0:
-        g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.connectionKind'), rdflib.URIRef (CIM_NS + 'WindingConnection.D')))  # TODO: cim:WindingConnection.D?
+        g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.connectionKind'), rdflib.URIRef (CIM_NS + 'WindingConnection.D')))
         g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.grounded'), rdflib.Literal(False, datatype=CIM.Boolean)))
       else:
-        g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.connectionKind'), rdflib.URIRef (CIM_NS + 'WindingConnection.Y')))  # TODO: cim:WindingConnection.Y?
+        g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.connectionKind'), rdflib.URIRef (CIM_NS + 'WindingConnection.Y')))
         g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.grounded'), rdflib.Literal(True, datatype=CIM.Boolean)))
       g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.rground'), rdflib.Literal(0.0, datatype=CIM.Resistance)))
       g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.xground'), rdflib.Literal(0.0, datatype=CIM.Reactance)))
@@ -984,7 +978,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((es, rdflib.URIRef (CIM_NS + 'EnergySource.x0'), rdflib.Literal(0.001, datatype=CIM.Reactance)))
 
   # identify the generator plants with step-up transformers
-  q = """SELECT DISTINCT ?name ?type ?bus ?rm_or_pec_id ?xfid ?vgroup ?enum WHERE {
+  q = """SELECT DISTINCT ?name ?type ?bus ?rm_or_pec_id ?xfid ?vgroup ?enum ?endid WHERE {
    ?s c:IdentifiedObject.name ?name.
    ?s c:IdentifiedObject.mRID ?rm_or_pec_id.
    {?s c:RotatingMachine.GeneratingUnit ?unit.}
@@ -995,10 +989,10 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
    ?s e:ConductingEquipment.FromConnectivityNode ?cn.
    ?cn c:IdentifiedObject.mRID ?cn1id.
    ?cn c:IdentifiedObject.name ?bus.
-   ?end1 e:TransformerEnd.ConnectivityNode ?cn.
-   ?end1 c:IdentifiedObject.mRID ?end1id.
-   ?end1 c:PowerTransformerEnd.PowerTransformer ?pxf.
-   ?end1 c:TransformerEnd.endNumber ?enum.
+   ?end e:TransformerEnd.ConnectivityNode ?cn.
+   ?end c:IdentifiedObject.mRID ?endid.
+   ?end c:PowerTransformerEnd.PowerTransformer ?pxf.
+   ?end c:TransformerEnd.endNumber ?enum.
    ?pxf c:IdentifiedObject.mRID ?xfid.
    ?pxf c:PowerTransformer.vectorGroup ?vgroup
   }
@@ -1007,10 +1001,23 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
   d = emthub.adhoc_sparql_dict (g, q, 'rm_or_pec_id')
   emthub.list_dict_table (d)
   for key, row in d['vals'].items():
-    if row['type'] in ['PhotoVoltaicUnit', 'PowerElectronicsWindUnit']:
+    if row['type'] in ['PhotoVoltaicUnit', 'PowerElectronicsWindUnit']:  # leave the GSU as Yy
       plant_type = 'IBRPlant'
-    else:
+    else: # change the GSU to Yd1
       plant_type = 'RotatingMachinePlant'
+      # change the transformer vectorGroup
+      pt = rdflib.URIRef (row['xfid'])
+      g.remove ((pt, rdflib.URIRef (CIM_NS + 'PowerTransformer.vectorGroup'), rdflib.Literal ('Yy', datatype=CIM.String)))
+      g.add ((pt, rdflib.URIRef (CIM_NS + 'PowerTransformer.vectorGroup'), rdflib.Literal ('Yd1', datatype=CIM.String)))
+      # find the transformer end that's connected to the generator
+      end = rdflib.URIRef (row['endid'])
+      # change end2 from wye grounded to delta
+      g.remove ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.phaseAngleClock'), rdflib.Literal(0, datatype=CIM.Integer)))
+      g.remove ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.connectionKind'), rdflib.URIRef (CIM_NS + 'WindingConnection.Y')))
+      g.remove ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.grounded'), rdflib.Literal(True, datatype=CIM.Boolean)))
+      g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.phaseAngleClock'), rdflib.Literal(1, datatype=CIM.Integer)))
+      g.add ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.connectionKind'), rdflib.URIRef (CIM_NS + 'WindingConnection.D')))
+      g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.grounded'), rdflib.Literal(False, datatype=CIM.Boolean)))
     ID = GetCIMID(plant_type, row['name'], uuids)
     plant = rdflib.URIRef (ID)
     g.add ((plant, rdflib.RDF.type, rdflib.URIRef (EMT_NS + plant_type)))
