@@ -8,6 +8,7 @@ import pkg_resources as pkg
 XML_QUERY_FILE = 'sparql_queries.xml'
 PREFIX = None
 DELIM = ':'
+ROOT = None
 
 def summarize_graph (g):
   q = """
@@ -23,8 +24,12 @@ def summarize_graph (g):
     cls = nscls[idx+1:]
     print('{:40s} {:40s} {:5d}'.format (ns, cls, int(r['cnt'])))
 
-def list_dict_table(dict, tag):
-  tbl = dict[tag]
+def list_dict_table(dict, tag=None):
+  if tag is None:
+    tbl = dict
+    tag = 'Adhoc Query'
+  else:
+    tbl = dict[tag]
   print ('\n{:s}: key,{:s}'.format(tag, str(tbl['columns'])))
   for key, row in tbl['vals'].items():
     print ('{:s},{:s}'.format (key, ','.join(str(row[c]) for c in tbl['columns'])))
@@ -65,21 +70,26 @@ def query_for_values (g, tbl, sysid):
             row[fld] = str(b[fld])
     tbl['vals'][key] = row
 
+def load_root_queries():
+  global ROOT, PREFIX
+  if ROOT is None:
+    # read the queries into dict
+    xml_file = pkg.resource_filename (__name__, 'queries/{:s}'.format(XML_QUERY_FILE))
+    print ('SPARQL from', xml_file)
+    tree = ET.parse(xml_file)
+    ROOT = tree.getroot()
+    nsCIM = ROOT.find('nsCIM').text.strip()
+    nsRDF = ROOT.find('nsRDF').text.strip()
+    nsEMT = ROOT.find('nsEMT').text.strip()
+    PREFIX = """PREFIX r: <{:s}>\nPREFIX c: <{:s}>\nPREFIX e: <{:s}>""".format (nsRDF, nsCIM, nsEMT)
+    print (PREFIX)
+
 def load_emt_dict (g, sysid, bTiming=False):
-  global PREFIX
+  global ROOT
   start_time = time.time()
-  # read the queries into dict
-  xml_file = pkg.resource_filename (__name__, 'queries/{:s}'.format(XML_QUERY_FILE))
-  print ('SPARQL from', xml_file)
-  tree = ET.parse(xml_file)
-  root = tree.getroot()
-  nsCIM = root.find('nsCIM').text.strip()
-  nsRDF = root.find('nsRDF').text.strip()
-  nsEMT = root.find('nsEMT').text.strip()
-  PREFIX = """PREFIX r: <{:s}>\nPREFIX c: <{:s}>\nPREFIX e: <{:s}>""".format (nsRDF, nsCIM, nsEMT)
-  #print (PREFIX)
+  load_root_queries()
   dict = {}
-  for query in root.findall('query'):
+  for query in ROOT.findall('query'):
     qid = query.find('id').text.strip()
     dict[qid] = {}
     dict[qid]['keyfld'] = query.find('keyfld').text
@@ -104,20 +114,12 @@ def load_emt_dict (g, sysid, bTiming=False):
   return dict
 
 def load_ic_dict (g):
-  global PREFIX
+  global ROOT
   start_time = time.time()
   # read the queries into dict
-  xml_file = pkg.resource_filename (__name__, 'queries/{:s}'.format(XML_QUERY_FILE))
-  print ('SPARQL from', xml_file)
-  tree = ET.parse(xml_file)
-  root = tree.getroot()
-  nsCIM = root.find('nsCIM').text.strip()
-  nsRDF = root.find('nsRDF').text.strip()
-  nsEMT = root.find('nsEMT').text.strip()
-  PREFIX = """PREFIX r: <{:s}>\nPREFIX c: <{:s}>\nPREFIX e: <{:s}>""".format (nsRDF, nsCIM, nsEMT)
-  #print (PREFIX)
+  load_root_queries()
   dict = {}
-  for query in root.findall('query'):
+  for query in ROOT.findall('query'):
     qid = query.find('id').text.strip()
     dict[qid] = {}
     dict[qid]['keyfld'] = query.find('keyfld').text
@@ -130,5 +132,15 @@ def load_ic_dict (g):
     query_for_values (g, dict[key], sysid=None)
 
   print ('Total query time {:6.3f} s'.format (time.time() - start_time))
+  return dict
+
+def adhoc_sparql_dict (g, q, key_field):
+  load_root_queries()
+  dict = {}
+  dict['keyfld'] = key_field
+  dict['sparql'] = q
+  dict['columns'] = []
+  dict['vals'] = {}
+  query_for_values (g, dict, sysid=None)
   return dict
 

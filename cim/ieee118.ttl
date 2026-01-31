@@ -20235,6 +20235,456 @@
     cim:IdentifiedObject.mRID "FC205CB1-89DF-4B55-A59D-D2C28DBF534E"^^cim:String ;
     cim:IdentifiedObject.name "31_138_0_1_Sat"^^cim:String .
 
+<00CDFCD4-4701-41CD-8EAB-3974E3263AC9> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <7FDB15D9-092A-4987-854F-7C590502C7C9>,
+        <F007C270-45D1-488C-865E-316DA63713CE> ;
+    cim:IdentifiedObject.mRID "00CDFCD4-4701-41CD-8EAB-3974E3263AC9"^^cim:String ;
+    cim:IdentifiedObject.name "132_W"^^cim:String .
+
+<076EE521-66E8-4237-B7CE-FFF41F0FF062> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <638407D0-2318-4325-A384-115635E3F177>,
+        <EC7FA449-5791-4FE8-BFA5-E7CDBBF44649> ;
+    cim:IdentifiedObject.mRID "076EE521-66E8-4237-B7CE-FFF41F0FF062"^^cim:String ;
+    cim:IdentifiedObject.name "159_S"^^cim:String .
+
+<0D0B4519-6FEC-4934-8013-1AC181F23AD7> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <0065B6BF-B4D9-40D0-A6FA-AD17F1F76419>,
+        <7C2C0402-52FA-46F6-B771-4191126C8AB2> ;
+    cim:IdentifiedObject.mRID "0D0B4519-6FEC-4934-8013-1AC181F23AD7"^^cim:String ;
+    cim:IdentifiedObject.name "140_S"^^cim:String .
+
+<1F8EF466-1500-4B4C-81FE-9D3CDC06D655> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <75C3FFC7-4ABB-449A-9820-735F24DBFCB5>,
+        <77287467-D4FC-46E5-A835-F737804F60FC> ;
+    cim:IdentifiedObject.mRID "1F8EF466-1500-4B4C-81FE-9D3CDC06D655"^^cim:String ;
+    cim:IdentifiedObject.name "175_S"^^cim:String .
+
+<27D00129-1A75-4DFD-91B3-E957BB542E0D> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <4E81DDE4-5BC2-4382-9084-EC34EE24CB47>,
+        <A2211A46-47CE-4A37-9B9F-62388ACA5042> ;
+    cim:IdentifiedObject.mRID "27D00129-1A75-4DFD-91B3-E957BB542E0D"^^cim:String ;
+    cim:IdentifiedObject.name "180_W"^^cim:String .
+
+<3AA9D439-F0E4-40F3-9FFC-21EF81635D50> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <61069C6C-1018-46B7-B7B5-6658F568AA3D>,
+        <9FC6C397-E82A-4854-AD31-604599E91C4E> ;
+    cim:IdentifiedObject.mRID "3AA9D439-F0E4-40F3-9FFC-21EF81635D50"^^cim:String ;
+    cim:IdentifiedObject.name "165_S"^^cim:String .
+
+<43342F35-943F-4611-9030-D27585437D07> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <20BEE2AD-1481-45DE-B24E-F534DB24CAAD>,
+        <49E4C739-6E77-49BA-BEFD-A3D197F19C46> ;
+    cim:IdentifiedObject.mRID "43342F35-943F-4611-9030-D27585437D07"^^cim:String ;
+    cim:IdentifiedObject.name "185_S"^^cim:String .
+
+<58D10247-65BD-4234-B1ED-70CD6CBDB96F> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <8191E72F-7243-4A5D-8100-FDA49A19B895>,
+        <968937C9-5AA8-42C5-9847-302F8E960D80> ;
+    cim:IdentifiedObject.mRID "58D10247-65BD-4234-B1ED-70CD6CBDB96F"^^cim:String ;
+    cim:IdentifiedObject.name "168_W"^^cim:String .
+
+<5D1EE9B5-FF05-4EE7-A55D-87371A4EC024> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <78EF5DED-3077-484B-810E-4AC2FD265368>,
+        <C456AAD0-3D85-4B51-8A39-6ACB8146E0C8> ;
+    cim:IdentifiedObject.mRID "5D1EE9B5-FF05-4EE7-A55D-87371A4EC024"^^cim:String ;
+    cim:IdentifiedObject.name "191_S"^^cim:String .
+
+<756AC3A5-6E0B-4BF5-8BDA-D8E82AE783AB> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <9DF65A8D-97F5-4399-A4DF-FD88910D6F9B>,
+        <C4700483-7D4F-420C-9E01-BEA067A69005> ;
+    cim:IdentifiedObject.mRID "756AC3A5-6E0B-4BF5-8BDA-D8E82AE783AB"^^cim:String ;
+    cim:IdentifiedObject.name "179_S"^^cim:String .
+
+<A215F80C-A812-4F86-A650-53D81AF2BC5E> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <7123EA5F-9D36-4E31-B5DC-814F0DB03460>,
+        <F05292CA-45F5-4AE4-92F3-95767292203A> ;
+    cim:IdentifiedObject.mRID "A215F80C-A812-4F86-A650-53D81AF2BC5E"^^cim:String ;
+    cim:IdentifiedObject.name "128_S"^^cim:String .
+
+<A628CAB9-9BA1-449B-9674-BC85C26BE954> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <C3477343-7AA7-4D05-A7DE-4D0A8012A437>,
+        <FA6F1575-64EF-4637-A51D-32268B693FB0> ;
+    cim:IdentifiedObject.mRID "A628CAB9-9BA1-449B-9674-BC85C26BE954"^^cim:String ;
+    cim:IdentifiedObject.name "149_S"^^cim:String .
+
+<B3B6C0C1-B6E9-4E3D-A418-BE6E507BFD87> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <B20B3D63-12FF-4028-911A-D09074F3F7C7>,
+        <F9DC9FBD-7B3D-411D-AD90-9346277B560B> ;
+    cim:IdentifiedObject.mRID "B3B6C0C1-B6E9-4E3D-A418-BE6E507BFD87"^^cim:String ;
+    cim:IdentifiedObject.name "151_S"^^cim:String .
+
+<C28D90C9-0349-4BF7-A190-792B83F64BC9> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <0CF84A3A-1B8F-40B1-8B1B-57EAC50A2BD7>,
+        <AF7F9A5E-64F2-416E-BC7B-3D6CDA96CA6E> ;
+    cim:IdentifiedObject.mRID "C28D90C9-0349-4BF7-A190-792B83F64BC9"^^cim:String ;
+    cim:IdentifiedObject.name "126_S"^^cim:String .
+
+<D3ED69F1-CFEE-42EA-84AF-24CB99BD4171> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <43192188-3A0F-4338-A183-95B82324AC02>,
+        <FC0D53FF-D845-4485-AE53-99AF2E17CD54> ;
+    cim:IdentifiedObject.mRID "D3ED69F1-CFEE-42EA-84AF-24CB99BD4171"^^cim:String ;
+    cim:IdentifiedObject.name "138_W"^^cim:String .
+
+<DCDE2C44-773B-4D75-87EF-9D5729042A21> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <46CED5CE-9345-4B6A-9321-AEB951EA61D9>,
+        <EF40B8BA-9A40-41ED-A1FE-7D433B76059B> ;
+    cim:IdentifiedObject.mRID "DCDE2C44-773B-4D75-87EF-9D5729042A21"^^cim:String ;
+    cim:IdentifiedObject.name "136_W"^^cim:String .
+
+<F3288F65-3116-4D9F-B207-4A1EFF6FD84A> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <BCFC394D-DC8C-44EB-9CC9-45037D03C182>,
+        <D8DD8F30-F534-4812-899D-4EEB8FB59A9D> ;
+    cim:IdentifiedObject.mRID "F3288F65-3116-4D9F-B207-4A1EFF6FD84A"^^cim:String ;
+    cim:IdentifiedObject.name "130_S"^^cim:String .
+
+<F8F083FC-AF25-4AE9-A308-D13344CDA6FC> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <57B45653-F128-4327-BBE3-53BE7C7D273F>,
+        <6D3BE235-DB8F-4D7B-A0D2-375C6E5A4177> ;
+    cim:IdentifiedObject.mRID "F8F083FC-AF25-4AE9-A308-D13344CDA6FC"^^cim:String ;
+    cim:IdentifiedObject.name "183_S"^^cim:String .
+
+<FCE87EA5-4DA8-4AC3-8691-874B35DBFF5A> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <AD35ADFE-B673-459D-ABBD-EC0634D40C85>,
+        <E40695BA-A4C7-4DF6-AA6A-8E33526AAE0B> ;
+    cim:IdentifiedObject.mRID "FCE87EA5-4DA8-4AC3-8691-874B35DBFF5A"^^cim:String ;
+    cim:IdentifiedObject.name "188_S"^^cim:String .
+
+<022F5197-36FB-4FE8-BDF4-32CA5EDA4F03> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <E2AD00B3-7F2B-4E49-919F-22ED7C96C481>,
+        <F083D26D-2327-47C9-8A3B-44C99128D621> ;
+    cim:IdentifiedObject.mRID "022F5197-36FB-4FE8-BDF4-32CA5EDA4F03"^^cim:String ;
+    cim:IdentifiedObject.name "148_2"^^cim:String .
+
+<032EDAB8-3936-4E0E-B688-DC8289ADDD1E> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <1FBE738A-6935-4333-9CEE-A8B7C532F7C1>,
+        <67422A55-A152-45DA-ACD2-B2AF1F6E8A5E> ;
+    cim:IdentifiedObject.mRID "032EDAB8-3936-4E0E-B688-DC8289ADDD1E"^^cim:String ;
+    cim:IdentifiedObject.name "177_1"^^cim:String .
+
+<0A03B361-4884-48C0-B5D6-D932AF4838B4> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <8322A72F-C9BC-4D17-9B71-CCD31CC40C63>,
+        <A3D7B4FD-1ABD-41B3-AD19-48C5A7A8213C> ;
+    cim:IdentifiedObject.mRID "0A03B361-4884-48C0-B5D6-D932AF4838B4"^^cim:String ;
+    cim:IdentifiedObject.name "134_1"^^cim:String .
+
+<0BDE2F77-CC82-4721-A737-7CB079DFE331> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <0C385933-53F1-4DB2-BBA0-2B9AA5421934>,
+        <4E1DDD04-5A92-43BC-BBAA-8989DBAB23FE> ;
+    cim:IdentifiedObject.mRID "0BDE2F77-CC82-4721-A737-7CB079DFE331"^^cim:String ;
+    cim:IdentifiedObject.name "122_1"^^cim:String .
+
+<11B73909-0B03-4C88-AC9E-F8780B136A24> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <80FBE81B-488A-4D84-A875-9483476135CE>,
+        <B938C50B-60A7-463C-8FB7-B75234420752> ;
+    cim:IdentifiedObject.mRID "11B73909-0B03-4C88-AC9E-F8780B136A24"^^cim:String ;
+    cim:IdentifiedObject.name "121_1"^^cim:String .
+
+<18C80174-4940-4685-81E1-F6B4B3ACDFC4> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <882E6533-0643-480F-B7A1-C00A0B8BA153>,
+        <A45C7B95-B2F7-479C-8555-4FE283AF6A82> ;
+    cim:IdentifiedObject.mRID "18C80174-4940-4685-81E1-F6B4B3ACDFC4"^^cim:String ;
+    cim:IdentifiedObject.name "124_1"^^cim:String .
+
+<2044036D-1167-434D-A610-0695C19BEF4F> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <10F443FC-3AA3-4E4C-AF2B-B4468CEB5F02>,
+        <927BF049-65A8-4478-B393-B6AE724BCD0A> ;
+    cim:IdentifiedObject.mRID "2044036D-1167-434D-A610-0695C19BEF4F"^^cim:String ;
+    cim:IdentifiedObject.name "135_1"^^cim:String .
+
+<23DE3880-298D-40EF-A25C-46F6E5E03C36> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <21CC2B23-4945-494B-9D95-E012CE027401>,
+        <F249BB0A-C51B-4AD0-A6B6-33338B0A7346> ;
+    cim:IdentifiedObject.mRID "23DE3880-298D-40EF-A25C-46F6E5E03C36"^^cim:String ;
+    cim:IdentifiedObject.name "154_1"^^cim:String .
+
+<24D8A846-AD06-4834-9FFC-64723984F1EB> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <D9BDE1D2-0EE2-4E3B-AA7B-8DA7E6D5059E>,
+        <DC268E02-78BF-4B3C-8FF9-3BCD64EB79C0> ;
+    cim:IdentifiedObject.mRID "24D8A846-AD06-4834-9FFC-64723984F1EB"^^cim:String ;
+    cim:IdentifiedObject.name "139_1"^^cim:String .
+
+<273F84E5-9E68-465F-AA2B-05EC89758259> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <51D0DCE1-77A3-47FE-9C70-3A2F8218AE9A>,
+        <9ABDF4C1-BF85-43E5-A515-8F976794F98A> ;
+    cim:IdentifiedObject.mRID "273F84E5-9E68-465F-AA2B-05EC89758259"^^cim:String ;
+    cim:IdentifiedObject.name "142_1"^^cim:String .
+
+<2884E8C8-47DA-47B1-BFE8-D6E2E4F5199F> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <367B707D-2DA6-43D7-973B-4CE6ED0D714C>,
+        <3E302506-7C98-4BB0-A533-886D31D977B9> ;
+    cim:IdentifiedObject.mRID "2884E8C8-47DA-47B1-BFE8-D6E2E4F5199F"^^cim:String ;
+    cim:IdentifiedObject.name "161_1"^^cim:String .
+
+<2B520E84-DAFF-4862-8642-7882965D1972> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <4B93FB9C-B74F-4450-B531-7BBAFB4EB2DA>,
+        <A0A0EB04-206C-4116-9F60-A242B72A1A64> ;
+    cim:IdentifiedObject.mRID "2B520E84-DAFF-4862-8642-7882965D1972"^^cim:String ;
+    cim:IdentifiedObject.name "133_1"^^cim:String .
+
+<2CDFD50E-9E5B-4C9B-862B-37132CFD68EF> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <2320C7F5-1409-4EDF-A651-28AC72670460>,
+        <6932DF8B-7419-4E1B-B263-0FC0103A9086> ;
+    cim:IdentifiedObject.mRID "2CDFD50E-9E5B-4C9B-862B-37132CFD68EF"^^cim:String ;
+    cim:IdentifiedObject.name "164_1"^^cim:String .
+
+<2DC3743C-3BA0-4E76-9534-D2CE9083D197> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <2D3EC3F1-3FEC-4767-968B-142C40BAC7FA>,
+        <B9E64A1D-9733-4D41-BA4A-16DDD260A37B> ;
+    cim:IdentifiedObject.mRID "2DC3743C-3BA0-4E76-9534-D2CE9083D197"^^cim:String ;
+    cim:IdentifiedObject.name "172_1"^^cim:String .
+
+<2F89BD81-DB25-42A9-96D0-D7243339B59B> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <78C117C2-4322-4243-A925-CA4DBBA7C115>,
+        <809E6108-419D-49BF-80AD-62BBC54A3539> ;
+    cim:IdentifiedObject.mRID "2F89BD81-DB25-42A9-96D0-D7243339B59B"^^cim:String ;
+    cim:IdentifiedObject.name "160_1"^^cim:String .
+
+<2FF16863-7742-4B97-B432-33E38181D737> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <BEFD763A-091A-4AFE-A43F-EB2FFB35D727>,
+        <D3A0897A-CB6C-41E8-A2EE-6AC772EEDE37> ;
+    cim:IdentifiedObject.mRID "2FF16863-7742-4B97-B432-33E38181D737"^^cim:String ;
+    cim:IdentifiedObject.name "190_1"^^cim:String .
+
+<354DA698-E3FC-4056-A6A8-55C40B4B0529> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <684860B4-FA1E-49C9-8F81-200E6D28745E>,
+        <EE562B0E-CBD6-45B6-AD24-DE9F525A5B59> ;
+    cim:IdentifiedObject.mRID "354DA698-E3FC-4056-A6A8-55C40B4B0529"^^cim:String ;
+    cim:IdentifiedObject.name "155_1"^^cim:String .
+
+<377CF4F0-1C45-42C7-9AEE-4A06983A1E1F> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <2C45C805-EB0E-4C63-A3BF-1262E2134C46>,
+        <528CF7FE-578F-461A-80D4-CFED9E218EED> ;
+    cim:IdentifiedObject.mRID "377CF4F0-1C45-42C7-9AEE-4A06983A1E1F"^^cim:String ;
+    cim:IdentifiedObject.name "120_1"^^cim:String .
+
+<3C7BD8DE-90E1-4E3F-A2C3-6BD1B619A17E> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <59EBFDA2-5EB2-44D5-9AC5-7694884FD767>,
+        <98575173-38C4-4D81-8CE5-9879CCEF798E> ;
+    cim:IdentifiedObject.mRID "3C7BD8DE-90E1-4E3F-A2C3-6BD1B619A17E"^^cim:String ;
+    cim:IdentifiedObject.name "129_1"^^cim:String .
+
+<46C1B5FC-97DF-4977-A2EE-E7246FC16A82> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <21664FE9-4F84-426D-902B-90E49BD32EEB>,
+        <F904012E-CEE8-4D93-B016-9359A6372180> ;
+    cim:IdentifiedObject.mRID "46C1B5FC-97DF-4977-A2EE-E7246FC16A82"^^cim:String ;
+    cim:IdentifiedObject.name "137_1"^^cim:String .
+
+<4E36F6D4-A1EF-4531-A464-8F532F2D01A4> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <62D48F71-AB2B-4BF9-BF12-0DB573CA46A7>,
+        <D7C4AAA7-F306-4042-B087-5C5DFFAA19D7> ;
+    cim:IdentifiedObject.mRID "4E36F6D4-A1EF-4531-A464-8F532F2D01A4"^^cim:String ;
+    cim:IdentifiedObject.name "144_1"^^cim:String .
+
+<4E42689C-36B4-424C-BFC1-2BC2AA9BC8C2> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <091FD517-D3AA-43FD-B914-AE396B9C73C6>,
+        <D113C218-46EC-4ACA-8460-0BDD423FDE5D> ;
+    cim:IdentifiedObject.mRID "4E42689C-36B4-424C-BFC1-2BC2AA9BC8C2"^^cim:String ;
+    cim:IdentifiedObject.name "171_1"^^cim:String .
+
+<4F2C06EA-E511-4EEA-9F44-F78EEF404974> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <33240597-44EB-4B8B-9B0A-30B06149975C>,
+        <5D0F4721-2861-44F0-B009-188F8DEDADF8> ;
+    cim:IdentifiedObject.mRID "4F2C06EA-E511-4EEA-9F44-F78EEF404974"^^cim:String ;
+    cim:IdentifiedObject.name "153_1"^^cim:String .
+
+<590303D0-9186-486F-AC21-FE7354D496B7> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <4D1A9813-4B20-4DAE-AE6C-4BF8477CF39B>,
+        <D01440F8-0E9D-4C68-BC44-67FC5BCE8EAC> ;
+    cim:IdentifiedObject.mRID "590303D0-9186-486F-AC21-FE7354D496B7"^^cim:String ;
+    cim:IdentifiedObject.name "184_1"^^cim:String .
+
+<5A43E54C-780D-45C8-9910-75ADDAC83EF4> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <96EF4236-87D0-44B1-9D15-35922B9E545B>,
+        <A639109F-EFB6-4D0A-B91C-17BC3F77A80C> ;
+    cim:IdentifiedObject.mRID "5A43E54C-780D-45C8-9910-75ADDAC83EF4"^^cim:String ;
+    cim:IdentifiedObject.name "146_1"^^cim:String .
+
+<60831EFF-343E-41B8-858A-BDA37EB1F557> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <09476EF9-B8FF-488C-B290-64FC72D51B45>,
+        <50C3F67A-7634-4E20-95AA-7639A2126AF0> ;
+    cim:IdentifiedObject.mRID "60831EFF-343E-41B8-858A-BDA37EB1F557"^^cim:String ;
+    cim:IdentifiedObject.name "145_1"^^cim:String .
+
+<64F492B6-2AF1-4703-851B-DD2EC650CED8> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <1093E8B7-163F-445F-8D7B-4E0A416E2D2B>,
+        <211A01C6-95CB-45C0-B8F1-40DE853FF9FA> ;
+    cim:IdentifiedObject.mRID "64F492B6-2AF1-4703-851B-DD2EC650CED8"^^cim:String ;
+    cim:IdentifiedObject.name "193_1"^^cim:String .
+
+<6AD765E5-9775-4F75-9FC1-7B5B81F81B0E> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <49138130-93D8-4259-98B4-8F5B83FA62DF>,
+        <C1320B82-E71E-4FD6-81C6-E07DBA1A3C66> ;
+    cim:IdentifiedObject.mRID "6AD765E5-9775-4F75-9FC1-7B5B81F81B0E"^^cim:String ;
+    cim:IdentifiedObject.name "147_1"^^cim:String .
+
+<70525984-1620-4078-9781-EFE666A4C854> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <29ED8F52-8D0F-4046-B189-5CD5C4165EA1>,
+        <757C06F2-F007-4747-83DC-ED10043ADC0E> ;
+    cim:IdentifiedObject.mRID "70525984-1620-4078-9781-EFE666A4C854"^^cim:String ;
+    cim:IdentifiedObject.name "187_1"^^cim:String .
+
+<7110DA6B-91B5-4D74-A6C2-E31DC7858F95> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <1D7EAF3F-C734-49C5-A53F-802AC3392629>,
+        <D336FF4B-EA2D-4534-81D3-EB3D293E252B> ;
+    cim:IdentifiedObject.mRID "7110DA6B-91B5-4D74-A6C2-E31DC7858F95"^^cim:String ;
+    cim:IdentifiedObject.name "162_1"^^cim:String .
+
+<748D1E42-588A-46CC-9DCA-488FC68141A3> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <B1E5E162-0BF1-45F9-8713-77CC7D6B8891>,
+        <F0294F90-8F76-475F-A153-99A496EB1104> ;
+    cim:IdentifiedObject.mRID "748D1E42-588A-46CC-9DCA-488FC68141A3"^^cim:String ;
+    cim:IdentifiedObject.name "127_1"^^cim:String .
+
+<75906267-DCBC-4C80-BCF7-24E80E799417> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <08967631-7C6C-4117-8E02-68FE8250680F>,
+        <19E886FD-4AC9-4DF1-812A-749546E59EDD> ;
+    cim:IdentifiedObject.mRID "75906267-DCBC-4C80-BCF7-24E80E799417"^^cim:String ;
+    cim:IdentifiedObject.name "170_1"^^cim:String .
+
+<7B52A25B-47BB-4C3D-B32F-D855B3356A5E> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <0ACDC4E9-94AC-46A5-9BFE-5787437EA3D2>,
+        <F3224AD9-CFB4-44E1-90F5-DF41C6FA0D33> ;
+    cim:IdentifiedObject.mRID "7B52A25B-47BB-4C3D-B32F-D855B3356A5E"^^cim:String ;
+    cim:IdentifiedObject.name "192_1"^^cim:String .
+
+<7FC02C3E-9125-4966-8595-F5CF84011404> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <1251584C-A471-4517-ADF0-B8333C158A36>,
+        <C0B25540-B246-47CF-BBF1-EEBBEBAB84B3> ;
+    cim:IdentifiedObject.mRID "7FC02C3E-9125-4966-8595-F5CF84011404"^^cim:String ;
+    cim:IdentifiedObject.name "125_1"^^cim:String .
+
+<7FF02638-EA07-404E-B6A2-C692F43B1146> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <507850DB-50C8-4CA0-B4FF-88FB3A068A4F>,
+        <51B99182-DAAD-476B-8039-9459EF5A0355> ;
+    cim:IdentifiedObject.mRID "7FF02638-EA07-404E-B6A2-C692F43B1146"^^cim:String ;
+    cim:IdentifiedObject.name "141_1"^^cim:String .
+
+<82D9BD63-1FF1-45B1-985B-BFC5C8210390> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <7B65B419-1E3A-4363-B3D6-371EC8ACC3E7>,
+        <BC9DE50A-2C04-4CC8-9304-FCD108346424> ;
+    cim:IdentifiedObject.mRID "82D9BD63-1FF1-45B1-985B-BFC5C8210390"^^cim:String ;
+    cim:IdentifiedObject.name "178_2"^^cim:String .
+
+<90F0CA6A-8F0C-4432-8B97-E61A08EE6816> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <442C9A87-2985-4C14-8F6F-E9ABB849FD38>,
+        <8CD2DF55-DDCE-49BF-88FD-CD57825CB8FE> ;
+    cim:IdentifiedObject.mRID "90F0CA6A-8F0C-4432-8B97-E61A08EE6816"^^cim:String ;
+    cim:IdentifiedObject.name "173_1"^^cim:String .
+
+<9128495B-087A-49CE-A33A-1DBA100E469E> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <19FF6759-F5E1-4A17-8FF8-270AC3C68B89>,
+        <28F84FCF-7B8A-4FDC-8B99-130FF1A87459> ;
+    cim:IdentifiedObject.mRID "9128495B-087A-49CE-A33A-1DBA100E469E"^^cim:String ;
+    cim:IdentifiedObject.name "131_1"^^cim:String .
+
+<96ACD4EB-818A-4A2C-8C9C-F7540DDCC4C6> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <59810B55-4864-4CDF-BD7A-BE6110C332AF>,
+        <CD9D77A2-250A-454F-94A2-4DB2C759F6F1> ;
+    cim:IdentifiedObject.mRID "96ACD4EB-818A-4A2C-8C9C-F7540DDCC4C6"^^cim:String ;
+    cim:IdentifiedObject.name "189_1"^^cim:String .
+
+<970940EA-3505-42ED-8A98-8AE156950B9D> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <0CC39D7E-3B58-4C36-8DB6-8BBA64D5B452>,
+        <66F2053F-D978-463D-96FD-542F8B4EA881> ;
+    cim:IdentifiedObject.mRID "970940EA-3505-42ED-8A98-8AE156950B9D"^^cim:String ;
+    cim:IdentifiedObject.name "182_1"^^cim:String .
+
+<97E83BC3-F504-48AB-A33D-7D2DAC559158> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <6B4980B2-6C88-4D08-B140-0744A85D5062>,
+        <B53BEAC5-22DF-4021-9BB5-C960E72EE135> ;
+    cim:IdentifiedObject.mRID "97E83BC3-F504-48AB-A33D-7D2DAC559158"^^cim:String ;
+    cim:IdentifiedObject.name "167_1"^^cim:String .
+
+<9806E7D4-FA65-4E83-8C77-BD9AB756F007> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <C3CC6AC5-EB72-466D-8111-08477B23EFEA>,
+        <D1F92652-7789-41CB-8D36-6E46B64C1B58> ;
+    cim:IdentifiedObject.mRID "9806E7D4-FA65-4E83-8C77-BD9AB756F007"^^cim:String ;
+    cim:IdentifiedObject.name "158_1"^^cim:String .
+
+<9A774DB9-C94B-40B3-8488-3B709FEFF752> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <44C3174E-0F34-4EF0-8C01-D32BD3B826B4>,
+        <63A406F9-0D8B-4D86-B3FC-785CD5A6A522> ;
+    cim:IdentifiedObject.mRID "9A774DB9-C94B-40B3-8488-3B709FEFF752"^^cim:String ;
+    cim:IdentifiedObject.name "156_1"^^cim:String .
+
+<AF67C9D7-9037-4959-A3B6-E414D0BD1E19> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <2248E3C5-D148-4819-9AFA-D94F9AA2981F>,
+        <4D399CA6-B543-42BE-89C0-583B50314A70> ;
+    cim:IdentifiedObject.mRID "AF67C9D7-9037-4959-A3B6-E414D0BD1E19"^^cim:String ;
+    cim:IdentifiedObject.name "157_1"^^cim:String .
+
+<B53816A6-451A-41D8-B350-D9AE423C4325> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <0E9038BC-5B4F-4C8F-9795-0C1FC72DCB26>,
+        <4F5AC5EE-5651-4494-B111-5CB6E8D994AE> ;
+    cim:IdentifiedObject.mRID "B53816A6-451A-41D8-B350-D9AE423C4325"^^cim:String ;
+    cim:IdentifiedObject.name "119_1"^^cim:String .
+
+<CE810FC4-1900-421B-9AD9-4AC4329C94AC> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <1D7B49A0-FFF0-4BE8-B02C-08CF007AFC9B>,
+        <50218FBD-9BA5-45AA-9537-3FEE9EFD95BF> ;
+    cim:IdentifiedObject.mRID "CE810FC4-1900-421B-9AD9-4AC4329C94AC"^^cim:String ;
+    cim:IdentifiedObject.name "166_1"^^cim:String .
+
+<CE8D73FD-D9C5-4B78-8643-5D62CF323A64> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <29F8E762-E07B-44F7-B7B7-9957B3365D49>,
+        <5E61C72D-815D-444C-8100-FBA12693FC1C> ;
+    cim:IdentifiedObject.mRID "CE8D73FD-D9C5-4B78-8643-5D62CF323A64"^^cim:String ;
+    cim:IdentifiedObject.name "186_1"^^cim:String .
+
+<D5E238CB-6A5C-41DD-9BF0-9BF2EECCA390> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <23A3F968-B1DC-48DC-8246-B4653C4D12DA>,
+        <8319D74A-7137-4461-9C96-7CEEF2D23F2B> ;
+    cim:IdentifiedObject.mRID "D5E238CB-6A5C-41DD-9BF0-9BF2EECCA390"^^cim:String ;
+    cim:IdentifiedObject.name "169_1"^^cim:String .
+
+<D95B92AB-2C78-481E-871A-9D46C677C76E> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <D13E94A3-2E89-4A23-8B9B-D2182215521A>,
+        <F6BDBAB5-02F5-45AA-A5ED-2B7BAC736D9A> ;
+    cim:IdentifiedObject.mRID "D95B92AB-2C78-481E-871A-9D46C677C76E"^^cim:String ;
+    cim:IdentifiedObject.name "143_1"^^cim:String .
+
+<DE154DC0-68A9-4998-8BC9-60025EFA70C1> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <0BD59E90-C996-4231-A81D-61C1F19E5F5E>,
+        <B36458B0-D189-40EE-8D2B-B771E4A2A3A9> ;
+    cim:IdentifiedObject.mRID "DE154DC0-68A9-4998-8BC9-60025EFA70C1"^^cim:String ;
+    cim:IdentifiedObject.name "123_1"^^cim:String .
+
+<E1EFC33F-BD3E-421C-B811-4393C0DE65D8> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <143BA8BA-95CF-4311-A05D-EB7B37E82B14>,
+        <DCF67F92-A6B7-46CF-AF23-AF608EC931B4> ;
+    cim:IdentifiedObject.mRID "E1EFC33F-BD3E-421C-B811-4393C0DE65D8"^^cim:String ;
+    cim:IdentifiedObject.name "163_1"^^cim:String .
+
+<E5BF6862-9751-4B68-A97A-D05A03139C80> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <1F2B9838-793B-4052-99A5-BFDF2B49A8E2>,
+        <CB9EA923-C5D0-4A9E-BD77-82CA760C2FD4> ;
+    cim:IdentifiedObject.mRID "E5BF6862-9751-4B68-A97A-D05A03139C80"^^cim:String ;
+    cim:IdentifiedObject.name "176_1"^^cim:String .
+
+<E76B6860-FB9F-4939-8012-0A488BF81910> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <812666E0-B38D-45A7-9846-24D33F86B230>,
+        <A97623CB-71BF-4FAC-8CC0-2BD78847A747> ;
+    cim:IdentifiedObject.mRID "E76B6860-FB9F-4939-8012-0A488BF81910"^^cim:String ;
+    cim:IdentifiedObject.name "152_1"^^cim:String .
+
+<E97E3D44-EFF9-4DF0-97A8-A1A7A55B1763> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <F68AFC61-3C4E-4D87-A28B-C876191FC5CA>,
+        <FF7AF496-CE18-4FE0-B09C-0FF3DDCF8407> ;
+    cim:IdentifiedObject.mRID "E97E3D44-EFF9-4DF0-97A8-A1A7A55B1763"^^cim:String ;
+    cim:IdentifiedObject.name "174_1"^^cim:String .
+
+<ECC4F2E1-CEC3-4872-B279-BF06DB85DE45> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <720168A7-D93B-40D4-B8B9-91C06674A049>,
+        <8C796AD9-752A-4FC5-B484-0FB2E7D7CE22> ;
+    cim:IdentifiedObject.mRID "ECC4F2E1-CEC3-4872-B279-BF06DB85DE45"^^cim:String ;
+    cim:IdentifiedObject.name "181_1"^^cim:String .
+
+<F8785A83-4A58-4FCC-84D7-D279BC98636F> a emt:RotatingMachinePlant ;
+    emt:GeneratingPlant.Equipments <9F87A332-8145-4C32-80F3-ABA97BB99E09>,
+        <D701AFC4-6AB6-4788-9B05-4417C940E73C> ;
+    cim:IdentifiedObject.mRID "F8785A83-4A58-4FCC-84D7-D279BC98636F"^^cim:String ;
+    cim:IdentifiedObject.name "150_1"^^cim:String .
+
 <D870B7D3-49E7-4155-B995-B20E2E6D4197> a cim:OperationalLimitType ;
     cim:IdentifiedObject.mRID "D870B7D3-49E7-4155-B995-B20E2E6D4197"^^cim:String ;
     cim:IdentifiedObject.name "Normal"^^cim:String ;

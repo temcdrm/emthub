@@ -871,3 +871,31 @@ SELECT DISTINCT ?endid ?p ?q WHERE {
  ?sv c:SvPowerFlow.q ?q
 } ORDER BY ?endid
 
+# EMTPlantGSU
+SELECT DISTINCT ?name ?type ?bus ?rm_or_pec_id ?xfid ?vgroup ?enum WHERE {
+ VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+# VALUES ?sysid {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+# ?s r:type c:SynchronousMachine.
+ ?s c:Equipment.EquipmentContainer ?sys.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?rm_or_pec_id.
+ {?s c:RotatingMachine.GeneratingUnit ?unit.}
+  UNION
+ {?unit c:PowerElectronicsUnit.PowerElectronicsConnection ?s.}
+ {?unit a ?rawtype.
+  bind(strafter(str(?rawtype),"#") as ?type)}
+ ?s e:ConductingEquipment.FromConnectivityNode ?cn.
+ ?cn c:IdentifiedObject.mRID ?cn1id.
+ ?cn c:IdentifiedObject.name ?bus.
+ ?end1 e:TransformerEnd.ConnectivityNode ?cn.
+ ?end1 c:IdentifiedObject.mRID ?end1id.
+ ?end1 c:PowerTransformerEnd.PowerTransformer ?pxf.
+ ?end1 c:TransformerEnd.endNumber ?enum.
+ ?pxf c:IdentifiedObject.mRID ?xfid.
+ ?pxf c:PowerTransformer.vectorGroup ?vgroup
+}
+ORDER by ?name
+

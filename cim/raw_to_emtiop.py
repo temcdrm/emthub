@@ -12,7 +12,9 @@ import math
 from rdflib.namespace import XSD
 from otsrdflib import OrderedTurtleSerializer
 import sqlite3
-import cim_examples 
+import cim_examples
+import emthub.api as emthub
+ 
 CIM_NS = 'http://www.ucaiug.org/ns#'
 EMT_NS = 'http://opensource.ieee.org/emtiop#'
 
@@ -981,6 +983,42 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((es, rdflib.URIRef (CIM_NS + 'EnergySource.r0'), rdflib.Literal(0.0, datatype=CIM.Resistance)))
       g.add ((es, rdflib.URIRef (CIM_NS + 'EnergySource.x0'), rdflib.Literal(0.001, datatype=CIM.Reactance)))
 
+  # identify the generator plants with step-up transformers
+  q = """SELECT DISTINCT ?name ?type ?bus ?rm_or_pec_id ?xfid ?vgroup ?enum WHERE {
+   ?s c:IdentifiedObject.name ?name.
+   ?s c:IdentifiedObject.mRID ?rm_or_pec_id.
+   {?s c:RotatingMachine.GeneratingUnit ?unit.}
+    UNION
+   {?unit c:PowerElectronicsUnit.PowerElectronicsConnection ?s.}
+   {?unit a ?rawtype.
+    bind(strafter(str(?rawtype),"#") as ?type)}
+   ?s e:ConductingEquipment.FromConnectivityNode ?cn.
+   ?cn c:IdentifiedObject.mRID ?cn1id.
+   ?cn c:IdentifiedObject.name ?bus.
+   ?end1 e:TransformerEnd.ConnectivityNode ?cn.
+   ?end1 c:IdentifiedObject.mRID ?end1id.
+   ?end1 c:PowerTransformerEnd.PowerTransformer ?pxf.
+   ?end1 c:TransformerEnd.endNumber ?enum.
+   ?pxf c:IdentifiedObject.mRID ?xfid.
+   ?pxf c:PowerTransformer.vectorGroup ?vgroup
+  }
+  ORDER by ?name
+  """
+  d = emthub.adhoc_sparql_dict (g, q, 'rm_or_pec_id')
+  emthub.list_dict_table (d)
+  for key, row in d['vals'].items():
+    if row['type'] in ['PhotoVoltaicUnit', 'PowerElectronicsWindUnit']:
+      plant_type = 'IBRPlant'
+    else:
+      plant_type = 'RotatingMachinePlant'
+    ID = GetCIMID(plant_type, row['name'], uuids)
+    plant = rdflib.URIRef (ID)
+    g.add ((plant, rdflib.RDF.type, rdflib.URIRef (EMT_NS + plant_type)))
+    g.add ((plant, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(row['name'], datatype=CIM.String)))
+    g.add ((plant, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+    g.add ((plant, rdflib.URIRef (EMT_NS + 'GeneratingPlant.Equipments'), rdflib.URIRef (key)))
+    g.add ((plant, rdflib.URIRef (EMT_NS + 'GeneratingPlant.Equipments'), rdflib.URIRef (row['xfid'])))
+
   # save the XML with mRIDs for re-use
   g.serialize (destination=case['xmlfile'], format='pretty-xml', max_depth=1)
 
@@ -1020,6 +1058,8 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     CIM.TransformerMeshImpedance,
     CIM.TransformerCoreAdmittance,
     EMT.TransformerSaturation,
+    EMT.IBRPlant,
+    EMT.RotatingMachinePlant,
     CIM.OperationalLimitType,
     CIM.OperationalLimitSet,
     CIM.ApparentPowerLimit,

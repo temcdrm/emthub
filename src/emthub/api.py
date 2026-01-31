@@ -15,6 +15,7 @@ Public Functions:
     :load_emt_dict: Load an RDF graph into Python dictionary using packaged SPARQL queries.
     :load_ic_dict: Load an RDF graph into Python dictionary from standalone power flow solution file.
     :list_dict_table: Print the fields and attributes of a Python dictionary loaded from SPARQL.
+    :adhoc_sparql_dict: Load the result of a user-written SPARQL query into a Python dictionary.
     :build_bus_lists: Order the buses (connectivity nodes) sequentially.
     :get_swingbus_id: Find the CIM ConnectivityNode ID by matching the Name/Number from the original raw file.
 """
@@ -27,6 +28,7 @@ from .cim_sparql import summarize_graph
 from .cim_sparql import load_emt_dict
 from .cim_sparql import load_ic_dict
 from .cim_sparql import list_dict_table
+from .cim_sparql import adhoc_sparql_dict
 
 from .buslists import build_bus_lists
 from .buslists import get_swingbus_id
