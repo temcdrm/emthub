@@ -899,3 +899,25 @@ SELECT DISTINCT ?name ?type ?bus ?rm_or_pec_id ?xfid ?vgroup ?enum WHERE {
 }
 ORDER by ?name
 
+# EMTRotatingMachinePlant
+SELECT DISTINCT ?id ?name ?eqid ?eqtype WHERE {
+ ?p r:type e:RotatingMachinePlant.
+ ?p c:IdentifiedObject.name ?name.
+ ?p c:IdentifiedObject.mRID ?id.
+ ?p e:GeneratingPlant.Equipments ?eq.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ {?eq a ?rawtype.
+  bind(strafter(str(?rawtype),"#") as ?eqtype)}
+} ORDER by ?id ?eqtype ?eqid
+
+# EMTIBRPlant
+SELECT DISTINCT ?id ?name ?eqid ?eqtype WHERE {
+ ?p r:type e:IBRPlant.
+ ?p c:IdentifiedObject.name ?name.
+ ?p c:IdentifiedObject.mRID ?id.
+ ?p e:GeneratingPlant.Equipments ?eq.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ {?eq a ?rawtype.
+  bind(strafter(str(?rawtype),"#") as ?eqtype)}
+} ORDER by ?id ?eqtype ?eqid
+

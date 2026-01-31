@@ -25,14 +25,22 @@ def summarize_graph (g):
     print('{:40s} {:40s} {:5d}'.format (ns, cls, int(r['cnt'])))
 
 def list_dict_table(dict, tag=None):
+  bMultiKey = False
   if tag is None:
     tbl = dict
     tag = 'Adhoc Query'
   else:
+    if '*' in tag:
+      bMultiKey = True
     tbl = dict[tag]
   print ('\n{:s}: key,{:s}'.format(tag, str(tbl['columns'])))
-  for key, row in tbl['vals'].items():
-    print ('{:s},{:s}'.format (key, ','.join(str(row[c]) for c in tbl['columns'])))
+  if bMultiKey:
+    for key, ary in tbl['vals'].items():
+      for row in ary:
+        print ('{:s},{:s}'.format (key, ','.join(str(row[c]) for c in tbl['columns'])))
+  else:
+    for key, row in tbl['vals'].items():
+      print ('{:s},{:s}'.format (key, ','.join(str(row[c]) for c in tbl['columns'])))
 
 def build_query (prefix, base, sysid):
   if sysid is not None:
@@ -41,7 +49,10 @@ def build_query (prefix, base, sysid):
   return prefix + '\n' + base
 
 def query_for_values (g, tbl, sysid):
-  keyflds = tbl['keyfld'].split(':')
+  bMultiKey = False
+  if '*' in tbl['keyfld']:
+    bMultiKey = True
+  keyflds = tbl['keyfld'].strip('*').split(':')
   q = build_query (PREFIX, tbl['sparql'], sysid)
  # print ('===================')
  # print (q)
@@ -68,7 +79,12 @@ def query_for_values (g, tbl, sysid):
             row[fld] = float(b[fld])
           except ValueError:
             row[fld] = str(b[fld])
-    tbl['vals'][key] = row
+    if bMultiKey:
+      if key not in tbl['vals']:
+        tbl['vals'][key] = []
+      tbl['vals'][key].append(row)
+    else:
+      tbl['vals'][key] = row
 
 def load_root_queries():
   global ROOT, PREFIX
@@ -104,7 +120,8 @@ def load_emt_dict (g, sysid, bTiming=False):
               'EMTSyncMachine', 'EMTSolar', 'EMTWind', 'EMTGovSteamSGO', 'EMTExcST1A',
               'EMTPssIEEE1A', 'EMTWeccREGCA', 'EMTWeccREECA', 'EMTWeccREPCA',
               'EMTWeccWTGTA', 'EMTWeccWTGARA', 'EMTEnergySource', 'EMTDisconnectingCircuitBreaker',
-              'EMTXfmrLimit', 'EMTBranchLimit', 'EMTBusVoltage', 'EMTBranchFlow', 'EMTXfmrFlow']:
+              'EMTXfmrLimit', 'EMTBranchLimit', 'EMTBusVoltage', 'EMTBranchFlow', 'EMTXfmrFlow',
+              'EMTIBRPlant*', 'EMTRotatingMachinePlant*']:
     if bTiming:
       query_start_time = time.time()
     query_for_values (g, dict[key], sysid)

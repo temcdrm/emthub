@@ -1087,7 +1087,7 @@ if __name__ == '__main__':
   g.parse (fname)
   print ('read', len(g), 'statements from', fname)
   d = emthub.load_emt_dict (g, case['id'], bTiming=True)
-  for key in ['EMTBaseVoltage']:
+  for key in ['EMTBaseVoltage', 'EMTIBRPlant*', 'EMTRotatingMachinePlant*']:
     emthub.list_dict_table (d, key)
 
   icd = None

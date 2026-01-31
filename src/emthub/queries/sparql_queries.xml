@@ -1019,4 +1019,44 @@ SELECT DISTINCT ?endid ?p ?q WHERE {
 ]]>
 </value>
 </query>
+<query>
+<id>EMTIBRPlant*</id>
+<keyfld>id*</keyfld>
+<description>Collection of equipment comprising an inverter-based resource plant, with plant-level attributes.</description>
+<value>
+<![CDATA[
+SELECT DISTINCT ?id ?name ?eqid ?eqtype WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?p r:type e:IBRPlant.
+ ?p c:IdentifiedObject.name ?name.
+ ?p c:IdentifiedObject.mRID ?id.
+ ?p e:GeneratingPlant.Equipments ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ {?eq a ?rawtype.
+  bind(strafter(str(?rawtype),"#") as ?eqtype)}
+} ORDER by ?id ?eqtype ?eqid
+]]>
+</value>
+</query>
+<query>
+<id>EMTRotatingMachinePlant*</id>
+<keyfld>id*</keyfld>
+<description>Collection of equipment comprising a conventional generating plant.</description>
+<value>
+<![CDATA[
+SELECT DISTINCT ?id ?name ?eqid ?eqtype WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?p r:type e:RotatingMachinePlant.
+ ?p c:IdentifiedObject.name ?name.
+ ?p c:IdentifiedObject.mRID ?id.
+ ?p e:GeneratingPlant.Equipments ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ {?eq a ?rawtype.
+  bind(strafter(str(?rawtype),"#") as ?eqtype)}
+} ORDER by ?id ?eqtype ?eqid
+]]>
+</value>
+</query>
 </queries>
