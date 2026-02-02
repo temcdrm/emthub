@@ -16888,7 +16888,7 @@
     cim:PowerTransformerEnd.PowerTransformer <2D3EC3F1-3FEC-4767-968B-142C40BAC7FA> ;
     cim:PowerTransformerEnd.connectionKind cim:WindingConnection.D ;
     cim:PowerTransformerEnd.phaseAngleClock "1"^^cim:Integer ;
-    cim:PowerTransformerEnd.ratedS "120000000.0"^^cim:ApparentPower ;
+    cim:PowerTransformerEnd.ratedS "50000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "13800.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <0E5E0C07-13A3-4153-B3A4-4F715E93CC89> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
@@ -17038,7 +17038,7 @@
     cim:PowerTransformerEnd.PowerTransformer <2D3EC3F1-3FEC-4767-968B-142C40BAC7FA> ;
     cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
     cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
-    cim:PowerTransformerEnd.ratedS "120000000.0"^^cim:ApparentPower ;
+    cim:PowerTransformerEnd.ratedS "50000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "138000.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <E2DE96D0-BC3F-4E89-A3CA-224FE2DEB7BC> ;
     cim:TransformerEnd.endNumber "1"^^cim:Integer ;
@@ -18494,10 +18494,10 @@
     cim:IdentifiedObject.name "90_172_0_1_Mesh"^^cim:String ;
     cim:TransformerMeshImpedance.FromTransformerEnd <C2C4253C-6C16-4D63-A302-0BE4CC6C1A95> ;
     cim:TransformerMeshImpedance.ToTransformerEnd <B561A521-A6BD-47DE-8EA8-27ECCD0A16E8> ;
-    cim:TransformerMeshImpedance.r "0.39675"^^cim:Resistance ;
-    cim:TransformerMeshImpedance.r0 "0.39675"^^cim:Resistance ;
-    cim:TransformerMeshImpedance.x "15.87"^^cim:Reactance ;
-    cim:TransformerMeshImpedance.x0 "15.87"^^cim:Reactance .
+    cim:TransformerMeshImpedance.r "0.9522"^^cim:Resistance ;
+    cim:TransformerMeshImpedance.r0 "0.9522"^^cim:Resistance ;
+    cim:TransformerMeshImpedance.x "38.088"^^cim:Reactance ;
+    cim:TransformerMeshImpedance.x0 "38.088"^^cim:Reactance .
 
 <D56905CE-92F7-4591-A289-0C8615AB273D> a cim:TransformerMeshImpedance ;
     cim:IdentifiedObject.mRID "D56905CE-92F7-4591-A289-0C8615AB273D"^^cim:String ;
@@ -18832,10 +18832,10 @@
     cim:IdentifiedObject.mRID "2AD4EE95-7D63-4F40-AECB-E2AA67A05E77"^^cim:String ;
     cim:IdentifiedObject.name "90_172_0_1_Core"^^cim:String ;
     cim:TransformerCoreAdmittance.TransformerEnd <B561A521-A6BD-47DE-8EA8-27ECCD0A16E8> ;
-    cim:TransformerCoreAdmittance.b "0.00630119722747322"^^cim:Susceptance ;
-    cim:TransformerCoreAdmittance.b0 "0.00630119722747322"^^cim:Susceptance ;
-    cim:TransformerCoreAdmittance.g "0.001575299306868305"^^cim:Conductance ;
-    cim:TransformerCoreAdmittance.g0 "0.001575299306868305"^^cim:Conductance .
+    cim:TransformerCoreAdmittance.b "0.0026254988447805077"^^cim:Susceptance ;
+    cim:TransformerCoreAdmittance.b0 "0.0026254988447805077"^^cim:Susceptance ;
+    cim:TransformerCoreAdmittance.g "0.0006563747111951269"^^cim:Conductance ;
+    cim:TransformerCoreAdmittance.g0 "0.0006563747111951269"^^cim:Conductance .
 
 <2E573221-1122-4953-AC0C-48D4B7E4C492> a cim:TransformerCoreAdmittance ;
     cim:IdentifiedObject.mRID "2E573221-1122-4953-AC0C-48D4B7E4C492"^^cim:String ;
@@ -22522,7 +22522,7 @@
     cim:OperationalLimit.OperationalLimitType <D870B7D3-49E7-4155-B995-B20E2E6D4197> .
 
 <0D7B92EA-F786-4F51-8489-AA62FEE2AAF9> a cim:ApparentPowerLimit ;
-    cim:ApparentPowerLimit.value "120000000.0"^^cim:ApparentPower ;
+    cim:ApparentPowerLimit.value "50000000.0"^^cim:ApparentPower ;
     cim:IdentifiedObject.mRID "0D7B92EA-F786-4F51-8489-AA62FEE2AAF9"^^cim:String ;
     cim:IdentifiedObject.name "90_172_0_1_End_1_ONAN"^^cim:String ;
     cim:OperationalLimit.OperationalLimitSet <45015AB7-9D0F-4B0F-8953-93586C1037DA> ;
@@ -22781,7 +22781,7 @@
     cim:OperationalLimit.OperationalLimitType <D870B7D3-49E7-4155-B995-B20E2E6D4197> .
 
 <286C7B42-0259-47A1-BC16-0329309DF37E> a cim:ApparentPowerLimit ;
-    cim:ApparentPowerLimit.value "120000000.0"^^cim:ApparentPower ;
+    cim:ApparentPowerLimit.value "50000000.0"^^cim:ApparentPower ;
     cim:IdentifiedObject.mRID "286C7B42-0259-47A1-BC16-0329309DF37E"^^cim:String ;
     cim:IdentifiedObject.name "90_172_0_1_End_2_ONAN"^^cim:String ;
     cim:OperationalLimit.OperationalLimitSet <9883C36D-620E-4E8A-8D6D-24EFF6F67036> ;
@@ -27842,13 +27842,13 @@
 
 <4DA3C784-1D4A-41ED-82E5-0D7ABC3F38B8_pt1> a cim:CurveData ;
     cim:CurveData.Curve <4DA3C784-1D4A-41ED-82E5-0D7ABC3F38B8> ;
-    cim:CurveData.xvalue "78.09967295830424"^^cim:Float ;
+    cim:CurveData.xvalue "32.541530399293435"^^cim:Float ;
     cim:CurveData.y1value "32.877215118686685"^^cim:Float .
 
 <4DA3C784-1D4A-41ED-82E5-0D7ABC3F38B8_pt2> a cim:CurveData ;
     cim:CurveData.Curve <4DA3C784-1D4A-41ED-82E5-0D7ABC3F38B8> ;
-    cim:CurveData.xvalue "178.09967295830424"^^cim:Float ;
-    cim:CurveData.y1value "32.9614080835823"^^cim:Float .
+    cim:CurveData.xvalue "132.54153039929344"^^cim:Float ;
+    cim:CurveData.y1value "33.07927823443615"^^cim:Float .
 
 <526A4EA5-2879-4A7E-A2DA-1901BF851137_pt1> a cim:CurveData ;
     cim:CurveData.Curve <526A4EA5-2879-4A7E-A2DA-1901BF851137> ;
