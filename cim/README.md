@@ -25,6 +25,7 @@ Files of interest include:
 - _cim_summary.py_: Lists the classes and their instance counts found in four example _\*.ttl_ files.
 - _cim_to_atp.py_:  Creates ATP netlist to _../../atp/data/\*_net.atp_ from input _\*.ttl_ files. Command-line argument 0..3 selects the case.
 - _create_db.py_: Creates a local SQL database from _emtiop_lite.sql_.
+- _ic_to_rdf.py_: Stores MATPOWER power flow solution an a TTL file of CIM state variables.
 - _plot_bps.py_: Displays a network model visualization from _raw/\*Network.json_ files. Command-line argument 0..2 selects the case.
 - _raw_to_rdf.py_: Creates local Turtle (_\*.ttl_) and XML RDF (_\*.xml_) files from input raw files. Command-line argument 0..3 selects the case.
 - _sparql_fragments.py_: Helper file that creates SPARQL query elements from _dynamics_defaults.json_. Use for convenience when adding new dynamics classes from CIM to the profile.

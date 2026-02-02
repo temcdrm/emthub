@@ -999,7 +999,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
   ORDER by ?name
   """
   d = emthub.adhoc_sparql_dict (g, q, 'rm_or_pec_id')
-  emthub.list_dict_table (d)
+  #emthub.list_dict_table (d)
   for key, row in d['vals'].items():
     if row['type'] in ['PhotoVoltaicUnit', 'PowerElectronicsWindUnit']:  # leave the GSU as Yy
       plant_type = 'IBRPlant'
