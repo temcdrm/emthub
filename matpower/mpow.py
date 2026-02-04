@@ -57,7 +57,7 @@ CASES = [
   },
   {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 
    'name': 'WECC240', 
-   'swingbus':'2438',
+   'swingbus':'3831',
    'load_scale':1.02,
    'softlims': False,
    'glpk_opts': None, # {'glpk.opts.itlim': 5},
