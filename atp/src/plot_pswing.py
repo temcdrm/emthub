@@ -5,11 +5,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import os
+import sys
 
 plt.rcParams['savefig.directory'] = os.getcwd()
 
 tticks = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0]
-swing_bus = 'B120'
 
 def summarize_df (df, label):
   print ('\nSummary of ', label)
@@ -18,11 +18,16 @@ def summarize_df (df, label):
     print ('{:20s} {:13.5f} {:13.5f}'.format (lbl, data.min(), data.max()))
 
 if __name__ == '__main__':
-  df1 = pd.read_hdf('Wecc240.hdf5')
-  #summarize_df (df1, 'Wecc240')
+  root = 'WECC240'
+  swing_bus = 'B120'
+  swing_bus = 'B31'
+  if len(sys.argv) > 1:
+    root = sys.argv[1]
+  df1 = pd.read_hdf('{:}.hdf5'.format(root))
+  summarize_df (df1, root)
 
   fig, ax = plt.subplots (1, 3, sharex = 'col', figsize=(10,4), constrained_layout=True)
-  fig.suptitle ('WECC240 Swing Bus {:s}'.format(swing_bus))
+  fig.suptitle (' {:s} Swing Bus {:s}'.format(root, swing_bus))
   t = np.array(df1.index)
   tmin = tticks[0]
   tmax = tticks[-1]

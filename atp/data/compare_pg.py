@@ -52,7 +52,8 @@ if __name__ == '__main__':
           toks = re.split('[ ]+', line.lstrip(' '))
           pgen = 3.0e-6*float(toks[5])
           key = toks[0][0:5]
-          gens[key]['Patp'] = pgen
+          if key in gens:
+            gens[key]['Patp'] = pgen
 
   print ('ATPbus RawBus      MVA      Ppf     Patp Error[%]')
   for key, row in gens.items():

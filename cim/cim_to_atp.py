@@ -385,6 +385,13 @@ def TheveninVoltage (vpu, deg, rpu, xpu, ppu, qpu):
   vt = complex(vpu*math.cos(rad), vpu*math.sin(rad))
   i = (s/vt).conjugate()
   vs = vt + z*i
+# print ('TheveninVoltage')
+# print (' ', s)
+# print (' ', z)
+# print (' ', deg, rad)
+# print (' ', vt)
+# print (' ', i)
+# print (' ', vs)
   return abs(vs), cmath.phase(vs) * RAD_TO_DEG
 
 solar_template = """$INCLUDE,IBR.PCH,{sbus},{sname} $$
@@ -409,8 +416,8 @@ def AppendType14Generator (cn1id, bus, vbase, rmva, Xdp, Ra, icd, mw, mvar, ap, 
   if icd is not None and cn1id in icd['EMTBusVoltageIC']['vals']:
     ic = icd['EMTBusVoltageIC']['vals'][cn1id]
     vpu = ic['vmag'] / vbase
-    deg = ic['vdeg']
-  vpu, deg = TheveninVoltage (vpu, deg, Xdp, Ra, mw/rmva, mvar/rmva)
+    vdeg = ic['vdeg']
+  vpu, deg = TheveninVoltage (vpu, deg, Ra, Xdp, mw/rmva, mvar/rmva)
   kv = vbase * 0.001
   zbase = kv * kv / rmva
   X1 = Xdp * zbase
@@ -435,6 +442,47 @@ def AppendType14Generator (cn1id, bus, vbase, rmva, Xdp, Ra, icd, mw, mvar, ap, 
   print ('51{:5s}A{:5s}A            {:s}{:s}'.format (bus, genbus, AtpFit6 (R0), AtpFit6 (X0)), file=ap)
   print ('52{:5s}B{:5s}B            {:s}{:s}'.format (bus, genbus, AtpFit6 (R1), AtpFit6 (X1)), file=ap)
   print ('53{:5s}C{:5s}C'.format (bus, genbus), file=ap)
+  return genbus
+
+def AppendIBRInitializer (cn1id, bus, vbase, rmva, xpu, rpu, icd, mw, mvar, ap, gsu_ang):
+  vpu = 1.0
+  vdeg = 0.0
+  if icd is not None and cn1id in icd['EMTBusVoltageIC']['vals']:
+    ic = icd['EMTBusVoltageIC']['vals'][cn1id]
+    vpu = ic['vmag'] / vbase
+    vdeg = ic['vdeg']
+  ppu = mw/rmva
+  qpu = mvar/rmva
+  vpu, vdeg = TheveninVoltage (vpu, vdeg, rpu, xpu, ppu, qpu)
+  kv = vbase * 0.001
+  zbase = kv * kv / rmva
+  X1 = xpu * zbase
+  R1 = rpu * zbase
+  X0 = X1
+  R0 = R1
+  vmag = vpu * kv * 1000.0 * SQRT2 / SQRT3
+  vang = vdeg + gsu_ang
+
+  genbus = GetNextScratchBus()
+  swtbus = GetNextScratchBus()
+  bus = AtpBus(bus)
+
+  print ('/SOURCE', file=ap)
+  print ('C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >', file=ap)
+  for ph in ['A', 'B', 'C']:
+    print ('14{:s}  {:10.3f}{:10.3f}{:10.3f}{:s}{:10.3f}{:10.3f}'.format (AtpNode (genbus, ph), 
+                                                                          vmag, 60.0, vang, 
+                                                                          PadBlanks(20), -1.0, 9999.0), file=ap)
+    vang -= 120.0
+  print ('/SWITCH', file=ap)
+  print ('C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1', file=ap)
+  for ph in ['A', 'B', 'C']:
+    print ('  {:6s}{:6s}{:10.3f}{:10.3f}'.format (AtpNode (swtbus, ph), AtpNode (bus, ph), -1.0, 0.020), file=ap)
+  print ('/BRANCH', file=ap)
+  print ('C < n1 >< n2 ><ref1><ref2>< R  >< X  >< C  >', file=ap)
+  print ('51{:5s}A{:5s}A            {:s}{:s}'.format (genbus, swtbus, AtpFit6 (R0), AtpFit6 (X0)), file=ap)
+  print ('52{:5s}B{:5s}B            {:s}{:s}'.format (genbus, swtbus, AtpFit6 (R1), AtpFit6 (X1)), file=ap)
+  print ('53{:5s}C{:5s}C'.format (genbus, swtbus), file=ap)
   return genbus
 
 def GetMachineDynamic (d, mach_id):
@@ -628,6 +676,11 @@ def InitializeIBR (key, row, icd):
     ic = icd['EMTBranchFlowIC']['vals'][key]
     row['p'] = -ic['p'] # accounting for the load convention of shunt power flow
     row['q'] = -ic['q']
+    bus = row['cn1id']
+    vbase = row['ratedU']
+    ic = icd['EMTBusVoltageIC']['vals'][bus]
+    row['vpu'] = ic['vmag'] / vbase
+    row['deg'] = ic['vdeg']
 
 def GetGSUPhaseShift (d, key, dxf):
   for plant, ary in d.items():
@@ -1026,9 +1079,13 @@ def convert_one_atp_model (d, icd, fpath, case):
     if (abs(pfang) < 0.001) or (abs(pfang) > 100.0) or (pfang < 0.0):  # TODO: verify
       pfang = 0.0
     sPF = AtpFit6 (pfang)
+    rmva = sbase*1e-6
+    mw = wtotal*1e-6
+    mvar = row['q']*1e-6
     print ('C =============================================================================', file=ap)
-    print ('C solar {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (row['name'], row['bus'], sbase*1e-6, wtotal*1e-6, row['q']*1e-6), file=ap)
+    print ('C solar {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (row['name'], row['bus'], rmva, mw, mvar), file=ap)
     AppendSolar (bus, vbase, sbase, ibase=sbase/vbase, ppu=wtotal/sbase, qpu=row['q']/sbase, vpu=1.0, ap=ap, ibr_count=PV_COUNT+WND_COUNT)
+    AppendIBRInitializer (row['cn1id'], bus, vbase, rmva, 0.2, 0.0, icd, mw, mvar, ap, gsu_ang)
     dgens[key] = {'Type':'Solar', 'Source':None, 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
     DUM_NODES += SOLAR_DUM_NODES
 
@@ -1041,11 +1098,15 @@ def convert_one_atp_model (d, icd, fpath, case):
     sbase = row['ratedS']
     InitializeIBR (key, row, icd)
     wtotal = row['p'] * 1.0 # PV_MULT
+    rmva = sbase*1e-6
+    mw = wtotal*1e-6
+    mvar = row['q']*1e-6
     WND_TOTAL += 1e-6 * wtotal
     WND_COUNT += 1
     print ('C =============================================================================', file=ap)
-    print ('C wind {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (row['name'], row['bus'], sbase*1e-6, wtotal*1e-6, row['q']*1e-6), file=ap)
+    print ('C wind {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (row['name'], row['bus'], rmva, mw, mvar), file=ap)
     AppendSolar (bus, vbase, sbase, ibase=sbase/vbase, ppu=wtotal/sbase, qpu=row['q']/sbase, vpu=1.0, ap=ap, ibr_count=PV_COUNT+WND_COUNT)
+    AppendIBRInitializer (row['cn1id'], bus, vbase, rmva, 0.2, 0.0, icd, mw, mvar, ap, gsu_ang)
     dgens[key] = {'Type':'Wind', 'Source':None, 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
     DUM_NODES += WIND_DUM_NODES
 
