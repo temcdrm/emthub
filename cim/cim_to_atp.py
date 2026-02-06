@@ -1022,11 +1022,14 @@ def convert_one_atp_model (d, icd, fpath, case):
       sV02 = AtpFit6 (vbase*vbase)
       sVWc = AtpFit6 (vbase/376.9911)
       sPF = AtpFit6 (pfang)
+      rmva=1e-6*sbase
+      mw=1e-6*wtotal
       print ('C =============================================================================', file=ap)
-      print ('C DER {:s} at {:s} is {:.2f} MVA producing {:.2f} MW'.format (row['name'], row['bus'], 1e-6*sbase, 1e-6*wtotal), file=ap)
+      print ('C DER {:s} at {:s} is {:.2f} MVA producing {:.2f} MW'.format (row['name'], row['bus'], rmva, mw), file=ap)
       print ('$INCLUDE,TACSPV3.PCH,{:s},{:s},{:s},{:s},{:s},{:s},{:s} $$'.format(sBus, sName, sW, sImax, sUV, sUT, sPF), file=ap)
       print ('  ,{:s},{:s},{:s}'.format(sV0, sV02, sVWc), file=ap)
       print ('/BRANCH', file=ap)
+      AppendIBRInitializer (row['cn1id'], bus, vbase, rmva, 0.2, 0.0, icd, mw, 0.0, ap, 0.0)
     else:
       print ('C =============================================================================', file=ap)
       print ('C load {:s} at {:s} is {:.3f} + j{:.3f} kVA'.format (row['name'], row['bus'], kw, kvar), file=ap)

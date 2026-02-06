@@ -20,7 +20,7 @@ def summarize_df (df, label):
 if __name__ == '__main__':
   root = 'WECC240'
   swing_bus = 'B120'
-  swing_bus = 'B31'
+  #swing_bus = 'B31'
   if len(sys.argv) > 1:
     root = sys.argv[1]
   df1 = pd.read_hdf('{:}.hdf5'.format(root))
