@@ -11,14 +11,12 @@ import networkx
 import math
 from rdflib.namespace import XSD
 from otsrdflib import OrderedTurtleSerializer
-import sqlite3
 import cim_examples
 import emthub.api as emthub
  
 CIM_NS = 'http://www.ucaiug.org/ns#'
 EMT_NS = 'http://opensource.ieee.org/emtiop#'
 
-METAFILE = 'psseraw.json'
 WFREQ = 2.0 * math.pi * 60.0
 M_PER_MILE = 1609.344
 SQRT3 = math.sqrt(3.0)
@@ -33,8 +31,6 @@ PU_WAVE_SPEED = 0.965
 
 IBR_IFAULT = 1.2
 
-DYNAMIC_SETTINGS_FILE = 'dynamics_defaults.json'
-
 STEP_VOLTAGE_INCREMENT = 0.625
 HIGH_STEP = 16
 LOW_STEP = -16
@@ -43,11 +39,6 @@ SHORT_TERM_SECONDS = 4*3600.0
 SHORT_TERM_SCALE = 1.2
 ONAF_SCALE = 4.0 / 3.0
 OFAF_SCALE = 5.0 / 3.0
-
-tables = {}
-baseMVA = -1.0
-bus_kvbases = {}
-kvbases = {}
 
 def load_bus_coordinates (fname):
   lp = open (fname).read()
@@ -100,134 +91,7 @@ def append_xml_dynamic_parameters (g, leaf, dyn_settings, sections):
       else:
         g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(sect, tag)), rdflib.Literal(row[0], datatype=CIM_NS+row[1])))
 
-def create_cim_sql (tables, kvbases, bus_kvbases, baseMVA, case):
-  # read the existing mRID map for persistence
-  # TODO: consolidate this step with XML export
-  uuids = {}
-  fuidname = case['mridfile']
-  if os.path.exists(fuidname):
-    print ('reading instance mRIDs from ', fuidname)
-    fuid = open (fuidname, 'r')
-    for uuid_ln in fuid.readlines():
-      uuid_toks = re.split('[,\s]+', uuid_ln)
-      if len(uuid_toks) > 2 and not uuid_toks[0].startswith('//'):
-        cls = uuid_toks[0]
-        nm = uuid_toks[1]
-        key = cls + ':' + nm
-        val = uuid_toks[2]
-        uuids[key] = val
-    fuid.close()
-
-  con = sqlite3.connect ('emtiop.db')
-  cur = con.cursor()
-  # clean out existing tables, in an order that should maintain referential integrity
-  # TODO: see if deleting from IdentifiedObject is enough, i.e., cascading deletes will clean out the other tables
-  for table_name in ['WeccWTGTA', 'WeccWTGARA', 'WeccREPCA', 'WeccREGCA', 'WeccREECA', 'WeccREEC', 'WeccDynamics',
-                     'GovSteamSGO', 'TurbineGovernorDynamics', 'PssIEEE1A', 'PowerSystemStabilizerDynamics',
-                     'ExcST1A', 'ExcitationSystemDynamics', 'TransformerSaturation', 'TransformerMeshImpedance',
-                     'TransformerCoreAdmittance', 'ThermalGeneratingUnit', 'TextDiagramObject', 'SynchronousMachineTimeConstantReactance',
-                     'SynchronousMachineDetailed', 'SynchronousMachineDynamics', 'SeriesCompensator', 'RotatingMachineDynamics',
-                     'PowerTransformerEnd', 'PowerTransformer', 'PowerElectronicsWindUnit', 'PhotoVoltaicUnit',
-                     'PSRType', 'NuclearGeneratingUnit', 'LinearShuntCompensator', 'HydroGeneratingUnit', 'EnergyConsumer',
-                     'DynamicsFunctionBlock', 'DiagramObjectPoint', 'DiagramObject', 'CurveData', 'Curve', 'BatteryUnit',
-                     'AsynchronousMachine', 'RotatingMachine', 'ShuntCompensator', 'PowerElectronicsUnit', 'PowerElectronicsConnection',
-                     'RegulatingCondEq', 'ACLineSegment', 'Conductor', 'LoadResponseCharacteristic', 'EnergyConnection',
-                     'ConductingEquipment', 'GeneratingUnit', 'TransformerEnd', 'Equipment', 'EquipmentContainer',
-                     'ConnectivityNode', 'ConnectivityNodeContainer', 'PowerSystemResource', 'BaseVoltage', 'IdentifiedObject']:
-    cur.execute ('DELETE from {:s}'.format (table_name))
-    con.commit()
-
-  # write the EquipmentContainer->ConnectivityNodeContainer->PowerSystemResource->IdentifiedObject
-  eq_id = case['id']
-  cur.execute ("INSERT into IdentifiedObject (mRID, name) VALUES ('{:s}', '{:s}')".format (eq_id, case['name']))
-  cur.execute ("INSERT into PowerSystemResource (mRID) VALUES ('{:s}')".format (eq_id))
-  cur.execute ("INSERT into ConnectivityNodeContainer (mRID) VALUES ('{:s}')".format (eq_id))
-  cur.execute ("INSERT into EquipmentContainer (mRID) VALUES ('{:s}')".format (eq_id))
-  con.commit()
-  # BaseVoltage(s)->IdentifiedObject
-  kvbase_ids = {}
-  for kvname, kv in kvbases.items():
-    print (kvname)
-    ID = GetCIMID('BaseVoltage', kvname, uuids)
-    cur.execute ("INSERT into IdentifiedObject (mRID, name) VALUES ('{:s}', '{:s}')".format (ID, kvname))
-    cur.execute ("INSERT into BaseVoltage (mRID, nominalVoltage) VALUES ('{:s}', {:.3f})".format (ID, kv * 1000.0))
-    kvbase_ids[str(kv)] = ID
-    con.commit()
-  # ConnectivityNode(s)->IdentifiedObject
-  busids = {}
-  for row in tables['BUS']['data']:
-    busname = str(row[0])
-    ID = GetCIMID('ConnectivityNode', busname, uuids)
-    busids[busname] = ID
-    cur.execute ("INSERT into IdentifiedObject (mRID, name) VALUES ('{:s}', '{:s}')".format (ID, busname))
-    cur.execute ("INSERT into ConnectivityNode (mRID, ConnectivityNodeContainer) VALUES ('{:s}', '{:s}')".format (ID, eq_id))
-    con.commit()
-  # ACLineSegment(s)->Conductor->ConductingEquipment->Equipment->PowerSystemResource->IdentifiedObject
-  # SeriesCompensator(s)->ConductingEquipment->Equipment->PowerSystemResource->IdentifiedObject
-  for row in tables['BRANCH']['data']:
-    bus1 = busids[str(row[0])]
-    bus2 = busids[str(row[1])]
-    ckt = int(row[2])
-    key = '{:d}_{:d}_{:d}'.format (row[0], row[1], ckt)
-    kvbase = bus_kvbases[row[0]]
-    bv = kvbase_ids[str(kvbase)]
-    zbase = kvbase * kvbase / baseMVA
-    rpu = row[3]
-    xpu = row[4]
-    bpu = row[5]
-    r1 = rpu * zbase
-    x1 = xpu * zbase
-    if x1 < 0.0:
-      ID = GetCIMID('SeriesCompensator', key, uuids)
-      cur.execute ("INSERT into IdentifiedObject (mRID, name) VALUES ('{:s}', '{:s}')".format (ID, key))
-      cur.execute ("INSERT into PowerSystemResource (mRID) VALUES ('{:s}')".format (ID))
-      cur.execute ("INSERT into Equipment (mRID, inService, EquipmentContainer) VALUES ('{:s}',{:d},'{:s}')".format (ID, 1, eq_id))
-      cur.execute ("INSERT into ConductingEquipment (mRID, BaseVoltage, FromConnectivityNode, ToConnectivityNode) VALUES ('{:s}','{:s}','{:s}','{:s}')".format (ID, bv, bus1, bus2))
-      cur.execute ("INSERT into SeriesCompensator (mRID, r, x, r0, x0) VALUES ('{:s}',{:.6f},{:.6f},{:.6f},{:.6f})".format (ID, r1, x1, r1, x1))
-    else:
-      ID = GetCIMID('ACLineSegment', key, uuids)
-      cur.execute ("INSERT into IdentifiedObject (mRID, name) VALUES ('{:s}', '{:s}')".format (ID, key))
-      cur.execute ("INSERT into PowerSystemResource (mRID) VALUES ('{:s}')".format (ID))
-      cur.execute ("INSERT into Equipment (mRID, inService, EquipmentContainer) VALUES ('{:s}',{:d},'{:s}')".format (ID, 1, eq_id))
-      cur.execute ("INSERT into ConductingEquipment (mRID, BaseVoltage, FromConnectivityNode, ToConnectivityNode) VALUES ('{:s}','{:s}','{:s}','{:s}')".format (ID, bv, bus1, bus2))
-      l1 = x1 / WFREQ
-      if bpu > 0.0:
-        c1 = bpu / WFREQ / zbase
-        z1 = math.sqrt (l1/c1)
-      else:
-        z1 = 400.0
-        c1 = l1 / z1 / z1
-      b1ch = c1 * WFREQ
-      if z1 >= 100.0 : # overhead
-        r0 = 2.0 * r1
-        x0 = 3.0 * x1 # was 2.0 * x1
-        b0ch = 0.6 * b1ch
-        if kvbase >= 345.0:
-          length = x1 / 0.6
-        else:
-          length = x1 / 0.8
-      else: # underground
-        r0 = r1
-        x0 = x1
-        b0ch = b1ch
-        length = x1 / 0.2
-      length *= M_PER_MILE
-      vel1 = length / math.sqrt(l1*c1) / 3.0e8 # wave velocity normalized to speed of light
-      cur.execute ("INSERT into Conductor (mRID, length) VALUES ('{:s}',{:.6f})".format (ID, length))
-      cur.execute ("INSERT into ACLineSegment (mRID, r, x, bch, r0, x0, b0ch) VALUES ('{:s}',{:f},{:f},{:f},{:f},{:f},{:f})".format (ID, r1, x1, b1ch, r0, x0, b0ch))
-      if vel1 >= 1.0:
-        print ('check line data for {:s} kv={:2f} z1={:.2f} vel1={:.3f}c'.format (key, kvbase, z1, vel1))
-    con.commit()
-
-  con.close()
-  # TODO: consolidate this step with XML export
-  print('saving instance mRIDs to ', fuidname)
-  fuid = open(fuidname, 'w')
-  for key, val in uuids.items():
-      print('{:s},{:s}'.format(key.replace(':', ',', 1), val), file=fuid)
-  fuid.close()
-
-def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
+def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
   g = rdflib.Graph()
   CIM = rdflib.Namespace (CIM_NS)
   g.bind('cim', CIM)
@@ -819,8 +683,7 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.y1value'), rdflib.Literal(f2, datatype=CIM.Float)))
 
   # write the generators: synchronous machine, generating unit, exciter, governor, stabilizer
-  with open(DYNAMIC_SETTINGS_FILE, 'r') as file:
-    dyn_settings = json.load (file)
+  dyn_settings = emthub.load_dynamics_defaults ()
   nsolar = 0
   nwind = 0
   nthermal = 0
@@ -1087,156 +950,17 @@ def create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case):
       print('{:s},{:s}'.format(key.replace(':', ',', 1), val), file=fuid)
   fuid.close()
 
-def print_table (table_name):
-  if table_name not in tables:
-    print ('***', table_name, 'not found')
-    return
-  table = tables[table_name]
-  print (table_name, 'has', len(table['data']), 'rows of', table['col_names'])
-  if table_name == 'TRANSFORMER':
-    for i in range (len(table['data'])):
-      print (table['data'][i], table['winding_data'][i])
-  else:
-    for row in table['data']:
-      print (row)
-
-def read_version_33_34(rdr,sections,bTwoTitles):
-  for section in sections:
-    sect = sections[section]
-    columns = sect['columns']
-    column_names = ','.join([columns[i]['Name'] for i in range(len(columns))])
-    print ('Table "{:s}" has {:d} raw columns, using {:d}: {:s}'.format (section, sect['column_count'], len(columns), column_names))
-  title = ','.join(next(reader))
-  print('MVA base = {:.1f}, Title: {:s}'.format(baseMVA, title))
-  if bTwoTitles:
-    title = ','.join(next(reader))
-    print ('Second Title: ', title)
-  table = None
-  bTransformer = False
-  for row in reader:
-#    print (row)
-    if '@!' in row[0]:
-      continue
-    if len(row) > 1 and 'END OF' in row[0] and 'BEGIN' in row[1]: # start a new table
-      i1 = row[1].find('BEGIN') + 6
-      i2 = row[1].find(' DATA')
-      table_name = row[1][i1:i2]
-      if table_name in sections:
-        sect = sections[table_name]
-        n_columns = len(sect['columns'])
-        total_columns = sect['column_count']
-        column_names = [sect['columns'][i]['Name'] for i in range(n_columns)]
-        column_indices = [sect['columns'][i]['Index'] for i in range(n_columns)]
-        column_types = [sect['columns'][i]['Type'] for i in range(n_columns)]
-        print ('found', table_name, 'data with', total_columns, 'columns, using', n_columns)
-        print ('  column_names:', column_names)
-        print ('  column_index:', column_indices)
-        print ('  column_types:', column_types)
-        # create a new table to hold the data of interest
-        table = {'col_names': column_names, 'col_types': column_types, 'data': []}
-        if table_name == 'TRANSFORMER':
-          table['winding_data'] = [] # impedances, ratings, and taps on extra lines
-          bTransformer = True
-        else:
-          bTransformer = False
-        tables[table_name] = table
-        print (table)
-      else:
-        print ('ignoring', table_name, 'raw file data')
-        table = None
-    elif table is not None:
-      data = []
-      ncol_read = len(row)
-      for i in range(n_columns):
-        idx = column_indices[i]
-        if idx >= ncol_read:
-          print ('** need column index {:d} but read only {:d} columns a'.format (idx, ncol_read))
-          quit()
-        val = row[idx]
-        if column_types[i] == 'Float':
-          data.append(float(val))
-        elif column_types[i] == 'Integer':
-          data.append(int(val))
-        else:
-          data.append(val.strip('\' '))
-      if bTransformer: # impedance and winding data is provided on extra lines
-        #print (data)
-        row = next(reader)
-        #print (row)
-        ncol_read = len(row)
-        if data[2] > 0.0:
-          if ncol_read > 8:
-            nwdgs = 3
-            winding_data = {'nwdgs': nwdgs, 'r12':float(row[0]), 'x12':float(row[1]), 's12':float(row[2]),
-                            'r23':float(row[3]), 'x23':float(row[4]), 's23':float(row[5]),
-                            'r13':float(row[6]), 'x13':float(row[6]), 's13':float(row[7]), 
-                            'taps':[], 'kvs':[], 'mvas':[]}
-          else:
-            print ('** need 9 impedance values for a 3-winding transformer, but read only {:d}'.format (ncol_read))
-            quit()
-        else:
-          if ncol_read > 2:
-            nwdgs = 2
-            winding_data = {'nwdgs': nwdgs, 'r12':float(row[0]), 'x12':float(row[1]), 's12':float(row[2]), 'taps':[], 'kvs':[], 'mvas':[]}
-          else:
-            print ('** need 3 impedance values for a 2-winding transformer, but read only {:d}'.format (ncol_read))
-            quit()
-        for i in range(nwdgs):
-          row = next(reader)
-          ncol_read = len(row)
-          winding_data['taps'].append(float(row[0]))
-          winding_data['kvs'].append(float(row[1])) # this may be zero, in which case take from the bus nominal voltages
-          if ncol_read > 5:
-            winding_data['mvas'].append(float(row[3])) # this may still be zero in the rawfile, TODO: verify index 3 or 5
-          else:
-            winding_data['mvas'].append(0.0)
-        table['winding_data'].append (winding_data)
-      table['data'].append (data)
-
-#  print_table ('BUS')
-#  print_table ('LOAD')
-#  print_table ('FIXED SHUNT')
-#  print_table ('SWITCHED SHUNT')
-#  print_table ('GENERATOR')
-#  print_table ('BRANCH')
-#  print_table ('TRANSFORMER')
-  print_table ('SYSTEM SWITCHING DEVICE')
-
 if __name__ == '__main__':
   case_id = 0
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
-
-  with open(METAFILE, 'r') as file:
-    meta = json.load (file)
-
   case = cim_examples.CASES[case_id]
-  with open(case['rawfile'], 'r') as csvfile:
-    reader = csv.reader(csvfile, quotechar="'") # don't use " because it causes problems for CSV reader in title lines
-    row = next(reader)
-    while row[0].startswith ('@!'):
-      row = next(reader)
-    baseMVA = float(row[1])
-    raw_version = int(row[2])
-    print (baseMVA, raw_version)
-    if raw_version == 33:
-      read_version_33_34 (reader, meta['version_sections']['33'], bTwoTitles=False)
-    elif raw_version == 34:
-      read_version_33_34 (reader, meta['version_sections']['34'], bTwoTitles=True)
-    elif raw_version == 35:
-      read_version_33_34 (reader, meta['version_sections']['35'], bTwoTitles=True)
-    else:
-      print ('Unknown RAW File Version = {:d} from {:s}'.format (raw_version, case['rawfile']))
-      quit()
 
-  for bus in tables['BUS']['data']:
-    bus_kvbases[bus[0]] = bus[2]
-    kvbases['BV_{:.2f}'.format(bus[2])] = bus[2]
+  tables, kvbases, bus_kvbases, baseMVA = emthub.load_psse_rawfile (case['rawfile'])
+  emthub.print_psse_table (tables, 'SYSTEM SWITCHING DEVICE')
 
   print ('All kV Bases =', kvbases)
 
-  create_cim_xml (tables, kvbases, bus_kvbases, baseMVA, case)
-#  create_cim_sql (tables, kvbases, bus_kvbases, baseMVA, case)
-#  print ('Bus kV Bases =', bus_kvbases)
+  create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case)
   
 

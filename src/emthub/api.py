@@ -11,6 +11,9 @@ Example:
 
 Public Functions:
     :print_cim_summaries: Print class names and counts found in list of Turtle files.
+    :load_dynamics_defaults: Load example default settings for dynamics into a Python dictionary.
+    :load_psse_meta: Load PSSE rawfile metadata into a Python dictionary.
+    :load_psse_rawfile: Load contents of a PSSE rawfile into a Python dictionary.
     :summarize_graph: Count the class instances by namespace in an RDF graph.
     :load_emt_dict: Load an RDF graph into Python dictionary using packaged SPARQL queries.
     :load_ic_dict: Load an RDF graph into Python dictionary from standalone power flow solution file.
@@ -23,6 +26,11 @@ Public Functions:
 from __future__ import absolute_import
 
 from .cim_summary import print_cim_summaries
+
+from .cim_support import load_dynamics_defaults
+from .cim_support import load_psse_meta
+from .cim_support import load_psse_rawfile
+from .cim_support import print_psse_table
 
 from .cim_sparql import summarize_graph
 from .cim_sparql import load_emt_dict

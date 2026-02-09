@@ -1,11 +1,11 @@
-# Copyright (C) 2025 Meltran, Inc
+# Copyright (C) 2025-2026 Meltran, Inc
 
 import json
 import textwrap
+import emthub.api as emthub
 
 if __name__ == '__main__':
-  with open('dynamics_defaults.json', 'r') as file:
-    dyn_settings = json.load (file)
+  dyn_settings = emthub.load_dynamics_defaults ()
 
   # to add manually, because they are not included in default settings:
   #   GovSteamSGO.mwbase
