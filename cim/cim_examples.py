@@ -10,7 +10,7 @@ CASES = [
    'br_ic': '../matpower/ieee39mbr.txt',
    'ttl_ic': 'ieee39_ic.ttl',
    'swingbus': '31',
-   'load': 1.0, 'UseXfmrSaturation': False},
+   'load': 1.0, 'UseXfmrSaturation': False, 'dyrfile': 'raw/ieee39_1ibr.dyr'},
   {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 
    'name': 'IEEE118', 'legend_loc': 'best', 
    'rawfile':'raw/ieee-118-bus-v4.raw', 'xmlfile':'ieee118.xml', 'locfile': 'raw/ieee118_network.json', 'mridfile':'raw/ieee118mrids.dat', 'ttlfile': 'ieee118.ttl',
@@ -24,7 +24,7 @@ CASES = [
    'br_ic': '../matpower/ieee118mbr.txt',
    'ttl_ic': 'ieee118_ic.ttl',
    'swingbus':'131', 
-   'load': 0.6748, 'UseXfmrSaturation': False},
+   'load': 0.6748, 'UseXfmrSaturation': False, 'dyrfile': None},
   {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 
    'name': 'WECC240', 'legend_loc': 'best',
    'rawfile':'raw/WECC240.raw', 'xmlfile':'wecc240.xml', 'locfile': 'raw/wecc240_network.json', 'mridfile':'raw/wecc240mrids.dat', 'ttlfile': 'wecc240.ttl',
@@ -46,7 +46,7 @@ CASES = [
    'ttl_ic': 'wecc240_ic.ttl',
    'swingbus':'3831',
    'old_swingbus':'2438', 
-   'load': 1.02, 'UseXfmrSaturation': False},
+   'load': 1.02, 'UseXfmrSaturation': False, 'dyrfile': 'raw/240busWECC_2018_PSS.dyr'},
   {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
    'name':'XfmrSat', 'legend_loc': 'best', 
    'rawfile':'raw/XfmrSat.raw', 'xmlfile':'XfmrSat.xml', 'mridfile': 'raw/XfmrSatmrids.dat', 'ttlfile': 'XfmrSat.ttl',
@@ -55,7 +55,7 @@ CASES = [
    'gen_ic': '../matpower/XfmrSatmg.txt',
    'br_ic': '../matpower/XfmrSatmbr.txt',
    'ttl_ic': 'XfmrSat_ic.ttl',
-   'swingbus': '1', 'load':1.0, 'emergency_ratings': True, 'UseXfmrSaturation': True}
+   'swingbus': '1', 'load':1.0, 'emergency_ratings': True, 'UseXfmrSaturation': True, 'dyrfile': None}
 ]
 
 
