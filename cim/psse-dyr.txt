@@ -1,0 +1,2075 @@
+﻿{
+  "GENCLS": {
+    "destination": "GENCLS",
+    "inputs": [
+      "BUS",
+      "ID",
+      "H",
+      "D"
+    ],
+    "find": {
+      "gen": {
+        "StaticGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "get": {
+      "u": {
+        "StaticGen": {
+          "src": "u",
+          "idx": "gen"
+        }
+      },
+      "Sn": {
+        "StaticGen": {
+          "src": "Sn",
+          "idx": "gen"
+        }
+      },
+      "Vn": {
+        "Bus": {
+          "src": "Vn",
+          "idx": "BUS"
+        }
+      },
+      "ra": {
+        "StaticGen": {
+          "src": "ra",
+          "idx": "gen"
+        }
+      },
+      "xs": {
+        "StaticGen": {
+          "src": "xs",
+          "idx": "gen"
+        }
+      }
+    },
+    "outputs": {
+      "u": "u",
+      "bus": "BUS",
+      "gen": "gen",
+      "Sn": "Sn",
+      "Vn": "Vn",
+      "D": "D",
+      "M": "GENCLS.H; lambda x: 2 * x",
+      "ra": "ra",
+      "xd1": "xs"
+    }
+  },
+  "GENSAL": {
+    "destination": "GENROU",
+    "inputs": [
+      "BUS",
+      "ID",
+      "Td10",
+      "Td20",
+      "Tq20",
+      "H",
+      "D",
+      "Xd",
+      "Xq",
+      "Xd1",
+      "Xd2",
+      "Xl",
+      "S10",
+      "S12"
+    ],
+    "find": {
+      "gen": {
+        "StaticGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "get": {
+      "u": {
+        "StaticGen": {
+          "src": "u",
+          "idx": "gen"
+        }
+      },
+      "Sn": {
+        "StaticGen": {
+          "src": "Sn",
+          "idx": "gen"
+        }
+      },
+      "Vn": {
+        "Bus": {
+          "src": "Vn",
+          "idx": "BUS"
+        }
+      },
+      "ra": {
+        "StaticGen": {
+          "src": "ra",
+          "idx": "gen"
+        }
+      },
+      "xs": {
+        "StaticGen": {
+          "src": "xs",
+          "idx": "gen"
+        }
+      }
+    },
+    "outputs": {
+      "u": "u",
+      "bus": "BUS",
+      "gen": "gen",
+      "Sn": "Sn",
+      "Vn": "Vn",
+      "D": "D",
+      "M": "GENSAL.H; lambda x: 2 * x",
+      "ra": "ra",
+      "xl": "Xl",
+      "xd": "Xd",
+      "xq": "Xq",
+      "xd1": "Xd1",
+      "xd2": "Xd2",
+      "xq1": "Xd1",
+      "xq2": "Xd2",
+      "Td10": "Td10",
+      "Tq10": "Td10",
+      "Td20": "Td20",
+      "Tq20": "Tq20",
+      "S10": "S10",
+      "S12": "S12"
+    }
+  },
+  "GENROU": {
+    "destination": "GENROU",
+    "inputs": [
+      "BUS",
+      "ID",
+      "Td10",
+      "Td20",
+      "Tq10",
+      "Tq20",
+      "H",
+      "D",
+      "Xd",
+      "Xq",
+      "Xd1",
+      "Xq1",
+      "Xd2",
+      "Xl",
+      "S10",
+      "S12"
+    ],
+    "find": {
+      "gen": {
+        "StaticGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "get": {
+      "u": {
+        "StaticGen": {
+          "src": "u",
+          "idx": "gen"
+        }
+      },
+      "Sn": {
+        "StaticGen": {
+          "src": "Sn",
+          "idx": "gen"
+        }
+      },
+      "Vn": {
+        "Bus": {
+          "src": "Vn",
+          "idx": "BUS"
+        }
+      },
+      "ra": {
+        "StaticGen": {
+          "src": "ra",
+          "idx": "gen"
+        }
+      },
+      "xs": {
+        "StaticGen": {
+          "src": "xs",
+          "idx": "gen"
+        }
+      }
+    },
+    "outputs": {
+      "u": "u",
+      "bus": "BUS",
+      "gen": "gen",
+      "Sn": "Sn",
+      "Vn": "Vn",
+      "D": "D",
+      "M": "GENROU.H; lambda x: 2 * x",
+      "ra": "ra",
+      "xl": "Xl",
+      "xd": "Xd",
+      "xq": "Xq",
+      "xd1": "Xd1",
+      "xd2": "Xd2",
+      "xq1": "Xq1",
+      "xq2": "Xd2",
+      "Td10": "Td10",
+      "Tq10": "Tq10",
+      "Td20": "Td20",
+      "Tq20": "Tq20",
+      "S10": "S10",
+      "S12": "S12"
+    }
+  },
+  "IEEEVC": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "rc",
+      "xc"
+    ],
+    "destination": "IEEEVC",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      },
+      "avr": {
+        "Exciter": {
+          "syn": "syn"
+        }
+      }
+    },
+    "outputs": {
+      "avr": "avr",
+      "rc": "rc",
+      "xc": "xc"
+    }
+  },
+  "IEEET3": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TR",
+      "KA",
+      "TA",
+      "VRMAX",
+      "VRMIN",
+      "VBMAX",
+      "KE",
+      "TE",
+      "KF",
+      "TF",
+      "KP",
+      "KI"
+    ],
+    "destination": "IEEET3",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "TR": "TR",
+      "KA": "KA",
+      "TA": "TA",
+      "VRMAX": "VRMAX",
+      "VRMIN": "VRMIN",
+      "VBMAX": "VBMAX",
+      "KE": "KE",
+      "TE": "TE",
+      "KF": "KF",
+      "TF": "TF",
+      "KP": "KP",
+      "KI": "KI"
+    }
+  },
+  "ESST1A": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "UEL",
+      "VOS",
+      "TR",
+      "VIMAX",
+      "VIMIN",
+      "TB",
+      "TC",
+      "TB1",
+      "TC1",
+      "VAMAX",
+      "VAMIN",
+      "KA",
+      "TA",
+      "ILR",
+      "KLR",
+      "VRMAX",
+      "VRMIN",
+      "KF",
+      "TF",
+      "KC"
+    ],
+    "destination": "ESST1A",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "TR": "TR",
+      "VIMAX": "VIMAX",
+      "VIMIN": "VIMIN",
+      "TB": "TB",
+      "TC": "TC",
+      "TB1": "TB1",
+      "TC1": "TC1",
+      "VAMAX": "VAMAX",
+      "VAMIN": "VAMIN",
+      "KA": "KA",
+      "TA": "TA",
+      "ILR": "ILR",
+      "KLR": "KLR",
+      "VRMAX": "VRMAX",
+      "VRMIN": "VRMIN",
+      "KF": "KF",
+      "TF": "TF",
+      "KC": "KC",
+      "UELc": "UEL",
+      "VOSc": "VOS"
+    }
+  },
+  "ESAC1A": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TR",
+      "TB",
+      "TC",
+      "VAMAX",
+      "VAMIN",
+      "KA",
+      "TA",
+      "VRMAX",
+      "VRMIN",
+      "TE",
+      "E1",
+      "SE1",
+      "E2",
+      "SE2",
+      "KC",
+      "KD",
+      "KE",
+      "KF",
+      "TF"
+    ],
+    "destination": "ESAC1A",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "TR": "TR",
+      "TB": "TB",
+      "TC": "TC",
+      "VAMAX": "VAMAX",
+      "VAMIN": "VAMIN",
+      "KA": "KA",
+      "TA": "TA",
+      "VRMAX": "VRMAX",
+      "VRMIN": "VRMIN",
+      "TE": "TE",
+      "E1": "E1",
+      "SE1": "SE1",
+      "E2": "E2",
+      "SE2": "SE2",
+      "KC": "KC",
+      "KD": "KD",
+      "KE": "KE",
+      "KF": "KF",
+      "TF": "TF"
+    }
+  },
+  "ESAC6A": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TR",
+      "KA",
+      "TA",
+      "TK",
+      "TB",
+      "TC",
+      "VAMAX",
+      "VAMIN",
+      "VRMAX",
+      "VRMIN",
+      "TE",
+      "VFELIM",
+      "KH",
+      "VHMAX",
+      "TH",
+      "TJ",
+      "KC",
+      "KD",
+      "KE",
+      "E1",
+      "SE1",
+      "E2",
+      "SE2"
+    ],
+    "destination": "SEXS",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn"
+    }
+  },
+  "SCRX": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TATB",
+      "TB",
+      "K",
+      "TE",
+      "EMIN",
+      "EMAX",
+      "CSWITCH",
+      "rcrfd"
+    ],
+    "destination": "SEXS",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn"
+    }
+  },
+  "EXPIC1": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TR",
+      "KA",
+      "TA1",
+      "VR1",
+      "VR2",
+      "TA2",
+      "TA3",
+      "TA4",
+      "VRMAX",
+      "VRMIN",
+      "KF",
+      "TF1",
+      "TF2",
+      "EFDMAX",
+      "EFDMIN",
+      "KE",
+      "TE",
+      "E1",
+      "SE1",
+      "E2",
+      "SE2",
+      "KP",
+      "KI",
+      "KC"
+    ],
+    "destination": "SEXS",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn"
+    }
+  },
+  "AC8B": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TR",
+      "kP",
+      "kI",
+      "kD",
+      "Td",
+      "VPMAX",
+      "VPMIN",
+      "VRMAX",
+      "VRMIN",
+      "VFEMAX",
+      "VEMIN",
+      "TA",
+      "KA",
+      "TE",
+      "KC",
+      "KD",
+      "KE",
+      "E1",
+      "SE1",
+      "E2",
+      "SE2"
+    ],
+    "destination": "AC8B",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "TR": "TR",
+      "kP": "kP",
+      "kI": "kI",
+      "kD": "kD",
+      "Td": "Td",
+      "VPMAX": "VPMAX",
+      "VPMIN": "VPMIN",
+      "VRMAX": "VRMAX",
+      "VRMIN": "VRMIN",
+      "VFEMAX": "VFEMAX",
+      "VEMIN": "VEMIN",
+      "TA": "TA",
+      "KA": "KA",
+      "TE": "TE",
+      "KC": "KC",
+      "KD": "KD",
+      "KE": "KE",
+      "E1": "E1",
+      "SE1": "SE1",
+      "E2": "E2",
+      "SE2": "SE2"
+    }
+  },
+  "EXAC1": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TR",
+      "TB",
+      "TC",
+      "KA",
+      "TA",
+      "VRMAX",
+      "VRMIN",
+      "TE",
+      "KF",
+      "TF",
+      "KC",
+      "KD",
+      "KE",
+      "E1",
+      "SE1",
+      "E2",
+      "SE2"
+    ],
+    "destination": "EXAC1",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "TR": "TR",
+      "TB": "TB",
+      "TC": "TC",
+      "KA": "KA",
+      "TA": "TA",
+      "VRMAX": "VRMAX",
+      "VRMIN": "VRMIN",
+      "TE": "TE",
+      "KF": "KF",
+      "TF": "TF",
+      "KC": "KC",
+      "KD": "KD",
+      "KE": "KE",
+      "E1": "E1",
+      "SE1": "SE1",
+      "E2": "E2",
+      "SE2": "SE2"
+    }
+  },
+  "EXAC2": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TR",
+      "TB",
+      "TC",
+      "KA",
+      "TA",
+      "VAMAX",
+      "VAMIN",
+      "KB",
+      "VRMAX",
+      "VRMIN",
+      "TE",
+      "KL",
+      "KH",
+      "KF",
+      "TF",
+      "KC",
+      "KD",
+      "KE",
+      "VLR",
+      "E1",
+      "SE1",
+      "E2",
+      "SE2"
+    ],
+    "destination": "EXAC2",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "TR": "TR",
+      "TB": "TB",
+      "TC": "TC",
+      "KA": "KA",
+      "TA": "TA",
+      "VAMAX": "VAMAX",
+      "VAMIN": "VAMIN",
+      "KB": "KB",
+      "VRMAX": "VRMAX",
+      "VRMIN": "VRMIN",
+      "TE": "TE",
+      "KL": "KL",
+      "KH": "KH",
+      "KF": "KF",
+      "TF": "TF",
+      "KC": "KC",
+      "KD": "KD",
+      "KE": "KE",
+      "VLR": "VLR",
+      "E1": "E1",
+      "SE1": "SE1",
+      "E2": "E2",
+      "SE2": "SE2"
+    }
+  },
+  "EXAC4": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TR",
+      "VIMAX",
+      "VIMIN",
+      "TC",
+      "TB",
+      "KA",
+      "TA",
+      "VRMAX",
+      "VRMIN",
+      "KC"
+    ],
+    "destination": "EXAC4",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "TR": "TR",
+      "VIMAX": "VIMAX",
+      "VIMIN": "VIMIN",
+      "TC": "TC",
+      "TB": "TB",
+      "KA": "KA",
+      "TA": "TA",
+      "VRMAX": "VRMAX",
+      "VRMIN": "VRMIN",
+      "KC": "KC"
+    }
+  },
+  "EXDC2": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TR",
+      "KA",
+      "TA",
+      "TB",
+      "TC",
+      "VRMAX",
+      "VRMIN",
+      "KE",
+      "TE",
+      "KF1",
+      "TF1",
+      "Switch",
+      "E1",
+      "SE1",
+      "E2",
+      "SE2"
+    ],
+    "destination": "EXDC2",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "TR": "TR",
+      "KA": "KA",
+      "TA": "TA",
+      "TB": "TB",
+      "TC": "TC",
+      "VRMAX": "VRMAX",
+      "VRMIN": "VRMIN",
+      "KE": "KE",
+      "TE": "TE",
+      "KF1": "KF1",
+      "TF1": "TF1",
+      "E1": "E1",
+      "SE1": "SE1",
+      "E2": "E2",
+      "SE2": "SE2"
+    }
+  },
+  "IEEEX1": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TR",
+      "KA",
+      "TA",
+      "TB",
+      "TC",
+      "VRMAX",
+      "VRMIN",
+      "KE",
+      "TE",
+      "KF1",
+      "TF1",
+      "Switch",
+      "E1",
+      "SE1",
+      "E2",
+      "SE2"
+    ],
+    "destination": "IEEEX1",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "TR": "TR",
+      "KA": "KA",
+      "TA": "TA",
+      "TB": "TB",
+      "TC": "TC",
+      "VRMAX": "VRMAX",
+      "VRMIN": "VRMIN",
+      "KE": "KE",
+      "TE": "TE",
+      "KF1": "KF1",
+      "TF1": "TF1",
+      "E1": "E1",
+      "SE1": "SE1",
+      "E2": "E2",
+      "SE2": "SE2"
+    }
+  },
+  "SEXS": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TATB",
+      "TB",
+      "K",
+      "TE",
+      "EMIN",
+      "EMAX"
+    ],
+    "destination": "SEXS",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "TATB": "TATB",
+      "TB": "TB",
+      "K": "K",
+      "TE": "TE",
+      "EMIN": "EMIN",
+      "EMAX": "EMAX"
+    }
+  },
+  "EXST1": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TR",
+      "VIMAX",
+      "VIMIN",
+      "TC",
+      "TB",
+      "KA",
+      "TA",
+      "VRMAX",
+      "VRMIN",
+      "KC",
+      "KF",
+      "TF"
+    ],
+    "destination": "EXST1",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "TR": "TR",
+      "VIMAX": "VIMAX",
+      "VIMIN": "VIMIN",
+      "TC": "TC",
+      "TB": "TB",
+      "KA": "KA",
+      "TA": "TA",
+      "VRMAX": "VRMAX",
+      "VRMIN": "VRMIN",
+      "KC": "KC",
+      "KF": "KF",
+      "TF": "TF"
+    }
+  },
+  "ESDC1A": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TR",
+      "KA",
+      "TA",
+      "TB",
+      "TC",
+      "VRMAX",
+      "VRMIN",
+      "KE",
+      "TE",
+      "KF",
+      "TF1",
+      "Switch",
+      "E1",
+      "SE1",
+      "E2",
+      "SE2"
+    ],
+    "destination": "ESDC1A",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "TR": "TR",
+      "KA": "KA",
+      "TA": "TA",
+      "TB": "TB",
+      "TC": "TC",
+      "VRMAX": "VRMAX",
+      "VRMIN": "VRMIN",
+      "KE": "KE",
+      "TE": "TE",
+      "KF": "KF",
+      "TF1": "TF1",
+      "Switch": "Switch",
+      "E1": "E1",
+      "SE1": "SE1",
+      "E2": "E2",
+      "SE2": "SE2"
+    }
+  },
+  "ESDC2A": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TR",
+      "KA",
+      "TA",
+      "TB",
+      "TC",
+      "VRMAX",
+      "VRMIN",
+      "KE",
+      "TE",
+      "KF",
+      "TF1",
+      "Switch",
+      "E1",
+      "SE1",
+      "E2",
+      "SE2"
+    ],
+    "destination": "ESDC2A",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "TR": "TR",
+      "KA": "KA",
+      "TA": "TA",
+      "TB": "TB",
+      "TC": "TC",
+      "VRMAX": "VRMAX",
+      "VRMIN": "VRMIN",
+      "KE": "KE",
+      "TE": "TE",
+      "KF": "KF",
+      "TF1": "TF1",
+      "Switch": "Switch",
+      "E1": "E1",
+      "SE1": "SE1",
+      "E2": "E2",
+      "SE2": "SE2"
+    }
+  },
+  "ESST3A": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TR",
+      "VIMAX",
+      "VIMIN",
+      "KM",
+      "TC",
+      "TB",
+      "KA",
+      "TA",
+      "VRMAX",
+      "VRMIN",
+      "KG",
+      "KP",
+      "KI",
+      "VBMAX",
+      "KC",
+      "XL",
+      "VGMAX",
+      "THETAP",
+      "TM",
+      "VMMAX",
+      "VMMIN"
+    ],
+    "destination": "ESST3A",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "TR": "TR",
+      "VIMAX": "VIMAX",
+      "VIMIN": "VIMIN",
+      "KM": "KM",
+      "TC": "TC",
+      "TB": "TB",
+      "KA": "KA",
+      "TA": "TA",
+      "VRMAX": "VRMAX",
+      "VRMIN": "VRMIN",
+      "KG": "KG",
+      "KP": "KP",
+      "KI": "KI",
+      "VBMAX": "VBMAX",
+      "KC": "KC",
+      "XL": "XL",
+      "VGMAX": "VGMAX",
+      "THETAP": "THETAP",
+      "TM": "TM",
+      "VMMAX": "VMMAX",
+      "VMMIN": "VMMIN"
+    }
+  },
+  "ESST4B": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TR",
+      "KPR",
+      "KIR",
+      "VRMAX",
+      "VRMIN",
+      "TA",
+      "KPM",
+      "KIM",
+      "VMMAX",
+      "VMMIN",
+      "KG",
+      "KP",
+      "KI",
+      "VBMAX",
+      "KC",
+      "XL",
+      "THETAP"
+    ],
+    "destination": "ESST4B",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "TR": "TR",
+      "KPR": "KPR",
+      "KIR": "KIR",
+      "VRMAX": "VRMAX",
+      "VRMIN": "VRMIN",
+      "TA": "TA",
+      "KPM": "KPM",
+      "KIM": "KIM",
+      "VMMAX": "VMMAX",
+      "VMMIN": "VMMIN",
+      "KG": "KG",
+      "KP": "KP",
+      "KI": "KI",
+      "VBMAX": "VBMAX",
+      "KC": "KC",
+      "XL": "XL",
+      "THETAP": "THETAP"
+    }
+  },
+  "IEEET1": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "TR",
+      "KA",
+      "TA",
+      "VRMAX",
+      "VRMIN",
+      "KE",
+      "TE",
+      "KF",
+      "TF",
+      "Switch",
+      "E1",
+      "SE1",
+      "E2",
+      "SE2"
+    ],
+    "destination": "IEEET1",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "TR": "TR",
+      "KA": "KA",
+      "TA": "TA",
+      "VRMAX": "VRMAX",
+      "VRMIN": "VRMIN",
+      "KE": "KE",
+      "TE": "TE",
+      "KF": "KF",
+      "TF": "TF",
+      "Switch": "Switch",
+      "E1": "E1",
+      "SE1": "SE1",
+      "E2": "E2",
+      "SE2": "SE2"
+    }
+  },
+  "GAST": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "R",
+      "T1",
+      "T2",
+      "T3",
+      "AT",
+      "KT",
+      "VMAX",
+      "VMIN",
+      "Dt"
+    ],
+    "destination": "GAST",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "R": "R",
+      "VMAX": "VMAX",
+      "VMIN": "VMIN",
+      "KT": "KT",
+      "AT": "AT",
+      "T1": "T1",
+      "T2": "T2",
+      "T3": "T3",
+      "Dt": "Dt"
+    }
+  },
+  "TGOV1": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "R",
+      "T1",
+      "VMAX",
+      "VMIN",
+      "T2",
+      "T3",
+      "Dt"
+    ],
+    "destination": "TGOV1",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "R": "R",
+      "T1": "T1",
+      "VMAX": "VMAX",
+      "VMIN": "VMIN",
+      "T2": "T2",
+      "T3": "T3",
+      "Dt": "Dt"
+    }
+  },
+  "GGOV1": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "Rselect",
+      "Fswitch",
+      "R",
+      "Tpelec",
+      "maxerr",
+      "minerr",
+      "Kpgov",
+      "KIgov",
+      "Kdgov",
+      "Tdgov",
+      "VMAX",
+      "VMIN",
+      "Tact",
+      "Kturb",
+      "Wfnl",
+      "Tb",
+      "Tc",
+      "Teng",
+      "Tfload",
+      "Kpload",
+      "KIload",
+      "Ldref",
+      "Dm",
+      "Ropen",
+      "Rclose",
+      "KImw",
+      "Aset",
+      "Ka",
+      "Ta",
+      "Trate",
+      "db",
+      "Tsa",
+      "Tsb",
+      "Rup",
+      "Rdown"
+    ],
+    "destination": "TGOV1",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "R": "R"
+    }
+  },
+  "HYGOV": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "R",
+      "r",
+      "Tr",
+      "Tf",
+      "Tg",
+      "VELM",
+      "GMAX",
+      "GMIN",
+      "Tw",
+      "At",
+      "Dturb",
+      "qNL"
+    ],
+    "destination": "HYGOV",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "R": "R",
+      "r": "r",
+      "Tr": "Tr",
+      "Tf": "Tf",
+      "Tg": "Tg",
+      "VELM": "VELM",
+      "GMAX": "GMAX",
+      "GMIN": "GMIN",
+      "Tw": "Tw",
+      "At": "At",
+      "Dt": "Dturb",
+      "qNL": "qNL"
+    }
+  },
+  "IEESGO": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "T6",
+      "K1",
+      "K2",
+      "K3",
+      "PMAX",
+      "PMIN"
+    ],
+    "destination": "IEESGO",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "T1": "T1",
+      "T2": "T2",
+      "T3": "T3",
+      "T4": "T4",
+      "T5": "T5",
+      "T6": "T6",
+      "K1": "K1",
+      "K2": "K2",
+      "K3": "K3",
+      "PMAX": "PMAX",
+      "PMIN": "PMIN"
+    }
+  },
+  "IEEEG1": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "BUS2",
+      "ID2",
+      "K",
+      "T1",
+      "T2",
+      "T3",
+      "UO",
+      "UC",
+      "PMAX",
+      "PMIN",
+      "T4",
+      "K1",
+      "K2",
+      "T5",
+      "K3",
+      "K4",
+      "T6",
+      "K5",
+      "K6",
+      "T7",
+      "K7",
+      "K8"
+    ],
+    "destination": "IEEEG1",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      },
+      "syn2": {
+        "SynGen": {
+          "bus": "BUS2",
+          "subidx": "ID2",
+          "allow_none": 1
+        }
+      }
+    },
+    "outputs": {
+      "syn": "syn",
+      "K": "K",
+      "T1": "T1",
+      "T2": "T2",
+      "T3": "T3",
+      "UO": "UO",
+      "UC": "UC",
+      "PMAX": "PMAX",
+      "PMIN": "PMIN",
+      "T4": "T4",
+      "K1": "K1",
+      "K2": "K2",
+      "T5": "T5",
+      "K3": "K3",
+      "K4": "K4",
+      "T6": "T6",
+      "K5": "K5",
+      "K6": "K6",
+      "T7": "T7",
+      "K7": "K7",
+      "K8": "K8"
+    }
+  },
+  "IEEEST": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "MODE",
+      "BUSR",
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6",
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "T6",
+      "KS",
+      "LSMAX",
+      "LSMIN",
+      "VCU",
+      "VCL"
+    ],
+    "destination": "IEEEST",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      },
+      "avr": {
+        "Exciter": {
+          "syn": "syn"
+        }
+      }
+    },
+    "outputs": {
+      "avr": "avr",
+      "MODE": "MODE",
+      "busr": "IEEEST.BUSR; lambda x: [None if (i == 0) else i for i in x]",
+      "A1": "A1",
+      "A2": "A2",
+      "A3": "A3",
+      "A4": "A4",
+      "A5": "A5",
+      "A6": "A6",
+      "T1": "T1",
+      "T2": "T2",
+      "T3": "T3",
+      "T4": "T4",
+      "T5": "T5",
+      "T6": "T6",
+      "KS": "KS",
+      "LSMAX": "LSMAX",
+      "LSMIN": "LSMIN",
+      "VCU": "VCU",
+      "VCL": "VCL"
+    }
+  },
+  "ST2CUT": {
+    "inputs": [
+      "BUS",
+      "ID",
+      "MODE",
+      "BUSR",
+      "MODE2",
+      "BUSR2",
+      "K1",
+      "K2",
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "T6",
+      "T7",
+      "T8",
+      "T9",
+      "T10",
+      "LSMAX",
+      "LSMIN",
+      "VCU",
+      "VCL"
+    ],
+    "destination": "ST2CUT",
+    "find": {
+      "syn": {
+        "SynGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      },
+      "avr": {
+        "Exciter": {
+          "syn": "syn"
+        }
+      }
+    },
+    "outputs": {
+      "avr": "avr",
+      "MODE": "MODE",
+      "busr": "ST2CUT.BUSR; lambda x: [None if (i == 0) else i for i in x]",
+      "MODE2": "MODE2",
+      "busr2": "ST2CUT.BUSR2; lambda x: [None if (i == 0) else i for i in x]",
+      "K1": "K1",
+      "K2": "K2",
+      "T1": "T1",
+      "T2": "T2",
+      "T3": "T3",
+      "T4": "T4",
+      "T5": "T5",
+      "T6": "T6",
+      "T7": "T7",
+      "T8": "T8",
+      "T9": "T9",
+      "T10": "T10",
+      "LSMAX": "LSMAX",
+      "LSMIN": "LSMIN",
+      "VCU": "VCU",
+      "VCL": "VCL"
+    }
+  },
+  "REGCA1": {
+    "destination": "REGCA1",
+    "inputs": [
+      "BUS",
+      "ID",
+      "Lvplsw",
+      "Tg",
+      "Rrpwr",
+      "Brkpt",
+      "Zerox",
+      "Lvpl1",
+      "Volim",
+      "Lvpnt1",
+      "Lvpnt0",
+      "Iolim",
+      "Tfltr",
+      "Khv",
+      "Iqrmax",
+      "Iqrmin",
+      "Accel"
+    ],
+    "find": {
+      "gen": {
+        "StaticGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      }
+    },
+    "get": {
+      "u": {
+        "StaticGen": {
+          "src": "u",
+          "idx": "gen"
+        }
+      },
+      "Sn": {
+        "StaticGen": {
+          "src": "Sn",
+          "idx": "gen"
+        }
+      }
+    },
+    "outputs": {
+      "u": "u",
+      "bus": "BUS",
+      "gen": "gen",
+      "Sn": "Sn",
+      "Tg": "Tg",
+      "Rrpwr": "Rrpwr",
+      "Brkpt": "Brkpt",
+      "Zerox": "Zerox",
+      "Lvplsw": "Lvplsw",
+      "Lvpl1": "Lvpl1",
+      "Volim": "Volim",
+      "Lvpnt1": "Lvpnt1",
+      "Lvpnt0": "Lvpnt0",
+      "Iolim": "Iolim",
+      "Tfltr": "Tfltr",
+      "Khv": "Khv",
+      "Iqrmax": "Iqrmax",
+      "Iqrmin": "Iqrmin",
+      "Accel": "Accel"
+    }
+  },
+  "REECA1": {
+    "destination": "REECA1",
+    "inputs": [
+      "BUS",
+      "ID",
+      "BUSR",
+      "PFFLAG",
+      "VFLAG",
+      "QFLAG",
+      "PFLAG",
+      "PQFLAG",
+      "Vdip",
+      "Vup",
+      "Trv",
+      "dbd1",
+      "dbd2",
+      "Kqv",
+      "Iqh1",
+      "Iql1",
+      "Vref0",
+      "Iqfrz",
+      "Thld",
+      "Thld2",
+      "Tp",
+      "QMax",
+      "QMin",
+      "VMAX",
+      "VMIN",
+      "Kqp",
+      "Kqi",
+      "Kvp",
+      "Kvi",
+      "Vbias",
+      "Tiq",
+      "dPmax",
+      "dPmin",
+      "PMAX",
+      "PMIN",
+      "Imax",
+      "Tpord",
+      "Vq1",
+      "Iq1",
+      "Vq2",
+      "Iq2",
+      "Vq3",
+      "Iq3",
+      "Vq4",
+      "Iq4",
+      "Vp1",
+      "Ip1",
+      "Vp2",
+      "Ip2",
+      "Vp3",
+      "Ip3",
+      "Vp4",
+      "Ip4"
+    ],
+    "find": {
+      "gen": {
+        "StaticGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      },
+      "reg": {
+        "RenGen": {
+          "bus": "BUS"
+        }
+      }
+    },
+    "outputs": {
+      "reg": "reg",
+      "busr": "BUSR",
+      "PFFLAG": "PFFLAG",
+      "VFLAG": "VFLAG",
+      "QFLAG": "QFLAG",
+      "PFLAG": "PFLAG",
+      "PQFLAG": "PQFLAG",
+      "Vdip": "Vdip",
+      "Vup": "Vup",
+      "Trv": "Trv",
+      "dbd1": "dbd1",
+      "dbd2": "dbd2",
+      "Kqv": "Kqv",
+      "Iqh1": "Iqh1",
+      "Iql1": "Iql1",
+      "Vref0": "Vref0",
+      "Iqfrz": "Iqfrz",
+      "Thld": "Thld",
+      "Thld2": "Thld2",
+      "Tp": "Tp",
+      "QMax": "QMax",
+      "QMin": "QMin",
+      "VMAX": "VMAX",
+      "VMIN": "VMIN",
+      "Kqp": "Kqp",
+      "Kqi": "Kqi",
+      "Kvp": "Kvp",
+      "Kvi": "Kvi",
+      "Vref1": "Vbias",
+      "Tiq": "Tiq",
+      "dPmax": "dPmax",
+      "dPmin": "dPmin",
+      "PMAX": "PMAX",
+      "PMIN": "PMIN",
+      "Imax": "Imax",
+      "Tpord": "Tpord",
+      "Vq1": "Vq1",
+      "Iq1": "Iq1",
+      "Vq2": "Vq2",
+      "Iq2": "Iq2",
+      "Vq3": "Vq3",
+      "Iq3": "Iq3",
+      "Vq4": "Vq4",
+      "Iq4": "Iq4",
+      "Vp1": "Vp1",
+      "Ip1": "Ip1",
+      "Vp2": "Vp2",
+      "Ip2": "Ip2",
+      "Vp3": "Vp3",
+      "Ip3": "Ip3",
+      "Vp4": "Vp4",
+      "Ip4": "Ip4"
+    }
+  },
+  "REPCA1": {
+    "destination": "REPCA1",
+    "inputs": [
+      "BUS",
+      "ID",
+      "BUSR",
+      "BUS1",
+      "BUS2",
+      "CKTID",
+      "VCFlag",
+      "RefFlag",
+      "Fflag",
+      "Tfltr",
+      "Kp",
+      "Ki",
+      "Tft",
+      "Tfv",
+      "Vfrz",
+      "Rc",
+      "Xc",
+      "Kc",
+      "emax",
+      "emin",
+      "dbd1",
+      "dbd2",
+      "Qmax",
+      "Qmin",
+      "Kpg",
+      "Kig",
+      "Tp",
+      "fdbd1",
+      "fdbd2",
+      "femax",
+      "femin",
+      "Pmax",
+      "Pmin",
+      "Tg",
+      "Ddn",
+      "Dup"
+    ],
+    "find": {
+      "gen": {
+        "StaticGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      },
+      "reg": {
+        "RenGen": {
+          "bus": "BUS"
+        }
+      },
+      "ree": {
+        "RenExciter": {
+          "reg": "reg"
+        }
+      },
+      "line": {
+        "Line": {
+          "bus1": "BUS1",
+          "bus2": "BUS2"
+        }
+      }
+    },
+    "outputs": {
+      "ree": "ree",
+      "line": "line",
+      "busr": "REPCA1.BUSR; lambda x: [None if (i == 0) else i for i in x]",
+      "VCFlag": "VCFlag",
+      "RefFlag": "RefFlag",
+      "Fflag": "Fflag",
+      "PLflag": "Fflag; lambda x: 1",
+      "Tfltr": "Tfltr",
+      "Kp": "Kp",
+      "Ki": "Ki",
+      "Tft": "Tft",
+      "Tfv": "Tfv",
+      "Vfrz": "Vfrz",
+      "Rc": "Rc",
+      "Xc": "Xc",
+      "Kc": "Kc",
+      "emax": "emax",
+      "emin": "emin",
+      "dbd1": "dbd1",
+      "dbd2": "dbd2",
+      "Qmax": "Qmax",
+      "Qmin": "Qmin",
+      "Kpg": "Kpg",
+      "Kig": "Kig",
+      "Tp": "Tp",
+      "fdbd1": "fdbd1",
+      "fdbd2": "fdbd2",
+      "femax": "femax",
+      "femin": "femin",
+      "Pmax": "Pmax",
+      "Pmin": "Pmin",
+      "Tg": "Tg",
+      "Ddn": "Ddn",
+      "Dup": "Dup"
+    }
+  },
+  "WTDTA1": {
+    "destination": "WTDTA1",
+    "inputs": [
+      "BUS",
+      "ID",
+      "H",
+      "DAMP",
+      "Htfrac",
+      "Freq1",
+      "Dshaft"
+    ],
+    "find": {
+      "ree": {
+        "RenExciter": {
+          "bus": "BUS"
+        }
+      }
+    },
+    "outputs": {
+      "ree": "ree",
+      "H": "H",
+      "DAMP": "DAMP",
+      "Htfrac": "Htfrac",
+      "Freq1": "Freq1",
+      "Dshaft": "Dshaft"
+    }
+  },
+  "WTARA1": {
+    "destination": "WTARA1",
+    "inputs": [
+      "BUS",
+      "ID",
+      "Ka",
+      "theta0"
+    ],
+    "find": {
+      "gen": {
+        "StaticGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      },
+      "reg": {
+        "RenGen": {
+          "bus": "BUS"
+        }
+      },
+      "ree": {
+        "RenExciter": {
+          "reg": "reg"
+        }
+      },
+      "rego": {
+        "RenGovernor": {
+          "ree": "ree"
+        }
+      }
+    },
+    "outputs": {
+      "rego": "rego",
+      "Ka": "Ka",
+      "theta0": "theta0"
+    }
+  },
+  "WTPTA1": {
+    "destination": "WTPTA1",
+    "inputs": [
+      "BUS",
+      "ID",
+      "Kiw",
+      "Kpw",
+      "Kic",
+      "Kpc",
+      "Kcc",
+      "Tp",
+      "TetaMax",
+      "TetaMin",
+      "RTetaMax",
+      "RTetaMin"
+    ],
+    "find": {
+      "gen": {
+        "StaticGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      },
+      "reg": {
+        "RenGen": {
+          "bus": "BUS"
+        }
+      },
+      "ree": {
+        "RenExciter": {
+          "reg": "reg"
+        }
+      },
+      "rego": {
+        "RenGovernor": {
+          "ree": "ree"
+        }
+      },
+      "rea": {
+        "RenAerodynamics": {
+          "rego": "rego"
+        }
+      }
+    },
+    "outputs": {
+      "rea": "rea",
+      "Kiw": "Kiw",
+      "Kpw": "Kpw",
+      "Kic": "Kic",
+      "Kpc": "Kpc",
+      "Kcc": "Kcc",
+      "Tp": "Tp",
+      "thmax": "TetaMax",
+      "thmin": "TetaMin",
+      "dthmax": "RTetaMax",
+      "dthmin": "RTetaMin"
+    }
+  },
+  "WTTQA1": {
+    "destination": "WTTQA1",
+    "inputs": [
+      "BUS",
+      "ID",
+      "Tflag",
+      "Kpp",
+      "Kip",
+      "Tp",
+      "Twref",
+      "Temax",
+      "Temin",
+      "p1",
+      "spd1",
+      "p2",
+      "spd2",
+      "p3",
+      "spd3",
+      "p4",
+      "spd4",
+      "TRATE"
+    ],
+    "find": {
+      "gen": {
+        "StaticGen": {
+          "bus": "BUS",
+          "subidx": "ID"
+        }
+      },
+      "reg": {
+        "RenGen": {
+          "bus": "BUS"
+        }
+      },
+      "ree": {
+        "RenExciter": {
+          "reg": "reg"
+        }
+      },
+      "rego": {
+        "RenGovernor": {
+          "ree": "ree"
+        }
+      },
+      "rea": {
+        "RenAerodynamics": {
+          "rego": "rego"
+        }
+      },
+      "rep": {
+        "RenPitch": {
+          "rea": "rea"
+        }
+      }
+    },
+    "outputs": {
+      "rep": "rep",
+      "Tflag": "Tflag",
+      "Kpp": "Kpp",
+      "Kip": "Kip",
+      "Tp": "Tp",
+      "Twref": "Twref",
+      "Temax": "Temax",
+      "Temin": "Temin",
+      "p1": "p1",
+      "spd1": "spd1",
+      "p2": "p2",
+      "spd2": "spd2",
+      "p3": "p3",
+      "spd3": "spd3",
+      "p4": "p4",
+      "spd4": "spd4",
+      "TRATE": "Tn"
+    }
+  },
+  "Toggle": {
+    "inputs": [
+      "model",
+      "dev",
+      "t"
+    ],
+    "destination": "Toggle",
+    "outputs": {
+      "model": "model",
+      "dev": "dev",
+      "t": "t"
+    }
+  },
+  "Fault": {
+    "inputs": [
+      "bus",
+      "tf",
+      "tc",
+      "xf",
+      "rf"
+    ],
+    "destination": "Fault",
+    "outputs": {
+      "bus": "bus",
+      "tf": "tf",
+      "tc": "tc",
+      "xf": "xf",
+      "rf": "rf"
+    }
+  }
+}

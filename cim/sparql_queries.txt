@@ -954,3 +954,50 @@ SELECT DISTINCT ?name ?type ?bus ?genU ?xfU ?vgroup ?genS ?xfS WHERE {
 }
 ORDER by ?name
 
+##################################################
+
+for OWL files
+
+PREFIX cim:  <http://www.ucaiug.org/ns#>
+PREFIX emt:  <http://opensource.ieee.org/emtiop#>
+PREFIX msg:  <http://langdale.com.au/2005/Message#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX uml:  <http://langdale.com.au/2005/UML#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+##################################################
+
+# summarize the Ontology
+SELECT ?type ?label ?imports
+WHERE {
+  ?s rdf:type ?type.
+  ?s rdfs:label ?label .
+  ?s owl:imports ?imports
+}
+
+# list the concrete classes, etc.
+SELECT ?type ?label ?stereo
+WHERE {
+# VALUES ?stereoraw {uml:attribute uml:cimextension uml:concrete uml:enumeration uml:ofAggregate}
+  ?s rdf:type ?type.
+  ?s rdfs:label ?label .
+  ?s uml:hasStereotype ?stereoraw.
+  bind(strafter(str(?stereoraw),"#") as ?stereo)
+} ORDER by ?label
+
+# list class attributes
+SELECT ?name ?atype
+WHERE {
+ VALUES ?label {"ACLineSegment"}
+  ?s rdf:type ?type.
+  ?s rdfs:label ?label .
+  ?s rdfs:subClassOf ?node.
+  ?node owl:onProperty ?rawname.
+  ?node owl:allValuesFrom ?dtype.
+  ?dtype owl:equivalentClass ?rawatype.        
+  bind(strafter(str(?rawname),"#") as ?name)
+  bind(strafter(str(?rawatype),"#") as ?atype)
+} ORDER by ?name
+
