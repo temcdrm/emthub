@@ -991,8 +991,9 @@ WHERE {
 # list class attributes and associations
 SELECT ?name ?atype
 WHERE {
- VALUES ?label {"ACLineSegment" "Conductor" "ConductingEquipment" "IdentifiedObject"}
-  ?s rdf:type ?type.
+# VALUES ?label {"ACLineSegment" "Conductor" "ConductingEquipment" "IdentifiedObject"}
+# VALUES ?label {"SynchronousMachine" "RotatingMachine" "RegulatingCondEq" "EnergyConnection" "ConductingEquipment" "Equipment" "PowerSystemResource" "IdentifiedObject"}
+ VALUES ?label {"WeccREECA" "WeccREEC" "WeccDynamics" "DynamicsFunctionBlock" "IdentifiedObject"}
   ?s rdfs:label ?label .
   ?s rdfs:subClassOf ?node.
   ?node owl:onProperty ?rawname.
