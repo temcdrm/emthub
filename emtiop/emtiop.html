@@ -2173,6 +2173,20 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
+                  <p class="name" id="IBRPlant.acFilterKind">acFilterKind</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IBRFilterKind">IBRFilterKind</a>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <th>
                   <p class="name" id="IBRPlant.acFilterLbridge">acFilterLbridge</p>
                </th>
                <td>
@@ -2380,6 +2394,22 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p class="comment">Version of the hardware provider's firmware, or the model provider's code.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLL.snapshotUri">snapshotUri</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Location of the optional snapshot file for initializing the DLL from a saved state. Either a universal resource identifier or network-accessible filename.</p>
                </td>
             </tr>
             <tr>
@@ -4966,6 +4996,22 @@ p.package { position: absolute; right: 10px; top: 0px}
          <p class="comment">State variable for power flow. Load convention is used for flow direction. This means flow out from the TopologicalNode into the equipment is positive.</p>
          <h3>Native Members</h3>
          <table>
+            <tr>
+               <th>
+                  <p class="name" id="SvPowerFlow.atToEnd">atToEnd</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">If True, power flow is positive into the ConductingEquipment at the ToConnectivityNode. If False or absent, power flow is positive into the ConductingEquipment at the FromConnectivityNode.</p>
+               </td>
+            </tr>
             <tr>
                <th>
                   <p class="name" id="SvPowerFlow.p">p</p>
@@ -10488,6 +10534,214 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="RemoteInputSignal" class="group">
+         <a href="#RemoteInputSignal">
+            <h2 class="abstract">RemoteInputSignal</h2>
+         </a>
+         <p class="package">StandardInterconnections</p>
+         <p class="comment">Supports connection to a terminal associated with a remote bus from which an input signal of a specific type is coming.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.atToEnd">atToEnd</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">If True, signal connects at the ToConnectivityNode of the associated ConductingEquipment. If False or absent, signal connects at the FromConnectivityNode of the associated ConductingEquipment. Not applicable with associations to ConnectivityNode or TransformerEnd.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.remoteSignalType">remoteSignalType</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#RemoteSignalKind">RemoteSignalKind</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Type of input signal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.ConductingEquipment">ConductingEquipment</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ConductingEquipment">ConductingEquipment</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The ConductingEquipment providing input for the signal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.ConnectivityNode">ConnectivityNode</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ConnectivityNode">ConnectivityNode</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The ConnectivityNode providing input to the signal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.DERDynamics">DERDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..<item>*</item>
+                  </p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#DERDynamics">DERDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">DER dynamics model which has a remote input signal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.IEEECigreDLL">IEEECigreDLL</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreDLL">IEEECigreDLL</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The DLL this signal provides input for.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.PowerSystemStabilizerDynamics">PowerSystemStabilizerDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PowerSystemStabilizerDynamics">PowerSystemStabilizerDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Power system stabilizer model using this remote input signal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.TransformerEnd">TransformerEnd</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#TransformerEnd">TransformerEnd</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The TransformerEnd providing input for the signal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.UnderexcitationLimiterDynamics">UnderexcitationLimiterDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#UnderexcitationLimiterDynamics">UnderexcitationLimiterDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Underexcitation limiter model using this remote input signal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.WeccDynamics">WeccDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#WeccDynamics">WeccDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The dynamic controller this signal provides input for.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
       <div id="RotatingMachine" class="group">
          <a href="#RotatingMachine">
             <h2 class="abstract">RotatingMachine</h2>
@@ -12105,6 +12359,26 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="IBRFilterKind" class="group">
+         <a href="#IBRFilterKind">
+            <h2 class="enumerated">IBRFilterKind</h2>
+         </a>
+         <p class="package">Emtiop</p>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">delta</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">ungroundedWye</p>
+               </th>
+               <td/>
+            </tr>
+         </table>
+      </div>
       <div id="IEEECigreDLLParameterKind" class="group">
          <a href="#IEEECigreDLLParameterKind">
             <h2 class="enumerated">IEEECigreDLLParameterKind</h2>
@@ -12443,6 +12717,105 @@ p.package { position: absolute; right: 10px; top: 0px}
                </th>
                <td>
                   <p class="comment">Low means a monitored value below the limit is a violation.  If applied to a terminal flow, the positive direction is into the terminal.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="RemoteSignalKind" class="group">
+         <a href="#RemoteSignalKind">
+            <h2 class="enumerated">RemoteSignalKind</h2>
+         </a>
+         <p class="package">StandardInterconnections</p>
+         <p class="comment">Type of input signal coming from remote bus.</p>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">remoteBranchActivePower</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">remoteBranchCurrent</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">remoteBranchCurrentAmplitude</p>
+               </th>
+               <td>
+                  <p class="comment">Input is branch current amplitude from remote terminal bus.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">remoteBranchReactivePower</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">remoteBusFrequency</p>
+               </th>
+               <td>
+                  <p class="comment">Input is frequency from remote terminal bus.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">remoteBusFrequencyDeviation</p>
+               </th>
+               <td>
+                  <p class="comment">Input is frequency deviation from remote terminal bus.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">remoteBusVoltage</p>
+               </th>
+               <td>
+                  <p class="comment">Input is voltage from remote terminal bus.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">remoteBusVoltageAmplitude</p>
+               </th>
+               <td>
+                  <p class="comment">Input is voltage amplitude from remote terminal bus.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">remoteBusVoltageAmplitudeDerivative</p>
+               </th>
+               <td>
+                  <p class="comment">Input is branch current amplitude derivative from remote terminal bus.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">remoteBusVoltageFrequency</p>
+               </th>
+               <td>
+                  <p class="comment">Input is voltage frequency from remote terminal bus.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">remoteBusVoltageFrequencyDeviation</p>
+               </th>
+               <td>
+                  <p class="comment">Input is voltage frequency deviation from remote terminal bus.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">remotePuBusVoltageDerivative</p>
+               </th>
+               <td>
+                  <p class="comment">Input is PU voltage derivative from remote terminal bus.</p>
                </td>
             </tr>
          </table>

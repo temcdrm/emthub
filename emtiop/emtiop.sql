@@ -514,6 +514,10 @@ CREATE TABLE "HydroGeneratingUnit"
     "mRID" VARCHAR(100) PRIMARY KEY
 );
 
+CREATE TABLE "IBRFilterKind" ( "name" VARCHAR(100) UNIQUE );
+INSERT INTO "IBRFilterKind" ( "name" ) VALUES ( 'delta' );
+INSERT INTO "IBRFilterKind" ( "name" ) VALUES ( 'ungroundedWye' );
+
 -- An inverter-based resource (IBR) plant comprising a collection of components,
 -- with additional attributes not represented by other CIM network components.
 -- For example, AC and DC filter characteristics, pulse width modulation (PWM)
@@ -523,6 +527,8 @@ CREATE TABLE "IBRPlant"
     "mRID" VARCHAR(100) PRIMARY KEY,
     -- Shunt capacitance of the AC tee filter, wye equivalent value.
     "acFilterCapacitance" DOUBLE PRECISION,
+    -- FK column reference to table representing the "IBRFilterKind" enumeration
+    "acFilterKind" VARCHAR(100),
     -- Inverter bridge-side inductance of the AC tee filter.
     "acFilterLbridge" DOUBLE PRECISION,
     -- Grid-side inductance of the AC tee filter.
@@ -550,6 +556,10 @@ CREATE TABLE "IEEECigreDLL"
     "firmwareInstalled" TIMESTAMP,
     -- Version of the hardware provider's firmware, or the model provider's code.
     "firmwareVersion" VARCHAR(255),
+    -- Location of the optional snapshot file for initializing the DLL from a
+    -- saved state. Either a universal resource identifier or network-accessible
+    -- filename.
+    "snapshotUri" VARCHAR(255),
     -- True if the DLL supports EMT simulation.
     "supportsEMT" INTEGER NOT NULL DEFAULT 1 CHECK ("supportsEMT" IN (0, 1)),
     -- True if the DLL supports RMS, i.e., phasor domain, simulation.
@@ -1138,6 +1148,66 @@ CREATE TABLE "RegulatingCondEq"
     "mRID" VARCHAR(100) PRIMARY KEY
 );
 
+-- Supports connection to a terminal associated with a remote bus from which
+-- an input signal of a specific type is coming.
+CREATE TABLE "RemoteInputSignal"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- If True, signal connects at the ToConnectivityNode of the associated ConductingEquipment.
+    -- If False or absent, signal connects at the FromConnectivityNode of the
+    -- associated ConductingEquipment. Not applicable with associations to ConnectivityNode
+    -- or TransformerEnd.
+    "atToEnd" INTEGER NOT NULL DEFAULT 1 CHECK ("atToEnd" IN (0, 1)),
+    -- Type of input signal.
+    -- FK column reference to table representing the "RemoteSignalKind" enumeration
+    "remoteSignalType" VARCHAR(100),
+    -- The ConductingEquipment providing input for the signal.
+    -- FK column reference to table representing the "ConductingEquipment" class
+    "ConductingEquipment" VARCHAR(100),
+    -- The ConnectivityNode providing input to the signal.
+    -- FK column reference to table representing the "ConnectivityNode" class
+    "ConnectivityNode" VARCHAR(100),
+    -- The DLL this signal provides input for.
+    -- FK column reference to table representing the "IEEECigreDLL" class
+    "IEEECigreDLL" VARCHAR(100),
+    -- Power system stabilizer model using this remote input signal.
+    -- FK column reference to table representing the "PowerSystemStabilizerDynamics" class
+    "PowerSystemStabilizerDynamics" VARCHAR(100),
+    -- The TransformerEnd providing input for the signal.
+    -- FK column reference to table representing the "TransformerEnd" class
+    "TransformerEnd" VARCHAR(100),
+    -- Underexcitation limiter model using this remote input signal.
+    -- FK column reference to table representing the "UnderexcitationLimiterDynamics" class
+    "UnderexcitationLimiterDynamics" VARCHAR(100),
+    -- The dynamic controller this signal provides input for.
+    -- FK column reference to table representing the "WeccDynamics" class
+    "WeccDynamics" VARCHAR(100)
+);
+
+-- Type of input signal coming from remote bus.
+CREATE TABLE "RemoteSignalKind" ( "name" VARCHAR(100) UNIQUE );
+INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBranchActivePower' );
+INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBranchCurrent' );
+-- Input is branch current amplitude from remote terminal bus.
+INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBranchCurrentAmplitude' );
+INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBranchReactivePower' );
+-- Input is frequency from remote terminal bus.
+INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBusFrequency' );
+-- Input is frequency deviation from remote terminal bus.
+INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBusFrequencyDeviation' );
+-- Input is voltage from remote terminal bus.
+INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBusVoltage' );
+-- Input is voltage amplitude from remote terminal bus.
+INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBusVoltageAmplitude' );
+-- Input is branch current amplitude derivative from remote terminal bus.
+INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBusVoltageAmplitudeDerivative' );
+-- Input is voltage frequency from remote terminal bus.
+INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBusVoltageFrequency' );
+-- Input is voltage frequency deviation from remote terminal bus.
+INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBusVoltageFrequencyDeviation' );
+-- Input is PU voltage derivative from remote terminal bus.
+INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remotePuBusVoltageDerivative' );
+
 -- A rotating machine which may be used as a generator or motor.
 CREATE TABLE "RotatingMachine"
 (
@@ -1278,6 +1348,10 @@ CREATE TABLE "StateVariable"
 CREATE TABLE "SvPowerFlow"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
+    -- If True, power flow is positive into the ConductingEquipment at the ToConnectivityNode.
+    -- If False or absent, power flow is positive into the ConductingEquipment
+    -- at the FromConnectivityNode.
+    "atToEnd" INTEGER NOT NULL DEFAULT 1 CHECK ("atToEnd" IN (0, 1)),
     -- The active power flow. Load sign convention is used, i.e. positive sign
     -- means flow out from a TopologicalNode (bus) into the conducting equipment.
     "p" DOUBLE PRECISION,
@@ -2592,6 +2666,9 @@ ALTER TABLE "RatioTapChanger" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TapChanger"
 -- Inheritance subclass-superclass constraint for table "RegulatingCondEq"
 ALTER TABLE "RegulatingCondEq" ADD FOREIGN KEY ( "mRID" ) REFERENCES "EnergyConnection" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "RemoteInputSignal"
+ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "RotatingMachine"
 ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RegulatingCondEq" ( "mRID" );
 
@@ -2713,6 +2790,9 @@ ALTER TABLE "Equipment" ADD FOREIGN KEY ( "EquipmentContainer" ) REFERENCES "Equ
 -- Foreign keys for table "ExcitationSystemDynamics"
 ALTER TABLE "ExcitationSystemDynamics" ADD FOREIGN KEY ( "SynchronousMachineDynamics" ) REFERENCES "SynchronousMachineDynamics" ( "mRID" );
 
+-- Foreign keys for table "IBRPlant"
+ALTER TABLE "IBRPlant" ADD FOREIGN KEY ( "acFilterKind" ) REFERENCES "IBRFilterKind" ( "name" );
+
 -- Foreign keys for table "IEEECigreDLL"
 ALTER TABLE "IEEECigreDLL" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFERENCES "PowerElectronicsConnection" ( "mRID" );
 
@@ -2746,6 +2826,16 @@ ALTER TABLE "PssIEEE1A" ADD FOREIGN KEY ( "inputSignalType" ) REFERENCES "InputS
 
 -- Foreign keys for table "RatioTapChanger"
 ALTER TABLE "RatioTapChanger" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
+
+-- Foreign keys for table "RemoteInputSignal"
+ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "remoteSignalType" ) REFERENCES "RemoteSignalKind" ( "name" );
+ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "ConductingEquipment" ) REFERENCES "ConductingEquipment" ( "mRID" );
+ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
+ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "IEEECigreDLL" ) REFERENCES "IEEECigreDLL" ( "mRID" );
+ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "PowerSystemStabilizerDynamics" ) REFERENCES "PowerSystemStabilizerDynamics" ( "mRID" );
+ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
+ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "UnderexcitationLimiterDynamics" ) REFERENCES "UnderexcitationLimiterDynamics" ( "mRID" );
+ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "WeccDynamics" ) REFERENCES "WeccDynamics" ( "mRID" );
 
 -- Foreign keys for table "RotatingMachine"
 ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "GeneratingUnit" ) REFERENCES "GeneratingUnit" ( "mRID" );
@@ -2819,6 +2909,8 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 
 -- Cascade deletes for compounds referenced in table "ExcitationSystemDynamics"
 
+-- Cascade deletes for compounds referenced in table "IBRPlant"
+
 -- Cascade deletes for compounds referenced in table "IEEECigreDLL"
 
 -- Cascade deletes for compounds referenced in table "IEEECigreDLLParameter"
@@ -2838,6 +2930,8 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 -- Cascade deletes for compounds referenced in table "PssIEEE1A"
 
 -- Cascade deletes for compounds referenced in table "RatioTapChanger"
+
+-- Cascade deletes for compounds referenced in table "RemoteInputSignal"
 
 -- Cascade deletes for compounds referenced in table "RotatingMachine"
 
@@ -2889,6 +2983,13 @@ CREATE INDEX ix_PowerElectronicsUnit_PowerElectronicsConnection ON "PowerElectro
 CREATE INDEX ix_PowerSystemStabilizerDynamics_ExcitationSystemDynamics ON "PowerSystemStabilizerDynamics" ( "ExcitationSystemDynamics" );
 CREATE INDEX ix_PowerTransformerEnd_PowerTransformer ON "PowerTransformerEnd" ( "PowerTransformer" );
 CREATE INDEX ix_RatioTapChanger_TransformerEnd ON "RatioTapChanger" ( "TransformerEnd" );
+CREATE INDEX ix_RemoteInputSignal_ConductingEquipment ON "RemoteInputSignal" ( "ConductingEquipment" );
+CREATE INDEX ix_RemoteInputSignal_ConnectivityNode ON "RemoteInputSignal" ( "ConnectivityNode" );
+CREATE INDEX ix_RemoteInputSignal_IEEECigreDLL ON "RemoteInputSignal" ( "IEEECigreDLL" );
+CREATE INDEX ix_RemoteInputSignal_PowerSystemStabilizerDynamics ON "RemoteInputSignal" ( "PowerSystemStabilizerDynamics" );
+CREATE INDEX ix_RemoteInputSignal_TransformerEnd ON "RemoteInputSignal" ( "TransformerEnd" );
+CREATE INDEX ix_RemoteInputSignal_UnderexcitationLimiterDynamics ON "RemoteInputSignal" ( "UnderexcitationLimiterDynamics" );
+CREATE INDEX ix_RemoteInputSignal_WeccDynamics ON "RemoteInputSignal" ( "WeccDynamics" );
 CREATE INDEX ix_RotatingMachine_GeneratingUnit ON "RotatingMachine" ( "GeneratingUnit" );
 CREATE INDEX ix_SvPowerFlow_ConductingEquipment ON "SvPowerFlow" ( "ConductingEquipment" );
 CREATE INDEX ix_SvPowerFlow_TransformerEnd ON "SvPowerFlow" ( "TransformerEnd" );

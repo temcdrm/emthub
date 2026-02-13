@@ -9,6 +9,145 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xml:base="http://www.ucaiug.org/profile" > 
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68a9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68aa"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#RemoteInputSignal.DERDynamics"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68aa">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DERDynamics</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#DERDynamics"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68ab">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68ac"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#RemoteInputSignal.TransformerEnd"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68ac">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>TransformerEnd</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#TransformerEnd"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68ad">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68ae"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#RemoteInputSignal.WeccDynamics"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68ae">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>WeccDynamics</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#WeccDynamics"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68af">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b0"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#RemoteInputSignal.UnderexcitationLimiterDynamics"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b0">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>UnderexcitationLimiterDynamics</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#UnderexcitationLimiterDynamics"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b2"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#RemoteInputSignal.PowerSystemStabilizerDynamics"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>PowerSystemStabilizerDynamics</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#PowerSystemStabilizerDynamics"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b4"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#RemoteInputSignal.IEEECigreDLL"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b4">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>IEEECigreDLL</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLL"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b6"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#RemoteInputSignal.ConductingEquipment"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ConductingEquipment</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ConductingEquipment"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b8"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#RemoteInputSignal.ConnectivityNode"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ConnectivityNode</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ConnectivityNode"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68ba"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#RemoteInputSignal.remoteSignalType"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68ba">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>remoteSignalType</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#RemoteSignalKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68bb">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68bc"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#RemoteInputSignal.atToEnd"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68bc">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>atToEnd</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-7847">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-7848"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#SvPowerFlow.atToEnd"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-7848">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>atToEnd</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-7849">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-784a"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IBRPlant.acFilterKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-784a">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextenstion"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>acFilterKind</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#IBRFilterKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-784b">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-784c"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLL.snapshotUri"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-784c">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>snapshotUri</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
   <rdf:Description rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-1d88">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
@@ -7060,10 +7199,17 @@
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#HydroGeneratingUnit"/>
     <rdfs:subClassOf rdf:resource="#GeneratingUnit"/>
   </rdf:Description>
+  <rdf:Description rdf:about="#IBRFilterKind">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextenstion"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#IBRFilterKind"/>
+  </rdf:Description>
   <rdf:Description rdf:about="#IBRPlant">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-7849"/>
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-721c"/>
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-721e"/>
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-7220"/>
@@ -7079,6 +7225,7 @@
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-784b"/>
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-720b"/>
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-720d"/>
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-720f"/>
@@ -7429,6 +7576,26 @@
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#RegulatingCondEq"/>
     <rdfs:subClassOf rdf:resource="#EnergyConnection"/>
   </rdf:Description>
+  <rdf:Description rdf:about="#RemoteInputSignal">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68a9"/>
+    <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68ab"/>
+    <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68ad"/>
+    <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68af"/>
+    <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b1"/>
+    <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b3"/>
+    <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b5"/>
+    <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b7"/>
+    <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b9"/>
+    <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68bb"/>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#RemoteInputSignal"/>
+    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#RemoteSignalKind">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#RemoteSignalKind"/>
+  </rdf:Description>
   <rdf:Description rdf:about="#Resistance">
     <rdfs:label>Resistance</rdfs:label>
   </rdf:Description>
@@ -7526,6 +7693,7 @@
   <rdf:Description rdf:about="#SvPowerFlow">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-7847"/>
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-53eb"/>
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-53ee"/>
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-53f0"/>
