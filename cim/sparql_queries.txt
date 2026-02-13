@@ -981,23 +981,51 @@ WHERE {
 SELECT ?type ?label ?stereo
 WHERE {
 # VALUES ?stereoraw {uml:attribute uml:cimextension uml:concrete uml:enumeration uml:ofAggregate}
+ VALUES ?stereoraw {uml:concrete}
   ?s rdf:type ?type.
   ?s rdfs:label ?label .
   ?s uml:hasStereotype ?stereoraw.
   bind(strafter(str(?stereoraw),"#") as ?stereo)
 } ORDER by ?label
 
-# list class attributes
+# list class attributes and associations
 SELECT ?name ?atype
 WHERE {
- VALUES ?label {"ACLineSegment"}
+ VALUES ?label {"ACLineSegment" "Conductor" "ConductingEquipment" "IdentifiedObject"}
   ?s rdf:type ?type.
   ?s rdfs:label ?label .
   ?s rdfs:subClassOf ?node.
   ?node owl:onProperty ?rawname.
   ?node owl:allValuesFrom ?dtype.
-  ?dtype owl:equivalentClass ?rawatype.        
+  {
+    ?dtype owl:equivalentClass ?rawatype.
+  } UNION {
+    ?dtype rdfs:subClassOf ?rawatype.
+  }
   bind(strafter(str(?rawname),"#") as ?name)
   bind(strafter(str(?rawatype),"#") as ?atype)
 } ORDER by ?name
+
+# traverse the ancestry of concrete classes
+# the full traversal with subClassOf* is not amenable to ORDER BY
+# to go one step at a time, run this query one step at a time without *
+SELECT DISTINCT ?class
+WHERE {
+ VALUES ?first {"PowerElectronicsConnection"}
+ VALUES ?type {owl:Class}
+  ?s rdfs:label ?first.
+  ?s rdfs:subClassOf* ?node.
+  ?node rdf:type ?type.
+  ?node rdfs:label ?class.
+}
+
+# list all the enumeration values
+SELECT ?eval
+WHERE {
+ VALUES ?stereoraw {uml:enumeration}
+  ?s uml:hasStereotype ?stereoraw.
+  ?s owl:oneOf ?node.
+  ?node rdf:rest*/rdf:first ?evalraw.
+  bind(strafter(str(?evalraw),"#") as ?eval)
+} ORDER by ?eval
 
