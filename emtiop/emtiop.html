@@ -85,16 +85,16 @@ p.package { position: absolute; right: 10px; top: 0px}
          <p class="comment">A line segment is a conductor or combination of conductors, with consistent electrical characteristics along its length, building a single electrical system that carries alternating current between two points in the power system.</p>
          <p class="comment">The BaseVoltage at the two ends of a line segment shall have the same BaseVoltage.nominalVoltage. However, boundary lines may have slightly different BaseVoltage.nominalVoltages and variation is allowed. Larger voltage difference in general requires use of an equivalent branch.</p>
          <p class="comment">Line segment impedances can be either directly described in electrical terms or physical line detail can be provided from which impedances can be calculated.</p>
-         <p class="comment">&lt;b&gt;Directly described impedances&lt;/b&gt;</p>
+         <p class="comment"><b>Directly described impedances</b></p>
          <p class="comment">For symmetrical, transposed three phase line segments, it is sufficient to use attributes of the line segment, which describe impedances and admittances for the entire length of the line segment.  Additionally, line segment impedances can be computed by using line segment length and associated per length impedances.</p>
          <p class="comment">Unbalanced modeling of impedances is supported by the per length phase impedance matrix (PerLengthPhaseImpedance) in conjunction with phase-to-sequence number mapping supplied by either ACLineSegmentPhase or WirePosition. The sequence numbers are referenced by the row and column attributes of the per length phase impedance matrix. This method enables single-phase and two-phase line segments, and transpositions of phases, to be described using the same per length phase impedance matrix. The length of the line segment is used in the computation of total impedance values for the line segment.</p>
-         <p class="comment">&lt;b&gt;Line detail characteristics&lt;/b&gt;</p>
+         <p class="comment"><b>Line detail characteristics</b></p>
          <p class="comment">There are three approaches to providing line detail and all use WireAssembly to supply line positions:</p>
-         <p class="comment">&lt;ul&gt;</p>
-         <p class="comment">	&lt;li&gt;Option 1 - WireAssembly supplies only line positions. ACLineSegmentPhase points to wire type and intraphase spacing and supplies the phase-to-sequence number mapping.&lt;/li&gt;</p>
-         <p class="comment">	&lt;li&gt;Option 2 - WireAssembly supplies line position and, for each position, also supplies wire type and intraphase spacing. ACLineSegmentPhase supplies the phase-to-sequence number mapping.&lt;/li&gt;</p>
-         <p class="comment">	&lt;li&gt;Option 3 - WireAssembly supplies line position and, for each position, also supplies wire type and intraphase spacing and phase. WireAssembly therefore supplies the phase-to-sequence number mapping and ACLineSegmentPhase is not needed.&lt;/li&gt;</p>
-         <p class="comment">&lt;/ul&gt;</p>
+         <p class="comment"><ul></p>
+         <p class="comment">	<li>Option 1 - WireAssembly supplies only line positions. ACLineSegmentPhase points to wire type and intraphase spacing and supplies the phase-to-sequence number mapping.</li></p>
+         <p class="comment">	<li>Option 2 - WireAssembly supplies line position and, for each position, also supplies wire type and intraphase spacing. ACLineSegmentPhase supplies the phase-to-sequence number mapping.</li></p>
+         <p class="comment">	<li>Option 3 - WireAssembly supplies line position and, for each position, also supplies wire type and intraphase spacing and phase. WireAssembly therefore supplies the phase-to-sequence number mapping and ACLineSegmentPhase is not needed.</li></p>
+         <p class="comment"></ul></p>
          <h3>Native Members</h3>
          <table>
             <tr>
@@ -1401,7 +1401,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Exciter voltage at which exciter saturation is defined (&lt;i&gt;E&lt;/i&gt;&lt;i&gt;&lt;sub&gt;FD1&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; 0).  Typical value = 3,1.</p>
+                  <p class="comment">Exciter voltage at which exciter saturation is defined (<i>E</i><i><sub>FD1</sub></i>) (> 0).  Typical value = 3,1.</p>
                </td>
             </tr>
             <tr>
@@ -1417,7 +1417,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Exciter voltage at which exciter saturation is defined (&lt;i&gt;E&lt;/i&gt;&lt;i&gt;&lt;sub&gt;FD2&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; 0).  Typical value = 2,3.</p>
+                  <p class="comment">Exciter voltage at which exciter saturation is defined (<i>E</i><i><sub>FD2</sub></i>) (> 0).  Typical value = 2,3.</p>
                </td>
             </tr>
             <tr>
@@ -1433,7 +1433,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">An additional attribute (&lt;i&gt;exclim&lt;/i&gt;) not defined in IEEE 421.5-2005.  IEEE standard is ambiguous about lower limit on exciter output.</p>
+                  <p class="comment">An additional attribute (<i>exclim</i>) not defined in IEEE 421.5-2005.  IEEE standard is ambiguous about lower limit on exciter output.</p>
                   <p class="comment">true = a lower limit of zero is applied to integrator output</p>
                   <p class="comment">false = a lower limit of zero is not applied to integrator output.</p>
                   <p class="comment">Typical value = true.</p>
@@ -1452,7 +1452,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Voltage regulator gain (&lt;i&gt;K&lt;/i&gt;&lt;i&gt;&lt;sub&gt;A&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; 0).  Typical value = 46.</p>
+                  <p class="comment">Voltage regulator gain (<i>K</i><i><sub>A</sub></i>) (> 0).  Typical value = 46.</p>
                </td>
             </tr>
             <tr>
@@ -1468,7 +1468,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Exciter constant related to self-excited field (&lt;i&gt;K&lt;/i&gt;&lt;i&gt;&lt;sub&gt;E&lt;/sub&gt;&lt;/i&gt;).  Typical value = 0.</p>
+                  <p class="comment">Exciter constant related to self-excited field (<i>K</i><i><sub>E</sub></i>).  Typical value = 0.</p>
                </td>
             </tr>
             <tr>
@@ -1484,7 +1484,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Excitation control system stabilizer gain (&lt;i&gt;K&lt;/i&gt;&lt;i&gt;&lt;sub&gt;F&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0.1.</p>
+                  <p class="comment">Excitation control system stabilizer gain (<i>K</i><i><sub>F</sub></i>) (>= 0).  Typical value = 0.1.</p>
                </td>
             </tr>
             <tr>
@@ -1500,7 +1500,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Exciter saturation function value at the corresponding exciter voltage, &lt;i&gt;E&lt;/i&gt;&lt;i&gt;&lt;sub&gt;FD1&lt;/sub&gt;&lt;/i&gt; (&lt;i&gt;S&lt;/i&gt;&lt;i&gt;&lt;sub&gt;E&lt;/sub&gt;&lt;/i&gt;&lt;i&gt;[E&lt;/i&gt;&lt;i&gt;&lt;sub&gt;FD1&lt;/sub&gt;&lt;/i&gt;&lt;i&gt;]&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0.33.</p>
+                  <p class="comment">Exciter saturation function value at the corresponding exciter voltage, <i>E</i><i><sub>FD1</sub></i> (<i>S</i><i><sub>E</sub></i><i>[E</i><i><sub>FD1</sub></i><i>]</i>) (>= 0).  Typical value = 0.33.</p>
                </td>
             </tr>
             <tr>
@@ -1516,7 +1516,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Exciter saturation function value at the corresponding exciter voltage, &lt;i&gt;E&lt;/i&gt;&lt;i&gt;&lt;sub&gt;FD2&lt;/sub&gt;&lt;/i&gt; (&lt;i&gt;S&lt;/i&gt;&lt;i&gt;&lt;sub&gt;E&lt;/sub&gt;&lt;/i&gt;&lt;i&gt;[E&lt;/i&gt;&lt;i&gt;&lt;sub&gt;FD2&lt;/sub&gt;&lt;/i&gt;&lt;i&gt;]&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0,1.</p>
+                  <p class="comment">Exciter saturation function value at the corresponding exciter voltage, <i>E</i><i><sub>FD2</sub></i> (<i>S</i><i><sub>E</sub></i><i>[E</i><i><sub>FD2</sub></i><i>]</i>) (>= 0).  Typical value = 0,1.</p>
                </td>
             </tr>
             <tr>
@@ -1532,7 +1532,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Voltage regulator time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;A&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; 0).  Typical value = 0,06.</p>
+                  <p class="comment">Voltage regulator time constant (<i>T</i><i><sub>A</sub></i>) (> 0).  Typical value = 0,06.</p>
                </td>
             </tr>
             <tr>
@@ -1548,7 +1548,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Voltage regulator time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;B&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0.</p>
+                  <p class="comment">Voltage regulator time constant (<i>T</i><i><sub>B</sub></i>) (>= 0).  Typical value = 0.</p>
                </td>
             </tr>
             <tr>
@@ -1564,7 +1564,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Voltage regulator time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;C&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0.</p>
+                  <p class="comment">Voltage regulator time constant (<i>T</i><i><sub>C</sub></i>) (>= 0).  Typical value = 0.</p>
                </td>
             </tr>
             <tr>
@@ -1580,7 +1580,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Exciter time constant, integration rate associated with exciter control (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;E&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; 0).  Typical value = 0,46.</p>
+                  <p class="comment">Exciter time constant, integration rate associated with exciter control (<i>T</i><i><sub>E</sub></i>) (> 0).  Typical value = 0,46.</p>
                </td>
             </tr>
             <tr>
@@ -1596,7 +1596,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Excitation control system stabilizer time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;F&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; 0).  Typical value = 1.</p>
+                  <p class="comment">Excitation control system stabilizer time constant (<i>T</i><i><sub>F</sub></i>) (> 0).  Typical value = 1.</p>
                </td>
             </tr>
             <tr>
@@ -1612,7 +1612,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">UEL input (&lt;i&gt;uelin&lt;/i&gt;).</p>
+                  <p class="comment">UEL input (<i>uelin</i>).</p>
                   <p class="comment">true = input is connected to the HV gate</p>
                   <p class="comment">false = input connects to the error signal.</p>
                   <p class="comment">Typical value = true.</p>
@@ -1631,7 +1631,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Maximum voltage regulator output (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;RMAX&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; ExcIEEEDC1A.vrmin).  Typical value = 1.</p>
+                  <p class="comment">Maximum voltage regulator output (<i>V</i><i><sub>RMAX</sub></i>) (> ExcIEEEDC1A.vrmin).  Typical value = 1.</p>
                </td>
             </tr>
             <tr>
@@ -1647,7 +1647,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Minimum voltage regulator output (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;RMIN&lt;/sub&gt;&lt;/i&gt;) (&amp;lt; 0 and &amp;lt; ExcIEEEDC1A.vrmax).  Typical value = -0,9.</p>
+                  <p class="comment">Minimum voltage regulator output (<i>V</i><i><sub>RMIN</sub></i>) (&amp;lt; 0 and &amp;lt; ExcIEEEDC1A.vrmax).  Typical value = -0,9.</p>
                </td>
             </tr>
          </table>
@@ -1749,7 +1749,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Field voltage clipping maximum limit (&lt;i&gt;Efdmax&lt;/i&gt;) (&amp;gt; ExcSEXS.efdmin).  Typical value = 5.</p>
+                  <p class="comment">Field voltage clipping maximum limit (<i>Efdmax</i>) (> ExcSEXS.efdmin).  Typical value = 5.</p>
                </td>
             </tr>
             <tr>
@@ -1765,7 +1765,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Field voltage clipping minimum limit (&lt;i&gt;Efdmin&lt;/i&gt;) (&amp;lt; ExcSEXS.efdmax).  Typical value = -5.</p>
+                  <p class="comment">Field voltage clipping minimum limit (<i>Efdmin</i>) (&amp;lt; ExcSEXS.efdmax).  Typical value = -5.</p>
                </td>
             </tr>
             <tr>
@@ -1781,7 +1781,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Maximum field voltage output (&lt;i&gt;Emax&lt;/i&gt;) (&amp;gt; ExcSEXS.emin).  Typical value = 5.</p>
+                  <p class="comment">Maximum field voltage output (<i>Emax</i>) (> ExcSEXS.emin).  Typical value = 5.</p>
                </td>
             </tr>
             <tr>
@@ -1797,7 +1797,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Minimum field voltage output (&lt;i&gt;Emin&lt;/i&gt;) (&amp;lt; ExcSEXS.emax).  Typical value = -5.</p>
+                  <p class="comment">Minimum field voltage output (<i>Emin</i>) (&amp;lt; ExcSEXS.emax).  Typical value = -5.</p>
                </td>
             </tr>
             <tr>
@@ -1813,7 +1813,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Gain (&lt;i&gt;K&lt;/i&gt;) (&amp;gt; 0).  Typical value = 100.</p>
+                  <p class="comment">Gain (<i>K</i>) (> 0).  Typical value = 100.</p>
                </td>
             </tr>
             <tr>
@@ -1829,7 +1829,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">PI controller gain (&lt;i&gt;Kc&lt;/i&gt;) (&amp;gt; 0 if ExcSEXS.tc &amp;gt; 0).  Typical value = 0,08.</p>
+                  <p class="comment">PI controller gain (<i>Kc</i>) (> 0 if ExcSEXS.tc > 0).  Typical value = 0,08.</p>
                </td>
             </tr>
             <tr>
@@ -1845,7 +1845,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Gain reduction ratio of lag-lead element (&lt;i&gt;[Ta / Tb]&lt;/i&gt;).  Typical value = 0,1.</p>
+                  <p class="comment">Gain reduction ratio of lag-lead element (<i>[Ta / Tb]</i>).  Typical value = 0,1.</p>
                </td>
             </tr>
             <tr>
@@ -1861,7 +1861,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Denominator time constant of lag-lead block (&lt;i&gt;Tb&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 10.</p>
+                  <p class="comment">Denominator time constant of lag-lead block (<i>Tb</i>) (>= 0).  Typical value = 10.</p>
                </td>
             </tr>
             <tr>
@@ -1877,7 +1877,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">PI controller phase lead time constant (&lt;i&gt;Tc&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0.</p>
+                  <p class="comment">PI controller phase lead time constant (<i>Tc</i>) (>= 0).  Typical value = 0.</p>
                </td>
             </tr>
             <tr>
@@ -1893,7 +1893,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Time constant of gain block (&lt;i&gt;Te&lt;/i&gt;) (&amp;gt; 0).  Typical value = 0,05.</p>
+                  <p class="comment">Time constant of gain block (<i>Te</i>) (> 0).  Typical value = 0,05.</p>
                </td>
             </tr>
          </table>
@@ -1995,7 +1995,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Exciter output current limit reference (&lt;i&gt;Ilr&lt;/i&gt;).  Typical value = 0.</p>
+                  <p class="comment">Exciter output current limit reference (<i>Ilr</i>).  Typical value = 0.</p>
                </td>
             </tr>
             <tr>
@@ -2011,7 +2011,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Voltage regulator gain (&lt;i&gt;Ka&lt;/i&gt;) (&amp;gt; 0).  Typical value = 190.</p>
+                  <p class="comment">Voltage regulator gain (<i>Ka</i>) (> 0).  Typical value = 190.</p>
                </td>
             </tr>
             <tr>
@@ -2027,7 +2027,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Rectifier loading factor proportional to commutating reactance (&lt;i&gt;Kc&lt;/i&gt;) (&amp;gt;= 0). Typical value = 0,05.</p>
+                  <p class="comment">Rectifier loading factor proportional to commutating reactance (<i>Kc</i>) (>= 0). Typical value = 0,05.</p>
                </td>
             </tr>
             <tr>
@@ -2043,7 +2043,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Excitation control system stabilizer gains (&lt;i&gt;Kf&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0.</p>
+                  <p class="comment">Excitation control system stabilizer gains (<i>Kf</i>) (>= 0).  Typical value = 0.</p>
                </td>
             </tr>
             <tr>
@@ -2059,7 +2059,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Exciter output current limiter gain (&lt;i&gt;Klr&lt;/i&gt;).  Typical value = 0.</p>
+                  <p class="comment">Exciter output current limiter gain (<i>Klr</i>).  Typical value = 0.</p>
                </td>
             </tr>
             <tr>
@@ -2075,7 +2075,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Voltage regulator time constant (&lt;i&gt;Ta&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0,02.</p>
+                  <p class="comment">Voltage regulator time constant (<i>Ta</i>) (>= 0).  Typical value = 0,02.</p>
                </td>
             </tr>
             <tr>
@@ -2091,7 +2091,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Voltage regulator time constant (&lt;i&gt;Tb&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 10.</p>
+                  <p class="comment">Voltage regulator time constant (<i>Tb</i>) (>= 0).  Typical value = 10.</p>
                </td>
             </tr>
             <tr>
@@ -2107,7 +2107,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Voltage regulator time constant (&lt;i&gt;Tb1&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0.</p>
+                  <p class="comment">Voltage regulator time constant (<i>Tb1</i>) (>= 0).  Typical value = 0.</p>
                </td>
             </tr>
             <tr>
@@ -2123,7 +2123,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Voltage regulator time constant (&lt;i&gt;Tc&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 1.</p>
+                  <p class="comment">Voltage regulator time constant (<i>Tc</i>) (>= 0).  Typical value = 1.</p>
                </td>
             </tr>
             <tr>
@@ -2139,7 +2139,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Voltage regulator time constant (&lt;i&gt;Tc1&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0.</p>
+                  <p class="comment">Voltage regulator time constant (<i>Tc1</i>) (>= 0).  Typical value = 0.</p>
                </td>
             </tr>
             <tr>
@@ -2155,7 +2155,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Excitation control system stabilizer time constant (&lt;i&gt;Tf&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 1.</p>
+                  <p class="comment">Excitation control system stabilizer time constant (<i>Tf</i>) (>= 0).  Typical value = 1.</p>
                </td>
             </tr>
             <tr>
@@ -2171,7 +2171,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Maximum voltage regulator output (&lt;i&gt;Vamax&lt;/i&gt;) (&amp;gt; 0).  Typical value = 999.</p>
+                  <p class="comment">Maximum voltage regulator output (<i>Vamax</i>) (> 0).  Typical value = 999.</p>
                </td>
             </tr>
             <tr>
@@ -2187,7 +2187,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Minimum voltage regulator output (&lt;i&gt;Vamin&lt;/i&gt;) (&amp;lt; 0).  Typical value = -999.</p>
+                  <p class="comment">Minimum voltage regulator output (<i>Vamin</i>) (&amp;lt; 0).  Typical value = -999.</p>
                </td>
             </tr>
             <tr>
@@ -2203,7 +2203,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Maximum voltage regulator input limit (&lt;i&gt;Vimax&lt;/i&gt;) (&amp;gt; 0).  Typical value = 999.</p>
+                  <p class="comment">Maximum voltage regulator input limit (<i>Vimax</i>) (> 0).  Typical value = 999.</p>
                </td>
             </tr>
             <tr>
@@ -2219,7 +2219,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Minimum voltage regulator input limit (&lt;i&gt;Vimin&lt;/i&gt;) (&amp;lt; 0).  Typical value = -999.</p>
+                  <p class="comment">Minimum voltage regulator input limit (<i>Vimin</i>) (&amp;lt; 0).  Typical value = -999.</p>
                </td>
             </tr>
             <tr>
@@ -2235,7 +2235,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Maximum voltage regulator outputs (&lt;i&gt;Vrmax&lt;/i&gt;) (&amp;gt; 0) .  Typical value = 7,8.</p>
+                  <p class="comment">Maximum voltage regulator outputs (<i>Vrmax</i>) (> 0) .  Typical value = 7,8.</p>
                </td>
             </tr>
             <tr>
@@ -2251,7 +2251,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Minimum voltage regulator outputs (&lt;i&gt;Vrmin&lt;/i&gt;) (&amp;lt; 0).  Typical value = -6,7.</p>
+                  <p class="comment">Minimum voltage regulator outputs (<i>Vrmin</i>) (&amp;lt; 0).  Typical value = -6,7.</p>
                </td>
             </tr>
             <tr>
@@ -2267,7 +2267,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Excitation xfmr effective reactance (&lt;i&gt;Xe&lt;/i&gt;).  Typical value = 0,04.</p>
+                  <p class="comment">Excitation xfmr effective reactance (<i>Xe</i>).  Typical value = 0,04.</p>
                </td>
             </tr>
          </table>
@@ -2369,7 +2369,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Ambient temperature load limit (&lt;i&gt;Load Limit&lt;/i&gt;).  Typical value = 1.</p>
+                  <p class="comment">Ambient temperature load limit (<i>Load Limit</i>).  Typical value = 1.</p>
                </td>
             </tr>
             <tr>
@@ -2385,7 +2385,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Turbine damping factor (&lt;i&gt;Dturb&lt;/i&gt;).  Typical value = 0,18.</p>
+                  <p class="comment">Turbine damping factor (<i>Dturb</i>).  Typical value = 0,18.</p>
                </td>
             </tr>
             <tr>
@@ -2401,7 +2401,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Temperature limiter gain (&lt;i&gt;Kt&lt;/i&gt;).  Typical value = 3.</p>
+                  <p class="comment">Temperature limiter gain (<i>Kt</i>).  Typical value = 3.</p>
                </td>
             </tr>
             <tr>
@@ -2417,7 +2417,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Base for power values (&lt;i&gt;MWbase&lt;/i&gt;) (&amp;gt; 0).  Unit = MW.</p>
+                  <p class="comment">Base for power values (<i>MWbase</i>) (> 0).  Unit = MW.</p>
                </td>
             </tr>
             <tr>
@@ -2433,7 +2433,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Permanent droop (&lt;i&gt;R&lt;/i&gt;) (&amp;gt;0). Typical value = 0,04.</p>
+                  <p class="comment">Permanent droop (<i>R</i>) (>0). Typical value = 0,04.</p>
                </td>
             </tr>
             <tr>
@@ -2449,7 +2449,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Governor mechanism time constant (&lt;i&gt;T1&lt;/i&gt;) (&amp;gt;= 0).  &lt;i&gt;T1&lt;/i&gt; represents the natural valve positioning time constant of the governor for small disturbances, as seen when rate limiting is not in effect.  Typical value = 0,5.</p>
+                  <p class="comment">Governor mechanism time constant (<i>T1</i>) (>= 0).  <i>T1</i> represents the natural valve positioning time constant of the governor for small disturbances, as seen when rate limiting is not in effect.  Typical value = 0,5.</p>
                </td>
             </tr>
             <tr>
@@ -2465,7 +2465,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Turbine power time constant (&lt;i&gt;T2&lt;/i&gt;) (&amp;gt;= 0).  &lt;i&gt;T2&lt;/i&gt; represents delay due to internal energy storage of the gas turbine engine. &lt;i&gt;T2&lt;/i&gt; can be used to give a rough approximation to the delay associated with acceleration of the compressor spool of a multi-shaft engine, or with the compressibility of gas in the plenum of a free power turbine of an aero-derivative unit, for example.  Typical value = 0,5.</p>
+                  <p class="comment">Turbine power time constant (<i>T2</i>) (>= 0).  <i>T2</i> represents delay due to internal energy storage of the gas turbine engine. <i>T2</i> can be used to give a rough approximation to the delay associated with acceleration of the compressor spool of a multi-shaft engine, or with the compressibility of gas in the plenum of a free power turbine of an aero-derivative unit, for example.  Typical value = 0,5.</p>
                </td>
             </tr>
             <tr>
@@ -2481,7 +2481,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Turbine exhaust temperature time constant (&lt;i&gt;T3&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 3.</p>
+                  <p class="comment">Turbine exhaust temperature time constant (<i>T3</i>) (>= 0).  Typical value = 3.</p>
                </td>
             </tr>
             <tr>
@@ -2497,7 +2497,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Maximum turbine power, PU of MWbase (&lt;i&gt;Vmax&lt;/i&gt;) (&amp;gt; GovGAST.vmin).  Typical value = 1.</p>
+                  <p class="comment">Maximum turbine power, PU of MWbase (<i>Vmax</i>) (> GovGAST.vmin).  Typical value = 1.</p>
                </td>
             </tr>
             <tr>
@@ -2513,7 +2513,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Minimum turbine power, PU of MWbase (&lt;i&gt;Vmin&lt;/i&gt;) (&amp;lt; GovGAST.vmax).  Typical value = 0.</p>
+                  <p class="comment">Minimum turbine power, PU of MWbase (<i>Vmin</i>) (&amp;lt; GovGAST.vmax).  Typical value = 0.</p>
                </td>
             </tr>
          </table>
@@ -2615,7 +2615,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Turbine gain (&lt;i&gt;At&lt;/i&gt;) (&amp;gt; 0).  Typical value = 1,2.</p>
+                  <p class="comment">Turbine gain (<i>At</i>) (> 0).  Typical value = 1,2.</p>
                </td>
             </tr>
             <tr>
@@ -2631,7 +2631,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Turbine damping factor (&lt;i&gt;Dturb&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0,5.</p>
+                  <p class="comment">Turbine damping factor (<i>Dturb</i>) (>= 0).  Typical value = 0,5.</p>
                </td>
             </tr>
             <tr>
@@ -2647,7 +2647,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Maximum gate opening (&lt;i&gt;Gmax&lt;/i&gt;) (&amp;gt; 0 and &amp;gt; GovHydro1.gmin).  Typical value = 1.</p>
+                  <p class="comment">Maximum gate opening (<i>Gmax</i>) (> 0 and > GovHydro1.gmin).  Typical value = 1.</p>
                </td>
             </tr>
             <tr>
@@ -2663,7 +2663,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Minimum gate opening (&lt;i&gt;Gmin&lt;/i&gt;) (&amp;gt;= 0 and &amp;lt; GovHydro1.gmax).  Typical value = 0.</p>
+                  <p class="comment">Minimum gate opening (<i>Gmin</i>) (>= 0 and &amp;lt; GovHydro1.gmax).  Typical value = 0.</p>
                </td>
             </tr>
             <tr>
@@ -2679,7 +2679,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Turbine nominal head (&lt;i&gt;hdam&lt;/i&gt;).  Typical value = 1.</p>
+                  <p class="comment">Turbine nominal head (<i>hdam</i>).  Typical value = 1.</p>
                </td>
             </tr>
             <tr>
@@ -2695,7 +2695,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Base for power values (&lt;i&gt;MWbase&lt;/i&gt;) (&amp;gt; 0).  Unit = MW.</p>
+                  <p class="comment">Base for power values (<i>MWbase</i>) (> 0).  Unit = MW.</p>
                </td>
             </tr>
             <tr>
@@ -2711,7 +2711,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">No-load flow at nominal head (&lt;i&gt;qnl&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0,08.</p>
+                  <p class="comment">No-load flow at nominal head (<i>qnl</i>) (>= 0).  Typical value = 0,08.</p>
                </td>
             </tr>
             <tr>
@@ -2727,7 +2727,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Permanent droop (&lt;i&gt;R&lt;/i&gt;) (&amp;gt; 0).  Typical value = 0,04.</p>
+                  <p class="comment">Permanent droop (<i>R</i>) (> 0).  Typical value = 0,04.</p>
                </td>
             </tr>
             <tr>
@@ -2743,7 +2743,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Temporary droop (&lt;i&gt;r&lt;/i&gt;) (&amp;gt; GovHydro1.rperm).  Typical value = 0,3.</p>
+                  <p class="comment">Temporary droop (<i>r</i>) (> GovHydro1.rperm).  Typical value = 0,3.</p>
                </td>
             </tr>
             <tr>
@@ -2759,7 +2759,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Filter time constant (&lt;i&gt;Tf&lt;/i&gt;) (&amp;gt; 0).  Typical value = 0,05.</p>
+                  <p class="comment">Filter time constant (<i>Tf</i>) (> 0).  Typical value = 0,05.</p>
                </td>
             </tr>
             <tr>
@@ -2775,7 +2775,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Gate servo time constant (&lt;i&gt;Tg&lt;/i&gt;) (&amp;gt; 0).  Typical value = 0,5.</p>
+                  <p class="comment">Gate servo time constant (<i>Tg</i>) (> 0).  Typical value = 0,5.</p>
                </td>
             </tr>
             <tr>
@@ -2791,7 +2791,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Washout time constant (&lt;i&gt;Tr&lt;/i&gt;) (&amp;gt; 0).  Typical value = 5.</p>
+                  <p class="comment">Washout time constant (<i>Tr</i>) (> 0).  Typical value = 5.</p>
                </td>
             </tr>
             <tr>
@@ -2807,7 +2807,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Water inertia time constant (&lt;i&gt;Tw&lt;/i&gt;) (&amp;gt; 0).  Typical value = 1.</p>
+                  <p class="comment">Water inertia time constant (<i>Tw</i>) (> 0).  Typical value = 1.</p>
                </td>
             </tr>
             <tr>
@@ -2823,7 +2823,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Maximum gate velocity (&lt;i&gt;Vlem&lt;/i&gt;) (&amp;gt; 0).  The limit is applied on the state variable of the integrator.  Typical value = 0,2.</p>
+                  <p class="comment">Maximum gate velocity (<i>Vlem</i>) (> 0).  The limit is applied on the state variable of the integrator.  Typical value = 0,2.</p>
                </td>
             </tr>
          </table>
@@ -2925,7 +2925,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">One / PU regulation (&lt;i&gt;K1&lt;/i&gt;).</p>
+                  <p class="comment">One / PU regulation (<i>K1</i>).</p>
                </td>
             </tr>
             <tr>
@@ -2941,7 +2941,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Fraction (&lt;i&gt;K2&lt;/i&gt;).</p>
+                  <p class="comment">Fraction (<i>K2</i>).</p>
                </td>
             </tr>
             <tr>
@@ -2957,7 +2957,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Fraction (&lt;i&gt;K3&lt;/i&gt;).</p>
+                  <p class="comment">Fraction (<i>K3</i>).</p>
                </td>
             </tr>
             <tr>
@@ -2973,7 +2973,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Base for power values (&lt;i&gt;MWbase&lt;/i&gt;) (&amp;gt; 0).  Unit = MW.</p>
+                  <p class="comment">Base for power values (<i>MWbase</i>) (> 0).  Unit = MW.</p>
                </td>
             </tr>
             <tr>
@@ -2989,7 +2989,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Upper power limit (&lt;i&gt;Pmax&lt;/i&gt;) (&amp;gt; GovSteamSGO.pmin).</p>
+                  <p class="comment">Upper power limit (<i>Pmax</i>) (> GovSteamSGO.pmin).</p>
                </td>
             </tr>
             <tr>
@@ -3005,7 +3005,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Lower power limit (&lt;i&gt;Pmin&lt;/i&gt;) (&amp;gt;= 0 and &amp;lt; GovSteamSGO.pmax).</p>
+                  <p class="comment">Lower power limit (<i>Pmin</i>) (>= 0 and &amp;lt; GovSteamSGO.pmax).</p>
                </td>
             </tr>
             <tr>
@@ -3021,7 +3021,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Controller lag (&lt;i&gt;T1&lt;/i&gt;) (&amp;gt;= 0).</p>
+                  <p class="comment">Controller lag (<i>T1</i>) (>= 0).</p>
                </td>
             </tr>
             <tr>
@@ -3037,7 +3037,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Controller lead compensation (&lt;i&gt;T2&lt;/i&gt;) (&amp;gt;= 0).</p>
+                  <p class="comment">Controller lead compensation (<i>T2</i>) (>= 0).</p>
                </td>
             </tr>
             <tr>
@@ -3053,7 +3053,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Governor lag (&lt;i&gt;T3&lt;/i&gt;) (&amp;gt; 0).</p>
+                  <p class="comment">Governor lag (<i>T3</i>) (> 0).</p>
                </td>
             </tr>
             <tr>
@@ -3069,7 +3069,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Delay due to steam inlet volumes associated with steam chest and inlet piping (&lt;i&gt;T4&lt;/i&gt;) (&amp;gt;= 0).</p>
+                  <p class="comment">Delay due to steam inlet volumes associated with steam chest and inlet piping (<i>T4</i>) (>= 0).</p>
                </td>
             </tr>
             <tr>
@@ -3085,7 +3085,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Reheater delay including hot and cold leads (&lt;i&gt;T5&lt;/i&gt;) (&amp;gt;= 0).</p>
+                  <p class="comment">Reheater delay including hot and cold leads (<i>T5</i>) (>= 0).</p>
                </td>
             </tr>
             <tr>
@@ -3101,7 +3101,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Delay due to IP-LP turbine, crossover pipes and LP end hoods (&lt;i&gt;T6&lt;/i&gt;) (&amp;gt;= 0).</p>
+                  <p class="comment">Delay due to IP-LP turbine, crossover pipes and LP end hoods (<i>T6</i>) (>= 0).</p>
                </td>
             </tr>
          </table>
@@ -4506,7 +4506,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Low voltage or current point on the inverse time characteristic (&lt;i&gt;EFD&lt;/i&gt;&lt;i&gt;&lt;sub&gt;1&lt;/sub&gt;&lt;/i&gt;).  Typical value = 1,1.</p>
+                  <p class="comment">Low voltage or current point on the inverse time characteristic (<i>EFD</i><i><sub>1</sub></i>).  Typical value = 1,1.</p>
                </td>
             </tr>
             <tr>
@@ -4522,7 +4522,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Mid voltage or current point on the inverse time characteristic (&lt;i&gt;EFD&lt;/i&gt;&lt;i&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/i&gt;).  Typical value = 1,2.</p>
+                  <p class="comment">Mid voltage or current point on the inverse time characteristic (<i>EFD</i><i><sub>2</sub></i>).  Typical value = 1,2.</p>
                </td>
             </tr>
             <tr>
@@ -4538,7 +4538,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">High voltage or current point on the inverse time characteristic (&lt;i&gt;EFD&lt;/i&gt;&lt;i&gt;&lt;sub&gt;3&lt;/sub&gt;&lt;/i&gt;).  Typical value = 1,5.</p>
+                  <p class="comment">High voltage or current point on the inverse time characteristic (<i>EFD</i><i><sub>3</sub></i>).  Typical value = 1,5.</p>
                </td>
             </tr>
             <tr>
@@ -4554,7 +4554,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Desired field voltage if &lt;i&gt;m&lt;/i&gt; = false or desired field current if &lt;i&gt;m &lt;/i&gt;= true (&lt;i&gt;EFD&lt;/i&gt;&lt;i&gt;&lt;sub&gt;DES&lt;/sub&gt;&lt;/i&gt;).  Typical value = 1.</p>
+                  <p class="comment">Desired field voltage if <i>m</i> = false or desired field current if <i>m </i>= true (<i>EFD</i><i><sub>DES</sub></i>).  Typical value = 1.</p>
                </td>
             </tr>
             <tr>
@@ -4570,7 +4570,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Rated field voltage if m = false or rated field current if m = true (&lt;i&gt;EFD&lt;/i&gt;&lt;i&gt;&lt;sub&gt;RATED&lt;/sub&gt;&lt;/i&gt;).  Typical value = 1,05.</p>
+                  <p class="comment">Rated field voltage if m = false or rated field current if m = true (<i>EFD</i><i><sub>RATED</sub></i>).  Typical value = 1,05.</p>
                </td>
             </tr>
             <tr>
@@ -4586,7 +4586,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Gain (&lt;i&gt;K&lt;/i&gt;&lt;i&gt;&lt;sub&gt;MX&lt;/sub&gt;&lt;/i&gt;).  Typical value = 0,002.</p>
+                  <p class="comment">Gain (<i>K</i><i><sub>MX</sub></i>).  Typical value = 0,002.</p>
                </td>
             </tr>
             <tr>
@@ -4602,7 +4602,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">(&lt;i&gt;m&lt;/i&gt;).</p>
+                  <p class="comment">(<i>m</i>).</p>
                   <p class="comment">true = IFD limiting</p>
                   <p class="comment">false = EFD limiting.</p>
                </td>
@@ -4636,7 +4636,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Time to trip the exciter at the low voltage or current point on the inverse time characteristic (&lt;i&gt;TIME&lt;/i&gt;&lt;i&gt;&lt;sub&gt;1&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 120.</p>
+                  <p class="comment">Time to trip the exciter at the low voltage or current point on the inverse time characteristic (<i>TIME</i><i><sub>1</sub></i>) (>= 0).  Typical value = 120.</p>
                </td>
             </tr>
             <tr>
@@ -4652,7 +4652,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Time to trip the exciter at the mid voltage or current point on the inverse time characteristic (&lt;i&gt;TIME&lt;/i&gt;&lt;i&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 40.</p>
+                  <p class="comment">Time to trip the exciter at the mid voltage or current point on the inverse time characteristic (<i>TIME</i><i><sub>2</sub></i>) (>= 0).  Typical value = 40.</p>
                </td>
             </tr>
             <tr>
@@ -4668,7 +4668,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Time to trip the exciter at the high voltage or current point on the inverse time characteristic (&lt;i&gt;TIME&lt;/i&gt;&lt;i&gt;&lt;sub&gt;3&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 15.</p>
+                  <p class="comment">Time to trip the exciter at the high voltage or current point on the inverse time characteristic (<i>TIME</i><i><sub>3</sub></i>) (>= 0).  Typical value = 15.</p>
                </td>
             </tr>
             <tr>
@@ -4684,7 +4684,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">High voltage limit (Vhigh) (&amp;gt; Vlow, &amp;gt;=0).</p>
+                  <p class="comment">High voltage limit (Vhigh) (> Vlow, >=0).</p>
                </td>
             </tr>
             <tr>
@@ -4700,7 +4700,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Low voltage limit (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;LOW&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; 0).</p>
+                  <p class="comment">Low voltage limit (<i>V</i><i><sub>LOW</sub></i>) (> 0).</p>
                </td>
             </tr>
          </table>
@@ -5726,7 +5726,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Notch filter parameter (&lt;i&gt;A&lt;/i&gt;&lt;i&gt;&lt;sub&gt;1&lt;/sub&gt;&lt;/i&gt;).</p>
+                  <p class="comment">Notch filter parameter (<i>A</i><i><sub>1</sub></i>).</p>
                </td>
             </tr>
             <tr>
@@ -5742,7 +5742,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Notch filter parameter (&lt;i&gt;A&lt;/i&gt;&lt;i&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/i&gt;).</p>
+                  <p class="comment">Notch filter parameter (<i>A</i><i><sub>2</sub></i>).</p>
                </td>
             </tr>
             <tr>
@@ -5758,7 +5758,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Notch filter parameter (&lt;i&gt;A&lt;/i&gt;&lt;i&gt;&lt;sub&gt;3&lt;/sub&gt;&lt;/i&gt;).</p>
+                  <p class="comment">Notch filter parameter (<i>A</i><i><sub>3</sub></i>).</p>
                </td>
             </tr>
             <tr>
@@ -5774,7 +5774,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Notch filter parameter (&lt;i&gt;A&lt;/i&gt;&lt;i&gt;&lt;sub&gt;4&lt;/sub&gt;&lt;/i&gt;).</p>
+                  <p class="comment">Notch filter parameter (<i>A</i><i><sub>4</sub></i>).</p>
                </td>
             </tr>
             <tr>
@@ -5790,7 +5790,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Notch filter parameter (&lt;i&gt;A&lt;/i&gt;&lt;i&gt;&lt;sub&gt;5&lt;/sub&gt;&lt;/i&gt;).</p>
+                  <p class="comment">Notch filter parameter (<i>A</i><i><sub>5</sub></i>).</p>
                </td>
             </tr>
             <tr>
@@ -5806,7 +5806,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Notch filter parameter (&lt;i&gt;A&lt;/i&gt;&lt;i&gt;&lt;sub&gt;6&lt;/sub&gt;&lt;/i&gt;).</p>
+                  <p class="comment">Notch filter parameter (<i>A</i><i><sub>6</sub></i>).</p>
                </td>
             </tr>
             <tr>
@@ -5822,7 +5822,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Notch filter parameter (&lt;i&gt;A&lt;/i&gt;&lt;i&gt;&lt;sub&gt;7&lt;/sub&gt;&lt;/i&gt;).</p>
+                  <p class="comment">Notch filter parameter (<i>A</i><i><sub>7</sub></i>).</p>
                </td>
             </tr>
             <tr>
@@ -5838,7 +5838,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Notch filter parameter (&lt;i&gt;A&lt;/i&gt;&lt;i&gt;&lt;sub&gt;8&lt;/sub&gt;&lt;/i&gt;).</p>
+                  <p class="comment">Notch filter parameter (<i>A</i><i><sub>8</sub></i>).</p>
                </td>
             </tr>
             <tr>
@@ -5870,9 +5870,9 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Selector (&lt;i&gt;Kd&lt;/i&gt;).</p>
-                  <p class="comment">true = e&lt;sup&gt;-sTdelay&lt;/sup&gt; used</p>
-                  <p class="comment">false = e&lt;sup&gt;-sTdelay&lt;/sup&gt; not used.</p>
+                  <p class="comment">Selector (<i>Kd</i>).</p>
+                  <p class="comment">true = e<sup>-sTdelay</sup> used</p>
+                  <p class="comment">false = e<sup>-sTdelay</sup> not used.</p>
                </td>
             </tr>
             <tr>
@@ -5888,7 +5888,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Stabilizer gain (&lt;i&gt;K&lt;/i&gt;&lt;i&gt;&lt;sub&gt;s&lt;/sub&gt;&lt;/i&gt;).</p>
+                  <p class="comment">Stabilizer gain (<i>K</i><i><sub>s</sub></i>).</p>
                </td>
             </tr>
             <tr>
@@ -5904,7 +5904,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Lead/lag time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;1&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).</p>
+                  <p class="comment">Lead/lag time constant (<i>T</i><i><sub>1</sub></i>) (>= 0).</p>
                </td>
             </tr>
             <tr>
@@ -5920,7 +5920,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Lead/lag time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).</p>
+                  <p class="comment">Lead/lag time constant (<i>T</i><i><sub>2</sub></i>) (>= 0).</p>
                </td>
             </tr>
             <tr>
@@ -5936,7 +5936,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Lead/lag time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;3&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).</p>
+                  <p class="comment">Lead/lag time constant (<i>T</i><i><sub>3</sub></i>) (>= 0).</p>
                </td>
             </tr>
             <tr>
@@ -5952,7 +5952,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Lead/lag time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;4&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).</p>
+                  <p class="comment">Lead/lag time constant (<i>T</i><i><sub>4</sub></i>) (>= 0).</p>
                </td>
             </tr>
             <tr>
@@ -5968,7 +5968,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Washout time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;5&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).</p>
+                  <p class="comment">Washout time constant (<i>T</i><i><sub>5</sub></i>) (>= 0).</p>
                </td>
             </tr>
             <tr>
@@ -5984,7 +5984,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Transducer time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;6&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).</p>
+                  <p class="comment">Transducer time constant (<i>T</i><i><sub>6</sub></i>) (>= 0).</p>
                </td>
             </tr>
             <tr>
@@ -6000,7 +6000,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Time constant (&lt;i&gt;Tdelay&lt;/i&gt;) (&amp;gt;= 0).</p>
+                  <p class="comment">Time constant (<i>Tdelay</i>) (>= 0).</p>
                </td>
             </tr>
             <tr>
@@ -6016,7 +6016,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Stabilizer input cutoff threshold (&lt;i&gt;Vcl&lt;/i&gt;).</p>
+                  <p class="comment">Stabilizer input cutoff threshold (<i>Vcl</i>).</p>
                </td>
             </tr>
             <tr>
@@ -6032,7 +6032,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Stabilizer input cutoff threshold (&lt;i&gt;Vcu&lt;/i&gt;).</p>
+                  <p class="comment">Stabilizer input cutoff threshold (<i>Vcu</i>).</p>
                </td>
             </tr>
             <tr>
@@ -6048,7 +6048,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Maximum stabilizer output (&lt;i&gt;Vrmax&lt;/i&gt;) (&amp;gt; Pss1A.vrmin).</p>
+                  <p class="comment">Maximum stabilizer output (<i>Vrmax</i>) (> Pss1A.vrmin).</p>
                </td>
             </tr>
             <tr>
@@ -6064,7 +6064,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Minimum stabilizer output (&lt;i&gt;Vrmin&lt;/i&gt;) (&amp;lt; Pss1A.vrmax).</p>
+                  <p class="comment">Minimum stabilizer output (<i>Vrmin</i>) (&amp;lt; Pss1A.vrmax).</p>
                </td>
             </tr>
          </table>
@@ -6169,7 +6169,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">PSS signal conditioning frequency filter constant (&lt;i&gt;A1&lt;/i&gt;).  Typical value = 0,061.</p>
+                  <p class="comment">PSS signal conditioning frequency filter constant (<i>A1</i>).  Typical value = 0,061.</p>
                </td>
             </tr>
             <tr>
@@ -6185,7 +6185,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">PSS signal conditioning frequency filter constant (&lt;i&gt;A2&lt;/i&gt;).  Typical value = 0,0017.</p>
+                  <p class="comment">PSS signal conditioning frequency filter constant (<i>A2</i>).  Typical value = 0,0017.</p>
                </td>
             </tr>
             <tr>
@@ -6217,7 +6217,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Stabilizer gain (&lt;i&gt;Ks&lt;/i&gt;).  Typical value = 5.</p>
+                  <p class="comment">Stabilizer gain (<i>Ks</i>).  Typical value = 5.</p>
                </td>
             </tr>
             <tr>
@@ -6233,7 +6233,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Lead/lag time constant (&lt;i&gt;T1&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0,3.</p>
+                  <p class="comment">Lead/lag time constant (<i>T1</i>) (>= 0).  Typical value = 0,3.</p>
                </td>
             </tr>
             <tr>
@@ -6249,7 +6249,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Lead/lag time constant (&lt;i&gt;T2&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0,03.</p>
+                  <p class="comment">Lead/lag time constant (<i>T2</i>) (>= 0).  Typical value = 0,03.</p>
                </td>
             </tr>
             <tr>
@@ -6265,7 +6265,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Lead/lag time constant (&lt;i&gt;T3&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0,3.</p>
+                  <p class="comment">Lead/lag time constant (<i>T3</i>) (>= 0).  Typical value = 0,3.</p>
                </td>
             </tr>
             <tr>
@@ -6281,7 +6281,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Lead/lag time constant (&lt;i&gt;T4&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0,03.</p>
+                  <p class="comment">Lead/lag time constant (<i>T4</i>) (>= 0).  Typical value = 0,03.</p>
                </td>
             </tr>
             <tr>
@@ -6297,7 +6297,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Washout time constant (&lt;i&gt;T5&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 10.</p>
+                  <p class="comment">Washout time constant (<i>T5</i>) (>= 0).  Typical value = 10.</p>
                </td>
             </tr>
             <tr>
@@ -6313,7 +6313,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Transducer time constant (&lt;i&gt;T6&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0,01.</p>
+                  <p class="comment">Transducer time constant (<i>T6</i>) (>= 0).  Typical value = 0,01.</p>
                </td>
             </tr>
             <tr>
@@ -6329,7 +6329,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Maximum stabilizer output (&lt;i&gt;Vrmax&lt;/i&gt;) (&amp;gt; PssIEEE1A.vrmin).  Typical value = 0,05.</p>
+                  <p class="comment">Maximum stabilizer output (<i>Vrmax</i>) (> PssIEEE1A.vrmin).  Typical value = 0,05.</p>
                </td>
             </tr>
             <tr>
@@ -6345,7 +6345,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Minimum stabilizer output (&lt;i&gt;Vrmin&lt;/i&gt;) (&amp;lt; PssIEEE1A.vrmax).  Typical value = -0,05.</p>
+                  <p class="comment">Minimum stabilizer output (<i>Vrmin</i>) (&amp;lt; PssIEEE1A.vrmax).  Typical value = -0,05.</p>
                </td>
             </tr>
          </table>
@@ -7581,9 +7581,9 @@ p.package { position: absolute; right: 10px; top: 0px}
          <p class="package">SynchronousMachineDynamics</p>
          <p class="comment">Synchronous machine detailed modelling types are defined by the combination of the attributes SynchronousMachineTimeConstantReactance.modelType and SynchronousMachineTimeConstantReactance.rotorType.</p>
          <p class="comment">Parameter details:</p>
-         <p class="comment">&lt;ol&gt;</p>
-         <p class="comment">	&lt;li&gt;The “p” in the time-related attribute names is a substitution for a “prime” in the usual parameter notation, e.g. tpdo refers to &lt;i&gt;T'do&lt;/i&gt;.&lt;/li&gt;</p>
-         <p class="comment">&lt;/ol&gt;</p>
+         <p class="comment"><ol></p>
+         <p class="comment">	<li>The “p” in the time-related attribute names is a substitution for a “prime” in the usual parameter notation, e.g. tpdo refers to <i>T'do</i>.</li></p>
+         <p class="comment"></ol></p>
          <h3>Native Members</h3>
          <table>
             <tr>
@@ -7599,7 +7599,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Saturation loading correction factor (&lt;i&gt;Ks&lt;/i&gt;) (&amp;gt;= 0).  Used only by type J model.  Typical value = 0.</p>
+                  <p class="comment">Saturation loading correction factor (<i>Ks</i>) (>= 0).  Used only by type J model.  Typical value = 0.</p>
                </td>
             </tr>
             <tr>
@@ -7647,7 +7647,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Damping time constant for “Canay” reactance (&amp;gt;= 0).  Typical value = 0.</p>
+                  <p class="comment">Damping time constant for “Canay” reactance (>= 0).  Typical value = 0.</p>
                </td>
             </tr>
             <tr>
@@ -7663,7 +7663,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Direct-axis transient rotor time constant (&lt;i&gt;T'do&lt;/i&gt;) (&amp;gt; SynchronousMachineTimeConstantReactance.tppdo).  Typical value = 5.</p>
+                  <p class="comment">Direct-axis transient rotor time constant (<i>T'do</i>) (> SynchronousMachineTimeConstantReactance.tppdo).  Typical value = 5.</p>
                </td>
             </tr>
             <tr>
@@ -7679,7 +7679,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Direct-axis subtransient rotor time constant (&lt;i&gt;T''do&lt;/i&gt;) (&amp;gt; 0).  Typical value = 0,03.</p>
+                  <p class="comment">Direct-axis subtransient rotor time constant (<i>T''do</i>) (> 0).  Typical value = 0,03.</p>
                </td>
             </tr>
             <tr>
@@ -7695,7 +7695,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Quadrature-axis subtransient rotor time constant (&lt;i&gt;T''qo&lt;/i&gt;) (&amp;gt; 0). Typical value = 0,03.</p>
+                  <p class="comment">Quadrature-axis subtransient rotor time constant (<i>T''qo</i>) (> 0). Typical value = 0,03.</p>
                </td>
             </tr>
             <tr>
@@ -7711,7 +7711,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Quadrature-axis transient rotor time constant (&lt;i&gt;T'qo&lt;/i&gt;) (&amp;gt; SynchronousMachineTimeConstantReactance.tppqo). Typical value = 0,5.</p>
+                  <p class="comment">Quadrature-axis transient rotor time constant (<i>T'qo</i>) (> SynchronousMachineTimeConstantReactance.tppqo). Typical value = 0,5.</p>
                </td>
             </tr>
             <tr>
@@ -7728,7 +7728,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Direct-axis subtransient reactance (unsaturated) (&lt;i&gt;X''d&lt;/i&gt;) (&amp;gt; RotatingMachineDynamics.statorLeakageReactance).  Typical value = 0,2.</p>
+                  <p class="comment">Direct-axis subtransient reactance (unsaturated) (<i>X''d</i>) (> RotatingMachineDynamics.statorLeakageReactance).  Typical value = 0,2.</p>
                </td>
             </tr>
             <tr>
@@ -7744,7 +7744,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Direct-axis synchronous reactance (&lt;i&gt;Xd&lt;/i&gt;) (&amp;gt;= SynchronousMachineTimeConstantReactance.xDirectTrans). The quotient of a sustained value of that AC component of armature voltage that is produced by the total direct-axis flux due to direct-axis armature current and the value of the AC component of this current, the machine running at rated speed.  Typical value = 1,8.</p>
+                  <p class="comment">Direct-axis synchronous reactance (<i>Xd</i>) (>= SynchronousMachineTimeConstantReactance.xDirectTrans). The quotient of a sustained value of that AC component of armature voltage that is produced by the total direct-axis flux due to direct-axis armature current and the value of the AC component of this current, the machine running at rated speed.  Typical value = 1,8.</p>
                </td>
             </tr>
             <tr>
@@ -7760,7 +7760,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Direct-axis transient reactance (unsaturated) (&lt;i&gt;X'd&lt;/i&gt;) (&amp;gt;= SynchronousMachineTimeConstantReactance.xDirectSubtrans).  Typical value = 0,5.</p>
+                  <p class="comment">Direct-axis transient reactance (unsaturated) (<i>X'd</i>) (>= SynchronousMachineTimeConstantReactance.xDirectSubtrans).  Typical value = 0,5.</p>
                </td>
             </tr>
             <tr>
@@ -7776,7 +7776,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Quadrature-axis subtransient reactance (&lt;i&gt;X''q&lt;/i&gt;) (&amp;gt; RotatingMachineDynamics.statorLeakageReactance).  Typical value = 0,2.</p>
+                  <p class="comment">Quadrature-axis subtransient reactance (<i>X''q</i>) (> RotatingMachineDynamics.statorLeakageReactance).  Typical value = 0,2.</p>
                </td>
             </tr>
             <tr>
@@ -7792,7 +7792,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Quadrature-axis synchronous reactance (&lt;i&gt;Xq&lt;/i&gt;) (&amp;gt;= SynchronousMachineTimeConstantReactance.xQuadTrans).</p>
+                  <p class="comment">Quadrature-axis synchronous reactance (<i>Xq</i>) (>= SynchronousMachineTimeConstantReactance.xQuadTrans).</p>
                   <p class="comment">The ratio of the component of reactive armature voltage, due to the quadrature-axis component of armature current, to this component of current, under steady state conditions and at rated frequency.  Typical value = 1,6.</p>
                </td>
             </tr>
@@ -7809,7 +7809,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Quadrature-axis transient reactance (&lt;i&gt;X'q&lt;/i&gt;) (&amp;gt;= SynchronousMachineTimeConstantReactance.xQuadSubtrans).  Typical value = 0,3.</p>
+                  <p class="comment">Quadrature-axis transient reactance (<i>X'q</i>) (>= SynchronousMachineTimeConstantReactance.xQuadSubtrans).  Typical value = 0,3.</p>
                </td>
             </tr>
          </table>
@@ -9086,7 +9086,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Reactive current injection delay after voltage dip (Thld) (&gt;=0). Typical value = 0.</p>
+                  <p class="comment">Reactive current injection delay after voltage dip (Thld) (>=0). Typical value = 0.</p>
                </td>
             </tr>
             <tr>
@@ -9102,7 +9102,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Ipcmd_max delay after fault (Thld2) (&gt;=0). Typical value = 0.</p>
+                  <p class="comment">Ipcmd_max delay after fault (Thld2) (>=0). Typical value = 0.</p>
                </td>
             </tr>
             <tr>
@@ -9118,7 +9118,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Time constant on lag delay (Tiq) (&gt;=0). Typical value = 0,01.</p>
+                  <p class="comment">Time constant on lag delay (Tiq) (>=0). Typical value = 0,01.</p>
                </td>
             </tr>
             <tr>
@@ -9134,7 +9134,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Filter time constant for power measurement (Tp) (&gt;=0). Typical value = 0,05.</p>
+                  <p class="comment">Filter time constant for power measurement (Tp) (>=0). Typical value = 0,05.</p>
                </td>
             </tr>
             <tr>
@@ -9150,7 +9150,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Time constant (Tpord) (&gt;=0). Typical value = 0,01.</p>
+                  <p class="comment">Time constant (Tpord) (>=0). Typical value = 0,01.</p>
                </td>
             </tr>
             <tr>
@@ -9166,7 +9166,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Filter time constant for voltage measurements (Trv) (&gt;=0). Typical value = 0,01.</p>
+                  <p class="comment">Filter time constant for voltage measurements (Trv) (>=0). Typical value = 0,01.</p>
                </td>
             </tr>
             <tr>
@@ -9942,7 +9942,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Time constant on lag delay (Tiq) (&gt;=0). Typical value = 0,02.</p>
+                  <p class="comment">Time constant on lag delay (Tiq) (>=0). Typical value = 0,02.</p>
                </td>
             </tr>
             <tr>
@@ -9958,7 +9958,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Filter time constant for el. power measurement (Tp) (&gt;=0). Typical value = 0,02.</p>
+                  <p class="comment">Filter time constant for el. power measurement (Tp) (>=0). Typical value = 0,02.</p>
                </td>
             </tr>
             <tr>
@@ -9974,7 +9974,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Time constant (Tpord) (&gt;=0). Typical value = 0,02.</p>
+                  <p class="comment">Time constant (Tpord) (>=0). Typical value = 0,02.</p>
                </td>
             </tr>
             <tr>
@@ -9990,7 +9990,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Filter time constant for voltage measurements (Trv) (&gt;=0). Typical value = 0,02.</p>
+                  <p class="comment">Filter time constant for voltage measurements (Trv) (>=0). Typical value = 0,02.</p>
                </td>
             </tr>
             <tr>
@@ -10349,7 +10349,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Voltage filter time constant (Tfltr) (&gt;=0). Typical value = 0,02.</p>
+                  <p class="comment">Voltage filter time constant (Tfltr) (>=0). Typical value = 0,02.</p>
                </td>
             </tr>
             <tr>
@@ -10365,7 +10365,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Converter time constant (Tg) (&gt;=0). Typical value = 0,02.</p>
+                  <p class="comment">Converter time constant (Tg) (>=0). Typical value = 0,02.</p>
                </td>
             </tr>
             <tr>
@@ -10835,7 +10835,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Voltage and reactive power filter time constant (Tfltr) (&gt;=0). Typical value = 0,02.</p>
+                  <p class="comment">Voltage and reactive power filter time constant (Tfltr) (>=0). Typical value = 0,02.</p>
                </td>
             </tr>
             <tr>
@@ -10851,7 +10851,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Plant controller Q output lead time constant (Tft) (&gt;=0). Typical value = 0.</p>
+                  <p class="comment">Plant controller Q output lead time constant (Tft) (>=0). Typical value = 0.</p>
                </td>
             </tr>
             <tr>
@@ -10867,7 +10867,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Plant controller Q output lag time constant (Tfv) (&gt;=0). Typical value = 0,05.</p>
+                  <p class="comment">Plant controller Q output lag time constant (Tfv) (>=0). Typical value = 0,05.</p>
                </td>
             </tr>
             <tr>
@@ -10883,7 +10883,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Plant controller P output lag time constant (Tlag) (&gt;=0). Typical value = 0,1.</p>
+                  <p class="comment">Plant controller P output lag time constant (Tlag) (>=0). Typical value = 0,1.</p>
                </td>
             </tr>
             <tr>
@@ -10899,7 +10899,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Active power filter time constant (Tp) (&gt;=0). Typical value = 0,25.</p>
+                  <p class="comment">Active power filter time constant (Tp) (>=0). Typical value = 0,25.</p>
                </td>
             </tr>
             <tr>
@@ -11183,7 +11183,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Generator inertia (Hg) (&gt;=0). Typical value = 1.</p>
+                  <p class="comment">Generator inertia (Hg) (>=0). Typical value = 1.</p>
                </td>
             </tr>
             <tr>
@@ -11199,7 +11199,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Turbine inertia (Ht) (&gt;=0). Typical value = 5.</p>
+                  <p class="comment">Turbine inertia (Ht) (>=0). Typical value = 5.</p>
                </td>
             </tr>
             <tr>
@@ -12362,7 +12362,7 @@ p.package { position: absolute; right: 10px; top: 0px}
             <h2 class="abstract">ExcitationSystemDynamics</h2>
          </a>
          <p class="package">ExcitationSystemDynamics</p>
-         <p class="comment">Excitation system function block whose behaviour is described by reference to a standard model &lt;font color="#0f0f0f"&gt;or by definition of a user-defined model.&lt;/font&gt;</p>
+         <p class="comment">Excitation system function block whose behaviour is described by reference to a standard model <font color="#0f0f0f">or by definition of a user-defined model.</font></p>
          <h3>Native Members</h3>
          <table>
             <tr>
@@ -12749,7 +12749,7 @@ p.package { position: absolute; right: 10px; top: 0px}
             <h2 class="abstract">OverexcitationLimiterDynamics</h2>
          </a>
          <p class="package">OverexcitationLimiterDynamics</p>
-         <p class="comment">Overexcitation limiter function block whose behaviour is described by reference to a standard model &lt;font color="#0f0f0f"&gt;or by definition of a user-defined model.&lt;/font&gt;</p>
+         <p class="comment">Overexcitation limiter function block whose behaviour is described by reference to a standard model <font color="#0f0f0f">or by definition of a user-defined model.</font></p>
          <h3>Native Members</h3>
          <table>
             <tr>
@@ -13052,7 +13052,7 @@ p.package { position: absolute; right: 10px; top: 0px}
             <h2 class="abstract">PowerSystemStabilizerDynamics</h2>
          </a>
          <p class="package">PowerSystemStabilizerDynamics</p>
-         <p class="comment">Power system stabilizer function block whose behaviour is described by reference to a standard model &lt;font color="#0f0f0f"&gt;or by definition of a user-defined model.&lt;/font&gt;</p>
+         <p class="comment">Power system stabilizer function block whose behaviour is described by reference to a standard model <font color="#0f0f0f">or by definition of a user-defined model.</font></p>
          <h3>Native Members</h3>
          <table>
             <tr>
@@ -13509,7 +13509,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Damping torque coefficient (D) (&amp;gt;= 0) in pu torque/pu speed deviation (differential type). A proportionality constant that, when multiplied by the angular velocity of the rotor poles with respect to the magnetic field (frequency), results in the damping torque. This value is often zero when the sources of damping torques (generator damper windings, load damping effects, etc.) are modelled in detail. Typical value = 0.</p>
+                  <p class="comment">Damping torque coefficient (D) (>= 0) in pu torque/pu speed deviation (differential type). A proportionality constant that, when multiplied by the angular velocity of the rotor poles with respect to the magnetic field (frequency), results in the damping torque. This value is often zero when the sources of damping torques (generator damper windings, load damping effects, etc.) are modelled in detail. Typical value = 0.</p>
                </td>
             </tr>
             <tr>
@@ -13525,7 +13525,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Inertia constant of generator or motor and mechanical load (&lt;i&gt;H&lt;/i&gt;) (&amp;gt; 0).  This is the specification for the stored energy in the rotating mass when operating at rated speed.  For a generator, this includes the generator plus all other elements (turbine, exciter) on the same shaft and has units of MW x s.  For a motor, it includes the motor plus its mechanical load. Conventional units are PU on the generator MVA base, usually expressed as MW x s / MVA or just s. This value is used in the accelerating power reference frame for operator training simulator solutions.  Typical value = 3.</p>
+                  <p class="comment">Inertia constant of generator or motor and mechanical load (<i>H</i>) (> 0).  This is the specification for the stored energy in the rotating mass when operating at rated speed.  For a generator, this includes the generator plus all other elements (turbine, exciter) on the same shaft and has units of MW x s.  For a motor, it includes the motor plus its mechanical load. Conventional units are PU on the generator MVA base, usually expressed as MW x s / MVA or just s. This value is used in the accelerating power reference frame for operator training simulator solutions.  Typical value = 3.</p>
                </td>
             </tr>
             <tr>
@@ -13541,7 +13541,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Stator leakage reactance (&lt;i&gt;Xl&lt;/i&gt;) (&amp;gt;= 0). Typical value = 0,15.</p>
+                  <p class="comment">Stator leakage reactance (<i>Xl</i>) (>= 0). Typical value = 0,15.</p>
                </td>
             </tr>
             <tr>
@@ -13557,7 +13557,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Stator (armature) resistance (&lt;i&gt;Rs&lt;/i&gt;) (&amp;gt;= 0). Typical value = 0,005.</p>
+                  <p class="comment">Stator (armature) resistance (<i>Rs</i>) (>= 0). Typical value = 0,005.</p>
                </td>
             </tr>
          </table>
@@ -13839,7 +13839,7 @@ p.package { position: absolute; right: 10px; top: 0px}
          <p class="comment">The several variations differ in the following ways:</p>
          <p class="comment">- the number of  equivalent windings that are included;</p>
          <p class="comment">- the way in which saturation is incorporated into the model;</p>
-         <p class="comment">- whether or not “subtransient saliency” (&lt;i&gt;X''q&lt;/i&gt; not = &lt;i&gt;X''d&lt;/i&gt;) is represented.</p>
+         <p class="comment">- whether or not “subtransient saliency” (<i>X''q</i> not = <i>X''d</i>) is represented.</p>
          <p class="comment">It is not necessary for each simulation tool to have separate models for each of the model types.  The same model can often be used for several types by alternative logic within the model.  Also, differences in saturation representation might not result in significant model performance differences so model substitutions are often acceptable.</p>
          <h3>Native Members</h3>
          <table>
@@ -13856,7 +13856,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Ratio (exciter voltage/generator voltage) of &lt;i&gt;Efd&lt;/i&gt; bases of exciter and generator models (&amp;gt; 0). Typical value = 1.</p>
+                  <p class="comment">Ratio (exciter voltage/generator voltage) of <i>Efd</i> bases of exciter and generator models (> 0). Typical value = 1.</p>
                </td>
             </tr>
             <tr>
@@ -13872,7 +13872,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Excitation base system mode. It should be equal to the value of &lt;i&gt;WLMDV&lt;/i&gt; given by the user. &lt;i&gt;WLMDV&lt;/i&gt; is the PU ratio between the field voltage and the excitation current: &lt;i&gt;Efd&lt;/i&gt; = &lt;i&gt;WLMDV&lt;/i&gt; x &lt;i&gt;Ifd&lt;/i&gt;. Typical value = ifag.</p>
+                  <p class="comment">Excitation base system mode. It should be equal to the value of <i>WLMDV</i> given by the user. <i>WLMDV</i> is the PU ratio between the field voltage and the excitation current: <i>Efd</i> = <i>WLMDV</i> x <i>Ifd</i>. Typical value = ifag.</p>
                </td>
             </tr>
             <tr>
@@ -13888,7 +13888,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Saturation factor at rated terminal voltage (&lt;i&gt;S1&lt;/i&gt;) (&amp;gt;= 0). Defined by defined by &lt;i&gt;S&lt;/i&gt;(&lt;i&gt;E1&lt;/i&gt;) in the SynchronousMachineSaturationParameters diagram.  Typical value = 0,02.</p>
+                  <p class="comment">Saturation factor at rated terminal voltage (<i>S1</i>) (>= 0). Defined by defined by <i>S</i>(<i>E1</i>) in the SynchronousMachineSaturationParameters diagram.  Typical value = 0,02.</p>
                </td>
             </tr>
             <tr>
@@ -13904,7 +13904,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Saturation factor at 120 % of rated terminal voltage (&lt;i&gt;S12&lt;/i&gt;) (&amp;gt;= RotatingMachineDynamics.saturationFactor). Defined by &lt;i&gt;S&lt;/i&gt;(&lt;i&gt;E2&lt;/i&gt;) in the SynchronousMachineSaturationParameters diagram. Typical value = 0,12.</p>
+                  <p class="comment">Saturation factor at 120 % of rated terminal voltage (<i>S12</i>) (>= RotatingMachineDynamics.saturationFactor). Defined by <i>S</i>(<i>E2</i>) in the SynchronousMachineSaturationParameters diagram. Typical value = 0,12.</p>
                </td>
             </tr>
             <tr>
@@ -13920,7 +13920,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Quadrature-axis saturation factor at 120% of rated terminal voltage (&lt;i&gt;S12q&lt;/i&gt;) (&amp;gt;= SynchonousMachineDetailed.saturationFactorQAxis).  Typical value = 0,12.</p>
+                  <p class="comment">Quadrature-axis saturation factor at 120% of rated terminal voltage (<i>S12q</i>) (>= SynchonousMachineDetailed.saturationFactorQAxis).  Typical value = 0,12.</p>
                </td>
             </tr>
             <tr>
@@ -13936,7 +13936,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Quadrature-axis saturation factor at rated terminal voltage (&lt;i&gt;S1q&lt;/i&gt;) (&amp;gt;= 0). Typical value = 0,02.</p>
+                  <p class="comment">Quadrature-axis saturation factor at rated terminal voltage (<i>S1q</i>) (>= 0). Typical value = 0,02.</p>
                </td>
             </tr>
          </table>
@@ -14097,12 +14097,12 @@ p.package { position: absolute; right: 10px; top: 0px}
          <p class="comment">- simplified (or classical), where a group of generators or motors is not modelled in detail;</p>
          <p class="comment">- detailed, in equivalent circuit form;</p>
          <p class="comment">- detailed, in time constant reactance form; or</p>
-         <p class="comment">&lt;font color="#0f0f0f"&gt;- by definition of a user-defined model.&lt;/font&gt;</p>
-         <p class="comment">&lt;font color="#0f0f0f"&gt;It is a common practice to represent small generators by a negative load rather than by a dynamic generator model when performing dynamics simulations. In this case, a SynchronousMachine in the static model is not represented by anything in the dynamics model, instead it is treated as an ordinary load.&lt;/font&gt;</p>
-         <p class="comment">&lt;font color="#0f0f0f"&gt;Parameter details:&lt;/font&gt;</p>
-         <p class="comment">&lt;ol&gt;</p>
-         <p class="comment">	&lt;li&gt;&lt;font color="#0f0f0f"&gt;Synchronous machine parameters such as &lt;i&gt;Xl, Xd, Xp&lt;/i&gt; etc. are actually used as inductances in the models,&lt;/font&gt; but are commonly referred to as reactances since, at nominal frequency, the PU values are the same. However, some references use the symbol &lt;i&gt;L&lt;/i&gt; instead of &lt;i&gt;X&lt;/i&gt;.&lt;/li&gt;</p>
-         <p class="comment">&lt;/ol&gt;</p>
+         <p class="comment"><font color="#0f0f0f">- by definition of a user-defined model.</font></p>
+         <p class="comment"><font color="#0f0f0f">It is a common practice to represent small generators by a negative load rather than by a dynamic generator model when performing dynamics simulations. In this case, a SynchronousMachine in the static model is not represented by anything in the dynamics model, instead it is treated as an ordinary load.</font></p>
+         <p class="comment"><font color="#0f0f0f">Parameter details:</font></p>
+         <p class="comment"><ol></p>
+         <p class="comment">	<li><font color="#0f0f0f">Synchronous machine parameters such as <i>Xl, Xd, Xp</i> etc. are actually used as inductances in the models,</font> but are commonly referred to as reactances since, at nominal frequency, the PU values are the same. However, some references use the symbol <i>L</i> instead of <i>X</i>.</li></p>
+         <p class="comment"></ol></p>
          <h3>Native Members</h3>
          <table>
             <tr>
@@ -14566,7 +14566,7 @@ p.package { position: absolute; right: 10px; top: 0px}
             <h2 class="abstract">TurbineGovernorDynamics</h2>
          </a>
          <p class="package">TurbineGovernorDynamics</p>
-         <p class="comment">Turbine-governor function block whose behaviour is described by reference to a standard model &lt;font color="#0f0f0f"&gt;or by definition of a user-defined model.&lt;/font&gt;</p>
+         <p class="comment">Turbine-governor function block whose behaviour is described by reference to a standard model <font color="#0f0f0f">or by definition of a user-defined model.</font></p>
          <h3>Native Members</h3>
          <table>
             <tr>
@@ -15008,7 +15008,7 @@ p.package { position: absolute; right: 10px; top: 0px}
             <h2 class="enumerated">InputSignalKind</h2>
          </a>
          <p class="package">PowerSystemStabilizerDynamics</p>
-         <p class="comment">Types of input signals.  In dynamics modelling, commonly represented by the &lt;i&gt;j&lt;/i&gt; parameter.</p>
+         <p class="comment">Types of input signals.  In dynamics modelling, commonly represented by the <i>j</i> parameter.</p>
          <table>
             <tr>
                <th>
@@ -15023,7 +15023,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">busFrequency</p>
                </th>
                <td>
-                  <p class="comment">Input signal is bus voltage fr&lt;font color="#0f0f0f"&gt;equency.  This could be a terminal frequency or remote frequency.&lt;/font&gt;</p>
+                  <p class="comment">Input signal is bus voltage fr<font color="#0f0f0f">equency.  This could be a terminal frequency or remote frequency.</font></p>
                </td>
             </tr>
             <tr>
@@ -15031,7 +15031,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">busFrequencyDeviation</p>
                </th>
                <td>
-                  <p class="comment">Input signal is deviation of bus voltage frequ&lt;font color="#0f0f0f"&gt;ency.  This could be a terminal frequency deviation or remote frequency deviation.&lt;/font&gt;</p>
+                  <p class="comment">Input signal is deviation of bus voltage frequ<font color="#0f0f0f">ency.  This could be a terminal frequency deviation or remote frequency deviation.</font></p>
                </td>
             </tr>
             <tr>
@@ -15039,7 +15039,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">busVoltage</p>
                </th>
                <td>
-                  <p class="comment">Input signal &lt;font color="#0f0f0f"&gt;is bus voltage.  This could be a terminal voltage or remote voltage.&lt;/font&gt;</p>
+                  <p class="comment">Input signal <font color="#0f0f0f">is bus voltage.  This could be a terminal voltage or remote voltage.</font></p>
                </td>
             </tr>
             <tr>
@@ -15047,7 +15047,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">busVoltageDerivative</p>
                </th>
                <td>
-                  <p class="comment">Input signal is derivative of bus voltag&lt;font color="#0f0f0f"&gt;e.  This could be a terminal voltage derivative or remote voltage derivative.&lt;/font&gt;</p>
+                  <p class="comment">Input signal is derivative of bus voltag<font color="#0f0f0f">e.  This could be a terminal voltage derivative or remote voltage derivative.</font></p>
                </td>
             </tr>
             <tr>
@@ -15071,7 +15071,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">generatorElectricalPower</p>
                </th>
                <td>
-                  <p class="comment">Input signal is generator electrical power on rated &lt;i&gt;S&lt;/i&gt;.</p>
+                  <p class="comment">Input signal is generator electrical power on rated <i>S</i>.</p>
                </td>
             </tr>
             <tr>
@@ -15173,12 +15173,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                <td>
                   <p class="comment">Temporarily Admissible Transmission Loading (TATL) which is the loading in amperes, MVA or MW that can be accepted by a branch for a certain limited duration.</p>
                   <p class="comment">The TATL can be defined in different ways:</p>
-                  <p class="comment">&lt;ul&gt;</p>
-                  <p class="comment">	&lt;li&gt;as a fixed percentage of the PATL for a given time (for example, 115% of the PATL that can be accepted during 15 minutes),&lt;/li&gt;</p>
-                  <p class="comment">&lt;/ul&gt;</p>
-                  <p class="comment">&lt;ul&gt;</p>
-                  <p class="comment">	&lt;li&gt;pairs of TATL type and Duration calculated for each line taking into account its particular configuration and conditions of functioning (for example, it can define a TATL acceptable during 20 minutes and another one acceptable during 10 minutes).&lt;/li&gt;</p>
-                  <p class="comment">&lt;/ul&gt;</p>
+                  <p class="comment"><ul></p>
+                  <p class="comment">	<li>as a fixed percentage of the PATL for a given time (for example, 115% of the PATL that can be accepted during 15 minutes),</li></p>
+                  <p class="comment"></ul></p>
+                  <p class="comment"><ul></p>
+                  <p class="comment">	<li>pairs of TATL type and Duration calculated for each line taking into account its particular configuration and conditions of functioning (for example, it can define a TATL acceptable during 20 minutes and another one acceptable during 10 minutes).</li></p>
+                  <p class="comment"></ul></p>
                   <p class="comment">Such a definition of TATL can depend on the initial operating conditions of the network element (sag situation of a line).</p>
                   <p class="comment">The duration attribute can be used to define several TATL limit types. Hence multiple TATL limit values may exist having different durations.</p>
                </td>
