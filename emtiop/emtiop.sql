@@ -379,6 +379,109 @@ CREATE TABLE "EquipmentContainer"
     "mRID" VARCHAR(100) PRIMARY KEY
 );
 
+-- IEEE 421.5-2005 type DC1A model. This model represents field-controlled
+-- DC commutator exciters with continuously acting voltage regulators (especially
+-- the direct-acting rheostatic, rotating amplifier, and magnetic amplifier
+-- types). Because this model has been widely implemented by the industry,
+-- it is sometimes used to represent other types of systems when detailed
+-- data for them are not available or when a simplified model is required.
+-- Reference: IEEE 421.5-2005, 5.1.
+-- According to IEEE 421.5-2016, 6.2 the DC1A excitation system model is being
+-- superseded by the model DC1C (ExcIEEEDC1C).
+CREATE TABLE "ExcIEEEDC1A"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Exciter voltage at which exciter saturation is defined (<i>E</i><i><sub>FD1</sub></i>)
+    -- (&gt; 0). Typical value = 3,1.
+    "efd1" DOUBLE PRECISION,
+    -- Exciter voltage at which exciter saturation is defined (<i>E</i><i><sub>FD2</sub></i>)
+    -- (&gt; 0). Typical value = 2,3.
+    "efd2" DOUBLE PRECISION,
+    -- An additional attribute (<i>exclim</i>) not defined in IEEE 421.5-2005.
+    -- IEEE standard is ambiguous about lower limit on exciter output.
+    -- true = a lower limit of zero is applied to integrator output
+    -- false = a lower limit of zero is not applied to integrator output.
+    -- Typical value = true.
+    "exclim" INTEGER NOT NULL DEFAULT 1 CHECK ("exclim" IN (0, 1)),
+    -- Voltage regulator gain (<i>K</i><i><sub>A</sub></i>) (&gt; 0). Typical
+    -- value = 46.
+    "ka" DOUBLE PRECISION,
+    -- Exciter constant related to self-excited field (<i>K</i><i><sub>E</sub></i>).
+    -- Typical value = 0.
+    "ke" DOUBLE PRECISION,
+    -- Excitation control system stabilizer gain (<i>K</i><i><sub>F</sub></i>)
+    -- (&gt;= 0). Typical value = 0.1.
+    "kf" DOUBLE PRECISION,
+    -- Exciter saturation function value at the corresponding exciter voltage,
+    -- <i>E</i><i><sub>FD1</sub></i> (<i>S</i><i><sub>E</sub></i><i>[E</i><i><sub>FD1</sub></i><i>]</i>)
+    -- (&gt;= 0). Typical value = 0.33.
+    "seefd1" DOUBLE PRECISION,
+    -- Exciter saturation function value at the corresponding exciter voltage,
+    -- <i>E</i><i><sub>FD2</sub></i> (<i>S</i><i><sub>E</sub></i><i>[E</i><i><sub>FD2</sub></i><i>]</i>)
+    -- (&gt;= 0). Typical value = 0,1.
+    "seefd2" DOUBLE PRECISION,
+    -- Voltage regulator time constant (<i>T</i><i><sub>A</sub></i>) (&gt; 0).
+    -- Typical value = 0,06.
+    "ta" DOUBLE PRECISION,
+    -- Voltage regulator time constant (<i>T</i><i><sub>B</sub></i>) (&gt;= 0).
+    -- Typical value = 0.
+    "tb" DOUBLE PRECISION,
+    -- Voltage regulator time constant (<i>T</i><i><sub>C</sub></i>) (&gt;= 0).
+    -- Typical value = 0.
+    "tc" DOUBLE PRECISION,
+    -- Exciter time constant, integration rate associated with exciter control
+    -- (<i>T</i><i><sub>E</sub></i>) (&gt; 0). Typical value = 0,46.
+    "te" DOUBLE PRECISION,
+    -- Excitation control system stabilizer time constant (<i>T</i><i><sub>F</sub></i>)
+    -- (&gt; 0). Typical value = 1.
+    "tf" DOUBLE PRECISION,
+    -- UEL input (<i>uelin</i>).
+    -- true = input is connected to the HV gate
+    -- false = input connects to the error signal.
+    -- Typical value = true.
+    "uelin" INTEGER NOT NULL DEFAULT 1 CHECK ("uelin" IN (0, 1)),
+    -- Maximum voltage regulator output (<i>V</i><i><sub>RMAX</sub></i>) (&gt;
+    -- ExcIEEEDC1A.vrmin). Typical value = 1.
+    "vrmax" DOUBLE PRECISION,
+    -- Minimum voltage regulator output (<i>V</i><i><sub>RMIN</sub></i>) (&lt;
+    -- 0 and &lt; ExcIEEEDC1A.vrmax). Typical value = -0,9.
+    "vrmin" DOUBLE PRECISION
+);
+
+-- Simplified excitation system.
+CREATE TABLE "ExcSEXS"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Field voltage clipping maximum limit (<i>Efdmax</i>) (&gt; ExcSEXS.efdmin).
+    -- Typical value = 5.
+    "efdmax" DOUBLE PRECISION,
+    -- Field voltage clipping minimum limit (<i>Efdmin</i>) (&lt; ExcSEXS.efdmax).
+    -- Typical value = -5.
+    "efdmin" DOUBLE PRECISION,
+    -- Maximum field voltage output (<i>Emax</i>) (&gt; ExcSEXS.emin). Typical
+    -- value = 5.
+    "emax" DOUBLE PRECISION,
+    -- Minimum field voltage output (<i>Emin</i>) (&lt; ExcSEXS.emax). Typical
+    -- value = -5.
+    "emin" DOUBLE PRECISION,
+    -- Gain (<i>K</i>) (&gt; 0). Typical value = 100.
+    "k" DOUBLE PRECISION,
+    -- PI controller gain (<i>Kc</i>) (&gt; 0 if ExcSEXS.tc &gt; 0). Typical value
+    -- = 0,08.
+    "kc" DOUBLE PRECISION,
+    -- Gain reduction ratio of lag-lead element (<i>[Ta / Tb]</i>). Typical value
+    -- = 0,1.
+    "tatb" DOUBLE PRECISION,
+    -- Denominator time constant of lag-lead block (<i>Tb</i>) (&gt;= 0). Typical
+    -- value = 10.
+    "tb" DOUBLE PRECISION,
+    -- PI controller phase lead time constant (<i>Tc</i>) (&gt;= 0). Typical value
+    -- = 0.
+    "tc" DOUBLE PRECISION,
+    -- Time constant of gain block (<i>Te</i>) (&gt; 0). Typical value = 0,05.
+    "te" DOUBLE PRECISION
+);
+
 -- Modification of an old IEEE ST1A static excitation system without overexcitation
 -- limiter (OEL) and underexcitation limiter (UEL).
 CREATE TABLE "ExcST1A"
@@ -473,6 +576,79 @@ CREATE TABLE "GeneratingUnit"
     -- This is the minimum operating active power limit the dispatcher can enter
     -- for this unit.
     "minOperatingP" DOUBLE PRECISION NOT NULL
+);
+
+-- Single shaft gas turbine.
+CREATE TABLE "GovGAST"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Ambient temperature load limit (<i>Load Limit</i>). Typical value = 1.
+    "at" DOUBLE PRECISION,
+    -- Turbine damping factor (<i>Dturb</i>). Typical value = 0,18.
+    "dturb" DOUBLE PRECISION,
+    -- Temperature limiter gain (<i>Kt</i>). Typical value = 3.
+    "kt" DOUBLE PRECISION,
+    -- Base for power values (<i>MWbase</i>) (&gt; 0). Unit = MW.
+    "mwbase" DOUBLE PRECISION,
+    -- Permanent droop (<i>R</i>) (&gt;0). Typical value = 0,04.
+    "r" DOUBLE PRECISION,
+    -- Governor mechanism time constant (<i>T1</i>) (&gt;= 0). <i>T1</i> represents
+    -- the natural valve positioning time constant of the governor for small disturbances,
+    -- as seen when rate limiting is not in effect. Typical value = 0,5.
+    "t1" DOUBLE PRECISION,
+    -- Turbine power time constant (<i>T2</i>) (&gt;= 0). <i>T2</i> represents
+    -- delay due to internal energy storage of the gas turbine engine. <i>T2</i>
+    -- can be used to give a rough approximation to the delay associated with
+    -- acceleration of the compressor spool of a multi-shaft engine, or with the
+    -- compressibility of gas in the plenum of a free power turbine of an aero-derivative
+    -- unit, for example. Typical value = 0,5.
+    "t2" DOUBLE PRECISION,
+    -- Turbine exhaust temperature time constant (<i>T3</i>) (&gt;= 0). Typical
+    -- value = 3.
+    "t3" DOUBLE PRECISION,
+    -- Maximum turbine power, PU of MWbase (<i>Vmax</i>) (&gt; GovGAST.vmin).
+    -- Typical value = 1.
+    "vmax" DOUBLE PRECISION,
+    -- Minimum turbine power, PU of MWbase (<i>Vmin</i>) (&lt; GovGAST.vmax).
+    -- Typical value = 0.
+    "vmin" DOUBLE PRECISION
+);
+
+-- Basic hydro turbine governor.
+CREATE TABLE "GovHydro1"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Turbine gain (<i>At</i>) (&gt; 0). Typical value = 1,2.
+    "at" DOUBLE PRECISION,
+    -- Turbine damping factor (<i>Dturb</i>) (&gt;= 0). Typical value = 0,5.
+    "dturb" DOUBLE PRECISION,
+    -- Maximum gate opening (<i>Gmax</i>) (&gt; 0 and &gt; GovHydro1.gmin). Typical
+    -- value = 1.
+    "gmax" DOUBLE PRECISION,
+    -- Minimum gate opening (<i>Gmin</i>) (&gt;= 0 and &lt; GovHydro1.gmax). Typical
+    -- value = 0.
+    "gmin" DOUBLE PRECISION,
+    -- Turbine nominal head (<i>hdam</i>). Typical value = 1.
+    "hdam" DOUBLE PRECISION,
+    -- Base for power values (<i>MWbase</i>) (&gt; 0). Unit = MW.
+    "mwbase" DOUBLE PRECISION,
+    -- No-load flow at nominal head (<i>qnl</i>) (&gt;= 0). Typical value = 0,08.
+    "qnl" DOUBLE PRECISION,
+    -- Permanent droop (<i>R</i>) (&gt; 0). Typical value = 0,04.
+    "rperm" DOUBLE PRECISION,
+    -- Temporary droop (<i>r</i>) (&gt; GovHydro1.rperm). Typical value = 0,3.
+    "rtemp" DOUBLE PRECISION,
+    -- Filter time constant (<i>Tf</i>) (&gt; 0). Typical value = 0,05.
+    "tf" DOUBLE PRECISION,
+    -- Gate servo time constant (<i>Tg</i>) (&gt; 0). Typical value = 0,5.
+    "tg" DOUBLE PRECISION,
+    -- Washout time constant (<i>Tr</i>) (&gt; 0). Typical value = 5.
+    "tr" DOUBLE PRECISION,
+    -- Water inertia time constant (<i>Tw</i>) (&gt; 0). Typical value = 1.
+    "tw" DOUBLE PRECISION,
+    -- Maximum gate velocity (<i>Vlem</i>) (&gt; 0). The limit is applied on the
+    -- state variable of the integrator. Typical value = 0,2.
+    "velm" DOUBLE PRECISION
 );
 
 -- Simplified steam turbine governor.
@@ -896,6 +1072,67 @@ CREATE TABLE "OperationalLimitType"
     "isInfiniteDuration" INTEGER NOT NULL DEFAULT 1 CHECK ("isInfiniteDuration" IN (0, 1))
 );
 
+-- Field voltage or current overexcitation limiter designed to protect the
+-- generator field of an AC machine with automatic excitation control from
+-- overheating due to prolonged overexcitation.
+CREATE TABLE "OverexcLimX2"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Low voltage or current point on the inverse time characteristic (<i>EFD</i><i><sub>1</sub></i>).
+    -- Typical value = 1,1.
+    "efd1" DOUBLE PRECISION,
+    -- Mid voltage or current point on the inverse time characteristic (<i>EFD</i><i><sub>2</sub></i>).
+    -- Typical value = 1,2.
+    "efd2" DOUBLE PRECISION,
+    -- High voltage or current point on the inverse time characteristic (<i>EFD</i><i><sub>3</sub></i>).
+    -- Typical value = 1,5.
+    "efd3" DOUBLE PRECISION,
+    -- Desired field voltage if <i>m</i> = false or desired field current if <i>m
+    -- </i>= true (<i>EFD</i><i><sub>DES</sub></i>). Typical value = 1.
+    "efddes" DOUBLE PRECISION,
+    -- Rated field voltage if m = false or rated field current if m = true (<i>EFD</i><i><sub>RATED</sub></i>).
+    -- Typical value = 1,05.
+    "efdrated" DOUBLE PRECISION,
+    -- Gain (<i>K</i><i><sub>MX</sub></i>). Typical value = 0,002.
+    "kmx" DOUBLE PRECISION,
+    -- (<i>m</i>).
+    -- true = IFD limiting
+    -- false = EFD limiting.
+    "m" INTEGER NOT NULL DEFAULT 1 CHECK ("m" IN (0, 1)),
+    -- Identifies the choice between using the inverse time characteristic and
+    -- desired field voltage. True means usage of inverse time characteristic.
+    -- False means usage of desired field voltage. Typical value = false.
+    "mstatus" INTEGER NOT NULL DEFAULT 1 CHECK ("mstatus" IN (0, 1)),
+    -- Time to trip the exciter at the low voltage or current point on the inverse
+    -- time characteristic (<i>TIME</i><i><sub>1</sub></i>) (&gt;= 0). Typical
+    -- value = 120.
+    "t1" DOUBLE PRECISION,
+    -- Time to trip the exciter at the mid voltage or current point on the inverse
+    -- time characteristic (<i>TIME</i><i><sub>2</sub></i>) (&gt;= 0). Typical
+    -- value = 40.
+    "t2" DOUBLE PRECISION,
+    -- Time to trip the exciter at the high voltage or current point on the inverse
+    -- time characteristic (<i>TIME</i><i><sub>3</sub></i>) (&gt;= 0). Typical
+    -- value = 15.
+    "t3" DOUBLE PRECISION,
+    -- High voltage limit (Vhigh) (&gt; Vlow, &gt;=0).
+    "vhigh" DOUBLE PRECISION,
+    -- Low voltage limit (<i>V</i><i><sub>LOW</sub></i>) (&gt; 0).
+    "vlow" DOUBLE PRECISION
+);
+
+-- Overexcitation limiter function block whose behaviour is described by reference
+-- to a standard model <font color="#0f0f0f">or by definition of a user-defined
+-- model.</font>
+CREATE TABLE "OverexcitationLimiterDynamics"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Excitation system model with which this overexcitation limiter model is
+    -- associated.
+    -- FK column reference to table representing the "ExcitationSystemDynamics" class
+    "ExcitationSystemDynamics" VARCHAR(100)
+);
+
 -- Classifying instances of the same class, e.g. overhead and underground
 -- ACLineSegments. This classification mechanism is intended to provide flexibility
 -- outside the scope of this document, i.e. provide customisation that is
@@ -1079,6 +1316,62 @@ CREATE TABLE "PowerTransformerEnd"
     -- The power transformer of this power transformer end.
     -- FK column reference to table representing the "PowerTransformer" class
     "PowerTransformer" VARCHAR(100) NOT NULL
+);
+
+-- Single input power system stabilizer. It is a modified version in order
+-- to allow representation of various vendors' implementations on PSS type
+-- 1A.
+CREATE TABLE "Pss1A"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Notch filter parameter (<i>A</i><i><sub>1</sub></i>).
+    "a1" DOUBLE PRECISION,
+    -- Notch filter parameter (<i>A</i><i><sub>2</sub></i>).
+    "a2" DOUBLE PRECISION,
+    -- Notch filter parameter (<i>A</i><i><sub>3</sub></i>).
+    "a3" DOUBLE PRECISION,
+    -- Notch filter parameter (<i>A</i><i><sub>4</sub></i>).
+    "a4" DOUBLE PRECISION,
+    -- Notch filter parameter (<i>A</i><i><sub>5</sub></i>).
+    "a5" DOUBLE PRECISION,
+    -- Notch filter parameter (<i>A</i><i><sub>6</sub></i>).
+    "a6" DOUBLE PRECISION,
+    -- Notch filter parameter (<i>A</i><i><sub>7</sub></i>).
+    "a7" DOUBLE PRECISION,
+    -- Notch filter parameter (<i>A</i><i><sub>8</sub></i>).
+    "a8" DOUBLE PRECISION,
+    -- Type of input signal (rotorAngularFrequencyDeviation, busFrequencyDeviation,
+    -- generatorElectricalPower, generatorAcceleratingPower, busVoltage, or busVoltageDerivative).
+    -- FK column reference to table representing the "InputSignalKind" enumeration
+    "inputSignalType" VARCHAR(100),
+    -- Selector (<i>Kd</i>).
+    -- true = e<sup>-sTdelay</sup> used
+    -- false = e<sup>-sTdelay</sup> not used.
+    "kd" INTEGER NOT NULL DEFAULT 1 CHECK ("kd" IN (0, 1)),
+    -- Stabilizer gain (<i>K</i><i><sub>s</sub></i>).
+    "ks" DOUBLE PRECISION,
+    -- Lead/lag time constant (<i>T</i><i><sub>1</sub></i>) (&gt;= 0).
+    "t1" DOUBLE PRECISION,
+    -- Lead/lag time constant (<i>T</i><i><sub>2</sub></i>) (&gt;= 0).
+    "t2" DOUBLE PRECISION,
+    -- Lead/lag time constant (<i>T</i><i><sub>3</sub></i>) (&gt;= 0).
+    "t3" DOUBLE PRECISION,
+    -- Lead/lag time constant (<i>T</i><i><sub>4</sub></i>) (&gt;= 0).
+    "t4" DOUBLE PRECISION,
+    -- Washout time constant (<i>T</i><i><sub>5</sub></i>) (&gt;= 0).
+    "t5" DOUBLE PRECISION,
+    -- Transducer time constant (<i>T</i><i><sub>6</sub></i>) (&gt;= 0).
+    "t6" DOUBLE PRECISION,
+    -- Time constant (<i>Tdelay</i>) (&gt;= 0).
+    "tdelay" DOUBLE PRECISION,
+    -- Stabilizer input cutoff threshold (<i>Vcl</i>).
+    "vcl" DOUBLE PRECISION,
+    -- Stabilizer input cutoff threshold (<i>Vcu</i>).
+    "vcu" DOUBLE PRECISION,
+    -- Maximum stabilizer output (<i>Vrmax</i>) (&gt; Pss1A.vrmin).
+    "vrmax" DOUBLE PRECISION,
+    -- Minimum stabilizer output (<i>Vrmin</i>) (&lt; Pss1A.vrmax).
+    "vrmin" DOUBLE PRECISION
 );
 
 -- IEEE type PSS1A power system stabilizer model. PSS1A is the generalized
@@ -2381,6 +2674,82 @@ CREATE TABLE "WeccREECA"
     "vup" DOUBLE PRECISION NOT NULL
 );
 
+-- WECC PQ Controller and Current Limit Logic.
+-- A simplified version of the electrical controls, which was previously used
+-- for PV plants but is no longer recommended.
+-- Reference: Model User Guide for Generic Renewable Energy System Models,
+-- EPRI, Palo Alto, CA: 2018, 3002014083.
+CREATE TABLE "WeccREECB"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Voltage deadband for overvoltage iq injection (db1). Typical value = -0,05.
+    "db1" DOUBLE PRECISION,
+    -- Voltage deadband for undervoltage iq injection (db2). Typical value = 0,05.
+    "db2" DOUBLE PRECISION,
+    -- Ramp rate on power reference (dPmax). Typical value = 999.
+    "dPmax" DOUBLE PRECISION,
+    -- Ramp rate on power reference (dPmin). Typical value = -999.
+    "dPmin" DOUBLE PRECISION,
+    -- Max. allowable total converter current limit (Imax). Typical value = 1,3.
+    "imax" DOUBLE PRECISION,
+    -- Maximum limit of reactive current injection (Iqh1). Typical value = 1,44.
+    "iqh1" DOUBLE PRECISION,
+    -- Minimum limit of reactive current injection (Iql1). Typical value = -1,44.
+    "iql1" DOUBLE PRECISION,
+    -- Integral gain (Kqi). Typical value = 0,7.
+    "kqi" DOUBLE PRECISION,
+    -- Proportional gain (Kqp). Typical value = 1.
+    "kqp" DOUBLE PRECISION,
+    -- Gain for reactive current injection during fault (Kqv). Typical value =
+    -- 2.
+    "kqv" DOUBLE PRECISION,
+    -- Integral gain (Kvi). Typical value = 0,7.
+    "kvi" DOUBLE PRECISION,
+    -- Proportional gain (Kvp). Typical value = 1.
+    "kvp" DOUBLE PRECISION,
+    -- Power factor flag: 1 (true) = pf control, 0 (false) = Q control (PfFlag).
+    -- Typical value = 0 (false).
+    "pfFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("pfFlag" IN (0, 1)),
+    -- Maximum power reference (Pmax). Typical value = 1.
+    "pmax" DOUBLE PRECISION,
+    -- Minimum power reference (Pmin). Typical value = 0.
+    "pmin" DOUBLE PRECISION,
+    -- Priority flag on current limit: 1 (true) = P, 0 (false) = Q priority (PqFlag).
+    -- Typical value = 0 (false).
+    "pqFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("pqFlag" IN (0, 1)),
+    -- Q control flag: 1 (true) = voltage/Q, 0 (false) = constant power factor
+    -- or Q control. (QFlag). Typical value = 0 (false).
+    "qFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("qFlag" IN (0, 1)),
+    -- Reactive power limit maximum (Qmax). Typical value = 0,43.
+    "qmax" DOUBLE PRECISION,
+    -- Reactive power limit minimum (Qmin). Typical value = -0,43.
+    "qmin" DOUBLE PRECISION,
+    -- Time constant on lag delay (Tiq) (>=0). Typical value = 0,02.
+    "tiq" DOUBLE PRECISION,
+    -- Filter time constant for el. power measurement (Tp) (>=0). Typical value
+    -- = 0,02.
+    "tp" DOUBLE PRECISION,
+    -- Time constant (Tpord) (>=0). Typical value = 0,02.
+    "tpord" DOUBLE PRECISION,
+    -- Filter time constant for voltage measurements (Trv) (>=0). Typical value
+    -- = 0,02.
+    "trv" DOUBLE PRECISION,
+    -- Undervoltage condition trigger voltage (Vdip). Typical value = 0,9.
+    "vdip" DOUBLE PRECISION,
+    -- Voltage control flag: 1 (true) = Q control, 0 (false) = voltage control
+    -- (VFlag). Typical value = 1 (true).
+    "vFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("vFlag" IN (0, 1)),
+    -- Voltage control maximum (Vmax). Typical value = 1,1.
+    "vmax" DOUBLE PRECISION,
+    -- Voltage control minimum (Vmin). Typical value = 0,9.
+    "vmin" DOUBLE PRECISION,
+    -- Reference voltage, enter 0 for terminal voltage (Vref0). Typical value
+    -- = 0.
+    "vref0" DOUBLE PRECISION,
+    -- Overvoltage condition trigger voltage (Vup). Typical value = 1,1.
+    "vup" DOUBLE PRECISION
+);
+
 -- WECC Generator-Converter Model.
 -- Reference: Model User Guide for Generic Renewable Energy System Models,
 -- EPRI, Palo Alto, CA: 2018, 3002014083.
@@ -2594,6 +2963,12 @@ ALTER TABLE "Equipment" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemResour
 -- Inheritance subclass-superclass constraint for table "EquipmentContainer"
 ALTER TABLE "EquipmentContainer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConnectivityNodeContainer" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "ExcIEEEDC1A"
+ALTER TABLE "ExcIEEEDC1A" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ExcitationSystemDynamics" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "ExcSEXS"
+ALTER TABLE "ExcSEXS" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ExcitationSystemDynamics" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "ExcST1A"
 ALTER TABLE "ExcST1A" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ExcitationSystemDynamics" ( "mRID" );
 
@@ -2605,6 +2980,12 @@ ALTER TABLE "GeneratingPlant" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystem
 
 -- Inheritance subclass-superclass constraint for table "GeneratingUnit"
 ALTER TABLE "GeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "GovGAST"
+ALTER TABLE "GovGAST" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TurbineGovernorDynamics" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "GovHydro1"
+ALTER TABLE "GovHydro1" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TurbineGovernorDynamics" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "GovSteamSGO"
 ALTER TABLE "GovSteamSGO" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TurbineGovernorDynamics" ( "mRID" );
@@ -2629,6 +3010,12 @@ ALTER TABLE "NuclearGeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Gener
 
 -- Inheritance subclass-superclass constraint for table "OperationalLimit"
 ALTER TABLE "OperationalLimit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "OverexcLimX2"
+ALTER TABLE "OverexcLimX2" ADD FOREIGN KEY ( "mRID" ) REFERENCES "OverexcitationLimiterDynamics" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "OverexcitationLimiterDynamics"
+ALTER TABLE "OverexcitationLimiterDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "PSRType"
 ALTER TABLE "PSRType" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
@@ -2656,6 +3043,9 @@ ALTER TABLE "PowerTransformer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Conducting
 
 -- Inheritance subclass-superclass constraint for table "PowerTransformerEnd"
 ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TransformerEnd" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "Pss1A"
+ALTER TABLE "Pss1A" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemStabilizerDynamics" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "PssIEEE1A"
 ALTER TABLE "PssIEEE1A" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemStabilizerDynamics" ( "mRID" );
@@ -2738,6 +3128,9 @@ ALTER TABLE "WeccREEC" ADD FOREIGN KEY ( "mRID" ) REFERENCES "WeccDynamics" ( "m
 -- Inheritance subclass-superclass constraint for table "WeccREECA"
 ALTER TABLE "WeccREECA" ADD FOREIGN KEY ( "mRID" ) REFERENCES "WeccREEC" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "WeccREECB"
+ALTER TABLE "WeccREECB" ADD FOREIGN KEY ( "mRID" ) REFERENCES "WeccREEC" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "WeccREGCA"
 ALTER TABLE "WeccREGCA" ADD FOREIGN KEY ( "mRID" ) REFERENCES "WeccDynamics" ( "mRID" );
 
@@ -2810,6 +3203,9 @@ ALTER TABLE "OperationalLimitSet" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCE
 
 -- Foreign keys for table "OperationalLimitType"
 ALTER TABLE "OperationalLimitType" ADD FOREIGN KEY ( "direction" ) REFERENCES "OperationalLimitDirectionKind" ( "name" );
+
+-- Foreign keys for table "OverexcitationLimiterDynamics"
+ALTER TABLE "OverexcitationLimiterDynamics" ADD FOREIGN KEY ( "ExcitationSystemDynamics" ) REFERENCES "ExcitationSystemDynamics" ( "mRID" );
 
 -- Foreign keys for table "PowerElectronicsUnit"
 ALTER TABLE "PowerElectronicsUnit" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFERENCES "PowerElectronicsConnection" ( "mRID" );
@@ -2921,6 +3317,8 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 
 -- Cascade deletes for compounds referenced in table "OperationalLimitType"
 
+-- Cascade deletes for compounds referenced in table "OverexcitationLimiterDynamics"
+
 -- Cascade deletes for compounds referenced in table "PowerElectronicsUnit"
 
 -- Cascade deletes for compounds referenced in table "PowerSystemStabilizerDynamics"
@@ -2979,6 +3377,7 @@ CREATE INDEX ix_OperationalLimit_OperationalLimitSet ON "OperationalLimit" ( "Op
 CREATE INDEX ix_OperationalLimit_OperationalLimitType ON "OperationalLimit" ( "OperationalLimitType" );
 CREATE INDEX ix_OperationalLimitSet_ConductingEquipment ON "OperationalLimitSet" ( "ConductingEquipment" );
 CREATE INDEX ix_OperationalLimitSet_TransformerEnd ON "OperationalLimitSet" ( "TransformerEnd" );
+CREATE INDEX ix_OverexcitationLimiterDynamics_ExcitationSystemDynamics ON "OverexcitationLimiterDynamics" ( "ExcitationSystemDynamics" );
 CREATE INDEX ix_PowerElectronicsUnit_PowerElectronicsConnection ON "PowerElectronicsUnit" ( "PowerElectronicsConnection" );
 CREATE INDEX ix_PowerSystemStabilizerDynamics_ExcitationSystemDynamics ON "PowerSystemStabilizerDynamics" ( "ExcitationSystemDynamics" );
 CREATE INDEX ix_PowerTransformerEnd_PowerTransformer ON "PowerTransformerEnd" ( "PowerTransformer" );

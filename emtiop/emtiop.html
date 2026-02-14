@@ -1378,6 +1378,602 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="ExcIEEEDC1A" class="group">
+         <a href="#ExcIEEEDC1A">
+            <h2 class="concrete">ExcIEEEDC1A</h2>
+         </a>
+         <p class="package">IEEE4215from2005</p>
+         <p class="comment">IEEE 421.5-2005 type DC1A model. This model represents field-controlled DC commutator exciters with continuously acting voltage regulators (especially the direct-acting rheostatic, rotating amplifier, and magnetic amplifier types).  Because this model has been widely implemented by the industry, it is sometimes used to represent other types of systems when detailed data for them are not available or when a simplified model is required.</p>
+         <p class="comment">Reference: IEEE 421.5-2005, 5.1.</p>
+         <p class="comment">According to IEEE 421.5-2016, 6.2 the DC1A excitation system model is being superseded by the model DC1C (ExcIEEEDC1C).</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="ExcIEEEDC1A.efd1">efd1</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Exciter voltage at which exciter saturation is defined (&lt;i&gt;E&lt;/i&gt;&lt;i&gt;&lt;sub&gt;FD1&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; 0).  Typical value = 3,1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcIEEEDC1A.efd2">efd2</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Exciter voltage at which exciter saturation is defined (&lt;i&gt;E&lt;/i&gt;&lt;i&gt;&lt;sub&gt;FD2&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; 0).  Typical value = 2,3.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcIEEEDC1A.exclim">exclim</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">An additional attribute (&lt;i&gt;exclim&lt;/i&gt;) not defined in IEEE 421.5-2005.  IEEE standard is ambiguous about lower limit on exciter output.</p>
+                  <p class="comment">true = a lower limit of zero is applied to integrator output</p>
+                  <p class="comment">false = a lower limit of zero is not applied to integrator output.</p>
+                  <p class="comment">Typical value = true.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcIEEEDC1A.ka">ka</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Voltage regulator gain (&lt;i&gt;K&lt;/i&gt;&lt;i&gt;&lt;sub&gt;A&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; 0).  Typical value = 46.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcIEEEDC1A.ke">ke</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Exciter constant related to self-excited field (&lt;i&gt;K&lt;/i&gt;&lt;i&gt;&lt;sub&gt;E&lt;/sub&gt;&lt;/i&gt;).  Typical value = 0.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcIEEEDC1A.kf">kf</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Excitation control system stabilizer gain (&lt;i&gt;K&lt;/i&gt;&lt;i&gt;&lt;sub&gt;F&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0.1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcIEEEDC1A.seefd1">seefd1</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Float">Float</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Exciter saturation function value at the corresponding exciter voltage, &lt;i&gt;E&lt;/i&gt;&lt;i&gt;&lt;sub&gt;FD1&lt;/sub&gt;&lt;/i&gt; (&lt;i&gt;S&lt;/i&gt;&lt;i&gt;&lt;sub&gt;E&lt;/sub&gt;&lt;/i&gt;&lt;i&gt;[E&lt;/i&gt;&lt;i&gt;&lt;sub&gt;FD1&lt;/sub&gt;&lt;/i&gt;&lt;i&gt;]&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0.33.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcIEEEDC1A.seefd2">seefd2</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Float">Float</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Exciter saturation function value at the corresponding exciter voltage, &lt;i&gt;E&lt;/i&gt;&lt;i&gt;&lt;sub&gt;FD2&lt;/sub&gt;&lt;/i&gt; (&lt;i&gt;S&lt;/i&gt;&lt;i&gt;&lt;sub&gt;E&lt;/sub&gt;&lt;/i&gt;&lt;i&gt;[E&lt;/i&gt;&lt;i&gt;&lt;sub&gt;FD2&lt;/sub&gt;&lt;/i&gt;&lt;i&gt;]&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0,1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcIEEEDC1A.ta">ta</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Voltage regulator time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;A&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; 0).  Typical value = 0,06.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcIEEEDC1A.tb">tb</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Voltage regulator time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;B&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcIEEEDC1A.tc">tc</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Voltage regulator time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;C&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcIEEEDC1A.te">te</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Exciter time constant, integration rate associated with exciter control (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;E&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; 0).  Typical value = 0,46.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcIEEEDC1A.tf">tf</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Excitation control system stabilizer time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;F&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; 0).  Typical value = 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcIEEEDC1A.uelin">uelin</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">UEL input (&lt;i&gt;uelin&lt;/i&gt;).</p>
+                  <p class="comment">true = input is connected to the HV gate</p>
+                  <p class="comment">false = input connects to the error signal.</p>
+                  <p class="comment">Typical value = true.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcIEEEDC1A.vrmax">vrmax</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Maximum voltage regulator output (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;RMAX&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; ExcIEEEDC1A.vrmin).  Typical value = 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcIEEEDC1A.vrmin">vrmin</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Minimum voltage regulator output (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;RMIN&lt;/sub&gt;&lt;/i&gt;) (&amp;lt; 0 and &amp;lt; ExcIEEEDC1A.vrmax).  Typical value = -0,9.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">SynchronousMachineDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#SynchronousMachineDynamics">SynchronousMachineDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass"
+                        href="#ExcitationSystemDynamics.SynchronousMachineDynamics">ExcitationSystemDynamics</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">enabled</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#DynamicsFunctionBlock.enabled">DynamicsFunctionBlock</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="ExcSEXS" class="group">
+         <a href="#ExcSEXS">
+            <h2 class="concrete">ExcSEXS</h2>
+         </a>
+         <p class="package">ExcitationSystemDynamics</p>
+         <p class="comment">Simplified excitation system.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="ExcSEXS.efdmax">efdmax</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Field voltage clipping maximum limit (&lt;i&gt;Efdmax&lt;/i&gt;) (&amp;gt; ExcSEXS.efdmin).  Typical value = 5.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcSEXS.efdmin">efdmin</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Field voltage clipping minimum limit (&lt;i&gt;Efdmin&lt;/i&gt;) (&amp;lt; ExcSEXS.efdmax).  Typical value = -5.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcSEXS.emax">emax</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Maximum field voltage output (&lt;i&gt;Emax&lt;/i&gt;) (&amp;gt; ExcSEXS.emin).  Typical value = 5.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcSEXS.emin">emin</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Minimum field voltage output (&lt;i&gt;Emin&lt;/i&gt;) (&amp;lt; ExcSEXS.emax).  Typical value = -5.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcSEXS.k">k</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Gain (&lt;i&gt;K&lt;/i&gt;) (&amp;gt; 0).  Typical value = 100.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcSEXS.kc">kc</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">PI controller gain (&lt;i&gt;Kc&lt;/i&gt;) (&amp;gt; 0 if ExcSEXS.tc &amp;gt; 0).  Typical value = 0,08.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcSEXS.tatb">tatb</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Float">Float</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Gain reduction ratio of lag-lead element (&lt;i&gt;[Ta / Tb]&lt;/i&gt;).  Typical value = 0,1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcSEXS.tb">tb</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Denominator time constant of lag-lead block (&lt;i&gt;Tb&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 10.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcSEXS.tc">tc</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">PI controller phase lead time constant (&lt;i&gt;Tc&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ExcSEXS.te">te</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Time constant of gain block (&lt;i&gt;Te&lt;/i&gt;) (&amp;gt; 0).  Typical value = 0,05.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">SynchronousMachineDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#SynchronousMachineDynamics">SynchronousMachineDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass"
+                        href="#ExcitationSystemDynamics.SynchronousMachineDynamics">ExcitationSystemDynamics</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">enabled</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#DynamicsFunctionBlock.enabled">DynamicsFunctionBlock</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
       <div id="ExcST1A" class="group">
          <a href="#ExcST1A">
             <h2 class="concrete">ExcST1A</h2>
@@ -1692,6 +2288,562 @@ p.package { position: absolute; right: 10px; top: 0px}
                <td>
                   <p>see <a class="superclass"
                         href="#ExcitationSystemDynamics.SynchronousMachineDynamics">ExcitationSystemDynamics</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">enabled</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#DynamicsFunctionBlock.enabled">DynamicsFunctionBlock</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="GovGAST" class="group">
+         <a href="#GovGAST">
+            <h2 class="concrete">GovGAST</h2>
+         </a>
+         <p class="package">TurbineGovernorDynamics</p>
+         <p class="comment">Single shaft gas turbine.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="GovGAST.at">at</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Ambient temperature load limit (&lt;i&gt;Load Limit&lt;/i&gt;).  Typical value = 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovGAST.dturb">dturb</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Turbine damping factor (&lt;i&gt;Dturb&lt;/i&gt;).  Typical value = 0,18.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovGAST.kt">kt</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Temperature limiter gain (&lt;i&gt;Kt&lt;/i&gt;).  Typical value = 3.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovGAST.mwbase">mwbase</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ActivePower">ActivePower</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Base for power values (&lt;i&gt;MWbase&lt;/i&gt;) (&amp;gt; 0).  Unit = MW.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovGAST.r">r</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Permanent droop (&lt;i&gt;R&lt;/i&gt;) (&amp;gt;0). Typical value = 0,04.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovGAST.t1">t1</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Governor mechanism time constant (&lt;i&gt;T1&lt;/i&gt;) (&amp;gt;= 0).  &lt;i&gt;T1&lt;/i&gt; represents the natural valve positioning time constant of the governor for small disturbances, as seen when rate limiting is not in effect.  Typical value = 0,5.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovGAST.t2">t2</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Turbine power time constant (&lt;i&gt;T2&lt;/i&gt;) (&amp;gt;= 0).  &lt;i&gt;T2&lt;/i&gt; represents delay due to internal energy storage of the gas turbine engine. &lt;i&gt;T2&lt;/i&gt; can be used to give a rough approximation to the delay associated with acceleration of the compressor spool of a multi-shaft engine, or with the compressibility of gas in the plenum of a free power turbine of an aero-derivative unit, for example.  Typical value = 0,5.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovGAST.t3">t3</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Turbine exhaust temperature time constant (&lt;i&gt;T3&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 3.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovGAST.vmax">vmax</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Maximum turbine power, PU of MWbase (&lt;i&gt;Vmax&lt;/i&gt;) (&amp;gt; GovGAST.vmin).  Typical value = 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovGAST.vmin">vmin</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Minimum turbine power, PU of MWbase (&lt;i&gt;Vmin&lt;/i&gt;) (&amp;lt; GovGAST.vmax).  Typical value = 0.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">SynchronousMachineDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#SynchronousMachineDynamics">SynchronousMachineDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass"
+                        href="#TurbineGovernorDynamics.SynchronousMachineDynamics">TurbineGovernorDynamics</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">enabled</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#DynamicsFunctionBlock.enabled">DynamicsFunctionBlock</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="GovHydro1" class="group">
+         <a href="#GovHydro1">
+            <h2 class="concrete">GovHydro1</h2>
+         </a>
+         <p class="package">TurbineGovernorDynamics</p>
+         <p class="comment">Basic hydro turbine governor.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="GovHydro1.at">at</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Turbine gain (&lt;i&gt;At&lt;/i&gt;) (&amp;gt; 0).  Typical value = 1,2.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovHydro1.dturb">dturb</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Turbine damping factor (&lt;i&gt;Dturb&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0,5.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovHydro1.gmax">gmax</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Maximum gate opening (&lt;i&gt;Gmax&lt;/i&gt;) (&amp;gt; 0 and &amp;gt; GovHydro1.gmin).  Typical value = 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovHydro1.gmin">gmin</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Minimum gate opening (&lt;i&gt;Gmin&lt;/i&gt;) (&amp;gt;= 0 and &amp;lt; GovHydro1.gmax).  Typical value = 0.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovHydro1.hdam">hdam</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Turbine nominal head (&lt;i&gt;hdam&lt;/i&gt;).  Typical value = 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovHydro1.mwbase">mwbase</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ActivePower">ActivePower</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Base for power values (&lt;i&gt;MWbase&lt;/i&gt;) (&amp;gt; 0).  Unit = MW.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovHydro1.qnl">qnl</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">No-load flow at nominal head (&lt;i&gt;qnl&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 0,08.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovHydro1.rperm">rperm</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Permanent droop (&lt;i&gt;R&lt;/i&gt;) (&amp;gt; 0).  Typical value = 0,04.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovHydro1.rtemp">rtemp</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Temporary droop (&lt;i&gt;r&lt;/i&gt;) (&amp;gt; GovHydro1.rperm).  Typical value = 0,3.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovHydro1.tf">tf</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Filter time constant (&lt;i&gt;Tf&lt;/i&gt;) (&amp;gt; 0).  Typical value = 0,05.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovHydro1.tg">tg</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Gate servo time constant (&lt;i&gt;Tg&lt;/i&gt;) (&amp;gt; 0).  Typical value = 0,5.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovHydro1.tr">tr</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Washout time constant (&lt;i&gt;Tr&lt;/i&gt;) (&amp;gt; 0).  Typical value = 5.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovHydro1.tw">tw</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Water inertia time constant (&lt;i&gt;Tw&lt;/i&gt;) (&amp;gt; 0).  Typical value = 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovHydro1.velm">velm</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Float">Float</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Maximum gate velocity (&lt;i&gt;Vlem&lt;/i&gt;) (&amp;gt; 0).  The limit is applied on the state variable of the integrator.  Typical value = 0,2.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">SynchronousMachineDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#SynchronousMachineDynamics">SynchronousMachineDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass"
+                        href="#TurbineGovernorDynamics.SynchronousMachineDynamics">TurbineGovernorDynamics</a>
                   </p>
                </td>
             </tr>
@@ -3333,6 +4485,302 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="OverexcLimX2" class="group">
+         <a href="#OverexcLimX2">
+            <h2 class="concrete">OverexcLimX2</h2>
+         </a>
+         <p class="package">OverexcitationLimiterDynamics</p>
+         <p class="comment">Field voltage or current overexcitation limiter designed to protect the generator field of an AC machine with automatic excitation control from overheating due to prolonged overexcitation.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="OverexcLimX2.efd1">efd1</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Low voltage or current point on the inverse time characteristic (&lt;i&gt;EFD&lt;/i&gt;&lt;i&gt;&lt;sub&gt;1&lt;/sub&gt;&lt;/i&gt;).  Typical value = 1,1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="OverexcLimX2.efd2">efd2</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Mid voltage or current point on the inverse time characteristic (&lt;i&gt;EFD&lt;/i&gt;&lt;i&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/i&gt;).  Typical value = 1,2.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="OverexcLimX2.efd3">efd3</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">High voltage or current point on the inverse time characteristic (&lt;i&gt;EFD&lt;/i&gt;&lt;i&gt;&lt;sub&gt;3&lt;/sub&gt;&lt;/i&gt;).  Typical value = 1,5.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="OverexcLimX2.efddes">efddes</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Desired field voltage if &lt;i&gt;m&lt;/i&gt; = false or desired field current if &lt;i&gt;m &lt;/i&gt;= true (&lt;i&gt;EFD&lt;/i&gt;&lt;i&gt;&lt;sub&gt;DES&lt;/sub&gt;&lt;/i&gt;).  Typical value = 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="OverexcLimX2.efdrated">efdrated</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Rated field voltage if m = false or rated field current if m = true (&lt;i&gt;EFD&lt;/i&gt;&lt;i&gt;&lt;sub&gt;RATED&lt;/sub&gt;&lt;/i&gt;).  Typical value = 1,05.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="OverexcLimX2.kmx">kmx</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Gain (&lt;i&gt;K&lt;/i&gt;&lt;i&gt;&lt;sub&gt;MX&lt;/sub&gt;&lt;/i&gt;).  Typical value = 0,002.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="OverexcLimX2.m">m</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">(&lt;i&gt;m&lt;/i&gt;).</p>
+                  <p class="comment">true = IFD limiting</p>
+                  <p class="comment">false = EFD limiting.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="OverexcLimX2.mstatus">mstatus</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Identifies the choice between using the inverse time characteristic and desired field voltage. True means usage of inverse time characteristic. False means usage of desired field voltage. Typical value = false.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="OverexcLimX2.t1">t1</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Time to trip the exciter at the low voltage or current point on the inverse time characteristic (&lt;i&gt;TIME&lt;/i&gt;&lt;i&gt;&lt;sub&gt;1&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 120.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="OverexcLimX2.t2">t2</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Time to trip the exciter at the mid voltage or current point on the inverse time characteristic (&lt;i&gt;TIME&lt;/i&gt;&lt;i&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 40.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="OverexcLimX2.t3">t3</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Time to trip the exciter at the high voltage or current point on the inverse time characteristic (&lt;i&gt;TIME&lt;/i&gt;&lt;i&gt;&lt;sub&gt;3&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).  Typical value = 15.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="OverexcLimX2.vhigh">vhigh</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">High voltage limit (Vhigh) (&amp;gt; Vlow, &amp;gt;=0).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="OverexcLimX2.vlow">vlow</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Low voltage limit (&lt;i&gt;V&lt;/i&gt;&lt;i&gt;&lt;sub&gt;LOW&lt;/sub&gt;&lt;/i&gt;) (&amp;gt; 0).</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">ExcitationSystemDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ExcitationSystemDynamics">ExcitationSystemDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass"
+                        href="#OverexcitationLimiterDynamics.ExcitationSystemDynamics">OverexcitationLimiterDynamics</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">enabled</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#DynamicsFunctionBlock.enabled">DynamicsFunctionBlock</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
       <div id="PhotoVoltaicUnit" class="group">
          <a href="#PhotoVoltaicUnit">
             <h2 class="concrete">PhotoVoltaicUnit</h2>
@@ -4257,6 +5705,446 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="Pss1A" class="group">
+         <a href="#Pss1A">
+            <h2 class="concrete">Pss1A</h2>
+         </a>
+         <p class="package">PowerSystemStabilizerDynamics</p>
+         <p class="comment">Single input power system stabilizer. It is a modified version in order to allow representation of various vendors' implementations on PSS type 1A.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.a1">a1</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Notch filter parameter (&lt;i&gt;A&lt;/i&gt;&lt;i&gt;&lt;sub&gt;1&lt;/sub&gt;&lt;/i&gt;).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.a2">a2</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Notch filter parameter (&lt;i&gt;A&lt;/i&gt;&lt;i&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/i&gt;).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.a3">a3</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Notch filter parameter (&lt;i&gt;A&lt;/i&gt;&lt;i&gt;&lt;sub&gt;3&lt;/sub&gt;&lt;/i&gt;).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.a4">a4</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Notch filter parameter (&lt;i&gt;A&lt;/i&gt;&lt;i&gt;&lt;sub&gt;4&lt;/sub&gt;&lt;/i&gt;).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.a5">a5</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Notch filter parameter (&lt;i&gt;A&lt;/i&gt;&lt;i&gt;&lt;sub&gt;5&lt;/sub&gt;&lt;/i&gt;).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.a6">a6</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Notch filter parameter (&lt;i&gt;A&lt;/i&gt;&lt;i&gt;&lt;sub&gt;6&lt;/sub&gt;&lt;/i&gt;).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.a7">a7</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Notch filter parameter (&lt;i&gt;A&lt;/i&gt;&lt;i&gt;&lt;sub&gt;7&lt;/sub&gt;&lt;/i&gt;).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.a8">a8</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Notch filter parameter (&lt;i&gt;A&lt;/i&gt;&lt;i&gt;&lt;sub&gt;8&lt;/sub&gt;&lt;/i&gt;).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.inputSignalType">inputSignalType</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#InputSignalKind">InputSignalKind</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Type of input signal (rotorAngularFrequencyDeviation, busFrequencyDeviation, generatorElectricalPower, generatorAcceleratingPower, busVoltage, or busVoltageDerivative).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.kd">kd</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Selector (&lt;i&gt;Kd&lt;/i&gt;).</p>
+                  <p class="comment">true = e&lt;sup&gt;-sTdelay&lt;/sup&gt; used</p>
+                  <p class="comment">false = e&lt;sup&gt;-sTdelay&lt;/sup&gt; not used.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.ks">ks</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Stabilizer gain (&lt;i&gt;K&lt;/i&gt;&lt;i&gt;&lt;sub&gt;s&lt;/sub&gt;&lt;/i&gt;).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.t1">t1</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Lead/lag time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;1&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.t2">t2</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Lead/lag time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.t3">t3</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Lead/lag time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;3&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.t4">t4</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Lead/lag time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;4&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.t5">t5</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Washout time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;5&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.t6">t6</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Transducer time constant (&lt;i&gt;T&lt;/i&gt;&lt;i&gt;&lt;sub&gt;6&lt;/sub&gt;&lt;/i&gt;) (&amp;gt;= 0).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.tdelay">tdelay</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Time constant (&lt;i&gt;Tdelay&lt;/i&gt;) (&amp;gt;= 0).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.vcl">vcl</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Stabilizer input cutoff threshold (&lt;i&gt;Vcl&lt;/i&gt;).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.vcu">vcu</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Stabilizer input cutoff threshold (&lt;i&gt;Vcu&lt;/i&gt;).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.vrmax">vrmax</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Maximum stabilizer output (&lt;i&gt;Vrmax&lt;/i&gt;) (&amp;gt; Pss1A.vrmin).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="Pss1A.vrmin">vrmin</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Minimum stabilizer output (&lt;i&gt;Vrmin&lt;/i&gt;) (&amp;lt; Pss1A.vrmax).</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">ExcitationSystemDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ExcitationSystemDynamics">ExcitationSystemDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass"
+                        href="#PowerSystemStabilizerDynamics.ExcitationSystemDynamics">PowerSystemStabilizerDynamics</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">enabled</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#DynamicsFunctionBlock.enabled">DynamicsFunctionBlock</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
       <div id="PssIEEE1A" class="group">
          <a href="#PssIEEE1A">
             <h2 class="concrete">PssIEEE1A</h2>
@@ -4687,6 +6575,214 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
          <table/>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="RemoteInputSignal" class="group">
+         <a href="#RemoteInputSignal">
+            <h2 class="concrete">RemoteInputSignal</h2>
+         </a>
+         <p class="package">StandardInterconnections</p>
+         <p class="comment">Supports connection to a terminal associated with a remote bus from which an input signal of a specific type is coming.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.atToEnd">atToEnd</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">If True, signal connects at the ToConnectivityNode of the associated ConductingEquipment. If False or absent, signal connects at the FromConnectivityNode of the associated ConductingEquipment. Not applicable with associations to ConnectivityNode or TransformerEnd.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.remoteSignalType">remoteSignalType</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#RemoteSignalKind">RemoteSignalKind</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Type of input signal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.ConductingEquipment">ConductingEquipment</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ConductingEquipment">ConductingEquipment</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The ConductingEquipment providing input for the signal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.ConnectivityNode">ConnectivityNode</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ConnectivityNode">ConnectivityNode</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The ConnectivityNode providing input to the signal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.DERDynamics">DERDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..<item>*</item>
+                  </p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#DERDynamics">DERDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">DER dynamics model which has a remote input signal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.IEEECigreDLL">IEEECigreDLL</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreDLL">IEEECigreDLL</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The DLL this signal provides input for.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.PowerSystemStabilizerDynamics">PowerSystemStabilizerDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PowerSystemStabilizerDynamics">PowerSystemStabilizerDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Power system stabilizer model using this remote input signal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.TransformerEnd">TransformerEnd</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#TransformerEnd">TransformerEnd</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The TransformerEnd providing input for the signal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.UnderexcitationLimiterDynamics">UnderexcitationLimiterDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#UnderexcitationLimiterDynamics">UnderexcitationLimiterDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Underexcitation limiter model using this remote input signal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="RemoteInputSignal.WeccDynamics">WeccDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#WeccDynamics">WeccDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The dynamic controller this signal provides input for.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
          <table>
             <tr>
                <th>
@@ -7519,6 +9615,558 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="WeccREECB" class="group">
+         <a href="#WeccREECB">
+            <h2 class="concrete">WeccREECB</h2>
+         </a>
+         <p class="package">WECCDynamics</p>
+         <p class="comment">WECC PQ Controller and Current Limit Logic.</p>
+         <p class="comment">A simplified version of the electrical controls, which was previously used for PV plants but is no longer recommended.</p>
+         <p class="comment">Reference: Model User Guide for Generic Renewable Energy System Models, EPRI, Palo Alto, CA: 2018, 3002014083.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.db1">db1</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Voltage deadband for overvoltage iq injection (db1). Typical value = -0,05.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.db2">db2</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Voltage deadband for undervoltage iq injection (db2). Typical value = 0,05.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.dPmax">dPmax</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Ramp rate on power reference (dPmax). Typical value = 999.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.dPmin">dPmin</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Ramp rate on power reference (dPmin). Typical value = -999.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.imax">imax</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Max. allowable total converter current limit (Imax). Typical value = 1,3.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.iqh1">iqh1</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Maximum limit of reactive current injection (Iqh1). Typical value = 1,44.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.iql1">iql1</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Minimum limit of reactive current injection (Iql1). Typical value = -1,44.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.kqi">kqi</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Integral gain (Kqi). Typical value = 0,7.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.kqp">kqp</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Proportional gain (Kqp). Typical value = 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.kqv">kqv</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Gain for reactive current injection during fault (Kqv). Typical value = 2.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.kvi">kvi</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Integral gain (Kvi). Typical value = 0,7.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.kvp">kvp</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Proportional gain (Kvp). Typical value = 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.pfFlag">pfFlag</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Power factor flag: 1 (true) = pf control, 0 (false) = Q control (PfFlag). Typical value = 0 (false).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.pmax">pmax</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Maximum power reference (Pmax). Typical value = 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.pmin">pmin</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Minimum power reference (Pmin). Typical value = 0.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.pqFlag">pqFlag</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Priority flag on current limit: 1 (true) = P, 0 (false) = Q priority (PqFlag). Typical value = 0 (false).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.qFlag">qFlag</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Q control flag: 1 (true) = voltage/Q, 0 (false)  = constant power factor or Q control. (QFlag). Typical value = 0 (false).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.qmax">qmax</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Reactive power limit maximum (Qmax). Typical value = 0,43.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.qmin">qmin</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Reactive power limit minimum (Qmin). Typical value = -0,43.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.tiq">tiq</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Time constant on lag delay (Tiq) (&gt;=0). Typical value = 0,02.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.tp">tp</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Filter time constant for el. power measurement (Tp) (&gt;=0). Typical value = 0,02.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.tpord">tpord</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Time constant (Tpord) (&gt;=0). Typical value = 0,02.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.trv">trv</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Filter time constant for voltage measurements (Trv) (&gt;=0). Typical value = 0,02.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.vdip">vdip</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Undervoltage condition trigger voltage (Vdip). Typical value = 0,9.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.vFlag">vFlag</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Voltage control flag: 1 (true) = Q control, 0 (false) = voltage control (VFlag). Typical value = 1 (true).</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.vmax">vmax</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Voltage control maximum (Vmax). Typical value = 1,1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.vmin">vmin</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Voltage control minimum (Vmin). Typical value = 0,9.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.vref0">vref0</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Reference voltage, enter 0 for terminal voltage (Vref0). Typical value = 0.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="WeccREECB.vup">vup</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Overvoltage condition trigger voltage (Vup). Typical value = 1,1.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table/>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">PowerElectronicsConnection</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PowerElectronicsConnection">PowerElectronicsConnection</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#WeccDynamics.PowerElectronicsConnection">WeccDynamics</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">enabled</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#DynamicsFunctionBlock.enabled">DynamicsFunctionBlock</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
       <div id="WeccREGCA" class="group">
          <a href="#WeccREGCA">
             <h2 class="concrete">WeccREGCA</h2>
@@ -10096,6 +12744,89 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="OverexcitationLimiterDynamics" class="group">
+         <a href="#OverexcitationLimiterDynamics">
+            <h2 class="abstract">OverexcitationLimiterDynamics</h2>
+         </a>
+         <p class="package">OverexcitationLimiterDynamics</p>
+         <p class="comment">Overexcitation limiter function block whose behaviour is described by reference to a standard model &lt;font color="#0f0f0f"&gt;or by definition of a user-defined model.&lt;/font&gt;</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name"
+                     id="OverexcitationLimiterDynamics.ExcitationSystemDynamics">ExcitationSystemDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ExcitationSystemDynamics">ExcitationSystemDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Excitation system model with which this overexcitation limiter model is associated.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">enabled</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#DynamicsFunctionBlock.enabled">DynamicsFunctionBlock</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
       <div id="PSRType" class="group">
          <a href="#PSRType">
             <h2 class="abstract">PSRType</h2>
@@ -10497,214 +13228,6 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
          <table/>
-         <table>
-            <tr>
-               <th>
-                  <p class="name">mRID</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#String">String</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">name</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#String">String</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
-      </div>
-      <div id="RemoteInputSignal" class="group">
-         <a href="#RemoteInputSignal">
-            <h2 class="abstract">RemoteInputSignal</h2>
-         </a>
-         <p class="package">StandardInterconnections</p>
-         <p class="comment">Supports connection to a terminal associated with a remote bus from which an input signal of a specific type is coming.</p>
-         <h3>Native Members</h3>
-         <table>
-            <tr>
-               <th>
-                  <p class="name" id="RemoteInputSignal.atToEnd">atToEnd</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Boolean">Boolean</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">If True, signal connects at the ToConnectivityNode of the associated ConductingEquipment. If False or absent, signal connects at the FromConnectivityNode of the associated ConductingEquipment. Not applicable with associations to ConnectivityNode or TransformerEnd.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="RemoteInputSignal.remoteSignalType">remoteSignalType</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#RemoteSignalKind">RemoteSignalKind</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">Type of input signal.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="RemoteInputSignal.ConductingEquipment">ConductingEquipment</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConductingEquipment">ConductingEquipment</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The ConductingEquipment providing input for the signal.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="RemoteInputSignal.ConnectivityNode">ConnectivityNode</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The ConnectivityNode providing input to the signal.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="RemoteInputSignal.DERDynamics">DERDynamics</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..<item>*</item>
-                  </p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#DERDynamics">DERDynamics</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">DER dynamics model which has a remote input signal.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="RemoteInputSignal.IEEECigreDLL">IEEECigreDLL</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#IEEECigreDLL">IEEECigreDLL</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The DLL this signal provides input for.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="RemoteInputSignal.PowerSystemStabilizerDynamics">PowerSystemStabilizerDynamics</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#PowerSystemStabilizerDynamics">PowerSystemStabilizerDynamics</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">Power system stabilizer model using this remote input signal.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="RemoteInputSignal.TransformerEnd">TransformerEnd</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#TransformerEnd">TransformerEnd</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The TransformerEnd providing input for the signal.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="RemoteInputSignal.UnderexcitationLimiterDynamics">UnderexcitationLimiterDynamics</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#UnderexcitationLimiterDynamics">UnderexcitationLimiterDynamics</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">Underexcitation limiter model using this remote input signal.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="RemoteInputSignal.WeccDynamics">WeccDynamics</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#WeccDynamics">WeccDynamics</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The dynamic controller this signal provides input for.</p>
-               </td>
-            </tr>
-         </table>
-         <h3>Inherited Members</h3>
          <table>
             <tr>
                <th>
