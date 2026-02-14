@@ -28,14 +28,6 @@
 -- ==========================================================================================
 --
 
--- An electrical connection point (AC or DC) to a piece of conducting equipment.
--- Terminals are connected at physical connection points called connectivity
--- nodes.
-CREATE TABLE "ACDCTerminal"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY
-);
-
 -- A line segment is a conductor or combination of conductors, with consistent
 -- electrical characteristics along its length, building a single electrical
 -- system that carries alternating current between two points in the power
@@ -1936,13 +1928,6 @@ CREATE TABLE "TapChanger"
     "step" DOUBLE PRECISION NOT NULL
 );
 
--- An AC electrical connection point to a piece of conducting equipment. Terminals
--- are connected at physical connection points called connectivity nodes.
-CREATE TABLE "Terminal"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY
-);
-
 -- A diagram object for placing free-text or text derived from an associated
 -- domain object.
 CREATE TABLE "TextDiagramObject"
@@ -1955,19 +1940,6 @@ CREATE TABLE "TextDiagramObject"
 -- A generating unit whose prime mover could be a steam turbine, combustion
 -- turbine, or diesel engine.
 CREATE TABLE "ThermalGeneratingUnit"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY
-);
-
--- For a detailed substation model a topological node is a set of connectivity
--- nodes that, in the current network state, are connected together through
--- any type of closed switches, including jumpers. Topological nodes change
--- as the current network state changes (i.e., switches, breakers, etc. change
--- state).
--- For a planning model, switch statuses are not used to form topological
--- nodes. Instead they are manually created or deleted in a model builder
--- tool. Topological nodes maintained this way are also called "busses".
-CREATE TABLE "TopologicalNode"
 (
     "mRID" VARCHAR(100) PRIMARY KEY
 );
@@ -3094,9 +3066,6 @@ ALTER TABLE "SynchronousMachineTimeConstantReactance" ADD FOREIGN KEY ( "mRID" )
 
 -- Inheritance subclass-superclass constraint for table "TapChanger"
 ALTER TABLE "TapChanger" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemResource" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "Terminal"
-ALTER TABLE "Terminal" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ACDCTerminal" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "TextDiagramObject"
 ALTER TABLE "TextDiagramObject" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DiagramObject" ( "mRID" );

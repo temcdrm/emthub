@@ -8109,11 +8109,6 @@
     <rdfs:label>Profile</rdfs:label>
     <owl:imports rdf:resource="http://www.ucaiug.org/ns"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#ACDCTerminal">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ACDCTerminal"/>
-    <rdfs:subClassOf rdf:resource="#ACDCTerminal"/>
-  </rdf:Description>
   <rdf:Description rdf:about="#ACLineSegment">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -9231,12 +9226,6 @@
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#TapChanger"/>
     <rdfs:subClassOf rdf:resource="#PowerSystemResource"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#Terminal">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#Terminal"/>
-    <rdfs:subClassOf rdf:resource="#ACDCTerminal"/>
-    <rdfs:subClassOf rdf:resource="#Terminal"/>
-  </rdf:Description>
   <rdf:Description rdf:about="#TextDiagramObject">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -9252,11 +9241,6 @@
     <rdfs:label>ThermalGeneratingUnit</rdfs:label>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ThermalGeneratingUnit"/>
     <rdfs:subClassOf rdf:resource="#GeneratingUnit"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#TopologicalNode">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#TopologicalNode"/>
-    <rdfs:subClassOf rdf:resource="#TopologicalNode"/>
   </rdf:Description>
   <rdf:Description rdf:about="#TransformerCoreAdmittance">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
