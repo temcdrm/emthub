@@ -9177,6 +9177,12 @@
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#SynchronousMachineOperatingMode"/>
     <owl:oneOf rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7f44"/>
   </rdf:Description>
+  <rdf:Description rdf:about="#SynchronousMachineSimplified">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#SynchronousMachineSimplified"/>
+    <rdfs:subClassOf rdf:resource="#SynchronousMachineDynamics"/>
+  </rdf:Description>
   <rdf:Description rdf:about="#SynchronousMachineTimeConstantReactance">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>

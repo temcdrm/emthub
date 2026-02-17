@@ -1826,6 +1826,25 @@ INSERT INTO "SynchronousMachineOperatingMode" ( "name" ) VALUES ( 'generator' );
 -- Operating as motor.
 INSERT INTO "SynchronousMachineOperatingMode" ( "name" ) VALUES ( 'motor' );
 
+-- The simplified model represents a synchronous generator as a constant internal
+-- voltage behind an impedance<i> </i>(<i>Rs + jXp</i>) as shown in the Simplified
+-- diagram.
+-- Since internal voltage is held constant, there is no <i>Efd</i> input and
+-- any excitation system model will be ignored. There is also no <i>Ifd</i>
+-- output.
+-- This model should not be used for representing a real generator except,
+-- perhaps, small generators whose response is insignificant.
+-- The parameters used for the simplified model include:
+-- - RotatingMachineDynamics.damping (<i>D</i>);
+-- - RotatingMachineDynamics.inertia (<i>H</i>);
+-- - RotatingMachineDynamics.statorLeakageReactance (used to exchange <i>jXp
+-- </i>for SynchronousMachineSimplified);
+-- - RotatingMachineDynamics.statorResistance (<i>Rs</i>).
+CREATE TABLE "SynchronousMachineSimplified"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
 -- Synchronous machine detailed modelling types are defined by the combination
 -- of the attributes SynchronousMachineTimeConstantReactance.modelType and
 -- SynchronousMachineTimeConstantReactance.rotorType.
@@ -3060,6 +3079,9 @@ ALTER TABLE "SynchronousMachineDetailed" ADD FOREIGN KEY ( "mRID" ) REFERENCES "
 
 -- Inheritance subclass-superclass constraint for table "SynchronousMachineDynamics"
 ALTER TABLE "SynchronousMachineDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RotatingMachineDynamics" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "SynchronousMachineSimplified"
+ALTER TABLE "SynchronousMachineSimplified" ADD FOREIGN KEY ( "mRID" ) REFERENCES "SynchronousMachineDynamics" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "SynchronousMachineTimeConstantReactance"
 ALTER TABLE "SynchronousMachineTimeConstantReactance" ADD FOREIGN KEY ( "mRID" ) REFERENCES "SynchronousMachineDetailed" ( "mRID" );

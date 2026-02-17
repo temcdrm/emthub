@@ -7574,6 +7574,167 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="SynchronousMachineSimplified" class="group">
+         <a href="#SynchronousMachineSimplified">
+            <h2 class="concrete">SynchronousMachineSimplified</h2>
+         </a>
+         <p class="package">SynchronousMachineDynamics</p>
+         <p class="comment">The simplified model represents a synchronous generator as a constant internal voltage behind an impedance<i> </i>(<i>Rs + jXp</i>) as shown in the Simplified diagram.</p>
+         <p class="comment">Since internal voltage is held constant, there is no <i>Efd</i> input and any excitation system model will be ignored.  There is also no <i>Ifd</i> output.</p>
+         <p class="comment">This model should not be used for representing a real generator except, perhaps, small generators whose response is insignificant.</p>
+         <p class="comment">The parameters used for the simplified model include:</p>
+         <p class="comment">- RotatingMachineDynamics.damping (<i>D</i>);</p>
+         <p class="comment">- RotatingMachineDynamics.inertia (<i>H</i>);</p>
+         <p class="comment">- RotatingMachineDynamics.statorLeakageReactance (used to exchange <i>jXp </i>for SynchronousMachineSimplified);</p>
+         <p class="comment">- RotatingMachineDynamics.statorResistance (<i>Rs</i>).</p>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">SynchronousMachine</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#SynchronousMachine">SynchronousMachine</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass"
+                        href="#SynchronousMachineDynamics.SynchronousMachine">SynchronousMachineDynamics</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">damping</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Float">Float</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#RotatingMachineDynamics.damping">RotatingMachineDynamics</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">inertia</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#RotatingMachineDynamics.inertia">RotatingMachineDynamics</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">statorLeakageReactance</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass"
+                        href="#RotatingMachineDynamics.statorLeakageReactance">RotatingMachineDynamics</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">statorResistance</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#RotatingMachineDynamics.statorResistance">RotatingMachineDynamics</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">enabled</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#DynamicsFunctionBlock.enabled">DynamicsFunctionBlock</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
       <div id="SynchronousMachineTimeConstantReactance" class="group">
          <a href="#SynchronousMachineTimeConstantReactance">
             <h2 class="concrete">SynchronousMachineTimeConstantReactance</h2>
