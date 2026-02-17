@@ -2904,6 +2904,220 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="GovSteam0" class="group">
+         <a href="#GovSteam0">
+            <h2 class="concrete">GovSteam0</h2>
+         </a>
+         <p class="package">TurbineGovernorDynamics</p>
+         <p class="comment">A simplified steam turbine governor.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="GovSteam0.dt">dt</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Turbine damping coefficient (<i>Dt</i>).  Unit = delta P / delta speed. Typical value = 0.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovSteam0.mwbase">mwbase</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ActivePower">ActivePower</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Base for power values (<i>MWbase</i>) (> 0).  Unit = MW.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovSteam0.r">r</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Permanent droop (<i>R</i>).  Typical value = 0,05.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovSteam0.t1">t1</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Steam bowl time constant (<i>T1</i>) (> 0).  Typical value = 0,5.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovSteam0.t2">t2</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Numerator time constant of <i>T2</i>/<i>T3</i> block (<i>T2</i>) (>= 0).  Typical value = 3.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovSteam0.t3">t3</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Reheater time constant (<i>T3</i>) (> 0).  Typical value = 10.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovSteam0.vmax">vmax</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Maximum valve position, PU of <i>mwcap</i> (<i>Vmax</i>) (> GovSteam0.vmin).  Typical value = 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="GovSteam0.vmin">vmin</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PU">PU</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Minimum valve position, PU of <i>mwcap</i> (<i>Vmin</i>) (< GovSteam0.vmax).  Typical value = 0.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">SynchronousMachineDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#SynchronousMachineDynamics">SynchronousMachineDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass"
+                        href="#TurbineGovernorDynamics.SynchronousMachineDynamics">TurbineGovernorDynamics</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">enabled</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#DynamicsFunctionBlock.enabled">DynamicsFunctionBlock</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
       <div id="GovSteamSGO" class="group">
          <a href="#GovSteamSGO">
             <h2 class="concrete">GovSteamSGO</h2>

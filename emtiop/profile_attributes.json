@@ -415,6 +415,40 @@
       "default": 0.2
     }
   },
+  "GovSteam0": {
+    "dt": {
+      "type": "PU",
+      "default": 0.0
+    },
+    "mwbase": {
+      "type": "ActivePower",
+      "default": null
+    },
+    "r": {
+      "type": "PU",
+      "default": 0.05
+    },
+    "t1": {
+      "type": "Seconds",
+      "default": 0.5
+    },
+    "t2": {
+      "type": "Seconds",
+      "default": 3.0
+    },
+    "t3": {
+      "type": "Seconds",
+      "default": 10.0
+    },
+    "vmax": {
+      "type": "PU",
+      "default": 1.0
+    },
+    "vmin": {
+      "type": "PU",
+      "default": 0.0
+    }
+  },
   "GovSteamSGO": {
     "k1": {
       "type": "PU",

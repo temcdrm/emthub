@@ -643,6 +643,32 @@ CREATE TABLE "GovHydro1"
     "velm" DOUBLE PRECISION
 );
 
+-- A simplified steam turbine governor.
+CREATE TABLE "GovSteam0"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Turbine damping coefficient (<i>Dt</i>). Unit = delta P / delta speed.
+    -- Typical value = 0.
+    "dt" DOUBLE PRECISION,
+    -- Base for power values (<i>MWbase</i>) (&gt; 0). Unit = MW.
+    "mwbase" DOUBLE PRECISION,
+    -- Permanent droop (<i>R</i>). Typical value = 0,05.
+    "r" DOUBLE PRECISION,
+    -- Steam bowl time constant (<i>T1</i>) (&gt; 0). Typical value = 0,5.
+    "t1" DOUBLE PRECISION,
+    -- Numerator time constant of <i>T2</i>/<i>T3</i> block (<i>T2</i>) (&gt;=
+    -- 0). Typical value = 3.
+    "t2" DOUBLE PRECISION,
+    -- Reheater time constant (<i>T3</i>) (&gt; 0). Typical value = 10.
+    "t3" DOUBLE PRECISION,
+    -- Maximum valve position, PU of <i>mwcap</i> (<i>Vmax</i>) (&gt; GovSteam0.vmin).
+    -- Typical value = 1.
+    "vmax" DOUBLE PRECISION,
+    -- Minimum valve position, PU of <i>mwcap</i> (<i>Vmin</i>) (&lt; GovSteam0.vmax).
+    -- Typical value = 0.
+    "vmin" DOUBLE PRECISION
+);
+
 -- Simplified steam turbine governor.
 CREATE TABLE "GovSteamSGO"
 (
@@ -2977,6 +3003,9 @@ ALTER TABLE "GovGAST" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TurbineGovernorDyna
 
 -- Inheritance subclass-superclass constraint for table "GovHydro1"
 ALTER TABLE "GovHydro1" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TurbineGovernorDynamics" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "GovSteam0"
+ALTER TABLE "GovSteam0" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TurbineGovernorDynamics" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "GovSteamSGO"
 ALTER TABLE "GovSteamSGO" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TurbineGovernorDynamics" ( "mRID" );
