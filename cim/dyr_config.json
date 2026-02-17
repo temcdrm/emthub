@@ -49,7 +49,7 @@
     ]
   },
   "IEEEVC": {
-    "CIMclass": "IEEEVC",
+    "CIMclass": null,
     "inputs": [
       "BUS",
       "ID",
@@ -74,7 +74,7 @@
       "KP",
       "KI"
     ],
-    "CIMclass": "IEEET3"
+    "CIMclass": null
   },
   "ESST1A": {
     "inputs": [
@@ -101,7 +101,7 @@
       "TF",
       "KC"
     ],
-    "CIMclass": "ExcST1A"
+    "CIMclass": null
   },
   "ESAC1A": {
     "inputs": [
@@ -127,7 +127,7 @@
       "KF",
       "TF"
     ],
-    "CIMclass": "ExcAC1A"
+    "CIMclass": null
   },
   "ESAC6A": {
     "inputs": [
@@ -157,7 +157,7 @@
       "E2",
       "SE2"
     ],
-    "CIMclass": "ExcAC6A"
+    "CIMclass": null
   },
   "SCRX": {
     "inputs": [
@@ -172,7 +172,7 @@
       "CSWITCH",
       "rcrfd"
     ],
-    "CIMclass": "SEXS"
+    "CIMclass": null
   },
   "EXPIC1": {
     "inputs": [
@@ -203,7 +203,7 @@
       "KI",
       "KC"
     ],
-    "CIMclass": "SEXS"
+    "CIMclass": null
   },
   "AC8B": {
     "inputs": [
@@ -231,7 +231,7 @@
       "E2",
       "SE2"
     ],
-    "CIMclass": "ExcAC8B"
+    "CIMclass": null
   },
   "EXAC1": {
     "inputs": [
@@ -255,7 +255,7 @@
       "E2",
       "SE2"
     ],
-    "CIMclass": "ExcAC1A"
+    "CIMclass": null
   },
   "EXAC2": {
     "inputs": [
@@ -285,7 +285,7 @@
       "E2",
       "SE2"
     ],
-    "CIMclass": "ExcAC2A"
+    "CIMclass": null
   },
   "EXAC4": {
     "inputs": [
@@ -302,7 +302,7 @@
       "VRMIN",
       "KC"
     ],
-    "CIMclass": "ExcAC4A"
+    "CIMclass": null
   },
   "EXDC2": {
     "inputs": [
@@ -325,7 +325,7 @@
       "E2",
       "SE2"
     ],
-    "CIMclass": "ExcDC2A"
+    "CIMclass": null
   },
   "IEEEX1": {
     "inputs": [
@@ -348,7 +348,7 @@
       "E2",
       "SE2"
     ],
-    "CIMclass": "IEEEX1"
+    "CIMclass": null
   },
   "SEXS": {
     "inputs": [
@@ -361,7 +361,7 @@
       "EMIN",
       "EMAX"
     ],
-    "CIMclass": "SEXS"
+    "CIMclass": "ExcSEXS"
   },
   "EXST1": {
     "inputs": [
@@ -403,7 +403,7 @@
       "E2",
       "SE2"
     ],
-    "CIMclass": "ExcDC1A"
+    "CIMclass": null
   },
   "ESDC2A": {
     "inputs": [
@@ -426,7 +426,7 @@
       "E2",
       "SE2"
     ],
-    "CIMclass": "ExcDC2A"
+    "CIMclass": null
   },
   "ESST3A": {
     "inputs": [
@@ -454,7 +454,7 @@
       "VMMAX",
       "VMMIN"
     ],
-    "CIMclass": "ExcST3A"
+    "CIMclass": null
   },
   "ESST4B": {
     "inputs": [
@@ -478,7 +478,7 @@
       "XL",
       "THETAP"
     ],
-    "CIMclass": "ExcST4B"
+    "CIMclass": null
   },
   "IEEET1": {
     "inputs": [
@@ -499,7 +499,7 @@
       "E2",
       "SE2"
     ],
-    "CIMclass": "IEEET1"
+    "CIMclass": "ExcIEEEDC1A"
   },
   "GAST": {
     "inputs": [
@@ -529,7 +529,7 @@
       "T3",
       "Dt"
     ],
-    "CIMclass": "TGOV1"
+    "CIMclass": "GovSteam0"
   },
   "GGOV1": {
     "inputs": [
@@ -571,7 +571,7 @@
       "Rup",
       "Rdown"
     ],
-    "CIMclass": "TGOV1"
+    "CIMclass": null
   },
   "HYGOV": {
     "inputs": [
@@ -590,7 +590,7 @@
       "Dturb",
       "qNL"
     ],
-    "CIMclass": "HYGOV"
+    "CIMclass": "GovHydro1"
   },
   "IEESGO": {
     "inputs": [
@@ -608,7 +608,7 @@
       "PMAX",
       "PMIN"
     ],
-    "CIMclass": "IEESGO"
+    "CIMclass": "GovSteamSGO"
   },
   "IEEEG1": {
     "inputs": [
@@ -637,7 +637,7 @@
       "K7",
       "K8"
     ],
-    "CIMclass": "IEEEG1"
+    "CIMclass": null
   },
   "IEEEST": {
     "inputs": [
@@ -663,7 +663,7 @@
       "VCU",
       "VCL"
     ],
-    "CIMclass": "IEEEST"
+    "CIMclass": "Pss1A"
   },
   "ST2CUT": {
     "inputs": [
@@ -690,7 +690,7 @@
       "VCU",
       "VCL"
     ],
-    "CIMclass": "ST2CUT"
+    "CIMclass": null
   },
   "REGCA1": {
     "CIMclass": "WeccREGCA",
@@ -772,6 +772,44 @@
       "Ip4"
     ]
   },
+  "REECB1": {
+    "CIMclass": "WeccREECB",
+    "inputs": [
+      "BUS",
+      "ID",
+      "PFFLAG",
+      "VFLAG",
+      "QFLAG",
+      "PFLAG",
+      "PQFLAG",
+      "Vdip",
+      "Vup",
+      "Trv",
+      "dbd1",
+      "dbd2",
+      "Kqv",
+      "Iqh1",
+      "Iql1",
+      "Vref0",
+      "Tp",
+      "QMax",
+      "QMin",
+      "VMAX",
+      "VMIN",
+      "Kqp",
+      "Kqi",
+      "Kvp",
+      "Kvi",
+      "Vbias",
+      "Tiq",
+      "dPmax",
+      "dPmin",
+      "PMAX",
+      "PMIN",
+      "Imax",
+      "Tpord"
+    ]
+  },
   "REPCA1": {
     "CIMclass": "WeccREPCA",
     "inputs": [
@@ -814,7 +852,7 @@
     ]
   },
   "WTDTA1": {
-    "CIMclass": "WeccWT12T",
+    "CIMclass": "WeccWTGTA",
     "inputs": [
       "BUS",
       "ID",
@@ -835,7 +873,7 @@
     ]
   },
   "WTPTA1": {
-    "CIMclass": "WeccWTGPTA",
+    "CIMclass": null,
     "inputs": [
       "BUS",
       "ID",
@@ -852,7 +890,7 @@
     ]
   },
   "WTTQA1": {
-    "CIMclass": "WeccWTGTRQA",
+    "CIMclass": null,
     "inputs": [
       "BUS",
       "ID",
@@ -880,7 +918,7 @@
       "dev",
       "t"
     ],
-    "CIMclass": ""
+    "CIMclass": null
   },
   "Fault": {
     "inputs": [
@@ -890,6 +928,6 @@
       "xf",
       "rf"
     ],
-    "CIMclass": ""
+    "CIMclass": null
   }
 }

@@ -1,0 +1,1111 @@
+{
+  "GENCLS": {
+    "CIMclass": "SynchronousMachineSimplified",
+    "parameters_after_ID": [
+      {
+        "dyr": "H",
+        "cim": "RotatingMachineDynamics.inertia"
+      },
+      {
+        "dyr": "D",
+        "cim": "RotatingMachineDynamics.damping"
+      }
+    ]
+  },
+  "GENSAL": {
+    "CIMclass": "SynchronousMachineTimeConstantReactance",
+    "parameters_after_ID": [
+      {
+        "dyr": "Td10",
+        "cim": "SynchronousMachineTimeConstantReactance.tpdo"
+      },
+      {
+        "dyr": "Td20",
+        "cim": "SynchronousMachineTimeConstantReactance.tppd0"
+      },
+      {
+        "dyr": "Tq20",
+        "cim": "SynchronousMachineTimeConstantReactance.tppq0"
+      },
+      {
+        "dyr": "H",
+        "cim": "RotatingMachineDynamics.inertia"
+      },
+      {
+        "dyr": "D",
+        "cim": "RotatingMachineDynamics.damping"
+      },
+      {
+        "dyr": "Xd",
+        "cim": "SynchronousMachineTimeConstantReactance.xDirectSync"
+      },
+      {
+        "dyr": "Xq",
+        "cim": "SynchronousMachineTimeConstantReactance.xQuadSync"
+      },
+      {
+        "dyr": "Xd1",
+        "cim": "SynchronousMachineTimeConstantReactance.xDirectTrans"
+      },
+      {
+        "dyr": "Xd2",
+        "cim": "SynchronousMachineTimeConstantReactance.xDirectSubtrans"
+      },
+      {
+        "dyr": "Xl",
+        "cim": "RotatingMachineDynamics.statorLeakageReactance"
+      },
+      {
+        "dyr": "S10",
+        "cim": "SynchronousMachineDetailed.saturationFactor"
+      },
+      {
+        "dyr": "S12",
+        "cim": "SynchronousMachineDetailed.saturationFactor120"
+      }
+    ]
+  },
+  "GENROU": {
+    "CIMclass": "SynchronousMachineTimeConstantReactance",
+    "parameters_after_ID": [
+      {
+        "dyr": "Td10",
+        "cim": "SynchronousMachineTimeConstantReactance.tpdo"
+      },
+      {
+        "dyr": "Td20",
+        "cim": "SynchronousMachineTimeConstantReactance.tppdo"
+      },
+      {
+        "dyr": "Tq10",
+        "cim": "SynchronousMachineTimeConstantReactance.tpqo"
+      },
+      {
+        "dyr": "Tq20",
+        "cim": "SynchronousMachineTimeConstantReactance.tppqo"
+      },
+      {
+        "dyr": "H",
+        "cim": "RotatingMachineDynamics.inertia"
+      },
+      {
+        "dyr": "D",
+        "cim": "RotatingMachineDynamics.damping"
+      },
+      {
+        "dyr": "Xd",
+        "cim": "SynchronousMachineTimeConstantReactance.xDirectSync"
+      },
+      {
+        "dyr": "Xq",
+        "cim": "SynchronousMachineTimeConstantReactance.xQuadSync"
+      },
+      {
+        "dyr": "Xd1",
+        "cim": "SynchronousMachineTimeConstantReactance.xDirectTrans"
+      },
+      {
+        "dyr": "Xq1",
+        "cim": "SynchronousMachineTimeConstantReactance.xQuadTrans"
+      },
+      {
+        "dyr": "Xd2",
+        "cim": "SynchronousMachineTimeConstantReactance.xDirectSubtrans"
+      },
+      {
+        "dyr": "Xl",
+        "cim": "RotatingMachineDynamics.statorLeakageReactance"
+      },
+      {
+        "dyr": "S10",
+        "cim": "SynchronousMachineDetailed.saturationFactor"
+      },
+      {
+        "dyr": "S12",
+        "cim": "SynchronousMachineDetailed.saturationFactor120"
+      }
+    ]
+  },
+  "SEXS": {
+    "CIMclass": "ExcSEXS",
+    "parameters_after_ID": [
+      {
+        "dyr": "TATB",
+        "cim": "ExcSEXS.tatb"
+      },
+      {
+        "dyr": "TB",
+        "cim": "ExcSEXS.tb"
+      },
+      {
+        "dyr": "K",
+        "cim": "ExcSEXS.k"
+      },
+      {
+        "dyr": "TE",
+        "cim": "ExcSEXS.te"
+      },
+      {
+        "dyr": "EMIN",
+        "cim": "ExcSEXS.emin"
+      },
+      {
+        "dyr": "EMAX",
+        "cim": "ExcSEXS.emax"
+      }
+    ]
+  },
+  "EXST1": {
+    "CIMclass": "ExcST1A",
+    "parameters_after_ID": [
+      {
+        "dyr": "TR",
+        "cim": null
+      },
+      {
+        "dyr": "VIMAX",
+        "cim": "ExcST1A.vimax"
+      },
+      {
+        "dyr": "VIMIN",
+        "cim": "ExcST1A.vimin"
+      },
+      {
+        "dyr": "TC",
+        "cim": "ExcST1A.tc"
+      },
+      {
+        "dyr": "TB",
+        "cim": "ExcST1A.tb"
+      },
+      {
+        "dyr": "KA",
+        "cim": "ExcST1A.ka"
+      },
+      {
+        "dyr": "TA",
+        "cim": "ExcST1A.ta"
+      },
+      {
+        "dyr": "VRMAX",
+        "cim": "ExcST1A.vrmax"
+      },
+      {
+        "dyr": "VRMIN",
+        "cim": "ExcST1A.vrmin"
+      },
+      {
+        "dyr": "KC",
+        "cim": "ExcST1A.kc"
+      },
+      {
+        "dyr": "KF",
+        "cim": "ExcST1A.kf"
+      },
+      {
+        "dyr": "TF",
+        "cim": "ExcST1A.tf"
+      }
+    ]
+  },
+  "IEEET1": {
+    "CIMclass": "ExcIEEEDC1A",
+    "parameters_after_ID": [
+      {
+        "dyr": "TR",
+        "cim": null
+      },
+      {
+        "dyr": "KA",
+        "cim": "ExcIEEEDC1A.ka"
+      },
+      {
+        "dyr": "TA",
+        "cim": "ExcIEEEDC1A.ta"
+      },
+      {
+        "dyr": "VRMAX",
+        "cim": "ExcIEEEDC1A.vrmax"
+      },
+      {
+        "dyr": "VRMIN",
+        "cim": "ExcIEEEDC1A.vrmin"
+      },
+      {
+        "dyr": "KE",
+        "cim": "ExcIEEEDC1A.ke"
+      },
+      {
+        "dyr": "TE",
+        "cim": "ExcIEEEDC1A.te"
+      },
+      {
+        "dyr": "KF",
+        "cim": "ExcIEEEDC1A.kf"
+      },
+      {
+        "dyr": "TF",
+        "cim": "ExcIEEEDC1A.tf"
+      },
+      {
+        "dyr": "Switch",
+        "cim": null
+      },
+      {
+        "dyr": "E1",
+        "cim": "ExcIEEEDC1A.efd1"
+      },
+      {
+        "dyr": "SE1",
+        "cim": "ExcIEEEDC1A.seefd1"
+      },
+      {
+        "dyr": "E2",
+        "cim": "ExcIEEEDC1A.efd2"
+      },
+      {
+        "dyr": "SE2",
+        "cim": "ExcIEEEDC1A.seefd2"
+      }
+    ]
+  },
+  "GAST": {
+    "CIMclass": "GovGAST",
+    "parameters_after_ID": [
+      {
+        "dyr": "R",
+        "cim": "GovGAST.r"
+      },
+      {
+        "dyr": "T1",
+        "cim": "GovGAST.t1"
+      },
+      {
+        "dyr": "T2",
+        "cim": "GovGAST.t2"
+      },
+      {
+        "dyr": "T3",
+        "cim": "GovGAST.t3"
+      },
+      {
+        "dyr": "AT",
+        "cim": "GovGAST.at"
+      },
+      {
+        "dyr": "KT",
+        "cim": "GovGAST.kt"
+      },
+      {
+        "dyr": "VMAX",
+        "cim": "GovGAST.vmax"
+      },
+      {
+        "dyr": "VMIN",
+        "cim": "GovGAST.vmin"
+      },
+      {
+        "dyr": "Dt",
+        "cim": "GovGAST.dturb"
+      }
+    ]
+  },
+  "TGOV1": {
+    "CIMclass": "GovSteam0",
+    "parameters_after_ID": [
+      {
+        "dyr": "R",
+        "cim": "GovSteam0.r"
+      },
+      {
+        "dyr": "T1",
+        "cim": "GovSteam0.t1"
+      },
+      {
+        "dyr": "VMAX",
+        "cim": "GovSteam0.vmax"
+      },
+      {
+        "dyr": "VMIN",
+        "cim": "GovSteam0.vmin"
+      },
+      {
+        "dyr": "T2",
+        "cim": "GovSteam0.t2"
+      },
+      {
+        "dyr": "T3",
+        "cim": "GovSteam0.t3"
+      },
+      {
+        "dyr": "Dt",
+        "cim": "GovSteam0.dt"
+      }
+    ]
+  },
+  "HYGOV": {
+    "CIMclass": "GovHydro1",
+    "parameters_after_ID": [
+      {
+        "dyr": "R",
+        "cim": "GovHydro1.rperm"
+      },
+      {
+        "dyr": "r",
+        "cim": "GovHydro1.rtemp"
+      },
+      {
+        "dyr": "Tr",
+        "cim": "GovHydro1.tr"
+      },
+      {
+        "dyr": "Tf",
+        "cim": "GovHydro1.tf"
+      },
+      {
+        "dyr": "Tg",
+        "cim": "GovHydro1.tg"
+      },
+      {
+        "dyr": "VELM",
+        "cim": "GovHydro1.velm"
+      },
+      {
+        "dyr": "GMAX",
+        "cim": "GovHydro1.gmax"
+      },
+      {
+        "dyr": "GMIN",
+        "cim": "GovHydro1.gmin"
+      },
+      {
+        "dyr": "Tw",
+        "cim": "GovHydro1.tw"
+      },
+      {
+        "dyr": "At",
+        "cim": "GovHydro1.at"
+      },
+      {
+        "dyr": "Dturb",
+        "cim": "GovHydro1.dturb"
+      },
+      {
+        "dyr": "qNL",
+        "cim": "GovHydro1.qnl"
+      }
+    ]
+  },
+  "IEESGO": {
+    "CIMclass": "GovSteamSGO",
+    "parameters_after_ID": [
+      {
+        "dyr": "T1",
+        "cim": "GovSteamSGO.t1"
+      },
+      {
+        "dyr": "T2",
+        "cim": "GovSteamSGO.t2"
+      },
+      {
+        "dyr": "T3",
+        "cim": "GovSteamSGO.t3"
+      },
+      {
+        "dyr": "T4",
+        "cim": "GovSteamSGO.t4"
+      },
+      {
+        "dyr": "T5",
+        "cim": "GovSteamSGO.t5"
+      },
+      {
+        "dyr": "T6",
+        "cim": "GovSteamSGO.t6"
+      },
+      {
+        "dyr": "K1",
+        "cim": "GovSteamSGO.k1"
+      },
+      {
+        "dyr": "K2",
+        "cim": "GovSteamSGO.k2"
+      },
+      {
+        "dyr": "K3",
+        "cim": "GovSteamSGO.k3"
+      },
+      {
+        "dyr": "PMAX",
+        "cim": "GovSteamSGO.pmax"
+      },
+      {
+        "dyr": "PMIN",
+        "cim": "GovSteamSGO.pmin"
+      }
+    ]
+  },
+  "IEEEST": {
+    "CIMclass": "Pss1A",
+    "parameters_after_ID": [
+      {
+        "dyr": "MODE",
+        "cim": "Pss1A.inputSignalType"
+      },
+      {
+        "dyr": "BUSR",
+        "cim": "RemoteInputSignal.ConnectivityNode"
+      },
+      {
+        "dyr": "A1",
+        "cim": "Pss1A.a1"
+      },
+      {
+        "dyr": "A2",
+        "cim": "Pss1A.a2"
+      },
+      {
+        "dyr": "A3",
+        "cim": "Pss1A.a3"
+      },
+      {
+        "dyr": "A4",
+        "cim": "Pss1A.a4"
+      },
+      {
+        "dyr": "A5",
+        "cim": "Pss1A.a5"
+      },
+      {
+        "dyr": "A6",
+        "cim": "Pss1A.a6"
+      },
+      {
+        "dyr": "T1",
+        "cim": "Pss1A.t1"
+      },
+      {
+        "dyr": "T2",
+        "cim": "Pss1A.t2"
+      },
+      {
+        "dyr": "T3",
+        "cim": "Pss1A.t3"
+      },
+      {
+        "dyr": "T4",
+        "cim": "Pss1A.t4"
+      },
+      {
+        "dyr": "T5",
+        "cim": "Pss1A.t5"
+      },
+      {
+        "dyr": "T6",
+        "cim": "Pss1A.t6"
+      },
+      {
+        "dyr": "KS",
+        "cim": "Pss1A.ks"
+      },
+      {
+        "dyr": "LSMAX",
+        "cim": null
+      },
+      {
+        "dyr": "LSMIN",
+        "cim": null
+      },
+      {
+        "dyr": "VCU",
+        "cim": "Pss1A.vcu"
+      },
+      {
+        "dyr": "VCL",
+        "cim": "Pss1A.vcl"
+      }
+    ]
+  },
+  "REGCA1": {
+    "CIMclass": "WeccREGCA",
+    "parameters_after_ID": [
+      {
+        "dyr": "Lvplsw",
+        "cim": "WeccREGCA.lvplsw"
+      },
+      {
+        "dyr": "Tg",
+        "cim": "WeccREGCA.tg"
+      },
+      {
+        "dyr": "Rrpwr",
+        "cim": "WeccREGCA.rrpwr"
+      },
+      {
+        "dyr": "Brkpt",
+        "cim": "WeccREGCA.brkpt"
+      },
+      {
+        "dyr": "Zerox",
+        "cim": "WeccREGCA.zerox"
+      },
+      {
+        "dyr": "Lvpl1",
+        "cim": "WeccREGCA.ivpl1"
+      },
+      {
+        "dyr": "Volim",
+        "cim": "WeccREGCA.volim"
+      },
+      {
+        "dyr": "Lvpnt1",
+        "cim": "WeccREGCA.ivpnt1"
+      },
+      {
+        "dyr": "Lvpnt0",
+        "cim": "WeccREGCA.ivpnt0"
+      },
+      {
+        "dyr": "Iolim",
+        "cim": "WeccREGCA.iolim"
+      },
+      {
+        "dyr": "Tfltr",
+        "cim": "WeccREGCA.tfltr"
+      },
+      {
+        "dyr": "Khv",
+        "cim": "WeccREGCA.khv"
+      },
+      {
+        "dyr": "Iqrmax",
+        "cim": "WeccREGCA.iqrmax"
+      },
+      {
+        "dyr": "Iqrmin",
+        "cim": "WeccREGCA.iqrmin"
+      },
+      {
+        "dyr": "Accel",
+        "cim": null
+      }
+    ]
+  },
+  "REECA1": {
+    "CIMclass": "WeccREECA",
+    "parameters_after_ID": [
+      {
+        "dyr": "BUSR",
+        "cim": "RemoteInputSignal.ConnectivityNode"
+      },
+      {
+        "dyr": "PFFLAG",
+        "cim": "WeccREECA.pfFlag"
+      },
+      {
+        "dyr": "VFLAG",
+        "cim": "WeccREECA.vFlag"
+      },
+      {
+        "dyr": "QFLAG",
+        "cim": "WeccREECA.qFlag"
+      },
+      {
+        "dyr": "PFLAG",
+        "cim": "WeccREECA.pFlag"
+      },
+      {
+        "dyr": "PQFLAG",
+        "cim": "WeccREECA.pqFlag"
+      },
+      {
+        "dyr": "Vdip",
+        "cim": "WeccREECA.vdip"
+      },
+      {
+        "dyr": "Vup",
+        "cim": "WeccREECA.vup"
+      },
+      {
+        "dyr": "Trv",
+        "cim": "WeccREECA.trv"
+      },
+      {
+        "dyr": "dbd1",
+        "cim": "WeccREECA.db1"
+      },
+      {
+        "dyr": "dbd2",
+        "cim": "WeccREECA.db2"
+      },
+      {
+        "dyr": "Kqv",
+        "cim": "WeccREECA.kqv"
+      },
+      {
+        "dyr": "Iqh1",
+        "cim": "WeccREECA.iqh1"
+      },
+      {
+        "dyr": "Iql1",
+        "cim": "WeccREECA.iql1"
+      },
+      {
+        "dyr": "Vref0",
+        "cim": "WeccREECA.vref0"
+      },
+      {
+        "dyr": "Iqfrz",
+        "cim": "WeccREECA.iqfrz"
+      },
+      {
+        "dyr": "Thld",
+        "cim": "WeccREECA.thld"
+      },
+      {
+        "dyr": "Thld2",
+        "cim": "WeccREECA.thld2"
+      },
+      {
+        "dyr": "Tp",
+        "cim": "WeccREECA.tp"
+      },
+      {
+        "dyr": "QMax",
+        "cim": "WeccREECA.qmax"
+      },
+      {
+        "dyr": "QMin",
+        "cim": "WeccREECA.qmin"
+      },
+      {
+        "dyr": "VMAX",
+        "cim": "WeccREECA.vmax"
+      },
+      {
+        "dyr": "VMIN",
+        "cim": "WeccREECA.vmin"
+      },
+      {
+        "dyr": "Kqp",
+        "cim": "WeccREECA.kqp"
+      },
+      {
+        "dyr": "Kqi",
+        "cim": "WeccREECA.kqi"
+      },
+      {
+        "dyr": "Kvp",
+        "cim": "WeccREECA.kvp"
+      },
+      {
+        "dyr": "Kvi",
+        "cim": "WeccREECA.kvi"
+      },
+      {
+        "dyr": "Vbias",
+        "cim": "WeccREECA.vref1"
+      },
+      {
+        "dyr": "Tiq",
+        "cim": "WeccREECA.tiq"
+      },
+      {
+        "dyr": "dPmax",
+        "cim": "WeccREECA.dPmax"
+      },
+      {
+        "dyr": "dPmin",
+        "cim": "WeccREECA.dPmin"
+      },
+      {
+        "dyr": "PMAX",
+        "cim": "WeccREECA.pmax"
+      },
+      {
+        "dyr": "PMIN",
+        "cim": "WeccREECA.pmin"
+      },
+      {
+        "dyr": "Imax",
+        "cim": "WeccREECA.imax"
+      },
+      {
+        "dyr": "Tpord",
+        "cim": "WeccREECA.tpord"
+      },
+      {
+        "dyr": "Vq1",
+        "cim": "WeccREECA.vdi1v1"
+      },
+      {
+        "dyr": "Iq1",
+        "cim": "WeccREECA.vdi1i1"
+      },
+      {
+        "dyr": "Vq2",
+        "cim": "WeccREECA.vdi1v2"
+      },
+      {
+        "dyr": "Iq2",
+        "cim": "WeccREECA.vdi1i2"
+      },
+      {
+        "dyr": "Vq3",
+        "cim": "WeccREECA.vdi1v3"
+      },
+      {
+        "dyr": "Iq3",
+        "cim": "WeccREECA.vdi1i3"
+      },
+      {
+        "dyr": "Vq4",
+        "cim": "WeccREECA.vdi1v4"
+      },
+      {
+        "dyr": "Iq4",
+        "cim": "WeccREECA.vdi1i4"
+      },
+      {
+        "dyr": "Vp1",
+        "cim": "WeccREECA.vdi2v1"
+      },
+      {
+        "dyr": "Ip1",
+        "cim": "WeccREECA.vdi1i1"
+      },
+      {
+        "dyr": "Vp2",
+        "cim": "WeccREECA.vdi1v2"
+      },
+      {
+        "dyr": "Ip2",
+        "cim": "WeccREECA.vdi1i2"
+      },
+      {
+        "dyr": "Vp3",
+        "cim": "WeccREECA.vdi1v3"
+      },
+      {
+        "dyr": "Ip3",
+        "cim": "WeccREECA.vdi1i3"
+      },
+      {
+        "dyr": "Vp4",
+        "cim": "WeccREECA.vdi1v4"
+      },
+      {
+        "dyr": "Ip4",
+        "cim": "WeccREECA.vdi1i4"
+      }
+    ]
+  },
+  "REECB1": {
+    "CIMclass": "WeccREECB",
+    "parameters_after_ID": [
+      {
+        "dyr": "PFFLAG",
+        "cim": "WeccREECB.pfFlag"
+      },
+      {
+        "dyr": "VFLAG",
+        "cim": "WeccREECB.vFlag"
+      },
+      {
+        "dyr": "QFLAG",
+        "cim": "WeccREECB.qFlag"
+      },
+      {
+        "dyr": "PFLAG",
+        "cim": "WeccREECB.pFlag"
+      },
+      {
+        "dyr": "PQFLAG",
+        "cim": "WeccREECB.pqFlag"
+      },
+      {
+        "dyr": "Vdip",
+        "cim": "WeccREECB.vdip"
+      },
+      {
+        "dyr": "Vup",
+        "cim": "WeccREECB.vup"
+      },
+      {
+        "dyr": "Trv",
+        "cim": "WeccREECB.trv"
+      },
+      {
+        "dyr": "dbd1",
+        "cim": "WeccREECB.db1"
+      },
+      {
+        "dyr": "dbd2",
+        "cim": "WeccREECB.db2"
+      },
+      {
+        "dyr": "Kqv",
+        "cim": "WeccREECB.kqv"
+      },
+      {
+        "dyr": "Iqh1",
+        "cim": "WeccREECB.iqh1"
+      },
+      {
+        "dyr": "Iql1",
+        "cim": "WeccREECB.iql1"
+      },
+      {
+        "dyr": "Vref0",
+        "cim": "WeccREECB.vref0"
+      },
+      {
+        "dyr": "Tp",
+        "cim": "WeccREECB.tp"
+      },
+      {
+        "dyr": "QMax",
+        "cim": "WeccREECB.qmax"
+      },
+      {
+        "dyr": "QMin",
+        "cim": "WeccREECB.qmin"
+      },
+      {
+        "dyr": "VMAX",
+        "cim": "WeccREECB.vmax"
+      },
+      {
+        "dyr": "VMIN",
+        "cim": "WeccREECB.vmin"
+      },
+      {
+        "dyr": "Kqp",
+        "cim": "WeccREECB.kqp"
+      },
+      {
+        "dyr": "Kqi",
+        "cim": "WeccREECB.kqi"
+      },
+      {
+        "dyr": "Kvp",
+        "cim": "WeccREECB.kvp"
+      },
+      {
+        "dyr": "Kvi",
+        "cim": "WeccREECB.kvi"
+      },
+      {
+        "dyr": "Vbias",
+        "cim": "WeccREECB.vref1"
+      },
+      {
+        "dyr": "Tiq",
+        "cim": "WeccREECB.tiq"
+      },
+      {
+        "dyr": "dPmax",
+        "cim": "WeccREECB.dPmax"
+      },
+      {
+        "dyr": "dPmin",
+        "cim": "WeccREECB.dPmin"
+      },
+      {
+        "dyr": "PMAX",
+        "cim": "WeccREECB.pmax"
+      },
+      {
+        "dyr": "PMIN",
+        "cim": "WeccREECB.pmin"
+      },
+      {
+        "dyr": "Imax",
+        "cim": "WeccREECB.imax"
+      },
+      {
+        "dyr": "Tpord",
+        "cim": "WeccREECB.tpord"
+      }
+    ]
+  },
+  "REPCA1": {
+    "CIMclass": "WeccREPCA",
+    "parameters_after_ID": [
+      {
+        "dyr": "BUSR",
+        "cim": "RemoteInputSignal.ConnectivityNode"
+      },
+      {
+        "dyr": "BUS1",
+        "cim": null
+      },
+      {
+        "dyr": "BUS2",
+        "cim": null
+      },
+      {
+        "dyr": "CKTID",
+        "cim": "RemoteInputSignal.ConductingEquipment"
+      },
+      {
+        "dyr": "VCFlag",
+        "cim": "WeccREPCA.vcmpFlag"
+      },
+      {
+        "dyr": "RefFlag",
+        "cim": "WeccREPCA.refFlag"
+      },
+      {
+        "dyr": "Fflag",
+        "cim": "WeccREPCA.frqFlag"
+      },
+      {
+        "dyr": "Tfltr",
+        "cim": "WeccREPCA.tfltr"
+      },
+      {
+        "dyr": "Kp",
+        "cim": "WeccREPCA.kp"
+      },
+      {
+        "dyr": "Ki",
+        "cim": "WeccREPCA.ki"
+      },
+      {
+        "dyr": "Tft",
+        "cim": "WeccREPCA.tft"
+      },
+      {
+        "dyr": "Tfv",
+        "cim": "WeccREPCA.tfv"
+      },
+      {
+        "dyr": "Vfrz",
+        "cim": "WeccREPCA.vfrz"
+      },
+      {
+        "dyr": "Rc",
+        "cim": "WeccREPCA.rc"
+      },
+      {
+        "dyr": "Xc",
+        "cim": "WeccREPCA.xc"
+      },
+      {
+        "dyr": "Kc",
+        "cim": "WeccREPCA.kc"
+      },
+      {
+        "dyr": "emax",
+        "cim": "WeccREPCA.emax"
+      },
+      {
+        "dyr": "emin",
+        "cim": "WeccREPCA.emin"
+      },
+      {
+        "dyr": "dbd1",
+        "cim": "WeccREPCA.db"
+      },
+      {
+        "dyr": "dbd2",
+        "cim": null
+      },
+      {
+        "dyr": "Qmax",
+        "cim": "WeccREPCA.qmax"
+      },
+      {
+        "dyr": "Qmin",
+        "cim": "WeccREPCA.qmin"
+      },
+      {
+        "dyr": "Kpg",
+        "cim": "WeccREPCA.kpg"
+      },
+      {
+        "dyr": "Kig",
+        "cim": "WeccREPCA.kig"
+      },
+      {
+        "dyr": "Tp",
+        "cim": "WeccREPCA.tp"
+      },
+      {
+        "dyr": "fdbd1",
+        "cim": "WeccREPCA.fdbd1"
+      },
+      {
+        "dyr": "fdbd2",
+        "cim": "WeccREPCA.fdbd2"
+      },
+      {
+        "dyr": "femax",
+        "cim": "WeccREPCA.femax"
+      },
+      {
+        "dyr": "femin",
+        "cim": "WeccREPCA.femin"
+      },
+      {
+        "dyr": "Pmax",
+        "cim": "WeccREPCA.pmax"
+      },
+      {
+        "dyr": "Pmin",
+        "cim": "WeccREPCA.pmin"
+      },
+      {
+        "dyr": "Tg",
+        "cim": "WeccREPCA.tlag"
+      },
+      {
+        "dyr": "Ddn",
+        "cim": "WeccREPCA.ddn"
+      },
+      {
+        "dyr": "Dup",
+        "cim": "WeccREPCA.dup"
+      }
+    ]
+  },
+  "WTDTA1": {
+    "CIMclass": "WeccWTGTA",
+    "parameters_after_ID": [
+      {
+        "dyr": "H",
+        "cim": null
+      },
+      {
+        "dyr": "DAMP",
+        "cim": null
+      },
+      {
+        "dyr": "Htfrac",
+        "cim": null
+      },
+      {
+        "dyr": "Freq1",
+        "cim": null
+      },
+      {
+        "dyr": "Dshaft",
+        "cim": "WeccWTGTA.dshaft"
+      }
+    ]
+  },
+  "WTARA1": {
+    "CIMclass": "WeccWTGARA",
+    "parameters_after_ID": [
+      {
+        "dyr": "Ka",
+        "cim": "WeccWTGARA.ka"
+      },
+      {
+        "dyr": "theta0",
+        "cim": "WeccWTGARA.t0"
+      }
+    ]
+  }
+}
