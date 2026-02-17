@@ -69,10 +69,12 @@ def append_xml_wecc_dynamics (g, key, ID, pec, leaf_class, dyn_settings):
   g.add ((leaf, rdflib.URIRef (CIM_NS + 'WeccDynamics.PowerElectronicsConnection'), pec))
   for tag in dyn_settings['DynamicsFunctionBlock']:
     row = dyn_settings['DynamicsFunctionBlock'][tag]
-    g.add ((leaf, rdflib.URIRef (CIM_NS + 'DynamicsFunctionBlock.{:s}'.format(tag)), rdflib.Literal(row[0], datatype=CIM_NS+row[1])))
+    if row[0] is not None:
+      g.add ((leaf, rdflib.URIRef (CIM_NS + 'DynamicsFunctionBlock.{:s}'.format(tag)), rdflib.Literal(row[0], datatype=CIM_NS+row[1])))
   for tag in dyn_settings[leaf_class]:
     row = dyn_settings[leaf_class][tag]
-    g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(leaf_class, tag)), rdflib.Literal(row[0], datatype=CIM_NS+row[1])))
+    if row[0] is not None:
+      g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(leaf_class, tag)), rdflib.Literal(row[0], datatype=CIM_NS+row[1])))
 
 def create_xml_machine_dynamics (g, leaf_class, key, uuids):
   ID = GetCIMID (leaf_class, key, uuids)
@@ -86,10 +88,11 @@ def append_xml_dynamic_parameters (g, leaf, dyn_settings, sections):
   for sect in sections:
     for tag in dyn_settings[sect]:
       row = dyn_settings[sect][tag]
-      if row[1].endswith('Kind'):
-        g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(sect, tag)), rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(row[1], row[0]))))
-      else:
-        g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(sect, tag)), rdflib.Literal(row[0], datatype=CIM_NS+row[1])))
+      if row[0] is not None:
+        if row[1].endswith('Kind'):
+          g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(sect, tag)), rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(row[1], row[0]))))
+        else:
+          g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(sect, tag)), rdflib.Literal(row[0], datatype=CIM_NS+row[1])))
 
 def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
   g = rdflib.Graph()
@@ -683,6 +686,9 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.y1value'), rdflib.Literal(f2, datatype=CIM.Float)))
 
   # write the generators: synchronous machine, generating unit, exciter, governor, stabilizer
+  dyr = emthub.load_psse_dyrfile (case)
+  if dyr is not None:
+    dyr_summary = emthub.summarize_psse_dyrfile (dyr, case)
   dyn_settings = emthub.load_dynamics_defaults ()
   nsolar = 0
   nwind = 0
