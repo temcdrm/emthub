@@ -29,7 +29,7 @@ def load_psse_dyrfile (case):
         line = line.replace("'", "")
         if len(line) == 0 or line.startswith ('/'):
           continue
-        s = re.sub ('[ ,\t]+', ',', line)
+        s = re.sub (r'[ ,\t]+', ',', line)
         if s.endswith('/'):
           s = s.replace(',/','\n')
           s = s.replace('/','\n')

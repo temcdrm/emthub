@@ -3,8 +3,6 @@
 import rdflib
 import os
 import sys
-import re
-import uuid
 import pandas as pd
 from rdflib.namespace import XSD
 from otsrdflib import OrderedTurtleSerializer

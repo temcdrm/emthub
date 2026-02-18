@@ -131,7 +131,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
     #print ('reading instance mRIDs from ', fuidname)
     fuid = open (fuidname, 'r')
     for uuid_ln in fuid.readlines():
-      uuid_toks = re.split('[,\s]+', uuid_ln)
+      uuid_toks = re.split(r'[,\s]+', uuid_ln)
       if len(uuid_toks) > 2 and not uuid_toks[0].startswith('//'):
         cls = uuid_toks[0]
         nm = uuid_toks[1]
