@@ -13,6 +13,7 @@ from rdflib.namespace import XSD
 from otsrdflib import OrderedTurtleSerializer
 import cim_examples
 import emthub.api as emthub
+import pandas as pd
  
 CIM_NS = 'http://www.ucaiug.org/ns#'
 EMT_NS = 'http://opensource.ieee.org/emtiop#'
@@ -127,7 +128,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
   uuids = {}
   fuidname = case['mridfile']
   if os.path.exists(fuidname):
-    print ('reading instance mRIDs from ', fuidname)
+    #print ('reading instance mRIDs from ', fuidname)
     fuid = open (fuidname, 'r')
     for uuid_ln in fuid.readlines():
       uuid_toks = re.split('[,\s]+', uuid_ln)
@@ -166,7 +167,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
   # write the base voltages
   kvbase_ids = {}
   for kvname, kv in kvbases.items():
-    print (kvname)
+    #print (kvname)
     ID = GetCIMID('BaseVoltage', kvname, uuids)
     bv = rdflib.URIRef (ID)
     g.add ((bv, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'BaseVoltage')))
@@ -404,7 +405,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((ec, rdflib.URIRef (CIM_NS + 'EnergyConsumer.p'), rdflib.Literal (p, datatype=CIM.ActivePower)))
     g.add ((ec, rdflib.URIRef (CIM_NS + 'EnergyConsumer.q'), rdflib.Literal (q, datatype=CIM.ReactivePower)))
 
-  print ('Writing', len(LoadResponseCharacteristics), 'load response characteristics')
+  print ('Creating', len(LoadResponseCharacteristics), 'load response characteristics')
   for key, row in LoadResponseCharacteristics.items():
     lr = rdflib.URIRef (row['mRID'])
     g.add ((lr, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'LoadResponseCharacteristic')))
@@ -950,7 +951,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
   #for prefix, namespace_uri in g.namespaces():
   #  print(f"  Prefix: {prefix}, URI: {namespace_uri}")
 
-  print('saving instance mRIDs to ', fuidname)
+  #print('saving instance mRIDs to ', fuidname)
   fuid = open(fuidname, 'w')
   for key, val in uuids.items():
       print('{:s},{:s}'.format(key.replace(':', ',', 1), val), file=fuid)
@@ -963,7 +964,7 @@ if __name__ == '__main__':
   case = cim_examples.CASES[case_id]
 
   tables, kvbases, bus_kvbases, baseMVA = emthub.load_psse_rawfile (case['rawfile'])
-  emthub.print_psse_table (tables, 'SYSTEM SWITCHING DEVICE')
+  #emthub.print_psse_table (tables, 'SYSTEM SWITCHING DEVICE')
 
   print ('All kV Bases =', kvbases)
 

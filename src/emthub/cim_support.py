@@ -105,17 +105,20 @@ def print_psse_table (tables, table_name):
     for row in table['data']:
       print (row)
 
-def read_version_33_34(tables, baseMVA, reader, sections, bTwoTitles):
+def read_version_33_34(tables, baseMVA, reader, sections, bTwoTitles, bPrint=False):
   for section in sections:
     sect = sections[section]
     columns = sect['columns']
     column_names = ','.join([columns[i]['Name'] for i in range(len(columns))])
-    print ('Table "{:s}" has {:d} raw columns, using {:d}: {:s}'.format (section, sect['column_count'], len(columns), column_names))
+    if bPrint:
+      print ('Table "{:s}" has {:d} raw columns, using {:d}: {:s}'.format (section, sect['column_count'], len(columns), column_names))
   title = ','.join(next(reader))
-  print('MVA base = {:.1f}, Title: {:s}'.format(baseMVA, title))
+  if bPrint:
+    print('MVA base = {:.1f}, Title: {:s}'.format(baseMVA, title))
   if bTwoTitles:
     title = ','.join(next(reader))
-    print ('Second Title: ', title)
+    if bPrint:
+      print ('Second Title: ', title)
   table = None
   bTransformer = False
   for row in reader:
@@ -133,10 +136,11 @@ def read_version_33_34(tables, baseMVA, reader, sections, bTwoTitles):
         column_names = [sect['columns'][i]['Name'] for i in range(n_columns)]
         column_indices = [sect['columns'][i]['Index'] for i in range(n_columns)]
         column_types = [sect['columns'][i]['Type'] for i in range(n_columns)]
-        print ('found', table_name, 'data with', total_columns, 'columns, using', n_columns)
-        print ('  column_names:', column_names)
-        print ('  column_index:', column_indices)
-        print ('  column_types:', column_types)
+        if bPrint:
+          print ('found', table_name, 'data with', total_columns, 'columns, using', n_columns)
+          print ('  column_names:', column_names)
+          print ('  column_index:', column_indices)
+          print ('  column_types:', column_types)
         # create a new table to hold the data of interest
         table = {'col_names': column_names, 'col_types': column_types, 'data': []}
         if table_name == 'TRANSFORMER':
@@ -145,9 +149,11 @@ def read_version_33_34(tables, baseMVA, reader, sections, bTwoTitles):
         else:
           bTransformer = False
         tables[table_name] = table
-        print (table)
+        if bPrint:
+          print (table)
       else:
-        print ('ignoring', table_name, 'raw file data')
+        if bPrint:
+          print ('ignoring', table_name, 'raw file data')
         table = None
     elif table is not None:
       data = []
@@ -198,7 +204,7 @@ def read_version_33_34(tables, baseMVA, reader, sections, bTwoTitles):
         table['winding_data'].append (winding_data)
       table['data'].append (data)
 
-def load_psse_rawfile(fname):
+def load_psse_rawfile(fname, bPrint=False):
   meta = load_psse_meta()
   tables = {}
   bus_kvbases = {}
@@ -211,13 +217,14 @@ def load_psse_rawfile(fname):
       row = next(reader)
     baseMVA = float(row[1])
     raw_version = int(row[2])
-    print ('Rawfile Base MVA', baseMVA, ', version', raw_version)
+    if bPrint:
+      print ('Rawfile Base MVA', baseMVA, ', version', raw_version)
     if raw_version == 33:
-      read_version_33_34 (tables, baseMVA, reader, meta['version_sections']['33'], bTwoTitles=False)
+      read_version_33_34 (tables, baseMVA, reader, meta['version_sections']['33'], bTwoTitles=False, bPrint=bPrint)
     elif raw_version == 34:
-      read_version_33_34 (tables, baseMVA, reader, meta['version_sections']['34'], bTwoTitles=True)
+      read_version_33_34 (tables, baseMVA, reader, meta['version_sections']['34'], bTwoTitles=True, bPrint=bPrint)
     elif raw_version == 35:
-      read_version_33_34 (tables, baseMVA, reader, meta['version_sections']['35'], bTwoTitles=True)
+      read_version_33_34 (tables, baseMVA, reader, meta['version_sections']['35'], bTwoTitles=True, bPrint=bPrint)
     else:
       print ('Unknown RAW File Version = {:d} from {:s}'.format (raw_version, fname))
       quit()

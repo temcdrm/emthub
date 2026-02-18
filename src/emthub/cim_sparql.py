@@ -86,19 +86,21 @@ def query_for_values (g, tbl, sysid):
     else:
       tbl['vals'][key] = row
 
-def load_root_queries():
+def load_root_queries(bPrint=False):
   global ROOT, PREFIX
   if ROOT is None:
     # read the queries into dict
     xml_file = pkg.resource_filename (__name__, 'queries/{:s}'.format(XML_QUERY_FILE))
-    print ('SPARQL from', xml_file)
+    if bPrint:
+      print ('SPARQL from', xml_file)
     tree = ET.parse(xml_file)
     ROOT = tree.getroot()
     nsCIM = ROOT.find('nsCIM').text.strip()
     nsRDF = ROOT.find('nsRDF').text.strip()
     nsEMT = ROOT.find('nsEMT').text.strip()
     PREFIX = """PREFIX r: <{:s}>\nPREFIX c: <{:s}>\nPREFIX e: <{:s}>""".format (nsRDF, nsCIM, nsEMT)
-    print (PREFIX)
+    if bPrint:
+      print (PREFIX)
 
 def load_emt_dict (g, sysid, bTiming=False):
   global ROOT
@@ -127,10 +129,11 @@ def load_emt_dict (g, sysid, bTiming=False):
     query_for_values (g, dict[key], sysid)
     if bTiming:
       print ('  Running {:40s} took {:6.3f} s for {:5d} rows'.format (key, time.time() - query_start_time, len(dict[key]['vals'])))
-  print ('Total query time {:6.3f} s'.format (time.time() - start_time))
+  if bTiming:
+    print ('Total query time {:6.3f} s'.format (time.time() - start_time))
   return dict
 
-def load_ic_dict (g):
+def load_ic_dict (g, bPrint=False):
   global ROOT
   start_time = time.time()
   # read the queries into dict
@@ -148,7 +151,8 @@ def load_ic_dict (g):
   for key in ['EMTBusVoltageIC', 'EMTBranchFlowIC', 'EMTXfmrFlowIC']:
     query_for_values (g, dict[key], sysid=None)
 
-  print ('Total query time {:6.3f} s'.format (time.time() - start_time))
+  if bPrint:
+    print ('Total query time {:6.3f} s'.format (time.time() - start_time))
   return dict
 
 def adhoc_sparql_dict (g, q, key_field):
