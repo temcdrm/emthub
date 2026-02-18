@@ -3,7 +3,7 @@
 import rdflib
 import time
 import xml.etree.ElementTree as ET
-import pkg_resources as pkg
+import importlib.resources
 
 XML_QUERY_FILE = 'sparql_queries.xml'
 PREFIX = None
@@ -90,11 +90,8 @@ def load_root_queries(bPrint=False):
   global ROOT, PREFIX
   if ROOT is None:
     # read the queries into dict
-    xml_file = pkg.resource_filename (__name__, 'queries/{:s}'.format(XML_QUERY_FILE))
-    if bPrint:
-      print ('SPARQL from', xml_file)
-    tree = ET.parse(xml_file)
-    ROOT = tree.getroot()
+    s = importlib.resources.read_text ('emthub.queries', XML_QUERY_FILE)
+    ROOT = ET.fromstring(s)
     nsCIM = ROOT.find('nsCIM').text.strip()
     nsRDF = ROOT.find('nsRDF').text.strip()
     nsEMT = ROOT.find('nsEMT').text.strip()

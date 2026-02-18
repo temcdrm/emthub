@@ -2,7 +2,7 @@
 
 import json
 import csv
-import pkg_resources as pkg
+import importlib.resources
 import os
 import pandas as pd
 import re
@@ -81,15 +81,13 @@ def summarize_psse_dyrfile (dyr, case, bDetails=False):
   return models
 
 def load_dynamics_defaults():
-  json_file = pkg.resource_filename (__name__, 'queries/{:s}'.format(DYNAMICS_DEFAULTS))
-  with open(json_file, 'r') as file:
-    dyn_settings = json.load (file)
+  s = importlib.resources.read_text ('emthub.queries', DYNAMICS_DEFAULTS)
+  dyn_settings = json.loads (s)
   return dyn_settings
 
 def load_psse_meta():
-  json_file = pkg.resource_filename (__name__, 'queries/{:s}'.format(METAFILE))
-  with open(json_file, 'r') as file:
-    meta = json.load (file)
+  s = importlib.resources.read_text ('emthub.queries', METAFILE)
+  meta = json.loads (s)
   return meta
 
 def print_psse_table (tables, table_name):
