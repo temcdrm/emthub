@@ -689,7 +689,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
   # write the generators: synchronous machine, generating unit, exciter, governor, stabilizer
   dyr = emthub.load_psse_dyrfile (case)
   if dyr is not None:
-    dyr_summary = emthub.summarize_psse_dyrfile (dyr, case)
+    dyr_summary = emthub.summarize_psse_dyrfile (dyr, case, bDetails=True)
   dyn_settings = emthub.load_dynamics_defaults ()
   nsolar = 0
   nwind = 0
@@ -964,7 +964,7 @@ if __name__ == '__main__':
   case = cim_examples.CASES[case_id]
 
   tables, kvbases, bus_kvbases, baseMVA = emthub.load_psse_rawfile (case['rawfile'])
-  #emthub.print_psse_table (tables, 'SYSTEM SWITCHING DEVICE')
+  emthub.print_psse_table (tables, 'GENERATOR')
 
   print ('All kV Bases =', kvbases)
 
