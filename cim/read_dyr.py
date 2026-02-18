@@ -10,9 +10,9 @@ if __name__ == '__main__':
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
   case = cim_examples.CASES[idx]
-  dyr = emthub.load_psse_dyrfile (case)
-  if dyr is None:
+  dyrdf = emthub.load_psse_dyrfile (case)
+  if dyrdf is None:
     print (case['name'], 'has no associated dyr file')
     quit()
-  emthub.summarize_psse_dyrfile (dyr, case, bDetails=False)
+  emthub.summarize_psse_dyrfile (dyrdf, case, bDetails=True)
 

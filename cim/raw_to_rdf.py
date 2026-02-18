@@ -13,7 +13,6 @@ from rdflib.namespace import XSD
 from otsrdflib import OrderedTurtleSerializer
 import cim_examples
 import emthub.api as emthub
-import pandas as pd
  
 CIM_NS = 'http://www.ucaiug.org/ns#'
 EMT_NS = 'http://opensource.ieee.org/emtiop#'
@@ -62,20 +61,34 @@ def GetCIMID(cls, nm, uuids, identify=False):
         return uuids[key]
     return str(uuid.uuid4()).upper() # for unidentified CIM instances
 
-def append_xml_wecc_dynamics (g, key, ID, pec, leaf_class, dyn_settings):
+def append_xml_wecc_dynamics (g, key, ID, pec, leaf_class, dyn_defaults, attmap, dyr_row):
+  #print (attmap)
+  #print (dyr_row)
   leaf = rdflib.URIRef (ID)
   g.add ((leaf, rdflib.RDF.type, rdflib.URIRef (CIM_NS + leaf_class)))
   g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM_NS+'String')))
   g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM_NS+'String')))
   g.add ((leaf, rdflib.URIRef (CIM_NS + 'WeccDynamics.PowerElectronicsConnection'), pec))
-  for tag in dyn_settings['DynamicsFunctionBlock']:
-    row = dyn_settings['DynamicsFunctionBlock'][tag]
+  for tag in dyn_defaults['DynamicsFunctionBlock']:
+    row = dyn_defaults['DynamicsFunctionBlock'][tag]
     if row[0] is not None:
       g.add ((leaf, rdflib.URIRef (CIM_NS + 'DynamicsFunctionBlock.{:s}'.format(tag)), rdflib.Literal(row[0], datatype=CIM_NS+row[1])))
-  for tag in dyn_settings[leaf_class]:
-    row = dyn_settings[leaf_class][tag]
+  for tag in dyn_defaults[leaf_class]:
+    row = dyn_defaults[leaf_class][tag]
     if row[0] is not None:
-      g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(leaf_class, tag)), rdflib.Literal(row[0], datatype=CIM_NS+row[1])))
+      att = '{:s}.{:s}'.format(leaf_class, tag)
+      val = row[0]
+      unit = row[1]
+      if att in attmap:
+        idx = attmap[att]
+        if row[1] == 'Boolean':
+          val = bool(dyr_row[idx])
+        elif unit == 'Integer':
+          val = int(dyr_row[idx])
+        else:
+          val = dyr_row[idx]
+        #print ('Value supplied for', att, 'in column', idx, '=', dyr_row[idx])
+      g.add ((leaf, rdflib.URIRef (CIM_NS + att), rdflib.Literal(val, datatype=CIM_NS+unit)))
 
 def create_xml_machine_dynamics (g, leaf_class, key, uuids):
   ID = GetCIMID (leaf_class, key, uuids)
@@ -85,10 +98,10 @@ def create_xml_machine_dynamics (g, leaf_class, key, uuids):
   g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM_NS+'String')))
   return leaf
 
-def append_xml_dynamic_parameters (g, leaf, dyn_settings, sections):
+def append_xml_dynamic_parameters (g, leaf, dyn_defaults, sections):
   for sect in sections:
-    for tag in dyn_settings[sect]:
-      row = dyn_settings[sect][tag]
+    for tag in dyn_defaults[sect]:
+      row = dyn_defaults[sect][tag]
       if row[0] is not None:
         if row[1].endswith('Kind'):
           g.add ((leaf, rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(sect, tag)), rdflib.URIRef (CIM_NS + '{:s}.{:s}'.format(row[1], row[0]))))
@@ -687,10 +700,13 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.y1value'), rdflib.Literal(f2, datatype=CIM.Float)))
 
   # write the generators: synchronous machine, generating unit, exciter, governor, stabilizer
-  dyr = emthub.load_psse_dyrfile (case)
-  if dyr is not None:
-    dyr_summary = emthub.summarize_psse_dyrfile (dyr, case, bDetails=True)
-  dyn_settings = emthub.load_dynamics_defaults ()
+  dyr_df = emthub.load_psse_dyrfile (case)
+  if dyr_df is not None:
+    dyr_summary = emthub.summarize_psse_dyrfile (dyr_df, case, bDetails=False)
+    dyr = emthub.match_dyr_generators (dyr_df)
+  dyn_defaults = emthub.load_dynamics_defaults ()
+  dyn_mapping = emthub.load_dynamics_mapping ()
+  print (dyn_mapping['TGOV1'])
   nsolar = 0
   nwind = 0
   nthermal = 0
@@ -759,16 +775,21 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.minQ'), rdflib.Literal (1.0e6*minQ, datatype=CIM.ReactivePower)))
       g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.operatingMode'), rdflib.URIRef (CIM_NS + 'SynchronousMachineOperatingMode.generator')))
       g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.type'), rdflib.URIRef (CIM_NS + 'SynchronousMachineKind.generator')))
+      if key in dyr:
+        for mdl, row in dyr[key].items():
+          cls = dyn_mapping[mdl]['CIMclass']
+          dynID = GetCIMID(cls, key, uuids)
+          #print ('Found', mdl, 'for', key, 'to create', cls, 'with ID', dynID)
       dynID = GetCIMID('SynchronousMachineTimeConstantReactance', key, uuids)
       dyn = create_xml_machine_dynamics (g, 'SynchronousMachineTimeConstantReactance', key, uuids)
       exc = create_xml_machine_dynamics (g, 'ExcST1A', key, uuids)
       pss = create_xml_machine_dynamics (g, 'PssIEEE1A', key, uuids)
       gov = create_xml_machine_dynamics (g, 'GovSteamSGO', key, uuids)
-      append_xml_dynamic_parameters (g, dyn, dyn_settings, ['SynchronousMachineTimeConstantReactance', 'SynchronousMachineDetailed', 
+      append_xml_dynamic_parameters (g, dyn, dyn_defaults, ['SynchronousMachineTimeConstantReactance', 'SynchronousMachineDetailed', 
                                                         'RotatingMachineDynamics', 'DynamicsFunctionBlock'])
-      append_xml_dynamic_parameters (g, exc, dyn_settings, ['ExcST1A', 'DynamicsFunctionBlock'])
-      append_xml_dynamic_parameters (g, pss, dyn_settings, ['PssIEEE1A', 'DynamicsFunctionBlock'])
-      append_xml_dynamic_parameters (g, gov, dyn_settings, ['GovSteamSGO', 'DynamicsFunctionBlock'])
+      append_xml_dynamic_parameters (g, exc, dyn_defaults, ['ExcST1A', 'DynamicsFunctionBlock'])
+      append_xml_dynamic_parameters (g, pss, dyn_defaults, ['PssIEEE1A', 'DynamicsFunctionBlock'])
+      append_xml_dynamic_parameters (g, gov, dyn_defaults, ['GovSteamSGO', 'DynamicsFunctionBlock'])
       g.add ((pss, rdflib.URIRef (CIM_NS + 'PowerSystemStabilizerDynamics.ExcitationSystemDynamics'), exc))
       g.add ((exc, rdflib.URIRef (CIM_NS + 'ExcitationSystemDynamics.SynchronousMachineDynamics'), dyn))
       g.add ((gov, rdflib.URIRef (CIM_NS + 'TurbineGovernorDynamics.SynchronousMachineDynamics'), dyn))
@@ -808,17 +829,23 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.PowerElectronicsConnection'), pec))
       g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.maxP'), rdflib.Literal (1.0e6*row[6], datatype=CIM.ActivePower)))
       g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.minP'), rdflib.Literal (0.0, datatype=CIM.ActivePower)))  # TODO: parse PT and PB
-      reecID = GetCIMID('WeccREECA', key, uuids)
-      append_xml_wecc_dynamics (g, key, reecID, pec, 'WeccREECA', dyn_settings)
-      repcID = GetCIMID('WeccREPCA', key, uuids)
-      append_xml_wecc_dynamics (g, key, repcID, pec, 'WeccREPCA', dyn_settings)
-      regcID = GetCIMID('WeccREGCA', key, uuids)
-      append_xml_wecc_dynamics (g, key, regcID, pec, 'WeccREGCA', dyn_settings)
-      if ftype in ['PowerElectronicsWindUnit']:
-        araID = GetCIMID('WeccWTGARA', key, uuids)
-        append_xml_wecc_dynamics (g, key, araID, pec, 'WeccWTGARA', dyn_settings)
-        taID = GetCIMID('WeccWTGTA', key, uuids)
-        append_xml_wecc_dynamics (g, key, taID, pec, 'WeccWTGTA', dyn_settings)
+      if key in dyr:
+        for mdl, row in dyr[key].items():
+          cls = dyn_mapping[mdl]['CIMclass']
+          dynID = GetCIMID(cls, key, uuids)
+          print ('Found', mdl, 'for', key, 'to create', cls, 'with ID', dynID)
+          append_xml_wecc_dynamics (g, key, dynID, pec, cls, dyn_defaults, dyn_mapping[mdl]['AttMap'], row)
+      #reecID = GetCIMID('WeccREECA', key, uuids)
+      #append_xml_wecc_dynamics (g, key, reecID, pec, 'WeccREECA', dyn_defaults)
+      #repcID = GetCIMID('WeccREPCA', key, uuids)
+      #append_xml_wecc_dynamics (g, key, repcID, pec, 'WeccREPCA', dyn_defaults)
+      #regcID = GetCIMID('WeccREGCA', key, uuids)
+      #append_xml_wecc_dynamics (g, key, regcID, pec, 'WeccREGCA', dyn_defaults)
+      #if ftype in ['PowerElectronicsWindUnit']:
+      #  araID = GetCIMID('WeccWTGARA', key, uuids)
+      #  append_xml_wecc_dynamics (g, key, araID, pec, 'WeccWTGARA', dyn_defaults)
+      #  taID = GetCIMID('WeccWTGTA', key, uuids)
+      #  append_xml_wecc_dynamics (g, key, taID, pec, 'WeccWTGTA', dyn_defaults)
 
   print ('{:d} thermal, {:d} hydro, {:d} nuclear, {:d} solar, {:d} wind generators'.format (nthermal, nhydro, nnuclear, nsolar, nwind))
   if nthermal+nhydro+nnuclear+nsolar+nwind < 1:

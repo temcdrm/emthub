@@ -14,7 +14,9 @@ Public Functions:
     :load_dynamics_defaults: Load example default settings for dynamics into a Python dictionary.
     :load_psse_meta: Load PSSE rawfile metadata into a Python dictionary.
     :load_psse_dyrfile: Load contents of a PSSE dyrfile into a Pandas dataframe.
-    :summarize_psse_dyrfile: Enumerate contents of a loaded PSSE dyrfile.
+    :summarize_psse_dyrfile: Enumerate contents of a loaded PSSE dyrfile dataframe.
+    :match_dyr_generators: Collect dyrfile modeels from Pandas dataframe into a Python dictionary by generator name/id.
+    :load_dynamics_mapping: Load a dictionary of CIM classes and attributes corresponding to dyr file contents.
     :load_psse_rawfile: Load contents of a PSSE rawfile into a Python dictionary.
     :summarize_graph: Count the class instances by namespace in an RDF graph.
     :load_emt_dict: Load an RDF graph into Python dictionary using packaged SPARQL queries.
@@ -35,6 +37,8 @@ from .cim_support import load_psse_rawfile
 from .cim_support import print_psse_table
 from .cim_support import load_psse_dyrfile
 from .cim_support import summarize_psse_dyrfile
+from .cim_support import match_dyr_generators
+from .cim_support import load_dynamics_mapping
 
 from .cim_sparql import summarize_graph
 from .cim_sparql import load_emt_dict

@@ -10,6 +10,7 @@ import io
 import math
 
 DYNAMICS_DEFAULTS = 'dynamics_defaults.json'
+DYNAMICS_MAPPING = 'dyr_mapping.json'
 METAFILE = 'psseraw.json'
 
 # the PSSE DYR file does not conform to CSV standards:
@@ -80,10 +81,40 @@ def summarize_psse_dyrfile (dyr, case, bDetails=False):
     print ('{:6s} {:6d} {:6d} {:6d}'.format (key, row['count'], row['min_len'], row['max_len']))
   return models
 
+def match_dyr_generators (df, bPrint=False):
+  d = {}
+  for row in df.itertuples(index=False):
+    bus = str(row[0])
+    model_type = str(row[1])
+    genid = str(row[2])
+    key = '{:s}_{:s}'.format (bus, genid)
+    if key not in d:
+      d[key] = {}
+    n = row_length (row)
+    d[key][model_type] = []
+    a = d[key][model_type]
+    for i in range(3,n):
+      a.append (row[i])
+    if bPrint:
+      print ('Dyr Entry:', key, model_type, a)
+  return d
+
 def load_dynamics_defaults():
   s = importlib.resources.read_text ('emthub.queries', DYNAMICS_DEFAULTS)
   dyn_settings = json.loads (s)
   return dyn_settings
+
+def load_dynamics_mapping():
+  s = importlib.resources.read_text ('emthub.queries', DYNAMICS_MAPPING)
+  d = json.loads (s)
+  attmap = {}
+  for dyr, item in d.items():
+    cls = item['CIMclass']
+    attmap[dyr] = {'CIMclass': cls, 'AttMap': {}}
+    for i in range(len(item['parameters_after_ID'])):
+      att = item['parameters_after_ID'][i]
+      attmap[dyr]['AttMap'][att['cim']] = i
+  return attmap
 
 def load_psse_meta():
   s = importlib.resources.read_text ('emthub.queries', METAFILE)
