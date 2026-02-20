@@ -10,6 +10,9 @@ Example:
         emthub.print_cim_summaries(['XfmrSat','IEEE39','IEEE118','WECC240'])
 
 Public Functions:
+    :create_cim_rdf: Create RDF in TTL/XML formats from results of load_psse_rawfile
+    :create_cim_sql: Create SQL db from results of load_psse_rawfile
+    :convert_one_atp_model: Write an ATP netlist from CIM loaded into a Python dictionary.
     :print_cim_summaries: Print class names and counts found in list of Turtle files.
     :load_dynamics_defaults: Load example default settings for dynamics into a Python dictionary.
     :load_psse_meta: Load PSSE rawfile metadata into a Python dictionary.
@@ -25,9 +28,17 @@ Public Functions:
     :adhoc_sparql_dict: Load the result of a user-written SPARQL query into a Python dictionary.
     :build_bus_lists: Order the buses (connectivity nodes) sequentially.
     :get_swingbus_id: Find the CIM ConnectivityNode ID by matching the Name/Number from the original raw file.
+    :build_system_graph: Auto-layout a diagram of the CIM network, returning a networkx graph.
+    :load_system_graph: Load the networkx layout (graph) from a JSON file.
+    :plot_system_graph: Plot the transmission system topology from a networkx layout (graph).
+    :save_system_graph: Save the networkx layout (graph) to a JSON file.
 """
 
 from __future__ import absolute_import
+
+from .create_rdf import create_cim_rdf
+from .create_sql import create_cim_sql
+from .create_atp import convert_one_atp_model
 
 from .cim_summary import print_cim_summaries
 
@@ -48,6 +59,11 @@ from .cim_sparql import adhoc_sparql_dict
 
 from .buslists import build_bus_lists
 from .buslists import get_swingbus_id
+
+from .plot_utils import build_system_graph
+from .plot_utils import load_system_graph
+from .plot_utils import plot_system_graph
+from .plot_utils import save_system_graph
 
 from .version import __version__
 
