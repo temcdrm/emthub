@@ -697,7 +697,7 @@ def GetGSUPhaseShift (d, key, dxf):
               return 0.0
   return 0.0
 
-def convert_one_atp_model (d, icd, fpath, case):
+def create_atp (d, icd, fpath, case):
   """Export one BES network model to ATP.
 
   Writes a file ending in *_net.atp*, which references support files for machines,

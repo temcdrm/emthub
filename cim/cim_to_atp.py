@@ -33,5 +33,5 @@ if __name__ == '__main__':
     icd = emthub.load_ic_dict (g)
     #emthub.list_dict_table (icd, 'EMTBusVoltageIC')
 
-  emthub.convert_one_atp_model (d, icd, fpath = '../atp/data/', case=case)
+  emthub.create_atp (d, icd, fpath = '../atp/data/', case=case)
 

@@ -12,7 +12,8 @@ Example:
 Public Functions:
     :create_cim_rdf: Create RDF in TTL/XML formats from results of load_psse_rawfile
     :create_cim_sql: Create SQL db from results of load_psse_rawfile
-    :convert_one_atp_model: Write an ATP netlist from CIM loaded into a Python dictionary.
+    :create_atp: Write an ATP netlist from CIM loaded into a Python dictionary.
+    :create_matpower: Write a MATPOWER netlist from CIM loaded into a Python dictionary.
     :print_cim_summaries: Print class names and counts found in list of Turtle files.
     :load_dynamics_defaults: Load example default settings for dynamics into a Python dictionary.
     :load_psse_meta: Load PSSE rawfile metadata into a Python dictionary.
@@ -38,7 +39,8 @@ from __future__ import absolute_import
 
 from .create_rdf import create_cim_rdf
 from .create_sql import create_cim_sql
-from .create_atp import convert_one_atp_model
+from .create_atp import create_atp
+from .create_mpow import create_matpower
 
 from .cim_summary import print_cim_summaries
 
