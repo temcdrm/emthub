@@ -598,8 +598,9 @@ SELECT ?name ?db1 ?db2 ?dPmax ?dPmin ?imax ?iqfrz ?iqh1 ?iql1 ?kqi ?kqp ?kqv
 ?tiq ?tp ?tpord ?trv ?vdi1i1 ?vdi1i2 ?vdi1i3 ?vdi1i4 ?vdi1v1 ?vdi1v2 ?vdi1v3
 ?vdi1v4 ?vdi2i1 ?vdi2i2 ?vdi2i3 ?vdi2i4 ?vdi2v1 ?vdi2v2 ?vdi2v3 ?vdi2v4 ?vdip
 ?vFlag ?vmax ?vmin ?vref0 ?vref1 ?vup ?id ?eqid ?sysid WHERE {
+ VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 # VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?s r:type c:WeccREECA.
  ?s c:WeccDynamics.PowerElectronicsConnection ?eq.

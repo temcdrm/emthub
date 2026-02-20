@@ -23,7 +23,6 @@ if __name__ == '__main__':
   g.parse (fname)
   print ('read', len(g), 'statements from', fname)
   d = emthub.load_emt_dict (g, case['id'], bTiming=True)
-  quit()
 
   G = emthub.build_system_graph (d)
   emthub.save_system_graph (G, './raw/{:s}_Network.json'.format(sys_name))

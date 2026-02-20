@@ -4,6 +4,7 @@ import rdflib
 import time
 import xml.etree.ElementTree as ET
 import importlib.resources
+import sys
 
 XML_QUERY_FILE = 'sparql_queries.xml'
 PREFIX = None
@@ -54,9 +55,10 @@ def query_for_values (g, tbl, sysid):
     bMultiKey = True
   keyflds = tbl['keyfld'].strip('*').split(':')
   q = build_query (PREFIX, tbl['sparql'], sysid)
- # print ('===================')
- # print (q)
+  #print ('===================')
+  #print (q)
   result = g.query(q)
+  #print (result)
   vars = [str(item) for item in result.vars]
   for akey in keyflds:
     vars.remove (akey)
@@ -67,6 +69,7 @@ def query_for_values (g, tbl, sysid):
     for i in range(1, len(keyflds)):
       key = key + DELIM + str(b[keyflds[i]])
     for fld in vars:
+      #print ('  ', key, fld, b[fld])
       if b[fld] is None:
         row[fld] = None
       elif fld in ['pname', 'name', 'conn', 'sysid', 'bus', 'bus1', 'bus2', 'id', 'eqid', 'endid']:
@@ -101,6 +104,13 @@ def load_root_queries(bPrint=False):
 
 def load_emt_dict (g, sysid, bTiming=False):
   global ROOT
+
+  current_recursion_limit = sys.getrecursionlimit()
+  new_recursion_limit = 10000
+  if new_recursion_limit > current_recursion_limit:
+    sys.setrecursionlimit(new_recursion_limit)
+    print ('For SPARQL, changing recursion limit from {:d} to {:d}'.format (current_recursion_limit, new_recursion_limit))
+
   start_time = time.time()
   load_root_queries()
   dict = {}
