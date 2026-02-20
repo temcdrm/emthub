@@ -46,7 +46,7 @@ CASES = [
    'ttl_ic': 'wecc240_ic.ttl',
    'swingbus':'3831',
    'old_swingbus':'2438', 
-   'load': 1.02, 'UseXfmrSaturation': False, 'dyrfile': 'raw/240busWECC_2018_PSS.dyr'},
+   'load': 1.02, 'UseXfmrSaturation': False, 'dyrfile': 'raw/WECC240.dyr'},
   {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
    'name':'XfmrSat', 'legend_loc': 'best', 
    'rawfile':'raw/XfmrSat.raw', 'xmlfile':'XfmrSat.xml', 'mridfile': 'raw/XfmrSatmrids.dat', 'ttlfile': 'XfmrSat.ttl',

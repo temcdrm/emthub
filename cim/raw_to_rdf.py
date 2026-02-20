@@ -73,6 +73,18 @@ def append_xml_wecc_dynamics (g, key, ID, pec, leaf_class, dyn_defaults, attmap,
     row = dyn_defaults['DynamicsFunctionBlock'][tag]
     if row[0] is not None:
       g.add ((leaf, rdflib.URIRef (CIM_NS + 'DynamicsFunctionBlock.{:s}'.format(tag)), rdflib.Literal(row[0], datatype=CIM_NS+row[1])))
+  if leaf_class == 'WeccWTGTA': # only dshaft comes directly from the dyr file
+    h = dyr_row[0]
+    ht = h * dyr_row[2]
+    hg = h - ht
+    freq = dyr_row[3]
+    kshaft = 2*ht*hg*(2*math.pi*freq)**2 / h
+    dshaft = dyr_row[4]
+    g.add ((leaf, rdflib.URIRef (CIM_NS + 'WeccWTGTA.dshaft'), rdflib.Literal(dshaft, datatype=CIM_NS+'PU')))
+    g.add ((leaf, rdflib.URIRef (CIM_NS + 'WeccWTGTA.kshaft'), rdflib.Literal(kshaft, datatype=CIM_NS+'PU')))
+    g.add ((leaf, rdflib.URIRef (CIM_NS + 'WeccWTGTA.ht'), rdflib.Literal(ht, datatype=CIM_NS+'Seconds')))
+    g.add ((leaf, rdflib.URIRef (CIM_NS + 'WeccWTGTA.hg'), rdflib.Literal(hg, datatype=CIM_NS+'Seconds')))
+    return
   for tag in dyn_defaults[leaf_class]:
     row = dyn_defaults[leaf_class][tag]
     if row[0] is not None:
@@ -717,6 +729,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
     dyr = emthub.match_dyr_generators (dyr_df)
   dyn_defaults = emthub.load_dynamics_defaults ()
   dyn_mapping = emthub.load_dynamics_mapping ()
+  dyr_used = {}
   nsolar = 0
   nwind = 0
   nthermal = 0
@@ -786,12 +799,15 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.operatingMode'), rdflib.URIRef (CIM_NS + 'SynchronousMachineOperatingMode.generator')))
       g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.type'), rdflib.URIRef (CIM_NS + 'SynchronousMachineKind.generator')))
       if key in dyr:
+        dyr_used[key] = True
         dyn = None
         exc = None
         pss = None
         gov = None
+        used = []
         for mdl, row in dyr[key].items():
           cls = dyn_mapping[mdl]['CIMclass']
+          used.append (cls)
           if cls.startswith ('SynchronousMachine'):
             dyn = create_xml_machine_dynamics (g, cls, key, uuids)
             append_xml_dynamic_parameters (g, dyn, dyn_defaults, [cls, 'SynchronousMachineDetailed', 'RotatingMachineDynamics', 'DynamicsFunctionBlock'], dyn_mapping[mdl]['AttMap'], row)
@@ -802,13 +818,17 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
             pss = create_xml_machine_dynamics (g, cls, key, uuids)
             append_xml_dynamic_parameters (g, pss, dyn_defaults, [cls, 'DynamicsFunctionBlock'], dyn_mapping[mdl]['AttMap'], row)
           elif cls.startswith ('Gov'):
+            if 'Hydro' in cls and 'Hydro' not in ftype:
+              print ('** non-hydro unit', key, 'has governor', cls, 'for', ftype)
+            elif 'Hydro' not in cls and 'Hydro' in ftype:
+              print ('** hydro unit', key, 'has governor', cls, 'for', ftype)
             gov = create_xml_machine_dynamics (g, cls, key, uuids)
             append_xml_dynamic_parameters (g, gov, dyn_defaults, [cls, 'DynamicsFunctionBlock'], dyn_mapping[mdl]['AttMap'], row)
             if 'mwbase' in dyn_defaults[cls]:
               att = '{:s}.mwbase'.format(cls)
               g.add ((gov, rdflib.URIRef (CIM_NS + att), rdflib.Literal (mvabase, datatype=CIM.ActivePower)))
           else:
-            print ('** Unknown dynamics class', cls, 'for dyr model', mdl)
+            print ('** Unknown dynamics class', cls, 'for dyr model', mdl, 'generator', key)
         if dyn is not None:
           g.add ((dyn, rdflib.URIRef (CIM_NS + 'SynchronousMachineDynamics.SynchronousMachine'), sm))
           if gov is not None:
@@ -817,10 +837,13 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
             g.add ((exc, rdflib.URIRef (CIM_NS + 'ExcitationSystemDynamics.SynchronousMachineDynamics'), dyn))
             if pss is not None:
               g.add ((pss, rdflib.URIRef (CIM_NS + 'PowerSystemStabilizerDynamics.ExcitationSystemDynamics'), exc))
+          #print ('machine dynamics for', key, used)
         else:
           print ('** missing machine dynamics for', key)
         if exc is None and pss is not None:
           print ('** power system stabilizer is missing excitation system for', key)
+      else:
+        print ('no machine dynamics found for', key, ftype)
     else:
       ID = GetCIMID('PowerElectronicsConnection', key, uuids)
       pec = rdflib.URIRef (ID)
@@ -856,22 +879,25 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.maxP'), rdflib.Literal (1.0e6*row[6], datatype=CIM.ActivePower)))
       g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.minP'), rdflib.Literal (0.0, datatype=CIM.ActivePower)))  # TODO: parse PT and PB
       if key in dyr:
+        dyr_used[key] = True
+        used = []
         for mdl, row in dyr[key].items():
           cls = dyn_mapping[mdl]['CIMclass']
+          used.append (cls)
           dynID = GetCIMID(cls, key, uuids)
           append_xml_wecc_dynamics (g, key, dynID, pec, cls, dyn_defaults, dyn_mapping[mdl]['AttMap'], row)
-      #reecID = GetCIMID('WeccREECA', key, uuids)
-      #append_xml_wecc_dynamics (g, key, reecID, pec, 'WeccREECA', dyn_defaults)
-      #repcID = GetCIMID('WeccREPCA', key, uuids)
-      #append_xml_wecc_dynamics (g, key, repcID, pec, 'WeccREPCA', dyn_defaults)
-      #regcID = GetCIMID('WeccREGCA', key, uuids)
-      #append_xml_wecc_dynamics (g, key, regcID, pec, 'WeccREGCA', dyn_defaults)
-      #if ftype in ['PowerElectronicsWindUnit']:
-      #  araID = GetCIMID('WeccWTGARA', key, uuids)
-      #  append_xml_wecc_dynamics (g, key, araID, pec, 'WeccWTGARA', dyn_defaults)
-      #  taID = GetCIMID('WeccWTGTA', key, uuids)
-      #  append_xml_wecc_dynamics (g, key, taID, pec, 'WeccWTGTA', dyn_defaults)
-
+        #print ('wecc dynamics for', key, used)
+      else:
+        print ('no WECC dynamics found for', key, ftype)
+  # warn of any unused dyr file entries
+  dyr_unused = []
+  for key in dyr:
+    if key not in dyr_used:
+      dyr_unused.append(key)
+  if len(dyr_unused) > 0:
+    print ('dyr entries for these generators were not used:') 
+    print (' ', dyr_unused)
+    print ('  (these units may have been flagged off-line in the raw file)')
   print ('{:d} thermal, {:d} hydro, {:d} nuclear, {:d} solar, {:d} wind generators'.format (nthermal, nhydro, nnuclear, nsolar, nwind))
   if nthermal+nhydro+nnuclear+nsolar+nwind < 1:
     if 'swingbus' in case:
@@ -1023,7 +1049,7 @@ if __name__ == '__main__':
   case = cim_examples.CASES[case_id]
 
   tables, kvbases, bus_kvbases, baseMVA = emthub.load_psse_rawfile (case['rawfile'])
-  emthub.print_psse_table (tables, 'GENERATOR')
+#  emthub.print_psse_table (tables, 'GENERATOR')
 
   print ('All kV Bases =', kvbases)
 

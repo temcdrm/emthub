@@ -7,10 +7,13 @@ import re
 
 CIM_NS = 'http://www.ucaiug.org/ns#'
 EMT_NS = 'http://opensource.ieee.org/emtiop#'
+ref_prefix = 'file:///C:/src/emthub/cim/'
 
 fnetwork = 'IEEE39.ttl'
 fuidname = 'raw/ieee39mrids.dat'
-ref_prefix = 'file:///C:/src/emthub/cim/'
+
+fnetwork = 'WECC240.ttl'
+fuidname = 'raw/wecc240mrids.dat'
 
 def uuid_in_graph (val, g):
   ref = rdflib.URIRef (ref_prefix + val)
