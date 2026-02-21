@@ -1031,3 +1031,191 @@ WHERE {
   bind(strafter(str(?evalraw),"#") as ?eval)
 } ORDER by ?eval
 
+# EMTExcIEEEDC1A
+SELECT ?name ?efd1 ?efd2 ?exclim ?ka ?ke ?kf ?seefd1 ?seefd2 ?ta ?tb ?tc ?te ?tf
+?uelin ?vrmax ?vrmin ?id ?eqid ?sysid WHERE {
+ VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+# VALUES ?sysid {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s r:type c:ExcIEEEDC1A.
+ ?s c:ExcitationSystemDynamics.SynchronousMachineDynamics ?dyn.
+ ?dyn c:SynchronousMachineDynamics.SynchronousMachine ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?s r:type c:ExcIEEEDC1A.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?id.
+ ?s c:ExcIEEEDC1A.efd1 ?efd1.
+ ?s c:ExcIEEEDC1A.efd2 ?efd2.
+ ?s c:ExcIEEEDC1A.exclim ?exclim.
+ ?s c:ExcIEEEDC1A.ka ?ka.
+ ?s c:ExcIEEEDC1A.ke ?ke.
+ ?s c:ExcIEEEDC1A.kf ?kf.
+ ?s c:ExcIEEEDC1A.seefd1 ?seefd1.
+ ?s c:ExcIEEEDC1A.seefd2 ?seefd2.
+ ?s c:ExcIEEEDC1A.ta ?ta.
+ ?s c:ExcIEEEDC1A.tb ?tb.
+ ?s c:ExcIEEEDC1A.tc ?tc.
+ ?s c:ExcIEEEDC1A.te ?te.
+ ?s c:ExcIEEEDC1A.tf ?tf.
+ ?s c:ExcIEEEDC1A.uelin ?uelin.
+ ?s c:ExcIEEEDC1A.vrmax ?vrmax.
+ ?s c:ExcIEEEDC1A.vrmin ?vrmin.
+} ORDER BY ?name
+
+# EMTExcSEXS
+SELECT ?name ?efdmax ?efdmin ?emax ?emin ?k ?kc ?tatb ?tb ?tc ?te ?id ?eqid
+?sysid WHERE {
+ VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+# VALUES ?sysid {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s r:type c:ExcSEXS.
+ ?s c:ExcitationSystemDynamics.SynchronousMachineDynamics ?dyn.
+ ?dyn c:SynchronousMachineDynamics.SynchronousMachine ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?s r:type c:ExcSEXS.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?id.
+ ?s c:ExcSEXS.efdmax ?efdmax.
+ ?s c:ExcSEXS.efdmin ?efdmin.
+ ?s c:ExcSEXS.emax ?emax.
+ ?s c:ExcSEXS.emin ?emin.
+ ?s c:ExcSEXS.k ?k.
+ ?s c:ExcSEXS.kc ?kc.
+ ?s c:ExcSEXS.tatb ?tatb.
+ ?s c:ExcSEXS.tb ?tb.
+ ?s c:ExcSEXS.tc ?tc.
+ ?s c:ExcSEXS.te ?te.
+} ORDER BY ?name
+
+# EMTGovGAST
+SELECT ?name ?at ?dturb ?kt ?mwbase ?r ?t1 ?t2 ?t3 ?vmax ?vmin ?id ?eqid ?sysid
+WHERE {
+ VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+# VALUES ?sysid {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s r:type c:GovGAST.
+ ?s c:TurbineGovernorDynamics.SynchronousMachineDynamics ?dyn.
+ ?dyn c:SynchronousMachineDynamics.SynchronousMachine ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?s r:type c:GovGAST.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?id.
+ ?s c:GovGAST.at ?at.
+ ?s c:GovGAST.dturb ?dturb.
+ ?s c:GovGAST.kt ?kt.
+ ?s c:GovGAST.mwbase ?mwbase.
+ ?s c:GovGAST.r ?r.
+ ?s c:GovGAST.t1 ?t1.
+ ?s c:GovGAST.t2 ?t2.
+ ?s c:GovGAST.t3 ?t3.
+ ?s c:GovGAST.vmax ?vmax.
+ ?s c:GovGAST.vmin ?vmin.
+} ORDER BY ?name
+
+# EMTGovHydro1
+SELECT ?name ?at ?dturb ?gmax ?gmin ?hdam ?mwbase ?qnl ?rperm ?rtemp ?tf ?tg ?tr
+?tw ?velm ?id ?eqid ?sysid WHERE {
+ VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+# VALUES ?sysid {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s r:type c:GovHydro1.
+ ?s c:TurbineGovernorDynamics.SynchronousMachineDynamics ?dyn.
+ ?dyn c:SynchronousMachineDynamics.SynchronousMachine ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?s r:type c:GovHydro1.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?id.
+ ?s c:GovHydro1.at ?at.
+ ?s c:GovHydro1.dturb ?dturb.
+ ?s c:GovHydro1.gmax ?gmax.
+ ?s c:GovHydro1.gmin ?gmin.
+ ?s c:GovHydro1.hdam ?hdam.
+ ?s c:GovHydro1.mwbase ?mwbase.
+ ?s c:GovHydro1.qnl ?qnl.
+ ?s c:GovHydro1.rperm ?rperm.
+ ?s c:GovHydro1.rtemp ?rtemp.
+ ?s c:GovHydro1.tf ?tf.
+ ?s c:GovHydro1.tg ?tg.
+ ?s c:GovHydro1.tr ?tr.
+ ?s c:GovHydro1.tw ?tw.
+ ?s c:GovHydro1.velm ?velm.
+} ORDER BY ?name
+
+# EMTGovSteam0
+SELECT ?name ?dt ?mwbase ?r ?t1 ?t2 ?t3 ?vmax ?vmin ?id ?eqid ?sysid WHERE {
+ VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+# VALUES ?sysid {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s r:type c:GovSteam0.
+ ?s c:TurbineGovernorDynamics.SynchronousMachineDynamics ?dyn.
+ ?dyn c:SynchronousMachineDynamics.SynchronousMachine ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?s r:type c:GovSteam0.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?id.
+ ?s c:GovSteam0.dt ?dt.
+ ?s c:GovSteam0.mwbase ?mwbase.
+ ?s c:GovSteam0.r ?r.
+ ?s c:GovSteam0.t1 ?t1.
+ ?s c:GovSteam0.t2 ?t2.
+ ?s c:GovSteam0.t3 ?t3.
+ ?s c:GovSteam0.vmax ?vmax.
+ ?s c:GovSteam0.vmin ?vmin.
+} ORDER BY ?name
+
+# EMTPss1A
+SELECT ?name ?a1 ?a2 ?a3 ?a4 ?a5 ?a6 ?a7 ?a8 ?inputSignalType ?kd ?ks ?t1 ?t2
+?t3 ?t4 ?t5 ?t6 ?tdelay ?vcl ?vcu ?vrmax ?vrmin ?id ?eqid ?sysid WHERE {
+ VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+# VALUES ?sysid {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?s r:type c:Pss1A.
+ ?s c:PowerSystemStabilizerDynamics.ExcitationSystemDynamics ?exc.
+ ?exc c:ExcitationSystemDynamics.SynchronousMachineDynamics ?dyn.
+ ?dyn c:SynchronousMachineDynamics.SynchronousMachine ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?eqid.
+ ?s r:type c:Pss1A.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?id.
+ ?s c:Pss1A.a1 ?a1.
+ ?s c:Pss1A.a2 ?a2.
+ ?s c:Pss1A.a3 ?a3.
+ ?s c:Pss1A.a4 ?a4.
+ ?s c:Pss1A.a5 ?a5.
+ ?s c:Pss1A.a6 ?a6.
+ ?s c:Pss1A.a7 ?a7.
+ ?s c:Pss1A.a8 ?a8.
+ ?s c:Pss1A.inputSignalType ?inputSignalType.
+ ?s c:Pss1A.kd ?kd.
+ ?s c:Pss1A.ks ?ks.
+ ?s c:Pss1A.t1 ?t1.
+ ?s c:Pss1A.t2 ?t2.
+ ?s c:Pss1A.t3 ?t3.
+ ?s c:Pss1A.t4 ?t4.
+ ?s c:Pss1A.t5 ?t5.
+ ?s c:Pss1A.t6 ?t6.
+ ?s c:Pss1A.tdelay ?tdelay.
+ ?s c:Pss1A.vcl ?vcl.
+ ?s c:Pss1A.vcu ?vcu.
+ ?s c:Pss1A.vrmax ?vrmax.
+ ?s c:Pss1A.vrmin ?vrmin.
+} ORDER BY ?name
+

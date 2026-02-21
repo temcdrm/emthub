@@ -9,7 +9,8 @@ if __name__ == '__main__':
 
   # to add manually, because they are not included in default settings:
   #   GovSteamSGO.mwbase
-  for key in ['ExcST1A', 'GovSteamSGO', 'PssIEEE1A', 'WeccREECA', 'WeccREPCA', 'WeccREGCA', 'WeccWTGARA', 'WeccWTGTA']:
+  #for key in ['ExcST1A', 'GovSteamSGO', 'PssIEEE1A', 'WeccREECA', 'WeccREPCA', 'WeccREGCA', 'WeccWTGARA', 'WeccWTGTA']:
+  for key in ['ExcIEEEDC1A', 'ExcSEXS', 'GovGAST', 'GovHydro1', 'GovSteam0', 'Pss1A']:
     tab = dyn_settings[key]
     fields = list(tab.keys())
     print ('\n# EMT{:s}'.format (key))
@@ -17,8 +18,10 @@ if __name__ == '__main__':
     select_str = 'SELECT ?name ?{:s} ?id ?eqid ?sysid WHERE {{'.format (field_str)
 #    print (key, fields)
     print (textwrap.fill (select_str, width=80))
+    print (' VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}')
     print ('# VALUES ?sysid {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}')
-    print (' VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}')
+    print ('# VALUES ?sysid {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}')
+    print ('# VALUES ?sysid {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}')
     print (' ?sys c:IdentifiedObject.mRID ?sysid.')
     print (' ?s r:type c:{:s}.'.format (key))
     # find the connected ConductingEquipment, based on the class of dynamics
