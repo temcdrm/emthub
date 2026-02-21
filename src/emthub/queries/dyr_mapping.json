@@ -801,127 +801,127 @@
     ]
   },
   "REECB1": {
-    "CIMclass": "WeccREECB",
+    "CIMclass": "WeccREECA",
     "parameters_after_ID": [
       {
         "dyr": "PFFLAG",
-        "cim": "WeccREECB.pfFlag"
+        "cim": "WeccREECA.pfFlag"
       },
       {
         "dyr": "VFLAG",
-        "cim": "WeccREECB.vFlag"
+        "cim": "WeccREECA.vFlag"
       },
       {
         "dyr": "QFLAG",
-        "cim": "WeccREECB.qFlag"
+        "cim": "WeccREECA.qFlag"
       },
       {
         "dyr": "PFLAG",
-        "cim": "WeccREECB.pFlag"
+        "cim": "WeccREECA.pFlag"
       },
       {
         "dyr": "PQFLAG",
-        "cim": "WeccREECB.pqFlag"
+        "cim": "WeccREECA.pqFlag"
       },
       {
         "dyr": "Vdip",
-        "cim": "WeccREECB.vdip"
+        "cim": "WeccREECA.vdip"
       },
       {
         "dyr": "Vup",
-        "cim": "WeccREECB.vup"
+        "cim": "WeccREECA.vup"
       },
       {
         "dyr": "Trv",
-        "cim": "WeccREECB.trv"
+        "cim": "WeccREECA.trv"
       },
       {
         "dyr": "dbd1",
-        "cim": "WeccREECB.db1"
+        "cim": "WeccREECA.db1"
       },
       {
         "dyr": "dbd2",
-        "cim": "WeccREECB.db2"
+        "cim": "WeccREECA.db2"
       },
       {
         "dyr": "Kqv",
-        "cim": "WeccREECB.kqv"
+        "cim": "WeccREECA.kqv"
       },
       {
         "dyr": "Iqh1",
-        "cim": "WeccREECB.iqh1"
+        "cim": "WeccREECA.iqh1"
       },
       {
         "dyr": "Iql1",
-        "cim": "WeccREECB.iql1"
+        "cim": "WeccREECA.iql1"
       },
       {
         "dyr": "Vref0",
-        "cim": "WeccREECB.vref0"
+        "cim": "WeccREECA.vref0"
       },
       {
         "dyr": "Tp",
-        "cim": "WeccREECB.tp"
+        "cim": "WeccREECA.tp"
       },
       {
         "dyr": "QMax",
-        "cim": "WeccREECB.qmax"
+        "cim": "WeccREECA.qmax"
       },
       {
         "dyr": "QMin",
-        "cim": "WeccREECB.qmin"
+        "cim": "WeccREECA.qmin"
       },
       {
         "dyr": "VMAX",
-        "cim": "WeccREECB.vmax"
+        "cim": "WeccREECA.vmax"
       },
       {
         "dyr": "VMIN",
-        "cim": "WeccREECB.vmin"
+        "cim": "WeccREECA.vmin"
       },
       {
         "dyr": "Kqp",
-        "cim": "WeccREECB.kqp"
+        "cim": "WeccREECA.kqp"
       },
       {
         "dyr": "Kqi",
-        "cim": "WeccREECB.kqi"
+        "cim": "WeccREECA.kqi"
       },
       {
         "dyr": "Kvp",
-        "cim": "WeccREECB.kvp"
+        "cim": "WeccREECA.kvp"
       },
       {
         "dyr": "Kvi",
-        "cim": "WeccREECB.kvi"
+        "cim": "WeccREECA.kvi"
       },
       {
         "dyr": "Tiq",
-        "cim": "WeccREECB.tiq"
+        "cim": "WeccREECA.tiq"
       },
       {
         "dyr": "dPmax",
-        "cim": "WeccREECB.dPmax"
+        "cim": "WeccREECA.dPmax"
       },
       {
         "dyr": "dPmin",
-        "cim": "WeccREECB.dPmin"
+        "cim": "WeccREECA.dPmin"
       },
       {
         "dyr": "PMAX",
-        "cim": "WeccREECB.pmax"
+        "cim": "WeccREECA.pmax"
       },
       {
         "dyr": "PMIN",
-        "cim": "WeccREECB.pmin"
+        "cim": "WeccREECA.pmin"
       },
       {
         "dyr": "Imax",
-        "cim": "WeccREECB.imax"
+        "cim": "WeccREECA.imax"
       },
       {
         "dyr": "Tpord",
-        "cim": "WeccREECB.tpord"
+        "cim": "WeccREECA.tpord"
       }
     ]
   },
