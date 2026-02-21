@@ -808,91 +808,91 @@
   },
   "Pss1A": {
     "a1": [
-      null,
+      0.0,
       "PU"
     ],
     "a2": [
-      null,
+      0.0,
       "PU"
     ],
     "a3": [
-      null,
+      0.0,
       "PU"
     ],
     "a4": [
-      null,
+      0.0,
       "PU"
     ],
     "a5": [
-      null,
+      0.0,
       "PU"
     ],
     "a6": [
-      null,
+      0.0,
       "PU"
     ],
     "a7": [
-      null,
+      0.0,
       "PU"
     ],
     "a8": [
-      null,
+      0.0,
       "PU"
     ],
     "inputSignalType": [
-      null,
+      "rotorAngularFrequencyDeviation",
       "InputSignalKind"
     ],
     "kd": [
-      null,
+      false,
       "Boolean"
     ],
     "ks": [
-      null,
+      2.0,
       "PU"
     ],
     "t1": [
-      null,
+      1.0,
       "Seconds"
     ],
     "t2": [
-      null,
+      0.5,
       "Seconds"
     ],
     "t3": [
-      null,
+      2.0,
       "Seconds"
     ],
     "t4": [
-      null,
+      0.1,
       "Seconds"
     ],
     "t5": [
-      null,
+      10.0,
       "Seconds"
     ],
     "t6": [
-      null,
+      0.0,
       "Seconds"
     ],
     "tdelay": [
-      null,
+      0.0,
       "Seconds"
     ],
     "vcl": [
-      null,
+      -5.0,
       "PU"
     ],
     "vcu": [
-      null,
+      5.0,
       "PU"
     ],
     "vrmax": [
-      null,
+      0.2,
       "PU"
     ],
     "vrmin": [
-      null,
+      -0.2,
       "PU"
     ]
   },
@@ -922,7 +922,7 @@
       "PU"
     ],
     "m": [
-      null,
+      true,
       "Boolean"
     ],
     "mstatus": [
@@ -942,11 +942,11 @@
       "Seconds"
     ],
     "vhigh": [
-      null,
+      5.0,
       "PU"
     ],
     "vlow": [
-      null,
+      0.1,
       "PU"
     ]
   },

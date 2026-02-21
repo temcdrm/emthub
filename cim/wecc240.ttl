@@ -18333,61 +18333,281 @@
     cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "10D70F22-21E7-49D8-A79E-620BBA2E6115"^^cim:String ;
     cim:IdentifiedObject.name "41311_H"^^cim:String ;
-    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <F4A9F8CA-7119-4475-A43A-BF99F04D05FA> .
+    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <F4A9F8CA-7119-4475-A43A-BF99F04D05FA> ;
+    cim:Pss1A.a1 "1.013"^^cim:PU ;
+    cim:Pss1A.a2 "0.013"^^cim:PU ;
+    cim:Pss1A.a3 "0.0"^^cim:PU ;
+    cim:Pss1A.a4 "0.0"^^cim:PU ;
+    cim:Pss1A.a5 "1.013"^^cim:PU ;
+    cim:Pss1A.a6 "0.113"^^cim:PU ;
+    cim:Pss1A.a7 "0.0"^^cim:PU ;
+    cim:Pss1A.a8 "0.0"^^cim:PU ;
+    cim:Pss1A.inputSignalType cim:InputSignalKind.rotorAngularFrequencyDeviation ;
+    cim:Pss1A.kd "false"^^cim:Boolean ;
+    cim:Pss1A.ks "3.0"^^cim:PU ;
+    cim:Pss1A.t1 "7.0"^^cim:Seconds ;
+    cim:Pss1A.t2 "0.02"^^cim:Seconds ;
+    cim:Pss1A.t3 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t4 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t5 "1.65"^^cim:Seconds ;
+    cim:Pss1A.t6 "1.65"^^cim:Seconds ;
+    cim:Pss1A.tdelay "0.0"^^cim:Seconds ;
+    cim:Pss1A.vcl "0.0"^^cim:PU ;
+    cim:Pss1A.vcu "0.0"^^cim:PU ;
+    cim:Pss1A.vrmax "0.2"^^cim:PU ;
+    cim:Pss1A.vrmin "-0.2"^^cim:PU .
 
 <20E910B6-F83F-4032-8F51-A6EE1E3B266D> a cim:Pss1A ;
     cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "20E910B6-F83F-4032-8F51-A6EE1E3B266D"^^cim:String ;
     cim:IdentifiedObject.name "70311_G"^^cim:String ;
-    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <1EBD68CC-298D-40BA-BE10-29BDAA205E40> .
+    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <1EBD68CC-298D-40BA-BE10-29BDAA205E40> ;
+    cim:Pss1A.a1 "1.013"^^cim:PU ;
+    cim:Pss1A.a2 "0.013"^^cim:PU ;
+    cim:Pss1A.a3 "0.0"^^cim:PU ;
+    cim:Pss1A.a4 "0.0"^^cim:PU ;
+    cim:Pss1A.a5 "1.013"^^cim:PU ;
+    cim:Pss1A.a6 "0.113"^^cim:PU ;
+    cim:Pss1A.a7 "0.0"^^cim:PU ;
+    cim:Pss1A.a8 "0.0"^^cim:PU ;
+    cim:Pss1A.inputSignalType cim:InputSignalKind.rotorAngularFrequencyDeviation ;
+    cim:Pss1A.kd "false"^^cim:Boolean ;
+    cim:Pss1A.ks "3.0"^^cim:PU ;
+    cim:Pss1A.t1 "7.0"^^cim:Seconds ;
+    cim:Pss1A.t2 "0.02"^^cim:Seconds ;
+    cim:Pss1A.t3 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t4 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t5 "1.65"^^cim:Seconds ;
+    cim:Pss1A.t6 "1.65"^^cim:Seconds ;
+    cim:Pss1A.tdelay "0.0"^^cim:Seconds ;
+    cim:Pss1A.vcl "0.0"^^cim:PU ;
+    cim:Pss1A.vcu "0.0"^^cim:PU ;
+    cim:Pss1A.vrmax "0.2"^^cim:PU ;
+    cim:Pss1A.vrmin "-0.2"^^cim:PU .
 
 <2D970305-7D1C-43B5-8CBE-3F3A8B84A8E4> a cim:Pss1A ;
     cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "2D970305-7D1C-43B5-8CBE-3F3A8B84A8E4"^^cim:String ;
     cim:IdentifiedObject.name "8034_G"^^cim:String ;
-    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <04194454-C1DC-464C-BF9B-04820A6900A9> .
+    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <04194454-C1DC-464C-BF9B-04820A6900A9> ;
+    cim:Pss1A.a1 "1.013"^^cim:PU ;
+    cim:Pss1A.a2 "0.013"^^cim:PU ;
+    cim:Pss1A.a3 "0.0"^^cim:PU ;
+    cim:Pss1A.a4 "0.0"^^cim:PU ;
+    cim:Pss1A.a5 "1.013"^^cim:PU ;
+    cim:Pss1A.a6 "0.113"^^cim:PU ;
+    cim:Pss1A.a7 "0.0"^^cim:PU ;
+    cim:Pss1A.a8 "0.0"^^cim:PU ;
+    cim:Pss1A.inputSignalType cim:InputSignalKind.rotorAngularFrequencyDeviation ;
+    cim:Pss1A.kd "false"^^cim:Boolean ;
+    cim:Pss1A.ks "3.0"^^cim:PU ;
+    cim:Pss1A.t1 "3.0"^^cim:Seconds ;
+    cim:Pss1A.t2 "0.02"^^cim:Seconds ;
+    cim:Pss1A.t3 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t4 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t5 "1.65"^^cim:Seconds ;
+    cim:Pss1A.t6 "1.65"^^cim:Seconds ;
+    cim:Pss1A.tdelay "0.0"^^cim:Seconds ;
+    cim:Pss1A.vcl "0.0"^^cim:PU ;
+    cim:Pss1A.vcu "0.0"^^cim:PU ;
+    cim:Pss1A.vrmax "0.2"^^cim:PU ;
+    cim:Pss1A.vrmin "-0.2"^^cim:PU .
 
 <405013C5-F284-4ED4-A389-4D46285C479D> a cim:Pss1A ;
     cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "405013C5-F284-4ED4-A389-4D46285C479D"^^cim:String ;
     cim:IdentifiedObject.name "65333_S"^^cim:String ;
-    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <506CDE08-4AA2-4D1A-9D14-3FA05310EA31> .
+    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <506CDE08-4AA2-4D1A-9D14-3FA05310EA31> ;
+    cim:Pss1A.a1 "1.013"^^cim:PU ;
+    cim:Pss1A.a2 "0.013"^^cim:PU ;
+    cim:Pss1A.a3 "0.0"^^cim:PU ;
+    cim:Pss1A.a4 "0.0"^^cim:PU ;
+    cim:Pss1A.a5 "1.013"^^cim:PU ;
+    cim:Pss1A.a6 "0.113"^^cim:PU ;
+    cim:Pss1A.a7 "0.0"^^cim:PU ;
+    cim:Pss1A.a8 "0.0"^^cim:PU ;
+    cim:Pss1A.inputSignalType cim:InputSignalKind.rotorAngularFrequencyDeviation ;
+    cim:Pss1A.kd "false"^^cim:Boolean ;
+    cim:Pss1A.ks "3.0"^^cim:PU ;
+    cim:Pss1A.t1 "7.0"^^cim:Seconds ;
+    cim:Pss1A.t2 "0.02"^^cim:Seconds ;
+    cim:Pss1A.t3 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t4 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t5 "1.65"^^cim:Seconds ;
+    cim:Pss1A.t6 "1.65"^^cim:Seconds ;
+    cim:Pss1A.tdelay "0.0"^^cim:Seconds ;
+    cim:Pss1A.vcl "0.0"^^cim:PU ;
+    cim:Pss1A.vcu "0.0"^^cim:PU ;
+    cim:Pss1A.vrmax "0.2"^^cim:PU ;
+    cim:Pss1A.vrmin "-0.2"^^cim:PU .
 
 <9CCF4B54-FDDE-4E0A-9ED0-39601C6FBBDA> a cim:Pss1A ;
     cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "9CCF4B54-FDDE-4E0A-9ED0-39601C6FBBDA"^^cim:String ;
     cim:IdentifiedObject.name "13331_G"^^cim:String ;
-    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <0484262D-6303-461C-898D-987621EF300B> .
+    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <0484262D-6303-461C-898D-987621EF300B> ;
+    cim:Pss1A.a1 "1.013"^^cim:PU ;
+    cim:Pss1A.a2 "0.013"^^cim:PU ;
+    cim:Pss1A.a3 "0.0"^^cim:PU ;
+    cim:Pss1A.a4 "0.0"^^cim:PU ;
+    cim:Pss1A.a5 "1.013"^^cim:PU ;
+    cim:Pss1A.a6 "0.113"^^cim:PU ;
+    cim:Pss1A.a7 "0.0"^^cim:PU ;
+    cim:Pss1A.a8 "0.0"^^cim:PU ;
+    cim:Pss1A.inputSignalType cim:InputSignalKind.rotorAngularFrequencyDeviation ;
+    cim:Pss1A.kd "false"^^cim:Boolean ;
+    cim:Pss1A.ks "3.0"^^cim:PU ;
+    cim:Pss1A.t1 "3.0"^^cim:Seconds ;
+    cim:Pss1A.t2 "0.02"^^cim:Seconds ;
+    cim:Pss1A.t3 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t4 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t5 "1.65"^^cim:Seconds ;
+    cim:Pss1A.t6 "1.65"^^cim:Seconds ;
+    cim:Pss1A.tdelay "0.0"^^cim:Seconds ;
+    cim:Pss1A.vcl "0.0"^^cim:PU ;
+    cim:Pss1A.vcu "0.0"^^cim:PU ;
+    cim:Pss1A.vrmax "0.2"^^cim:PU ;
+    cim:Pss1A.vrmin "-0.2"^^cim:PU .
 
 <CADBD74F-C559-4AFA-AF13-7820598C4754> a cim:Pss1A ;
     cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "CADBD74F-C559-4AFA-AF13-7820598C4754"^^cim:String ;
     cim:IdentifiedObject.name "39311_NH"^^cim:String ;
-    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <B79948EC-E46B-420E-8427-A42559459AC8> .
+    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <B79948EC-E46B-420E-8427-A42559459AC8> ;
+    cim:Pss1A.a1 "1.013"^^cim:PU ;
+    cim:Pss1A.a2 "0.013"^^cim:PU ;
+    cim:Pss1A.a3 "0.0"^^cim:PU ;
+    cim:Pss1A.a4 "0.0"^^cim:PU ;
+    cim:Pss1A.a5 "1.013"^^cim:PU ;
+    cim:Pss1A.a6 "0.113"^^cim:PU ;
+    cim:Pss1A.a7 "0.0"^^cim:PU ;
+    cim:Pss1A.a8 "0.0"^^cim:PU ;
+    cim:Pss1A.inputSignalType cim:InputSignalKind.rotorAngularFrequencyDeviation ;
+    cim:Pss1A.kd "false"^^cim:Boolean ;
+    cim:Pss1A.ks "3.0"^^cim:PU ;
+    cim:Pss1A.t1 "10.0"^^cim:Seconds ;
+    cim:Pss1A.t2 "0.02"^^cim:Seconds ;
+    cim:Pss1A.t3 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t4 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t5 "1.65"^^cim:Seconds ;
+    cim:Pss1A.t6 "1.65"^^cim:Seconds ;
+    cim:Pss1A.tdelay "0.0"^^cim:Seconds ;
+    cim:Pss1A.vcl "0.0"^^cim:PU ;
+    cim:Pss1A.vcu "0.0"^^cim:PU ;
+    cim:Pss1A.vrmax "0.2"^^cim:PU ;
+    cim:Pss1A.vrmin "-0.2"^^cim:PU .
 
 <CEC204EC-DA11-435F-8EF2-B54AD9AEC1EE> a cim:Pss1A ;
     cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "CEC204EC-DA11-435F-8EF2-B54AD9AEC1EE"^^cim:String ;
     cim:IdentifiedObject.name "62352_W"^^cim:String ;
-    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <3DDF1B3F-A385-4B2B-AFA4-92AB50BB25EE> .
+    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <3DDF1B3F-A385-4B2B-AFA4-92AB50BB25EE> ;
+    cim:Pss1A.a1 "1.013"^^cim:PU ;
+    cim:Pss1A.a2 "0.013"^^cim:PU ;
+    cim:Pss1A.a3 "0.0"^^cim:PU ;
+    cim:Pss1A.a4 "0.0"^^cim:PU ;
+    cim:Pss1A.a5 "1.013"^^cim:PU ;
+    cim:Pss1A.a6 "0.113"^^cim:PU ;
+    cim:Pss1A.a7 "0.0"^^cim:PU ;
+    cim:Pss1A.a8 "0.0"^^cim:PU ;
+    cim:Pss1A.inputSignalType cim:InputSignalKind.rotorAngularFrequencyDeviation ;
+    cim:Pss1A.kd "false"^^cim:Boolean ;
+    cim:Pss1A.ks "3.0"^^cim:PU ;
+    cim:Pss1A.t1 "10.0"^^cim:Seconds ;
+    cim:Pss1A.t2 "0.02"^^cim:Seconds ;
+    cim:Pss1A.t3 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t4 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t5 "1.65"^^cim:Seconds ;
+    cim:Pss1A.t6 "1.65"^^cim:Seconds ;
+    cim:Pss1A.tdelay "0.0"^^cim:Seconds ;
+    cim:Pss1A.vcl "0.0"^^cim:PU ;
+    cim:Pss1A.vcu "0.0"^^cim:PU ;
+    cim:Pss1A.vrmax "0.2"^^cim:PU ;
+    cim:Pss1A.vrmin "-0.2"^^cim:PU .
 
 <DD0FD1D5-7E5D-42D9-822C-A54936175DEE> a cim:Pss1A ;
     cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "DD0FD1D5-7E5D-42D9-822C-A54936175DEE"^^cim:String ;
     cim:IdentifiedObject.name "2630_G"^^cim:String ;
-    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <FB57F436-25BB-4C26-B7C4-424D3C3B19D0> .
+    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <FB57F436-25BB-4C26-B7C4-424D3C3B19D0> ;
+    cim:Pss1A.a1 "1.013"^^cim:PU ;
+    cim:Pss1A.a2 "0.013"^^cim:PU ;
+    cim:Pss1A.a3 "0.0"^^cim:PU ;
+    cim:Pss1A.a4 "0.0"^^cim:PU ;
+    cim:Pss1A.a5 "1.013"^^cim:PU ;
+    cim:Pss1A.a6 "0.113"^^cim:PU ;
+    cim:Pss1A.a7 "0.0"^^cim:PU ;
+    cim:Pss1A.a8 "0.0"^^cim:PU ;
+    cim:Pss1A.inputSignalType cim:InputSignalKind.rotorAngularFrequencyDeviation ;
+    cim:Pss1A.kd "false"^^cim:Boolean ;
+    cim:Pss1A.ks "3.0"^^cim:PU ;
+    cim:Pss1A.t1 "4.0"^^cim:Seconds ;
+    cim:Pss1A.t2 "0.02"^^cim:Seconds ;
+    cim:Pss1A.t3 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t4 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t5 "1.65"^^cim:Seconds ;
+    cim:Pss1A.t6 "1.65"^^cim:Seconds ;
+    cim:Pss1A.tdelay "0.0"^^cim:Seconds ;
+    cim:Pss1A.vcl "0.0"^^cim:PU ;
+    cim:Pss1A.vcu "0.0"^^cim:PU ;
+    cim:Pss1A.vrmax "0.2"^^cim:PU ;
+    cim:Pss1A.vrmin "-0.2"^^cim:PU .
 
 <E563F3A6-9B27-43A7-B058-33539EDA18DF> a cim:Pss1A ;
     cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "E563F3A6-9B27-43A7-B058-33539EDA18DF"^^cim:String ;
     cim:IdentifiedObject.name "20301_G"^^cim:String ;
-    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <4AF702D7-EC81-42DD-AE86-DE9DA46F13A5> .
+    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <4AF702D7-EC81-42DD-AE86-DE9DA46F13A5> ;
+    cim:Pss1A.a1 "1.013"^^cim:PU ;
+    cim:Pss1A.a2 "0.013"^^cim:PU ;
+    cim:Pss1A.a3 "0.0"^^cim:PU ;
+    cim:Pss1A.a4 "0.0"^^cim:PU ;
+    cim:Pss1A.a5 "1.013"^^cim:PU ;
+    cim:Pss1A.a6 "0.113"^^cim:PU ;
+    cim:Pss1A.a7 "0.0"^^cim:PU ;
+    cim:Pss1A.a8 "0.0"^^cim:PU ;
+    cim:Pss1A.inputSignalType cim:InputSignalKind.rotorAngularFrequencyDeviation ;
+    cim:Pss1A.kd "false"^^cim:Boolean ;
+    cim:Pss1A.ks "3.0"^^cim:PU ;
+    cim:Pss1A.t1 "4.0"^^cim:Seconds ;
+    cim:Pss1A.t2 "0.02"^^cim:Seconds ;
+    cim:Pss1A.t3 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t4 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t5 "1.65"^^cim:Seconds ;
+    cim:Pss1A.t6 "1.65"^^cim:Seconds ;
+    cim:Pss1A.tdelay "0.0"^^cim:Seconds ;
+    cim:Pss1A.vcl "0.0"^^cim:PU ;
+    cim:Pss1A.vcu "0.0"^^cim:PU ;
+    cim:Pss1A.vrmax "0.2"^^cim:PU ;
+    cim:Pss1A.vrmin "-0.2"^^cim:PU .
 
 <FAC20C27-135A-4164-A22F-48902EE50A9B> a cim:Pss1A ;
     cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "FAC20C27-135A-4164-A22F-48902EE50A9B"^^cim:String ;
     cim:IdentifiedObject.name "24387_WG"^^cim:String ;
-    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <28EDB64E-C2C2-43B4-B498-135F1CF37786> .
+    cim:PowerSystemStabilizerDynamics.ExcitationSystemDynamics <28EDB64E-C2C2-43B4-B498-135F1CF37786> ;
+    cim:Pss1A.a1 "1.013"^^cim:PU ;
+    cim:Pss1A.a2 "0.013"^^cim:PU ;
+    cim:Pss1A.a3 "0.0"^^cim:PU ;
+    cim:Pss1A.a4 "0.0"^^cim:PU ;
+    cim:Pss1A.a5 "1.013"^^cim:PU ;
+    cim:Pss1A.a6 "0.113"^^cim:PU ;
+    cim:Pss1A.a7 "0.0"^^cim:PU ;
+    cim:Pss1A.a8 "0.0"^^cim:PU ;
+    cim:Pss1A.inputSignalType cim:InputSignalKind.rotorAngularFrequencyDeviation ;
+    cim:Pss1A.kd "false"^^cim:Boolean ;
+    cim:Pss1A.ks "3.0"^^cim:PU ;
+    cim:Pss1A.t1 "11.0"^^cim:Seconds ;
+    cim:Pss1A.t2 "0.02"^^cim:Seconds ;
+    cim:Pss1A.t3 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t4 "0.0"^^cim:Seconds ;
+    cim:Pss1A.t5 "1.65"^^cim:Seconds ;
+    cim:Pss1A.t6 "1.65"^^cim:Seconds ;
+    cim:Pss1A.tdelay "0.0"^^cim:Seconds ;
+    cim:Pss1A.vcl "0.0"^^cim:PU ;
+    cim:Pss1A.vcu "0.0"^^cim:PU ;
+    cim:Pss1A.vrmax "0.2"^^cim:PU ;
+    cim:Pss1A.vrmin "-0.2"^^cim:PU .
 
 <09BCAC26-7E1B-4277-9EA7-0717D9EF3BAA> a cim:PowerElectronicsConnection ;
     emt:ConductingEquipment.FromConnectivityNode <168A94F2-0DB7-42D7-BA0D-53FD559E86FE> ;

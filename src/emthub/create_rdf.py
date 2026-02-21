@@ -116,8 +116,14 @@ def create_xml_machine_dynamics (g, leaf_class, key, uuids):
   return leaf
 
 def append_xml_dynamic_parameters (g, leaf, dyn_defaults, sections, attmap, dyr_row):
+#  bPrint = False
   for sect in sections:
+#    if sect.startswith('Pss'):
+#      bPrint = True
+#      print (sect, dyr_row)
     for tag in dyn_defaults[sect]:
+#      if bPrint:
+#        print ('  ', tag)
       row = dyn_defaults[sect][tag]
       if row[0] is not None:
         att = '{:s}.{:s}'.format(sect, tag)
@@ -125,6 +131,8 @@ def append_xml_dynamic_parameters (g, leaf, dyn_defaults, sections, attmap, dyr_
         unit = row[1]
         if att in attmap:
           idx = attmap[att]
+#          if bPrint:
+#            print ('    ', att, val, unit, idx)
           if unit == 'Boolean':
             val = bool(dyr_row[idx])
           elif unit == 'Integer':

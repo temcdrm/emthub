@@ -446,11 +446,11 @@
     ]
   },
   "IEEEST": {
-    "CIMclass": "PssIEEE1A",
+    "CIMclass": "Pss1A",
     "parameters_after_ID": [
       {
         "dyr": "MODE",
-        "cim": "PssIEEE1A.inputSignalType"
+        "cim": "Pss1A.inputSignalType"
       },
       {
         "dyr": "BUSR",
@@ -458,55 +458,55 @@
       },
       {
         "dyr": "A1",
-        "cim": "PssIEEE1A.a1"
+        "cim": "Pss1A.a1"
       },
       {
         "dyr": "A2",
-        "cim": "PssIEEE1A.a2"
+        "cim": "Pss1A.a2"
       },
       {
         "dyr": "A3",
-        "cim": "PssIEEE1A.a3"
+        "cim": "Pss1A.a3"
       },
       {
         "dyr": "A4",
-        "cim": "PssIEEE1A.a4"
+        "cim": "Pss1A.a4"
       },
       {
         "dyr": "A5",
-        "cim": "PssIEEE1A.a5"
+        "cim": "Pss1A.a5"
       },
       {
         "dyr": "A6",
-        "cim": "PssIEEE1A.a6"
+        "cim": "Pss1A.a6"
       },
       {
         "dyr": "T1",
-        "cim": "PssIEEE1A.t1"
+        "cim": "Pss1A.t1"
       },
       {
         "dyr": "T2",
-        "cim": "PssIEEE1A.t2"
+        "cim": "Pss1A.t2"
       },
       {
         "dyr": "T3",
-        "cim": "PssIEEE1A.t3"
+        "cim": "Pss1A.t3"
       },
       {
         "dyr": "T4",
-        "cim": "PssIEEE1A.t4"
+        "cim": "Pss1A.t4"
       },
       {
         "dyr": "T5",
-        "cim": "PssIEEE1A.t5"
+        "cim": "Pss1A.t5"
       },
       {
         "dyr": "T6",
-        "cim": "PssIEEE1A.t6"
+        "cim": "Pss1A.t6"
       },
       {
         "dyr": "KS",
-        "cim": "PssIEEE1A.ks"
+        "cim": "Pss1A.ks"
       },
       {
         "dyr": "LSMAX",
@@ -518,11 +518,11 @@
       },
       {
         "dyr": "VCU",
-        "cim": "PssIEEE1A.vcu"
+        "cim": "Pss1A.vcu"
       },
       {
         "dyr": "VCL",
-        "cim": "PssIEEE1A.vcl"
+        "cim": "Pss1A.vcl"
       }
     ]
   },
