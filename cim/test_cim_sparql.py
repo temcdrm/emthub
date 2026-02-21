@@ -19,8 +19,9 @@ if __name__ == '__main__':
 
   d = emthub.load_emt_dict (g, case['id'], bTiming=True)
 
-  for key in ['EMTBaseVoltage', 'EMTBusVoltage', 'EMTBranchFlow', 'EMTXfmrFlow']:
+  for key in ['EMTExcIEEEDC1A', 'EMTExcSEXS', 'EMTGovGAST', 'EMTGovHydro1', 'EMTGovSteam0', 'EMTPss1A']:
     emthub.list_dict_table (d, key)
+  quit()
 
   g = rdflib.Graph()
   fname = case['name'] + '_ic.ttl'
