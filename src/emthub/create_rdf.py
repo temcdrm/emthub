@@ -129,6 +129,8 @@ def append_xml_dynamic_parameters (g, leaf, dyn_defaults, sections, attmap, dyr_
             val = bool(dyr_row[idx])
           elif unit == 'Integer':
             val = int(dyr_row[idx])
+          elif unit == 'InputSignalKind':
+            val = 'rotorAngularFrequencyDeviation'
           else:
             val = dyr_row[idx]
         if unit.endswith('Kind'):

@@ -24,7 +24,7 @@ CASES = [
    'br_ic': '../matpower/ieee118mbr.txt',
    'ttl_ic': 'ieee118_ic.ttl',
    'swingbus':'131', 
-   'load': 0.6748, 'UseXfmrSaturation': False, 'dyrfile': None},
+   'load': 0.6748, 'UseXfmrSaturation': False, 'dyrfile': 'raw/IEEE118.dyr'},
   {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 
    'name': 'WECC240', 'legend_loc': 'best',
    'rawfile':'raw/WECC240.raw', 'xmlfile':'wecc240.xml', 'locfile': 'raw/wecc240_network.json', 'mridfile':'raw/wecc240mrids.dat', 'ttlfile': 'wecc240.ttl',

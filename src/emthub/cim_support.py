@@ -104,9 +104,11 @@ def load_dynamics_defaults():
   dyn_settings = json.loads (s)
   return dyn_settings
 
-def load_dynamics_mapping():
+def load_dynamics_mapping(bReverseLookup = True):
   s = importlib.resources.read_text ('emthub.queries', DYNAMICS_MAPPING)
   d = json.loads (s)
+  if not bReverseLookup:
+    return d
   attmap = {}
   for dyr, item in d.items():
     cls = item['CIMclass']

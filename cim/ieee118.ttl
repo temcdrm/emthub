@@ -14539,8 +14539,8 @@
     cim:IdentifiedObject.name "180_W"^^cim:String ;
     cim:WeccDynamics.PowerElectronicsConnection <A2211A46-47CE-4A37-9B9F-62388ACA5042> ;
     cim:WeccWTGTA.dshaft "1.5"^^cim:PU ;
-    cim:WeccWTGTA.hg "0.62"^^cim:Seconds ;
-    cim:WeccWTGTA.ht "4.134"^^cim:Seconds ;
+    cim:WeccWTGTA.hg "0.6199976639999996"^^cim:Seconds ;
+    cim:WeccWTGTA.ht "4.134002336"^^cim:Seconds ;
     cim:WeccWTGTA.kshaft "0.0"^^cim:PU .
 
 <08972FA5-5AF8-4EAA-9094-DF5C4129372C> a cim:WeccWTGTA ;
@@ -14549,8 +14549,8 @@
     cim:IdentifiedObject.name "136_W"^^cim:String ;
     cim:WeccDynamics.PowerElectronicsConnection <EF40B8BA-9A40-41ED-A1FE-7D433B76059B> ;
     cim:WeccWTGTA.dshaft "1.5"^^cim:PU ;
-    cim:WeccWTGTA.hg "0.62"^^cim:Seconds ;
-    cim:WeccWTGTA.ht "4.134"^^cim:Seconds ;
+    cim:WeccWTGTA.hg "0.6199976639999996"^^cim:Seconds ;
+    cim:WeccWTGTA.ht "4.134002336"^^cim:Seconds ;
     cim:WeccWTGTA.kshaft "0.0"^^cim:PU .
 
 <8F8C7D34-6946-440D-A84C-189D08A32D6D> a cim:WeccWTGTA ;
@@ -14559,8 +14559,8 @@
     cim:IdentifiedObject.name "132_W"^^cim:String ;
     cim:WeccDynamics.PowerElectronicsConnection <F007C270-45D1-488C-865E-316DA63713CE> ;
     cim:WeccWTGTA.dshaft "1.5"^^cim:PU ;
-    cim:WeccWTGTA.hg "0.62"^^cim:Seconds ;
-    cim:WeccWTGTA.ht "4.134"^^cim:Seconds ;
+    cim:WeccWTGTA.hg "0.6199976639999996"^^cim:Seconds ;
+    cim:WeccWTGTA.ht "4.134002336"^^cim:Seconds ;
     cim:WeccWTGTA.kshaft "0.0"^^cim:PU .
 
 <905E98EB-985F-4594-90B2-06AC066FD067> a cim:WeccWTGTA ;
@@ -14569,8 +14569,8 @@
     cim:IdentifiedObject.name "138_W"^^cim:String ;
     cim:WeccDynamics.PowerElectronicsConnection <43192188-3A0F-4338-A183-95B82324AC02> ;
     cim:WeccWTGTA.dshaft "1.5"^^cim:PU ;
-    cim:WeccWTGTA.hg "0.62"^^cim:Seconds ;
-    cim:WeccWTGTA.ht "4.134"^^cim:Seconds ;
+    cim:WeccWTGTA.hg "0.6199976639999996"^^cim:Seconds ;
+    cim:WeccWTGTA.ht "4.134002336"^^cim:Seconds ;
     cim:WeccWTGTA.kshaft "0.0"^^cim:PU .
 
 <E82CD924-4392-40B4-8A0C-BC2DD59CB5AA> a cim:WeccWTGTA ;
@@ -14579,8 +14579,8 @@
     cim:IdentifiedObject.name "168_W"^^cim:String ;
     cim:WeccDynamics.PowerElectronicsConnection <968937C9-5AA8-42C5-9847-302F8E960D80> ;
     cim:WeccWTGTA.dshaft "1.5"^^cim:PU ;
-    cim:WeccWTGTA.hg "0.62"^^cim:Seconds ;
-    cim:WeccWTGTA.ht "4.134"^^cim:Seconds ;
+    cim:WeccWTGTA.hg "0.6199976639999996"^^cim:Seconds ;
+    cim:WeccWTGTA.ht "4.134002336"^^cim:Seconds ;
     cim:WeccWTGTA.kshaft "0.0"^^cim:PU .
 
 <091FD517-D3AA-43FD-B914-AE396B9C73C6> a cim:PowerTransformer ;

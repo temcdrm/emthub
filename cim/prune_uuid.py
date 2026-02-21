@@ -15,6 +15,9 @@ fuidname = 'raw/ieee39mrids.dat'
 fnetwork = 'WECC240.ttl'
 fuidname = 'raw/wecc240mrids.dat'
 
+fnetwork = 'IEEE118.ttl'
+fuidname = 'raw/ieee118mrids.dat'
+
 def uuid_in_graph (val, g):
   ref = rdflib.URIRef (ref_prefix + val)
   return (ref, None, None) in g
