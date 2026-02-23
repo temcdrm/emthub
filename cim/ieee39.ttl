@@ -1268,7 +1268,7 @@
     cim:IdentifiedObject.mRID "172DC313-FEBF-4AC7-85A1-0B0CB48AB1DA"^^cim:String ;
     cim:IdentifiedObject.name "31_1"^^cim:String ;
     cim:RotatingMachineDynamics.damping "0.0"^^cim:Float ;
-    cim:RotatingMachineDynamics.inertia "4.967213115"^^cim:Seconds ;
+    cim:RotatingMachineDynamics.inertia "4.97"^^cim:Seconds ;
     cim:RotatingMachineDynamics.statorLeakageReactance "0.2135"^^cim:PU ;
     cim:RotatingMachineDynamics.statorResistance "0.001"^^cim:PU ;
     cim:SynchronousMachineDetailed.efdBaseRatio "1.0"^^cim:Float ;
@@ -1286,7 +1286,7 @@
     cim:SynchronousMachineTimeConstantReactance.tppdo "0.049"^^cim:Seconds ;
     cim:SynchronousMachineTimeConstantReactance.tppqo "0.14"^^cim:Seconds ;
     cim:SynchronousMachineTimeConstantReactance.tpqo "1.5"^^cim:Seconds ;
-    cim:SynchronousMachineTimeConstantReactance.xDirectSubtrans "0.24888"^^cim:PU ;
+    cim:SynchronousMachineTimeConstantReactance.xDirectSubtrans "0.2489"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xDirectSync "1.7995"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xDirectTrans "0.42517"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xQuadSubtrans "0.114"^^cim:PU ;
@@ -1298,8 +1298,8 @@
     cim:IdentifiedObject.mRID "244CDC4D-AC3E-4E44-87B0-112E0F374FD6"^^cim:String ;
     cim:IdentifiedObject.name "32_1"^^cim:String ;
     cim:RotatingMachineDynamics.damping "0.0"^^cim:Float ;
-    cim:RotatingMachineDynamics.inertia "4.972222222"^^cim:Seconds ;
-    cim:RotatingMachineDynamics.statorLeakageReactance "0.21888"^^cim:PU ;
+    cim:RotatingMachineDynamics.inertia "4.97"^^cim:Seconds ;
+    cim:RotatingMachineDynamics.statorLeakageReactance "0.2189"^^cim:PU ;
     cim:RotatingMachineDynamics.statorResistance "0.001"^^cim:PU ;
     cim:SynchronousMachineDetailed.efdBaseRatio "1.0"^^cim:Float ;
     cim:SynchronousMachineDetailed.ifdBaseType cim:IfdBaseKind.ifag ;
@@ -1321,14 +1321,14 @@
     cim:SynchronousMachineTimeConstantReactance.xDirectTrans "0.38232"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xQuadSubtrans "0.114"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xQuadSync "1.7064"^^cim:PU ;
-    cim:SynchronousMachineTimeConstantReactance.xQuadTrans "0.63072"^^cim:PU .
+    cim:SynchronousMachineTimeConstantReactance.xQuadTrans "0.6307"^^cim:PU .
 
 <28024E8A-9CEB-47E8-886A-F2B5567D3585> a cim:SynchronousMachineTimeConstantReactance ;
     cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "28024E8A-9CEB-47E8-886A-F2B5567D3585"^^cim:String ;
     cim:IdentifiedObject.name "34_1"^^cim:String ;
     cim:RotatingMachineDynamics.damping "0.0"^^cim:Float ;
-    cim:RotatingMachineDynamics.inertia "4.814814815"^^cim:Seconds ;
+    cim:RotatingMachineDynamics.inertia "4.81"^^cim:Seconds ;
     cim:RotatingMachineDynamics.statorLeakageReactance "0.2916"^^cim:PU ;
     cim:RotatingMachineDynamics.statorResistance "0.001"^^cim:PU ;
     cim:SynchronousMachineDetailed.efdBaseRatio "1.0"^^cim:Float ;
@@ -1344,13 +1344,13 @@
     cim:SynchronousMachineTimeConstantReactance.tc "0.0"^^cim:Seconds ;
     cim:SynchronousMachineTimeConstantReactance.tpdo "5.4"^^cim:Seconds ;
     cim:SynchronousMachineTimeConstantReactance.tppdo "0.035"^^cim:Seconds ;
-    cim:SynchronousMachineTimeConstantReactance.tppqo "0.44"^^cim:Seconds ;
+    cim:SynchronousMachineTimeConstantReactance.tppqo "0.14"^^cim:Seconds ;
     cim:SynchronousMachineTimeConstantReactance.tpqo "0.44"^^cim:Seconds ;
     cim:SynchronousMachineTimeConstantReactance.xDirectSubtrans "0.459"^^cim:PU ;
-    cim:SynchronousMachineTimeConstantReactance.xDirectSync "3.618"^^cim:PU ;
+    cim:SynchronousMachineTimeConstantReactance.xDirectSync "1.818"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xDirectTrans "0.7128"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xQuadSubtrans "0.114"^^cim:PU ;
-    cim:SynchronousMachineTimeConstantReactance.xQuadSync "3.348"^^cim:PU ;
+    cim:SynchronousMachineTimeConstantReactance.xQuadSync "1.748"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xQuadTrans "0.8964"^^cim:PU .
 
 <29D883D5-CFA8-460C-BA31-81E103207E88> a cim:SynchronousMachineTimeConstantReactance ;
@@ -1358,7 +1358,7 @@
     cim:IdentifiedObject.mRID "29D883D5-CFA8-460C-BA31-81E103207E88"^^cim:String ;
     cim:IdentifiedObject.name "33_1"^^cim:String ;
     cim:RotatingMachineDynamics.damping "0.0"^^cim:Float ;
-    cim:RotatingMachineDynamics.inertia "4.205882353"^^cim:Seconds ;
+    cim:RotatingMachineDynamics.inertia "4.21"^^cim:Seconds ;
     cim:RotatingMachineDynamics.statorLeakageReactance "0.2006"^^cim:PU ;
     cim:RotatingMachineDynamics.statorResistance "0.001"^^cim:PU ;
     cim:SynchronousMachineDetailed.efdBaseRatio "1.0"^^cim:Float ;
@@ -1376,7 +1376,7 @@
     cim:SynchronousMachineTimeConstantReactance.tppdo "0.041"^^cim:Seconds ;
     cim:SynchronousMachineTimeConstantReactance.tppqo "0.213"^^cim:Seconds ;
     cim:SynchronousMachineTimeConstantReactance.tpqo "1.5"^^cim:Seconds ;
-    cim:SynchronousMachineTimeConstantReactance.xDirectSubtrans "0.25432"^^cim:PU ;
+    cim:SynchronousMachineTimeConstantReactance.xDirectSubtrans "0.2543"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xDirectSync "1.7816"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xDirectTrans "0.29648"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xQuadSubtrans "0.114"^^cim:PU ;
@@ -1448,8 +1448,8 @@
     cim:IdentifiedObject.mRID "E5698451-4258-4646-A22C-22611B2FD8B1"^^cim:String ;
     cim:IdentifiedObject.name "35_1"^^cim:String ;
     cim:RotatingMachineDynamics.damping "0.0"^^cim:Float ;
-    cim:RotatingMachineDynamics.inertia "4.833333333"^^cim:Seconds ;
-    cim:RotatingMachineDynamics.statorLeakageReactance "0.16128"^^cim:PU ;
+    cim:RotatingMachineDynamics.inertia "4.83"^^cim:Seconds ;
+    cim:RotatingMachineDynamics.statorLeakageReactance "0.1613"^^cim:PU ;
     cim:RotatingMachineDynamics.statorResistance "0.001"^^cim:PU ;
     cim:SynchronousMachineDetailed.efdBaseRatio "1.0"^^cim:Float ;
     cim:SynchronousMachineDetailed.ifdBaseType cim:IfdBaseKind.ifag ;
@@ -1466,20 +1466,20 @@
     cim:SynchronousMachineTimeConstantReactance.tppdo "0.032"^^cim:Seconds ;
     cim:SynchronousMachineTimeConstantReactance.tppqo "0.055"^^cim:Seconds ;
     cim:SynchronousMachineTimeConstantReactance.tpqo "0.4"^^cim:Seconds ;
-    cim:SynchronousMachineTimeConstantReactance.xDirectSubtrans "0.24408"^^cim:PU ;
+    cim:SynchronousMachineTimeConstantReactance.xDirectSubtrans "0.2441"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xDirectSync "1.8288"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xDirectTrans "0.36"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xQuadSubtrans "0.114"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xQuadSync "1.7352"^^cim:PU ;
-    cim:SynchronousMachineTimeConstantReactance.xQuadTrans "0.58608"^^cim:PU .
+    cim:SynchronousMachineTimeConstantReactance.xQuadTrans "0.5861"^^cim:PU .
 
 <EA43F232-ADD4-44E3-9F1B-4000086DC181> a cim:SynchronousMachineTimeConstantReactance ;
     cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "EA43F232-ADD4-44E3-9F1B-4000086DC181"^^cim:String ;
     cim:IdentifiedObject.name "36_1"^^cim:String ;
     cim:RotatingMachineDynamics.damping "0.0"^^cim:Float ;
-    cim:RotatingMachineDynamics.inertia "4.327868852"^^cim:Seconds ;
-    cim:RotatingMachineDynamics.statorLeakageReactance "0.19642"^^cim:PU ;
+    cim:RotatingMachineDynamics.inertia "4.33"^^cim:Seconds ;
+    cim:RotatingMachineDynamics.statorLeakageReactance "0.1964"^^cim:PU ;
     cim:RotatingMachineDynamics.statorResistance "0.001"^^cim:PU ;
     cim:SynchronousMachineDetailed.efdBaseRatio "1.0"^^cim:Float ;
     cim:SynchronousMachineDetailed.ifdBaseType cim:IfdBaseKind.ifag ;
@@ -1496,7 +1496,7 @@
     cim:SynchronousMachineTimeConstantReactance.tppdo "0.014"^^cim:Seconds ;
     cim:SynchronousMachineTimeConstantReactance.tppqo "0.207"^^cim:Seconds ;
     cim:SynchronousMachineTimeConstantReactance.tpqo "1.5"^^cim:Seconds ;
-    cim:SynchronousMachineTimeConstantReactance.xDirectSubtrans "0.24705"^^cim:PU ;
+    cim:SynchronousMachineTimeConstantReactance.xDirectSubtrans "0.2471"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xDirectSync "1.7995"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xDirectTrans "0.2989"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xQuadSubtrans "0.114"^^cim:PU ;
@@ -1508,8 +1508,8 @@
     cim:IdentifiedObject.mRID "F30B4C61-023A-44CC-9E85-2863B70463CF"^^cim:String ;
     cim:IdentifiedObject.name "38_1"^^cim:String ;
     cim:RotatingMachineDynamics.damping "0.0"^^cim:Float ;
-    cim:RotatingMachineDynamics.inertia "3.876404494"^^cim:Seconds ;
-    cim:RotatingMachineDynamics.statorLeakageReactance "0.26522"^^cim:PU ;
+    cim:RotatingMachineDynamics.inertia "3.88"^^cim:Seconds ;
+    cim:RotatingMachineDynamics.statorLeakageReactance "0.2652"^^cim:PU ;
     cim:RotatingMachineDynamics.statorResistance "0.001"^^cim:PU ;
     cim:SynchronousMachineDetailed.efdBaseRatio "1.0"^^cim:Float ;
     cim:SynchronousMachineDetailed.ifdBaseType cim:IfdBaseKind.ifag ;
@@ -1527,11 +1527,11 @@
     cim:SynchronousMachineTimeConstantReactance.tppqo "0.04"^^cim:Seconds ;
     cim:SynchronousMachineTimeConstantReactance.tpqo "1.96"^^cim:Seconds ;
     cim:SynchronousMachineTimeConstantReactance.xDirectSubtrans "0.3382"^^cim:PU ;
-    cim:SynchronousMachineTimeConstantReactance.xDirectSync "1.87434"^^cim:PU ;
+    cim:SynchronousMachineTimeConstantReactance.xDirectSync "1.8743"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xDirectTrans "0.5073"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xQuadSubtrans "0.114"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xQuadSync "1.8245"^^cim:PU ;
-    cim:SynchronousMachineTimeConstantReactance.xQuadTrans "0.52243"^^cim:PU .
+    cim:SynchronousMachineTimeConstantReactance.xQuadTrans "0.5224"^^cim:PU .
 
 <0D114127-2E61-4365-85BF-2932242F8EDA> a cim:GovSteam0 ;
     cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
