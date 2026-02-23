@@ -486,11 +486,11 @@ def AppendIBRInitializer (cn1id, bus, vbase, rmva, xpu, rpu, icd, mw, mvar, ap, 
   print ('53{:5s}C{:5s}C'.format (genbus, swtbus), file=ap)
   return genbus
 
-def GetMachineDynamic (d, mach_id):
-  for key, row in d.items():
-    if mach_id == row['eqid']:
-      return row
-  return None
+#def GetMachineDynamic (d, mach_id):
+#  for key, row in d.items():
+#    if mach_id == row['eqid']:
+#      return row
+#  return None
 
 machine_dynamic_template = """$INCLUDE,SYNCMACH.PCH,{sbus},{sname} $$
   ,{rmva},{rkv},{agline},{s1d},{s2d},{vpk} $$
@@ -534,7 +534,11 @@ def AppendMachineDynamics (bus, vpu, deg, mach, gov, exc, pss, ap, gsu_ang):
   tqop = mach['Tqop']
   tdopp = mach['Tdopp']
   tqopp = mach['Tqopp']
-  x0 = mach['Xl']  # REVISIT
+  if xqpp < xl or xqpp < xdpp:
+    xnew = max(xl, xdpp)
+    print ('  changing xqpp from', xqpp, 'to', xnew, 'at', bus)
+    xqpp = xnew
+  x0 = 1.0 * xl  # REVISIT
   rn = 900.0 # 0.0
   xn = 65.0 # 0.0
   xcan = xl
@@ -542,35 +546,95 @@ def AppendMachineDynamics (bus, vpu, deg, mach, gov, exc, pss, ap, gsu_ang):
   dsd = rmva * MACHINE_DSD
   ikv0 = 1.0 / vpu / rkv
   kvini = vpu * rkv
-  kgov = gov['k1']
-  t2 = gov['t2']
-  t1t3 = gov['t1'] * gov['t3']
-  t1pt3 = gov['t1'] + gov['t3']
-  pmax = max (1.2, gov['pmax']) # pmin not used from CIM?
-  kc = exc['kc'] # not using CIM kf, tb1, tc1, tf, vamax, vamin, vimax, vimin
-  ilr = exc['ilr']
-  klr = exc['klr']
-  vrmin = abs(exc['vrmin'])
-  vrmax = exc['vrmax']
-  ka = exc['ka']
-  v0pu = vpu + 1.0 / ka
-  ta = max(exc['ta'],1e-9)
-  tb = exc['tb']
-  tc = exc['tc']
-  tled = max(0.0,0.4)
-  tlag = max(0.0,0.025)
+  # governor parameters (default GovSteamSGO)
+  kgov = 25.0
+  t2 = 5.0
+  t1t3 = 0.5
+  t1pt3 = 5.1
+  pmax = 1.2
+  if gov is not None:
+    d = gov['data']
+    if gov['type'] == 'EMTGovSteamSGO':
+      kgov = d['k1']
+      t2 = max(1e-9, d['t2'])
+      t1t3 = max(2e-18, d['t1'] * d['t3'])
+      t1pt3 = max(1e-9, d['t1'] + d['t3'])
+      pmax = max (1.2, d['pmax']) # pmin not used from CIM?
+    elif gov['type'] == 'EMTGovSteam0':
+      kgov = 1.0 / d['r']
+      pmax = max (1.2, d['vmax'])
+    elif gov['type'] == 'EMTGovHydro1':
+      kgov = 1.0 / d['rperm']
+      pmax = max (1.2, d['gmax'])
+    elif gov['type'] == 'EMTGovGAST':
+      kgov = 1.0 / d['r']
+      pmax = max (1.2, d['vmax'])
+    else:
+      print ('** Unrecognized governor data for', gov['type'], 'at bus', bus)
+  # exciter parameters (default ExcST1A)
+  kc = 0.038
+  ilr = 4.4
+  klr = 4.54
+  vrmin = abs(-4.0)
+  vrmax = 4.5
+  ka = 0.0
+  v0pu = 1.0
+  ta = max(0.0,1e-9)
+  tb = 10.0
+  tc = 1.0
+  tled = 0.4
+  tlag = 0.025
   kfbk = 0.0
-  tfbk = max(0.0,1.0)
-  psk5 = pss['ks'] # t1 and t2 from CIM not used?
-  psa1 = max(pss['a1'],2e-9)
-  psa2 = max(pss['a2'],1e-18)
-  pst3 = pss['t3']
-  pst4 = pss['t4']
-  pst5 = pss['t5']
-  pst6 = max(pss['t6'],1e-9)
-  vstmn = pss['vrmin']
-  vstmx = pss['vrmax']
-#  print ('58 at {:s}, V={:.2f} at {:.2f}, gov={:s}, exc={:s}, pss={:s}'.format(bus, vpu, deg+gsu_ang, gov['id'], exc['id'], pss['id']), file=ap)
+  tfbk = 1.0
+  if exc is not None:
+    d = exc['data']
+    if exc['type'] == 'EMTExcST1A':
+      kc = d['kc'] # not using CIM vamax, vamin, vimax, vimin
+      ilr = d['ilr']
+      klr = d['klr']
+      vrmin = abs(d['vrmin'])
+      vrmax = d['vrmax']
+      ka = d['ka']
+      v0pu = vpu + 1.0 / ka
+      ta = max(d['ta'],1e-9)
+      tb = max(d['tb'],1e-9)
+      tc = max(d['tc'],1e-9)
+      tled = max(1e-9, d['tc1'])
+      tlag = max(1e-9, d['tb1'])
+      kfbk = d['kf'] # 0.0
+      tfbk = max(1e-9, d['tf'])
+    elif exc['type'] == 'EMTExcIEEEDC1A':
+      ka = d['ka']
+      v0pu = vpu + 1.0 / ka
+    elif exc['type'] == 'EMTExcSEXS':
+      ka = d['k'] * d['kc']
+      v0pu = vpu + 1.0 / ka
+    else:
+      print ('** Unrecognized exciter data for', exc['type'], 'at bus', bus)
+  # stabilizer parameters (default Pss1A)
+  psk5 = 0.0
+  psa1 = 2e-9
+  psa2 = 1e-18
+  pst3 = 2.0
+  pst4 = 0.1
+  pst5 = 10.0
+  pst6 = max(0.0, 1e-9)
+  vstmn = -0.2
+  vstmx = 0.2
+  if pss is not None:
+    d = pss['data']
+    if pss['type'] == 'EMTPss1A':
+      psk5 = d['ks'] # t1 and t2 from CIM not used?
+      psa1 = max(d['a1'],2e-9)
+      psa2 = max(d['a2'],1e-18)
+      pst3 = max(d['t3'],1e-9)
+      pst4 = max(d['t4'],1e-9)
+      pst5 = max(d['t5'],1e-9)
+      pst6 = max(d['t6'],1e-9)
+      vstmn = d['vrmin']
+      vstmx = d['vrmax']
+    else:
+      print ('** Unrecognized stabilizer data for', pss['type'], 'at bus', bus)
   print (machine_dynamic_template.format(sbus=sbus,
                                          sname=sname,
                                          rmva = AtpFit10 (rmva),
@@ -1118,7 +1182,32 @@ def create_atp (d, icd, fpath, case):
 
   ic_idx = 0
   if len(machines) > 0: # ATP requires these come after all other sources
-    lastKey = list(machines.keys())[-1]
+    # lastKey = list(machines.keys())[-1]
+    # build a dictionary of all the control dynamics (SynchronousMachineTimeConstantReactance is already embedded in the EMTSyncMachine query)
+    gen_dyn = {}
+    for q, res in d.items():
+      if q.startswith ('EMTExc') and len(res['vals']) > 0:
+        print ('Exciters', q, res['columns'])
+        for dyn_key, dyn_row in res['vals'].items():
+          eqid = dyn_row['eqid']
+          if eqid not in gen_dyn:
+            gen_dyn[eqid] = {'gov': None, 'exc': None, 'pss':None}
+          gen_dyn[eqid]['exc'] = {'type':q, 'data': dyn_row}
+      elif q.startswith ('EMTPss') and len(res['vals']) > 0:
+        print ('Stabilizers', q, res['columns'])
+        for dyn_key, dyn_row in res['vals'].items():
+          eqid = dyn_row['eqid']
+          if eqid not in gen_dyn:
+            gen_dyn[eqid] = {'gov': None, 'exc': None, 'pss':None}
+          gen_dyn[eqid]['pss'] = {'type':q, 'data': dyn_row}
+      elif q.startswith ('EMTGov') and len(res['vals']) > 0:
+        print ('Governors', q, res['columns'])
+        for dyn_key, dyn_row in res['vals'].items():
+          eqid = dyn_row['eqid']
+          if eqid not in gen_dyn:
+            gen_dyn[eqid] = {'gov': None, 'exc': None, 'pss':None}
+          gen_dyn[eqid]['gov'] = {'type':q, 'data': dyn_row}
+    # write all the machines
     for key, row in machines.items():
       gsu_ang = GetGSUPhaseShift (d['EMTRotatingMachinePlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
       bus = atp_buses[row['cn1id']]
@@ -1143,9 +1232,9 @@ def create_atp (d, icd, fpath, case):
           genbus = AppendType14Generator (row['cn1id'], bus, vbase, rmva, row['Xdp'], row['Ra'], icd, mw, mvar, ap, gsu_ang)
           dgens[key] = {'Type':'SyncMach', 'Source':'14', 'Name':row['name'], 'Bus':genbus, 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
         else:
-          gov = GetMachineDynamic (d['EMTGovSteamSGO']['vals'], key)
-          exc = GetMachineDynamic (d['EMTExcST1A']['vals'], key)
-          pss = GetMachineDynamic (d['EMTPssIEEE1A']['vals'], key)
+          gov = gen_dyn[key]['gov']
+          exc = gen_dyn[key]['exc']
+          pss = gen_dyn[key]['pss']
           AppendMachineDynamics (bus=bus, vpu=row['vpu'], deg=row['deg'], mach=row, gov=gov, exc=exc, pss=pss, ap=ap, gsu_ang=gsu_ang)
           DUM_NODES += MACHINE_DUM_NODES
           dgens[key] = {'Type':'SyncMach', 'Source':'59', 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
