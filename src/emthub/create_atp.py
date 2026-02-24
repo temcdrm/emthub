@@ -181,7 +181,7 @@ def AtpRXC(r, x, c):
 def AtpRZTL(r, z, t, l):
   return '{:12e}{:12e}{:12e}{:12e}'.format(r, z, t, l)
 
-def AtpFit6(x):
+def AtpFit6(x): # TODO: 1e-9 comes back 10.e-10, which is too long
   if x == 0.0:
     return '0.0000'
   elif x >= 10000:
@@ -611,8 +611,10 @@ def AppendMachineDynamics (bus, vpu, deg, mach, gov, exc, pss, ap, gsu_ang):
       v0pu = vpu + 1.0 / ka
     else:
       print ('** Unrecognized exciter data for', exc['type'], 'at bus', bus)
+  if ka < 1.0:
+    print ('** Exciter gain {:.3f} at {:s} is too low for built-in model limiters'.format (ka, str(bus)))
   # stabilizer parameters (default Pss1A)
-  psk5 = 0.0
+  psk5 = max(0.0, 1e-8)
   psa1 = 2e-9
   psa2 = 1e-18
   pst3 = 2.0
@@ -624,7 +626,7 @@ def AppendMachineDynamics (bus, vpu, deg, mach, gov, exc, pss, ap, gsu_ang):
   if pss is not None:
     d = pss['data']
     if pss['type'] == 'EMTPss1A':
-      psk5 = d['ks'] # t1 and t2 from CIM not used?
+      psk5 = max(d['ks'],1e-8) # t1 and t2 from CIM not used?
       psa1 = max(d['a1'],2e-9)
       psa2 = max(d['a2'],1e-18)
       pst3 = max(d['t3'],1e-9)

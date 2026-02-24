@@ -85,7 +85,7 @@ C
 C Excitation system
 C 
 11_KVREF  ______V0PU                                               -1.      1.E3
- 0EXCLIM  -VRMSPU         +_KVREF -___VSI -EXCFBK     1.   -.1    .1      
+ 0EXCLIM  -VRMSPU         +_KVREF -___VSI -EXCFBK     1.  -1.5   1.5      
  1_EXCVA                  +EXCTRN                 ____KA -999.  999.      
         1.
         1.________TA
