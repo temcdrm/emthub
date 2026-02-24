@@ -75,7 +75,10 @@ the same bus. It includes 105 synchronous machines and 35 IBR. The purpose
 of this example is to demonstrate CIM extensions to remove the CIM 
 _Terminal_ class and the _Wecc_ dynamic models for IBR. (Kp=10, Ki=1 for all IBR)
  
-**TODO: this example has known errors under investigation.** 
+A version of this example had lower settling times using the same machine 
+control settings as in the IEEE 118-bus example, including a power system
+stabilizer on each machine. Therefore, it is likely that settings in the
+WECC 240-bus _dyr_ file could be improved.
 
 ![WECC240 Network](wecc240_network.png)
 
