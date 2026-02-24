@@ -24,8 +24,8 @@ MIN_BERGERON_TAU = 200.0e-6
 DUM_NODES = 0
 PV3_DUM_NODES = 49
 MACHINE_DUM_NODES = 31
-SOLAR_DUM_NODES = 114
-WIND_DUM_NODES = 114
+SOLAR_DUM_NODES = 87
+WIND_DUM_NODES = 87
 DUM_NODE_LIMIT = 9999
 
 DELIM = ':'
@@ -395,10 +395,21 @@ def TheveninVoltage (vpu, deg, rpu, xpu, ppu, qpu):
 # print (' ', vs)
   return abs(vs), cmath.phase(vs) * RAD_TO_DEG
 
+#ARG __PCC, __OUT
+#ARG __VOLTBASE, _POWERBASE, __CURRBASE, _______PPU, _______QPU, ____VREFPU
+#ARG ___ICTHETA, _VFLAG, _QFLAG, _PQFLG, _PFFLG, _REFFG, _LDCFG, _FRQFG
+#ARG _LVPSW, _TANPF, _PFLAG, __PMIN, __PMAX, _IQRMX, _IQRMN, __VDIP, ___VUP
+#ARG ___KQV, _IOLIM, ____KC, ____RC, ____XC, ___ZC2, _VQMAX, _VQMIN, __IMAX
+#ARG __QMIN, __QMAX, ___KQP, ___KQI, ___KVP, ___KVI, ____KP, ____KI, ___KPG
+#ARG ___KIG
+
 solar_template = """$INCLUDE,IBR.PCH,{sbus},{sname} $$
   ,{vbase},{sbase},{ibase},{ppu},{qpu},{vpu},{theta}"""
 
-def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count):
+def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, regc, repc):
+  print ('REEC', reec)
+  print ('REGC', regc)
+  print ('REPC', repc)
   sbus = AtpBus (bus)
   sname = 'IBR{:02d}'.format (ibr_count)
   print (solar_template.format(sbus=sbus, sname=sname,
@@ -1118,6 +1129,25 @@ def create_atp (d, icd, fpath, case):
   # dictionary of generators to track ratings and initial conditions
   dgens = {}
 
+  # collect the WECC dynamics for IBR
+  if len(d['EMTSolar']['vals']) > 0 or len(d['EMTWind']['vals']) > 0:
+    ibr_dyn = {}
+    for key, row in d['EMTWeccREECA']['vals'].items():
+      eqid = row['eqid']
+      if eqid not in ibr_dyn:
+        ibr_dyn[eqid] = {'reec': None, 'regc': None, 'repc':None}
+      ibr_dyn[eqid]['reec'] = row
+    for key, row in d['EMTWeccREGCA']['vals'].items():
+      eqid = row['eqid']
+      if eqid not in ibr_dyn:
+        ibr_dyn[eqid] = {'reec': None, 'regc': None, 'repc':None}
+      ibr_dyn[eqid]['regc'] = row
+    for key, row in d['EMTWeccREPCA']['vals'].items():
+      eqid = row['eqid']
+      if eqid not in ibr_dyn:
+        ibr_dyn[eqid] = {'reec': None, 'regc': None, 'repc':None}
+      ibr_dyn[eqid]['repc'] = row
+
   for key, row in d['EMTSolar']['vals'].items():
     gsu_ang = GetGSUPhaseShift (d['EMTIBRPlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
     bus = atp_buses[row['cn1id']]
@@ -1156,7 +1186,8 @@ def create_atp (d, icd, fpath, case):
     mvar = row['q']*1e-6
     print ('C =============================================================================', file=ap)
     print ('C solar {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (row['name'], row['bus'], rmva, mw, mvar), file=ap)
-    AppendSolar (bus, vbase, sbase, ibase=sbase/vbase, ppu=wtotal/sbase, qpu=row['q']/sbase, vpu=1.0, ap=ap, ibr_count=PV_COUNT+WND_COUNT)
+    AppendSolar (bus, vbase, sbase, ibase=sbase/vbase, ppu=wtotal/sbase, qpu=row['q']/sbase, vpu=1.0, ap=ap, ibr_count=PV_COUNT+WND_COUNT,
+                 reec=ibr_dyn[key]['reec'], regc=ibr_dyn[key]['regc'], repc=ibr_dyn[key]['repc'])
     AppendIBRInitializer (row['cn1id'], bus, vbase, rmva, 0.2, 0.0, icd, mw, mvar, ap, gsu_ang)
     dgens[key] = {'Type':'Solar', 'Source':None, 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
     DUM_NODES += SOLAR_DUM_NODES
@@ -1177,7 +1208,8 @@ def create_atp (d, icd, fpath, case):
     WND_COUNT += 1
     print ('C =============================================================================', file=ap)
     print ('C wind {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (row['name'], row['bus'], rmva, mw, mvar), file=ap)
-    AppendSolar (bus, vbase, sbase, ibase=sbase/vbase, ppu=wtotal/sbase, qpu=row['q']/sbase, vpu=1.0, ap=ap, ibr_count=PV_COUNT+WND_COUNT)
+    AppendSolar (bus, vbase, sbase, ibase=sbase/vbase, ppu=wtotal/sbase, qpu=row['q']/sbase, vpu=1.0, ap=ap, ibr_count=PV_COUNT+WND_COUNT,
+                 reec=ibr_dyn[key]['reec'], regc=ibr_dyn[key]['regc'], repc=ibr_dyn[key]['repc'])
     AppendIBRInitializer (row['cn1id'], bus, vbase, rmva, 0.2, 0.0, icd, mw, mvar, ap, gsu_ang)
     dgens[key] = {'Type':'Wind', 'Source':None, 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
     DUM_NODES += WIND_DUM_NODES

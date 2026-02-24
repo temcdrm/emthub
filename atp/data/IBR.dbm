@@ -3,24 +3,29 @@ DATA BASE MODULE
 $ERASE
 ARG __PCC, __OUT
 ARG __VOLTBASE, _POWERBASE, __CURRBASE, _______PPU, _______QPU, ____VREFPU
-ARG ___ICTHETA
+ARG ___ICTHETA, _VFLAG, _QFLAG, _PQFLG, _PFFLG, _REFFG, _LDCFG, _FRQFG
+ARG _LVPSW, _TANPF, _PFLAG, __PMIN, __PMAX, _IQRMX, _IQRMN, __VDIP, ___VUP
+ARG ___KQV, _IOLIM, ____KC, ____RC, ____XC, ___ZC2, _VQMAX, _VQMIN, __IMAX
+ARG __QMIN, __QMAX, ___KQP, ___KQI, ___KVP, ___KVI, ____KP, ____KI, ___KPG
+ARG ___KIG
 C 
 NUM __VOLTBASE, _POWERBASE, __CURRBASE, _______PPU, _______QPU, ____VREFPU
-NUM ___ICTHETA
+NUM ___ICTHETA, _VFLAG, _QFLAG, _PQFLG, _PFFLG, _REFFG, _LDCFG, _FRQFG
+NUM _LVPSW, _TANPF, _PFLAG, __PMIN, __PMAX, _IQRMX, _IQRMN, __VDIP, ___VUP
+NUM ___KQV, _IOLIM, ____KC, ____RC, ____XC, ___ZC2, _VQMAX, _VQMIN, __IMAX
+NUM __QMIN, __QMAX, ___KQP, ___KQI, ___KVP, ___KVI, ____KP, ____KI, ___KPG
+NUM ___KIG
 C 
 DUM _COSTH, _SINTH, _THETA, _ALPHA, __BETA, ___VGD, ___VGQ, ___IGD, ___IGQ
-DUM __PDQ0, __QDQ0, ___VGR, _IQRMX, _IQRMN, _IALPH, _IBETA, _IPREF, _IPCMD
+DUM __PDQ0, __QDQ0, ___VGR, _IALPH, _IBETA, _IPREF, _IPCMD, ____WC, _VLVPL
 DUM _IQREF, _IQCMD, ____ID, _LVACM, __VGPU, ____PG, ____QG, ____DW, ____WE
-DUM ____WC, _VLVPL, __LVPL, _LVPRR, _LVPSW, _IOLIM, ___KCV, _VSWEL
-DUM __VSAG, _VFILT, _VREF0, __VDIP, _IQVRF, __VDL1, __VDL2, _PELEC, _TANPF
-DUM __QREF, ___QPF, _QCTRL, __QREG, ____ND, _NDFLT, _IQRAW, _IQFRZ, _IQCMD
-DUM __IMAX, _PQFLG, _IQLIM, _IPLIM, _IQMAX, _IPMAX, _IQMIN, _IQINJ, _VREF1
-DUM _QFLAG, _PREFW, _RFLAG, __PORD, __PMIN, __PMAX, _IPRAW, _IPCMD, _VQMAX
-DUM _VQMIN, ___IGR, ____KC, ____RC, ____XC, __VLDC, ___ZC2, _VCTRL, _LDCFG
-DUM _REFFG, _VCLAG, _QGLAG, __QEX1, __QEX2, __QEX3, __QEX4, _PGLAG, ___DWP
-DUM __DWDB, __PEX1, _FRQFG, __PEX2, __PEX3, _PFFLG, __QEXT, _NDFLG, _IQFLG
-DUM ____IQ, _VFLAG, _VFGIN, ____IA, ____IB, ____IC, ___IGA, ___IGB, ___IGC
-DUM __IX16, __IX17, __IX18, __IX19, _VALPH, _VBETA, __PREF
+DUM _VFILT, _VREF0, __VSUP, _IQVRF, __VDL1, __VDL2, _PELEC, __LVPL, _LVPRR
+DUM __QREF, ___QPF, _QCTRL, __QREG, ____ND, _NDFLT, _IQRAW, _IQCMD, _PREFW
+DUM _IQLIM, _IPLIM, _IQMAX, _IPMAX, _IQMIN, _IQINJ, __PORD, _IPRAW, _IPCMD
+DUM _VCLAG, _QGLAG, __QEX1, __QEX2, __QEX3, __QEX4, _PGLAG, ___DWP, _VCTRL
+DUM __DWDB, __PEX1, __PEX2, __PEX3, __QEXT, _NDFLG, _IQFLG, ___IGR, __VLDC
+DUM ____IQ, _VFGIN, ____IA, ____IB, ____IC, ___IGA, ___IGB, ___IGC, __PREF
+DUM __IX16, __IX17, __IX18, __IX19, _VALPH, _VBETA
 /TACS
 C
 C voltage and current sensors
@@ -45,12 +50,10 @@ C
 99__PDQ0  =___VGD*___IGD+___VGQ*___IGQ
 99__QDQ0  =___VGQ*___IGD-___VGD*___IGQ
 99___VGR  =SQRT(___VGD*___VGD+___VGQ*___VGQ)
-98_IQRMX  =    999.9
-98_IQRMN  =   -999.9
  1_IPREF  +_IPCMD                                     1.                  _LVPRR
         1.          
         1.       .02
- 1_IQREF  +_IQCMD                                     1.            _IQRMN_IQRMX
+ 1_IQREF  +_IQCMD                                     1._IQRMN_IQRMX
         1.          
         1.       .02
 99____ID  =-_IPREF*_LVACM
@@ -94,19 +97,11 @@ C 99_POWER  =__PCCA*___IGA + __PCCB*___IGB + __PCCC*___IGC
               10               1
            9999.
 99_LVPRR  =_LVPSW*__LVPL
-98_LVPSW  =       1.
-C 98_VBASE  =    2.2E4
-C 98_SBASE  =     6.E8
-C 98_IBASE  =   27273.
-98_IOLIM  =     -1.2
-98___KCV  =      0.0
-98_VSWEL  =     1.15
-98__VSAG  =     0.87
  1_VFILT  +__VGPU                                     1.                  
         1.          
         1.       .03
 98_VREF0  =____VREFPU
-98__VDIP  =___KCV * ((__VGPU.LT.__VSAG) .OR. (__VGPU.GT._VSWEL))
+98__VSUP  =___KQV * ((__VGPU.LT.__VDIP) .OR. (__VGPU.GT.___VUP))
 98_IQVRF56        -_VFILT         +_VREF0             1.
       -100000000           -1.05
            -1.05           -1.05
@@ -132,58 +127,41 @@ C 98_IBASE  =   27273.
  1_PELEC  +____PG                                     1.                  
         1.          
         1.       .05
-98_TANPF  = -0.20306
 24__IX16  _______QPU       .01                                     .01       .02
 11__IX17  _______QPU                                               .02      1.E3
 98__QREF  =__IX16+__IX17
-99___QPF  =_PELEC * _TANPF * _PFFLG
- 0_QCTRL          +___QPF         +__QEXT             1.   -.7    .7      
- 1__QREG          +_QCTRL         -____QG             1.            _VQMIN_VQMAX
-        .1        .1                                                            
+99___QPF  =_PELEC * (_TANPF * _PFFLG)
+ 0_QCTRL          +___QPF         +__QEXT             1.__QMIN__QMAX
+ 1__QREG          +_QCTRL         -____QG             1._VQMIN_VQMAX
+    ___KQP    ___KQI                                                            
                   1.                                                            
 98____ND  = _QCTRL / _VFILT
  1_NDFLT  +____ND                                     1.                  
         1.          
         1.      .015
  1_IQRAW          +_VFGIN         -_VFILT             1.            _IQMIN_IQMAX
-        1.        5.                                                            
+    ___KVP    ___KVI                                                            
                   1.                                                            
-98_IQFRZ  =      0.0
  0_IQCMD  +_NDFLG +_IQINJ                 +_IQFLG     1.            _IQMIN_IQMAX
-98__IMAX  =      1.2
-98_PQFLG  =      0.0
 C  Delay start of reactive power control
 98_IQLIM  =SQRT(__IMAX*__IMAX - _PQFLG*_IPCMD*_IPCMD)*(TIMEX.GT.0.25)
 98_IPLIM  =SQRT(__IMAX*__IMAX - (1-_PQFLG)*_IQCMD*_IQCMD)
 98_IQMAX63        +__VDL1         +_IQLIM                  -1.
 98_IPMAX63        +__VDL2         +_IPLIM                  -1.
 98_IQMIN  = - _IQMAX
-98_IQINJ  = _IQVRF * __VDIP
-98_VREF1  =      0.0
-98_QFLAG  =       0.
+98_IQINJ  = _IQVRF * __VSUP
 24__IX18  _______PPU       .01                                     .01       .02
 11__IX19  _______PPU                                               .02      1.E3
 98__PREF  =__IX18+__IX19
-99_PREFW  =__PREF * (NOT(_RFLAG) + _RFLAG*____WE)
-98_RFLAG  =      0.0
- 1__PORD  +_PREFW                                     1.            __PMIN__PMAX
+99_PREFW  =__PREF * (NOT(_PFLAG) + _PFLAG*____WE)
+ 1__PORD  +_PREFW                                     1.__PMIN__PMAX
         1.          
         1.       .03
-98__PMIN  =      0.0
-98__PMAX  =       1.
 98_IPRAW  = __PORD / _VFILT
- 0_IPCMD                  +_IPRAW                     1.            __PMIN_IPMAX
-98_VQMAX  =     1.07
-98_VQMIN  =      0.9
+ 0_IPCMD                  +_IPRAW                     1.__PMIN            _IPMAX
 99___IGR  =SQRT(___IGD*___IGD+___IGQ*___IGQ)
-98____KC  =      0.0
-98____RC  =    0.001
-98____XC  =     0.01
 99__VLDC  =SQRT(_VFILT*_VFILT-(___ZC2*___IGR*___IGR))
-98___ZC2  =  1.01E-4
 99_VCTRL  =(____KC*____QG+__VGPU)*(1-_LDCFG) + _LDCFG*__VLDC
-98_LDCFG  =      0.0
-98_REFFG  =       1.
  1_VCLAG  +_VCTRL                                     1.                  
         1.          
         1.       .02
@@ -197,8 +175,8 @@ C  Delay start of reactive power control
              999             999
             2000             999
            9999.
- 1__QEX3                  +__QEX2                     1.   -.7    .7      
-        8.      0.04                                                            
+ 1__QEX3                  +__QEX2                     1.__QMIN__QMAX
+    ____KP    ____KI                                                            
                   1.                                                            
  1__QEX4  +__QEX3                                     1.                  
         1.          
@@ -214,19 +192,16 @@ C  Delay start of reactive power control
             1000               0
            9999.
 99__PEX1  =(__PREF - _PGLAG + __DWDB) * _FRQFG
-98_FRQFG  =       1.
  1__PEX2                  +__PEX1                     1.          1.      
-       .05        .1                                                            
+    ___KPG    ___KIG                                                            
                   1.                                                            
  1__PEX3  +__PEX2                                     1.                  
         1.          
         1.       .08
-98_PFFLG  =      0.0
 99__QEXT  =__QEX4 * (1.0 - _PFFLG)
 99_NDFLG  =_NDFLT * (1.0 - _QFLAG)
 99_IQFLG  =_IQRAW * _QFLAG
 98____IQ  =     1. * _IQREF
-98_VFLAG  =       0.
 99_VFGIN  =__QREG * _VFLAG + __QEXT * (1.0-_VFLAG) * (1.0-_PFFLG)
 C 
 C Define output variables
