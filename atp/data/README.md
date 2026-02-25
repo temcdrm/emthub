@@ -86,7 +86,7 @@ optimized for best dynamic performance. Updates to the _dyr_ file settings
 may result in better results.
 
 | vFlag | qFlag | pqFlag | pfFlag | refFlag | vcmpFlag | frqFlag | ivplsw | pFlag | kqv | kqp | kqi  | kvp | kvi | kp   | ki  | kpg | kig |
--------------------------------------------------------------------------------------------------------------------------------------------
+| ----- | ----- | ------ | ------ | ------- | -------- | ------- | ------ | ----- | --- | --- | ---- | --- | --- | ---- | --- | --- | --- |
 | True  | True  | False  | False  | True    | True     | True    | True   | False | 2.0 | 1.0 | 0.33 | 0.2 | 5.0 | 0.04 | 8.0 | 0.5 | 1.0 |
 
 
