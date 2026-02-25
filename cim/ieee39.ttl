@@ -1932,8 +1932,8 @@
     cim:WeccREECA.vdi2v3 "0.0"^^cim:PU ;
     cim:WeccREECA.vdi2v4 "0.0"^^cim:PU ;
     cim:WeccREECA.vdip "0.5"^^cim:PU ;
-    cim:WeccREECA.vmax "1.1"^^cim:PU ;
-    cim:WeccREECA.vmin "0.5"^^cim:PU ;
+    cim:WeccREECA.vmax "1.07"^^cim:PU ;
+    cim:WeccREECA.vmin "0.9"^^cim:PU ;
     cim:WeccREECA.vref0 "1.0"^^cim:PU ;
     cim:WeccREECA.vref1 "0.0"^^cim:PU ;
     cim:WeccREECA.vup "1.1"^^cim:PU .
@@ -1948,7 +1948,7 @@
     cim:WeccREGCA.iqrmax "1.5"^^cim:PU ;
     cim:WeccREGCA.iqrmin "-1.5"^^cim:PU ;
     cim:WeccREGCA.ivpl1 "1.22"^^cim:Float ;
-    cim:WeccREGCA.ivplsw "false"^^cim:Boolean ;
+    cim:WeccREGCA.ivplsw "true"^^cim:Boolean ;
     cim:WeccREGCA.ivpnt0 "0.4"^^cim:PU ;
     cim:WeccREGCA.ivpnt1 "0.8"^^cim:PU ;
     cim:WeccREGCA.khv "0.7"^^cim:Float ;

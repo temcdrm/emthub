@@ -410,6 +410,8 @@ solar_template = """$INCLUDE,IBR.PCH,{sbus},{sname} $$
   ,{rc},{xc},{zc2},{vqmax},{vqmin},{imax},{qmin},{qmax},{kqp},{kqi} $$
   ,{kvp},{kvi},{kp},{ki},{kpg},{kig}"""
 
+use_dyr_file = True
+
 def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, regc, repc):
   #print ('REEC', reec)
   #print ('REGC', regc)
@@ -425,7 +427,8 @@ def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, r
   rc = repc['rc']
   xc = repc['xc']
   zc2 = rc*rc + xc*xc
-  print (solar_template.format(sbus=sbus, sname=sname,
+  if use_dyr_file:
+    print (solar_template.format(sbus=sbus, sname=sname,
                                vbase = AtpFit10 (vbase),
                                sbase = AtpFit10 (sbase),
                                ibase = AtpFit10 (ibase),
@@ -440,7 +443,7 @@ def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, r
                                refflag = AtpFit6 (int(repc['refFlag']=='true')),
                                vcmpflag = AtpFit6 (int(repc['vcmpFlag']=='true')),
                                frqflag = AtpFit6 (int(repc['frqFlag']=='true')),
-                               lvpsw = AtpFit6 (int(regc['ivplsw']=='true')),
+                               lvpsw = AtpFit6 (int(regc['ivplsw']=='true')), #TODO: check the spelling in UML vs. EPRI model user guide
                                tanpf = AtpFit6 (tanpf),
                                pflag = AtpFit6 (int(reec['pFlag']=='true')),
                                pmin = AtpFit6 (reec['pmin']),
@@ -455,19 +458,63 @@ def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, r
                                rc = AtpFit6 (rc),
                                xc = AtpFit6 (xc),
                                zc2 = AtpFit6 (zc2),
-                               vqmax = AtpFit6 (reec['qmax']),
-                               vqmin = AtpFit6 (reec['qmin']),
+                               vqmax = AtpFit6 (reec['vmax']),
+                               vqmin = AtpFit6 (reec['vmin']),
                                imax = AtpFit6 (reec['imax']),
                                qmin = AtpFit6 (repc['qmin']),
                                qmax = AtpFit6 (repc['qmax']),
                                kqp = AtpFit6 (max(1e-8, reec['kqp'])),
                                kqi = AtpFit6 (reec['kqi']),
-                               kvp = AtpFit6 (max(1e-8, reec['kvp'])), #AtpFit6 (min(0.2, reec['kvp'])), 
-                               kvi = AtpFit6 (reec['kvi']),            #AtpFit6 (min(5.0, reec['kvi'])), 
-                               kp = AtpFit6 (max(1e-8, repc['kp'])),   #AtpFit6 (min(1.0, repc['kp'])), #
+                               kvp = AtpFit6 (max(1e-8, reec['kvp'])),
+                               kvi = AtpFit6 (reec['kvi']),
+                               kp = AtpFit6 (max(1e-8, repc['kp'])),
                                ki = AtpFit6 (repc['ki']),
                                kpg = AtpFit6 (max(1e-8, repc['kpg'])),
                                kig = AtpFit6 (repc['kig'])), file=ap)
+  else:
+    print (solar_template.format(sbus=sbus, sname=sname,
+                               vbase = AtpFit10 (vbase),
+                               sbase = AtpFit10 (sbase),
+                               ibase = AtpFit10 (ibase),
+                               ppu = AtpFit10 (ppu),
+                               qpu = AtpFit10 (qpu),
+                               vpu = AtpFit10 (vpu),
+                               theta = AtpFit10 (1.8),
+                               vflag = AtpFit6 (0.0),
+                               qflag = AtpFit6 (0.0),
+                               pqflag = AtpFit6 (0.0),
+                               pfflag = AtpFit6 (0.0),
+                               refflag = AtpFit6 (1.0),
+                               vcmpflag = AtpFit6 (0.0),
+                               frqflag = AtpFit6 (1.0),
+                               lvpsw = AtpFit6 (1.0),
+                               tanpf = AtpFit6 (-0.2031),
+                               pflag = AtpFit6 (0.0),
+                               pmin = AtpFit6 (0.0),
+                               pmax = AtpFit6 (1.0),
+                               iqrmin = AtpFit6 (-990.0),
+                               iqrmax = AtpFit6 (999.0),
+                               vdip = AtpFit6 (0.87),
+                               vup = AtpFit6 (1.15),
+                               kqv = AtpFit6 (0.0),
+                               iolim = AtpFit6 (-1.2),
+                               kc = AtpFit6 (0.0),
+                               rc = AtpFit6 (0.001),
+                               xc = AtpFit6 (0.01),
+                               zc2 = AtpFit6 (0.0001),
+                               vqmax = AtpFit6 (1.07),
+                               vqmin = AtpFit6 (0.9),
+                               imax = AtpFit6 (1.2),
+                               qmin = AtpFit6 (-0.7),
+                               qmax = AtpFit6 (0.7),
+                               kqp = AtpFit6 (0.1),
+                               kqi = AtpFit6 (0.1),
+                               kvp = AtpFit6 (5.0),
+                               kvi = AtpFit6 (1.0),
+                               kp = AtpFit6 (0.04),
+                               ki = AtpFit6 (8.0),
+                               kpg = AtpFit6 (0.1),
+                               kig = AtpFit6 (0.05)), file=ap)
 
 def AppendType14Generator (cn1id, bus, vbase, rmva, Xdp, Ra, icd, mw, mvar, ap, gsu_ang):
   vpu = 1.0
