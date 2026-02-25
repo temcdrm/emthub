@@ -2,11 +2,7 @@
 
 import rdflib
 import sys
-#import math
-#import cmath
 import os
-#import numpy as np
-#import json
 import cim_examples
 import emthub.api as emthub
 

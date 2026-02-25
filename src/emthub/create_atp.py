@@ -414,6 +414,8 @@ def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, r
   #print ('REEC', reec)
   #print ('REGC', regc)
   #print ('REPC', repc)
+  print (reec['vFlag'], reec['qFlag'], reec['pqFlag'], reec['pfFlag'], repc['refFlag'], repc['vcmpFlag'], repc['frqFlag'], regc['ivplsw'], reec['pFlag'],
+         reec['kqv'], reec['kqp'], reec['kqi'], reec['kvp'], reec['kvi'], repc['kp'], repc['ki'], repc['kpg'], repc['kig'])
   sbus = AtpBus (bus)
   sname = 'IBR{:02d}'.format (ibr_count)
   if ppu > 0.0:
@@ -440,7 +442,7 @@ def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, r
                                frqflag = AtpFit6 (int(repc['frqFlag']=='true')),
                                lvpsw = AtpFit6 (int(regc['ivplsw']=='true')),
                                tanpf = AtpFit6 (tanpf),
-                               pflag = AtpFit6 (int(reec['vFlag']=='true')),
+                               pflag = AtpFit6 (int(reec['pFlag']=='true')),
                                pmin = AtpFit6 (reec['pmin']),
                                pmax = AtpFit6 (reec['pmax']),
                                iqrmin = AtpFit6 (regc['iqrmin']),
@@ -458,13 +460,13 @@ def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, r
                                imax = AtpFit6 (reec['imax']),
                                qmin = AtpFit6 (repc['qmin']),
                                qmax = AtpFit6 (repc['qmax']),
-                               kqp = AtpFit6 (reec['kqp']),
+                               kqp = AtpFit6 (max(1e-8, reec['kqp'])),
                                kqi = AtpFit6 (reec['kqi']),
-                               kvp = AtpFit6 (reec['kvp']),
-                               kvi = AtpFit6 (reec['kvi']),
-                               kp = AtpFit6 (repc['kp']),
+                               kvp = AtpFit6 (max(1e-8, reec['kvp'])), #AtpFit6 (min(0.2, reec['kvp'])), 
+                               kvi = AtpFit6 (reec['kvi']),            #AtpFit6 (min(5.0, reec['kvi'])), 
+                               kp = AtpFit6 (max(1e-8, repc['kp'])),   #AtpFit6 (min(1.0, repc['kp'])), #
                                ki = AtpFit6 (repc['ki']),
-                               kpg = AtpFit6 (repc['kpg']),
+                               kpg = AtpFit6 (max(1e-8, repc['kpg'])),
                                kig = AtpFit6 (repc['kig'])), file=ap)
 
 def AppendType14Generator (cn1id, bus, vbase, rmva, Xdp, Ra, icd, mw, mvar, ap, gsu_ang):
@@ -592,7 +594,7 @@ def AppendMachineDynamics (bus, vpu, deg, mach, gov, exc, pss, ap, gsu_ang):
   tqopp = mach['Tqopp']
   if xqpp < xl or xqpp < xdpp:
     xnew = max(xl, xdpp)
-    print ('  changing xqpp from', xqpp, 'to', xnew, 'at', bus)
+    #print ('  changing xqpp from', xqpp, 'to', xnew, 'at', bus)
     xqpp = xnew
   x0 = 1.0 * xl  # REVISIT
   rn = 900.0 # 0.0
@@ -784,13 +786,13 @@ def ParallelMachines (d, icd, atp_buses):
         row = d[key]
         for tag in ['ratedS', 'p', 'q', 'minP', 'maxP', 'minQ', 'maxQ']:
           par[parkey][tag] += row[tag]
-  print ('Generator  Bus           MVA          P      Vpu     Vdeg')
-  for key, row in par.items():
-    print ('{:10s} {:6s} {:10.2f} {:10.2f} {:8.4f} {:8.4f}'.format (row['name'], 
-                                                                    row['bus'], 
-                                                                    row['ratedS']*1e-6, 
-                                                                    row['p']*1e-6,
-                                                                    row['vpu'], row['deg']))
+# print ('Generator  Bus           MVA          P      Vpu     Vdeg')
+# for key, row in par.items():
+#   print ('{:10s} {:6s} {:10.2f} {:10.2f} {:8.4f} {:8.4f}'.format (row['name'],
+#                                                                   row['bus'],
+#                                                                   row['ratedS']*1e-6,
+#                                                                   row['p']*1e-6,
+#                                                                   row['vpu'], row['deg']))
   return par
 
 # over-write the CIM power with initial conditions
@@ -1266,21 +1268,21 @@ def create_atp (d, icd, fpath, case):
     gen_dyn = {}
     for q, res in d.items():
       if q.startswith ('EMTExc') and len(res['vals']) > 0:
-        print ('Exciters', q, res['columns'])
+        #print ('Exciters', q, res['columns'])
         for dyn_key, dyn_row in res['vals'].items():
           eqid = dyn_row['eqid']
           if eqid not in gen_dyn:
             gen_dyn[eqid] = {'gov': None, 'exc': None, 'pss':None}
           gen_dyn[eqid]['exc'] = {'type':q, 'data': dyn_row}
       elif q.startswith ('EMTPss') and len(res['vals']) > 0:
-        print ('Stabilizers', q, res['columns'])
+        #print ('Stabilizers', q, res['columns'])
         for dyn_key, dyn_row in res['vals'].items():
           eqid = dyn_row['eqid']
           if eqid not in gen_dyn:
             gen_dyn[eqid] = {'gov': None, 'exc': None, 'pss':None}
           gen_dyn[eqid]['pss'] = {'type':q, 'data': dyn_row}
       elif q.startswith ('EMTGov') and len(res['vals']) > 0:
-        print ('Governors', q, res['columns'])
+        #print ('Governors', q, res['columns'])
         for dyn_key, dyn_row in res['vals'].items():
           eqid = dyn_row['eqid']
           if eqid not in gen_dyn:

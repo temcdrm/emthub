@@ -133,14 +133,14 @@ C 99_POWER  =__PCCA*___IGA + __PCCB*___IGB + __PCCC*___IGC
 99___QPF  =_PELEC * (_TANPF * _PFFLG)
  0_QCTRL          +___QPF         +__QEXT             1.__QMIN__QMAX
  1__QREG          +_QCTRL         -____QG             1._VQMIN_VQMAX
-    ___KQP    ___KQI                                                            
+    ___KQI    ___KQP                                                            
                   1.                                                            
 98____ND  = _QCTRL / _VFILT
  1_NDFLT  +____ND                                     1.                  
         1.          
         1.      .015
  1_IQRAW          +_VFGIN         -_VFILT             1.            _IQMIN_IQMAX
-    ___KVP    ___KVI                                                            
+    ___KVI    ___KVP                                                            
                   1.                                                            
  0_IQCMD  +_NDFLG +_IQINJ                 +_IQFLG     1.            _IQMIN_IQMAX
 C  Delay start of reactive power control
@@ -176,7 +176,7 @@ C  Delay start of reactive power control
             2000             999
            9999.
  1__QEX3                  +__QEX2                     1.__QMIN__QMAX
-    ____KP    ____KI                                                            
+    ____KI    ____KP                                                            
                   1.                                                            
  1__QEX4  +__QEX3                                     1.                  
         1.          
@@ -193,7 +193,7 @@ C  Delay start of reactive power control
            9999.
 99__PEX1  =(__PREF - _PGLAG + __DWDB) * _FRQFG
  1__PEX2                  +__PEX1                     1.          1.      
-    ___KPG    ___KIG                                                            
+    ___KIG    ___KPG                                                            
                   1.                                                            
  1__PEX3  +__PEX2                                     1.                  
         1.          
