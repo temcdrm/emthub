@@ -1,0 +1,699 @@
+@prefix cim: <http://www.ucaiug.org/ns#> .
+@prefix emt: <http://opensource.ieee.org/emtiop#> .
+
+<62CB0930-211D-4762-B5C1-27BF73EAC7C4> a cim:EquipmentContainer ;
+    cim:IdentifiedObject.mRID "62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^cim:String ;
+    cim:IdentifiedObject.name "SMIBDLL"^^cim:String .
+
+<DBA83F3E-9FA6-453E-9FBC-73FA0BBE83CB> a cim:BaseVoltage ;
+    cim:BaseVoltage.nominalVoltage "34500.0"^^cim:Voltage ;
+    cim:IdentifiedObject.mRID "DBA83F3E-9FA6-453E-9FBC-73FA0BBE83CB"^^cim:String ;
+    cim:IdentifiedObject.name "BV_34.50"^^cim:String .
+
+<E18B2A77-4D06-475A-83D1-257C2DAB9C2D> a cim:BaseVoltage ;
+    cim:BaseVoltage.nominalVoltage "600.0"^^cim:Voltage ;
+    cim:IdentifiedObject.mRID "E18B2A77-4D06-475A-83D1-257C2DAB9C2D"^^cim:String ;
+    cim:IdentifiedObject.name "BV_0.60"^^cim:String .
+
+<FA4E9325-13BE-4980-BC1B-D3832EB55232> a cim:BaseVoltage ;
+    cim:BaseVoltage.nominalVoltage "230000.0"^^cim:Voltage ;
+    cim:IdentifiedObject.mRID "FA4E9325-13BE-4980-BC1B-D3832EB55232"^^cim:String ;
+    cim:IdentifiedObject.name "BV_230.00"^^cim:String .
+
+<0B2BB3E3-80F5-48BC-883C-4FB49967BCC5> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:IdentifiedObject.mRID "0B2BB3E3-80F5-48BC-883C-4FB49967BCC5"^^cim:String ;
+    cim:IdentifiedObject.name "10"^^cim:String .
+
+<0D346513-A8C4-4B88-9115-F49FDE77FDE3> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:IdentifiedObject.mRID "0D346513-A8C4-4B88-9115-F49FDE77FDE3"^^cim:String ;
+    cim:IdentifiedObject.name "1"^^cim:String .
+
+<18CD2BB5-6651-472A-B7C6-74AA4503AB2F> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:IdentifiedObject.mRID "18CD2BB5-6651-472A-B7C6-74AA4503AB2F"^^cim:String ;
+    cim:IdentifiedObject.name "7"^^cim:String .
+
+<49775C1A-39F4-48E3-B47E-834A29EC8836> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:IdentifiedObject.mRID "49775C1A-39F4-48E3-B47E-834A29EC8836"^^cim:String ;
+    cim:IdentifiedObject.name "5"^^cim:String .
+
+<50F431B1-2B0D-4643-B99A-2DE6B2086D64> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:IdentifiedObject.mRID "50F431B1-2B0D-4643-B99A-2DE6B2086D64"^^cim:String ;
+    cim:IdentifiedObject.name "9"^^cim:String .
+
+<6EBC949C-1AFF-4C3E-A7C9-0B9C7E462F66> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:IdentifiedObject.mRID "6EBC949C-1AFF-4C3E-A7C9-0B9C7E462F66"^^cim:String ;
+    cim:IdentifiedObject.name "12"^^cim:String .
+
+<82B17EC0-8265-4653-BDBC-C2B3CC679545> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:IdentifiedObject.mRID "82B17EC0-8265-4653-BDBC-C2B3CC679545"^^cim:String ;
+    cim:IdentifiedObject.name "2"^^cim:String .
+
+<B42190F4-1B21-41CD-9F12-5D2063740289> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:IdentifiedObject.mRID "B42190F4-1B21-41CD-9F12-5D2063740289"^^cim:String ;
+    cim:IdentifiedObject.name "6"^^cim:String .
+
+<D3450F06-6527-4EAD-BFCD-0329101F2511> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:IdentifiedObject.mRID "D3450F06-6527-4EAD-BFCD-0329101F2511"^^cim:String ;
+    cim:IdentifiedObject.name "11"^^cim:String .
+
+<D7FFECE8-9AF8-4EC8-82A6-F09B9E70ABFE> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:IdentifiedObject.mRID "D7FFECE8-9AF8-4EC8-82A6-F09B9E70ABFE"^^cim:String ;
+    cim:IdentifiedObject.name "8"^^cim:String .
+
+<EE6FE71A-A9DE-4A70-962D-76C4496A7D46> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:IdentifiedObject.mRID "EE6FE71A-A9DE-4A70-962D-76C4496A7D46"^^cim:String ;
+    cim:IdentifiedObject.name "3"^^cim:String .
+
+<F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:IdentifiedObject.mRID "F1D8559F-C599-4317-ACC6-7DFCC8D28CAF"^^cim:String ;
+    cim:IdentifiedObject.name "4"^^cim:String .
+
+<120A5D19-D703-4508-80BC-CBACDF876508> a cim:ACLineSegment ;
+    emt:ConductingEquipment.FromConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> ;
+    emt:ConductingEquipment.ToConnectivityNode <D3450F06-6527-4EAD-BFCD-0329101F2511> ;
+    cim:ACLineSegment.b0ch "0.00098989125"^^cim:Susceptance ;
+    cim:ACLineSegment.bch "0.0016498187500000002"^^cim:Susceptance ;
+    cim:ACLineSegment.r "26.3971"^^cim:Resistance ;
+    cim:ACLineSegment.r0 "52.7942"^^cim:Resistance ;
+    cim:ACLineSegment.x "263.971"^^cim:Reactance ;
+    cim:ACLineSegment.x0 "791.913"^^cim:Reactance ;
+    cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
+    cim:Conductor.length "506773.2418876104"^^cim:Length ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "120A5D19-D703-4508-80BC-CBACDF876508"^^cim:String ;
+    cim:IdentifiedObject.name "5_11_1"^^cim:String .
+
+<19826C0D-3F20-484C-87C7-F1A70FEC6F6C> a cim:ACLineSegment ;
+    emt:ConductingEquipment.FromConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> ;
+    emt:ConductingEquipment.ToConnectivityNode <6EBC949C-1AFF-4C3E-A7C9-0B9C7E462F66> ;
+    cim:ACLineSegment.b0ch "0.0013205823749999999"^^cim:Susceptance ;
+    cim:ACLineSegment.bch "0.0022009706249999997"^^cim:Susceptance ;
+    cim:ACLineSegment.r "35.2314"^^cim:Resistance ;
+    cim:ACLineSegment.r0 "70.4628"^^cim:Resistance ;
+    cim:ACLineSegment.x "352.15529999999995"^^cim:Reactance ;
+    cim:ACLineSegment.x0 "1056.4659"^^cim:Reactance ;
+    cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
+    cim:Conductor.length "676070.0343178"^^cim:Length ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "19826C0D-3F20-484C-87C7-F1A70FEC6F6C"^^cim:String ;
+    cim:IdentifiedObject.name "5_12_1"^^cim:String .
+
+<2A5A6262-A2C8-4A68-AC39-58146E85F4EC> a cim:ACLineSegment ;
+    emt:ConductingEquipment.FromConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> ;
+    emt:ConductingEquipment.ToConnectivityNode <0B2BB3E3-80F5-48BC-883C-4FB49967BCC5> ;
+    cim:ACLineSegment.b0ch "0.00079151625"^^cim:Susceptance ;
+    cim:ACLineSegment.bch "0.00131919375"^^cim:Susceptance ;
+    cim:ACLineSegment.r "21.1071"^^cim:Resistance ;
+    cim:ACLineSegment.r0 "42.2142"^^cim:Resistance ;
+    cim:ACLineSegment.x "211.071"^^cim:Reactance ;
+    cim:ACLineSegment.x0 "633.213"^^cim:Reactance ;
+    cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
+    cim:Conductor.length "405215.4779822777"^^cim:Length ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "2A5A6262-A2C8-4A68-AC39-58146E85F4EC"^^cim:String ;
+    cim:IdentifiedObject.name "5_10_1"^^cim:String .
+
+<504652FC-355A-42E0-9462-78117DCEF0A6> a cim:ACLineSegment ;
+    emt:ConductingEquipment.FromConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> ;
+    emt:ConductingEquipment.ToConnectivityNode <B42190F4-1B21-41CD-9F12-5D2063740289> ;
+    cim:ACLineSegment.b0ch "0.00019639124999999995"^^cim:Susceptance ;
+    cim:ACLineSegment.bch "0.00032731874999999993"^^cim:Susceptance ;
+    cim:ACLineSegment.r "5.237100000000001"^^cim:Resistance ;
+    cim:ACLineSegment.r0 "10.474200000000002"^^cim:Resistance ;
+    cim:ACLineSegment.x "52.371"^^cim:Reactance ;
+    cim:ACLineSegment.x0 "157.113"^^cim:Reactance ;
+    cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
+    cim:Conductor.length "100542.1862662794"^^cim:Length ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "504652FC-355A-42E0-9462-78117DCEF0A6"^^cim:String ;
+    cim:IdentifiedObject.name "5_6_1"^^cim:String .
+
+<712C072F-5853-445F-B04E-1973FE110433> a cim:ACLineSegment ;
+    emt:ConductingEquipment.FromConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> ;
+    emt:ConductingEquipment.ToConnectivityNode <50F431B1-2B0D-4643-B99A-2DE6B2086D64> ;
+    cim:ACLineSegment.b0ch "0.000659200125"^^cim:Susceptance ;
+    cim:ACLineSegment.bch "0.001098666875"^^cim:Susceptance ;
+    cim:ACLineSegment.r "17.5628"^^cim:Resistance ;
+    cim:ACLineSegment.r0 "35.1256"^^cim:Resistance ;
+    cim:ACLineSegment.x "175.7867"^^cim:Reactance ;
+    cim:ACLineSegment.x0 "527.3601"^^cim:Reactance ;
+    cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
+    cim:Conductor.length "337476.44945742073"^^cim:Length ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "712C072F-5853-445F-B04E-1973FE110433"^^cim:String ;
+    cim:IdentifiedObject.name "5_9_1"^^cim:String .
+
+<B720A0C7-D1AB-43FE-86E0-190BAB17F6DC> a cim:ACLineSegment ;
+    emt:ConductingEquipment.FromConnectivityNode <82B17EC0-8265-4653-BDBC-C2B3CC679545> ;
+    emt:ConductingEquipment.ToConnectivityNode <EE6FE71A-A9DE-4A70-962D-76C4496A7D46> ;
+    cim:ACLineSegment.b0ch "0.006721277042638102"^^cim:Susceptance ;
+    cim:ACLineSegment.bch "0.006721277042638102"^^cim:Susceptance ;
+    cim:ACLineSegment.r "0.119025"^^cim:Resistance ;
+    cim:ACLineSegment.r0 "0.119025"^^cim:Resistance ;
+    cim:ACLineSegment.x "0.4761"^^cim:Reactance ;
+    cim:ACLineSegment.x0 "0.4761"^^cim:Reactance ;
+    cim:ConductingEquipment.BaseVoltage <DBA83F3E-9FA6-453E-9FBC-73FA0BBE83CB> ;
+    cim:Conductor.length "3831.043392"^^cim:Length ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "B720A0C7-D1AB-43FE-86E0-190BAB17F6DC"^^cim:String ;
+    cim:IdentifiedObject.name "2_3_1"^^cim:String .
+
+<B99C1747-9C7C-4F5A-B267-0EDD0DA58108> a cim:ACLineSegment ;
+    emt:ConductingEquipment.FromConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> ;
+    emt:ConductingEquipment.ToConnectivityNode <18CD2BB5-6651-472A-B7C6-74AA4503AB2F> ;
+    cim:ACLineSegment.b0ch "0.00039476625000000004"^^cim:Susceptance ;
+    cim:ACLineSegment.bch "0.0006579437500000001"^^cim:Susceptance ;
+    cim:ACLineSegment.r "10.5271"^^cim:Resistance ;
+    cim:ACLineSegment.r0 "21.0542"^^cim:Resistance ;
+    cim:ACLineSegment.x "105.271"^^cim:Reactance ;
+    cim:ACLineSegment.x0 "315.813"^^cim:Reactance ;
+    cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
+    cim:Conductor.length "202099.95017161217"^^cim:Length ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "B99C1747-9C7C-4F5A-B267-0EDD0DA58108"^^cim:String ;
+    cim:IdentifiedObject.name "5_7_1"^^cim:String .
+
+<C49D5D63-F29F-4CAB-B39E-7E10D6BE7744> a cim:ACLineSegment ;
+    emt:ConductingEquipment.FromConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> ;
+    emt:ConductingEquipment.ToConnectivityNode <D7FFECE8-9AF8-4EC8-82A6-F09B9E70ABFE> ;
+    cim:ACLineSegment.b0ch "0.00049395375"^^cim:Susceptance ;
+    cim:ACLineSegment.bch "0.00082325625"^^cim:Susceptance ;
+    cim:ACLineSegment.r "13.172099999999999"^^cim:Resistance ;
+    cim:ACLineSegment.r0 "26.344199999999997"^^cim:Resistance ;
+    cim:ACLineSegment.x "131.721"^^cim:Reactance ;
+    cim:ACLineSegment.x0 "395.163"^^cim:Reactance ;
+    cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
+    cim:Conductor.length "252878.83212427856"^^cim:Length ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "C49D5D63-F29F-4CAB-B39E-7E10D6BE7744"^^cim:String ;
+    cim:IdentifiedObject.name "5_8_1"^^cim:String .
+
+<351E0161-F69F-416F-A88D-27AD71DC3B3D> a cim:DisconnectingCircuitBreaker ;
+    emt:ConductingEquipment.FromConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> ;
+    emt:ConductingEquipment.ToConnectivityNode <18CD2BB5-6651-472A-B7C6-74AA4503AB2F> ;
+    cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "351E0161-F69F-416F-A88D-27AD71DC3B3D"^^cim:String ;
+    cim:IdentifiedObject.name "4_7_1"^^cim:String .
+
+<389D91DA-D1F8-4642-A233-274507A27476> a cim:DisconnectingCircuitBreaker ;
+    emt:ConductingEquipment.FromConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> ;
+    emt:ConductingEquipment.ToConnectivityNode <D3450F06-6527-4EAD-BFCD-0329101F2511> ;
+    cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "389D91DA-D1F8-4642-A233-274507A27476"^^cim:String ;
+    cim:IdentifiedObject.name "4_11_1"^^cim:String .
+
+<6D84F700-4E67-4194-B4FB-2909F016CCE4> a cim:DisconnectingCircuitBreaker ;
+    emt:ConductingEquipment.FromConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> ;
+    emt:ConductingEquipment.ToConnectivityNode <D7FFECE8-9AF8-4EC8-82A6-F09B9E70ABFE> ;
+    cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "6D84F700-4E67-4194-B4FB-2909F016CCE4"^^cim:String ;
+    cim:IdentifiedObject.name "4_8_1"^^cim:String .
+
+<76AB8421-9974-4D8A-BF09-C3C704E7343D> a cim:DisconnectingCircuitBreaker ;
+    emt:ConductingEquipment.FromConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> ;
+    emt:ConductingEquipment.ToConnectivityNode <50F431B1-2B0D-4643-B99A-2DE6B2086D64> ;
+    cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "76AB8421-9974-4D8A-BF09-C3C704E7343D"^^cim:String ;
+    cim:IdentifiedObject.name "4_9_1"^^cim:String .
+
+<9D76B37A-5430-46E2-8E79-C83C845D5C27> a cim:DisconnectingCircuitBreaker ;
+    emt:ConductingEquipment.FromConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> ;
+    emt:ConductingEquipment.ToConnectivityNode <6EBC949C-1AFF-4C3E-A7C9-0B9C7E462F66> ;
+    cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "9D76B37A-5430-46E2-8E79-C83C845D5C27"^^cim:String ;
+    cim:IdentifiedObject.name "4_12_1"^^cim:String .
+
+<D3C19ABF-3D9D-40E8-953F-9601694E5211> a cim:DisconnectingCircuitBreaker ;
+    emt:ConductingEquipment.FromConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> ;
+    emt:ConductingEquipment.ToConnectivityNode <0B2BB3E3-80F5-48BC-883C-4FB49967BCC5> ;
+    cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "D3C19ABF-3D9D-40E8-953F-9601694E5211"^^cim:String ;
+    cim:IdentifiedObject.name "4_10_1"^^cim:String .
+
+<ED0C0C3E-4ABF-4CC2-A3D4-913A0CE83692> a cim:DisconnectingCircuitBreaker ;
+    emt:ConductingEquipment.FromConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> ;
+    emt:ConductingEquipment.ToConnectivityNode <B42190F4-1B21-41CD-9F12-5D2063740289> ;
+    cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "ED0C0C3E-4ABF-4CC2-A3D4-913A0CE83692"^^cim:String ;
+    cim:IdentifiedObject.name "4_6_1"^^cim:String .
+
+<0A82F415-8F69-431F-8CA1-9561F2857828> a cim:PowerElectronicsConnection ;
+    emt:ConductingEquipment.FromConnectivityNode <0D346513-A8C4-4B88-9115-F49FDE77FDE3> ;
+    emt:ConductingEquipment.ToConnectivityNode <0D346513-A8C4-4B88-9115-F49FDE77FDE3> ;
+    cim:ConductingEquipment.BaseVoltage <E18B2A77-4D06-475A-83D1-257C2DAB9C2D> ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "0A82F415-8F69-431F-8CA1-9561F2857828"^^cim:String ;
+    cim:IdentifiedObject.name "1_1"^^cim:String ;
+    cim:PowerElectronicsConnection.maxIFault "1.2"^^cim:PU ;
+    cim:PowerElectronicsConnection.maxQ "50000000.0"^^cim:ReactivePower ;
+    cim:PowerElectronicsConnection.minQ "-50000000.0"^^cim:ReactivePower ;
+    cim:PowerElectronicsConnection.p "100000000.0"^^cim:ActivePower ;
+    cim:PowerElectronicsConnection.q "0.0"^^cim:ReactivePower ;
+    cim:PowerElectronicsConnection.ratedS "100000000.0"^^cim:ApparentPower ;
+    cim:PowerElectronicsConnection.ratedU "600.0"^^cim:Voltage .
+
+<26074AB0-0691-4AE4-BCE2-A37DFB492A2B> a cim:PhotoVoltaicUnit ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "0A82F415-8F69-431F-8CA1-9561F2857828"^^cim:String ;
+    cim:IdentifiedObject.name "1_1"^^cim:String ;
+    cim:PowerElectronicsUnit.PowerElectronicsConnection <0A82F415-8F69-431F-8CA1-9561F2857828> ;
+    cim:PowerElectronicsUnit.maxP "100000000.0"^^cim:ActivePower ;
+    cim:PowerElectronicsUnit.minP "0.0"^^cim:ActivePower .
+
+<3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5> a cim:PowerTransformer ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5"^^cim:String ;
+    cim:IdentifiedObject.name "2_1_0_1"^^cim:String ;
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
+
+<553C8DD4-48BB-4255-994B-6951693FEC63> a cim:PowerTransformer ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "553C8DD4-48BB-4255-994B-6951693FEC63"^^cim:String ;
+    cim:IdentifiedObject.name "4_3_0_1"^^cim:String ;
+    cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
+
+<6BC39BAD-9086-4749-93E7-B3DF14136636> a cim:PowerTransformerEnd ;
+    emt:TransformerEnd.ConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> ;
+    cim:IdentifiedObject.mRID "6BC39BAD-9086-4749-93E7-B3DF14136636"^^cim:String ;
+    cim:IdentifiedObject.name "4_3_0_1_End_1"^^cim:String ;
+    cim:PowerTransformerEnd.PowerTransformer <553C8DD4-48BB-4255-994B-6951693FEC63> ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
+    cim:PowerTransformerEnd.ratedS "120000000.0"^^cim:ApparentPower ;
+    cim:PowerTransformerEnd.ratedU "230000.0"^^cim:Voltage ;
+    cim:TransformerEnd.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
+    cim:TransformerEnd.endNumber "1"^^cim:Integer ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
+    cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
+    cim:TransformerEnd.xground "0.0"^^cim:Reactance .
+
+<96513B25-FEEC-4C2D-AC11-8D475B1E2A19> a cim:PowerTransformerEnd ;
+    emt:TransformerEnd.ConnectivityNode <0D346513-A8C4-4B88-9115-F49FDE77FDE3> ;
+    cim:IdentifiedObject.mRID "96513B25-FEEC-4C2D-AC11-8D475B1E2A19"^^cim:String ;
+    cim:IdentifiedObject.name "2_1_0_1_End_2"^^cim:String ;
+    cim:PowerTransformerEnd.PowerTransformer <3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5> ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
+    cim:PowerTransformerEnd.ratedS "120000000.0"^^cim:ApparentPower ;
+    cim:PowerTransformerEnd.ratedU "600.0"^^cim:Voltage ;
+    cim:TransformerEnd.BaseVoltage <E18B2A77-4D06-475A-83D1-257C2DAB9C2D> ;
+    cim:TransformerEnd.endNumber "2"^^cim:Integer ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
+    cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
+    cim:TransformerEnd.xground "0.0"^^cim:Reactance .
+
+<CF35E997-2CC1-4D5D-9A42-F4F0CBBE3D3B> a cim:PowerTransformerEnd ;
+    emt:TransformerEnd.ConnectivityNode <EE6FE71A-A9DE-4A70-962D-76C4496A7D46> ;
+    cim:IdentifiedObject.mRID "CF35E997-2CC1-4D5D-9A42-F4F0CBBE3D3B"^^cim:String ;
+    cim:IdentifiedObject.name "4_3_0_1_End_2"^^cim:String ;
+    cim:PowerTransformerEnd.PowerTransformer <553C8DD4-48BB-4255-994B-6951693FEC63> ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
+    cim:PowerTransformerEnd.ratedS "120000000.0"^^cim:ApparentPower ;
+    cim:PowerTransformerEnd.ratedU "34500.0"^^cim:Voltage ;
+    cim:TransformerEnd.BaseVoltage <DBA83F3E-9FA6-453E-9FBC-73FA0BBE83CB> ;
+    cim:TransformerEnd.endNumber "2"^^cim:Integer ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
+    cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
+    cim:TransformerEnd.xground "0.0"^^cim:Reactance .
+
+<E743A608-EA28-4D43-A013-657FEBCEAA6B> a cim:PowerTransformerEnd ;
+    emt:TransformerEnd.ConnectivityNode <82B17EC0-8265-4653-BDBC-C2B3CC679545> ;
+    cim:IdentifiedObject.mRID "E743A608-EA28-4D43-A013-657FEBCEAA6B"^^cim:String ;
+    cim:IdentifiedObject.name "2_1_0_1_End_1"^^cim:String ;
+    cim:PowerTransformerEnd.PowerTransformer <3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5> ;
+    cim:PowerTransformerEnd.connectionKind cim:WindingConnection.Y ;
+    cim:PowerTransformerEnd.phaseAngleClock "0"^^cim:Integer ;
+    cim:PowerTransformerEnd.ratedS "120000000.0"^^cim:ApparentPower ;
+    cim:PowerTransformerEnd.ratedU "34500.0"^^cim:Voltage ;
+    cim:TransformerEnd.BaseVoltage <DBA83F3E-9FA6-453E-9FBC-73FA0BBE83CB> ;
+    cim:TransformerEnd.endNumber "1"^^cim:Integer ;
+    cim:TransformerEnd.grounded "true"^^cim:Boolean ;
+    cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
+    cim:TransformerEnd.xground "0.0"^^cim:Reactance .
+
+<33AA98EC-E3AF-4C01-8B13-7713103A775C> a cim:TransformerMeshImpedance ;
+    cim:IdentifiedObject.mRID "33AA98EC-E3AF-4C01-8B13-7713103A775C"^^cim:String ;
+    cim:IdentifiedObject.name "4_3_0_1_Mesh"^^cim:String ;
+    cim:TransformerMeshImpedance.FromTransformerEnd <6BC39BAD-9086-4749-93E7-B3DF14136636> ;
+    cim:TransformerMeshImpedance.ToTransformerEnd <CF35E997-2CC1-4D5D-9A42-F4F0CBBE3D3B> ;
+    cim:TransformerMeshImpedance.r "4.408333333333333"^^cim:Resistance ;
+    cim:TransformerMeshImpedance.r0 "4.408333333333333"^^cim:Resistance ;
+    cim:TransformerMeshImpedance.x "35.266666666666666"^^cim:Reactance ;
+    cim:TransformerMeshImpedance.x0 "35.266666666666666"^^cim:Reactance .
+
+<66A48F5B-F414-459B-8F53-84681D21DEF1> a cim:TransformerMeshImpedance ;
+    cim:IdentifiedObject.mRID "66A48F5B-F414-459B-8F53-84681D21DEF1"^^cim:String ;
+    cim:IdentifiedObject.name "2_1_0_1_Mesh"^^cim:String ;
+    cim:TransformerMeshImpedance.FromTransformerEnd <E743A608-EA28-4D43-A013-657FEBCEAA6B> ;
+    cim:TransformerMeshImpedance.ToTransformerEnd <96513B25-FEEC-4C2D-AC11-8D475B1E2A19> ;
+    cim:TransformerMeshImpedance.r "0.030748124999999998"^^cim:Resistance ;
+    cim:TransformerMeshImpedance.r0 "0.030748124999999998"^^cim:Resistance ;
+    cim:TransformerMeshImpedance.x "0.24796875"^^cim:Reactance ;
+    cim:TransformerMeshImpedance.x0 "0.24796875"^^cim:Reactance .
+
+<018D435F-29E9-4E3D-B361-A1A68BB350C4> a cim:TransformerCoreAdmittance ;
+    cim:IdentifiedObject.mRID "018D435F-29E9-4E3D-B361-A1A68BB350C4"^^cim:String ;
+    cim:IdentifiedObject.name "4_3_0_1_Core"^^cim:String ;
+    cim:TransformerCoreAdmittance.TransformerEnd <CF35E997-2CC1-4D5D-9A42-F4F0CBBE3D3B> ;
+    cim:TransformerCoreAdmittance.b "0.0010081915563957152"^^cim:Susceptance ;
+    cim:TransformerCoreAdmittance.b0 "0.0010081915563957152"^^cim:Susceptance ;
+    cim:TransformerCoreAdmittance.g "0.0002520478890989288"^^cim:Conductance ;
+    cim:TransformerCoreAdmittance.g0 "0.0002520478890989288"^^cim:Conductance .
+
+<73C87014-A00C-4377-9609-80C8500FB5F6> a cim:TransformerCoreAdmittance ;
+    cim:IdentifiedObject.mRID "73C87014-A00C-4377-9609-80C8500FB5F6"^^cim:String ;
+    cim:IdentifiedObject.name "2_1_0_1_Core"^^cim:String ;
+    cim:TransformerCoreAdmittance.TransformerEnd <96513B25-FEEC-4C2D-AC11-8D475B1E2A19> ;
+    cim:TransformerCoreAdmittance.b "3.333333333333334"^^cim:Susceptance ;
+    cim:TransformerCoreAdmittance.b0 "3.333333333333334"^^cim:Susceptance ;
+    cim:TransformerCoreAdmittance.g "0.8333333333333335"^^cim:Conductance ;
+    cim:TransformerCoreAdmittance.g0 "0.8333333333333335"^^cim:Conductance .
+
+<1DEC6DAE-C13E-4F36-A9CF-72589BF86C7A> a emt:TransformerSaturation ;
+    emt:TransformerSaturation.TransformerCoreAdmittance <018D435F-29E9-4E3D-B361-A1A68BB350C4> ;
+    cim:Curve.curveStyle cim:CurveStyle.straightLineYValues ;
+    cim:Curve.xMultiplier cim:UnitMultiplier.none ;
+    cim:Curve.xUnit cim:UnitSymbol.A ;
+    cim:Curve.y1Multiplier cim:UnitMultiplier.none ;
+    cim:Curve.y1Unit cim:UnitSymbol.Vs ;
+    cim:IdentifiedObject.mRID "1DEC6DAE-C13E-4F36-A9CF-72589BF86C7A"^^cim:String ;
+    cim:IdentifiedObject.name "4_3_0_1_Sat"^^cim:String .
+
+<8C421075-1459-4915-8861-D257446A5699> a emt:TransformerSaturation ;
+    emt:TransformerSaturation.TransformerCoreAdmittance <73C87014-A00C-4377-9609-80C8500FB5F6> ;
+    cim:Curve.curveStyle cim:CurveStyle.straightLineYValues ;
+    cim:Curve.xMultiplier cim:UnitMultiplier.none ;
+    cim:Curve.xUnit cim:UnitSymbol.A ;
+    cim:Curve.y1Multiplier cim:UnitMultiplier.none ;
+    cim:Curve.y1Unit cim:UnitSymbol.Vs ;
+    cim:IdentifiedObject.mRID "8C421075-1459-4915-8861-D257446A5699"^^cim:String ;
+    cim:IdentifiedObject.name "2_1_0_1_Sat"^^cim:String .
+
+<298095DE-85A1-474C-8316-8CAE0F932952> a emt:IBRPlant ;
+    emt:GeneratingPlant.Equipments <0A82F415-8F69-431F-8CA1-9561F2857828>,
+        <3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5>,
+        <553C8DD4-48BB-4255-994B-6951693FEC63>,
+        <B720A0C7-D1AB-43FE-86E0-190BAB17F6DC> ;
+    cim:IdentifiedObject.mRID "298095DE-85A1-474C-8316-8CAE0F932952"^^cim:String ;
+    cim:IdentifiedObject.name "1_1"^^cim:String .
+
+<77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> a cim:OperationalLimitType ;
+    cim:IdentifiedObject.mRID "77ABD436-BAAC-4F66-AED3-CC81D3DBFE69"^^cim:String ;
+    cim:IdentifiedObject.name "Normal"^^cim:String ;
+    cim:OperationalLimitType.direction cim:OperationalLimitDirectionKind.absoluteValue ;
+    cim:OperationalLimitType.isInfiniteDuration "true"^^cim:Boolean .
+
+<A0DB001E-AF08-4C63-8AA1-0D095688DBB1> a cim:OperationalLimitType ;
+    cim:IdentifiedObject.mRID "A0DB001E-AF08-4C63-8AA1-0D095688DBB1"^^cim:String ;
+    cim:IdentifiedObject.name "ShortTerm"^^cim:String ;
+    cim:OperationalLimitType.acceptableDuration "14400.0"^^cim:Seconds ;
+    cim:OperationalLimitType.direction cim:OperationalLimitDirectionKind.absoluteValue ;
+    cim:OperationalLimitType.isInfiniteDuration "false"^^cim:Boolean .
+
+<0CD9E10A-D397-4E9F-995E-9142B3DD934A> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <351E0161-F69F-416F-A88D-27AD71DC3B3D> ;
+    cim:IdentifiedObject.mRID "0CD9E10A-D397-4E9F-995E-9142B3DD934A"^^cim:String ;
+    cim:IdentifiedObject.name "4_7_1"^^cim:String .
+
+<0EEEA63C-C19A-4ED0-86BF-A980337CC656> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <D3C19ABF-3D9D-40E8-953F-9601694E5211> ;
+    cim:IdentifiedObject.mRID "0EEEA63C-C19A-4ED0-86BF-A980337CC656"^^cim:String ;
+    cim:IdentifiedObject.name "4_10_1"^^cim:String .
+
+<23E1DBB0-7266-480C-8341-0B4883017E1B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <2A5A6262-A2C8-4A68-AC39-58146E85F4EC> ;
+    cim:IdentifiedObject.mRID "23E1DBB0-7266-480C-8341-0B4883017E1B"^^cim:String ;
+    cim:IdentifiedObject.name "5_10_1"^^cim:String .
+
+<27DAA770-6DCD-4A4A-B35B-9B5D525E410C> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <6BC39BAD-9086-4749-93E7-B3DF14136636> ;
+    cim:IdentifiedObject.mRID "27DAA770-6DCD-4A4A-B35B-9B5D525E410C"^^cim:String ;
+    cim:IdentifiedObject.name "4_3_0_1_End_1"^^cim:String .
+
+<2A0B87DD-0658-4EBC-A612-E0A8ACE526AA> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <96513B25-FEEC-4C2D-AC11-8D475B1E2A19> ;
+    cim:IdentifiedObject.mRID "2A0B87DD-0658-4EBC-A612-E0A8ACE526AA"^^cim:String ;
+    cim:IdentifiedObject.name "2_1_0_1_End_2"^^cim:String .
+
+<4EF1A005-2F3C-4A1F-BDBB-63DEB32EA5C2> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <120A5D19-D703-4508-80BC-CBACDF876508> ;
+    cim:IdentifiedObject.mRID "4EF1A005-2F3C-4A1F-BDBB-63DEB32EA5C2"^^cim:String ;
+    cim:IdentifiedObject.name "5_11_1"^^cim:String .
+
+<601B67D3-DBFE-4ED2-BB22-D0627B589593> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <19826C0D-3F20-484C-87C7-F1A70FEC6F6C> ;
+    cim:IdentifiedObject.mRID "601B67D3-DBFE-4ED2-BB22-D0627B589593"^^cim:String ;
+    cim:IdentifiedObject.name "5_12_1"^^cim:String .
+
+<65DD5976-BB1D-47AB-94EA-CC50EE07826B> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <712C072F-5853-445F-B04E-1973FE110433> ;
+    cim:IdentifiedObject.mRID "65DD5976-BB1D-47AB-94EA-CC50EE07826B"^^cim:String ;
+    cim:IdentifiedObject.name "5_9_1"^^cim:String .
+
+<78034673-227A-4BC9-B637-C86FC1EBFEBB> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <CF35E997-2CC1-4D5D-9A42-F4F0CBBE3D3B> ;
+    cim:IdentifiedObject.mRID "78034673-227A-4BC9-B637-C86FC1EBFEBB"^^cim:String ;
+    cim:IdentifiedObject.name "4_3_0_1_End_2"^^cim:String .
+
+<989ACC43-302F-4538-BE44-4D3B50D6268F> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <6D84F700-4E67-4194-B4FB-2909F016CCE4> ;
+    cim:IdentifiedObject.mRID "989ACC43-302F-4538-BE44-4D3B50D6268F"^^cim:String ;
+    cim:IdentifiedObject.name "4_8_1"^^cim:String .
+
+<BC6DF774-7821-43B8-88DE-DE9CC6828620> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <9D76B37A-5430-46E2-8E79-C83C845D5C27> ;
+    cim:IdentifiedObject.mRID "BC6DF774-7821-43B8-88DE-DE9CC6828620"^^cim:String ;
+    cim:IdentifiedObject.name "4_12_1"^^cim:String .
+
+<BDD513D6-1EDF-4A40-960E-EF9FE899F1E1> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <504652FC-355A-42E0-9462-78117DCEF0A6> ;
+    cim:IdentifiedObject.mRID "BDD513D6-1EDF-4A40-960E-EF9FE899F1E1"^^cim:String ;
+    cim:IdentifiedObject.name "5_6_1"^^cim:String .
+
+<BF0909BA-3FA7-4012-97E2-43ECD51AF96E> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.TransformerEnd <E743A608-EA28-4D43-A013-657FEBCEAA6B> ;
+    cim:IdentifiedObject.mRID "BF0909BA-3FA7-4012-97E2-43ECD51AF96E"^^cim:String ;
+    cim:IdentifiedObject.name "2_1_0_1_End_1"^^cim:String .
+
+<CC57B71A-397C-4EA8-9C6C-D816483A57B7> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <389D91DA-D1F8-4642-A233-274507A27476> ;
+    cim:IdentifiedObject.mRID "CC57B71A-397C-4EA8-9C6C-D816483A57B7"^^cim:String ;
+    cim:IdentifiedObject.name "4_11_1"^^cim:String .
+
+<D6D3943F-159C-4A31-B0BD-748E064A2196> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <B99C1747-9C7C-4F5A-B267-0EDD0DA58108> ;
+    cim:IdentifiedObject.mRID "D6D3943F-159C-4A31-B0BD-748E064A2196"^^cim:String ;
+    cim:IdentifiedObject.name "5_7_1"^^cim:String .
+
+<DB8BCEA3-4B43-4755-B44E-04880B345BCC> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <76AB8421-9974-4D8A-BF09-C3C704E7343D> ;
+    cim:IdentifiedObject.mRID "DB8BCEA3-4B43-4755-B44E-04880B345BCC"^^cim:String ;
+    cim:IdentifiedObject.name "4_9_1"^^cim:String .
+
+<DBDA5B12-0A51-408F-A19C-74BFD3798064> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <ED0C0C3E-4ABF-4CC2-A3D4-913A0CE83692> ;
+    cim:IdentifiedObject.mRID "DBDA5B12-0A51-408F-A19C-74BFD3798064"^^cim:String ;
+    cim:IdentifiedObject.name "4_6_1"^^cim:String .
+
+<F142D777-950C-4861-A79F-47722E966B13> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <B720A0C7-D1AB-43FE-86E0-190BAB17F6DC> ;
+    cim:IdentifiedObject.mRID "F142D777-950C-4861-A79F-47722E966B13"^^cim:String ;
+    cim:IdentifiedObject.name "2_3_1"^^cim:String .
+
+<FB29D331-BA8F-4706-A1D0-7FE861E8EE56> a cim:OperationalLimitSet ;
+    emt:OperationalLimitSet.ConductingEquipment <C49D5D63-F29F-4CAB-B39E-7E10D6BE7744> ;
+    cim:IdentifiedObject.mRID "FB29D331-BA8F-4706-A1D0-7FE861E8EE56"^^cim:String ;
+    cim:IdentifiedObject.name "5_8_1"^^cim:String .
+
+<07E793D0-7A99-40C8-8026-2703AE6F2AC4> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "120000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "07E793D0-7A99-40C8-8026-2703AE6F2AC4"^^cim:String ;
+    cim:IdentifiedObject.name "2_1_0_1_End_1_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <BF0909BA-3FA7-4012-97E2-43ECD51AF96E> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<26B44F07-CB51-484E-9884-1E5F65B4C990> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "26B44F07-CB51-484E-9884-1E5F65B4C990"^^cim:String ;
+    cim:IdentifiedObject.name "4_6_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <DBDA5B12-0A51-408F-A19C-74BFD3798064> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<275E6F14-5A35-44A0-A924-2DBDB3B05A6E> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "275E6F14-5A35-44A0-A924-2DBDB3B05A6E"^^cim:String ;
+    cim:IdentifiedObject.name "4_7_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <0CD9E10A-D397-4E9F-995E-9142B3DD934A> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<357887BC-4174-43B7-BB59-2928F43716FE> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "120000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "357887BC-4174-43B7-BB59-2928F43716FE"^^cim:String ;
+    cim:IdentifiedObject.name "4_3_0_1_End_2_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <78034673-227A-4BC9-B637-C86FC1EBFEBB> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<3D7686B9-66C3-4894-9163-064258FB89F5> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "120000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "3D7686B9-66C3-4894-9163-064258FB89F5"^^cim:String ;
+    cim:IdentifiedObject.name "4_3_0_1_End_1_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <27DAA770-6DCD-4A4A-B35B-9B5D525E410C> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<3EDC76D2-88BD-4CBD-9733-ECCF712F0A0A> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "3EDC76D2-88BD-4CBD-9733-ECCF712F0A0A"^^cim:String ;
+    cim:IdentifiedObject.name "4_9_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <DB8BCEA3-4B43-4755-B44E-04880B345BCC> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<473E4BDD-3B79-48FF-B013-60FDE7C4A8D8> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "473E4BDD-3B79-48FF-B013-60FDE7C4A8D8"^^cim:String ;
+    cim:IdentifiedObject.name "5_10_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <23E1DBB0-7266-480C-8341-0B4883017E1B> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<7A5FB5E3-14FF-40A5-90BA-DAA57FDF449C> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "7A5FB5E3-14FF-40A5-90BA-DAA57FDF449C"^^cim:String ;
+    cim:IdentifiedObject.name "4_12_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <BC6DF774-7821-43B8-88DE-DE9CC6828620> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<86EEC6C3-72ED-4B8E-AD09-1730DA363CE4> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "86EEC6C3-72ED-4B8E-AD09-1730DA363CE4"^^cim:String ;
+    cim:IdentifiedObject.name "4_11_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <CC57B71A-397C-4EA8-9C6C-D816483A57B7> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<96BADF04-9627-4A23-8FEB-F0688D96E943> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "96BADF04-9627-4A23-8FEB-F0688D96E943"^^cim:String ;
+    cim:IdentifiedObject.name "4_8_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <989ACC43-302F-4538-BE44-4D3B50D6268F> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<AFB82135-6715-4F0A-A0AD-CA678226F150> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "AFB82135-6715-4F0A-A0AD-CA678226F150"^^cim:String ;
+    cim:IdentifiedObject.name "5_8_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <FB29D331-BA8F-4706-A1D0-7FE861E8EE56> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<B4BF9E22-74D1-437F-A63C-7AC9F993822A> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "B4BF9E22-74D1-437F-A63C-7AC9F993822A"^^cim:String ;
+    cim:IdentifiedObject.name "4_10_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <0EEEA63C-C19A-4ED0-86BF-A980337CC656> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<B79CC348-5503-44C5-9FED-C39C9AE10CCA> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "B79CC348-5503-44C5-9FED-C39C9AE10CCA"^^cim:String ;
+    cim:IdentifiedObject.name "5_11_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <4EF1A005-2F3C-4A1F-BDBB-63DEB32EA5C2> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<CD1B4F22-B7FA-494A-959D-6FA646348B29> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "CD1B4F22-B7FA-494A-959D-6FA646348B29"^^cim:String ;
+    cim:IdentifiedObject.name "5_7_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <D6D3943F-159C-4A31-B0BD-748E064A2196> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<E14FE4B6-E82E-483B-9055-1FF811C95C21> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "E14FE4B6-E82E-483B-9055-1FF811C95C21"^^cim:String ;
+    cim:IdentifiedObject.name "2_3_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <F142D777-950C-4861-A79F-47722E966B13> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<EAA538B5-2AEE-4EDA-9A05-96293139CCA3> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "EAA538B5-2AEE-4EDA-9A05-96293139CCA3"^^cim:String ;
+    cim:IdentifiedObject.name "5_12_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <601B67D3-DBFE-4ED2-BB22-D0627B589593> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<EE18945F-F018-43A8-BE42-38126DFA8799> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "EE18945F-F018-43A8-BE42-38126DFA8799"^^cim:String ;
+    cim:IdentifiedObject.name "5_9_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <65DD5976-BB1D-47AB-94EA-CC50EE07826B> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<EEA7553D-E5BC-469B-8CA8-05B4F9707608> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "200000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "EEA7553D-E5BC-469B-8CA8-05B4F9707608"^^cim:String ;
+    cim:IdentifiedObject.name "5_6_1_Normal"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <BDD513D6-1EDF-4A40-960E-EF9FE899F1E1> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<F1DB8C3D-0669-477E-8AE3-77754B2E4FE4> a cim:ApparentPowerLimit ;
+    cim:ApparentPowerLimit.value "120000000.0"^^cim:ApparentPower ;
+    cim:IdentifiedObject.mRID "F1DB8C3D-0669-477E-8AE3-77754B2E4FE4"^^cim:String ;
+    cim:IdentifiedObject.name "2_1_0_1_End_2_ONAN"^^cim:String ;
+    cim:OperationalLimit.OperationalLimitSet <2A0B87DD-0658-4EBC-A612-E0A8ACE526AA> ;
+    cim:OperationalLimit.OperationalLimitType <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> .
+
+<1DEC6DAE-C13E-4F36-A9CF-72589BF86C7A_pt1> a cim:CurveData ;
+    cim:CurveData.Curve <1DEC6DAE-C13E-4F36-A9CF-72589BF86C7A> ;
+    cim:CurveData.xvalue "31.239869183321694"^^cim:Float ;
+    cim:CurveData.y1value "82.19303779671671"^^cim:Float .
+
+<1DEC6DAE-C13E-4F36-A9CF-72589BF86C7A_pt2> a cim:CurveData ;
+    cim:CurveData.Curve <1DEC6DAE-C13E-4F36-A9CF-72589BF86C7A> ;
+    cim:CurveData.xvalue "131.2398691833217"^^cim:Float ;
+    cim:CurveData.y1value "82.61400262119477"^^cim:Float .
+
+<8C421075-1459-4915-8861-D257446A5699_pt1> a cim:CurveData ;
+    cim:CurveData.Curve <8C421075-1459-4915-8861-D257446A5699> ;
+    cim:CurveData.xvalue "1796.2924780409976"^^cim:Float ;
+    cim:CurveData.y1value "1.4294441355950733"^^cim:Float .
+
+<8C421075-1459-4915-8861-D257446A5699_pt2> a cim:CurveData ;
+    cim:CurveData.Curve <8C421075-1459-4915-8861-D257446A5699> ;
+    cim:CurveData.xvalue "1896.2924780409976"^^cim:Float ;
+    cim:CurveData.y1value "1.4294839243308464"^^cim:Float .
+

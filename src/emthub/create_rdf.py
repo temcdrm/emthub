@@ -57,14 +57,14 @@ def load_bus_coordinates (fname):
   return xy
 
 def GetCIMID(cls, nm, uuids, identify=False):
-    if nm is not None:
-        key = cls + ':' + nm
-        if key not in uuids:
-            uuids[key] = str(uuid.uuid4()).upper()
-        elif identify:
-            print('Found existing ID for ', key)
-        return uuids[key]
-    return str(uuid.uuid4()).upper() # for unidentified CIM instances
+  if nm is not None:
+    key = cls + ':' + nm
+    if key not in uuids:
+      uuids[key] = str(uuid.uuid4()).upper()
+    elif identify:
+      print('Found existing ID for ', key)
+    return uuids[key]
+  return str(uuid.uuid4()).upper() # for unidentified CIM instances
 
 def append_xml_wecc_dynamics (g, key, ID, pec, leaf_class, dyn_defaults, attmap, dyr_row):
   #print (attmap)
@@ -146,7 +146,7 @@ def append_xml_dynamic_parameters (g, leaf, dyn_defaults, sections, attmap, dyr_
         else:
           g.add ((leaf, rdflib.URIRef (CIM_NS + att), rdflib.Literal(val, datatype=CIM_NS+unit)))
 
-def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
+def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True, bWantGraph=False):
   g = rdflib.Graph()
   CIM = rdflib.Namespace (CIM_NS)
   g.bind('cim', CIM)
@@ -738,6 +738,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((pt, rdflib.URIRef (CIM_NS + 'CurveData.y1value'), rdflib.Literal(f2, datatype=CIM.Float)))
 
   # write the generators: synchronous machine, generating unit, exciter, governor, stabilizer
+  dyr = None
   dyr_df = load_psse_dyrfile (case)
   if dyr_df is not None:
     dyr_summary = summarize_psse_dyrfile (dyr_df, case, bDetails=False)
@@ -813,7 +814,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.minQ'), rdflib.Literal (1.0e6*minQ, datatype=CIM.ReactivePower)))
       g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.operatingMode'), rdflib.URIRef (CIM_NS + 'SynchronousMachineOperatingMode.generator')))
       g.add ((sm, rdflib.URIRef (CIM_NS + 'SynchronousMachine.type'), rdflib.URIRef (CIM_NS + 'SynchronousMachineKind.generator')))
-      if key in dyr:
+      if dyr is not None and key in dyr:
         dyr_used[key] = True
         dyn = None
         exc = None
@@ -893,7 +894,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
       g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.PowerElectronicsConnection'), pec))
       g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.maxP'), rdflib.Literal (1.0e6*row[6], datatype=CIM.ActivePower)))
       g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.minP'), rdflib.Literal (0.0, datatype=CIM.ActivePower)))  # TODO: parse PT and PB
-      if key in dyr:
+      if dyr is not None and key in dyr:
         dyr_used[key] = True
         used = []
         for mdl, row in dyr[key].items():
@@ -991,10 +992,64 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
     g.add ((plant, rdflib.URIRef (EMT_NS + 'GeneratingPlant.Equipments'), rdflib.URIRef (key)))
     g.add ((plant, rdflib.URIRef (EMT_NS + 'GeneratingPlant.Equipments'), rdflib.URIRef (row['xfid'])))
 
-  # save the XML with mRIDs for re-use
-  g.serialize (destination=case['xmlfile'], format='pretty-xml', max_depth=1)
+  #print("Bound Namespaces:")
+  #for prefix, namespace_uri in g.namespaces():
+  #  print(f"  Prefix: {prefix}, URI: {namespace_uri}")
 
-  #g.serialize (destination='test1.ttl', format='turtle')
+  #print('saving instance mRIDs to ', fuidname)
+  fuid = open(fuidname, 'w')
+  for key, val in uuids.items():
+      print('{:s},{:s}'.format(key.replace(':', ',', 1), val), file=fuid)
+  fuid.close()
+
+  if bSerialize:
+    write_cim_rdf (case, g, CIM, EMT)
+  if bWantGraph:
+    return g, CIM, EMT
+
+def add_ibr_plant (case, plant, g, CIM, EMT):
+  uuids = {}
+  fuidname = case['mridfile']
+  if os.path.exists(fuidname):
+    #print ('reading instance mRIDs from ', fuidname)
+    fuid = open (fuidname, 'r')
+    for uuid_ln in fuid.readlines():
+      uuid_toks = re.split(r'[,\s]+', uuid_ln)
+      if len(uuid_toks) > 2 and not uuid_toks[0].startswith('//'):
+        cls = uuid_toks[0]
+        nm = uuid_toks[1]
+        key = cls + ':' + nm
+        val = uuid_toks[2]
+        uuids[key] = val
+    fuid.close()
+
+  plantID = GetCIMID ('IBRPlant', plant['generator'], uuids)
+  print ('Adding to IBRPlant', plant['generator'], plantID)
+  ibr = rdflib.URIRef (plantID)
+  #g.add ((ibr, rdflib.RDF.type, rdflib.URIRef (EMT_NS + plant_type)))
+  #g.add ((ibr, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(row['name'], datatype=CIM.String)))
+  #g.add ((ibr, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+  #g.add ((ibr, rdflib.URIRef (EMT_NS + 'GeneratingPlant.Equipments'), rdflib.URIRef (key)))
+  #g.add ((ibr, rdflib.URIRef (EMT_NS + 'GeneratingPlant.Equipments'), rdflib.URIRef (row['xfid'])))
+
+  for item in plant['components']:
+    cls = item[0]
+    name = item[1]
+    ID = GetCIMID (cls, name, uuids)
+    tuplet = (ibr, rdflib.URIRef (EMT_NS + 'GeneratingPlant.Equipments'), rdflib.URIRef(ID))
+    if tuplet not in g:
+      print ('Adding component', cls, name, ID, 'to the IBR plant')
+      g.add (tuplet)
+
+  fuid = open(fuidname, 'w')
+  for key, val in uuids.items():
+      print('{:s},{:s}'.format(key.replace(':', ',', 1), val), file=fuid)
+  fuid.close()
+
+  return g, CIM, EMT
+
+def write_cim_rdf (case, g, CIM, EMT):
+  g.serialize (destination=case['xmlfile'], format='pretty-xml', max_depth=1)
 
   serializer = OrderedTurtleSerializer(g)
   serializer.class_order = [
@@ -1049,13 +1104,4 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case):
   with open(case['ttlfile'], 'wb') as fp:
     serializer.serialize(fp)
 
-  #print("Bound Namespaces:")
-  #for prefix, namespace_uri in g.namespaces():
-  #  print(f"  Prefix: {prefix}, URI: {namespace_uri}")
-
-  #print('saving instance mRIDs to ', fuidname)
-  fuid = open(fuidname, 'w')
-  for key, val in uuids.items():
-      print('{:s},{:s}'.format(key.replace(':', ',', 1), val), file=fuid)
-  fuid.close()
 

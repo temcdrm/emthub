@@ -11,6 +11,8 @@ Example:
 
 Public Functions:
     :create_cim_rdf: Create RDF in TTL/XML formats from results of load_psse_rawfile
+    :write_cim_rdf: Serialize the (possibly modified) return value from create_cim_rdf
+    :add_ibr_plant: Add an IBR plant with attributes and a DLL interface
     :create_cim_sql: Create SQL db from results of load_psse_rawfile
     :create_atp: Write an ATP netlist from CIM loaded into a Python dictionary.
     :create_matpower: Write a MATPOWER netlist from CIM loaded into a Python dictionary.
@@ -37,7 +39,9 @@ Public Functions:
 
 from __future__ import absolute_import
 
+from .create_rdf import add_ibr_plant
 from .create_rdf import create_cim_rdf
+from .create_rdf import write_cim_rdf
 from .create_sql import create_cim_sql
 from .create_atp import create_atp
 from .create_mpow import create_matpower
