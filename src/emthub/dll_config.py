@@ -255,5 +255,50 @@ def get_dll_interface (dll_name, bPrint = True):
 # print ('Model_FirstCall', dll.Model_FirstCall)
 # print ('Model_Iterate', dll.Model_Iterate)
 
+def write_atp_dll_interface (dll_fullname, atp_path, parm_vals):
+  mod_name = 'DLL1' # ATP only allows one instance, and the DLL name must already be compiled and linked into the ATP solver
+
+  d = get_dll_interface (dll_fullname, bPrint=False)
+  dll_name = os.path.basename (dll_fullname)
+  dll_path = os.path.dirname (dll_fullname)
+  function_name, function_ext = os.path.splitext (dll_name)
+  mod_fullname = os.path.join (atp_path, mod_name+'.mod')
+  print (mod_fullname)
+
+  fp = open(mod_fullname, 'wt')
+  print ('MODEL m{:s}'.format (mod_name), file=fp)
+  print ('INPUT', file=fp)
+  print ('  {:s}'.format (','.join([d['InputPortsInfo'][i]['Name'] for i in range(d['NumInputPorts'])])), file=fp)
+  print ('DATA', file=fp)
+  for i in range(d['NumParameters']):
+    print ('  {:12s} {{dflt: {:f}}}'.format (d['ParametersInfo'][i]['Name'], d['ParametersInfo'][i]['DefaultValue']), file=fp)
+  print ('OUTPUT', file=fp)
+  print ('  {:s}'.format (','.join([d['OutputPortsInfo'][i]['Name'] for i in range(d['NumOutputPorts'])])), file=fp)
+  print ('VAR', file=fp)
+  print ('  {:s}'.format (','.join([d['OutputPortsInfo'][i]['Name'] for i in range(d['NumOutputPorts'])])), file=fp)
+  print ('INIT', file=fp)
+  for i in range(d['NumOutputPorts']):
+    print ('  {:s}:=0.0'.format (d['OutputPortsInfo'][i]['Name']), file=fp)
+  print ('ENDINIT', file=fp)
+  print ('MODEL m1 FOREIGN {:s} {{ixdata:{:d}, ixin:{:d}, ixout:{:d}, ixvar:0}}'.format (function_name.upper(), 
+         d['NumParameters'], 
+         d['NumInputPorts']+2, # appending ATP t and stoptime
+         d['NumOutputPorts']), file=fp)
+  print ('EXEC', file=fp)
+  print ('  USE m1 AS m1', file=fp)
+  for i in range(d['NumParameters']):
+    print ('    DATA xdata[{:d}] := {:12s} -- {:s}'.format (i+1, d['ParametersInfo'][i]['Name'], d['ParametersInfo'][i]['Unit']), file=fp)
+  print ('    -- the DLL will convert inputs to kV, kA as needed', file=fp)
+  for i in range(d['NumInputPorts']):
+    print ('    INPUT xin[{:d}] := {:12s} -- {:s}'.format (i+1, d['InputPortsInfo'][i]['Name'], d['InputPortsInfo'][i]['Unit']), file=fp)
+  print ('    INPUT xin[{:d}] := t'.format (d['NumInputPorts']+1), file=fp)
+  print ('    INPUT xin[{:d}] := stoptime'.format (d['NumInputPorts']+2), file=fp)
+  print ('    -- the DLL will convert inverter voltages from kV to V', file=fp)
+  for i in range(d['NumOutputPorts']):
+    print ('    OUTPUT {:12s} := xout[{:d}] -- {:s}'.format (d['OutputPortsInfo'][i]['Name'], i+1, d['OutputPortsInfo'][i]['Unit']), file=fp)
+  print ('  ENDUSE', file=fp)
+  print ('ENDEXEC', file=fp)
+  print ('ENDMODEL', file=fp)
+  fp.close()
 
 

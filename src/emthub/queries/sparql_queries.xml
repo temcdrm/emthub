@@ -1268,7 +1268,7 @@ SELECT ?name ?a1 ?a2 ?a3 ?a4 ?a5 ?a6 ?a7 ?a8 ?inputSignalType ?kd ?ks ?t1 ?t2
 <query>
 <id>EMTIEEECigreDLLParameters*</id>
 <keyfld>id*</keyfld>
-<description>.</description>
+<description>List the values and sizes of parameters for the DLL interfaces.</description>
 <value>
 <![CDATA[
 SELECT DISTINCT ?id ?seq ?kind ?val WHERE {
@@ -1289,7 +1289,7 @@ SELECT DISTINCT ?id ?seq ?kind ?val WHERE {
 <query>
 <id>EMTCountDLLParameters</id>
 <keyfld>id</keyfld>
-<description>.</description>
+<description>Counts the number of parameters in each DLL interface.</description>
 <value>
 <![CDATA[
 SELECT ?id (count(?p) as ?count) WHERE {
@@ -1308,7 +1308,7 @@ ORDER BY ?id
 <query>
 <id>EMTIEEECigreDLL</id>
 <keyfld>id</keyfld>
-<description>.</description>
+<description>DLL interface attached to an inverter.</description>
 <value>
 <![CDATA[
 SELECT DISTINCT ?id ?name ?pecid ?datetime ?version ?emt ?rms ?dt ?uri ?snapshotUri ?vendor WHERE {
@@ -1334,18 +1334,18 @@ SELECT DISTINCT ?id ?name ?pecid ?datetime ?version ?emt ?rms ?dt ?uri ?snapshot
 <query>
 <id>EMTIBRPlantAttributes</id>
 <keyfld>id</keyfld>
-<description>.</description>
+<description>IBR plant attributes, keyed on the inverter ID for convenience.</description>
 <value>
 <![CDATA[
-SELECT DISTINCT ?id ?name ?pecid ?dcV ?dcCap ?acRgrid ?acLgrid ?acCap ?acRbridge ?acLbridge ?swtFreq ?filterKind ?dllid WHERE {
+SELECT DISTINCT ?id ?name ?plantid ?dcV ?dcCap ?acRgrid ?acLgrid ?acCap ?acRbridge ?acLbridge ?swtFreq ?filterKind ?dllid WHERE {
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?p r:type e:IBRPlant.
  ?p c:IdentifiedObject.name ?name.
- ?p c:IdentifiedObject.mRID ?id.
+ ?p c:IdentifiedObject.mRID ?plantid.
  ?p e:GeneratingPlant.Equipments ?eq.
  ?eq r:type c:PowerElectronicsConnection.
  ?eq c:Equipment.EquipmentContainer ?sys.
- ?eq c:IdentifiedObject.mRID ?pecid.
+ ?eq c:IdentifiedObject.mRID ?id.
  ?p e:IBRPlant.acFilterCapacitance ?acCap.
  ?p e:IBRPlant.acFilterRgrid ?acRgrid.
  ?p e:IBRPlant.acFilterLgrid ?acLgrid.

@@ -10,6 +10,7 @@ import json
 
 from .buslists import build_bus_lists
 from .buslists import get_swingbus_id
+from .dll_config import write_atp_dll_interface
 
 GEN_TYPE_ST = 0
 GEN_TYPE_PV = 1
@@ -26,6 +27,7 @@ PV3_DUM_NODES = 49
 MACHINE_DUM_NODES = 31
 SOLAR_DUM_NODES = 87
 WIND_DUM_NODES = 87
+DLL_DUM_NODES = 0
 DUM_NODE_LIMIT = 9999
 
 DELIM = ':'
@@ -53,6 +55,8 @@ SM_COUNT = 0
 SM_TOTAL = 0.0
 WND_COUNT = 0
 WND_TOTAL = 0.0
+DLL_COUNT = 0
+DLL_TOTAL = 0.0
 NEXT_BUSNUM = 0
 
 def reset_globals(case):
@@ -62,7 +66,7 @@ def reset_globals(case):
     case (dict): one of the CASES
   """
   global LOAD_MULT, DUM_NODES, LOAD_TOTAL, PV_COUNT, PV_TOTAL, SM_COUNT, SM_TOTAL, WND_COUNT, WND_TOTAL
-  global NEXT_BUSNUM, DR_COUNT, DR_TOTAL
+  global NEXT_BUSNUM, DR_COUNT, DR_TOTAL, DLL_COUNT, DLL_TOTAL
   if 'load' in case:
     LOAD_MULT = case['load']
   else:
@@ -77,6 +81,8 @@ def reset_globals(case):
   SM_TOTAL = 0.0
   WND_COUNT = 0
   WND_TOTAL = 0.0
+  DLL_COUNT = 0
+  DLL_TOTAL = 0.0
   NEXT_BUSNUM = 0
 
 def AtpNode(bus, phs):
@@ -412,6 +418,43 @@ solar_template = """$INCLUDE,IBR.PCH,{sbus},{sname} $$
 
 use_dyr_file = True
 
+def AppendDLL (bus, key, d, atp_path, ap):
+  if key not in d['EMTIBRPlantAttributes']['vals']:
+    print ('** PEC ID', key, 'not found in extended plant attributes for DLL interface')
+    return
+  atts = d['EMTIBRPlantAttributes']['vals'][key]
+  dll_key = atts['dllid']
+  if dll_key not in d['EMTIEEECigreDLL']['vals']:
+    print ('** DLL ID', key, 'not found in the DLL interfaces')
+    return
+  dll = d['EMTIEEECigreDLL']['vals'][dll_key]
+  dll_path = dll['uri']
+  nparms = d['EMTCountDLLParameters']['vals'][dll_key]['count']
+  dcV = atts['dcV']
+  dcCap = atts['dcCap']
+  acCap = atts['acCap']
+  acRgrid = atts['acLgrid']
+  acLgrid = atts['acLgrid']
+  acRbridge = atts['acRbridge']
+  acLbridge = atts['acLbridge']
+  swtFreq = atts['swtFreq']
+  filterKind = atts['filterKind']
+  print ('appending a DLL at', bus, 'from', dll_path, 'with', nparms, 'parameters')
+
+  # read in the parameters
+  parms = nparms * [None]
+  for key, ary in d['EMTIEEECigreDLLParameters*']['vals'].items():
+    if key == dll_key:
+      for row in ary:
+        idx = int(row['seq']) - 1
+        if row['kind'] != 'Real64_Val':
+          print ('  DLL parameter', row['seq'], 'has unsupported kind', row['kind'], ', ATP allows only Real64_Val')
+        else:
+          val = float (row['val'])
+          parms[idx] = val
+  write_atp_dll_interface (dll_path, atp_path, parms)
+  return
+
 def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, regc, repc):
   #print ('REEC', reec)
   #print ('REGC', regc)
@@ -515,6 +558,9 @@ def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, r
                                ki = AtpFit6 (8.0),
                                kpg = AtpFit6 (0.1),
                                kig = AtpFit6 (0.05)), file=ap)
+
+def AppendWind (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, regc, repc):
+  AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, regc, repc)
 
 def AppendType14Generator (cn1id, bus, vbase, rmva, Xdp, Ra, icd, mw, mvar, ap, gsu_ang):
   vpu = 1.0
@@ -883,7 +929,7 @@ def create_atp (d, icd, fpath, case):
     case (dict): one of the CASES
   """
   global LOAD_MULT, DUM_NODES, LOAD_TOTAL, PV_COUNT, PV_TOTAL, SM_COUNT, SM_TOTAL, WND_COUNT, WND_TOTAL
-  global DELIM, DR_COUNT, DR_TOTAL
+  global DELIM, DR_COUNT, DR_TOTAL, DLL_COUNT, DLL_TOTAL
 
   reset_globals (case)
 
@@ -1251,8 +1297,6 @@ def create_atp (d, icd, fpath, case):
     sbase = row['ratedS']
     InitializeIBR (key, row, icd)
     wtotal = row['p'] * 1.0 # PV_MULT
-    PV_TOTAL += 1e-6 * wtotal
-    PV_COUNT += 1
     pfang = 0.0
     if row['q'] != 0.0:
       if wtotal != 0.0:
@@ -1266,8 +1310,8 @@ def create_atp (d, icd, fpath, case):
       irmsmx = row['ipu'] * sbase / vbase
     else:
       irmsmx = row['ipu'] * sbase / vbase / SQRT3
-    sBus1 = AtpNode (bus, phases[0]).replace(' ', '#')
-    sName = 'PV{:03d}'.format (PV_COUNT)
+#    sBus1 = AtpNode (bus, phases[0]).replace(' ', '#')
+#    sName = 'PV{:03d}'.format (PV_COUNT)
     sW = AtpFit6 (wtotal)
     sImax = AtpFit6 (irmsmx)
     sUV = AtpFit6 (vtrip)
@@ -1281,12 +1325,19 @@ def create_atp (d, icd, fpath, case):
     print ('C =============================================================================', file=ap)
     print ('C solar {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (row['name'], row['bus'], rmva, mw, mvar), file=ap)
     if key in ibr_dyn:
+      PV_COUNT += 1
+      PV_TOTAL += 1e-6 * wtotal
+      DUM_NODES += SOLAR_DUM_NODES
       AppendSolar (bus, vbase, sbase, ibase=sbase/vbase, ppu=wtotal/sbase, qpu=row['q']/sbase, vpu=1.0, ap=ap, ibr_count=PV_COUNT+WND_COUNT,
                    reec=ibr_dyn[key]['reec'], regc=ibr_dyn[key]['regc'], repc=ibr_dyn[key]['repc'])
+    else:
+      DLL_COUNT += 1
+      DLL_TOTAL += 1e-6 * wtotal
+      DUM_NODES += DLL_DUM_NODES
+      AppendDLL (bus, key, d, ap=ap, atp_path=fpath)
     if mw != 0.0 or mvar != 0.0:
       AppendIBRInitializer (row['cn1id'], bus, vbase, rmva, 0.2, 0.0, icd, mw, mvar, ap, gsu_ang)
     dgens[key] = {'Type':'Solar', 'Source':None, 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
-    DUM_NODES += SOLAR_DUM_NODES
 
   for key, row in d['EMTWind']['vals'].items():
     gsu_ang = GetGSUPhaseShift (d['EMTIBRPlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
@@ -1300,17 +1351,22 @@ def create_atp (d, icd, fpath, case):
     rmva = sbase*1e-6
     mw = wtotal*1e-6
     mvar = row['q']*1e-6
-    WND_TOTAL += 1e-6 * wtotal
-    WND_COUNT += 1
     print ('C =============================================================================', file=ap)
     print ('C wind {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (row['name'], row['bus'], rmva, mw, mvar), file=ap)
     if key in ibr_dyn:
-      AppendSolar (bus, vbase, sbase, ibase=sbase/vbase, ppu=wtotal/sbase, qpu=row['q']/sbase, vpu=1.0, ap=ap, ibr_count=PV_COUNT+WND_COUNT,
+      WND_COUNT += 1
+      WND_TOTAL += 1e-6 * wtotal
+      DUM_NODES += WIND_DUM_NODES
+      AppendWind (bus, vbase, sbase, ibase=sbase/vbase, ppu=wtotal/sbase, qpu=row['q']/sbase, vpu=1.0, ap=ap, ibr_count=PV_COUNT+WND_COUNT,
                    reec=ibr_dyn[key]['reec'], regc=ibr_dyn[key]['regc'], repc=ibr_dyn[key]['repc'])
+    else:
+      DLL_COUNT += 1
+      DLL_TOTAL += 1e-6 * wtotal
+      DUM_NODES += DLL_DUM_NODES
+      AppendDLL (bus, key, d, ap=ap, atp_path=fpath)
     if mw != 0.0 or mvar != 0.0:
       AppendIBRInitializer (row['cn1id'], bus, vbase, rmva, 0.2, 0.0, icd, mw, mvar, ap, gsu_ang)
     dgens[key] = {'Type':'Wind', 'Source':None, 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
-    DUM_NODES += WIND_DUM_NODES
 
   ic_idx = 0
   if len(machines) > 0: # ATP requires these come after all other sources
@@ -1377,9 +1433,9 @@ def create_atp (d, icd, fpath, case):
     json.dump(dgens, jp)
 
   print ('Wrote {:s}_net.atp to {:s}'.format(fname, fpath))
-  print ('  Total Load = {:.2f} MW, PV = {:.2f} MW, Wind = {:.2f} MW, SyncMach={:.2f} MVA, DER={:.2f} MW'.format (LOAD_TOTAL, PV_TOTAL, WND_TOTAL, SM_TOTAL, DR_TOTAL))
+  print ('  Total Load = {:.2f} MW, PV = {:.2f} MW, Wind = {:.2f} MW, SyncMach={:.2f} MVA, DER={:.2f} MW, DLL={:.2f} MW'.format (LOAD_TOTAL, PV_TOTAL, WND_TOTAL, SM_TOTAL, DR_TOTAL, DLL_TOTAL))
   print ('  Wrote {:d} transformers; limit of X bus numbers is 9999'.format(xfbusnum-1))
-  print ('  Wrote {:d} PV, {:d} Wind, {:d} Equiv SyncMach, {:d} DER'.format (PV_COUNT, WND_COUNT, SM_COUNT, DR_COUNT))
+  print ('  Wrote {:d} PV, {:d} Wind, {:d} Equiv SyncMach, {:d} DER, {:d} DLL'.format (PV_COUNT, WND_COUNT, SM_COUNT, DR_COUNT, DLL_COUNT))
   print ('  Estimated {:d} TACS dummy nodes, limit is {:d}'.format (DUM_NODES, DUM_NODE_LIMIT))
 
 
