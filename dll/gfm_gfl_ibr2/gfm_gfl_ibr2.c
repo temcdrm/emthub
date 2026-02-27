@@ -936,13 +936,13 @@ IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
   .DLLInterfaceVersion = { 1, 1, 0, 0},         // Release number of the API 
   // used during code generation 
   .ModelName = "IBR-Average-Model",             // Model name   
-  .ModelVersion = "1.1.0.4",                    // Model version   
+  .ModelVersion = "1.1.0.5",                    // Model version   
   .ModelDescription = "GFD-IBR-Average",        // Model description 
   .GeneralInformation= "General Information",   // General information
   .ModelCreated = "September 21, 2023",         // Model created on  
-  .ModelCreator = "Vishal Verma",               // Model created by     
-  .ModelLastModifiedDate= "August 25, 2025",       // Model last modified on  
-  .ModelLastModifiedBy = "Tom McDermott",       // Model last modified by 
+  .ModelCreator = "EPRI",                       // Model created by     
+  .ModelLastModifiedDate= "February 27, 2026",  // Model last modified on  
+  .ModelLastModifiedBy = "IEEE EMTIOP WG",      // Model last modified by 
   .ModelModifiedComment = "Remove currTime input, edit parameter descriptions, add Pout and Qout\nAdd Vref input signal and more filter parameters\nFix choke units, Q control, AW clamps\nPre-windup protection for Qcl, added Tv", // Model modified comment 
   .ModelModifiedHistory = "Second instance",    // Model modified history 
   .FixedStepBaseSampleTime = 0.00001,           // Time Step sampling time (sec)  

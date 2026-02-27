@@ -331,17 +331,17 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
 };
 
 IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
-  .DLLInterfaceVersion = { 0, 0, 0, 8 },
+  .DLLInterfaceVersion = { 1, 1, 0, 0 },
   .ModelName = "hwpv",
-  .ModelVersion = "0.0.0.8",
+  .ModelVersion = "0.0.0.9",
   .ModelDescription = "hwpv; generalized block diagram models",
   .GeneralInformation = "General Information",
   .ModelCreated = "November 11, 2024",
-  .ModelCreator = "temc",
-  .ModelLastModifiedDate = "November 11, 2024",
-  .ModelLastModifiedBy = "temc",
+  .ModelCreator = "Meltran, Inc",
+  .ModelLastModifiedDate = "February 27, 2026",
+  .ModelLastModifiedBy = "IEEE EMTIOP WG",
   .ModelModifiedComment = "Version 0.0.0.8 for IEEE/Cigre DLL API V2",
-  .ModelModifiedHistory = "History of Changes: V0.0.0.8 Initial model for API V1",
+  .ModelModifiedHistory = "History of Changes: V0.0.0.8 Initial model for API V1, V0.0.0.9 for IEEE P3743",
   .FixedStepBaseSampleTime = 0.002,                   // Time Step sampling time (sec) VARIABLE
 
   // Inputs

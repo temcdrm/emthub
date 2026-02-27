@@ -447,14 +447,14 @@
 
 <FDE751E2-C11C-485C-B254-52B43FE55028> a emt:IEEECigreDLL ;
     emt:IEEECigreDLL.PowerElectronicsConnection <0A82F415-8F69-431F-8CA1-9561F2857828> ;
-    emt:IEEECigreDLL.firmwareInstalled "August 25, 2025"^^cim:DateTime ;
+    emt:IEEECigreDLL.firmwareInstalled "2025-08-25T00:00:00"^^cim:DateTime ;
     emt:IEEECigreDLL.firmwareVersion "1.1.0.4"^^cim:String ;
     emt:IEEECigreDLL.snapshotUri ""^^cim:String ;
     emt:IEEECigreDLL.supportsEMT "true"^^cim:Boolean ;
     emt:IEEECigreDLL.supportsRMS "false"^^cim:Boolean ;
     emt:IEEECigreDLL.timestep "1e-05"^^cim:Seconds ;
     emt:IEEECigreDLL.uri "C:\\src\\emthub\\dll\\bin\\gfm_gfl_ibr2.dll"^^cim:String ;
-    emt:IEEECigreDLL.vendorName "Vishal Verma"^^cim:String ;
+    emt:IEEECigreDLL.vendorName "EPRI, IEEE EMTIOP WG"^^cim:String ;
     cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
     cim:IdentifiedObject.mRID "FDE751E2-C11C-485C-B254-52B43FE55028"^^cim:String ;
     cim:IdentifiedObject.name "1_1"^^cim:String .

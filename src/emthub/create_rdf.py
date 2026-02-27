@@ -9,6 +9,7 @@ import re
 import uuid
 import networkx
 import math
+import datetime
 from rdflib.namespace import XSD
 from otsrdflib import OrderedTurtleSerializer
 
@@ -1066,10 +1067,12 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
       elif mode == 3:
         bRMS = True
       dllVersion = d['ModelVersion']
-      dllDate = d['ModelLastModifiedDate']
+      dllDate = datetime.datetime.strptime (d['ModelLastModifiedDate'], '%B %d, %Y').isoformat()
       snapUri = ''
       dt = d['FixedStepBaseSampleTime']
       vendorName = d['ModelCreator']
+      if vendorName != d['ModelLastModifiedBy']:
+        vendorName = '{:s}, {:s}'.format (vendorName, d['ModelLastModifiedBy'])
       #query for attributes and IEEECigreDLLParameter here via the API
       dllID = GetCIMID('IEEECigreDLL', key, uuids)
       dll = rdflib.URIRef (dllID)
