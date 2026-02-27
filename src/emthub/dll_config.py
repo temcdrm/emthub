@@ -255,7 +255,7 @@ def get_dll_interface (dll_name, bPrint = True):
 # print ('Model_FirstCall', dll.Model_FirstCall)
 # print ('Model_Iterate', dll.Model_Iterate)
 
-def write_atp_dll_interface (dll_fullname, atp_path, parm_vals):
+def write_atp_dll_interface (dll_fullname, atp_path, parm_vals, ap):
   mod_name = 'DLL1' # ATP only allows one instance, and the DLL name must already be compiled and linked into the ATP solver
 
   d = get_dll_interface (dll_fullname, bPrint=False)
@@ -265,6 +265,7 @@ def write_atp_dll_interface (dll_fullname, atp_path, parm_vals):
   mod_fullname = os.path.join (atp_path, mod_name+'.mod')
   print (mod_fullname)
 
+  # write a module that calls the DLL
   fp = open(mod_fullname, 'wt')
   print ('MODEL m{:s}'.format (mod_name), file=fp)
   print ('INPUT', file=fp)
@@ -301,4 +302,29 @@ def write_atp_dll_interface (dll_fullname, atp_path, parm_vals):
   print ('ENDMODEL', file=fp)
   fp.close()
 
+  # add a module call to the ATP netlist
+  print ('/MODELS', file=ap)
+  print ('MODELS', file=ap)
+  print ('INPUT', file=ap)
+  for i in range(d['NumInputPorts']):
+    nm = d['InputPortsInfo'][i]['Name'].upper()
+    if len(nm) > 6:
+      print ('** truncating', nm, 'to', nm[0:5], 'for TACS')
+    print ('  MM{:04d} {{tacs({:s})}}'.format(i+1, nm[0:5]), file=ap)
+  print ('$INCLUDE, {:s}.mod'.format (mod_name), file=ap)
+  print ('USE m{:s} AS mymodel'.format (mod_name), file=ap)
+  print ('INPUT', file=ap)
+  for i in range(d['NumInputPorts']):
+    print ('  {:s}:=MM{:04d}'.format(d['InputPortsInfo'][i]['Name'], i+1), file=ap)
+  print ('DATA', file=ap)
+  for i in range(d['NumParameters']):
+    print ('  {:s}:={:.6f}'.format(d['ParametersInfo'][i]['Name'], parm_vals[i]), file=ap)
+  print ('ENDUSE', file=ap)
+  print ('RECORD', file=ap)
+  for i in range(d['NumOutputPorts']):
+    nm = d['OutputPortsInfo'][i]['Name']
+    if len(nm) > 6:
+      print ('** truncating', nm, 'to', nm[0:5].upper(), 'for ATP output')
+    print ('  mymodel.{:s} AS {:s}'.format(nm, nm[0:5].upper()), file=ap)
+  print ('ENDMODELS', file=ap)
 

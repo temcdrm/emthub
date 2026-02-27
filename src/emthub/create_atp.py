@@ -452,7 +452,7 @@ def AppendDLL (bus, key, d, atp_path, ap):
         else:
           val = float (row['val'])
           parms[idx] = val
-  write_atp_dll_interface (dll_path, atp_path, parms)
+  write_atp_dll_interface (dll_path, atp_path, parms, ap)
   return
 
 def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, regc, repc):

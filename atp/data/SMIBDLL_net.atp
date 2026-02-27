@@ -1,0 +1,286 @@
+C file: SMIBDLL, Load Mult=1.000
+$VINTAGE,0
+C =============================================================================
+C Swing Bus 5 at 5
+/SOURCE
+C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >
+14THEV_A  187794.214    60.000     0.000                        -1.000  9999.000
+14THEV_B  187794.214    60.000  -120.000                        -1.000  9999.000
+14THEV_C  187794.214    60.000  -240.000                        -1.000  9999.000
+/BRANCH
+C < n1 >< n2 ><ref1><ref2>< R  >< X  >< C  >
+51THEV_ASBUS_A            0.05290.5290
+52THEV_BSBUS_B            0.05290.5290
+53THEV_CSBUS_C
+/SWITCH
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
+  SBUS_AB5___A    -1.000  9990.000                    MEASURING                1
+  SBUS_BB5___B    -1.000  9990.000                    MEASURING                1
+  SBUS_CB5___C    -1.000  9990.000                    MEASURING                1
+/BRANCH
+C =============================================================================
+C transformer 2_1_0_1, 2 windings from 2
+C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
+  TRANSFORMER             31.24082.193X1___X3967.5
+          31.240          82.193
+          32.979          82.195
+            9999
+C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
+ 1B2___A                  0.01540.124019.919
+ 2B1___A                  46.E-738.E-60.3464
+  TRANSFORMER X1___X                  X1___Y
+ 1B2___B      
+ 2B1___B      
+  TRANSFORMER X1___X                  X1___Z
+ 1B2___C      
+ 2B1___C      
+C =============================================================================
+C transformer 4_3_0_1, 2 windings from 4
+C TRANSFORMER             <Imag><Fmag><BusT><Rmag>
+  TRANSFORMER             4.6860547.95X2___X176.E3
+          4.6860          547.95
+          19.686          550.76
+            9999
+C < n 1>< n 2><ref1><ref2><   R><   X><  KV>
+ 1B4___A                  2.204217.633132.79
+ 2B3___A                  0.04960.396719.919
+  TRANSFORMER X2___X                  X2___Y
+ 1B4___B      
+ 2B3___B      
+  TRANSFORMER X2___X                  X2___Z
+ 1B4___C      
+ 2B3___C      
+C =============================================================================
+C line 2_3_1 from 2 to 3
+C   per-instance sequence parameters for 3.83km
+$VINTAGE,1
+C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >
+1 B2___AB3___A                1.190250e-01    4.761000e-01    1.782874e+01
+2 B2___BB3___B                0.000000e+00    0.000000e+00    0.000000e+00
+                              1.190250e-01    4.761000e-01    1.782874e+01
+3 B2___CB3___C                0.000000e+00    0.000000e+00    0.000000e+00
+                              0.000000e+00    0.000000e+00    0.000000e+00
+                              1.190250e-01    4.761000e-01    1.782874e+01
+$VINTAGE,0
+C =============================================================================
+C line 5_10_1 from 5 to 10
+C   per-instance sequence parameters for 405.22km
+$VINTAGE,1
+C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
+-1B5___AB10__A            1.041772e-018.944272e+021.877905e-034.052155e+02 2 0 0
+-2B5___BB10__B            5.208858e-024.000000e+021.399708e-034.052155e+02 2 0 0
+-3B5___CB10__C
+$VINTAGE,0
+C =============================================================================
+C line 5_11_1 from 5 to 11
+C   per-instance sequence parameters for 506.77km
+$VINTAGE,1
+C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
+-1B5___AB11__A            1.041772e-018.944272e+022.348558e-035.067732e+02 2 0 0
+-2B5___BB11__B            5.208858e-024.000000e+021.750512e-035.067732e+02 2 0 0
+-3B5___CB11__C
+$VINTAGE,0
+C =============================================================================
+C line 5_12_1 from 5 to 12
+C   per-instance sequence parameters for 676.07km
+$VINTAGE,1
+C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
+-1B5___AB12__A            1.042241e-018.944272e+023.133137e-036.760700e+02 2 0 0
+-2B5___BB12__B            5.211206e-024.000000e+022.335302e-036.760700e+02 2 0 0
+-3B5___CB12__C
+$VINTAGE,0
+C =============================================================================
+C line 5_6_1 from 5 to 6
+C   per-instance sequence parameters for 100.54km
+$VINTAGE,1
+C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
+-1B5___AB6___A            1.041772e-018.944272e+024.659465e-041.005422e+02 2 0 0
+-2B5___BB6___B            5.208858e-024.000000e+023.472960e-041.005422e+02 2 0 0
+-3B5___CB6___C
+$VINTAGE,0
+C =============================================================================
+C line 5_7_1 from 5 to 7
+C   per-instance sequence parameters for 202.10km
+$VINTAGE,1
+C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
+-1B5___AB7___A            1.041772e-018.944272e+029.365994e-042.021000e+02 2 0 0
+-2B5___BB7___B            5.208858e-024.000000e+026.981000e-042.021000e+02 2 0 0
+-3B5___CB7___C
+$VINTAGE,0
+C =============================================================================
+C line 5_8_1 from 5 to 8
+C   per-instance sequence parameters for 252.88km
+$VINTAGE,1
+C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
+-1B5___AB8___A            1.041772e-018.944272e+021.171926e-032.528788e+02 2 0 0
+-2B5___BB8___B            5.208858e-024.000000e+028.735020e-042.528788e+02 2 0 0
+-3B5___CB8___C
+$VINTAGE,0
+C =============================================================================
+C line 5_9_1 from 5 to 9
+C   per-instance sequence parameters for 337.48km
+$VINTAGE,1
+C < n 1>< n 2>            <   R/LEN  ><     Z    ><   TAU    ><   LEN    > 2 0 0
+-1B5___AB9___A            1.040831e-018.944272e+021.563980e-033.374764e+02 2 0 0
+-2B5___BB9___B            5.204156e-024.000000e+021.165722e-033.374764e+02 2 0 0
+-3B5___CB9___C
+$VINTAGE,0
+/SWITCH
+C =============================================================================
+C Breaker 4_10_1 from 4 to 10 numbered 0 for timing
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
+  B4___AB10__A_TCLOSE0___TOPEN0___                                             1
+  B4___BB10__B_TCLOSE0___TOPEN0___                                             1
+  B4___CB10__C_TCLOSE0___TOPEN0___                                             1
+C =============================================================================
+C Breaker 4_11_1 from 4 to 11 numbered 1 for timing
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
+  B4___AB11__A_TCLOSE1___TOPEN1___                                             1
+  B4___BB11__B_TCLOSE1___TOPEN1___                                             1
+  B4___CB11__C_TCLOSE1___TOPEN1___                                             1
+C =============================================================================
+C Breaker 4_12_1 from 4 to 12 numbered 2 for timing
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
+  B4___AB12__A_TCLOSE2___TOPEN2___                                             1
+  B4___BB12__B_TCLOSE2___TOPEN2___                                             1
+  B4___CB12__C_TCLOSE2___TOPEN2___                                             1
+C =============================================================================
+C Breaker 4_6_1 from 4 to 6 numbered 3 for timing
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
+  B4___AB6___A_TCLOSE3___TOPEN3___                                             1
+  B4___BB6___B_TCLOSE3___TOPEN3___                                             1
+  B4___CB6___C_TCLOSE3___TOPEN3___                                             1
+C =============================================================================
+C Breaker 4_7_1 from 4 to 7 numbered 4 for timing
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
+  B4___AB7___A_TCLOSE4___TOPEN4___                                             1
+  B4___BB7___B_TCLOSE4___TOPEN4___                                             1
+  B4___CB7___C_TCLOSE4___TOPEN4___                                             1
+C =============================================================================
+C Breaker 4_8_1 from 4 to 8 numbered 5 for timing
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
+  B4___AB8___A_TCLOSE5___TOPEN5___                                             1
+  B4___BB8___B_TCLOSE5___TOPEN5___                                             1
+  B4___CB8___C_TCLOSE5___TOPEN5___                                             1
+C =============================================================================
+C Breaker 4_9_1 from 4 to 9 numbered 6 for timing
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
+  B4___AB9___A_TCLOSE6___TOPEN6___                                             1
+  B4___BB9___B_TCLOSE6___TOPEN6___                                             1
+  B4___CB9___C_TCLOSE6___TOPEN6___                                             1
+/BRANCH
+C =============================================================================
+C solar 1_1 at 1 is 100.000 MVA producing 0.000 MW and 0.000 Mvar
+/MODELS
+MODELS
+INPUT
+  MM0001 {tacs(VTA)}
+  MM0002 {tacs(VTB)}
+  MM0003 {tacs(VTC)}
+  MM0004 {tacs(I1A)}
+  MM0005 {tacs(I1B)}
+  MM0006 {tacs(I1C)}
+  MM0007 {tacs(I2A)}
+  MM0008 {tacs(I2B)}
+  MM0009 {tacs(I2C)}
+  MM0010 {tacs(IDC)}
+  MM0011 {tacs(VDCMP)}
+  MM0012 {tacs(PREF)}
+  MM0013 {tacs(QREF)}
+  MM0014 {tacs(VDC_M)}
+  MM0015 {tacs(VREF)}
+  $INCLUDE, DLL1.mod
+USE mDLL1 AS mymodel
+INPUT
+  Vta:=MM0001
+  Vtb:=MM0002
+  Vtc:=MM0003
+  I1a:=MM0004
+  I1b:=MM0005
+  I1c:=MM0006
+  I2a:=MM0007
+  I2b:=MM0008
+  I2c:=MM0009
+  Idc:=MM0010
+  VdcMPPT:=MM0011
+  Pref:=MM0012
+  Qref:=MM0013
+  Vdc_meas:=MM0014
+  Vref:=MM0015
+DATA
+  VLLbase:=600.000000
+  Sbase:=1000000.000000
+  Tflt_v:=0.000010
+  Vflt_flag:=1.000000
+  Tflt_i:=0.000010
+  Iflt_flag:=1.000000
+  Cur1_flag:=1.000000
+  k_PLL:=1.000000
+  KpPLL:=25.400000
+  KiPLL:=324.000000
+  Lim_PLL:=70.000000
+  w_nom:=376.991118
+  tstart_up:=1.900000
+  Vdc_nom:=1200.000000
+  VI_flag:=0.000000
+  MPPT_flag:=0.000000
+  b_Vdc:=0.560000
+  Kp_Vdc:=5.180000
+  Ki_Vdc:=52.910000
+  T_frq:=0.100000
+  fdbd1:=-0.000600
+  fdbd2:=0.000600
+  Ddn:=20.000000
+  Dup:=0.000000
+  Tp_droop:=0.001000
+  Vdc_flag:=0.000000
+  f_flag:=0.000000
+  Id_frz_flag:=0.000000
+  Ilim_pu:=1.100000
+  Kv_p:=0.000000
+  Kv_i:=100.000000
+  Qmin:=-0.400000
+  Qmax:=0.400000
+  Kq_p:=0.000000
+  Kq_i:=40.000000
+  dbhv_frt:=-0.100000
+  dblv_frt:=0.100000
+  Kqv1:=2.000000
+  Qctl_CL_flag:=1.000000
+  Vt_flag:=1.000000
+  dbl_2:=-0.100000
+  dbh_2:=0.100000
+  Kqv2:=2.000000
+  V2_flag:=1.000000
+  Ipramp_up:=1.000000
+  Kcc_p:=0.323250
+  Kcc_i:=324.000000
+  Lim_upCC:=99999.000000
+  Lim_lowCC:=-99999.000000
+  Tau_Vff:=0.000100
+  Vff_flag:=0.000000
+  IR_flag:=1.000000
+  Tr:=0.001000
+  Lchoke:=0.000100
+  Rchoke:=0.000750
+  Cfilt:=0.001500
+  Rdamp:=0.016670
+  Tv:=0.010000
+ENDUSE
+RECORD
+  mymodel.m_a AS M_A
+  mymodel.m_b AS M_B
+  mymodel.m_c AS M_C
+  mymodel.FreqPLL AS FREQP
+  mymodel.Id1 AS ID1
+  mymodel.Iq1 AS IQ1
+  mymodel.Id2 AS ID2
+  mymodel.Iq2 AS IQ2
+  mymodel.Vtd1 AS VTD1
+  mymodel.Vtq1 AS VTQ1
+  mymodel.Vtd2 AS VTD2
+  mymodel.Vtq2 AS VTQ2
+  mymodel.FRT_Flag AS FRT_F
+  mymodel.Pout AS POUT
+  mymodel.Qout AS QOUT
+ENDMODELS
