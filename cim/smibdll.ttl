@@ -282,7 +282,7 @@
     cim:PowerElectronicsConnection.maxIFault "1.2"^^cim:PU ;
     cim:PowerElectronicsConnection.maxQ "50000000.0"^^cim:ReactivePower ;
     cim:PowerElectronicsConnection.minQ "-50000000.0"^^cim:ReactivePower ;
-    cim:PowerElectronicsConnection.p "100000000.0"^^cim:ActivePower ;
+    cim:PowerElectronicsConnection.p "0.0"^^cim:ActivePower ;
     cim:PowerElectronicsConnection.q "0.0"^^cim:ReactivePower ;
     cim:PowerElectronicsConnection.ratedS "100000000.0"^^cim:ApparentPower ;
     cim:PowerElectronicsConnection.ratedU "600.0"^^cim:Voltage .
@@ -447,8 +447,8 @@
 
 <FDE751E2-C11C-485C-B254-52B43FE55028> a emt:IEEECigreDLL ;
     emt:IEEECigreDLL.PowerElectronicsConnection <0A82F415-8F69-431F-8CA1-9561F2857828> ;
-    emt:IEEECigreDLL.firmwareInstalled "2025-08-25T00:00:00"^^cim:DateTime ;
-    emt:IEEECigreDLL.firmwareVersion "1.1.0.4"^^cim:String ;
+    emt:IEEECigreDLL.firmwareInstalled "2026-02-27T00:00:00"^^cim:DateTime ;
+    emt:IEEECigreDLL.firmwareVersion "1.1.0.5"^^cim:String ;
     emt:IEEECigreDLL.snapshotUri ""^^cim:String ;
     emt:IEEECigreDLL.supportsEMT "true"^^cim:Boolean ;
     emt:IEEECigreDLL.supportsRMS "false"^^cim:Boolean ;

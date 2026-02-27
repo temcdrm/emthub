@@ -59,8 +59,7 @@ CASES = [
   {'id': '62CB0930-211D-4762-B5C1-27BF73EAC7C4',
    'name': 'SMIBDLL', 'xmlfile':'smibdll.xml', 'mridfile':'raw/smibdll_mrids.dat', 'ttlfile': 'smibdll.ttl',
    'wind_units': [], 'solar_units': ['1_1'], 'hydro_units': [], 'nuclear_units': [],
-   'bus_ic': None, 'gen_ic': None, 'br_ic': None, 'ttl_ic': None,
-   'swingbus': '5', 'load': 1.0, 'UseXfmrSaturation': True, 'dyrfile': None}
+   'swingbus': '5', 'load': 1.0, 'UseXfmrSaturation': True}
 ]
 
 

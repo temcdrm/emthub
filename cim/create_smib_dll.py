@@ -36,7 +36,7 @@ tables = {
     'col_names': ['Bus', 'ID', 'P', 'Q', 'QT', 'QB', 'BaseMVA', 'Status'], 
     'col_types': ['Integer', 'String', 'Float', 'Float', 'Float', 'Float', 'Float', 'Integer'], 
     'data': [
-      [1, '1', 100.0, 0.0, 50.0, -50.0, 100.0, 1]
+      [1, '1', 0.0, 0.0, 50.0, -50.0, 100.0, 1]
       ]}, 
   'BRANCH': {
     'col_names': ['Bus1', 'Bus2', 'Circuit', 'R', 'X', 'B', 'RATE1', 'Status'], 

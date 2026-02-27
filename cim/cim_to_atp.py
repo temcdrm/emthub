@@ -7,7 +7,7 @@ import cim_examples
 import emthub.api as emthub
 
 if __name__ == '__main__':
-  idx = 0
+  idx = 4
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
   case = cim_examples.CASES[idx]
@@ -17,7 +17,7 @@ if __name__ == '__main__':
   g.parse (fname)
   print ('read', len(g), 'statements from', fname)
   d = emthub.load_emt_dict (g, case['id'], bTiming=True)
-  for key in ['EMTBaseVoltage']: #, 'EMTIBRPlant*', 'EMTRotatingMachinePlant*']:
+  for key in ['EMTBaseVoltage']: # , 'EMTIBRPlant*', 'EMTIBRPlantAttributes', 'EMTIEEECigreDLL', 'EMTCountDLLParameters', 'EMTIEEECigreDLLParameters*']:
     emthub.list_dict_table (d, key)
 
   icd = None

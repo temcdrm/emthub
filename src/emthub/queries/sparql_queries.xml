@@ -1265,4 +1265,103 @@ SELECT ?name ?a1 ?a2 ?a3 ?a4 ?a5 ?a6 ?a7 ?a8 ?inputSignalType ?kd ?ks ?t1 ?t2
 ]]>
 </value>
 </query>
+<query>
+<id>EMTIEEECigreDLLParameters*</id>
+<keyfld>id*</keyfld>
+<description>.</description>
+<value>
+<![CDATA[
+SELECT DISTINCT ?id ?seq ?kind ?val WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?d c:IdentifiedObject.mRID ?id.
+ ?p e:IEEECigreDLLParameter.IEEECigreDLL ?d.
+ ?p e:IEEECigreDLLParameter.sequenceNumber ?seq.
+ ?p e:IEEECigreDLLParameter.value ?val.
+ {?p e:IEEECigreDLLParameter.parameterKind ?rawkind.
+  bind(strafter(str(?rawkind),"Kind.") as ?kind)}
+} ORDER by ?id ?seq
+]]>
+</value>
+</query>
+<query>
+<id>EMTCountDLLParameters</id>
+<keyfld>id</keyfld>
+<description>.</description>
+<value>
+<![CDATA[
+SELECT ?id (count(?p) as ?count) WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?d c:IdentifiedObject.mRID ?id.
+ ?p e:IEEECigreDLLParameter.IEEECigreDLL ?d.
+}
+GROUP BY ?id
+ORDER BY ?id
+]]>
+</value>
+</query>
+<query>
+<id>EMTIEEECigreDLL</id>
+<keyfld>id</keyfld>
+<description>.</description>
+<value>
+<![CDATA[
+SELECT DISTINCT ?id ?name ?pecid ?datetime ?version ?emt ?rms ?dt ?uri ?snapshotUri ?vendor WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?eq c:IdentifiedObject.mRID ?pecid.
+ ?d c:IdentifiedObject.mRID ?id.
+ ?d c:IdentifiedObject.name ?name.
+ ?d e:IEEECigreDLL.firmwareInstalled ?datetime.
+ ?d e:IEEECigreDLL.firmwareVersion ?version.
+ ?d e:IEEECigreDLL.supportsEMT ?emt.
+ ?d e:IEEECigreDLL.supportsRMS ?rms.
+ ?d e:IEEECigreDLL.timestep ?dt.
+ ?d e:IEEECigreDLL.uri ?uri.
+ ?d e:IEEECigreDLL.snapshotUri ?snapshotUri.
+ ?d e:IEEECigreDLL.vendorName ?vendor.
+} ORDER by ?id
+]]>
+</value>
+</query>
+<query>
+<id>EMTIBRPlantAttributes</id>
+<keyfld>id</keyfld>
+<description>.</description>
+<value>
+<![CDATA[
+SELECT DISTINCT ?id ?name ?pecid ?dcV ?dcCap ?acRgrid ?acLgrid ?acCap ?acRbridge ?acLbridge ?swtFreq ?filterKind ?dllid WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?p r:type e:IBRPlant.
+ ?p c:IdentifiedObject.name ?name.
+ ?p c:IdentifiedObject.mRID ?id.
+ ?p e:GeneratingPlant.Equipments ?eq.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?pecid.
+ ?p e:IBRPlant.acFilterCapacitance ?acCap.
+ ?p e:IBRPlant.acFilterRgrid ?acRgrid.
+ ?p e:IBRPlant.acFilterLgrid ?acLgrid.
+ ?p e:IBRPlant.acFilterRbridge ?acRbridge.
+ ?p e:IBRPlant.acFilterLbridge ?acLbridge.
+ ?p e:IBRPlant.dcLinkCapacitance ?dcCap.
+ ?p e:IBRPlant.dcLinkVoltage ?dcV.
+ ?p e:IBRPlant.switchingFrequency ?swtFreq.
+ {?p e:IBRPlant.acFilterKind ?rawkind.
+  bind(strafter(str(?rawkind),"Kind.") as ?filterKind)}
+ OPTIONAL {
+   ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+   ?d c:IdentifiedObject.mRID ?dllid
+   }
+} ORDER by ?id
+]]>
+</value>
+</query>
 </queries>

@@ -34,6 +34,8 @@ PREFIX e:  <http://opensource.ieee.org/emtiop#>
 # IEEE118	1783D2A8-1204-4781-A0B4-7A73A2FA6038
 # WECC240	2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3
 # XfmrSat       93EA6BF1-A569-4190-9590-98A62780489E
+# SMIBDLL       62CB0930-211D-4762-B5C1-27BF73EAC7C4
+
 SELECT ?name ?id WHERE {
  ?s r:type c:EquipmentContainer.
  ?s c:IdentifiedObject.name ?name.
@@ -913,14 +915,97 @@ SELECT DISTINCT ?id ?name ?eqid ?eqtype WHERE {
 
 # EMTIBRPlant
 SELECT DISTINCT ?id ?name ?eqid ?eqtype WHERE {
+VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?sysid {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
  ?p r:type e:IBRPlant.
  ?p c:IdentifiedObject.name ?name.
  ?p c:IdentifiedObject.mRID ?id.
  ?p e:GeneratingPlant.Equipments ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
  ?eq c:IdentifiedObject.mRID ?eqid.
  {?eq a ?rawtype.
   bind(strafter(str(?rawtype),"#") as ?eqtype)}
 } ORDER by ?id ?eqtype ?eqid
+
+# EMTIBRPlantAttributes
+SELECT DISTINCT ?id ?name ?pecid ?dcV ?dcCap ?acRgrid ?acLgrid ?acCap ?acRbridge ?acLbridge ?swtFreq ?filterKind ?dllid WHERE {
+#VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+VALUES ?sysid {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?p r:type e:IBRPlant.
+ ?p c:IdentifiedObject.name ?name.
+ ?p c:IdentifiedObject.mRID ?id.
+ ?p e:GeneratingPlant.Equipments ?eq.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?pecid.
+ ?p e:IBRPlant.acFilterCapacitance ?acCap.
+ ?p e:IBRPlant.acFilterRgrid ?acRgrid.
+ ?p e:IBRPlant.acFilterLgrid ?acLgrid.
+ ?p e:IBRPlant.acFilterRbridge ?acRbridge.
+ ?p e:IBRPlant.acFilterLbridge ?acLbridge.
+ ?p e:IBRPlant.dcLinkCapacitance ?dcCap.
+ ?p e:IBRPlant.dcLinkVoltage ?dcV.
+ ?p e:IBRPlant.switchingFrequency ?swtFreq.
+ {?p e:IBRPlant.acFilterKind ?rawkind.
+  bind(strafter(str(?rawkind),"Kind.") as ?filterKind)}
+ OPTIONAL {
+   ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+   ?d c:IdentifiedObject.mRID ?dllid
+   }
+} ORDER by ?id
+
+# EMTIEEECigreDLL
+SELECT DISTINCT ?id ?name ?pecid ?datetime ?version ?emt ?rms ?dt ?uri ?snapshotUri ?vendor WHERE {
+#VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+VALUES ?sysid {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?eq c:IdentifiedObject.mRID ?pecid.
+ ?d c:IdentifiedObject.mRID ?id.
+ ?d c:IdentifiedObject.name ?name.
+ ?d e:IEEECigreDLL.firmwareInstalled ?datetime.
+ ?d e:IEEECigreDLL.firmwareVersion ?version.
+ ?d e:IEEECigreDLL.supportsEMT ?emt.
+ ?d e:IEEECigreDLL.supportsRMS ?rms.
+ ?d e:IEEECigreDLL.timestep ?dt.
+ ?d e:IEEECigreDLL.uri ?uri.
+ ?d e:IEEECigreDLL.snapshotUri ?snapshotUri.
+ ?d e:IEEECigreDLL.vendorName ?vendor.
+} ORDER by ?id
+
+# EMTIEEECigreDLLParameters
+SELECT DISTINCT ?id ?seq ?kind ?val WHERE {
+#VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+VALUES ?sysid {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?d c:IdentifiedObject.mRID ?id.
+ ?p e:IEEECigreDLLParameter.IEEECigreDLL ?d.
+ ?p e:IEEECigreDLLParameter.sequenceNumber ?seq.
+ ?p e:IEEECigreDLLParameter.value ?val.
+ {?p e:IEEECigreDLLParameter.parameterKind ?rawkind.
+  bind(strafter(str(?rawkind),"Kind.") as ?kind)}
+} ORDER by ?id ?seq
+
+# EMTCountDLLParameters
+SELECT ?id (count(?p) as ?count) WHERE {
+#VALUES ?sysid {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+VALUES ?sysid {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?d c:IdentifiedObject.mRID ?id.
+ ?p e:IEEECigreDLLParameter.IEEECigreDLL ?d.
+}
+GROUP BY ?id
+ORDER BY ?id
 
 # EMTCheckGSUSizes
 SELECT DISTINCT ?name ?type ?bus ?genU ?xfU ?vgroup ?genS ?xfS WHERE {
