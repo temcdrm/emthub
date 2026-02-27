@@ -19,6 +19,7 @@ from .cim_support import summarize_psse_dyrfile
 from .cim_support import match_dyr_generators
 from .cim_sparql import adhoc_sparql_dict
 from .dll_config import get_dll_interface
+from .dll_config import get_cim_parameter_kind
 
 CIM_NS = 'http://www.ucaiug.org/ns#'
 EMT_NS = 'http://opensource.ieee.org/emtiop#'
@@ -1087,6 +1088,19 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
       g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.vendorName'), rdflib.Literal (vendorName, datatype=CIM.String)))
 
       # create the DLL parameters with default values
+      # print (d['ParametersInfo'])
+      seq = 1
+      for parm in d['ParametersInfo']:
+        kind = get_cim_parameter_kind (parm['DataType'])
+        val = str(parm['DefaultValue'])
+        #print (seq, kind, val)
+        pt = rdflib.URIRef (dllID+'_{:d}'.format(seq))
+        g.add ((pt, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameter')))
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameter.IEEECigreDLL'), dll))
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameter.sequenceNumber'), rdflib.Literal(seq, datatype=CIM.Integer)))
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameter.value'), rdflib.Literal(val, datatype=CIM.String)))
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameter.parameterKind'), rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameterKind.{:s}'.format(kind))))
+        seq += 1
     else:
       print ('can not find the dll', dllname)
 
@@ -1144,6 +1158,7 @@ def write_cim_rdf (case, g, CIM, EMT):
     EMT.IBRPlant,
     EMT.RotatingMachinePlant,
     EMT.IEEECigreDLL,
+    EMT.IEEECigreDLLParameter,
     CIM.OperationalLimitType,
     CIM.OperationalLimitSet,
     CIM.ApparentPowerLimit,

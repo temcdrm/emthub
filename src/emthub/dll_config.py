@@ -18,6 +18,29 @@ class DLLDataType(IntEnum):
   real64_T   = 9
   c_string_T = 10
 
+def get_cim_parameter_kind (idx):
+  if idx == 1:
+    return 'Char_Val'
+  if idx == 2:
+    return 'Int8_Val'
+  if idx == 3:
+    return 'Uint8_Val'
+  if idx == 4:
+    return 'Int16_Val'
+  if idx == 5:
+    return 'Uint16_Val'
+  if idx == 6:
+    return 'Int32_Val'
+  if idx == 7:
+    return 'Uint32_Val'
+  if idx == 8:
+    return 'Real32_Val'
+  if idx == 9:
+    return 'Real64_Val'
+  if idx == 10:
+    return 'Char_Ptr'
+  
+
 class DLLReturnValue(IntEnum):
   OK = 0
   Message = 1

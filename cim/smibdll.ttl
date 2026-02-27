@@ -459,6 +459,354 @@
     cim:IdentifiedObject.mRID "FDE751E2-C11C-485C-B254-52B43FE55028"^^cim:String ;
     cim:IdentifiedObject.name "1_1"^^cim:String .
 
+<FDE751E2-C11C-485C-B254-52B43FE55028_1> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "1"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "600.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_10> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "10"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "324.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_11> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "11"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "70.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_12> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "12"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "376.99111842"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_13> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "13"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "1.9"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_14> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "14"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "1200.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_15> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "15"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_16> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "16"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_17> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "17"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.56"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_18> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "18"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "5.18"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_19> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "19"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "52.91"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_2> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "2"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "1000000.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_20> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "20"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.1"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_21> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "21"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "-0.0006"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_22> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "22"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.0006"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_23> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "23"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "20.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_24> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "24"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_25> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "25"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.001"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_26> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "26"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_27> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "27"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_28> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "28"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_29> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "29"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "1.1"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_3> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "3"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "1e-05"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_30> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "30"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_31> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "31"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "100.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_32> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "32"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "-0.4"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_33> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "33"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.4"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_34> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "34"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_35> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "35"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "40.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_36> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "36"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "-0.1"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_37> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "37"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.1"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_38> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "38"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "2.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_39> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "39"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "1.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_4> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "4"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "1.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_40> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "40"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "1.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_41> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "41"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "-0.1"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_42> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "42"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.1"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_43> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "43"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "2.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_44> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "44"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "1.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_45> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "45"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "1.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_46> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "46"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.32325"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_47> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "47"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "324.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_48> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "48"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "99999.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_49> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "49"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "-99999.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_5> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "5"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "1e-05"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_50> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "50"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.0001"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_51> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "51"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_52> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "52"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "1.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_53> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "53"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.001"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_54> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "54"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.0001"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_55> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "55"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.00075"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_56> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "56"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.0015"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_57> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "57"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.01667"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_58> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "58"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "0.01"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_6> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "6"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "1.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_7> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "7"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "1.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_8> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "8"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "1.0"^^cim:String .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_9> a emt:IEEECigreDLLParameter ;
+    emt:IEEECigreDLLParameter.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLParameter.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLParameter.sequenceNumber "9"^^cim:Integer ;
+    emt:IEEECigreDLLParameter.value "25.4"^^cim:String .
+
 <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> a cim:OperationalLimitType ;
     cim:IdentifiedObject.mRID "77ABD436-BAAC-4F66-AED3-CC81D3DBFE69"^^cim:String ;
     cim:IdentifiedObject.name "Normal"^^cim:String ;
