@@ -18,6 +18,7 @@ from .cim_support import load_dynamics_mapping
 from .cim_support import summarize_psse_dyrfile
 from .cim_support import match_dyr_generators
 from .cim_sparql import adhoc_sparql_dict
+from .dll_config import get_dll_interface
 
 CIM_NS = 'http://www.ucaiug.org/ns#'
 EMT_NS = 'http://opensource.ieee.org/emtiop#'
@@ -1053,13 +1054,21 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
     dllname = os.path.abspath(plant['dll_path'])
     if os.path.exists(dllname):
       print ('create DLL interface for', dllname)
+      d = get_dll_interface (dllname, bPrint=False)
+      #print (d)
       bRMS = False
       bEMT = True
-      dllVersion = '0'
-      dllDate = '0'
+      mode = d['EMT_RMS_Mode']
+      if mode == 2:
+        bRMS = True
+        bEMT = False
+      elif mode == 3:
+        bRMS = True
+      dllVersion = d['ModelVersion']
+      dllDate = d['ModelLastModifiedDate']
       snapUri = ''
-      dt = 10.0e-6
-      vendorName = 'EPRI'
+      dt = d['FixedStepBaseSampleTime']
+      vendorName = d['ModelCreator']
       #query for attributes and IEEECigreDLLParameter here via the API
       dllID = GetCIMID('IEEECigreDLL', key, uuids)
       dll = rdflib.URIRef (dllID)
@@ -1076,9 +1085,10 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
       g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.timestep'), rdflib.Literal (dt, datatype=CIM.Seconds)))
       g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.uri'), rdflib.Literal (dllname, datatype=CIM.String)))
       g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.vendorName'), rdflib.Literal (vendorName, datatype=CIM.String)))
+
+      # create the DLL parameters with default values
     else:
       print ('can not find the dll', dllname)
-
 
   fuid = open(fuidname, 'w')
   for key, val in uuids.items():

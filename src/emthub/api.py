@@ -7,9 +7,10 @@ Example:
     To show print CIM summaries interface::
 
         import emthub.api as emthub
-        emthub.print_cim_summaries(['XfmrSat','IEEE39','IEEE118','WECC240'])
+        emthub.print_cim_summaries(['XfmrSat','IEEE39','IEEE118','WECC240','SMIBDLL'])
 
 Public Functions:
+    :get_dll_interface: Returns a Python dictionary of the interface to an IEEE/Cigre DLL.
     :create_cim_rdf: Create RDF in TTL/XML formats from results of load_psse_rawfile
     :write_cim_rdf: Serialize the (possibly modified) return value from create_cim_rdf
     :add_ibr_plant: Add an IBR plant with attributes and a DLL interface
@@ -38,6 +39,8 @@ Public Functions:
 """
 
 from __future__ import absolute_import
+
+from .dll_config import get_dll_interface
 
 from .create_rdf import add_ibr_plant
 from .create_rdf import create_cim_rdf
