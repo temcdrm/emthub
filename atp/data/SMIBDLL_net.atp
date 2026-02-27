@@ -171,6 +171,8 @@ C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
 /BRANCH
 C =============================================================================
 C solar 1_1 at 1 is 100.000 MVA producing 0.000 MW and 0.000 Mvar
+C DLL interface to gfm_gfl_ibr2.dll follows
+C
 /MODELS
 MODELS
 INPUT
@@ -189,7 +191,7 @@ INPUT
   MM0013 {tacs(QREF)}
   MM0014 {tacs(VDC_M)}
   MM0015 {tacs(VREF)}
-  $INCLUDE, DLL1.mod
+$INCLUDE, DLL1.mod
 USE mDLL1 AS mymodel
 INPUT
   Vta:=MM0001
@@ -284,3 +286,41 @@ RECORD
   mymodel.Pout AS POUT
   mymodel.Qout AS QOUT
 ENDMODELS
+/BRANCH
+C < n1 >< n2 ><ref1><ref2>< R  >< X  >< C  >
+  B1___GB1___D            0.000010.E-7
+  B1___HB1___E            0.000010.E-7
+  B1___IB1___F            0.000010.E-7
+  B1___JB1___G            75.E-50.0377
+  B1___KB1___H            75.E-50.0377
+  B1___LB1___I            75.E-50.0377
+  B1___GB1___Z                        1500.0
+  B1___HB1___Z                        1500.0
+  B1___IB1___Z                        1500.0
+/SWITCH
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
+  B1___DB1___A    -1.000  9990.000                    MEASURING                1
+  B1___EB1___B    -1.000  9990.000                    MEASURING                1
+  B1___FB1___C    -1.000  9990.000                    MEASURING                1
+  B1___MB1___J    -1.000  9990.000                    MEASURING                1
+  B1___NB1___K    -1.000  9990.000                    MEASURING                1
+  B1___OB1___L    -1.000  9990.000                    MEASURING                1
+/TACS
+TACS HYBRID
+90B1___A                                                                    1.E3
+90B1___B                                                                    1.E3
+90B1___C                                                                    1.E3
+91B1___M                                                                    1.E3
+91B1___N                                                                    1.E3
+91B1___O                                                                    1.E3
+91B1___D                                                                    1.E3
+91B1___E                                                                    1.E3
+91B1___F                                                                    1.E3
+98B1___M  = 600.00 * M_M
+98B1___N  = 600.00 * M_N
+98B1___O  = 600.00 * M_O
+/SOURCE
+C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >
+60B1___M 0                                                                  1.E3
+60B1___N 0                                                                  1.E3
+60B1___O 0                                                                  1.E3

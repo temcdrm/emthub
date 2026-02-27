@@ -431,17 +431,22 @@ def AppendDLL (bus, key, d, atp_path, ap):
   dll_path = dll['uri']
   nparms = d['EMTCountDLLParameters']['vals'][dll_key]['count']
   dcV = atts['dcV']
-  dcCap = atts['dcCap']
-  acCap = atts['acCap']
+  dcCap = atts['dcCap'] * 1.0e6
+  acCap = atts['acCap'] * 1.0e6
   acRgrid = atts['acLgrid']
-  acLgrid = atts['acLgrid']
+  acXgrid = atts['acLgrid'] * OMEGA
+  if acXgrid < 1.0e-6:
+    acXgrid = 1.0e-6
   acRbridge = atts['acRbridge']
-  acLbridge = atts['acLbridge']
+  acXbridge = atts['acLbridge'] * OMEGA
+  if acXbridge < 1.0e-6:
+    acXbridge = 1.0e-6
   swtFreq = atts['swtFreq']
   filterKind = atts['filterKind']
+  print ('C DLL interface to {:s} follows\nC'.format(os.path.basename (dll_path)), file=ap)
   print ('appending a DLL at', bus, 'from', dll_path, 'with', nparms, 'parameters')
 
-  # read in the parameters
+  # read in the parameters and write ATP MODELS
   parms = nparms * [None]
   for key, ary in d['EMTIEEECigreDLLParameters*']['vals'].items():
     if key == dll_key:
@@ -453,6 +458,49 @@ def AppendDLL (bus, key, d, atp_path, ap):
           val = float (row['val'])
           parms[idx] = val
   write_atp_dll_interface (dll_path, atp_path, parms, ap)
+
+  # netlist the AC filter, TACS-controlled source, and measuring switches
+  print ('/BRANCH', file=ap)
+  print ('C < n1 >< n2 ><ref1><ref2>< R  >< X  >< C  >', file=ap)
+  for phs in [['G', 'D'], ['H', 'E'], ['I', 'F']]:
+    ph1 = phs[0]
+    ph2 = phs[1]
+    print ('  {:6s}{:6s}            {:s}{:s}'.format (AtpNode(bus, ph1), AtpNode(bus, ph2), AtpFit6 (acRgrid), AtpFit6 (acXgrid)), file=ap)
+  for phs in [['J', 'G'], ['K', 'H'], ['L', 'I']]:
+    ph1 = phs[0]
+    ph2 = phs[1]
+    print ('  {:6s}{:6s}            {:s}{:s}'.format (AtpNode(bus, ph1), AtpNode(bus, ph2), AtpFit6 (acRbridge), AtpFit6 (acXbridge)), file=ap)
+  if filterKind == 'ungroundedWye':
+    for phs in [['G', 'Z'], ['H', 'Z'], ['I', 'Z']]:
+      ph1 = phs[0]
+      ph2 = phs[1]
+      print ('  {:6s}{:6s}                        {:s}'.format (AtpNode(bus, ph1), AtpNode(bus, ph2), AtpFit6 (acCap)), file=ap) 
+  elif filterKind == 'delta':
+    for phs in [['G', 'H'], ['H', 'I'], ['I', 'G']]:
+      ph1 = phs[0]
+      ph2 = phs[1]
+      print ('  {:6s}{:6s}                        {:s}'.format (AtpNode(bus, ph1), AtpNode(bus, ph2), AtpFit6 (acCap)), file=ap) 
+
+  print ('/SWITCH', file=ap)
+  print ('C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1', file=ap)
+  for phs in [['D', 'A'], ['E', 'B'], ['F', 'C'], ['M', 'J'], ['N', 'K'], ['O', 'L']]:
+    ph1 = phs[0]
+    ph2 = phs[1]
+    print ('  {:6s}{:6s}{:10.3f}{:10.3f}                    MEASURING                1'.format (AtpNode (bus, ph1), 
+      AtpNode (bus, ph2), -1.0, TOPEN), file=ap)
+  print ('/TACS', file=ap)
+  print ('TACS HYBRID', file=ap)
+  for ph in ['A', 'B', 'C']:
+    print ('90{:6s}                                                                    1.E3'.format (AtpNode (bus, ph)), file=ap)
+  for ph in ['M', 'N', 'O', 'D', 'E', 'F']:
+    print ('91{:6s}                                                                    1.E3'.format (AtpNode (bus, ph)), file=ap)
+  mgain = dcV * 0.5
+  for ph in ['M', 'N', 'O']:
+    print ('98{:6s}  = {:s} * M_{:s}'.format (AtpNode (bus, ph), AtpFit6 (mgain), ph), file=ap) #TODO what is the TACS output for modulation index?
+  print ('/SOURCE', file=ap)
+  print ('C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >', file=ap)
+  for ph in ['M', 'N', 'O']:
+    print ('60{:6s} 0                                                                  1.E3'.format (AtpNode (bus, ph)), file=ap)
   return
 
 def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, regc, repc):
