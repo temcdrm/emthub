@@ -1876,7 +1876,7 @@
 <A2AEC926-7289-42FA-BE6A-759904B7C443> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <6477751A-0472-4FD6-B3C3-3AD4945CBE56> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "1302CBF0-B6D1-4AD7-8456-BCD6FD34FC2F"^^cim:String ;
+    cim:IdentifiedObject.mRID "A2AEC926-7289-42FA-BE6A-759904B7C443"^^cim:String ;
     cim:IdentifiedObject.name "30_1"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <1302CBF0-B6D1-4AD7-8456-BCD6FD34FC2F> ;
     cim:PowerElectronicsUnit.maxP "480000000.0"^^cim:ActivePower ;

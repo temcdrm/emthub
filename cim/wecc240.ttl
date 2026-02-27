@@ -19172,7 +19172,7 @@
 <10116806-452D-4FF6-8A1C-46FDB62215DE> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "4F384DF6-8463-4AEC-AC4E-A9CD7459C744"^^cim:String ;
+    cim:IdentifiedObject.mRID "10116806-452D-4FF6-8A1C-46FDB62215DE"^^cim:String ;
     cim:IdentifiedObject.name "5032_C"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <4F384DF6-8463-4AEC-AC4E-A9CD7459C744> ;
     cim:PowerElectronicsUnit.maxP "13039000000.0"^^cim:ActivePower ;
@@ -19181,7 +19181,7 @@
 <1094C37E-3437-43EE-8935-34D7F9028326> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "CC1AE9F2-53FA-4B6E-A112-23575D3068CA"^^cim:String ;
+    cim:IdentifiedObject.mRID "1094C37E-3437-43EE-8935-34D7F9028326"^^cim:String ;
     cim:IdentifiedObject.name "70321_G"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <CC1AE9F2-53FA-4B6E-A112-23575D3068CA> ;
     cim:PowerElectronicsUnit.maxP "1483000000.0"^^cim:ActivePower ;
@@ -19190,7 +19190,7 @@
 <15FF19A2-E9C0-4D24-A5A2-80D886C20BB9> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "CA871A00-9F70-4D31-AEC5-EFB3296A76B2"^^cim:String ;
+    cim:IdentifiedObject.mRID "15FF19A2-E9C0-4D24-A5A2-80D886C20BB9"^^cim:String ;
     cim:IdentifiedObject.name "6533_C"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <CA871A00-9F70-4D31-AEC5-EFB3296A76B2> ;
     cim:PowerElectronicsUnit.maxP "3276000000.0"^^cim:ActivePower ;
@@ -19199,7 +19199,7 @@
 <19E699DD-B0D4-4B30-AA91-1458C3C9562F> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "09BCAC26-7E1B-4277-9EA7-0717D9EF3BAA"^^cim:String ;
+    cim:IdentifiedObject.mRID "19E699DD-B0D4-4B30-AA91-1458C3C9562F"^^cim:String ;
     cim:IdentifiedObject.name "61324_W"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <09BCAC26-7E1B-4277-9EA7-0717D9EF3BAA> ;
     cim:PowerElectronicsUnit.maxP "973000000.0"^^cim:ActivePower ;
@@ -19208,7 +19208,7 @@
 <206DB4EC-B828-4C62-A41C-158DDF0FDA3D> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "5C0AB230-4955-420C-B122-606D2E186509"^^cim:String ;
+    cim:IdentifiedObject.mRID "206DB4EC-B828-4C62-A41C-158DDF0FDA3D"^^cim:String ;
     cim:IdentifiedObject.name "64333_W"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <5C0AB230-4955-420C-B122-606D2E186509> ;
     cim:PowerElectronicsUnit.maxP "152000000.0"^^cim:ActivePower ;
@@ -19217,7 +19217,7 @@
 <28CB662F-9954-4743-85DB-56734B293AB9> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "B957EEB8-A9B6-4DCC-B5EE-6212E7471475"^^cim:String ;
+    cim:IdentifiedObject.mRID "28CB662F-9954-4743-85DB-56734B293AB9"^^cim:String ;
     cim:IdentifiedObject.name "2533_S"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <B957EEB8-A9B6-4DCC-B5EE-6212E7471475> ;
     cim:PowerElectronicsUnit.maxP "1999000000.0"^^cim:ActivePower ;
@@ -19226,7 +19226,7 @@
 <30E0925C-F6E9-4AB7-BE98-E5DA15624C92> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "CC36B47D-4F32-467B-B70C-7E679B464D07"^^cim:String ;
+    cim:IdentifiedObject.mRID "30E0925C-F6E9-4AB7-BE98-E5DA15624C92"^^cim:String ;
     cim:IdentifiedObject.name "3933_CG"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <CC36B47D-4F32-467B-B70C-7E679B464D07> ;
     cim:PowerElectronicsUnit.maxP "865000000.0"^^cim:ActivePower ;
@@ -19235,7 +19235,7 @@
 <3BA327C4-2779-4326-904F-DFC9B50C5126> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "DFD7DD7B-9E20-4646-8479-B5EB6730658D"^^cim:String ;
+    cim:IdentifiedObject.mRID "3BA327C4-2779-4326-904F-DFC9B50C5126"^^cim:String ;
     cim:IdentifiedObject.name "65331_G"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <DFD7DD7B-9E20-4646-8479-B5EB6730658D> ;
     cim:PowerElectronicsUnit.maxP "3239000000.0"^^cim:ActivePower ;
@@ -19244,7 +19244,7 @@
 <41B33EEE-356A-4C65-B6FB-3D2E1B62F761> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "73DFCC15-6DA8-466F-ABEA-4CCF87EB7CEC"^^cim:String ;
+    cim:IdentifiedObject.mRID "41B33EEE-356A-4C65-B6FB-3D2E1B62F761"^^cim:String ;
     cim:IdentifiedObject.name "40311_H"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <73DFCC15-6DA8-466F-ABEA-4CCF87EB7CEC> ;
     cim:PowerElectronicsUnit.maxP "952000000.0"^^cim:ActivePower ;
@@ -19253,7 +19253,7 @@
 <6A8FDCA4-1040-4C57-A322-B98D57A4702D> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "632BFB1E-1CAF-4C90-B72B-99A09822DC9E"^^cim:String ;
+    cim:IdentifiedObject.mRID "6A8FDCA4-1040-4C57-A322-B98D57A4702D"^^cim:String ;
     cim:IdentifiedObject.name "32343_NW"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <632BFB1E-1CAF-4C90-B72B-99A09822DC9E> ;
     cim:PowerElectronicsUnit.maxP "1740000000.0"^^cim:ActivePower ;
@@ -19262,7 +19262,7 @@
 <6B0CEAA5-2750-4D97-B4F6-A9DA5E62C9E0> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "2F800CC6-DBBC-4876-93F7-6C54FC1706A9"^^cim:String ;
+    cim:IdentifiedObject.mRID "6B0CEAA5-2750-4D97-B4F6-A9DA5E62C9E0"^^cim:String ;
     cim:IdentifiedObject.name "39331_NB"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <2F800CC6-DBBC-4876-93F7-6C54FC1706A9> ;
     cim:PowerElectronicsUnit.maxP "345000000.0"^^cim:ActivePower ;
@@ -19271,7 +19271,7 @@
 <A290D0E1-8805-4456-BDAD-8A2CA1AE796B> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "3D25A0AC-93BA-4539-A9C6-D117675566B9"^^cim:String ;
+    cim:IdentifiedObject.mRID "A290D0E1-8805-4456-BDAD-8A2CA1AE796B"^^cim:String ;
     cim:IdentifiedObject.name "62351_H"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <3D25A0AC-93BA-4539-A9C6-D117675566B9> ;
     cim:PowerElectronicsUnit.maxP "2671000000.0"^^cim:ActivePower ;
@@ -19280,7 +19280,7 @@
 <A4C7E85F-EE5A-4DB0-A767-366EC95D38F2> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "C4D0AA45-EAB0-4E24-A894-3FBDEBA4F6C6"^^cim:String ;
+    cim:IdentifiedObject.mRID "A4C7E85F-EE5A-4DB0-A767-366EC95D38F2"^^cim:String ;
     cim:IdentifiedObject.name "42321_H"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <C4D0AA45-EAB0-4E24-A894-3FBDEBA4F6C6> ;
     cim:PowerElectronicsUnit.maxP "558000000.0"^^cim:ActivePower ;
@@ -19289,7 +19289,7 @@
 <A7233448-83C0-4D06-84B7-2B31814AC3C4> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "DD65D878-1509-4A70-A06F-6C296E3CAD81"^^cim:String ;
+    cim:IdentifiedObject.mRID "A7233448-83C0-4D06-84B7-2B31814AC3C4"^^cim:String ;
     cim:IdentifiedObject.name "2631_S"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <DD65D878-1509-4A70-A06F-6C296E3CAD81> ;
     cim:PowerElectronicsUnit.maxP "520000000.0"^^cim:ActivePower ;
@@ -19298,7 +19298,7 @@
 <B685B28A-3BAA-445C-B00F-89D5CE74C4FC> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "4FB6238E-C3B7-475E-800E-8AE8BC3419E4"^^cim:String ;
+    cim:IdentifiedObject.mRID "B685B28A-3BAA-445C-B00F-89D5CE74C4FC"^^cim:String ;
     cim:IdentifiedObject.name "61322_H"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <4FB6238E-C3B7-475E-800E-8AE8BC3419E4> ;
     cim:PowerElectronicsUnit.maxP "2541000000.0"^^cim:ActivePower ;
@@ -19307,7 +19307,7 @@
 <CB7BEC05-B021-40BD-8B42-42D875E929E5> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "44E5B53C-9ECB-44AA-B82B-4D47959EA803"^^cim:String ;
+    cim:IdentifiedObject.mRID "CB7BEC05-B021-40BD-8B42-42D875E929E5"^^cim:String ;
     cim:IdentifiedObject.name "70312_P"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <44E5B53C-9ECB-44AA-B82B-4D47959EA803> ;
     cim:PowerElectronicsUnit.maxP "509000000.0"^^cim:ActivePower ;
@@ -19316,7 +19316,7 @@
 <D168F64E-68A1-4982-A718-9614EEAB5DC4> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "83D9FDF1-14C0-4166-A888-E8B1E2F5568A"^^cim:String ;
+    cim:IdentifiedObject.mRID "D168F64E-68A1-4982-A718-9614EEAB5DC4"^^cim:String ;
     cim:IdentifiedObject.name "38351_NG"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <83D9FDF1-14C0-4166-A888-E8B1E2F5568A> ;
     cim:PowerElectronicsUnit.maxP "2025000000.0"^^cim:ActivePower ;
@@ -19325,7 +19325,7 @@
 <D3685297-4F7F-4B36-AA46-EA311954386B> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "687FEC01-0CB4-4C38-B62C-A596C142EAC1"^^cim:String ;
+    cim:IdentifiedObject.mRID "D3685297-4F7F-4B36-AA46-EA311954386B"^^cim:String ;
     cim:IdentifiedObject.name "41312_W"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <687FEC01-0CB4-4C38-B62C-A596C142EAC1> ;
     cim:PowerElectronicsUnit.maxP "790000000.0"^^cim:ActivePower ;
@@ -19334,7 +19334,7 @@
 <D8880396-400D-42CB-9B88-6B0B63CA2D10> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "4C3A8DF4-629B-4ED0-8E79-8D2CC43F107B"^^cim:String ;
+    cim:IdentifiedObject.mRID "D8880396-400D-42CB-9B88-6B0B63CA2D10"^^cim:String ;
     cim:IdentifiedObject.name "3932_S"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <4C3A8DF4-629B-4ED0-8E79-8D2CC43F107B> ;
     cim:PowerElectronicsUnit.maxP "1426000000.0"^^cim:ActivePower ;
@@ -19343,7 +19343,7 @@
 <DCB22F88-CB2E-416F-B737-4EF9AA04F3B9> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "A8D7873B-ADAF-41AA-9692-524EC02622D2"^^cim:String ;
+    cim:IdentifiedObject.mRID "DCB22F88-CB2E-416F-B737-4EF9AA04F3B9"^^cim:String ;
     cim:IdentifiedObject.name "63331_W"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <A8D7873B-ADAF-41AA-9692-524EC02622D2> ;
     cim:PowerElectronicsUnit.maxP "1489000000.0"^^cim:ActivePower ;
@@ -19352,7 +19352,7 @@
 <E468F3A9-E595-4144-A1D9-4C32CC9F6857> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "8A039042-3032-48F3-89C2-C3B9AF7BA294"^^cim:String ;
+    cim:IdentifiedObject.mRID "E468F3A9-E595-4144-A1D9-4C32CC9F6857"^^cim:String ;
     cim:IdentifiedObject.name "50324_W"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <8A039042-3032-48F3-89C2-C3B9AF7BA294> ;
     cim:PowerElectronicsUnit.maxP "541000000.0"^^cim:ActivePower ;
@@ -19361,7 +19361,7 @@
 <EFD0BD3E-63BB-4BBA-94E2-93AF1A6B2FB3> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "B9C474A4-20FB-46F9-AC85-63AB9BD8953D"^^cim:String ;
+    cim:IdentifiedObject.mRID "EFD0BD3E-63BB-4BBA-94E2-93AF1A6B2FB3"^^cim:String ;
     cim:IdentifiedObject.name "40392_W"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <B9C474A4-20FB-46F9-AC85-63AB9BD8953D> ;
     cim:PowerElectronicsUnit.maxP "1290000000.0"^^cim:ActivePower ;
@@ -19370,7 +19370,7 @@
 <F6153651-E93B-46BA-9B5E-E53D424B7E9A> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "0AD433ED-DD36-4694-B77D-A6DABC00AC5A"^^cim:String ;
+    cim:IdentifiedObject.mRID "F6153651-E93B-46BA-9B5E-E53D424B7E9A"^^cim:String ;
     cim:IdentifiedObject.name "34331_S"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <0AD433ED-DD36-4694-B77D-A6DABC00AC5A> ;
     cim:PowerElectronicsUnit.maxP "1426000000.0"^^cim:ActivePower ;
@@ -19379,7 +19379,7 @@
 <F683660D-3F13-46A6-9E0C-D134D1BABEB7> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "B85FE0C0-7BFF-40F6-A5E4-65C69F3BA7DE"^^cim:String ;
+    cim:IdentifiedObject.mRID "F683660D-3F13-46A6-9E0C-D134D1BABEB7"^^cim:String ;
     cim:IdentifiedObject.name "40312_S"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <B85FE0C0-7BFF-40F6-A5E4-65C69F3BA7DE> ;
     cim:PowerElectronicsUnit.maxP "427000000.0"^^cim:ActivePower ;
@@ -19388,7 +19388,7 @@
 <FF7087D5-4BAF-42E0-9A90-B3EF40E6B8EF> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "B6207005-DA5B-4103-B0F3-72835F63919D"^^cim:String ;
+    cim:IdentifiedObject.mRID "FF7087D5-4BAF-42E0-9A90-B3EF40E6B8EF"^^cim:String ;
     cim:IdentifiedObject.name "4035_C"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <B6207005-DA5B-4103-B0F3-72835F63919D> ;
     cim:PowerElectronicsUnit.maxP "642000000.0"^^cim:ActivePower ;
@@ -19397,7 +19397,7 @@
 <11B60583-0D95-4A7D-8C6A-55F1ADFC9319> a cim:PowerElectronicsWindUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "229F16F4-E9E5-485E-9898-1A1073972A95"^^cim:String ;
+    cim:IdentifiedObject.mRID "11B60583-0D95-4A7D-8C6A-55F1ADFC9319"^^cim:String ;
     cim:IdentifiedObject.name "2332_S"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <229F16F4-E9E5-485E-9898-1A1073972A95> ;
     cim:PowerElectronicsUnit.maxP "1333000000.0"^^cim:ActivePower ;
@@ -19406,7 +19406,7 @@
 <14B07A59-B1F3-436A-887D-067D412272E0> a cim:PowerElectronicsWindUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "BF6F6444-1DE1-401A-B765-A259CD0CF238"^^cim:String ;
+    cim:IdentifiedObject.mRID "14B07A59-B1F3-436A-887D-067D412272E0"^^cim:String ;
     cim:IdentifiedObject.name "13332_S"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <BF6F6444-1DE1-401A-B765-A259CD0CF238> ;
     cim:PowerElectronicsUnit.maxP "2423000000.0"^^cim:ActivePower ;
@@ -19415,7 +19415,7 @@
 <1D60A2D9-3848-4FB1-A2D7-C6CB6A1BEACD> a cim:PowerElectronicsWindUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "373AEB82-22C0-4047-AB95-5A918E1A50A2"^^cim:String ;
+    cim:IdentifiedObject.mRID "1D60A2D9-3848-4FB1-A2D7-C6CB6A1BEACD"^^cim:String ;
     cim:IdentifiedObject.name "24386_SW"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <373AEB82-22C0-4047-AB95-5A918E1A50A2> ;
     cim:PowerElectronicsUnit.maxP "3210000000.0"^^cim:ActivePower ;
@@ -19424,7 +19424,7 @@
 <A3B8CB91-70C1-4475-887A-415E554018F3> a cim:PowerElectronicsWindUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "09FE45DC-C52E-4A01-AACE-76803A611668"^^cim:String ;
+    cim:IdentifiedObject.mRID "A3B8CB91-70C1-4475-887A-415E554018F3"^^cim:String ;
     cim:IdentifiedObject.name "2439_S"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <09FE45DC-C52E-4A01-AACE-76803A611668> ;
     cim:PowerElectronicsUnit.maxP "1666000000.0"^^cim:ActivePower ;
@@ -19433,7 +19433,7 @@
 <B67DA0B3-0962-4DCD-859A-5FA6BE2730E0> a cim:PowerElectronicsWindUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "6203B692-2818-44F0-9C3D-AEDE41046CB9"^^cim:String ;
+    cim:IdentifiedObject.mRID "B67DA0B3-0962-4DCD-859A-5FA6BE2730E0"^^cim:String ;
     cim:IdentifiedObject.name "2431_S"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <6203B692-2818-44F0-9C3D-AEDE41046CB9> ;
     cim:PowerElectronicsUnit.maxP "1666000000.0"^^cim:ActivePower ;
@@ -19442,7 +19442,7 @@
 <BA42C8B6-09B9-4DD6-A476-FBE8A0F1895C> a cim:PowerElectronicsWindUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "A7A581D7-7D90-4482-97CF-5D7F86AA3CBC"^^cim:String ;
+    cim:IdentifiedObject.mRID "BA42C8B6-09B9-4DD6-A476-FBE8A0F1895C"^^cim:String ;
     cim:IdentifiedObject.name "21301_G"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <A7A581D7-7D90-4482-97CF-5D7F86AA3CBC> ;
     cim:PowerElectronicsUnit.maxP "586000000.0"^^cim:ActivePower ;
@@ -19451,7 +19451,7 @@
 <BB671C4C-0989-408C-A0FA-4D73B791D438> a cim:PowerElectronicsWindUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "7A396E4E-4622-48F3-8F8A-EABFF42D48FC"^^cim:String ;
+    cim:IdentifiedObject.mRID "BB671C4C-0989-408C-A0FA-4D73B791D438"^^cim:String ;
     cim:IdentifiedObject.name "2434_S"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <7A396E4E-4622-48F3-8F8A-EABFF42D48FC> ;
     cim:PowerElectronicsUnit.maxP "1489000000.0"^^cim:ActivePower ;
@@ -19460,7 +19460,7 @@
 <D453BF92-CEA2-4DF1-9E9F-3888172BA4CD> a cim:PowerElectronicsWindUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "A24C3D41-01FA-47BF-9121-5E4DFC98020D"^^cim:String ;
+    cim:IdentifiedObject.mRID "D453BF92-CEA2-4DF1-9E9F-3888172BA4CD"^^cim:String ;
     cim:IdentifiedObject.name "10342_W"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <A24C3D41-01FA-47BF-9121-5E4DFC98020D> ;
     cim:PowerElectronicsUnit.maxP "1682000000.0"^^cim:ActivePower ;
@@ -19469,7 +19469,7 @@
 <DBB2A73E-DF7F-4459-8180-44AAE5258496> a cim:PowerElectronicsWindUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "38FAEEED-295D-422D-BBFB-A936BAC3B544"^^cim:String ;
+    cim:IdentifiedObject.mRID "DBB2A73E-DF7F-4459-8180-44AAE5258496"^^cim:String ;
     cim:IdentifiedObject.name "10322_S"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <38FAEEED-295D-422D-BBFB-A936BAC3B544> ;
     cim:PowerElectronicsUnit.maxP "638000000.0"^^cim:ActivePower ;
@@ -19478,7 +19478,7 @@
 <E4A46B51-4FE5-4A21-9288-A267B6D2CE59> a cim:PowerElectronicsWindUnit ;
     cim:Equipment.EquipmentContainer <2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "E2CC7772-2363-4D4C-8679-D37085C36BE3"^^cim:String ;
+    cim:IdentifiedObject.mRID "E4A46B51-4FE5-4A21-9288-A267B6D2CE59"^^cim:String ;
     cim:IdentifiedObject.name "24382_RG"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <E2CC7772-2363-4D4C-8679-D37085C36BE3> ;
     cim:PowerElectronicsUnit.maxP "5451000000.0"^^cim:ActivePower ;

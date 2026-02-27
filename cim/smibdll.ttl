@@ -290,7 +290,7 @@
 <26074AB0-0691-4AE4-BCE2-A37DFB492A2B> a cim:PhotoVoltaicUnit ;
     cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
-    cim:IdentifiedObject.mRID "0A82F415-8F69-431F-8CA1-9561F2857828"^^cim:String ;
+    cim:IdentifiedObject.mRID "26074AB0-0691-4AE4-BCE2-A37DFB492A2B"^^cim:String ;
     cim:IdentifiedObject.name "1_1"^^cim:String ;
     cim:PowerElectronicsUnit.PowerElectronicsConnection <0A82F415-8F69-431F-8CA1-9561F2857828> ;
     cim:PowerElectronicsUnit.maxP "100000000.0"^^cim:ActivePower ;
@@ -433,6 +433,15 @@
         <3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5>,
         <553C8DD4-48BB-4255-994B-6951693FEC63>,
         <B720A0C7-D1AB-43FE-86E0-190BAB17F6DC> ;
+    emt:IBRPlant.acFilterCapacitance "0.0015"^^cim:Capacitance ;
+    emt:IBRPlant.acFilterKind emt:IBRFilterKind.ungroundedWye ;
+    emt:IBRPlant.acFilterLbridge "0.0001"^^cim:Inductance ;
+    emt:IBRPlant.acFilterLgrid "0.0"^^cim:Inductance ;
+    emt:IBRPlant.acFilterRbridge "0.00075"^^cim:Resistance ;
+    emt:IBRPlant.acFilterRgrid "0.0"^^cim:Resistance ;
+    emt:IBRPlant.dcLinkCapacitance "0.1"^^cim:Capacitance ;
+    emt:IBRPlant.dcLinkVoltage "1200.0"^^cim:Voltage ;
+    emt:IBRPlant.switchingFrequency "3060.0"^^cim:Frequency ;
     cim:IdentifiedObject.mRID "298095DE-85A1-474C-8316-8CAE0F932952"^^cim:String ;
     cim:IdentifiedObject.name "1_1"^^cim:String .
 

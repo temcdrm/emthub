@@ -888,7 +888,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
       un = rdflib.URIRef (unitID)
       g.add ((un, rdflib.RDF.type, rdflib.URIRef (CIM_NS + ftype)))
       g.add ((un, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
-      g.add ((un, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+      g.add ((un, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(unitID, datatype=CIM.String)))
       g.add ((un, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
       g.add ((un, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
       g.add ((un, rdflib.URIRef (CIM_NS + 'PowerElectronicsUnit.PowerElectronicsConnection'), pec))
@@ -1024,14 +1024,12 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
     fuid.close()
 
   plantID = GetCIMID ('IBRPlant', plant['generator'], uuids)
-  print ('Adding to IBRPlant', plant['generator'], plantID)
+  pecID = GetCIMID ('PowerElectronicsConnection', plant['generator'], uuids)
+  print ('Adding to IBRPlant', plant['generator'], plantID, 'with inverter', pecID)
   ibr = rdflib.URIRef (plantID)
-  #g.add ((ibr, rdflib.RDF.type, rdflib.URIRef (EMT_NS + plant_type)))
-  #g.add ((ibr, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(row['name'], datatype=CIM.String)))
-  #g.add ((ibr, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
-  #g.add ((ibr, rdflib.URIRef (EMT_NS + 'GeneratingPlant.Equipments'), rdflib.URIRef (key)))
-  #g.add ((ibr, rdflib.URIRef (EMT_NS + 'GeneratingPlant.Equipments'), rdflib.URIRef (row['xfid'])))
+  pec = rdflib.URIRef (pecID)
 
+  # fill out the plant-level components and attributes
   for item in plant['components']:
     cls = item[0]
     name = item[1]
@@ -1040,6 +1038,23 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
     if tuplet not in g:
       print ('Adding component', cls, name, ID, 'to the IBR plant')
       g.add (tuplet)
+  for item in plant['attributes']:
+    att = EMT_NS+'IBRPlant.{:s}'.format (item[0])
+    val = item[1]
+    unit = item[2]
+    if unit.endswith('Kind'):
+      g.add ((ibr, rdflib.URIRef (att), rdflib.URIRef (EMT_NS + '{:s}.{:s}'.format(unit, val))))
+    else:
+      g.add ((ibr, rdflib.URIRef (att), rdflib.Literal(val, datatype=CIM_NS+unit)))
+
+  # add the DLL interface
+  if 'dll_path' in plant and plant['dll_path'] is not None:
+    dllname = os.path.abspath(plant['dll_path'])
+    if os.path.exists(dllname):
+      print ('create DLL interface for', dllname)
+    else:
+      print ('can not find the dll', dllname)
+
 
   fuid = open(fuidname, 'w')
   for key, val in uuids.items():

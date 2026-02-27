@@ -1,20 +1,9 @@
 # Copyright (C) 2026 Meltran, Inc
 
 import sys
+import cim_examples
 import emthub.api as emthub
  
-case = {'id': '62CB0930-211D-4762-B5C1-27BF73EAC7C4',
- 'name': 'SMIBDLL', 'xmlfile':'smibdll.xml', 'mridfile':'raw/smibdll_mrids.dat', 'ttlfile': 'smibdll.ttl',
- 'wind_units': [], 'solar_units': ['1_1'], 'hydro_units': [], 'nuclear_units': [],
- 'bus_ic': None, 'gen_ic': None, 'br_ic': None, 'ttl_ic': None,
- 'swingbus': '5', 'load': 1.0, 'UseXfmrSaturation': True, 'dyrfile': None}
-
-plant = {'generator': '1_1', 'dll_path': '../dll/bin/gfm_gfl_ibr2.dll',
-         'components': [['ACLineSegment', '2_3_1'],
-                        ['PowerTransformer', '2_1_0_1'],
-                        ['PowerTransformer', '4_3_0_1']]
-         }
-
 tables = {
   'BUS': {
     'col_names': ['Number', 'Name', 'BaseKV', 'Type'], 
@@ -91,7 +80,28 @@ tables = {
     'data': [
       ]}}
 
+plant = {'generator': '1_1', 
+         'dll_path': '../dll/bin/gfm_gfl_ibr2.dll',
+         'components': [
+           ['ACLineSegment', '2_3_1'],
+           ['PowerTransformer', '2_1_0_1'],
+           ['PowerTransformer', '4_3_0_1']
+           ],
+         'attributes': [
+           ['acFilterCapacitance', 0.0015, 'Capacitance'],
+           ['acFilterLbridge', 0.0001, 'Inductance'],
+           ['acFilterLgrid', 0.0, 'Inductance'],
+           ['acFilterRbridge', 0.00075, 'Resistance'],
+           ['acFilterRgrid', 0.0, 'Resistance'],
+           ['acFilterKind', 'ungroundedWye', 'IBRFilterKind'],
+           ['dcLinkCapacitance', 0.1, 'Capacitance'],
+           ['dcLinkVoltage', 1200.0, 'Voltage'],
+           ['switchingFrequency', 3060.0, 'Frequency']
+           ]
+         }
+
 if __name__ == '__main__':
+  case = cim_examples.CASES[4]
   # create rawfile tables from Python dictionary
   baseMVA = 100.0
   bus_kvbases = {}
