@@ -41,7 +41,7 @@ def summarize_graph (root, classes_found):
 def print_cim_summaries (root_list):
   """ Prints a summary of class names and counts found in list of Turtle files.
 
-  Only the list XfmrSat, IEEE39, IEEE118, and WECC240 is supported. The Turtle
+  Only the list XfmrSat, IEEE39, IEEE118, WECC240, and SMIBDLL is supported. The Turtle
   files must already exist in the current directory.
 
   Args:
@@ -53,13 +53,16 @@ def print_cim_summaries (root_list):
   for root in root_list:
     d[root] = summarize_graph (root, classes_found)
 
-  print ('{:39s} {:>8s} {:>8s} {:>8s} {:>8s}'.format ('Quantity in Example:', 'XfmrSat',  'IEEE39', 'IEEE118', 'WECC240'))
-  print ('{:39s} {:8d} {:8d} {:8d} {:8d}'.format ('Statements (RDF Triples)', d['XfmrSat']['statements'], d['IEEE39']['statements'], d['IEEE118']['statements'], d['WECC240']['statements']))
+  print ('{:39s} {:>8s} {:>8s} {:>8s} {:>8s} {:>8s}'.format ('Quantity in Example:', 'XfmrSat',  'IEEE39', 'IEEE118', 'WECC240', 'SMIBDLL'))
+  print ('{:39s} {:8d} {:8d} {:8d} {:8d} {:8d}'.format ('Statements (RDF Triples)', d['XfmrSat']['statements'], 
+                                                        d['IEEE39']['statements'], d['IEEE118']['statements'], 
+                                                        d['WECC240']['statements'], d['SMIBDLL']['statements']))
   for cls in sorted(classes_found):
     count1 = 0
     count2 = 0
     count3 = 0
     count4 = 0
+    count5 = 0
     if cls in d['XfmrSat']['classes']:
       count1 = d['XfmrSat']['classes'][cls]
     if cls in d['IEEE39']['classes']:
@@ -68,5 +71,7 @@ def print_cim_summaries (root_list):
       count3 = d['IEEE118']['classes'][cls]
     if cls in d['WECC240']['classes']:
       count4 = d['WECC240']['classes'][cls]
-    print ('{:39s} {:8d} {:8d} {:8d} {:8d}'.format (cls, count1, count2, count3, count4))
+    if cls in d['SMIBDLL']['classes']:
+      count5 = d['SMIBDLL']['classes'][cls]
+    print ('{:39s} {:8d} {:8d} {:8d} {:8d} {:8d}'.format (cls, count1, count2, count3, count4, count5))
 

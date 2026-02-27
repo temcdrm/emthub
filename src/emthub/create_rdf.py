@@ -1023,8 +1023,9 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
         uuids[key] = val
     fuid.close()
 
-  plantID = GetCIMID ('IBRPlant', plant['generator'], uuids)
-  pecID = GetCIMID ('PowerElectronicsConnection', plant['generator'], uuids)
+  key = plant['generator']
+  plantID = GetCIMID ('IBRPlant', key, uuids)
+  pecID = GetCIMID ('PowerElectronicsConnection', key, uuids)
   print ('Adding to IBRPlant', plant['generator'], plantID, 'with inverter', pecID)
   ibr = rdflib.URIRef (plantID)
   pec = rdflib.URIRef (pecID)
@@ -1052,6 +1053,29 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
     dllname = os.path.abspath(plant['dll_path'])
     if os.path.exists(dllname):
       print ('create DLL interface for', dllname)
+      bRMS = False
+      bEMT = True
+      dllVersion = '0'
+      dllDate = '0'
+      snapUri = ''
+      dt = 10.0e-6
+      vendorName = 'EPRI'
+      #query for attributes and IEEECigreDLLParameter here via the API
+      dllID = GetCIMID('IEEECigreDLL', key, uuids)
+      dll = rdflib.URIRef (dllID)
+      g.add ((dll, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'IEEECigreDLL')))
+      g.add ((dll, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+      g.add ((dll, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(dllID, datatype=CIM.String)))
+      g.add ((dll, rdflib.URIRef (CIM_NS + 'DynamicsFunctionBlock.enabled'), rdflib.Literal (True, datatype=CIM.Boolean)))
+      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.PowerElectronicsConnection'), pec))
+      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.firmwareInstalled'), rdflib.Literal (dllDate, datatype=CIM.DateTime)))
+      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.firmwareVersion'), rdflib.Literal (dllVersion, datatype=CIM.String)))
+      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.snapshotUri'), rdflib.Literal (snapUri, datatype=CIM.String)))
+      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.supportsEMT'), rdflib.Literal (bEMT, datatype=CIM.Boolean)))
+      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.supportsRMS'), rdflib.Literal (bRMS, datatype=CIM.Boolean)))
+      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.timestep'), rdflib.Literal (dt, datatype=CIM.Seconds)))
+      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.uri'), rdflib.Literal (dllname, datatype=CIM.String)))
+      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.vendorName'), rdflib.Literal (vendorName, datatype=CIM.String)))
     else:
       print ('can not find the dll', dllname)
 
@@ -1109,6 +1133,7 @@ def write_cim_rdf (case, g, CIM, EMT):
     EMT.TransformerSaturation,
     EMT.IBRPlant,
     EMT.RotatingMachinePlant,
+    EMT.IEEECigreDLL,
     CIM.OperationalLimitType,
     CIM.OperationalLimitSet,
     CIM.ApparentPowerLimit,

@@ -445,6 +445,20 @@
     cim:IdentifiedObject.mRID "298095DE-85A1-474C-8316-8CAE0F932952"^^cim:String ;
     cim:IdentifiedObject.name "1_1"^^cim:String .
 
+<FDE751E2-C11C-485C-B254-52B43FE55028> a emt:IEEECigreDLL ;
+    emt:IEEECigreDLL.PowerElectronicsConnection <0A82F415-8F69-431F-8CA1-9561F2857828> ;
+    emt:IEEECigreDLL.firmwareInstalled "0"^^cim:DateTime ;
+    emt:IEEECigreDLL.firmwareVersion "0"^^cim:String ;
+    emt:IEEECigreDLL.snapshotUri ""^^cim:String ;
+    emt:IEEECigreDLL.supportsEMT "true"^^cim:Boolean ;
+    emt:IEEECigreDLL.supportsRMS "false"^^cim:Boolean ;
+    emt:IEEECigreDLL.timestep "1e-05"^^cim:Seconds ;
+    emt:IEEECigreDLL.uri "C:\\src\\emthub\\dll\\bin\\gfm_gfl_ibr2.dll"^^cim:String ;
+    emt:IEEECigreDLL.vendorName "EPRI"^^cim:String ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "FDE751E2-C11C-485C-B254-52B43FE55028"^^cim:String ;
+    cim:IdentifiedObject.name "1_1"^^cim:String .
+
 <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> a cim:OperationalLimitType ;
     cim:IdentifiedObject.mRID "77ABD436-BAAC-4F66-AED3-CC81D3DBFE69"^^cim:String ;
     cim:IdentifiedObject.name "Normal"^^cim:String ;
