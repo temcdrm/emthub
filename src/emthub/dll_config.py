@@ -255,7 +255,37 @@ def get_dll_interface (dll_name, bPrint = True):
 # print ('Model_FirstCall', dll.Model_FirstCall)
 # print ('Model_Iterate', dll.Model_Iterate)
 
-def write_atp_dll_interface (dll_fullname, atp_path, parm_vals, ap):
+def AtpNode(bus, phs):
+  if bus[0].isdigit():
+    return 'B{:4s}{:1s}'.format(bus, phs).replace(' ', '_')
+  return '{:5s}{:1s}'.format(bus, phs).replace(' ', '_')
+
+def TranslateInputNameForTacs (nm, bus):
+  if 'IDC' in nm:
+    return 'UNUSED'
+  elif 'VDC' in nm:
+    return 'UNUSED'
+  elif nm == 'VTA':
+    return AtpNode (bus, 'A')
+  elif nm == 'VTB':
+    return AtpNode (bus, 'B')
+  elif nm == 'VTC':
+    return AtpNode (bus, 'C')
+  elif nm == 'I1A':
+    return AtpNode (bus, 'J')
+  elif nm == 'I1B':
+    return AtpNode (bus, 'K')
+  elif nm == 'I1C':
+    return AtpNode (bus, 'L')
+  elif nm == 'I2A':
+    return AtpNode (bus, 'D')
+  elif nm == 'I2B':
+    return AtpNode (bus, 'E')
+  elif nm == 'I2C':
+    return AtpNode (bus, 'F')
+  return nm
+
+def write_atp_dll_interface (dll_fullname, atp_path, parm_vals, bus, ap):
   mod_name = 'DLL1' # ATP only allows one instance, and the DLL name must already be compiled and linked into the ATP solver
 
   d = get_dll_interface (dll_fullname, bPrint=False)
@@ -308,9 +338,14 @@ def write_atp_dll_interface (dll_fullname, atp_path, parm_vals, ap):
   print ('INPUT', file=ap)
   for i in range(d['NumInputPorts']):
     nm = d['InputPortsInfo'][i]['Name'].upper()
+    nm = TranslateInputNameForTacs (nm, bus)
     if len(nm) > 6:
-      print ('** truncating', nm, 'to', nm[0:5], 'for TACS')
-    print ('  MM{:04d} {{tacs({:s})}}'.format(i+1, nm[0:5]), file=ap)
+      print ('** truncating', nm, 'to', nm[0:6], 'for TACS')
+    print ('  MM{:04d} {{tacs({:s})}}'.format(i+1, nm[0:6]), file=ap)
+  print ('OUTPUT', file=ap)
+  print ('  DLL1MA', file=ap)
+  print ('  DLL1MB', file=ap)
+  print ('  DLL1MC', file=ap)
   print ('$INCLUDE, {:s}.mod'.format (mod_name), file=ap)
   print ('USE m{:s} AS mymodel'.format (mod_name), file=ap)
   print ('INPUT', file=ap)
@@ -319,6 +354,10 @@ def write_atp_dll_interface (dll_fullname, atp_path, parm_vals, ap):
   print ('DATA', file=ap)
   for i in range(d['NumParameters']):
     print ('  {:s}:={:.6f}'.format(d['ParametersInfo'][i]['Name'], parm_vals[i]), file=ap)
+  print ('OUTPUT', file=ap)
+  print ('  DLL1MA:=m_a', file=ap) #TODO - generalize
+  print ('  DLL1MB:=m_b', file=ap)
+  print ('  DLL1MC:=m_c', file=ap)
   print ('ENDUSE', file=ap)
   print ('RECORD', file=ap)
   for i in range(d['NumOutputPorts']):

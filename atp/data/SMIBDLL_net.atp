@@ -129,45 +129,45 @@ $VINTAGE,0
 C =============================================================================
 C Breaker 4_10_1 from 4 to 10 numbered 0 for timing
 C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
-  B4___AB10__A_TCLOSE0___TOPEN0___                                             1
-  B4___BB10__B_TCLOSE0___TOPEN0___                                             1
-  B4___CB10__C_TCLOSE0___TOPEN0___                                             1
+  B4___AB10__A_TCLOSE0___TOPEN0___                                             0
+  B4___BB10__B_TCLOSE0___TOPEN0___                                             0
+  B4___CB10__C_TCLOSE0___TOPEN0___                                             0
 C =============================================================================
 C Breaker 4_11_1 from 4 to 11 numbered 1 for timing
 C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
-  B4___AB11__A_TCLOSE1___TOPEN1___                                             1
-  B4___BB11__B_TCLOSE1___TOPEN1___                                             1
-  B4___CB11__C_TCLOSE1___TOPEN1___                                             1
+  B4___AB11__A_TCLOSE1___TOPEN1___                                             0
+  B4___BB11__B_TCLOSE1___TOPEN1___                                             0
+  B4___CB11__C_TCLOSE1___TOPEN1___                                             0
 C =============================================================================
 C Breaker 4_12_1 from 4 to 12 numbered 2 for timing
 C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
-  B4___AB12__A_TCLOSE2___TOPEN2___                                             1
-  B4___BB12__B_TCLOSE2___TOPEN2___                                             1
-  B4___CB12__C_TCLOSE2___TOPEN2___                                             1
+  B4___AB12__A_TCLOSE2___TOPEN2___                                             0
+  B4___BB12__B_TCLOSE2___TOPEN2___                                             0
+  B4___CB12__C_TCLOSE2___TOPEN2___                                             0
 C =============================================================================
 C Breaker 4_6_1 from 4 to 6 numbered 3 for timing
 C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
-  B4___AB6___A_TCLOSE3___TOPEN3___                                             1
-  B4___BB6___B_TCLOSE3___TOPEN3___                                             1
-  B4___CB6___C_TCLOSE3___TOPEN3___                                             1
+  B4___AB6___A_TCLOSE3___TOPEN3___                                             0
+  B4___BB6___B_TCLOSE3___TOPEN3___                                             0
+  B4___CB6___C_TCLOSE3___TOPEN3___                                             0
 C =============================================================================
 C Breaker 4_7_1 from 4 to 7 numbered 4 for timing
 C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
-  B4___AB7___A_TCLOSE4___TOPEN4___                                             1
-  B4___BB7___B_TCLOSE4___TOPEN4___                                             1
-  B4___CB7___C_TCLOSE4___TOPEN4___                                             1
+  B4___AB7___A_TCLOSE4___TOPEN4___                                             0
+  B4___BB7___B_TCLOSE4___TOPEN4___                                             0
+  B4___CB7___C_TCLOSE4___TOPEN4___                                             0
 C =============================================================================
 C Breaker 4_8_1 from 4 to 8 numbered 5 for timing
 C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
-  B4___AB8___A_TCLOSE5___TOPEN5___                                             1
-  B4___BB8___B_TCLOSE5___TOPEN5___                                             1
-  B4___CB8___C_TCLOSE5___TOPEN5___                                             1
+  B4___AB8___A_TCLOSE5___TOPEN5___                                             0
+  B4___BB8___B_TCLOSE5___TOPEN5___                                             0
+  B4___CB8___C_TCLOSE5___TOPEN5___                                             0
 C =============================================================================
 C Breaker 4_9_1 from 4 to 9 numbered 6 for timing
 C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
-  B4___AB9___A_TCLOSE6___TOPEN6___                                             1
-  B4___BB9___B_TCLOSE6___TOPEN6___                                             1
-  B4___CB9___C_TCLOSE6___TOPEN6___                                             1
+  B4___AB9___A_TCLOSE6___TOPEN6___                                             0
+  B4___BB9___B_TCLOSE6___TOPEN6___                                             0
+  B4___CB9___C_TCLOSE6___TOPEN6___                                             0
 /BRANCH
 C =============================================================================
 C solar 1_1 at 1 is 100.000 MVA producing 0.000 MW and 0.000 Mvar
@@ -176,21 +176,25 @@ C
 /MODELS
 MODELS
 INPUT
-  MM0001 {tacs(VTA)}
-  MM0002 {tacs(VTB)}
-  MM0003 {tacs(VTC)}
-  MM0004 {tacs(I1A)}
-  MM0005 {tacs(I1B)}
-  MM0006 {tacs(I1C)}
-  MM0007 {tacs(I2A)}
-  MM0008 {tacs(I2B)}
-  MM0009 {tacs(I2C)}
-  MM0010 {tacs(IDC)}
-  MM0011 {tacs(VDCMP)}
+  MM0001 {tacs(B1___A)}
+  MM0002 {tacs(B1___B)}
+  MM0003 {tacs(B1___C)}
+  MM0004 {tacs(B1___J)}
+  MM0005 {tacs(B1___K)}
+  MM0006 {tacs(B1___L)}
+  MM0007 {tacs(B1___D)}
+  MM0008 {tacs(B1___E)}
+  MM0009 {tacs(B1___F)}
+  MM0010 {tacs(UNUSED)}
+  MM0011 {tacs(UNUSED)}
   MM0012 {tacs(PREF)}
   MM0013 {tacs(QREF)}
-  MM0014 {tacs(VDC_M)}
+  MM0014 {tacs(UNUSED)}
   MM0015 {tacs(VREF)}
+OUTPUT
+  DLL1MA
+  DLL1MB
+  DLL1MC
 $INCLUDE, DLL1.mod
 USE mDLL1 AS mymodel
 INPUT
@@ -268,6 +272,10 @@ DATA
   Cfilt:=0.001500
   Rdamp:=0.016670
   Tv:=0.010000
+OUTPUT
+  DLL1MA:=m_a
+  DLL1MB:=m_b
+  DLL1MC:=m_c
 ENDUSE
 RECORD
   mymodel.m_a AS M_A
@@ -306,19 +314,34 @@ C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1
   B1___NB1___K    -1.000  9990.000                    MEASURING                1
   B1___OB1___L    -1.000  9990.000                    MEASURING                1
 /TACS
-TACS HYBRID
+90PREF                                                                      1.E3
+90QREF                                                                      1.E3
+90VREF                                                                      1.E3
 90B1___A                                                                    1.E3
 90B1___B                                                                    1.E3
 90B1___C                                                                    1.E3
-91B1___M                                                                    1.E3
-91B1___N                                                                    1.E3
-91B1___O                                                                    1.E3
+91B1___J                                                                    1.E3
+91B1___K                                                                    1.E3
+91B1___L                                                                    1.E3
 91B1___D                                                                    1.E3
 91B1___E                                                                    1.E3
 91B1___F                                                                    1.E3
-98B1___M  = 600.00 * M_M
-98B1___N  = 600.00 * M_N
-98B1___O  = 600.00 * M_O
+27DLL1MA
+98B1___M  = 600.00 * DLL1MA
+27DLL1MB
+98B1___N  = 600.00 * DLL1MB
+27DLL1MC
+98B1___O  = 600.00 * DLL1MC
+98UNUSED  =      0.0
+33B1___A
+33B1___B
+33B1___C
+33B1___D
+33B1___E
+33B1___F
+33B1___M
+33B1___N
+33B1___O
 /SOURCE
 C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >
 60B1___M 0                                                                  1.E3

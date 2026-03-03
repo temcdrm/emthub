@@ -1,0 +1,33 @@
+BEGIN NEW DATA CASE
+$INCLUDE, smib.prm
+C  dT  >< Tmax >< Xopt >< Copt ><Epsiln>
+__DELTAT____TMAX    60.0
+   65535       1       1       1       1       0       0       1
+C        1         2         3         4         5         6         7         8
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+/TACS
+TACS HYBRID
+$INCLUDE, smibdll_net.atp
+/BRANCH
+  PREF                      1.E3                                               0
+  QREF                      1.E3                                               0
+  VREF                      1.E3                                               0
+/SOURCE
+C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >
+11PREF   0PREF0_____                                               -1.      1.E3
+12PREF   0DPREF_____                .001                    TPREF_____      1.E3
+11VREF   0VREF0_____                                               -1.      1.E3
+12VREF   0DVREF_____                .001                    TVREF_____      1.E3
+11QREF   0QREF0_____                                               -1.      1.E3
+12QREF   0DQREF_____                .001                    TQREF_____      1.E3
+/OUTPUT
+  B4___AB4___BB4___C
+BLANK TACS
+BLANK MODELS
+BLANK BRANCH
+BLANK SWITCH
+BLANK SOURCE
+BLANK OUTPUT
+BLANK PLOT
+BEGIN NEW DATA CASE
+BLANK

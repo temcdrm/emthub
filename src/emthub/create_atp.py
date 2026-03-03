@@ -457,7 +457,7 @@ def AppendDLL (bus, key, d, atp_path, ap):
         else:
           val = float (row['val'])
           parms[idx] = val
-  write_atp_dll_interface (dll_path, atp_path, parms, ap)
+  write_atp_dll_interface (dll_path, atp_path, parms, bus, ap)
 
   # netlist the AC filter, TACS-controlled source, and measuring switches
   print ('/BRANCH', file=ap)
@@ -489,14 +489,23 @@ def AppendDLL (bus, key, d, atp_path, ap):
     print ('  {:6s}{:6s}{:10.3f}{:10.3f}                    MEASURING                1'.format (AtpNode (bus, ph1), 
       AtpNode (bus, ph2), -1.0, TOPEN), file=ap)
   print ('/TACS', file=ap)
-  print ('TACS HYBRID', file=ap)
+  print ('90PREF                                                                      1.E3', file=ap)
+  print ('90QREF                                                                      1.E3', file=ap)
+  print ('90VREF                                                                      1.E3', file=ap)
   for ph in ['A', 'B', 'C']:
     print ('90{:6s}                                                                    1.E3'.format (AtpNode (bus, ph)), file=ap)
-  for ph in ['M', 'N', 'O', 'D', 'E', 'F']:
+  for ph in ['J', 'K', 'L', 'D', 'E', 'F']:
     print ('91{:6s}                                                                    1.E3'.format (AtpNode (bus, ph)), file=ap)
   mgain = dcV * 0.5
-  for ph in ['M', 'N', 'O']:
-    print ('98{:6s}  = {:s} * M_{:s}'.format (AtpNode (bus, ph), AtpFit6 (mgain), ph), file=ap) #TODO what is the TACS output for modulation index?
+  mroot = 'DLL1M'
+  for phs in [['M', 'A'], ['N', 'B'], ['O', 'C']]:
+    ph1 = phs[0]
+    ph2 = phs[1]
+    print ('27{:6s}'.format (AtpNode (mroot, ph2)), file=ap)
+    print ('98{:6s}  = {:s} * {:s}'.format (AtpNode (bus, ph1), AtpFit6 (mgain), AtpNode (mroot, ph2)), file=ap)
+  print ('98UNUSED  =      0.0', file=ap)
+  for ph in ['A', 'B', 'C', 'D', 'E', 'F', 'M', 'N', 'O']:
+    print ('33{:6s}'.format (AtpNode (bus, ph)), file=ap)
   print ('/SOURCE', file=ap)
   print ('C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >', file=ap)
   for ph in ['M', 'N', 'O']:
@@ -1189,6 +1198,10 @@ def create_atp (d, icd, fpath, case):
       print ('$VINTAGE,0', file=ap)
 
   if len(d['EMTDisconnectingCircuitBreaker']['vals']) > 0:
+    if len(d['EMTDisconnectingCircuitBreaker']['vals']) < 3:
+      iOut = 1
+    else:
+      iOut = 0
     nbrkr = 0
     print ('/SWITCH', file=ap)
     for key, row in d['EMTDisconnectingCircuitBreaker']['vals'].items():
@@ -1200,8 +1213,8 @@ def create_atp (d, icd, fpath, case):
       print ('C Breaker {:s} from {:s} to {:s} numbered {:d} for timing'.format (row['name'], row['bus1'], row['bus2'], nbrkr), file=ap)
       print ('C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1', file=ap)
       for ph in ['A', 'B', 'C']:
-        print ('  {:6s}{:6s}{:10s}{:10s}                                             1'.format (AtpNode (bus1, ph), 
-          AtpNode (bus2, ph), sClose, sOpen), file=ap)
+        print ('  {:6s}{:6s}{:10s}{:10s}                                             {:1d}'.format (AtpNode (bus1, ph), 
+          AtpNode (bus2, ph), sClose, sOpen, iOut), file=ap)
 #        print ('  {:6s}{:6s}{:10.3f}{:10.3f}                                             0'.format (AtpNode (bus1, ph), 
 #          AtpNode (bus2, ph), -1.0, TOPEN), file=ap)
       nbrkr += 1

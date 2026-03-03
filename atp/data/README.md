@@ -1,6 +1,6 @@
 # ATP System Examples
 
-The ATP netlists for _XfmrSat_, _IEEE39_, _IEEE118_, and _WECC240_ examples were created from 
+The ATP netlists for _XfmrSat_, _IEEE39_, _IEEE118_, _WECC240_, and _SMIBDLL_ examples were created from 
 scripts and rawfiles located in the sibling _../../CIM_ directory. Python scripts to convert outputs
 to COMTRADE and plot them are located in the sibling _../src_ directory.
 
@@ -12,7 +12,7 @@ To run these examples:
 Other files of interest:
 
 - _\*_net.atp_: ATP network data produced by the CIM scripts. These should not be edited by the user.
-- _\[XfmrSat|IEEE39|IEEE118|WECC240].atp_: Four specific top-level ATP example files. These may be edited.
+- _\[XfmrSat|IEEE39|IEEE118|WECC240|SMIB].atp_: Four specific top-level ATP example files. These may be edited.
 - _\*.prm_: Sets ATP parameters, called from the _\*.atp_ files. These may be edited.
 - _\*.atpmap_: Lists the CIM buses that correspond to each ATP bus (ATP buses must be numbered sequentially).
 - _clean.bat_: Deletes ATP temporary files.
@@ -90,6 +90,14 @@ may result in better results.
 | True  | True  | False  | False  | True    | True     | True    | True   | False | 2.0 | 1.0 | 0.33 | 0.2 | 5.0 | 0.04 | 8.0 | 0.5 | 1.0 |
 
 
+## SMIB DLL Example
 
+This result comes from the EPRI generic grid-forming inverter model, implemented
+in a DLL compiled from C code. It is sized at 100 MW and connected to a single-machine,
+infinite-bus (SMIB) grid with adjustable short-circuit ratio (SCR). The example
+shows the DLL starting up, in preparation for a transient event to be applied at
+t=4.0 seconds.
+
+![SMIB DLL Startup Results](smib.png)
 
 Copyright &copy; 2024-26, Meltran, Inc
