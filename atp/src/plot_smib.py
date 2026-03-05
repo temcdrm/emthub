@@ -5,6 +5,8 @@ import pandas as pd
 import os
 
 LSIZE = 14
+TZOOM1 = 3.9
+TZOOM2 = 4.2
 
 def summarize_df (df, label):
   print ('Column                         Min           Max {:s}'.format (label))
@@ -75,9 +77,9 @@ def plot_page (df, title, savename=None):
   plot_channel (ax[2,1], tplot, id2[i1:i2], 'Id2 [pu]')
   plot_channel (ax[3,1], tplot, iq2[i1:i2], 'Iq2 [pu]', bLabelX = True)
 
-  indices = np.where(t>=1.8)
+  indices = np.where(t>=TZOOM1)
   i1 = indices[0][0]
-  indices = np.where(t>2.2)
+  indices = np.where(t>TZOOM2)
   i2 = indices[0][0]
   print ('Window', i1, i2, t[i1], t[i2])
   tplot = t[i1:i2]
