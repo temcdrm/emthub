@@ -56,5 +56,14 @@ To deploy the project on PyPi, staring in the directory of your git clone, where
 - `pip install -i https://test.pypi.org/simple/ emthub==0.0.3` for local testing of the deployable package, example version 0.0.3 (Note: consider doing this in a separate Python test environment)
 - `twine upload dist/*` for final deployment
 
+### File and Scripting Workflow
+
+![FileFlow](FileFlow.png)
+
+### Extension and Profile Workflow
+
+![ProfileFlow](ProfileFlow.png)
+
+
 Copyright &copy; 2024-26, Meltran, Inc
 
