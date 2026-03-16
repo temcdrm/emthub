@@ -1,0 +1,65 @@
+cmake_minimum_required(VERSION 3.26)
+
+include(CMakePrintHelpers)
+
+set(CMAKE_INSTALL_PREFIX ..)
+project(@PROJECT_NAME@ C)
+
+set(FMU_NAME "@FMU_NAME@")
+set(FMU_HASH "@FMU_HASH@")
+set(FMU_SOURCES_DIR "${CMAKE_CURRENT_SOURCE_DIR}/@FMU_SOURCES_REL@")
+
+if(NOT EXISTS "${FMU_SOURCES_DIR}/CMakeLists.txt")
+  message(FATAL_ERROR "Extracted FMU CMakeLists.txt not found at ${FMU_SOURCES_DIR}")
+endif()
+
+# The extracted OpenModelica FMU project can build either shared or static.
+# Force a static build here so downstream wrapper targets can link it directly.
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build extracted FMU sources as a static library" FORCE)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON CACHE BOOL "Build static libraries with PIC" FORCE)
+set(RUNTIME_DEPENDENCIES_LEVEL none CACHE STRING "Do not bundle runtime dependencies in the wrapper build" FORCE)
+set(NEED_CVODE OFF CACHE BOOL "Disable CVODE unless explicitly needed" FORCE)
+
+add_subdirectory("${FMU_SOURCES_DIR}" "${CMAKE_CURRENT_BINARY_DIR}/fmu_sources")
+
+if(WIN32)
+  add_library(@PROJECT_NAME@ SHARED PPC.c PPC_resources.rc)
+else()
+  add_library(@PROJECT_NAME@ SHARED PPC.c)
+endif()
+
+target_include_directories(@PROJECT_NAME@ PRIVATE
+  "${CMAKE_CURRENT_SOURCE_DIR}/../include"
+  "${FMU_SOURCES_DIR}"
+  "${FMU_SOURCES_DIR}/fmi"
+)
+
+target_link_libraries(@PROJECT_NAME@ PRIVATE @FMU_HASH@)
+
+if(WIN32)
+  add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../wrapper" "${CMAKE_CURRENT_BINARY_DIR}/dll_wrapper")
+  add_executable(TEST_@PROJECT_NAME@ test_ppc.c)
+  target_include_directories(TEST_@PROJECT_NAME@ PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../include")
+  target_link_libraries(TEST_@PROJECT_NAME@ PRIVATE DLLWrapper)
+endif()
+
+if(WIN32)
+  target_compile_definitions(@PROJECT_NAME@ PRIVATE _CRT_SECURE_NO_WARNINGS)
+  if("${CMAKE_GENERATOR_PLATFORM}" STREQUAL "Win32")
+    install(TARGETS @PROJECT_NAME@ RUNTIME DESTINATION bin32)
+    install(TARGETS TEST_@PROJECT_NAME@ RUNTIME DESTINATION bin32)
+  else()
+    install(TARGETS @PROJECT_NAME@ RUNTIME DESTINATION bin)
+    install(TARGETS TEST_@PROJECT_NAME@ RUNTIME DESTINATION bin)
+  endif()
+endif()
+
+if(APPLE OR UNIX)
+  target_link_libraries(@PROJECT_NAME@ PRIVATE m)
+  install(TARGETS @PROJECT_NAME@ LIBRARY DESTINATION bin)
+endif()
+
+cmake_print_variables(CMAKE_INSTALL_PREFIX PROJECT_SOURCE_DIR CMAKE_GENERATOR_PLATFORM)
+message(STATUS "FMU name: ${FMU_NAME}")
+message(STATUS "FMU hash target: ${FMU_HASH}")
+message(STATUS "FMU sources dir: ${FMU_SOURCES_DIR}")

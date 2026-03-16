@@ -1,0 +1,18 @@
+cd(".");
+
+loadFile("OpenIPSL/OpenIPSL/package.mo");
+getErrorString();
+
+loadModel(Modelica);
+getErrorString();
+
+loadFile("PPC.mo");
+getErrorString();
+
+checkModel(PPC);
+getErrorString();
+
+cd("build");
+translateModelFMU(PPC, version="2.0", fmuType="cs", fileNamePrefix="PPC", platforms={"static"});
+
+getErrorString();
