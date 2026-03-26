@@ -770,6 +770,107 @@ CREATE TABLE "IEEECigreDLL"
     "PowerElectronicsConnection" VARCHAR(100)
 );
 
+-- Connects the set of DLL input signals, as defined in its API, to points
+-- in the network model.
+CREATE TABLE "IEEECigreDLLInput"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The type of input signal. If remoteInputSignal, supply the RemoteInputSignal
+    -- association. The phase attribute is required for acTerminalVoltage, acCurrentVsc,
+    -- and acCurrentGrid. If apiDefined, the DLL must be queried through its API
+    -- for more information.
+    -- FK column reference to table representing the "IEEECigreDLLInputKind" enumeration
+    "kind" VARCHAR(100),
+    -- The phase of acTerminalVoltage, acCurrentVsc, or acCurrentGrid.
+    -- FK column reference to table representing the "SinglePhaseKind" enumeration
+    "phase" VARCHAR(100),
+    -- The input's expected sequence number in the DLL API.
+    "sequenceNumber" INTEGER,
+    -- The DLL connected to the input.
+    -- FK column reference to table representing the "IEEECigreDLL" class
+    "IEEECigreDLL" VARCHAR(100),
+    -- The RemoteInputSignal for this DLL input. Requires kind=remoteInputSignal.
+    -- FK column reference to table representing the "RemoteInputSignal" class
+    "RemoteInputSignal" VARCHAR(100)
+);
+
+CREATE TABLE "IEEECigreDLLInputKind" ( "name" VARCHAR(100) UNIQUE );
+-- AC current from AC filter into the grid. Requires the phase attribute.
+-- Typically in Amperes, but the DLL API should be used to verify units.
+INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'acCurrentGrid' );
+-- AC current from inverter into the AC filter. Requires the phase attribute.
+-- Typically in Amperes, but the DLL API should be used to verify units.
+INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'acCurrentVsc' );
+-- AC voltage at the filter-to-grid connection point. Requires the phase attribute.
+-- Typically in Volts, but the DLL API should be used to verify units.
+INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'acTerminalVoltage' );
+-- Active power control reference. Typically in per-unit but the DLL API should
+-- be used to verify units.
+INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'activePowerReference' );
+-- Another kind of input or control signal not enumerated in CIM. Use the
+-- DLL API for more information.
+INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'apiDefined' );
+-- DC current into the inverter stage, if DC bus modeling applies. Typically
+-- in Amperes, but the DLL API should be used to verify units.
+INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'dcCurrent' );
+-- DC voltage command from the maximum power point tracking system, if DC
+-- bus modeling applies. Typically in Volts, but the DLL API should be used
+-- to verify units.
+INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'dcMPPTVoltage' );
+-- DC voltage at the inverter stage, if DC bus modeling applies. Typically
+-- in Volts, but the DLL API should be used to verify units.
+INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'dcMeasuredVoltage' );
+-- Reactive power control reference. Typically in per-unit but the DLL API
+-- should be used to verify units.
+INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'reactivePowerReference' );
+-- An input from an external point in the network. Requires the IEEECigreDLLInput.RemoteInputSignal
+-- assocation.
+INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'remoteInputSignal' );
+-- Voltage control reference. Typically in per-unit and positive sequence,
+-- but the DLL API should be used to verify units.
+INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'voltageReference' );
+
+-- Connects the set of DLL output signals, as defined in its API, to points
+-- in the network model.
+CREATE TABLE "IEEECigreDLLOutput"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The type of output signal. The phase attribute must be supplied with modulationIndex
+    -- and vscVoltage. If apiDefined, obtain more information from the DLL API.
+    -- FK column reference to table representing the "IEEECigreDLLOutputKind" enumeration
+    "kind" VARCHAR(100),
+    -- The phase of modulationIndex or vscVoltage.
+    -- FK column reference to table representing the "SinglePhaseKind" enumeration
+    "phase" VARCHAR(100),
+    -- The output's expected sequence number in the DLL API.
+    "sequenceNumber" INTEGER,
+    -- The DLL producing the outputs.
+    -- FK column reference to table representing the "IEEECigreDLL" class
+    "IEEECigreDLL" VARCHAR(100)
+);
+
+CREATE TABLE "IEEECigreDLLOutputKind" ( "name" VARCHAR(100) UNIQUE );
+-- Active power from internal calculation; a convenience output.
+INSERT INTO "IEEECigreDLLOutputKind" ( "name" ) VALUES ( 'activePower' );
+-- Typically a convenience output for plotting and analysis. Use DLL API for
+-- more information.
+INSERT INTO "IEEECigreDLLOutputKind" ( "name" ) VALUES ( 'apiDefined' );
+-- Modulation index for PWM switching in a detailed VSC model. May be scaled
+-- by Vdc/2 in an average model. Requires the phase attribute. If these outputs
+-- are not provided, then vscVoltage outputs shall be provided.
+INSERT INTO "IEEECigreDLLOutputKind" ( "name" ) VALUES ( 'modulationIndex' );
+-- Frequency estimated from the DLL's phase locked loop or similar algorithm.
+INSERT INTO "IEEECigreDLLOutputKind" ( "name" ) VALUES ( 'pllFrequency' );
+-- Reactive power from internal calculation; a convenience output.
+INSERT INTO "IEEECigreDLLOutputKind" ( "name" ) VALUES ( 'reactivePower' );
+-- A flag indicating fault-ride-through mode is active, based on logic internal
+-- to the DLL.
+INSERT INTO "IEEECigreDLLOutputKind" ( "name" ) VALUES ( 'rideThroughMode' );
+-- VSC source voltage for an average model. Requires the phase attribute.
+-- If these outputs are not provided then modulationIndex outputs shall be
+-- provided.
+INSERT INTO "IEEECigreDLLOutputKind" ( "name" ) VALUES ( 'vscVoltage' );
+
 -- A single value in the array of DLL input values. The meaning of this parameter
 -- is discoverable through the DLL's application program interface (API) and/or
 -- documentation provided with the DLL. This CIM class maintains only the
@@ -1478,9 +1579,6 @@ CREATE TABLE "RemoteInputSignal"
     -- The ConnectivityNode providing input to the signal.
     -- FK column reference to table representing the "ConnectivityNode" class
     "ConnectivityNode" VARCHAR(100),
-    -- The DLL this signal provides input for.
-    -- FK column reference to table representing the "IEEECigreDLL" class
-    "IEEECigreDLL" VARCHAR(100),
     -- Power system stabilizer model using this remote input signal.
     -- FK column reference to table representing the "PowerSystemStabilizerDynamics" class
     "PowerSystemStabilizerDynamics" VARCHAR(100),
@@ -3130,6 +3228,17 @@ ALTER TABLE "IBRPlant" ADD FOREIGN KEY ( "acFilterKind" ) REFERENCES "IBRFilterK
 -- Foreign keys for table "IEEECigreDLL"
 ALTER TABLE "IEEECigreDLL" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFERENCES "PowerElectronicsConnection" ( "mRID" );
 
+-- Foreign keys for table "IEEECigreDLLInput"
+ALTER TABLE "IEEECigreDLLInput" ADD FOREIGN KEY ( "kind" ) REFERENCES "IEEECigreDLLInputKind" ( "name" );
+ALTER TABLE "IEEECigreDLLInput" ADD FOREIGN KEY ( "phase" ) REFERENCES "SinglePhaseKind" ( "name" );
+ALTER TABLE "IEEECigreDLLInput" ADD FOREIGN KEY ( "IEEECigreDLL" ) REFERENCES "IEEECigreDLL" ( "mRID" );
+ALTER TABLE "IEEECigreDLLInput" ADD FOREIGN KEY ( "RemoteInputSignal" ) REFERENCES "RemoteInputSignal" ( "mRID" );
+
+-- Foreign keys for table "IEEECigreDLLOutput"
+ALTER TABLE "IEEECigreDLLOutput" ADD FOREIGN KEY ( "kind" ) REFERENCES "IEEECigreDLLOutputKind" ( "name" );
+ALTER TABLE "IEEECigreDLLOutput" ADD FOREIGN KEY ( "phase" ) REFERENCES "SinglePhaseKind" ( "name" );
+ALTER TABLE "IEEECigreDLLOutput" ADD FOREIGN KEY ( "IEEECigreDLL" ) REFERENCES "IEEECigreDLL" ( "mRID" );
+
 -- Foreign keys for table "IEEECigreDLLParameter"
 ALTER TABLE "IEEECigreDLLParameter" ADD FOREIGN KEY ( "parameterKind" ) REFERENCES "IEEECigreDLLParameterKind" ( "name" );
 ALTER TABLE "IEEECigreDLLParameter" ADD FOREIGN KEY ( "IEEECigreDLL" ) REFERENCES "IEEECigreDLL" ( "mRID" );
@@ -3168,7 +3277,6 @@ ALTER TABLE "RatioTapChanger" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "T
 ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "remoteSignalType" ) REFERENCES "RemoteSignalKind" ( "name" );
 ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "ConductingEquipment" ) REFERENCES "ConductingEquipment" ( "mRID" );
 ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
-ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "IEEECigreDLL" ) REFERENCES "IEEECigreDLL" ( "mRID" );
 ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "PowerSystemStabilizerDynamics" ) REFERENCES "PowerSystemStabilizerDynamics" ( "mRID" );
 ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
 ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "UnderexcitationLimiterDynamics" ) REFERENCES "UnderexcitationLimiterDynamics" ( "mRID" );
@@ -3250,6 +3358,10 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 
 -- Cascade deletes for compounds referenced in table "IEEECigreDLL"
 
+-- Cascade deletes for compounds referenced in table "IEEECigreDLLInput"
+
+-- Cascade deletes for compounds referenced in table "IEEECigreDLLOutput"
+
 -- Cascade deletes for compounds referenced in table "IEEECigreDLLParameter"
 
 -- Cascade deletes for compounds referenced in table "OperationalLimit"
@@ -3313,6 +3425,9 @@ CREATE INDEX ix_EnergyConsumer_LoadResponse ON "EnergyConsumer" ( "LoadResponse"
 CREATE INDEX ix_Equipment_EquipmentContainer ON "Equipment" ( "EquipmentContainer" );
 CREATE INDEX ix_ExcitationSystemDynamics_SynchronousMachineDynamics ON "ExcitationSystemDynamics" ( "SynchronousMachineDynamics" );
 CREATE INDEX ix_IEEECigreDLL_PowerElectronicsConnection ON "IEEECigreDLL" ( "PowerElectronicsConnection" );
+CREATE INDEX ix_IEEECigreDLLInput_IEEECigreDLL ON "IEEECigreDLLInput" ( "IEEECigreDLL" );
+CREATE INDEX ix_IEEECigreDLLInput_RemoteInputSignal ON "IEEECigreDLLInput" ( "RemoteInputSignal" );
+CREATE INDEX ix_IEEECigreDLLOutput_IEEECigreDLL ON "IEEECigreDLLOutput" ( "IEEECigreDLL" );
 CREATE INDEX ix_IEEECigreDLLParameter_IEEECigreDLL ON "IEEECigreDLLParameter" ( "IEEECigreDLL" );
 CREATE INDEX ix_OperationalLimit_OperationalLimitSet ON "OperationalLimit" ( "OperationalLimitSet" );
 CREATE INDEX ix_OperationalLimit_OperationalLimitType ON "OperationalLimit" ( "OperationalLimitType" );
@@ -3325,7 +3440,6 @@ CREATE INDEX ix_PowerTransformerEnd_PowerTransformer ON "PowerTransformerEnd" ( 
 CREATE INDEX ix_RatioTapChanger_TransformerEnd ON "RatioTapChanger" ( "TransformerEnd" );
 CREATE INDEX ix_RemoteInputSignal_ConductingEquipment ON "RemoteInputSignal" ( "ConductingEquipment" );
 CREATE INDEX ix_RemoteInputSignal_ConnectivityNode ON "RemoteInputSignal" ( "ConnectivityNode" );
-CREATE INDEX ix_RemoteInputSignal_IEEECigreDLL ON "RemoteInputSignal" ( "IEEECigreDLL" );
 CREATE INDEX ix_RemoteInputSignal_PowerSystemStabilizerDynamics ON "RemoteInputSignal" ( "PowerSystemStabilizerDynamics" );
 CREATE INDEX ix_RemoteInputSignal_TransformerEnd ON "RemoteInputSignal" ( "TransformerEnd" );
 CREATE INDEX ix_RemoteInputSignal_UnderexcitationLimiterDynamics ON "RemoteInputSignal" ( "UnderexcitationLimiterDynamics" );

@@ -575,6 +575,46 @@
       "default": null
     }
   },
+  "IEEECigreDLLInput": {
+    "kind": {
+      "type": "IEEECigreDLLInputKind",
+      "default": null
+    },
+    "phase": {
+      "type": "SinglePhaseKind",
+      "default": null
+    },
+    "sequenceNumber": {
+      "type": "Integer",
+      "default": null
+    },
+    "IEEECigreDLL": {
+      "type": "IEEECigreDLL",
+      "default": null
+    },
+    "RemoteInputSignal": {
+      "type": "RemoteInputSignal",
+      "default": null
+    }
+  },
+  "IEEECigreDLLOutput": {
+    "kind": {
+      "type": "IEEECigreDLLOutputKind",
+      "default": null
+    },
+    "phase": {
+      "type": "SinglePhaseKind",
+      "default": null
+    },
+    "sequenceNumber": {
+      "type": "Integer",
+      "default": null
+    },
+    "IEEECigreDLL": {
+      "type": "IEEECigreDLL",
+      "default": null
+    }
+  },
   "IEEECigreDLLParameter": {
     "parameterKind": {
       "type": "IEEECigreDLLParameterKind",
@@ -954,10 +994,6 @@
     },
     "DERDynamics": {
       "type": "DERDynamics",
-      "default": null
-    },
-    "IEEECigreDLL": {
-      "type": "IEEECigreDLL",
       "default": null
     },
     "PowerSystemStabilizerDynamics": {

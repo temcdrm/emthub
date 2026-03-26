@@ -3913,6 +3913,170 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="IEEECigreDLLInput" class="group">
+         <a href="#IEEECigreDLLInput">
+            <h2 class="concrete">IEEECigreDLLInput</h2>
+         </a>
+         <p class="package">Emtiop</p>
+         <p class="comment">Connects the set of DLL input signals, as defined in its API, to points in the network model.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInput.kind">kind</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreDLLInputKind">IEEECigreDLLInputKind</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The type of input signal. If remoteInputSignal, supply the RemoteInputSignal association. The phase attribute is required for acTerminalVoltage, acCurrentVsc, and acCurrentGrid. If apiDefined, the DLL must be queried through its API for more information.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInput.phase">phase</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#SinglePhaseKind">SinglePhaseKind</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The phase of acTerminalVoltage, acCurrentVsc, or acCurrentGrid.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInput.sequenceNumber">sequenceNumber</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The input's expected sequence number in the DLL API.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInput.IEEECigreDLL">IEEECigreDLL</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreDLL">IEEECigreDLL</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The DLL connected to the input.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInput.RemoteInputSignal">RemoteInputSignal</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#RemoteInputSignal">RemoteInputSignal</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The RemoteInputSignal for this DLL input. Requires kind=remoteInputSignal.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="IEEECigreDLLOutput" class="group">
+         <a href="#IEEECigreDLLOutput">
+            <h2 class="concrete">IEEECigreDLLOutput</h2>
+         </a>
+         <p class="package">Emtiop</p>
+         <p class="comment">Connects the set of DLL output signals, as defined in its API, to points in the network model.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLOutput.kind">kind</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreDLLOutputKind">IEEECigreDLLOutputKind</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The type of output signal. The phase attribute must be supplied with modulationIndex and vscVoltage. If apiDefined, obtain more information from the DLL API.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLOutput.phase">phase</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#SinglePhaseKind">SinglePhaseKind</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The phase of modulationIndex or vscVoltage.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLOutput.sequenceNumber">sequenceNumber</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The output's expected sequence number in the DLL API.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLOutput.IEEECigreDLL">IEEECigreDLL</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreDLL">IEEECigreDLL</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The DLL producing the outputs.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
       <div id="IEEECigreDLLParameter" class="group">
          <a href="#IEEECigreDLLParameter">
             <h2 class="concrete">IEEECigreDLLParameter</h2>
@@ -6913,22 +7077,6 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p class="comment">DER dynamics model which has a remote input signal.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="RemoteInputSignal.IEEECigreDLL">IEEECigreDLL</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#IEEECigreDLL">IEEECigreDLL</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The DLL this signal provides input for.</p>
                </td>
             </tr>
             <tr>
@@ -14698,6 +14846,166 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">ungroundedWye</p>
                </th>
                <td/>
+            </tr>
+         </table>
+      </div>
+      <div id="IEEECigreDLLInputKind" class="group">
+         <a href="#IEEECigreDLLInputKind">
+            <h2 class="enumerated">IEEECigreDLLInputKind</h2>
+         </a>
+         <p class="package">Emtiop</p>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">acCurrentGrid</p>
+               </th>
+               <td>
+                  <p class="comment">AC current from AC filter into the grid. Requires the phase attribute. Typically in Amperes, but the DLL API should be used to verify units.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">acCurrentVsc</p>
+               </th>
+               <td>
+                  <p class="comment">AC current from inverter into the AC filter. Requires the phase attribute. Typically in Amperes, but the DLL API should be used to verify units.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">acTerminalVoltage</p>
+               </th>
+               <td>
+                  <p class="comment">AC voltage at the filter-to-grid connection point. Requires the phase attribute. Typically in Volts, but the DLL API should be used to verify units.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">activePowerReference</p>
+               </th>
+               <td>
+                  <p class="comment">Active power control reference. Typically in per-unit but the DLL API should be used to verify units.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">apiDefined</p>
+               </th>
+               <td>
+                  <p class="comment">Another kind of input or control signal not enumerated in CIM. Use the DLL API for more information.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">dcCurrent</p>
+               </th>
+               <td>
+                  <p class="comment">DC current into the inverter stage, if DC bus modeling applies. Typically in Amperes, but the DLL API should be used to verify units.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">dcMPPTVoltage</p>
+               </th>
+               <td>
+                  <p class="comment">DC voltage command from the maximum power point tracking system, if DC bus modeling applies. Typically in Volts, but the DLL API should be used to verify units.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">dcMeasuredVoltage</p>
+               </th>
+               <td>
+                  <p class="comment">DC voltage at the inverter stage, if DC bus modeling applies. Typically in Volts, but the DLL API should be used to verify units.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">reactivePowerReference</p>
+               </th>
+               <td>
+                  <p class="comment">Reactive power control reference. Typically in per-unit but the DLL API should be used to verify units.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">remoteInputSignal</p>
+               </th>
+               <td>
+                  <p class="comment">An input from an external point in the network. Requires the IEEECigreDLLInput.RemoteInputSignal assocation.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">voltageReference</p>
+               </th>
+               <td>
+                  <p class="comment">Voltage control reference. Typically in per-unit and positive sequence, but the DLL API should be used to verify units.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="IEEECigreDLLOutputKind" class="group">
+         <a href="#IEEECigreDLLOutputKind">
+            <h2 class="enumerated">IEEECigreDLLOutputKind</h2>
+         </a>
+         <p class="package">Emtiop</p>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">activePower</p>
+               </th>
+               <td>
+                  <p class="comment">Active power from internal calculation; a convenience output.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">apiDefined</p>
+               </th>
+               <td>
+                  <p class="comment">Typically a convenience output for plotting and analysis. Use DLL API for more information.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">modulationIndex</p>
+               </th>
+               <td>
+                  <p class="comment">Modulation index for PWM switching in a detailed VSC model. May be scaled by Vdc/2 in an average model. Requires the phase attribute. If these outputs are not provided, then vscVoltage outputs shall be provided.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">pllFrequency</p>
+               </th>
+               <td>
+                  <p class="comment">Frequency estimated from the DLL's phase locked loop or similar algorithm.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">reactivePower</p>
+               </th>
+               <td>
+                  <p class="comment">Reactive power from internal calculation; a convenience output.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">rideThroughMode</p>
+               </th>
+               <td>
+                  <p class="comment">A flag indicating fault-ride-through mode is active, based on logic internal to the DLL.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">vscVoltage</p>
+               </th>
+               <td>
+                  <p class="comment">VSC source voltage for an average model. Requires the phase attribute. If these outputs are not provided then modulationIndex outputs shall be provided.</p>
+               </td>
             </tr>
          </table>
       </div>

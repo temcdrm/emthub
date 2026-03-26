@@ -9,6 +9,145 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xml:base="http://www.ucaiug.org/profile" > 
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5718">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5719"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLOutput.sequenceNumber"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5719">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>sequenceNumber</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-571a">
+    <rdf:first rdf:resource="#IEEECigreDLL"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-571b">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-571c"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLOutput.IEEECigreDLL"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-571c">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>IEEECigreDLL</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLL"/>
+    <owl:unionOf rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-571a"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-571d">
+    <rdf:first rdf:resource="#SinglePhaseKind"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-571e">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-571f"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLOutput.phase"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-571f">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>phase</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#SinglePhaseKind"/>
+    <owl:unionOf rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-571d"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5720">
+    <rdf:first rdf:resource="#IEEECigreDLLOutputKind"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5721">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5722"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLOutput.kind"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5722">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>kind</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLOutputKind"/>
+    <owl:unionOf rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5720"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5723">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5724"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLInput.sequenceNumber"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5724">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>sequenceNumber</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5725">
+    <rdf:first rdf:resource="#IEEECigreDLL"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5726">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5727"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLInput.IEEECigreDLL"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5727">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>IEEECigreDLL</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLL"/>
+    <owl:unionOf rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5725"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5728">
+    <rdf:first rdf:resource="#RemoteInputSignal"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5729">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-572a"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLInput.RemoteInputSignal"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-572a">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>RemoteInputSignal</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#RemoteInputSignal"/>
+    <owl:unionOf rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5728"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-572b">
+    <rdf:first rdf:resource="#SinglePhaseKind"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-572c">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-572d"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLInput.phase"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-572d">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>phase</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#SinglePhaseKind"/>
+    <owl:unionOf rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-572b"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-572e">
+    <rdf:first rdf:resource="#IEEECigreDLLInputKind"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-572f">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5730"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLInput.kind"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5730">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>kind</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLInputKind"/>
+    <owl:unionOf rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-572e"/>
+  </rdf:Description>
   <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-5fc4">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:allValuesFrom rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-5fc5"/>
@@ -1009,17 +1148,6 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:label>PowerSystemStabilizerDynamics</rdfs:label>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#PowerSystemStabilizerDynamics"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b3">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b4"/>
-    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#RemoteInputSignal.IEEECigreDLL"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b4">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>IEEECigreDLL</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLL"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b5">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
@@ -8359,6 +8487,39 @@
     <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLL"/>
     <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
   </rdf:Description>
+  <rdf:Description rdf:about="#IEEECigreDLLInput">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5723"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5726"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5729"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-572c"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-572f"/>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLInput"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#IEEECigreDLLInputKind">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLInputKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#IEEECigreDLLOutput">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5718"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-571b"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-571e"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X5468381eXa3X19d2b7e6020Xa3X-5721"/>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLOutput"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#IEEECigreDLLOutputKind">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLOutputKind"/>
+  </rdf:Description>
   <rdf:Description rdf:about="#IEEECigreDLLParameter">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
@@ -8759,7 +8920,6 @@
     <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68ad"/>
     <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68af"/>
     <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b1"/>
-    <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b3"/>
     <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b5"/>
     <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b7"/>
     <rdfs:subClassOf rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-68b9"/>
