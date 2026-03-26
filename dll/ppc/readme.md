@@ -36,9 +36,10 @@ Then follow these instructions to make 64-bit and 32-bit versions of the DLL:
 
 1. Open the *x64 Native Tools Command Prompt for VS 2022* from Windows Start Menu.
 2. From the repository root:
-    1. Checkout git submodule "OpenIPSL" from its git repository
-    2. Regenerate the FMU build files:
-       `python dll\ppc\fmu\generate_fmu_build.py --omc-cmd "path\to\omc.exe"`
+    1. Checkout git submodule "OpenIPSL" from its git repository:
+       `git submodule update --init --recursive`
+    2. Regenerate the FMU build files (default as-tested path to omc.exe is shown):
+       `python dll\ppc\fmu\generate_fmu_build.py --omc-cmd "c:\program files\openmodelica1.26.3-64bit\bin\omc.exe"`
     3. Remove `build` and `build32` if they already exist.
     4. `md build`
     5. `md build32`
@@ -51,6 +52,7 @@ Then follow these instructions to make 64-bit and 32-bit versions of the DLL:
 3. From the `build` and `build32` directories, check the exported functions:
     1. `dumpbin /exports Release\PPC.dll` or `dumpbin /exports Debug\PPC.dll`
     2. `Release\TEST_PPC.exe` generates CSV output for the wrapper-based harness
+    3. `python ..\dll\bin\plotdlltest.py ppc_voltage_step.csv` plots one of the CSV output files
 4. From the installed output directories:
     1. x64 installs to `dll\bin`
     2. Win32 installs to `dll\bin32`
