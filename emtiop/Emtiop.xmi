@@ -3,15 +3,15 @@
 	<xmi:Documentation exporter="Enterprise Architect" exporterVersion="6.5" exporterID="1714"/>
 	<uml:Model xmi:type="uml:Model" name="EA_Model" visibility="public">
 		<packagedElement xmi:type="uml:Package" xmi:id="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" name="Emtiop" visibility="public">
-			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_70BE4C77_7C67_4da4_918F_11E741E8FAF5" body="This extension represents non-linear transformer core effects, through a piecewise-linear TransformerSaturation instance, which associates to linear TransformerCoreAdmittance and then to TransformerEnd."/>
 			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_8271D14C_510B_49d6_AC80_3C8C2898A131" body="These extensions eliminate Terminal objects from the IEEE P3743. Instead, ConductingEquipment and TransformerEnd extension instances associate directly to ConnectivityNode. Another extension represents non-linear transformer core effects, through a piecewise-linear TransformerSaturation instance, which associates to linear TransformerCoreAdmittance and then to TransformerEnd.">
 				<annotatedElement xmi:idref="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A"/>
 			</ownedComment>
+			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_70BE4C77_7C67_4da4_918F_11E741E8FAF5" body="This extension represents non-linear transformer core effects, through a piecewise-linear TransformerSaturation instance, which associates to linear TransformerCoreAdmittance and then to TransformerEnd."/>
+			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_37686F36_5816_4b4e_957A_C860E89CFC65" body="These classes allow dynamic remote signal connections to ConnectivityNode, TransformerEnd, and either the From or To side of ConductingEquipment. It also permits the standard WeccDynamics and the extension IEEECigreDLL to use remote signals. &lt;font color=&quot;#ff0000&quot;&gt;What is the difference between remoteBusVoltage and remoteBusVoltageAmplitude?&lt;/font&gt;"/>
 			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_5567A377_5F25_4983_8492_59C5F34B7B45" body="These extensions associate SvVoltage to ConnectivityNode instead of TopologicalNode, and SvPowerFlow to either ConductingEquipment or TransformerEnd. &#xA;&#xA;For ConductingEquipment, positive power flow is by default into the equipment from the associated FromConnectivityNode. Flow at the ToConnectivityNode may be calculated as needed, or directly specified using the atToEnd attribute. For TransformerEnd, positive power flow is into the transformer from the associated ConnectivityNode.&#xA;&#xA;SvSwitch, SvStatus, SvTapStep, and SvShuntCompensatorSections are unchanged from the core CIM. SvInjection is not used."/>
 			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_0FB50C00_5BAC_4d9c_A43B_007185071E81" body="These classes define attributes and sets of Equipment associated with generating plants."/>
-			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_F285346A_4C68_4c70_8B10_EAF57553CC99" body="These classes associate a set of power flow ratings to ConductingEquipment or TransformerEnd instead of Equipment or Terminal. Voltage ratings are not included."/>
 			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_118938DF_7E6A_4cdc_AC05_F82C84BFD8C5" body="These classes associate &quot;real-code&quot; dynamic link libraries (DLLs) to inverters, per Cigre TB 958."/>
-			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_37686F36_5816_4b4e_957A_C860E89CFC65" body="These classes allow dynamic remote signal connections to ConnectivityNode, TransformerEnd, and either the From or To side of ConductingEquipment. It also permits the standard WeccDynamics and the extension IEEECigreDLL to use remote signals. &lt;font color=&quot;#ff0000&quot;&gt;What is the difference between remoteBusVoltage and remoteBusVoltageAmplitude?&lt;/font&gt;"/>
+			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_F285346A_4C68_4c70_8B10_EAF57553CC99" body="These classes associate a set of power flow ratings to ConductingEquipment or TransformerEnd instead of Equipment or Terminal. Voltage ratings are not included."/>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3" name="ConductingEquipment" visibility="public"/>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_BC1FDB6F_1C1E_4dd0_A183_02B0AB55BF52" visibility="public">
 				<memberEnd xmi:idref="EAID_dst1FDB6F_1C1E_4dd0_A183_02B0AB55BF52"/>
@@ -51,8 +51,8 @@
 				</ownedEnd>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dstF0E448_2490_42a8_8023_3574E17777F9" name="ConductingEquipment" visibility="public" association="EAID_1CF0E448_2490_42a8_8023_3574E17777F9" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000105__2490_42a8_8023_3574E17777F9" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000106__2490_42a8_8023_3574E17777F9" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000131__2490_42a8_8023_3574E17777F9" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000132__2490_42a8_8023_3574E17777F9" value="1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_AF27276C_41C5_4d19_89FF_184413BECC00" visibility="public">
@@ -65,8 +65,8 @@
 				</ownedEnd>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst27276C_41C5_4d19_89FF_184413BECC00" name="ConductingEquipment" visibility="public" association="EAID_AF27276C_41C5_4d19_89FF_184413BECC00" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000125__41C5_4d19_89FF_184413BECC00" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000126__41C5_4d19_89FF_184413BECC00" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000151__41C5_4d19_89FF_184413BECC00" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000152__41C5_4d19_89FF_184413BECC00" value="1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_FF89C308_CDD3_4848_8792_0480B9A713B1" visibility="public">
@@ -79,8 +79,8 @@
 				</ownedEnd>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst89C308_CDD3_4848_8792_0480B9A713B1" name="ConductingEquipment" visibility="public" association="EAID_FF89C308_CDD3_4848_8792_0480B9A713B1" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000115__CDD3_4848_8792_0480B9A713B1" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000116__CDD3_4848_8792_0480B9A713B1" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000141__CDD3_4848_8792_0480B9A713B1" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000142__CDD3_4848_8792_0480B9A713B1" value="1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_0C440DC4_4D78_4d54_B3B1_6BC0BA88FEBB" name="GeneratingPlant" visibility="public">
@@ -201,8 +201,8 @@
 				<memberEnd xmi:idref="EAID_src068697_C2E8_473d_B0D9_46C16E088A3D"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src068697_C2E8_473d_B0D9_46C16E088A3D" name="IEEECigreDLL" visibility="public" association="EAID_46068697_C2E8_473d_B0D9_46C16E088A3D" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_FE82DEC1_98ED_4d75_B9F9_082E4B494C70"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000071__C2E8_473d_B0D9_46C16E088A3D" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000072__C2E8_473d_B0D9_46C16E088A3D" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000067__C2E8_473d_B0D9_46C16E088A3D" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000068__C2E8_473d_B0D9_46C16E088A3D" value="1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_B0DB49EB_59F9_466c_84BF_2A07AD648520" visibility="public">
@@ -215,8 +215,8 @@
 				<memberEnd xmi:idref="EAID_srcDB49EB_59F9_466c_84BF_2A07AD648520"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_srcDB49EB_59F9_466c_84BF_2A07AD648520" name="IEEECigreDLL" visibility="public" association="EAID_B0DB49EB_59F9_466c_84BF_2A07AD648520" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_FE82DEC1_98ED_4d75_B9F9_082E4B494C70"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000101__59F9_466c_84BF_2A07AD648520" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000102__59F9_466c_84BF_2A07AD648520" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000115__59F9_466c_84BF_2A07AD648520" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000116__59F9_466c_84BF_2A07AD648520" value="1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_CA4FAA81_D534_4a55_A727_A2B23A9282D6" visibility="public">
@@ -229,8 +229,8 @@
 				<memberEnd xmi:idref="EAID_src4FAA81_D534_4a55_A727_A2B23A9282D6"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src4FAA81_D534_4a55_A727_A2B23A9282D6" name="IEEECigreDLL" visibility="public" association="EAID_CA4FAA81_D534_4a55_A727_A2B23A9282D6" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_FE82DEC1_98ED_4d75_B9F9_082E4B494C70"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000079__D534_4a55_A727_A2B23A9282D6" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000080__D534_4a55_A727_A2B23A9282D6" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000093__D534_4a55_A727_A2B23A9282D6" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000094__D534_4a55_A727_A2B23A9282D6" value="1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_F79C44AC_B76C_4db4_A105_286F324C6F22" visibility="public">
@@ -253,93 +253,153 @@
 					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000063_1AA3_4cf2_9324_F930C3083D8B" value="0"/>
 					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000064_1AA3_4cf2_9324_F930C3083D8B" value="1"/>
 				</ownedAttribute>
-				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_C79B1D23_ADE4_4328_8A2F_BF7FDC64D550" name="phase" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<type xmi:idref="EAID_0AD52D65_4270_45c1_9AF4_29C53A398AE3"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000065_ADE4_4328_8A2F_BF7FDC64D550" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000066_ADE4_4328_8A2F_BF7FDC64D550" value="1"/>
-				</ownedAttribute>
-				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_E8EC3F77_02AA_4460_8F22_A4AD6518E4D2" name="sequenceNumber" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<type xmi:idref="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000067_02AA_4460_8F22_A4AD6518E4D2" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000068_02AA_4460_8F22_A4AD6518E4D2" value="1"/>
-				</ownedAttribute>
+				<generalization xmi:type="uml:Generalization" xmi:id="EAID_68B0D58A_8E33_4a05_837A_ADD20A2FBAC6" general="EAID_9C01A523_ED17_437d_9E28_AC7CFAB911DB" isSubstitutable="true"/>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_13463FB3_B677_400d_811B_B64AB4D84E56" visibility="public">
 				<memberEnd xmi:idref="EAID_dst463FB3_B677_400d_811B_B64AB4D84E56"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst463FB3_B677_400d_811B_B64AB4D84E56" name="RemoteInputSignal" visibility="public" association="EAID_13463FB3_B677_400d_811B_B64AB4D84E56" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_9362D4B3_DE41_4140_A405_3225ED0FCD02"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000069__B677_400d_811B_B64AB4D84E56" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000070__B677_400d_811B_B64AB4D84E56" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000065__B677_400d_811B_B64AB4D84E56" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000066__B677_400d_811B_B64AB4D84E56" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_src463FB3_B677_400d_811B_B64AB4D84E56"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src463FB3_B677_400d_811B_B64AB4D84E56" name="IEEECigreDLLInput" visibility="public" association="EAID_13463FB3_B677_400d_811B_B64AB4D84E56" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_13298CB1_D689_446c_BCC2_3AAC894B6D20"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000117__B677_400d_811B_B64AB4D84E56" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000118__B677_400d_811B_B64AB4D84E56" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000143__B677_400d_811B_B64AB4D84E56" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000144__B677_400d_811B_B64AB4D84E56" value="1"/>
 				</ownedEnd>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_85B8E983_EE2F_403f_AB95_89512D2C9C9E" name="IEEECigreDLLInputKind" visibility="public">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_D2BBF2B0_9F6D_4007_8997_502FCD73DD00" name="acCurrentGrid" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000069_9F6D_4007_8997_502FCD73DD00" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000070_9F6D_4007_8997_502FCD73DD00" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_2E700AB0_3C46_4906_AE23_2E6559D218D0" name="acCurrentVsc" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000071_3C46_4906_AE23_2E6559D218D0" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000072_3C46_4906_AE23_2E6559D218D0" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_DBBE77C6_AF7C_4cef_8D41_8AEB22720FFB" name="acTerminalVoltage" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000073_AF7C_4cef_8D41_8AEB22720FFB" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000074_AF7C_4cef_8D41_8AEB22720FFB" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_0B043198_020E_4eeb_9CE2_A36CFBDC0C64" name="activePowerReference" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000075_020E_4eeb_9CE2_A36CFBDC0C64" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000076_020E_4eeb_9CE2_A36CFBDC0C64" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_A8733B9E_9B9B_401a_B228_16B00AC28658" name="apiDefined" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000077_9B9B_401a_B228_16B00AC28658" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000078_9B9B_401a_B228_16B00AC28658" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_0F679E75_7729_4d01_BBF6_0059626F89E0" name="dcCurrent" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000079_7729_4d01_BBF6_0059626F89E0" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000080_7729_4d01_BBF6_0059626F89E0" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_52631393_D1DE_44c1_83AB_86139D1D8F6B" name="dcMeasuredVoltage" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000081_D1DE_44c1_83AB_86139D1D8F6B" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000082_D1DE_44c1_83AB_86139D1D8F6B" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_630EE838_0118_4a50_9547_7E92AE10B5EB" name="dcMPPTVoltage" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000083_0118_4a50_9547_7E92AE10B5EB" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000084_0118_4a50_9547_7E92AE10B5EB" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_659866FF_0EED_44aa_BFF3_F855FB14967D" name="reactivePowerReference" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000085_0EED_44aa_BFF3_F855FB14967D" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000086_0EED_44aa_BFF3_F855FB14967D" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_F00A4ADB_8A76_481a_9D7A_D4A9424E9B44" name="remoteInputSignal" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000087_8A76_481a_9D7A_D4A9424E9B44" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000088_8A76_481a_9D7A_D4A9424E9B44" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_2A10D8DE_E1A0_4f31_872E_C6BCA9B54ED9" name="voltageReference" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000089_E1A0_4f31_872E_C6BCA9B54ED9" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000090_E1A0_4f31_872E_C6BCA9B54ED9" value="1"/>
+				</ownedAttribute>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_1E3817AD_61B4_4617_85A3_D404B4E676FE" name="IEEECigreDLLOutput" visibility="public">
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_42E8F19B_73B7_42b8_B2C3_D39E100E9152" name="kind" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
 					<type xmi:idref="EAID_821F7B28_5215_496e_B03B_27C243409D68"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000073_73B7_42b8_B2C3_D39E100E9152" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000074_73B7_42b8_B2C3_D39E100E9152" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000091_73B7_42b8_B2C3_D39E100E9152" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000092_73B7_42b8_B2C3_D39E100E9152" value="1"/>
 				</ownedAttribute>
-				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_46EA974E_04C8_4de7_9F86_8D91F5DDB84B" name="phase" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<type xmi:idref="EAID_0AD52D65_4270_45c1_9AF4_29C53A398AE3"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000075_04C8_4de7_9F86_8D91F5DDB84B" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000076_04C8_4de7_9F86_8D91F5DDB84B" value="1"/>
-				</ownedAttribute>
-				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_249792B9_A92E_41c2_BEE1_80CB9C50F09E" name="sequenceNumber" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<type xmi:idref="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000077_A92E_41c2_BEE1_80CB9C50F09E" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000078_A92E_41c2_BEE1_80CB9C50F09E" value="1"/>
-				</ownedAttribute>
+				<generalization xmi:type="uml:Generalization" xmi:id="EAID_94A08DBC_CB33_49a3_AEF5_C611973EF851" general="EAID_9C01A523_ED17_437d_9E28_AC7CFAB911DB" isSubstitutable="true"/>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_821F7B28_5215_496e_B03B_27C243409D68" name="IEEECigreDLLOutputKind" visibility="public">
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_5012E83C_13DD_42d6_ABD7_BE1C76047AD7" name="activePower" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000081_13DD_42d6_ABD7_BE1C76047AD7" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000082_13DD_42d6_ABD7_BE1C76047AD7" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000095_13DD_42d6_ABD7_BE1C76047AD7" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000096_13DD_42d6_ABD7_BE1C76047AD7" value="1"/>
 				</ownedAttribute>
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_7B917DAD_F12C_4d75_9F5D_3F49FCE65D7B" name="apiDefined" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000083_F12C_4d75_9F5D_3F49FCE65D7B" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000084_F12C_4d75_9F5D_3F49FCE65D7B" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000097_F12C_4d75_9F5D_3F49FCE65D7B" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000098_F12C_4d75_9F5D_3F49FCE65D7B" value="1"/>
 				</ownedAttribute>
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_18F5C614_7535_410e_B064_397260CA4D83" name="modulationIndex" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000085_7535_410e_B064_397260CA4D83" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000086_7535_410e_B064_397260CA4D83" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000099_7535_410e_B064_397260CA4D83" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000100_7535_410e_B064_397260CA4D83" value="1"/>
 				</ownedAttribute>
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_AF66BF9C_3EF1_4c88_A772_92AEC18DC16E" name="pllFrequency" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000087_3EF1_4c88_A772_92AEC18DC16E" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000088_3EF1_4c88_A772_92AEC18DC16E" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000101_3EF1_4c88_A772_92AEC18DC16E" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000102_3EF1_4c88_A772_92AEC18DC16E" value="1"/>
 				</ownedAttribute>
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_DAB4A3BE_9F05_45db_997D_DE14B69E9208" name="reactivePower" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000089_9F05_45db_997D_DE14B69E9208" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000090_9F05_45db_997D_DE14B69E9208" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000103_9F05_45db_997D_DE14B69E9208" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000104_9F05_45db_997D_DE14B69E9208" value="1"/>
 				</ownedAttribute>
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_55D1C549_416C_4b0a_B6A3_8C48C54CCC26" name="rideThroughMode" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000091_416C_4b0a_B6A3_8C48C54CCC26" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000092_416C_4b0a_B6A3_8C48C54CCC26" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000105_416C_4b0a_B6A3_8C48C54CCC26" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000106_416C_4b0a_B6A3_8C48C54CCC26" value="1"/>
 				</ownedAttribute>
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_07A6CB9B_D736_458a_B2BF_1AD7B456FAAE" name="vscVoltage" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000093_D736_458a_B2BF_1AD7B456FAAE" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000094_D736_458a_B2BF_1AD7B456FAAE" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000107_D736_458a_B2BF_1AD7B456FAAE" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000108_D736_458a_B2BF_1AD7B456FAAE" value="1"/>
 				</ownedAttribute>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_87EA71F2_114B_4dad_8692_E78C27AD3A12" name="IEEECigreDLLParameter" visibility="public">
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_083DDE7F_0C4A_4eb3_A900_06F6596D4FF6" name="parameterKind" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
 					<type xmi:idref="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000095_0C4A_4eb3_A900_06F6596D4FF6" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000096_0C4A_4eb3_A900_06F6596D4FF6" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000109_0C4A_4eb3_A900_06F6596D4FF6" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000110_0C4A_4eb3_A900_06F6596D4FF6" value="1"/>
 				</ownedAttribute>
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_9AC93796_A640_4f74_8EBC_32AF8C714C67" name="sequenceNumber" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
 					<type xmi:idref="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000097_A640_4f74_8EBC_32AF8C714C67" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000098_A640_4f74_8EBC_32AF8C714C67" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000111_A640_4f74_8EBC_32AF8C714C67" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000112_A640_4f74_8EBC_32AF8C714C67" value="1"/>
 				</ownedAttribute>
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_1E49F935_160D_4ff6_97AE_87F21A37F6E2" name="value" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
 					<type xmi:idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000099_160D_4ff6_97AE_87F21A37F6E2" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000100_160D_4ff6_97AE_87F21A37F6E2" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000113_160D_4ff6_97AE_87F21A37F6E2" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000114_160D_4ff6_97AE_87F21A37F6E2" value="1"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_9C01A523_ED17_437d_9E28_AC7CFAB911DB" name="IEEECigreDLLSignal" visibility="public">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_76957763_D864_4b1d_ACAB_EC069D934012" name="multiplier" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<type xmi:idref="EAID_DC62CC93_2E3F_4b9c_9C81_C84C30A6C67D"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000117_D864_4b1d_ACAB_EC069D934012" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000118_D864_4b1d_ACAB_EC069D934012" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_17EBCA51_030C_40d3_9979_FAE8B2C93CF1" name="name" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<type xmi:idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000119_030C_40d3_9979_FAE8B2C93CF1" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000120_030C_40d3_9979_FAE8B2C93CF1" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_34127100_A349_4649_81E3_BD8913C869D6" name="parameterKind" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<type xmi:idref="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000121_A349_4649_81E3_BD8913C869D6" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000122_A349_4649_81E3_BD8913C869D6" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_74017AE2_028D_4b6f_9ABC_FC35D46A41EA" name="phase" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<type xmi:idref="EAID_0AD52D65_4270_45c1_9AF4_29C53A398AE3"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000123_028D_4b6f_9ABC_FC35D46A41EA" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000124_028D_4b6f_9ABC_FC35D46A41EA" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_4F807027_DB24_4fdf_80A3_E3E84395F070" name="sequenceNumber" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<type xmi:idref="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000125_DB24_4fdf_80A3_E3E84395F070" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000126_DB24_4fdf_80A3_E3E84395F070" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_BDE548EE_4712_4aac_8C5C_E501040B3E6B" name="unit" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<type xmi:idref="EAID_80012160_A038_43b5_BA6F_9862E525518C"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000127_4712_4aac_8C5C_E501040B3E6B" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000128_4712_4aac_8C5C_E501040B3E6B" value="1"/>
 				</ownedAttribute>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F" name="OperationalLimitSet" visibility="public"/>
@@ -347,49 +407,49 @@
 				<memberEnd xmi:idref="EAID_dst30FF9A_B8C1_4908_8FB5_5D8AFEEF603D"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst30FF9A_B8C1_4908_8FB5_5D8AFEEF603D" name="TransformerEnd" visibility="public" association="EAID_0E30FF9A_B8C1_4908_8FB5_5D8AFEEF603D" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000103__B8C1_4908_8FB5_5D8AFEEF603D" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000104__B8C1_4908_8FB5_5D8AFEEF603D" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000129__B8C1_4908_8FB5_5D8AFEEF603D" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000130__B8C1_4908_8FB5_5D8AFEEF603D" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_src30FF9A_B8C1_4908_8FB5_5D8AFEEF603D"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src30FF9A_B8C1_4908_8FB5_5D8AFEEF603D" name="OperationalLimitSets" visibility="public" association="EAID_0E30FF9A_B8C1_4908_8FB5_5D8AFEEF603D" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000137__B8C1_4908_8FB5_5D8AFEEF603D" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000138__B8C1_4908_8FB5_5D8AFEEF603D" value="-1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000163__B8C1_4908_8FB5_5D8AFEEF603D" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000164__B8C1_4908_8FB5_5D8AFEEF603D" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_9362D4B3_DE41_4140_A405_3225ED0FCD02" name="RemoteInputSignal" visibility="public">
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_372C96E4_4C37_48d6_9AE0_F148DD46F381" name="atToEnd" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
 					<type xmi:idref="EAID_9F8964F1_6C32_465b_A83D_F5A201A291C3"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000107_4C37_48d6_9AE0_F148DD46F381" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000108_4C37_48d6_9AE0_F148DD46F381" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000133_4C37_48d6_9AE0_F148DD46F381" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000134_4C37_48d6_9AE0_F148DD46F381" value="1"/>
 				</ownedAttribute>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_8B4B1D3C_91E4_4e2c_8C39_F2697B2C8F25" visibility="public">
 				<memberEnd xmi:idref="EAID_dst4B1D3C_91E4_4e2c_8C39_F2697B2C8F25"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst4B1D3C_91E4_4e2c_8C39_F2697B2C8F25" name="ConnectivityNode" visibility="public" association="EAID_8B4B1D3C_91E4_4e2c_8C39_F2697B2C8F25" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000109__91E4_4e2c_8C39_F2697B2C8F25" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000110__91E4_4e2c_8C39_F2697B2C8F25" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000135__91E4_4e2c_8C39_F2697B2C8F25" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000136__91E4_4e2c_8C39_F2697B2C8F25" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_src4B1D3C_91E4_4e2c_8C39_F2697B2C8F25"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src4B1D3C_91E4_4e2c_8C39_F2697B2C8F25" name="RemoteInputSignals" visibility="public" association="EAID_8B4B1D3C_91E4_4e2c_8C39_F2697B2C8F25" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_9362D4B3_DE41_4140_A405_3225ED0FCD02"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000111__91E4_4e2c_8C39_F2697B2C8F25" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000112__91E4_4e2c_8C39_F2697B2C8F25" value="-1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000137__91E4_4e2c_8C39_F2697B2C8F25" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000138__91E4_4e2c_8C39_F2697B2C8F25" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_DFFA268E_3BD6_4c08_9BAF_05DC0065AD81" visibility="public">
 				<memberEnd xmi:idref="EAID_dstFA268E_3BD6_4c08_9BAF_05DC0065AD81"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dstFA268E_3BD6_4c08_9BAF_05DC0065AD81" name="TransformerEnd" visibility="public" association="EAID_DFFA268E_3BD6_4c08_9BAF_05DC0065AD81" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000113__3BD6_4c08_9BAF_05DC0065AD81" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000114__3BD6_4c08_9BAF_05DC0065AD81" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000139__3BD6_4c08_9BAF_05DC0065AD81" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000140__3BD6_4c08_9BAF_05DC0065AD81" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_srcFA268E_3BD6_4c08_9BAF_05DC0065AD81"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_srcFA268E_3BD6_4c08_9BAF_05DC0065AD81" name="RemoteInputSignals" visibility="public" association="EAID_DFFA268E_3BD6_4c08_9BAF_05DC0065AD81" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_9362D4B3_DE41_4140_A405_3225ED0FCD02"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000141__3BD6_4c08_9BAF_05DC0065AD81" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000142__3BD6_4c08_9BAF_05DC0065AD81" value="-1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000167__3BD6_4c08_9BAF_05DC0065AD81" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000168__3BD6_4c08_9BAF_05DC0065AD81" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_A798AF00_916E_4212_AC99_509EF39B782C" visibility="public">
@@ -397,13 +457,13 @@
 				<memberEnd xmi:idref="EAID_src98AF00_916E_4212_AC99_509EF39B782C"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src98AF00_916E_4212_AC99_509EF39B782C" name="WeccDynamics" visibility="public" association="EAID_A798AF00_916E_4212_AC99_509EF39B782C" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_EA29E4D9_C2CB_4769_80C2_950879D20F34"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000119__916E_4212_AC99_509EF39B782C" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000120__916E_4212_AC99_509EF39B782C" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000145__916E_4212_AC99_509EF39B782C" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000146__916E_4212_AC99_509EF39B782C" value="1"/>
 				</ownedEnd>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst98AF00_916E_4212_AC99_509EF39B782C" name="RemoteInputSignals" visibility="public" association="EAID_A798AF00_916E_4212_AC99_509EF39B782C" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_9362D4B3_DE41_4140_A405_3225ED0FCD02"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000121__916E_4212_AC99_509EF39B782C" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000122__916E_4212_AC99_509EF39B782C" value="-1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000147__916E_4212_AC99_509EF39B782C" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000148__916E_4212_AC99_509EF39B782C" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_A8F8F566_1B41_431a_A965_44E4E0B221E3" name="RotatingMachinePlant" visibility="public">
@@ -412,22 +472,22 @@
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6" name="SvPowerFlow" visibility="public">
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_3B15BCC6_360A_4267_883D_47292EB5FA44" name="atToEnd" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
 					<type xmi:idref="EAID_9F8964F1_6C32_465b_A83D_F5A201A291C3"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000123_360A_4267_883D_47292EB5FA44" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000124_360A_4267_883D_47292EB5FA44" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000149_360A_4267_883D_47292EB5FA44" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000150_360A_4267_883D_47292EB5FA44" value="1"/>
 				</ownedAttribute>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_C16ED186_CD69_421e_8DFB_7B487E67D3BD" visibility="public">
 				<memberEnd xmi:idref="EAID_dst6ED186_CD69_421e_8DFB_7B487E67D3BD"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst6ED186_CD69_421e_8DFB_7B487E67D3BD" name="TransformerEnd" visibility="public" association="EAID_C16ED186_CD69_421e_8DFB_7B487E67D3BD" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000127__CD69_421e_8DFB_7B487E67D3BD" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000128__CD69_421e_8DFB_7B487E67D3BD" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000153__CD69_421e_8DFB_7B487E67D3BD" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000154__CD69_421e_8DFB_7B487E67D3BD" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_src6ED186_CD69_421e_8DFB_7B487E67D3BD"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src6ED186_CD69_421e_8DFB_7B487E67D3BD" name="SvPowerFlows" visibility="public" association="EAID_C16ED186_CD69_421e_8DFB_7B487E67D3BD" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000139__CD69_421e_8DFB_7B487E67D3BD" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000140__CD69_421e_8DFB_7B487E67D3BD" value="-1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000165__CD69_421e_8DFB_7B487E67D3BD" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000166__CD69_421e_8DFB_7B487E67D3BD" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_6C833C4F_109F_47f5_B80B_F3E4F2F9BEC7" name="SvVoltage" visibility="public"/>
@@ -435,14 +495,14 @@
 				<memberEnd xmi:idref="EAID_dstE2E1B6_088A_4410_A913_00284C69F3E8"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dstE2E1B6_088A_4410_A913_00284C69F3E8" name="ConnectivityNode" visibility="public" association="EAID_DEE2E1B6_088A_4410_A913_00284C69F3E8" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000129__088A_4410_A913_00284C69F3E8" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000130__088A_4410_A913_00284C69F3E8" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000155__088A_4410_A913_00284C69F3E8" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000156__088A_4410_A913_00284C69F3E8" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_srcE2E1B6_088A_4410_A913_00284C69F3E8"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_srcE2E1B6_088A_4410_A913_00284C69F3E8" name="SvVoltages" visibility="public" association="EAID_DEE2E1B6_088A_4410_A913_00284C69F3E8" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_6C833C4F_109F_47f5_B80B_F3E4F2F9BEC7"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000131__088A_4410_A913_00284C69F3E8" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000132__088A_4410_A913_00284C69F3E8" value="-1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000157__088A_4410_A913_00284C69F3E8" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000158__088A_4410_A913_00284C69F3E8" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF" name="TransformerEnd" visibility="public"/>
@@ -450,14 +510,14 @@
 				<memberEnd xmi:idref="EAID_dst1EF705_C28A_4bff_86E7_FCACF42F1BD5"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst1EF705_C28A_4bff_86E7_FCACF42F1BD5" name="ConnectivityNode" visibility="public" association="EAID_F81EF705_C28A_4bff_86E7_FCACF42F1BD5" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000133__C28A_4bff_86E7_FCACF42F1BD5" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000134__C28A_4bff_86E7_FCACF42F1BD5" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000159__C28A_4bff_86E7_FCACF42F1BD5" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000160__C28A_4bff_86E7_FCACF42F1BD5" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_src1EF705_C28A_4bff_86E7_FCACF42F1BD5"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src1EF705_C28A_4bff_86E7_FCACF42F1BD5" name="TransformerEnd" visibility="public" association="EAID_F81EF705_C28A_4bff_86E7_FCACF42F1BD5" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000135__C28A_4bff_86E7_FCACF42F1BD5" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000136__C28A_4bff_86E7_FCACF42F1BD5" value="-1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000161__C28A_4bff_86E7_FCACF42F1BD5" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000162__C28A_4bff_86E7_FCACF42F1BD5" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C" name="TransformerSaturation" visibility="public">
@@ -468,64 +528,18 @@
 				<memberEnd xmi:idref="EAID_src543B00_E80C_455e_A952_12EA8E441602"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src543B00_E80C_455e_A952_12EA8E441602" name="TransformerCoreAdmittance" visibility="public" association="EAID_01543B00_E80C_455e_A952_12EA8E441602" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_25B2D790_161A_45c8_8551_E77A34DE684C"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000143__E80C_455e_A952_12EA8E441602" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000144__E80C_455e_A952_12EA8E441602" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000169__E80C_455e_A952_12EA8E441602" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000170__E80C_455e_A952_12EA8E441602" value="1"/>
 				</ownedEnd>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst543B00_E80C_455e_A952_12EA8E441602" name="TransformerSaturation" visibility="public" association="EAID_01543B00_E80C_455e_A952_12EA8E441602" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000145__E80C_455e_A952_12EA8E441602" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000146__E80C_455e_A952_12EA8E441602" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000171__E80C_455e_A952_12EA8E441602" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000172__E80C_455e_A952_12EA8E441602" value="1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Enumeration" xmi:id="EAID_69E84257_BCE6_4de4_A87B_BCF589AF6173" name="IBRFilterKind" visibility="public">
 				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_D85E84C5_ACBA_4c16_B24D_ECDE89997C6B" name="delta" visibility="public"/>
 				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_86AEB0D5_DE85_40ae_9629_0237675B7685" name="ungroundedWye" visibility="public"/>
-			</packagedElement>
-			<packagedElement xmi:type="uml:Class" xmi:id="EAID_85B8E983_EE2F_403f_AB95_89512D2C9C9E" name="IEEECigreDLLInputKind" visibility="public">
-				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_D2BBF2B0_9F6D_4007_8997_502FCD73DD00" name="acCurrentGrid" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000147_9F6D_4007_8997_502FCD73DD00" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000148_9F6D_4007_8997_502FCD73DD00" value="1"/>
-				</ownedAttribute>
-				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_2E700AB0_3C46_4906_AE23_2E6559D218D0" name="acCurrentVsc" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000149_3C46_4906_AE23_2E6559D218D0" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000150_3C46_4906_AE23_2E6559D218D0" value="1"/>
-				</ownedAttribute>
-				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_DBBE77C6_AF7C_4cef_8D41_8AEB22720FFB" name="acTerminalVoltage" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000151_AF7C_4cef_8D41_8AEB22720FFB" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000152_AF7C_4cef_8D41_8AEB22720FFB" value="1"/>
-				</ownedAttribute>
-				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_0B043198_020E_4eeb_9CE2_A36CFBDC0C64" name="activePowerReference" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000153_020E_4eeb_9CE2_A36CFBDC0C64" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000154_020E_4eeb_9CE2_A36CFBDC0C64" value="1"/>
-				</ownedAttribute>
-				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_A8733B9E_9B9B_401a_B228_16B00AC28658" name="apiDefined" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000155_9B9B_401a_B228_16B00AC28658" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000156_9B9B_401a_B228_16B00AC28658" value="1"/>
-				</ownedAttribute>
-				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_0F679E75_7729_4d01_BBF6_0059626F89E0" name="dcCurrent" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000157_7729_4d01_BBF6_0059626F89E0" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000158_7729_4d01_BBF6_0059626F89E0" value="1"/>
-				</ownedAttribute>
-				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_52631393_D1DE_44c1_83AB_86139D1D8F6B" name="dcMeasuredVoltage" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000159_D1DE_44c1_83AB_86139D1D8F6B" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000160_D1DE_44c1_83AB_86139D1D8F6B" value="1"/>
-				</ownedAttribute>
-				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_630EE838_0118_4a50_9547_7E92AE10B5EB" name="dcMPPTVoltage" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000161_0118_4a50_9547_7E92AE10B5EB" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000162_0118_4a50_9547_7E92AE10B5EB" value="1"/>
-				</ownedAttribute>
-				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_659866FF_0EED_44aa_BFF3_F855FB14967D" name="reactivePowerReference" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000163_0EED_44aa_BFF3_F855FB14967D" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000164_0EED_44aa_BFF3_F855FB14967D" value="1"/>
-				</ownedAttribute>
-				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_F00A4ADB_8A76_481a_9D7A_D4A9424E9B44" name="remoteInputSignal" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000165_8A76_481a_9D7A_D4A9424E9B44" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000166_8A76_481a_9D7A_D4A9424E9B44" value="1"/>
-				</ownedAttribute>
-				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_2A10D8DE_E1A0_4f31_872E_C6BCA9B54ED9" name="voltageReference" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000167_E1A0_4f31_872E_C6BCA9B54ED9" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000168_E1A0_4f31_872E_C6BCA9B54ED9" value="1"/>
-				</ownedAttribute>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Enumeration" xmi:id="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B" name="IEEECigreDLLParameterKind" visibility="public" isAbstract="true">
 				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_C758A914_85B1_4ce5_9844_4AFDB305ED73" name="Char_Val" visibility="public"/>
@@ -551,27 +565,6 @@
 		<thecustomprofile:CIMExtension base_Class="EAID_42038FD2_A349_48b5_9779_D40E62A25373"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_FE82DEC1_98ED_4d75_B9F9_082E4B494C70"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_13298CB1_D689_446c_BCC2_3AAC894B6D20"/>
-		<thecustomprofile:CIMExtension base_Class="EAID_1E3817AD_61B4_4617_85A3_D404B4E676FE"/>
-		<thecustomprofile:enumeration base_Class="EAID_821F7B28_5215_496e_B03B_27C243409D68"/>
-		<thecustomprofile:CIMExtension base_Class="EAID_821F7B28_5215_496e_B03B_27C243409D68"/>
-		<thecustomprofile:enum base_Property="EAID_5012E83C_13DD_42d6_ABD7_BE1C76047AD7"/>
-		<thecustomprofile:enum base_Property="EAID_7B917DAD_F12C_4d75_9F5D_3F49FCE65D7B"/>
-		<thecustomprofile:enum base_Property="EAID_18F5C614_7535_410e_B064_397260CA4D83"/>
-		<thecustomprofile:enum base_Property="EAID_AF66BF9C_3EF1_4c88_A772_92AEC18DC16E"/>
-		<thecustomprofile:enum base_Property="EAID_DAB4A3BE_9F05_45db_997D_DE14B69E9208"/>
-		<thecustomprofile:enum base_Property="EAID_55D1C549_416C_4b0a_B6A3_8C48C54CCC26"/>
-		<thecustomprofile:enum base_Property="EAID_07A6CB9B_D736_458a_B2BF_1AD7B456FAAE"/>
-		<thecustomprofile:CIMExtension base_Class="EAID_87EA71F2_114B_4dad_8692_E78C27AD3A12"/>
-		<thecustomprofile:CIMExtension base_Class="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F"/>
-		<thecustomprofile:CIMExtension base_Class="EAID_9362D4B3_DE41_4140_A405_3225ED0FCD02"/>
-		<thecustomprofile:CIMExtension base_Class="EAID_A8F8F566_1B41_431a_A965_44E4E0B221E3"/>
-		<thecustomprofile:CIMExtension base_Class="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6"/>
-		<thecustomprofile:CIMExtension base_Class="EAID_6C833C4F_109F_47f5_B80B_F3E4F2F9BEC7"/>
-		<thecustomprofile:CIMExtension base_Class="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
-		<thecustomprofile:CIMExtension base_Class="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C"/>
-		<thecustomprofile:CIMExtension base_Generalization="EAID_53C66C17_A275_4e92_88D0_0DCAD87C1B0E"/>
-		<thecustomprofile:CIMExtenstion base_Enumeration="EAID_69E84257_BCE6_4de4_A87B_BCF589AF6173"/>
-		<thecustomprofile:enumeration base_Enumeration="EAID_69E84257_BCE6_4de4_A87B_BCF589AF6173"/>
 		<thecustomprofile:enumeration base_Class="EAID_85B8E983_EE2F_403f_AB95_89512D2C9C9E"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_85B8E983_EE2F_403f_AB95_89512D2C9C9E"/>
 		<thecustomprofile:enum base_Property="EAID_D2BBF2B0_9F6D_4007_8997_502FCD73DD00"/>
@@ -585,6 +578,28 @@
 		<thecustomprofile:enum base_Property="EAID_659866FF_0EED_44aa_BFF3_F855FB14967D"/>
 		<thecustomprofile:enum base_Property="EAID_F00A4ADB_8A76_481a_9D7A_D4A9424E9B44"/>
 		<thecustomprofile:enum base_Property="EAID_2A10D8DE_E1A0_4f31_872E_C6BCA9B54ED9"/>
+		<thecustomprofile:CIMExtension base_Class="EAID_1E3817AD_61B4_4617_85A3_D404B4E676FE"/>
+		<thecustomprofile:enumeration base_Class="EAID_821F7B28_5215_496e_B03B_27C243409D68"/>
+		<thecustomprofile:CIMExtension base_Class="EAID_821F7B28_5215_496e_B03B_27C243409D68"/>
+		<thecustomprofile:enum base_Property="EAID_5012E83C_13DD_42d6_ABD7_BE1C76047AD7"/>
+		<thecustomprofile:enum base_Property="EAID_7B917DAD_F12C_4d75_9F5D_3F49FCE65D7B"/>
+		<thecustomprofile:enum base_Property="EAID_18F5C614_7535_410e_B064_397260CA4D83"/>
+		<thecustomprofile:enum base_Property="EAID_AF66BF9C_3EF1_4c88_A772_92AEC18DC16E"/>
+		<thecustomprofile:enum base_Property="EAID_DAB4A3BE_9F05_45db_997D_DE14B69E9208"/>
+		<thecustomprofile:enum base_Property="EAID_55D1C549_416C_4b0a_B6A3_8C48C54CCC26"/>
+		<thecustomprofile:enum base_Property="EAID_07A6CB9B_D736_458a_B2BF_1AD7B456FAAE"/>
+		<thecustomprofile:CIMExtension base_Class="EAID_87EA71F2_114B_4dad_8692_E78C27AD3A12"/>
+		<thecustomprofile:CIMExtension base_Class="EAID_9C01A523_ED17_437d_9E28_AC7CFAB911DB"/>
+		<thecustomprofile:CIMExtension base_Class="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F"/>
+		<thecustomprofile:CIMExtension base_Class="EAID_9362D4B3_DE41_4140_A405_3225ED0FCD02"/>
+		<thecustomprofile:CIMExtension base_Class="EAID_A8F8F566_1B41_431a_A965_44E4E0B221E3"/>
+		<thecustomprofile:CIMExtension base_Class="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6"/>
+		<thecustomprofile:CIMExtension base_Class="EAID_6C833C4F_109F_47f5_B80B_F3E4F2F9BEC7"/>
+		<thecustomprofile:CIMExtension base_Class="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
+		<thecustomprofile:CIMExtension base_Class="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C"/>
+		<thecustomprofile:CIMExtension base_Generalization="EAID_53C66C17_A275_4e92_88D0_0DCAD87C1B0E"/>
+		<thecustomprofile:CIMExtenstion base_Enumeration="EAID_69E84257_BCE6_4de4_A87B_BCF589AF6173"/>
+		<thecustomprofile:enumeration base_Enumeration="EAID_69E84257_BCE6_4de4_A87B_BCF589AF6173"/>
 		<thecustomprofile:enumeration base_Enumeration="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B"/>
 		<thecustomprofile:CIMExtension base_Enumeration="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B"/>
 		<thecustomprofile:enumeration base_Enumeration="EAID_049E27AF_38BD_474e_AF32_DFD5A846DE3A"/>
@@ -610,10 +625,10 @@
 				<times created="2025-10-31 16:09:43" modified="2025-11-11 14:47:24" lastloaddate="2025-11-11 14:47:23" lastsavedate="2025-11-11 14:47:23"/>
 				<flags iscontrolled="0" isprotected="0" batchsave="0" batchload="0" usedtd="0" logxml="0"/>
 			</element>
-			<element xmi:idref="EAID_37686F36_5816_4b4e_957A_C860E89CFC65" xmi:type="uml:Note" scope="public">
-				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8611" ea_eleType="element"/>
-				<properties documentation="These classes allow dynamic remote signal connections to ConnectivityNode, TransformerEnd, and either the From or To side of ConductingEquipment. It also permits the standard WeccDynamics and the extension IEEECigreDLL to use remote signals. &lt;font color=&quot;#ff0000&quot;&gt;What is the difference between remoteBusVoltage and remoteBusVoltageAmplitude?&lt;/font&gt;" isSpecification="false" sType="Note" nType="0" scope="public"/>
-				<project author="tom" version="1.0" phase="1.0" created="2026-01-12 13:35:15" modified="2026-02-13 14:51:34" complexity="1" status="Proposed"/>
+			<element xmi:idref="EAID_F285346A_4C68_4c70_8B10_EAF57553CC99" xmi:type="uml:Note" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8628" ea_eleType="element"/>
+				<properties documentation="These classes associate a set of power flow ratings to ConductingEquipment or TransformerEnd instead of Equipment or Terminal. Voltage ratings are not included." isSpecification="false" sType="Note" nType="0" scope="public"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-02-13 15:08:46" modified="2026-02-13 15:09:36" complexity="1" status="Proposed"/>
 				<code gentype="&lt;none&gt;"/>
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
@@ -624,16 +639,6 @@
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8622" ea_eleType="element"/>
 				<properties documentation="These classes associate &quot;real-code&quot; dynamic link libraries (DLLs) to inverters, per Cigre TB 958." isSpecification="false" sType="Note" nType="0" scope="public"/>
 				<project author="tom" version="1.0" phase="1.0" created="2026-01-15 13:23:48" modified="2026-02-13 12:49:02" complexity="1" status="Proposed"/>
-				<code gentype="&lt;none&gt;"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
-				<xrefs/>
-				<extendedProperties tagged="0" package_name="Emtiop"/>
-			</element>
-			<element xmi:idref="EAID_F285346A_4C68_4c70_8B10_EAF57553CC99" xmi:type="uml:Note" scope="public">
-				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8628" ea_eleType="element"/>
-				<properties documentation="These classes associate a set of power flow ratings to ConductingEquipment or TransformerEnd instead of Equipment or Terminal. Voltage ratings are not included." isSpecification="false" sType="Note" nType="0" scope="public"/>
-				<project author="tom" version="1.0" phase="1.0" created="2026-02-13 15:08:46" modified="2026-02-13 15:09:36" complexity="1" status="Proposed"/>
 				<code gentype="&lt;none&gt;"/>
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
@@ -660,6 +665,26 @@
 				<xrefs/>
 				<extendedProperties tagged="0" package_name="Emtiop"/>
 			</element>
+			<element xmi:idref="EAID_37686F36_5816_4b4e_957A_C860E89CFC65" xmi:type="uml:Note" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8611" ea_eleType="element"/>
+				<properties documentation="These classes allow dynamic remote signal connections to ConnectivityNode, TransformerEnd, and either the From or To side of ConductingEquipment. It also permits the standard WeccDynamics and the extension IEEECigreDLL to use remote signals. &lt;font color=&quot;#ff0000&quot;&gt;What is the difference between remoteBusVoltage and remoteBusVoltageAmplitude?&lt;/font&gt;" isSpecification="false" sType="Note" nType="0" scope="public"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-01-12 13:35:15" modified="2026-02-13 14:51:34" complexity="1" status="Proposed"/>
+				<code gentype="&lt;none&gt;"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="Emtiop"/>
+			</element>
+			<element xmi:idref="EAID_70BE4C77_7C67_4da4_918F_11E741E8FAF5" xmi:type="uml:Note" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8610" ea_eleType="element"/>
+				<properties documentation="This extension represents non-linear transformer core effects, through a piecewise-linear TransformerSaturation instance, which associates to linear TransformerCoreAdmittance and then to TransformerEnd." isSpecification="false" sType="Note" nType="0" scope="public"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-01-12 13:21:43" modified="2026-01-12 13:22:05" complexity="1" status="Proposed"/>
+				<code gentype="&lt;none&gt;"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="Emtiop"/>
+			</element>
 			<element xmi:idref="EAID_8271D14C_510B_49d6_AC80_3C8C2898A131" xmi:type="uml:Note" scope="public">
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8606" ea_eleType="element"/>
 				<properties documentation="These extensions eliminate Terminal objects from the IEEE P3743. Instead, ConductingEquipment and TransformerEnd extension instances associate directly to ConnectivityNode. Another extension represents non-linear transformer core effects, through a piecewise-linear TransformerSaturation instance, which associates to linear TransformerCoreAdmittance and then to TransformerEnd." isSpecification="false" sType="Note" nType="0" scope="public"/>
@@ -672,16 +697,6 @@
 				<links>
 					<NoteLink xmi:id="EAID_CC054591_3E5A_4270_BB6B_D11B3C6EFCFA" start="EAID_8271D14C_510B_49d6_AC80_3C8C2898A131" end="EAID_68F3A560_E3C8_422e_8A8A_D3464C8A967A"/>
 				</links>
-			</element>
-			<element xmi:idref="EAID_70BE4C77_7C67_4da4_918F_11E741E8FAF5" xmi:type="uml:Note" scope="public">
-				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8610" ea_eleType="element"/>
-				<properties documentation="This extension represents non-linear transformer core effects, through a piecewise-linear TransformerSaturation instance, which associates to linear TransformerCoreAdmittance and then to TransformerEnd." isSpecification="false" sType="Note" nType="0" scope="public"/>
-				<project author="tom" version="1.0" phase="1.0" created="2026-01-12 13:21:43" modified="2026-01-12 13:22:05" complexity="1" status="Proposed"/>
-				<code gentype="&lt;none&gt;"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
-				<xrefs/>
-				<extendedProperties tagged="0" package_name="Emtiop"/>
 			</element>
 			<element xmi:idref="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3" xmi:type="uml:Class" name="ConductingEquipment" scope="public">
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8607" ea_eleType="element"/>
@@ -1031,41 +1046,189 @@
 						<tags/>
 						<xrefs/>
 					</attribute>
-					<attribute xmi:idref="EAID_C79B1D23_ADE4_4328_8A2F_BF7FDC64D550" name="phase" scope="Public">
-						<initial/>
-						<documentation value="The phase of acTerminalVoltage, acCurrentVsc, or acCurrentGrid."/>
-						<model ea_localid="28368" ea_guid="{C79B1D23-ADE4-4328-8A2F-BF7FDC64D550}"/>
-						<properties type="SinglePhaseKind" collection="false" static="0" duplicates="0" changeability="changeable"/>
-						<coords ordered="0"/>
-						<containment containment="Not Specified" position="1"/>
-						<stereotype/>
-						<bounds lower="0" upper="1"/>
-						<options/>
-						<style/>
-						<styleex value="volatile=0;union=0;"/>
-						<tags/>
-						<xrefs/>
-					</attribute>
-					<attribute xmi:idref="EAID_E8EC3F77_02AA_4460_8F22_A4AD6518E4D2" name="sequenceNumber" scope="Public">
-						<initial/>
-						<documentation value="The input's expected sequence number in the DLL API."/>
-						<model ea_localid="28366" ea_guid="{E8EC3F77-02AA-4460-8F22-A4AD6518E4D2}"/>
-						<properties type="Integer" collection="false" static="0" duplicates="0" changeability="changeable"/>
-						<coords ordered="0"/>
-						<containment containment="Not Specified" position="0"/>
-						<stereotype/>
-						<bounds lower="0" upper="1"/>
-						<options/>
-						<style/>
-						<styleex value="volatile=0;union=0;"/>
-						<tags/>
-						<xrefs/>
-					</attribute>
 				</attributes>
 				<links>
 					<Association xmi:id="EAID_13463FB3_B677_400d_811B_B64AB4D84E56" start="EAID_13298CB1_D689_446c_BCC2_3AAC894B6D20" end="EAID_9362D4B3_DE41_4140_A405_3225ED0FCD02"/>
+					<Generalization xmi:id="EAID_68B0D58A_8E33_4a05_837A_ADD20A2FBAC6" start="EAID_13298CB1_D689_446c_BCC2_3AAC894B6D20" end="EAID_9C01A523_ED17_437d_9E28_AC7CFAB911DB"/>
 					<Association xmi:id="EAID_46068697_C2E8_473d_B0D9_46C16E088A3D" start="EAID_FE82DEC1_98ED_4d75_B9F9_082E4B494C70" end="EAID_13298CB1_D689_446c_BCC2_3AAC894B6D20"/>
 				</links>
+			</element>
+			<element xmi:idref="EAID_85B8E983_EE2F_403f_AB95_89512D2C9C9E" xmi:type="uml:Class" name="IEEECigreDLLInputKind" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8632" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-03-26 14:00:18" modified="2026-03-26 15:17:54" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=15335401;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={9C7701CC-F96A-4bb7-90E2-5BD812C2AF71}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;GUID={9700AC88-B2BF-4302-AE88-22067536055C};@ENDSTEREO;@STEREO;Name=enumeration;GUID={89162AAF-C7E6-4d3c-A102-5516F22896C6};@ENDSTEREO;$DES;$CLT={85B8E983-EE2F-403f-AB95-89512D2C9C9E}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Emtiop" ea_attsclassified="{1237B548-1AA3-4cf2-9324-F930C3083D8B}"/>
+				<attributes>
+					<attribute xmi:idref="EAID_D2BBF2B0_9F6D_4007_8997_502FCD73DD00" name="acCurrentGrid" scope="Public">
+						<initial/>
+						<documentation value="AC current from AC filter into the grid. Requires the phase attribute. Typically in Amperes, but the DLL API should be used to verify units."/>
+						<model ea_localid="28374" ea_guid="{D2BBF2B0-9F6D-4007-8997-502FCD73DD00}"/>
+						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="9"/>
+						<stereotype stereotype="enum"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
+						<tags/>
+						<xrefs value="$XREFPROP=$XID={8850AC0F-F5E2-4302-A9B5-6BBC0E26981D}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={D2BBF2B0-9F6D-4007-8997-502FCD73DD00}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					</attribute>
+					<attribute xmi:idref="EAID_2E700AB0_3C46_4906_AE23_2E6559D218D0" name="acCurrentVsc" scope="Public">
+						<initial/>
+						<documentation value="AC current from inverter into the AC filter. Requires the phase attribute. Typically in Amperes, but the DLL API should be used to verify units."/>
+						<model ea_localid="28373" ea_guid="{2E700AB0-3C46-4906-AE23-2E6559D218D0}"/>
+						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="8"/>
+						<stereotype stereotype="enum"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
+						<tags/>
+						<xrefs value="$XREFPROP=$XID={506F836C-542A-41d3-AC43-421CF28B9260}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={2E700AB0-3C46-4906-AE23-2E6559D218D0}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					</attribute>
+					<attribute xmi:idref="EAID_DBBE77C6_AF7C_4cef_8D41_8AEB22720FFB" name="acTerminalVoltage" scope="Public">
+						<initial/>
+						<documentation value="AC voltage at the filter-to-grid connection point. Requires the phase attribute. Typically in Volts, but the DLL API should be used to verify units.&#xA;"/>
+						<model ea_localid="28365" ea_guid="{DBBE77C6-AF7C-4cef-8D41-8AEB22720FFB}"/>
+						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="6"/>
+						<stereotype stereotype="enum"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
+						<tags/>
+						<xrefs value="$XREFPROP=$XID={665C64CF-6CE1-4046-9BB8-373F3ED2C8FF}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={DBBE77C6-AF7C-4cef-8D41-8AEB22720FFB}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					</attribute>
+					<attribute xmi:idref="EAID_0B043198_020E_4eeb_9CE2_A36CFBDC0C64" name="activePowerReference" scope="Public">
+						<initial/>
+						<documentation value="Active power control reference. Typically in per-unit but the DLL API should be used to verify units."/>
+						<model ea_localid="28359" ea_guid="{0B043198-020E-4eeb-9CE2-A36CFBDC0C64}"/>
+						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="0"/>
+						<stereotype stereotype="enum"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
+						<tags/>
+						<xrefs value="$XREFPROP=$XID={88DD981F-04A9-4edd-B6D3-A92F21475C20}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={0B043198-020E-4eeb-9CE2-A36CFBDC0C64}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					</attribute>
+					<attribute xmi:idref="EAID_A8733B9E_9B9B_401a_B228_16B00AC28658" name="apiDefined" scope="Public">
+						<initial/>
+						<documentation value="Another kind of input or control signal not enumerated in CIM. Use the DLL API for more information."/>
+						<model ea_localid="28375" ea_guid="{A8733B9E-9B9B-401a-B228-16B00AC28658}"/>
+						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="10"/>
+						<stereotype stereotype="enum"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
+						<tags/>
+						<xrefs value="$XREFPROP=$XID={29108174-261A-4a48-9FC1-047343BB43C4}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={A8733B9E-9B9B-401a-B228-16B00AC28658}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					</attribute>
+					<attribute xmi:idref="EAID_0F679E75_7729_4d01_BBF6_0059626F89E0" name="dcCurrent" scope="Public">
+						<initial/>
+						<documentation value="DC current into the inverter stage, if DC bus modeling applies. Typically in Amperes, but the DLL API should be used to verify units."/>
+						<model ea_localid="28362" ea_guid="{0F679E75-7729-4d01-BBF6-0059626F89E0}"/>
+						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="3"/>
+						<stereotype stereotype="enum"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
+						<tags/>
+						<xrefs value="$XREFPROP=$XID={952915CA-BC41-4239-908A-DC02AF55E747}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={0F679E75-7729-4d01-BBF6-0059626F89E0}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					</attribute>
+					<attribute xmi:idref="EAID_52631393_D1DE_44c1_83AB_86139D1D8F6B" name="dcMeasuredVoltage" scope="Public">
+						<initial/>
+						<documentation value="DC voltage at the inverter stage, if DC bus modeling applies. Typically in Volts, but the DLL API should be used to verify units.&#xA;"/>
+						<model ea_localid="28363" ea_guid="{52631393-D1DE-44c1-83AB-86139D1D8F6B}"/>
+						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="4"/>
+						<stereotype stereotype="enum"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
+						<tags/>
+						<xrefs value="$XREFPROP=$XID={4E1854E8-7B98-47dc-91FC-ABE5738F6596}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={52631393-D1DE-44c1-83AB-86139D1D8F6B}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					</attribute>
+					<attribute xmi:idref="EAID_630EE838_0118_4a50_9547_7E92AE10B5EB" name="dcMPPTVoltage" scope="Public">
+						<initial/>
+						<documentation value="DC voltage command from the maximum power point tracking system, if DC bus modeling applies. Typically in Volts, but the DLL API should be used to verify units.&#xA;"/>
+						<model ea_localid="28364" ea_guid="{630EE838-0118-4a50-9547-7E92AE10B5EB}"/>
+						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="5"/>
+						<stereotype stereotype="enum"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
+						<tags/>
+						<xrefs value="$XREFPROP=$XID={62448EBF-1B0A-4b45-9147-E659E1EA334C}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={630EE838-0118-4a50-9547-7E92AE10B5EB}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					</attribute>
+					<attribute xmi:idref="EAID_659866FF_0EED_44aa_BFF3_F855FB14967D" name="reactivePowerReference" scope="Public">
+						<initial/>
+						<documentation value="Reactive power control reference. Typically in per-unit but the DLL API should be used to verify units."/>
+						<model ea_localid="28360" ea_guid="{659866FF-0EED-44aa-BFF3-F855FB14967D}"/>
+						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="1"/>
+						<stereotype stereotype="enum"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
+						<tags/>
+						<xrefs value="$XREFPROP=$XID={22B9A6E9-08D9-45f2-BEE5-98AFF6EEF6A7}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={659866FF-0EED-44aa-BFF3-F855FB14967D}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					</attribute>
+					<attribute xmi:idref="EAID_F00A4ADB_8A76_481a_9D7A_D4A9424E9B44" name="remoteInputSignal" scope="Public">
+						<initial/>
+						<documentation value="An input from an external point in the network. Requires the IEEECigreDLLInput.RemoteInputSignal assocation."/>
+						<model ea_localid="28372" ea_guid="{F00A4ADB-8A76-481a-9D7A-D4A9424E9B44}"/>
+						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="7"/>
+						<stereotype stereotype="enum"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
+						<tags/>
+						<xrefs value="$XREFPROP=$XID={648B335D-F88F-4966-A10F-A7E8A57EC23F}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={F00A4ADB-8A76-481a-9D7A-D4A9424E9B44}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					</attribute>
+					<attribute xmi:idref="EAID_2A10D8DE_E1A0_4f31_872E_C6BCA9B54ED9" name="voltageReference" scope="Public">
+						<initial/>
+						<documentation value="Voltage control reference. Typically in per-unit and positive sequence, but the DLL API should be used to verify units."/>
+						<model ea_localid="28361" ea_guid="{2A10D8DE-E1A0-4f31-872E-C6BCA9B54ED9}"/>
+						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="2"/>
+						<stereotype stereotype="enum"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
+						<tags/>
+						<xrefs value="$XREFPROP=$XID={8E46BB27-062C-472b-92FB-C1FEFEA74BBF}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={2A10D8DE-E1A0-4f31-872E-C6BCA9B54ED9}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					</attribute>
+				</attributes>
 			</element>
 			<element xmi:idref="EAID_1E3817AD_61B4_4617_85A3_D404B4E676FE" xmi:type="uml:Class" name="IEEECigreDLLOutput" scope="public">
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8631" ea_eleType="element"/>
@@ -1092,47 +1255,18 @@
 						<tags/>
 						<xrefs/>
 					</attribute>
-					<attribute xmi:idref="EAID_46EA974E_04C8_4de7_9F86_8D91F5DDB84B" name="phase" scope="Public">
-						<initial/>
-						<documentation value="The phase of modulationIndex or vscVoltage."/>
-						<model ea_localid="28369" ea_guid="{46EA974E-04C8-4de7-9F86-8D91F5DDB84B}"/>
-						<properties type="SinglePhaseKind" collection="false" static="0" duplicates="0" changeability="changeable"/>
-						<coords ordered="0"/>
-						<containment containment="Not Specified" position="1"/>
-						<stereotype/>
-						<bounds lower="0" upper="1"/>
-						<options/>
-						<style/>
-						<styleex value="volatile=0;union=0;"/>
-						<tags/>
-						<xrefs/>
-					</attribute>
-					<attribute xmi:idref="EAID_249792B9_A92E_41c2_BEE1_80CB9C50F09E" name="sequenceNumber" scope="Public">
-						<initial/>
-						<documentation value="The output's expected sequence number in the DLL API."/>
-						<model ea_localid="28367" ea_guid="{249792B9-A92E-41c2-BEE1-80CB9C50F09E}"/>
-						<properties type="Integer" collection="false" static="0" duplicates="0" changeability="changeable"/>
-						<coords ordered="0"/>
-						<containment containment="Not Specified" position="0"/>
-						<stereotype/>
-						<bounds lower="0" upper="1"/>
-						<options/>
-						<style/>
-						<styleex value="volatile=0;union=0;"/>
-						<tags/>
-						<xrefs/>
-					</attribute>
 				</attributes>
 				<links>
+					<Generalization xmi:id="EAID_94A08DBC_CB33_49a3_AEF5_C611973EF851" start="EAID_1E3817AD_61B4_4617_85A3_D404B4E676FE" end="EAID_9C01A523_ED17_437d_9E28_AC7CFAB911DB"/>
 					<Association xmi:id="EAID_CA4FAA81_D534_4a55_A727_A2B23A9282D6" start="EAID_FE82DEC1_98ED_4d75_B9F9_082E4B494C70" end="EAID_1E3817AD_61B4_4617_85A3_D404B4E676FE"/>
 				</links>
 			</element>
 			<element xmi:idref="EAID_821F7B28_5215_496e_B03B_27C243409D68" xmi:type="uml:Class" name="IEEECigreDLLOutputKind" scope="public">
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8633" ea_eleType="element"/>
 				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
-				<project author="tom" version="1.0" phase="1.0" created="2026-03-26 14:01:06" modified="2026-03-26 15:04:44" complexity="1" status="Proposed"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-03-26 14:01:06" modified="2026-03-26 15:17:33" complexity="1" status="Proposed"/>
 				<code gentype="Java"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<style appearance="BackColor=15335401;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
 				<xrefs value="$XREFPROP=$XID={CCEDFE40-F0AD-41ca-999D-F6C446CB5B0A}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;GUID={9700AC88-B2BF-4302-AE88-22067536055C};@ENDSTEREO;@STEREO;Name=enumeration;GUID={89162AAF-C7E6-4d3c-A102-5516F22896C6};@ENDSTEREO;$DES;$CLT={821F7B28-5215-496e-B03B-27C243409D68}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 				<extendedProperties tagged="0" package_name="Emtiop" ea_attsclassified="{42E8F19B-73B7-42b8-B2C3-D39E100E9152}"/>
@@ -1302,6 +1436,112 @@
 				</attributes>
 				<links>
 					<Association xmi:id="EAID_B0DB49EB_59F9_466c_84BF_2A07AD648520" start="EAID_FE82DEC1_98ED_4d75_B9F9_082E4B494C70" end="EAID_87EA71F2_114B_4dad_8692_E78C27AD3A12"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_9C01A523_ED17_437d_9E28_AC7CFAB911DB" xmi:type="uml:Class" name="IEEECigreDLLSignal" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8634" ea_eleType="element"/>
+				<properties documentation="The parent class for DLL input and output signals." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-03-27 16:25:23" modified="2026-03-27 16:36:24" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={A918F112-7340-49c8-AC9B-38D17EB9CD1D}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;GUID={C8C977C1-4CBD-40f3-A3D5-DD1D291A3921};@ENDSTEREO;$DES;$CLT={9C01A523-ED17-437d-9E28-AC7CFAB911DB}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Emtiop"/>
+				<attributes>
+					<attribute xmi:idref="EAID_76957763_D864_4b1d_ACAB_EC069D934012" name="multiplier" scope="Public">
+						<initial/>
+						<documentation value="Multiplier for the units of this signal."/>
+						<model ea_localid="28388" ea_guid="{76957763-D864-4b1d-ACAB-EC069D934012}"/>
+						<properties type="UnitMultiplier" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="5"/>
+						<stereotype/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;union=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_17EBCA51_030C_40d3_9979_FAE8B2C93CF1" name="name" scope="Public">
+						<initial/>
+						<documentation value="The signal name from the DLL API. It may be helpful to interpret the signal's meaning."/>
+						<model ea_localid="28384" ea_guid="{17EBCA51-030C-40d3-9979-FAE8B2C93CF1}"/>
+						<properties type="String" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="1"/>
+						<stereotype/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;union=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_34127100_A349_4649_81E3_BD8913C869D6" name="parameterKind" scope="Public">
+						<initial/>
+						<documentation value="Establishes the signal value size, in bytes, expected in the DLL API."/>
+						<model ea_localid="28386" ea_guid="{34127100-A349-4649-81E3-BD8913C869D6}"/>
+						<properties type="IEEECigreDLLParameterKind" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="3"/>
+						<stereotype/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;union=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_74017AE2_028D_4b6f_9ABC_FC35D46A41EA" name="phase" scope="Public">
+						<initial/>
+						<documentation value="The signal's phase, as applicable, for multiphase signal connections."/>
+						<model ea_localid="28383" ea_guid="{74017AE2-028D-4b6f-9ABC-FC35D46A41EA}"/>
+						<properties type="SinglePhaseKind" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="0"/>
+						<stereotype/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;union=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_4F807027_DB24_4fdf_80A3_E3E84395F070" name="sequenceNumber" scope="Public">
+						<initial/>
+						<documentation value="The signal's expected sequence number in the DLL API array."/>
+						<model ea_localid="28385" ea_guid="{4F807027-DB24-4fdf-80A3-E3E84395F070}"/>
+						<properties type="Integer" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="2"/>
+						<stereotype/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;union=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_BDE548EE_4712_4aac_8C5C_E501040B3E6B" name="unit" scope="Public">
+						<initial/>
+						<documentation value="Signal units, if applicable."/>
+						<model ea_localid="28387" ea_guid="{BDE548EE-4712-4aac-8C5C-E501040B3E6B}"/>
+						<properties type="UnitSymbol" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="4"/>
+						<stereotype/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;union=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+				</attributes>
+				<links>
+					<Generalization xmi:id="EAID_68B0D58A_8E33_4a05_837A_ADD20A2FBAC6" start="EAID_13298CB1_D689_446c_BCC2_3AAC894B6D20" end="EAID_9C01A523_ED17_437d_9E28_AC7CFAB911DB"/>
+					<Generalization xmi:id="EAID_94A08DBC_CB33_49a3_AEF5_C611973EF851" start="EAID_1E3817AD_61B4_4617_85A3_D404B4E676FE" end="EAID_9C01A523_ED17_437d_9E28_AC7CFAB911DB"/>
 				</links>
 			</element>
 			<element xmi:idref="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F" xmi:type="uml:Class" name="OperationalLimitSet" scope="public">
@@ -1486,183 +1726,6 @@
 					</attribute>
 				</attributes>
 			</element>
-			<element xmi:idref="EAID_85B8E983_EE2F_403f_AB95_89512D2C9C9E" xmi:type="uml:Class" name="IEEECigreDLLInputKind" scope="public">
-				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8632" ea_eleType="element"/>
-				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
-				<project author="tom" version="1.0" phase="1.0" created="2026-03-26 14:00:18" modified="2026-03-26 15:04:52" complexity="1" status="Proposed"/>
-				<code gentype="Java"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
-				<xrefs value="$XREFPROP=$XID={9C7701CC-F96A-4bb7-90E2-5BD812C2AF71}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;GUID={9700AC88-B2BF-4302-AE88-22067536055C};@ENDSTEREO;@STEREO;Name=enumeration;GUID={89162AAF-C7E6-4d3c-A102-5516F22896C6};@ENDSTEREO;$DES;$CLT={85B8E983-EE2F-403f-AB95-89512D2C9C9E}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-				<extendedProperties tagged="0" package_name="Emtiop" ea_attsclassified="{1237B548-1AA3-4cf2-9324-F930C3083D8B}"/>
-				<attributes>
-					<attribute xmi:idref="EAID_D2BBF2B0_9F6D_4007_8997_502FCD73DD00" name="acCurrentGrid" scope="Public">
-						<initial/>
-						<documentation value="AC current from AC filter into the grid. Requires the phase attribute. Typically in Amperes, but the DLL API should be used to verify units."/>
-						<model ea_localid="28374" ea_guid="{D2BBF2B0-9F6D-4007-8997-502FCD73DD00}"/>
-						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
-						<coords ordered="0"/>
-						<containment containment="Not Specified" position="9"/>
-						<stereotype stereotype="enum"/>
-						<bounds lower="1" upper="1"/>
-						<options/>
-						<style/>
-						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
-						<tags/>
-						<xrefs value="$XREFPROP=$XID={8850AC0F-F5E2-4302-A9B5-6BBC0E26981D}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={D2BBF2B0-9F6D-4007-8997-502FCD73DD00}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-					</attribute>
-					<attribute xmi:idref="EAID_2E700AB0_3C46_4906_AE23_2E6559D218D0" name="acCurrentVsc" scope="Public">
-						<initial/>
-						<documentation value="AC current from inverter into the AC filter. Requires the phase attribute. Typically in Amperes, but the DLL API should be used to verify units."/>
-						<model ea_localid="28373" ea_guid="{2E700AB0-3C46-4906-AE23-2E6559D218D0}"/>
-						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
-						<coords ordered="0"/>
-						<containment containment="Not Specified" position="8"/>
-						<stereotype stereotype="enum"/>
-						<bounds lower="1" upper="1"/>
-						<options/>
-						<style/>
-						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
-						<tags/>
-						<xrefs value="$XREFPROP=$XID={506F836C-542A-41d3-AC43-421CF28B9260}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={2E700AB0-3C46-4906-AE23-2E6559D218D0}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-					</attribute>
-					<attribute xmi:idref="EAID_DBBE77C6_AF7C_4cef_8D41_8AEB22720FFB" name="acTerminalVoltage" scope="Public">
-						<initial/>
-						<documentation value="AC voltage at the filter-to-grid connection point. Requires the phase attribute. Typically in Volts, but the DLL API should be used to verify units.&#xA;"/>
-						<model ea_localid="28365" ea_guid="{DBBE77C6-AF7C-4cef-8D41-8AEB22720FFB}"/>
-						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
-						<coords ordered="0"/>
-						<containment containment="Not Specified" position="6"/>
-						<stereotype stereotype="enum"/>
-						<bounds lower="1" upper="1"/>
-						<options/>
-						<style/>
-						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
-						<tags/>
-						<xrefs value="$XREFPROP=$XID={665C64CF-6CE1-4046-9BB8-373F3ED2C8FF}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={DBBE77C6-AF7C-4cef-8D41-8AEB22720FFB}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-					</attribute>
-					<attribute xmi:idref="EAID_0B043198_020E_4eeb_9CE2_A36CFBDC0C64" name="activePowerReference" scope="Public">
-						<initial/>
-						<documentation value="Active power control reference. Typically in per-unit but the DLL API should be used to verify units."/>
-						<model ea_localid="28359" ea_guid="{0B043198-020E-4eeb-9CE2-A36CFBDC0C64}"/>
-						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
-						<coords ordered="0"/>
-						<containment containment="Not Specified" position="0"/>
-						<stereotype stereotype="enum"/>
-						<bounds lower="1" upper="1"/>
-						<options/>
-						<style/>
-						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
-						<tags/>
-						<xrefs value="$XREFPROP=$XID={88DD981F-04A9-4edd-B6D3-A92F21475C20}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={0B043198-020E-4eeb-9CE2-A36CFBDC0C64}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-					</attribute>
-					<attribute xmi:idref="EAID_A8733B9E_9B9B_401a_B228_16B00AC28658" name="apiDefined" scope="Public">
-						<initial/>
-						<documentation value="Another kind of input or control signal not enumerated in CIM. Use the DLL API for more information."/>
-						<model ea_localid="28375" ea_guid="{A8733B9E-9B9B-401a-B228-16B00AC28658}"/>
-						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
-						<coords ordered="0"/>
-						<containment containment="Not Specified" position="10"/>
-						<stereotype stereotype="enum"/>
-						<bounds lower="1" upper="1"/>
-						<options/>
-						<style/>
-						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
-						<tags/>
-						<xrefs value="$XREFPROP=$XID={29108174-261A-4a48-9FC1-047343BB43C4}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={A8733B9E-9B9B-401a-B228-16B00AC28658}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-					</attribute>
-					<attribute xmi:idref="EAID_0F679E75_7729_4d01_BBF6_0059626F89E0" name="dcCurrent" scope="Public">
-						<initial/>
-						<documentation value="DC current into the inverter stage, if DC bus modeling applies. Typically in Amperes, but the DLL API should be used to verify units."/>
-						<model ea_localid="28362" ea_guid="{0F679E75-7729-4d01-BBF6-0059626F89E0}"/>
-						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
-						<coords ordered="0"/>
-						<containment containment="Not Specified" position="3"/>
-						<stereotype stereotype="enum"/>
-						<bounds lower="1" upper="1"/>
-						<options/>
-						<style/>
-						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
-						<tags/>
-						<xrefs value="$XREFPROP=$XID={952915CA-BC41-4239-908A-DC02AF55E747}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={0F679E75-7729-4d01-BBF6-0059626F89E0}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-					</attribute>
-					<attribute xmi:idref="EAID_52631393_D1DE_44c1_83AB_86139D1D8F6B" name="dcMeasuredVoltage" scope="Public">
-						<initial/>
-						<documentation value="DC voltage at the inverter stage, if DC bus modeling applies. Typically in Volts, but the DLL API should be used to verify units.&#xA;"/>
-						<model ea_localid="28363" ea_guid="{52631393-D1DE-44c1-83AB-86139D1D8F6B}"/>
-						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
-						<coords ordered="0"/>
-						<containment containment="Not Specified" position="4"/>
-						<stereotype stereotype="enum"/>
-						<bounds lower="1" upper="1"/>
-						<options/>
-						<style/>
-						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
-						<tags/>
-						<xrefs value="$XREFPROP=$XID={4E1854E8-7B98-47dc-91FC-ABE5738F6596}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={52631393-D1DE-44c1-83AB-86139D1D8F6B}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-					</attribute>
-					<attribute xmi:idref="EAID_630EE838_0118_4a50_9547_7E92AE10B5EB" name="dcMPPTVoltage" scope="Public">
-						<initial/>
-						<documentation value="DC voltage command from the maximum power point tracking system, if DC bus modeling applies. Typically in Volts, but the DLL API should be used to verify units.&#xA;"/>
-						<model ea_localid="28364" ea_guid="{630EE838-0118-4a50-9547-7E92AE10B5EB}"/>
-						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
-						<coords ordered="0"/>
-						<containment containment="Not Specified" position="5"/>
-						<stereotype stereotype="enum"/>
-						<bounds lower="1" upper="1"/>
-						<options/>
-						<style/>
-						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
-						<tags/>
-						<xrefs value="$XREFPROP=$XID={62448EBF-1B0A-4b45-9147-E659E1EA334C}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={630EE838-0118-4a50-9547-7E92AE10B5EB}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-					</attribute>
-					<attribute xmi:idref="EAID_659866FF_0EED_44aa_BFF3_F855FB14967D" name="reactivePowerReference" scope="Public">
-						<initial/>
-						<documentation value="Reactive power control reference. Typically in per-unit but the DLL API should be used to verify units."/>
-						<model ea_localid="28360" ea_guid="{659866FF-0EED-44aa-BFF3-F855FB14967D}"/>
-						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
-						<coords ordered="0"/>
-						<containment containment="Not Specified" position="1"/>
-						<stereotype stereotype="enum"/>
-						<bounds lower="1" upper="1"/>
-						<options/>
-						<style/>
-						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
-						<tags/>
-						<xrefs value="$XREFPROP=$XID={22B9A6E9-08D9-45f2-BEE5-98AFF6EEF6A7}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={659866FF-0EED-44aa-BFF3-F855FB14967D}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-					</attribute>
-					<attribute xmi:idref="EAID_F00A4ADB_8A76_481a_9D7A_D4A9424E9B44" name="remoteInputSignal" scope="Public">
-						<initial/>
-						<documentation value="An input from an external point in the network. Requires the IEEECigreDLLInput.RemoteInputSignal assocation."/>
-						<model ea_localid="28372" ea_guid="{F00A4ADB-8A76-481a-9D7A-D4A9424E9B44}"/>
-						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
-						<coords ordered="0"/>
-						<containment containment="Not Specified" position="7"/>
-						<stereotype stereotype="enum"/>
-						<bounds lower="1" upper="1"/>
-						<options/>
-						<style/>
-						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
-						<tags/>
-						<xrefs value="$XREFPROP=$XID={648B335D-F88F-4966-A10F-A7E8A57EC23F}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={F00A4ADB-8A76-481a-9D7A-D4A9424E9B44}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-					</attribute>
-					<attribute xmi:idref="EAID_2A10D8DE_E1A0_4f31_872E_C6BCA9B54ED9" name="voltageReference" scope="Public">
-						<initial/>
-						<documentation value="Voltage control reference. Typically in per-unit and positive sequence, but the DLL API should be used to verify units."/>
-						<model ea_localid="28361" ea_guid="{2A10D8DE-E1A0-4f31-872E-C6BCA9B54ED9}"/>
-						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
-						<coords ordered="0"/>
-						<containment containment="Not Specified" position="2"/>
-						<stereotype stereotype="enum"/>
-						<bounds lower="1" upper="1"/>
-						<options/>
-						<style/>
-						<styleex value="IsLiteral=1;volatile=0;union=0;"/>
-						<tags/>
-						<xrefs value="$XREFPROP=$XID={8E46BB27-062C-472b-92FB-C1FEFEA74BBF}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={2A10D8DE-E1A0-4f31-872E-C6BCA9B54ED9}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-					</attribute>
-				</attributes>
-			</element>
 			<element xmi:idref="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B" xmi:type="uml:Class" name="IEEECigreDLLParameterKind" scope="public">
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8620" ea_eleType="element"/>
 				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="enumeration" isRoot="false" isLeaf="false" isAbstract="true" isActive="false"/>
@@ -1671,7 +1734,7 @@
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
 				<xrefs value="$XREFPROP=$XID={B9EE8627-8AE3-429c-85E0-EF30D20E9C97}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enumeration;GUID={89162AAF-C7E6-4d3c-A102-5516F22896C6};@ENDSTEREO;@STEREO;Name=CIMExtension;GUID={9700AC88-B2BF-4302-AE88-22067536055C};@ENDSTEREO;$DES;$CLT={8A4C296F-C2FC-4c7d-8ECC-EE048DD0356B}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-				<extendedProperties tagged="0" package_name="Emtiop" ea_attsclassified="{083DDE7F-0C4A-4eb3-A900-06F6596D4FF6}"/>
+				<extendedProperties tagged="0" package_name="Emtiop" ea_attsclassified="{083DDE7F-0C4A-4eb3-A900-06F6596D4FF6},{34127100-A349-4649-81E3-BD8913C869D6}"/>
 				<attributes>
 					<attribute xmi:idref="EAID_C758A914_85B1_4ce5_9844_4AFDB305ED73" name="Char_Val" scope="Public">
 						<initial/>
@@ -2486,6 +2549,74 @@
 				<xrefs/>
 				<tags/>
 			</connector>
+			<connector xmi:idref="EAID_68B0D58A_8E33_4a05_837A_ADD20A2FBAC6">
+				<source xmi:idref="EAID_13298CB1_D689_446c_BCC2_3AAC894B6D20">
+					<model ea_localid="8630" type="Class" name="IEEECigreDLLInput"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_9C01A523_ED17_437d_9E28_AC7CFAB911DB">
+					<model ea_localid="8634" type="Class" name="IEEECigreDLLSignal"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="11085"/>
+				<properties ea_type="Generalization" direction="Source -&gt; Destination"/>
+				<parameterSubstitutions/>
+				<documentation/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_94A08DBC_CB33_49a3_AEF5_C611973EF851">
+				<source xmi:idref="EAID_1E3817AD_61B4_4617_85A3_D404B4E676FE">
+					<model ea_localid="8631" type="Class" name="IEEECigreDLLOutput"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_9C01A523_ED17_437d_9E28_AC7CFAB911DB">
+					<model ea_localid="8634" type="Class" name="IEEECigreDLLSignal"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="11086"/>
+				<properties ea_type="Generalization" direction="Source -&gt; Destination"/>
+				<parameterSubstitutions/>
+				<documentation/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
 			<connector xmi:idref="EAID_0E30FF9A_B8C1_4908_8FB5_5D8AFEEF603D">
 				<source xmi:idref="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F">
 					<model ea_localid="8617" type="Class" name="OperationalLimitSet"/>
@@ -3256,25 +3387,28 @@
 			<diagram xmi:id="EAID_2E6B6B6D_CD9F_431c_A7DA_A4BB1E1A11C2">
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" localID="1305" owner="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A"/>
 				<properties name="DocEmtiopDLLSignals" type="Logical"/>
-				<project author="tom" version="1.0" created="2026-03-26 13:54:53" modified="2026-03-26 15:04:44"/>
+				<project author="tom" version="1.0" created="2026-03-26 13:54:53" modified="2026-03-27 16:47:43"/>
 				<style1 value="ShowPrivate=1;ShowProtected=1;ShowPublic=1;HideRelationships=0;Locked=0;Border=1;HighlightForeign=1;PackageContents=1;SequenceNotes=0;ScalePrintImage=0;PPgs.cx=0;PPgs.cy=0;DocSize.cx=819;DocSize.cy=1059;ShowDetails=0;Orientation=P;Zoom=100;ShowTags=0;OpParams=1;VisibleAttributeDetail=0;ShowOpRetType=1;ShowIcons=1;CollabNums=0;HideProps=0;ShowReqs=0;ShowCons=0;PaperSize=1;HideParents=0;UseAlias=0;HideAtts=0;HideOps=0;HideStereo=0;HideElemStereo=0;ShowTests=0;ShowMaint=0;ConnectorNotation=UML 2.1;ExplicitNavigability=0;ShowShape=1;AllDockable=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;ShowNotes=0;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;"/>
-				<style2 value="ExcludeRTF=0;DocAll=0;HideQuals=0;AttPkg=1;ShowTests=0;ShowMaint=0;SuppressFOC=1;MatrixActive=0;SwimlanesActive=1;KanbanActive=0;MatrixLineWidth=1;MatrixLineClr=0;MatrixLocked=0;TConnectorNotation=UML 2.1;TExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;MDGDgm=;STBLDgm=;ShowNotes=0;VisibleAttributeDetail=0;ShowOpRetType=1;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;SuppressedCompartments=;Theme=:119;SaveTag=AA823248;"/>
+				<style2 value="ExcludeRTF=0;DocAll=0;HideQuals=0;AttPkg=1;ShowTests=0;ShowMaint=0;SuppressFOC=1;MatrixActive=0;SwimlanesActive=1;KanbanActive=0;MatrixLineWidth=1;MatrixLineClr=0;MatrixLocked=0;TConnectorNotation=UML 2.1;TExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;MDGDgm=;STBLDgm=;ShowNotes=0;VisibleAttributeDetail=0;ShowOpRetType=1;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;SuppressedCompartments=;Theme=:119;SaveTag=B0998B5A;"/>
 				<swimlanes value="locked=false;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;"/>
 				<matrixitems value="locked=false;matrixactive=false;swimlanesactive=true;kanbanactive=false;width=1;clrLine=0;"/>
 				<extendedProperties/>
-				<persistentstyle value="DGS=On=0:CNT=8:W=120:H=40:SG=0:SGH=0:AEB=0:;AR=0;DCL=0;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;Swimlanes=locked=false;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;"/>
+				<persistentstyle value="DGS=On=0:CNT=8:W=120:H=40:SG=0:SGH=0:AEB=0:;AR=0;DCL=0;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;Swimlanes=locked=false;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;"/>
 				<xrefs/>
 				<elements>
-					<element geometry="Left=287;Top=50;Right=489;Bottom=214;" subject="EAID_821F7B28_5215_496e_B03B_27C243409D68" seqno="1" style="DUID=6764AD3F;"/>
-					<element geometry="Left=44;Top=40;Right=246;Bottom=242;" subject="EAID_85B8E983_EE2F_403f_AB95_89512D2C9C9E" seqno="2" style="DUID=85E40605;"/>
-					<element geometry="Left=530;Top=359;Right=730;Bottom=449;" subject="EAID_1E3817AD_61B4_4617_85A3_D404B4E676FE" seqno="3" style="DUID=6E7C5A6A;"/>
-					<element geometry="Left=535;Top=242;Right=726;Bottom=332;" subject="EAID_13298CB1_D689_446c_BCC2_3AAC894B6D20" seqno="4" style="DUID=F30577D4;"/>
-					<element geometry="Left=548;Top=50;Right=649;Bottom=196;" subject="EAID_0AD52D65_4270_45c1_9AF4_29C53A398AE3" seqno="5" style="DUID=1BC8527A;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;HideIcon=0;"/>
-					<element geometry="Left=256;Top=233;Right=395;Bottom=303;" subject="EAID_9362D4B3_DE41_4140_A405_3225ED0FCD02" seqno="6" style="DUID=EAB8A492;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
-					<element geometry="Left=41;Top=272;Right=232;Bottom=449;" subject="EAID_FE82DEC1_98ED_4d75_B9F9_082E4B494C70" seqno="7" style="DUID=3CD3E9BE;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
-					<element geometry="SX=95;SY=-25;EX=-29;EY=-34;EDGE=2;$LLB=CX=7:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=70:CY=15:OX=0:OY=-13:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=100:CY=15:OX=-10:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=18:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_46068697_C2E8_473d_B0D9_46C16E088A3D" style="Mode=3;EOID=F30577D4;SOID=3CD3E9BE;Color=-1;LWidth=0;Hidden=0;"/>
-					<element geometry="SX=95;SY=-70;EX=-85;EY=-26;EDGE=2;$LLB=CX=7:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=70:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=109:CY=15:OX=-8:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=18:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_CA4FAA81_D534_4a55_A727_A2B23A9282D6" style="Mode=3;EOID=6E7C5A6A;SOID=3CD3E9BE;Color=-1;LWidth=0;Hidden=0;"/>
-					<element geometry="SX=0;SY=27;EX=69;EY=2;EDGE=4;$LLB=CX=19:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=95:CY=15:OX=-12:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=97:CY=15:OX=0:OY=23:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=0:OY=-23:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_13463FB3_B677_400d_811B_B64AB4D84E56" style="Mode=3;EOID=EAB8A492;SOID=F30577D4;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="Left=569;Top=312;Right=836;Bottom=444;" subject="EAID_9C01A523_ED17_437d_9E28_AC7CFAB911DB" seqno="1" style="DUID=396241B4;"/>
+					<element geometry="Left=296;Top=42;Right=498;Bottom=206;" subject="EAID_821F7B28_5215_496e_B03B_27C243409D68" seqno="2" style="DUID=6764AD3F;"/>
+					<element geometry="Left=44;Top=40;Right=246;Bottom=260;" subject="EAID_85B8E983_EE2F_403f_AB95_89512D2C9C9E" seqno="3" style="DUID=85E40605;"/>
+					<element geometry="Left=336;Top=361;Right=536;Bottom=423;" subject="EAID_1E3817AD_61B4_4617_85A3_D404B4E676FE" seqno="4" style="DUID=6E7C5A6A;"/>
+					<element geometry="Left=302;Top=234;Right=493;Bottom=295;" subject="EAID_13298CB1_D689_446c_BCC2_3AAC894B6D20" seqno="5" style="DUID=F30577D4;"/>
+					<element geometry="Left=548;Top=50;Right=649;Bottom=196;" subject="EAID_0AD52D65_4270_45c1_9AF4_29C53A398AE3" seqno="6" style="DUID=1BC8527A;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;HideIcon=0;"/>
+					<element geometry="Left=640;Top=213;Right=779;Bottom=283;" subject="EAID_9362D4B3_DE41_4140_A405_3225ED0FCD02" seqno="7" style="DUID=EAB8A492;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
+					<element geometry="Left=41;Top=272;Right=232;Bottom=449;" subject="EAID_FE82DEC1_98ED_4d75_B9F9_082E4B494C70" seqno="8" style="DUID=3CD3E9BE;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
+					<element geometry="SX=95;SY=21;EX=-10;EY=-4;EDGE=2;$LLB=CX=7:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=70:CY=15:OX=0:OY=38:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=100:CY=15:OX=113:OY=11:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=18:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_46068697_C2E8_473d_B0D9_46C16E088A3D" style="Mode=3;EOID=F30577D4;SOID=3CD3E9BE;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=92;SY=-61;EX=-82;EY=-17;EDGE=2;$LLB=CX=7:CY=15:OX=4:OY=-3:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=70:CY=15:OX=1:OY=-6:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=109:CY=15:OX=80:OY=39:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=18:CY=15:OX=-6:OY=1:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_CA4FAA81_D534_4a55_A727_A2B23A9282D6" style="Mode=3;EOID=6E7C5A6A;SOID=3CD3E9BE;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=95;SY=5;EX=67;EY=-11;EDGE=2;$LLB=CX=19:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=95:CY=15:OX=2:OY=-2:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=97:CY=15:OX=-11:OY=23:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=-6:OY=-23:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_13463FB3_B677_400d_811B_B64AB4D84E56" style="Mode=3;EOID=EAB8A492;SOID=F30577D4;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=0;SY=0;EX=0;EY=0;EDGE=3;$LLB=;LLT=;LMT=;LMB=;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_68B0D58A_8E33_4a05_837A_ADD20A2FBAC6" style="Mode=3;EOID=396241B4;SOID=F30577D4;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=0;SY=0;EX=0;EY=0;EDGE=2;$LLB=;LLT=;LMT=;LMB=;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_94A08DBC_CB33_49a3_AEF5_C611973EF851" style="Mode=3;EOID=396241B4;SOID=6E7C5A6A;Color=-1;LWidth=0;Hidden=0;"/>
 				</elements>
 			</diagram>
 		</diagrams>
@@ -3287,7 +3421,9 @@
 		<EAStub xmi:id="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490" name="String" UMLType="Class"/>
 		<EAStub xmi:id="EAID_9F8964F1_6C32_465b_A83D_F5A201A291C3" name="Boolean" UMLType="Class"/>
 		<EAStub xmi:id="EAID_A2008978_193D_4955_8102_599E43C7CFE4" name="Seconds" UMLType="Class"/>
-		<EAStub xmi:id="EAID_0AD52D65_4270_45c1_9AF4_29C53A398AE3" name="SinglePhaseKind" UMLType="Class"/>
 		<EAStub xmi:id="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789" name="Integer" UMLType="Class"/>
+		<EAStub xmi:id="EAID_DC62CC93_2E3F_4b9c_9C81_C84C30A6C67D" name="UnitMultiplier" UMLType="Class"/>
+		<EAStub xmi:id="EAID_0AD52D65_4270_45c1_9AF4_29C53A398AE3" name="SinglePhaseKind" UMLType="Class"/>
+		<EAStub xmi:id="EAID_80012160_A038_43b5_BA6F_9862E525518C" name="UnitSymbol" UMLType="Class"/>
 	</xmi:Extension>
 </xmi:XMI>

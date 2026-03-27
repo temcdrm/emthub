@@ -580,14 +580,6 @@
       "type": "IEEECigreDLLInputKind",
       "default": null
     },
-    "phase": {
-      "type": "SinglePhaseKind",
-      "default": null
-    },
-    "sequenceNumber": {
-      "type": "Integer",
-      "default": null
-    },
     "IEEECigreDLL": {
       "type": "IEEECigreDLL",
       "default": null
@@ -600,14 +592,6 @@
   "IEEECigreDLLOutput": {
     "kind": {
       "type": "IEEECigreDLLOutputKind",
-      "default": null
-    },
-    "phase": {
-      "type": "SinglePhaseKind",
-      "default": null
-    },
-    "sequenceNumber": {
-      "type": "Integer",
       "default": null
     },
     "IEEECigreDLL": {
@@ -1708,6 +1692,32 @@
     },
     "minOperatingP": {
       "type": "ActivePower",
+      "default": null
+    }
+  },
+  "IEEECigreDLLSignal": {
+    "multiplier": {
+      "type": "UnitMultiplier",
+      "default": null
+    },
+    "name": {
+      "type": "String",
+      "default": null
+    },
+    "parameterKind": {
+      "type": "IEEECigreDLLParameterKind",
+      "default": null
+    },
+    "phase": {
+      "type": "SinglePhaseKind",
+      "default": null
+    },
+    "sequenceNumber": {
+      "type": "Integer",
+      "default": null
+    },
+    "unit": {
+      "type": "UnitSymbol",
       "default": null
     }
   },

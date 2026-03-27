@@ -781,11 +781,6 @@ CREATE TABLE "IEEECigreDLLInput"
     -- for more information.
     -- FK column reference to table representing the "IEEECigreDLLInputKind" enumeration
     "kind" VARCHAR(100),
-    -- The phase of acTerminalVoltage, acCurrentVsc, or acCurrentGrid.
-    -- FK column reference to table representing the "SinglePhaseKind" enumeration
-    "phase" VARCHAR(100),
-    -- The input's expected sequence number in the DLL API.
-    "sequenceNumber" INTEGER,
     -- The DLL connected to the input.
     -- FK column reference to table representing the "IEEECigreDLL" class
     "IEEECigreDLL" VARCHAR(100),
@@ -839,11 +834,6 @@ CREATE TABLE "IEEECigreDLLOutput"
     -- and vscVoltage. If apiDefined, obtain more information from the DLL API.
     -- FK column reference to table representing the "IEEECigreDLLOutputKind" enumeration
     "kind" VARCHAR(100),
-    -- The phase of modulationIndex or vscVoltage.
-    -- FK column reference to table representing the "SinglePhaseKind" enumeration
-    "phase" VARCHAR(100),
-    -- The output's expected sequence number in the DLL API.
-    "sequenceNumber" INTEGER,
     -- The DLL producing the outputs.
     -- FK column reference to table representing the "IEEECigreDLL" class
     "IEEECigreDLL" VARCHAR(100)
@@ -904,6 +894,29 @@ INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Real64_Val' );
 INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Uint16_Val' );
 INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Uint32_Val' );
 INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Uint8_Val' );
+
+-- The parent class for DLL input and output signals.
+CREATE TABLE "IEEECigreDLLSignal"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Multiplier for the units of this signal.
+    -- FK column reference to table representing the "UnitMultiplier" enumeration
+    "multiplier" VARCHAR(100),
+    -- The signal name from the DLL API. It may be helpful to interpret the signal's
+    -- meaning.
+    "name" VARCHAR(255),
+    -- Establishes the signal value size, in bytes, expected in the DLL API.
+    -- FK column reference to table representing the "IEEECigreDLLParameterKind" enumeration
+    "parameterKind" VARCHAR(100),
+    -- The signal's phase, as applicable, for multiphase signal connections.
+    -- FK column reference to table representing the "SinglePhaseKind" enumeration
+    "phase" VARCHAR(100),
+    -- The signal's expected sequence number in the DLL API array.
+    "sequenceNumber" INTEGER,
+    -- Signal units, if applicable.
+    -- FK column reference to table representing the "UnitSymbol" enumeration
+    "unit" VARCHAR(100)
+);
 
 -- This is a class that provides common identification for all classes needing
 -- identification and naming attributes.
@@ -3041,6 +3054,12 @@ ALTER TABLE "IBRPlant" ADD FOREIGN KEY ( "mRID" ) REFERENCES "GeneratingPlant" (
 -- Inheritance subclass-superclass constraint for table "IEEECigreDLL"
 ALTER TABLE "IEEECigreDLL" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "IEEECigreDLLInput"
+ALTER TABLE "IEEECigreDLLInput" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IEEECigreDLLSignal" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "IEEECigreDLLOutput"
+ALTER TABLE "IEEECigreDLLOutput" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IEEECigreDLLSignal" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "LinearShuntCompensator"
 ALTER TABLE "LinearShuntCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ShuntCompensator" ( "mRID" );
 
@@ -3230,13 +3249,11 @@ ALTER TABLE "IEEECigreDLL" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 
 -- Foreign keys for table "IEEECigreDLLInput"
 ALTER TABLE "IEEECigreDLLInput" ADD FOREIGN KEY ( "kind" ) REFERENCES "IEEECigreDLLInputKind" ( "name" );
-ALTER TABLE "IEEECigreDLLInput" ADD FOREIGN KEY ( "phase" ) REFERENCES "SinglePhaseKind" ( "name" );
 ALTER TABLE "IEEECigreDLLInput" ADD FOREIGN KEY ( "IEEECigreDLL" ) REFERENCES "IEEECigreDLL" ( "mRID" );
 ALTER TABLE "IEEECigreDLLInput" ADD FOREIGN KEY ( "RemoteInputSignal" ) REFERENCES "RemoteInputSignal" ( "mRID" );
 
 -- Foreign keys for table "IEEECigreDLLOutput"
 ALTER TABLE "IEEECigreDLLOutput" ADD FOREIGN KEY ( "kind" ) REFERENCES "IEEECigreDLLOutputKind" ( "name" );
-ALTER TABLE "IEEECigreDLLOutput" ADD FOREIGN KEY ( "phase" ) REFERENCES "SinglePhaseKind" ( "name" );
 ALTER TABLE "IEEECigreDLLOutput" ADD FOREIGN KEY ( "IEEECigreDLL" ) REFERENCES "IEEECigreDLL" ( "mRID" );
 
 -- Foreign keys for table "IEEECigreDLLParameter"
