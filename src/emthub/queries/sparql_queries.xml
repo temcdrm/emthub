@@ -1320,8 +1320,10 @@ SELECT DISTINCT ?id ?seq ?name ?sig ?unit ?mult ?phase WHERE {
  ?p e:IEEECigreDLLInput.IEEECigreDLL ?d.
  ?p e:IEEECigreDLLSignal.sequenceNumber ?seq.
  ?p e:IEEECigreDLLSignal.name ?name.
- ?p e:IEEECigreDLLSignal.unit ?unit.
- ?p e:IEEECigreDLLSignal.multiplier ?mult.
+ {?p e:IEEECigreDLLSignal.unit ?rawunit.
+  bind(strafter(str(?rawunit),"UnitSymbol.") as ?unit)}
+ {?p e:IEEECigreDLLSignal.multiplier ?rawmult.
+  bind(strafter(str(?rawmult),"UnitMultiplier.") as ?mult)}
  OPTIONAL {?p e:IEEECigreDLLSignal.phase ?rawphase.
   bind(strafter(str(?rawphase),"Kind.") as ?phase)}
  {?p e:IEEECigreDLLSignal.parameterKind ?rawkind.
@@ -1366,8 +1368,10 @@ SELECT DISTINCT ?id ?seq ?name ?sig ?unit ?mult ?phase WHERE {
  ?p e:IEEECigreDLLOutput.IEEECigreDLL ?d.
  ?p e:IEEECigreDLLSignal.sequenceNumber ?seq.
  ?p e:IEEECigreDLLSignal.name ?name.
- ?p e:IEEECigreDLLSignal.unit ?unit.
- ?p e:IEEECigreDLLSignal.multiplier ?mult.
+ {?p e:IEEECigreDLLSignal.unit ?rawunit.
+  bind(strafter(str(?rawunit),"UnitSymbol.") as ?unit)}
+ {?p e:IEEECigreDLLSignal.multiplier ?rawmult.
+  bind(strafter(str(?rawmult),"UnitMultiplier.") as ?mult)}
  OPTIONAL {?p e:IEEECigreDLLSignal.phase ?rawphase.
   bind(strafter(str(?rawphase),"Kind.") as ?phase)}
  {?p e:IEEECigreDLLSignal.parameterKind ?rawkind.
