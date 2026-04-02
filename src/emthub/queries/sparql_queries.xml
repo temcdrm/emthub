@@ -1306,6 +1306,98 @@ ORDER BY ?id
 </value>
 </query>
 <query>
+<id>EMTIEEECigreDLLInputs*</id>
+<keyfld>id*</keyfld>
+<description>List the values and sizes of input signals for the DLL interfaces.</description>
+<value>
+<![CDATA[
+SELECT DISTINCT ?id ?seq ?name ?sig ?unit ?mult ?phase WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?d c:IdentifiedObject.mRID ?id.
+ ?p e:IEEECigreDLLInput.IEEECigreDLL ?d.
+ ?p e:IEEECigreDLLSignal.sequenceNumber ?seq.
+ ?p e:IEEECigreDLLSignal.name ?name.
+ ?p e:IEEECigreDLLSignal.unit ?unit.
+ ?p e:IEEECigreDLLSignal.multiplier ?mult.
+ OPTIONAL {?p e:IEEECigreDLLSignal.phase ?rawphase.
+  bind(strafter(str(?rawphase),"Kind.") as ?phase)}
+ {?p e:IEEECigreDLLSignal.parameterKind ?rawkind.
+  bind(strafter(str(?rawkind),"Kind.") as ?kind)}
+ {?p e:IEEECigreDLLInput.kind ?rawsig.
+  bind(strafter(str(?rawsig),"Kind.") as ?sig)}
+} ORDER by ?id ?seq
+]]>
+</value>
+</query>
+<query>
+<id>EMTCountDLLInputs</id>
+<keyfld>id</keyfld>
+<description>Counts the number of input signals in each DLL interface.</description>
+<value>
+<![CDATA[
+SELECT ?id (count(?p) as ?count) WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?d c:IdentifiedObject.mRID ?id.
+ ?p e:IEEECigreDLLInput.IEEECigreDLL ?d.
+}
+GROUP BY ?id
+ORDER BY ?id
+]]>
+</value>
+</query>
+<query>
+<id>EMTIEEECigreDLLOutputs*</id>
+<keyfld>id*</keyfld>
+<description>List the values and sizes of output signals for the DLL interfaces.</description>
+<value>
+<![CDATA[
+SELECT DISTINCT ?id ?seq ?name ?sig ?unit ?mult ?phase WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?d c:IdentifiedObject.mRID ?id.
+ ?p e:IEEECigreDLLOutput.IEEECigreDLL ?d.
+ ?p e:IEEECigreDLLSignal.sequenceNumber ?seq.
+ ?p e:IEEECigreDLLSignal.name ?name.
+ ?p e:IEEECigreDLLSignal.unit ?unit.
+ ?p e:IEEECigreDLLSignal.multiplier ?mult.
+ OPTIONAL {?p e:IEEECigreDLLSignal.phase ?rawphase.
+  bind(strafter(str(?rawphase),"Kind.") as ?phase)}
+ {?p e:IEEECigreDLLSignal.parameterKind ?rawkind.
+  bind(strafter(str(?rawkind),"Kind.") as ?kind)}
+ {?p e:IEEECigreDLLOutput.kind ?rawsig.
+  bind(strafter(str(?rawsig),"Kind.") as ?sig)}
+} ORDER by ?id ?seq
+]]>
+</value>
+</query>
+<query>
+<id>EMTCountDLLOutputs</id>
+<keyfld>id</keyfld>
+<description>Counts the number of output signals in each DLL interface.</description>
+<value>
+<![CDATA[
+SELECT ?id (count(?p) as ?count) WHERE {
+ ?sys c:IdentifiedObject.mRID ?sysid.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?d c:IdentifiedObject.mRID ?id.
+ ?p e:IEEECigreDLLOutput.IEEECigreDLL ?d.
+}
+GROUP BY ?id
+ORDER BY ?id
+]]>
+</value>
+</query>
+<query>
 <id>EMTIEEECigreDLL</id>
 <keyfld>id</keyfld>
 <description>DLL interface attached to an inverter.</description>
