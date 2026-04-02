@@ -18,7 +18,7 @@ class DLLDataType(IntEnum):
   real64_T   = 9
   c_string_T = 10
 
-def get_cim_parameter_kind (idx):
+def get_dll_cim_parameter_kind (idx):
   if idx == 1:
     return 'Char_Val'
   if idx == 2:
@@ -39,7 +39,85 @@ def get_cim_parameter_kind (idx):
     return 'Real64_Val'
   if idx == 10:
     return 'Char_Ptr'
-  
+ 
+def get_dll_sig_cim_units (s):
+  unit = 'none'
+  if s == 'N/A':
+    unit = 'none'
+  elif s.endswith('A'):
+    unit = 'A'
+  elif s.endswith ('V'):
+    unit = 'V'
+  elif s.endswith ('W'):
+    unit = 'W'
+  elif s.endswith ('VA'):
+    unit = 'VA'
+  elif s.endswith ('VAr'):
+    unit = 'VAr'
+  elif s.endswith ('Hz'):
+    unit = 'Hz'
+
+  mult = 'none'
+  if s == 'pu':
+    mult = 'none'
+  elif s.startswith ('K') or s.startswith ('k'):
+    mult = 'k'
+  elif s.startswith ('M'):
+    mult = 'M'
+  elif s.startswith ('G'):
+    mult = 'G'
+  elif s.startswith ('micro'):
+    mult = 'micro'
+  elif s.startswith ('m'):
+    mult = 'm'
+  elif s.startswith ('n'):
+    mult = 'n'
+  elif s.startswith ('p'):
+    mult = 'p'
+
+  return unit, mult
+
+def get_dll_input_kind (s):
+  kind = 'apiDefined'
+  phase = None
+  if s == 'Idc':
+    kind = 'dcCurrent'
+  elif s == 'VdcMPPT':
+    kind = 'dcMPPTVoltage'
+  elif s == 'Vdc_meas':
+    kind = 'dcMeasuredVoltage'
+  elif s == 'Pref':
+    kind = 'activePowerReference'
+  elif s == 'Qref':
+    kind = 'reactivePowerReference'
+  elif s == 'Vref':
+    kind = 'voltageReference'
+  elif s.startswith ('Vt'):
+    kind = 'acTerminalVoltage'
+    phase = s[-1].upper()
+  elif s.startswith ('I1'):
+    kind = 'acCurrentVsc'
+    phase = s[-1].upper()
+  elif s.startswith ('I2'):
+    kind = 'acCurrentGrid'
+    phase = s[-1].upper()
+  return kind, phase
+
+def get_dll_output_kind (s):
+  kind = 'apiDefined'
+  phase = None
+  if s == 'Pout':
+    kind = 'activePower'
+  elif s == 'Qout':
+    kind = 'reactivePower'
+  elif s == 'FRT_Flag':
+    kind = 'rideThroughMode'
+  elif s == 'FreqPLL':
+    kind = 'pllFrequency'
+  elif s.startswith ('m_'):
+    kind = 'modulationIndex'
+    phase = s[-1].upper()
+  return kind, phase
 
 class DLLReturnValue(IntEnum):
   OK = 0

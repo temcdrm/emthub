@@ -807,6 +807,288 @@
     emt:IEEECigreDLLParameter.sequenceNumber "9"^^cim:Integer ;
     emt:IEEECigreDLLParameter.value "25.4"^^cim:String .
 
+<FDE751E2-C11C-485C-B254-52B43FE55028_i1> a emt:IEEECigreDLLInput ;
+    emt:IEEECigreDLLInput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.acTerminalVoltage ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
+    emt:IEEECigreDLLSignal.name "Vta"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.phase cim:SinglePhaseKind.A ;
+    emt:IEEECigreDLLSignal.sequenceNumber "1"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.V .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_i10> a emt:IEEECigreDLLInput ;
+    emt:IEEECigreDLLInput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.dcCurrent ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
+    emt:IEEECigreDLLSignal.name "Idc"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "10"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.A .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_i11> a emt:IEEECigreDLLInput ;
+    emt:IEEECigreDLLInput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.dcMPPTVoltage ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
+    emt:IEEECigreDLLSignal.name "VdcMPPT"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "11"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.V .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_i12> a emt:IEEECigreDLLInput ;
+    emt:IEEECigreDLLInput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.activePowerReference ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "Pref"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "12"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_i13> a emt:IEEECigreDLLInput ;
+    emt:IEEECigreDLLInput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.reactivePowerReference ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "Qref"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "13"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_i14> a emt:IEEECigreDLLInput ;
+    emt:IEEECigreDLLInput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.dcMeasuredVoltage ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
+    emt:IEEECigreDLLSignal.name "Vdc_meas"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "14"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.V .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_i15> a emt:IEEECigreDLLInput ;
+    emt:IEEECigreDLLInput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.voltageReference ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "Vref"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "15"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_i2> a emt:IEEECigreDLLInput ;
+    emt:IEEECigreDLLInput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.acTerminalVoltage ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
+    emt:IEEECigreDLLSignal.name "Vtb"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.phase cim:SinglePhaseKind.B ;
+    emt:IEEECigreDLLSignal.sequenceNumber "2"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.V .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_i3> a emt:IEEECigreDLLInput ;
+    emt:IEEECigreDLLInput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.acTerminalVoltage ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
+    emt:IEEECigreDLLSignal.name "Vtc"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.phase cim:SinglePhaseKind.C ;
+    emt:IEEECigreDLLSignal.sequenceNumber "3"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.V .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_i4> a emt:IEEECigreDLLInput ;
+    emt:IEEECigreDLLInput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.acCurrentVsc ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
+    emt:IEEECigreDLLSignal.name "I1a"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.phase cim:SinglePhaseKind.A ;
+    emt:IEEECigreDLLSignal.sequenceNumber "4"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.A .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_i5> a emt:IEEECigreDLLInput ;
+    emt:IEEECigreDLLInput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.acCurrentVsc ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
+    emt:IEEECigreDLLSignal.name "I1b"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.phase cim:SinglePhaseKind.B ;
+    emt:IEEECigreDLLSignal.sequenceNumber "5"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.A .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_i6> a emt:IEEECigreDLLInput ;
+    emt:IEEECigreDLLInput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.acCurrentVsc ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
+    emt:IEEECigreDLLSignal.name "I1c"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.phase cim:SinglePhaseKind.C ;
+    emt:IEEECigreDLLSignal.sequenceNumber "6"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.A .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_i7> a emt:IEEECigreDLLInput ;
+    emt:IEEECigreDLLInput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.acCurrentGrid ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
+    emt:IEEECigreDLLSignal.name "I2a"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.phase cim:SinglePhaseKind.A ;
+    emt:IEEECigreDLLSignal.sequenceNumber "7"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.A .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_i8> a emt:IEEECigreDLLInput ;
+    emt:IEEECigreDLLInput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.acCurrentGrid ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
+    emt:IEEECigreDLLSignal.name "I2b"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.phase cim:SinglePhaseKind.B ;
+    emt:IEEECigreDLLSignal.sequenceNumber "8"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.A .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_i9> a emt:IEEECigreDLLInput ;
+    emt:IEEECigreDLLInput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.acCurrentGrid ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
+    emt:IEEECigreDLLSignal.name "I2c"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.phase cim:SinglePhaseKind.C ;
+    emt:IEEECigreDLLSignal.sequenceNumber "9"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.A .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_o1> a emt:IEEECigreDLLOutput ;
+    emt:IEEECigreDLLOutput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLOutput.kind emt:IEEECigreDLLOutputKind.modulationIndex ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "m_a"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.phase cim:SinglePhaseKind.A ;
+    emt:IEEECigreDLLSignal.sequenceNumber "1"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_o10> a emt:IEEECigreDLLOutput ;
+    emt:IEEECigreDLLOutput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLOutput.kind emt:IEEECigreDLLOutputKind.apiDefined ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "Vtq1"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "10"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_o11> a emt:IEEECigreDLLOutput ;
+    emt:IEEECigreDLLOutput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLOutput.kind emt:IEEECigreDLLOutputKind.apiDefined ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "Vtd2"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "11"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_o12> a emt:IEEECigreDLLOutput ;
+    emt:IEEECigreDLLOutput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLOutput.kind emt:IEEECigreDLLOutputKind.apiDefined ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "Vtq2"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "12"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_o13> a emt:IEEECigreDLLOutput ;
+    emt:IEEECigreDLLOutput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLOutput.kind emt:IEEECigreDLLOutputKind.rideThroughMode ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "FRT_Flag"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "13"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_o14> a emt:IEEECigreDLLOutput ;
+    emt:IEEECigreDLLOutput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLOutput.kind emt:IEEECigreDLLOutputKind.activePower ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "Pout"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "14"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_o15> a emt:IEEECigreDLLOutput ;
+    emt:IEEECigreDLLOutput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLOutput.kind emt:IEEECigreDLLOutputKind.reactivePower ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "Qout"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "15"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_o2> a emt:IEEECigreDLLOutput ;
+    emt:IEEECigreDLLOutput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLOutput.kind emt:IEEECigreDLLOutputKind.modulationIndex ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "m_b"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.phase cim:SinglePhaseKind.B ;
+    emt:IEEECigreDLLSignal.sequenceNumber "2"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_o3> a emt:IEEECigreDLLOutput ;
+    emt:IEEECigreDLLOutput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLOutput.kind emt:IEEECigreDLLOutputKind.modulationIndex ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "m_c"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.phase cim:SinglePhaseKind.C ;
+    emt:IEEECigreDLLSignal.sequenceNumber "3"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_o4> a emt:IEEECigreDLLOutput ;
+    emt:IEEECigreDLLOutput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLOutput.kind emt:IEEECigreDLLOutputKind.pllFrequency ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "FreqPLL"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "4"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.Hz .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_o5> a emt:IEEECigreDLLOutput ;
+    emt:IEEECigreDLLOutput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLOutput.kind emt:IEEECigreDLLOutputKind.apiDefined ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "Id1"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "5"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_o6> a emt:IEEECigreDLLOutput ;
+    emt:IEEECigreDLLOutput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLOutput.kind emt:IEEECigreDLLOutputKind.apiDefined ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "Iq1"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "6"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_o7> a emt:IEEECigreDLLOutput ;
+    emt:IEEECigreDLLOutput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLOutput.kind emt:IEEECigreDLLOutputKind.apiDefined ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "Id2"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "7"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_o8> a emt:IEEECigreDLLOutput ;
+    emt:IEEECigreDLLOutput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLOutput.kind emt:IEEECigreDLLOutputKind.apiDefined ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "Iq2"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "8"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
+<FDE751E2-C11C-485C-B254-52B43FE55028_o9> a emt:IEEECigreDLLOutput ;
+    emt:IEEECigreDLLOutput.IEEECigreDLL <FDE751E2-C11C-485C-B254-52B43FE55028> ;
+    emt:IEEECigreDLLOutput.kind emt:IEEECigreDLLOutputKind.apiDefined ;
+    emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.none ;
+    emt:IEEECigreDLLSignal.name "Vtd1"^^cim:String ;
+    emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
+    emt:IEEECigreDLLSignal.sequenceNumber "9"^^cim:Integer ;
+    emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none .
+
 <77ABD436-BAAC-4F66-AED3-CC81D3DBFE69> a cim:OperationalLimitType ;
     cim:IdentifiedObject.mRID "77ABD436-BAAC-4F66-AED3-CC81D3DBFE69"^^cim:String ;
     cim:IdentifiedObject.name "Normal"^^cim:String ;
