@@ -173,6 +173,38 @@ C =============================================================================
 C solar 1_1 at 1 is 100.000 MVA producing 0.000 MW and 0.000 Mvar
 C DLL interface to gfm_gfl_ibr2.dll follows
 C
+C DLL input signals and CIM attributes:
+C    0 Vta        acTerminalVoltage      A kV
+C    1 Vtb        acTerminalVoltage      B kV
+C    2 Vtc        acTerminalVoltage      C kV
+C    3 I1a        acCurrentVsc           A kA
+C    4 I1b        acCurrentVsc           B kA
+C    5 I1c        acCurrentVsc           C kA
+C    6 I2a        acCurrentGrid          A kA
+C    7 I2b        acCurrentGrid          B kA
+C    8 I2c        acCurrentGrid          C kA
+C    9 Idc        dcCurrent                kA
+C   10 VdcMPPT    dcMPPTVoltage            kV
+C   11 Pref       activePowerReference     
+C   12 Qref       reactivePowerReference   
+C   13 Vdc_meas   dcMeasuredVoltage        kV
+C   14 Vref       voltageReference         
+C DLL output signals and CIM attributes:
+C    0 m_a        modulationIndex        A 
+C    1 m_b        modulationIndex        B 
+C    2 m_c        modulationIndex        C 
+C    3 FreqPLL    pllFrequency             Hz
+C    4 Id1        apiDefined               
+C    5 Iq1        apiDefined               
+C    6 Id2        apiDefined               
+C    7 Iq2        apiDefined               
+C    8 Vtd1       apiDefined               
+C    9 Vtq1       apiDefined               
+C   10 Vtd2       apiDefined               
+C   11 Vtq2       apiDefined               
+C   12 FRT_Flag   rideThroughMode          
+C   13 Pout       activePower              
+C   14 Qout       reactivePower            
 /MODELS
 MODELS
 INPUT

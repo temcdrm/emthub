@@ -418,6 +418,21 @@ solar_template = """$INCLUDE,IBR.PCH,{sbus},{sname} $$
 
 use_dyr_file = True
 
+def FormatSignalInfo (row):
+  if row['phase'] is not None:
+    phs = row['phase']
+  else:
+    phs = ' '
+  if row['unit'] is not None and row['unit'] != 'none':
+    unit = row['unit']
+  else:
+    unit = ''
+  if row['mult'] is not None and row['mult'] != 'none':
+    mult = row['mult']
+  else:
+    mult = ''
+  return '{:10s} {:22s} {:1s} {:s}{:s}'.format (row['name'], row['sig'], phs, mult, unit)
+
 def AppendDLL (bus, key, d, atp_path, ap):
   if key not in d['EMTIBRPlantAttributes']['vals']:
     print ('** PEC ID', key, 'not found in extended plant attributes for DLL interface')
@@ -445,6 +460,30 @@ def AppendDLL (bus, key, d, atp_path, ap):
   filterKind = atts['filterKind']
   print ('C DLL interface to {:s} follows\nC'.format(os.path.basename (dll_path)), file=ap)
   print ('appending a DLL at', bus, 'from', dll_path, 'with', nparms, 'parameters')
+
+  # summary information about the signals
+  nin =  d['EMTCountDLLInputs']['vals'][dll_key]['count']
+  inputs = nin * [None]
+  for key, ary in d['EMTIEEECigreDLLInputs*']['vals'].items():
+    if key == dll_key:
+      for row in ary:
+        idx = int(row['seq']) - 1
+        inputs[idx] = FormatSignalInfo (row)
+
+  nout =  d['EMTCountDLLOutputs']['vals'][dll_key]['count']
+  outputs = nout * [None]
+  for key, ary in d['EMTIEEECigreDLLOutputs*']['vals'].items():
+    if key == dll_key:
+      for row in ary:
+        idx = int(row['seq']) - 1
+        outputs[idx] = FormatSignalInfo (row)
+
+  print ('C DLL input signals and CIM attributes:', file=ap)
+  for idx in range(nin):
+    print ('C   {:2d} {:s}'.format (idx, inputs[idx]), file=ap)
+  print ('C DLL output signals and CIM attributes:', file=ap)
+  for idx in range(nout):
+    print ('C   {:2d} {:s}'.format (idx, outputs[idx]), file=ap)
 
   # read in the parameters and write ATP MODELS
   parms = nparms * [None]
