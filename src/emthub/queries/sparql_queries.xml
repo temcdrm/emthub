@@ -1308,10 +1308,10 @@ ORDER BY ?id
 <query>
 <id>EMTIEEECigreDLLInputs*</id>
 <keyfld>id*</keyfld>
-<description>List the values and sizes of input signals for the DLL interfaces.</description>
+<description>List the metadata of input signals for the DLL interfaces.</description>
 <value>
 <![CDATA[
-SELECT DISTINCT ?id ?seq ?name ?sig ?unit ?mult ?phase WHERE {
+SELECT DISTINCT ?id ?seq ?name ?width ?sig ?unit ?mult ?phase WHERE {
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?eq r:type c:PowerElectronicsConnection.
  ?eq c:Equipment.EquipmentContainer ?sys.
@@ -1320,6 +1320,7 @@ SELECT DISTINCT ?id ?seq ?name ?sig ?unit ?mult ?phase WHERE {
  ?p e:IEEECigreDLLInput.IEEECigreDLL ?d.
  ?p e:IEEECigreDLLSignal.sequenceNumber ?seq.
  ?p e:IEEECigreDLLSignal.name ?name.
+ ?p e:IEEECigreDLLSignal.width ?width.
  {?p e:IEEECigreDLLSignal.unit ?rawunit.
   bind(strafter(str(?rawunit),"UnitSymbol.") as ?unit)}
  {?p e:IEEECigreDLLSignal.multiplier ?rawmult.
@@ -1356,10 +1357,10 @@ ORDER BY ?id
 <query>
 <id>EMTIEEECigreDLLOutputs*</id>
 <keyfld>id*</keyfld>
-<description>List the values and sizes of output signals for the DLL interfaces.</description>
+<description>List the metadata of output signals for the DLL interfaces.</description>
 <value>
 <![CDATA[
-SELECT DISTINCT ?id ?seq ?name ?sig ?unit ?mult ?phase WHERE {
+SELECT DISTINCT ?id ?seq ?name ?width ?sig ?unit ?mult ?phase WHERE {
  ?sys c:IdentifiedObject.mRID ?sysid.
  ?eq r:type c:PowerElectronicsConnection.
  ?eq c:Equipment.EquipmentContainer ?sys.
@@ -1368,6 +1369,7 @@ SELECT DISTINCT ?id ?seq ?name ?sig ?unit ?mult ?phase WHERE {
  ?p e:IEEECigreDLLOutput.IEEECigreDLL ?d.
  ?p e:IEEECigreDLLSignal.sequenceNumber ?seq.
  ?p e:IEEECigreDLLSignal.name ?name.
+ ?p e:IEEECigreDLLSignal.width ?width.
  {?p e:IEEECigreDLLSignal.unit ?rawunit.
   bind(strafter(str(?rawunit),"UnitSymbol.") as ?unit)}
  {?p e:IEEECigreDLLSignal.multiplier ?rawmult.

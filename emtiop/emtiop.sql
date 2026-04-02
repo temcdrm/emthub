@@ -915,7 +915,9 @@ CREATE TABLE "IEEECigreDLLSignal"
     "sequenceNumber" INTEGER,
     -- Signal units, if applicable.
     -- FK column reference to table representing the "UnitSymbol" enumeration
-    "unit" VARCHAR(100)
+    "unit" VARCHAR(100),
+    -- Signal array dimension, defaults to 1.
+    "width" INTEGER
 );
 
 -- This is a class that provides common identification for all classes needing

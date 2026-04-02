@@ -1719,6 +1719,10 @@
     "unit": {
       "type": "UnitSymbol",
       "default": null
+    },
+    "width": {
+      "type": "Integer",
+      "default": null
     }
   },
   "IdentifiedObject": {

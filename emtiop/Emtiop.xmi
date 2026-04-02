@@ -51,8 +51,8 @@
 				</ownedEnd>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dstF0E448_2490_42a8_8023_3574E17777F9" name="ConductingEquipment" visibility="public" association="EAID_1CF0E448_2490_42a8_8023_3574E17777F9" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000131__2490_42a8_8023_3574E17777F9" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000132__2490_42a8_8023_3574E17777F9" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000133__2490_42a8_8023_3574E17777F9" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000134__2490_42a8_8023_3574E17777F9" value="1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_AF27276C_41C5_4d19_89FF_184413BECC00" visibility="public">
@@ -65,8 +65,8 @@
 				</ownedEnd>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst27276C_41C5_4d19_89FF_184413BECC00" name="ConductingEquipment" visibility="public" association="EAID_AF27276C_41C5_4d19_89FF_184413BECC00" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000151__41C5_4d19_89FF_184413BECC00" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000152__41C5_4d19_89FF_184413BECC00" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000153__41C5_4d19_89FF_184413BECC00" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000154__41C5_4d19_89FF_184413BECC00" value="1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_FF89C308_CDD3_4848_8792_0480B9A713B1" visibility="public">
@@ -79,8 +79,8 @@
 				</ownedEnd>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst89C308_CDD3_4848_8792_0480B9A713B1" name="ConductingEquipment" visibility="public" association="EAID_FF89C308_CDD3_4848_8792_0480B9A713B1" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_D2ACEE2E_7355_4f8b_A38D_EE1F583151A3"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000141__CDD3_4848_8792_0480B9A713B1" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000142__CDD3_4848_8792_0480B9A713B1" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000143__CDD3_4848_8792_0480B9A713B1" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000144__CDD3_4848_8792_0480B9A713B1" value="1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_0C440DC4_4D78_4d54_B3B1_6BC0BA88FEBB" name="GeneratingPlant" visibility="public">
@@ -265,8 +265,8 @@
 				<memberEnd xmi:idref="EAID_src463FB3_B677_400d_811B_B64AB4D84E56"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src463FB3_B677_400d_811B_B64AB4D84E56" name="IEEECigreDLLInput" visibility="public" association="EAID_13463FB3_B677_400d_811B_B64AB4D84E56" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_13298CB1_D689_446c_BCC2_3AAC894B6D20"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000143__B677_400d_811B_B64AB4D84E56" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000144__B677_400d_811B_B64AB4D84E56" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000145__B677_400d_811B_B64AB4D84E56" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000146__B677_400d_811B_B64AB4D84E56" value="1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_85B8E983_EE2F_403f_AB95_89512D2C9C9E" name="IEEECigreDLLInputKind" visibility="public">
@@ -401,55 +401,60 @@
 					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000127_4712_4aac_8C5C_E501040B3E6B" value="0"/>
 					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000128_4712_4aac_8C5C_E501040B3E6B" value="1"/>
 				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_A6437606_82CF_400a_81AE_7BD08BBC608E" name="width" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<type xmi:idref="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000129_82CF_400a_81AE_7BD08BBC608E" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000130_82CF_400a_81AE_7BD08BBC608E" value="1"/>
+				</ownedAttribute>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F" name="OperationalLimitSet" visibility="public"/>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_0E30FF9A_B8C1_4908_8FB5_5D8AFEEF603D" visibility="public">
 				<memberEnd xmi:idref="EAID_dst30FF9A_B8C1_4908_8FB5_5D8AFEEF603D"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst30FF9A_B8C1_4908_8FB5_5D8AFEEF603D" name="TransformerEnd" visibility="public" association="EAID_0E30FF9A_B8C1_4908_8FB5_5D8AFEEF603D" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000129__B8C1_4908_8FB5_5D8AFEEF603D" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000130__B8C1_4908_8FB5_5D8AFEEF603D" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000131__B8C1_4908_8FB5_5D8AFEEF603D" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000132__B8C1_4908_8FB5_5D8AFEEF603D" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_src30FF9A_B8C1_4908_8FB5_5D8AFEEF603D"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src30FF9A_B8C1_4908_8FB5_5D8AFEEF603D" name="OperationalLimitSets" visibility="public" association="EAID_0E30FF9A_B8C1_4908_8FB5_5D8AFEEF603D" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_19CBA492_2B24_40ea_843A_E4ED518F309F"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000163__B8C1_4908_8FB5_5D8AFEEF603D" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000164__B8C1_4908_8FB5_5D8AFEEF603D" value="-1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000165__B8C1_4908_8FB5_5D8AFEEF603D" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000166__B8C1_4908_8FB5_5D8AFEEF603D" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_9362D4B3_DE41_4140_A405_3225ED0FCD02" name="RemoteInputSignal" visibility="public">
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_372C96E4_4C37_48d6_9AE0_F148DD46F381" name="atToEnd" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
 					<type xmi:idref="EAID_9F8964F1_6C32_465b_A83D_F5A201A291C3"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000133_4C37_48d6_9AE0_F148DD46F381" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000134_4C37_48d6_9AE0_F148DD46F381" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000135_4C37_48d6_9AE0_F148DD46F381" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000136_4C37_48d6_9AE0_F148DD46F381" value="1"/>
 				</ownedAttribute>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_8B4B1D3C_91E4_4e2c_8C39_F2697B2C8F25" visibility="public">
 				<memberEnd xmi:idref="EAID_dst4B1D3C_91E4_4e2c_8C39_F2697B2C8F25"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst4B1D3C_91E4_4e2c_8C39_F2697B2C8F25" name="ConnectivityNode" visibility="public" association="EAID_8B4B1D3C_91E4_4e2c_8C39_F2697B2C8F25" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000135__91E4_4e2c_8C39_F2697B2C8F25" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000136__91E4_4e2c_8C39_F2697B2C8F25" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000137__91E4_4e2c_8C39_F2697B2C8F25" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000138__91E4_4e2c_8C39_F2697B2C8F25" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_src4B1D3C_91E4_4e2c_8C39_F2697B2C8F25"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src4B1D3C_91E4_4e2c_8C39_F2697B2C8F25" name="RemoteInputSignals" visibility="public" association="EAID_8B4B1D3C_91E4_4e2c_8C39_F2697B2C8F25" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_9362D4B3_DE41_4140_A405_3225ED0FCD02"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000137__91E4_4e2c_8C39_F2697B2C8F25" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000138__91E4_4e2c_8C39_F2697B2C8F25" value="-1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000139__91E4_4e2c_8C39_F2697B2C8F25" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000140__91E4_4e2c_8C39_F2697B2C8F25" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_DFFA268E_3BD6_4c08_9BAF_05DC0065AD81" visibility="public">
 				<memberEnd xmi:idref="EAID_dstFA268E_3BD6_4c08_9BAF_05DC0065AD81"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dstFA268E_3BD6_4c08_9BAF_05DC0065AD81" name="TransformerEnd" visibility="public" association="EAID_DFFA268E_3BD6_4c08_9BAF_05DC0065AD81" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000139__3BD6_4c08_9BAF_05DC0065AD81" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000140__3BD6_4c08_9BAF_05DC0065AD81" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000141__3BD6_4c08_9BAF_05DC0065AD81" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000142__3BD6_4c08_9BAF_05DC0065AD81" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_srcFA268E_3BD6_4c08_9BAF_05DC0065AD81"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_srcFA268E_3BD6_4c08_9BAF_05DC0065AD81" name="RemoteInputSignals" visibility="public" association="EAID_DFFA268E_3BD6_4c08_9BAF_05DC0065AD81" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_9362D4B3_DE41_4140_A405_3225ED0FCD02"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000167__3BD6_4c08_9BAF_05DC0065AD81" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000168__3BD6_4c08_9BAF_05DC0065AD81" value="-1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000169__3BD6_4c08_9BAF_05DC0065AD81" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000170__3BD6_4c08_9BAF_05DC0065AD81" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_A798AF00_916E_4212_AC99_509EF39B782C" visibility="public">
@@ -457,13 +462,13 @@
 				<memberEnd xmi:idref="EAID_src98AF00_916E_4212_AC99_509EF39B782C"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src98AF00_916E_4212_AC99_509EF39B782C" name="WeccDynamics" visibility="public" association="EAID_A798AF00_916E_4212_AC99_509EF39B782C" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_EA29E4D9_C2CB_4769_80C2_950879D20F34"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000145__916E_4212_AC99_509EF39B782C" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000146__916E_4212_AC99_509EF39B782C" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000147__916E_4212_AC99_509EF39B782C" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000148__916E_4212_AC99_509EF39B782C" value="1"/>
 				</ownedEnd>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst98AF00_916E_4212_AC99_509EF39B782C" name="RemoteInputSignals" visibility="public" association="EAID_A798AF00_916E_4212_AC99_509EF39B782C" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_9362D4B3_DE41_4140_A405_3225ED0FCD02"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000147__916E_4212_AC99_509EF39B782C" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000148__916E_4212_AC99_509EF39B782C" value="-1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000149__916E_4212_AC99_509EF39B782C" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000150__916E_4212_AC99_509EF39B782C" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_A8F8F566_1B41_431a_A965_44E4E0B221E3" name="RotatingMachinePlant" visibility="public">
@@ -472,22 +477,22 @@
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6" name="SvPowerFlow" visibility="public">
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_3B15BCC6_360A_4267_883D_47292EB5FA44" name="atToEnd" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
 					<type xmi:idref="EAID_9F8964F1_6C32_465b_A83D_F5A201A291C3"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000149_360A_4267_883D_47292EB5FA44" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000150_360A_4267_883D_47292EB5FA44" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000151_360A_4267_883D_47292EB5FA44" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000152_360A_4267_883D_47292EB5FA44" value="1"/>
 				</ownedAttribute>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Association" xmi:id="EAID_C16ED186_CD69_421e_8DFB_7B487E67D3BD" visibility="public">
 				<memberEnd xmi:idref="EAID_dst6ED186_CD69_421e_8DFB_7B487E67D3BD"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst6ED186_CD69_421e_8DFB_7B487E67D3BD" name="TransformerEnd" visibility="public" association="EAID_C16ED186_CD69_421e_8DFB_7B487E67D3BD" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000153__CD69_421e_8DFB_7B487E67D3BD" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000154__CD69_421e_8DFB_7B487E67D3BD" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000155__CD69_421e_8DFB_7B487E67D3BD" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000156__CD69_421e_8DFB_7B487E67D3BD" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_src6ED186_CD69_421e_8DFB_7B487E67D3BD"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src6ED186_CD69_421e_8DFB_7B487E67D3BD" name="SvPowerFlows" visibility="public" association="EAID_C16ED186_CD69_421e_8DFB_7B487E67D3BD" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_F2C521CC_47B1_4d36_B228_0CA63D96BAA6"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000165__CD69_421e_8DFB_7B487E67D3BD" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000166__CD69_421e_8DFB_7B487E67D3BD" value="-1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000167__CD69_421e_8DFB_7B487E67D3BD" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000168__CD69_421e_8DFB_7B487E67D3BD" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_6C833C4F_109F_47f5_B80B_F3E4F2F9BEC7" name="SvVoltage" visibility="public"/>
@@ -495,14 +500,14 @@
 				<memberEnd xmi:idref="EAID_dstE2E1B6_088A_4410_A913_00284C69F3E8"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dstE2E1B6_088A_4410_A913_00284C69F3E8" name="ConnectivityNode" visibility="public" association="EAID_DEE2E1B6_088A_4410_A913_00284C69F3E8" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000155__088A_4410_A913_00284C69F3E8" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000156__088A_4410_A913_00284C69F3E8" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000157__088A_4410_A913_00284C69F3E8" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000158__088A_4410_A913_00284C69F3E8" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_srcE2E1B6_088A_4410_A913_00284C69F3E8"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_srcE2E1B6_088A_4410_A913_00284C69F3E8" name="SvVoltages" visibility="public" association="EAID_DEE2E1B6_088A_4410_A913_00284C69F3E8" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_6C833C4F_109F_47f5_B80B_F3E4F2F9BEC7"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000157__088A_4410_A913_00284C69F3E8" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000158__088A_4410_A913_00284C69F3E8" value="-1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000159__088A_4410_A913_00284C69F3E8" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000160__088A_4410_A913_00284C69F3E8" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF" name="TransformerEnd" visibility="public"/>
@@ -510,14 +515,14 @@
 				<memberEnd xmi:idref="EAID_dst1EF705_C28A_4bff_86E7_FCACF42F1BD5"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst1EF705_C28A_4bff_86E7_FCACF42F1BD5" name="ConnectivityNode" visibility="public" association="EAID_F81EF705_C28A_4bff_86E7_FCACF42F1BD5" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000159__C28A_4bff_86E7_FCACF42F1BD5" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000160__C28A_4bff_86E7_FCACF42F1BD5" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000161__C28A_4bff_86E7_FCACF42F1BD5" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000162__C28A_4bff_86E7_FCACF42F1BD5" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_src1EF705_C28A_4bff_86E7_FCACF42F1BD5"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src1EF705_C28A_4bff_86E7_FCACF42F1BD5" name="TransformerEnd" visibility="public" association="EAID_F81EF705_C28A_4bff_86E7_FCACF42F1BD5" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_6C66120F_256B_4964_9D8B_5769EB5C74FF"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000161__C28A_4bff_86E7_FCACF42F1BD5" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000162__C28A_4bff_86E7_FCACF42F1BD5" value="-1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000163__C28A_4bff_86E7_FCACF42F1BD5" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000164__C28A_4bff_86E7_FCACF42F1BD5" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C" name="TransformerSaturation" visibility="public">
@@ -528,13 +533,13 @@
 				<memberEnd xmi:idref="EAID_src543B00_E80C_455e_A952_12EA8E441602"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src543B00_E80C_455e_A952_12EA8E441602" name="TransformerCoreAdmittance" visibility="public" association="EAID_01543B00_E80C_455e_A952_12EA8E441602" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_25B2D790_161A_45c8_8551_E77A34DE684C"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000169__E80C_455e_A952_12EA8E441602" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000170__E80C_455e_A952_12EA8E441602" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000171__E80C_455e_A952_12EA8E441602" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000172__E80C_455e_A952_12EA8E441602" value="1"/>
 				</ownedEnd>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst543B00_E80C_455e_A952_12EA8E441602" name="TransformerSaturation" visibility="public" association="EAID_01543B00_E80C_455e_A952_12EA8E441602" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000171__E80C_455e_A952_12EA8E441602" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000172__E80C_455e_A952_12EA8E441602" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000173__E80C_455e_A952_12EA8E441602" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000174__E80C_455e_A952_12EA8E441602" value="1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Enumeration" xmi:id="EAID_69E84257_BCE6_4de4_A87B_BCF589AF6173" name="IBRFilterKind" visibility="public">
@@ -1530,6 +1535,21 @@
 						<properties type="UnitSymbol" collection="false" static="0" duplicates="0" changeability="changeable"/>
 						<coords ordered="0"/>
 						<containment containment="Not Specified" position="4"/>
+						<stereotype/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;union=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_A6437606_82CF_400a_81AE_7BD08BBC608E" name="width" scope="Public">
+						<initial/>
+						<documentation value="Signal array dimension, defaults to 1."/>
+						<model ea_localid="28389" ea_guid="{A6437606-82CF-400a-81AE-7BD08BBC608E}"/>
+						<properties type="Integer" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="6"/>
 						<stereotype/>
 						<bounds lower="0" upper="1"/>
 						<options/>
