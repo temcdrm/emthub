@@ -1,5 +1,9 @@
 # Copyright (C) 2025-2026 Meltran, Inc
 
+"""
+  Description.
+"""
+
 import json
 import csv
 import importlib.resources
@@ -19,6 +23,17 @@ METAFILE = 'psseraw.json'
 #  3) Field delimiters are comma (,) or any number of blanks
 #  4) Each row generally begins with bus number (int), model name (str), and ID (str) but the ID is not always quoted
 def load_psse_dyrfile (case):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   dyr = None
   if 'dyrfile' in case and case['dyrfile'] is not None and os.path.exists(case['dyrfile']):
     buf = io.StringIO()
@@ -58,6 +73,17 @@ def row_length (row):
   return len(row)
 
 def summarize_psse_dyrfile (dyr, case, bDetails=False):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   print ('Dynamics data from', case['dyrfile'], 'size =', dyr.shape)
   if bDetails:
     print (dyr)
@@ -82,6 +108,17 @@ def summarize_psse_dyrfile (dyr, case, bDetails=False):
   return models
 
 def match_dyr_generators (df, bPrint=False):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   d = {}
   for row in df.itertuples(index=False):
     bus = str(row[0])
@@ -100,11 +137,33 @@ def match_dyr_generators (df, bPrint=False):
   return d
 
 def load_dynamics_defaults():
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   s = importlib.resources.read_text ('emthub.queries', DYNAMICS_DEFAULTS)
   dyn_settings = json.loads (s)
   return dyn_settings
 
 def load_dynamics_mapping(bReverseLookup = True):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   s = importlib.resources.read_text ('emthub.queries', DYNAMICS_MAPPING)
   d = json.loads (s)
   if not bReverseLookup:
@@ -119,11 +178,33 @@ def load_dynamics_mapping(bReverseLookup = True):
   return attmap
 
 def load_psse_meta():
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   s = importlib.resources.read_text ('emthub.queries', METAFILE)
   meta = json.loads (s)
   return meta
 
 def print_psse_table (tables, table_name):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   if table_name not in tables:
     print ('***', table_name, 'not found')
     return
@@ -236,6 +317,17 @@ def read_version_33_34(tables, baseMVA, reader, sections, bTwoTitles, bPrint=Fal
       table['data'].append (data)
 
 def load_psse_rawfile(fname, bPrint=False):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   meta = load_psse_meta()
   tables = {}
   bus_kvbases = {}

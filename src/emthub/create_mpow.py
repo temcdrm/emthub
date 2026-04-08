@@ -1,6 +1,10 @@
 # Copyright (C) 2023-2024 Battelle Memorial Institute
 # Copyright (C) 2025-2026 Meltran, Inc
 
+"""
+  Description.
+"""
+
 import cmath
 from .buslists import build_bus_lists
 from .buslists import get_swingbus_id
@@ -73,6 +77,17 @@ def constant_impedance (z, i, p):
   return False
 
 def create_matpower (d, sys_name, fp, swingbus, scale=1.0):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   print ('function mpc = {:s}'.format(sys_name.upper()), file=fp)
   print ('mpc.version = "2";', file=fp)
   print ('mpc.baseMVA = {:.1f};'.format(MVA_BASE), file=fp)

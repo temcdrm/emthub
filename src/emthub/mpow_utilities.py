@@ -327,6 +327,18 @@ def get_last_number (ln):
   return toks[-1].strip('";\n')
 
 def read_matpower_casefile(fname, asNumpy=True):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
+
   d = {}
   fp = open(fname, 'r')
   while True:
@@ -374,6 +386,18 @@ def write_matpower_casefile(d, fname):
   fp.close()
 
 def print_solution_summary (fname, details=False):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
+
   fp = open(fname, 'r')
   converged = False
   iterations = 0
@@ -392,6 +416,18 @@ def print_solution_summary (fname, details=False):
   fp.close()
 
 def summarize_casefile (d, label):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
+
   print ('Summary of {:s} data'.format (label))
   for key, val in d.items():
     if key in ['version', 'baseMVA']:
@@ -420,6 +456,18 @@ def unit_color_label(genfuel):
   return clr, lbl
 
 def write_most_table_indices(fp):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
+
   print("""  [PQ, PV, REF, NONE, BUS_I, BUS_TYPE, PD, QD, GS, BS, BUS_AREA, VM, ...
     VA, BASE_KV, ZONE, VMAX, VMIN, LAM_P, LAM_Q, MU_VMAX, MU_VMIN] = idx_bus;
   [F_BUS, T_BUS, BR_R, BR_X, BR_B, RATE_A, RATE_B, RATE_C, TAP, SHIFT, ...

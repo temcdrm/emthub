@@ -1,6 +1,9 @@
 # Copyright (C) 2025-2026 Meltran, Inc
 
-#import rdflib
+"""
+  Description.
+"""
+
 import sys
 import math
 import cmath

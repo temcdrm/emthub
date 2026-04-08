@@ -11,8 +11,8 @@ in electric utility systems. Network EMT models are based on the international s
 IBR models are based on IEEE standards 2800 and P2800.2, along with a Cigre/IEEE specification on real-code modeling through
 dynamics link library (DLL) interfaces.
 
-Background
-----------
+Bibliography
+------------
 
 For an overview, see `IEEE P3743 Introduction <_static/IEEE_P3743_Introduction.pdf>`_.
 

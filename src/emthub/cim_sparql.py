@@ -1,5 +1,9 @@
 # Copyright (C) 2025-2026 Meltran, Inc
 
+"""
+  Description.
+"""
+
 import rdflib
 import time
 import xml.etree.ElementTree as ET
@@ -12,6 +16,18 @@ DELIM = ':'
 ROOT = None
 
 def summarize_graph (g):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
+
   q = """
   SELECT ?class (COUNT(?class) as ?cnt) WHERE {
     ?s a ?class .
@@ -103,6 +119,17 @@ def load_root_queries(bPrint=False):
       print (PREFIX)
 
 def load_emt_dict (g, sysid, bTiming=False):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   global ROOT
 
   current_recursion_limit = sys.getrecursionlimit()
@@ -144,6 +171,17 @@ def load_emt_dict (g, sysid, bTiming=False):
   return dict
 
 def load_ic_dict (g, bPrint=False):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   global ROOT
   start_time = time.time()
   # read the queries into dict
@@ -166,6 +204,17 @@ def load_ic_dict (g, bPrint=False):
   return dict
 
 def adhoc_sparql_dict (g, q, key_field):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   load_root_queries()
   dict = {}
   dict['keyfld'] = key_field

@@ -1,6 +1,5 @@
 # Copyright (C) 2026 Meltran, Inc
 
-import cim_examples 
 import emthub.api as emthub
 import math
 
@@ -22,7 +21,7 @@ def lookup_cim_default (cls_att, defaults):
   return val
 
 if __name__ == '__main__':
-  case = cim_examples.CASES[1]
+  case = emthub.CASES[1]
   fp = open (case['dyrfile'], 'w')
 
   tables, kvbases, bus_kvbases, baseMVA = emthub.load_psse_rawfile (case['rawfile'])

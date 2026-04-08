@@ -41,6 +41,8 @@ Public Functions:
 
 from __future__ import absolute_import
 
+from .cim_examples import CASES
+
 from .dll_config import get_dll_interface
 from .dll_config import write_atp_dll_interface
 

@@ -1,7 +1,22 @@
 # Copyright (C) 2023-2024 Battelle Memorial Institute
 # Copyright (C) 2025-2026 Meltran, Inc
 
+"""
+  Description.
+"""
+
 def build_bus_lists (d):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   bNumeric = True
   for key, data in d['EMTBus']['vals'].items():
     if not data['name'].isdigit():
@@ -21,6 +36,17 @@ def build_bus_lists (d):
   return ordered_buses, bus_numbers
 
 def get_swingbus_id (ordered_buses, swingbus):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   for cnid, data in ordered_buses.items():
     if data['name'] == swingbus:
       return cnid

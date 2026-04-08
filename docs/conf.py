@@ -30,8 +30,8 @@ master_doc = 'index'
 project = 'emthub'
 copyright = '2024-26, Meltran, Inc'
 author = 'Meltran, Inc'
-version = '0.0.3'
-release = '0.0.3'
+version = '0.0.4'
+release = '0.0.4'
 language = 'en'
 
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
@@ -54,8 +54,8 @@ man_pages = [
      [author], 1)
 ]
 texinfo_documents = [
-    (master_doc, 'emthub', 'pecblocks Documentation',
-     author, 'emthub', 'Power Electronic Converter Blocks.',
+    (master_doc, 'emthub', 'emthub Documentation',
+     author, 'emthub', 'IEEE P3743, EMT Model Interoperability.',
      'Miscellaneous'),
 ]
 

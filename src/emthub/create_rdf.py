@@ -1,5 +1,9 @@
 # Copyright (C) 2025-2026 Meltran, Inc
 
+"""
+  Description.
+"""
+
 import json
 import csv
 import rdflib
@@ -153,6 +157,17 @@ def append_xml_dynamic_parameters (g, leaf, dyn_defaults, sections, attmap, dyr_
           g.add ((leaf, rdflib.URIRef (CIM_NS + att), rdflib.Literal(val, datatype=CIM_NS+unit)))
 
 def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True, bWantGraph=False):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   g = rdflib.Graph()
   CIM = rdflib.Namespace (CIM_NS)
   g.bind('cim', CIM)
@@ -1014,6 +1029,17 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
     return g, CIM, EMT
 
 def add_ibr_plant (case, plant, g, CIM, EMT):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   uuids = {}
   fuidname = case['mridfile']
   if os.path.exists(fuidname):
@@ -1160,6 +1186,17 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
   return g, CIM, EMT
 
 def write_cim_rdf (case, g, CIM, EMT):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   g.serialize (destination=case['xmlfile'], format='pretty-xml', max_depth=1)
 
   serializer = OrderedTurtleSerializer(g)

@@ -6,7 +6,6 @@ import sys
 import pandas as pd
 from rdflib.namespace import XSD
 from otsrdflib import OrderedTurtleSerializer
-import cim_examples 
 import emthub.api as emthub
 
 CIM_NS = 'http://www.ucaiug.org/ns#'
@@ -86,6 +85,6 @@ if __name__ == '__main__':
   idx = 3
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
-  case = cim_examples.CASES[idx]
+  case = emthub.CASES[idx]
   create_cim_ic (case)
 

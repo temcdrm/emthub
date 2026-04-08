@@ -2,7 +2,6 @@
 # Copyright (C) 2025-2026 Meltran, Inc
 
 import sys
-import cim_examples
 import emthub.api as emthub
 
 if __name__ == '__main__':
@@ -13,7 +12,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 2:
       if int(sys.argv[2]) > 0:
         plot_labels = True
-  case = cim_examples.CASES[case_id]
+  case = emthub.CASES[case_id]
   sys_name = case['name']
   loc = case['legend_loc']
   G = emthub.load_system_graph ('./raw/{:s}_Network.json'.format(sys_name))

@@ -1,8 +1,6 @@
 # Copyright (C) 2026 Meltran, Inc
 
-#import sys
 import rdflib
-#import uuid
 import re
 
 CIM_NS = 'http://www.ucaiug.org/ns#'

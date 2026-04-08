@@ -8,7 +8,6 @@ import cmath
 import os
 import numpy as np
 import json
-import cim_examples
 
 PREFIX = None
 DELIM = ':'
@@ -1107,7 +1106,7 @@ if __name__ == '__main__':
   idx = 1
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
-  case = cim_examples.CASES[idx]
+  case = emthub.CASES[idx]
 
   start_time = time.time()
   d = load_sql_emt_dict ('emtiop.db', case['id'])

@@ -1,5 +1,9 @@
 # Copyright (C) 2024-26 Meltran, Inc
 
+"""
+  Functions to query an IEEE/Cigre DLL through its API.
+"""
+
 import os
 import sys
 import json
@@ -203,6 +207,17 @@ class DLLINSTANCE(Structure): # TODO: not tested yet
               ('DoubleStates', c_void_p)]   # to c_double[]
 
 def get_dll_interface (dll_name, bPrint = True):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   dll = CDLL (dll_name)
   if bPrint:
     print (dll_name, dll)
@@ -364,6 +379,17 @@ def TranslateInputNameForTacs (nm, bus):
   return nm
 
 def write_atp_dll_interface (dll_fullname, atp_path, parm_vals, bus, ap):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   mod_name = 'DLL1' # ATP only allows one instance, and the DLL name must already be compiled and linked into the ATP solver
 
   d = get_dll_interface (dll_fullname, bPrint=False)

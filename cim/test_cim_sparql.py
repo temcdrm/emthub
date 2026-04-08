@@ -2,14 +2,13 @@
 
 import sys
 import rdflib
-import cim_examples
 import emthub.api as emthub
 
 if __name__ == '__main__':
   idx = 0
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
-  case = cim_examples.CASES[idx]
+  case = emthub.CASES[idx]
   g = rdflib.Graph()
   fname = case['name'] + '.ttl'
   #fname = case['name'] + '_merged.ttl'

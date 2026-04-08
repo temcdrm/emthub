@@ -1,6 +1,10 @@
 # Copyright (C) 2023 Battelle Memorial Institute
 # Copyright (C) 2025-2026 Meltran, Inc
 
+"""
+  Plotting and graph topology support functions.
+"""
+
 import sys
 import math
 import networkx as nx
@@ -9,7 +13,6 @@ import os
 import matplotlib.pyplot as plt 
 import matplotlib.lines as lines
 import matplotlib.patches as patches
-import cim_examples
 
 nodeTypes = {
   'load':  {'color':'green', 'tag':'Load',  'size':15},
@@ -108,6 +111,17 @@ def get_node_mnemonic(nclass):
   return 'Unknown'
 
 def plot_system_graph (G, sys_name, plot_labels, loc):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   plt.rcParams['savefig.directory'] = os.getcwd()
   reset_type_counts()
   # assign node colors
@@ -178,6 +192,17 @@ def plot_system_graph (G, sys_name, plot_labels, loc):
   plt.show()
 
 def load_system_graph (fname):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   lp = open (fname).read()
   mdl = json.loads(lp)
   G = nx.readwrite.json_graph.node_link_graph(mdl)
@@ -195,6 +220,17 @@ def km_distance (G, n1, n2):
   return km
 
 def build_system_graph (d):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   # accumulate loads and generation onto the buses
   buses = d['EMTBus']['vals']
   for key, data in d['EMTLoad']['vals'].items():
@@ -263,6 +299,17 @@ def build_system_graph (d):
   return G
 
 def save_system_graph (G, fname):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   fp = open (fname, 'w')
   data = nx.readwrite.json_graph.node_link_data(G)
   json.dump (data, fp, indent=2)

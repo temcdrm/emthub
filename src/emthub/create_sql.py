@@ -1,5 +1,9 @@
 # Copyright (C) 2025-2026 Meltran, Inc
 
+"""
+  Description.
+"""
+
 import json
 import csv
 import os
@@ -58,6 +62,17 @@ def GetCIMID(cls, nm, uuids, identify=False):
     return str(uuid.uuid4()).upper() # for unidentified CIM instances
 
 def create_cim_sql (tables, kvbases, bus_kvbases, baseMVA, case):
+  """Oneliner.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
   # read the existing mRID map for persistence
   # TODO: consolidate this step with XML export
   uuids = {}

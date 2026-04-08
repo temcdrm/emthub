@@ -1,7 +1,6 @@
 # Copyright (C) 2026 Meltran, Inc
 
 import sys
-import cim_examples
 import emthub.api as emthub
  
 tables = {
@@ -101,7 +100,7 @@ plant = {'generator': '1_1',
          }
 
 if __name__ == '__main__':
-  case = cim_examples.CASES[4]
+  case = emthub.CASES[4]
   # create rawfile tables from Python dictionary
   baseMVA = 100.0
   bus_kvbases = {}
