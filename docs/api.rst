@@ -23,6 +23,20 @@ buslists
 ..   :member-order: bysource
    :exclude-members: __init__, __weakref__, forward
 
+cim_examples
+------------
+
+.. autodata:: emthub.cim_examples.CASES
+   :no-value:
+
+.. exec_code::
+
+   #hide: start
+   import json
+   import emthub.api as emthub
+   print(json.dumps(emthub.CASES, indent=2))
+   #hide: stop
+
 cim_sparql
 ----------
 

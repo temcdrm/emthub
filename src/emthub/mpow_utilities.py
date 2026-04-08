@@ -2,10 +2,13 @@
 # Copyright (C) 2025-2026 Meltran, Inc
 
 # file: mpow_utilities.py
-"""Reads MATPOWER and MOST cases/results into Python.
+"""Functions that run MATPOWER from the console, and read MATPOWER/MOST cases/results into Python. 
+   Also defines some needed constants for zero-based array indices corresponding to MATPOWER's one-based array indices.
+   See *Appendix B, Data File Format*, in the MATPOWER manual for more information. For example, PG is
+   the column index in the generator table for real power output; it's 2 for MATPOWER and 1 for Python.
 
-   TODO: many more functions and variables to be documented.
-
+   Some internal functions were developed to support the i2x project's work on BPS hosting capacity;
+   these functions are not used for EMT initialization.
 """
 
 import numpy as np
@@ -150,10 +153,14 @@ ercot8_base_load = np.array ([[7182.65, 6831.0, 6728.83, 6781.1, 6985.44, 7291.9
 [56.55, 51.95, 50.65, 50.57, 51.68, 53.72, 56.25, 59.4, 62.76, 65.57, 67.97, 70.06, 72.15, 74.53, 77.34, 80.29, 83.0, 84.73, 84.61, 82.72, 80.5, 78.53, 75.32, 69.74]])
 
 def run_matpower_and_wait (fscript, quiet=False):
-  """ Runs MATPOWER from command line on Windows, Mac, or Linux
+  """Runs MATPOWER from command line on Windows, Mac, or Linux.
 
-  Octave and MATPOWER must be installed.
+  Octave and MATPOWER must be installed. On Windows, Octave should be installed
+  in the default location.
 
+  Args:
+    fscript (str): the name of a MATPOWER m-file to run.
+    quiet (bool): request a progress notification to the console.
   """
   if sys.platform == 'win32':
     octave = '"C:\Program Files\GNU Octave\Octave-10.3.0\octave-launch.exe" --no-gui'
@@ -327,16 +334,16 @@ def get_last_number (ln):
   return toks[-1].strip('";\n')
 
 def read_matpower_casefile(fname, asNumpy=True):
-  """Oneliner.
+  """Read a MATPOWER m file into Python dictionary.
 
-  Narrative.
+  Parses the *gen*, *branch*, *bus*, *bus_name*, *gencost*, *gentype*, and *genfuel* tables.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    fname (str): name of the MATPOWER m file to read
+    asNumpy (bool): request the data in Numpy rather than Python arrays
 
   Returns:
-    list(DataFrame): return value.
+    d(dict): a dictionary of the MATPOWER case input.
   """
 
   d = {}
@@ -386,16 +393,14 @@ def write_matpower_casefile(d, fname):
   fp.close()
 
 def print_solution_summary (fname, details=False):
-  """Oneliner.
+  """Prints a summary of solved MATPOWER case to console.
 
-  Narrative.
+  Use this to check for convergence, solution time, and presence of overloads or bus voltage violations.
+  Does not include branch and bus details.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
-
-  Returns:
-    list(DataFrame): return value.
+    filename (str): name of a solution summary file created in the script passed to *run_matpower_and_wait*
+    details (bool): include the total load, generation, loss and voltage summary.
   """
 
   fp = open(fname, 'r')
@@ -416,16 +421,14 @@ def print_solution_summary (fname, details=False):
   fp.close()
 
 def summarize_casefile (d, label):
-  """Oneliner.
+  """Report the table sizes, total load, and total generation in a loaded MATPOWER case file.
 
-  Narrative.
+  The total load includes constant PQ only. Constant Z loads are represented as bus shunts,
+  and do not appear in this summary. Constant I loads are not supported in MATPOWER.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
-
-  Returns:
-    list(DataFrame): return value.
+    d (dict): return value from *read_matpower_casefile*
+    label (str): annotation for the summary, typically *Input* or *Solved*
   """
 
   print ('Summary of {:s} data'.format (label))
@@ -456,16 +459,15 @@ def unit_color_label(genfuel):
   return clr, lbl
 
 def write_most_table_indices(fp):
-  """Oneliner.
+  """Writes some array column indices not included in the base MATPOWER set.
 
-  Narrative.
+  MOST is the optimal power flow bundled with MATPOWER.  Some of its indices
+  are used in generator cost and fuel modeling (used to distinguish IBR), and
+  in the i2x hosting capacity work. For EMT, these indices are used to apply
+  edits, taken from *emthub.cim_examples.CASES*, on the base network model.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
-
-  Returns:
-    list(DataFrame): return value.
+    fp (file): a handle to an open MATPOWER m file
   """
 
   print("""  [PQ, PV, REF, NONE, BUS_I, BUS_TYPE, PD, QD, GS, BS, BUS_AREA, VM, ...

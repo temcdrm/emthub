@@ -33,11 +33,17 @@ Public Functions:
     :plot_system_graph: Plot the transmission system topology from a networkx layout (graph).
     :print_cim_summaries: Print class names and counts found in list of Turtle files.
     :print_psse_table: Print a named dictionary loaded from section of a PSSE rawfile.
+    :print_solution_summary: Prints a summary of solved MATPOWER case to console.
+    :read_matpower_casefile: Read a MATPOWER m file into Python dictionary.
+    :run_matpower_and_wait: Runs MATPOWER from command line on Windows, Mac, or Linux.
     :save_system_graph: Save the networkx layout (graph) to a JSON file.
+    :summarize_casefile: Report the table sizes, total load, and total generation in a loaded MATPOWER case file.
     :summarize_graph: Count the class instances by namespace in an RDF graph.
     :summarize_psse_dyrfile: Enumerate contents of a loaded PSSE dyrfile dataframe.
     :write_atp_dll_interface: Netlists an ATP module that calls an IEEE/Cigre DLL.
     :write_cim_rdf: Serialize the (possibly modified) return value from create_cim_rdf.
+    :write_most_table_indices: Writes some array column indices not included in the base MATPOWER set.
+    :CASES: Configuration data for five examples that come with this package.
 """
 
 from __future__ import absolute_import
@@ -76,6 +82,12 @@ from .create_sql import create_cim_sql
 
 from .dll_config import get_dll_interface
 from .dll_config import write_atp_dll_interface
+
+from .mpow_utilities import print_solution_summary
+from .mpow_utilities import read_matpower_casefile
+from .mpow_utilities import run_matpower_and_wait
+from .mpow_utilities import summarize_casefile
+from .mpow_utilities import write_most_table_indices
 
 from .plot_utils import build_system_graph
 from .plot_utils import load_system_graph

@@ -61,5 +61,6 @@ CASES = [
    'wind_units': [], 'solar_units': ['1_1'], 'hydro_units': [], 'nuclear_units': [],
    'swingbus': '5', 'load': 1.0, 'UseXfmrSaturation': True}
 ]
+"""A list containing example case configurations as dictionaries."""
 
 

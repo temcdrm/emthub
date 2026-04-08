@@ -15,7 +15,8 @@ extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
     'sphinx.ext.todo',
     'sphinx-jsonschema',
-    'sphinx.ext.intersphinx']
+    'sphinx.ext.intersphinx',
+    'sphinx_exec_code']
 templates_path = ['_templates']
 from recommonmark.parser import CommonMarkParser
 source_suffix = ['.rst', '.md']
@@ -60,4 +61,30 @@ texinfo_documents = [
 ]
 
 napoleon_custom_sections = [('Returns', 'params_style')]
+
+# from Google
+
+import json
+from docutils import nodes
+from docutils.parsers.rst import Directive
+
+class PrettyPrintDict(Directive):
+  required_arguments = 1
+  def run(self):
+    # Import the dictionary dynamically
+    module_path, dict_name = self.arguments[0].rsplit('.', 1)
+    mod = __import__(module_path, fromlist=[dict_name])
+    data = getattr(mod, dict_name)
+
+    # Format as a pretty JSON string
+    pretty_data = json.dumps(data, indent=4, sort_keys=True)
+    content = f".. code-block:: json\n\n  {pretty_data}"
+
+    # Parse the generated rST content
+    node = nodes.section()
+    self.state.nested_parse([content], 0, node)
+    return node.children
+
+def setup(app):
+  app.add_directive('pretty-dict', PrettyPrintDict)
 
