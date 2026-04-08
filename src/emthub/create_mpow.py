@@ -77,16 +77,13 @@ def constant_impedance (z, i, p):
   return False
 
 def create_matpower (d, sys_name, fp, swingbus, scale=1.0):
-  """Oneliner.
+  """Write a MATPOWER netlist from CIM loaded into a Python dictionary.
 
   Narrative.
 
   Args:
     filename (list(str)): argument
     n (int): argument
-
-  Returns:
-    list(DataFrame): return value.
   """
   print ('function mpc = {:s}'.format(sys_name.upper()), file=fp)
   print ('mpc.version = "2";', file=fp)

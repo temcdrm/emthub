@@ -111,7 +111,7 @@ def get_node_mnemonic(nclass):
   return 'Unknown'
 
 def plot_system_graph (G, sys_name, plot_labels, loc):
-  """Oneliner.
+  """Plot the transmission system topology from a networkx layout (graph).
 
   Narrative.
 
@@ -192,7 +192,7 @@ def plot_system_graph (G, sys_name, plot_labels, loc):
   plt.show()
 
 def load_system_graph (fname):
-  """Oneliner.
+  """Load the networkx layout (graph) from a JSON file.
 
   Narrative.
 
@@ -220,7 +220,7 @@ def km_distance (G, n1, n2):
   return km
 
 def build_system_graph (d):
-  """Oneliner.
+  """Auto-layout a diagram of the CIM network, returning a networkx graph.
 
   Narrative.
 
@@ -299,7 +299,7 @@ def build_system_graph (d):
   return G
 
 def save_system_graph (G, fname):
-  """Oneliner.
+  """Save the networkx layout (graph) to a JSON file.
 
   Narrative.
 

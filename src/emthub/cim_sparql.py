@@ -16,7 +16,7 @@ DELIM = ':'
 ROOT = None
 
 def summarize_graph (g):
-  """Oneliner.
+  """Count the class instances by namespace in an RDF graph.
 
   Narrative.
 
@@ -42,6 +42,18 @@ def summarize_graph (g):
     print('{:40s} {:40s} {:5d}'.format (ns, cls, int(r['cnt'])))
 
 def list_dict_table(dict, tag=None):
+  """Print the fields and attributes of a Python dictionary loaded from SPARQL.
+
+  Narrative.
+
+  Args:
+    filename (list(str)): argument
+    n (int): argument
+
+  Returns:
+    list(DataFrame): return value.
+  """
+
   bMultiKey = False
   if tag is None:
     tbl = dict
@@ -119,7 +131,7 @@ def load_root_queries(bPrint=False):
       print (PREFIX)
 
 def load_emt_dict (g, sysid, bTiming=False):
-  """Oneliner.
+  """Load an RDF graph into Python dictionary using packaged SPARQL queries.
 
   Narrative.
 
@@ -171,7 +183,7 @@ def load_emt_dict (g, sysid, bTiming=False):
   return dict
 
 def load_ic_dict (g, bPrint=False):
-  """Oneliner.
+  """Load an RDF graph into Python dictionary from standalone power flow solution file.
 
   Narrative.
 
@@ -204,7 +216,7 @@ def load_ic_dict (g, bPrint=False):
   return dict
 
 def adhoc_sparql_dict (g, q, key_field):
-  """Oneliner.
+  """Load the result of a user-written SPARQL query into a Python dictionary.
 
   Narrative.
 

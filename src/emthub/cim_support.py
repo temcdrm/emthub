@@ -23,7 +23,7 @@ METAFILE = 'psseraw.json'
 #  3) Field delimiters are comma (,) or any number of blanks
 #  4) Each row generally begins with bus number (int), model name (str), and ID (str) but the ID is not always quoted
 def load_psse_dyrfile (case):
-  """Oneliner.
+  """Load contents of a PSSE dyrfile into a Pandas dataframe.
 
   Narrative.
 
@@ -73,7 +73,7 @@ def row_length (row):
   return len(row)
 
 def summarize_psse_dyrfile (dyr, case, bDetails=False):
-  """Oneliner.
+  """Enumerate contents of a loaded PSSE dyrfile dataframe.
 
   Narrative.
 
@@ -108,7 +108,7 @@ def summarize_psse_dyrfile (dyr, case, bDetails=False):
   return models
 
 def match_dyr_generators (df, bPrint=False):
-  """Oneliner.
+  """Collect dyrfile modeels from Pandas dataframe into a Python dictionary by generator name/id.
 
   Narrative.
 
@@ -137,7 +137,7 @@ def match_dyr_generators (df, bPrint=False):
   return d
 
 def load_dynamics_defaults():
-  """Oneliner.
+  """Load example default settings for dynamics into a Python dictionary.
 
   Narrative.
 
@@ -153,7 +153,7 @@ def load_dynamics_defaults():
   return dyn_settings
 
 def load_dynamics_mapping(bReverseLookup = True):
-  """Oneliner.
+  """Load a dictionary of CIM classes and attributes corresponding to dyr file contents.
 
   Narrative.
 
@@ -178,7 +178,7 @@ def load_dynamics_mapping(bReverseLookup = True):
   return attmap
 
 def load_psse_meta():
-  """Oneliner.
+  """Load PSSE rawfile metadata into a Python dictionary.
 
   Narrative.
 
@@ -194,7 +194,7 @@ def load_psse_meta():
   return meta
 
 def print_psse_table (tables, table_name):
-  """Oneliner.
+  """Print a named dictionary loaded from section of a PSSE rawfile.
 
   Narrative.
 
@@ -317,7 +317,7 @@ def read_version_33_34(tables, baseMVA, reader, sections, bTwoTitles, bPrint=Fal
       table['data'].append (data)
 
 def load_psse_rawfile(fname, bPrint=False):
-  """Oneliner.
+  """Load contents of a PSSE rawfile into a Python dictionary.
 
   Narrative.
 

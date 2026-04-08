@@ -3,13 +3,16 @@
 """
 import rdflib
 
-def summarize_graph (root, classes_found):
+def graph_summary_dict (root, classes_found):
   """ Create a dictionary of class names and counts found in an RDF graph.
 
-  The Turtle file must exist in the current directory.
+  The Turtle file must exist in the current directory. This is a local
+  version of emthub.summarize_graph that keeps a running list of classes
+  found in repeated invocations. It also returns the counts in a 
+  dictionary, rather than printing to console.
 
   Args:
-    root (str): the basename of a Turtle file in tehe current directory.
+    root (str): the basename of a Turtle file in the current directory.
     classes_found (set): adds each class (str) found to a set of classes found in many files.
 
   Returns:
@@ -51,7 +54,7 @@ def print_cim_summaries (root_list):
   d = {}
   classes_found = set()
   for root in root_list:
-    d[root] = summarize_graph (root, classes_found)
+    d[root] = graph_summary_dict (root, classes_found)
 
   print ('{:39s} {:>8s} {:>8s} {:>8s} {:>8s} {:>8s}'.format ('Quantity in Example:', 'XfmrSat',  'IEEE39', 'IEEE118', 'WECC240', 'SMIBDLL'))
   print ('{:39s} {:8d} {:8d} {:8d} {:8d} {:8d}'.format ('Statements (RDF Triples)', d['XfmrSat']['statements'], 

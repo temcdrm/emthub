@@ -207,7 +207,7 @@ class DLLINSTANCE(Structure): # TODO: not tested yet
               ('DoubleStates', c_void_p)]   # to c_double[]
 
 def get_dll_interface (dll_name, bPrint = True):
-  """Oneliner.
+  """Returns a Python dictionary of the interface to an IEEE/Cigre DLL.
 
   Narrative.
 
@@ -379,7 +379,7 @@ def TranslateInputNameForTacs (nm, bus):
   return nm
 
 def write_atp_dll_interface (dll_fullname, atp_path, parm_vals, bus, ap):
-  """Oneliner.
+  """Netlists an ATP module that calls an IEEE/Cigre DLL.
 
   Narrative.
 

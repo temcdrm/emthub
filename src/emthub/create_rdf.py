@@ -157,7 +157,7 @@ def append_xml_dynamic_parameters (g, leaf, dyn_defaults, sections, attmap, dyr_
           g.add ((leaf, rdflib.URIRef (CIM_NS + att), rdflib.Literal(val, datatype=CIM_NS+unit)))
 
 def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True, bWantGraph=False):
-  """Oneliner.
+  """Create RDF in TTL/XML formats from results of load_psse_rawfile.
 
   Narrative.
 
@@ -1029,7 +1029,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
     return g, CIM, EMT
 
 def add_ibr_plant (case, plant, g, CIM, EMT):
-  """Oneliner.
+  """Add an IBR plant with attributes and a DLL interface.
 
   Narrative.
 
@@ -1186,18 +1186,16 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
   return g, CIM, EMT
 
 def write_cim_rdf (case, g, CIM, EMT):
-  """Oneliner.
+  """Serialize the (possibly modified) return value from create_cim_rdf.
 
   Narrative.
 
   Args:
     filename (list(str)): argument
     n (int): argument
-
-  Returns:
-    list(DataFrame): return value.
   """
   g.serialize (destination=case['xmlfile'], format='pretty-xml', max_depth=1)
+  #g.serialize (destination='test.json', format='json-ld', indent=2)
 
   serializer = OrderedTurtleSerializer(g)
   serializer.class_order = [

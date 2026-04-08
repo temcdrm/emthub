@@ -1014,7 +1014,7 @@ def GetGSUPhaseShift (d, key, dxf):
   return 0.0
 
 def create_atp (d, icd, fpath, case):
-  """Export one BES network model to ATP.
+  """Write an ATP netlist from CIM loaded into a Python dictionary.
 
   Writes a file ending in *_net.atp*, which references support files for machines,
   IBR, controls, and other components. An ATP user license is required for the

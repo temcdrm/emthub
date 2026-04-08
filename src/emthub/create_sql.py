@@ -62,16 +62,13 @@ def GetCIMID(cls, nm, uuids, identify=False):
     return str(uuid.uuid4()).upper() # for unidentified CIM instances
 
 def create_cim_sql (tables, kvbases, bus_kvbases, baseMVA, case):
-  """Oneliner.
+  """Create SQL db from results of load_psse_rawfile.
 
-  Narrative.
+  TODO: Not fully implemented.
 
   Args:
     filename (list(str)): argument
     n (int): argument
-
-  Returns:
-    list(DataFrame): return value.
   """
   # read the existing mRID map for persistence
   # TODO: consolidate this step with XML export

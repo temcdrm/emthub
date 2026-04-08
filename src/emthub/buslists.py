@@ -6,7 +6,7 @@
 """
 
 def build_bus_lists (d):
-  """Oneliner.
+  """Order the buses (connectivity nodes) sequentially.
 
   Narrative.
 
@@ -36,7 +36,7 @@ def build_bus_lists (d):
   return ordered_buses, bus_numbers
 
 def get_swingbus_id (ordered_buses, swingbus):
-  """Oneliner.
+  """Find the CIM ConnectivityNode ID by matching the Name/Number from the original raw file.
 
   Narrative.
 
