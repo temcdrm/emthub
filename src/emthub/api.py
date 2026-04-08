@@ -29,7 +29,7 @@ Public Functions:
     :load_psse_meta: Load PSSE rawfile metadata into a Python dictionary.
     :load_psse_rawfile: Load contents of a PSSE rawfile into a Python dictionary.
     :load_system_graph: Load the networkx layout (graph) from a JSON file.
-    :match_dyr_generators: Collect dyrfile modeels from Pandas dataframe into a Python dictionary by generator name/id.
+    :match_dyr_generators: Collect dyrfile models from Pandas dataframe into a Python dictionary by generator name/id.
     :plot_system_graph: Plot the transmission system topology from a networkx layout (graph).
     :print_cim_summaries: Print class names and counts found in list of Turtle files.
     :print_psse_table: Print a named dictionary loaded from section of a PSSE rawfile.

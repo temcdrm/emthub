@@ -1,7 +1,7 @@
 # Copyright (C) 2025-2026 Meltran, Inc
 
 """
-  Description.
+  Functions that read CIM into Python dictionaries using SPARQL queries.
 """
 
 import rdflib
@@ -18,14 +18,10 @@ ROOT = None
 def summarize_graph (g):
   """Count the class instances by namespace in an RDF graph.
 
-  Narrative.
+  Use this function for a printed summary of the graph size.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
-
-  Returns:
-    list(DataFrame): return value.
+    g (Graph): the RDF Graph obtained from construction in memory, or loaded from a file.
   """
 
   q = """
@@ -44,14 +40,11 @@ def summarize_graph (g):
 def list_dict_table(dict, tag=None):
   """Print the fields and attributes of a Python dictionary loaded from SPARQL.
 
-  Narrative.
+  Use this function to explore the structure, size, and contents of a table loaded from SPARQL.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
-
-  Returns:
-    list(DataFrame): return value.
+    dict (dict): result from *load_emt_dict*, *load_ic_dict*, or *adhoc_sparql_dict*
+    tag (str): should be a loaded table name, 'Adhoc Query'. If it includes \* then the table is multi-keyed.
   """
 
   bMultiKey = False
@@ -133,14 +126,17 @@ def load_root_queries(bPrint=False):
 def load_emt_dict (g, sysid, bTiming=False):
   """Load an RDF graph into Python dictionary using packaged SPARQL queries.
 
-  Narrative.
+  This function works on a graph that might contain several transmission system datasets,
+  differentiated by *sysid*. The correct *sysid* must be supplied, even if the graph
+  contains data for only one transmission system, because *sysid* filters all queries.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    g (Graph): an RDF graph loaded from *XML* or *TTL* file
+    sysid (str): the ID of the transmission system's *EquipmentContainer*
+    bTiming (bool): print the execution time of each packaged query
 
   Returns:
-    list(DataFrame): return value.
+    dict(dict): dictionary of *EMT* tables loaded from SPARQL.
   """
   global ROOT
 
@@ -185,14 +181,15 @@ def load_emt_dict (g, sysid, bTiming=False):
 def load_ic_dict (g, bPrint=False):
   """Load an RDF graph into Python dictionary from standalone power flow solution file.
 
-  Narrative.
+  This function only runs the *EMTBusVoltageIC*, *EMTBranchFlowIC*, and *EMTXfmrFlowIC* queries
+  on data that usually comes from a power flow solver.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    g (Graph): an RDF graph loaded from *XML* or *TTL* file
+    bPrint (bool): print the total query time
 
   Returns:
-    list(DataFrame): return value.
+    dict(dict): dictionary of *EMT* tables loaded from SPARQL.
   """
   global ROOT
   start_time = time.time()
@@ -218,14 +215,17 @@ def load_ic_dict (g, bPrint=False):
 def adhoc_sparql_dict (g, q, key_field):
   """Load the result of a user-written SPARQL query into a Python dictionary.
 
-  Narrative.
+  Use this function to run SPARQL that has been constructed at runtime. It is used
+  to work with IBR and conventional generating plants that are not rooted in raw files,
+  i.e., the plant data is constructed at runtime.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    g (Graph): an RDF graph constructed in memory, or loaded from *XML* or *TTL* file
+    q (str): the SPARQL query text
+    key_field (str): the field to index query results on, usually a CIM *mRID*
 
   Returns:
-    list(DataFrame): return value.
+    dict(dict): dictionary results from SPARQL, corresponding to a single un-named table.
   """
   load_root_queries()
   dict = {}

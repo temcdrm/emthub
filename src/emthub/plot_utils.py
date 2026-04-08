@@ -2,7 +2,12 @@
 # Copyright (C) 2025-2026 Meltran, Inc
 
 """
-  Plotting and graph topology support functions.
+  Plotting and graph topology support functions. Use these to add missing *DiagramLayout* data to the CIM model. The sequence of steps for this is:
+
+  1) Call *create_cim_rdf* using the *rawfile* and *dyrfile* data. It won't have *DiagramLayout* data in the serialized CIM RDF (unless the function finds an old JSON file from previously completing step 2).
+  2) Call *build_system_graph*, using a dictionary obtained from the RDF data saved in step 1. This writes a JSON file with the layout.
+  3) Call *plot_system_graph* to visually check the layout, including colors and labels.
+  4) Call *create_cim_rdf* a second time. Now it will find the JSON file from step 2, and include *DiagramLayout* data in the serialized CIM RDF.
 """
 
 import sys
@@ -113,14 +118,14 @@ def get_node_mnemonic(nclass):
 def plot_system_graph (G, sys_name, plot_labels, loc):
   """Plot the transmission system topology from a networkx layout (graph).
 
-  Narrative.
+  Uses *matplotlib* to make the plot from *G*. Optionally, use a button on the plot GUI
+  to save it in the current working directory.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
-
-  Returns:
-    list(DataFrame): return value.
+    G(networkx.Graph): the node/edge system layout.
+    sys_name (str): root name from the title, typically from *CASES[i]['name']*
+    plot_labels (bool): plot node (bus) labels. Only recommended with a small number of nodes.
+    loc (str): location of the legend for *matplotlib*,  typically from *CASES[i]['legend_loc']*. The examples use 'best', the default, or specify 'lower right'.
   """
   plt.rcParams['savefig.directory'] = os.getcwd()
   reset_type_counts()
@@ -197,11 +202,10 @@ def load_system_graph (fname):
   Narrative.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    fname (str): name of the JSON file containing networkx Graph data
 
   Returns:
-    list(DataFrame): return value.
+    G(networkx.Graph): the node/edge system layout.
   """
   lp = open (fname).read()
   mdl = json.loads(lp)
@@ -222,14 +226,16 @@ def km_distance (G, n1, n2):
 def build_system_graph (d):
   """Auto-layout a diagram of the CIM network, returning a networkx graph.
 
-  Narrative.
+  This function assigns colors to buses (graph nodes) depending on the presence of load, wind, solar, or conventional generation.
+  It assigns colors and weights to the mult-terminal components (graph edges) depending on the type of component and voltage class. *ACLineSegments*
+  are weighed by an estimated physical length. Then the *networkx* package's *kamada_kawai_layout* option is used to create a plausible
+  layout of the buses.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    d (dict): CIM data from *load_emt_dict*
 
   Returns:
-    list(DataFrame): return value.
+    G(networkx.Graph): the node/edge system layout.
   """
   # accumulate loads and generation onto the buses
   buses = d['EMTBus']['vals']
@@ -301,14 +307,11 @@ def build_system_graph (d):
 def save_system_graph (G, fname):
   """Save the networkx layout (graph) to a JSON file.
 
-  Narrative.
+  Call this after *build_system_graph*.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
-
-  Returns:
-    list(DataFrame): return value.
+    G(networkx.Graph): the node/edge system layout.
+    fname (str): name of the JSON file to save *G* in
   """
   fp = open (fname, 'w')
   data = nx.readwrite.json_graph.node_link_data(G)

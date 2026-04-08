@@ -1,7 +1,11 @@
 # Copyright (C) 2025-2026 Meltran, Inc
 
 """
-  Description.
+  Helper functions that netlist an Alternative Transients Program (ATP) model from CIM data.
+  ATP requires a no-cost license to use, but not all parties are allowed to license ATP. The
+  code in this module, and the output from this module's code, are covered by the Apache 2.0
+  license. So, this module may be useful as an example for developers implementing the CIM-to-EMT
+  netlisting function for other EMT simulators.
 """
 
 import sys
@@ -65,8 +69,10 @@ NEXT_BUSNUM = 0
 def reset_globals(case):
   """Reset counters and limits for the next ATP netlist export.
 
+  It's not necessary to call this function from outside the *create_atp* function.
+
   Args:
-    case (dict): one of the CASES
+    case (dict): an example chosen from *emthub.cim_examples.CASES*
   """
   global LOAD_MULT, DUM_NODES, LOAD_TOTAL, PV_COUNT, PV_TOTAL, SM_COUNT, SM_TOTAL, WND_COUNT, WND_TOTAL
   global NEXT_BUSNUM, DR_COUNT, DR_TOTAL, DLL_COUNT, DLL_TOTAL
@@ -1025,7 +1031,7 @@ def create_atp (d, icd, fpath, case):
     d (dict): loaded from rdflib
     icd (dict): power flow solution for initial conditions
     fpath (str): relative path for ATP netlist files
-    case (dict): one of the CASES
+    case (dict): an example chosen from *emthub.cim_examples.CASES*
   """
   global LOAD_MULT, DUM_NODES, LOAD_TOTAL, PV_COUNT, PV_TOTAL, SM_COUNT, SM_TOTAL, WND_COUNT, WND_TOTAL
   global DELIM, DR_COUNT, DR_TOTAL, DLL_COUNT, DLL_TOTAL

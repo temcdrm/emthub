@@ -1,7 +1,7 @@
 # Copyright (C) 2025-2026 Meltran, Inc
 
 """
-  Description.
+  Functions that insert CIM data into a SQL database. *Not Fully Implemented*
 """
 
 import json
@@ -67,8 +67,10 @@ def create_cim_sql (tables, kvbases, bus_kvbases, baseMVA, case):
   TODO: Not fully implemented.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    tables (dict): dictionary of tables from *load_psse_rawfile*
+    kvbases (dict): dictionary of system-wide voltage bases found in *load_psse_rawfile*
+    bus_kvbases (dict): dictionary of bus voltage bases found in *load_psse_rawfile*
+    baseMVA (float): the base MVA from the rawfile, usually 100, found in *load_psse_rawfile*
   """
   # read the existing mRID map for persistence
   # TODO: consolidate this step with XML export

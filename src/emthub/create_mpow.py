@@ -2,7 +2,8 @@
 # Copyright (C) 2025-2026 Meltran, Inc
 
 """
-  Description.
+  Helper functions that write a MATPOWER model from CIM data.
+  These power flow models can be used to help initialize EMT simulations.
 """
 
 import cmath
@@ -79,11 +80,16 @@ def constant_impedance (z, i, p):
 def create_matpower (d, sys_name, fp, swingbus, scale=1.0):
   """Write a MATPOWER netlist from CIM loaded into a Python dictionary.
 
-  Narrative.
+  MATPOWER only supports constant PQ loads. Constant impedance loads
+  are netlisted as bus shunts, i.e., constant admittance. Constant current
+  loads are handled as constant PQ loads.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    d (dict): dictionary of CIM data from *load_emt_dict*
+    sys_name (str): the root name of the transmission system, typically from *CASES[i]['name']*. This name is used as the MATLAB/Octave function name to load the MATPOWER case.
+    fp (file): an open file handle to the MATPOWER m file to be written
+    swingbus (str): the swing bus number, as a string to look up the CIM ConnectivityNode ID
+    scale (float): scaling factor on the nominal loads
   """
   print ('function mpc = {:s}'.format(sys_name.upper()), file=fp)
   print ('mpc.version = "2";', file=fp)

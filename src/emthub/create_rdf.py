@@ -1,7 +1,7 @@
 # Copyright (C) 2025-2026 Meltran, Inc
 
 """
-  Description.
+  Helper functions that write CIM RDF.
 """
 
 import json
@@ -159,14 +159,30 @@ def append_xml_dynamic_parameters (g, leaf, dyn_defaults, sections, attmap, dyr_
 def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True, bWantGraph=False):
   """Create RDF in TTL/XML formats from results of load_psse_rawfile.
 
-  Narrative.
+  This function calls *load_psse_dyrfile* internally, as configured in the *case* argument.
+  It also creates basic IBR plant and conventional generating plant data, for plants
+  that can be interpreted from the generator (*PowerElectronicsConverter* or *SynchronousMachine*)
+  and a generator step-up (GSU) transformer that is directly connected to the generator.
+  When the *rawfile* data, the *dyrfile* data, and the simple plants define the entire network,
+  the RDF data should be written by specifying *bSerialize=True*.
+
+  If a more complicated IBR plant will be part of the model, use *bSerialize=False* and
+  *bWantGraph=True*. This allows for additional processing IBR plant attributes and a DLL
+  interface before calling *write_cim_rdf*.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    tables (dict): data tables, returned from *load_psse_rawfile*
+    kvbases (dict): bus kV bases found in the system, returned from *load_psse_rawfile*
+    bus_kvbases (dict): kV bases for each bus, returned from *load_psse_rawfile*
+    baseMVA (float): system MVA base, returned from *load_psse_rawfile*
+    case (dict): an example chosen from *emthub.cim_examples.CASES*
+    bSerialize (bool): call *write_cim_rdf* on the graph produced
+    bWantGraph (bool): return the RDF graph and namespaces for additional processing
 
   Returns:
-    list(DataFrame): return value.
+    g(Graph): an RDF graph built from *rawfile* and *dyrfile* data
+    CIM(Namespace): an RDF namespace for the core CIM
+    EMT(Namespace): an RDF namespace for the EMT extensions
   """
   g = rdflib.Graph()
   CIM = rdflib.Namespace (CIM_NS)
@@ -1031,14 +1047,50 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
 def add_ibr_plant (case, plant, g, CIM, EMT):
   """Add an IBR plant with attributes and a DLL interface.
 
-  Narrative.
+  Call this function after *create_cim_rdf*, with a supplemental *plant* dictionary
+  to configure an IBR plant. Call the function once for each IBR plant to be added.
+  After adding all IBR plants, call *write_cim_rdf* to serialize the full CIM dataset.
+
+  The *plant* dictionary keys are as follows, referencing components by *name* rather than *mRID*.
+
+    1) *generator*, the name of the main *PowerElectronicsConnection* or *SynchronousMachine*
+    2) *dll_path*, the name of the DLL to be interfaced. It must be in a callable location.
+    3) *components*, an array of other plant components (not including the *GeneratingUnit* that is associated with the *generator*). Each array item is a two-element array in the form [*CIMClassName*, *name* of the component]
+    4) *attributes*, an array of *IBRPlant* attributes. Each array is a three-element array in the form [*AttributeName*, *value*, *CIM Unit Class*]
+
+  An example, from *create_smib_dll.py*, follows::
+
+     plant = {'generator': '1_1', 
+         'dll_path': '../dll/bin/gfm_gfl_ibr2.dll',
+         'components': [
+           ['ACLineSegment', '2_3_1'],
+           ['PowerTransformer', '2_1_0_1'],
+           ['PowerTransformer', '4_3_0_1']
+           ],
+         'attributes': [
+           ['acFilterCapacitance', 0.0015, 'Capacitance'],
+           ['acFilterLbridge', 0.0001, 'Inductance'],
+           ['acFilterLgrid', 0.0, 'Inductance'],
+           ['acFilterRbridge', 0.00075, 'Resistance'],
+           ['acFilterRgrid', 0.0, 'Resistance'],
+           ['acFilterKind', 'ungroundedWye', 'IBRFilterKind'],
+           ['dcLinkCapacitance', 0.1, 'Capacitance'],
+           ['dcLinkVoltage', 1200.0, 'Voltage'],
+           ['switchingFrequency', 3060.0, 'Frequency']
+           ]
+         }
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    case (dict): an example chosen from *emthub.cim_examples.CASES*
+    plant (dict): defines the IBR plant's generator, other components, attributes, and DLL
+    g(Graph): the RDF graph from *rawfile* and *dyrfile* data, from *create_cim_rdf*
+    CIM(Namespace): an RDF namespace for the core CIM, from *create_cim_rdf*
+    EMT(Namespace): an RDF namespace for the EMT extensions, from *create_cim_rdf*
 
   Returns:
-    list(DataFrame): return value.
+    g(Graph): modified RDF graph with an IBR plant model
+    CIM(Namespace): an RDF namespace for the core CIM, same as input
+    EMT(Namespace): an RDF namespace for the EMT extensions, same as input
   """
   uuids = {}
   fuidname = case['mridfile']
@@ -1188,11 +1240,14 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
 def write_cim_rdf (case, g, CIM, EMT):
   """Serialize the (possibly modified) return value from create_cim_rdf.
 
-  Narrative.
+  Writes both TTL and XML. The RDF serializer also supports *json-ld*, which
+  could be implemented in a single line of code.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    case (dict): an example chosen from *emthub.cim_examples.CASES*
+    g(Graph): the RDF graph from *create_cim_rdf*, possibly modified with *add_ibr_plant*
+    CIM(Namespace): an RDF namespace for the core CIM, from *create_cim_rdf*
+    EMT(Namespace): an RDF namespace for the EMT extensions, from *create_cim_rdf*
   """
   g.serialize (destination=case['xmlfile'], format='pretty-xml', max_depth=1)
   #g.serialize (destination='test.json', format='json-ld', indent=2)

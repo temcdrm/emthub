@@ -209,14 +209,15 @@ class DLLINSTANCE(Structure): # TODO: not tested yet
 def get_dll_interface (dll_name, bPrint = True):
   """Returns a Python dictionary of the interface to an IEEE/Cigre DLL.
 
-  Narrative.
+  Use this function to extract the DLL parameters, input ports, output ports,
+  and version information. Some of that will be added to CIM data.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    dll_name (str): path to the DLL that will be called through its API
+    bPrint (bool): write a summary of DLL parameters and signals to the console
 
   Returns:
-    list(DataFrame): return value.
+    d (dict): dictionary of the DLL parameters, signals, and other metadata.
   """
   dll = CDLL (dll_name)
   if bPrint:
@@ -381,14 +382,17 @@ def TranslateInputNameForTacs (nm, bus):
 def write_atp_dll_interface (dll_fullname, atp_path, parm_vals, bus, ap):
   """Netlists an ATP module that calls an IEEE/Cigre DLL.
 
-  Narrative.
+  This function calls the DLL through its API to obtain its full metadata.
+  It writes an include file, with *.mod* extension, to be called by the main
+  ATP netlist. It then appends a call to this include file in the main
+  ATP netlist.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
-
-  Returns:
-    list(DataFrame): return value.
+    dll_fullname (str): filename of the DLL in an executable location.
+    atp_path (str): path where the ATP main netlist and include files are being written.
+    parm_vals (list): array of DLL parameters that came from CIM data. Only floating-point values are supported in ATP.
+    bus (str): the root ATP bus name where this DLL is connected. ATP only allows 5 characters in this name.
+    ap (file): handle of the file that has been opened for the main ATP netlist.
   """
   mod_name = 'DLL1' # ATP only allows one instance, and the DLL name must already be compiled and linked into the ATP solver
 

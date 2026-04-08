@@ -1,7 +1,8 @@
 # Copyright (C) 2025-2026 Meltran, Inc
 
 """
-  Description.
+  Helper functions that read *rawfile* and *dyrfile* data into Python dictionaries. These
+  dictionaries are then used to create RDF CIM data.
 """
 
 import json
@@ -17,22 +18,24 @@ DYNAMICS_DEFAULTS = 'dynamics_defaults.json'
 DYNAMICS_MAPPING = 'dyr_mapping.json'
 METAFILE = 'psseraw.json'
 
-# the PSSE DYR file does not conform to CSV standards:
-#  1) A line beginning with / or // is a comment to be ignored
-#  2) Rows span lines. Each row ends with a single /
-#  3) Field delimiters are comma (,) or any number of blanks
-#  4) Each row generally begins with bus number (int), model name (str), and ID (str) but the ID is not always quoted
 def load_psse_dyrfile (case):
   """Load contents of a PSSE dyrfile into a Pandas dataframe.
 
-  Narrative.
+  The PSSE DYR file does not conform to CSV standards:
+
+    1) A line beginning with / or // is a comment to be ignored
+    2) Rows span lines. Each row ends with a single /
+    3) Field delimiters are comma (,) or any number of blanks
+    4) Each row generally begins with bus number (int), model name (str), and ID (str) but the ID is not always quoted
+
+  So, it is loaded into a Pandas data structure that offers more robust parsing, and flexible sizing, than standard Python
+  arrays and CSV parsers.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    case (dict): an example chosen from *emthub.cim_examples.CASES*
 
   Returns:
-    list(DataFrame): return value.
+    dyr(DataFrame): the dynamics input data.
   """
   dyr = None
   if 'dyrfile' in case and case['dyrfile'] is not None and os.path.exists(case['dyrfile']):
@@ -75,14 +78,18 @@ def row_length (row):
 def summarize_psse_dyrfile (dyr, case, bDetails=False):
   """Enumerate contents of a loaded PSSE dyrfile dataframe.
 
-  Narrative.
+  Use this for checking the numbers and sizes of dynamic models read.
+  Each model of the same type should have the same size. Names of the
+  parameters are not available from dyr files, so not available in
+  this function.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    dyr (DataFrame): return value from *load_psse_dyrfile*
+    case (dict): an example chosen from *emthub.cim_examples.CASES*
+    bDetails (bool): print *dyr* using built-in Pandas formatting
 
   Returns:
-    list(DataFrame): return value.
+    models (dict): a dictionary of the dynamic models found, with sizes and instance counts
   """
   print ('Dynamics data from', case['dyrfile'], 'size =', dyr.shape)
   if bDetails:
@@ -108,16 +115,20 @@ def summarize_psse_dyrfile (dyr, case, bDetails=False):
   return models
 
 def match_dyr_generators (df, bPrint=False):
-  """Collect dyrfile modeels from Pandas dataframe into a Python dictionary by generator name/id.
+  """Collect dyrfile models from Pandas dataframe into a Python dictionary by generator name/id.
 
-  Narrative.
+  A conventional generator may have several dynamics models, e.g., the machine itself,
+  excitation system, governor, power system stabilizer, etc. An IBR may also have several
+  dynamic models associated with it, e.g., plant controller, regulator, converter controller,
+  wind dynamics, etc. So, the return dictionary is keyed on generator, than one or more
+  model types.  The model types are taken from column 2 of each dyr file entry.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    df (DataFrame): the return value from *load_psse_dyrfile*
+    bPrint (bool): print the dynamic model types and data found for each generator
 
   Returns:
-    list(DataFrame): return value.
+    d (dict): a dictionary of dynamic models, keyed on generator ID and then model type
   """
   d = {}
   for row in df.itertuples(index=False):
@@ -139,14 +150,10 @@ def match_dyr_generators (df, bPrint=False):
 def load_dynamics_defaults():
   """Load example default settings for dynamics into a Python dictionary.
 
-  Narrative.
-
-  Args:
-    filename (list(str)): argument
-    n (int): argument
+  The data comes from a JSON file included in the package named *dynamics_defaults.json*.
 
   Returns:
-    list(DataFrame): return value.
+    dyn_settings(dict): dictionary of default values, keyed on model type and then attribute.
   """
   s = importlib.resources.read_text ('emthub.queries', DYNAMICS_DEFAULTS)
   dyn_settings = json.loads (s)
@@ -155,14 +162,16 @@ def load_dynamics_defaults():
 def load_dynamics_mapping(bReverseLookup = True):
   """Load a dictionary of CIM classes and attributes corresponding to dyr file contents.
 
-  Narrative.
+  The data comes from a JSON file included in the package named *dyr_mapping.json*.
+  Use this function to translate *dyrfile* contents to the CIM classes and attributes.
+  A reverse lookup option keys on CIM classes, to create missing *dyrfile* data from
+  a CIM model based only on a *rawfile*.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    bReverseLookup (bool): key on the CIM class instead of the dyr model name
 
   Returns:
-    list(DataFrame): return value.
+    attmap(dict): dictionary keyed on a dyr model name, with CIM class and attributes.
   """
   s = importlib.resources.read_text ('emthub.queries', DYNAMICS_MAPPING)
   d = json.loads (s)
@@ -180,14 +189,12 @@ def load_dynamics_mapping(bReverseLookup = True):
 def load_psse_meta():
   """Load PSSE rawfile metadata into a Python dictionary.
 
-  Narrative.
-
-  Args:
-    filename (list(str)): argument
-    n (int): argument
+  The data comes from a JSON file included in the package named *psseraw.json*.
+  It currently supports versions 33, 34, and 35. This function does not have
+  to called separately from *load_psse_rawfile*.
 
   Returns:
-    list(DataFrame): return value.
+    meta(dict): schema of tables found in supported *rawfile* versions.
   """
   s = importlib.resources.read_text ('emthub.queries', METAFILE)
   meta = json.loads (s)
@@ -196,14 +203,12 @@ def load_psse_meta():
 def print_psse_table (tables, table_name):
   """Print a named dictionary loaded from section of a PSSE rawfile.
 
-  Narrative.
+  Use this function to verify the data imported from *load_psse_rawfile*.
+  Also reveals the column names in each table.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
-
-  Returns:
-    list(DataFrame): return value.
+    tables (dict): returned from *load_psse_rawfile*
+    table_name (str): name of the table to print. Should be one of 'BUS', 'LOAD', 'FIXED SHUNT', 'SWITCHED SHUNT', 'GENERATOR', 'BRANCH', 'SYSTEM SWITCHING DEVICE', 'TRANSFORMER'
   """
   if table_name not in tables:
     print ('***', table_name, 'not found')
@@ -319,14 +324,18 @@ def read_version_33_34(tables, baseMVA, reader, sections, bTwoTitles, bPrint=Fal
 def load_psse_rawfile(fname, bPrint=False):
   """Load contents of a PSSE rawfile into a Python dictionary.
 
-  Narrative.
+  Versions 33, 34, and 35 are supported. The corresponding dynamics data should be read using
+  *load_psse_dyrfile*, which does not have versions.
 
   Args:
-    filename (list(str)): argument
-    n (int): argument
+    fname (str): name of the PSSE *rawfile* to read.
+    bPrint (bool): for debugging, print the contents of each *rawfile* row as it's parsed.
 
   Returns:
-    list(DataFrame): return value.
+    tables(dict): dictionary of table data, following the schema from *load_psse_meta*.
+    kvbases(dict): dictionary of voltage (kV) bases found in the system data, keyed on a constructed name for CIM *BaseVoltage* instances.
+    bus_kvbases(dict): dictionary of voltage (kV) bases for each bus in the system.
+    baseMVA(float): the system MVA base.
   """
   meta = load_psse_meta()
   tables = {}
