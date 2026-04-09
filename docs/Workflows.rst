@@ -13,11 +13,14 @@ Workflows
 Extension and Profile Management
 --------------------------------
 
+.. image:: ../ProfileFlow.png
 
 .. _target-workflow-network:
 
 Network Modeling
 ----------------
+
+.. image:: ../FileFlow.png
 
 
 .. _target-workflow-dll:
