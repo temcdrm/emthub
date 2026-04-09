@@ -7,46 +7,56 @@ Overview
 
 EMTHub\ |reg| provides software and data schemas for standards-based model building and validation to perform electromagnetic transient (EMT) 
 studies of electric utility power systems. The focus is on inverter-based resources (IBR), e.g., wind, solar, and storage, 
-in electric utility systems. Network EMT models are based on the international standard Common Information Model (CIM). Unit and plant
-IBR models are based on IEEE standards 2800 and P2800.2, along with a Cigre/IEEE specification on real-code modeling through
-dynamics link library (DLL) interfaces.
+in electric utility systems. Network EMT models are based on an extension and profile of the Common Information Model (CIM), available
+under the Apache 2.0 :ref:`target-license`. Unit and plant IBR models interface to a Cigre/IEEE specification on real-code modeling through dynamics link 
+library (DLL) interfaces.
 
-Bibliography
-------------
+As part of IEEE P3743, Recommended Practice for Electromagnetic Transient Model Interoperability for Electric Power Transmission Systems, this
+content will shortly move to an IEEE open-source project called `EMTIOP <https://opensource.ieee.org/emtiop>`_. The document under development by the P3743
+Working Group is considered normative for the open-source software, and vice versa. For now, only members of the P3743 Working Group can access
+draft versions of the document at `iMeet <https://ieee-sa.imeetcentral.com/p3743/>`_. Others may view the scope and purpose of P3743, and express
+interest in joining its Working Group, at the `P3743 PAR Site <https://standards.ieee.org/ieee/3743/12233/>`_. In the meantime, until P3743 is
+published, scripts and examples will run as documented here.
 
-For an overview, see `IEEE P3743 Introduction <_static/IEEE_P3743_Introduction.pdf>`_.
+This content may also depend on `IEEE P3597 <https://standards.ieee.org/ieee/3597/12053/>`_, which aims to standardize the DLL interface. 
+P3597 begins meeting in July 2026 at the IEEE PES General Meeting in Montreal.
 
-- For general background on **EMT modeling**, with a focus on IBR, see `IEEE Electrification Special Issue <https://ieeexplore.ieee.org/xpl/tocresult.jsp?isnumber=10334426&punumber=6508996>`_.
-- For background on the North American Electric Reliability Corporation (**NERC**) guidelines on EMT modeling for IBR, see its `Reliability Guideline <https://www.nerc.com/comm/RSTC_Reliability_Guidelines/Reliability_Guideline-EMT_Modeling_and_Simulations.pdf>`_ and its `EMT Task Force <https://www.nerc.com/comm/RSTC/Pages/EMTTF.aspx>`_.
-- For information about the **DLL interface** for IBR modeling, see `Joint IEEE/Cigre Task Force Web Site <https://www.electranix.com/ieee-pes-tass-realcodewg/>`_ and `EPRI Report 3002028322 <https://www.epri.com/research/products/3002028322>`_.
-- For background on the **WECC generic IBR** models, see `EPRI Report 3002027129 <https://www.epri.com/research/products/000000003002027129>`_.
-- For technical background on maintaining EMT **network models**, see `Thapa, et. al. <https://doi.org/10.1109/ACCESS.2023.3305394>`_, `Abdelmalak, et. al. <https://doi.org/10.1109/PESGM46819.2021.9637930>`_,  `Noda, et. al. <https://doi.org/10.1109/MELE.2023.3320521>`_, and `Zhao, et. al. <https://doi.org/10.1109/APEEC.2019.8720692>`_.
-- For background on the **CIM**, see `EPRI CIM Primer 3002026852 <https://www.epri.com/research/products/3002026852>`_ and `CIMHub <https://cimhub.readthedocs.io/en/latest/>`_.
-- For applications of **CIM dynamics modeling**, including the Western Electricity Coordinating Council (WECC) generic IBR models, see `Common Grid Model Exchange Specification (Dynamics) <https://cgmes.github.io/dynamics/#dynamics>`_
-- For applications of **CIM EMT modeling**, see `Martin and Fillion <https://www.ipstconf.org/papers/Proc_IPST2017/17IPST099.pdf>`_.
-- For early examples of **scripted IBR model validation**, see `NERC/i2X EMT Bootcamp Files <https://github.com/pnnl/i2x/tree/master/emt-bootcamp>`_.
-- For description of medium-scale public test systems with IBR, see `Pena et. al. <https://doi.org/10.1109/TPWRS.2017.2695963>`_ for a modified **IEEE 118-bus system** and `Yuan et. al. <https://doi.org/10.1109/TD39804.2020.9299666>`_ for a modified **WECC 240-bus system**.
+The IEC CIM standards are not normative for P3743. The open-source software is based on the `CIM UML <https://cimug.org/cimdocs/standards-artifacts/>`_,
+under an Apache 2.0 license.
 
 Installation
 ------------
 
-To install the Python package::
+Python 3.11.4 or greater is required. If necessary, install or update `Python <https://www.python.org/downloads/>`_. 
+Then install the Python package::
 
     pip install emthub
+
+For now, the GitHub :ref:`target-repository` should also be cloned to obtain the examples.
 
 Quick Start
 -----------
 
-TBD; running examples in this order:
+Choose one of the roadmaps to follow:
 
-- `CIM <https://github.com/temcdrm/emthub/tree/main/cim>`_.
-- `MATPOWER <https://github.com/temcdrm/emthub/tree/main/matpower>`_.
-- `ATP <https://github.com/temcdrm/emthub/tree/main/atp/data>`_.
+- :ref:`target-roadmap-users` to just run examples.
+- :ref:`target-roadmap-profile` for maintaining the CIM extensions and profile.
+- :ref:`target-roadmap-network` for developing and testing CIM data import to EMT tools.
+- :ref:`target-roadmap-dll` for developing and testing DLL models.
+
+Consult the :ref:`target-bibliography` as needed for background information. 
+
+.. _target-repository:
 
 Repository
 ----------
 
 See `EMTHub directory <https://github.com/temcdrm/emthub>`_
+
+To make a local copy, first `Install Git <https://github.com/git-guides/install-git>`_. Then 
+invoke this command from a directory where source code will be kept, such as `c:\src`::
+
+    git clone https://github.com/temcdrm/emthub.git
 
 .. |reg|    unicode:: U+000AE .. REGISTERED SIGN
 .. |copy|   unicode:: U+000A9 .. COPYRIGHT SIGN

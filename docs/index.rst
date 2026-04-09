@@ -6,8 +6,13 @@ EMTHub\ |reg|
    :caption: Contents:
 
    Overview
+   Roadmap
+   Workflows
+   NetworkExamples
+   DLLExamples
    api
    profile
+   Bibliography
    LICENSE
 
 Indices and tables
