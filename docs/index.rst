@@ -7,6 +7,7 @@ EMTHub\ |reg|
 
    Overview
    api
+   profile
    LICENSE
 
 Indices and tables
