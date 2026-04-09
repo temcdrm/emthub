@@ -52,8 +52,8 @@ To deploy the project on PyPi, staring in the directory of your git clone, where
 - Invoke `rd /s /q dist` on Windows (would be `rm -rf dist` on Linux or Mac OS X)
 - `python -m build`
 - `twine check dist/*` should not show any errors
-- `twine upload -r testpypi dist/*` requires project credentials for pecblocks on test.pypi.org (Note: this will reject if version already exists, also note that testpypi is a separate register to pypi)
-- `pip install -i https://test.pypi.org/simple/ emthub==0.0.3` for local testing of the deployable package, example version 0.0.3 (Note: consider doing this in a separate Python test environment)
+- `twine upload -r testpypi dist/*` requires project credentials for emthub on test.pypi.org (Note: this will reject if version already exists, also note that testpypi is a separate register to pypi)
+- `pip install -i https://test.pypi.org/simple/ emthub==0.0.4` for local testing of the deployable package, example version 0.0.4 (Note: consider doing this in a separate Python test environment)
 - `twine upload dist/*` for final deployment
 
 ### File and Scripting Workflow
