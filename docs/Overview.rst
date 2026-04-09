@@ -24,6 +24,8 @@ P3597 begins meeting in July 2026 at the IEEE PES General Meeting in Montreal.
 The IEC CIM standards are not normative for P3743. The open-source software is based on the `CIM UML <https://cimug.org/cimdocs/standards-artifacts/>`_,
 under an Apache 2.0 license.
 
+.. _target-installation:
+
 Installation
 ------------
 
