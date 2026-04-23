@@ -333,6 +333,76 @@
     cim:OperationalLimit.OperationalLimitSet <9FC8F4AB-ADFB-4E97-B6A0-3E77571DF9A4> ;
     cim:OperationalLimit.OperationalLimitType <9B53D10B-5004-45B0-B977-BF08C85D9DA7> .
 
+<47B73D7D-9E80-41CC-9BE1-7485A11042D6> a cim:TextDiagramObject ;
+    cim:DiagramObject.IdentifiedObject <212BCE15-7CAE-4469-B001-5040D60466C6> ;
+    cim:DiagramObject.drawingOrder "1"^^cim:Integer ;
+    cim:DiagramObject.isPolygon "false"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "47B73D7D-9E80-41CC-9BE1-7485A11042D6"^^cim:String ;
+    cim:IdentifiedObject.name "4"^^cim:String ;
+    cim:TextDiagramObject.text "4 LOW SIDE 138.00 kV"^^cim:String .
+
+<7BC958B0-8A6B-4AA5-AAEB-88157EFFD042> a cim:TextDiagramObject ;
+    cim:DiagramObject.IdentifiedObject <1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E> ;
+    cim:DiagramObject.drawingOrder "1"^^cim:Integer ;
+    cim:DiagramObject.isPolygon "false"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "7BC958B0-8A6B-4AA5-AAEB-88157EFFD042"^^cim:String ;
+    cim:IdentifiedObject.name "5"^^cim:String ;
+    cim:TextDiagramObject.text "5 LOAD 138.00 kV"^^cim:String .
+
+<80AA3CCF-6DBC-4C71-A74D-6D0489638926> a cim:TextDiagramObject ;
+    cim:DiagramObject.IdentifiedObject <5A74B6F3-2B95-47DE-88FC-902A6643D37A> ;
+    cim:DiagramObject.drawingOrder "1"^^cim:Integer ;
+    cim:DiagramObject.isPolygon "false"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "80AA3CCF-6DBC-4C71-A74D-6D0489638926"^^cim:String ;
+    cim:IdentifiedObject.name "2"^^cim:String ;
+    cim:TextDiagramObject.text "2 LINE END 345.00 kV"^^cim:String .
+
+<D2278790-2142-4017-A46E-58120D7A7B2A> a cim:TextDiagramObject ;
+    cim:DiagramObject.IdentifiedObject <D3C50564-2BA5-4B81-AFF0-BB99CE54E804> ;
+    cim:DiagramObject.drawingOrder "1"^^cim:Integer ;
+    cim:DiagramObject.isPolygon "false"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "D2278790-2142-4017-A46E-58120D7A7B2A"^^cim:String ;
+    cim:IdentifiedObject.name "1"^^cim:String ;
+    cim:TextDiagramObject.text "1 SOURCE 345.00 kV"^^cim:String .
+
+<DBB167AD-6323-4775-86B4-7F97B5418FC2> a cim:TextDiagramObject ;
+    cim:DiagramObject.IdentifiedObject <FA16A3CC-2849-410E-91E7-88674CCA513D> ;
+    cim:DiagramObject.drawingOrder "1"^^cim:Integer ;
+    cim:DiagramObject.isPolygon "false"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "DBB167AD-6323-4775-86B4-7F97B5418FC2"^^cim:String ;
+    cim:IdentifiedObject.name "3"^^cim:String ;
+    cim:TextDiagramObject.text "3 HIGH SIDE 345.00 kV"^^cim:String .
+
+<47B73D7D-9E80-41CC-9BE1-7485A11042D6_pt1> a cim:DiagramObjectPoint ;
+    cim:DiagramObjectPoint.DiagramObject <47B73D7D-9E80-41CC-9BE1-7485A11042D6> ;
+    cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
+    cim:DiagramObjectPoint.xPosition "-0.2505416644185298"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.0016317681235825214"^^cim:Float .
+
+<7BC958B0-8A6B-4AA5-AAEB-88157EFFD042_pt1> a cim:DiagramObjectPoint ;
+    cim:DiagramObjectPoint.DiagramObject <7BC958B0-8A6B-4AA5-AAEB-88157EFFD042> ;
+    cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
+    cim:DiagramObjectPoint.xPosition "-0.25158165343721434"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "0.00399744415330113"^^cim:Float .
+
+<80AA3CCF-6DBC-4C71-A74D-6D0489638926_pt1> a cim:DiagramObjectPoint ;
+    cim:DiagramObjectPoint.DiagramObject <80AA3CCF-6DBC-4C71-A74D-6D0489638926> ;
+    cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
+    cim:DiagramObjectPoint.xPosition "-0.248421345395677"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "-0.003081329042064154"^^cim:Float .
+
+<D2278790-2142-4017-A46E-58120D7A7B2A_pt1> a cim:DiagramObjectPoint ;
+    cim:DiagramObjectPoint.DiagramObject <D2278790-2142-4017-A46E-58120D7A7B2A> ;
+    cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
+    cim:DiagramObjectPoint.xPosition "0.9999999999999999"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "-0.0018348578680013885"^^cim:Float .
+
+<DBB167AD-6323-4775-86B4-7F97B5418FC2_pt1> a cim:DiagramObjectPoint ;
+    cim:DiagramObjectPoint.DiagramObject <DBB167AD-6323-4775-86B4-7F97B5418FC2> ;
+    cim:DiagramObjectPoint.sequenceNumber "1"^^cim:Integer ;
+    cim:DiagramObjectPoint.xPosition "-0.2494553367485787"^^cim:Float ;
+    cim:DiagramObjectPoint.yPosition "-0.0007130253668181081"^^cim:Float .
+
 <A4548015-D844-4B79-8468-97B6B75936AB_pt1> a cim:CurveData ;
     cim:CurveData.Curve <A4548015-D844-4B79-8468-97B6B75936AB> ;
     cim:CurveData.xvalue "32.541530399293435"^^cim:Float ;
