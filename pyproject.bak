@@ -36,3 +36,9 @@ dependencies = ["lxml>=5.2.2",
 [project.urls]
 "Bug Tracker" = "https://github.com/temcdrm/EMTHub/issues"
 
+[tool.setuptools.packages.find]
+include = ["src*"]
+
+[tool.setuptools.package-data]
+"*" = ["queries/*.*", "data/*.*"]
+

@@ -31,8 +31,8 @@ master_doc = 'index'
 project = 'emthub'
 copyright = '2024-26, Meltran, Inc'
 author = 'Meltran, Inc'
-version = '0.0.4'
-release = '0.0.4'
+version = '0.0.5'
+release = '0.0.5'
 language = 'en'
 
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']

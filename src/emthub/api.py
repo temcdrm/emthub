@@ -18,8 +18,10 @@ Public Functions:
     :create_cim_rdf: Create RDF in TTL/XML formats from results of load_psse_rawfile.
     :create_cim_sql: Create SQL db from results of load_psse_rawfile.
     :create_matpower: Write a MATPOWER netlist from CIM loaded into a Python dictionary.
+    :extract_case: Copy example files for one case into the current directory.
     :get_dll_interface: Returns a Python dictionary of the interface to an IEEE/Cigre DLL.
     :get_swingbus_id: Find the CIM ConnectivityNode ID by matching the Name/Number from the original raw file.
+    :list_cases: List the names and descriptions of examples provided with the package.
     :list_dict_table: Print the fields and attributes of a Python dictionary loaded from SPARQL.
     :load_dynamics_defaults: Load example default settings for dynamics into a Python dictionary.
     :load_dynamics_mapping: Load a dictionary of CIM classes and attributes corresponding to dyr file contents.
@@ -52,6 +54,8 @@ from .buslists import build_bus_lists
 from .buslists import get_swingbus_id
 
 from .cim_examples import CASES
+from .cim_examples import list_cases
+from .cim_examples import extract_case
 
 from .cim_sparql import adhoc_sparql_dict
 from .cim_sparql import list_dict_table
