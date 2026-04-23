@@ -38,11 +38,12 @@ def load_psse_dyrfile (case):
     dyr(DataFrame): the dynamics input data.
   """
   dyr = None
-  if 'dyrfile' in case and case['dyrfile'] is not None and os.path.exists(case['dyrfile']):
+  dyrfile = case['name']+'.dyr'
+  if os.path.exists(dyrfile):
     buf = io.StringIO()
     maxcols = 0
     ncols = 0
-    with open (case['dyrfile'], 'r') as file:
+    with open (dyrfile, 'r') as file:
       for line in file:
         line = line.strip()
         line = line.replace("'", "")
@@ -91,7 +92,7 @@ def summarize_psse_dyrfile (dyr, case, bDetails=False):
   Returns:
     models (dict): a dictionary of the dynamic models found, with sizes and instance counts
   """
-  print ('Dynamics data from', case['dyrfile'], 'size =', dyr.shape)
+  print ('Dynamics data from', case['name']+'.dyr', 'size =', dyr.shape)
   if bDetails:
     print (dyr)
   models = {}

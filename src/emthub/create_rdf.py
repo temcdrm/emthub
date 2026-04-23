@@ -214,7 +214,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
   
   # read the existing mRID map for persistence
   uuids = {}
-  fuidname = case['mridfile']
+  fuidname = case['name'] + '_mRIDs.dat'
   if os.path.exists(fuidname):
     #print ('reading instance mRIDs from ', fuidname)
     fuid = open (fuidname, 'r')
@@ -277,28 +277,28 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
     g.add ((cn, rdflib.URIRef (CIM_NS + 'ConnectivityNode.ConnectivityNodeContainer'), eq))
 
   # write the diagram layout
-  if 'locfile' in case:
-    if os.path.exists(case['locfile']):
-      busxy = load_bus_coordinates (case['locfile'])
-      for row in tables['BUS']['data']:
-        key = str(row[0])
-        busname = '{:d} {:s} {:.2f} kV'.format (row[0], row[1], row[2])
-        xy = busxy[key]
-        ID = GetCIMID('TextDiagramObject', key, uuids)
-        td = rdflib.URIRef (ID)
-        g.add ((td, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'TextDiagramObject')))
-        g.add ((td, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
-        g.add ((td, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
-        g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.IdentifiedObject'), rdflib.URIRef (busids[key])))
-        g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.drawingOrder'), rdflib.Literal (1, datatype=CIM.Integer)))
-        g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.isPolygon'), rdflib.Literal (False, datatype=CIM.Boolean)))
-        g.add ((td, rdflib.URIRef (CIM_NS + 'TextDiagramObject.text'), rdflib.Literal(busname, datatype=CIM.String)))
-        pt = rdflib.URIRef (ID+'_pt1') # rdflib.BNode()
-        g.add ((pt, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint')))
-        g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.DiagramObject'), td))
-        g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.sequenceNumber'), rdflib.Literal(1, datatype=CIM.Integer)))
-        g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.xPosition'), rdflib.Literal(xy[0], datatype=CIM.Float)))
-        g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.yPosition'), rdflib.Literal(xy[1], datatype=CIM.Float)))
+  locfile = case['name'] + '_Network.json'
+  if os.path.exists(locfile):
+    busxy = load_bus_coordinates (locfile)
+    for row in tables['BUS']['data']:
+      key = str(row[0])
+      busname = '{:d} {:s} {:.2f} kV'.format (row[0], row[1], row[2])
+      xy = busxy[key]
+      ID = GetCIMID('TextDiagramObject', key, uuids)
+      td = rdflib.URIRef (ID)
+      g.add ((td, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'TextDiagramObject')))
+      g.add ((td, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+      g.add ((td, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+      g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.IdentifiedObject'), rdflib.URIRef (busids[key])))
+      g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.drawingOrder'), rdflib.Literal (1, datatype=CIM.Integer)))
+      g.add ((td, rdflib.URIRef (CIM_NS + 'DiagramObject.isPolygon'), rdflib.Literal (False, datatype=CIM.Boolean)))
+      g.add ((td, rdflib.URIRef (CIM_NS + 'TextDiagramObject.text'), rdflib.Literal(busname, datatype=CIM.String)))
+      pt = rdflib.URIRef (ID+'_pt1') # rdflib.BNode()
+      g.add ((pt, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint')))
+      g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.DiagramObject'), td))
+      g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.sequenceNumber'), rdflib.Literal(1, datatype=CIM.Integer)))
+      g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.xPosition'), rdflib.Literal(xy[0], datatype=CIM.Float)))
+      g.add ((pt, rdflib.URIRef (CIM_NS + 'DiagramObjectPoint.yPosition'), rdflib.Literal(xy[1], datatype=CIM.Float)))
 
   # write the branches
   for row in tables['BRANCH']['data']:
@@ -1249,8 +1249,8 @@ def write_cim_rdf (case, g, CIM, EMT):
     CIM(Namespace): an RDF namespace for the core CIM, from *create_cim_rdf*
     EMT(Namespace): an RDF namespace for the EMT extensions, from *create_cim_rdf*
   """
-  g.serialize (destination=case['xmlfile'], format='pretty-xml', max_depth=1)
-  #g.serialize (destination='test.json', format='json-ld', indent=2)
+  g.serialize (destination=case['name']+'.xml', format='pretty-xml', max_depth=1)
+  g.serialize (destination=case['name']+'.json', format='json-ld', indent=2)
 
   serializer = OrderedTurtleSerializer(g)
   serializer.class_order = [
@@ -1306,7 +1306,7 @@ def write_cim_rdf (case, g, CIM, EMT):
     CIM.DiagramObjectPoint,
     CIM.CurveData
   ]
-  with open(case['ttlfile'], 'wb') as fp:
+  with open(case['name']+'.ttl', 'wb') as fp:
     serializer.serialize(fp)
 
 

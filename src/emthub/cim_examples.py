@@ -14,13 +14,10 @@ CASES = [
    'solar_units': ['30_1'], 
    'hydro_units': [], 
    'nuclear_units': [],
-   'bus_ic': '../matpower/ieee39mb.txt',
-   'gen_ic': '../matpower/ieee39mg.txt',
-   'br_ic': '../matpower/ieee39mbr.txt',
-   'ttl_ic': 'ieee39_ic.ttl',
    'swingbus': '31',
    'load': 1.0, 
-   'UseXfmrSaturation': False},
+   'UseXfmrSaturation': False,
+   'UseMATPOWER': True},
   {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 
    'name': 'IEEE118', 
    'desc': '193 buses, 56 machines, 19 IBR',
@@ -31,13 +28,10 @@ CASES = [
                    '183_S', '185_S', '188_S', '191_S'],
    'hydro_units': [], 
    'nuclear_units': [],   
-   'bus_ic': '../matpower/ieee118mb.txt',
-   'gen_ic': '../matpower/ieee118mg.txt',
-   'br_ic': '../matpower/ieee118mbr.txt',
-   'ttl_ic': 'ieee118_ic.ttl',
    'swingbus':'131', 
    'load': 0.6748, 
-   'UseXfmrSaturation': False},
+   'UseXfmrSaturation': False,
+   'UseMATPOWER': True},
   {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 
    'name': 'WECC240', 
    'desc': '333 buses, 105 machines, 35 IBR',
@@ -54,14 +48,11 @@ CASES = [
                    '50311_H', '63352_H', '65332_H', '70322_H', '8033_H', 
                    '80341_H'],
    'nuclear_units': ['14311_N', '41322_N'],
-   'bus_ic': '../matpower/wecc240mb.txt',
-   'gen_ic': '../matpower/wecc240mg.txt',
-   'br_ic': '../matpower/wecc240mbr.txt',
-   'ttl_ic': 'wecc240_ic.ttl',
    'swingbus':'3831',
    'old_swingbus':'2438', 
    'load': 1.02, 
-   'UseXfmrSaturation': False},
+   'UseXfmrSaturation': False,
+   'UseMATPOWER': True},
   {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
    'name':'XfmrSat', 
    'desc': '5 buses, load rejection with transformer saturation',
@@ -70,14 +61,11 @@ CASES = [
    'solar_units':[], 
    'hydro_units':[], 
    'nuclear_units':[],
-   'bus_ic': '../matpower/XfmrSatmb.txt',
-   'gen_ic': '../matpower/XfmrSatmg.txt',
-   'br_ic': '../matpower/XfmrSatmbr.txt',
-   'ttl_ic': 'XfmrSat_ic.ttl',
    'swingbus': '1', 
    'load':1.0, 
    'emergency_ratings': True, 
-   'UseXfmrSaturation': True},
+   'UseXfmrSaturation': True,
+   'UseMATPOWER': True},
   {'id': '62CB0930-211D-4762-B5C1-27BF73EAC7C4',
    'name': 'SMIBDLL', 
    'desc': '12 buses in a test harness, 1 IBR in a DLL',
@@ -87,7 +75,8 @@ CASES = [
    'nuclear_units': [],
    'swingbus': '5', 
    'load': 1.0, 
-   'UseXfmrSaturation': True}
+   'UseXfmrSaturation': True,
+   'UseMATPOWER': False}
 ]
 """A list containing example case configurations as dictionaries."""
 
@@ -125,4 +114,15 @@ def extract_case ():
       with importlib.resources.as_file(src) as fpath:
         if os.path.isfile(fpath):
           shutil.copy(fpath, '.')
+
+  # Python script files
+  for fname in ['raw_to_rdf.py', 'bps_make_mpow.py', 'mpow.py', 'cim_to_atp.py']:
+    if not os.path.isfile('./{:s}'.format(fname)):
+      src = importlib.resources.files('emthub.data').joinpath(fname)
+      with importlib.resources.as_file(src) as fpath:
+        if os.path.isfile(fpath):
+          shutil.copy(fpath, '.')
+
+
+
 

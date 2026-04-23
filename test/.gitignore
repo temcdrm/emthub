@@ -1,4 +1,10 @@
 *.raw
 *.dyr
 *_mRIDs.dat
-*_Network.json
+*.json
+*.xml
+*.prm
+*.atp
+*.py
+*.pch
+matpower_write_ic.m

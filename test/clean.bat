@@ -4,6 +4,12 @@ del *.raw
 del *_Network.json
 del *_mRIDs.dat
 
+rem clean up my local scripts
+del raw_to_rdf.py
+del bps_make_mpow.py
+del mpow.py
+del cim_to_atp.py
+
 rem clean up after MATPOWER
 del solve*.m
 del *Solved.m

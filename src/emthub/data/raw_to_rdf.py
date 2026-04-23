@@ -9,7 +9,7 @@ if __name__ == '__main__':
     case_id = int(sys.argv[1])
   case = emthub.CASES[case_id]
 
-  tables, kvbases, bus_kvbases, baseMVA = emthub.load_psse_rawfile (case['rawfile'])
+  tables, kvbases, bus_kvbases, baseMVA = emthub.load_psse_rawfile (case['name']+'.raw')
 #  emthub.print_psse_table (tables, 'GENERATOR')
 
   print ('All kV Bases =', kvbases)
