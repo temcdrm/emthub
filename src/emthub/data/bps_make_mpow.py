@@ -7,7 +7,7 @@ import rdflib
 import emthub.api as emthub
 
 if __name__ == '__main__':
-  case_id = 3
+  case_id = 0
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
   case = emthub.CASES[case_id]
@@ -20,7 +20,7 @@ if __name__ == '__main__':
   print ('read', len(g), 'statements from', fname)
   d = emthub.load_emt_dict (g, case['id'], bTiming=True)
 
-  fp = open ('../matpower/' + sys_name + '.m', 'w')
+  fp = open (sys_name + '.m', 'w')
   emthub.create_matpower (d, sys_name, fp, case['swingbus'], case['load'])
   fp.close()
 

@@ -8,6 +8,7 @@ rem clean up my local scripts
 del raw_to_rdf.py
 del bps_make_mpow.py
 del mpow.py
+del ic_to_rdf.py
 del cim_to_atp.py
 
 rem clean up after MATPOWER
@@ -16,6 +17,7 @@ del *Solved.m
 del matpower_*.m
 
 rem clean up after ATP
+del *.atpmap
 del *_base.atp
 del *.prm
 del *.lis

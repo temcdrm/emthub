@@ -116,7 +116,7 @@ def extract_case ():
           shutil.copy(fpath, '.')
 
   # Python script files
-  for fname in ['raw_to_rdf.py', 'bps_make_mpow.py', 'mpow.py', 'cim_to_atp.py']:
+  for fname in ['raw_to_rdf.py', 'bps_make_mpow.py', 'mpow.py', 'ic_to_rdf.py', 'cim_to_atp.py']:
     if not os.path.isfile('./{:s}'.format(fname)):
       src = importlib.resources.files('emthub.data').joinpath(fname)
       with importlib.resources.as_file(src) as fpath:

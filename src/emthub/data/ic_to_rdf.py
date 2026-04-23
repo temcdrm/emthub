@@ -13,19 +13,22 @@ EMT_NS = 'http://opensource.ieee.org/emtiop#'
 
 def create_cim_ic (case):
   bus_ic = None
-  if 'bus_ic' in case and os.path.exists(case['bus_ic']):
-    bus_ic = pd.read_csv (case['bus_ic'])
-    print ('Initial bus numbers, base kV, Vpus, angles, and CN ids from', case['bus_ic'], 'read', bus_ic.shape)
+  bus_name = case['name']+'mb.txt'
+  if os.path.exists(bus_name):
+    bus_ic = pd.read_csv (bus_name)
+    print ('Initial bus numbers, base kV, Vpus, angles, and CN ids from', bus_name, 'read', bus_ic.shape)
     #print (bus_ic)
   gen_ic = None
-  if 'gen_ic' in case and os.path.exists(case['gen_ic']):
-    gen_ic = pd.read_csv (case['gen_ic'])
-    print ('Generator bus, p, q, types, and EQ ids from', case['gen_ic'], 'read', gen_ic.shape)
+  gen_name = case['name']+'mg.txt'
+  if os.path.exists(gen_name):
+    gen_ic = pd.read_csv (gen_name)
+    print ('Generator bus, p, q, types, and EQ ids from', gen_name, 'read', gen_ic.shape)
     #print (gen_ic)
   br_ic = None
-  if 'br_ic' in case and os.path.exists(case['br_ic']):
-    br_ic = pd.read_csv (case['br_ic'])
-    print ('Branch from, to, tap, pf, qf, pt, qt and EQ/XfEnd ids from', case['br_ic'], 'read', br_ic.shape)
+  br_name = case['name']+'mbr.txt'
+  if os.path.exists(br_name):
+    br_ic = pd.read_csv (br_name)
+    print ('Branch from, to, tap, pf, qf, pt, qt and EQ/XfEnd ids from', br_name, 'read', br_ic.shape)
     print (br_ic)
 
   g = rdflib.Graph()
@@ -77,12 +80,13 @@ def create_cim_ic (case):
     CIM.SvPowerFlow,
     CIM.SvVoltage
   ]
-  with open(case['ttl_ic'], 'wb') as fp:
+  ic_name = case['name']+'_ic.ttl'
+  with open(ic_name, 'wb') as fp:
     serializer.serialize(fp)
-  print ('wrote initial conditions to', case['ttl_ic'])
+  print ('wrote initial conditions to', ic_name)
 
 if __name__ == '__main__':
-  idx = 3
+  idx = 0
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
   case = emthub.CASES[idx]
