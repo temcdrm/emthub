@@ -1,5 +1,5 @@
 BEGIN NEW DATA CASE
-$INCLUDE, smib.prm
+$INCLUDE, smibdll.prm
 C  dT  >< Tmax >< Xopt >< Copt ><Epsiln>
 __DELTAT____TMAX    60.0
    65535       1       1       1       1       0       0       1

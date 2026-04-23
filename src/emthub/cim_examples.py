@@ -3,41 +3,45 @@
 import importlib.resources
 import shutil
 import sys
+import os
 
 CASES = [
   {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56',
    'name': 'IEEE39', 
    'desc': '39 buses, 9 machines, 1 IBR',
    'legend_loc': 'lower right',
-   'rawfile': 'raw/IEEE39.raw', 'xmlfile':'ieee39.xml', 'locfile': 'raw/ieee39_network.json', 'mridfile':'raw/ieee39mrids.dat', 'ttlfile': 'ieee39.ttl',
-   'wind_units': [], 'solar_units': ['30_1'], 'hydro_units': [], 'nuclear_units': [],
+   'wind_units': [], 
+   'solar_units': ['30_1'], 
+   'hydro_units': [], 
+   'nuclear_units': [],
    'bus_ic': '../matpower/ieee39mb.txt',
    'gen_ic': '../matpower/ieee39mg.txt',
    'br_ic': '../matpower/ieee39mbr.txt',
    'ttl_ic': 'ieee39_ic.ttl',
    'swingbus': '31',
-   'load': 1.0, 'UseXfmrSaturation': False, 'dyrfile': 'raw/ieee39_1ibr.dyr'},
+   'load': 1.0, 
+   'UseXfmrSaturation': False},
   {'id': '1783D2A8-1204-4781-A0B4-7A73A2FA6038', 
    'name': 'IEEE118', 
    'desc': '193 buses, 56 machines, 19 IBR',
    'legend_loc': 'best', 
-   'rawfile':'raw/IEEE118.raw', 'xmlfile':'ieee118.xml', 'locfile': 'raw/ieee118_network.json', 'mridfile':'raw/ieee118mrids.dat', 'ttlfile': 'ieee118.ttl',
    'wind_units': ['132_W', '136_W', '138_W', '168_W', '180_W'],
    'solar_units': ['126_S', '128_S', '130_S', '140_S', '149_S', 
                    '151_S', '159_S', '165_S', '175_S', '179_S', 
                    '183_S', '185_S', '188_S', '191_S'],
-   'hydro_units': [], 'nuclear_units': [],   
+   'hydro_units': [], 
+   'nuclear_units': [],   
    'bus_ic': '../matpower/ieee118mb.txt',
    'gen_ic': '../matpower/ieee118mg.txt',
    'br_ic': '../matpower/ieee118mbr.txt',
    'ttl_ic': 'ieee118_ic.ttl',
    'swingbus':'131', 
-   'load': 0.6748, 'UseXfmrSaturation': False, 'dyrfile': 'raw/IEEE118.dyr'},
+   'load': 0.6748, 
+   'UseXfmrSaturation': False},
   {'id': '2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3', 
    'name': 'WECC240', 
    'desc': '333 buses, 105 machines, 35 IBR',
    'legend_loc': 'best',
-   'rawfile':'raw/WECC240.raw', 'xmlfile':'wecc240.xml', 'locfile': 'raw/wecc240_network.json', 'mridfile':'raw/wecc240mrids.dat', 'ttlfile': 'wecc240.ttl',
    'wind_units': ['10322_S', '10342_W', '13332_S', '21301_G',  '2332_S', 
                    '2431_S',  '2434_S', '24382_RG', '24386_SW', '2439_S'],
    'solar_units': ['2533_S', '2631_S', '32343_NW', '34331_S', '38351_NG', 
@@ -56,24 +60,34 @@ CASES = [
    'ttl_ic': 'wecc240_ic.ttl',
    'swingbus':'3831',
    'old_swingbus':'2438', 
-   'load': 1.02, 'UseXfmrSaturation': False, 'dyrfile': 'raw/WECC240.dyr'},
+   'load': 1.02, 
+   'UseXfmrSaturation': False},
   {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
    'name':'XfmrSat', 
    'desc': '5 buses, load rejection with transformer saturation',
    'legend_loc': 'best', 
-   'rawfile':'raw/XfmrSat.raw', 'xmlfile':'XfmrSat.xml', 'mridfile': 'raw/XfmrSatmrids.dat', 'ttlfile': 'XfmrSat.ttl',
-   'wind_units':[], 'solar_units':[], 'hydro_units':[], 'nuclear_units':[],
+   'wind_units':[], 
+   'solar_units':[], 
+   'hydro_units':[], 
+   'nuclear_units':[],
    'bus_ic': '../matpower/XfmrSatmb.txt',
    'gen_ic': '../matpower/XfmrSatmg.txt',
    'br_ic': '../matpower/XfmrSatmbr.txt',
    'ttl_ic': 'XfmrSat_ic.ttl',
-   'swingbus': '1', 'load':1.0, 'emergency_ratings': True, 'UseXfmrSaturation': True, 'dyrfile': None},
+   'swingbus': '1', 
+   'load':1.0, 
+   'emergency_ratings': True, 
+   'UseXfmrSaturation': True},
   {'id': '62CB0930-211D-4762-B5C1-27BF73EAC7C4',
    'name': 'SMIBDLL', 
    'desc': '12 buses in a test harness, 1 IBR in a DLL',
-   'xmlfile':'smibdll.xml', 'mridfile':'raw/smibdll_mrids.dat', 'ttlfile': 'smibdll.ttl',
-   'wind_units': [], 'solar_units': ['1_1'], 'hydro_units': [], 'nuclear_units': [],
-   'swingbus': '5', 'load': 1.0, 'UseXfmrSaturation': True}
+   'wind_units': [], 
+   'solar_units': ['1_1'], 
+   'hydro_units': [], 
+   'nuclear_units': [],
+   'swingbus': '5', 
+   'load': 1.0, 
+   'UseXfmrSaturation': True}
 ]
 """A list containing example case configurations as dictionaries."""
 
@@ -97,8 +111,18 @@ def extract_case ():
   case = CASES[idx]
   root = case['name']
 
-  for ext in ['.raw', '.dyr', '_Network.json', '_mRIDs.dat']:
-    src = importlib.resources.files('emthub.data').joinpath('{:s}.raw'.format(root))
+  # case-specific example files
+  for ext in ['.raw', '.dyr', '_Network.json', '_mRIDs.dat', '_base.atp', '.prm']:
+    src = importlib.resources.files('emthub.data').joinpath('{:s}{:s}'.format(root, ext))
     with importlib.resources.as_file(src) as fpath:
-      shutil.copy(fpath, '.')
+      if os.path.isfile(fpath):
+        shutil.copy(fpath, '.')
+
+  # MATPOWER and ATP support files
+  for fname in ['matpower_write_ic.m', 'ibr.pch', 'syncmach.pch', 'tacspv3.pch']:
+    if not os.path.isfile('./{:s}'.format(fname)):
+      src = importlib.resources.files('emthub.data').joinpath(fname)
+      with importlib.resources.as_file(src) as fpath:
+        if os.path.isfile(fpath):
+          shutil.copy(fpath, '.')
 
