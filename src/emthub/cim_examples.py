@@ -76,7 +76,8 @@ CASES = [
    'swingbus': '5', 
    'load': 1.0, 
    'UseXfmrSaturation': True,
-   'UseMATPOWER': False}
+   'UseMATPOWER': False,
+   'ExtraFiles': ['create_smib_dll.py']}
 ]
 """A list containing example case configurations as dictionaries."""
 
@@ -101,11 +102,19 @@ def extract_case ():
   root = case['name']
 
   # case-specific example files
-  for ext in ['.raw', '.dyr', '_Network.json', '_mRIDs.dat', '_base.atp', '.prm']:
+  for ext in ['.raw', '.dyr', '_Network.json', '_mRIDs.dat', '.atp', '.prm']:
     src = importlib.resources.files('emthub.data').joinpath('{:s}{:s}'.format(root, ext))
     with importlib.resources.as_file(src) as fpath:
       if os.path.isfile(fpath):
         shutil.copy(fpath, '.')
+
+  if 'ExtraFiles' in case:
+    for fname in case['ExtraFiles']:
+      if not os.path.isfile('./{:s}'.format(fname)):
+        src = importlib.resources.files('emthub.data').joinpath(fname)
+        with importlib.resources.as_file(src) as fpath:
+          if os.path.isfile(fpath):
+            shutil.copy(fpath, '.')
 
   # MATPOWER and ATP support files
   for fname in ['matpower_write_ic.m', 'ibr.pch', 'syncmach.pch', 'tacspv3.pch']:
@@ -116,7 +125,7 @@ def extract_case ():
           shutil.copy(fpath, '.')
 
   # Python script files
-  for fname in ['raw_to_rdf.py', 'bps_make_mpow.py', 'mpow.py', 'ic_to_rdf.py', 'cim_to_atp.py']:
+  for fname in ['raw_to_rdf.py', 'bps_make_mpow.py', 'mpow.py', 'ic_to_rdf.py', 'cim_to_atp.py', 'atp.py']:
     if not os.path.isfile('./{:s}'.format(fname)):
       src = importlib.resources.files('emthub.data').joinpath(fname)
       with importlib.resources.as_file(src) as fpath:

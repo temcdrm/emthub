@@ -90,5 +90,8 @@ if __name__ == '__main__':
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
   case = emthub.CASES[idx]
+  if not case['UseMATPOWER']:
+    print ('{:s} does not use MATPOWER'.format(case['name']))
+    quit()
   create_cim_ic (case)
 

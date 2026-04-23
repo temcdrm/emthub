@@ -13,6 +13,9 @@ if __name__ == '__main__':
   case = emthub.CASES[case_id]
   sys_id = case['id']
   sys_name = case['name']
+  if not case['UseMATPOWER']:
+    print ('{:s} does not use MATPOWER'.format(sys_name))
+    quit()
 
   g = rdflib.Graph()
   fname = sys_name + '.ttl'

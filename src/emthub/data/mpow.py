@@ -82,7 +82,16 @@ CASES = [
      {'branch_number':449, 'new_mva':1500.0}],
    'gen_PG': None,
    'edits': None},
-  {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 'name': 'XfmrSat', 'swingbus':'1', 'load_scale': 1.0, 'gen_PG':None, 'edits':None, 'radial': True}
+  {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
+   'name': 'XfmrSat', 
+   'swingbus':'1', 
+   'load_scale': 1.0, 
+   'gen_PG':None, 
+   'edits':None, 
+   'radial': True},
+  {'id': '62CB0930-211D-4762-B5C1-27BF73EAC7C4',
+   'name': 'SMIBDLL', 
+   'UseMATPOWER': False}
   ]
 
 
@@ -238,6 +247,10 @@ if __name__ == '__main__':
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
   sys_name = CASES[case_id]['name']
+  if 'UseMATPOWER' in CASES[case_id]:
+    if not CASES[case_id]['UseMATPOWER']:
+      print ('{:s} does not use MATPOWER'.format(sys_name))
+      quit()
   load_scale = CASES[case_id]['load_scale']
   d = mpow.read_matpower_casefile ('{:s}.m'.format (sys_name))
   mpow.summarize_casefile (d, 'Input')

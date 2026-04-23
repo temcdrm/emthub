@@ -1093,7 +1093,7 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
     EMT(Namespace): an RDF namespace for the EMT extensions, same as input
   """
   uuids = {}
-  fuidname = case['mridfile']
+  fuidname = case['name']+'_mRIDs.dat'
   if os.path.exists(fuidname):
     #print ('reading instance mRIDs from ', fuidname)
     fuid = open (fuidname, 'r')
