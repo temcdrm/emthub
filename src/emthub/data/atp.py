@@ -10,14 +10,59 @@ import operator
 import subprocess
 import os
 import shutil
-import random
-#import h5utils
-import numpy
+import pandas as pd
+import numpy as np
+from comtrade import Comtrade
+import matplotlib.pyplot as plt
+from scipy import signal
 
 atp_roots = ['IEEE39', 'IEEE118', 'WECC240', 'XfmrSat', 'SMIBDLL']
 atp_path = '.'
 
-def run_atp_case(atp_root):
+def summarize_df (df, label):
+  print ('Column                         Min           Max {:s}'.format (label))
+  for lbl, data in df.items():
+    print ('{:20s} {:13.5f} {:13.5f}'.format (lbl, data.min(), data.max()))
+
+def make_pd_key (prefix, tok1, tok2 = None):
+  key = '{:s}:{:s}'.format (prefix, tok1.lstrip().rstrip().replace('_', ''))
+  if tok2 is not None:
+    key = '{:s}:{:s}'.format (key, tok2.lstrip().rstrip().replace('_', ''))
+  return key
+
+def comtrade_to_pd5 (atp_root):
+  chan = {}
+  rec = Comtrade ()
+  rec.load (atp_root + '.cfg', atp_root + '.dat')
+  t = np.array(rec.time)
+  t = np.linspace (t[0], t[-1], len(t)) # COMTRADE does not have sub-microsecond time steps
+  for i in range(rec.analog_count):
+    lbl = rec.analog_channel_ids[i]
+    tok1 = lbl[0:6]
+    tok2 = lbl[7:13]
+    tok3 = lbl[14:]
+#    print ('"{:s}" "{:s}" "{:s}" "{:s}"'.format (lbl, tok1, tok2, tok3))
+    key = None
+    if tok1 == 'TACS  ':
+      key = make_pd_key ('T', tok2)
+    elif tok1 == 'MODELS':
+      key = make_pd_key ('M', tok2)
+    elif tok3 == 'V-branch':
+      key = make_pd_key ('V', tok1, tok2)
+    elif tok3 == '  V-node':
+      key = make_pd_key ('V', tok1)
+    elif tok3 == 'I-branch':
+      key = make_pd_key ('I', tok1, tok2)
+    else:
+      print ('Unrecognized COMTRADE Channel {:d} "{:s}"'.format (i, lbl))
+    if key is not None:
+      chan[key] = np.array (rec.analog[i])
+
+  df = pd.DataFrame(data=chan, index=t)
+  df.info()
+  df.to_hdf(atp_root + '.hdf5', key='Base', mode='w', complevel=4)
+
+def run_atp_case (atp_root):
   cmdline = 'c:\\atp\\atpgnu\\runtpgig ' + atp_root + '.atp >nul'
   print (cmdline)
   pw0 = subprocess.Popen (cmdline, cwd=atp_path, shell=True)
@@ -35,7 +80,7 @@ def run_atp_case(atp_root):
 
 if __name__ == '__main__':
   if len(sys.argv) != 3:
-    print ('Usage: python atp.py idx [run|convert|plot]')
+    print ('Usage: python atp.py idx [run|convert|plot|png]')
     quit()
   idx = int(sys.argv[1])
   opt = sys.argv[2]
@@ -46,8 +91,11 @@ if __name__ == '__main__':
     run_atp_case (atp_root)
   elif opt == 'convert':
     print ('convert', idx)
+    comtrade_to_pd5 (atp_root)
   elif opt == 'plot':
     print ('plot', idx)
+  elif opt == 'png':
+    print ('png', idx)
   else:
     print ('Unrecognized option:', opt)
 
