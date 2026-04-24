@@ -41,4 +41,5 @@ del *.cfg 2>nul
 rem still relevant?
 del README.html 2>nul
 del *.mod 2>nul
+del *.png 2>nul
 

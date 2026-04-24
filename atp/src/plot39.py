@@ -32,7 +32,7 @@ if __name__ == '__main__':
   ibr_end = 2
 
   df = pd.read_hdf('IEEE39.hdf5')
-# summarize_df (df, 'IEEE 118-bus Case')
+#  summarize_df (df, 'IEEE 118-bus Case')
   print ('Column                 Min           Max')
   key = 'I:FAULTC:'
   data = df[key]
@@ -61,7 +61,7 @@ if __name__ == '__main__':
   fig, ax = plt.subplots (2, 4, sharex = 'col', figsize=(21,9), constrained_layout=True)
   fig.suptitle ('IEEE 39-bus Case')
   t = np.array(df.index)
-  fmin = np.where(t==tpll)
+  fmin = np.where(t>=tpll)
   amin = np.where(t==tmin)
   amax = np.where(t==tmax)
   ifmin = int(fmin[0][0])
