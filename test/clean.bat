@@ -11,11 +11,14 @@ del bps_make_mpow.py 2>nul
 del mpow.py 2>nul
 del ic_to_rdf.py 2>nul
 del cim_to_atp.py 2>nul
+del atp.py 2>nul
+del create_smib_dll.py 2>nul
 
 rem clean up after MATPOWER
 del solve*.m 2>nul
 del *Solved.m 2>nul
 del matpower_*.m 2>nul
+git checkout *summary.txt 2>nul
 
 rem clean up after ATP
 del IEEE39.atp 2>nul

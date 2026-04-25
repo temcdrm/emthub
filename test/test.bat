@@ -13,3 +13,5 @@ for /L %%i in (0,1,3) do (
 emthub-extract-case 4
 python create_smib_dll.py 4
 python cim_to_atp.py 4
+
+python cim_summary.py

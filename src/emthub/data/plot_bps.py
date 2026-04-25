@@ -15,7 +15,7 @@ if __name__ == '__main__':
   case = emthub.CASES[case_id]
   sys_name = case['name']
   loc = case['legend_loc']
-  G = emthub.load_system_graph ('./raw/{:s}_Network.json'.format(sys_name))
+  G = emthub.load_system_graph ('{:s}_Network.json'.format(sys_name))
   emthub.plot_system_graph (G, sys_name, plot_labels, loc)
 
 
