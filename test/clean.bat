@@ -13,6 +13,8 @@ del ic_to_rdf.py 2>nul
 del cim_to_atp.py 2>nul
 del atp.py 2>nul
 del create_smib_dll.py 2>nul
+del plot_bps.py 2>nul
+del cim_summary.py 2>nul
 
 rem clean up after MATPOWER
 del solve*.m 2>nul
