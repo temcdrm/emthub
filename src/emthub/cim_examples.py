@@ -5,6 +5,8 @@ import shutil
 import sys
 import os
 
+RDIR = 'emthub.examples'
+
 CASES = [
   {'id': '6477751A-0472-4FD6-B3C3-3AD4945CBE56',
    'name': 'IEEE39', 
@@ -103,7 +105,7 @@ def extract_case ():
 
   # case-specific example files
   for ext in ['.raw', '.dyr', '_Network.json', '_mRIDs.dat', '.atp', '.prm']:
-    src = importlib.resources.files('emthub.data').joinpath('{:s}{:s}'.format(root, ext))
+    src = importlib.resources.files(RDIR).joinpath('{:s}{:s}'.format(root, ext))
     with importlib.resources.as_file(src) as fpath:
       if os.path.isfile(fpath):
         shutil.copy(fpath, '.')
@@ -111,7 +113,7 @@ def extract_case ():
   if 'ExtraFiles' in case:
     for fname in case['ExtraFiles']:
       if not os.path.isfile('./{:s}'.format(fname)):
-        src = importlib.resources.files('emthub.data').joinpath(fname)
+        src = importlib.resources.files(RDIR).joinpath(fname)
         with importlib.resources.as_file(src) as fpath:
           if os.path.isfile(fpath):
             shutil.copy(fpath, '.')
@@ -119,7 +121,7 @@ def extract_case ():
   # MATPOWER and ATP support files
   for fname in ['matpower_write_ic.m', 'ibr.pch', 'syncmach.pch', 'tacspv3.pch']:
     if not os.path.isfile('./{:s}'.format(fname)):
-      src = importlib.resources.files('emthub.data').joinpath(fname)
+      src = importlib.resources.files(RDIR).joinpath(fname)
       with importlib.resources.as_file(src) as fpath:
         if os.path.isfile(fpath):
           shutil.copy(fpath, '.')
@@ -128,7 +130,7 @@ def extract_case ():
   for fname in ['raw_to_rdf.py', 'bps_make_mpow.py', 'mpow.py', 'ic_to_rdf.py', 
                 'cim_to_atp.py', 'atp.py', 'plot_bps.py', 'cim_summary.py']:
     if not os.path.isfile('./{:s}'.format(fname)):
-      src = importlib.resources.files('emthub.data').joinpath(fname)
+      src = importlib.resources.files(RDIR).joinpath(fname)
       with importlib.resources.as_file(src) as fpath:
         if os.path.isfile(fpath):
           shutil.copy(fpath, '.')
