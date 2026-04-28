@@ -67,7 +67,7 @@ def list_dict_table(dict, tag=None):
 def build_query (prefix, base, sysid):
   if sysid is not None:
     idx = base.find('WHERE {') + 8
-    return prefix + '\n' + base[:idx] + """ VALUES ?sysid {{"{:s}"^^c:String}}\n""".format (sysid) + base[idx:]
+    return prefix + '\n' + base[:idx] + """ VALUES ?EquipmentContainer_mRID {{"{:s}"^^c:String}}\n""".format (sysid) + base[idx:]
   return prefix + '\n' + base
 
 def query_for_values (g, tbl, sysid):
@@ -93,7 +93,13 @@ def query_for_values (g, tbl, sysid):
       #print ('  ', key, fld, b[fld])
       if b[fld] is None:
         row[fld] = None
-      elif fld in ['pname', 'name', 'conn', 'sysid', 'bus', 'bus1', 'bus2', 'id', 'eqid', 'endid']:
+      elif 'mRID' in fld:
+        row[fld] = str(b[fld])
+      elif '_name' in fld:
+        row[fld] = str(b[fld])
+      elif '_type' in fld:
+        row[fld] = str(b[fld])
+      elif fld in ['name', 'connectionKind', 'vectorGroup', 'inputSignalType', 'kind', 'parameterKind', 'unit']:
         row[fld] = str(b[fld])
       else:
         try:

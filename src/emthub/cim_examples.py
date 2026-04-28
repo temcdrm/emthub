@@ -128,7 +128,8 @@ def extract_case ():
 
   # Python script files
   for fname in ['raw_to_rdf.py', 'bps_make_mpow.py', 'mpow.py', 'ic_to_rdf.py', 
-                'cim_to_atp.py', 'atp.py', 'plot_bps.py', 'cim_summary.py']:
+                'cim_to_atp.py', 'atp.py', 'plot_bps.py', 'cim_summary.py',
+                'test_cim_sparql.py']:
     if not os.path.isfile('./{:s}'.format(fname)):
       src = importlib.resources.files(RDIR).joinpath(fname)
       with importlib.resources.as_file(src) as fpath:
