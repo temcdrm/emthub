@@ -44,7 +44,7 @@ def list_dict_table(dict, tag=None):
 
   Args:
     dict (dict): result from *load_emt_dict*, *load_ic_dict*, or *adhoc_sparql_dict*
-    tag (str): should be a loaded table name, 'Adhoc Query'. If it includes \* then the table is multi-keyed.
+    tag (str): should be a loaded table name, 'Adhoc Query'. If it includes \\* then the table is multi-keyed.
   """
 
   bMultiKey = False
