@@ -452,7 +452,10 @@ def plot_case (atp_root, bPng):
   plt.close()
 
 def run_atp_case (atp_root):
-  cmdline = 'c:\\atp\\atpmingw\\mytpbig ' + atp_root + '.atp >nul'
+  if atp_root == 'SMIBDLL':
+    cmdline = 'c:\\atp\\atpmingw\\mytpbig ' + atp_root + '.atp >nul'
+  else:
+    cmdline = 'c:\\atp\\atpgnu\\runtpgig ' + atp_root + '.atp >nul'
   print (cmdline)
   pw0 = subprocess.Popen (cmdline, cwd=atp_path, shell=True)
   pw0.wait()
