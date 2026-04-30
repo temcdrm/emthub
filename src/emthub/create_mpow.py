@@ -9,6 +9,7 @@
 import cmath
 from .buslists import build_bus_lists
 from .buslists import get_swingbus_id
+from .cim_sparql import list_dict_table
 
 FUELS = {
   'hydro':  {'c2':1.0e-5, 'c1': 1.29, 'c0': 0.0},
@@ -34,10 +35,15 @@ def get_gencosts(fuel):
     c0 = FUELS[fuel]['c0']
   return c2, c1, c0
 
-def add_mpc_generator (gens, data, bus_numbers, bus_generation, bus_headroom):
-  busnum = bus_numbers[data['cn1id']]
+def add_mpc_generator (gens, data, bus_numbers, bus_generation, bus_headroom, bIbr=False):
+  busnum = bus_numbers[data['FromConnectivityNode_mRID']]
   Pg = data['p']/1.0e6
-  Pmax = data['maxP']/1.0e6
+  if bIbr: # the CIM UML used different attribute names for SynchronousMachine and PowerElectronicsConnection
+    Pmax = data['maxP']/1.0e6
+    Pmin = data['minP']/1.0e6
+  else:
+    Pmax = data['maxOperatingP']/1.0e6
+    Pmin = data['minOperatingP']/1.0e6
   Pheadroom = Pmax - Pg
   if busnum in bus_generation:
     bus_generation[busnum] += Pg
@@ -59,15 +65,15 @@ def add_mpc_generator (gens, data, bus_numbers, bus_generation, bus_headroom):
                 'mBase':data['ratedS']/1.0e6,
                 'status':status,
                 'Pmax':Pmax,
-                'Pmin':data['minP']/1.0e6,
+                'Pmin':Pmin,
                 'Pc1':0.0, 'Pc2':0.0, 'Qc1min':0.0, 'Qc1max':0.0, 'Qc2min':0.0, 'Qc2max':0.0,
                 'ramp_agc':0.0, 'ramp_10':0.0, 'ramp_30':0.0, 'ramp_q':0.0, 'apf':0.0})
 
 def find_branch_normal_rating (eqid, d):
   val = 0.0
   for key, data in d['EMTBranchLimit']['vals'].items():
-    if eqid == data['eqid']:
-      if data['inf'] == 'true':
+    if eqid == data['Equipment_mRID']:
+      if data['isInfiniteDuration'] == 'true':
         val = data['value']
         return val / 1.0e6
   return val
@@ -115,7 +121,7 @@ mpc.bus = [""", file=fp)
                        'area':1,
                        'Vm':1.0,
                        'Va':0.0,
-                       'baseKV':data['nomv'] * 0.001,
+                       'baseKV':data['BaseVoltage_nominalVoltage'] * 0.001,
                        'zone':1,
                        'Vmax':1.1,
                        'Vmin':0.9})
@@ -124,23 +130,23 @@ mpc.bus = [""", file=fp)
   # add loads and shunts to buses
   total_load = 0.0
   for key, data in d['EMTLoad']['vals'].items():
-    idx = bus_numbers[data['cn1id']]-1
+    idx = bus_numbers[data['FromConnectivityNode_mRID']]-1
     Pd = scale * data['p'] / 1.0e6
     Qd = scale * data['q'] / 1.0e6
     total_load += Pd
-    if constant_impedance (data['pz'], data['pi'], data['pp']):
+    if constant_impedance (data['pConstantImpedance'], data['pConstantCurrent'], data['pConstantPower']):
       mpc_buses[idx]['Gs'] += Pd
     else:
       mpc_buses[idx]['Pd'] += Pd
-    if constant_impedance (data['qz'], data['qi'], data['qz']):
+    if constant_impedance (data['qConstantImpedance'], data['qConstantCurrent'], data['qConstantPower']):
       mpc_buses[idx]['Bs'] -= Qd
     else:
       mpc_buses[idx]['Qd'] += Qd
   for key, data in d['EMTCompShunt']['vals'].items():
-    idx = bus_numbers[data['cn1id']]-1
-    scale = data['sections']*data['nomu']*data['nomu']/1.0e6
-    mpc_buses[idx]['Gs'] += data['gsection']*scale
-    mpc_buses[idx]['Bs'] += data['bsection']*scale
+    idx = bus_numbers[data['FromConnectivityNode_mRID']]-1
+    scale = data['sections']*data['nomU']*data['nomU']/1.0e6
+    mpc_buses[idx]['Gs'] += data['gPerSection']*scale
+    mpc_buses[idx]['Bs'] += data['bPerSection']*scale
   # any bus with a generator is type 2; bus with most total generation is type 3
   mpc_generators = []
   mpc_gen_ids = []
@@ -148,14 +154,15 @@ mpc.bus = [""", file=fp)
   mpc_gentypes = []
   bus_generation = {}
   bus_headroom = {}
+  #list_dict_table (d, 'EMTSyncMachine')
   for key, data in d['EMTSyncMachine']['vals'].items():
-    idx = bus_numbers[data['cn1id']]-1
+    idx = bus_numbers[data['FromConnectivityNode_mRID']]-1
     mpc_buses[idx]['type'] = 2
     add_mpc_generator (mpc_generators, data, bus_numbers, bus_generation, bus_headroom)
-    if data['type'] == 'Hydro':
+    if data['GeneratingUnit_type'] == 'Hydro':
       mpc_genfuels.append('hydro')
       mpc_gentypes.append('HY')
-    elif data['type'] == 'Nuclear':
+    elif data['GeneratingUnit_type'] == 'Nuclear':
       mpc_genfuels.append('nuclear')
       mpc_gentypes.append('ST')
     else:
@@ -163,16 +170,16 @@ mpc.bus = [""", file=fp)
       mpc_gentypes.append('ST')
     mpc_gen_ids.append(key)
   for key, data in d['EMTSolar']['vals'].items():
-    idx = bus_numbers[data['cn1id']]-1
+    idx = bus_numbers[data['FromConnectivityNode_mRID']]-1
     mpc_buses[idx]['type'] = 2
-    add_mpc_generator (mpc_generators, data, bus_numbers, bus_generation, bus_headroom)
+    add_mpc_generator (mpc_generators, data, bus_numbers, bus_generation, bus_headroom, bIbr=True)
     mpc_genfuels.append('solar')
     mpc_gentypes.append('PV')
     mpc_gen_ids.append(key)
   for key, data in d['EMTWind']['vals'].items():
-    idx = bus_numbers[data['cn1id']]-1
+    idx = bus_numbers[data['FromConnectivityNode_mRID']]-1
     mpc_buses[idx]['type'] = 2
-    add_mpc_generator (mpc_generators, data, bus_numbers, bus_generation, bus_headroom)
+    add_mpc_generator (mpc_generators, data, bus_numbers, bus_generation, bus_headroom, bIbr=True)
     mpc_genfuels.append('wind')
     mpc_gentypes.append('WT')
     mpc_gen_ids.append(key)
@@ -221,12 +228,12 @@ mpc.gen = [""", file=fp)
   for key, data in d['EMTPowerXfmrWinding']['vals'].items():
     toks = key.split(':')
     pname = toks[0]
-    bus = bus_numbers[data['cn1id']]
+    bus = bus_numbers[data['FromConnectivityNode_mRID']]
     if pname not in xfmrs:
-      fid = data['id']
+      fid = data['mRID']
       ratio = 1.0
       if fid in d['EMTXfmrTap']['vals']:
-        ratio = 1.0 + (d['EMTXfmrTap']['vals'][fid]['svi']*d['EMTXfmrTap']['vals'][fid]['step']) / 100.0
+        ratio = 1.0 + (d['EMTXfmrTap']['vals'][fid]['stepVoltageIncrement']*d['EMTXfmrTap']['vals'][fid]['step']) / 100.0
         print (' * found tap={:8.6f} for winding {:s}'.format (ratio, fid))
       mva = data['ratedS'] / 1.0e6
       kv = data['ratedU'] / 1.0e3
@@ -234,7 +241,7 @@ mpc.gen = [""", file=fp)
       xfmrs[pname] = {'from':bus, 'mva':mva, 'ratio': ratio, 'end1id': fid}
     else:
       xfmrs[pname]['to'] = bus
-      tid = data['id']
+      tid = data['mRID']
       mesh = d['EMTPowerXfmrMesh']['vals']['{:s}:{:s}'.format(fid, tid)]
       r = mesh['r'] / zbase
       x = mesh['x'] / zbase
@@ -250,9 +257,9 @@ mpc.gen = [""", file=fp)
 mpc.branch = [""", file=fp)
   for key, data in d['EMTLine']['vals'].items():
     rateA = find_branch_normal_rating (key, d)
-    bus1 = bus_numbers[data['cn1id']]
-    bus2 = bus_numbers[data['cn2id']]
-    kvbase = data['basev']/1000.0
+    bus1 = bus_numbers[data['FromConnectivityNode_mRID']]
+    bus2 = bus_numbers[data['ToConnectivityNode_mRID']]
+    kvbase = data['BaseVoltage_nominalVoltage']/1000.0
     zbase = kvbase*kvbase/MVA_BASE
     q = data['b']*kvbase*kvbase
     r = data['r']/zbase
@@ -272,9 +279,9 @@ mpc.branch = [""", file=fp)
     mpc_xfsec_ids.append('')
   for key, data in d['EMTCompSeries']['vals'].items():
     rateA = find_branch_normal_rating (key, d)
-    bus1 = bus_numbers[data['cn1id']]
-    bus2 = bus_numbers[data['cn2id']]
-    kvbase = data['basev']/1000.0
+    bus1 = bus_numbers[data['FromConnectivityNode_mRID']]
+    bus2 = bus_numbers[data['ToConnectivityNode_mRID']]
+    kvbase = data['BaseVoltage_nominalVoltage']/1000.0
     zbase = kvbase*kvbase/MVA_BASE
     r = data['r']/zbase
     x = data['x']/zbase
@@ -283,8 +290,8 @@ mpc.branch = [""", file=fp)
     mpc_xfsec_ids.append('')
   for key, data in d['EMTDisconnectingCircuitBreaker']['vals'].items():
     rateA = find_branch_normal_rating (key, d)
-    bus1 = bus_numbers[data['cn1id']]
-    bus2 = bus_numbers[data['cn2id']]
+    bus1 = bus_numbers[data['FromConnectivityNode_mRID']]
+    bus2 = bus_numbers[data['ToConnectivityNode_mRID']]
     print (' {:5d} {:5d} 0.0 1.0e-6 0.0 {:8.3f} 0.0 0.0 0.0 0.0 1 0.0 0.0;'.format (bus1, bus2, rateA), file=fp)
     mpc_branch_ids.append(key)
     mpc_xfsec_ids.append('')
