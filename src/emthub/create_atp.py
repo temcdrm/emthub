@@ -18,6 +18,7 @@ import json
 from .buslists import build_bus_lists
 from .buslists import get_swingbus_id
 from .dll_config import write_atp_dll_interface
+from .cim_sparql import list_dict_table
 
 GEN_TYPE_ST = 0
 GEN_TYPE_PV = 1
@@ -443,6 +444,7 @@ def FormatSignalInfo (row):
   return '{:10s} {:22s} {:1s} {:s}{:s}'.format (row['name'], row['kind'], phs, mult, unit)
 
 def AppendDLL (bus, key, d, atp_path, ap):
+  #list_dict_table (d, 'EMTIBRPlantAttributes')
   if key not in d['EMTIBRPlantAttributes']['vals']:
     print ('** PEC ID', key, 'not found in extended plant attributes for DLL interface')
     return

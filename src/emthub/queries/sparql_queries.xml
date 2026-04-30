@@ -1435,7 +1435,7 @@ SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?firmwareInstalled 
 </query>
 <query>
 <id>EMTIBRPlantAttributes</id>
-<keyfld>mRID</keyfld>
+<keyfld>PowerElectronicsConnection_mRID</keyfld>
 <description>IBR plant attributes, keyed on the inverter ID for convenience.</description>
 <value>
 <![CDATA[
