@@ -240,13 +240,13 @@ def build_system_graph (d):
   # accumulate loads and generation onto the buses
   buses = d['EMTBus']['vals']
   for key, data in d['EMTLoad']['vals'].items():
-    buses[data['cn1id']]['has_load'] = True
+    buses[data['FromConnectivityNode_mRID']]['has_load'] = True
   for key, data in d['EMTSyncMachine']['vals'].items():
-    buses[data['cn1id']]['has_gen'] = True
+    buses[data['FromConnectivityNode_mRID']]['has_gen'] = True
   for key, data in d['EMTSolar']['vals'].items():
-    buses[data['cn1id']]['has_solar'] = True
+    buses[data['FromConnectivityNode_mRID']]['has_solar'] = True
   for key, data in d['EMTWind']['vals'].items():
-    buses[data['cn1id']]['has_wind'] = True
+    buses[data['FromConnectivityNode_mRID']]['has_wind'] = True
   G = nx.Graph()
   for key, data in buses.items():
     if 'has_solar' in data:
@@ -259,7 +259,7 @@ def build_system_graph (d):
       nclass='load'
     else:
       nclass='bus'
-    G.add_node (key, nclass=nclass, ndata={'kv':0.001*data['nomv'],'name':data['name']})
+    G.add_node (key, nclass=nclass, ndata={'kv':0.001*data['BaseVoltage_nominalVoltage'],'name':data['name']})
   # accumulate the transformer windings into transformers
   xfmrs = {}
   for key, data in d['EMTPowerXfmrWinding']['vals'].items():
@@ -267,25 +267,25 @@ def build_system_graph (d):
     pname = toks[0]
     busnum = 'cn{:s}id'.format(toks[1])
     if pname not in xfmrs:
-      xfmrs[pname] = {busnum:data['cn1id']}
-      xfmrs[pname]['name'] = data['pname']
+      xfmrs[pname] = {busnum:data['FromConnectivityNode_mRID']}
+      xfmrs[pname]['name'] = data['PowerTransformer_name']
     else:
-      xfmrs[pname][busnum] = data['cn1id']
+      xfmrs[pname][busnum] = data['FromConnectivityNode_mRID']
 
   # add line, transformer, series compensator, and circuit breaker branches
   for key, data in d['EMTLine']['vals'].items():
-    km = round(0.001*data['len'],3)
-    G.add_edge(data['cn1id'],data['cn2id'],eclass='line',eid=key,
-               edata={'km':km, 'kv':0.001*data['basev'], 'name':data['name']}, weight=km)
-  for key, data in xfmrs.items():
+    km = round(0.001*data['length'],3)
+    G.add_edge(data['FromConnectivityNode_mRID'],data['ToConnectivityNode_mRID'],eclass='line',eid=key,
+               edata={'km':km, 'kv':0.001*data['BaseVoltage_nominalVoltage'], 'name':data['name']}, weight=km)
+  for key, data in xfmrs.items():  # connectivity nodes are numbered for transformers because there can be more than one, i.e., the windings associate to ConnectivityNode
     G.add_edge(data['cn1id'],data['cn2id'],eclass='transformer',eid=key,
                edata={'km':1.0, 'name':data['name']}, weight=1.0)
   for key, data in d['EMTCompSeries']['vals'].items():
-    G.add_edge(data['cn1id'],data['cn2id'],eclass='series',eid=key,
-               edata={'km':1.0, 'kv':0.001*data['basev'], 'name':data['name']}, weight=1.0)
+    G.add_edge(data['FromConnectivityNode_mRID'],data['ToConnectivityNode_mRID'],eclass='series',eid=key,
+               edata={'km':1.0, 'kv':0.001*data['BaseVoltage_nominalVoltage'], 'name':data['name']}, weight=1.0)
   for key, data in d['EMTDisconnectingCircuitBreaker']['vals'].items():
-    G.add_edge(data['cn1id'],data['cn2id'],eclass='cb',eid=key,
-               edata={'km':1.0, 'kv':0.001*data['basev'], 'name':data['name']}, weight=1.0)
+    G.add_edge(data['FromConnectivityNode_mRID'],data['ToConnectivityNode_mRID'],eclass='cb',eid=key,
+               edata={'km':1.0, 'kv':0.001*data['BaseVoltage_nominalVoltage'], 'name':data['name']}, weight=1.0)
 
   # create XY coordinates for the buses
   dist = {}

@@ -15,11 +15,11 @@ if __name__ == '__main__':
 
   g = rdflib.Graph()
   fname = sys_name + '.ttl'
-  g.parse (fname)
+  g.parse ('../test/' + fname)
   print ('read', len(g), 'statements from', fname)
   d = emthub.load_emt_dict (g, case['id'], bTiming=True)
 
   G = emthub.build_system_graph (d)
-  emthub.save_system_graph (G, './raw/{:s}_Network.json'.format(sys_name))
+  emthub.save_system_graph (G, './{:s}_Network.json'.format(sys_name))
 
 

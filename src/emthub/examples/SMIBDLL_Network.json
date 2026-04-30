@@ -1,0 +1,331 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "nclass": "solar",
+      "ndata": {
+        "kv": 0.6,
+        "name": "1",
+        "x": 0.10996388332775,
+        "y": -0.06761028580988666
+      },
+      "id": "0D346513-A8C4-4B88-9115-F49FDE77FDE3"
+    },
+    {
+      "nclass": "bus",
+      "ndata": {
+        "kv": 230.0,
+        "name": "10",
+        "x": 0.08303547800697642,
+        "y": -0.037686313942804625
+      },
+      "id": "0B2BB3E3-80F5-48BC-883C-4FB49967BCC5"
+    },
+    {
+      "nclass": "bus",
+      "ndata": {
+        "kv": 230.0,
+        "name": "11",
+        "x": 0.08849674680600315,
+        "y": -0.03401469411537288
+      },
+      "id": "D3450F06-6527-4EAD-BFCD-0329101F2511"
+    },
+    {
+      "nclass": "bus",
+      "ndata": {
+        "kv": 230.0,
+        "name": "12",
+        "x": 0.08810086049480617,
+        "y": -0.03405875977078438
+      },
+      "id": "6EBC949C-1AFF-4C3E-A7C9-0B9C7E462F66"
+    },
+    {
+      "nclass": "bus",
+      "ndata": {
+        "kv": 34.5,
+        "name": "2",
+        "x": 0.10622226387266477,
+        "y": -0.06307548926700979
+      },
+      "id": "82B17EC0-8265-4653-BDBC-C2B3CC679545"
+    },
+    {
+      "nclass": "bus",
+      "ndata": {
+        "kv": 34.5,
+        "name": "3",
+        "x": 0.09207028770206677,
+        "y": -0.04506980485375616
+      },
+      "id": "EE6FE71A-A9DE-4A70-962D-76C4496A7D46"
+    },
+    {
+      "nclass": "bus",
+      "ndata": {
+        "kv": 230.0,
+        "name": "4",
+        "x": 0.08848191188405377,
+        "y": -0.03993985074962048
+      },
+      "id": "F1D8559F-C599-4317-ACC6-7DFCC8D28CAF"
+    },
+    {
+      "nclass": "bus",
+      "ndata": {
+        "kv": 230.0,
+        "name": "5",
+        "x": -1.0,
+        "y": 0.4666196644772098
+      },
+      "id": "49775C1A-39F4-48E3-B47E-834A29EC8836"
+    },
+    {
+      "nclass": "bus",
+      "ndata": {
+        "kv": 230.0,
+        "name": "6",
+        "x": 0.08249351554131565,
+        "y": -0.03893548341825759
+      },
+      "id": "B42190F4-1B21-41CD-9F12-5D2063740289"
+    },
+    {
+      "nclass": "bus",
+      "ndata": {
+        "kv": 230.0,
+        "name": "7",
+        "x": 0.08277926020780145,
+        "y": -0.03823765808183199
+      },
+      "id": "18CD2BB5-6651-472A-B7C6-74AA4503AB2F"
+    },
+    {
+      "nclass": "bus",
+      "ndata": {
+        "kv": 230.0,
+        "name": "8",
+        "x": 0.0894019356323391,
+        "y": -0.03399936563853428
+      },
+      "id": "D7FFECE8-9AF8-4EC8-82A6-F09B9E70ABFE"
+    },
+    {
+      "nclass": "bus",
+      "ndata": {
+        "kv": 230.0,
+        "name": "9",
+        "x": 0.08895385652422273,
+        "y": -0.033991958829350945
+      },
+      "id": "50F431B1-2B0D-4643-B99A-2DE6B2086D64"
+    }
+  ],
+  "edges": [
+    {
+      "eclass": "transformer",
+      "eid": "3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5",
+      "edata": {
+        "km": 1.0,
+        "name": "2_1_0_1"
+      },
+      "weight": 1.0,
+      "source": "0D346513-A8C4-4B88-9115-F49FDE77FDE3",
+      "target": "82B17EC0-8265-4653-BDBC-C2B3CC679545"
+    },
+    {
+      "eclass": "line",
+      "eid": "2A5A6262-A2C8-4A68-AC39-58146E85F4EC",
+      "edata": {
+        "km": 405.215,
+        "kv": 230.0,
+        "name": "5_10_1"
+      },
+      "weight": 405.215,
+      "source": "0B2BB3E3-80F5-48BC-883C-4FB49967BCC5",
+      "target": "49775C1A-39F4-48E3-B47E-834A29EC8836"
+    },
+    {
+      "eclass": "cb",
+      "eid": "D3C19ABF-3D9D-40E8-953F-9601694E5211",
+      "edata": {
+        "km": 1.0,
+        "kv": 230.0,
+        "name": "4_10_1"
+      },
+      "weight": 1.0,
+      "source": "0B2BB3E3-80F5-48BC-883C-4FB49967BCC5",
+      "target": "F1D8559F-C599-4317-ACC6-7DFCC8D28CAF"
+    },
+    {
+      "eclass": "line",
+      "eid": "120A5D19-D703-4508-80BC-CBACDF876508",
+      "edata": {
+        "km": 506.773,
+        "kv": 230.0,
+        "name": "5_11_1"
+      },
+      "weight": 506.773,
+      "source": "D3450F06-6527-4EAD-BFCD-0329101F2511",
+      "target": "49775C1A-39F4-48E3-B47E-834A29EC8836"
+    },
+    {
+      "eclass": "cb",
+      "eid": "389D91DA-D1F8-4642-A233-274507A27476",
+      "edata": {
+        "km": 1.0,
+        "kv": 230.0,
+        "name": "4_11_1"
+      },
+      "weight": 1.0,
+      "source": "D3450F06-6527-4EAD-BFCD-0329101F2511",
+      "target": "F1D8559F-C599-4317-ACC6-7DFCC8D28CAF"
+    },
+    {
+      "eclass": "line",
+      "eid": "19826C0D-3F20-484C-87C7-F1A70FEC6F6C",
+      "edata": {
+        "km": 676.07,
+        "kv": 230.0,
+        "name": "5_12_1"
+      },
+      "weight": 676.07,
+      "source": "6EBC949C-1AFF-4C3E-A7C9-0B9C7E462F66",
+      "target": "49775C1A-39F4-48E3-B47E-834A29EC8836"
+    },
+    {
+      "eclass": "cb",
+      "eid": "9D76B37A-5430-46E2-8E79-C83C845D5C27",
+      "edata": {
+        "km": 1.0,
+        "kv": 230.0,
+        "name": "4_12_1"
+      },
+      "weight": 1.0,
+      "source": "6EBC949C-1AFF-4C3E-A7C9-0B9C7E462F66",
+      "target": "F1D8559F-C599-4317-ACC6-7DFCC8D28CAF"
+    },
+    {
+      "eclass": "line",
+      "eid": "B720A0C7-D1AB-43FE-86E0-190BAB17F6DC",
+      "edata": {
+        "km": 3.831,
+        "kv": 34.5,
+        "name": "2_3_1"
+      },
+      "weight": 3.831,
+      "source": "82B17EC0-8265-4653-BDBC-C2B3CC679545",
+      "target": "EE6FE71A-A9DE-4A70-962D-76C4496A7D46"
+    },
+    {
+      "eclass": "transformer",
+      "eid": "553C8DD4-48BB-4255-994B-6951693FEC63",
+      "edata": {
+        "km": 1.0,
+        "name": "4_3_0_1"
+      },
+      "weight": 1.0,
+      "source": "EE6FE71A-A9DE-4A70-962D-76C4496A7D46",
+      "target": "F1D8559F-C599-4317-ACC6-7DFCC8D28CAF"
+    },
+    {
+      "eclass": "cb",
+      "eid": "ED0C0C3E-4ABF-4CC2-A3D4-913A0CE83692",
+      "edata": {
+        "km": 1.0,
+        "kv": 230.0,
+        "name": "4_6_1"
+      },
+      "weight": 1.0,
+      "source": "F1D8559F-C599-4317-ACC6-7DFCC8D28CAF",
+      "target": "B42190F4-1B21-41CD-9F12-5D2063740289"
+    },
+    {
+      "eclass": "cb",
+      "eid": "351E0161-F69F-416F-A88D-27AD71DC3B3D",
+      "edata": {
+        "km": 1.0,
+        "kv": 230.0,
+        "name": "4_7_1"
+      },
+      "weight": 1.0,
+      "source": "F1D8559F-C599-4317-ACC6-7DFCC8D28CAF",
+      "target": "18CD2BB5-6651-472A-B7C6-74AA4503AB2F"
+    },
+    {
+      "eclass": "cb",
+      "eid": "6D84F700-4E67-4194-B4FB-2909F016CCE4",
+      "edata": {
+        "km": 1.0,
+        "kv": 230.0,
+        "name": "4_8_1"
+      },
+      "weight": 1.0,
+      "source": "F1D8559F-C599-4317-ACC6-7DFCC8D28CAF",
+      "target": "D7FFECE8-9AF8-4EC8-82A6-F09B9E70ABFE"
+    },
+    {
+      "eclass": "cb",
+      "eid": "76AB8421-9974-4D8A-BF09-C3C704E7343D",
+      "edata": {
+        "km": 1.0,
+        "kv": 230.0,
+        "name": "4_9_1"
+      },
+      "weight": 1.0,
+      "source": "F1D8559F-C599-4317-ACC6-7DFCC8D28CAF",
+      "target": "50F431B1-2B0D-4643-B99A-2DE6B2086D64"
+    },
+    {
+      "eclass": "line",
+      "eid": "504652FC-355A-42E0-9462-78117DCEF0A6",
+      "edata": {
+        "km": 100.542,
+        "kv": 230.0,
+        "name": "5_6_1"
+      },
+      "weight": 100.542,
+      "source": "49775C1A-39F4-48E3-B47E-834A29EC8836",
+      "target": "B42190F4-1B21-41CD-9F12-5D2063740289"
+    },
+    {
+      "eclass": "line",
+      "eid": "B99C1747-9C7C-4F5A-B267-0EDD0DA58108",
+      "edata": {
+        "km": 202.1,
+        "kv": 230.0,
+        "name": "5_7_1"
+      },
+      "weight": 202.1,
+      "source": "49775C1A-39F4-48E3-B47E-834A29EC8836",
+      "target": "18CD2BB5-6651-472A-B7C6-74AA4503AB2F"
+    },
+    {
+      "eclass": "line",
+      "eid": "C49D5D63-F29F-4CAB-B39E-7E10D6BE7744",
+      "edata": {
+        "km": 252.879,
+        "kv": 230.0,
+        "name": "5_8_1"
+      },
+      "weight": 252.879,
+      "source": "49775C1A-39F4-48E3-B47E-834A29EC8836",
+      "target": "D7FFECE8-9AF8-4EC8-82A6-F09B9E70ABFE"
+    },
+    {
+      "eclass": "line",
+      "eid": "712C072F-5853-445F-B04E-1973FE110433",
+      "edata": {
+        "km": 337.476,
+        "kv": 230.0,
+        "name": "5_9_1"
+      },
+      "weight": 337.476,
+      "source": "49775C1A-39F4-48E3-B47E-834A29EC8836",
+      "target": "50F431B1-2B0D-4643-B99A-2DE6B2086D64"
+    }
+  ]
+}

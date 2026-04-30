@@ -71,6 +71,7 @@ CASES = [
   {'id': '62CB0930-211D-4762-B5C1-27BF73EAC7C4',
    'name': 'SMIBDLL', 
    'desc': '12 buses in a test harness, 1 IBR in a DLL',
+   'legend_loc': 'best', 
    'wind_units': [], 
    'solar_units': ['1_1'], 
    'hydro_units': [], 
