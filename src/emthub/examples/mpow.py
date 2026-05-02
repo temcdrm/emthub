@@ -83,7 +83,7 @@ CASES = [
    'gen_PG': None,
    'edits': None},
   {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
-   'name': 'XfmrSat', 
+   'name': 'XFMRSAT', 
    'swingbus':'1', 
    'load_scale': 1.0, 
    'gen_PG':None, 
