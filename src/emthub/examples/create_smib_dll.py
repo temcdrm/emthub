@@ -80,7 +80,7 @@ tables = {
       ]}}
 
 plant = {'generator': '1_1', 
-         'dll_path': '../dll/bin/gfm_gfl_ibr2.dll',
+         'dll_path': './gfm_gfl_ibr2.dll',
          'components': [
            ['ACLineSegment', '2_3_1'],
            ['PowerTransformer', '2_1_0_1'],

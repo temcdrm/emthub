@@ -80,7 +80,7 @@ CASES = [
    'load': 1.0, 
    'UseXfmrSaturation': True,
    'UseMATPOWER': False,
-   'ExtraFiles': ['create_smib_dll.py']}
+   'ExtraFiles': ['create_smib_dll.py', 'gfm_gfl_ibr2.dll', 'gfm_gfl_ibr2.dll32']}
 ]
 """A list containing example case configurations as dictionaries."""
 

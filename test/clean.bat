@@ -16,6 +16,8 @@ del create_smib_dll.py 2>nul
 del plot_bps.py 2>nul
 del cim_summary.py 2>nul
 del test_cim_sparql.py 2>nul
+del gfm_gfl_ibr2.dll 2>nul
+del gfm_gfl_ibr2.dll32 2>nul
 
 rem clean up after MATPOWER
 del solve*.m 2>nul
