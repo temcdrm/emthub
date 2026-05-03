@@ -83,7 +83,7 @@ CASES = [
    'gen_PG': None,
    'edits': None},
   {'id': '93EA6BF1-A569-4190-9590-98A62780489E', 
-   'name': 'XFMRSAT', 
+   'name': 'XfmrSat', 
    'swingbus':'1', 
    'load_scale': 1.0, 
    'gen_PG':None, 
@@ -145,9 +145,9 @@ def write_solve_file (root, load_scale=1.0, editfile=None, pg=None):
   print ("""cd {:s}""".format (os.getcwd()), file=fp)
   print ("""define_constants;""", file=fp)
   if editfile is None:
-    print ("""mpc = loadcase({:s});""".format (root.upper()), file=fp)
+    print ("""mpc = loadcase({:s});""".format (root), file=fp)
   else:
-    print("""mpcbase = loadcase({:s});""".format (root.upper()), file=fp)
+    print("""mpcbase = loadcase({:s});""".format (root), file=fp)
     print("""chgtab = {:s};""".format(editfile), file=fp)
     print("""mpc = apply_changes (1, mpcbase, chgtab);""", file=fp)
   if pg is not None:
@@ -178,9 +178,9 @@ def write_radial_file (root, load_scale=1.0, editfile=None, pg=None):
   print ("""cd {:s}""".format (os.getcwd()), file=fp)
   print ("""define_constants;""", file=fp)
   if editfile is None:
-    print ("""mpc = loadcase({:s});""".format (root.upper()), file=fp)
+    print ("""mpc = loadcase({:s});""".format (root), file=fp)
   else:
-    print("""mpcbase = loadcase({:s});""".format (root.upper()), file=fp)
+    print("""mpcbase = loadcase({:s});""".format (root), file=fp)
     print("""chgtab = {:s};""".format(editfile), file=fp)
     print("""mpc = apply_changes (1, mpcbase, chgtab);""", file=fp)
   if pg is not None:
