@@ -1,6 +1,9 @@
 API Reference
 =============
 
+.. note::
+    Example script documentation will be added.
+
 .. automodule:: emthub.__init__
 
 First ``import emthub.api as emthub``, then invoke a function like ``emthub.print_cim_summaries([filename_roots])``

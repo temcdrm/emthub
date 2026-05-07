@@ -2,16 +2,16 @@ EMTHub\ |reg|
 =============
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 3
    :caption: Contents:
 
    Overview
    Roadmap
-   Workflows
    NetworkExamples
    DLLExamples
    api
    profile
+   Queries
    Bibliography
    LICENSE
 

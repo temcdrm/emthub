@@ -7,6 +7,8 @@
 DLL Examples
 ============
 
+.. warning::
+    This section is not complete yet.
 
 .. _target-examples-scrx9:
 

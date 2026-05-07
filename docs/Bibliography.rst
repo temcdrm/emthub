@@ -19,4 +19,5 @@ For an overview of this project and its motivating use case to perform EMT studi
 - For applications of **CIM EMT modeling**, see `Martin and Fillion <https://www.ipstconf.org/papers/Proc_IPST2017/17IPST099.pdf>`_ and `Ivanov, et. al. <https://doi.org/10.1109/ISGTEUROPE62998.2024.10863427>`_.
 - For description of medium-scale public test systems with IBR, see `Maharjan et. al. <https://doi.org/10.1109/PESGM52009.2025.11224969>`_ for a modified **IEEE 39-bus system**, `Pena et. al. <https://doi.org/10.1109/TPWRS.2017.2695963>`_ for a modified **IEEE 118-bus system** and `Yuan et. al. <https://doi.org/10.1109/TD39804.2020.9299666>`_ for a modified **WECC 240-bus system**.
 - For information about writing SPARQL queries against the CIM, see `DuCharme, Learning SPARQL, 2nd ed. <https://www.learningsparql.com/>`_.
+- For a book that may help with interpretation of ATP syntax, see `Martinez-Velasco, Transient Analysis of Power Systems: A Practical Approach, Wiley-IEEE Press <https://doi.org/10.1002/9781119480549>`_.
 

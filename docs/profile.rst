@@ -1,3 +1,5 @@
+.. _target-cim-profile:
+
 CIM Extension and Profile
 =========================
 
@@ -5,9 +7,9 @@ The CIM extensions and profile for EMT are in the `emthub/emtiop` repository fol
 
 1) *emtiop.html* contains the class and attribute documentation built from CIMTool
 2) *emtiop.owl* contains the profile for CIMTool
-3) *emtiop.sql* contains the CIMTool-generated statements to build a SQL database; these don't work with Pythons _sqlite_ package
+3) *emtiop.sql* contains the CIMTool-generated statements to build a SQL database; these don't work with Pythons *sqlite* package
 4) *Emtiop.xmi* contains the CIM extensions, for importing into a UML editor that has the core CIM UML
-5) *emtiop_sqlite.sql* contains hand-edits to *emtiop.sql* that work with _sqlite_
+5) *emtiop_sqlite.sql* contains hand-edits to *emtiop.sql* that work with *sqlite*
 
 .. raw:: html
    :file: ../emtiop/emtiop.html
