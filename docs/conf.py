@@ -4,6 +4,10 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
+import subprocess
+
+script_path = os.path.abspath('build_query_doc.py')
+subprocess.run([sys.executable, script_path], check=True)
 
 # -- General configuration ------------------------------------------------
 needs_sphinx = '5.0.2'
@@ -31,8 +35,8 @@ master_doc = 'index'
 project = 'emthub'
 copyright = '2024-26, Meltran, Inc'
 author = 'Meltran, Inc'
-version = '0.0.8'
-release = '0.0.8'
+version = '0.0.9'
+release = '0.0.9'
 language = 'en'
 
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']

@@ -18,7 +18,8 @@ http://opensource.ieee.org/emtiop#
 <query>
 <id>EMTBus</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>Buses and their base voltages.</description>
+<classes>ConnectivityNode,BaseVoltage</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?name ?mRID ?BaseVoltage_nominalVoltage WHERE {
@@ -50,7 +51,8 @@ ORDER by ?name
 <query>
 <id>EMTBusXY</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>XY bus coordinates for graphical layouts.</description>
+<classes>TextDiagramObject,DiagramObjectPoint</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?name ?mRID ?text ?ConnectivityNode_mRID ?sequenceNumber ?xPosition ?yPosition WHERE {
@@ -74,7 +76,8 @@ ORDER by ?name ?sequenceNumber
 <query>
 <id>EMTSyncMachine</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A *SynchronousMachine* with dynamic parameters. The *GeneratingUnit_type* is typically *HydroGeneratingUnit*, *NuclearGeneratingUnit*, or *ThermalGeneratingUnit*.</description>
+<classes>SynchronousMachine,SynchronousMachineTimeConstantReactance</classes>
 <value>
 <![CDATA[
 SELECT ?name ?GeneratingUnit_type ?FromConnectivityNode_name ?ratedS ?ratedU ?p ?q ?maxOperatingP ?minOperatingP ?maxQ ?minQ
@@ -114,7 +117,7 @@ SELECT ?name ?GeneratingUnit_type ?FromConnectivityNode_name ?ratedS ?ratedU ?p 
  ?dyn c:SynchronousMachineTimeConstantReactance.tppqo ?tppqo.
  ?s e:ConductingEquipment.FromConnectivityNode ?cn.
  ?cn c:IdentifiedObject.mRID ?FromConnectivityNode_mRID.
- ?cn c:IdentifiedObject.name ?FromConnectivityNode_name
+ ?cn c:IdentifiedObject.name ?FromConnectivityNode_name.
 }
 ORDER by ?name
 ]]>
@@ -123,10 +126,11 @@ ORDER by ?name
 <query>
 <id>EMTLine</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A three-phase transposed line, overhead or underground.</description>
+<classes>ACLineSegment</classes>
 <value>
 <![CDATA[
-SELECT ?name ?mRID ?BaseVoltage_nominalVoltage ?FromConnectivityNode_name ?ToConnectivityNode_name ?length ?r ?x ?b ?r0 ?x0 ?b0 ?EquipmentContainer_mRID ?FromConnectivityNode_mRID ?ToConnectivityNode_mRID WHERE {
+SELECT ?name ?mRID ?BaseVoltage_nominalVoltage ?FromConnectivityNode_name ?ToConnectivityNode_name ?length ?r ?x ?bch ?r0 ?x0 ?b0ch ?EquipmentContainer_mRID ?FromConnectivityNode_mRID ?ToConnectivityNode_mRID WHERE {
  ?s r:type c:ACLineSegment.
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?s c:Equipment.EquipmentContainer ?sys.
@@ -137,16 +141,16 @@ SELECT ?name ?mRID ?BaseVoltage_nominalVoltage ?FromConnectivityNode_name ?ToCon
  ?s c:Conductor.length ?length.
  ?s c:ACLineSegment.r ?r.
  ?s c:ACLineSegment.x ?x.
- ?s c:ACLineSegment.bch ?b.
+ ?s c:ACLineSegment.bch ?bch.
  ?s c:ACLineSegment.r0 ?r0.
  ?s c:ACLineSegment.x0 ?x0.
- ?s c:ACLineSegment.b0ch ?b0.
+ ?s c:ACLineSegment.b0ch ?b0ch.
  ?s e:ConductingEquipment.FromConnectivityNode ?cn1.
  ?s e:ConductingEquipment.ToConnectivityNode ?cn2.
  ?cn1 c:IdentifiedObject.mRID ?FromConnectivityNode_mRID.
  ?cn1 c:IdentifiedObject.name ?FromConnectivityNode_name.
  ?cn2 c:IdentifiedObject.mRID ?ToConnectivityNode_mRID.
- ?cn2 c:IdentifiedObject.name ?ToConnectivityNode_name
+ ?cn2 c:IdentifiedObject.name ?ToConnectivityNode_name.
 }
 ORDER BY ?name
 ]]>
@@ -155,7 +159,8 @@ ORDER BY ?name
 <query>
 <id>EMTDisconnectingCircuitBreaker</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A three-phase breaker with disconnect switches.</description>
+<classes>DisconnectingCircuitBreaker</classes>
 <value>
 <![CDATA[
 SELECT ?name ?FromConnectivityNode_name ?ToConnectivityNode_name ?BaseVoltage_nominalVoltage ?mRID ?EquipmentContainer_mRID ?FromConnectivityNode_mRID ?ToConnectivityNode_mRID WHERE {
@@ -171,7 +176,7 @@ SELECT ?name ?FromConnectivityNode_name ?ToConnectivityNode_name ?BaseVoltage_no
  ?cn1 c:IdentifiedObject.mRID ?FromConnectivityNode_mRID.
  ?cn1 c:IdentifiedObject.name ?FromConnectivityNode_name.
  ?cn2 c:IdentifiedObject.mRID ?ToConnectivityNode_mRID.
- ?cn2 c:IdentifiedObject.name ?ToConnectivityNode_name
+ ?cn2 c:IdentifiedObject.name ?ToConnectivityNode_name.
 }
 ORDER by ?name
 ]]>
@@ -180,7 +185,8 @@ ORDER by ?name
 <query>
 <id>EMTEnergySource</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A Thevenin equivalent source.</description>
+<classes>EnergySource,BaseVoltage</classes>
 <value>
 <![CDATA[
 SELECT ?name ?mRID ?FromConnectivityNode_name ?BaseVoltage_nominalVoltage ?r ?x ?r0 ?x0 ?EnergySource_nominalVoltage ?voltageMagnitude ?voltageAngle ?EquipmentContainer_mRID ?FromConnectivityNode_mRID WHERE {
@@ -200,7 +206,7 @@ SELECT ?name ?mRID ?FromConnectivityNode_name ?BaseVoltage_nominalVoltage ?r ?x 
  ?s c:EnergySource.voltageAngle ?voltageAngle.
  ?s e:ConductingEquipment.FromConnectivityNode ?cn. 
  ?cn c:IdentifiedObject.mRID ?FromConnectivityNode_mRID. 
- ?cn c:IdentifiedObject.name ?FromConnectivityNode_name
+ ?cn c:IdentifiedObject.name ?FromConnectivityNode_name.
 } ORDER by ?name
 ]]>
 </value>
@@ -208,7 +214,8 @@ SELECT ?name ?mRID ?FromConnectivityNode_name ?BaseVoltage_nominalVoltage ?r ?x 
 <query>
 <id>EMTCompSeries</id>
 <keyfld>mRID</keyfld>
-<description>series capacitor or reactor</description>
+<description>Series capacitor or reactor.</description>
+<classes>SeriesCompensator</classes>
 <value>
 <![CDATA[
 SELECT ?name ?FromConnectivityNode_name ?ToConnectivityNode_name ?BaseVoltage_nominalVoltage ?r ?r0 ?x ?x0 ?mRID ?EquipmentContainer_mRID ?FromConnectivityNode_mRID ?ToConnectivityNode_mRID WHERE {
@@ -228,7 +235,7 @@ SELECT ?name ?FromConnectivityNode_name ?ToConnectivityNode_name ?BaseVoltage_no
  ?cn1 c:IdentifiedObject.mRID ?FromConnectivityNode_mRID.
  ?cn1 c:IdentifiedObject.name ?FromConnectivityNode_name.
  ?cn2 c:IdentifiedObject.mRID ?ToConnectivityNode_mRID.
- ?cn2 c:IdentifiedObject.name ?ToConnectivityNode_name
+ ?cn2 c:IdentifiedObject.name ?ToConnectivityNode_name.
 }
 ORDER by ?name
 ]]>
@@ -237,7 +244,8 @@ ORDER by ?name
 <query>
 <id>EMTPowerXfmrWinding</id>
 <keyfld>PowerTransformer_mRID:endNumber</keyfld>
-<description>Power transformers on their own, without catalog reference.</description>
+<description>Three-phase, balanced, multi-winding power transformers defined by data for windings, mesh impedances, and core admittance. The datasheet option is not supported in this query. The query returns one row for each winding of a transformer.</description>
+<classes>PowerTransformerEnd</classes>
 <value>
 <![CDATA[
 SELECT ?mRID ?PowerTransformer_name ?vectorGroup ?endNumber ?FromConnectivityNode_name ?BaseVoltage_nominalVoltage ?connectionKind ?ratedS ?ratedU ?phaseAngleClock ?grounded ?rground ?xground ?FromConnectivityNode_mRID ?PowerTransformer_mRID WHERE {
@@ -262,7 +270,7 @@ SELECT ?mRID ?PowerTransformer_name ?vectorGroup ?endNumber ?FromConnectivityNod
  ?cn c:IdentifiedObject.mRID ?FromConnectivityNode_mRID. 
  ?cn c:IdentifiedObject.name ?FromConnectivityNode_name.
  ?end c:TransformerEnd.BaseVoltage ?bv.
- ?bv c:BaseVoltage.nominalVoltage ?BaseVoltage_nominalVoltage
+ ?bv c:BaseVoltage.nominalVoltage ?BaseVoltage_nominalVoltage.
 }
 ORDER BY ?PowerTransformer_name ?endNumber
 ]]>
@@ -271,7 +279,8 @@ ORDER BY ?PowerTransformer_name ?endNumber
 <query>
 <id>EMTPowerXfmrCore</id>
 <keyfld>PowerTransformer_mRID</keyfld>
-<description>keyed on the PowerTransformer</description>
+<description>Linear exciting current branch for a transformer.</description>
+<classes>TransformerCoreAdmittance</classes>
 <value>
 <![CDATA[
 SELECT ?PowerTransformer_name ?endNumber ?b ?g ?mRID ?PowerTransformerEnd_mRID ?PowerTransformer_mRID WHERE {
@@ -286,7 +295,7 @@ SELECT ?PowerTransformer_name ?endNumber ?b ?g ?mRID ?PowerTransformerEnd_mRID ?
  ?adm c:TransformerCoreAdmittance.g ?g.
  ?p c:IdentifiedObject.mRID ?PowerTransformer_mRID.
  ?end c:IdentifiedObject.mRID ?PowerTransformerEnd_mRID.
- ?adm c:IdentifiedObject.mRID ?mRID
+ ?adm c:IdentifiedObject.mRID ?mRID.
 }
 ORDER BY ?PowerTransformer_name
 ]]>
@@ -295,7 +304,8 @@ ORDER BY ?PowerTransformer_name
 <query>
 <id>EMTXfmrTap</id>
 <keyfld>PowerTransformerEnd_mRID</keyfld>
-<description>Off-nominal tap in percent. Keyed on the PowerTransformerEnd mRID</description>
+<description>Off-nominal transformer tap in percent. The query returns one row for each winding that has an off-nominal tap.</description>
+<classes>RatioTapChanger</classes>
 <value>
 <![CDATA[
 SELECT ?PowerTransformer_name ?endNumber ?stepVoltageIncrement ?step ?PowerTransformerEnd_mRID WHERE {
@@ -308,7 +318,7 @@ SELECT ?PowerTransformer_name ?endNumber ?stepVoltageIncrement ?step ?PowerTrans
  ?end c:TransformerEnd.endNumber ?endNumber.
  ?rtc c:RatioTapChanger.stepVoltageIncrement ?stepVoltageIncrement.
  ?rtc c:TapChanger.step ?step.
- ?end c:IdentifiedObject.mRID ?PowerTransformerEnd_mRID
+ ?end c:IdentifiedObject.mRID ?PowerTransformerEnd_mRID.
 }
 ORDER BY ?PowerTransformer_name ?endNumber
 ]]>
@@ -317,7 +327,8 @@ ORDER BY ?PowerTransformer_name ?endNumber
 <query>
 <id>EMTPowerXfmrMesh</id>
 <keyfld>FromTransformerEnd_mRID:ToTransformerEnd_mRID</keyfld>
-<description>Mesh impedances, keyed on from end mRID:to end mRID.</description>
+<description>Mesh impedances between pairs of transformer windings. Note that SI units are used, referred to the highest voltage winding in the pair.</description>
+<classes>TransformerMeshImpedance</classes>
 <value>
 <![CDATA[
 SELECT ?PowerTransformer_name ?FromTransformerEnd_endNumber ?ToTransformerEnd_endNumber ?r ?x ?PowerTransformer_mRID ?FromTransformerEnd_mRID ?ToTransformerEnd_mRID ?mRID WHERE {
@@ -335,7 +346,7 @@ SELECT ?PowerTransformer_name ?FromTransformerEnd_endNumber ?ToTransformerEnd_en
  ?p c:IdentifiedObject.mRID ?PowerTransformer_mRID.
  ?from c:IdentifiedObject.mRID ?FromTransformerEnd_mRID.
  ?to c:IdentifiedObject.mRID ?ToTransformerEnd_mRID.
- ?imp c:IdentifiedObject.mRID ?mRID
+ ?imp c:IdentifiedObject.mRID ?mRID.
 }
 ORDER BY ?PowerTransformer_name ?FromTransformerEnd_endNumber ?ToTransformerEnd_endNumber
 ]]>
@@ -344,7 +355,8 @@ ORDER BY ?PowerTransformer_name ?FromTransformerEnd_endNumber ?ToTransformerEnd_
 <query>
 <id>EMTXfmrSaturation</id>
 <keyfld>PowerTransformer_mRID:amps</keyfld>
-<description></description>
+<description>Non-linear transformer saturation data. Does not include hysteresis, so the resistive portion of *TransformerCoreAdmittance* should still be included, but this replaces the inductive portion of *TransformerCoreAdmittance*.</description>
+<classes>TransformerSaturation,CurveData</classes>
 <value>
 <![CDATA[
 SELECT ?PowerTransformer_name ?PowerTransformer_mRID ?TransformerCoreAdmittance_mRID ?amps ?vs WHERE {
@@ -372,7 +384,8 @@ ORDER BY ?PowerTransformer_mRID ?amps ?vs
 <query>
 <id>EMTContainer</id>
 <keyfld>mRID</keyfld>
-<description>list all the transmission systems</description>
+<description>Lists all the transmission systems found in a CIM RDF file. The *mRID* can be used to filter on the system, when constructing a network model from a CIM RDF file that contains multiple transmission systems.</description>
+<classes>EquipmentContainer</classes>
 <value>
 <![CDATA[
 SELECT ?name ?mRID WHERE {
@@ -387,7 +400,8 @@ ORDER by ?name
 <query>
 <id>EMTSolar</id>
 <keyfld>mRID</keyfld>
-<description>Keyed on PowerElectronicsConnection</description>
+<description>An inverter with associated solar generation. Keyed on the *PowerElectronicsConnection*.</description>
+<classes>PowerElectronicsConnection</classes>
 <value>
 <![CDATA[
 SELECT ?name ?FromConnectivityNode_name ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?maxIFault ?p ?q ?EquipmentContainer_mRID ?mRID ?PhotoVoltaicUnit_mRID ?FromConnectivityNode_mRID WHERE {
@@ -409,7 +423,7 @@ SELECT ?name ?FromConnectivityNode_name ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ 
  ?pec c:IdentifiedObject.mRID ?mRID.
  ?pec e:ConductingEquipment.FromConnectivityNode ?cn. 
  ?cn c:IdentifiedObject.mRID ?FromConnectivityNode_mRID.
- ?cn c:IdentifiedObject.name ?FromConnectivityNode_name
+ ?cn c:IdentifiedObject.name ?FromConnectivityNode_name.
 }
 ORDER by ?name
 ]]>
@@ -418,7 +432,8 @@ ORDER by ?name
 <query>
 <id>EMTWind</id>
 <keyfld>mRID</keyfld>
-<description>Keyed on PowerElectronicsConnection</description>
+<description>An inverter with associated wind generation. Keyed on the *PowerElectronicsConnection*.</description>
+<classes>PowerElectronicsConnection</classes>
 <value>
 <![CDATA[
 SELECT ?name ?FromConnectivityNode_name ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?maxIFault ?p ?q ?EquipmentContainer_mRID ?PowerElectronicsWindUnit_mRID ?mRID ?FromConnectivityNode_mRID WHERE {
@@ -440,7 +455,7 @@ SELECT ?name ?FromConnectivityNode_name ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ 
  ?pec c:IdentifiedObject.mRID ?mRID.
  ?pec e:ConductingEquipment.FromConnectivityNode ?cn. 
  ?cn c:IdentifiedObject.mRID ?FromConnectivityNode_mRID.
- ?cn c:IdentifiedObject.name ?FromConnectivityNode_name
+ ?cn c:IdentifiedObject.name ?FromConnectivityNode_name.
 }
 ORDER by ?name
 ]]>
@@ -449,7 +464,8 @@ ORDER by ?name
 <query>
 <id>EMTExcST1A</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A static excitation system.</description>
+<classes>ExcST1A</classes>
 <value>
 <![CDATA[
 SELECT ?name ?ilr ?ka ?kc ?kf ?klr ?ta ?tb ?tb1 ?tc ?tc1 ?tf ?vamax ?vamin
@@ -488,7 +504,8 @@ SELECT ?name ?ilr ?ka ?kc ?kf ?klr ?ta ?tb ?tb1 ?tc ?tc1 ?tf ?vamax ?vamin
 <query>
 <id>EMTGovSteamSGO</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A steam governor.</description>
+<classes>GovSteamSGO</classes>
 <value>
 <![CDATA[
 SELECT ?name ?k1 ?k2 ?k3 ?pmin ?pmax ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?mwbase ?mRID ?SynchronousMachine_mRID ?EquipmentContainer_mRID
@@ -521,7 +538,8 @@ WHERE {
 <query>
 <id>EMTPssIEEE1A</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A power system stabilizer for synchronous machines.</description>
+<classes>PssIEEE1A</classes>
 <value>
 <![CDATA[
 SELECT ?name ?a1 ?a2 ?inputSignalType ?ks ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?vrmax ?vrmin
@@ -556,7 +574,8 @@ SELECT ?name ?a1 ?a2 ?inputSignalType ?ks ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?vrmax ?vrmin
 <query>
 <id>EMTWeccREGCA</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A WECC current-source model for renewable energy generation.</description>
+<classes>WeccREGCA</classes>
 <value>
 <![CDATA[
 SELECT ?name ?brkpt ?iolim ?iqrmax ?iqrmin ?ivpl1 ?ivplsw ?ivpnt0 ?ivpnt1 ?khv
@@ -590,7 +609,8 @@ SELECT ?name ?brkpt ?iolim ?iqrmax ?iqrmin ?ivpl1 ?ivplsw ?ivpnt0 ?ivpnt1 ?khv
 <query>
 <id>EMTWeccREECA</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A WECC inverter controller for renewable energy generation.</description>
+<classes>WeccREECA</classes>
 <value>
 <![CDATA[
 SELECT ?name ?db1 ?db2 ?dPmax ?dPmin ?imax ?iqfrz ?iqh1 ?iql1 ?kqi ?kqp ?kqv
@@ -663,7 +683,8 @@ SELECT ?name ?db1 ?db2 ?dPmax ?dPmin ?imax ?iqfrz ?iqh1 ?iql1 ?kqi ?kqp ?kqv
 <query>
 <id>EMTWeccREPCA</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A WECC plant controller for renewable energy generation.</description>
+<classes>WeccREPCA</classes>
 <value>
 <![CDATA[
 SELECT ?name ?db ?ddn ?dup ?emax ?emin ?fdbd1 ?fdbd2 ?femax ?femin ?frqFlag ?kc
@@ -713,7 +734,8 @@ SELECT ?name ?db ?ddn ?dup ?emax ?emin ?fdbd1 ?fdbd2 ?femax ?femin ?frqFlag ?kc
 <query>
 <id>EMTWeccWTGTA</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A WECC drive-train model for wind generation.</description>
+<classes>WeccWTGTA</classes>
 <value>
 <![CDATA[
 SELECT ?name ?dshaft ?hg ?ht ?kshaft ?mRID ?PowerElectronicsConnection_mRID ?EquipmentContainer_mRID WHERE {
@@ -736,7 +758,8 @@ SELECT ?name ?dshaft ?hg ?ht ?kshaft ?mRID ?PowerElectronicsConnection_mRID ?Equ
 <query>
 <id>EMTWeccWTGARA</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A WECC aerodynamic model for wind generation.</description>
+<classes>WeccWTGARA</classes>
 <value>
 <![CDATA[
 SELECT ?name ?ka ?t0 ?mRID ?PowerElectronicsConnection_mRID ?EquipmentContainer_mRID WHERE {
@@ -757,7 +780,8 @@ SELECT ?name ?ka ?t0 ?mRID ?PowerElectronicsConnection_mRID ?EquipmentContainer_
 <query>
 <id>EMTBaseVoltage</id>
 <keyfld>nominalVoltage</keyfld>
-<description></description>
+<description>List all (preferred) base voltages found in a transmission system.</description>
+<classes>BaseVoltage</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?nominalVoltage WHERE {
@@ -779,7 +803,8 @@ ORDER BY ?nominalVoltage
 <query>
 <id>EMTCompShunt</id>
 <keyfld>mRID</keyfld>
-<description>Shunt reactor or capacitor</description>
+<description>Shunt reactor or capacitor.</description>
+<classes>LinearShuntCompensator</classes>
 <value>
 <![CDATA[
 SELECT ?name ?BaseVoltage_nominalVoltage ?nomU ?gPerSection ?bPerSection ?sections ?maximumSections ?FromConnectivityNode_name ?mRID ?EquipmentContainer_mRID ?FromConnectivityNode_mRID WHERE {
@@ -797,7 +822,7 @@ SELECT ?name ?BaseVoltage_nominalVoltage ?nomU ?gPerSection ?bPerSection ?sectio
  ?s c:IdentifiedObject.mRID ?mRID. 
  ?s e:ConductingEquipment.FromConnectivityNode ?cn. 
  ?cn c:IdentifiedObject.mRID ?FromConnectivityNode_mRID.
- ?cn c:IdentifiedObject.name ?FromConnectivityNode_name
+ ?cn c:IdentifiedObject.name ?FromConnectivityNode_name.
 }
 ORDER by ?name
 ]]>
@@ -806,7 +831,8 @@ ORDER by ?name
 <query>
 <id>EMTLoad</id>
 <keyfld>mRID</keyfld>
-<description>Balanced on three phases</description>
+<description>Balanced three-phase ZIP load.</description>
+<classes>EnergyConsumer,LoadResponseCharacteristic</classes>
 <value>
 <![CDATA[
 SELECT ?name ?mRID ?FromConnectivityNode_name ?BaseVoltage_nominalVoltage ?p ?q ?pConstantImpedance ?qConstantImpedance ?pConstantCurrent ?qConstantCurrent ?pConstantPower ?qConstantPower ?pVoltageExponent ?qVoltageExponent ?EquipmentContainer_mRID ?FromConnectivityNode_mRID WHERE {
@@ -826,11 +852,11 @@ SELECT ?name ?mRID ?FromConnectivityNode_name ?BaseVoltage_nominalVoltage ?p ?q 
  ?lr c:LoadResponseCharacteristic.qConstantCurrent ?qConstantCurrent.
  ?lr c:LoadResponseCharacteristic.pConstantPower ?pConstantPower.
  ?lr c:LoadResponseCharacteristic.qConstantPower ?qConstantPower.
- OPTIONAL {?lr c:LoadResponseCharacteristic.pVoltageExponent ?pe.}
- OPTIONAL {?lr c:LoadResponseCharacteristic.qVoltageExponent ?qe.}
+ OPTIONAL {?lr c:LoadResponseCharacteristic.pVoltageExponent ?pVoltageExponent.}
+ OPTIONAL {?lr c:LoadResponseCharacteristic.qVoltageExponent ?qVoltageExponent.}
  ?s e:ConductingEquipment.FromConnectivityNode ?cn. 
  ?cn c:IdentifiedObject.mRID ?FromConnectivityNode_mRID. 
- ?cn c:IdentifiedObject.name ?FromConnectivityNode_name
+ ?cn c:IdentifiedObject.name ?FromConnectivityNode_name.
 }
 ORDER by ?name
 ]]>
@@ -839,7 +865,8 @@ ORDER by ?name
 <query>
 <id>EMTCountPowerXfmrWindings</id>
 <keyfld>mRID</keyfld>
-<description>for EMTPowerXfmrWinding</description>
+<description>Count the number of windings in each *PowerTransformer*.</description>
+<classes>PowerTransformerEnd</classes>
 <value>
 <![CDATA[
 SELECT ?mRID (count(?p) as ?count) WHERE {
@@ -857,7 +884,8 @@ ORDER BY ?mRID
 <query>
 <id>EMTXfmrLimit</id>
 <keyfld>mRID</keyfld>
-<description>operational limits for transformer windings</description>
+<description>Operational limits for transformer windings.</description>
+<classes>ApparentPowerLimit,PowerTransformerEnd</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?name ?PowerTransformerEnd_mRID ?OperationalLimitType_name ?value ?acceptableDuration ?isInfiniteDuration ?direction WHERE {
@@ -887,7 +915,8 @@ ORDER BY ?PowerTransformerEnd_mRID ?isInfiniteDuration ?OperationalLimitType_nam
 <query>
 <id>EMTBranchLimit</id>
 <keyfld>mRID</keyfld>
-<description>operational limits for conducting equipment</description>
+<description>Operational limits for conducting equipment. *Equipment_type* may be *ACLineSegment*, *DisconnectingCircuitBreaker*, etc. Use the *EMTXfmrLimit* query for transformer winding limits.</description>
+<classes>ApparentPowerLimit,ConductingEquipment</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?name ?Equipment_mRID ?Equipment_type ?OperationalLimitType_name ?value ?acceptableDuration ?isInfiniteDuration ?direction WHERE {
@@ -918,7 +947,8 @@ ORDER BY ?Equipment_mRID ?isInfiniteDuration ?OperationalLimitType_name ?value
 <query>
 <id>EMTBusVoltage</id>
 <keyfld>mRID</keyfld>
-<description>Bus voltages from power flow in a merged instance, keyed on ConnectivityNode.</description>
+<description>Bus voltages from power flow in a merged instance, keyed on *ConnectivityNode*.</description>
+<classes>SvVoltage,ConnectivityNode</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?name ?v ?angle WHERE {
@@ -928,7 +958,7 @@ SELECT DISTINCT ?mRID ?name ?v ?angle WHERE {
  ?s c:IdentifiedObject.name ?name.
  ?sv e:SvVoltage.ConnectivityNode ?s.
  ?sv c:SvVoltage.v ?v.
- ?sv c:SvVoltage.angle ?angle
+ ?sv c:SvVoltage.angle ?angle.
 }
 ORDER BY ?name
 ]]>
@@ -937,7 +967,8 @@ ORDER BY ?name
 <query>
 <id>EMTBranchFlow</id>
 <keyfld>mRID</keyfld>
-<description>Branch power flows in a merged instance, keyed on Equipment.</description>
+<description>Branch power flows in a merged instance, keyed on *Equipment*. *Equipment_type* may be *ACLineSegment*, *DisconnectingCircuitBreaker*, etc. Use the *EMTXfmrFlow* query for transformer winding flows.</description>
+<classes>SvPowerFlow,ConductingEquipment</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?Equipment_type ?name ?p ?q WHERE {
@@ -949,7 +980,7 @@ SELECT DISTINCT ?mRID ?Equipment_type ?name ?p ?q WHERE {
   bind(strafter(str(?typeraw),"#") as ?Equipment_type)
  ?sv e:SvPowerFlow.ConductingEquipment ?s.
  ?sv c:SvPowerFlow.p ?p.
- ?sv c:SvPowerFlow.q ?q
+ ?sv c:SvPowerFlow.q ?q.
 }
 ORDER BY ?Equipment_type ?name
 ]]>
@@ -958,7 +989,8 @@ ORDER BY ?Equipment_type ?name
 <query>
 <id>EMTXfmrFlow</id>
 <keyfld>mRID</keyfld>
-<description>Transformer winding (end) power flows in a merged instance, keyed on TransformerEnd.</description>
+<description>Transformer winding (end) power flows in a merged instance, keyed on *TransformerEnd*.</description>
+<classes>SvPowerFlow,PowerTransformerEnd</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?name ?p ?q WHERE {
@@ -971,7 +1003,7 @@ SELECT DISTINCT ?mRID ?name ?p ?q WHERE {
   bind(strafter(str(?typeraw),"#") as ?TransformerEnd_type)
  ?sv e:SvPowerFlow.TransformerEnd ?end.
  ?sv c:SvPowerFlow.p ?p.
- ?sv c:SvPowerFlow.q ?q
+ ?sv c:SvPowerFlow.q ?q.
 }
 ORDER BY ?name
 ]]>
@@ -980,14 +1012,15 @@ ORDER BY ?name
 <query>
 <id>EMTBusVoltageIC</id>
 <keyfld>mRID</keyfld>
-<description>Bus voltages from power flow in a standalone file. Don't select the system. Keyed on ConnectivityNode.</description>
+<description>Bus voltages from power flow in a standalone file. Keyed on *ConnectivityNode*. Filtering on *EquipmentContainer* is not supported in standalone IC files.</description>
+<classes>SvVoltage,ConnectivityNode</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?v ?angle WHERE {
  ?sv e:SvVoltage.ConnectivityNode ?cn.
   bind(substr(str(?cn),strlen(str(?cn))-35) as ?mRID)
  ?sv c:SvVoltage.v ?v.
- ?sv c:SvVoltage.angle ?angle
+ ?sv c:SvVoltage.angle ?angle.
 } ORDER BY ?mRID
 ]]>
 </value>
@@ -995,14 +1028,15 @@ SELECT DISTINCT ?mRID ?v ?angle WHERE {
 <query>
 <id>EMTBranchFlowIC</id>
 <keyfld>mRID</keyfld>
-<description>Branch power flows in a standalone file. Don't select the system. Keyed on Equipment.</description>
+<description>Branch power flows in a standalone file. Keyed on *Equipment*. Filtering on *EquipmentContainer* is not supported in standalone IC files.</description>
+<classes>SvPowerFlow,ConductingEquipment</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?p ?q WHERE {
  ?sv e:SvPowerFlow.ConductingEquipment ?eq.
   bind(substr(str(?eq),strlen(str(?eq))-35) as ?mRID)
  ?sv c:SvPowerFlow.p ?p.
- ?sv c:SvPowerFlow.q ?q
+ ?sv c:SvPowerFlow.q ?q.
 } ORDER BY ?mRID
 ]]>
 </value>
@@ -1010,14 +1044,15 @@ SELECT DISTINCT ?mRID ?p ?q WHERE {
 <query>
 <id>EMTXfmrFlowIC</id>
 <keyfld>mRID</keyfld>
-<description>Transformer winding (end) power flows in a standalone file. Don't select the system. Keyed on TransformerEnd.</description>
+<description>Transformer winding (end) power flows in a standalone file. Don't select the system. Keyed on *TransformerEnd*. Filtering on *EquipmentContainer* is not supported in standalone IC files.</description>
+<classes>SvPowerFlow,PowerTransformerEnd</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?p ?q WHERE {
  ?sv e:SvPowerFlow.TransformerEnd ?end.
   bind(substr(str(?end),strlen(str(?end))-35) as ?mRID)
  ?sv c:SvPowerFlow.p ?p.
- ?sv c:SvPowerFlow.q ?q
+ ?sv c:SvPowerFlow.q ?q.
 } ORDER BY ?mRID
 ]]>
 </value>
@@ -1025,12 +1060,11 @@ SELECT DISTINCT ?mRID ?p ?q WHERE {
 <query>
 <id>EMTIBRPlant*</id>
 <keyfld>mRID*</keyfld>
-<description>Collection of equipment comprising an inverter-based resource plant, with plant-level attributes.</description>
+<description>Collection of equipment comprising an inverter-based resource plant. May return multiple rows for the same plant *mRID*. Use the *EMTIBRPlantAttributes* query to retrieve the plant-level attributes. *Equipment_type* is typically *ACLineSegment*, *PowerTransformer*, *PowerElectronicsConnection*, or *DisconnectingCircuitBreaker* but may include other types.</description>
+<classes>IBRPlant</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?name ?Equipment_mRID ?Equipment_type WHERE {
-VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
-# VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?p r:type e:IBRPlant.
  ?p c:IdentifiedObject.name ?name.
@@ -1047,7 +1081,8 @@ VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:Strin
 <query>
 <id>EMTRotatingMachinePlant*</id>
 <keyfld>mRID*</keyfld>
-<description>Collection of equipment comprising a conventional generating plant.</description>
+<description>Collection of equipment comprising a conventional generating plant. May return multiple rows for the same plant *mRID*. *Equipment_type* is typically *SynchronousMachine*, *PowerTransformer*, or *DisconnectingCircuitBreaker* but may include other types.</description>
+<classes>RotatingMachinePlant</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?name ?Equipment_mRID ?Equipment_type WHERE {
@@ -1065,7 +1100,8 @@ SELECT DISTINCT ?mRID ?name ?Equipment_mRID ?Equipment_type WHERE {
 <query>
 <id>EMTExcIEEEDC1A</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A DC exciter.</description>
+<classes>ExcIEEEDC1A</classes>
 <value>
 <![CDATA[
 SELECT ?name ?efd1 ?efd2 ?exclim ?ka ?ke ?kf ?seefd1 ?seefd2 ?ta ?tb ?tc ?te ?tf
@@ -1102,7 +1138,8 @@ SELECT ?name ?efd1 ?efd2 ?exclim ?ka ?ke ?kf ?seefd1 ?seefd2 ?ta ?tb ?tc ?te ?tf
 <query>
 <id>EMTExcSEXS</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A static exciter.</description>
+<classes>ExcSEXS</classes>
 <value>
 <![CDATA[
 SELECT ?name ?efdmax ?efdmin ?emax ?emin ?k ?kc ?tatb ?tb ?tc ?te ?mRID ?SynchronousMachine_mRID
@@ -1133,7 +1170,8 @@ SELECT ?name ?efdmax ?efdmin ?emax ?emin ?k ?kc ?tatb ?tb ?tc ?te ?mRID ?Synchro
 <query>
 <id>EMTGovGAST</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A gas turbine governor.</description>
+<classes>GovGAST</classes>
 <value>
 <![CDATA[
 SELECT ?name ?at ?dturb ?kt ?mwbase ?r ?t1 ?t2 ?t3 ?vmax ?vmin ?mRID ?SynchronousMachine_mRID ?EquipmentContainer_mRID
@@ -1164,7 +1202,8 @@ WHERE {
 <query>
 <id>EMTGovHydro1</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A hydro governor.</description>
+<classes>GovHydro1</classes>
 <value>
 <![CDATA[
 SELECT ?name ?at ?dturb ?gmax ?gmin ?hdam ?mwbase ?qnl ?rperm ?rtemp ?tf ?tg ?tr
@@ -1199,7 +1238,8 @@ SELECT ?name ?at ?dturb ?gmax ?gmin ?hdam ?mwbase ?qnl ?rperm ?rtemp ?tf ?tg ?tr
 <query>
 <id>EMTGovSteam0</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A steam unit governor.</description>
+<classes>GovSteam0</classes>
 <value>
 <![CDATA[
 SELECT ?name ?dt ?mwbase ?r ?t1 ?t2 ?t3 ?vmax ?vmin ?mRID ?SynchronousMachine_mRID ?EquipmentContainer_mRID WHERE {
@@ -1227,7 +1267,8 @@ SELECT ?name ?dt ?mwbase ?r ?t1 ?t2 ?t3 ?vmax ?vmin ?mRID ?SynchronousMachine_mR
 <query>
 <id>EMTPss1A</id>
 <keyfld>mRID</keyfld>
-<description></description>
+<description>A power system stabilizer.</description>
+<classes>Pss1A</classes>
 <value>
 <![CDATA[
 SELECT ?name ?a1 ?a2 ?a3 ?a4 ?a5 ?a6 ?a7 ?a8 ?inputSignalType ?kd ?ks ?t1 ?t2
@@ -1272,7 +1313,8 @@ SELECT ?name ?a1 ?a2 ?a3 ?a4 ?a5 ?a6 ?a7 ?a8 ?inputSignalType ?kd ?ks ?t1 ?t2
 <query>
 <id>EMTIEEECigreDLLParameters*</id>
 <keyfld>mRID*</keyfld>
-<description>List the values and sizes of parameters for the DLL interfaces.</description>
+<description>List the values and sizes of parameters for the DLL interfaces. May return multiple rows for the same DLL *mRID*.</description>
+<classes>IEEECigreDLLParameter,IEEECigreDLL</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?sequenceNumber ?parameterKind ?value WHERE {
@@ -1294,6 +1336,7 @@ SELECT DISTINCT ?mRID ?sequenceNumber ?parameterKind ?value WHERE {
 <id>EMTCountDLLParameters</id>
 <keyfld>mRID</keyfld>
 <description>Counts the number of parameters in each DLL interface.</description>
+<classes>IEEECigreDLLParameter,IEEECigreDLL</classes>
 <value>
 <![CDATA[
 SELECT ?mRID (count(?p) as ?count) WHERE {
@@ -1312,7 +1355,8 @@ ORDER BY ?mRID
 <query>
 <id>EMTIEEECigreDLLInputs*</id>
 <keyfld>mRID*</keyfld>
-<description>List the metadata of input signals for the DLL interfaces.</description>
+<description>List the metadata of input signals for the DLL interfaces. May return multiple rows for the same DLL *mRID*.</description>
+<classes>IEEECigreDLLInput,IEEECigreDLL</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?sequenceNumber ?name ?width ?kind ?unit ?multiplier ?phase WHERE {
@@ -1343,6 +1387,7 @@ SELECT DISTINCT ?mRID ?sequenceNumber ?name ?width ?kind ?unit ?multiplier ?phas
 <id>EMTCountDLLInputs</id>
 <keyfld>mRID</keyfld>
 <description>Counts the number of input signals in each DLL interface.</description>
+<classes>IEEECigreDLLInput,IEEECigreDLL</classes>
 <value>
 <![CDATA[
 SELECT ?mRID (count(?p) as ?count) WHERE {
@@ -1361,7 +1406,8 @@ ORDER BY ?mRID
 <query>
 <id>EMTIEEECigreDLLOutputs*</id>
 <keyfld>mRID*</keyfld>
-<description>List the metadata of output signals for the DLL interfaces.</description>
+<description>List the metadata of output signals for the DLL interfaces. May return multiple rows for the same DLL *mRID*.</description>
+<classes>IEEECigreDLLOutput,IEEECigreDLL</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?sequenceNumber ?name ?width ?kind ?unit ?multiplier ?phase WHERE {
@@ -1392,6 +1438,7 @@ SELECT DISTINCT ?mRID ?sequenceNumber ?name ?width ?kind ?unit ?multiplier ?phas
 <id>EMTCountDLLOutputs</id>
 <keyfld>mRID</keyfld>
 <description>Counts the number of output signals in each DLL interface.</description>
+<classes>IEEECigreDLLOutput,IEEECigreDLL</classes>
 <value>
 <![CDATA[
 SELECT ?mRID (count(?p) as ?count) WHERE {
@@ -1411,6 +1458,7 @@ ORDER BY ?mRID
 <id>EMTIEEECigreDLL</id>
 <keyfld>mRID</keyfld>
 <description>DLL interface attached to an inverter.</description>
+<classes>IEEECigreDLL</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?firmwareInstalled ?firmwareVersion ?supportsEMT ?supportsRMS ?timestep ?uri ?snapshotUri ?vendorName WHERE {
@@ -1437,6 +1485,7 @@ SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?firmwareInstalled 
 <id>EMTIBRPlantAttributes</id>
 <keyfld>PowerElectronicsConnection_mRID</keyfld>
 <description>IBR plant attributes, keyed on the inverter ID for convenience.</description>
+<classes>IBRPlant</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?dcLinkVoltage ?dcLinkCapacitance ?acFilterRgrid ?acFilterLgrid ?acFilterCapacitance ?acFilterRbridge ?acFilterLbridge ?switchingFrequency ?acFilterKind ?IEEECigreDLL_mRID WHERE {

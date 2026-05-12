@@ -153,7 +153,7 @@ SELECT DISTINCT ?nominalVoltage WHERE {
 ORDER BY ?nominalVoltage
 
 # EMTLine
-SELECT ?name ?mRID ?BaseVoltage_nominalVoltage ?FromConnectivityNode_name ?ToConnectivityNode_name ?length ?r ?x ?b ?r0 ?x0 ?b0 ?EquipmentContainer_mRID ?FromConnectivityNode_mRID ?ToConnectivityNode_mRID WHERE {
+SELECT ?name ?mRID ?BaseVoltage_nominalVoltage ?FromConnectivityNode_name ?ToConnectivityNode_name ?length ?r ?x ?bch ?r0 ?x0 ?b0ch ?EquipmentContainer_mRID ?FromConnectivityNode_mRID ?ToConnectivityNode_mRID WHERE {
  ?s r:type c:ACLineSegment.
  VALUES ?EquipmentContainer_mRID {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
 # VALUES ?EquipmentContainer_mRID {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
@@ -166,10 +166,10 @@ SELECT ?name ?mRID ?BaseVoltage_nominalVoltage ?FromConnectivityNode_name ?ToCon
  ?s c:Conductor.length ?length.
  ?s c:ACLineSegment.r ?r.
  ?s c:ACLineSegment.x ?x.
- ?s c:ACLineSegment.bch ?b.
+ ?s c:ACLineSegment.bch ?bch.
  ?s c:ACLineSegment.r0 ?r0.
  ?s c:ACLineSegment.x0 ?x0.
- ?s c:ACLineSegment.b0ch ?b0.
+ ?s c:ACLineSegment.b0ch ?b0ch.
  ?s e:ConductingEquipment.FromConnectivityNode ?cn1.
  ?s e:ConductingEquipment.ToConnectivityNode ?cn2.
  ?cn1 c:IdentifiedObject.mRID ?FromConnectivityNode_mRID.
