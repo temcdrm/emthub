@@ -470,7 +470,13 @@ def run_atp_case (atp_root):
   pw0 = subprocess.Popen (cmdline, cwd=atp_path, shell=True)
   pw0.wait()
 
-if __name__ == '__main__':
+def main():
+  """Runs or post-processes ATP from an existing netlist.
+
+  Command-line Arguments:
+    **index** (int): case number from 0 to 4
+    **option** (str): either **run** to execute ATP, **convert** to convert PL4 to COMTRADE and then HDF5, **plot** to plot HDF5 on screen, or **png** to plot HDF5 to a file.
+  """
   if len(sys.argv) != 3:
     print ('Usage: python atp.py idx [run|convert|plot|png]')
     quit()
@@ -492,4 +498,7 @@ if __name__ == '__main__':
     print ('png', idx)
   else:
     print ('Unrecognized option:', opt)
+
+if __name__ == '__main__':
+  main()
 

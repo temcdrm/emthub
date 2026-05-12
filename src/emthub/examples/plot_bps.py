@@ -4,7 +4,12 @@
 import sys
 import emthub.api as emthub
 
-if __name__ == '__main__':
+def main():
+  """Plot a system graphical layout. Data comes from a *SystemName_Network.json* file.
+
+  Command-line Arguments:
+    **index** (int): case number from 0 to 4
+  """
   case_id = 0
   plot_labels = False
   if len(sys.argv) > 1:
@@ -18,4 +23,6 @@ if __name__ == '__main__':
   G = emthub.load_system_graph ('{:s}_Network.json'.format(sys_name))
   emthub.plot_system_graph (G, sys_name, plot_labels, loc)
 
+if __name__ == '__main__':
+  main()
 

@@ -4,7 +4,13 @@ import sys
 import rdflib
 import emthub.api as emthub
 
-if __name__ == '__main__':
+def main():
+  """Use this for printing the results of a SPARQL query loaded into a Python dictionary.
+  Edit the script to print the dictionaries of interest.
+
+  Command-line Arguments:
+    **index** (int): case number from 0 to 4
+  """
   idx = 4
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
@@ -31,4 +37,7 @@ if __name__ == '__main__':
   d2 = emthub.load_ic_dict (g)
   for key in ['EMTBusVoltageIC', 'EMTBranchFlowIC', 'EMTXfmrFlowIC']:
     emthub.list_dict_table (d2, key)
+
+if __name__ == '__main__':
+  main()
 

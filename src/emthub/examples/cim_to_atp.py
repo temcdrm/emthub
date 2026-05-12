@@ -5,7 +5,12 @@ import sys
 import os
 import emthub.api as emthub
 
-if __name__ == '__main__':
+def main():
+  """Creates a netlist for ATP from CIM RDF (TTL file).
+
+  Command-line Arguments:
+    **index** (int): case number from 0 to 4
+  """
   idx = 0
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
@@ -29,4 +34,7 @@ if __name__ == '__main__':
     #emthub.list_dict_table (icd, 'EMTBusVoltageIC')
 
   emthub.create_atp (d, icd, fpath = '', case=case)
+
+if __name__ == '__main__':
+  main()
 

@@ -85,7 +85,12 @@ def create_cim_ic (case):
     serializer.serialize(fp)
   print ('wrote initial conditions to', ic_name)
 
-if __name__ == '__main__':
+def main():
+  """Converts initial conditions from MATPOWER to CIM RDF (TTL file).
+
+  Command-line Arguments:
+    **index** (int): case number from 0 to 4
+  """
   idx = 0
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
@@ -94,4 +99,7 @@ if __name__ == '__main__':
     print ('{:s} does not use MATPOWER'.format(case['name']))
     quit()
   create_cim_ic (case)
+
+if __name__ == '__main__':
+  main()
 

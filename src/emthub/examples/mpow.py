@@ -242,7 +242,12 @@ def append_overloads_to_summary(fname, d):
   print ('  {:d} branches overloaded'.format (nover), file=fp)
   fp.close()
 
-if __name__ == '__main__':
+def main():
+  """Runs MATPOWER from a previously generated netlist.
+
+  Command-line Arguments:
+    **index** (int): case number from 0 to 4
+  """
   case_id = 0
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
@@ -280,4 +285,7 @@ if __name__ == '__main__':
   append_overloads_to_summary (fsummary, r)
 
   mpow.print_solution_summary (fsummary, details=True)
+
+if __name__ == '__main__':
+  main()
 

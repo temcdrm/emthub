@@ -99,7 +99,9 @@ plant = {'generator': '1_1',
            ]
          }
 
-if __name__ == '__main__':
+def main():
+  """Creates the ATP netlist and a DLL interface for the *SMIBDLL* example (case 4). The *rawfile* tables are hard-coded.
+  """
   case = emthub.CASES[4]
   # create rawfile tables from Python dictionary
   baseMVA = 100.0
@@ -113,4 +115,6 @@ if __name__ == '__main__':
   g, ns1, ns2 = emthub.add_ibr_plant (case, plant, g, ns1, ns2)
   emthub.write_cim_rdf (case, g, ns1, ns2)
   
+if __name__ == '__main__':
+  main()
 

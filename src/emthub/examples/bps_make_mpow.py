@@ -6,7 +6,12 @@ import os
 import rdflib
 import emthub.api as emthub
 
-if __name__ == '__main__':
+def main():
+  """Creates a netlist for MATPOWER from CIM RDF (TTL file).
+
+  Command-line Arguments:
+    **index** (int): case number from 0 to 4
+  """
   case_id = 0
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
@@ -26,4 +31,7 @@ if __name__ == '__main__':
   fp = open (sys_name + '.m', 'w')
   emthub.create_matpower (d, sys_name, fp, case['swingbus'], case['load'])
   fp.close()
+
+if __name__ == '__main__':
+  main()
 

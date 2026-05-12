@@ -129,5 +129,33 @@ plot_utils
 ..   :member-order: bysource
    :exclude-members: __init__, __weakref__, forward
 
+Example Scripts for Users
+-------------------------
+
+These are distributed in the *examples* subdirectory, and obtainable by *emthub-extract-case #*.
+The command-line documentation follows.
+
+.. autofunction:: emthub.examples.atp.main
+
+.. autofunction:: emthub.examples.bps_make_mpow.main
+
+.. autofunction:: emthub.examples.cim_summary.main
+
+.. autofunction:: emthub.examples.cim_to_atp.main
+
+.. autofunction:: emthub.examples.create_smib_dll.main
+
+.. autofunction:: emthub.examples.ic_to_rdf.main
+
+.. autofunction:: emthub.examples.mpow.main
+
+.. autofunction:: emthub.examples.plot_bps.main
+
+.. autofunction:: emthub.examples.raw_to_rdf.main
+
+.. autofunction:: emthub.examples.test_cim_sparql.main
+
+
+
 
 
