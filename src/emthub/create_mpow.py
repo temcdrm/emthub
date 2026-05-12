@@ -261,7 +261,7 @@ mpc.branch = [""", file=fp)
     bus2 = bus_numbers[data['ToConnectivityNode_mRID']]
     kvbase = data['BaseVoltage_nominalVoltage']/1000.0
     zbase = kvbase*kvbase/MVA_BASE
-    q = data['b']*kvbase*kvbase
+    q = data['bch']*kvbase*kvbase
     r = data['r']/zbase
     x = data['x']/zbase
     b = q/MVA_BASE

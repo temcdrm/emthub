@@ -1206,8 +1206,8 @@ def create_atp (d, icd, fpath, case):
     rm = (row['r0']-row['r']) / 3.0
     xs = (row['x0']+2.0*row['x']) / 3.0
     xm = (row['x0']-row['x']) / 3.0
-    cs = 1.0e6 * (row['b0']+2.0*row['b']) / 3.0 / OMEGA
-    cm = 1.0e6 * (row['b0']-row['b']) / 3.0 / OMEGA
+    cs = 1.0e6 * (row['b0ch']+2.0*row['bch']) / 3.0 / OMEGA
+    cm = 1.0e6 * (row['b0ch']-row['bch']) / 3.0 / OMEGA
     if rs < 0.0 or rm < 0.0:
       print ('** Line', key, 'has negative resistance')
     # calculate the positive and negative Bergeron parameters
