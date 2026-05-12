@@ -5,7 +5,7 @@
 .. _target-examples-network:
 
 Network Examples
-################
+================
 
 Two versions of ATP are used in these examples. The script *atp.py*
 chooses the correct version based on the example's case number.
@@ -45,7 +45,7 @@ kig       1.0
 
 
 Transformer Saturation
-**********************
+----------------------
 
 This example disconnects 400 MW of load from the end of a 500-km 
 transformer-terminated line. It demonstrates the CIM extension for 
@@ -66,7 +66,7 @@ ATP. The first set of graphs represents a linear transformer and the second set 
 
 
 IEEE 39-Bus
-***********
+-----------
 
 This example demonstrates a single-line-to-ground fault (SLGF) applied and 
 cleared on the IEEE 39-bus test system, which is generally representative 
@@ -83,7 +83,7 @@ This example does not require `gfm_gfl_ibr2.dll` to run in ATP.
 
 
 IEEE 118-Bus
-************
+------------
 
 This example demonstrates a SLGF applied and cleared on the IEEE 118-bus 
 test system, which is generally representative of the Midwestern United 
@@ -104,7 +104,7 @@ to run in ATP. It does not require `gfm_gfl_ibr2.dll` to run in ATP.
 
 
 WECC 240-Bus
-************
+------------
 
 This example demonstrates a SLGF applied and cleared on the WECC 240-bus 
 test system, which is generally representative of the Western United 
@@ -123,7 +123,7 @@ not require `gfm_gfl_ibr2.dll` to run in ATP.
 .. _target-examples-smibdll:
 
 SMIB DLL
-********
+--------
 
 This result comes from the EPRI generic grid-forming inverter model, 
 implemented in a DLL compiled from C code. It is sized at 100 MW and 
