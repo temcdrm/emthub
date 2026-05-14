@@ -62,15 +62,80 @@ With an ATP installation, you should be able to match the outputs in :ref:`targe
 Profile Maintainers
 -------------------
 
-.. note::
-    To be completed.
+.. warning::
+    This section produces errors that are under investigation.
 
 This roadmap applies to stakeholders that primarily manage CIM UML and profiles. They do not necessarily run EMT simulations.
 
 #. :ref:`target-roadmap-users` Roadmap is a pre-requisite.
-#. **Talk about obtaining CIM UML, a UML editor, and CIMTool.**
+#. The CIM UML, which includes version *18v15* of the *Grid* package, should be obtained from the `CIM Users Group <https://cimug.org/cimdocs/standards-artifacts/>`_. Look for *Draft CIM Model Releases* and then a 48-MB zip file that includes *Grid18v15* in the file name. Download that to your hard drive and unzip it.
+#. A UML editing tool is suggested for exploring and extending the CIM UML. Chapter 10 of the `CIM Modeling Guide <https://cimug.org/cimdocs/model-manager-documents/>`_ provides advice on this topic.
+#. To create and update profiles, document profiles, produce SQL data definition scripts, and check CIM RDF instance files against a profile, you need the open-source `CIMTool <https://cimtool.ucaiug.io/>`_.
 
-.. image:: ../ProfileFlow.png
+These files, tools, and on-line documents provide the initial knowledge 
+base to perform segments of the workflow shown below. In the upper left, 
+the file *CIM_Grid_18v15.qea* has been reduced in size, by deleting the 
+unnecesary (for EMT) *Enterprise* and *Market* packages. This step is 
+optional. The three shaded files are key items maintained on the open-source
+software site for P3743:
+ 
+#. *Emtiop.xmi* contains the CIM extensions for EMT, output from  the UML editor and input to *CIMTool*. This file is relatively small and kept under version control. It should be possible to use this extension file with future versions of the base CIM. The format is a variant of *xml*.
+#. *emtiop.owl* is the profile for EMT. This is created by selecting classes and attributes from the base CIM with extensions in *CIMTool*. You should check example CIM RDF instance files, some of them listed at the lower left, against the profile and resolve any errors.
+#. *emtiop.html* documents the classes and attributes used in the profile for EMT. It is built automatically from *CIMTool* and included in this on-line documentation as part of :ref:`target-cim-profile`. 
+
+.. image:: assets/ProfileFlow.png
+
+For use with SQL implementations, *CIMTool* also produces *emtiop.sql* to 
+define SQL tables. This doesn't work for Python's *sqlite3* package; 
+manual editing is necessary to add foreign keys at the same time as tables 
+are created. This is not necessary if using CIM RDF implementations.
+ 
+*CIMTool* stores its files in a "workspace" under its local installation. 
+Any files imported into *CIMTool* will be copied into this workspace. Once 
+the files are copied, it's recommended to let *CIMTool* manage the 
+workspace files itself. *CIMTool* began as an Eclipse plugin, and has 
+since been more conveniently packaged as a standalone installation. The 
+following steps illustrate a successful sequence of importing the schema, 
+importing the profile from version control, and checking one of the 
+example instance files against the profile. 
+
+#. Extract the :ref:`target-repository` if you haven't already.
+#. Start *CIMTool*. Version *2.3.0 RC4* was used in this demonstration.
+#. Use the *File/New/CIMTool Project* menu command.
+#. On the page **New CIMTool Project**, name the project *emtioptest*. It will typically create the workspace in *C:\CIMTool-2.3.0-RC4\workspace\emtioptest*. Click *Next >*.
+#. On the page **Project Copyright Templates Configuration**, select the option *Do not include copyrights* and click *Next >*.
+#. On the page **Import Initial Schema**:
+
+   - Browse to the *qea* file containing the base CIM schema. It must include the *Grid18v15* package.
+   - Leave the *Namespace URI* as *http://www.ucauig.org/ns#* with the *Preference* option checked.
+   - Leave the *During import merge shadow class extensions* and *Enable self-healing* options checked. 
+   - Turn off the *CIMTool Schema Model Validation Report*. 
+   - The page should look similar to the screen shot below. Click *Finish*.
+
+.. image:: assets/CIMTool1.png
+
+7. The *Project Explorer* should show the imported CIM base schema, as shown below.
+
+.. image:: assets/CIMTool2.png
+
+8. Right-click on the *Schema* item under the *emtioptest* workspace in *Project Explorer*. Click *Import* on the pop-up menu and then select *Import Schema*, as shown below.
+
+.. image:: assets/CIMTool3.png
+
+9. Click *Next* to bring up the **Import Schema** page, similar to item 6. Leave the options as before, but browse to *Emtiop.xmi* in your local copy of the GitHub repository. The page should be similar to the screen shot below. Then click *Finish*.
+
+.. image:: assets/CIMTool4.png
+
+10. **TODO**: resolve the ensuing stack overflow error in *CIMTool*.  See below. The *Project Model* says no information available.  It's necessary to delete the *emtioptest* workspace from the Windows file system. Then *CIMTool* will open the previous *Emtiop* workspace.
+
+.. image:: assets/CIMTool5.png
+
+11. **TODO**: open the profile *emtiop.owl*
+
+#. **TODO**: check one of the CIM RDF instance files in *CIMTool*
+
+From this point, please consult the *CIMTool* documentation and the *CIM Modeling Guide*
+for advice on how to proceed.
 
 .. _target-roadmap-network:
 
@@ -95,7 +160,7 @@ This roadmap applies to stakeholders that primarily import CIM network models to
    c. Try testing the *SMIBDLL* example next.  This adds the essential DLL interface to the baseline features already tested.
    d. Try testing *IEEE118* and then *WECC240*. These are similar to but larger than *IEEE39* and they add a few more types of network model components.
 
-.. image:: ../FileFlow.png
+.. image:: assets/FileFlow.png
 
 .. _target-roadmap-dll:
 
