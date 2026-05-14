@@ -34,11 +34,19 @@ Then install the Python package from a Windows Command Prompt::
 
     pip install emthub
 
-If you installed Python fresh from the Microsoft Store or the new Python install manager, it may not have added 
-Python console scripts to the Windows path. You can do this in the Windows Settings app. The path to add will
-be a subfolder of your Python installation, which should already be in the path. For example, the path you need
-to add might end with `\\Python\\pythoncore-3.14-64\\Scripts`. If ``emthub-list-cases`` fails to run in the next
-section, that means you need to complete this step.
+If you installed Python fresh from the Microsoft Store or the new Python 
+install manager, it may not have added Python console scripts to the 
+Windows path. You can do this in the Windows Settings app. If 
+``emthub-list-cases`` fails to run in the next section, that means you 
+need to complete this step. The path to add will be a subfolder of your 
+Python installation, which should already be in the path. For example, the 
+path you need to add might end with 
+`\\Python\\pythoncore-3.14-64\\Scripts`. See the screenshot below for a 
+**highlighted example** from an earlier version. It matches the core 
+Python path directly underneath. It also shows some paths for optional ATP 
+testing. 
+
+.. image:: assets/UserPaths.png
 
 .. _target-quick-start:
 
