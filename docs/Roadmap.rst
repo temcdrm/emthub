@@ -62,9 +62,6 @@ With an ATP installation, you should be able to match the outputs in :ref:`targe
 Profile Maintainers
 -------------------
 
-.. warning::
-    This section produces errors that are under investigation.
-
 This roadmap applies to stakeholders that primarily manage CIM UML and profiles. They do not necessarily run EMT simulations.
 
 #. :ref:`target-roadmap-users` Roadmap is a pre-requisite.
@@ -74,10 +71,11 @@ This roadmap applies to stakeholders that primarily manage CIM UML and profiles.
 
 These files, tools, and on-line documents provide the initial knowledge 
 base to perform segments of the workflow shown below. In the upper left, 
-the file *CIM_Grid_18v15.qea* has been reduced in size, by deleting the 
-unnecesary (for EMT) *Enterprise* and *Market* packages. This step is 
-optional. The three shaded files are key items maintained on the open-source
-software site for P3743:
+the file *CIM_Grid_18v15.xmi* [1]_ has been reduced in size, by deleting the 
+unnecesary (for EMT) *Enterprise* and *Market* packages. For *CIMTool*, it 
+was also necessary to delete profile packages distributed within the base 
+CIM file by the CIM Users Group. The three shaded files are key items 
+maintained on the open-source software site for P3743: 
  
 #. *Emtiop.xmi* contains the CIM extensions for EMT, output from  the UML editor and input to *CIMTool*. This file is relatively small and kept under version control. It should be possible to use this extension file with future versions of the base CIM. The format is a variant of *xml*.
 #. *emtiop.owl* is the profile for EMT. This is created by selecting classes and attributes from the base CIM with extensions in *CIMTool*. You should check example CIM RDF instance files, some of them listed at the lower left, against the profile and resolve any errors.
@@ -136,6 +134,16 @@ example instance files against the profile.
 
 From this point, please consult the *CIMTool* documentation and the *CIM Modeling Guide*
 for advice on how to proceed.
+
+.. [1] Instead of importing two separate *xmi* files to *CIMTool*, it is 
+   also possible to import one *CIM_Grid_18v15_Emtiop.qea* file. This 
+   combined *qea* file is not under version control; a developer would have 
+   to merge the two separate *xmi* files into a single *qea* file using the 
+   commercial UML editor. This approach can be more efficient in working on 
+   CIM extensions and profiles in a single workflow. At significant 
+   milestones, be sure to export *Emtiop.xmi* from the UML editor for version 
+   control. We keep two *xmi* files under version control because only the 
+   smaller *Emtiop.xmi* is expected to change frequently. 
 
 .. _target-roadmap-network:
 
