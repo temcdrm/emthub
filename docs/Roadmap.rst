@@ -62,6 +62,9 @@ With an ATP installation, you should be able to match the outputs in :ref:`targe
 Profile Maintainers
 -------------------
 
+.. note::
+    To be completed.
+
 This roadmap applies to stakeholders that primarily manage CIM UML and profiles. They do not necessarily run EMT simulations.
 
 #. :ref:`target-roadmap-users` Roadmap is a pre-requisite.
@@ -100,13 +103,13 @@ example instance files against the profile.
 #. Extract the :ref:`target-repository` if you haven't already.
 #. Start *CIMTool*. Version *2.3.0 RC4* was used in this demonstration.
 #. Use the *File/New/CIMTool Project* menu command.
-#. On the page **New CIMTool Project**, name the project *emtioptest*. It will typically create the workspace in *C:\CIMTool-2.3.0-RC4\workspace\emtioptest*. Click *Next >*.
+#. On the page **New CIMTool Project**, name the project *emtioptest*. It will typically create the workspace in *C:\\CIMTool-2.3.0-RC4\\workspace\\emtioptest*. Click *Next >*.
 #. On the page **Project Copyright Templates Configuration**, select the option *Do not include copyrights* and click *Next >*.
 #. On the page **Import Initial Schema**:
 
-   - Browse to the *qea* file containing the base CIM schema. It must include the *Grid18v15* package.
-   - Leave the *Namespace URI* as *http://www.ucauig.org/ns#* with the *Preference* option checked.
-   - Leave the *During import merge shadow class extensions* and *Enable self-healing* options checked. 
+   - Browse to the *CIM_Grid_18v15.xmi* file containing the base CIM schema, which includes the *Grid18v15* package.
+   - Specify the *Namespace URI* as *http://www.ucauig.org/ns#* (check the *Preference* option if necessary).
+   - Leave the *During import merge shadow class extensions* and *Enable self-healing* options checked (these may be grayed out). 
    - Turn off the *CIMTool Schema Model Validation Report*. 
    - The page should look similar to the screen shot below. Click *Finish*.
 
@@ -116,19 +119,19 @@ example instance files against the profile.
 
 .. image:: assets/CIMTool2.png
 
-8. Right-click on the *Schema* item under the *emtioptest* workspace in *Project Explorer*. Click *Import* on the pop-up menu and then select *Import Schema*, as shown below.
+#. Right-click on the *Schema* item under the *emtioptest* workspace in *Project Explorer*. Click *Import* on the pop-up menu and then select *Import Schema*, as shown below.
 
 .. image:: assets/CIMTool3.png
 
-9. Click *Next* to bring up the **Import Schema** page, similar to item 6. Leave the options as before, but browse to *Emtiop.xmi* in your local copy of the GitHub repository. The page should be similar to the screen shot below. Then click *Finish*.
+#. Click *Next* to bring up the **Import Schema** page, similar to item 6. Leave the options as before, but browse to *Emtiop.xmi* in your local copy of the GitHub repository. The page should be similar to the screen shot below. Then click *Finish*.
 
 .. image:: assets/CIMTool4.png
 
-10. **TODO**: resolve the ensuing stack overflow error in *CIMTool*.  See below. The *Project Model* says no information available.  It's necessary to delete the *emtioptest* workspace from the Windows file system. Then *CIMTool* will open the previous *Emtiop* workspace.
+#. The *Project Explorer* and *Project Browser* should reflect the content of both *xmi* files, as shown below.
 
 .. image:: assets/CIMTool5.png
 
-11. **TODO**: open the profile *emtiop.owl*
+#. **TODO**: open the profile *emtiop.owl*
 
 #. **TODO**: check one of the CIM RDF instance files in *CIMTool*
 
