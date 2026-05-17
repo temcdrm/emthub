@@ -3,6 +3,7 @@
 	<xmi:Documentation exporter="Enterprise Architect" exporterVersion="6.5" exporterID="1714"/>
 	<uml:Model xmi:type="uml:Model" name="EA_Model" visibility="public">
 		<packagedElement xmi:type="uml:Package" xmi:id="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" name="Emtiop" visibility="public">
+			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_5329F0C5_C7DA_4b32_9575_A887C157C185" body="Use these curves to specify more than two points for machine saturation characteristics. &lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;Units TBD&lt;/b&gt;&lt;/font&gt;."/>
 			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_3558F643_EEBA_4c41_A8E1_962241F8B26D" body="This subset of DC components should suffice to represent the DC side of an IBR converter."/>
 			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_70BE4C77_7C67_4da4_918F_11E741E8FAF5" body="This extension represents non-linear transformer core effects, through a piecewise-linear TransformerSaturation instance, which associates to linear TransformerCoreAdmittance and then to TransformerEnd."/>
 			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_8271D14C_510B_49d6_AC80_3C8C2898A131" body="These extensions eliminate Terminal objects from the IEEE P3743. Instead, ConductingEquipment and TransformerEnd extension instances associate directly to ConnectivityNode. Another extension represents non-linear transformer core effects, through a piecewise-linear TransformerSaturation instance, which associates to linear TransformerCoreAdmittance and then to TransformerEnd.">
@@ -13,6 +14,7 @@
 			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_118938DF_7E6A_4cdc_AC05_F82C84BFD8C5" body="These classes associate &quot;real-code&quot; dynamic link libraries (DLLs) to inverters and other Equipment, per Cigre TB 958. The IEEECigreDLLParameter does not need to inherit from DetailedModelDescriptor because it is already uniquely identified by the association to IEEECigreDLL in combination with its own sequenceNumber."/>
 			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_37686F36_5816_4b4e_957A_C860E89CFC65" body="These classes allow dynamic remote signal connections to ConnectivityNode, TransformerEnd, and either the From or To side of ConductingEquipment. It also permits the standard WeccDynamics and the extension IEEECigreDLL to use remote signals. &lt;font color=&quot;#ff0000&quot;&gt;What is the difference between remoteBusVoltage and remoteBusVoltageAmplitude?&lt;/font&gt;"/>
 			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_5567A377_5F25_4983_8492_59C5F34B7B45" body="The extension (top) associates SvVoltage to ConnectivityNode instead of TopologicalNode.&#xA;For ConductingEquipment, positive SvPowerFlow is defined from the Terminal into the equipment. This sign convention cannot be reversed. SvSwitch, SvStatus, SvTapStep, and SvShuntCompensatorSections are unchanged from the core CIM. SvInjection is not used.&#xA;Some inherited associations are hidden in this diagram for clarity. The phase attribute will not be used for describing positive sequence power flow results to initialize EMT. Instead, use the phase A reference angle in three-phase systems."/>
+			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_14608A02_1109_4ef5_9959_F3CB0647E49A" body="Maintain North American dynamic model parameter sets in a similar fashion as the IEEECigreDLL parameter sets."/>
 			<ownedComment xmi:type="uml:Comment" xmi:id="EAID_E7793D3B_7886_4ef5_81BB_0320EF6B493A" body="IEEECigreDLL inherits from DynamicsFunctionBlock."/>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_6774354F_3A1A_42c6_8771_7CE0A61015C8" visibility="public"/>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_0C440DC4_4D78_4d54_B3B1_6BC0BA88FEBB" name="ConnectedFacility" visibility="public">
@@ -325,11 +327,63 @@
 					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000112__E8EA_40af_8906_0DD5B0F98879" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_08D2CE41_7CBA_4631_8CD0_98D130F7B9CD" name="MachineSaturation" visibility="public">
+				<generalization xmi:type="uml:Generalization" xmi:id="EAID_9999B593_31E9_4def_998B_1BECD9473E12" general="EAID_73A500A6_E7FF_4abe_8FDA_E68B4E60FF9F" isSubstitutable="true"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Association" xmi:id="EAID_0C07D5DD_BF15_40f3_B5FB_C56B28721A98" visibility="public">
+				<memberEnd xmi:idref="EAID_dst07D5DD_BF15_40f3_B5FB_C56B28721A98"/>
+				<memberEnd xmi:idref="EAID_src07D5DD_BF15_40f3_B5FB_C56B28721A98"/>
+				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src07D5DD_BF15_40f3_B5FB_C56B28721A98" name="SynchronousMachineDetailed" visibility="public" association="EAID_0C07D5DD_BF15_40f3_B5FB_C56B28721A98" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
+					<type xmi:idref="EAID_B272216C_A098_436d_80C8_02AD11F5B97F"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000113__BF15_40f3_B5FB_C56B28721A98" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000114__BF15_40f3_B5FB_C56B28721A98" value="1"/>
+				</ownedEnd>
+				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst07D5DD_BF15_40f3_B5FB_C56B28721A98" name="MachineSaturationQAxis" visibility="public" association="EAID_0C07D5DD_BF15_40f3_B5FB_C56B28721A98" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
+					<type xmi:idref="EAID_08D2CE41_7CBA_4631_8CD0_98D130F7B9CD"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000115__BF15_40f3_B5FB_C56B28721A98" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000116__BF15_40f3_B5FB_C56B28721A98" value="1"/>
+				</ownedEnd>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Association" xmi:id="EAID_8343ACF6_65FC_47f4_8F19_9497DB66A8E4" visibility="public">
+				<memberEnd xmi:idref="EAID_dst43ACF6_65FC_47f4_8F19_9497DB66A8E4"/>
+				<memberEnd xmi:idref="EAID_src43ACF6_65FC_47f4_8F19_9497DB66A8E4"/>
+				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src43ACF6_65FC_47f4_8F19_9497DB66A8E4" name="SynchronousMachineDetailed" visibility="public" association="EAID_8343ACF6_65FC_47f4_8F19_9497DB66A8E4" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
+					<type xmi:idref="EAID_B272216C_A098_436d_80C8_02AD11F5B97F"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000117__65FC_47f4_8F19_9497DB66A8E4" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000118__65FC_47f4_8F19_9497DB66A8E4" value="1"/>
+				</ownedEnd>
+				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst43ACF6_65FC_47f4_8F19_9497DB66A8E4" name="MachineSaturationDAxis" visibility="public" association="EAID_8343ACF6_65FC_47f4_8F19_9497DB66A8E4" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
+					<type xmi:idref="EAID_08D2CE41_7CBA_4631_8CD0_98D130F7B9CD"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000119__65FC_47f4_8F19_9497DB66A8E4" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000120__65FC_47f4_8F19_9497DB66A8E4" value="1"/>
+				</ownedEnd>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_303A4169_58C3_4aee_A17A_92026FB281C5" name="NERCDynamicModel" visibility="public">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_FAEF8ABA_5D4D_4894_B17F_F8B3239CBCD3" name="nameKind" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<type xmi:idref="EAID_EEFA8003_D650_4709_B643_D52D7B762676"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000121_5D4D_4894_B17F_F8B3239CBCD3" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000122_5D4D_4894_B17F_F8B3239CBCD3" value="1"/>
+				</ownedAttribute>
+				<generalization xmi:type="uml:Generalization" xmi:id="EAID_C0146B2A_5D80_476e_956B_7B05584F8A9B" general="EAID_5EDF767F_A5D0_45ed_A2CA_448F43F2CA14" isSubstitutable="true"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_E6A5E378_0C66_4de2_B84E_A593AB942396" name="NERCDynamicModelParameter" visibility="public">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_7B3B0E9A_2463_45f2_8EA9_919EB73043A8" name="sequenceNumber" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<type xmi:idref="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000123_2463_45f2_8EA9_919EB73043A8" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000124_2463_45f2_8EA9_919EB73043A8" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_0F944990_11DA_4a52_AC01_52031FAD619B" name="value" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
+					<type xmi:idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000125_11DA_4a52_AC01_52031FAD619B" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000126_11DA_4a52_AC01_52031FAD619B" value="1"/>
+				</ownedAttribute>
+				<generalization xmi:type="uml:Generalization" xmi:id="EAID_C269F7A8_556D_453f_9EDF_AB8678891C65" general="EAID_4AF9369A_AF00_49d7_8970_2B62B4AE1C8E" isSubstitutable="true"/>
+			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_894AFF31_07B8_423a_AFB9_E5F054714594" name="PowerElectronicsConnectionDCTerminal" visibility="public">
 				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_B665A31D_1C2F_4af6_B2A3_A040BFC261C3" name="polarity" visibility="public" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false">
 					<type xmi:idref="EAID_09086925_F185_4228_AD42_A487DE5FC8C5"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000113_1C2F_4af6_B2A3_A040BFC261C3" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000114_1C2F_4af6_B2A3_A040BFC261C3" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000127_1C2F_4af6_B2A3_A040BFC261C3" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000128_1C2F_4af6_B2A3_A040BFC261C3" value="1"/>
 				</ownedAttribute>
 				<generalization xmi:type="uml:Generalization" xmi:id="EAID_B62D2854_E956_47f6_8E08_4DABC5173A0A" general="EAID_F76397E4_74A4_4178_9434_E33C9EBC5E7C" isSubstitutable="true"/>
 			</packagedElement>
@@ -338,13 +392,13 @@
 				<memberEnd xmi:idref="EAID_src6518FD_7CD5_41bd_BC98_8FB58BC89044"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src6518FD_7CD5_41bd_BC98_8FB58BC89044" name="PowerElectronicsConnection" visibility="public" association="EAID_D26518FD_7CD5_41bd_BC98_8FB58BC89044" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_AEF4A2AB_D126_4311_B299_CAB7D826A16E"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000115__7CD5_41bd_BC98_8FB58BC89044" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000116__7CD5_41bd_BC98_8FB58BC89044" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000129__7CD5_41bd_BC98_8FB58BC89044" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000130__7CD5_41bd_BC98_8FB58BC89044" value="1"/>
 				</ownedEnd>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst6518FD_7CD5_41bd_BC98_8FB58BC89044" name="PowerElectronicsConnectionDCTerminal" visibility="public" association="EAID_D26518FD_7CD5_41bd_BC98_8FB58BC89044" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_894AFF31_07B8_423a_AFB9_E5F054714594"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000117__7CD5_41bd_BC98_8FB58BC89044" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000118__7CD5_41bd_BC98_8FB58BC89044" value="-1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000131__7CD5_41bd_BC98_8FB58BC89044" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000132__7CD5_41bd_BC98_8FB58BC89044" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_A8F8F566_1B41_431a_A965_44E4E0B221E3" name="RotatingMachinePlant" visibility="public">
@@ -355,14 +409,14 @@
 				<memberEnd xmi:idref="EAID_dstE2E1B6_088A_4410_A913_00284C69F3E8"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dstE2E1B6_088A_4410_A913_00284C69F3E8" name="ConnectivityNode" visibility="public" association="EAID_DEE2E1B6_088A_4410_A913_00284C69F3E8" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_8BCACC36_B2DD_4c2a_A2AE_CFDF43731FC2"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000119__088A_4410_A913_00284C69F3E8" value="1"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000120__088A_4410_A913_00284C69F3E8" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000133__088A_4410_A913_00284C69F3E8" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000134__088A_4410_A913_00284C69F3E8" value="1"/>
 				</ownedEnd>
 				<memberEnd xmi:idref="EAID_srcE2E1B6_088A_4410_A913_00284C69F3E8"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_srcE2E1B6_088A_4410_A913_00284C69F3E8" name="SvVoltages" visibility="public" association="EAID_DEE2E1B6_088A_4410_A913_00284C69F3E8" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_6C833C4F_109F_47f5_B80B_F3E4F2F9BEC7"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000121__088A_4410_A913_00284C69F3E8" value="0"/>
-					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000122__088A_4410_A913_00284C69F3E8" value="-1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000135__088A_4410_A913_00284C69F3E8" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000136__088A_4410_A913_00284C69F3E8" value="-1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Class" xmi:id="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C" name="TransformerSaturation" visibility="public">
@@ -373,13 +427,13 @@
 				<memberEnd xmi:idref="EAID_src543B00_E80C_455e_A952_12EA8E441602"/>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src543B00_E80C_455e_A952_12EA8E441602" name="TransformerCoreAdmittance" visibility="public" association="EAID_01543B00_E80C_455e_A952_12EA8E441602" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_25B2D790_161A_45c8_8551_E77A34DE684C"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000123__E80C_455e_A952_12EA8E441602" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000124__E80C_455e_A952_12EA8E441602" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000137__E80C_455e_A952_12EA8E441602" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000138__E80C_455e_A952_12EA8E441602" value="1"/>
 				</ownedEnd>
 				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst543B00_E80C_455e_A952_12EA8E441602" name="TransformerSaturation" visibility="public" association="EAID_01543B00_E80C_455e_A952_12EA8E441602" isStatic="false" isReadOnly="false" isDerived="false" isOrdered="false" isUnique="true" isDerivedUnion="false" aggregation="none">
 					<type xmi:idref="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C"/>
-					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000125__E80C_455e_A952_12EA8E441602" value="0"/>
-					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000126__E80C_455e_A952_12EA8E441602" value="1"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000139__E80C_455e_A952_12EA8E441602" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000140__E80C_455e_A952_12EA8E441602" value="1"/>
 				</ownedEnd>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Enumeration" xmi:id="EAID_1140B936_8410_45ba_84B9_2EB84B4C8FE6" name="DCSourceKind" visibility="public">
@@ -398,6 +452,12 @@
 				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_B2F08779_AFA2_4cb4_B933_AAAB9E24229E" name="Uint32_Val" visibility="public"/>
 				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_AC18A790_F8C8_4d20_8094_7AEF7B7FCD46" name="Real32_Val" visibility="public"/>
 				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_6A178E59_E15D_47c5_B09D_D15D746763F5" name="Real64_Val" visibility="public"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Enumeration" xmi:id="EAID_EEFA8003_D650_4709_B643_D52D7B762676" name="NERCModelNameKind" visibility="public">
+				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_D741AB3C_77ED_4888_BAFB_978CC46F5CB8" name="PSSE" visibility="public"/>
+				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_089BA23B_5286_42d0_9DC1_5D4620C6B2F2" name="PSLF" visibility="public"/>
+				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_700AA8EB_A6D2_4830_92E6_882A7DE11676" name="WECC" visibility="public"/>
+				<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_CFBC5BF4_C461_4430_BC86_9D1D044ED785" name="Other" visibility="public"/>
 			</packagedElement>
 		</packagedElement>
 		<thecustomprofile:CIMExtension base_Class="EAID_0C440DC4_4D78_4d54_B3B1_6BC0BA88FEBB"/>
@@ -429,6 +489,9 @@
 		<thecustomprofile:enum base_Property="EAID_07A6CB9B_D736_458a_B2BF_1AD7B456FAAE"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_87EA71F2_114B_4dad_8692_E78C27AD3A12"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_9C01A523_ED17_437d_9E28_AC7CFAB911DB"/>
+		<thecustomprofile:CIMExtension base_Class="EAID_08D2CE41_7CBA_4631_8CD0_98D130F7B9CD"/>
+		<thecustomprofile:CIMExtension base_Class="EAID_303A4169_58C3_4aee_A17A_92026FB281C5"/>
+		<thecustomprofile:CIMExtension base_Class="EAID_E6A5E378_0C66_4de2_B84E_A593AB942396"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_894AFF31_07B8_423a_AFB9_E5F054714594"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_A8F8F566_1B41_431a_A965_44E4E0B221E3"/>
 		<thecustomprofile:CIMExtension base_Class="EAID_6C833C4F_109F_47f5_B80B_F3E4F2F9BEC7"/>
@@ -437,6 +500,7 @@
 		<thecustomprofile:CIMExtension base_Enumeration="EAID_1140B936_8410_45ba_84B9_2EB84B4C8FE6"/>
 		<thecustomprofile:enumeration base_Enumeration="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B"/>
 		<thecustomprofile:CIMExtension base_Enumeration="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B"/>
+		<thecustomprofile:CIMExtension base_Enumeration="EAID_EEFA8003_D650_4709_B643_D52D7B762676"/>
 		<thecustomprofile:baseuri base_Package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" baseuri="http://opensource.ieee.org/emtiop#"/>
 		<thecustomprofile:CIMExtension base_Package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A"/>
 	</uml:Model>
@@ -462,6 +526,16 @@
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8613" ea_eleType="element"/>
 				<properties documentation="IEEECigreDLL inherits from DynamicsFunctionBlock." isSpecification="false" sType="Note" nType="0" scope="public"/>
 				<project author="tom" version="1.0" phase="1.0" created="2026-05-14 16:44:28" modified="2026-05-16 08:39:17" complexity="1" status="Proposed"/>
+				<code gentype="&lt;none&gt;"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="Emtiop"/>
+			</element>
+			<element xmi:idref="EAID_14608A02_1109_4ef5_9959_F3CB0647E49A" xmi:type="uml:Note" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8636" ea_eleType="element"/>
+				<properties documentation="Maintain North American dynamic model parameter sets in a similar fashion as the IEEECigreDLL parameter sets." isSpecification="false" sType="Note" nType="0" scope="public"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-05-16 23:15:56" modified="2026-05-16 23:16:34" complexity="1" status="Proposed"/>
 				<code gentype="&lt;none&gt;"/>
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
@@ -545,6 +619,16 @@
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8614" ea_eleType="element"/>
 				<properties documentation="This subset of DC components should suffice to represent the DC side of an IBR converter." isSpecification="false" sType="Note" nType="0" scope="public"/>
 				<project author="tom" version="1.0" phase="1.0" created="2026-05-14 17:46:49" modified="2026-05-16 08:39:17" complexity="1" status="Proposed"/>
+				<code gentype="&lt;none&gt;"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="Emtiop"/>
+			</element>
+			<element xmi:idref="EAID_5329F0C5_C7DA_4b32_9575_A887C157C185" xmi:type="uml:Note" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8637" ea_eleType="element"/>
+				<properties documentation="Use these curves to specify more than two points for machine saturation characteristics. &lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;Units TBD&lt;/b&gt;&lt;/font&gt;." isSpecification="false" sType="Note" nType="0" scope="public"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-05-16 23:22:33" modified="2026-05-16 23:23:11" complexity="1" status="Proposed"/>
 				<code gentype="&lt;none&gt;"/>
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
@@ -1402,6 +1486,96 @@
 					<Generalization xmi:id="EAID_94A08DBC_CB33_49a3_AEF5_C611973EF851" start="EAID_1E3817AD_61B4_4617_85A3_D404B4E676FE" end="EAID_9C01A523_ED17_437d_9E28_AC7CFAB911DB"/>
 				</links>
 			</element>
+			<element xmi:idref="EAID_08D2CE41_7CBA_4631_8CD0_98D130F7B9CD" xmi:type="uml:Class" name="MachineSaturation" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8635" ea_eleType="element"/>
+				<properties documentation="Use to define machine saturation with more than two points." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-05-16 23:03:55" modified="2026-05-16 23:08:48" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=16777184;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={2E71B9A1-8F7A-4846-9F8C-FD8F9A89A4B4}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;@ENDSTEREO;$DES;$CLT={08D2CE41-7CBA-4631-8CD0-98D130F7B9CD}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Emtiop"/>
+				<links>
+					<Generalization xmi:id="EAID_9999B593_31E9_4def_998B_1BECD9473E12" start="EAID_08D2CE41_7CBA_4631_8CD0_98D130F7B9CD" end="EAID_73A500A6_E7FF_4abe_8FDA_E68B4E60FF9F"/>
+					<Association xmi:id="EAID_0C07D5DD_BF15_40f3_B5FB_C56B28721A98" start="EAID_B272216C_A098_436d_80C8_02AD11F5B97F" end="EAID_08D2CE41_7CBA_4631_8CD0_98D130F7B9CD"/>
+					<Association xmi:id="EAID_8343ACF6_65FC_47f4_8F19_9497DB66A8E4" start="EAID_B272216C_A098_436d_80C8_02AD11F5B97F" end="EAID_08D2CE41_7CBA_4631_8CD0_98D130F7B9CD"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_303A4169_58C3_4aee_A17A_92026FB281C5" xmi:type="uml:Class" name="NERCDynamicModel" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8632" ea_eleType="element"/>
+				<properties documentation="Parameterized models from software libraries or user code that rely on documentation provided elsewhere, e.g., software documentation. The model is named within the domain of nameKind, e.g., ST6B for PSSE or esst6b for PSLF. Parameters are maintained by name and sequence number in the NERCDynamicModelParameter class. " isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-05-16 22:42:16" modified="2026-05-16 23:07:55" complexity="1" status="Proposed"/>
+				<code product_name="Java" gentype="Java"/>
+				<style appearance="BackColor=16777184;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={64C6BA0B-C3ED-441b-8014-987C32464B94}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;GUID={5B7C5D39-EEDF-44a5-98D4-16F1C812AEB3};@ENDSTEREO;$DES;$CLT={303A4169-58C3-4aee-A17A-92026FB281C5}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Emtiop"/>
+				<attributes>
+					<attribute xmi:idref="EAID_FAEF8ABA_5D4D_4894_B17F_F8B3239CBCD3" name="nameKind" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="28386" ea_guid="{FAEF8ABA-5D4D-4894-B17F-F8B3239CBCD3}"/>
+						<properties type="NERCModelNameKind" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="0"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+				</attributes>
+				<links>
+					<Generalization xmi:id="EAID_C0146B2A_5D80_476e_956B_7B05584F8A9B" start="EAID_303A4169_58C3_4aee_A17A_92026FB281C5" end="EAID_5EDF767F_A5D0_45ed_A2CA_448F43F2CA14"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_E6A5E378_0C66_4de2_B84E_A593AB942396" xmi:type="uml:Class" name="NERCDynamicModelParameter" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8633" ea_eleType="element"/>
+				<properties documentation="Input parameter for a NERCDynamicModel. Interpretation of the each value relies on documentation provided elsewhere." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-05-16 22:42:23" modified="2026-05-16 22:53:32" complexity="1" status="Proposed"/>
+				<code product_name="Java" gentype="Java"/>
+				<style appearance="BackColor=16777184;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={E1678E56-E3FB-4231-B7CD-E4E333360D33}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;@ENDSTEREO;$DES;$CLT={E6A5E378-0C66-4de2-B84E-A593AB942396}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Emtiop"/>
+				<attributes>
+					<attribute xmi:idref="EAID_7B3B0E9A_2463_45f2_8EA9_919EB73043A8" name="sequenceNumber" scope="Public">
+						<initial/>
+						<documentation value="This parameter's order in the documented array of model parameters, e.g., its column number in a delimited text file or its index number in an array passed in a function call."/>
+						<model ea_localid="28387" ea_guid="{7B3B0E9A-2463-45f2-8EA9-919EB73043A8}"/>
+						<properties type="Integer" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="0"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;union=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_0F944990_11DA_4a52_AC01_52031FAD619B" name="value" scope="Public">
+						<initial/>
+						<documentation value="The parameter value in text format."/>
+						<model ea_localid="28388" ea_guid="{0F944990-11DA-4a52-AC01-52031FAD619B}"/>
+						<properties type="String" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="1"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;union=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+				</attributes>
+				<links>
+					<Generalization xmi:id="EAID_C269F7A8_556D_453f_9EDF_AB8678891C65" start="EAID_E6A5E378_0C66_4de2_B84E_A593AB942396" end="EAID_4AF9369A_AF00_49d7_8970_2B62B4AE1C8E"/>
+				</links>
+			</element>
 			<element xmi:idref="EAID_894AFF31_07B8_423a_AFB9_E5F054714594" xmi:type="uml:Class" name="PowerElectronicsConnectionDCTerminal" scope="public">
 				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8626" ea_eleType="element"/>
 				<properties documentation="A DC connection point at the converter, which is also connected on the AC side as any other AC ConductingEquipment. This special terminal is separate from the regular DCTerminal to restrict the connection, such that no other DC conducting equipment can be connected to the AC side." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
@@ -1690,6 +1864,78 @@
 						<styleex value="IsLiteral=1;volatile=0;"/>
 						<tags/>
 						<xrefs value="$XREFPROP=$XID={E207C5F2-0A6D-4941-9AFE-DD4213CD3AA7}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={6A178E59-E15D-47c5-B09D-D15D746763F5}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					</attribute>
+				</attributes>
+			</element>
+			<element xmi:idref="EAID_EEFA8003_D650_4709_B643_D52D7B762676" xmi:type="uml:Enumeration" name="NERCModelNameKind" scope="public">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" tpos="0" ea_localid="8634" ea_eleType="element"/>
+				<properties documentation="Describes the naming category for dynamic models recognized by NERC." isSpecification="false" sType="Enumeration" nType="0" scope="public" stereotype="CIMExtension" isRoot="false" isLeaf="false" isAbstract="false"/>
+				<project author="tom" version="1.0" phase="1.0" created="2026-05-16 22:47:20" modified="2026-05-16 22:48:57" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={3ABC4D86-2E92-4589-A830-DA4C768BE147}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=CIMExtension;GUID={3C752ABE-518C-4d9f-9AFD-BD90AF0F69AD};@ENDSTEREO;$DES;$CLT={EEFA8003-D650-4709-B643-D52D7B762676}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Emtiop" ea_attsclassified="{FAEF8ABA-5D4D-4894-B17F-F8B3239CBCD3}"/>
+				<attributes>
+					<attribute xmi:idref="EAID_D741AB3C_77ED_4888_BAFB_978CC46F5CB8" name="PSSE" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="28382" ea_guid="{D741AB3C-77ED-4888-BAFB-978CC46F5CB8}"/>
+						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="0"/>
+						<stereotype stereotype="enum"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=1;volatile=0;"/>
+						<tags/>
+						<xrefs value="$XREFPROP=$XID={D9871412-0343-4ac7-BA32-F1A5A5394BCE}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={D741AB3C-77ED-4888-BAFB-978CC46F5CB8}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					</attribute>
+					<attribute xmi:idref="EAID_089BA23B_5286_42d0_9DC1_5D4620C6B2F2" name="PSLF" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="28383" ea_guid="{089BA23B-5286-42d0-9DC1-5D4620C6B2F2}"/>
+						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="1"/>
+						<stereotype stereotype="enum"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=1;volatile=0;"/>
+						<tags/>
+						<xrefs value="$XREFPROP=$XID={AB095079-033C-4abe-AF8A-50CAA8C3D70A}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={089BA23B-5286-42d0-9DC1-5D4620C6B2F2}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					</attribute>
+					<attribute xmi:idref="EAID_700AA8EB_A6D2_4830_92E6_882A7DE11676" name="WECC" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="28384" ea_guid="{700AA8EB-A6D2-4830-92E6-882A7DE11676}"/>
+						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="2"/>
+						<stereotype stereotype="enum"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=1;volatile=0;"/>
+						<tags/>
+						<xrefs value="$XREFPROP=$XID={170A4446-6ED2-4cf9-BF41-E1731CA54B09}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={700AA8EB-A6D2-4830-92E6-882A7DE11676}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					</attribute>
+					<attribute xmi:idref="EAID_CFBC5BF4_C461_4430_BC86_9D1D044ED785" name="Other" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="28385" ea_guid="{CFBC5BF4-C461-4430-BC86-9D1D044ED785}"/>
+						<properties collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="3"/>
+						<stereotype stereotype="enum"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=1;volatile=0;"/>
+						<tags/>
+						<xrefs value="$XREFPROP=$XID={6119E65C-8D1F-4e8e-8619-9B74228B6E75}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=enum;GUID={66E21CE2-67ED-417f-AFF5-A0788B700B5A};@ENDSTEREO;$DES;$CLT={CFBC5BF4-C461-4430-BC86-9D1D044ED785}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 					</attribute>
 				</attributes>
 			</element>
@@ -2171,6 +2417,178 @@
 				<documentation/>
 				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
 				<labels lb="0..*" lt="+IEEECigreDLLSignals" rb="0..1" rt="+DCNode"/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_9999B593_31E9_4def_998B_1BECD9473E12">
+				<source xmi:idref="EAID_08D2CE41_7CBA_4631_8CD0_98D130F7B9CD">
+					<model ea_localid="8635" type="Class" name="MachineSaturation"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_73A500A6_E7FF_4abe_8FDA_E68B4E60FF9F">
+					<model ea_localid="96" type="Class" name="Curve"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="11071"/>
+				<properties ea_type="Generalization" direction="Source -&gt; Destination"/>
+				<parameterSubstitutions/>
+				<documentation/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_0C07D5DD_BF15_40f3_B5FB_C56B28721A98">
+				<source xmi:idref="EAID_B272216C_A098_436d_80C8_02AD11F5B97F">
+					<model ea_localid="1552" type="Class" name="SynchronousMachineDetailed"/>
+					<role name="SynchronousMachineDetailed" visibility="Public" targetScope="instance"/>
+					<type multiplicity="0..1" aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"/>
+					<documentation value="The synchronous machine this saturation characteristic applies to."/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_08D2CE41_7CBA_4631_8CD0_98D130F7B9CD">
+					<model ea_localid="8635" type="Class" name="MachineSaturation"/>
+					<role name="MachineSaturationQAxis" visibility="Public" targetScope="instance"/>
+					<type multiplicity="0..1" aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"/>
+					<documentation value="The machine saturation characteristic that overrides saturationFactorQAxis and saturationFactor120QAxis."/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="11073"/>
+				<properties ea_type="Association" direction="Unspecified"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<parameterSubstitutions/>
+				<documentation/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels lb="0..1" lt="+SynchronousMachineDetailed" rb="0..1" rt="+MachineSaturationQAxis"/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_8343ACF6_65FC_47f4_8F19_9497DB66A8E4">
+				<source xmi:idref="EAID_B272216C_A098_436d_80C8_02AD11F5B97F">
+					<model ea_localid="1552" type="Class" name="SynchronousMachineDetailed"/>
+					<role name="SynchronousMachineDetailed" visibility="Public" targetScope="instance"/>
+					<type multiplicity="0..1" aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"/>
+					<documentation value="The machine this saturation characteristic applies to."/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_08D2CE41_7CBA_4631_8CD0_98D130F7B9CD">
+					<model ea_localid="8635" type="Class" name="MachineSaturation"/>
+					<role name="MachineSaturationDAxis" visibility="Public" targetScope="instance"/>
+					<type multiplicity="0..1" aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"/>
+					<documentation value="The machine saturation characteristic that overrides saturationFactor and saturationFactor120."/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="11072"/>
+				<properties ea_type="Association" direction="Unspecified"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<parameterSubstitutions/>
+				<documentation/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels lb="0..1" lt="+SynchronousMachineDetailed" rb="0..1" rt="+MachineSaturationDAxis"/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_C0146B2A_5D80_476e_956B_7B05584F8A9B">
+				<source xmi:idref="EAID_303A4169_58C3_4aee_A17A_92026FB281C5">
+					<model ea_localid="8632" type="Class" name="NERCDynamicModel"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_5EDF767F_A5D0_45ed_A2CA_448F43F2CA14">
+					<model ea_localid="1241" type="Class" name="DetailedModelTypeDynamics"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="11069"/>
+				<properties ea_type="Generalization" direction="Source -&gt; Destination"/>
+				<parameterSubstitutions/>
+				<documentation/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_C269F7A8_556D_453f_9EDF_AB8678891C65">
+				<source xmi:idref="EAID_E6A5E378_0C66_4de2_B84E_A593AB942396">
+					<model ea_localid="8633" type="Class" name="NERCDynamicModelParameter"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_4AF9369A_AF00_49d7_8970_2B62B4AE1C8E">
+					<model ea_localid="1171" type="Class" name="DetailedModelDescriptor"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="11070"/>
+				<properties ea_type="Generalization" direction="Source -&gt; Destination"/>
+				<parameterSubstitutions/>
+				<documentation/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels/>
 				<extendedProperties virtualInheritance="0"/>
 				<style/>
 				<xrefs/>
@@ -2670,6 +3088,56 @@
 					<element geometry="SX=19;SY=-14;EX=19;EY=-14;EDGE=3;$LLB=;LLT=;LMT=;LMB=;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_8CF57247_8C41_4bb5_8F2C_5A6509A36FE1" style="Mode=3;EOID=F7640486;SOID=4EEF1D57;Color=-1;LWidth=0;Hidden=0;"/>
 					<element geometry="EDGE=4;$LLB=;LLT=;LMT=;LMB=;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_EB3D45F1_32E4_42c7_AF54_506FDBB53F40" style="Mode=3;EOID=F7640486;SOID=CC275125;Color=-1;LWidth=0;Hidden=0;"/>
 					<element geometry="EDGE=4;$LLB=;LLT=;LMT=;LMB=;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_BCE5ECBF_4237_479d_8405_D92F44CA6D69" style="Mode=3;EOID=F7640486;SOID=38716C0C;Color=-1;LWidth=0;Hidden=0;"/>
+				</elements>
+			</diagram>
+			<diagram xmi:id="EAID_7FDD3BCC_451B_46b0_872B_D8AACE8323D7">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" localID="1305" owner="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A"/>
+				<properties name="DocEmtiopDynamics" type="Logical"/>
+				<project author="tom" version="1.0" created="2026-05-16 22:34:42" modified="2026-05-16 23:16:55"/>
+				<style1 value="ShowPrivate=1;ShowProtected=1;ShowPublic=1;HideRelationships=0;Locked=0;Border=1;HighlightForeign=1;PackageContents=1;SequenceNotes=0;ScalePrintImage=0;PPgs.cx=0;PPgs.cy=0;DocSize.cx=819;DocSize.cy=1059;ShowDetails=0;Orientation=P;Zoom=100;ShowTags=0;OpParams=1;VisibleAttributeDetail=0;ShowOpRetType=1;ShowIcons=1;CollabNums=0;HideProps=0;ShowReqs=0;ShowCons=0;PaperSize=1;HideParents=0;UseAlias=0;HideAtts=0;HideOps=0;HideStereo=0;HideElemStereo=0;ShowTests=0;ShowMaint=0;ConnectorNotation=UML 2.1;ExplicitNavigability=0;ShowShape=1;AllDockable=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;ShowNotes=0;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;"/>
+				<style2 value="ExcludeRTF=0;DocAll=0;HideQuals=0;AttPkg=1;ShowTests=0;ShowMaint=0;SuppressFOC=1;MatrixActive=0;SwimlanesActive=1;KanbanActive=0;MatrixLineWidth=1;MatrixLineClr=0;MatrixLocked=0;TConnectorNotation=UML 2.1;TExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;MDGDgm=;STBLDgm=;ShowNotes=0;VisibleAttributeDetail=0;ShowOpRetType=1;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;SuppressedCompartments=;Theme=:119;SaveTag=0E164E41;"/>
+				<swimlanes value="locked=false;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;"/>
+				<matrixitems value="locked=false;matrixactive=false;swimlanesactive=true;kanbanactive=false;width=1;clrLine=0;"/>
+				<extendedProperties/>
+				<persistentstyle value="DGS=On=0:CNT=8:W=120:H=40:SG=0:SGH=0:AEB=0:;AR=0;DCL=0;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;Swimlanes=locked=false;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;;"/>
+				<xrefs/>
+				<elements>
+					<element geometry="Left=787;Top=370;Right=983;Bottom=445;" subject="EAID_14608A02_1109_4ef5_9959_F3CB0647E49A" seqno="1" style="DUID=E7BE9211;"/>
+					<element geometry="Left=787;Top=246;Right=983;Bottom=350;" subject="EAID_EEFA8003_D650_4709_B643_D52D7B762676" seqno="2" style="DUID=EB83BABE;"/>
+					<element geometry="Left=563;Top=367;Right=759;Bottom=443;" subject="EAID_E6A5E378_0C66_4de2_B84E_A593AB942396" seqno="3" style="DUID=2D061080;"/>
+					<element geometry="Left=563;Top=247;Right=759;Bottom=317;" subject="EAID_303A4169_58C3_4aee_A17A_92026FB281C5" seqno="4" style="DUID=61285392;"/>
+					<element geometry="Left=334;Top=370;Right=504;Bottom=440;" subject="EAID_4AF9369A_AF00_49d7_8970_2B62B4AE1C8E" seqno="5" style="DUID=F508874B;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
+					<element geometry="Left=765;Top=106;Right=983;Bottom=210;" subject="EAID_F8DD8DAC_3545_4660_9CA5_794881CC6591" seqno="6" style="DUID=AAE1D7A3;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
+					<element geometry="Left=334;Top=123;Right=504;Bottom=193;" subject="EAID_0B926C2C_1D9B_408e_8228_D392CFACFC4B" seqno="7" style="DUID=554D7689;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
+					<element geometry="Left=334;Top=247;Right=504;Bottom=317;" subject="EAID_5EDF767F_A5D0_45ed_A2CA_448F43F2CA14" seqno="8" style="DUID=8C75D05E;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
+					<element geometry="SX=72;SY=-11;EX=72;EY=-11;EDGE=1;$LLB=CX=19:CY=15:OX=3:OY=2:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=146:CY=15:OX=-14:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=123:CY=15:OX=-5:OY=1:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=18:CY=15:OX=-8:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_B3E23881_9DF4_4b95_BF9F_208D60DD2AF3" style="Mode=3;EOID=554D7689;SOID=8C75D05E;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="EDGE=2;$LLB=CX=18:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=123:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=58:CY=15:OX=-5:OY=23:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=-5:OY=-25:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_868AEE49_8683_405a_B352_53C5350D2E91" style="Mode=3;EOID=AAE1D7A3;SOID=554D7689;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=70;SY=0;EX=70;EY=0;EDGE=1;$LLB=CX=18:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=128:CY=15:OX=-8:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=146:CY=15:OX=-8:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=-9:OY=-1:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_BF84800E_62B9_4aa8_83D9_E01012989193" style="Mode=3;EOID=8C75D05E;SOID=F508874B;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=0;SY=0;EX=0;EY=0;EDGE=4;$LLB=;LLT=;LMT=;LMB=;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_C0146B2A_5D80_476e_956B_7B05584F8A9B" style="Mode=3;EOID=8C75D05E;SOID=61285392;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=0;SY=0;EX=0;EY=0;EDGE=4;$LLB=;LLT=;LMT=;LMB=;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_C269F7A8_556D_453f_9EDF_AB8678891C65" style="Mode=3;EOID=F508874B;SOID=2D061080;Color=-1;LWidth=0;Hidden=0;"/>
+				</elements>
+			</diagram>
+			<diagram xmi:id="EAID_B104AE02_9026_44fa_9A34_7DA098183AE2">
+				<model package="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A" localID="1306" owner="EAPK_68F3A560_E3C8_422e_8A8A_D3464C8A967A"/>
+				<properties name="DocEmtiopMachineSaturation" type="Logical"/>
+				<project author="tom" version="1.0" created="2026-05-16 23:15:07" modified="2026-05-16 23:23:28"/>
+				<style1 value="ShowPrivate=1;ShowProtected=1;ShowPublic=1;HideRelationships=0;Locked=0;Border=1;HighlightForeign=1;PackageContents=1;SequenceNotes=0;ScalePrintImage=0;PPgs.cx=0;PPgs.cy=0;DocSize.cx=819;DocSize.cy=1059;ShowDetails=0;Orientation=P;Zoom=100;ShowTags=0;OpParams=1;VisibleAttributeDetail=0;ShowOpRetType=1;ShowIcons=1;CollabNums=0;HideProps=0;ShowReqs=0;ShowCons=0;PaperSize=1;HideParents=0;UseAlias=0;HideAtts=0;HideOps=0;HideStereo=0;HideElemStereo=0;ShowTests=0;ShowMaint=0;ConnectorNotation=UML 2.1;ExplicitNavigability=0;ShowShape=1;AllDockable=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;ShowNotes=0;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;"/>
+				<style2 value="ExcludeRTF=0;DocAll=0;HideQuals=0;AttPkg=1;ShowTests=0;ShowMaint=0;SuppressFOC=1;MatrixActive=0;SwimlanesActive=1;KanbanActive=0;MatrixLineWidth=1;MatrixLineClr=0;MatrixLocked=0;TConnectorNotation=UML 2.1;TExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;MDGDgm=;STBLDgm=;ShowNotes=0;VisibleAttributeDetail=0;ShowOpRetType=1;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;SuppressedCompartments=;Theme=:119;SaveTag=346EF7AB;"/>
+				<swimlanes value="locked=false;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;"/>
+				<matrixitems value="locked=false;matrixactive=false;swimlanesactive=true;kanbanactive=false;width=1;clrLine=0;"/>
+				<extendedProperties/>
+				<persistentstyle value="DGS=On=0:CNT=8:W=120:H=40:SG=0:SGH=0:AEB=0:;AR=0;DCL=0;"/>
+				<xrefs/>
+				<elements>
+					<element geometry="Left=428;Top=67;Right=588;Bottom=148;" subject="EAID_5329F0C5_C7DA_4b32_9575_A887C157C185" seqno="1" style="DUID=F90B75C2;"/>
+					<element geometry="Left=469;Top=473;Right=593;Bottom=566;" subject="EAID_49452B3C_BB66_4c7a_A86B_6BE155BB7193" seqno="2" style="DUID=252A3E03;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
+					<element geometry="Left=144;Top=392;Right=352;Bottom=566;" subject="EAID_73A500A6_E7FF_4abe_8FDA_E68B4E60FF9F" seqno="3" style="DUID=7B4271F7;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
+					<element geometry="Left=61;Top=317;Right=436;Bottom=356;" subject="EAID_08D2CE41_7CBA_4631_8CD0_98D130F7B9CD" seqno="4" style="DUID=FA880CFF;"/>
+					<element geometry="Left=141;Top=67;Right=356;Bottom=213;" subject="EAID_B272216C_A098_436d_80C8_02AD11F5B97F" seqno="5" style="DUID=E69B3EEA;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
+					<element geometry="SX=-3;SY=-17;EX=103;EY=-57;EDGE=4;$LLB=CX=18:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=66:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=38:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=7:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=;" subject="EAID_21D1EA17_DE1A_4a12_BCB8_293A9781EFC4" style="Mode=3;EOID=7B4271F7;SOID=252A3E03;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=0;SY=0;EX=0;EY=0;EDGE=3;$LLB=;LLT=;LMT=;LMB=;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_9999B593_31E9_4def_998B_1BECD9473E12" style="Mode=3;EOID=7B4271F7;SOID=FA880CFF;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=-25;SY=-72;EX=-45;EY=18;EDGE=3;$LLB=CX=19:CY=15:OX=-33:OY=14:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=150:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=128:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=223:-276$202:-276$;" subject="EAID_8343ACF6_65FC_47f4_8F19_9497DB66A8E4" style="Mode=3;EOID=FA880CFF;SOID=E69B3EEA;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="SX=8;SY=-25;EX=157;EY=18;EDGE=3;$LLB=CX=19:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LLT=CX=150:CY=15:OX=163:OY=14:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LMT=;LMB=;LRT=CX=129:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;LRB=CX=19:CY=15:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=1:DIR=0:ROT=0;IRHS=;ILHS=;Path=255:-278$404:-278$;" subject="EAID_0C07D5DD_BF15_40f3_B5FB_C56B28721A98" style="Mode=3;EOID=FA880CFF;SOID=E69B3EEA;Color=-1;LWidth=0;Hidden=0;"/>
 				</elements>
 			</diagram>
 		</diagrams>
