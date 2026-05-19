@@ -62,9 +62,6 @@ With an ATP installation, you should be able to match the outputs in :ref:`targe
 Profile Maintainers
 -------------------
 
-.. note::
-    To be completed.
-
 This roadmap applies to stakeholders that primarily manage CIM UML and profiles. They do not necessarily run EMT simulations.
 
 #. :ref:`target-roadmap-users` Roadmap is a pre-requisite.
@@ -119,21 +116,56 @@ example instance files against the profile.
 
 .. image:: assets/CIMTool2.png
 
-#. Right-click on the *Schema* item under the *emtioptest* workspace in *Project Explorer*. Click *Import* on the pop-up menu and then select *Import Schema*, as shown below.
+8. Use either the archived CIM extensions in *Emtiop.xmi*, or export your own *Emtiop.xmi* from the UML editing tool (*EA* or an alternative). 
+   This same procedure was used to create the base *CIM_Grid_18v15.xmi* file.
+
+   - In *EA*, select the <<CIMExtension>> Emtiop* pacakge in the *Browser*, *Project* tab on the left-hand side of the application.
+   - Invoke the *Export / Other Formats* menu command from the *Publish* tab in the ribbon.
+   - Select the *UML 1.4 (XMI 1.2)* export type.
+   - Select **only** the *Format XML Output* and *Exclude EA Extensions* options. Your dialog should be similar to that shown below. 
+     Verify that the *Package* at the top is *Emtiop*. Verify that *Filename* shows your desired output file.
+   - Click *Export* and then you may exit *EA*
+
+.. image:: assets/EA1.png
+
+9. The next step is to add the CIM extension *xmi* file to the base CIM *xmi* file in *CIMTool*.
+10. Right-click on the *Schema* item under the *emtioptest* workspace in *Project Explorer*. Click *Import* on the pop-up menu and then select *Import Schema*, as shown below.
 
 .. image:: assets/CIMTool3.png
 
-#. Click *Next* to bring up the **Import Schema** page, similar to item 6. Leave the options as before, but browse to *Emtiop.xmi* in your local copy of the GitHub repository. The page should be similar to the screen shot below. Then click *Finish*.
+11. Click *Next* to bring up the **Import Schema** page, similar to item 6. Leave the options as before, but browse to *Emtiop.xmi* 
+    in your local copy of the GitHub repository. The page should be similar to the screen shot below. Then click *Finish*.
 
 .. image:: assets/CIMTool4.png
 
-#. The *Project Explorer* and *Project Browser* should reflect the content of both *xmi* files, as shown below.
+12. The *Project Explorer* and *Project Browser* should reflect the content of both *xmi* files, as shown below.
 
 .. image:: assets/CIMTool5.png
 
-#. **TODO**: open the profile *emtiop.owl*
+13. Right-click on the *Profiles* item under the *emtioptest* workspace in *Project Explorer*. Click *Import* on the pop-up menu 
+    and then select *Import Profile*. Click *Next*. This brings up the **Import Profile** page. Click *Browse* and navigate to the 
+    archived *emtiop.owl* file as shown below. Then click *Finish*.
 
-#. **TODO**: check one of the CIM RDF instance files in *CIMTool*
+.. image:: assets/CIMTool6.png
+
+14. This imports and verifies the profile against the loaded schema of base CIM with extensions. Correct any errors
+    reported. These are generally caused by mismatches in different versions of the profile and CIM extension, which
+    may require some iterations to resolve. The profile import should produce no errors before taking the next step.
+
+15. Right-click on the *Instances* item under the *emtioptest* workspace in *Project Explorer*. Click *Import* on 
+    the pop-up menu and then select *Import Model (CIM/XML file)*. Then click *Next*. This brings up the **Import a Model** page.
+    Click *Browse* and navigate to one of the example CIM RDF files, in *xml* format, as shown below. [2]_ The *Namespace URI* should be
+    left as shown. The correct check boxes for *Project* and *Profile* should be selected. Then click *Next*. 
+
+.. image:: assets/CIMTool7.png
+
+16. The **Model Details** page should have a proper *Model file name* filled in. If you are re-importing the same model in
+    the process of fixing errors, select the check box to *Replace existing model*. For a first-time import of that model,
+    the check box should be disabled. Click *Finish*.
+
+17. This imports and verifies the network model against the profile, including CIM extensions. Any errors should be
+    resolved before testing other network models, and before deploying any code. This may require iterations in the
+    CIM extensions, the profile, and/or the code used to create the network model *xml* files from *raw* and *dyr* files.
 
 From this point, please consult the *CIMTool* documentation and the *CIM Modeling Guide*
 for advice on how to proceed.
@@ -146,7 +178,10 @@ for advice on how to proceed.
    CIM extensions and profiles in a single workflow. At significant 
    milestones, be sure to export *Emtiop.xmi* from the UML editor for version 
    control. We keep two *xmi* files under version control because only the 
-   smaller *Emtiop.xmi* is expected to change frequently. 
+   smaller *Emtiop.xmi* is expected to change frequently.
+   
+.. [2] The example *xml* files were generated in the directory shown by
+   completing the :ref:`target-roadmap-users` Roadmap in that directory. 
 
 .. _target-roadmap-network:
 
