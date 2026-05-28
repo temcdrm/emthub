@@ -28,6 +28,19 @@
 -- ==========================================================================================
 --
 
+-- An electrical connection point (AC or DC) to a piece of conducting equipment.
+-- Terminals are connected at physical connection points called connectivity
+-- nodes.
+CREATE TABLE "ACDCTerminal"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The orientation of the terminal connections for a multiple terminal conducting
+    -- equipment. The sequence numbering starts with 1 and additional terminals
+    -- should follow in increasing order. The first terminal is the "starting
+    -- point" for a two terminal branch.
+    "sequenceNumber" INTEGER
+);
+
 -- A line segment is a conductor or combination of conductors, with consistent
 -- electrical characteristics along its length, building a single electrical
 -- system that carries alternating current between two points in the power
@@ -87,6 +100,16 @@ CREATE TABLE "ACLineSegment"
     "x" DOUBLE PRECISION NOT NULL,
     -- Zero sequence series reactance of the entire line segment.
     "x0" DOUBLE PRECISION NOT NULL
+);
+
+-- Point of interconnection of the DC converter station to the adjacent AC
+-- system (IEC 60633).
+CREATE TABLE "ACPointOfCommonCoupling"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Connectivity node which is a point of common coupling AC.
+    -- FK column reference to table representing the "ConnectivityNode" class
+    "ConnectivityNode" VARCHAR(100)
 );
 
 -- Apparent power limit.
@@ -152,16 +175,7 @@ CREATE TABLE "ConductingEquipment"
     -- level container used and only one base voltage applies. For example, not
     -- used for transformers.
     -- FK column reference to table representing the "BaseVoltage" class
-    "BaseVoltage" VARCHAR(100),
-    -- The "bus 1" ConnectivityNode for this ConductingEquipment, where the polarity
-    -- dot is located for positive current flow within this ConductingEquipment.
-    -- FK column reference to table representing the "ConnectivityNode" class
-    "FromConnectivityNode" VARCHAR(100),
-    -- The "bus 2" ConnectivityNode for this ConductingEquipment. The polarity
-    -- dot for positive current flow is located at the other end of this ConductingEquipment.
-    -- Omit this for one-terminal ConductingEquipment.
-    -- FK column reference to table representing the "ConnectivityNode" class
-    "ToConnectivityNode" VARCHAR(100)
+    "BaseVoltage" VARCHAR(100)
 );
 
 -- Combination of conducting material with consistent electrical characteristics,
@@ -172,6 +186,18 @@ CREATE TABLE "Conductor"
     "mRID" VARCHAR(100) PRIMARY KEY,
     -- Segment length for calculating line segment capabilities.
     "length" DOUBLE PRECISION NOT NULL
+);
+
+-- A collection of components that comprise a facility connected to the grid,
+-- such as a generating plant or large load.
+CREATE TABLE "ConnectedFacility"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The connection point for this facility. It should be associated with a
+    -- ConnectivityNode within the facility network model, where it may be connected
+    -- to an external network model.
+    -- FK column reference to table representing the "ACPointOfCommonCoupling" class
+    "ACPointOfCommonCoupling" VARCHAR(100)
 );
 
 -- Connectivity nodes are points where terminals of AC conducting equipment
@@ -236,6 +262,230 @@ INSERT INTO "CurveStyle" ( "name" ) VALUES ( 'constantYValue' );
 -- The Y-axis values are assumed to be a straight line between values. Also
 -- known as linear interpolation.
 INSERT INTO "CurveStyle" ( "name" ) VALUES ( 'straightLineYValues' );
+
+-- An electrical connection point at a piece of DC conducting equipment. DC
+-- terminals are connected at one physical DC node that may have multiple
+-- DC terminals connected. A DC node is similar to an AC connectivity node.
+-- The model requires that DC connections are distinct from AC connections.
+CREATE TABLE "DCBaseTerminal"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The DC connectivity node to which this DC base terminal connects with zero
+    -- impedance.
+    -- FK column reference to table representing the "DCNode" class
+    "DCNode" VARCHAR(100),
+    -- See association end Terminal.TopologicalNode.
+    -- FK column reference to table representing the "DCTopologicalNode" class
+    "DCTopologicalNode" VARCHAR(100)
+);
+
+-- A breaker within a DC system.
+CREATE TABLE "DCBreaker"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
+-- The parts of the DC power system that are designed to carry current or
+-- that are conductively connected through DC terminals.
+CREATE TABLE "DCConductingEquipment"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The maximum continuous current carrying capacity in amps governed by the
+    -- device material and construction.
+    -- The attribute shall be a positive value.
+    "ratedCurrent" DOUBLE PRECISION,
+    -- Rated DC device voltage. The attribute shall be a positive value. It is
+    -- configuration data used in power flow.
+    "ratedUdc" DOUBLE PRECISION
+);
+
+-- A disconnector within a DC system.
+CREATE TABLE "DCDisconnector"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
+-- A source of DC power that is independent of the AC system, e.g., a battery
+-- or solar panel. The internal representation may include current sources,
+-- voltage sources, diodes, etc. Use DCSourceKind to provide guidance on the
+-- internal representation.
+CREATE TABLE "DCEnergySource"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The power output, negative for load or charging.
+    "p" DOUBLE PRECISION,
+    -- Maximum power available from the primary source, e.g., photovoltaic panels
+    -- or a battery.
+    "pMax" DOUBLE PRECISION,
+    -- Maximum load or battery charging power.
+    "pMaxLoad" DOUBLE PRECISION,
+    -- Minimum power available from the supply.
+    "pMin" DOUBLE PRECISION,
+    -- Minimum load or battery charging power.
+    "pMinLoad" DOUBLE PRECISION,
+    -- Series source resistance.
+    "rSeries" DOUBLE PRECISION,
+    -- Shunt source resistance.
+    "rShunt" DOUBLE PRECISION,
+    -- FK column reference to table representing the "DCSourceKind" class
+    "kind" VARCHAR(100)
+);
+
+-- A modelling construct to provide a root class for containment of DC as
+-- well as AC equipment. The class differ from the EquipmentContainer for
+-- AC in that it may also contain DCNode(-s). Hence it can contain both AC
+-- and DC equipment.
+CREATE TABLE "DCEquipmentContainer"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
+-- A ground within a DC system.
+CREATE TABLE "DCGround"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Inductance to ground.
+    "inductance" DOUBLE PRECISION,
+    -- Resistance to ground.
+    "r" DOUBLE PRECISION
+);
+
+-- A wire or combination of wires not insulated from one another, with consistent
+-- electrical characteristics, used to carry direct current between points
+-- in the DC region of the power system.
+CREATE TABLE "DCLineSegment"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Capacitance of the DC line segment. Significant for cables only.
+    "capacitance" DOUBLE PRECISION,
+    -- Inductance of the DC line segment. Negligible compared with DCSeriesDevice
+    -- used for smoothing.
+    "inductance" DOUBLE PRECISION,
+    -- Segment length for calculating line section capabilities.
+    "length" DOUBLE PRECISION,
+    -- Resistance of the DC line segment.
+    "resistance" DOUBLE PRECISION,
+    -- Set of per-length parameters for this line segment.
+    -- FK column reference to table representing the "PerLengthDCLineParameter" class
+    "PerLengthParameter" VARCHAR(100)
+);
+
+-- DC nodes are points where terminals of DC conducting equipment are connected
+-- together with zero impedance.
+CREATE TABLE "DCNode"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
+-- A series device within the DC system, typically a reactor used for filtering
+-- or smoothing. Needed for transient and short circuit studies.
+CREATE TABLE "DCSeriesDevice"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Inductance of the device.
+    "inductance" DOUBLE PRECISION,
+    -- Resistance of the DC device.
+    "resistance" DOUBLE PRECISION
+);
+
+-- A shunt device within the DC system, typically used for filtering. Needed
+-- for transient and short circuit studies.
+CREATE TABLE "DCShunt"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Capacitance of the DC shunt.
+    "capacitance" DOUBLE PRECISION,
+    -- Resistance of the DC device.
+    "resistance" DOUBLE PRECISION
+);
+
+CREATE TABLE "DCSourceKind"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
+-- A switch within the DC system.
+CREATE TABLE "DCSwitch"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- If true, the switch is locked. The resulting switch state is a combination
+    -- of locked and DCSwitch.open attributes as follows:
+    -- <ul>
+    -- <li>locked=true and DCSwitch.open=true. The resulting state is open and
+    -- locked;</li>
+    -- <li>locked=false and DCSwitch.open=true. The resulting state is open;</li>
+    -- <li>locked=false and DCSwitch.open=false. The resulting state is closed.</li>
+    -- </ul>
+    "locked" INTEGER NOT NULL DEFAULT 1 CHECK ("locked" IN (0, 1)),
+    -- The attribute is used in cases when no Measurement for the status value
+    -- is present. If the DCSwitch has a status measurement the Discrete.normalValue
+    -- is expected to match with the DCSwitch.normalOpen.
+    "normalOpen" INTEGER NOT NULL DEFAULT 1 CHECK ("normalOpen" IN (0, 1)),
+    -- The attribute tells if the switch is considered open when used as input
+    -- to topology processing.
+    "open" INTEGER NOT NULL DEFAULT 1 CHECK ("open" IN (0, 1)),
+    -- Branch is retained in the topological solution. The flow through retained
+    -- switches will normally be calculated in power flow.
+    "retained" INTEGER NOT NULL DEFAULT 1 CHECK ("retained" IN (0, 1))
+);
+
+-- An electrical connection point to generic DC conducting equipment.
+CREATE TABLE "DCTerminal"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Represents the normal network polarity condition. Used in DC system configurations
+    -- that have explicit polarity of the terminals, e.g., voltage source converter
+    -- (VSC) technology.
+    -- FK column reference to table representing the "DCTerminalPolarityKind" enumeration
+    "polarity" VARCHAR(100),
+    -- An DC terminal belong to a DC conducting equipment.
+    -- FK column reference to table representing the "DCConductingEquipment" class
+    "DCConductingEquipment" VARCHAR(100)
+);
+
+-- Polarity for DC terminal. Used in DC system configurations that have explicit
+-- polarity of the terminals, e.g., voltage source converter (VSC) technology.
+CREATE TABLE "DCTerminalPolarityKind" ( "name" VARCHAR(100) UNIQUE );
+-- Negative terminal.
+INSERT INTO "DCTerminalPolarityKind" ( "name" ) VALUES ( 'negative' );
+-- Positive terminal.
+INSERT INTO "DCTerminalPolarityKind" ( "name" ) VALUES ( 'positive' );
+
+-- Describes different components of a detailed model.
+CREATE TABLE "DetailedModelDescriptor"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255),
+    -- The detailed model type dynamics that has detailed model descriptor.
+    -- FK column reference to table representing the "DetailedModelTypeDynamics" class
+    "DetailedModelTypeDynamics" VARCHAR(100)
+);
+
+-- The main class that packages all related to this detailed model. This includes
+-- all parameters, functions, signals, etc.
+CREATE TABLE "DetailedModelDynamics"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The type of detailed model dynamics that is applied to the detailed model
+    -- dynamics.
+    -- FK column reference to table representing the "DetailedModelTypeDynamics" class
+    "DetailedModelTypeDynamics" VARCHAR(100),
+    -- The dynamics function block for this detailed model dynamics.
+    -- FK column reference to table representing the "DynamicsFunctionBlock" class
+    "DynamicsFunctionBlock" VARCHAR(100),
+    -- The equipment which behaviour this detailed model dynamics represents.
+    -- FK column reference to table representing the "Equipment" class
+    "Equipment" VARCHAR(100)
+);
+
+-- The main class that packages all related to this type of a detailed model.
+-- This includes all parameters, functions, signals, etc.
+CREATE TABLE "DetailedModelTypeDynamics"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
 
 -- An object that defines one or more points in a given space. This object
 -- can be associated with anything that specializes IdentifiedObject. For
@@ -371,188 +621,6 @@ CREATE TABLE "EquipmentContainer"
     "mRID" VARCHAR(100) PRIMARY KEY
 );
 
--- IEEE 421.5-2005 type DC1A model. This model represents field-controlled
--- DC commutator exciters with continuously acting voltage regulators (especially
--- the direct-acting rheostatic, rotating amplifier, and magnetic amplifier
--- types). Because this model has been widely implemented by the industry,
--- it is sometimes used to represent other types of systems when detailed
--- data for them are not available or when a simplified model is required.
--- Reference: IEEE 421.5-2005, 5.1.
--- According to IEEE 421.5-2016, 6.2 the DC1A excitation system model is being
--- superseded by the model DC1C (ExcIEEEDC1C).
-CREATE TABLE "ExcIEEEDC1A"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Exciter voltage at which exciter saturation is defined (<i>E</i><i><sub>FD1</sub></i>)
-    -- (&gt; 0). Typical value = 3,1.
-    "efd1" DOUBLE PRECISION,
-    -- Exciter voltage at which exciter saturation is defined (<i>E</i><i><sub>FD2</sub></i>)
-    -- (&gt; 0). Typical value = 2,3.
-    "efd2" DOUBLE PRECISION,
-    -- An additional attribute (<i>exclim</i>) not defined in IEEE 421.5-2005.
-    -- IEEE standard is ambiguous about lower limit on exciter output.
-    -- true = a lower limit of zero is applied to integrator output
-    -- false = a lower limit of zero is not applied to integrator output.
-    -- Typical value = true.
-    "exclim" INTEGER NOT NULL DEFAULT 1 CHECK ("exclim" IN (0, 1)),
-    -- Voltage regulator gain (<i>K</i><i><sub>A</sub></i>) (&gt; 0). Typical
-    -- value = 46.
-    "ka" DOUBLE PRECISION,
-    -- Exciter constant related to self-excited field (<i>K</i><i><sub>E</sub></i>).
-    -- Typical value = 0.
-    "ke" DOUBLE PRECISION,
-    -- Excitation control system stabilizer gain (<i>K</i><i><sub>F</sub></i>)
-    -- (&gt;= 0). Typical value = 0.1.
-    "kf" DOUBLE PRECISION,
-    -- Exciter saturation function value at the corresponding exciter voltage,
-    -- <i>E</i><i><sub>FD1</sub></i> (<i>S</i><i><sub>E</sub></i><i>[E</i><i><sub>FD1</sub></i><i>]</i>)
-    -- (&gt;= 0). Typical value = 0.33.
-    "seefd1" DOUBLE PRECISION,
-    -- Exciter saturation function value at the corresponding exciter voltage,
-    -- <i>E</i><i><sub>FD2</sub></i> (<i>S</i><i><sub>E</sub></i><i>[E</i><i><sub>FD2</sub></i><i>]</i>)
-    -- (&gt;= 0). Typical value = 0,1.
-    "seefd2" DOUBLE PRECISION,
-    -- Voltage regulator time constant (<i>T</i><i><sub>A</sub></i>) (&gt; 0).
-    -- Typical value = 0,06.
-    "ta" DOUBLE PRECISION,
-    -- Voltage regulator time constant (<i>T</i><i><sub>B</sub></i>) (&gt;= 0).
-    -- Typical value = 0.
-    "tb" DOUBLE PRECISION,
-    -- Voltage regulator time constant (<i>T</i><i><sub>C</sub></i>) (&gt;= 0).
-    -- Typical value = 0.
-    "tc" DOUBLE PRECISION,
-    -- Exciter time constant, integration rate associated with exciter control
-    -- (<i>T</i><i><sub>E</sub></i>) (&gt; 0). Typical value = 0,46.
-    "te" DOUBLE PRECISION,
-    -- Excitation control system stabilizer time constant (<i>T</i><i><sub>F</sub></i>)
-    -- (&gt; 0). Typical value = 1.
-    "tf" DOUBLE PRECISION,
-    -- UEL input (<i>uelin</i>).
-    -- true = input is connected to the HV gate
-    -- false = input connects to the error signal.
-    -- Typical value = true.
-    "uelin" INTEGER NOT NULL DEFAULT 1 CHECK ("uelin" IN (0, 1)),
-    -- Maximum voltage regulator output (<i>V</i><i><sub>RMAX</sub></i>) (&gt;
-    -- ExcIEEEDC1A.vrmin). Typical value = 1.
-    "vrmax" DOUBLE PRECISION,
-    -- Minimum voltage regulator output (<i>V</i><i><sub>RMIN</sub></i>) (&lt;
-    -- 0 and &lt; ExcIEEEDC1A.vrmax). Typical value = -0,9.
-    "vrmin" DOUBLE PRECISION
-);
-
--- Simplified excitation system.
-CREATE TABLE "ExcSEXS"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Field voltage clipping maximum limit (<i>Efdmax</i>) (&gt; ExcSEXS.efdmin).
-    -- Typical value = 5.
-    "efdmax" DOUBLE PRECISION,
-    -- Field voltage clipping minimum limit (<i>Efdmin</i>) (&lt; ExcSEXS.efdmax).
-    -- Typical value = -5.
-    "efdmin" DOUBLE PRECISION,
-    -- Maximum field voltage output (<i>Emax</i>) (&gt; ExcSEXS.emin). Typical
-    -- value = 5.
-    "emax" DOUBLE PRECISION,
-    -- Minimum field voltage output (<i>Emin</i>) (&lt; ExcSEXS.emax). Typical
-    -- value = -5.
-    "emin" DOUBLE PRECISION,
-    -- Gain (<i>K</i>) (&gt; 0). Typical value = 100.
-    "k" DOUBLE PRECISION,
-    -- PI controller gain (<i>Kc</i>) (&gt; 0 if ExcSEXS.tc &gt; 0). Typical value
-    -- = 0,08.
-    "kc" DOUBLE PRECISION,
-    -- Gain reduction ratio of lag-lead element (<i>[Ta / Tb]</i>). Typical value
-    -- = 0,1.
-    "tatb" DOUBLE PRECISION,
-    -- Denominator time constant of lag-lead block (<i>Tb</i>) (&gt;= 0). Typical
-    -- value = 10.
-    "tb" DOUBLE PRECISION,
-    -- PI controller phase lead time constant (<i>Tc</i>) (&gt;= 0). Typical value
-    -- = 0.
-    "tc" DOUBLE PRECISION,
-    -- Time constant of gain block (<i>Te</i>) (&gt; 0). Typical value = 0,05.
-    "te" DOUBLE PRECISION
-);
-
--- Modification of an old IEEE ST1A static excitation system without overexcitation
--- limiter (OEL) and underexcitation limiter (UEL).
-CREATE TABLE "ExcST1A"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Exciter output current limit reference (<i>Ilr</i>). Typical value = 0.
-    "ilr" DOUBLE PRECISION NOT NULL,
-    -- Voltage regulator gain (<i>Ka</i>) (&gt; 0). Typical value = 190.
-    "ka" DOUBLE PRECISION NOT NULL,
-    -- Rectifier loading factor proportional to commutating reactance (<i>Kc</i>)
-    -- (&gt;= 0). Typical value = 0,05.
-    "kc" DOUBLE PRECISION NOT NULL,
-    -- Excitation control system stabilizer gains (<i>Kf</i>) (&gt;= 0). Typical
-    -- value = 0.
-    "kf" DOUBLE PRECISION NOT NULL,
-    -- Exciter output current limiter gain (<i>Klr</i>). Typical value = 0.
-    "klr" DOUBLE PRECISION NOT NULL,
-    -- Voltage regulator time constant (<i>Ta</i>) (&gt;= 0). Typical value =
-    -- 0,02.
-    "ta" DOUBLE PRECISION NOT NULL,
-    -- Voltage regulator time constant (<i>Tb</i>) (&gt;= 0). Typical value =
-    -- 10.
-    "tb" DOUBLE PRECISION NOT NULL,
-    -- Voltage regulator time constant (<i>Tb1</i>) (&gt;= 0). Typical value =
-    -- 0.
-    "tb1" DOUBLE PRECISION NOT NULL,
-    -- Voltage regulator time constant (<i>Tc</i>) (&gt;= 0). Typical value =
-    -- 1.
-    "tc" DOUBLE PRECISION NOT NULL,
-    -- Voltage regulator time constant (<i>Tc1</i>) (&gt;= 0). Typical value =
-    -- 0.
-    "tc1" DOUBLE PRECISION NOT NULL,
-    -- Excitation control system stabilizer time constant (<i>Tf</i>) (&gt;= 0).
-    -- Typical value = 1.
-    "tf" DOUBLE PRECISION NOT NULL,
-    -- Maximum voltage regulator output (<i>Vamax</i>) (&gt; 0). Typical value
-    -- = 999.
-    "vamax" DOUBLE PRECISION NOT NULL,
-    -- Minimum voltage regulator output (<i>Vamin</i>) (&lt; 0). Typical value
-    -- = -999.
-    "vamin" DOUBLE PRECISION NOT NULL,
-    -- Maximum voltage regulator input limit (<i>Vimax</i>) (&gt; 0). Typical
-    -- value = 999.
-    "vimax" DOUBLE PRECISION NOT NULL,
-    -- Minimum voltage regulator input limit (<i>Vimin</i>) (&lt; 0). Typical
-    -- value = -999.
-    "vimin" DOUBLE PRECISION NOT NULL,
-    -- Maximum voltage regulator outputs (<i>Vrmax</i>) (&gt; 0) . Typical value
-    -- = 7,8.
-    "vrmax" DOUBLE PRECISION NOT NULL,
-    -- Minimum voltage regulator outputs (<i>Vrmin</i>) (&lt; 0). Typical value
-    -- = -6,7.
-    "vrmin" DOUBLE PRECISION NOT NULL,
-    -- Excitation xfmr effective reactance (<i>Xe</i>). Typical value = 0,04.
-    "xe" DOUBLE PRECISION NOT NULL
-);
-
--- Excitation system function block whose behaviour is described by reference
--- to a standard model <font color="#0f0f0f">or by definition of a user-defined
--- model.</font>
-CREATE TABLE "ExcitationSystemDynamics"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Synchronous machine model with which this excitation system model is associated.
-    -- FK column reference to table representing the "SynchronousMachineDynamics" class
-    "SynchronousMachineDynamics" VARCHAR(100)
-);
-
--- A collection of components that comprise a generating plant, e.g., SynchronousMachine
--- with associated controls and GeneratingUnit, a PowerTransformer, and a
--- DisconnectingCircuitBreaker for thermal and hydro plants. For inverter-based
--- resource (IBR) plants, a PowerElectronicsConnection with associated controls
--- and GeneratingUnit, one or more PowerTransformers, one or more DisconnectingCircuitBreakers,
--- and one or more ACLineSegments.
-CREATE TABLE "GeneratingPlant"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY
-);
-
 -- A single or set of synchronous machines for converting mechanical power
 -- into alternating-current power. For example, individual machines within
 -- a set may be defined for scheduling purposes while a single control signal
@@ -570,137 +638,6 @@ CREATE TABLE "GeneratingUnit"
     "minOperatingP" DOUBLE PRECISION NOT NULL
 );
 
--- Single shaft gas turbine.
-CREATE TABLE "GovGAST"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Ambient temperature load limit (<i>Load Limit</i>). Typical value = 1.
-    "at" DOUBLE PRECISION,
-    -- Turbine damping factor (<i>Dturb</i>). Typical value = 0,18.
-    "dturb" DOUBLE PRECISION,
-    -- Temperature limiter gain (<i>Kt</i>). Typical value = 3.
-    "kt" DOUBLE PRECISION,
-    -- Base for power values (<i>MWbase</i>) (&gt; 0). Unit = MW.
-    "mwbase" DOUBLE PRECISION,
-    -- Permanent droop (<i>R</i>) (&gt;0). Typical value = 0,04.
-    "r" DOUBLE PRECISION,
-    -- Governor mechanism time constant (<i>T1</i>) (&gt;= 0). <i>T1</i> represents
-    -- the natural valve positioning time constant of the governor for small disturbances,
-    -- as seen when rate limiting is not in effect. Typical value = 0,5.
-    "t1" DOUBLE PRECISION,
-    -- Turbine power time constant (<i>T2</i>) (&gt;= 0). <i>T2</i> represents
-    -- delay due to internal energy storage of the gas turbine engine. <i>T2</i>
-    -- can be used to give a rough approximation to the delay associated with
-    -- acceleration of the compressor spool of a multi-shaft engine, or with the
-    -- compressibility of gas in the plenum of a free power turbine of an aero-derivative
-    -- unit, for example. Typical value = 0,5.
-    "t2" DOUBLE PRECISION,
-    -- Turbine exhaust temperature time constant (<i>T3</i>) (&gt;= 0). Typical
-    -- value = 3.
-    "t3" DOUBLE PRECISION,
-    -- Maximum turbine power, PU of MWbase (<i>Vmax</i>) (&gt; GovGAST.vmin).
-    -- Typical value = 1.
-    "vmax" DOUBLE PRECISION,
-    -- Minimum turbine power, PU of MWbase (<i>Vmin</i>) (&lt; GovGAST.vmax).
-    -- Typical value = 0.
-    "vmin" DOUBLE PRECISION
-);
-
--- Basic hydro turbine governor.
-CREATE TABLE "GovHydro1"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Turbine gain (<i>At</i>) (&gt; 0). Typical value = 1,2.
-    "at" DOUBLE PRECISION,
-    -- Turbine damping factor (<i>Dturb</i>) (&gt;= 0). Typical value = 0,5.
-    "dturb" DOUBLE PRECISION,
-    -- Maximum gate opening (<i>Gmax</i>) (&gt; 0 and &gt; GovHydro1.gmin). Typical
-    -- value = 1.
-    "gmax" DOUBLE PRECISION,
-    -- Minimum gate opening (<i>Gmin</i>) (&gt;= 0 and &lt; GovHydro1.gmax). Typical
-    -- value = 0.
-    "gmin" DOUBLE PRECISION,
-    -- Turbine nominal head (<i>hdam</i>). Typical value = 1.
-    "hdam" DOUBLE PRECISION,
-    -- Base for power values (<i>MWbase</i>) (&gt; 0). Unit = MW.
-    "mwbase" DOUBLE PRECISION,
-    -- No-load flow at nominal head (<i>qnl</i>) (&gt;= 0). Typical value = 0,08.
-    "qnl" DOUBLE PRECISION,
-    -- Permanent droop (<i>R</i>) (&gt; 0). Typical value = 0,04.
-    "rperm" DOUBLE PRECISION,
-    -- Temporary droop (<i>r</i>) (&gt; GovHydro1.rperm). Typical value = 0,3.
-    "rtemp" DOUBLE PRECISION,
-    -- Filter time constant (<i>Tf</i>) (&gt; 0). Typical value = 0,05.
-    "tf" DOUBLE PRECISION,
-    -- Gate servo time constant (<i>Tg</i>) (&gt; 0). Typical value = 0,5.
-    "tg" DOUBLE PRECISION,
-    -- Washout time constant (<i>Tr</i>) (&gt; 0). Typical value = 5.
-    "tr" DOUBLE PRECISION,
-    -- Water inertia time constant (<i>Tw</i>) (&gt; 0). Typical value = 1.
-    "tw" DOUBLE PRECISION,
-    -- Maximum gate velocity (<i>Vlem</i>) (&gt; 0). The limit is applied on the
-    -- state variable of the integrator. Typical value = 0,2.
-    "velm" DOUBLE PRECISION
-);
-
--- A simplified steam turbine governor.
-CREATE TABLE "GovSteam0"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Turbine damping coefficient (<i>Dt</i>). Unit = delta P / delta speed.
-    -- Typical value = 0.
-    "dt" DOUBLE PRECISION,
-    -- Base for power values (<i>MWbase</i>) (&gt; 0). Unit = MW.
-    "mwbase" DOUBLE PRECISION,
-    -- Permanent droop (<i>R</i>). Typical value = 0,05.
-    "r" DOUBLE PRECISION,
-    -- Steam bowl time constant (<i>T1</i>) (&gt; 0). Typical value = 0,5.
-    "t1" DOUBLE PRECISION,
-    -- Numerator time constant of <i>T2</i>/<i>T3</i> block (<i>T2</i>) (&gt;=
-    -- 0). Typical value = 3.
-    "t2" DOUBLE PRECISION,
-    -- Reheater time constant (<i>T3</i>) (&gt; 0). Typical value = 10.
-    "t3" DOUBLE PRECISION,
-    -- Maximum valve position, PU of <i>mwcap</i> (<i>Vmax</i>) (&gt; GovSteam0.vmin).
-    -- Typical value = 1.
-    "vmax" DOUBLE PRECISION,
-    -- Minimum valve position, PU of <i>mwcap</i> (<i>Vmin</i>) (&lt; GovSteam0.vmax).
-    -- Typical value = 0.
-    "vmin" DOUBLE PRECISION
-);
-
--- Simplified steam turbine governor.
-CREATE TABLE "GovSteamSGO"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- One / PU regulation (<i>K1</i>).
-    "k1" DOUBLE PRECISION NOT NULL,
-    -- Fraction (<i>K2</i>).
-    "k2" DOUBLE PRECISION NOT NULL,
-    -- Fraction (<i>K3</i>).
-    "k3" DOUBLE PRECISION NOT NULL,
-    -- Base for power values (<i>MWbase</i>) (&gt; 0). Unit = MW.
-    "mwbase" DOUBLE PRECISION NOT NULL,
-    -- Upper power limit (<i>Pmax</i>) (&gt; GovSteamSGO.pmin).
-    "pmax" DOUBLE PRECISION NOT NULL,
-    -- Lower power limit (<i>Pmin</i>) (&gt;= 0 and &lt; GovSteamSGO.pmax).
-    "pmin" DOUBLE PRECISION NOT NULL,
-    -- Controller lag (<i>T1</i>) (&gt;= 0).
-    "t1" DOUBLE PRECISION NOT NULL,
-    -- Controller lead compensation (<i>T2</i>) (&gt;= 0).
-    "t2" DOUBLE PRECISION NOT NULL,
-    -- Governor lag (<i>T3</i>) (&gt; 0).
-    "t3" DOUBLE PRECISION NOT NULL,
-    -- Delay due to steam inlet volumes associated with steam chest and inlet
-    -- piping (<i>T4</i>) (&gt;= 0).
-    "t4" DOUBLE PRECISION NOT NULL,
-    -- Reheater delay including hot and cold leads (<i>T5</i>) (&gt;= 0).
-    "t5" DOUBLE PRECISION NOT NULL,
-    -- Delay due to IP-LP turbine, crossover pipes and LP end hoods (<i>T6</i>)
-    -- (&gt;= 0).
-    "t6" DOUBLE PRECISION NOT NULL
-);
-
 -- A generating unit whose prime mover is a hydraulic turbine (e.g. Francis,
 -- Pelton, Kaplan).
 CREATE TABLE "HydroGeneratingUnit"
@@ -708,33 +645,14 @@ CREATE TABLE "HydroGeneratingUnit"
     "mRID" VARCHAR(100) PRIMARY KEY
 );
 
-CREATE TABLE "IBRFilterKind" ( "name" VARCHAR(100) UNIQUE );
-INSERT INTO "IBRFilterKind" ( "name" ) VALUES ( 'delta' );
-INSERT INTO "IBRFilterKind" ( "name" ) VALUES ( 'ungroundedWye' );
-
 -- An inverter-based resource (IBR) plant comprising a collection of components,
--- with additional attributes not represented by other CIM network components.
--- For example, AC and DC filter characteristics, pulse width modulation (PWM)
--- switching characteristics, etc.
+-- e.g., a PowerElectronicsConnection with associated controls and GeneratingUnit,
+-- one or more PowerTransformers, one or more DisconnectingCircuitBreakers,
+-- and one or more ACLineSegments. The components may also include AC filter
+-- and DC bus modeling.
 CREATE TABLE "IBRPlant"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Shunt capacitance of the AC tee filter, wye equivalent value.
-    "acFilterCapacitance" DOUBLE PRECISION,
-    -- FK column reference to table representing the "IBRFilterKind" enumeration
-    "acFilterKind" VARCHAR(100),
-    -- Inverter bridge-side inductance of the AC tee filter.
-    "acFilterLbridge" DOUBLE PRECISION,
-    -- Grid-side inductance of the AC tee filter.
-    "acFilterLgrid" DOUBLE PRECISION,
-    -- Inverter bridge-side resistance of the AC tee filter.
-    "acFilterRbridge" DOUBLE PRECISION,
-    -- Grid-side resistance of the AC tee filter.
-    "acFilterRgrid" DOUBLE PRECISION,
-    -- Capacitance (plus to minus) of the DC bus, if applicable.
-    "dcLinkCapacitance" DOUBLE PRECISION,
-    -- Voltage of the DC bus, if applicable.
-    "dcLinkVoltage" DOUBLE PRECISION,
     -- PWM switching frequency.
     "switchingFrequency" DOUBLE PRECISION
 );
@@ -764,10 +682,7 @@ CREATE TABLE "IEEECigreDLL"
     -- filename.
     "uri" VARCHAR(255),
     -- Name of the model (code) provider.
-    "vendorName" VARCHAR(255),
-    -- The PowerElectronicsConnection controlled by this DLL.
-    -- FK column reference to table representing the "PowerElectronicsConnection" class
-    "PowerElectronicsConnection" VARCHAR(100)
+    "vendorName" VARCHAR(255)
 );
 
 -- Connects the set of DLL input signals, as defined in its API, to points
@@ -780,25 +695,19 @@ CREATE TABLE "IEEECigreDLLInput"
     -- and acCurrentGrid. If apiDefined, the DLL must be queried through its API
     -- for more information.
     -- FK column reference to table representing the "IEEECigreDLLInputKind" enumeration
-    "kind" VARCHAR(100),
-    -- The DLL connected to the input.
-    -- FK column reference to table representing the "IEEECigreDLL" class
-    "IEEECigreDLL" VARCHAR(100),
-    -- The RemoteInputSignal for this DLL input. Requires kind=remoteInputSignal.
-    -- FK column reference to table representing the "RemoteInputSignal" class
-    "RemoteInputSignal" VARCHAR(100)
+    "kind" VARCHAR(100)
 );
 
 CREATE TABLE "IEEECigreDLLInputKind" ( "name" VARCHAR(100) UNIQUE );
+-- AC current from inverter into the AC filter. Requires the phase attribute.
+-- Typically in Amperes, but the DLL API should be used to verify units.
+INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'acCurrent' );
 -- AC current from AC filter into the grid. Requires the phase attribute.
 -- Typically in Amperes, but the DLL API should be used to verify units.
 INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'acCurrentGrid' );
--- AC current from inverter into the AC filter. Requires the phase attribute.
--- Typically in Amperes, but the DLL API should be used to verify units.
-INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'acCurrentVsc' );
 -- AC voltage at the filter-to-grid connection point. Requires the phase attribute.
 -- Typically in Volts, but the DLL API should be used to verify units.
-INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'acTerminalVoltage' );
+INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'acVoltage' );
 -- Active power control reference. Typically in per-unit but the DLL API should
 -- be used to verify units.
 INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'activePowerReference' );
@@ -814,13 +723,10 @@ INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'dcCurrent' );
 INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'dcMPPTVoltage' );
 -- DC voltage at the inverter stage, if DC bus modeling applies. Typically
 -- in Volts, but the DLL API should be used to verify units.
-INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'dcMeasuredVoltage' );
+INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'dcVoltage' );
 -- Reactive power control reference. Typically in per-unit but the DLL API
 -- should be used to verify units.
 INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'reactivePowerReference' );
--- An input from an external point in the network. Requires the IEEECigreDLLInput.RemoteInputSignal
--- assocation.
-INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'remoteInputSignal' );
 -- Voltage control reference. Typically in per-unit and positive sequence,
 -- but the DLL API should be used to verify units.
 INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'voltageReference' );
@@ -833,10 +739,7 @@ CREATE TABLE "IEEECigreDLLOutput"
     -- The type of output signal. The phase attribute must be supplied with modulationIndex
     -- and vscVoltage. If apiDefined, obtain more information from the DLL API.
     -- FK column reference to table representing the "IEEECigreDLLOutputKind" enumeration
-    "kind" VARCHAR(100),
-    -- The DLL producing the outputs.
-    -- FK column reference to table representing the "IEEECigreDLL" class
-    "IEEECigreDLL" VARCHAR(100)
+    "kind" VARCHAR(100)
 );
 
 CREATE TABLE "IEEECigreDLLOutputKind" ( "name" VARCHAR(100) UNIQUE );
@@ -895,7 +798,11 @@ INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Uint16_Val' );
 INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Uint32_Val' );
 INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Uint8_Val' );
 
--- The parent class for DLL input and output signals.
+-- The parent class for DLL input and output signals. Use the ACDCTerminal
+-- association for network flows, the DCNode association for DC bus quantities,
+-- the ConnectivityNode association for AC bus quantities, or no association
+-- for references levels or other signals not connected to the electric power
+-- networks.
 CREATE TABLE "IEEECigreDLLSignal"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
@@ -1128,6 +1035,64 @@ CREATE TABLE "LoadResponseCharacteristic"
     "qVoltageExponent" DOUBLE PRECISION NOT NULL
 );
 
+-- Use to define machine saturation with more than two points.
+CREATE TABLE "MachineSaturation"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The machine this saturation characteristic applies to.
+    -- FK column reference to table representing the "SynchronousMachineDetailed" class
+    "SynchronousMachineDetailed" VARCHAR(100)
+);
+
+-- Parameterized models from software libraries or user code that rely on
+-- documentation provided elsewhere, e.g., software documentation. The model
+-- is named within the domain of nameKind, e.g., ST6B for PSSE or esst6b for
+-- PSLF. Parameters are maintained by name and sequence number in the NERCDynamicModelParameter
+-- class.
+CREATE TABLE "NERCDynamicModel"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Suggested application of this dynamic model.
+    -- FK column reference to table representing the "NERCModelKind" enumeration
+    "modelKind" VARCHAR(100),
+    -- FK column reference to table representing the "NERCModelNameKind" enumeration
+    "nameKind" VARCHAR(100),
+    -- FK column reference to table representing the "NERCModelStatusKind" enumeration
+    "statusKind" VARCHAR(100)
+);
+
+-- Application of this model.
+CREATE TABLE "NERCModelKind" ( "name" VARCHAR(100) UNIQUE );
+INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'currentCompensation' );
+INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'excitationSystem' );
+INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'load' );
+INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'loadController' );
+INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'machine' );
+INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'powerSystemStabilizer' );
+INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'protection' );
+INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'renewableEnergyResource' );
+INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'signalPlayback' );
+INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'staticVarAndFACTS' );
+INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'turbineGovernor' );
+
+-- Describes the naming category for dynamic models recognized by NERC.
+CREATE TABLE "NERCModelNameKind" ( "name" VARCHAR(100) UNIQUE );
+INSERT INTO "NERCModelNameKind" ( "name" ) VALUES ( 'Other' );
+INSERT INTO "NERCModelNameKind" ( "name" ) VALUES ( 'PSLF' );
+INSERT INTO "NERCModelNameKind" ( "name" ) VALUES ( 'PSSE' );
+INSERT INTO "NERCModelNameKind" ( "name" ) VALUES ( 'WECC' );
+
+CREATE TABLE "NERCModelStatusKind" ( "name" VARCHAR(100) UNIQUE );
+-- NERC allows this model for interconnection-wide studies. NERC used to keep
+-- a list of allowed models; currently, it lists only prohibited models.
+INSERT INTO "NERCModelStatusKind" ( "name" ) VALUES ( 'allowed' );
+-- NERC allows this model in interconnection-wide studies, but other models
+-- are more suitable.
+INSERT INTO "NERCModelStatusKind" ( "name" ) VALUES ( 'deprecated' );
+-- NERC prohibits use of this model in interconnection-side studies. Some
+-- legacy network examples may still use this model.
+INSERT INTO "NERCModelStatusKind" ( "name" ) VALUES ( 'prohibited' );
+
 -- A nuclear generating unit.
 CREATE TABLE "NuclearGeneratingUnit"
 (
@@ -1175,15 +1140,7 @@ INSERT INTO "OperationalLimitDirectionKind" ( "name" ) VALUES ( 'low' );
 -- together as a set.
 CREATE TABLE "OperationalLimitSet"
 (
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- The ConductingEquipment associated with this limit set. Mutually exclusive
-    -- with the TransformerEnd association.
-    -- FK column reference to table representing the "ConductingEquipment" class
-    "ConductingEquipment" VARCHAR(100),
-    -- The TransformerEnd associated with this limit set. Mutually exclusive with
-    -- the ConductingEquipment assocation.
-    -- FK column reference to table representing the "TransformerEnd" class
-    "TransformerEnd" VARCHAR(100)
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- The operational meaning of a category of limits.
@@ -1206,67 +1163,6 @@ CREATE TABLE "OperationalLimitType"
     "isInfiniteDuration" INTEGER NOT NULL DEFAULT 1 CHECK ("isInfiniteDuration" IN (0, 1))
 );
 
--- Field voltage or current overexcitation limiter designed to protect the
--- generator field of an AC machine with automatic excitation control from
--- overheating due to prolonged overexcitation.
-CREATE TABLE "OverexcLimX2"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Low voltage or current point on the inverse time characteristic (<i>EFD</i><i><sub>1</sub></i>).
-    -- Typical value = 1,1.
-    "efd1" DOUBLE PRECISION,
-    -- Mid voltage or current point on the inverse time characteristic (<i>EFD</i><i><sub>2</sub></i>).
-    -- Typical value = 1,2.
-    "efd2" DOUBLE PRECISION,
-    -- High voltage or current point on the inverse time characteristic (<i>EFD</i><i><sub>3</sub></i>).
-    -- Typical value = 1,5.
-    "efd3" DOUBLE PRECISION,
-    -- Desired field voltage if <i>m</i> = false or desired field current if <i>m
-    -- </i>= true (<i>EFD</i><i><sub>DES</sub></i>). Typical value = 1.
-    "efddes" DOUBLE PRECISION,
-    -- Rated field voltage if m = false or rated field current if m = true (<i>EFD</i><i><sub>RATED</sub></i>).
-    -- Typical value = 1,05.
-    "efdrated" DOUBLE PRECISION,
-    -- Gain (<i>K</i><i><sub>MX</sub></i>). Typical value = 0,002.
-    "kmx" DOUBLE PRECISION,
-    -- (<i>m</i>).
-    -- true = IFD limiting
-    -- false = EFD limiting.
-    "m" INTEGER NOT NULL DEFAULT 1 CHECK ("m" IN (0, 1)),
-    -- Identifies the choice between using the inverse time characteristic and
-    -- desired field voltage. True means usage of inverse time characteristic.
-    -- False means usage of desired field voltage. Typical value = false.
-    "mstatus" INTEGER NOT NULL DEFAULT 1 CHECK ("mstatus" IN (0, 1)),
-    -- Time to trip the exciter at the low voltage or current point on the inverse
-    -- time characteristic (<i>TIME</i><i><sub>1</sub></i>) (&gt;= 0). Typical
-    -- value = 120.
-    "t1" DOUBLE PRECISION,
-    -- Time to trip the exciter at the mid voltage or current point on the inverse
-    -- time characteristic (<i>TIME</i><i><sub>2</sub></i>) (&gt;= 0). Typical
-    -- value = 40.
-    "t2" DOUBLE PRECISION,
-    -- Time to trip the exciter at the high voltage or current point on the inverse
-    -- time characteristic (<i>TIME</i><i><sub>3</sub></i>) (&gt;= 0). Typical
-    -- value = 15.
-    "t3" DOUBLE PRECISION,
-    -- High voltage limit (Vhigh) (&gt; Vlow, &gt;=0).
-    "vhigh" DOUBLE PRECISION,
-    -- Low voltage limit (<i>V</i><i><sub>LOW</sub></i>) (&gt; 0).
-    "vlow" DOUBLE PRECISION
-);
-
--- Overexcitation limiter function block whose behaviour is described by reference
--- to a standard model <font color="#0f0f0f">or by definition of a user-defined
--- model.</font>
-CREATE TABLE "OverexcitationLimiterDynamics"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Excitation system model with which this overexcitation limiter model is
-    -- associated.
-    -- FK column reference to table representing the "ExcitationSystemDynamics" class
-    "ExcitationSystemDynamics" VARCHAR(100)
-);
-
 -- Classifying instances of the same class, e.g. overhead and underground
 -- ACLineSegments. This classification mechanism is intended to provide flexibility
 -- outside the scope of this document, i.e. provide customisation that is
@@ -1276,8 +1172,49 @@ CREATE TABLE "PSRType"
     "mRID" VARCHAR(100) PRIMARY KEY
 );
 
+-- Supports definition of one or more parameters of several different datatypes
+-- for use by the detailed model. It describes the parameters used in the
+-- equations of the detailed model.
+-- The name of the parameter shall be the same as the name used in the equations
+-- of the detailed model.
+CREATE TABLE "ParameterDescriptor"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Sequence number of the parameter among the set of parameters associated
+    -- with the related proprietary user-defined model.
+    "sequenceNumber" INTEGER,
+    -- Typical value for the parameter. The datatype is as specified in attribute
+    -- valueXSDdatatype.
+    "typicalValue" VARCHAR(255)
+);
+
+-- Provides the value of a given parameter of a detailed model dynamics.
+CREATE TABLE "ParameterValue"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
+-- Common type for per-length electrical catalogues describing DC line parameters.
+CREATE TABLE "PerLengthDCLineParameter"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
 -- A photovoltaic device or an aggregation of such devices.
 CREATE TABLE "PhotoVoltaicUnit"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
+-- Point of Common Coupling (PCC) refers to the location where multiple electrical
+-- sources or loads are electrically connected and provide a reference point
+-- where the voltages and currents from different parts of the system are
+-- considered to be common. The PCC is used to support system analysis, control,
+-- and monitoring, as it provides a reference for understanding the interactions
+-- and power flow between various components within the system. It is also
+-- relevant to define the requirement and responsibility between different
+-- actors in operating a power system.
+CREATE TABLE "PointOfCommonCoupling"
 (
     "mRID" VARCHAR(100) PRIMARY KEY
 );
@@ -1311,6 +1248,21 @@ CREATE TABLE "PowerElectronicsConnection"
     -- for short circuit data exchange according to IEC 60909.
     -- The attribute shall be a positive value.
     "ratedU" DOUBLE PRECISION NOT NULL
+);
+
+-- A DC connection point at the converter, which is also connected on the
+-- AC side as any other AC ConductingEquipment. This special terminal is separate
+-- from the regular DCTerminal to restrict the connection, such that no other
+-- DC conducting equipment can be connected to the AC side.
+CREATE TABLE "PowerElectronicsConnectionDCTerminal"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Use to indicated positive or negative polarity on the DC side.
+    -- FK column reference to table representing the "DCTerminalPolarityKind" enumeration
+    "polarity" VARCHAR(100),
+    -- The PowerElectronicsConnection for this terminal.
+    -- FK column reference to table representing the "PowerElectronicsConnection" class
+    "PowerElectronicsConnection" VARCHAR(100)
 );
 
 -- A generating unit or battery or aggregation that connects to the AC network
@@ -1452,104 +1404,6 @@ CREATE TABLE "PowerTransformerEnd"
     "PowerTransformer" VARCHAR(100) NOT NULL
 );
 
--- Single input power system stabilizer. It is a modified version in order
--- to allow representation of various vendors' implementations on PSS type
--- 1A.
-CREATE TABLE "Pss1A"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Notch filter parameter (<i>A</i><i><sub>1</sub></i>).
-    "a1" DOUBLE PRECISION,
-    -- Notch filter parameter (<i>A</i><i><sub>2</sub></i>).
-    "a2" DOUBLE PRECISION,
-    -- Notch filter parameter (<i>A</i><i><sub>3</sub></i>).
-    "a3" DOUBLE PRECISION,
-    -- Notch filter parameter (<i>A</i><i><sub>4</sub></i>).
-    "a4" DOUBLE PRECISION,
-    -- Notch filter parameter (<i>A</i><i><sub>5</sub></i>).
-    "a5" DOUBLE PRECISION,
-    -- Notch filter parameter (<i>A</i><i><sub>6</sub></i>).
-    "a6" DOUBLE PRECISION,
-    -- Notch filter parameter (<i>A</i><i><sub>7</sub></i>).
-    "a7" DOUBLE PRECISION,
-    -- Notch filter parameter (<i>A</i><i><sub>8</sub></i>).
-    "a8" DOUBLE PRECISION,
-    -- Type of input signal (rotorAngularFrequencyDeviation, busFrequencyDeviation,
-    -- generatorElectricalPower, generatorAcceleratingPower, busVoltage, or busVoltageDerivative).
-    -- FK column reference to table representing the "InputSignalKind" enumeration
-    "inputSignalType" VARCHAR(100),
-    -- Selector (<i>Kd</i>).
-    -- true = e<sup>-sTdelay</sup> used
-    -- false = e<sup>-sTdelay</sup> not used.
-    "kd" INTEGER NOT NULL DEFAULT 1 CHECK ("kd" IN (0, 1)),
-    -- Stabilizer gain (<i>K</i><i><sub>s</sub></i>).
-    "ks" DOUBLE PRECISION,
-    -- Lead/lag time constant (<i>T</i><i><sub>1</sub></i>) (&gt;= 0).
-    "t1" DOUBLE PRECISION,
-    -- Lead/lag time constant (<i>T</i><i><sub>2</sub></i>) (&gt;= 0).
-    "t2" DOUBLE PRECISION,
-    -- Lead/lag time constant (<i>T</i><i><sub>3</sub></i>) (&gt;= 0).
-    "t3" DOUBLE PRECISION,
-    -- Lead/lag time constant (<i>T</i><i><sub>4</sub></i>) (&gt;= 0).
-    "t4" DOUBLE PRECISION,
-    -- Washout time constant (<i>T</i><i><sub>5</sub></i>) (&gt;= 0).
-    "t5" DOUBLE PRECISION,
-    -- Transducer time constant (<i>T</i><i><sub>6</sub></i>) (&gt;= 0).
-    "t6" DOUBLE PRECISION,
-    -- Time constant (<i>Tdelay</i>) (&gt;= 0).
-    "tdelay" DOUBLE PRECISION,
-    -- Stabilizer input cutoff threshold (<i>Vcl</i>).
-    "vcl" DOUBLE PRECISION,
-    -- Stabilizer input cutoff threshold (<i>Vcu</i>).
-    "vcu" DOUBLE PRECISION,
-    -- Maximum stabilizer output (<i>Vrmax</i>) (&gt; Pss1A.vrmin).
-    "vrmax" DOUBLE PRECISION,
-    -- Minimum stabilizer output (<i>Vrmin</i>) (&lt; Pss1A.vrmax).
-    "vrmin" DOUBLE PRECISION
-);
-
--- IEEE type PSS1A power system stabilizer model. PSS1A is the generalized
--- form of a PSS with a single input signal.
--- Reference: IEEE 421.5-2005, 8.1 and IEEE 421.5-2016, 9.2.
--- Parameter details:
--- In order to match with the parameters defined in IEEE 421.5-2016, attributes
--- vrmax and vrmin defined in this model shall be considered the same as parameters
--- Vstmax and Vstmin defined by IEEE 421.5-2016, 9.2.
-CREATE TABLE "PssIEEE1A"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- PSS signal conditioning frequency filter constant (<i>A1</i>). Typical
-    -- value = 0,061.
-    "a1" DOUBLE PRECISION NOT NULL,
-    -- PSS signal conditioning frequency filter constant (<i>A2</i>). Typical
-    -- value = 0,0017.
-    "a2" DOUBLE PRECISION NOT NULL,
-    -- Type of input signal (rotorAngularFrequencyDeviation, generatorElectricalPower,
-    -- rotorSpeed, busFrequency or busFrequencyDeviation). Typical value = rotorAngularFrequencyDeviation.
-    -- FK column reference to table representing the "InputSignalKind" enumeration
-    "inputSignalType" VARCHAR(100) NOT NULL,
-    -- Stabilizer gain (<i>Ks</i>). Typical value = 5.
-    "ks" DOUBLE PRECISION NOT NULL,
-    -- Lead/lag time constant (<i>T1</i>) (&gt;= 0). Typical value = 0,3.
-    "t1" DOUBLE PRECISION NOT NULL,
-    -- Lead/lag time constant (<i>T2</i>) (&gt;= 0). Typical value = 0,03.
-    "t2" DOUBLE PRECISION NOT NULL,
-    -- Lead/lag time constant (<i>T3</i>) (&gt;= 0). Typical value = 0,3.
-    "t3" DOUBLE PRECISION NOT NULL,
-    -- Lead/lag time constant (<i>T4</i>) (&gt;= 0). Typical value = 0,03.
-    "t4" DOUBLE PRECISION NOT NULL,
-    -- Washout time constant (<i>T5</i>) (&gt;= 0). Typical value = 10.
-    "t5" DOUBLE PRECISION NOT NULL,
-    -- Transducer time constant (<i>T6</i>) (&gt;= 0). Typical value = 0,01.
-    "t6" DOUBLE PRECISION NOT NULL,
-    -- Maximum stabilizer output (<i>Vrmax</i>) (&gt; PssIEEE1A.vrmin). Typical
-    -- value = 0,05.
-    "vrmax" DOUBLE PRECISION NOT NULL,
-    -- Minimum stabilizer output (<i>Vrmin</i>) (&lt; PssIEEE1A.vrmax). Typical
-    -- value = -0,05.
-    "vrmin" DOUBLE PRECISION NOT NULL
-);
-
 -- A tap changer that changes the voltage ratio impacting the voltage magnitude
 -- but not the phase angle across the transformer.
 -- Angle sign convention (general): Positive value indicates a positive phase
@@ -1574,63 +1428,6 @@ CREATE TABLE "RegulatingCondEq"
 (
     "mRID" VARCHAR(100) PRIMARY KEY
 );
-
--- Supports connection to a terminal associated with a remote bus from which
--- an input signal of a specific type is coming.
-CREATE TABLE "RemoteInputSignal"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- If True, signal connects at the ToConnectivityNode of the associated ConductingEquipment.
-    -- If False or absent, signal connects at the FromConnectivityNode of the
-    -- associated ConductingEquipment. Not applicable with associations to ConnectivityNode
-    -- or TransformerEnd.
-    "atToEnd" INTEGER NOT NULL DEFAULT 1 CHECK ("atToEnd" IN (0, 1)),
-    -- Type of input signal.
-    -- FK column reference to table representing the "RemoteSignalKind" enumeration
-    "remoteSignalType" VARCHAR(100),
-    -- The ConductingEquipment providing input for the signal.
-    -- FK column reference to table representing the "ConductingEquipment" class
-    "ConductingEquipment" VARCHAR(100),
-    -- The ConnectivityNode providing input to the signal.
-    -- FK column reference to table representing the "ConnectivityNode" class
-    "ConnectivityNode" VARCHAR(100),
-    -- Power system stabilizer model using this remote input signal.
-    -- FK column reference to table representing the "PowerSystemStabilizerDynamics" class
-    "PowerSystemStabilizerDynamics" VARCHAR(100),
-    -- The TransformerEnd providing input for the signal.
-    -- FK column reference to table representing the "TransformerEnd" class
-    "TransformerEnd" VARCHAR(100),
-    -- Underexcitation limiter model using this remote input signal.
-    -- FK column reference to table representing the "UnderexcitationLimiterDynamics" class
-    "UnderexcitationLimiterDynamics" VARCHAR(100),
-    -- The dynamic controller this signal provides input for.
-    -- FK column reference to table representing the "WeccDynamics" class
-    "WeccDynamics" VARCHAR(100)
-);
-
--- Type of input signal coming from remote bus.
-CREATE TABLE "RemoteSignalKind" ( "name" VARCHAR(100) UNIQUE );
-INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBranchActivePower' );
-INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBranchCurrent' );
--- Input is branch current amplitude from remote terminal bus.
-INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBranchCurrentAmplitude' );
-INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBranchReactivePower' );
--- Input is frequency from remote terminal bus.
-INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBusFrequency' );
--- Input is frequency deviation from remote terminal bus.
-INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBusFrequencyDeviation' );
--- Input is voltage from remote terminal bus.
-INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBusVoltage' );
--- Input is voltage amplitude from remote terminal bus.
-INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBusVoltageAmplitude' );
--- Input is branch current amplitude derivative from remote terminal bus.
-INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBusVoltageAmplitudeDerivative' );
--- Input is voltage frequency from remote terminal bus.
-INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBusVoltageFrequency' );
--- Input is voltage frequency deviation from remote terminal bus.
-INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remoteBusVoltageFrequencyDeviation' );
--- Input is PU voltage derivative from remote terminal bus.
-INSERT INTO "RemoteSignalKind" ( "name" ) VALUES ( 'remotePuBusVoltageDerivative' );
 
 -- A rotating machine which may be used as a generator or motor.
 CREATE TABLE "RotatingMachine"
@@ -1685,6 +1482,9 @@ CREATE TABLE "RotatingMachineDynamics"
     "statorResistance" DOUBLE PRECISION NOT NULL
 );
 
+-- A conventional generating plant, e.g., SynchronousMachine with associated
+-- controls and GeneratingUnit, a PowerTransformer, and a DisconnectingCircuitBreaker
+-- for thermal and hydro plants.
 CREATE TABLE "RotatingMachinePlant"
 (
     "mRID" VARCHAR(100) PRIMARY KEY
@@ -1743,6 +1543,13 @@ CREATE TABLE "ShuntCompensator"
     "sections" DOUBLE PRECISION NOT NULL
 );
 
+-- Describes the signals both internal signals that connect different functions
+-- or external signals.
+CREATE TABLE "SignalDescriptor"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
 -- Enumeration of phase identifiers used to designate the specific phase of
 -- conducting equipment modelled as individual unbalanced phases.
 -- Allows designation of specific phases for transmission and distribution
@@ -1772,24 +1579,74 @@ CREATE TABLE "StateVariable"
 CREATE TABLE "SvPowerFlow"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
-    -- If True, power flow is positive into the ConductingEquipment at the ToConnectivityNode.
-    -- If False or absent, power flow is positive into the ConductingEquipment
-    -- at the FromConnectivityNode.
-    "atToEnd" INTEGER NOT NULL DEFAULT 1 CHECK ("atToEnd" IN (0, 1)),
     -- The active power flow. Load sign convention is used, i.e. positive sign
     -- means flow out from a TopologicalNode (bus) into the conducting equipment.
     "p" DOUBLE PRECISION,
     -- The reactive power flow. Load sign convention is used, i.e. positive sign
     -- means flow out from a TopologicalNode (bus) into the conducting equipment.
-    "q" DOUBLE PRECISION,
-    -- The ConductingEquipment associated with this State PowerFlow. Positive
-    -- flow direction is into the ConductingEquipment's FromConnectivityNode.
+    "q" DOUBLE PRECISION
+);
+
+-- State variable for the number of sections in service for a shunt compensator.
+CREATE TABLE "SvShuntCompensatorSections"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The terminal phase at which the connection is applied. If missing, the
+    -- injection is assumed to be balanced among non-neutral phases.
+    -- FK column reference to table representing the "SinglePhaseKind" enumeration
+    "phase" VARCHAR(100),
+    -- The number of sections in service as a continuous variable. The attribute
+    -- shall be a positive value or zero. To get integer value scale with ShuntCompensator.bPerSection.
+    "sections" DOUBLE PRECISION,
+    -- The shunt compensator for which the state applies.
+    -- FK column reference to table representing the "ShuntCompensator" class
+    "ShuntCompensator" VARCHAR(100)
+);
+
+-- State variable for status.
+CREATE TABLE "SvStatus"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The in service status as a result of topology processing. It indicates
+    -- if the equipment is considered as energized by the power flow. It reflects
+    -- if the equipment is connected within a solvable island. It does not necessarily
+    -- reflect whether or not the island was solved by the power flow.
+    "inService" INTEGER NOT NULL DEFAULT 1 CHECK ("inService" IN (0, 1)),
+    -- The individual phase status. If the attribute is unspecified, then three
+    -- phase model is assumed.
+    -- FK column reference to table representing the "SinglePhaseKind" enumeration
+    "phase" VARCHAR(100),
+    -- The conducting equipment associated with the status state variable.
     -- FK column reference to table representing the "ConductingEquipment" class
-    "ConductingEquipment" VARCHAR(100),
-    -- The TransformerEnd associated with this State PowerFlow. Positive flow
-    -- into the TransformerEnd's ConnectivityNode.
-    -- FK column reference to table representing the "TransformerEnd" class
-    "TransformerEnd" VARCHAR(100)
+    "ConductingEquipment" VARCHAR(100)
+);
+
+-- State variable for switch.
+CREATE TABLE "SvSwitch"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The attribute tells if the computed state of the switch is considered open.
+    "open" INTEGER NOT NULL DEFAULT 1 CHECK ("open" IN (0, 1)),
+    -- The terminal phase at which the connection is applied. If missing, the
+    -- injection is assumed to be balanced among non-neutral phases.
+    -- FK column reference to table representing the "SinglePhaseKind" enumeration
+    "phase" VARCHAR(100),
+    -- The switch associated with the switch state.
+    -- FK column reference to table representing the "Switch" class
+    "Switch" VARCHAR(100)
+);
+
+-- State variable for transformer tap step.
+CREATE TABLE "SvTapStep"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The floating point tap position. This is not the tap ratio, but rather
+    -- the tap step position as defined by the related tap changer model and normally
+    -- is constrained to be within the range of minimum and maximum tap positions.
+    "position" DOUBLE PRECISION,
+    -- The tap changer associated with the tap step state.
+    -- FK column reference to table representing the "TapChanger" class
+    "TapChanger" VARCHAR(100)
 );
 
 -- State variable for voltage.
@@ -1805,6 +1662,16 @@ CREATE TABLE "SvVoltage"
     -- The ConnectivityNode associated with this State Voltage.
     -- FK column reference to table representing the "ConnectivityNode" class
     "ConnectivityNode" VARCHAR(100)
+);
+
+-- A generic device designed to close, or open, or both, one or more electric
+-- circuits. All switches are two terminal devices including grounding switches.
+-- The ACDCTerminal.connected at the two sides of the switch shall not be
+-- considered for assessing switch connectivity, i.e. only Switch.open, .normalOpen
+-- and .locked are relevant.
+CREATE TABLE "Switch"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- An electromechanical device that operates with shaft rotating synchronously
@@ -2086,6 +1953,21 @@ CREATE TABLE "TapChanger"
     "step" DOUBLE PRECISION NOT NULL
 );
 
+-- An AC electrical connection point to a piece of conducting equipment. Terminals
+-- are connected at physical connection points called connectivity nodes.
+CREATE TABLE "Terminal"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The conducting equipment of the terminal. Conducting equipment have terminals
+    -- that may be connected to other conducting equipment terminals via connectivity
+    -- nodes or topological nodes.
+    -- FK column reference to table representing the "ConductingEquipment" class
+    "ConductingEquipment" VARCHAR(100),
+    -- The connectivity node to which this terminal connects with zero impedance.
+    -- FK column reference to table representing the "ConnectivityNode" class
+    "ConnectivityNode" VARCHAR(100)
+);
+
 -- A diagram object for placing free-text or text derived from an associated
 -- domain object.
 CREATE TABLE "TextDiagramObject"
@@ -2146,10 +2028,7 @@ CREATE TABLE "TransformerEnd"
     "xground" DOUBLE PRECISION NOT NULL,
     -- Base voltage of the transformer end. This is essential for PU calculation.
     -- FK column reference to table representing the "BaseVoltage" class
-    "BaseVoltage" VARCHAR(100) NOT NULL,
-    -- The connection point (bus) for the TransformerEnd (winding).
-    -- FK column reference to table representing the "ConnectivityNode" class
-    "ConnectivityNode" VARCHAR(100) NOT NULL
+    "BaseVoltage" VARCHAR(100) NOT NULL
 );
 
 -- Transformer mesh impedance (Delta-model) between transformer ends.
@@ -2202,19 +2081,6 @@ CREATE TABLE "TransformerSaturation"
     "mRID" VARCHAR(100) PRIMARY KEY,
     -- FK column reference to table representing the "TransformerCoreAdmittance" class
     "TransformerCoreAdmittance" VARCHAR(100) NOT NULL
-);
-
--- Turbine-governor function block whose behaviour is described by reference
--- to a standard model <font color="#0f0f0f">or by definition of a user-defined
--- model.</font>
-CREATE TABLE "TurbineGovernorDynamics"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Synchronous machine model with which this turbine-governor model is associated.
-    -- TurbineGovernorDynamics shall have either an association to SynchronousMachineDynamics
-    -- or to AsynchronousMachineDynamics.
-    -- FK column reference to table representing the "SynchronousMachineDynamics" class
-    "SynchronousMachineDynamics" VARCHAR(100)
 );
 
 -- The unit multipliers defined for the CIM. When applied to unit symbols,
@@ -2636,315 +2502,6 @@ INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'therm' );
 -- Mass in tons, "tonne" or "metric ton" (1000 kg = 1 Mg).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'tonne' );
 
--- Parent class supporting relationships to WECC standard models.
-CREATE TABLE "WeccDynamics"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Power electronics connection model with which this WECC dynamics model
-    -- is associated.
-    -- FK column reference to table representing the "PowerElectronicsConnection" class
-    "PowerElectronicsConnection" VARCHAR(100) NOT NULL
-);
-
--- WECC PQ Controller and Current Limit Logic.
-CREATE TABLE "WeccREEC"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY
-);
-
--- WECC PQ Controller and Current Limit Logic.
--- Reference: Model User Guide for Generic Renewable Energy System Models,
--- EPRI, Palo Alto, CA: 2018, 3002014083.
-CREATE TABLE "WeccREECA"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Voltage deadband for overvoltage iq injection (db1). Typical value = -0,05.
-    "db1" DOUBLE PRECISION NOT NULL,
-    -- Voltage deadband for undervoltage iq injection (db2). Typical value = 0,05.
-    "db2" DOUBLE PRECISION NOT NULL,
-    -- Ramp rate on power reference (dPmax). Typical value = 2.
-    "dPmax" DOUBLE PRECISION NOT NULL,
-    -- Ramp rate on power reference (dPmin). Typical value = -2.
-    "dPmin" DOUBLE PRECISION NOT NULL,
-    -- Maximum converter current limit (Imax). Typical value = 1,3.
-    "imax" DOUBLE PRECISION NOT NULL,
-    -- Value at which injection is held after voltage dip (Iq_frz). Typical value
-    -- = 0.
-    "iqfrz" DOUBLE PRECISION NOT NULL,
-    -- Maximum limit of reactive current injection (Iqh1). Typical value = 1,44.
-    "iqh1" DOUBLE PRECISION NOT NULL,
-    -- Minimum limit of reactive current injection (Iql1). Typical value = -1,44.
-    "iql1" DOUBLE PRECISION NOT NULL,
-    -- Integral gain (Kqi). Typical value = 0,7.
-    "kqi" DOUBLE PRECISION NOT NULL,
-    -- Proportional gain (Kqp). Typical value = 1.
-    "kqp" DOUBLE PRECISION NOT NULL,
-    -- Gain for reactive current injection during fault (Kqv). Typical value =
-    -- 2.
-    "kqv" DOUBLE PRECISION NOT NULL,
-    -- Integral gain (Kvi). Typical value = 0,7.
-    "kvi" DOUBLE PRECISION NOT NULL,
-    -- Proportional gain (Kvp). Typical value = 1.
-    "kvp" DOUBLE PRECISION NOT NULL,
-    -- Power factor flag: 1 (true) = pf control, 0 (false) = Q control (PfFlag).
-    -- Typical value = 0 (false).
-    "pfFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("pfFlag" IN (0, 1)) NOT NULL,
-    -- Power control flag: 0 (false) = P reference, 1 (true) = Speed reference
-    -- (PFlag). Typical value = 1 (true).
-    "pFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("pFlag" IN (0, 1)) NOT NULL,
-    -- Maximum power reference (Pmax). Typical value = 1.
-    "pmax" DOUBLE PRECISION NOT NULL,
-    -- Minimum power reference (Pmin). Typical value = 0.
-    "pmin" DOUBLE PRECISION NOT NULL,
-    -- Priority flag on current limit: 1 (true) = P, 0 (false) = Q priority (PqFlag).
-    -- Typical value = 0 (false).
-    "pqFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("pqFlag" IN (0, 1)) NOT NULL,
-    -- Q control flag: 1 (true) = voltage/Q, 0 (false) = constant power factor
-    -- or Q control (QFlag). Typical value = 0 (false).
-    "qFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("qFlag" IN (0, 1)) NOT NULL,
-    -- Reactive power limit maximum (Qmax). Typical value = 0,436.
-    "qmax" DOUBLE PRECISION NOT NULL,
-    -- Reactive power limit minimum (Qmin). Typical value = -0,436.
-    "qmin" DOUBLE PRECISION NOT NULL,
-    -- Reactive current injection delay after voltage dip (Thld) (>=0). Typical
-    -- value = 0.
-    "thld" DOUBLE PRECISION NOT NULL,
-    -- Ipcmd_max delay after fault (Thld2) (>=0). Typical value = 0.
-    "thld2" DOUBLE PRECISION NOT NULL,
-    -- Time constant on lag delay (Tiq) (>=0). Typical value = 0,01.
-    "tiq" DOUBLE PRECISION NOT NULL,
-    -- Filter time constant for power measurement (Tp) (>=0). Typical value =
-    -- 0,05.
-    "tp" DOUBLE PRECISION NOT NULL,
-    -- Time constant (Tpord) (>=0). Typical value = 0,01.
-    "tpord" DOUBLE PRECISION NOT NULL,
-    -- Filter time constant for voltage measurements (Trv) (>=0). Typical value
-    -- = 0,01.
-    "trv" DOUBLE PRECISION NOT NULL,
-    -- Point 1 reactive current of a piecewise linear curve made up of four pairs
-    -- of V and I values and defines the reactive current limits in relation to
-    -- value of voltage (vdl1).
-    "vdi1i1" DOUBLE PRECISION NOT NULL,
-    -- Point 2 reactive current of a piecewise linear curve made up of four pairs
-    -- of V and I values and defines the reactive current limits in relation to
-    -- value of voltage (vdl1).
-    "vdi1i2" DOUBLE PRECISION NOT NULL,
-    -- Point 3 reactive current of a piecewise linear curve made up of four pairs
-    -- of V and I values and defines the reactive current limits in relation to
-    -- value of voltage (vdl1).
-    "vdi1i3" DOUBLE PRECISION NOT NULL,
-    -- Point 4 reactive current of a piecewise linear curve made up of four pairs
-    -- of V and I values and defines the reactive current limits in relation to
-    -- value of voltage (vdl1).
-    "vdi1i4" DOUBLE PRECISION NOT NULL,
-    -- Point 1 voltage of a piecewise linear curve made up of four pairs of V
-    -- and I values and defines the reactive current limits in relation to value
-    -- of voltage (vdl1).
-    "vdi1v1" DOUBLE PRECISION NOT NULL,
-    -- Point 2 voltage of a piecewise linear curve made up of four pairs of V
-    -- and I values and defines the reactive current limits in relation to value
-    -- of voltage (vdl1).
-    "vdi1v2" DOUBLE PRECISION NOT NULL,
-    -- Point 3 voltage of a piecewise linear curve made up of four pairs of V
-    -- and I values and defines the reactive current limits in relation to value
-    -- of voltage (vdl1).
-    "vdi1v3" DOUBLE PRECISION NOT NULL,
-    -- Point 4 voltage of a piecewise linear curve made up of four pairs of V
-    -- and I values and defines the reactive current limits in relation to value
-    -- of voltage (vdl1).
-    "vdi1v4" DOUBLE PRECISION NOT NULL,
-    -- Point 1 active current of a piecewise linear curve made up of four pairs
-    -- of V and I values and defines the active current limits in relation to
-    -- value of voltage (vdl2).
-    "vdi2i1" DOUBLE PRECISION NOT NULL,
-    -- Point 2 active current of a piecewise linear curve made up of four pairs
-    -- of V and I values and defines the active current limits in relation to
-    -- value of voltage (vdl2).
-    "vdi2i2" DOUBLE PRECISION NOT NULL,
-    -- Point 3 active current of a piecewise linear curve made up of four pairs
-    -- of V and I values and defines the active current limits in relation to
-    -- value of voltage (vdl2).
-    "vdi2i3" DOUBLE PRECISION NOT NULL,
-    -- Point 4 active current of a piecewise linear curve made up of four pairs
-    -- of V and I values and defines the active current limits in relation to
-    -- value of voltage (vdl2).
-    "vdi2i4" DOUBLE PRECISION NOT NULL,
-    -- Point 1 voltage of a piecewise linear curve made up of four pairs of V
-    -- and I values and defines the active current limits in relation to value
-    -- of voltage (vdl2).
-    "vdi2v1" DOUBLE PRECISION NOT NULL,
-    -- Point 2 voltage of a piecewise linear curve made up of four pairs of V
-    -- and I values and defines the active current limits in relation to value
-    -- of voltage (vdl2).
-    "vdi2v2" DOUBLE PRECISION NOT NULL,
-    -- Point 3 voltage of a piecewise linear curve made up of four pairs of V
-    -- and I values and defines the active current limits in relation to value
-    -- of voltage (vdl2).
-    "vdi2v3" DOUBLE PRECISION NOT NULL,
-    -- Point 4 voltage of a piecewise linear curve made up of four pairs of V
-    -- and I values and defines the active current limits in relation to value
-    -- of voltage (vdl2).
-    "vdi2v4" DOUBLE PRECISION NOT NULL,
-    -- Undervoltage condition trigger voltage (Vdip). Typical value = 0,9.
-    "vdip" DOUBLE PRECISION NOT NULL,
-    -- Voltage control flag: 1 (true) = Q control, 0 (false) = voltage control
-    -- (VFlag). Typical value = 1 (true).
-    "vFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("vFlag" IN (0, 1)) NOT NULL,
-    -- Voltage control maximum (Vmax). Typical value = 1,1.
-    "vmax" DOUBLE PRECISION NOT NULL,
-    -- Voltage control minimum (Vmin). Typical value = 0,9.
-    "vmin" DOUBLE PRECISION NOT NULL,
-    -- Reference voltage, enter 0 for terminal voltage (Vref0). Typical value
-    -- = 0.
-    "vref0" DOUBLE PRECISION NOT NULL,
-    -- User-defined reference/bias on inner-loop voltage control (Vref1). Typical
-    -- value = 0.
-    "vref1" DOUBLE PRECISION NOT NULL,
-    -- Overvoltage condition trigger voltage (Vup). Typical value = 1,1.
-    "vup" DOUBLE PRECISION NOT NULL
-);
-
--- WECC Generator-Converter Model.
--- Reference: Model User Guide for Generic Renewable Energy System Models,
--- EPRI, Palo Alto, CA: 2018, 3002014083.
-CREATE TABLE "WeccREGCA"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- LVPL breakpoint (brkpt). Typical value = 0,9.
-    "brkpt" DOUBLE PRECISION NOT NULL,
-    -- Current limit for high voltage clamp logic (Iolim). Typical value = -1,1.
-    "iolim" DOUBLE PRECISION NOT NULL,
-    -- Maximum reactive current rate limit (Iqrmax). Typical value = 999.
-    "iqrmax" DOUBLE PRECISION NOT NULL,
-    -- Minimum reactive current rate limit (Iqrmin). Typical value = -999.
-    "iqrmin" DOUBLE PRECISION NOT NULL,
-    -- LVPL gain breakpoint [pu current/pu voltage] (lvpl1). Typical value = 1,22.
-    "ivpl1" DOUBLE PRECISION NOT NULL,
-    -- Low voltage power logic switch: 1 (true) -Curve/0-Zero (Lvplsw). Typical
-    -- value = 1 (true).
-    "ivplsw" INTEGER NOT NULL DEFAULT 1 CHECK ("ivplsw" IN (0, 1)) NOT NULL,
-    -- Minimum low voltage active current breakpoint (lvpnt0). Typical value =
-    -- 0,4.
-    "ivpnt0" DOUBLE PRECISION NOT NULL,
-    -- Maximum low voltage active current breakpoint (lvpnt1). Typical value =
-    -- 0,8.
-    "ivpnt1" DOUBLE PRECISION NOT NULL,
-    -- High voltage clamp logic accelerator factor (Khv). Typical value = 0,7.
-    "khv" DOUBLE PRECISION NOT NULL,
-    -- Active current rate limit (rrpwr). Typical value = 10.
-    "rrpwr" DOUBLE PRECISION NOT NULL,
-    -- Voltage filter time constant (Tfltr) (>=0). Typical value = 0,02.
-    "tfltr" DOUBLE PRECISION NOT NULL,
-    -- Converter time constant (Tg) (>=0). Typical value = 0,02.
-    "tg" DOUBLE PRECISION NOT NULL,
-    -- Voltage limit for high voltage clamp logic (Volim). Typical value = 1,2.
-    "volim" DOUBLE PRECISION NOT NULL,
-    -- LVPL zero crossing (zerox). Typical value = 0,4.
-    "zerox" DOUBLE PRECISION NOT NULL
-);
-
--- WECC Plant Controller.
--- Reference: Model User Guide for Generic Renewable Energy System Models,
--- EPRI, Palo Alto, CA: 2018, 3002014083.
-CREATE TABLE "WeccREPCA"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Deadband in reactive power or voltage control (db). Typical value = 0,002.
-    "db" DOUBLE PRECISION NOT NULL,
-    -- Down regulation droop gain (Ddn). Typical value = 20.
-    "ddn" DOUBLE PRECISION NOT NULL,
-    -- Up regulation droop gain (Dup). Typical value = 0.
-    "dup" DOUBLE PRECISION NOT NULL,
-    -- Maximum Volt/VAR error (emax). Typical value = 0,5.
-    "emax" DOUBLE PRECISION NOT NULL,
-    -- Minimum Volt/VAR error (emin). Typical value = -0,5.
-    "emin" DOUBLE PRECISION NOT NULL,
-    -- Frequency deadband downside (fdbd1). Typical value = -0,0006.
-    "fdbd1" DOUBLE PRECISION NOT NULL,
-    -- Frequency deadband upside (fdbd2). Typical value = 0,0006.
-    "fdbd2" DOUBLE PRECISION NOT NULL,
-    -- Maximum power error in droop regulator (femax). Typical value = 99.
-    "femax" DOUBLE PRECISION NOT NULL,
-    -- Minimum power error in droop regulator (femin). Typical value = -99.
-    "femin" DOUBLE PRECISION NOT NULL,
-    -- Active power control: 0 (false) means disabled, 1 (true) means enabled
-    -- (FrqFlag). Typical value = 1 (true).
-    "frqFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("frqFlag" IN (0, 1)) NOT NULL,
-    -- Reactive droop gain (Kc). Typical value = 10.
-    "kc" DOUBLE PRECISION NOT NULL,
-    -- Volt/VAR regulator integral gain (Ki). Typical value = 5.
-    "ki" DOUBLE PRECISION NOT NULL,
-    -- Real power control integral gain (Kig). Typical value = 3.
-    "kig" DOUBLE PRECISION NOT NULL,
-    -- Volt/VAR regulator proportional gain (Kp). Typical value = 1.
-    "kp" DOUBLE PRECISION NOT NULL,
-    -- Real power control proportional gain (Kpg). Typical value = 1,1.
-    "kpg" DOUBLE PRECISION NOT NULL,
-    -- Maximum plant active power command (Pmax). Typical value = 1.
-    "pmax" DOUBLE PRECISION NOT NULL,
-    -- Minimum plant active power command (Pmin). Typical value = 0.
-    "pmin" DOUBLE PRECISION NOT NULL,
-    -- Maximum plant reactive power command (Qmax). Typical value = 0,436.
-    "qmax" DOUBLE PRECISION NOT NULL,
-    -- Minimum plant reactive power command (Qmin). Typical value = -0,436.
-    "qmin" DOUBLE PRECISION NOT NULL,
-    -- Line drop compensation resistance (Rc). Typical value = 0.
-    "rc" DOUBLE PRECISION NOT NULL,
-    -- Reference flag. 0 (false) means reactive power control, 1 (true) means
-    -- voltage control (RefFlag). Typical value = 0 (false).
-    "refFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("refFlag" IN (0, 1)) NOT NULL,
-    -- Voltage and reactive power filter time constant (Tfltr) (>=0). Typical
-    -- value = 0,02.
-    "tfltr" DOUBLE PRECISION NOT NULL,
-    -- Plant controller Q output lead time constant (Tft) (>=0). Typical value
-    -- = 0.
-    "tft" DOUBLE PRECISION NOT NULL,
-    -- Plant controller Q output lag time constant (Tfv) (>=0). Typical value
-    -- = 0,05.
-    "tfv" DOUBLE PRECISION NOT NULL,
-    -- Plant controller P output lag time constant (Tlag) (>=0). Typical value
-    -- = 0,1.
-    "tlag" DOUBLE PRECISION NOT NULL,
-    -- Active power filter time constant (Tp) (>=0). Typical value = 0,25.
-    "tp" DOUBLE PRECISION NOT NULL,
-    -- Compensation flag. 0 (false) means reactive droop, 1 (true) means line
-    -- drop compensation (VcmpFlag). Typical value = 0 (false).
-    "vcmpFlag" INTEGER NOT NULL DEFAULT 1 CHECK ("vcmpFlag" IN (0, 1)) NOT NULL,
-    -- Voltage for freezing Volt/VAR regulator integrator (Vfrz). Typical value
-    -- = 0,7.
-    "vfrz" DOUBLE PRECISION NOT NULL,
-    -- Line drop compensation reactance (Xc). Typical value = 0.
-    "xc" DOUBLE PRECISION NOT NULL
-);
-
--- WECC Aero-Dynamic Model.
--- Reference: Model User Guide for Generic Renewable Energy System Models,
--- EPRI, Palo Alto, CA: 2018, 3002014083.
-CREATE TABLE "WeccWTGARA"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Aero-dynamic gain factor (Ka). Typical value = 0,007.
-    "ka" DOUBLE PRECISION NOT NULL,
-    -- Initial pitch angle (T0). Typical value = 0.
-    "t0" DOUBLE PRECISION NOT NULL
-);
-
--- WECC Drive-Train Model.
--- Reference: Model User Guide for Generic Renewable Energy System Models,
--- EPRI, Palo Alto, CA: 2018, 3002014083.
-CREATE TABLE "WeccWTGTA"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Damping coefficient (Dshaft). Typical value = 0,3.
-    "dshaft" DOUBLE PRECISION NOT NULL,
-    -- Generator inertia (Hg) (>=0). Typical value = 1.
-    "hg" DOUBLE PRECISION NOT NULL,
-    -- Turbine inertia (Ht) (>=0). Typical value = 5.
-    "ht" DOUBLE PRECISION NOT NULL,
-    -- Spring constant (Kshaft). Typical value = 200.
-    "kshaft" DOUBLE PRECISION NOT NULL
-);
-
 -- Winding connection type.
 CREATE TABLE "WindingConnection" ( "name" VARCHAR(100) UNIQUE );
 -- Autotransformer common winding.
@@ -2966,8 +2523,14 @@ INSERT INTO "WindingConnection" ( "name" ) VALUES ( 'Zn' );
 -- Inheritance constraint definitions
 ------------------------------------------------------------------------------
 
+-- Inheritance subclass-superclass constraint for table "ACDCTerminal"
+ALTER TABLE "ACDCTerminal" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "ACLineSegment"
 ALTER TABLE "ACLineSegment" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Conductor" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "ACPointOfCommonCoupling"
+ALTER TABLE "ACPointOfCommonCoupling" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PointOfCommonCoupling" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "ApparentPowerLimit"
 ALTER TABLE "ApparentPowerLimit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "OperationalLimit" ( "mRID" );
@@ -2987,6 +2550,9 @@ ALTER TABLE "ConductingEquipment" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipme
 -- Inheritance subclass-superclass constraint for table "Conductor"
 ALTER TABLE "Conductor" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "ConnectedFacility"
+ALTER TABLE "ConnectedFacility" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemResource" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "ConnectivityNode"
 ALTER TABLE "ConnectivityNode" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
@@ -2996,8 +2562,50 @@ ALTER TABLE "ConnectivityNodeContainer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "P
 -- Inheritance subclass-superclass constraint for table "Curve"
 ALTER TABLE "Curve" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "DCBaseTerminal"
+ALTER TABLE "DCBaseTerminal" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ACDCTerminal" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "DCBreaker"
+ALTER TABLE "DCBreaker" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCSwitch" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "DCConductingEquipment"
+ALTER TABLE "DCConductingEquipment" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "DCDisconnector"
+ALTER TABLE "DCDisconnector" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCSwitch" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "DCEnergySource"
+ALTER TABLE "DCEnergySource" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCConductingEquipment" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "DCGround"
+ALTER TABLE "DCGround" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCConductingEquipment" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "DCLineSegment"
+ALTER TABLE "DCLineSegment" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCConductingEquipment" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "DCSeriesDevice"
+ALTER TABLE "DCSeriesDevice" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCConductingEquipment" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "DCShunt"
+ALTER TABLE "DCShunt" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCConductingEquipment" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "DCSwitch"
+ALTER TABLE "DCSwitch" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCConductingEquipment" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "DCTerminal"
+ALTER TABLE "DCTerminal" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCBaseTerminal" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "DetailedModelDescriptor"
+ALTER TABLE "DetailedModelDescriptor" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "DetailedModelDynamics"
+ALTER TABLE "DetailedModelDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "DiagramObject"
 ALTER TABLE "DiagramObject" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "DisconnectingCircuitBreaker"
+ALTER TABLE "DisconnectingCircuitBreaker" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Switch" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "DynamicsFunctionBlock"
 ALTER TABLE "DynamicsFunctionBlock" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
@@ -3017,41 +2625,14 @@ ALTER TABLE "Equipment" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemResour
 -- Inheritance subclass-superclass constraint for table "EquipmentContainer"
 ALTER TABLE "EquipmentContainer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConnectivityNodeContainer" ( "mRID" );
 
--- Inheritance subclass-superclass constraint for table "ExcIEEEDC1A"
-ALTER TABLE "ExcIEEEDC1A" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ExcitationSystemDynamics" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "ExcSEXS"
-ALTER TABLE "ExcSEXS" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ExcitationSystemDynamics" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "ExcST1A"
-ALTER TABLE "ExcST1A" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ExcitationSystemDynamics" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "ExcitationSystemDynamics"
-ALTER TABLE "ExcitationSystemDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "GeneratingPlant"
-ALTER TABLE "GeneratingPlant" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemResource" ( "mRID" );
-
 -- Inheritance subclass-superclass constraint for table "GeneratingUnit"
 ALTER TABLE "GeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "GovGAST"
-ALTER TABLE "GovGAST" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TurbineGovernorDynamics" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "GovHydro1"
-ALTER TABLE "GovHydro1" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TurbineGovernorDynamics" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "GovSteam0"
-ALTER TABLE "GovSteam0" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TurbineGovernorDynamics" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "GovSteamSGO"
-ALTER TABLE "GovSteamSGO" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TurbineGovernorDynamics" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "HydroGeneratingUnit"
 ALTER TABLE "HydroGeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "GeneratingUnit" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "IBRPlant"
-ALTER TABLE "IBRPlant" ADD FOREIGN KEY ( "mRID" ) REFERENCES "GeneratingPlant" ( "mRID" );
+ALTER TABLE "IBRPlant" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConnectedFacility" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "IEEECigreDLL"
 ALTER TABLE "IEEECigreDLL" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
@@ -3062,11 +2643,20 @@ ALTER TABLE "IEEECigreDLLInput" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IEEECigre
 -- Inheritance subclass-superclass constraint for table "IEEECigreDLLOutput"
 ALTER TABLE "IEEECigreDLLOutput" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IEEECigreDLLSignal" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "IEEECigreDLLSignal"
+ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "mRID" ) REFERENCES "SignalDescriptor" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "LinearShuntCompensator"
 ALTER TABLE "LinearShuntCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ShuntCompensator" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "LoadResponseCharacteristic"
 ALTER TABLE "LoadResponseCharacteristic" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "MachineSaturation"
+ALTER TABLE "MachineSaturation" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Curve" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "NERCDynamicModel"
+ALTER TABLE "NERCDynamicModel" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DetailedModelTypeDynamics" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "NuclearGeneratingUnit"
 ALTER TABLE "NuclearGeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "GeneratingUnit" ( "mRID" );
@@ -3074,20 +2664,23 @@ ALTER TABLE "NuclearGeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Gener
 -- Inheritance subclass-superclass constraint for table "OperationalLimit"
 ALTER TABLE "OperationalLimit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
--- Inheritance subclass-superclass constraint for table "OverexcLimX2"
-ALTER TABLE "OverexcLimX2" ADD FOREIGN KEY ( "mRID" ) REFERENCES "OverexcitationLimiterDynamics" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "OverexcitationLimiterDynamics"
-ALTER TABLE "OverexcitationLimiterDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
-
 -- Inheritance subclass-superclass constraint for table "PSRType"
 ALTER TABLE "PSRType" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "ParameterDescriptor"
+ALTER TABLE "ParameterDescriptor" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DetailedModelDescriptor" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "PhotoVoltaicUnit"
 ALTER TABLE "PhotoVoltaicUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerElectronicsUnit" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "PointOfCommonCoupling"
+ALTER TABLE "PointOfCommonCoupling" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "PowerElectronicsConnection"
 ALTER TABLE "PowerElectronicsConnection" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RegulatingCondEq" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "PowerElectronicsConnectionDCTerminal"
+ALTER TABLE "PowerElectronicsConnectionDCTerminal" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCBaseTerminal" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "PowerElectronicsUnit"
 ALTER TABLE "PowerElectronicsUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
@@ -3107,20 +2700,11 @@ ALTER TABLE "PowerTransformer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Conducting
 -- Inheritance subclass-superclass constraint for table "PowerTransformerEnd"
 ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TransformerEnd" ( "mRID" );
 
--- Inheritance subclass-superclass constraint for table "Pss1A"
-ALTER TABLE "Pss1A" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemStabilizerDynamics" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "PssIEEE1A"
-ALTER TABLE "PssIEEE1A" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemStabilizerDynamics" ( "mRID" );
-
 -- Inheritance subclass-superclass constraint for table "RatioTapChanger"
 ALTER TABLE "RatioTapChanger" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TapChanger" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "RegulatingCondEq"
 ALTER TABLE "RegulatingCondEq" ADD FOREIGN KEY ( "mRID" ) REFERENCES "EnergyConnection" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "RemoteInputSignal"
-ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "RotatingMachine"
 ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RegulatingCondEq" ( "mRID" );
@@ -3129,7 +2713,7 @@ ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RegulatingC
 ALTER TABLE "RotatingMachineDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "RotatingMachinePlant"
-ALTER TABLE "RotatingMachinePlant" ADD FOREIGN KEY ( "mRID" ) REFERENCES "GeneratingPlant" ( "mRID" );
+ALTER TABLE "RotatingMachinePlant" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConnectedFacility" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "SeriesCompensator"
 ALTER TABLE "SeriesCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" );
@@ -3137,8 +2721,23 @@ ALTER TABLE "SeriesCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Conductin
 -- Inheritance subclass-superclass constraint for table "ShuntCompensator"
 ALTER TABLE "ShuntCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RegulatingCondEq" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "SignalDescriptor"
+ALTER TABLE "SignalDescriptor" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DetailedModelDescriptor" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "SvPowerFlow"
 ALTER TABLE "SvPowerFlow" ADD FOREIGN KEY ( "mRID" ) REFERENCES "StateVariable" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "SvShuntCompensatorSections"
+ALTER TABLE "SvShuntCompensatorSections" ADD FOREIGN KEY ( "mRID" ) REFERENCES "StateVariable" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "SvStatus"
+ALTER TABLE "SvStatus" ADD FOREIGN KEY ( "mRID" ) REFERENCES "StateVariable" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "SvSwitch"
+ALTER TABLE "SvSwitch" ADD FOREIGN KEY ( "mRID" ) REFERENCES "StateVariable" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "SvTapStep"
+ALTER TABLE "SvTapStep" ADD FOREIGN KEY ( "mRID" ) REFERENCES "StateVariable" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "SvVoltage"
 ALTER TABLE "SvVoltage" ADD FOREIGN KEY ( "mRID" ) REFERENCES "StateVariable" ( "mRID" );
@@ -3161,6 +2760,9 @@ ALTER TABLE "SynchronousMachineTimeConstantReactance" ADD FOREIGN KEY ( "mRID" )
 -- Inheritance subclass-superclass constraint for table "TapChanger"
 ALTER TABLE "TapChanger" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemResource" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "Terminal"
+ALTER TABLE "Terminal" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ACDCTerminal" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "TextDiagramObject"
 ALTER TABLE "TextDiagramObject" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DiagramObject" ( "mRID" );
 
@@ -3179,41 +2781,21 @@ ALTER TABLE "TransformerMeshImpedance" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Id
 -- Inheritance subclass-superclass constraint for table "TransformerSaturation"
 ALTER TABLE "TransformerSaturation" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Curve" ( "mRID" );
 
--- Inheritance subclass-superclass constraint for table "TurbineGovernorDynamics"
-ALTER TABLE "TurbineGovernorDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "WeccDynamics"
-ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "WeccREEC"
-ALTER TABLE "WeccREEC" ADD FOREIGN KEY ( "mRID" ) REFERENCES "WeccDynamics" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "WeccREECA"
-ALTER TABLE "WeccREECA" ADD FOREIGN KEY ( "mRID" ) REFERENCES "WeccREEC" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "WeccREGCA"
-ALTER TABLE "WeccREGCA" ADD FOREIGN KEY ( "mRID" ) REFERENCES "WeccDynamics" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "WeccREPCA"
-ALTER TABLE "WeccREPCA" ADD FOREIGN KEY ( "mRID" ) REFERENCES "WeccDynamics" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "WeccWTGARA"
-ALTER TABLE "WeccWTGARA" ADD FOREIGN KEY ( "mRID" ) REFERENCES "WeccDynamics" ( "mRID" );
-
--- Inheritance subclass-superclass constraint for table "WeccWTGTA"
-ALTER TABLE "WeccWTGTA" ADD FOREIGN KEY ( "mRID" ) REFERENCES "WeccDynamics" ( "mRID" );
-
 ------------------------------------------------------------------------------
 -- Standard foreign key constraint definitions
 ------------------------------------------------------------------------------
+
+-- Foreign keys for table "ACPointOfCommonCoupling"
+ALTER TABLE "ACPointOfCommonCoupling" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
 
 -- Foreign keys for table "BatteryUnit"
 ALTER TABLE "BatteryUnit" ADD FOREIGN KEY ( "batteryState" ) REFERENCES "BatteryStateKind" ( "name" );
 
 -- Foreign keys for table "ConductingEquipment"
 ALTER TABLE "ConductingEquipment" ADD FOREIGN KEY ( "BaseVoltage" ) REFERENCES "BaseVoltage" ( "mRID" );
-ALTER TABLE "ConductingEquipment" ADD FOREIGN KEY ( "FromConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
-ALTER TABLE "ConductingEquipment" ADD FOREIGN KEY ( "ToConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
+
+-- Foreign keys for table "ConnectedFacility"
+ALTER TABLE "ConnectedFacility" ADD FOREIGN KEY ( "ACPointOfCommonCoupling" ) REFERENCES "ACPointOfCommonCoupling" ( "mRID" );
 
 -- Foreign keys for table "ConnectivityNode"
 ALTER TABLE "ConnectivityNode" ADD FOREIGN KEY ( "ConnectivityNodeContainer" ) REFERENCES "ConnectivityNodeContainer" ( "mRID" );
@@ -3228,6 +2810,28 @@ ALTER TABLE "Curve" ADD FOREIGN KEY ( "y1Unit" ) REFERENCES "UnitSymbol" ( "name
 -- Foreign keys for table "CurveData"
 ALTER TABLE "CurveData" ADD FOREIGN KEY ( "Curve" ) REFERENCES "Curve" ( "mRID" );
 
+-- Foreign keys for table "DCBaseTerminal"
+ALTER TABLE "DCBaseTerminal" ADD FOREIGN KEY ( "DCNode" ) REFERENCES "DCNode" ( "mRID" );
+ALTER TABLE "DCBaseTerminal" ADD FOREIGN KEY ( "DCTopologicalNode" ) REFERENCES "DCTopologicalNode" ( "mRID" );
+
+-- Foreign keys for table "DCEnergySource"
+ALTER TABLE "DCEnergySource" ADD FOREIGN KEY ( "kind" ) REFERENCES "DCSourceKind" ( "mRID" );
+
+-- Foreign keys for table "DCLineSegment"
+ALTER TABLE "DCLineSegment" ADD FOREIGN KEY ( "PerLengthParameter" ) REFERENCES "PerLengthDCLineParameter" ( "mRID" );
+
+-- Foreign keys for table "DCTerminal"
+ALTER TABLE "DCTerminal" ADD FOREIGN KEY ( "polarity" ) REFERENCES "DCTerminalPolarityKind" ( "name" );
+ALTER TABLE "DCTerminal" ADD FOREIGN KEY ( "DCConductingEquipment" ) REFERENCES "DCConductingEquipment" ( "mRID" );
+
+-- Foreign keys for table "DetailedModelDescriptor"
+ALTER TABLE "DetailedModelDescriptor" ADD FOREIGN KEY ( "DetailedModelTypeDynamics" ) REFERENCES "DetailedModelTypeDynamics" ( "mRID" );
+
+-- Foreign keys for table "DetailedModelDynamics"
+ALTER TABLE "DetailedModelDynamics" ADD FOREIGN KEY ( "DetailedModelTypeDynamics" ) REFERENCES "DetailedModelTypeDynamics" ( "mRID" );
+ALTER TABLE "DetailedModelDynamics" ADD FOREIGN KEY ( "DynamicsFunctionBlock" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
+ALTER TABLE "DetailedModelDynamics" ADD FOREIGN KEY ( "Equipment" ) REFERENCES "Equipment" ( "mRID" );
+
 -- Foreign keys for table "DiagramObject"
 ALTER TABLE "DiagramObject" ADD FOREIGN KEY ( "IdentifiedObject" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
@@ -3240,41 +2844,23 @@ ALTER TABLE "EnergyConsumer" ADD FOREIGN KEY ( "LoadResponse" ) REFERENCES "Load
 -- Foreign keys for table "Equipment"
 ALTER TABLE "Equipment" ADD FOREIGN KEY ( "EquipmentContainer" ) REFERENCES "EquipmentContainer" ( "mRID" );
 
--- Foreign keys for table "ExcitationSystemDynamics"
-ALTER TABLE "ExcitationSystemDynamics" ADD FOREIGN KEY ( "SynchronousMachineDynamics" ) REFERENCES "SynchronousMachineDynamics" ( "mRID" );
-
--- Foreign keys for table "IBRPlant"
-ALTER TABLE "IBRPlant" ADD FOREIGN KEY ( "acFilterKind" ) REFERENCES "IBRFilterKind" ( "name" );
-
--- Foreign keys for table "IEEECigreDLL"
-ALTER TABLE "IEEECigreDLL" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFERENCES "PowerElectronicsConnection" ( "mRID" );
-
--- Foreign keys for table "IEEECigreDLLInput"
-ALTER TABLE "IEEECigreDLLInput" ADD FOREIGN KEY ( "kind" ) REFERENCES "IEEECigreDLLInputKind" ( "name" );
-ALTER TABLE "IEEECigreDLLInput" ADD FOREIGN KEY ( "IEEECigreDLL" ) REFERENCES "IEEECigreDLL" ( "mRID" );
-ALTER TABLE "IEEECigreDLLInput" ADD FOREIGN KEY ( "RemoteInputSignal" ) REFERENCES "RemoteInputSignal" ( "mRID" );
-
--- Foreign keys for table "IEEECigreDLLOutput"
-ALTER TABLE "IEEECigreDLLOutput" ADD FOREIGN KEY ( "kind" ) REFERENCES "IEEECigreDLLOutputKind" ( "name" );
-ALTER TABLE "IEEECigreDLLOutput" ADD FOREIGN KEY ( "IEEECigreDLL" ) REFERENCES "IEEECigreDLL" ( "mRID" );
-
 -- Foreign keys for table "IEEECigreDLLParameter"
 ALTER TABLE "IEEECigreDLLParameter" ADD FOREIGN KEY ( "parameterKind" ) REFERENCES "IEEECigreDLLParameterKind" ( "name" );
 ALTER TABLE "IEEECigreDLLParameter" ADD FOREIGN KEY ( "IEEECigreDLL" ) REFERENCES "IEEECigreDLL" ( "mRID" );
+
+-- Foreign keys for table "MachineSaturation"
+ALTER TABLE "MachineSaturation" ADD FOREIGN KEY ( "SynchronousMachineDetailed" ) REFERENCES "SynchronousMachineDetailed" ( "mRID" );
 
 -- Foreign keys for table "OperationalLimit"
 ALTER TABLE "OperationalLimit" ADD FOREIGN KEY ( "OperationalLimitSet" ) REFERENCES "OperationalLimitSet" ( "mRID" );
 ALTER TABLE "OperationalLimit" ADD FOREIGN KEY ( "OperationalLimitType" ) REFERENCES "OperationalLimitType" ( "mRID" );
 
--- Foreign keys for table "OperationalLimitSet"
-ALTER TABLE "OperationalLimitSet" ADD FOREIGN KEY ( "ConductingEquipment" ) REFERENCES "ConductingEquipment" ( "mRID" );
-ALTER TABLE "OperationalLimitSet" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
-
 -- Foreign keys for table "OperationalLimitType"
 ALTER TABLE "OperationalLimitType" ADD FOREIGN KEY ( "direction" ) REFERENCES "OperationalLimitDirectionKind" ( "name" );
 
--- Foreign keys for table "OverexcitationLimiterDynamics"
-ALTER TABLE "OverexcitationLimiterDynamics" ADD FOREIGN KEY ( "ExcitationSystemDynamics" ) REFERENCES "ExcitationSystemDynamics" ( "mRID" );
+-- Foreign keys for table "PowerElectronicsConnectionDCTerminal"
+ALTER TABLE "PowerElectronicsConnectionDCTerminal" ADD FOREIGN KEY ( "polarity" ) REFERENCES "DCTerminalPolarityKind" ( "name" );
+ALTER TABLE "PowerElectronicsConnectionDCTerminal" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFERENCES "PowerElectronicsConnection" ( "mRID" );
 
 -- Foreign keys for table "PowerElectronicsUnit"
 ALTER TABLE "PowerElectronicsUnit" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFERENCES "PowerElectronicsConnection" ( "mRID" );
@@ -3286,27 +2872,26 @@ ALTER TABLE "PowerSystemStabilizerDynamics" ADD FOREIGN KEY ( "ExcitationSystemD
 ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "connectionKind" ) REFERENCES "WindingConnection" ( "name" );
 ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "PowerTransformer" ) REFERENCES "PowerTransformer" ( "mRID" );
 
--- Foreign keys for table "PssIEEE1A"
-ALTER TABLE "PssIEEE1A" ADD FOREIGN KEY ( "inputSignalType" ) REFERENCES "InputSignalKind" ( "name" );
-
 -- Foreign keys for table "RatioTapChanger"
 ALTER TABLE "RatioTapChanger" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
-
--- Foreign keys for table "RemoteInputSignal"
-ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "remoteSignalType" ) REFERENCES "RemoteSignalKind" ( "name" );
-ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "ConductingEquipment" ) REFERENCES "ConductingEquipment" ( "mRID" );
-ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
-ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "PowerSystemStabilizerDynamics" ) REFERENCES "PowerSystemStabilizerDynamics" ( "mRID" );
-ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
-ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "UnderexcitationLimiterDynamics" ) REFERENCES "UnderexcitationLimiterDynamics" ( "mRID" );
-ALTER TABLE "RemoteInputSignal" ADD FOREIGN KEY ( "WeccDynamics" ) REFERENCES "WeccDynamics" ( "mRID" );
 
 -- Foreign keys for table "RotatingMachine"
 ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "GeneratingUnit" ) REFERENCES "GeneratingUnit" ( "mRID" );
 
--- Foreign keys for table "SvPowerFlow"
-ALTER TABLE "SvPowerFlow" ADD FOREIGN KEY ( "ConductingEquipment" ) REFERENCES "ConductingEquipment" ( "mRID" );
-ALTER TABLE "SvPowerFlow" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
+-- Foreign keys for table "SvShuntCompensatorSections"
+ALTER TABLE "SvShuntCompensatorSections" ADD FOREIGN KEY ( "phase" ) REFERENCES "SinglePhaseKind" ( "name" );
+ALTER TABLE "SvShuntCompensatorSections" ADD FOREIGN KEY ( "ShuntCompensator" ) REFERENCES "ShuntCompensator" ( "mRID" );
+
+-- Foreign keys for table "SvStatus"
+ALTER TABLE "SvStatus" ADD FOREIGN KEY ( "phase" ) REFERENCES "SinglePhaseKind" ( "name" );
+ALTER TABLE "SvStatus" ADD FOREIGN KEY ( "ConductingEquipment" ) REFERENCES "ConductingEquipment" ( "mRID" );
+
+-- Foreign keys for table "SvSwitch"
+ALTER TABLE "SvSwitch" ADD FOREIGN KEY ( "phase" ) REFERENCES "SinglePhaseKind" ( "name" );
+ALTER TABLE "SvSwitch" ADD FOREIGN KEY ( "Switch" ) REFERENCES "Switch" ( "mRID" );
+
+-- Foreign keys for table "SvTapStep"
+ALTER TABLE "SvTapStep" ADD FOREIGN KEY ( "TapChanger" ) REFERENCES "TapChanger" ( "mRID" );
 
 -- Foreign keys for table "SvVoltage"
 ALTER TABLE "SvVoltage" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
@@ -3325,24 +2910,21 @@ ALTER TABLE "SynchronousMachineDynamics" ADD FOREIGN KEY ( "SynchronousMachine" 
 ALTER TABLE "SynchronousMachineTimeConstantReactance" ADD FOREIGN KEY ( "modelType" ) REFERENCES "SynchronousMachineModelKind" ( "name" );
 ALTER TABLE "SynchronousMachineTimeConstantReactance" ADD FOREIGN KEY ( "rotorType" ) REFERENCES "RotorKind" ( "name" );
 
+-- Foreign keys for table "Terminal"
+ALTER TABLE "Terminal" ADD FOREIGN KEY ( "ConductingEquipment" ) REFERENCES "ConductingEquipment" ( "mRID" );
+ALTER TABLE "Terminal" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
+
 -- Foreign keys for table "TransformerCoreAdmittance"
 ALTER TABLE "TransformerCoreAdmittance" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
 
 -- Foreign keys for table "TransformerEnd"
 ALTER TABLE "TransformerEnd" ADD FOREIGN KEY ( "BaseVoltage" ) REFERENCES "BaseVoltage" ( "mRID" );
-ALTER TABLE "TransformerEnd" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
 
 -- Foreign keys for table "TransformerMeshImpedance"
 ALTER TABLE "TransformerMeshImpedance" ADD FOREIGN KEY ( "FromTransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
 
 -- Foreign keys for table "TransformerSaturation"
 ALTER TABLE "TransformerSaturation" ADD FOREIGN KEY ( "TransformerCoreAdmittance" ) REFERENCES "TransformerCoreAdmittance" ( "mRID" );
-
--- Foreign keys for table "TurbineGovernorDynamics"
-ALTER TABLE "TurbineGovernorDynamics" ADD FOREIGN KEY ( "SynchronousMachineDynamics" ) REFERENCES "SynchronousMachineDynamics" ( "mRID" );
-
--- Foreign keys for table "WeccDynamics"
-ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFERENCES "PowerElectronicsConnection" ( "mRID" );
 
 ------------------------------------------------------------------------------
 -- Cascade delete foreign key constraint definitions (for Compounds)
@@ -3353,15 +2935,31 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 -- Compound data. Such child data will be deleted concurrently to
 -- that of its parent data.
 
+-- Cascade deletes for compounds referenced in table "ACPointOfCommonCoupling"
+
 -- Cascade deletes for compounds referenced in table "BatteryUnit"
 
 -- Cascade deletes for compounds referenced in table "ConductingEquipment"
+
+-- Cascade deletes for compounds referenced in table "ConnectedFacility"
 
 -- Cascade deletes for compounds referenced in table "ConnectivityNode"
 
 -- Cascade deletes for compounds referenced in table "Curve"
 
 -- Cascade deletes for compounds referenced in table "CurveData"
+
+-- Cascade deletes for compounds referenced in table "DCBaseTerminal"
+
+-- Cascade deletes for compounds referenced in table "DCEnergySource"
+
+-- Cascade deletes for compounds referenced in table "DCLineSegment"
+
+-- Cascade deletes for compounds referenced in table "DCTerminal"
+
+-- Cascade deletes for compounds referenced in table "DetailedModelDescriptor"
+
+-- Cascade deletes for compounds referenced in table "DetailedModelDynamics"
 
 -- Cascade deletes for compounds referenced in table "DiagramObject"
 
@@ -3371,25 +2969,15 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 
 -- Cascade deletes for compounds referenced in table "Equipment"
 
--- Cascade deletes for compounds referenced in table "ExcitationSystemDynamics"
-
--- Cascade deletes for compounds referenced in table "IBRPlant"
-
--- Cascade deletes for compounds referenced in table "IEEECigreDLL"
-
--- Cascade deletes for compounds referenced in table "IEEECigreDLLInput"
-
--- Cascade deletes for compounds referenced in table "IEEECigreDLLOutput"
-
 -- Cascade deletes for compounds referenced in table "IEEECigreDLLParameter"
+
+-- Cascade deletes for compounds referenced in table "MachineSaturation"
 
 -- Cascade deletes for compounds referenced in table "OperationalLimit"
 
--- Cascade deletes for compounds referenced in table "OperationalLimitSet"
-
 -- Cascade deletes for compounds referenced in table "OperationalLimitType"
 
--- Cascade deletes for compounds referenced in table "OverexcitationLimiterDynamics"
+-- Cascade deletes for compounds referenced in table "PowerElectronicsConnectionDCTerminal"
 
 -- Cascade deletes for compounds referenced in table "PowerElectronicsUnit"
 
@@ -3397,15 +2985,17 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 
 -- Cascade deletes for compounds referenced in table "PowerTransformerEnd"
 
--- Cascade deletes for compounds referenced in table "PssIEEE1A"
-
 -- Cascade deletes for compounds referenced in table "RatioTapChanger"
-
--- Cascade deletes for compounds referenced in table "RemoteInputSignal"
 
 -- Cascade deletes for compounds referenced in table "RotatingMachine"
 
--- Cascade deletes for compounds referenced in table "SvPowerFlow"
+-- Cascade deletes for compounds referenced in table "SvShuntCompensatorSections"
+
+-- Cascade deletes for compounds referenced in table "SvStatus"
+
+-- Cascade deletes for compounds referenced in table "SvSwitch"
+
+-- Cascade deletes for compounds referenced in table "SvTapStep"
 
 -- Cascade deletes for compounds referenced in table "SvVoltage"
 
@@ -3417,6 +3007,8 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 
 -- Cascade deletes for compounds referenced in table "SynchronousMachineTimeConstantReactance"
 
+-- Cascade deletes for compounds referenced in table "Terminal"
+
 -- Cascade deletes for compounds referenced in table "TransformerCoreAdmittance"
 
 -- Cascade deletes for compounds referenced in table "TransformerEnd"
@@ -3425,53 +3017,47 @@ ALTER TABLE "WeccDynamics" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFE
 
 -- Cascade deletes for compounds referenced in table "TransformerSaturation"
 
--- Cascade deletes for compounds referenced in table "TurbineGovernorDynamics"
-
--- Cascade deletes for compounds referenced in table "WeccDynamics"
-
 ------------------------------------------------------------------------------
 -- Foreign key column indexes for optimized queries and joins
 ------------------------------------------------------------------------------
 
+CREATE INDEX ix_ACPointOfCommonCoupling_ConnectivityNode ON "ACPointOfCommonCoupling" ( "ConnectivityNode" );
 CREATE INDEX ix_ConductingEquipment_BaseVoltage ON "ConductingEquipment" ( "BaseVoltage" );
-CREATE INDEX ix_ConductingEquipment_FromConnectivityNode ON "ConductingEquipment" ( "FromConnectivityNode" );
-CREATE INDEX ix_ConductingEquipment_ToConnectivityNode ON "ConductingEquipment" ( "ToConnectivityNode" );
+CREATE INDEX ix_ConnectedFacility_ACPointOfCommonCoupling ON "ConnectedFacility" ( "ACPointOfCommonCoupling" );
 CREATE INDEX ix_ConnectivityNode_ConnectivityNodeContainer ON "ConnectivityNode" ( "ConnectivityNodeContainer" );
 CREATE INDEX ix_CurveData_Curve ON "CurveData" ( "Curve" );
+CREATE INDEX ix_DCBaseTerminal_DCNode ON "DCBaseTerminal" ( "DCNode" );
+CREATE INDEX ix_DCBaseTerminal_DCTopologicalNode ON "DCBaseTerminal" ( "DCTopologicalNode" );
+CREATE INDEX ix_DCEnergySource_kind ON "DCEnergySource" ( "kind" );
+CREATE INDEX ix_DCLineSegment_PerLengthParameter ON "DCLineSegment" ( "PerLengthParameter" );
+CREATE INDEX ix_DCTerminal_DCConductingEquipment ON "DCTerminal" ( "DCConductingEquipment" );
+CREATE INDEX ix_DetailedModelDescriptor_DetailedModelTypeDynamics ON "DetailedModelDescriptor" ( "DetailedModelTypeDynamics" );
+CREATE INDEX ix_DetailedModelDynamics_DetailedModelTypeDynamics ON "DetailedModelDynamics" ( "DetailedModelTypeDynamics" );
+CREATE INDEX ix_DetailedModelDynamics_DynamicsFunctionBlock ON "DetailedModelDynamics" ( "DynamicsFunctionBlock" );
+CREATE INDEX ix_DetailedModelDynamics_Equipment ON "DetailedModelDynamics" ( "Equipment" );
 CREATE INDEX ix_DiagramObject_IdentifiedObject ON "DiagramObject" ( "IdentifiedObject" );
 CREATE INDEX ix_DiagramObjectPoint_DiagramObject ON "DiagramObjectPoint" ( "DiagramObject" );
 CREATE INDEX ix_EnergyConsumer_LoadResponse ON "EnergyConsumer" ( "LoadResponse" );
 CREATE INDEX ix_Equipment_EquipmentContainer ON "Equipment" ( "EquipmentContainer" );
-CREATE INDEX ix_ExcitationSystemDynamics_SynchronousMachineDynamics ON "ExcitationSystemDynamics" ( "SynchronousMachineDynamics" );
-CREATE INDEX ix_IEEECigreDLL_PowerElectronicsConnection ON "IEEECigreDLL" ( "PowerElectronicsConnection" );
-CREATE INDEX ix_IEEECigreDLLInput_IEEECigreDLL ON "IEEECigreDLLInput" ( "IEEECigreDLL" );
-CREATE INDEX ix_IEEECigreDLLInput_RemoteInputSignal ON "IEEECigreDLLInput" ( "RemoteInputSignal" );
-CREATE INDEX ix_IEEECigreDLLOutput_IEEECigreDLL ON "IEEECigreDLLOutput" ( "IEEECigreDLL" );
 CREATE INDEX ix_IEEECigreDLLParameter_IEEECigreDLL ON "IEEECigreDLLParameter" ( "IEEECigreDLL" );
+CREATE INDEX ix_MachineSaturation_SynchronousMachineDetailed ON "MachineSaturation" ( "SynchronousMachineDetailed" );
 CREATE INDEX ix_OperationalLimit_OperationalLimitSet ON "OperationalLimit" ( "OperationalLimitSet" );
 CREATE INDEX ix_OperationalLimit_OperationalLimitType ON "OperationalLimit" ( "OperationalLimitType" );
-CREATE INDEX ix_OperationalLimitSet_ConductingEquipment ON "OperationalLimitSet" ( "ConductingEquipment" );
-CREATE INDEX ix_OperationalLimitSet_TransformerEnd ON "OperationalLimitSet" ( "TransformerEnd" );
-CREATE INDEX ix_OverexcitationLimiterDynamics_ExcitationSystemDynamics ON "OverexcitationLimiterDynamics" ( "ExcitationSystemDynamics" );
+CREATE INDEX ix_PowerElectronicsConnectionDCTerminal_PowerElectronicsConnection ON "PowerElectronicsConnectionDCTerminal" ( "PowerElectronicsConnection" );
 CREATE INDEX ix_PowerElectronicsUnit_PowerElectronicsConnection ON "PowerElectronicsUnit" ( "PowerElectronicsConnection" );
 CREATE INDEX ix_PowerSystemStabilizerDynamics_ExcitationSystemDynamics ON "PowerSystemStabilizerDynamics" ( "ExcitationSystemDynamics" );
 CREATE INDEX ix_PowerTransformerEnd_PowerTransformer ON "PowerTransformerEnd" ( "PowerTransformer" );
 CREATE INDEX ix_RatioTapChanger_TransformerEnd ON "RatioTapChanger" ( "TransformerEnd" );
-CREATE INDEX ix_RemoteInputSignal_ConductingEquipment ON "RemoteInputSignal" ( "ConductingEquipment" );
-CREATE INDEX ix_RemoteInputSignal_ConnectivityNode ON "RemoteInputSignal" ( "ConnectivityNode" );
-CREATE INDEX ix_RemoteInputSignal_PowerSystemStabilizerDynamics ON "RemoteInputSignal" ( "PowerSystemStabilizerDynamics" );
-CREATE INDEX ix_RemoteInputSignal_TransformerEnd ON "RemoteInputSignal" ( "TransformerEnd" );
-CREATE INDEX ix_RemoteInputSignal_UnderexcitationLimiterDynamics ON "RemoteInputSignal" ( "UnderexcitationLimiterDynamics" );
-CREATE INDEX ix_RemoteInputSignal_WeccDynamics ON "RemoteInputSignal" ( "WeccDynamics" );
 CREATE INDEX ix_RotatingMachine_GeneratingUnit ON "RotatingMachine" ( "GeneratingUnit" );
-CREATE INDEX ix_SvPowerFlow_ConductingEquipment ON "SvPowerFlow" ( "ConductingEquipment" );
-CREATE INDEX ix_SvPowerFlow_TransformerEnd ON "SvPowerFlow" ( "TransformerEnd" );
+CREATE INDEX ix_SvShuntCompensatorSections_ShuntCompensator ON "SvShuntCompensatorSections" ( "ShuntCompensator" );
+CREATE INDEX ix_SvStatus_ConductingEquipment ON "SvStatus" ( "ConductingEquipment" );
+CREATE INDEX ix_SvSwitch_Switch ON "SvSwitch" ( "Switch" );
+CREATE INDEX ix_SvTapStep_TapChanger ON "SvTapStep" ( "TapChanger" );
 CREATE INDEX ix_SvVoltage_ConnectivityNode ON "SvVoltage" ( "ConnectivityNode" );
 CREATE INDEX ix_SynchronousMachineDynamics_SynchronousMachine ON "SynchronousMachineDynamics" ( "SynchronousMachine" );
+CREATE INDEX ix_Terminal_ConductingEquipment ON "Terminal" ( "ConductingEquipment" );
+CREATE INDEX ix_Terminal_ConnectivityNode ON "Terminal" ( "ConnectivityNode" );
 CREATE INDEX ix_TransformerCoreAdmittance_TransformerEnd ON "TransformerCoreAdmittance" ( "TransformerEnd" );
 CREATE INDEX ix_TransformerEnd_BaseVoltage ON "TransformerEnd" ( "BaseVoltage" );
-CREATE INDEX ix_TransformerEnd_ConnectivityNode ON "TransformerEnd" ( "ConnectivityNode" );
 CREATE INDEX ix_TransformerMeshImpedance_FromTransformerEnd ON "TransformerMeshImpedance" ( "FromTransformerEnd" );
 CREATE INDEX ix_TransformerSaturation_TransformerCoreAdmittance ON "TransformerSaturation" ( "TransformerCoreAdmittance" );
-CREATE INDEX ix_TurbineGovernorDynamics_SynchronousMachineDynamics ON "TurbineGovernorDynamics" ( "SynchronousMachineDynamics" );
-CREATE INDEX ix_WeccDynamics_PowerElectronicsConnection ON "WeccDynamics" ( "PowerElectronicsConnection" );

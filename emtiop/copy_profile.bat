@@ -1,4 +1,4 @@
-python process_html.py C:\cimtool-2.3.0-rc4\workspace\emtiop\profiles\emtiop.html emtiop.html
-copy /y C:\cimtool-2.3.0-rc4\workspace\emtiop\profiles\emtiop.owl
-copy /y C:\cimtool-2.3.0-rc4\workspace\emtiop\profiles\emtiop.sql
+python process_html.py C:\cimtool-2.3.0-rc11\workspace\emtiop\profiles\emtiop.html emtiop.html
+copy /y C:\cimtool-2.3.0-rc11\workspace\emtiop\profiles\emtiop.owl
+copy /y C:\cimtool-2.3.0-rc11\workspace\emtiop\profiles\emtiop.sql
 
