@@ -38,7 +38,7 @@ CREATE TABLE "ACDCTerminal"
     -- equipment. The sequence numbering starts with 1 and additional terminals
     -- should follow in increasing order. The first terminal is the "starting
     -- point" for a two terminal branch.
-    "sequenceNumber" INTEGER
+    "sequenceNumber" INTEGER NOT NULL
 );
 
 -- A line segment is a conductor or combination of conductors, with consistent
@@ -133,6 +133,9 @@ CREATE TABLE "AsynchronousMachine"
 CREATE TABLE "BaseVoltage"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255) NOT NULL,
     -- The power system resource's base voltage, expressed on a phase-to-phase
     -- (line-to-line) basis. Shall be a positive value and not zero.
     "nominalVoltage" DOUBLE PRECISION NOT NULL
@@ -164,6 +167,15 @@ CREATE TABLE "BatteryUnit"
     -- Amount of energy currently stored. The attribute shall be a positive value
     -- or zero and lower than BatteryUnit.ratedE.
     "storedE" DOUBLE PRECISION NOT NULL
+);
+
+-- A mechanical switching device capable of making, carrying, and breaking
+-- currents under normal circuit conditions and also making, carrying for
+-- a specified time, and breaking currents under specified abnormal circuit
+-- conditions e.g. those of short circuit.
+CREATE TABLE "Breaker"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- The parts of the AC power system that are designed to carry current or
@@ -205,6 +217,9 @@ CREATE TABLE "ConnectedFacility"
 CREATE TABLE "ConnectivityNode"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255) NOT NULL,
     -- Container of this connectivity node.
     -- FK column reference to table representing the "ConnectivityNodeContainer" class
     "ConnectivityNodeContainer" VARCHAR(100) NOT NULL
@@ -225,6 +240,9 @@ CREATE TABLE "Curve"
     -- The style or shape of the curve.
     -- FK column reference to table representing the "CurveStyle" enumeration
     "curveStyle" VARCHAR(100),
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255) NOT NULL,
     -- Multiplier for X-axis.
     -- FK column reference to table representing the "UnitMultiplier" enumeration
     "xMultiplier" VARCHAR(100),
@@ -273,10 +291,7 @@ CREATE TABLE "DCBaseTerminal"
     -- The DC connectivity node to which this DC base terminal connects with zero
     -- impedance.
     -- FK column reference to table representing the "DCNode" class
-    "DCNode" VARCHAR(100),
-    -- See association end Terminal.TopologicalNode.
-    -- FK column reference to table representing the "DCTopologicalNode" class
-    "DCTopologicalNode" VARCHAR(100)
+    "DCNode" VARCHAR(100) NOT NULL
 );
 
 -- A breaker within a DC system.
@@ -374,7 +389,10 @@ CREATE TABLE "DCLineSegment"
 -- together with zero impedance.
 CREATE TABLE "DCNode"
 (
-    "mRID" VARCHAR(100) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255) NOT NULL
 );
 
 -- A series device within the DC system, typically a reactor used for filtering
@@ -455,9 +473,6 @@ INSERT INTO "DCTerminalPolarityKind" ( "name" ) VALUES ( 'positive' );
 CREATE TABLE "DetailedModelDescriptor"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
-    -- The name is any free human readable and possibly non unique text naming
-    -- the object.
-    "name" VARCHAR(255),
     -- The detailed model type dynamics that has detailed model descriptor.
     -- FK column reference to table representing the "DetailedModelTypeDynamics" class
     "DetailedModelTypeDynamics" VARCHAR(100)
@@ -502,6 +517,9 @@ CREATE TABLE "DiagramObject"
     -- of a polygon or the routing of a polyline. If this value is true then a
     -- receiving application should consider the first and last points to be connected.
     "isPolygon" INTEGER NOT NULL DEFAULT 1 CHECK ("isPolygon" IN (0, 1)) NOT NULL,
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255) NOT NULL,
     -- The domain object to which this diagram object is associated.
     -- FK column reference to table representing the "IdentifiedObject" class
     "IdentifiedObject" VARCHAR(100) NOT NULL
@@ -540,7 +558,10 @@ CREATE TABLE "DynamicsFunctionBlock"
     -- Function block used indicator.
     -- true = use of function block is enabled
     -- false = use of function block is disabled.
-    "enabled" INTEGER NOT NULL DEFAULT 1 CHECK ("enabled" IN (0, 1)) NOT NULL
+    "enabled" INTEGER NOT NULL DEFAULT 1 CHECK ("enabled" IN (0, 1)) NOT NULL,
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255) NOT NULL
 );
 
 -- A connection of energy generation or consumption on the power system model.
@@ -834,7 +855,7 @@ CREATE TABLE "IdentifiedObject"
     "mRID" VARCHAR(100) PRIMARY KEY,
     -- The name is any free human readable and possibly non unique text naming
     -- the object.
-    "name" VARCHAR(255) NOT NULL
+    "name" VARCHAR(255)
 );
 
 -- Excitation base system mode.
@@ -1044,6 +1065,37 @@ CREATE TABLE "MachineSaturation"
     "SynchronousMachineDetailed" VARCHAR(100)
 );
 
+-- This class represents the zero sequence line mutual coupling.
+CREATE TABLE "MutualCoupling"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Zero sequence mutual coupling shunt (charging) susceptance, uniformly distributed,
+    -- of the entire line section.
+    "b0ch" DOUBLE PRECISION,
+    -- Distance to the start of the coupled region from the first line's terminal
+    -- having sequence number equal to 1.
+    "distance11" DOUBLE PRECISION,
+    -- Distance to the end of the coupled region from the first line's terminal
+    -- with sequence number equal to 1.
+    "distance12" DOUBLE PRECISION,
+    -- Distance to the start of coupled region from the second line's terminal
+    -- with sequence number equal to 1.
+    "distance21" DOUBLE PRECISION,
+    -- Distance to the end of coupled region from the second line's terminal with
+    -- sequence number equal to 1.
+    "distance22" DOUBLE PRECISION,
+    -- Zero sequence mutual coupling shunt (charging) conductance, uniformly distributed,
+    -- of the entire line section.
+    "g0ch" DOUBLE PRECISION,
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255) NOT NULL,
+    -- Zero sequence branch-to-branch mutual impedance coupling, resistance.
+    "r0" DOUBLE PRECISION,
+    -- Zero sequence branch-to-branch mutual impedance coupling, reactance.
+    "x0" DOUBLE PRECISION
+);
+
 -- Parameterized models from software libraries or user code that rely on
 -- documentation provided elsewhere, e.g., software documentation. The model
 -- is named within the domain of nameKind, e.g., ST6B for PSSE or esst6b for
@@ -1112,6 +1164,9 @@ CREATE TABLE "NuclearGeneratingUnit"
 CREATE TABLE "OperationalLimit"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255) NOT NULL,
     -- The limit set to which the limit values belong.
     -- FK column reference to table representing the "OperationalLimitSet" class
     "OperationalLimitSet" VARCHAR(100),
@@ -1140,7 +1195,13 @@ INSERT INTO "OperationalLimitDirectionKind" ( "name" ) VALUES ( 'low' );
 -- together as a set.
 CREATE TABLE "OperationalLimitSet"
 (
-    "mRID" VARCHAR(100) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255) NOT NULL,
+    -- The terminal where the operational limit set apply.
+    -- FK column reference to table representing the "ACDCTerminal" class
+    "Terminal" VARCHAR(100) NOT NULL
 );
 
 -- The operational meaning of a category of limits.
@@ -1160,7 +1221,10 @@ CREATE TABLE "OperationalLimitType"
     -- Defines if the operational limit type has infinite duration. If true, the
     -- limit has infinite duration. If false, the limit has definite duration
     -- which is defined by the attribute acceptableDuration.
-    "isInfiniteDuration" INTEGER NOT NULL DEFAULT 1 CHECK ("isInfiniteDuration" IN (0, 1))
+    "isInfiniteDuration" INTEGER NOT NULL DEFAULT 1 CHECK ("isInfiniteDuration" IN (0, 1)),
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255) NOT NULL
 );
 
 -- Classifying instances of the same class, e.g. overhead and underground
@@ -1194,12 +1258,6 @@ CREATE TABLE "ParameterValue"
     "mRID" VARCHAR(100) PRIMARY KEY
 );
 
--- Common type for per-length electrical catalogues describing DC line parameters.
-CREATE TABLE "PerLengthDCLineParameter"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY
-);
-
 -- A photovoltaic device or an aggregation of such devices.
 CREATE TABLE "PhotoVoltaicUnit"
 (
@@ -1216,7 +1274,10 @@ CREATE TABLE "PhotoVoltaicUnit"
 -- actors in operating a power system.
 CREATE TABLE "PointOfCommonCoupling"
 (
-    "mRID" VARCHAR(100) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255) NOT NULL
 );
 
 -- A connection to the AC network for energy production or consumption that
@@ -1294,19 +1355,10 @@ CREATE TABLE "PowerElectronicsWindUnit"
 -- Power system resources can have measurements associated.
 CREATE TABLE "PowerSystemResource"
 (
-    "mRID" VARCHAR(100) PRIMARY KEY
-);
-
--- Power system stabilizer function block whose behaviour is described by
--- reference to a standard model <font color="#0f0f0f">or by definition of
--- a user-defined model.</font>
-CREATE TABLE "PowerSystemStabilizerDynamics"
-(
     "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Excitation system model with which this power system stabilizer model is
-    -- associated.
-    -- FK column reference to table representing the "ExcitationSystemDynamics" class
-    "ExcitationSystemDynamics" VARCHAR(100) NOT NULL
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255) NOT NULL
 );
 
 -- An electrical device consisting of two or more coupled windings, with or
@@ -1402,6 +1454,12 @@ CREATE TABLE "PowerTransformerEnd"
     -- The power transformer of this power transformer end.
     -- FK column reference to table representing the "PowerTransformer" class
     "PowerTransformer" VARCHAR(100) NOT NULL
+);
+
+-- A ProtectedSwitch is a switching device that can be operated by ProtectionEquipment.
+CREATE TABLE "ProtectedSwitch"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
 );
 
 -- A tap changer that changes the voltage ratio impacting the voltage magnitude
@@ -1584,7 +1642,10 @@ CREATE TABLE "SvPowerFlow"
     "p" DOUBLE PRECISION,
     -- The reactive power flow. Load sign convention is used, i.e. positive sign
     -- means flow out from a TopologicalNode (bus) into the conducting equipment.
-    "q" DOUBLE PRECISION
+    "q" DOUBLE PRECISION,
+    -- The terminal associated with the power flow state variable.
+    -- FK column reference to table representing the "Terminal" class
+    "Terminal" VARCHAR(100)
 );
 
 -- State variable for the number of sections in service for a shunt compensator.
@@ -1962,10 +2023,10 @@ CREATE TABLE "Terminal"
     -- that may be connected to other conducting equipment terminals via connectivity
     -- nodes or topological nodes.
     -- FK column reference to table representing the "ConductingEquipment" class
-    "ConductingEquipment" VARCHAR(100),
+    "ConductingEquipment" VARCHAR(100) NOT NULL,
     -- The connectivity node to which this terminal connects with zero impedance.
     -- FK column reference to table representing the "ConnectivityNode" class
-    "ConnectivityNode" VARCHAR(100)
+    "ConnectivityNode" VARCHAR(100) NOT NULL
 );
 
 -- A diagram object for placing free-text or text derived from an associated
@@ -1997,6 +2058,9 @@ CREATE TABLE "TransformerCoreAdmittance"
     "g" DOUBLE PRECISION NOT NULL,
     -- Zero sequence magnetizing branch conductance.
     "g0" DOUBLE PRECISION NOT NULL,
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255) NOT NULL,
     -- All transformer ends having this core admittance.
     -- FK column reference to table representing the "TransformerEnd" class
     "TransformerEnd" VARCHAR(100) NOT NULL
@@ -2020,6 +2084,9 @@ CREATE TABLE "TransformerEnd"
     -- and TransformerEnd.xground are required. If false, the attributes TransformerEnd.rground
     -- and TransformerEnd.xground are not considered.
     "grounded" INTEGER NOT NULL DEFAULT 1 CHECK ("grounded" IN (0, 1)) NOT NULL,
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255) NOT NULL,
     -- Resistance part of neutral impedance. Zero indicates solidly grounded or
     -- grounded through a reactor.
     "rground" DOUBLE PRECISION NOT NULL,
@@ -2028,7 +2095,10 @@ CREATE TABLE "TransformerEnd"
     "xground" DOUBLE PRECISION NOT NULL,
     -- Base voltage of the transformer end. This is essential for PU calculation.
     -- FK column reference to table representing the "BaseVoltage" class
-    "BaseVoltage" VARCHAR(100) NOT NULL
+    "BaseVoltage" VARCHAR(100) NOT NULL,
+    -- Terminal of the power transformer to which this transformer end belongs.
+    -- FK column reference to table representing the "Terminal" class
+    "Terminal" VARCHAR(100) NOT NULL
 );
 
 -- Transformer mesh impedance (Delta-model) between transformer ends.
@@ -2039,6 +2109,9 @@ CREATE TABLE "TransformerEnd"
 CREATE TABLE "TransformerMeshImpedance"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The name is any free human readable and possibly non unique text naming
+    -- the object.
+    "name" VARCHAR(255) NOT NULL,
     -- Resistance between the 'from' and the 'to' end, seen from the 'from' end.
     "r" DOUBLE PRECISION NOT NULL,
     -- Zero-sequence resistance between the 'from' and the 'to' end, seen from
@@ -2544,6 +2617,9 @@ ALTER TABLE "BaseVoltage" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObjec
 -- Inheritance subclass-superclass constraint for table "BatteryUnit"
 ALTER TABLE "BatteryUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerElectronicsUnit" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "Breaker"
+ALTER TABLE "Breaker" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ProtectedSwitch" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "ConductingEquipment"
 ALTER TABLE "ConductingEquipment" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Equipment" ( "mRID" );
 
@@ -2583,6 +2659,9 @@ ALTER TABLE "DCGround" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCConductingEquipm
 -- Inheritance subclass-superclass constraint for table "DCLineSegment"
 ALTER TABLE "DCLineSegment" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCConductingEquipment" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "DCNode"
+ALTER TABLE "DCNode" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "DCSeriesDevice"
 ALTER TABLE "DCSeriesDevice" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCConductingEquipment" ( "mRID" );
 
@@ -2605,7 +2684,7 @@ ALTER TABLE "DetailedModelDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Dynam
 ALTER TABLE "DiagramObject" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "DisconnectingCircuitBreaker"
-ALTER TABLE "DisconnectingCircuitBreaker" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Switch" ( "mRID" );
+ALTER TABLE "DisconnectingCircuitBreaker" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Breaker" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "DynamicsFunctionBlock"
 ALTER TABLE "DynamicsFunctionBlock" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
@@ -2655,6 +2734,9 @@ ALTER TABLE "LoadResponseCharacteristic" ADD FOREIGN KEY ( "mRID" ) REFERENCES "
 -- Inheritance subclass-superclass constraint for table "MachineSaturation"
 ALTER TABLE "MachineSaturation" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Curve" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "MutualCoupling"
+ALTER TABLE "MutualCoupling" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "NERCDynamicModel"
 ALTER TABLE "NERCDynamicModel" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DetailedModelTypeDynamics" ( "mRID" );
 
@@ -2691,14 +2773,14 @@ ALTER TABLE "PowerElectronicsWindUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Po
 -- Inheritance subclass-superclass constraint for table "PowerSystemResource"
 ALTER TABLE "PowerSystemResource" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
--- Inheritance subclass-superclass constraint for table "PowerSystemStabilizerDynamics"
-ALTER TABLE "PowerSystemStabilizerDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
-
 -- Inheritance subclass-superclass constraint for table "PowerTransformer"
 ALTER TABLE "PowerTransformer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "PowerTransformerEnd"
 ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TransformerEnd" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "ProtectedSwitch"
+ALTER TABLE "ProtectedSwitch" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Switch" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "RatioTapChanger"
 ALTER TABLE "RatioTapChanger" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TapChanger" ( "mRID" );
@@ -2741,6 +2823,9 @@ ALTER TABLE "SvTapStep" ADD FOREIGN KEY ( "mRID" ) REFERENCES "StateVariable" ( 
 
 -- Inheritance subclass-superclass constraint for table "SvVoltage"
 ALTER TABLE "SvVoltage" ADD FOREIGN KEY ( "mRID" ) REFERENCES "StateVariable" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "Switch"
+ALTER TABLE "Switch" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "SynchronousMachine"
 ALTER TABLE "SynchronousMachine" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RotatingMachine" ( "mRID" );
@@ -2812,7 +2897,6 @@ ALTER TABLE "CurveData" ADD FOREIGN KEY ( "Curve" ) REFERENCES "Curve" ( "mRID" 
 
 -- Foreign keys for table "DCBaseTerminal"
 ALTER TABLE "DCBaseTerminal" ADD FOREIGN KEY ( "DCNode" ) REFERENCES "DCNode" ( "mRID" );
-ALTER TABLE "DCBaseTerminal" ADD FOREIGN KEY ( "DCTopologicalNode" ) REFERENCES "DCTopologicalNode" ( "mRID" );
 
 -- Foreign keys for table "DCEnergySource"
 ALTER TABLE "DCEnergySource" ADD FOREIGN KEY ( "kind" ) REFERENCES "DCSourceKind" ( "mRID" );
@@ -2855,6 +2939,9 @@ ALTER TABLE "MachineSaturation" ADD FOREIGN KEY ( "SynchronousMachineDetailed" )
 ALTER TABLE "OperationalLimit" ADD FOREIGN KEY ( "OperationalLimitSet" ) REFERENCES "OperationalLimitSet" ( "mRID" );
 ALTER TABLE "OperationalLimit" ADD FOREIGN KEY ( "OperationalLimitType" ) REFERENCES "OperationalLimitType" ( "mRID" );
 
+-- Foreign keys for table "OperationalLimitSet"
+ALTER TABLE "OperationalLimitSet" ADD FOREIGN KEY ( "Terminal" ) REFERENCES "ACDCTerminal" ( "mRID" );
+
 -- Foreign keys for table "OperationalLimitType"
 ALTER TABLE "OperationalLimitType" ADD FOREIGN KEY ( "direction" ) REFERENCES "OperationalLimitDirectionKind" ( "name" );
 
@@ -2865,9 +2952,6 @@ ALTER TABLE "PowerElectronicsConnectionDCTerminal" ADD FOREIGN KEY ( "PowerElect
 -- Foreign keys for table "PowerElectronicsUnit"
 ALTER TABLE "PowerElectronicsUnit" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFERENCES "PowerElectronicsConnection" ( "mRID" );
 
--- Foreign keys for table "PowerSystemStabilizerDynamics"
-ALTER TABLE "PowerSystemStabilizerDynamics" ADD FOREIGN KEY ( "ExcitationSystemDynamics" ) REFERENCES "ExcitationSystemDynamics" ( "mRID" );
-
 -- Foreign keys for table "PowerTransformerEnd"
 ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "connectionKind" ) REFERENCES "WindingConnection" ( "name" );
 ALTER TABLE "PowerTransformerEnd" ADD FOREIGN KEY ( "PowerTransformer" ) REFERENCES "PowerTransformer" ( "mRID" );
@@ -2877,6 +2961,9 @@ ALTER TABLE "RatioTapChanger" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "T
 
 -- Foreign keys for table "RotatingMachine"
 ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "GeneratingUnit" ) REFERENCES "GeneratingUnit" ( "mRID" );
+
+-- Foreign keys for table "SvPowerFlow"
+ALTER TABLE "SvPowerFlow" ADD FOREIGN KEY ( "Terminal" ) REFERENCES "Terminal" ( "mRID" );
 
 -- Foreign keys for table "SvShuntCompensatorSections"
 ALTER TABLE "SvShuntCompensatorSections" ADD FOREIGN KEY ( "phase" ) REFERENCES "SinglePhaseKind" ( "name" );
@@ -2919,6 +3006,7 @@ ALTER TABLE "TransformerCoreAdmittance" ADD FOREIGN KEY ( "TransformerEnd" ) REF
 
 -- Foreign keys for table "TransformerEnd"
 ALTER TABLE "TransformerEnd" ADD FOREIGN KEY ( "BaseVoltage" ) REFERENCES "BaseVoltage" ( "mRID" );
+ALTER TABLE "TransformerEnd" ADD FOREIGN KEY ( "Terminal" ) REFERENCES "Terminal" ( "mRID" );
 
 -- Foreign keys for table "TransformerMeshImpedance"
 ALTER TABLE "TransformerMeshImpedance" ADD FOREIGN KEY ( "FromTransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
@@ -2975,19 +3063,21 @@ ALTER TABLE "TransformerSaturation" ADD FOREIGN KEY ( "TransformerCoreAdmittance
 
 -- Cascade deletes for compounds referenced in table "OperationalLimit"
 
+-- Cascade deletes for compounds referenced in table "OperationalLimitSet"
+
 -- Cascade deletes for compounds referenced in table "OperationalLimitType"
 
 -- Cascade deletes for compounds referenced in table "PowerElectronicsConnectionDCTerminal"
 
 -- Cascade deletes for compounds referenced in table "PowerElectronicsUnit"
 
--- Cascade deletes for compounds referenced in table "PowerSystemStabilizerDynamics"
-
 -- Cascade deletes for compounds referenced in table "PowerTransformerEnd"
 
 -- Cascade deletes for compounds referenced in table "RatioTapChanger"
 
 -- Cascade deletes for compounds referenced in table "RotatingMachine"
+
+-- Cascade deletes for compounds referenced in table "SvPowerFlow"
 
 -- Cascade deletes for compounds referenced in table "SvShuntCompensatorSections"
 
@@ -3027,7 +3117,6 @@ CREATE INDEX ix_ConnectedFacility_ACPointOfCommonCoupling ON "ConnectedFacility"
 CREATE INDEX ix_ConnectivityNode_ConnectivityNodeContainer ON "ConnectivityNode" ( "ConnectivityNodeContainer" );
 CREATE INDEX ix_CurveData_Curve ON "CurveData" ( "Curve" );
 CREATE INDEX ix_DCBaseTerminal_DCNode ON "DCBaseTerminal" ( "DCNode" );
-CREATE INDEX ix_DCBaseTerminal_DCTopologicalNode ON "DCBaseTerminal" ( "DCTopologicalNode" );
 CREATE INDEX ix_DCEnergySource_kind ON "DCEnergySource" ( "kind" );
 CREATE INDEX ix_DCLineSegment_PerLengthParameter ON "DCLineSegment" ( "PerLengthParameter" );
 CREATE INDEX ix_DCTerminal_DCConductingEquipment ON "DCTerminal" ( "DCConductingEquipment" );
@@ -3043,12 +3132,13 @@ CREATE INDEX ix_IEEECigreDLLParameter_IEEECigreDLL ON "IEEECigreDLLParameter" ( 
 CREATE INDEX ix_MachineSaturation_SynchronousMachineDetailed ON "MachineSaturation" ( "SynchronousMachineDetailed" );
 CREATE INDEX ix_OperationalLimit_OperationalLimitSet ON "OperationalLimit" ( "OperationalLimitSet" );
 CREATE INDEX ix_OperationalLimit_OperationalLimitType ON "OperationalLimit" ( "OperationalLimitType" );
+CREATE INDEX ix_OperationalLimitSet_Terminal ON "OperationalLimitSet" ( "Terminal" );
 CREATE INDEX ix_PowerElectronicsConnectionDCTerminal_PowerElectronicsConnection ON "PowerElectronicsConnectionDCTerminal" ( "PowerElectronicsConnection" );
 CREATE INDEX ix_PowerElectronicsUnit_PowerElectronicsConnection ON "PowerElectronicsUnit" ( "PowerElectronicsConnection" );
-CREATE INDEX ix_PowerSystemStabilizerDynamics_ExcitationSystemDynamics ON "PowerSystemStabilizerDynamics" ( "ExcitationSystemDynamics" );
 CREATE INDEX ix_PowerTransformerEnd_PowerTransformer ON "PowerTransformerEnd" ( "PowerTransformer" );
 CREATE INDEX ix_RatioTapChanger_TransformerEnd ON "RatioTapChanger" ( "TransformerEnd" );
 CREATE INDEX ix_RotatingMachine_GeneratingUnit ON "RotatingMachine" ( "GeneratingUnit" );
+CREATE INDEX ix_SvPowerFlow_Terminal ON "SvPowerFlow" ( "Terminal" );
 CREATE INDEX ix_SvShuntCompensatorSections_ShuntCompensator ON "SvShuntCompensatorSections" ( "ShuntCompensator" );
 CREATE INDEX ix_SvStatus_ConductingEquipment ON "SvStatus" ( "ConductingEquipment" );
 CREATE INDEX ix_SvSwitch_Switch ON "SvSwitch" ( "Switch" );
@@ -3059,5 +3149,6 @@ CREATE INDEX ix_Terminal_ConductingEquipment ON "Terminal" ( "ConductingEquipmen
 CREATE INDEX ix_Terminal_ConnectivityNode ON "Terminal" ( "ConnectivityNode" );
 CREATE INDEX ix_TransformerCoreAdmittance_TransformerEnd ON "TransformerCoreAdmittance" ( "TransformerEnd" );
 CREATE INDEX ix_TransformerEnd_BaseVoltage ON "TransformerEnd" ( "BaseVoltage" );
+CREATE INDEX ix_TransformerEnd_Terminal ON "TransformerEnd" ( "Terminal" );
 CREATE INDEX ix_TransformerMeshImpedance_FromTransformerEnd ON "TransformerMeshImpedance" ( "FromTransformerEnd" );
 CREATE INDEX ix_TransformerSaturation_TransformerCoreAdmittance ON "TransformerSaturation" ( "TransformerCoreAdmittance" );

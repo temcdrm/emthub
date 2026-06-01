@@ -29,7 +29,7 @@ def create_cim_ic (case):
   if os.path.exists(br_name):
     br_ic = pd.read_csv (br_name)
     print ('Branch from, to, tap, pf, qf, pt, qt and EQ/XfEnd ids from', br_name, 'read', br_ic.shape)
-    print (br_ic)
+    #print (br_ic)
 
   g = rdflib.Graph()
   CIM = rdflib.Namespace (CIM_NS)
@@ -44,7 +44,7 @@ def create_cim_ic (case):
     deg = bus_ic.iloc[i,3]
     cnid = bus_ic.iloc[i,4]
     vmag = vpu * nomv
-    sv = rdflib.URIRef (cnid+'_SvV') #rdflib.BNode()
+    sv = rdflib.URIRef (cnid+'_SvV')
     g.add ((sv, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'SvVoltage')))
     g.add ((sv, rdflib.URIRef (EMT_NS + 'SvVoltage.ConnectivityNode'), rdflib.URIRef(cnid)))
     g.add ((sv, rdflib.URIRef (CIM_NS + 'SvVoltage.v'), rdflib.Literal (vmag, datatype=CIM.Voltage)))
@@ -52,28 +52,39 @@ def create_cim_ic (case):
 
   for i in range(len(br_ic)):
     tap = br_ic.iloc[i,2]
-    pf = 1.0e6 * br_ic.iloc[i,3]
-    qf = 1.0e6 * br_ic.iloc[i,4]
-    brid = br_ic.iloc[i,7]
-    sv = rdflib.URIRef (brid+'_SvPF') #rdflib.BNode()
-    g.add ((sv, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'SvPowerFlow')))
+    p1 = 1.0e6 * br_ic.iloc[i,3]
+    q1 = 1.0e6 * br_ic.iloc[i,4]
+    p2 = 1.0e6 * br_ic.iloc[i,5]
+    q2 = 1.0e6 * br_ic.iloc[i,6]
+    t1id = br_ic.iloc[i,7]
+    t2id = br_ic.iloc[i,8]
+    eqid = t1id.split('_')[0]
     if tap > 0.0:
-      g.add ((sv, rdflib.URIRef (EMT_NS + 'SvPowerFlow.TransformerEnd'), rdflib.URIRef(brid)))
+      sv1 = rdflib.URIRef (eqid+'_SvXfmrPF_1')
+      sv2 = rdflib.URIRef (eqid+'_SvXfmrPF_2')
     else:
-      g.add ((sv, rdflib.URIRef (EMT_NS + 'SvPowerFlow.ConductingEquipment'), rdflib.URIRef(brid)))
-    g.add ((sv, rdflib.URIRef (CIM_NS + 'SvPowerFlow.p'), rdflib.Literal (pf, datatype=CIM.ActivePower)))
-    g.add ((sv, rdflib.URIRef (CIM_NS + 'SvPowerFlow.q'), rdflib.Literal (qf, datatype=CIM.ReactivePower)))
+      sv1 = rdflib.URIRef (eqid+'_SvLinePF_1')
+      sv2 = rdflib.URIRef (eqid+'_SvLinePF_2')
+    g.add ((sv1, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'SvPowerFlow')))
+    g.add ((sv1, rdflib.URIRef (CIM_NS + 'SvPowerFlow.Terminal'), rdflib.URIRef(t1id)))
+    g.add ((sv1, rdflib.URIRef (CIM_NS + 'SvPowerFlow.p'), rdflib.Literal (p1, datatype=CIM.ActivePower)))
+    g.add ((sv1, rdflib.URIRef (CIM_NS + 'SvPowerFlow.q'), rdflib.Literal (q1, datatype=CIM.ReactivePower)))
+    g.add ((sv2, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'SvPowerFlow')))
+    g.add ((sv2, rdflib.URIRef (CIM_NS + 'SvPowerFlow.Terminal'), rdflib.URIRef(t2id)))
+    g.add ((sv2, rdflib.URIRef (CIM_NS + 'SvPowerFlow.p'), rdflib.Literal (p2, datatype=CIM.ActivePower)))
+    g.add ((sv2, rdflib.URIRef (CIM_NS + 'SvPowerFlow.q'), rdflib.Literal (q2, datatype=CIM.ReactivePower)))
 
   # positive generation sign changes to follow load convention, into the From bus
   for i in range(len(gen_ic)):
-    pf = -1.0e6 * gen_ic.iloc[i,1]
-    qf = -1.0e6 * gen_ic.iloc[i,2]
-    eqid = gen_ic.iloc[i,4]
-    sv = rdflib.URIRef (eqid+'_SvPF') #rdflib.BNode()
+    p1 = -1.0e6 * gen_ic.iloc[i,1]
+    q1 = -1.0e6 * gen_ic.iloc[i,2]
+    t1id = gen_ic.iloc[i,4]
+    eqid = t1id.split('_')[0]
+    sv = rdflib.URIRef (eqid+'_SvGenPF')
     g.add ((sv, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'SvPowerFlow')))
-    g.add ((sv, rdflib.URIRef (EMT_NS + 'SvPowerFlow.ConductingEquipment'), rdflib.URIRef(eqid)))
-    g.add ((sv, rdflib.URIRef (CIM_NS + 'SvPowerFlow.p'), rdflib.Literal (pf, datatype=CIM.ActivePower)))
-    g.add ((sv, rdflib.URIRef (CIM_NS + 'SvPowerFlow.q'), rdflib.Literal (qf, datatype=CIM.ReactivePower)))
+    g.add ((sv, rdflib.URIRef (CIM_NS + 'SvPowerFlow.Terminal'), rdflib.URIRef(t1id)))
+    g.add ((sv, rdflib.URIRef (CIM_NS + 'SvPowerFlow.p'), rdflib.Literal (p1, datatype=CIM.ActivePower)))
+    g.add ((sv, rdflib.URIRef (CIM_NS + 'SvPowerFlow.q'), rdflib.Literal (q1, datatype=CIM.ReactivePower)))
 
   serializer = OrderedTurtleSerializer(g)
   serializer.class_order = [

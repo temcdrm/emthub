@@ -156,6 +156,27 @@ def append_xml_dynamic_parameters (g, leaf, dyn_defaults, sections, attmap, dyr_
         else:
           g.add ((leaf, rdflib.URIRef (CIM_NS + att), rdflib.Literal(val, datatype=CIM_NS+unit)))
 
+def ConnectToConnectivityNode (g, eq_id, cn_id, sequenceNumber, CIM):
+  trm_id = '{:s}_{:d}'.format (eq_id, sequenceNumber)
+  trm = rdflib.URIRef (trm_id)
+  g.add ((trm, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'Terminal')))
+  g.add ((trm, rdflib.URIRef (CIM_NS + 'Terminal.ConnectivityNode'), cn_id))
+  g.add ((trm, rdflib.URIRef (CIM_NS + 'Terminal.ConductingEquipment'), eq_id))
+  g.add ((trm, rdflib.URIRef (CIM_NS + 'ACDCTerminal.sequenceNumber'), rdflib.Literal (sequenceNumber, datatype=CIM.Integer)))
+
+def ConnectTransformer (g, eq_id, end_id, cn_id, sequenceNumber, CIM):
+  trm_id = '{:s}_{:d}'.format (eq_id, sequenceNumber) # sequenceNumber should match the TransformerEnd.endNumber
+  trm = rdflib.URIRef (trm_id)
+  g.add ((rdflib.URIRef (end_id), rdflib.URIRef (CIM_NS + 'TransformerEnd.Terminal'), trm))
+  g.add ((trm, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'Terminal')))
+  g.add ((trm, rdflib.URIRef (CIM_NS + 'Terminal.ConnectivityNode'), cn_id))
+  g.add ((trm, rdflib.URIRef (CIM_NS + 'Terminal.ConductingEquipment'), eq_id))
+  g.add ((trm, rdflib.URIRef (CIM_NS + 'ACDCTerminal.sequenceNumber'), rdflib.Literal (sequenceNumber, datatype=CIM.Integer)))
+
+def GetTerminalRef (eq_id, sequenceNumber):
+  trm_id = '{:s}_{:d}'.format (eq_id, sequenceNumber)
+  return rdflib.URIRef (trm_id)
+
 def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True, bWantGraph=False):
   """Create RDF in TTL/XML formats from results of load_psse_rawfile.
 
@@ -323,8 +344,8 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
       g.add ((ac, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
       g.add ((ac, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
       g.add ((ac, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
-      g.add ((ac, rdflib.URIRef (EMT_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
-      g.add ((ac, rdflib.URIRef (EMT_NS + 'ConductingEquipment.ToConnectivityNode'), bus2))
+      ConnectToConnectivityNode (g, ac, bus1, 1, CIM)
+      ConnectToConnectivityNode (g, ac, bus2, 2, CIM)
       g.add ((ac, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
       g.add ((ac, rdflib.URIRef (CIM_NS + 'SeriesCompensator.r'), rdflib.Literal (r1, datatype=CIM.Resistance)))
       g.add ((ac, rdflib.URIRef (CIM_NS + 'SeriesCompensator.x'), rdflib.Literal (x1, datatype=CIM.Reactance)))
@@ -363,8 +384,8 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
       g.add ((ac, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
       g.add ((ac, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
       g.add ((ac, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
-      g.add ((ac, rdflib.URIRef (EMT_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
-      g.add ((ac, rdflib.URIRef (EMT_NS + 'ConductingEquipment.ToConnectivityNode'), bus2))
+      ConnectToConnectivityNode (g, ac, bus1, 1, CIM)
+      ConnectToConnectivityNode (g, ac, bus2, 2, CIM)
       g.add ((ac, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
       g.add ((ac, rdflib.URIRef (CIM_NS + 'Conductor.length'), rdflib.Literal (length, datatype=CIM.Length)))
       g.add ((ac, rdflib.URIRef (CIM_NS + 'ACLineSegment.r'), rdflib.Literal (r1, datatype=CIM.Resistance)))
@@ -381,7 +402,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
     g.add ((ols, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'OperationalLimitSet')))
     g.add ((ols, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
     g.add ((ols, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(olsID, datatype=CIM.String)))
-    g.add ((ols, rdflib.URIRef (EMT_NS + 'OperationalLimitSet.ConductingEquipment'), ac))
+    g.add ((ols, rdflib.URIRef (CIM_NS + 'OperationalLimitSet.Terminal'), GetTerminalRef (ID, 1)))
     alkey = '{:s}_Normal'.format(key)
     alID = GetCIMID('ApparentPowerLimit', alkey, uuids)
     al = rdflib.URIRef (alID)
@@ -421,8 +442,8 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
       g.add ((cb, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
       g.add ((cb, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
       g.add ((cb, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
-      g.add ((cb, rdflib.URIRef (EMT_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
-      g.add ((cb, rdflib.URIRef (EMT_NS + 'ConductingEquipment.ToConnectivityNode'), bus2))
+      ConnectToConnectivityNode (g, cb, bus1, 1, CIM)
+      ConnectToConnectivityNode (g, cb, bus2, 2, CIM)
       g.add ((cb, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
       # operational limits on this branch
       rate1mva = row[4]
@@ -431,7 +452,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
       g.add ((ols, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'OperationalLimitSet')))
       g.add ((ols, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
       g.add ((ols, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(olsID, datatype=CIM.String)))
-      g.add ((ols, rdflib.URIRef (EMT_NS + 'OperationalLimitSet.ConductingEquipment'), cb))
+      g.add ((ols, rdflib.URIRef (CIM_NS + 'OperationalLimitSet.Terminal'), GetTerminalRef (ID, 1)))
       alkey = '{:s}_Normal'.format(key)
       alID = GetCIMID('ApparentPowerLimit', alkey, uuids)
       al = rdflib.URIRef (alID)
@@ -486,8 +507,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
     g.add ((ec, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
     g.add ((ec, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
     g.add ((ec, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
-    g.add ((ec, rdflib.URIRef (EMT_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
-    g.add ((ec, rdflib.URIRef (EMT_NS + 'ConductingEquipment.ToConnectivityNode'), bus1))
+    ConnectToConnectivityNode (g, ec, bus1, 1, CIM)
     g.add ((ec, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
     g.add ((ec, rdflib.URIRef (CIM_NS + 'EnergyConsumer.LoadResponse'), rdflib.URIRef (LRmRID)))
     g.add ((ec, rdflib.URIRef (CIM_NS + 'EnergyConsumer.p'), rdflib.Literal (p, datatype=CIM.ActivePower)))
@@ -531,8 +551,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
     g.add ((sc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
-    g.add ((sc, rdflib.URIRef (EMT_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
-    g.add ((sc, rdflib.URIRef (EMT_NS + 'ConductingEquipment.ToConnectivityNode'), bus1))
+    ConnectToConnectivityNode (g, sc, bus1, 1, CIM)
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.nomU'), rdflib.Literal (kvbase * 1000.0, datatype=CIM.Voltage)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.sections'), rdflib.Literal (sectionCount, datatype=CIM.Integer)))
@@ -558,8 +577,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
     g.add ((sc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
-    g.add ((sc, rdflib.URIRef (EMT_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
-    g.add ((sc, rdflib.URIRef (EMT_NS + 'ConductingEquipment.ToConnectivityNode'), bus1))
+    ConnectToConnectivityNode (g, sc, bus1, 1, CIM)
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.nomU'), rdflib.Literal (kvbase * 1000.0, datatype=CIM.Voltage)))
     g.add ((sc, rdflib.URIRef (CIM_NS + 'ShuntCompensator.sections'), rdflib.Literal (sectionCount, datatype=CIM.Integer)))
@@ -621,7 +639,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
       bv = rdflib.URIRef (kvbase_ids[str(wdg['kvs'][idx])])
       g.add ((end, rdflib.URIRef (CIM_NS + 'TransformerEnd.BaseVoltage'), bv))
       bus_wdg = rdflib.URIRef(busids[str(row[idx])])
-      g.add ((end, rdflib.URIRef (EMT_NS + 'TransformerEnd.ConnectivityNode'), bus_wdg))
+      ConnectTransformer (g, pt, end, bus_wdg, idx+1, CIM)
       tap = wdg['taps'][idx]
       if abs(1.0-tap) > 1.0e-8:
         rtcID = GetCIMID('RatioTapChanger', endkey, uuids)
@@ -649,7 +667,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
       g.add ((ols, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'OperationalLimitSet')))
       g.add ((ols, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(endkey, datatype=CIM.String)))
       g.add ((ols, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(olsID, datatype=CIM.String)))
-      g.add ((ols, rdflib.URIRef (EMT_NS + 'OperationalLimitSet.TransformerEnd'), end))
+      g.add ((ols, rdflib.URIRef (CIM_NS + 'OperationalLimitSet.Terminal'), GetTerminalRef (ID, idx+1)))
       alkey = '{:s}_ONAN'.format(endkey)
       alID = GetCIMID('ApparentPowerLimit', alkey, uuids)
       al = rdflib.URIRef (alID)
@@ -830,8 +848,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
       g.add ((sm, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
       g.add ((sm, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
       g.add ((sm, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
-      g.add ((sm, rdflib.URIRef (EMT_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
-      g.add ((sm, rdflib.URIRef (EMT_NS + 'ConductingEquipment.ToConnectivityNode'), bus1))
+      ConnectToConnectivityNode (g, sm, bus1, 1, CIM)
       g.add ((sm, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
       g.add ((sm, rdflib.URIRef (CIM_NS + 'RotatingMachine.GeneratingUnit'), un))
       maxQ = row[4]
@@ -905,8 +922,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
       g.add ((pec, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
       g.add ((pec, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
       g.add ((pec, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
-      g.add ((pec, rdflib.URIRef (EMT_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
-      g.add ((pec, rdflib.URIRef (EMT_NS + 'ConductingEquipment.ToConnectivityNode'), bus1))
+      ConnectToConnectivityNode (g, pec, bus1, 1, CIM)
       g.add ((pec, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
       g.add ((pec, rdflib.URIRef (CIM_NS + 'PowerElectronicsConnection.maxIFault'), rdflib.Literal (IBR_IFAULT, datatype=CIM.PU)))
       maxQ = row[4]
@@ -969,8 +985,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
       g.add ((es, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
       g.add ((es, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
       g.add ((es, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
-      g.add ((es, rdflib.URIRef (EMT_NS + 'ConductingEquipment.FromConnectivityNode'), bus1))
-      g.add ((es, rdflib.URIRef (EMT_NS + 'ConductingEquipment.ToConnectivityNode'), bus1))
+      ConnectToConnectivityNode (g, es, bus1, 1, CIM)
       g.add ((es, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
       g.add ((es, rdflib.URIRef (CIM_NS + 'EnergySource.nominalVoltage'), rdflib.Literal(1000.0 * kvbase, datatype=CIM.Voltage)))
       g.add ((es, rdflib.URIRef (CIM_NS + 'EnergySource.voltageMagnitude'), rdflib.Literal(1000.0 * kvbase, datatype=CIM.Voltage)))
@@ -1026,8 +1041,8 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
     g.add ((plant, rdflib.RDF.type, rdflib.URIRef (EMT_NS + plant_type)))
     g.add ((plant, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(row['name'], datatype=CIM.String)))
     g.add ((plant, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
-    g.add ((plant, rdflib.URIRef (EMT_NS + 'GeneratingPlant.Equipments'), rdflib.URIRef (key)))
-    g.add ((plant, rdflib.URIRef (EMT_NS + 'GeneratingPlant.Equipments'), rdflib.URIRef (row['xfid'])))
+    g.add ((plant, rdflib.URIRef (EMT_NS + 'ConnectedFacility.Equipments'), rdflib.URIRef (key)))
+    g.add ((plant, rdflib.URIRef (EMT_NS + 'ConnectedFacility.Equipments'), rdflib.URIRef (row['xfid'])))
 
   #print("Bound Namespaces:")
   #for prefix, namespace_uri in g.namespaces():
@@ -1119,7 +1134,7 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
     cls = item[0]
     name = item[1]
     ID = GetCIMID (cls, name, uuids)
-    tuplet = (ibr, rdflib.URIRef (EMT_NS + 'GeneratingPlant.Equipments'), rdflib.URIRef(ID))
+    tuplet = (ibr, rdflib.URIRef (EMT_NS + 'ConnectedFacility.Equipments'), rdflib.URIRef(ID))
     if tuplet not in g:
       print ('Adding component', cls, name, ID, 'to the IBR plant')
       g.add (tuplet)
@@ -1257,6 +1272,7 @@ def write_cim_rdf (case, g, CIM, EMT):
     CIM.EquipmentContainer,
     CIM.BaseVoltage,
     CIM.ConnectivityNode,
+    CIM.Terminal,
     CIM.ACLineSegment,
     CIM.DisconnectingCircuitBreaker,
     CIM.LinearShuntCompensator,
@@ -1270,23 +1286,23 @@ def write_cim_rdf (case, g, CIM, EMT):
     CIM.ThermalGeneratingUnit,
     CIM.SynchronousMachineSimplified,
     CIM.SynchronousMachineTimeConstantReactance,
-    CIM.GovGAST,
-    CIM.GovHydro1,
-    CIM.GovSteam0,
-    CIM.GovSteamSGO,
-    CIM.ExcIEEEDC1A,
-    CIM.ExcSEXS,
-    CIM.ExcST1A,
-    CIM.PssIEEE1A,
-    CIM.Pss1A,
+#    CIM.GovGAST,
+#    CIM.GovHydro1,
+#    CIM.GovSteam0,
+#    CIM.GovSteamSGO,
+#    CIM.ExcIEEEDC1A,
+#    CIM.ExcSEXS,
+#    CIM.ExcST1A,
+#    CIM.PssIEEE1A,
+#    CIM.Pss1A,
     CIM.PowerElectronicsConnection,
     CIM.PhotoVoltaicUnit,
     CIM.PowerElectronicsWindUnit,
-    CIM.WeccREECA,
-    CIM.WeccREGCA,
-    CIM.WeccREPCA,
-    CIM.WeccWTGARA,
-    CIM.WeccWTGTA,
+#    CIM.WeccREECA,
+#    CIM.WeccREGCA,
+#    CIM.WeccREPCA,
+#    CIM.WeccWTGARA,
+#    CIM.WeccWTGTA,
     CIM.PowerTransformer,
     CIM.PowerTransformerEnd,
     CIM.RatioTapChanger,

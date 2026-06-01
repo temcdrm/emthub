@@ -258,7 +258,7 @@ def AtpXfmrNeutralImpedance(xfbus, enum, wdgrow):
 
 # this is for balanced PowerTransformer; ph can be A, B, C for Y or D
 def AtpXfmrNodes(xfbus, enum, wdgrow, bEnd1Delta, ph, atp_buses=None):
-  bus = wdgrow['FromConnectivityNode_mRID']
+  bus = wdgrow['ConnectivityNode1_mRID']
   if atp_buses:
     bus = atp_buses[bus]
   if wdgrow['connectionKind'] == 'Y':
@@ -963,7 +963,7 @@ def ParallelMachines (d, icd, atp_buses):
   bus_generators = {}
   for key, row in d.items():
     vbase = row['ratedU']
-    bus = row['FromConnectivityNode_mRID']
+    bus = row['ConnectivityNode1_mRID']
     ic = icd['EMTBranchFlowIC']['vals'][key]
     row['p'] = -ic['p'] # account for load convention of shunt power flows
     row['q'] = -ic['q']
@@ -1001,7 +1001,7 @@ def InitializeIBR (key, row, icd):
     ic = icd['EMTBranchFlowIC']['vals'][key]
     row['p'] = -ic['p'] # accounting for the load convention of shunt power flow
     row['q'] = -ic['q']
-    bus = row['FromConnectivityNode_mRID']
+    bus = row['ConnectivityNode1_mRID']
     vbase = row['ratedU']
     ic = icd['EMTBusVoltageIC']['vals'][bus]
     row['vpu'] = ic['v'] / vbase
@@ -1088,7 +1088,7 @@ def create_atp (d, icd, fpath, case):
   gsu_ang = 0.0
   if len(machines) > 0: # find the swing bus
     for key, row in machines.items():
-      if bus == atp_buses[row['FromConnectivityNode_mRID']]:
+      if bus == atp_buses[row['ConnectivityNode1_mRID']]:
         mva_swing = 1.0e-6 * row['ratedS']
         x1pu_swing = row['xDirectTrans']
         r1pu_swing = row['statorResistance']
@@ -1162,7 +1162,7 @@ def create_atp (d, icd, fpath, case):
       for j in range(i+1, nwdg):
         meshes.append (d['EMTPowerXfmrMesh']['vals']['{:s}{:s}{:s}'.format(row['ends'][i], DELIM, row['ends'][j])])
     print ('C =============================================================================', file=ap)
-    print ('C transformer {:s}, {:d} windings from {:s}'.format (wdgs[0]['PowerTransformer_name'], nwdg, wdgs[0]['FromConnectivityNode_name']), file=ap)
+    print ('C transformer {:s}, {:d} windings from {:s}'.format (wdgs[0]['PowerTransformer_name'], nwdg, wdgs[0]['ConnectivityNode1_name']), file=ap)
     if nwdg > 3:
       print ('C *** too many windings for saturable transformer component', file=ap)
       print ('*** Transformer {:s} has {:d} windings, but only 2 or 3 supported'.format(pname, nwdg))
@@ -1195,13 +1195,13 @@ def create_atp (d, icd, fpath, case):
     for i in range(nwdg):
       if wdgs[i]['connectionKind'] == 'D':
         for ph in ['A', 'B', 'C']:
-          print ('  {:s}                  1000.0         1.0'.format (AtpNode (atp_buses[wdgs[i]['FromConnectivityNode_mRID']], ph)), file=ap)
+          print ('  {:s}                  1000.0         1.0'.format (AtpNode (atp_buses[wdgs[i]['ConnectivityNode1_mRID']], ph)), file=ap)
 
     xfbusnum += 1
 
   for key, row in d['EMTLine']['vals'].items():
-    bus1 = AtpBus(atp_buses[row['FromConnectivityNode_mRID']])
-    bus2 = AtpBus(atp_buses[row['ToConnectivityNode_mRID']])
+    bus1 = AtpBus(atp_buses[row['ConnectivityNode1_mRID']])
+    bus2 = AtpBus(atp_buses[row['ConnectivityNode2_mRID']])
     rs = (row['r0']+2.0*row['r']) / 3.0
     rm = (row['r0']-row['r']) / 3.0
     xs = (row['x0']+2.0*row['x']) / 3.0
@@ -1227,7 +1227,7 @@ def create_atp (d, icd, fpath, case):
       if min(tau0, tau1) >= MIN_BERGERON_TAU:
         bergeron = True
     print ('C =============================================================================', file=ap)
-    print ('C line {:s} from {:s} to {:s}'.format (row['name'], row['FromConnectivityNode_name'], row['ToConnectivityNode_name']), file=ap)
+    print ('C line {:s} from {:s} to {:s}'.format (row['name'], row['ConnectivityNode1_name'], row['ConnectivityNode2_name']), file=ap)
     print ('C   per-instance sequence parameters for {:.2f}km'.format(km), file=ap)
     if bergeron:
       print ('$VINTAGE,1', file=ap)
@@ -1255,12 +1255,12 @@ def create_atp (d, icd, fpath, case):
     nbrkr = 0
     print ('/SWITCH', file=ap)
     for key, row in d['EMTDisconnectingCircuitBreaker']['vals'].items():
-      bus1 = AtpBus(atp_buses[row['FromConnectivityNode_mRID']])
-      bus2 = AtpBus(atp_buses[row['ToConnectivityNode_mRID']])
+      bus1 = AtpBus(atp_buses[row['ConnectivityNode1_mRID']])
+      bus2 = AtpBus(atp_buses[row['ConnectivityNode2_mRID']])
       sClose = '_TCLOSE{:d}'.format (nbrkr).ljust (10, '_')
       sOpen = '_TOPEN{:d}'.format (nbrkr).ljust (10, '_')
       print ('C =============================================================================', file=ap)
-      print ('C Breaker {:s} from {:s} to {:s} numbered {:d} for timing'.format (row['name'], row['FromConnectivityNode_name'], row['ToConnectivityNode_name'], nbrkr), file=ap)
+      print ('C Breaker {:s} from {:s} to {:s} numbered {:d} for timing'.format (row['name'], row['ConnectivityNode1_name'], row['ConnectivityNode2_name'], nbrkr), file=ap)
       print ('C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1', file=ap)
       for ph in ['A', 'B', 'C']:
         print ('  {:6s}{:6s}{:10s}{:10s}                                             {:1d}'.format (AtpNode (bus1, ph), 
@@ -1271,11 +1271,11 @@ def create_atp (d, icd, fpath, case):
     print ('/BRANCH', file=ap)
 
   for key, row in d['EMTCompSeries']['vals'].items():
-    bus1 = AtpBus(atp_buses[row['FromConnectivityNode_mRID']])
-    bus2 = AtpBus(atp_buses[row['ToConnectivityNode_mRID']])
+    bus1 = AtpBus(atp_buses[row['ConnectivityNode1_mRID']])
+    bus2 = AtpBus(atp_buses[row['ConnectivityNode2_mRID']])
     if row['x'] > 0.0:
       print ('C =============================================================================', file=ap)
-      print ('C series reactor {:s} from {:s} to {:s}'.format (row['name'], row['FromConnectivityNode_name'], row['ToConnectivityNode_name']), file=ap)
+      print ('C series reactor {:s} from {:s} to {:s}'.format (row['name'], row['ConnectivityNode1_name'], row['ConnectivityNode2_name']), file=ap)
       print ('C < n1 >< n2 ><ref1><ref2>< R  >< X  >< C  >', file=ap)
       print ('51{:5s}A{:5s}A            {:s}{:s}'.format (bus1, bus2, AtpFit6 (row['r0']), AtpFit6 (row['x0'])), file=ap)
       print ('52{:5s}B{:5s}B            {:s}{:s}'.format (bus1, bus2, AtpFit6 (row['r']), AtpFit6 (row['x'])), file=ap)
@@ -1283,7 +1283,7 @@ def create_atp (d, icd, fpath, case):
     else:
       cuf = -1.0e6 / row['x'] / OMEGA
       print ('C =============================================================================', file=ap)
-      print ('C series capacitor {:s} from {:s} to {:s}'.format (row['name'], row['FromConnectivityNode_name'], row['ToConnectivityNode_name']), file=ap)
+      print ('C series capacitor {:s} from {:s} to {:s}'.format (row['name'], row['ConnectivityNode1_name'], row['ConnectivityNode2_name']), file=ap)
       print ('C < n1 >< n2 ><ref1><ref2>< R  >< X  >< C  >', file=ap)
       print ('  {:5s}A{:5s}A                        {:s}'.format (bus1, bus2, AtpFit6 (cuf)), file=ap)
       print ('  {:5s}B{:5s}B                        {:s}'.format (bus1, bus2, AtpFit6 (cuf)), file=ap)
@@ -1294,9 +1294,9 @@ def create_atp (d, icd, fpath, case):
     kvar = 1000.0 * row['bPerSection'] * row['sections'] * kv * kv
     if kvar > 0.0:
       cuf = 1000.0 * kvar / kv / kv / OMEGA
-      bus = atp_buses[row['FromConnectivityNode_mRID']]
+      bus = atp_buses[row['ConnectivityNode1_mRID']]
       print ('C =============================================================================', file=ap)
-      print ('C capacitor {:s} at {:s} is {:.2f} kVAR'.format (row['name'], row['FromConnectivityNode_name'], kvar), file=ap)
+      print ('C capacitor {:s} at {:s} is {:.2f} kVAR'.format (row['name'], row['ConnectivityNode1_name'], kvar), file=ap)
       print ('C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >', file=ap)
       print ('$VINTAGE,1', file=ap)
       for ph in GetAtpPhaseList ('ABC'):
@@ -1304,9 +1304,9 @@ def create_atp (d, icd, fpath, case):
       print ('$VINTAGE,0', file=ap)
     elif kvar < 0.0:
       xshunt = -1000.0 * kv * kv / kvar
-      bus = atp_buses[row['FromConnectivityNode_mRID']]
+      bus = atp_buses[row['ConnectivityNode1_mRID']]
       print ('C =============================================================================', file=ap)
-      print ('C reactor {:s} at {:s} is {:.2f} kVAR'.format (row['name'], row['FromConnectivityNode_name'], -kvar), file=ap)
+      print ('C reactor {:s} at {:s} is {:.2f} kVAR'.format (row['name'], row['ConnectivityNode1_name'], -kvar), file=ap)
       print ('C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >', file=ap)
       print ('$VINTAGE,1', file=ap)
       for ph in GetAtpPhaseList ('ABC'):
@@ -1314,7 +1314,7 @@ def create_atp (d, icd, fpath, case):
       print ('$VINTAGE,0', file=ap)
 
   for key, row in d['EMTLoad']['vals'].items():
-    bus = atp_buses[row['FromConnectivityNode_mRID']]
+    bus = atp_buses[row['ConnectivityNode1_mRID']]
     phases = GetAtpPhaseList ('ABC')
     nph = len(phases)
     kv = 0.001 * row['BaseVoltage_nominalVoltage']
@@ -1356,14 +1356,14 @@ def create_atp (d, icd, fpath, case):
       rmva=1e-6*sbase
       mw=1e-6*wtotal
       print ('C =============================================================================', file=ap)
-      print ('C DER {:s} at {:s} is {:.2f} MVA producing {:.2f} MW'.format (row['name'], row['FromConnectivityNode_name'], rmva, mw), file=ap)
+      print ('C DER {:s} at {:s} is {:.2f} MVA producing {:.2f} MW'.format (row['name'], row['ConnectivityNode1_name'], rmva, mw), file=ap)
       print ('$INCLUDE,TACSPV3.PCH,{:s},{:s},{:s},{:s},{:s},{:s},{:s} $$'.format(sBus, sName, sW, sImax, sUV, sUT, sPF), file=ap)
       print ('  ,{:s},{:s},{:s}'.format(sV0, sV02, sVWc), file=ap)
       print ('/BRANCH', file=ap)
-      AppendIBRInitializer (row['FromConnectivityNode_mRID'], bus, vbase, rmva, 0.2, 0.0, icd, mw, 0.0, ap, 0.0)
+      AppendIBRInitializer (row['ConnectivityNode1_mRID'], bus, vbase, rmva, 0.2, 0.0, icd, mw, 0.0, ap, 0.0)
     else:
       print ('C =============================================================================', file=ap)
-      print ('C load {:s} at {:s} is {:.3f} + j{:.3f} kVA'.format (row['name'], row['FromConnectivityNode_name'], kw, kvar), file=ap)
+      print ('C load {:s} at {:s} is {:.3f} + j{:.3f} kVA'.format (row['name'], row['ConnectivityNode1_name'], kw, kvar), file=ap)
       print ('C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >', file=ap)
       print ('$VINTAGE,1', file=ap)
       for ph in phases:
@@ -1401,7 +1401,7 @@ def create_atp (d, icd, fpath, case):
 
   for key, row in d['EMTSolar']['vals'].items():
     gsu_ang = GetGSUPhaseShift (d['EMTIBRPlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
-    bus = atp_buses[row['FromConnectivityNode_mRID']]
+    bus = atp_buses[row['ConnectivityNode1_mRID']]
     phases = GetAtpPhaseList ('ABC')
     nph = len(phases)
     vbase = row['ratedU']
@@ -1434,7 +1434,7 @@ def create_atp (d, icd, fpath, case):
     mw = wtotal*1e-6
     mvar = row['q']*1e-6
     print ('C =============================================================================', file=ap)
-    print ('C solar {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (row['name'], row['FromConnectivityNode_name'], rmva, mw, mvar), file=ap)
+    print ('C solar {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (row['name'], row['ConnectivityNode1_name'], rmva, mw, mvar), file=ap)
     if key in ibr_dyn:
       PV_COUNT += 1
       PV_TOTAL += 1e-6 * wtotal
@@ -1447,12 +1447,12 @@ def create_atp (d, icd, fpath, case):
       DUM_NODES += DLL_DUM_NODES
       AppendDLL (bus, key, d, ap=ap, atp_path=fpath)
     if mw != 0.0 or mvar != 0.0:
-      AppendIBRInitializer (row['FromConnectivityNode_mRID'], bus, vbase, rmva, 0.2, 0.0, icd, mw, mvar, ap, gsu_ang)
+      AppendIBRInitializer (row['ConnectivityNode1_mRID'], bus, vbase, rmva, 0.2, 0.0, icd, mw, mvar, ap, gsu_ang)
     dgens[key] = {'Type':'Solar', 'Source':None, 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
 
   for key, row in d['EMTWind']['vals'].items():
     gsu_ang = GetGSUPhaseShift (d['EMTIBRPlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
-    bus = atp_buses[row['FromConnectivityNode_mRID']]
+    bus = atp_buses[row['ConnectivityNode1_mRID']]
     phases = GetAtpPhaseList ('ABC')
     nph = len(phases)
     vbase = row['ratedU']
@@ -1463,7 +1463,7 @@ def create_atp (d, icd, fpath, case):
     mw = wtotal*1e-6
     mvar = row['q']*1e-6
     print ('C =============================================================================', file=ap)
-    print ('C wind {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (row['name'], row['FromConnectivityNode_name'], rmva, mw, mvar), file=ap)
+    print ('C wind {:s} at {:s} is {:.3f} MVA producing {:.3f} MW and {:.3f} Mvar'.format (row['name'], row['ConnectivityNode1_name'], rmva, mw, mvar), file=ap)
     if key in ibr_dyn:
       WND_COUNT += 1
       WND_TOTAL += 1e-6 * wtotal
@@ -1476,7 +1476,7 @@ def create_atp (d, icd, fpath, case):
       DUM_NODES += DLL_DUM_NODES
       AppendDLL (bus, key, d, ap=ap, atp_path=fpath)
     if mw != 0.0 or mvar != 0.0:
-      AppendIBRInitializer (row['FromConnectivityNode_mRID'], bus, vbase, rmva, 0.2, 0.0, icd, mw, mvar, ap, gsu_ang)
+      AppendIBRInitializer (row['ConnectivityNode1_mRID'], bus, vbase, rmva, 0.2, 0.0, icd, mw, mvar, ap, gsu_ang)
     dgens[key] = {'Type':'Wind', 'Source':None, 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
 
   ic_idx = 0
@@ -1509,7 +1509,7 @@ def create_atp (d, icd, fpath, case):
     # write all the machines
     for key, row in machines.items():
       gsu_ang = GetGSUPhaseShift (d['EMTRotatingMachinePlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
-      bus = atp_buses[row['FromConnectivityNode_mRID']]
+      bus = atp_buses[row['ConnectivityNode1_mRID']]
       phases = GetAtpPhaseList ('ABC')
       nph = len(phases)
       vbase = row['ratedU']
@@ -1521,14 +1521,14 @@ def create_atp (d, icd, fpath, case):
       SM_COUNT += 1
       if row['statorResistance'] < 0.0:
         print ('** Machine', key, 'has negative resistance')
-      if row['FromConnectivityNode_name'] == swingbus:
+      if row['ConnectivityNode1_name'] == swingbus:
         print ('C =============================================================================', file=ap)
-        print ('C SyncMachine {:s} at {:s} is {:.2f} MVA, part of Swing Bus'.format (row['name'], row['FromConnectivityNode_name'], rmva), file=ap)
+        print ('C SyncMachine {:s} at {:s} is {:.2f} MVA, part of Swing Bus'.format (row['name'], row['ConnectivityNode1_name'], rmva), file=ap)
       else:
         print ('C =============================================================================', file=ap)
-        print ('C SyncMachine {:s} at {:s} is {:.2f} MVA, {:.2f} MW, {:.2f} MVAR'.format (row['name'], row['FromConnectivityNode_name'], rmva, mw, mvar), file=ap)
+        print ('C SyncMachine {:s} at {:s} is {:.2f} MVA, {:.2f} MW, {:.2f} MVAR'.format (row['name'], row['ConnectivityNode1_name'], rmva, mw, mvar), file=ap)
         if USE_TYPE_14_MACHINES: #  or (key != lastKey):
-          genbus = AppendType14Generator (row['FromConnectivityNode_mRID'], bus, vbase, rmva, row['xDirectTrans'], row['statorResistance'], icd, mw, mvar, ap, gsu_ang)
+          genbus = AppendType14Generator (row['ConnectivityNode1_mRID'], bus, vbase, rmva, row['xDirectTrans'], row['statorResistance'], icd, mw, mvar, ap, gsu_ang)
           dgens[key] = {'Type':'SyncMach', 'Source':'14', 'Name':row['name'], 'Bus':genbus, 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
         else:
           gov = gen_dyn[key]['gov']

@@ -167,10 +167,12 @@ def load_emt_dict (g, sysid, bTiming=False):
   for key in ['EMTContainer', 'EMTBus', 'EMTBusXY', 'EMTBaseVoltage', 'EMTLine', 'EMTLoad',
               'EMTCountPowerXfmrWindings', 'EMTPowerXfmrWinding', 'EMTPowerXfmrCore',
               'EMTPowerXfmrMesh', 'EMTXfmrTap', 'EMTXfmrSaturation', 'EMTCompShunt', 'EMTCompSeries',
-              'EMTSyncMachine', 'EMTSolar', 'EMTWind', 'EMTGovGAST', 'EMTGovHydro1', 'EMTGovSteam0',
-              'EMTGovSteamSGO', 'EMTExcST1A', 'EMTExcIEEEDC1A', 'EMTExcSEXS', 'EMTPss1A',
-              'EMTPssIEEE1A', 'EMTWeccREGCA', 'EMTWeccREECA', 'EMTWeccREPCA',
-              'EMTWeccWTGTA', 'EMTWeccWTGARA', 'EMTEnergySource', 'EMTDisconnectingCircuitBreaker',
+              'EMTSyncMachine', 'EMTSolar', 'EMTWind', 
+              # 'EMTGovGAST', 'EMTGovHydro1', 'EMTGovSteam0',
+              # 'EMTGovSteamSGO', 'EMTExcST1A', 'EMTExcIEEEDC1A', 'EMTExcSEXS', 'EMTPss1A',
+              # 'EMTPssIEEE1A', 'EMTWeccREGCA', 'EMTWeccREECA', 'EMTWeccREPCA',
+              # 'EMTWeccWTGTA', 'EMTWeccWTGARA', 
+              'EMTEnergySource', 'EMTDisconnectingCircuitBreaker',
               'EMTXfmrLimit', 'EMTBranchLimit', 'EMTBusVoltage', 'EMTBranchFlow', 'EMTXfmrFlow',
               'EMTIBRPlant*', 'EMTRotatingMachinePlant*', 'EMTIEEECigreDLLParameters*',
               'EMTIBRPlantAttributes', 'EMTCountDLLParameters', 'EMTIEEECigreDLL',
@@ -187,8 +189,12 @@ def load_emt_dict (g, sysid, bTiming=False):
 def load_ic_dict (g, bPrint=False):
   """Load an RDF graph into Python dictionary from standalone power flow solution file.
 
-  This function only runs the *EMTBusVoltageIC*, *EMTBranchFlowIC*, and *EMTXfmrFlowIC* queries
+  This function only runs the *EMTBusVoltageIC* and *EMTBranchFlowIC* queries
   on data that usually comes from a power flow solver.
+
+  The *EMTXfmrFlowIC* no longer works in a standalone power flow solution file. To
+  obtain this filtering, merge the power flow solution and network model into a single
+  CIM RDF file, and then use *EMTXfmrFlow*.
 
   Args:
     g (Graph): an RDF graph loaded from *XML* or *TTL* file
@@ -211,7 +217,7 @@ def load_ic_dict (g, bPrint=False):
     dict[qid]['vals'] = {}
     #print (' ', qid, dict[qid]['keyfld'])
 
-  for key in ['EMTBusVoltageIC', 'EMTBranchFlowIC', 'EMTXfmrFlowIC']:
+  for key in ['EMTBusVoltageIC', 'EMTBranchFlowIC']: # , 'EMTXfmrFlowIC']:
     query_for_values (g, dict[key], sysid=None)
 
   if bPrint:

@@ -30,16 +30,14 @@ SELECT DISTINCT ?name ?mRID ?BaseVoltage_nominalVoltage WHERE {
  ?s c:IdentifiedObject.mRID ?mRID.
  { 
    ?ce c:Equipment.EquipmentContainer ?sys.
-   ?ce e:ConductingEquipment.FromConnectivityNode ?s.
-   ?ce c:ConductingEquipment.BaseVoltage ?bv.
- } UNION { 
-   ?ce c:Equipment.EquipmentContainer ?sys.
-   ?ce e:ConductingEquipment.ToConnectivityNode ?s.
+   ?t1 c:Terminal.ConductingEquipment ?ce.
+   ?t1 c:Terminal.ConnectivityNode ?s.
    ?ce c:ConductingEquipment.BaseVoltage ?bv.
  } UNION {
    ?pxf c:Equipment.EquipmentContainer ?sys.
    ?end c:PowerTransformerEnd.PowerTransformer ?pxf.
-   ?end e:TransformerEnd.ConnectivityNode ?s.
+   ?end c:TransformerEnd.Terminal ?t3.
+   ?t3 c:Terminal.ConnectivityNode ?s.
    ?end c:TransformerEnd.BaseVoltage ?bv.
  }
  ?bv c:BaseVoltage.nominalVoltage ?BaseVoltage_nominalVoltage.
@@ -130,7 +128,7 @@ ORDER by ?name
 <classes>ACLineSegment</classes>
 <value>
 <![CDATA[
-SELECT ?name ?mRID ?BaseVoltage_nominalVoltage ?FromConnectivityNode_name ?ToConnectivityNode_name ?length ?r ?x ?bch ?r0 ?x0 ?b0ch ?EquipmentContainer_mRID ?FromConnectivityNode_mRID ?ToConnectivityNode_mRID WHERE {
+SELECT ?name ?mRID ?BaseVoltage_nominalVoltage ?ConnectivityNode1_name ?ConnectivityNode2_name ?length ?r ?x ?bch ?r0 ?x0 ?b0ch ?EquipmentContainer_mRID ?ConnectivityNode1_mRID ?ConnectivityNode2_mRID WHERE {
  ?s r:type c:ACLineSegment.
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?s c:Equipment.EquipmentContainer ?sys.
@@ -145,12 +143,16 @@ SELECT ?name ?mRID ?BaseVoltage_nominalVoltage ?FromConnectivityNode_name ?ToCon
  ?s c:ACLineSegment.r0 ?r0.
  ?s c:ACLineSegment.x0 ?x0.
  ?s c:ACLineSegment.b0ch ?b0ch.
- ?s e:ConductingEquipment.FromConnectivityNode ?cn1.
- ?s e:ConductingEquipment.ToConnectivityNode ?cn2.
- ?cn1 c:IdentifiedObject.mRID ?FromConnectivityNode_mRID.
- ?cn1 c:IdentifiedObject.name ?FromConnectivityNode_name.
- ?cn2 c:IdentifiedObject.mRID ?ToConnectivityNode_mRID.
- ?cn2 c:IdentifiedObject.name ?ToConnectivityNode_name.
+ ?t1 c:Terminal.ConductingEquipment ?s.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
+ ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?t2 c:Terminal.ConductingEquipment ?s.
+ ?t2 c:Terminal.ConnectivityNode ?cn2.
+ ?t2 c:ACDCTerminal.sequenceNumber "2"^^c:Integer.
+ ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID.
+ ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name.
+ ?cn2 c:IdentifiedObject.mRID ?ConnectivityNode2_mRID.
+ ?cn2 c:IdentifiedObject.name ?ConnectivityNode2_name
 }
 ORDER BY ?name
 ]]>
@@ -163,7 +165,7 @@ ORDER BY ?name
 <classes>DisconnectingCircuitBreaker</classes>
 <value>
 <![CDATA[
-SELECT ?name ?FromConnectivityNode_name ?ToConnectivityNode_name ?BaseVoltage_nominalVoltage ?mRID ?EquipmentContainer_mRID ?FromConnectivityNode_mRID ?ToConnectivityNode_mRID WHERE {
+SELECT ?name ?ConnectivityNode1_name ?ConnectivityNode2_name ?BaseVoltage_nominalVoltage ?mRID ?EquipmentContainer_mRID ?ConnectivityNode1_mRID ?ConnectivityNode2_mRID WHERE {
  ?s r:type c:DisconnectingCircuitBreaker.
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?s c:Equipment.EquipmentContainer ?sys.
@@ -171,12 +173,16 @@ SELECT ?name ?FromConnectivityNode_name ?ToConnectivityNode_name ?BaseVoltage_no
  ?s c:IdentifiedObject.mRID ?mRID. 
  ?s c:ConductingEquipment.BaseVoltage ?bv.
  ?bv c:BaseVoltage.nominalVoltage ?BaseVoltage_nominalVoltage.
- ?s e:ConductingEquipment.FromConnectivityNode ?cn1.
- ?s e:ConductingEquipment.ToConnectivityNode ?cn2.
- ?cn1 c:IdentifiedObject.mRID ?FromConnectivityNode_mRID.
- ?cn1 c:IdentifiedObject.name ?FromConnectivityNode_name.
- ?cn2 c:IdentifiedObject.mRID ?ToConnectivityNode_mRID.
- ?cn2 c:IdentifiedObject.name ?ToConnectivityNode_name.
+ ?t1 c:Terminal.ConductingEquipment ?s.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
+ ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?t2 c:Terminal.ConductingEquipment ?s.
+ ?t2 c:Terminal.ConnectivityNode ?cn2.
+ ?t2 c:ACDCTerminal.sequenceNumber "2"^^c:Integer.
+ ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID.
+ ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name.
+ ?cn2 c:IdentifiedObject.mRID ?ConnectivityNode2_mRID.
+ ?cn2 c:IdentifiedObject.name ?ConnectivityNode2_name
 }
 ORDER by ?name
 ]]>
@@ -189,7 +195,7 @@ ORDER by ?name
 <classes>EnergySource,BaseVoltage</classes>
 <value>
 <![CDATA[
-SELECT ?name ?mRID ?FromConnectivityNode_name ?BaseVoltage_nominalVoltage ?r ?x ?r0 ?x0 ?EnergySource_nominalVoltage ?voltageMagnitude ?voltageAngle ?EquipmentContainer_mRID ?FromConnectivityNode_mRID WHERE {
+SELECT ?name ?mRID ?ConnectivityNode1_name ?BaseVoltage_nominalVoltage ?r ?x ?r0 ?x0 ?EnergySource_nominalVoltage ?voltageMagnitude ?voltageAngle ?EquipmentContainer_mRID ?ConnectivityNode1_mRID WHERE {
  ?s r:type c:EnergySource.
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?s c:Equipment.EquipmentContainer ?sys.
@@ -204,9 +210,11 @@ SELECT ?name ?mRID ?FromConnectivityNode_name ?BaseVoltage_nominalVoltage ?r ?x 
  ?s c:EnergySource.nominalVoltage ?EnergySource_nominalVoltage.
  ?s c:EnergySource.voltageMagnitude ?voltageMagnitude.
  ?s c:EnergySource.voltageAngle ?voltageAngle.
- ?s e:ConductingEquipment.FromConnectivityNode ?cn. 
- ?cn c:IdentifiedObject.mRID ?FromConnectivityNode_mRID. 
- ?cn c:IdentifiedObject.name ?FromConnectivityNode_name.
+ ?t1 c:Terminal.ConductingEquipment ?s.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
+ ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID. 
+ ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name
 } ORDER by ?name
 ]]>
 </value>
@@ -248,7 +256,7 @@ ORDER by ?name
 <classes>PowerTransformerEnd</classes>
 <value>
 <![CDATA[
-SELECT ?mRID ?PowerTransformer_name ?vectorGroup ?endNumber ?FromConnectivityNode_name ?BaseVoltage_nominalVoltage ?connectionKind ?ratedS ?ratedU ?phaseAngleClock ?grounded ?rground ?xground ?FromConnectivityNode_mRID ?PowerTransformer_mRID WHERE {
+SELECT ?mRID ?PowerTransformer_name ?vectorGroup ?endNumber ?ConnectivityNode1_name ?BaseVoltage_nominalVoltage ?connectionKind ?ratedS ?ratedU ?phaseAngleClock ?grounded ?rground ?xground ?ConnectivityNode1_mRID ?PowerTransformer_mRID WHERE {
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?p c:Equipment.EquipmentContainer ?sys.
  ?p r:type c:PowerTransformer.
@@ -266,11 +274,12 @@ SELECT ?mRID ?PowerTransformer_name ?vectorGroup ?endNumber ?FromConnectivityNod
  OPTIONAL {?end c:TransformerEnd.rground ?rground.}
  OPTIONAL {?end c:TransformerEnd.xground ?xground.}
  ?end c:IdentifiedObject.mRID ?mRID.
- ?end e:TransformerEnd.ConnectivityNode ?cn. 
- ?cn c:IdentifiedObject.mRID ?FromConnectivityNode_mRID. 
- ?cn c:IdentifiedObject.name ?FromConnectivityNode_name.
+ ?end c:TransformerEnd.Terminal ?t1. 
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
+ ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID. 
+ ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name.
  ?end c:TransformerEnd.BaseVoltage ?bv.
- ?bv c:BaseVoltage.nominalVoltage ?BaseVoltage_nominalVoltage.
+ ?bv c:BaseVoltage.nominalVoltage ?BaseVoltage_nominalVoltage
 }
 ORDER BY ?PowerTransformer_name ?endNumber
 ]]>
@@ -835,7 +844,7 @@ ORDER by ?name
 <classes>EnergyConsumer,LoadResponseCharacteristic</classes>
 <value>
 <![CDATA[
-SELECT ?name ?mRID ?FromConnectivityNode_name ?BaseVoltage_nominalVoltage ?p ?q ?pConstantImpedance ?qConstantImpedance ?pConstantCurrent ?qConstantCurrent ?pConstantPower ?qConstantPower ?pVoltageExponent ?qVoltageExponent ?EquipmentContainer_mRID ?FromConnectivityNode_mRID WHERE {
+SELECT ?name ?mRID ?ConnectivityNode1_name ?BaseVoltage_nominalVoltage ?p ?q ?pConstantImpedance ?qConstantImpedance ?pConstantCurrent ?qConstantCurrent ?pConstantPower ?qConstantPower ?pVoltageExponent ?qVoltageExponent ?EquipmentContainer_mRID ?ConnectivityNode1_mRID WHERE {
  ?s r:type c:EnergyConsumer.
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?s c:Equipment.EquipmentContainer ?sys.
@@ -852,11 +861,13 @@ SELECT ?name ?mRID ?FromConnectivityNode_name ?BaseVoltage_nominalVoltage ?p ?q 
  ?lr c:LoadResponseCharacteristic.qConstantCurrent ?qConstantCurrent.
  ?lr c:LoadResponseCharacteristic.pConstantPower ?pConstantPower.
  ?lr c:LoadResponseCharacteristic.qConstantPower ?qConstantPower.
- OPTIONAL {?lr c:LoadResponseCharacteristic.pVoltageExponent ?pVoltageExponent.}
- OPTIONAL {?lr c:LoadResponseCharacteristic.qVoltageExponent ?qVoltageExponent.}
- ?s e:ConductingEquipment.FromConnectivityNode ?cn. 
- ?cn c:IdentifiedObject.mRID ?FromConnectivityNode_mRID. 
- ?cn c:IdentifiedObject.name ?FromConnectivityNode_name.
+ OPTIONAL {?lr c:LoadResponseCharacteristic.pVoltageExponent ?pe.}
+ OPTIONAL {?lr c:LoadResponseCharacteristic.qVoltageExponent ?qe.}
+ ?t1 c:Terminal.ConductingEquipment ?s.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
+ ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID. 
+ ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name
 }
 ORDER by ?name
 ]]>
@@ -893,7 +904,8 @@ SELECT DISTINCT ?mRID ?name ?PowerTransformerEnd_mRID ?OperationalLimitType_name
  ?p c:Equipment.EquipmentContainer ?sys.
  ?end c:PowerTransformerEnd.PowerTransformer ?p.
  ?end c:IdentifiedObject.mRID ?PowerTransformerEnd_mRID.
- ?ols e:OperationalLimitSet.TransformerEnd ?end.
+ ?ols c:OperationalLimitSet.Terminal ?t1.
+ ?end c:TransformerEnd.Terminal ?t1.
  ?s c:OperationalLimit.OperationalLimitSet ?ols.
  ?s c:OperationalLimit.OperationalLimitType ?olt.
  ?s r:type c:ApparentPowerLimit.
@@ -925,7 +937,9 @@ SELECT DISTINCT ?mRID ?name ?Equipment_mRID ?Equipment_type ?OperationalLimitTyp
  ?eq c:IdentifiedObject.mRID ?Equipment_mRID.
  ?eq r:type ?typeraw.
   bind(strafter(str(?typeraw),"#") as ?Equipment_type)
- ?ols e:OperationalLimitSet.ConductingEquipment ?eq.
+ FILTER (?Equipment_type != "PowerTransformer")
+ ?ols c:OperationalLimitSet.Terminal ?t1.
+ ?t1 c:Terminal.ConductingEquipment ?eq.
  ?s c:OperationalLimit.OperationalLimitSet ?ols.
  ?s c:OperationalLimit.OperationalLimitType ?olt.
  ?s r:type c:ApparentPowerLimit.
@@ -966,21 +980,24 @@ ORDER BY ?name
 </query>
 <query>
 <id>EMTBranchFlow</id>
-<keyfld>mRID</keyfld>
+<keyfld>mRID:sequenceNumber</keyfld>
 <description>Branch power flows in a merged instance, keyed on *Equipment*. *Equipment_type* may be *ACLineSegment*, *DisconnectingCircuitBreaker*, etc. Use the *EMTXfmrFlow* query for transformer winding flows.</description>
 <classes>SvPowerFlow,ConductingEquipment</classes>
 <value>
 <![CDATA[
-SELECT DISTINCT ?mRID ?Equipment_type ?name ?p ?q WHERE {
+SELECT DISTINCT ?mRID ?sequenceNumber ?Equipment_type ?name ?p ?q WHERE {
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?s c:Equipment.EquipmentContainer ?sys.
  ?s c:IdentifiedObject.mRID ?mRID.
  ?s c:IdentifiedObject.name ?name.
  ?s r:type ?typeraw.
   bind(strafter(str(?typeraw),"#") as ?Equipment_type)
- ?sv e:SvPowerFlow.ConductingEquipment ?s.
+  FILTER (?Equipment_type != "PowerTransformer")
+ ?sv c:SvPowerFlow.Terminal ?t.
+ ?t c:Terminal.ConductingEquipment ?s.
+ ?t c:ACDCTerminal.sequenceNumber ?sequenceNumber.
  ?sv c:SvPowerFlow.p ?p.
- ?sv c:SvPowerFlow.q ?q.
+ ?sv c:SvPowerFlow.q ?q
 }
 ORDER BY ?Equipment_type ?name
 ]]>
@@ -993,17 +1010,19 @@ ORDER BY ?Equipment_type ?name
 <classes>SvPowerFlow,PowerTransformerEnd</classes>
 <value>
 <![CDATA[
-SELECT DISTINCT ?mRID ?name ?p ?q WHERE {
+SELECT DISTINCT ?mRID ?name ?PowerTransformer_mRID ?sequenceNumber ?endNumber ?p ?q WHERE {
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?pxf c:Equipment.EquipmentContainer ?sys.
+ ?pxf c:IdentifiedObject.mRID ?PowerTransformer_mRID.
  ?end c:PowerTransformerEnd.PowerTransformer ?pxf.
  ?end c:IdentifiedObject.mRID ?mRID.
  ?end c:IdentifiedObject.name ?name.
- ?end r:type ?typeraw.
-  bind(strafter(str(?typeraw),"#") as ?TransformerEnd_type)
- ?sv e:SvPowerFlow.TransformerEnd ?end.
+ ?end c:TransformerEnd.Terminal ?trm.
+ ?end c:TransformerEnd.endNumber ?endNumber.
+ ?sv c:SvPowerFlow.Terminal ?trm.
+ ?trm c:ACDCTerminal.sequenceNumber ?sequenceNumber.
  ?sv c:SvPowerFlow.p ?p.
- ?sv c:SvPowerFlow.q ?q.
+ ?sv c:SvPowerFlow.q ?q
 }
 ORDER BY ?name
 ]]>
@@ -1027,24 +1046,25 @@ SELECT DISTINCT ?mRID ?v ?angle WHERE {
 </query>
 <query>
 <id>EMTBranchFlowIC</id>
-<keyfld>mRID</keyfld>
-<description>Branch power flows in a standalone file. Keyed on *Equipment*. Filtering on *EquipmentContainer* is not supported in standalone IC files.</description>
+<keyfld>mRID:sequenceNumber</keyfld>
+<description>Branch power flows in a standalone file. Don't select the system. Keyed on *Equipment*. Filtering on *EquipmentContainer* is not supported in standalone IC files. Includes PowerTransformers.</description>
 <classes>SvPowerFlow,ConductingEquipment</classes>
 <value>
 <![CDATA[
-SELECT DISTINCT ?mRID ?p ?q WHERE {
- ?sv e:SvPowerFlow.ConductingEquipment ?eq.
-  bind(substr(str(?eq),strlen(str(?eq))-35) as ?mRID)
+SELECT DISTINCT ?mRID ?sequenceNumber ?p ?q WHERE {
+ ?sv c:SvPowerFlow.Terminal ?trm.
+  bind(substr(str(?trm),strlen(str(?trm))-37,36) as ?mRID)
+  bind(substr(str(?trm),strlen(str(?trm))) as ?sequenceNumber)
  ?sv c:SvPowerFlow.p ?p.
- ?sv c:SvPowerFlow.q ?q.
-} ORDER BY ?mRID
+ ?sv c:SvPowerFlow.q ?q
+} ORDER BY ?mRID ?sequenceNumber
 ]]>
 </value>
 </query>
 <query>
 <id>EMTXfmrFlowIC</id>
 <keyfld>mRID</keyfld>
-<description>Transformer winding (end) power flows in a standalone file. Don't select the system. Keyed on *TransformerEnd*. Filtering on *EquipmentContainer* is not supported in standalone IC files.</description>
+<description>Transformer winding (end) power flows in a standalone file. WARNING: no longer works with CIM Terminals in a standalone file; the IC and network model should be merged first. Don't select the system. Keyed on *TransformerEnd*. Filtering on *EquipmentContainer* is not supported in standalone IC files.</description>
 <classes>SvPowerFlow,PowerTransformerEnd</classes>
 <value>
 <![CDATA[

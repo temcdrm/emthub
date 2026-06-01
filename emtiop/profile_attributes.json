@@ -38,6 +38,14 @@
     }
   },
   "BaseVoltage": {
+    "mRID": {
+      "type": "String",
+      "default": null
+    },
+    "name": {
+      "type": "String",
+      "default": null
+    },
     "nominalVoltage": {
       "type": "Voltage",
       "default": null
@@ -58,6 +66,14 @@
     }
   },
   "ConnectivityNode": {
+    "mRID": {
+      "type": "String",
+      "default": null
+    },
+    "name": {
+      "type": "String",
+      "default": null
+    },
     "ConnectivityNodeContainer": {
       "type": "ConnectivityNodeContainer",
       "default": null
@@ -140,6 +156,16 @@
     },
     "PerLengthParameter": {
       "type": "PerLengthDCLineParameter",
+      "default": null
+    }
+  },
+  "DCNode": {
+    "mRID": {
+      "type": "String",
+      "default": null
+    },
+    "name": {
+      "type": "String",
       "default": null
     }
   },
@@ -381,7 +407,25 @@
       "default": null
     }
   },
+  "OperationalLimitSet": {
+    "mRID": {
+      "type": "String",
+      "default": null
+    },
+    "name": {
+      "type": "String",
+      "default": null
+    },
+    "Terminal": {
+      "type": "ACDCTerminal",
+      "default": null
+    }
+  },
   "OperationalLimitType": {
+    "mRID": {
+      "type": "String",
+      "default": null
+    },
     "acceptableDuration": {
       "type": "Seconds",
       "default": null
@@ -392,6 +436,10 @@
     },
     "isInfiniteDuration": {
       "type": "Boolean",
+      "default": null
+    },
+    "name": {
+      "type": "String",
       "default": null
     }
   },
@@ -504,6 +552,10 @@
     },
     "q": {
       "type": "ReactivePower",
+      "default": null
+    },
+    "Terminal": {
+      "type": "Terminal",
       "default": null
     }
   },
@@ -674,6 +726,10 @@
     }
   },
   "TransformerCoreAdmittance": {
+    "mRID": {
+      "type": "String",
+      "default": null
+    },
     "b": {
       "type": "Susceptance",
       "default": null
@@ -690,12 +746,24 @@
       "type": "Conductance",
       "default": null
     },
+    "name": {
+      "type": "String",
+      "default": null
+    },
     "TransformerEnd": {
       "type": "TransformerEnd",
       "default": null
     }
   },
   "TransformerMeshImpedance": {
+    "mRID": {
+      "type": "String",
+      "default": null
+    },
+    "name": {
+      "type": "String",
+      "default": null
+    },
     "r": {
       "type": "Resistance",
       "default": null
@@ -752,8 +820,16 @@
     }
   },
   "Curve": {
+    "mRID": {
+      "type": "String",
+      "default": null
+    },
     "curveStyle": {
       "type": "CurveStyle",
+      "default": null
+    },
+    "name": {
+      "type": "String",
       "default": null
     },
     "xMultiplier": {
@@ -776,10 +852,6 @@
   "DCBaseTerminal": {
     "DCNode": {
       "type": "DCNode",
-      "default": null
-    },
-    "DCTopologicalNode": {
-      "type": "DCTopologicalNode",
       "default": null
     }
   },
@@ -816,10 +888,6 @@
       "type": "String",
       "default": null
     },
-    "name": {
-      "type": "String",
-      "default": null
-    },
     "DetailedModelTypeDynamics": {
       "type": "DetailedModelTypeDynamics",
       "default": null
@@ -840,6 +908,10 @@
     }
   },
   "DiagramObject": {
+    "mRID": {
+      "type": "String",
+      "default": null
+    },
     "drawingOrder": {
       "type": "Integer",
       "default": null
@@ -848,14 +920,26 @@
       "type": "Boolean",
       "default": null
     },
+    "name": {
+      "type": "String",
+      "default": null
+    },
     "IdentifiedObject": {
       "type": "IdentifiedObject",
       "default": null
     }
   },
   "DynamicsFunctionBlock": {
+    "mRID": {
+      "type": "String",
+      "default": null
+    },
     "enabled": {
       "type": "Boolean",
+      "default": null
+    },
+    "name": {
+      "type": "String",
       "default": null
     }
   },
@@ -919,13 +1003,73 @@
       "default": null
     }
   },
+  "MutualCoupling": {
+    "mRID": {
+      "type": "String",
+      "default": null
+    },
+    "b0ch": {
+      "type": "Susceptance",
+      "default": null
+    },
+    "distance11": {
+      "type": "Length",
+      "default": null
+    },
+    "distance12": {
+      "type": "Length",
+      "default": null
+    },
+    "distance21": {
+      "type": "Length",
+      "default": null
+    },
+    "distance22": {
+      "type": "Length",
+      "default": null
+    },
+    "g0ch": {
+      "type": "Conductance",
+      "default": null
+    },
+    "name": {
+      "type": "String",
+      "default": null
+    },
+    "r0": {
+      "type": "Resistance",
+      "default": null
+    },
+    "x0": {
+      "type": "Reactance",
+      "default": null
+    }
+  },
   "OperationalLimit": {
+    "mRID": {
+      "type": "String",
+      "default": null
+    },
+    "name": {
+      "type": "String",
+      "default": null
+    },
     "OperationalLimitSet": {
       "type": "OperationalLimitSet",
       "default": null
     },
     "OperationalLimitType": {
       "type": "OperationalLimitType",
+      "default": null
+    }
+  },
+  "PointOfCommonCoupling": {
+    "mRID": {
+      "type": "String",
+      "default": null
+    },
+    "name": {
+      "type": "String",
       "default": null
     }
   },
@@ -940,6 +1084,16 @@
     },
     "PowerElectronicsConnection": {
       "type": "PowerElectronicsConnection",
+      "default": null
+    }
+  },
+  "PowerSystemResource": {
+    "mRID": {
+      "type": "String",
+      "default": null
+    },
+    "name": {
+      "type": "String",
       "default": null
     }
   },
@@ -1060,12 +1214,20 @@
     }
   },
   "TransformerEnd": {
+    "mRID": {
+      "type": "String",
+      "default": null
+    },
     "endNumber": {
       "type": "Integer",
       "default": null
     },
     "grounded": {
       "type": "Boolean",
+      "default": null
+    },
+    "name": {
+      "type": "String",
       "default": null
     },
     "rground": {
@@ -1078,6 +1240,10 @@
     },
     "BaseVoltage": {
       "type": "BaseVoltage",
+      "default": null
+    },
+    "Terminal": {
+      "type": "Terminal",
       "default": null
     }
   }

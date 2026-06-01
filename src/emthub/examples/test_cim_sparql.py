@@ -11,22 +11,22 @@ def main():
   Command-line Arguments:
     **index** (int): case number from 0 to 4
   """
-  idx = 4
+  idx = 3
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
   case = emthub.CASES[idx]
   g = rdflib.Graph()
-  fname = case['name'] + '.ttl'
-  #fname = case['name'] + '_merged.ttl'
+  #fname = case['name'] + '.ttl'
+  fname = case['name'] + '_merged.ttl'
   g.parse (fname)
   print ('read', len(g), 'statements from', fname)
   emthub.summarize_graph (g)
 
   d = emthub.load_emt_dict (g, case['id'], bTiming=True)
 
-  for key in ['EMTIEEECigreDLLInputs*', 'EMTIEEECigreDLLOutputs*']:
+  for key in ['EMTBusVoltage', 'EMTBranchFlow', 'EMTXfmrFlow']: # ['EMTIEEECigreDLLInputs*', 'EMTIEEECigreDLLOutputs*']:
     emthub.list_dict_table (d, key)
-  quit()
+  #quit()
 
   g = rdflib.Graph()
   fname = case['name'] + '_ic.ttl'

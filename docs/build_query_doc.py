@@ -38,7 +38,7 @@ def find_cim_attribute (col, atts):
   for att in atts:
     if col == att.split('.')[1]:
       return att
-  print ('***** No CIM attribute found for', col)
+  print ('***** No CIM attribute found for', col, 'in', atts)
   return str(None)
 
 def formatted_link (cls):
