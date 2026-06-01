@@ -1052,6 +1052,14 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
     g.add ((plant, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
     g.add ((plant, rdflib.URIRef (EMT_NS + 'ConnectedFacility.Equipments'), rdflib.URIRef (key)))
     g.add ((plant, rdflib.URIRef (EMT_NS + 'ConnectedFacility.Equipments'), rdflib.URIRef (row['PowerTransformer_mRID'])))
+    # add the POC
+    pocID = GetCIMID('ACPointOfCommonCoupling', row['name'], uuids)
+    poc = rdflib.URIRef (pocID)
+    g.add ((poc, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'ACPointOfCommonCoupling')))
+    g.add ((poc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(row['name'], datatype=CIM.String)))
+    g.add ((poc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(pocID, datatype=CIM.String)))
+    g.add ((poc, rdflib.URIRef (CIM_NS + 'ACPointOfCommonCoupling.ConnectivityNode'), rdflib.URIRef (row['ACPointOfCommonCoupling_mRID'])))
+    g.add ((plant, rdflib.URIRef (EMT_NS + 'ConnectedFacility.ACPointOfCommonCoupling'), poc))
 
   #print("Bound Namespaces:")
   #for prefix, namespace_uri in g.namespaces():
@@ -1320,6 +1328,7 @@ def write_cim_rdf (case, g, CIM, EMT):
     EMT.TransformerSaturation,
     EMT.IBRPlant,
     EMT.RotatingMachinePlant,
+    CIM.ACPointOfCommonCoupling,
     EMT.IEEECigreDLL,
     EMT.IEEECigreDLLParameter,
     EMT.IEEECigreDLLInput,
