@@ -649,7 +649,8 @@ SELECT DISTINCT ?mRID ?sequenceNumber ?p ?q WHERE {
 } ORDER BY ?mRID
 
 # EMTPlantGSU
-SELECT DISTINCT ?name ?GeneratingUnit_type ?ConnectivityNode1_name ?RegulatingCondEq_mRID ?PowerTransformer_mRID ?vectorGroup ?TransformerEnd_endNumber ?PowerTransformerEnd_mRID WHERE {
+SELECT DISTINCT ?name ?GeneratingUnit_type ?ConnectivityNode1_name ?RegulatingCondEq_mRID ?PowerTransformer_mRID ?vectorGroup 
+                ?TransformerEnd_endNumber ?PowerTransformerEnd_mRID ?ACPointOfCommonCoupling_name ?ACPointOfCommonCoupling_mRID WHERE {
  VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 # VALUES ?EquipmentContainer_mRID {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
 # VALUES ?EquipmentContainer_mRID {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
@@ -664,15 +665,23 @@ SELECT DISTINCT ?name ?GeneratingUnit_type ?ConnectivityNode1_name ?RegulatingCo
  {?unit c:PowerElectronicsUnit.PowerElectronicsConnection ?s.}
  {?unit a ?rawtype.
   bind(strafter(str(?rawtype),"#") as ?GeneratingUnit_type)}
- ?s e:ConductingEquipment.ConnectivityNode1 ?cn.
- ?cn c:IdentifiedObject.mRID ?ConnectivityNode1_mRID.
- ?cn c:IdentifiedObject.name ?ConnectivityNode1_name.
- ?end e:TransformerEnd.ConnectivityNode ?cn.
+ ?t1 c:Terminal.ConductingEquipment ?s.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
+ ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID.
+ ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name.
+ ?end c:TransformerEnd.Terminal ?tx2.
+ ?tx2 c:Terminal.ConnectivityNode ?cn1.
  ?end c:IdentifiedObject.mRID ?PowerTransformerEnd_mRID.
  ?end c:PowerTransformerEnd.PowerTransformer ?pxf.
  ?end c:TransformerEnd.endNumber ?TransformerEnd_endNumber.
  ?pxf c:IdentifiedObject.mRID ?PowerTransformer_mRID.
- ?pxf c:PowerTransformer.vectorGroup ?vectorGroup
+ ?pxf c:PowerTransformer.vectorGroup ?vectorGroup.
+ ?end1 c:PowerTransformerEnd.PowerTransformer ?pxf.
+ ?end1 c:TransformerEnd.endNumber "1"^^c:Integer.
+ ?end1 c:TransformerEnd.Terminal ?tx1.
+ ?tx1 c:Terminal.ConnectivityNode ?poc.
+ ?poc c:IdentifiedObject.mRID ?ACPointOfCommonCoupling_mRID.
+ ?poc c:IdentifiedObject.name ?ACPointOfCommonCoupling_name
 }
 ORDER by ?name
 

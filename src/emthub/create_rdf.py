@@ -22,6 +22,7 @@ from .cim_support import load_psse_dyrfile
 from .cim_support import load_dynamics_mapping
 from .cim_support import summarize_psse_dyrfile
 from .cim_support import match_dyr_generators
+from .cim_sparql import list_dict_table
 from .cim_sparql import adhoc_sparql_dict
 from .dll_config import get_dll_interface
 from .dll_config import get_dll_cim_parameter_kind
@@ -996,39 +997,47 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
       g.add ((es, rdflib.URIRef (CIM_NS + 'EnergySource.x0'), rdflib.Literal(0.001, datatype=CIM.Reactance)))
 
   # identify the generator plants with step-up transformers
-  q = """SELECT DISTINCT ?name ?type ?bus ?rm_or_pec_id ?xfid ?vgroup ?enum ?endid WHERE {
-   ?s c:IdentifiedObject.name ?name.
-   ?s c:IdentifiedObject.mRID ?rm_or_pec_id.
-   {?s c:RotatingMachine.GeneratingUnit ?unit.}
-    UNION
-   {?unit c:PowerElectronicsUnit.PowerElectronicsConnection ?s.}
-   {?unit a ?rawtype.
-    bind(strafter(str(?rawtype),"#") as ?type)}
-   ?s e:ConductingEquipment.FromConnectivityNode ?cn.
-   ?cn c:IdentifiedObject.mRID ?cn1id.
-   ?cn c:IdentifiedObject.name ?bus.
-   ?end e:TransformerEnd.ConnectivityNode ?cn.
-   ?end c:IdentifiedObject.mRID ?endid.
-   ?end c:PowerTransformerEnd.PowerTransformer ?pxf.
-   ?end c:TransformerEnd.endNumber ?enum.
-   ?pxf c:IdentifiedObject.mRID ?xfid.
-   ?pxf c:PowerTransformer.vectorGroup ?vgroup
-  }
-  ORDER by ?name
+  q = """SELECT DISTINCT ?name ?GeneratingUnit_type ?ConnectivityNode1_name ?RegulatingCondEq_mRID ?PowerTransformer_mRID ?vectorGroup 
+                ?TransformerEnd_endNumber ?PowerTransformerEnd_mRID ?ACPointOfCommonCoupling_name ?ACPointOfCommonCoupling_mRID WHERE {
+  ?s c:IdentifiedObject.name ?name.
+  ?s c:IdentifiedObject.mRID ?RegulatingCondEq_mRID.
+  {?s c:RotatingMachine.GeneratingUnit ?unit.}
+   UNION
+  {?unit c:PowerElectronicsUnit.PowerElectronicsConnection ?s.}
+  {?unit a ?rawtype.
+   bind(strafter(str(?rawtype),"#") as ?GeneratingUnit_type)}
+  ?t1 c:Terminal.ConductingEquipment ?s.
+  ?t1 c:Terminal.ConnectivityNode ?cn1.
+  ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID.
+  ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name.
+  ?end c:TransformerEnd.Terminal ?tx2.
+  ?tx2 c:Terminal.ConnectivityNode ?cn1.
+  ?end c:IdentifiedObject.mRID ?PowerTransformerEnd_mRID.
+  ?end c:PowerTransformerEnd.PowerTransformer ?pxf.
+  ?end c:TransformerEnd.endNumber ?TransformerEnd_endNumber.
+  ?pxf c:IdentifiedObject.mRID ?PowerTransformer_mRID.
+  ?pxf c:PowerTransformer.vectorGroup ?vectorGroup.
+  ?end1 c:PowerTransformerEnd.PowerTransformer ?pxf.
+  ?end1 c:TransformerEnd.endNumber "1"^^c:Integer.
+  ?end1 c:TransformerEnd.Terminal ?tx1.
+  ?tx1 c:Terminal.ConnectivityNode ?poc.
+  ?poc c:IdentifiedObject.mRID ?ACPointOfCommonCoupling_mRID.
+  ?poc c:IdentifiedObject.name ?ACPointOfCommonCoupling_name
+ }
   """
-  d = adhoc_sparql_dict (g, q, 'rm_or_pec_id')
-  #list_dict_table (d)
+  d = adhoc_sparql_dict (g, q, 'RegulatingCondEq_mRID')
+  list_dict_table (d)
   for key, row in d['vals'].items():
-    if row['type'] in ['PhotoVoltaicUnit', 'PowerElectronicsWindUnit']:  # leave the GSU as Yy
+    if row['GeneratingUnit_type'] in ['PhotoVoltaicUnit', 'PowerElectronicsWindUnit']:  # leave the GSU as Yy
       plant_type = 'IBRPlant'
     else: # change the GSU to Yd1
       plant_type = 'RotatingMachinePlant'
       # change the transformer vectorGroup
-      pt = rdflib.URIRef (row['xfid'])
+      pt = rdflib.URIRef (row['PowerTransformer_mRID'])
       g.remove ((pt, rdflib.URIRef (CIM_NS + 'PowerTransformer.vectorGroup'), rdflib.Literal ('Yy', datatype=CIM.String)))
       g.add ((pt, rdflib.URIRef (CIM_NS + 'PowerTransformer.vectorGroup'), rdflib.Literal ('Yd1', datatype=CIM.String)))
       # find the transformer end that's connected to the generator
-      end = rdflib.URIRef (row['endid'])
+      end = rdflib.URIRef (row['PowerTransformerEnd_mRID'])
       # change end2 from wye grounded to delta
       g.remove ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.phaseAngleClock'), rdflib.Literal(0, datatype=CIM.Integer)))
       g.remove ((end, rdflib.URIRef (CIM_NS + 'PowerTransformerEnd.connectionKind'), rdflib.URIRef (CIM_NS + 'WindingConnection.Y')))
@@ -1042,7 +1051,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
     g.add ((plant, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(row['name'], datatype=CIM.String)))
     g.add ((plant, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
     g.add ((plant, rdflib.URIRef (EMT_NS + 'ConnectedFacility.Equipments'), rdflib.URIRef (key)))
-    g.add ((plant, rdflib.URIRef (EMT_NS + 'ConnectedFacility.Equipments'), rdflib.URIRef (row['xfid'])))
+    g.add ((plant, rdflib.URIRef (EMT_NS + 'ConnectedFacility.Equipments'), rdflib.URIRef (row['PowerTransformer_mRID'])))
 
   #print("Bound Namespaces:")
   #for prefix, namespace_uri in g.namespaces():
@@ -1286,23 +1295,23 @@ def write_cim_rdf (case, g, CIM, EMT):
     CIM.ThermalGeneratingUnit,
     CIM.SynchronousMachineSimplified,
     CIM.SynchronousMachineTimeConstantReactance,
-#    CIM.GovGAST,
-#    CIM.GovHydro1,
-#    CIM.GovSteam0,
-#    CIM.GovSteamSGO,
-#    CIM.ExcIEEEDC1A,
-#    CIM.ExcSEXS,
-#    CIM.ExcST1A,
-#    CIM.PssIEEE1A,
-#    CIM.Pss1A,
+    CIM.GovGAST,
+    CIM.GovHydro1,
+    CIM.GovSteam0,
+    CIM.GovSteamSGO,
+    CIM.ExcIEEEDC1A,
+    CIM.ExcSEXS,
+    CIM.ExcST1A,
+    CIM.PssIEEE1A,
+    CIM.Pss1A,
     CIM.PowerElectronicsConnection,
     CIM.PhotoVoltaicUnit,
     CIM.PowerElectronicsWindUnit,
-#    CIM.WeccREECA,
-#    CIM.WeccREGCA,
-#    CIM.WeccREPCA,
-#    CIM.WeccWTGARA,
-#    CIM.WeccWTGTA,
+    CIM.WeccREECA,
+    CIM.WeccREGCA,
+    CIM.WeccREPCA,
+    CIM.WeccWTGARA,
+    CIM.WeccWTGTA,
     CIM.PowerTransformer,
     CIM.PowerTransformerEnd,
     CIM.RatioTapChanger,
