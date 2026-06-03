@@ -78,9 +78,10 @@ ORDER by ?name ?sequenceNumber
 <classes>SynchronousMachine,SynchronousMachineTimeConstantReactance</classes>
 <value>
 <![CDATA[
-SELECT ?name ?GeneratingUnit_type ?FromConnectivityNode_name ?ratedS ?ratedU ?p ?q ?maxOperatingP ?minOperatingP ?maxQ ?minQ
+# EMTSyncMachine
+SELECT ?name ?GeneratingUnit_type ?ConnectivityNode1_name ?ratedS ?ratedU ?p ?q ?maxOperatingP ?minOperatingP ?maxQ ?minQ
        ?inertia ?xDirectSync ?xDirectTrans ?xDirectSubtrans ?xQuadSync ?xQuadTrans ?xQuadSubtrans ?statorResistance ?statorLeakageReactance
-       ?tpdo ?tppdo ?tpqo ?tppqo ?mRID ?GeneratingUnit_mRID ?EquipmentContainer_mRID ?FromConnectivityNode_mRID WHERE {
+       ?tpdo ?tppdo ?tpqo ?tppqo ?mRID ?GeneratingUnit_mRID ?EquipmentContainer_mRID ?ConnectivityNode1_mRID WHERE {
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?s r:type c:SynchronousMachine.
  ?s c:Equipment.EquipmentContainer ?sys.
@@ -113,9 +114,11 @@ SELECT ?name ?GeneratingUnit_type ?FromConnectivityNode_name ?ratedS ?ratedU ?p 
  ?dyn c:SynchronousMachineTimeConstantReactance.tppdo ?tppdo.
  ?dyn c:SynchronousMachineTimeConstantReactance.tpqo ?tpqo.
  ?dyn c:SynchronousMachineTimeConstantReactance.tppqo ?tppqo.
- ?s e:ConductingEquipment.FromConnectivityNode ?cn.
- ?cn c:IdentifiedObject.mRID ?FromConnectivityNode_mRID.
- ?cn c:IdentifiedObject.name ?FromConnectivityNode_name.
+ ?t1 c:Terminal.ConductingEquipment ?s.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
+ ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID.
+ ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name
 }
 ORDER by ?name
 ]]>
@@ -413,7 +416,7 @@ ORDER by ?name
 <classes>PowerElectronicsConnection</classes>
 <value>
 <![CDATA[
-SELECT ?name ?FromConnectivityNode_name ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?maxIFault ?p ?q ?EquipmentContainer_mRID ?mRID ?PhotoVoltaicUnit_mRID ?FromConnectivityNode_mRID WHERE {
+SELECT ?name ?ConnectivityNode1_name ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?maxIFault ?p ?q ?EquipmentContainer_mRID ?mRID ?PhotoVoltaicUnit_mRID ?ConnectivityNode1_mRID WHERE {
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?s r:type c:PhotoVoltaicUnit.
  ?s c:IdentifiedObject.name ?name.
@@ -430,9 +433,11 @@ SELECT ?name ?FromConnectivityNode_name ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ 
  ?pec c:PowerElectronicsConnection.minQ ?minQ.
  ?pec c:PowerElectronicsConnection.maxQ ?maxQ.
  ?pec c:IdentifiedObject.mRID ?mRID.
- ?pec e:ConductingEquipment.FromConnectivityNode ?cn. 
- ?cn c:IdentifiedObject.mRID ?FromConnectivityNode_mRID.
- ?cn c:IdentifiedObject.name ?FromConnectivityNode_name.
+ ?t1 c:Terminal.ConductingEquipment ?pec.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
+ ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID.
+ ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name
 }
 ORDER by ?name
 ]]>
@@ -445,7 +450,7 @@ ORDER by ?name
 <classes>PowerElectronicsConnection</classes>
 <value>
 <![CDATA[
-SELECT ?name ?FromConnectivityNode_name ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?maxIFault ?p ?q ?EquipmentContainer_mRID ?PowerElectronicsWindUnit_mRID ?mRID ?FromConnectivityNode_mRID WHERE {
+SELECT ?name ?ConnectivityNode1_name ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?maxIFault ?p ?q ?EquipmentContainer_mRID ?PowerElectronicsWindUnit_mRID ?mRID ?ConnectivityNode1_mRID WHERE {
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?s r:type c:PowerElectronicsWindUnit.
  ?s c:IdentifiedObject.name ?name.
@@ -462,9 +467,11 @@ SELECT ?name ?FromConnectivityNode_name ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ 
  ?pec c:PowerElectronicsConnection.minQ ?minQ.
  ?pec c:PowerElectronicsConnection.maxQ ?maxQ.
  ?pec c:IdentifiedObject.mRID ?mRID.
- ?pec e:ConductingEquipment.FromConnectivityNode ?cn. 
- ?cn c:IdentifiedObject.mRID ?FromConnectivityNode_mRID.
- ?cn c:IdentifiedObject.name ?FromConnectivityNode_name.
+ ?t1 c:Terminal.ConductingEquipment ?pec.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
+ ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID.
+ ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name
 }
 ORDER by ?name
 ]]>
@@ -1532,6 +1539,114 @@ SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?dcLinkVoltage ?dcL
    ?d c:IdentifiedObject.mRID ?IEEECigreDLL_mRID
    }
 } ORDER by ?mRID
+]]>
+</value>
+</query>
+<query>
+<id>EMTDynamicsModel</id>
+<keyfld>mRID</keyfld>
+<description>A controller for machines or power electronics.</description>
+<classes>DetailedModelDynamics</classes>
+<value>
+<![CDATA[
+SELECT DISTINCT ?mRID ?name ?modelKind ?Equipment_type ?Equipment_name ?Equipment_mRID ?DetailedModelTypeDynamics_name ?DetailedModelTypeDynamics_mRID WHERE {
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?dyn c:DetailedModelDynamics.Equipment ?eq.
+ ?dyn c:IdentifiedObject.mRID ?mRID.
+ ?dyn c:IdentifiedObject.name ?name.
+ ?eq c:IdentifiedObject.mRID ?Equipment_mRID.
+ ?eq c:IdentifiedObject.name ?Equipment_name.
+ ?eq r:type ?typeraw.
+  bind(strafter(str(?typeraw),"#") as ?Equipment_type)
+ ?dyn c:DetailedModelDynamics.DetailedModelTypeDynamics ?typ.
+ ?typ e:NERCDynamicModel.modelKind ?modelKindRaw.  
+  bind(strafter(str(?modelKindRaw),"NERCModelKind.") as ?modelKind)
+ ?typ c:IdentifiedObject.mRID ?DetailedModelTypeDynamics_mRID.
+ ?typ c:IdentifiedObject.name ?DetailedModelTypeDynamics_name
+}
+ORDER BY ?name
+]]>
+</value>
+</query>
+<query>
+<id>EMTDynamicsModelType</id>
+<keyfld>mRID</keyfld>
+<description>A type of controller defined from proprietary file formats.</description>
+<classes>NERCDynamicModel</classes>
+<value>
+<![CDATA[
+SELECT DISTINCT ?mRID ?name ?modelKind ?nameKind ?statusKind ?closestStandardModel WHERE {
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?dyn c:DetailedModelDynamics.Equipment ?eq.
+ ?dyn c:DetailedModelDynamics.DetailedModelTypeDynamics ?typ.
+ ?typ e:NERCDynamicModel.modelKind ?modelKindRaw.  
+ ?typ e:NERCDynamicModel.nameKind ?nameKindRaw.  
+ ?typ e:NERCDynamicModel.statusKind ?statusKindRaw.  
+  bind(strafter(str(?modelKindRaw),"NERCModelKind.") as ?modelKind)
+  bind(strafter(str(?nameKindRaw),"NERCModelNameKind.") as ?nameKind)
+  bind(strafter(str(?statusKindRaw),"NERCModelStatusKind.") as ?statusKind)
+ ?typ e:NERCDynamicModel.closestStandardModel ?closestStandardModel.
+ ?typ c:IdentifiedObject.mRID ?mRID.
+ ?typ c:IdentifiedObject.name ?name
+}
+ORDER BY ?name
+]]>
+</value>
+</query>
+<query>
+<id>EMTDynamicsParameterDescriptor</id>
+<keyfld>mRID</keyfld>
+<description>Describes the name and other metadata for a dynamics parameter.</description>
+<classes>ParameterDescriptor</classes>
+<value>
+<![CDATA[
+SELECT DISTINCT ?DetailedModelTypeDynamics_name ?sequenceNumber ?name ?mRID ?typicalValue ?engineeringUnit ?DetailedModelTypeDynamics_mRID WHERE {
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?dyn c:DetailedModelDynamics.Equipment ?eq.
+ ?dyn c:DetailedModelDynamics.DetailedModelTypeDynamics ?typ.
+ ?prm c:DetailedModelDescriptor.DetailedModelTypeDynamics ?typ.
+ ?prm c:IdentifiedObject.mRID ?mRID.
+ ?prm c:IdentifiedObject.name ?name.
+ ?prm c:ParameterDescriptor.sequenceNumber ?sequenceNumber.
+ ?prm c:ParameterDescriptor.typicalValue ?typicalValue.
+ ?prm c:ParameterDescriptor.engineeringUnit ?engineeringUnit.
+ ?typ c:IdentifiedObject.mRID ?DetailedModelTypeDynamics_mRID.
+ ?typ c:IdentifiedObject.name ?DetailedModelTypeDynamics_name
+}
+ORDER BY ?DetailedModelTypeDynamics_name ?sequenceNumber
+]]>
+</value>
+</query>
+<query>
+<id>EMTDynamicsParameter</id>
+<keyfld>Equipment_mRID:DetailedModelTypeDynamics_mRID:name</keyfld>
+<description>Parameter value for a controller instance.</description>
+<classes>ParameterValue</classes>
+<value>
+<![CDATA[
+SELECT ?Equipment_name ?Equipment_type ?DetailedModelTypeDynamics_name ?sequenceNumber ?name ?value ?ParameterDescriptor_mRID ?Equipment_mRID ?DetailedModelTypeDynamics_mRID WHERE {
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?Equipment_mRID.
+ ?eq c:IdentifiedObject.name ?Equipment_name.
+ ?eq r:type ?typeraw.
+  bind(strafter(str(?typeraw),"#") as ?Equipment_type)
+ ?dyn c:DetailedModelDynamics.Equipment ?eq.
+ ?dyn c:DetailedModelDynamics.DetailedModelTypeDynamics ?typ.
+ ?val c:ParameterValue.DetailedModelDynamics ?dyn.
+ ?prm c:DetailedModelDescriptor.DetailedModelTypeDynamics ?typ.
+ ?prm c:IdentifiedObject.mRID ?ParameterDescriptor_mRID.
+ ?prm c:IdentifiedObject.name ?name.
+ ?prm c:ParameterDescriptor.sequenceNumber ?sequenceNumber.
+ ?val c:ParameterValue.ParameterDescriptor ?prm.
+ ?val c:ParameterValue.value ?value.
+ ?typ c:IdentifiedObject.mRID ?DetailedModelTypeDynamics_mRID.
+ ?typ c:IdentifiedObject.name ?DetailedModelTypeDynamics_name
+}
+ORDER BY ?Equipment_name ?DetailedModelTypeDynamics_name ?sequenceNumber
 ]]>
 </value>
 </query>

@@ -46,6 +46,7 @@ def add_header(label, level_char, fp):
 
 def find_cim_attribute (col, atts):
   for att in atts:
+    #print ('checking', att, 'for', col)
     if col == att.split('.')[1]:
       return att
   # catch one special case
