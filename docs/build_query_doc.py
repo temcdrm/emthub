@@ -47,16 +47,14 @@ def find_cim_attribute (col, atts):
   return str(None)
 
 def formatted_link (cls):
-  if cls.startswith('From'):
-    if cls.endswith('ConnectivityNode'):
-      return '**From** `ConnectivityNode <{:s}ConnectivityNode>`_'.format (PROFILE)
-    elif cls.endswith('TransformerEnd'):
-      return '**From** `TransformerEnd <{:s}TransformerEnd>`_'.format (PROFILE)
-  elif cls.startswith('To'):
-    if cls.endswith('ConnectivityNode'):
-      return '**To** `ConnectivityNode <{:s}ConnectivityNode>`_'.format (PROFILE)
-    elif cls.endswith('TransformerEnd'):
-      return '**To** `TransformerEnd <{:s}TransformerEnd>`_'.format (PROFILE)
+  if cls == 'FromTransformerEnd':
+    return '**From** `TransformerEnd <{:s}TransformerEnd>`_'.format (PROFILE)
+  if cls == 'ToTransformerEnd':
+    return '**To** `TransformerEnd <{:s}TransformerEnd>`_'.format (PROFILE)
+  if cls == 'ConnectivityNode1':
+    return '`ConnectivityNode <{:s}ConnectivityNode>`_ **1**'.format (PROFILE)
+  if cls == 'ConnectivityNode2':
+    return '`ConnectivityNode <{:s}ConnectivityNode>`_ **2**'.format (PROFILE)
   return '`{:s} <{:s}{:s}>`_'.format (cls, PROFILE, cls)
 
 def parse_columns (qry):
