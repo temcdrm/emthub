@@ -1,7 +1,7 @@
 # Copyright (C) 2026 Meltran, Inc
 
 """
-  Functions that document SPARQL queries for ReadTheDocs.
+  Functions that document SPARQL queries and EMTDynamics models for ReadTheDocs.
 """
 
 import rdflib
@@ -9,6 +9,7 @@ import time
 import xml.etree.ElementTree as ET
 import importlib.resources
 import sys
+import json
 
 XML_QUERY_FILE = 'sparql_queries.xml'
 PREFIX = None
@@ -16,9 +17,16 @@ DELIM = ':'
 ROOT = None
 PROFILE = 'profile.html#'
 
+JSON_DYNAMICS_FILE = 'detailed_model_types.json'
+TYPES = None
+
 def load_root_queries(bPrint=False):
-  global ROOT, PREFIX
+  global ROOT, PREFIX, TYPES
   if ROOT is None:
+    # read the model types into dict
+    jfile = importlib.resources.files('emthub.queries').joinpath(JSON_DYNAMICS_FILE)
+    with open (jfile, 'r', encoding='utf-8', errors='strict') as fp:
+      TYPES = json.load (fp)
     # read the queries into dict
     xfile = importlib.resources.files('emthub.queries').joinpath(XML_QUERY_FILE)
     with open (xfile, 'r', encoding='utf-8', errors='strict') as fp:
@@ -154,6 +162,33 @@ if __name__ == '__main__':
     print ('     - CIM Attribute', file=fp)
     for col in sorted(q['columns']):
       print ('   * - {:s}\n     - {:s}'.format (col, q['columns'][col]), file=fp)
+    print ('\n', file=fp)
+
+  fp.close()
+
+  # now document the detaield model types
+  fp = open ('dynamics_doc.rst', 'w')
+  for key in sorted(TYPES):
+    mdl = TYPES[key]
+    add_header (key, '_', fp)
+    print ('**nameKind**: {:s}\n'.format (mdl['nameKind']), file=fp)
+    print ('**modelKind**: {:s}\n'.format (mdl['modelKind']), file=fp)
+    print ('**statusKind**: {:s}\n'.format (mdl['statusKind']), file=fp)
+    print ('**description**: {:s}\n'.format (mdl['description']), file=fp)
+    print ('**closestStandardModel**: {:s}\n'.format (mdl['closestStandardModel']), file=fp)
+    print ('**mRID**: {:s}\n'.format (mdl['mRID']), file=fp)
+    print ('.. list-table:: {:s} Parameters\n   :widths: 20 20 20 20 20\n   :header-rows: 1\n'.format (key), file=fp)
+    print ('   * - Name', file=fp)
+    print ('     - Number', file=fp)
+    print ('     - Value', file=fp)
+    print ('     - Unit', file=fp)
+    print ('     - mRID', file=fp)
+    for p in mdl['parameterDescriptors']:
+      print ('   * - {:s}\n     - {:d}\n     - {:s}\n     - {:s}\n     - {:s}'.format (p['name'],
+                                                                                       p['sequenceNumber'],
+                                                                                       str(p['typicalValue']),
+                                                                                       p['engineeringUnit'],
+                                                                                       p['mRID']), file=fp)
     print ('\n', file=fp)
 
   fp.close()

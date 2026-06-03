@@ -12,6 +12,7 @@ EMTHub\ |reg|
    api
    profile
    Queries
+   Dynamics
    Bibliography
    LICENSE
 

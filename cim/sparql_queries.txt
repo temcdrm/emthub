@@ -43,7 +43,7 @@ SELECT ?name ?mRID WHERE {
 }
 ORDER by ?name
 
-# EMTDynamicsParameters
+# EMTDynamicsParameter
 SELECT ?Equipment_name ?Equipment_type ?DetailedModelTypeDynamics_name ?sequenceNumber ?name ?value ?ParameterDescriptor_mRID ?Equipment_mRID ?DetailedModelTypeDynamics_mRID WHERE {
  VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 # VALUES ?EquipmentContainer_mRID {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
@@ -68,7 +68,7 @@ SELECT ?Equipment_name ?Equipment_type ?DetailedModelTypeDynamics_name ?sequence
 }
 ORDER BY ?Equipment_name ?DetailedModelTypeDynamics_name ?sequenceNumber
 
-# EMTDynamicsParameterDescriptors
+# EMTDynamicsParameterDescriptor
 SELECT DISTINCT ?DetailedModelTypeDynamics_name ?sequenceNumber ?name ?mRID ?typicalValue ?engineeringUnit ?DetailedModelTypeDynamics_mRID WHERE {
  VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 # VALUES ?EquipmentContainer_mRID {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}

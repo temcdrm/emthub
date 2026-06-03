@@ -92,9 +92,9 @@ if __name__ == '__main__':
     # start over with everything besides the mRIDs
     # first 3 parameters are the same for all dyr models
     d2[key]['parameterDescriptors'] = [
-      {'name':'Bus', 'mRID':Get_mRID ('Bus', old_mRIDs), 'typicalValue':'', 'engineeringUnits':'Integer', 'sequenceNumber':1},
-      {'name':'Model', 'mRID':Get_mRID ('Model', old_mRIDs), 'typicalValue':'', 'engineeringUnits':'String', 'sequenceNumber':2},
-      {'name':'ID', 'mRID':Get_mRID ('ID', old_mRIDs), 'typicalValue':'1', 'engineeringUnits':'String', 'sequenceNumber':3}]
+      {'name':'Bus', 'mRID':Get_mRID ('Bus', old_mRIDs), 'typicalValue':'', 'engineeringUnit':'Integer', 'sequenceNumber':1},
+      {'name':'Model', 'mRID':Get_mRID ('Model', old_mRIDs), 'typicalValue':'', 'engineeringUnit':'String', 'sequenceNumber':2},
+      {'name':'ID', 'mRID':Get_mRID ('ID', old_mRIDs), 'typicalValue':'1', 'engineeringUnit':'String', 'sequenceNumber':3}]
     pda = d2[key]['parameterDescriptors']
     for i in range(len(row['parameters_after_ID'])):
       prm = row['parameters_after_ID'][i]
