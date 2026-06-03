@@ -408,6 +408,10 @@
     }
   },
   "NERCDynamicModel": {
+    "closestStandardModel": {
+      "type": "String",
+      "default": null
+    },
     "modelKind": {
       "type": "NERCModelKind",
       "default": null

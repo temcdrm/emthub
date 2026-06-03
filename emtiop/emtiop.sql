@@ -1104,6 +1104,9 @@ CREATE TABLE "MutualCoupling"
 CREATE TABLE "NERCDynamicModel"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Name of the closest match from Dynamics / StandardModels, if such a match
+    -- exists.
+    "closestStandardModel" VARCHAR(255),
     -- Suggested application of this dynamic model.
     -- FK column reference to table representing the "NERCModelKind" enumeration
     "modelKind" VARCHAR(100),

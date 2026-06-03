@@ -98,6 +98,7 @@ def append_xml_detailed_model (g, root_key, eq, model_key, model_type, uuids, ro
     seq = parms[idx+3]['sequenceNumber']
     parm = rdflib.URIRef (ID+'_seq{:d}'.format(seq))
     g.add ((parm, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'ParameterValue')))
+    g.add ((parm, rdflib.URIRef (CIM_NS + 'ParameterValue.DetailedModelDynamics'), rdflib.URIRef (ID)))
     g.add ((parm, rdflib.URIRef (CIM_NS + 'ParameterValue.ParameterDescriptor'), rdflib.URIRef (parm_ID)))
     g.add ((parm, rdflib.URIRef (CIM_NS + 'ParameterValue.value'), rdflib.Literal(val, datatype=CIM_NS+'String')))
 

@@ -43,6 +43,94 @@ SELECT ?name ?mRID WHERE {
 }
 ORDER by ?name
 
+# EMTDynamicsParameters
+SELECT ?Equipment_name ?Equipment_type ?DetailedModelTypeDynamics_name ?sequenceNumber ?name ?value ?ParameterDescriptor_mRID ?Equipment_mRID ?DetailedModelTypeDynamics_mRID WHERE {
+ VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?EquipmentContainer_mRID {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?EquipmentContainer_mRID {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?Equipment_mRID.
+ ?eq c:IdentifiedObject.name ?Equipment_name.
+ ?eq r:type ?typeraw.
+  bind(strafter(str(?typeraw),"#") as ?Equipment_type)
+ ?dyn c:DetailedModelDynamics.Equipment ?eq.
+ ?dyn c:DetailedModelDynamics.DetailedModelTypeDynamics ?typ.
+ ?val c:ParameterValue.DetailedModelDynamics ?dyn.
+ ?prm c:DetailedModelDescriptor.DetailedModelTypeDynamics ?typ.
+ ?prm c:IdentifiedObject.mRID ?ParameterDescriptor_mRID.
+ ?prm c:IdentifiedObject.name ?name.
+ ?prm c:ParameterDescriptor.sequenceNumber ?sequenceNumber.
+ ?val c:ParameterValue.ParameterDescriptor ?prm.
+ ?val c:ParameterValue.value ?value.
+ ?typ c:IdentifiedObject.mRID ?DetailedModelTypeDynamics_mRID.
+ ?typ c:IdentifiedObject.name ?DetailedModelTypeDynamics_name
+}
+ORDER BY ?Equipment_name ?DetailedModelTypeDynamics_name ?sequenceNumber
+
+# EMTDynamicsParameterDescriptors
+SELECT DISTINCT ?DetailedModelTypeDynamics_name ?sequenceNumber ?name ?mRID ?typicalValue ?engineeringUnit ?DetailedModelTypeDynamics_mRID WHERE {
+ VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?EquipmentContainer_mRID {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?EquipmentContainer_mRID {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?dyn c:DetailedModelDynamics.Equipment ?eq.
+ ?dyn c:DetailedModelDynamics.DetailedModelTypeDynamics ?typ.
+ ?prm c:DetailedModelDescriptor.DetailedModelTypeDynamics ?typ.
+ ?prm c:IdentifiedObject.mRID ?mRID.
+ ?prm c:IdentifiedObject.name ?name.
+ ?prm c:ParameterDescriptor.sequenceNumber ?sequenceNumber.
+ ?prm c:ParameterDescriptor.typicalValue ?typicalValue.
+ ?prm c:ParameterDescriptor.engineeringUnit ?engineeringUnit.
+ ?typ c:IdentifiedObject.mRID ?DetailedModelTypeDynamics_mRID.
+ ?typ c:IdentifiedObject.name ?DetailedModelTypeDynamics_name
+}
+ORDER BY ?DetailedModelTypeDynamics_name ?sequenceNumber
+
+# EMTDynamicsModel
+SELECT DISTINCT ?mRID ?name ?modelKind ?Equipment_type ?Equipment_name ?Equipment_mRID ?DetailedModelTypeDynamics_name ?DetailedModelTypeDynamics_mRID WHERE {
+ VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?EquipmentContainer_mRID {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?EquipmentContainer_mRID {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?dyn c:DetailedModelDynamics.Equipment ?eq.
+ ?dyn c:IdentifiedObject.mRID ?mRID.
+ ?dyn c:IdentifiedObject.name ?name.
+ ?eq c:IdentifiedObject.mRID ?Equipment_mRID.
+ ?eq c:IdentifiedObject.name ?Equipment_name.
+ ?eq r:type ?typeraw.
+  bind(strafter(str(?typeraw),"#") as ?Equipment_type)
+ ?dyn c:DetailedModelDynamics.DetailedModelTypeDynamics ?typ.
+ ?typ e:NERCDynamicModel.modelKind ?modelKindRaw.  
+  bind(strafter(str(?modelKindRaw),"NERCModelKind.") as ?modelKind)
+ ?typ c:IdentifiedObject.mRID ?DetailedModelTypeDynamics_mRID.
+ ?typ c:IdentifiedObject.name ?DetailedModelTypeDynamics_name
+}
+ORDER BY ?name
+
+# EMTDynamicsModelType
+SELECT DISTINCT ?mRID ?name ?modelKind ?nameKind ?statusKind ?closestStandardModel WHERE {
+ VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+# VALUES ?EquipmentContainer_mRID {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
+# VALUES ?EquipmentContainer_mRID {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?dyn c:DetailedModelDynamics.Equipment ?eq.
+ ?dyn c:DetailedModelDynamics.DetailedModelTypeDynamics ?typ.
+ ?typ e:NERCDynamicModel.modelKind ?modelKindRaw.  
+ ?typ e:NERCDynamicModel.nameKind ?nameKindRaw.  
+ ?typ e:NERCDynamicModel.statusKind ?statusKindRaw.  
+  bind(strafter(str(?modelKindRaw),"NERCModelKind.") as ?modelKind)
+  bind(strafter(str(?nameKindRaw),"NERCModelNameKind.") as ?nameKind)
+  bind(strafter(str(?statusKindRaw),"NERCModelStatusKind.") as ?statusKind)
+ ?typ e:NERCDynamicModel.closestStandardModel ?closestStandardModel.
+ ?typ c:IdentifiedObject.mRID ?mRID.
+ ?typ c:IdentifiedObject.name ?name
+}
+ORDER BY ?name
+
 # EMTDisconnectingCircuitBreaker
 SELECT ?name ?ConnectivityNode1_name ?ConnectivityNode2_name ?BaseVoltage_nominalVoltage ?mRID ?EquipmentContainer_mRID ?ConnectivityNode1_mRID ?ConnectivityNode2_mRID WHERE {
  ?s r:type c:DisconnectingCircuitBreaker.
@@ -337,9 +425,10 @@ ORDER BY ?PowerTransformer_name ?FromTransformerEnd_endNumber ?ToTransformerEnd_
 
 # EMTXfmrSaturation
 SELECT ?PowerTransformer_name ?PowerTransformer_mRID ?TransformerCoreAdmittance_mRID ?amps ?vs WHERE {
+ VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 # VALUES ?EquipmentContainer_mRID {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
 # VALUES ?EquipmentContainer_mRID {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
- VALUES ?EquipmentContainer_mRID {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
+# VALUES ?EquipmentContainer_mRID {"93EA6BF1-A569-4190-9590-98A62780489E"^^c:String}
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?p c:Equipment.EquipmentContainer ?sys.
  ?p r:type c:PowerTransformer.
@@ -362,8 +451,9 @@ ORDER BY ?PowerTransformer_mRID ?amps ?vs
 # EMTCompShunt may be capacitor or reactor
 SELECT ?name ?BaseVoltage_nominalVoltage ?nomU ?gPerSection ?bPerSection ?sections ?maximumSections ?ConnectivityNode1_name ?mRID ?EquipmentContainer_mRID ?ConnectivityNode1_mRID WHERE {
  ?s r:type c:LinearShuntCompensator.
+ VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 # VALUES ?EquipmentContainer_mRID {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?EquipmentContainer_mRID {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+# VALUES ?EquipmentContainer_mRID {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?s c:Equipment.EquipmentContainer ?sys.
  ?s c:IdentifiedObject.name ?name.
@@ -415,8 +505,9 @@ ORDER by ?name
 SELECT ?name ?GeneratingUnit_type ?ConnectivityNode1_name ?ratedS ?ratedU ?p ?q ?maxOperatingP ?minOperatingP ?maxQ ?minQ
        ?inertia ?xDirectSync ?xDirectTrans ?xDirectSubtrans ?xQuadSync ?xQuadTrans ?xQuadSubtrans ?statorResistance ?statorLeakageReactance
        ?tpdo ?tppdo ?tpqo ?tppqo ?mRID ?GeneratingUnit_mRID ?EquipmentContainer_mRID ?ConnectivityNode1_mRID WHERE {
+ VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 # VALUES ?EquipmentContainer_mRID {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?EquipmentContainer_mRID {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+# VALUES ?EquipmentContainer_mRID {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?s r:type c:SynchronousMachine.
  ?s c:Equipment.EquipmentContainer ?sys.
@@ -459,8 +550,9 @@ ORDER by ?name
 
 # EMTSolar
 SELECT ?name ?ConnectivityNode1_name ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?maxIFault ?p ?q ?EquipmentContainer_mRID ?mRID ?PhotoVoltaicUnit_mRID ?ConnectivityNode1_mRID WHERE {
+ VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 # VALUES ?EquipmentContainer_mRID {"1783D2A8-1204-4781-A0B4-7A73A2FA6038"^^c:String}
- VALUES ?EquipmentContainer_mRID {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
+# VALUES ?EquipmentContainer_mRID {"2540AF5C-4F83-4C0F-9577-DEE8CC73BBB3"^^c:String}
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?s r:type c:PhotoVoltaicUnit.
  ?s c:IdentifiedObject.name ?name.
