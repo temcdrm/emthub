@@ -120,7 +120,9 @@ def load_root_queries(bPrint=False):
   global ROOT, PREFIX
   if ROOT is None:
     # read the queries into dict
-    s = importlib.resources.read_text ('emthub.queries', XML_QUERY_FILE)
+    xfile = importlib.resources.files('emthub.queries').joinpath(XML_QUERY_FILE)
+    with open (xfile, 'r', encoding='utf-8', errors='strict') as fp:
+      s = fp.read()
     ROOT = ET.fromstring(s)
     nsCIM = ROOT.find('nsCIM').text.strip()
     nsRDF = ROOT.find('nsRDF').text.strip()

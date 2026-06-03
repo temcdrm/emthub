@@ -20,7 +20,9 @@ def load_root_queries(bPrint=False):
   global ROOT, PREFIX
   if ROOT is None:
     # read the queries into dict
-    s = importlib.resources.read_text ('emthub.queries', XML_QUERY_FILE)
+    xfile = importlib.resources.files('emthub.queries').joinpath(XML_QUERY_FILE)
+    with open (xfile, 'r', encoding='utf-8', errors='strict') as fp:
+      s = fp.read()
     ROOT = ET.fromstring(s)
     nsCIM = ROOT.find('nsCIM').text.strip()
     nsRDF = ROOT.find('nsRDF').text.strip()
@@ -38,6 +40,9 @@ def find_cim_attribute (col, atts):
   for att in atts:
     if col == att.split('.')[1]:
       return att
+  # catch one special case
+  if col == 'sequenceNumber':
+    return 'c:ACDCTerminal.sequenceNumber'
   print ('***** No CIM attribute found for', col, 'in', atts)
   return str(None)
 
@@ -123,6 +128,9 @@ if __name__ == '__main__':
 #  print ('Header 3\n^^^^^^^^', file=fp)
 #  print ('Header 4\n********', file=fp)
   for key in sorted(dict):
+    if 'DEPRECATED' in dict[key]['description']:
+      print ('Skipping deprecated query', key)
+      continue
     add_header (key, '-', fp)
     q = dict[key]
     print (q['description'], file=fp)

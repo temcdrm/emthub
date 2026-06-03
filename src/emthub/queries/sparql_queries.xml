@@ -473,7 +473,7 @@ ORDER by ?name
 <query>
 <id>EMTExcST1A</id>
 <keyfld>mRID</keyfld>
-<description>A static excitation system.</description>
+<description>A static excitation system. DEPRECATED.</description>
 <classes>ExcST1A</classes>
 <value>
 <![CDATA[
@@ -513,7 +513,7 @@ SELECT ?name ?ilr ?ka ?kc ?kf ?klr ?ta ?tb ?tb1 ?tc ?tc1 ?tf ?vamax ?vamin
 <query>
 <id>EMTGovSteamSGO</id>
 <keyfld>mRID</keyfld>
-<description>A steam governor.</description>
+<description>A steam governor. DEPRECATED.</description>
 <classes>GovSteamSGO</classes>
 <value>
 <![CDATA[
@@ -547,7 +547,7 @@ WHERE {
 <query>
 <id>EMTPssIEEE1A</id>
 <keyfld>mRID</keyfld>
-<description>A power system stabilizer for synchronous machines.</description>
+<description>A power system stabilizer for synchronous machines. DEPRECATED.</description>
 <classes>PssIEEE1A</classes>
 <value>
 <![CDATA[
@@ -583,7 +583,7 @@ SELECT ?name ?a1 ?a2 ?inputSignalType ?ks ?t1 ?t2 ?t3 ?t4 ?t5 ?t6 ?vrmax ?vrmin
 <query>
 <id>EMTWeccREGCA</id>
 <keyfld>mRID</keyfld>
-<description>A WECC current-source model for renewable energy generation.</description>
+<description>A WECC current-source model for renewable energy generation. DEPRECATED.</description>
 <classes>WeccREGCA</classes>
 <value>
 <![CDATA[
@@ -618,7 +618,7 @@ SELECT ?name ?brkpt ?iolim ?iqrmax ?iqrmin ?ivpl1 ?ivplsw ?ivpnt0 ?ivpnt1 ?khv
 <query>
 <id>EMTWeccREECA</id>
 <keyfld>mRID</keyfld>
-<description>A WECC inverter controller for renewable energy generation.</description>
+<description>A WECC inverter controller for renewable energy generation. DEPRECATED.</description>
 <classes>WeccREECA</classes>
 <value>
 <![CDATA[
@@ -692,7 +692,7 @@ SELECT ?name ?db1 ?db2 ?dPmax ?dPmin ?imax ?iqfrz ?iqh1 ?iql1 ?kqi ?kqp ?kqv
 <query>
 <id>EMTWeccREPCA</id>
 <keyfld>mRID</keyfld>
-<description>A WECC plant controller for renewable energy generation.</description>
+<description>A WECC plant controller for renewable energy generation. DEPRECATED.</description>
 <classes>WeccREPCA</classes>
 <value>
 <![CDATA[
@@ -743,7 +743,7 @@ SELECT ?name ?db ?ddn ?dup ?emax ?emin ?fdbd1 ?fdbd2 ?femax ?femin ?frqFlag ?kc
 <query>
 <id>EMTWeccWTGTA</id>
 <keyfld>mRID</keyfld>
-<description>A WECC drive-train model for wind generation.</description>
+<description>A WECC drive-train model for wind generation. DEPRECATED.</description>
 <classes>WeccWTGTA</classes>
 <value>
 <![CDATA[
@@ -767,7 +767,7 @@ SELECT ?name ?dshaft ?hg ?ht ?kshaft ?mRID ?PowerElectronicsConnection_mRID ?Equ
 <query>
 <id>EMTWeccWTGARA</id>
 <keyfld>mRID</keyfld>
-<description>A WECC aerodynamic model for wind generation.</description>
+<description>A WECC aerodynamic model for wind generation. DEPRECATED.</description>
 <classes>WeccWTGARA</classes>
 <value>
 <![CDATA[
@@ -1120,7 +1120,7 @@ SELECT DISTINCT ?mRID ?name ?Equipment_mRID ?Equipment_type WHERE {
 <query>
 <id>EMTExcIEEEDC1A</id>
 <keyfld>mRID</keyfld>
-<description>A DC exciter.</description>
+<description>A DC exciter. DEPRECATED.</description>
 <classes>ExcIEEEDC1A</classes>
 <value>
 <![CDATA[
@@ -1158,7 +1158,7 @@ SELECT ?name ?efd1 ?efd2 ?exclim ?ka ?ke ?kf ?seefd1 ?seefd2 ?ta ?tb ?tc ?te ?tf
 <query>
 <id>EMTExcSEXS</id>
 <keyfld>mRID</keyfld>
-<description>A static exciter.</description>
+<description>A static exciter. DEPRECATED.</description>
 <classes>ExcSEXS</classes>
 <value>
 <![CDATA[
@@ -1190,7 +1190,7 @@ SELECT ?name ?efdmax ?efdmin ?emax ?emin ?k ?kc ?tatb ?tb ?tc ?te ?mRID ?Synchro
 <query>
 <id>EMTGovGAST</id>
 <keyfld>mRID</keyfld>
-<description>A gas turbine governor.</description>
+<description>A gas turbine governor. DEPRECATED.</description>
 <classes>GovGAST</classes>
 <value>
 <![CDATA[
@@ -1222,7 +1222,7 @@ WHERE {
 <query>
 <id>EMTGovHydro1</id>
 <keyfld>mRID</keyfld>
-<description>A hydro governor.</description>
+<description>A hydro governor. DEPRECATED.</description>
 <classes>GovHydro1</classes>
 <value>
 <![CDATA[
@@ -1258,7 +1258,7 @@ SELECT ?name ?at ?dturb ?gmax ?gmin ?hdam ?mwbase ?qnl ?rperm ?rtemp ?tf ?tg ?tr
 <query>
 <id>EMTGovSteam0</id>
 <keyfld>mRID</keyfld>
-<description>A steam unit governor.</description>
+<description>A steam unit governor. DEPRECATED.</description>
 <classes>GovSteam0</classes>
 <value>
 <![CDATA[
@@ -1287,7 +1287,7 @@ SELECT ?name ?dt ?mwbase ?r ?t1 ?t2 ?t3 ?vmax ?vmin ?mRID ?SynchronousMachine_mR
 <query>
 <id>EMTPss1A</id>
 <keyfld>mRID</keyfld>
-<description>A power system stabilizer.</description>
+<description>A power system stabilizer. DEPRECATED.</description>
 <classes>Pss1A</classes>
 <value>
 <![CDATA[
