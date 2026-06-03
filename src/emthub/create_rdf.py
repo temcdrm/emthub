@@ -1024,6 +1024,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
     g.add ((mtyp, rdflib.URIRef (EMT_NS + 'NERCDynamicModel.modelKind'), rdflib.URIRef (EMT_NS + 'NERCModelKind.{:s}'.format(model_type['modelKind']))))
     g.add ((mtyp, rdflib.URIRef (EMT_NS + 'NERCDynamicModel.nameKind'), rdflib.URIRef (EMT_NS + 'NERCModelNameKind.{:s}'.format(model_type['nameKind']))))
     g.add ((mtyp, rdflib.URIRef (EMT_NS + 'NERCDynamicModel.statusKind'), rdflib.URIRef (EMT_NS + 'NERCModelStatusKind.{:s}'.format(model_type['statusKind']))))
+    g.add ((mtyp, rdflib.URIRef (EMT_NS + 'NERCDynamicModel.closestStandardModel'), rdflib.Literal(model_type['closestStandardModel'], datatype=CIM.String)))
     parms = model_type['parameterDescriptors']
     for i in range(3,len(parms)):
       ID = parms[i]['mRID']

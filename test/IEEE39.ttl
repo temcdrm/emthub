@@ -2162,6 +2162,7 @@
     cim:IdentifiedObject.name "32_1_turbineGovernor"^^cim:String .
 
 <1D697002-8710-4710-9717-6B074A9F66EF> a emt:NERCDynamicModel ;
+    emt:NERCDynamicModel.closestStandardModel "ExcIEEEDC1A"^^cim:String ;
     emt:NERCDynamicModel.modelKind emt:NERCModelKind.excitationSystem ;
     emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.PSSE ;
     emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
@@ -2169,6 +2170,7 @@
     cim:IdentifiedObject.name "IEEET1"^^cim:String .
 
 <32034FA3-7303-4F91-8110-A05EE463DF7F> a emt:NERCDynamicModel ;
+    emt:NERCDynamicModel.closestStandardModel "WeccREPCA"^^cim:String ;
     emt:NERCDynamicModel.modelKind emt:NERCModelKind.renewableEnergyResource ;
     emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.WECC ;
     emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
@@ -2176,6 +2178,7 @@
     cim:IdentifiedObject.name "REPCA1"^^cim:String .
 
 <737C9425-B23D-4692-BB9D-6C1801A341BE> a emt:NERCDynamicModel ;
+    emt:NERCDynamicModel.closestStandardModel "WeccREECA"^^cim:String ;
     emt:NERCDynamicModel.modelKind emt:NERCModelKind.renewableEnergyResource ;
     emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.WECC ;
     emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
@@ -2183,6 +2186,7 @@
     cim:IdentifiedObject.name "REECA1"^^cim:String .
 
 <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> a emt:NERCDynamicModel ;
+    emt:NERCDynamicModel.closestStandardModel "WeccREGCA"^^cim:String ;
     emt:NERCDynamicModel.modelKind emt:NERCModelKind.renewableEnergyResource ;
     emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.WECC ;
     emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
@@ -2190,6 +2194,7 @@
     cim:IdentifiedObject.name "REGCA1"^^cim:String .
 
 <F7BBFF29-107F-46E5-AF37-71341F6B1587> a emt:NERCDynamicModel ;
+    emt:NERCDynamicModel.closestStandardModel "GovSteam0"^^cim:String ;
     emt:NERCDynamicModel.modelKind emt:NERCModelKind.turbineGovernor ;
     emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.PSSE ;
     emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
