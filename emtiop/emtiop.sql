@@ -1244,6 +1244,8 @@ CREATE TABLE "PSRType"
 CREATE TABLE "ParameterDescriptor"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The engineering unit of the value.
+    "engineeringUnit" VARCHAR(255),
     -- Sequence number of the parameter among the set of parameters associated
     -- with the related proprietary user-defined model.
     "sequenceNumber" INTEGER,
@@ -1255,7 +1257,15 @@ CREATE TABLE "ParameterDescriptor"
 -- Provides the value of a given parameter of a detailed model dynamics.
 CREATE TABLE "ParameterValue"
 (
-    "mRID" VARCHAR(100) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The value of the parameter.
+    "value" VARCHAR(255),
+    -- The detailed model to which this parameter value applies.
+    -- FK column reference to table representing the "DetailedModelDynamics" class
+    "DetailedModelDynamics" VARCHAR(100),
+    -- The parameter descriptor that has this value.
+    -- FK column reference to table representing the "ParameterDescriptor" class
+    "ParameterDescriptor" VARCHAR(100)
 );
 
 -- A photovoltaic device or an aggregation of such devices.
@@ -2945,6 +2955,10 @@ ALTER TABLE "OperationalLimitSet" ADD FOREIGN KEY ( "Terminal" ) REFERENCES "ACD
 -- Foreign keys for table "OperationalLimitType"
 ALTER TABLE "OperationalLimitType" ADD FOREIGN KEY ( "direction" ) REFERENCES "OperationalLimitDirectionKind" ( "name" );
 
+-- Foreign keys for table "ParameterValue"
+ALTER TABLE "ParameterValue" ADD FOREIGN KEY ( "DetailedModelDynamics" ) REFERENCES "DetailedModelDynamics" ( "mRID" );
+ALTER TABLE "ParameterValue" ADD FOREIGN KEY ( "ParameterDescriptor" ) REFERENCES "ParameterDescriptor" ( "mRID" );
+
 -- Foreign keys for table "PowerElectronicsConnectionDCTerminal"
 ALTER TABLE "PowerElectronicsConnectionDCTerminal" ADD FOREIGN KEY ( "polarity" ) REFERENCES "DCTerminalPolarityKind" ( "name" );
 ALTER TABLE "PowerElectronicsConnectionDCTerminal" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFERENCES "PowerElectronicsConnection" ( "mRID" );
@@ -3067,6 +3081,8 @@ ALTER TABLE "TransformerSaturation" ADD FOREIGN KEY ( "TransformerCoreAdmittance
 
 -- Cascade deletes for compounds referenced in table "OperationalLimitType"
 
+-- Cascade deletes for compounds referenced in table "ParameterValue"
+
 -- Cascade deletes for compounds referenced in table "PowerElectronicsConnectionDCTerminal"
 
 -- Cascade deletes for compounds referenced in table "PowerElectronicsUnit"
@@ -3133,6 +3149,8 @@ CREATE INDEX ix_MachineSaturation_SynchronousMachineDetailed ON "MachineSaturati
 CREATE INDEX ix_OperationalLimit_OperationalLimitSet ON "OperationalLimit" ( "OperationalLimitSet" );
 CREATE INDEX ix_OperationalLimit_OperationalLimitType ON "OperationalLimit" ( "OperationalLimitType" );
 CREATE INDEX ix_OperationalLimitSet_Terminal ON "OperationalLimitSet" ( "Terminal" );
+CREATE INDEX ix_ParameterValue_DetailedModelDynamics ON "ParameterValue" ( "DetailedModelDynamics" );
+CREATE INDEX ix_ParameterValue_ParameterDescriptor ON "ParameterValue" ( "ParameterDescriptor" );
 CREATE INDEX ix_PowerElectronicsConnectionDCTerminal_PowerElectronicsConnection ON "PowerElectronicsConnectionDCTerminal" ( "PowerElectronicsConnection" );
 CREATE INDEX ix_PowerElectronicsUnit_PowerElectronicsConnection ON "PowerElectronicsUnit" ( "PowerElectronicsConnection" );
 CREATE INDEX ix_PowerTransformerEnd_PowerTransformer ON "PowerTransformerEnd" ( "PowerTransformer" );

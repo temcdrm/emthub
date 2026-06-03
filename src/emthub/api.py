@@ -22,6 +22,7 @@ Public Functions:
     :get_dll_interface: Returns a Python dictionary of the interface to an IEEE/Cigre DLL.
     :get_swingbus_id: Find the CIM ConnectivityNode ID by matching the Name/Number from the original raw file.
     :list_cases: List the names and descriptions of examples provided with the package.
+    :load_detailed_model_types: Load the library of detailed dynamic models with parameter descriptors.
     :list_dict_table: Print the fields and attributes of a Python dictionary loaded from SPARQL.
     :load_dynamics_defaults: Load example default settings for dynamics into a Python dictionary.
     :load_dynamics_mapping: Load a dictionary of CIM classes and attributes corresponding to dyr file contents.
@@ -65,6 +66,7 @@ from .cim_sparql import summarize_graph
 
 from .cim_summary import print_cim_summaries
 
+from .cim_support import load_detailed_model_types
 from .cim_support import load_dynamics_defaults
 from .cim_support import load_dynamics_mapping
 from .cim_support import load_psse_dyrfile

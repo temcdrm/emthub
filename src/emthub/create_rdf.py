@@ -18,6 +18,7 @@ from rdflib.namespace import XSD
 from otsrdflib import OrderedTurtleSerializer
 
 from .cim_support import load_dynamics_defaults
+from .cim_support import load_detailed_model_types
 from .cim_support import load_psse_dyrfile 
 from .cim_support import load_dynamics_mapping
 from .cim_support import summarize_psse_dyrfile
@@ -76,6 +77,29 @@ def GetCIMID(cls, nm, uuids, identify=False):
       print('Found existing ID for ', key)
     return uuids[key]
   return str(uuid.uuid4()).upper() # for unidentified CIM instances
+
+def append_xml_detailed_model (g, root_key, eq, model_key, model_type, uuids, row):
+  key = '{:s}_{:s}'.format (root_key, model_type['modelKind'])
+  if 'renewableEnergyResource' in key:
+    key = '{:s}_{:s}'.format (key, model_key)
+  ID = GetCIMID ('DetailedModelDynamics', key, uuids)
+  leaf = rdflib.URIRef (ID)
+  g.add ((leaf, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'DetailedModelDynamics')))
+  g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM_NS+'String')))
+  g.add ((leaf, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM_NS+'String')))
+  g.add ((leaf, rdflib.URIRef (CIM_NS + 'DynamicsFunctionBlock.enabled'), rdflib.Literal (True, datatype=CIM_NS+'Boolean')))
+  g.add ((leaf, rdflib.URIRef (CIM_NS + 'DetailedModelDynamics.Equipment'), eq))
+  desc = rdflib.URIRef (model_type['mRID'])
+  g.add ((leaf, rdflib.URIRef (CIM_NS + 'DetailedModelDynamics.DetailedModelTypeDynamics'), desc))
+  parms = model_type['parameterDescriptors']
+  for idx in range(len(row)):
+    val = row[idx]
+    parm_ID = parms[idx+3]['mRID'] # always skip the bus, model, and ID from the dyr file. sequenceNumber starts at 3.
+    seq = parms[idx+3]['sequenceNumber']
+    parm = rdflib.URIRef (ID+'_seq{:d}'.format(seq))
+    g.add ((parm, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'ParameterValue')))
+    g.add ((parm, rdflib.URIRef (CIM_NS + 'ParameterValue.ParameterDescriptor'), rdflib.URIRef (parm_ID)))
+    g.add ((parm, rdflib.URIRef (CIM_NS + 'ParameterValue.value'), rdflib.Literal(val, datatype=CIM_NS+'String')))
 
 def append_xml_wecc_dynamics (g, key, ID, pec, leaf_class, dyn_defaults, attmap, dyr_row):
   #print (attmap)
@@ -799,8 +823,10 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
   if dyr_df is not None:
     dyr_summary = summarize_psse_dyrfile (dyr_df, case, bDetails=False)
     dyr = match_dyr_generators (dyr_df)
-  dyn_defaults = load_dynamics_defaults ()
-  dyn_mapping = load_dynamics_mapping ()
+  dyn_defaults = load_dynamics_defaults ()  # TODO: remove if choice made to rely on DetailedModelTypeDynamics
+  dyn_mapping = load_dynamics_mapping ()  # TODO: remove if choice made to rely on DetailedModelTypeDynamics
+  dyn_models = load_detailed_model_types ()
+  model_types_used = set()
   dyr_used = {}
   nsolar = 0
   nwind = 0
@@ -877,40 +903,51 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
         gov = None
         used = []
         for mdl, row in dyr[key].items():
-          cls = dyn_mapping[mdl]['CIMclass']
-          used.append (cls)
+          used.append (mdl)
+          cls = dyn_models[mdl]['closestStandardModel']
           if cls.startswith ('SynchronousMachine'):
             dyn = create_xml_machine_dynamics (g, cls, key, uuids)
             append_xml_dynamic_parameters (g, dyn, dyn_defaults, [cls, 'SynchronousMachineDetailed', 'RotatingMachineDynamics', 'DynamicsFunctionBlock'], dyn_mapping[mdl]['AttMap'], row)
-          elif cls.startswith ('Exc'):
-            exc = create_xml_machine_dynamics (g, cls, key, uuids)
-            append_xml_dynamic_parameters (g, exc, dyn_defaults, [cls, 'DynamicsFunctionBlock'], dyn_mapping[mdl]['AttMap'], row)
-          elif cls.startswith ('Pss'):
-            pss = create_xml_machine_dynamics (g, cls, key, uuids)
-            append_xml_dynamic_parameters (g, pss, dyn_defaults, [cls, 'DynamicsFunctionBlock'], dyn_mapping[mdl]['AttMap'], row)
-          elif cls.startswith ('Gov'):
-            if 'Hydro' in cls and 'Hydro' not in ftype:
-              print ('** non-hydro unit', key, 'has governor', cls, 'for', ftype)
-            elif 'Hydro' not in cls and 'Hydro' in ftype:
-              print ('** hydro unit', key, 'has governor', cls, 'for', ftype)
-            gov = create_xml_machine_dynamics (g, cls, key, uuids)
-            append_xml_dynamic_parameters (g, gov, dyn_defaults, [cls, 'DynamicsFunctionBlock'], dyn_mapping[mdl]['AttMap'], row)
-            if 'mwbase' in dyn_defaults[cls]:
-              att = '{:s}.mwbase'.format(cls)
-              g.add ((gov, rdflib.URIRef (CIM_NS + att), rdflib.Literal (mvabase, datatype=CIM.ActivePower)))
+            g.add ((dyn, rdflib.URIRef (CIM_NS + 'SynchronousMachineDynamics.SynchronousMachine'), sm))
           else:
-            print ('** Unknown dynamics class', cls, 'for dyr model', mdl, 'generator', key)
-        if dyn is not None:
-          g.add ((dyn, rdflib.URIRef (CIM_NS + 'SynchronousMachineDynamics.SynchronousMachine'), sm))
-          if gov is not None:
-            g.add ((gov, rdflib.URIRef (CIM_NS + 'TurbineGovernorDynamics.SynchronousMachineDynamics'), dyn))
-          if exc is not None:
-            g.add ((exc, rdflib.URIRef (CIM_NS + 'ExcitationSystemDynamics.SynchronousMachineDynamics'), dyn))
-            if pss is not None:
-              g.add ((pss, rdflib.URIRef (CIM_NS + 'PowerSystemStabilizerDynamics.ExcitationSystemDynamics'), exc))
-          #print ('machine dynamics for', key, used)
-        else:
-          print ('** missing machine dynamics for', key)
+            model_types_used.add (mdl)
+            append_xml_detailed_model (g, key, sm, mdl, dyn_models[mdl], uuids, row)
+        print ('machine dynamics for', key, used)
+#       for mdl, row in dyr[key].items():
+#         cls = dyn_mapping[mdl]['CIMclass']
+#         used.append (cls)
+#         if cls.startswith ('SynchronousMachine'):
+#           dyn = create_xml_machine_dynamics (g, cls, key, uuids)
+#           append_xml_dynamic_parameters (g, dyn, dyn_defaults, [cls, 'SynchronousMachineDetailed', 'RotatingMachineDynamics', 'DynamicsFunctionBlock'], dyn_mapping[mdl]['AttMap'], row)
+#         elif cls.startswith ('Exc'):
+#           exc = create_xml_machine_dynamics (g, cls, key, uuids)
+#           append_xml_dynamic_parameters (g, exc, dyn_defaults, [cls, 'DynamicsFunctionBlock'], dyn_mapping[mdl]['AttMap'], row)
+#         elif cls.startswith ('Pss'):
+#           pss = create_xml_machine_dynamics (g, cls, key, uuids)
+#           append_xml_dynamic_parameters (g, pss, dyn_defaults, [cls, 'DynamicsFunctionBlock'], dyn_mapping[mdl]['AttMap'], row)
+#         elif cls.startswith ('Gov'):
+#           if 'Hydro' in cls and 'Hydro' not in ftype:
+#             print ('** non-hydro unit', key, 'has governor', cls, 'for', ftype)
+#           elif 'Hydro' not in cls and 'Hydro' in ftype:
+#             print ('** hydro unit', key, 'has governor', cls, 'for', ftype)
+#           gov = create_xml_machine_dynamics (g, cls, key, uuids)
+#           append_xml_dynamic_parameters (g, gov, dyn_defaults, [cls, 'DynamicsFunctionBlock'], dyn_mapping[mdl]['AttMap'], row)
+#           if 'mwbase' in dyn_defaults[cls]:
+#             att = '{:s}.mwbase'.format(cls)
+#             g.add ((gov, rdflib.URIRef (CIM_NS + att), rdflib.Literal (mvabase, datatype=CIM.ActivePower)))
+#         else:
+#           print ('** Unknown dynamics class', cls, 'for dyr model', mdl, 'generator', key)
+#       if dyn is not None:
+#         g.add ((dyn, rdflib.URIRef (CIM_NS + 'SynchronousMachineDynamics.SynchronousMachine'), sm))
+#         if gov is not None:
+#           g.add ((gov, rdflib.URIRef (CIM_NS + 'TurbineGovernorDynamics.SynchronousMachineDynamics'), dyn))
+#         if exc is not None:
+#           g.add ((exc, rdflib.URIRef (CIM_NS + 'ExcitationSystemDynamics.SynchronousMachineDynamics'), dyn))
+#           if pss is not None:
+#             g.add ((pss, rdflib.URIRef (CIM_NS + 'PowerSystemStabilizerDynamics.ExcitationSystemDynamics'), exc))
+#         #print ('machine dynamics for', key, used)
+#       else:
+#         print ('** missing machine dynamics for', key)
         if exc is None and pss is not None:
           print ('** power system stabilizer is missing excitation system for', key)
       else:
@@ -952,11 +989,15 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
         dyr_used[key] = True
         used = []
         for mdl, row in dyr[key].items():
-          cls = dyn_mapping[mdl]['CIMclass']
-          used.append (cls)
-          dynID = GetCIMID(cls, key, uuids)
-          append_xml_wecc_dynamics (g, key, dynID, pec, cls, dyn_defaults, dyn_mapping[mdl]['AttMap'], row)
-        #print ('wecc dynamics for', key, used)
+          print (mdl, row)
+          used.append (mdl)
+          model_types_used.add (mdl)
+          append_xml_detailed_model (g, key, pec, mdl, dyn_models[mdl], uuids, row)
+#          cls = dyn_mapping[mdl]['CIMclass']
+#          used.append (cls)
+#          dynID = GetCIMID(cls, key, uuids)
+#          append_xml_wecc_dynamics (g, key, dynID, pec, cls, dyn_defaults, dyn_mapping[mdl]['AttMap'], row)
+        print ('wecc dynamics for', key, used)
       else:
         print ('no WECC dynamics found for', key, ftype)
   # warn of any unused dyr file entries
@@ -969,6 +1010,32 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
       print ('dyr entries for these generators were not used:') 
       print (' ', dyr_unused)
       print ('  (these units may have been flagged off-line in the raw file)')
+
+  # write the DetailedModelTypeDynamicss that we need
+  print ('Adding DetailedModelTypeDynamics for', model_types_used)
+  for key in model_types_used:
+    model_type = dyn_models[key]
+    ID = model_type['mRID']
+    uuids['NERCDynamicModel' + ':' + key] = ID
+    mtyp = rdflib.URIRef (ID)
+    g.add ((mtyp, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'NERCDynamicModel')))
+    g.add ((mtyp, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
+    g.add ((mtyp, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+    g.add ((mtyp, rdflib.URIRef (EMT_NS + 'NERCDynamicModel.modelKind'), rdflib.URIRef (EMT_NS + 'NERCModelKind.{:s}'.format(model_type['modelKind']))))
+    g.add ((mtyp, rdflib.URIRef (EMT_NS + 'NERCDynamicModel.nameKind'), rdflib.URIRef (EMT_NS + 'NERCModelNameKind.{:s}'.format(model_type['nameKind']))))
+    g.add ((mtyp, rdflib.URIRef (EMT_NS + 'NERCDynamicModel.statusKind'), rdflib.URIRef (EMT_NS + 'NERCModelStatusKind.{:s}'.format(model_type['statusKind']))))
+    parms = model_type['parameterDescriptors']
+    for i in range(3,len(parms)):
+      ID = parms[i]['mRID']
+      uuids['ParameterDescriptor' + ':' + '{:s}_{:s}'. format (key, parms[i]['name'])] = ID
+      desc = rdflib.URIRef (ID)
+      g.add ((desc, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'ParameterDescriptor')))
+      g.add ((desc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(parms[i]['name'], datatype=CIM.String)))
+      g.add ((desc, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
+      g.add ((desc, rdflib.URIRef (CIM_NS + 'DetailedModelDescriptor.DetailedModelTypeDynamics'), mtyp))
+      g.add ((desc, rdflib.URIRef (CIM_NS + 'ParameterDescriptor.typicalValue'), rdflib.Literal(parms[i]['typicalValue'], datatype=CIM.String)))
+      g.add ((desc, rdflib.URIRef (CIM_NS + 'ParameterDescriptor.engineeringUnit'), rdflib.Literal(parms[i]['engineeringUnit'], datatype=CIM.String)))
+      g.add ((desc, rdflib.URIRef (CIM_NS + 'ParameterDescriptor.sequenceNumber'), rdflib.Literal(parms[i]['sequenceNumber'], datatype=CIM.Integer)))
 
   print ('{:d} thermal, {:d} hydro, {:d} nuclear, {:d} solar, {:d} wind generators'.format (nthermal, nhydro, nnuclear, nsolar, nwind))
   if nthermal+nhydro+nnuclear+nsolar+nwind < 1:
@@ -1026,7 +1093,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
  }
   """
   d = adhoc_sparql_dict (g, q, 'RegulatingCondEq_mRID')
-  list_dict_table (d)
+  #list_dict_table (d)
   for key, row in d['vals'].items():
     if row['GeneratingUnit_type'] in ['PhotoVoltaicUnit', 'PowerElectronicsWindUnit']:  # leave the GSU as Yy
       plant_type = 'IBRPlant'
@@ -1303,23 +1370,26 @@ def write_cim_rdf (case, g, CIM, EMT):
     CIM.ThermalGeneratingUnit,
     CIM.SynchronousMachineSimplified,
     CIM.SynchronousMachineTimeConstantReactance,
-    CIM.GovGAST,
-    CIM.GovHydro1,
-    CIM.GovSteam0,
-    CIM.GovSteamSGO,
-    CIM.ExcIEEEDC1A,
-    CIM.ExcSEXS,
-    CIM.ExcST1A,
-    CIM.PssIEEE1A,
-    CIM.Pss1A,
+    CIM.DetailedModelDynamics,
+    EMT.NERCDynamicModel,
+    CIM.ParameterDescriptor,
+#   CIM.GovGAST,
+#   CIM.GovHydro1,
+#   CIM.GovSteam0,
+#   CIM.GovSteamSGO,
+#   CIM.ExcIEEEDC1A,
+#   CIM.ExcSEXS,
+#   CIM.ExcST1A,
+#   CIM.PssIEEE1A,
+#   CIM.Pss1A,
     CIM.PowerElectronicsConnection,
     CIM.PhotoVoltaicUnit,
     CIM.PowerElectronicsWindUnit,
-    CIM.WeccREECA,
-    CIM.WeccREGCA,
-    CIM.WeccREPCA,
-    CIM.WeccWTGARA,
-    CIM.WeccWTGTA,
+#   CIM.WeccREECA,
+#   CIM.WeccREGCA,
+#   CIM.WeccREPCA,
+#   CIM.WeccWTGARA,
+#   CIM.WeccWTGTA,
     CIM.PowerTransformer,
     CIM.PowerTransformerEnd,
     CIM.RatioTapChanger,
@@ -1338,7 +1408,8 @@ def write_cim_rdf (case, g, CIM, EMT):
     CIM.ApparentPowerLimit,
     CIM.TextDiagramObject,
     CIM.DiagramObjectPoint,
-    CIM.CurveData
+    CIM.CurveData,
+    CIM.ParameterValue
   ]
   with open(case['name']+'.ttl', 'wb') as fp:
     serializer.serialize(fp)

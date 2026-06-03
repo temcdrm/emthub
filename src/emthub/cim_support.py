@@ -16,6 +16,7 @@ import math
 
 DYNAMICS_DEFAULTS = 'dynamics_defaults.json'
 DYNAMICS_MAPPING = 'dyr_mapping.json'
+DETAILED_MODELS = 'detailed_model_types.json'
 METAFILE = 'psseraw.json'
 
 def load_psse_dyrfile (case):
@@ -147,6 +148,18 @@ def match_dyr_generators (df, bPrint=False):
     if bPrint:
       print ('Dyr Entry:', key, model_type, a)
   return d
+
+def load_detailed_model_types():
+  """Load the library of detailed dynamic models with parameter descriptors.
+
+  The data comes from a JSON file included in the package named *detailed_model_types.json*.
+
+  Returns:
+    detailed_models(dict): dictionary of detailed models, keyed on model name.
+  """
+  s = importlib.resources.read_text ('emthub.queries', DETAILED_MODELS)
+  detailed_models = json.loads (s)
+  return detailed_models
 
 def load_dynamics_defaults():
   """Load example default settings for dynamics into a Python dictionary.

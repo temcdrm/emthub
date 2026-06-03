@@ -199,6 +199,20 @@
       "default": null
     }
   },
+  "DetailedModelDynamics": {
+    "DetailedModelTypeDynamics": {
+      "type": "DetailedModelTypeDynamics",
+      "default": null
+    },
+    "DynamicsFunctionBlock": {
+      "type": "DynamicsFunctionBlock",
+      "default": null
+    },
+    "Equipment": {
+      "type": "Equipment",
+      "default": null
+    }
+  },
   "DiagramObjectPoint": {
     "sequenceNumber": {
       "type": "Integer",
@@ -444,12 +458,30 @@
     }
   },
   "ParameterDescriptor": {
+    "engineeringUnit": {
+      "type": "String",
+      "default": null
+    },
     "sequenceNumber": {
       "type": "Integer",
       "default": null
     },
     "typicalValue": {
       "type": "String",
+      "default": null
+    }
+  },
+  "ParameterValue": {
+    "value": {
+      "type": "String",
+      "default": null
+    },
+    "DetailedModelDynamics": {
+      "type": "DetailedModelDynamics",
+      "default": null
+    },
+    "ParameterDescriptor": {
+      "type": "ParameterDescriptor",
       "default": null
     }
   },
@@ -817,6 +849,10 @@
     "ACPointOfCommonCoupling": {
       "type": "ACPointOfCommonCoupling",
       "default": null
+    },
+    "Equipments": {
+      "type": "Equipment",
+      "default": null
     }
   },
   "Curve": {
@@ -890,20 +926,6 @@
     },
     "DetailedModelTypeDynamics": {
       "type": "DetailedModelTypeDynamics",
-      "default": null
-    }
-  },
-  "DetailedModelDynamics": {
-    "DetailedModelTypeDynamics": {
-      "type": "DetailedModelTypeDynamics",
-      "default": null
-    },
-    "DynamicsFunctionBlock": {
-      "type": "DynamicsFunctionBlock",
-      "default": null
-    },
-    "Equipment": {
-      "type": "Equipment",
       "default": null
     }
   },

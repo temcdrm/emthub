@@ -102,7 +102,7 @@ if __name__ == '__main__':
       pda.append({'name': prm['dyr'],
                   'mRID': Get_mRID (prm['dyr'], old_mRIDs), 
                   'typicalValue': val,
-                  'engineeringUnits': units,
+                  'engineeringUnit': units,
                   'sequenceNumber': i+4})
 
   jp = open (outfile, 'w')

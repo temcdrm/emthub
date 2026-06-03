@@ -2014,6 +2014,1156 @@
     cim:SynchronousMachineTimeConstantReactance.xQuadSync "1.8245"^^cim:PU ;
     cim:SynchronousMachineTimeConstantReactance.xQuadTrans "0.5224"^^cim:PU .
 
+<07EC669F-857F-4186-99EB-41B5F9D3A94A> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:DetailedModelDynamics.Equipment <545E6435-603C-495F-889D-1EFF053CEA07> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "07EC669F-857F-4186-99EB-41B5F9D3A94A"^^cim:String ;
+    cim:IdentifiedObject.name "32_1_excitationSystem"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:DetailedModelDynamics.Equipment <1302CBF0-B6D1-4AD7-8456-BCD6FD34FC2F> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "164EB446-D12A-418D-963F-E6EAD0EFBE45"^^cim:String ;
+    cim:IdentifiedObject.name "30_1_renewableEnergyResource_REECA1"^^cim:String .
+
+<202940FA-86B3-4FD2-9CA5-9B2852F12970> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:DetailedModelDynamics.Equipment <B2B315B3-8D9A-44B1-BC3E-4AF653A3D63E> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "202940FA-86B3-4FD2-9CA5-9B2852F12970"^^cim:String ;
+    cim:IdentifiedObject.name "35_1_excitationSystem"^^cim:String .
+
+<240FAEFA-AEC2-44DC-B132-2CA794655C62> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:DetailedModelDynamics.Equipment <FE33FE4E-6941-4D8A-8D12-074B0BED9138> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "240FAEFA-AEC2-44DC-B132-2CA794655C62"^^cim:String ;
+    cim:IdentifiedObject.name "39_1_excitationSystem"^^cim:String .
+
+<408BE5BD-D8E6-4718-B59A-EB39DA3ACAE5> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:DetailedModelDynamics.Equipment <D7CD2D21-075B-48A6-9A17-786681F00841> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "408BE5BD-D8E6-4718-B59A-EB39DA3ACAE5"^^cim:String ;
+    cim:IdentifiedObject.name "33_1_excitationSystem"^^cim:String .
+
+<677FE6E6-F5F4-444F-A9C2-5FE6FE0574D6> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:DetailedModelDynamics.Equipment <923EB9BC-C647-4097-AF04-2CD1B02EBD6E> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "677FE6E6-F5F4-444F-A9C2-5FE6FE0574D6"^^cim:String ;
+    cim:IdentifiedObject.name "36_1_excitationSystem"^^cim:String .
+
+<78C71844-9A71-425F-9E4B-CF0F0FAF35BC> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <F7BBFF29-107F-46E5-AF37-71341F6B1587> ;
+    cim:DetailedModelDynamics.Equipment <923EB9BC-C647-4097-AF04-2CD1B02EBD6E> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "78C71844-9A71-425F-9E4B-CF0F0FAF35BC"^^cim:String ;
+    cim:IdentifiedObject.name "36_1_turbineGovernor"^^cim:String .
+
+<7F8C109E-125E-4DAF-A258-F887FF50F99B> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <F7BBFF29-107F-46E5-AF37-71341F6B1587> ;
+    cim:DetailedModelDynamics.Equipment <9D92B671-C3CD-43AF-87D9-3F2DD721CFC6> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "7F8C109E-125E-4DAF-A258-F887FF50F99B"^^cim:String ;
+    cim:IdentifiedObject.name "31_1_turbineGovernor"^^cim:String .
+
+<A7AB4903-0616-452D-BC30-30A2DE4F36BA> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <F7BBFF29-107F-46E5-AF37-71341F6B1587> ;
+    cim:DetailedModelDynamics.Equipment <B8739BD7-1875-4790-951B-C4D31227364A> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "A7AB4903-0616-452D-BC30-30A2DE4F36BA"^^cim:String ;
+    cim:IdentifiedObject.name "38_1_turbineGovernor"^^cim:String .
+
+<AB696C8A-F289-498A-A3E4-897AE6EEEDE4> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <F7BBFF29-107F-46E5-AF37-71341F6B1587> ;
+    cim:DetailedModelDynamics.Equipment <B2B315B3-8D9A-44B1-BC3E-4AF653A3D63E> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "AB696C8A-F289-498A-A3E4-897AE6EEEDE4"^^cim:String ;
+    cim:IdentifiedObject.name "35_1_turbineGovernor"^^cim:String .
+
+<AF82F0FB-7EA6-4E91-B4D0-D78809E8AF2F> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <F7BBFF29-107F-46E5-AF37-71341F6B1587> ;
+    cim:DetailedModelDynamics.Equipment <29376CE7-B3C4-45AA-AAA5-9EF4D97E5C27> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "AF82F0FB-7EA6-4E91-B4D0-D78809E8AF2F"^^cim:String ;
+    cim:IdentifiedObject.name "34_1_turbineGovernor"^^cim:String .
+
+<B8AF1730-BFD2-4D80-923D-8BB0B9AC9544> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> ;
+    cim:DetailedModelDynamics.Equipment <1302CBF0-B6D1-4AD7-8456-BCD6FD34FC2F> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "B8AF1730-BFD2-4D80-923D-8BB0B9AC9544"^^cim:String ;
+    cim:IdentifiedObject.name "30_1_renewableEnergyResource_REGCA1"^^cim:String .
+
+<B8CC40FA-C2DB-4D5F-A070-48243E8DA022> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <F7BBFF29-107F-46E5-AF37-71341F6B1587> ;
+    cim:DetailedModelDynamics.Equipment <EE10F878-5399-4F71-9C07-1D34B5408E8F> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "B8CC40FA-C2DB-4D5F-A070-48243E8DA022"^^cim:String ;
+    cim:IdentifiedObject.name "37_1_turbineGovernor"^^cim:String .
+
+<CADF7B23-E773-44A9-9DB9-BC8A2CC3FBBD> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <F7BBFF29-107F-46E5-AF37-71341F6B1587> ;
+    cim:DetailedModelDynamics.Equipment <FE33FE4E-6941-4D8A-8D12-074B0BED9138> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "CADF7B23-E773-44A9-9DB9-BC8A2CC3FBBD"^^cim:String ;
+    cim:IdentifiedObject.name "39_1_turbineGovernor"^^cim:String .
+
+<CAEC8697-9AAF-450A-B736-296D60BD45AF> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:DetailedModelDynamics.Equipment <29376CE7-B3C4-45AA-AAA5-9EF4D97E5C27> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "CAEC8697-9AAF-450A-B736-296D60BD45AF"^^cim:String ;
+    cim:IdentifiedObject.name "34_1_excitationSystem"^^cim:String .
+
+<CDA9A08D-4DBA-4589-9457-F70BA8D156A9> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:DetailedModelDynamics.Equipment <9D92B671-C3CD-43AF-87D9-3F2DD721CFC6> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "CDA9A08D-4DBA-4589-9457-F70BA8D156A9"^^cim:String ;
+    cim:IdentifiedObject.name "31_1_excitationSystem"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:DetailedModelDynamics.Equipment <1302CBF0-B6D1-4AD7-8456-BCD6FD34FC2F> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "DB7184AD-4842-4D8B-B3EE-0976CE297DB9"^^cim:String ;
+    cim:IdentifiedObject.name "30_1_renewableEnergyResource_REPCA1"^^cim:String .
+
+<DD8F29BD-AFB3-483C-8934-00B45349CFEE> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:DetailedModelDynamics.Equipment <EE10F878-5399-4F71-9C07-1D34B5408E8F> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "DD8F29BD-AFB3-483C-8934-00B45349CFEE"^^cim:String ;
+    cim:IdentifiedObject.name "37_1_excitationSystem"^^cim:String .
+
+<E1FD07DF-F71E-4865-8DB4-2FD3DC68967F> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:DetailedModelDynamics.Equipment <B8739BD7-1875-4790-951B-C4D31227364A> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "E1FD07DF-F71E-4865-8DB4-2FD3DC68967F"^^cim:String ;
+    cim:IdentifiedObject.name "38_1_excitationSystem"^^cim:String .
+
+<E8DCEB9F-BE8B-4124-B443-BBF8C2C368BD> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <F7BBFF29-107F-46E5-AF37-71341F6B1587> ;
+    cim:DetailedModelDynamics.Equipment <D7CD2D21-075B-48A6-9A17-786681F00841> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "E8DCEB9F-BE8B-4124-B443-BBF8C2C368BD"^^cim:String ;
+    cim:IdentifiedObject.name "33_1_turbineGovernor"^^cim:String .
+
+<EBD324AC-1566-45CD-9C99-C8AB8BDB7625> a cim:DetailedModelDynamics ;
+    cim:DetailedModelDynamics.DetailedModelTypeDynamics <F7BBFF29-107F-46E5-AF37-71341F6B1587> ;
+    cim:DetailedModelDynamics.Equipment <545E6435-603C-495F-889D-1EFF053CEA07> ;
+    cim:DynamicsFunctionBlock.enabled "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "EBD324AC-1566-45CD-9C99-C8AB8BDB7625"^^cim:String ;
+    cim:IdentifiedObject.name "32_1_turbineGovernor"^^cim:String .
+
+<1D697002-8710-4710-9717-6B074A9F66EF> a emt:NERCDynamicModel ;
+    emt:NERCDynamicModel.modelKind emt:NERCModelKind.excitationSystem ;
+    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.PSSE ;
+    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+    cim:IdentifiedObject.mRID "1D697002-8710-4710-9717-6B074A9F66EF"^^cim:String ;
+    cim:IdentifiedObject.name "IEEET1"^^cim:String .
+
+<32034FA3-7303-4F91-8110-A05EE463DF7F> a emt:NERCDynamicModel ;
+    emt:NERCDynamicModel.modelKind emt:NERCModelKind.renewableEnergyResource ;
+    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.WECC ;
+    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+    cim:IdentifiedObject.mRID "32034FA3-7303-4F91-8110-A05EE463DF7F"^^cim:String ;
+    cim:IdentifiedObject.name "REPCA1"^^cim:String .
+
+<737C9425-B23D-4692-BB9D-6C1801A341BE> a emt:NERCDynamicModel ;
+    emt:NERCDynamicModel.modelKind emt:NERCModelKind.renewableEnergyResource ;
+    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.WECC ;
+    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+    cim:IdentifiedObject.mRID "737C9425-B23D-4692-BB9D-6C1801A341BE"^^cim:String ;
+    cim:IdentifiedObject.name "REECA1"^^cim:String .
+
+<ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> a emt:NERCDynamicModel ;
+    emt:NERCDynamicModel.modelKind emt:NERCModelKind.renewableEnergyResource ;
+    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.WECC ;
+    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+    cim:IdentifiedObject.mRID "ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8"^^cim:String ;
+    cim:IdentifiedObject.name "REGCA1"^^cim:String .
+
+<F7BBFF29-107F-46E5-AF37-71341F6B1587> a emt:NERCDynamicModel ;
+    emt:NERCDynamicModel.modelKind emt:NERCModelKind.turbineGovernor ;
+    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.PSSE ;
+    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+    cim:IdentifiedObject.mRID "F7BBFF29-107F-46E5-AF37-71341F6B1587"^^cim:String ;
+    cim:IdentifiedObject.name "TGOV1"^^cim:String .
+
+<0047194F-6E80-4D0E-981F-E051363E7604> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "0047194F-6E80-4D0E-981F-E051363E7604"^^cim:String ;
+    cim:IdentifiedObject.name "RefFlag"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Boolean"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "9"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "true"^^cim:String .
+
+<03067421-28C4-4AF8-B5BC-F4F0ED7B6020> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "03067421-28C4-4AF8-B5BC-F4F0ED7B6020"^^cim:String ;
+    cim:IdentifiedObject.name "PFLAG"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Boolean"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "8"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "true"^^cim:String .
+
+<037C243D-5476-4FA4-903F-3DE832AB97CE> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "037C243D-5476-4FA4-903F-3DE832AB97CE"^^cim:String ;
+    cim:IdentifiedObject.name "Tiq"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "32"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.015"^^cim:String .
+
+<06D9C5F6-2AE2-4B19-9CF3-51F7524E04E5> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:IdentifiedObject.mRID "06D9C5F6-2AE2-4B19-9CF3-51F7524E04E5"^^cim:String ;
+    cim:IdentifiedObject.name "KA"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "5"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "46.0"^^cim:String .
+
+<0C287014-57C4-4414-BF79-E5E8BCFA3008> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "0C287014-57C4-4414-BF79-E5E8BCFA3008"^^cim:String ;
+    cim:IdentifiedObject.name "Fflag"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Boolean"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "10"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "true"^^cim:String .
+
+<0DC3D3E8-ED7F-4C95-8F43-9FA11A7551FF> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "0DC3D3E8-ED7F-4C95-8F43-9FA11A7551FF"^^cim:String ;
+    cim:IdentifiedObject.name "Ddn"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "36"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "20.0"^^cim:String .
+
+<10947A42-96E4-46D4-9524-3734F3FC497B> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "10947A42-96E4-46D4-9524-3734F3FC497B"^^cim:String ;
+    cim:IdentifiedObject.name "Ip3"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "52"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<1395498F-FE58-4DEE-B0AD-B6C1819E4990> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "1395498F-FE58-4DEE-B0AD-B6C1819E4990"^^cim:String ;
+    cim:IdentifiedObject.name "Imax"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "37"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.2"^^cim:String .
+
+<143CC459-8716-4B19-A68F-251F8FE10BF9> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "143CC459-8716-4B19-A68F-251F8FE10BF9"^^cim:String ;
+    cim:IdentifiedObject.name "Vq1"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "39"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "-1.0"^^cim:String .
+
+<182F1C59-EB7B-4684-95CD-D50341E402BE> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <F7BBFF29-107F-46E5-AF37-71341F6B1587> ;
+    cim:IdentifiedObject.mRID "182F1C59-EB7B-4684-95CD-D50341E402BE"^^cim:String ;
+    cim:IdentifiedObject.name "T1"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "5"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.5"^^cim:String .
+
+<19F78225-C18F-4719-8D24-EED695C07960> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "19F78225-C18F-4719-8D24-EED695C07960"^^cim:String ;
+    cim:IdentifiedObject.name "PMAX"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "35"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.0"^^cim:String .
+
+<1B13F8F7-FAC3-4CF1-A61F-7B0BCB3CFE34> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "1B13F8F7-FAC3-4CF1-A61F-7B0BCB3CFE34"^^cim:String ;
+    cim:IdentifiedObject.name "VCFlag"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Boolean"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "8"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "true"^^cim:String .
+
+<1BD3442D-C02B-4F7C-B622-4E30A1E2CEB4> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> ;
+    cim:IdentifiedObject.mRID "1BD3442D-C02B-4F7C-B622-4E30A1E2CEB4"^^cim:String ;
+    cim:IdentifiedObject.name "Rrpwr"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "6"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "10.0"^^cim:String .
+
+<1C552845-EFF1-41FE-8675-13942D1998EF> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> ;
+    cim:IdentifiedObject.mRID "1C552845-EFF1-41FE-8675-13942D1998EF"^^cim:String ;
+    cim:IdentifiedObject.name "Lvpl1"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Float"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "9"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.2"^^cim:String .
+
+<1CA731D1-E8F8-42DB-8E58-DA4B9B4DF9A9> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "1CA731D1-E8F8-42DB-8E58-DA4B9B4DF9A9"^^cim:String ;
+    cim:IdentifiedObject.name "BUSR"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit ""^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "4"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue ""^^cim:String .
+
+<237103F2-35B0-4DB3-AAF3-1906C3C5AC8A> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> ;
+    cim:IdentifiedObject.mRID "237103F2-35B0-4DB3-AAF3-1906C3C5AC8A"^^cim:String ;
+    cim:IdentifiedObject.name "Iqrmin"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "17"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "-999.0"^^cim:String .
+
+<2851E921-7603-4FEF-905B-DA437652F5B6> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> ;
+    cim:IdentifiedObject.mRID "2851E921-7603-4FEF-905B-DA437652F5B6"^^cim:String ;
+    cim:IdentifiedObject.name "Lvpnt1"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "11"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.8"^^cim:String .
+
+<2A95B34F-025C-4ACD-AABD-C51E487ED44A> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "2A95B34F-025C-4ACD-AABD-C51E487ED44A"^^cim:String ;
+    cim:IdentifiedObject.name "VMAX"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "25"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.07"^^cim:String .
+
+<2AAD6538-D75E-4AFF-BE8A-DAF56935C8CE> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "2AAD6538-D75E-4AFF-BE8A-DAF56935C8CE"^^cim:String ;
+    cim:IdentifiedObject.name "Ip4"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "54"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<2BCC9F74-3065-4293-B7D9-6656FD97FD26> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "2BCC9F74-3065-4293-B7D9-6656FD97FD26"^^cim:String ;
+    cim:IdentifiedObject.name "QMax"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "23"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.7"^^cim:String .
+
+<2F057E4B-2294-47CF-B756-F048E7519ECD> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "2F057E4B-2294-47CF-B756-F048E7519ECD"^^cim:String ;
+    cim:IdentifiedObject.name "Tg"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "35"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.08"^^cim:String .
+
+<2F0F6B77-D760-4F6C-8D1B-392A3585FD42> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "2F0F6B77-D760-4F6C-8D1B-392A3585FD42"^^cim:String ;
+    cim:IdentifiedObject.name "Vdip"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "10"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.87"^^cim:String .
+
+<31832411-11CC-4FDE-8D39-3F03A8411A3F> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "31832411-11CC-4FDE-8D39-3F03A8411A3F"^^cim:String ;
+    cim:IdentifiedObject.name "Vp2"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "49"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "2.0"^^cim:String .
+
+<319A0D2C-2719-4CB6-94AD-04386C646CDD> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "319A0D2C-2719-4CB6-94AD-04386C646CDD"^^cim:String ;
+    cim:IdentifiedObject.name "Ip2"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "50"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.0"^^cim:String .
+
+<346F4B13-FD65-4E57-868F-AFC2DC3966F5> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "346F4B13-FD65-4E57-868F-AFC2DC3966F5"^^cim:String ;
+    cim:IdentifiedObject.name "Kvi"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "30"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.0"^^cim:String .
+
+<352229D4-CFB4-4F23-B8C2-D36A5C7D401D> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "352229D4-CFB4-4F23-B8C2-D36A5C7D401D"^^cim:String ;
+    cim:IdentifiedObject.name "Ip1"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "48"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.0"^^cim:String .
+
+<370643E2-4DA4-42FB-A876-5FCBE065B5B7> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "370643E2-4DA4-42FB-A876-5FCBE065B5B7"^^cim:String ;
+    cim:IdentifiedObject.name "dPmin"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "34"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "-999.0"^^cim:String .
+
+<376022E5-AFA5-40C1-96D9-E4F70F848656> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "376022E5-AFA5-40C1-96D9-E4F70F848656"^^cim:String ;
+    cim:IdentifiedObject.name "dbd2"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "14"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.05"^^cim:String .
+
+<37B6A0A0-E321-4310-8628-2DE1A38049CB> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> ;
+    cim:IdentifiedObject.mRID "37B6A0A0-E321-4310-8628-2DE1A38049CB"^^cim:String ;
+    cim:IdentifiedObject.name "Iolim"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "13"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "-1.2"^^cim:String .
+
+<3A93999C-81B8-4B11-874B-E716310D1E61> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "3A93999C-81B8-4B11-874B-E716310D1E61"^^cim:String ;
+    cim:IdentifiedObject.name "BUS1"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit ""^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "5"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue ""^^cim:String .
+
+<3CF71436-E804-4378-ABB7-B3F22497BADC> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "3CF71436-E804-4378-ABB7-B3F22497BADC"^^cim:String ;
+    cim:IdentifiedObject.name "Iq4"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "46"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<4051A34B-2CCC-40A8-A6EA-3330982C0446> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "4051A34B-2CCC-40A8-A6EA-3330982C0446"^^cim:String ;
+    cim:IdentifiedObject.name "Xc"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "18"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<419CEBED-8D72-4BAF-9BB1-BBD6404BE950> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <F7BBFF29-107F-46E5-AF37-71341F6B1587> ;
+    cim:IdentifiedObject.mRID "419CEBED-8D72-4BAF-9BB1-BBD6404BE950"^^cim:String ;
+    cim:IdentifiedObject.name "VMAX"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "6"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.0"^^cim:String .
+
+<42881242-0903-44F8-A565-A9273B186223> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> ;
+    cim:IdentifiedObject.mRID "42881242-0903-44F8-A565-A9273B186223"^^cim:String ;
+    cim:IdentifiedObject.name "Lvpnt0"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "12"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.4"^^cim:String .
+
+<49E007D9-1474-40AC-A5F9-C091BCD70704> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "49E007D9-1474-40AC-A5F9-C091BCD70704"^^cim:String ;
+    cim:IdentifiedObject.name "Thld2"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "21"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<4AF992A7-010D-42CF-890B-DA4A92212AB1> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "4AF992A7-010D-42CF-890B-DA4A92212AB1"^^cim:String ;
+    cim:IdentifiedObject.name "Vp3"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "51"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<4BEAFB82-FFB3-4551-AA12-AE8D4BC09610> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <F7BBFF29-107F-46E5-AF37-71341F6B1587> ;
+    cim:IdentifiedObject.mRID "4BEAFB82-FFB3-4551-AA12-AE8D4BC09610"^^cim:String ;
+    cim:IdentifiedObject.name "T3"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "9"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "10.0"^^cim:String .
+
+<50A2FF9E-C212-4431-AC6E-A9A6B9BF1A34> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <F7BBFF29-107F-46E5-AF37-71341F6B1587> ;
+    cim:IdentifiedObject.mRID "50A2FF9E-C212-4431-AC6E-A9A6B9BF1A34"^^cim:String ;
+    cim:IdentifiedObject.name "VMIN"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "7"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<51034D10-D82D-4E1C-88B8-3F9E00D6534E> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "51034D10-D82D-4E1C-88B8-3F9E00D6534E"^^cim:String ;
+    cim:IdentifiedObject.name "Kp"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "12"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "10.0"^^cim:String .
+
+<585D0407-70FA-4EAE-B1B2-C1A442650402> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "585D0407-70FA-4EAE-B1B2-C1A442650402"^^cim:String ;
+    cim:IdentifiedObject.name "Tft"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "14"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<5A737BB4-EEA3-486E-8CC8-539E68A8535C> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> ;
+    cim:IdentifiedObject.mRID "5A737BB4-EEA3-486E-8CC8-539E68A8535C"^^cim:String ;
+    cim:IdentifiedObject.name "Brkpt"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "7"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.9"^^cim:String .
+
+<5BFD03A5-DC6C-4EF3-B44D-65F636D23AB0> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "5BFD03A5-DC6C-4EF3-B44D-65F636D23AB0"^^cim:String ;
+    cim:IdentifiedObject.name "Ki"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "13"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "5.0"^^cim:String .
+
+<5CBA6640-2682-4FD7-BF12-1A8B906497D8> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "5CBA6640-2682-4FD7-BF12-1A8B906497D8"^^cim:String ;
+    cim:IdentifiedObject.name "Thld"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "20"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<5E3D7FC9-9857-4CC1-9AAC-CE4DC662651F> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "5E3D7FC9-9857-4CC1-9AAC-CE4DC662651F"^^cim:String ;
+    cim:IdentifiedObject.name "Pmin"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "34"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<62F16062-1BF3-49FD-B2F4-7CE208A297FB> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "62F16062-1BF3-49FD-B2F4-7CE208A297FB"^^cim:String ;
+    cim:IdentifiedObject.name "Kvp"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "29"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "5.0"^^cim:String .
+
+<698732A1-D3FF-4CEA-8FFB-E36C115915F3> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "698732A1-D3FF-4CEA-8FFB-E36C115915F3"^^cim:String ;
+    cim:IdentifiedObject.name "Tfv"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "15"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.08"^^cim:String .
+
+<6994AC3F-5173-454C-8778-D96D0444276B> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "6994AC3F-5173-454C-8778-D96D0444276B"^^cim:String ;
+    cim:IdentifiedObject.name "Iq1"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "40"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.0"^^cim:String .
+
+<6D2B92F8-30CD-4D7E-9169-C9A28224F03B> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "6D2B92F8-30CD-4D7E-9169-C9A28224F03B"^^cim:String ;
+    cim:IdentifiedObject.name "Trv"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "12"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.03"^^cim:String .
+
+<6D737FCB-269D-4868-9E98-D1AA7F43C3B3> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:IdentifiedObject.mRID "6D737FCB-269D-4868-9E98-D1AA7F43C3B3"^^cim:String ;
+    cim:IdentifiedObject.name "TE"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "10"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.46"^^cim:String .
+
+<6E3516C8-8BA3-4F0C-A793-7893E0A054D0> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:IdentifiedObject.mRID "6E3516C8-8BA3-4F0C-A793-7893E0A054D0"^^cim:String ;
+    cim:IdentifiedObject.name "TA"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "6"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.06"^^cim:String .
+
+<7058A063-4FEC-4A0B-A459-19BC3F4C4445> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> ;
+    cim:IdentifiedObject.mRID "7058A063-4FEC-4A0B-A459-19BC3F4C4445"^^cim:String ;
+    cim:IdentifiedObject.name "Accel"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit ""^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "18"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue ""^^cim:String .
+
+<712D3456-5E20-4D6C-9C73-67AC138CA33D> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "712D3456-5E20-4D6C-9C73-67AC138CA33D"^^cim:String ;
+    cim:IdentifiedObject.name "Vq4"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "45"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<71DA756B-08B1-487E-9487-3F009B4F2382> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "71DA756B-08B1-487E-9487-3F009B4F2382"^^cim:String ;
+    cim:IdentifiedObject.name "fdbd2"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "30"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.01"^^cim:String .
+
+<76F0C938-726A-402A-9C84-3D1AA4E988A9> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "76F0C938-726A-402A-9C84-3D1AA4E988A9"^^cim:String ;
+    cim:IdentifiedObject.name "Qmax"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "24"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.7"^^cim:String .
+
+<786A2C31-C177-448E-86CA-7E56F04ADB41> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "786A2C31-C177-448E-86CA-7E56F04ADB41"^^cim:String ;
+    cim:IdentifiedObject.name "QFLAG"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Boolean"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "7"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "true"^^cim:String .
+
+<79C13399-8782-4240-87E0-63A423C6D699> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "79C13399-8782-4240-87E0-63A423C6D699"^^cim:String ;
+    cim:IdentifiedObject.name "Rc"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "17"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<7E2A4B97-8ABF-43CF-9D7D-81334EA8DB7F> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "7E2A4B97-8ABF-43CF-9D7D-81334EA8DB7F"^^cim:String ;
+    cim:IdentifiedObject.name "Iql1"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "17"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "-1.05"^^cim:String .
+
+<7E7F6414-7AEF-4C23-9C43-82F28D949F3B> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:IdentifiedObject.mRID "7E7F6414-7AEF-4C23-9C43-82F28D949F3B"^^cim:String ;
+    cim:IdentifiedObject.name "Switch"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit ""^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "13"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue ""^^cim:String .
+
+<81A62F12-5154-48FB-8E58-C092D556B9CD> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "81A62F12-5154-48FB-8E58-C092D556B9CD"^^cim:String ;
+    cim:IdentifiedObject.name "dbd1"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "13"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "-0.05"^^cim:String .
+
+<835A024D-3610-497B-9FFD-657345CD53B5> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "835A024D-3610-497B-9FFD-657345CD53B5"^^cim:String ;
+    cim:IdentifiedObject.name "femin"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "32"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "-999.0"^^cim:String .
+
+<83AB5D99-8196-4243-A3AA-B07B201C4326> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> ;
+    cim:IdentifiedObject.mRID "83AB5D99-8196-4243-A3AA-B07B201C4326"^^cim:String ;
+    cim:IdentifiedObject.name "Lvplsw"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Boolean"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "4"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "true"^^cim:String .
+
+<84E383C7-8C63-4DC5-93E5-15545BFE4D0D> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "84E383C7-8C63-4DC5-93E5-15545BFE4D0D"^^cim:String ;
+    cim:IdentifiedObject.name "femax"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "31"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "999.0"^^cim:String .
+
+<89900F37-BDD3-4ECF-83BE-A4BEC189ABCC> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "89900F37-BDD3-4ECF-83BE-A4BEC189ABCC"^^cim:String ;
+    cim:IdentifiedObject.name "fdbd1"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "29"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "-0.01"^^cim:String .
+
+<8B53DEF3-7E2D-4D14-A84D-9EEB59CDEC35> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "8B53DEF3-7E2D-4D14-A84D-9EEB59CDEC35"^^cim:String ;
+    cim:IdentifiedObject.name "Vfrz"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "16"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.35"^^cim:String .
+
+<8BC2AA90-AF1A-40AC-9794-98EEDDA69B8C> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "8BC2AA90-AF1A-40AC-9794-98EEDDA69B8C"^^cim:String ;
+    cim:IdentifiedObject.name "VMIN"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "26"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.9"^^cim:String .
+
+<90392B45-2438-4859-BA0C-274940B62CE4> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:IdentifiedObject.mRID "90392B45-2438-4859-BA0C-274940B62CE4"^^cim:String ;
+    cim:IdentifiedObject.name "TR"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit ""^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "4"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue ""^^cim:String .
+
+<90FEE5A4-3651-4C27-81B3-A70359D3A3E7> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "90FEE5A4-3651-4C27-81B3-A70359D3A3E7"^^cim:String ;
+    cim:IdentifiedObject.name "emax"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "20"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "999.0"^^cim:String .
+
+<92C925AE-4C42-421A-9ADE-0BEB3E6B3D85> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "92C925AE-4C42-421A-9ADE-0BEB3E6B3D85"^^cim:String ;
+    cim:IdentifiedObject.name "Tp"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "22"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.05"^^cim:String .
+
+<9335B9A4-747B-437A-99F4-204967E17E6F> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "9335B9A4-747B-437A-99F4-204967E17E6F"^^cim:String ;
+    cim:IdentifiedObject.name "Kqv"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "15"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "5.0"^^cim:String .
+
+<93487D57-F243-425B-ACA0-D46A78117183> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> ;
+    cim:IdentifiedObject.mRID "93487D57-F243-425B-ACA0-D46A78117183"^^cim:String ;
+    cim:IdentifiedObject.name "Iqrmax"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "16"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "999.0"^^cim:String .
+
+<9660C61E-12CD-44B2-9380-BD10E3BB0E23> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "9660C61E-12CD-44B2-9380-BD10E3BB0E23"^^cim:String ;
+    cim:IdentifiedObject.name "dbd1"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "22"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<979A2FDB-3C8C-41C6-9CFC-06997A727A00> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "979A2FDB-3C8C-41C6-9CFC-06997A727A00"^^cim:String ;
+    cim:IdentifiedObject.name "Dup"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "37"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<985F6294-B8E5-48B4-A64E-AA63C6AC57AF> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "985F6294-B8E5-48B4-A64E-AA63C6AC57AF"^^cim:String ;
+    cim:IdentifiedObject.name "emin"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "21"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "-999.0"^^cim:String .
+
+<988B4A18-B5A6-47AE-91D3-68D5DD6290E8> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:IdentifiedObject.mRID "988B4A18-B5A6-47AE-91D3-68D5DD6290E8"^^cim:String ;
+    cim:IdentifiedObject.name "KF"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "11"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.1"^^cim:String .
+
+<9A40656D-D77E-46B0-B706-7797A5F290D5> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:IdentifiedObject.mRID "9A40656D-D77E-46B0-B706-7797A5F290D5"^^cim:String ;
+    cim:IdentifiedObject.name "SE1"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Float"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "15"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.33"^^cim:String .
+
+<9C1B56C0-9371-45ED-8679-AA0C5E8E5CEC> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <F7BBFF29-107F-46E5-AF37-71341F6B1587> ;
+    cim:IdentifiedObject.mRID "9C1B56C0-9371-45ED-8679-AA0C5E8E5CEC"^^cim:String ;
+    cim:IdentifiedObject.name "Dt"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "10"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<9C3747D1-F1CA-419E-9564-77912CF01ACE> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "9C3747D1-F1CA-419E-9564-77912CF01ACE"^^cim:String ;
+    cim:IdentifiedObject.name "Iqfrz"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "19"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.05"^^cim:String .
+
+<9FEFADB8-FCA6-467E-A0E0-6A0B8070418C> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "9FEFADB8-FCA6-467E-A0E0-6A0B8070418C"^^cim:String ;
+    cim:IdentifiedObject.name "dPmax"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "33"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "999.0"^^cim:String .
+
+<A1B04507-70C4-47FC-8BDC-7BA27ABC1004> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> ;
+    cim:IdentifiedObject.mRID "A1B04507-70C4-47FC-8BDC-7BA27ABC1004"^^cim:String ;
+    cim:IdentifiedObject.name "Tfltr"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "14"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.015"^^cim:String .
+
+<A56F1152-553D-4EBA-B7C0-BA204365C510> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <F7BBFF29-107F-46E5-AF37-71341F6B1587> ;
+    cim:IdentifiedObject.mRID "A56F1152-553D-4EBA-B7C0-BA204365C510"^^cim:String ;
+    cim:IdentifiedObject.name "T2"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "8"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "3.0"^^cim:String .
+
+<A6CDABC0-69EB-4141-B5F8-360AD976FCF5> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "A6CDABC0-69EB-4141-B5F8-360AD976FCF5"^^cim:String ;
+    cim:IdentifiedObject.name "Kqi"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "28"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.1"^^cim:String .
+
+<A8914BCC-F7DD-4D17-9E31-653DF9574126> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> ;
+    cim:IdentifiedObject.mRID "A8914BCC-F7DD-4D17-9E31-653DF9574126"^^cim:String ;
+    cim:IdentifiedObject.name "Zerox"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "8"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.4"^^cim:String .
+
+<A8A65F06-88C2-4203-ACD8-41BDD15A966F> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:IdentifiedObject.mRID "A8A65F06-88C2-4203-ACD8-41BDD15A966F"^^cim:String ;
+    cim:IdentifiedObject.name "E2"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "16"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "2.3"^^cim:String .
+
+<A8A79AB1-06D8-4EB5-8789-804DB75C179C> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "A8A79AB1-06D8-4EB5-8789-804DB75C179C"^^cim:String ;
+    cim:IdentifiedObject.name "Vup"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "11"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.15"^^cim:String .
+
+<ACEA907F-0EF7-477C-81D9-7CC34BC16131> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "ACEA907F-0EF7-477C-81D9-7CC34BC16131"^^cim:String ;
+    cim:IdentifiedObject.name "VFLAG"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Boolean"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "6"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "true"^^cim:String .
+
+<AF0BF4AF-764A-4628-AAB8-19225B40A158> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "AF0BF4AF-764A-4628-AAB8-19225B40A158"^^cim:String ;
+    cim:IdentifiedObject.name "PFFLAG"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Boolean"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "5"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "false"^^cim:String .
+
+<B254F02C-781F-4547-8E08-25604E82D04D> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "B254F02C-781F-4547-8E08-25604E82D04D"^^cim:String ;
+    cim:IdentifiedObject.name "Vq3"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "43"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<B4556CE5-5583-424D-B0F1-1F82C056803F> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "B4556CE5-5583-424D-B0F1-1F82C056803F"^^cim:String ;
+    cim:IdentifiedObject.name "Vp1"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "47"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "-1.0"^^cim:String .
+
+<B60E708D-BFAF-4BCC-BFB6-B93E722E2616> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "B60E708D-BFAF-4BCC-BFB6-B93E722E2616"^^cim:String ;
+    cim:IdentifiedObject.name "QMin"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "24"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "-0.7"^^cim:String .
+
+<B9B701FD-166D-41BB-9647-4547B48564F4> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "B9B701FD-166D-41BB-9647-4547B48564F4"^^cim:String ;
+    cim:IdentifiedObject.name "Iq3"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "44"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<BB2D4793-35E9-4C00-8EEA-A6A6B11B30D9> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "BB2D4793-35E9-4C00-8EEA-A6A6B11B30D9"^^cim:String ;
+    cim:IdentifiedObject.name "dbd2"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit ""^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "23"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue ""^^cim:String .
+
+<BBB70981-1913-45EA-A8C0-4E7B935CDF21> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "BBB70981-1913-45EA-A8C0-4E7B935CDF21"^^cim:String ;
+    cim:IdentifiedObject.name "Vref0"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "18"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.0"^^cim:String .
+
+<BDF4DE52-2DBE-46FD-853E-1773C2327B6B> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "BDF4DE52-2DBE-46FD-853E-1773C2327B6B"^^cim:String ;
+    cim:IdentifiedObject.name "PQFLAG"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Boolean"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "9"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "false"^^cim:String .
+
+<BF07A12F-1BA1-4D3D-A577-52F398259E19> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "BF07A12F-1BA1-4D3D-A577-52F398259E19"^^cim:String ;
+    cim:IdentifiedObject.name "Tpord"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "38"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.03"^^cim:String .
+
+<BF4C1769-0357-49BE-8627-7B9CD0D90F60> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:IdentifiedObject.mRID "BF4C1769-0357-49BE-8627-7B9CD0D90F60"^^cim:String ;
+    cim:IdentifiedObject.name "KE"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "9"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<C1CBD55E-8049-4DBB-8AC8-6556AFAD243F> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "C1CBD55E-8049-4DBB-8AC8-6556AFAD243F"^^cim:String ;
+    cim:IdentifiedObject.name "Vbias"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "31"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<C36F0003-2385-43EA-9F33-5B0E048020FA> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "C36F0003-2385-43EA-9F33-5B0E048020FA"^^cim:String ;
+    cim:IdentifiedObject.name "Kig"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "27"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.05"^^cim:String .
+
+<C388E5B3-C823-4BD9-ACC4-C14C2A73EE41> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "C388E5B3-C823-4BD9-ACC4-C14C2A73EE41"^^cim:String ;
+    cim:IdentifiedObject.name "CKTID"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit ""^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "7"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue ""^^cim:String .
+
+<C63ADBF4-919D-4787-BD71-34B568D41C8C> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "C63ADBF4-919D-4787-BD71-34B568D41C8C"^^cim:String ;
+    cim:IdentifiedObject.name "Iqh1"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "16"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.05"^^cim:String .
+
+<C6AC5C89-7A2F-4437-BAA9-BC8D0FEA4730> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "C6AC5C89-7A2F-4437-BAA9-BC8D0FEA4730"^^cim:String ;
+    cim:IdentifiedObject.name "PMIN"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "36"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<C9479F9A-722D-416D-8D8E-71FAD92390A9> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:IdentifiedObject.mRID "C9479F9A-722D-416D-8D8E-71FAD92390A9"^^cim:String ;
+    cim:IdentifiedObject.name "E1"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "14"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "3.1"^^cim:String .
+
+<CA6613C5-B2D6-4792-87DB-D070DBB135D8> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> ;
+    cim:IdentifiedObject.mRID "CA6613C5-B2D6-4792-87DB-D070DBB135D8"^^cim:String ;
+    cim:IdentifiedObject.name "Khv"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Float"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "15"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.7"^^cim:String .
+
+<CAF12779-6345-4830-95B0-ABD44E712D49> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "CAF12779-6345-4830-95B0-ABD44E712D49"^^cim:String ;
+    cim:IdentifiedObject.name "Kc"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "19"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.02"^^cim:String .
+
+<D0627E06-0E87-489A-97AF-07619C7B9A24> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "D0627E06-0E87-489A-97AF-07619C7B9A24"^^cim:String ;
+    cim:IdentifiedObject.name "Tfltr"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "11"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.02"^^cim:String .
+
+<D241E5C1-F4DB-4654-B9A3-3EB7D40667EE> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "D241E5C1-F4DB-4654-B9A3-3EB7D40667EE"^^cim:String ;
+    cim:IdentifiedObject.name "Iq2"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "42"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.0"^^cim:String .
+
+<D488032D-90AB-49BE-9FEA-62096C4B2983> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "D488032D-90AB-49BE-9FEA-62096C4B2983"^^cim:String ;
+    cim:IdentifiedObject.name "BUSR"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit ""^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "4"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue ""^^cim:String .
+
+<D5947D7C-F6C7-4445-80FB-0AC5AE647CA0> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "D5947D7C-F6C7-4445-80FB-0AC5AE647CA0"^^cim:String ;
+    cim:IdentifiedObject.name "Tp"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "28"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.03"^^cim:String .
+
+<D6980FD5-7C98-4CCA-877A-62933645447B> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> ;
+    cim:IdentifiedObject.mRID "D6980FD5-7C98-4CCA-877A-62933645447B"^^cim:String ;
+    cim:IdentifiedObject.name "Tg"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "5"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.02"^^cim:String .
+
+<DBB46C29-E4C4-4CD2-BB5C-0D2C838C89BA> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:IdentifiedObject.mRID "DBB46C29-E4C4-4CD2-BB5C-0D2C838C89BA"^^cim:String ;
+    cim:IdentifiedObject.name "VRMIN"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "8"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "-0.9"^^cim:String .
+
+<DD4D6806-5715-4CC6-9BA4-533808562B15> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> ;
+    cim:IdentifiedObject.mRID "DD4D6806-5715-4CC6-9BA4-533808562B15"^^cim:String ;
+    cim:IdentifiedObject.name "Volim"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "10"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.2"^^cim:String .
+
+<DDD70F88-374A-4FD5-B53F-1DE139C5748E> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "DDD70F88-374A-4FD5-B53F-1DE139C5748E"^^cim:String ;
+    cim:IdentifiedObject.name "BUS2"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit ""^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "6"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue ""^^cim:String .
+
+<E23B8641-EF32-4D48-A58C-CEC86DB07934> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "E23B8641-EF32-4D48-A58C-CEC86DB07934"^^cim:String ;
+    cim:IdentifiedObject.name "Vq2"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "41"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "2.0"^^cim:String .
+
+<E461B486-F24C-4BDD-93A7-CF07A9B971E3> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:IdentifiedObject.mRID "E461B486-F24C-4BDD-93A7-CF07A9B971E3"^^cim:String ;
+    cim:IdentifiedObject.name "SE2"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Float"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "17"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.1"^^cim:String .
+
+<EAB5AEC3-DE88-4016-B97F-66D9CDA67611> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:IdentifiedObject.mRID "EAB5AEC3-DE88-4016-B97F-66D9CDA67611"^^cim:String ;
+    cim:IdentifiedObject.name "TF"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "Seconds"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "12"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.0"^^cim:String .
+
+<ED37BC37-3EA1-4DA1-819A-5A4A426DD864> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "ED37BC37-3EA1-4DA1-819A-5A4A426DD864"^^cim:String ;
+    cim:IdentifiedObject.name "Kqp"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "27"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.1"^^cim:String .
+
+<EDD06008-09DD-4068-891A-005F0DBB1158> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "EDD06008-09DD-4068-891A-005F0DBB1158"^^cim:String ;
+    cim:IdentifiedObject.name "Qmin"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "25"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "-0.7"^^cim:String .
+
+<EF182868-4670-4271-9684-231C1ACDF593> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <F7BBFF29-107F-46E5-AF37-71341F6B1587> ;
+    cim:IdentifiedObject.mRID "EF182868-4670-4271-9684-231C1ACDF593"^^cim:String ;
+    cim:IdentifiedObject.name "R"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "4"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.05"^^cim:String .
+
+<F89005C6-7659-428B-B288-59CCC4E77B6E> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "F89005C6-7659-428B-B288-59CCC4E77B6E"^^cim:String ;
+    cim:IdentifiedObject.name "Kpg"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "26"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.1"^^cim:String .
+
+<FB0B16CC-534F-41FF-87A6-2B76CC033CAF> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <737C9425-B23D-4692-BB9D-6C1801A341BE> ;
+    cim:IdentifiedObject.mRID "FB0B16CC-534F-41FF-87A6-2B76CC033CAF"^^cim:String ;
+    cim:IdentifiedObject.name "Vp4"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "53"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "0.0"^^cim:String .
+
+<FBF9F943-1E02-41A1-9F1D-4B81E9FA6B54> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <32034FA3-7303-4F91-8110-A05EE463DF7F> ;
+    cim:IdentifiedObject.mRID "FBF9F943-1E02-41A1-9F1D-4B81E9FA6B54"^^cim:String ;
+    cim:IdentifiedObject.name "Pmax"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "33"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.0"^^cim:String .
+
+<FD880F5C-AD4A-47AB-A26B-5124AA6902A3> a cim:ParameterDescriptor ;
+    cim:DetailedModelDescriptor.DetailedModelTypeDynamics <1D697002-8710-4710-9717-6B074A9F66EF> ;
+    cim:IdentifiedObject.mRID "FD880F5C-AD4A-47AB-A26B-5124AA6902A3"^^cim:String ;
+    cim:IdentifiedObject.name "VRMAX"^^cim:String ;
+    cim:ParameterDescriptor.engineeringUnit "PU"^^cim:String ;
+    cim:ParameterDescriptor.sequenceNumber "7"^^cim:Integer ;
+    cim:ParameterDescriptor.typicalValue "1.0"^^cim:String .
+
 <1302CBF0-B6D1-4AD7-8456-BCD6FD34FC2F> a cim:PowerElectronicsConnection ;
     cim:ConductingEquipment.BaseVoltage <EA403C8A-7422-4EBC-A5D6-67B78515E7A4> ;
     cim:Equipment.EquipmentContainer <6477751A-0472-4FD6-B3C3-3AD4945CBE56> ;
@@ -4443,4 +5593,1160 @@
     cim:CurveData.Curve <E44145A3-8AF5-4822-BAEE-E187CBE8FD78> ;
     cim:CurveData.xvalue "113.01661215971737"^^cim:Float ;
     cim:CurveData.y1value "849.3983327643608"^^cim:Float .
+
+<07EC669F-857F-4186-99EB-41B5F9D3A94A_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6D737FCB-269D-4868-9E98-D1AA7F43C3B3> ;
+    cim:ParameterValue.value "0.5"^^cim:String .
+
+<07EC669F-857F-4186-99EB-41B5F9D3A94A_seq11> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <988B4A18-B5A6-47AE-91D3-68D5DD6290E8> ;
+    cim:ParameterValue.value "0.08"^^cim:String .
+
+<07EC669F-857F-4186-99EB-41B5F9D3A94A_seq12> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EAB5AEC3-DE88-4016-B97F-66D9CDA67611> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<07EC669F-857F-4186-99EB-41B5F9D3A94A_seq13> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <7E7F6414-7AEF-4C23-9C43-82F28D949F3B> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<07EC669F-857F-4186-99EB-41B5F9D3A94A_seq14> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <C9479F9A-722D-416D-8D8E-71FAD92390A9> ;
+    cim:ParameterValue.value "2.3422860712054963"^^cim:String .
+
+<07EC669F-857F-4186-99EB-41B5F9D3A94A_seq15> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9A40656D-D77E-46B0-B706-7797A5F290D5> ;
+    cim:ParameterValue.value "0.13"^^cim:String .
+
+<07EC669F-857F-4186-99EB-41B5F9D3A94A_seq16> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A8A65F06-88C2-4203-ACD8-41BDD15A966F> ;
+    cim:ParameterValue.value "3.123048094940662"^^cim:String .
+
+<07EC669F-857F-4186-99EB-41B5F9D3A94A_seq17> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <E461B486-F24C-4BDD-93A7-CF07A9B971E3> ;
+    cim:ParameterValue.value "0.34"^^cim:String .
+
+<07EC669F-857F-4186-99EB-41B5F9D3A94A_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <90392B45-2438-4859-BA0C-274940B62CE4> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<07EC669F-857F-4186-99EB-41B5F9D3A94A_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <06D9C5F6-2AE2-4B19-9CF3-51F7524E04E5> ;
+    cim:ParameterValue.value "5.0"^^cim:String .
+
+<07EC669F-857F-4186-99EB-41B5F9D3A94A_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6E3516C8-8BA3-4F0C-A793-7893E0A054D0> ;
+    cim:ParameterValue.value "0.06"^^cim:String .
+
+<07EC669F-857F-4186-99EB-41B5F9D3A94A_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <FD880F5C-AD4A-47AB-A26B-5124AA6902A3> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<07EC669F-857F-4186-99EB-41B5F9D3A94A_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <DBB46C29-E4C4-4CD2-BB5C-0D2C838C89BA> ;
+    cim:ParameterValue.value "-1.0"^^cim:String .
+
+<07EC669F-857F-4186-99EB-41B5F9D3A94A_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <BF4C1769-0357-49BE-8627-7B9CD0D90F60> ;
+    cim:ParameterValue.value "-0.0198"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <2F0F6B77-D760-4F6C-8D1B-392A3585FD42> ;
+    cim:ParameterValue.value "0.5"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq11> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A8A79AB1-06D8-4EB5-8789-804DB75C179C> ;
+    cim:ParameterValue.value "1.1"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq12> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6D2B92F8-30CD-4D7E-9169-C9A28224F03B> ;
+    cim:ParameterValue.value "0.016668"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq13> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <81A62F12-5154-48FB-8E58-C092D556B9CD> ;
+    cim:ParameterValue.value "-0.001"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq14> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <376022E5-AFA5-40C1-96D9-E4F70F848656> ;
+    cim:ParameterValue.value "0.001"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq15> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9335B9A4-747B-437A-99F4-204967E17E6F> ;
+    cim:ParameterValue.value "2.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq16> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <C63ADBF4-919D-4787-BD71-34B568D41C8C> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq17> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <7E2A4B97-8ABF-43CF-9D7D-81334EA8DB7F> ;
+    cim:ParameterValue.value "-1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq18> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <BBB70981-1913-45EA-A8C0-4E7B935CDF21> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq19> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9C3747D1-F1CA-419E-9564-77912CF01ACE> ;
+    cim:ParameterValue.value "0.1"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq20> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <5CBA6640-2682-4FD7-BF12-1A8B906497D8> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq21> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <49E007D9-1474-40AC-A5F9-C091BCD70704> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq22> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <92C925AE-4C42-421A-9ADE-0BEB3E6B3D85> ;
+    cim:ParameterValue.value "0.05"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq23> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <2BCC9F74-3065-4293-B7D9-6656FD97FD26> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq24> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <B60E708D-BFAF-4BCC-BFB6-B93E722E2616> ;
+    cim:ParameterValue.value "-1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq25> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <2A95B34F-025C-4ACD-AABD-C51E487ED44A> ;
+    cim:ParameterValue.value "1.07"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq26> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <8BC2AA90-AF1A-40AC-9794-98EEDDA69B8C> ;
+    cim:ParameterValue.value "0.9"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq27> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <ED37BC37-3EA1-4DA1-819A-5A4A426DD864> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq28> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A6CDABC0-69EB-4141-B5F8-360AD976FCF5> ;
+    cim:ParameterValue.value "0.333"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq29> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <62F16062-1BF3-49FD-B2F4-7CE208A297FB> ;
+    cim:ParameterValue.value "0.2"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq30> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <346F4B13-FD65-4E57-868F-AFC2DC3966F5> ;
+    cim:ParameterValue.value "5.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq31> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <C1CBD55E-8049-4DBB-8AC8-6556AFAD243F> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq32> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <037C243D-5476-4FA4-903F-3DE832AB97CE> ;
+    cim:ParameterValue.value "0.08"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq33> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9FEFADB8-FCA6-467E-A0E0-6A0B8070418C> ;
+    cim:ParameterValue.value "99.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq34> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <370643E2-4DA4-42FB-A876-5FCBE065B5B7> ;
+    cim:ParameterValue.value "-99.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq35> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <19F78225-C18F-4719-8D24-EED695C07960> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq36> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <C6AC5C89-7A2F-4437-BAA9-BC8D0FEA4730> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq37> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <1395498F-FE58-4DEE-B0AD-B6C1819E4990> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq38> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <BF07A12F-1BA1-4D3D-A577-52F398259E19> ;
+    cim:ParameterValue.value "0.016668"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq39> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <143CC459-8716-4B19-A68F-251F8FE10BF9> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <1CA731D1-E8F8-42DB-8E58-DA4B9B4DF9A9> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq40> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6994AC3F-5173-454C-8778-D96D0444276B> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq41> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <E23B8641-EF32-4D48-A58C-CEC86DB07934> ;
+    cim:ParameterValue.value "0.4"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq42> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <D241E5C1-F4DB-4654-B9A3-3EB7D40667EE> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq43> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <B254F02C-781F-4547-8E08-25604E82D04D> ;
+    cim:ParameterValue.value "0.9"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq44> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <B9B701FD-166D-41BB-9647-4547B48564F4> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq45> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <712D3456-5E20-4D6C-9C73-67AC138CA33D> ;
+    cim:ParameterValue.value "1.2"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq46> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <3CF71436-E804-4378-ABB7-B3F22497BADC> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq47> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <B4556CE5-5583-424D-B0F1-1F82C056803F> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq48> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <352229D4-CFB4-4F23-B8C2-D36A5C7D401D> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq49> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <31832411-11CC-4FDE-8D39-3F03A8411A3F> ;
+    cim:ParameterValue.value "0.4"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <AF0BF4AF-764A-4628-AAB8-19225B40A158> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq50> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <319A0D2C-2719-4CB6-94AD-04386C646CDD> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq51> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <4AF992A7-010D-42CF-890B-DA4A92212AB1> ;
+    cim:ParameterValue.value "0.9"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq52> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <10947A42-96E4-46D4-9524-3734F3FC497B> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq53> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <FB0B16CC-534F-41FF-87A6-2B76CC033CAF> ;
+    cim:ParameterValue.value "1.2"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq54> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <2AAD6538-D75E-4AFF-BE8A-DAF56935C8CE> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <ACEA907F-0EF7-477C-81D9-7CC34BC16131> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <786A2C31-C177-448E-86CA-7E56F04ADB41> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <03067421-28C4-4AF8-B5BC-F4F0ED7B6020> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<164EB446-D12A-418D-963F-E6EAD0EFBE45_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <BDF4DE52-2DBE-46FD-853E-1773C2327B6B> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<202940FA-86B3-4FD2-9CA5-9B2852F12970_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6D737FCB-269D-4868-9E98-D1AA7F43C3B3> ;
+    cim:ParameterValue.value "0.471"^^cim:String .
+
+<202940FA-86B3-4FD2-9CA5-9B2852F12970_seq11> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <988B4A18-B5A6-47AE-91D3-68D5DD6290E8> ;
+    cim:ParameterValue.value "0.0754"^^cim:String .
+
+<202940FA-86B3-4FD2-9CA5-9B2852F12970_seq12> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EAB5AEC3-DE88-4016-B97F-66D9CDA67611> ;
+    cim:ParameterValue.value "1.246"^^cim:String .
+
+<202940FA-86B3-4FD2-9CA5-9B2852F12970_seq13> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <7E7F6414-7AEF-4C23-9C43-82F28D949F3B> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<202940FA-86B3-4FD2-9CA5-9B2852F12970_seq14> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <C9479F9A-722D-416D-8D8E-71FAD92390A9> ;
+    cim:ParameterValue.value "3.586800573888092"^^cim:String .
+
+<202940FA-86B3-4FD2-9CA5-9B2852F12970_seq15> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9A40656D-D77E-46B0-B706-7797A5F290D5> ;
+    cim:ParameterValue.value "0.064"^^cim:String .
+
+<202940FA-86B3-4FD2-9CA5-9B2852F12970_seq16> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A8A65F06-88C2-4203-ACD8-41BDD15A966F> ;
+    cim:ParameterValue.value "4.782400765184122"^^cim:String .
+
+<202940FA-86B3-4FD2-9CA5-9B2852F12970_seq17> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <E461B486-F24C-4BDD-93A7-CF07A9B971E3> ;
+    cim:ParameterValue.value "0.251"^^cim:String .
+
+<202940FA-86B3-4FD2-9CA5-9B2852F12970_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <90392B45-2438-4859-BA0C-274940B62CE4> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<202940FA-86B3-4FD2-9CA5-9B2852F12970_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <06D9C5F6-2AE2-4B19-9CF3-51F7524E04E5> ;
+    cim:ParameterValue.value "5.0"^^cim:String .
+
+<202940FA-86B3-4FD2-9CA5-9B2852F12970_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6E3516C8-8BA3-4F0C-A793-7893E0A054D0> ;
+    cim:ParameterValue.value "0.02"^^cim:String .
+
+<202940FA-86B3-4FD2-9CA5-9B2852F12970_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <FD880F5C-AD4A-47AB-A26B-5124AA6902A3> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<202940FA-86B3-4FD2-9CA5-9B2852F12970_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <DBB46C29-E4C4-4CD2-BB5C-0D2C838C89BA> ;
+    cim:ParameterValue.value "-1.0"^^cim:String .
+
+<202940FA-86B3-4FD2-9CA5-9B2852F12970_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <BF4C1769-0357-49BE-8627-7B9CD0D90F60> ;
+    cim:ParameterValue.value "-0.0419"^^cim:String .
+
+<240FAEFA-AEC2-44DC-B132-2CA794655C62_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6D737FCB-269D-4868-9E98-D1AA7F43C3B3> ;
+    cim:ParameterValue.value "500.0"^^cim:String .
+
+<240FAEFA-AEC2-44DC-B132-2CA794655C62_seq11> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <988B4A18-B5A6-47AE-91D3-68D5DD6290E8> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<240FAEFA-AEC2-44DC-B132-2CA794655C62_seq12> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EAB5AEC3-DE88-4016-B97F-66D9CDA67611> ;
+    cim:ParameterValue.value "500.0"^^cim:String .
+
+<240FAEFA-AEC2-44DC-B132-2CA794655C62_seq13> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <7E7F6414-7AEF-4C23-9C43-82F28D949F3B> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<240FAEFA-AEC2-44DC-B132-2CA794655C62_seq14> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <C9479F9A-722D-416D-8D8E-71FAD92390A9> ;
+    cim:ParameterValue.value "3.75"^^cim:String .
+
+<240FAEFA-AEC2-44DC-B132-2CA794655C62_seq15> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9A40656D-D77E-46B0-B706-7797A5F290D5> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<240FAEFA-AEC2-44DC-B132-2CA794655C62_seq16> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A8A65F06-88C2-4203-ACD8-41BDD15A966F> ;
+    cim:ParameterValue.value "5.0"^^cim:String .
+
+<240FAEFA-AEC2-44DC-B132-2CA794655C62_seq17> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <E461B486-F24C-4BDD-93A7-CF07A9B971E3> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<240FAEFA-AEC2-44DC-B132-2CA794655C62_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <90392B45-2438-4859-BA0C-274940B62CE4> ;
+    cim:ParameterValue.value "500.0"^^cim:String .
+
+<240FAEFA-AEC2-44DC-B132-2CA794655C62_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <06D9C5F6-2AE2-4B19-9CF3-51F7524E04E5> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<240FAEFA-AEC2-44DC-B132-2CA794655C62_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6E3516C8-8BA3-4F0C-A793-7893E0A054D0> ;
+    cim:ParameterValue.value "500.0"^^cim:String .
+
+<240FAEFA-AEC2-44DC-B132-2CA794655C62_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <FD880F5C-AD4A-47AB-A26B-5124AA6902A3> ;
+    cim:ParameterValue.value "10.0"^^cim:String .
+
+<240FAEFA-AEC2-44DC-B132-2CA794655C62_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <DBB46C29-E4C4-4CD2-BB5C-0D2C838C89BA> ;
+    cim:ParameterValue.value "-10.0"^^cim:String .
+
+<240FAEFA-AEC2-44DC-B132-2CA794655C62_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <BF4C1769-0357-49BE-8627-7B9CD0D90F60> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<408BE5BD-D8E6-4718-B59A-EB39DA3ACAE5_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6D737FCB-269D-4868-9E98-D1AA7F43C3B3> ;
+    cim:ParameterValue.value "0.5"^^cim:String .
+
+<408BE5BD-D8E6-4718-B59A-EB39DA3ACAE5_seq11> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <988B4A18-B5A6-47AE-91D3-68D5DD6290E8> ;
+    cim:ParameterValue.value "0.08"^^cim:String .
+
+<408BE5BD-D8E6-4718-B59A-EB39DA3ACAE5_seq12> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EAB5AEC3-DE88-4016-B97F-66D9CDA67611> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<408BE5BD-D8E6-4718-B59A-EB39DA3ACAE5_seq13> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <7E7F6414-7AEF-4C23-9C43-82F28D949F3B> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<408BE5BD-D8E6-4718-B59A-EB39DA3ACAE5_seq14> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <C9479F9A-722D-416D-8D8E-71FAD92390A9> ;
+    cim:ParameterValue.value "2.8680688336520075"^^cim:String .
+
+<408BE5BD-D8E6-4718-B59A-EB39DA3ACAE5_seq15> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9A40656D-D77E-46B0-B706-7797A5F290D5> ;
+    cim:ParameterValue.value "0.08"^^cim:String .
+
+<408BE5BD-D8E6-4718-B59A-EB39DA3ACAE5_seq16> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A8A65F06-88C2-4203-ACD8-41BDD15A966F> ;
+    cim:ParameterValue.value "3.8240917782026767"^^cim:String .
+
+<408BE5BD-D8E6-4718-B59A-EB39DA3ACAE5_seq17> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <E461B486-F24C-4BDD-93A7-CF07A9B971E3> ;
+    cim:ParameterValue.value "0.314"^^cim:String .
+
+<408BE5BD-D8E6-4718-B59A-EB39DA3ACAE5_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <90392B45-2438-4859-BA0C-274940B62CE4> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<408BE5BD-D8E6-4718-B59A-EB39DA3ACAE5_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <06D9C5F6-2AE2-4B19-9CF3-51F7524E04E5> ;
+    cim:ParameterValue.value "5.0"^^cim:String .
+
+<408BE5BD-D8E6-4718-B59A-EB39DA3ACAE5_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6E3516C8-8BA3-4F0C-A793-7893E0A054D0> ;
+    cim:ParameterValue.value "0.06"^^cim:String .
+
+<408BE5BD-D8E6-4718-B59A-EB39DA3ACAE5_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <FD880F5C-AD4A-47AB-A26B-5124AA6902A3> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<408BE5BD-D8E6-4718-B59A-EB39DA3ACAE5_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <DBB46C29-E4C4-4CD2-BB5C-0D2C838C89BA> ;
+    cim:ParameterValue.value "-1.0"^^cim:String .
+
+<408BE5BD-D8E6-4718-B59A-EB39DA3ACAE5_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <BF4C1769-0357-49BE-8627-7B9CD0D90F60> ;
+    cim:ParameterValue.value "-0.0525"^^cim:String .
+
+<677FE6E6-F5F4-444F-A9C2-5FE6FE0574D6_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6D737FCB-269D-4868-9E98-D1AA7F43C3B3> ;
+    cim:ParameterValue.value "0.73"^^cim:String .
+
+<677FE6E6-F5F4-444F-A9C2-5FE6FE0574D6_seq11> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <988B4A18-B5A6-47AE-91D3-68D5DD6290E8> ;
+    cim:ParameterValue.value "0.03"^^cim:String .
+
+<677FE6E6-F5F4-444F-A9C2-5FE6FE0574D6_seq12> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EAB5AEC3-DE88-4016-B97F-66D9CDA67611> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<677FE6E6-F5F4-444F-A9C2-5FE6FE0574D6_seq13> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <7E7F6414-7AEF-4C23-9C43-82F28D949F3B> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<677FE6E6-F5F4-444F-A9C2-5FE6FE0574D6_seq14> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <C9479F9A-722D-416D-8D8E-71FAD92390A9> ;
+    cim:ParameterValue.value "2.8017241379310347"^^cim:String .
+
+<677FE6E6-F5F4-444F-A9C2-5FE6FE0574D6_seq15> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9A40656D-D77E-46B0-B706-7797A5F290D5> ;
+    cim:ParameterValue.value "0.53"^^cim:String .
+
+<677FE6E6-F5F4-444F-A9C2-5FE6FE0574D6_seq16> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A8A65F06-88C2-4203-ACD8-41BDD15A966F> ;
+    cim:ParameterValue.value "3.735632183908046"^^cim:String .
+
+<677FE6E6-F5F4-444F-A9C2-5FE6FE0574D6_seq17> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <E461B486-F24C-4BDD-93A7-CF07A9B971E3> ;
+    cim:ParameterValue.value "0.74"^^cim:String .
+
+<677FE6E6-F5F4-444F-A9C2-5FE6FE0574D6_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <90392B45-2438-4859-BA0C-274940B62CE4> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<677FE6E6-F5F4-444F-A9C2-5FE6FE0574D6_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <06D9C5F6-2AE2-4B19-9CF3-51F7524E04E5> ;
+    cim:ParameterValue.value "40.0"^^cim:String .
+
+<677FE6E6-F5F4-444F-A9C2-5FE6FE0574D6_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6E3516C8-8BA3-4F0C-A793-7893E0A054D0> ;
+    cim:ParameterValue.value "0.02"^^cim:String .
+
+<677FE6E6-F5F4-444F-A9C2-5FE6FE0574D6_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <FD880F5C-AD4A-47AB-A26B-5124AA6902A3> ;
+    cim:ParameterValue.value "6.5"^^cim:String .
+
+<677FE6E6-F5F4-444F-A9C2-5FE6FE0574D6_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <DBB46C29-E4C4-4CD2-BB5C-0D2C838C89BA> ;
+    cim:ParameterValue.value "-6.5"^^cim:String .
+
+<677FE6E6-F5F4-444F-A9C2-5FE6FE0574D6_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <BF4C1769-0357-49BE-8627-7B9CD0D90F60> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<78C71844-9A71-425F-9E4B-CF0F0FAF35BC_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9C1B56C0-9371-45ED-8679-AA0C5E8E5CEC> ;
+    cim:ParameterValue.value "1.311475"^^cim:String .
+
+<78C71844-9A71-425F-9E4B-CF0F0FAF35BC_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EF182868-4670-4271-9684-231C1ACDF593> ;
+    cim:ParameterValue.value "0.084069"^^cim:String .
+
+<78C71844-9A71-425F-9E4B-CF0F0FAF35BC_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <182F1C59-EB7B-4684-95CD-D50341E402BE> ;
+    cim:ParameterValue.value "0.38"^^cim:String .
+
+<78C71844-9A71-425F-9E4B-CF0F0FAF35BC_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <419CEBED-8D72-4BAF-9BB1-BBD6404BE950> ;
+    cim:ParameterValue.value "1.2"^^cim:String .
+
+<78C71844-9A71-425F-9E4B-CF0F0FAF35BC_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <50A2FF9E-C212-4431-AC6E-A9A6B9BF1A34> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<78C71844-9A71-425F-9E4B-CF0F0FAF35BC_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A56F1152-553D-4EBA-B7C0-BA204365C510> ;
+    cim:ParameterValue.value "3.75"^^cim:String .
+
+<78C71844-9A71-425F-9E4B-CF0F0FAF35BC_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <4BEAFB82-FFB3-4551-AA12-AE8D4BC09610> ;
+    cim:ParameterValue.value "7.5"^^cim:String .
+
+<7F8C109E-125E-4DAF-A258-F887FF50F99B_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9C1B56C0-9371-45ED-8679-AA0C5E8E5CEC> ;
+    cim:ParameterValue.value "1.598361"^^cim:String .
+
+<7F8C109E-125E-4DAF-A258-F887FF50F99B_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EF182868-4670-4271-9684-231C1ACDF593> ;
+    cim:ParameterValue.value "0.089338"^^cim:String .
+
+<7F8C109E-125E-4DAF-A258-F887FF50F99B_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <182F1C59-EB7B-4684-95CD-D50341E402BE> ;
+    cim:ParameterValue.value "0.55"^^cim:String .
+
+<7F8C109E-125E-4DAF-A258-F887FF50F99B_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <419CEBED-8D72-4BAF-9BB1-BBD6404BE950> ;
+    cim:ParameterValue.value "1.2"^^cim:String .
+
+<7F8C109E-125E-4DAF-A258-F887FF50F99B_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <50A2FF9E-C212-4431-AC6E-A9A6B9BF1A34> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<7F8C109E-125E-4DAF-A258-F887FF50F99B_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A56F1152-553D-4EBA-B7C0-BA204365C510> ;
+    cim:ParameterValue.value "13.25"^^cim:String .
+
+<7F8C109E-125E-4DAF-A258-F887FF50F99B_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <4BEAFB82-FFB3-4551-AA12-AE8D4BC09610> ;
+    cim:ParameterValue.value "54.0"^^cim:String .
+
+<A7AB4903-0616-452D-BC30-30A2DE4F36BA_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9C1B56C0-9371-45ED-8679-AA0C5E8E5CEC> ;
+    cim:ParameterValue.value "1.573034"^^cim:String .
+
+<A7AB4903-0616-452D-BC30-30A2DE4F36BA_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EF182868-4670-4271-9684-231C1ACDF593> ;
+    cim:ParameterValue.value "0.04071"^^cim:String .
+
+<A7AB4903-0616-452D-BC30-30A2DE4F36BA_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <182F1C59-EB7B-4684-95CD-D50341E402BE> ;
+    cim:ParameterValue.value "0.48"^^cim:String .
+
+<A7AB4903-0616-452D-BC30-30A2DE4F36BA_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <419CEBED-8D72-4BAF-9BB1-BBD6404BE950> ;
+    cim:ParameterValue.value "1.2"^^cim:String .
+
+<A7AB4903-0616-452D-BC30-30A2DE4F36BA_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <50A2FF9E-C212-4431-AC6E-A9A6B9BF1A34> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<A7AB4903-0616-452D-BC30-30A2DE4F36BA_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A56F1152-553D-4EBA-B7C0-BA204365C510> ;
+    cim:ParameterValue.value "1.68"^^cim:String .
+
+<A7AB4903-0616-452D-BC30-30A2DE4F36BA_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <4BEAFB82-FFB3-4551-AA12-AE8D4BC09610> ;
+    cim:ParameterValue.value "6.0"^^cim:String .
+
+<AB696C8A-F289-498A-A3E4-897AE6EEEDE4_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9C1B56C0-9371-45ED-8679-AA0C5E8E5CEC> ;
+    cim:ParameterValue.value "1.38888"^^cim:String .
+
+<AB696C8A-F289-498A-A3E4-897AE6EEEDE4_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EF182868-4670-4271-9684-231C1ACDF593> ;
+    cim:ParameterValue.value "0.06371"^^cim:String .
+
+<AB696C8A-F289-498A-A3E4-897AE6EEEDE4_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <182F1C59-EB7B-4684-95CD-D50341E402BE> ;
+    cim:ParameterValue.value "3.0"^^cim:String .
+
+<AB696C8A-F289-498A-A3E4-897AE6EEEDE4_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <419CEBED-8D72-4BAF-9BB1-BBD6404BE950> ;
+    cim:ParameterValue.value "1.2"^^cim:String .
+
+<AB696C8A-F289-498A-A3E4-897AE6EEEDE4_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <50A2FF9E-C212-4431-AC6E-A9A6B9BF1A34> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<AB696C8A-F289-498A-A3E4-897AE6EEEDE4_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A56F1152-553D-4EBA-B7C0-BA204365C510> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<AB696C8A-F289-498A-A3E4-897AE6EEEDE4_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <4BEAFB82-FFB3-4551-AA12-AE8D4BC09610> ;
+    cim:ParameterValue.value "50.0"^^cim:String .
+
+<AF82F0FB-7EA6-4E91-B4D0-D78809E8AF2F_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9C1B56C0-9371-45ED-8679-AA0C5E8E5CEC> ;
+    cim:ParameterValue.value "0.5555"^^cim:String .
+
+<AF82F0FB-7EA6-4E91-B4D0-D78809E8AF2F_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EF182868-4670-4271-9684-231C1ACDF593> ;
+    cim:ParameterValue.value "0.072338"^^cim:String .
+
+<AF82F0FB-7EA6-4E91-B4D0-D78809E8AF2F_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <182F1C59-EB7B-4684-95CD-D50341E402BE> ;
+    cim:ParameterValue.value "0.275"^^cim:String .
+
+<AF82F0FB-7EA6-4E91-B4D0-D78809E8AF2F_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <419CEBED-8D72-4BAF-9BB1-BBD6404BE950> ;
+    cim:ParameterValue.value "1.2"^^cim:String .
+
+<AF82F0FB-7EA6-4E91-B4D0-D78809E8AF2F_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <50A2FF9E-C212-4431-AC6E-A9A6B9BF1A34> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<AF82F0FB-7EA6-4E91-B4D0-D78809E8AF2F_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A56F1152-553D-4EBA-B7C0-BA204365C510> ;
+    cim:ParameterValue.value "4.5"^^cim:String .
+
+<AF82F0FB-7EA6-4E91-B4D0-D78809E8AF2F_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <4BEAFB82-FFB3-4551-AA12-AE8D4BC09610> ;
+    cim:ParameterValue.value "9.65"^^cim:String .
+
+<B8AF1730-BFD2-4D80-923D-8BB0B9AC9544_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <DD4D6806-5715-4CC6-9BA4-533808562B15> ;
+    cim:ParameterValue.value "1.111"^^cim:String .
+
+<B8AF1730-BFD2-4D80-923D-8BB0B9AC9544_seq11> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <2851E921-7603-4FEF-905B-DA437652F5B6> ;
+    cim:ParameterValue.value "0.8"^^cim:String .
+
+<B8AF1730-BFD2-4D80-923D-8BB0B9AC9544_seq12> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <42881242-0903-44F8-A565-A9273B186223> ;
+    cim:ParameterValue.value "0.4"^^cim:String .
+
+<B8AF1730-BFD2-4D80-923D-8BB0B9AC9544_seq13> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <37B6A0A0-E321-4310-8628-2DE1A38049CB> ;
+    cim:ParameterValue.value "-1.3"^^cim:String .
+
+<B8AF1730-BFD2-4D80-923D-8BB0B9AC9544_seq14> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A1B04507-70C4-47FC-8BDC-7BA27ABC1004> ;
+    cim:ParameterValue.value "0.016668"^^cim:String .
+
+<B8AF1730-BFD2-4D80-923D-8BB0B9AC9544_seq15> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <CA6613C5-B2D6-4792-87DB-D070DBB135D8> ;
+    cim:ParameterValue.value "0.7"^^cim:String .
+
+<B8AF1730-BFD2-4D80-923D-8BB0B9AC9544_seq16> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <93487D57-F243-425B-ACA0-D46A78117183> ;
+    cim:ParameterValue.value "1.5"^^cim:String .
+
+<B8AF1730-BFD2-4D80-923D-8BB0B9AC9544_seq17> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <237103F2-35B0-4DB3-AAF3-1906C3C5AC8A> ;
+    cim:ParameterValue.value "-1.5"^^cim:String .
+
+<B8AF1730-BFD2-4D80-923D-8BB0B9AC9544_seq18> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <7058A063-4FEC-4A0B-A459-19BC3F4C4445> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<B8AF1730-BFD2-4D80-923D-8BB0B9AC9544_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <83AB5D99-8196-4243-A3AA-B07B201C4326> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<B8AF1730-BFD2-4D80-923D-8BB0B9AC9544_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <D6980FD5-7C98-4CCA-877A-62933645447B> ;
+    cim:ParameterValue.value "0.08"^^cim:String .
+
+<B8AF1730-BFD2-4D80-923D-8BB0B9AC9544_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <1BD3442D-C02B-4F7C-B622-4E30A1E2CEB4> ;
+    cim:ParameterValue.value "0.4"^^cim:String .
+
+<B8AF1730-BFD2-4D80-923D-8BB0B9AC9544_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <5A737BB4-EEA3-486E-8CC8-539E68A8535C> ;
+    cim:ParameterValue.value "0.8"^^cim:String .
+
+<B8AF1730-BFD2-4D80-923D-8BB0B9AC9544_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A8914BCC-F7DD-4D17-9E31-653DF9574126> ;
+    cim:ParameterValue.value "0.2"^^cim:String .
+
+<B8AF1730-BFD2-4D80-923D-8BB0B9AC9544_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <1C552845-EFF1-41FE-8675-13942D1998EF> ;
+    cim:ParameterValue.value "1.22"^^cim:String .
+
+<B8CC40FA-C2DB-4D5F-A070-48243E8DA022_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9C1B56C0-9371-45ED-8679-AA0C5E8E5CEC> ;
+    cim:ParameterValue.value "1.5"^^cim:String .
+
+<B8CC40FA-C2DB-4D5F-A070-48243E8DA022_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EF182868-4670-4271-9684-231C1ACDF593> ;
+    cim:ParameterValue.value "0.09311"^^cim:String .
+
+<B8CC40FA-C2DB-4D5F-A070-48243E8DA022_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <182F1C59-EB7B-4684-95CD-D50341E402BE> ;
+    cim:ParameterValue.value "3.0"^^cim:String .
+
+<B8CC40FA-C2DB-4D5F-A070-48243E8DA022_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <419CEBED-8D72-4BAF-9BB1-BBD6404BE950> ;
+    cim:ParameterValue.value "1.2"^^cim:String .
+
+<B8CC40FA-C2DB-4D5F-A070-48243E8DA022_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <50A2FF9E-C212-4431-AC6E-A9A6B9BF1A34> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<B8CC40FA-C2DB-4D5F-A070-48243E8DA022_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A56F1152-553D-4EBA-B7C0-BA204365C510> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<B8CC40FA-C2DB-4D5F-A070-48243E8DA022_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <4BEAFB82-FFB3-4551-AA12-AE8D4BC09610> ;
+    cim:ParameterValue.value "3.0"^^cim:String .
+
+<CADF7B23-E773-44A9-9DB9-BC8A2CC3FBBD_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9C1B56C0-9371-45ED-8679-AA0C5E8E5CEC> ;
+    cim:ParameterValue.value "0.1"^^cim:String .
+
+<CADF7B23-E773-44A9-9DB9-BC8A2CC3FBBD_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EF182868-4670-4271-9684-231C1ACDF593> ;
+    cim:ParameterValue.value "10.0"^^cim:String .
+
+<CADF7B23-E773-44A9-9DB9-BC8A2CC3FBBD_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <182F1C59-EB7B-4684-95CD-D50341E402BE> ;
+    cim:ParameterValue.value "100.0"^^cim:String .
+
+<CADF7B23-E773-44A9-9DB9-BC8A2CC3FBBD_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <419CEBED-8D72-4BAF-9BB1-BBD6404BE950> ;
+    cim:ParameterValue.value "2000.0"^^cim:String .
+
+<CADF7B23-E773-44A9-9DB9-BC8A2CC3FBBD_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <50A2FF9E-C212-4431-AC6E-A9A6B9BF1A34> ;
+    cim:ParameterValue.value "-999.0"^^cim:String .
+
+<CADF7B23-E773-44A9-9DB9-BC8A2CC3FBBD_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A56F1152-553D-4EBA-B7C0-BA204365C510> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<CADF7B23-E773-44A9-9DB9-BC8A2CC3FBBD_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <4BEAFB82-FFB3-4551-AA12-AE8D4BC09610> ;
+    cim:ParameterValue.value "100.0"^^cim:String .
+
+<CAEC8697-9AAF-450A-B736-296D60BD45AF_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6D737FCB-269D-4868-9E98-D1AA7F43C3B3> ;
+    cim:ParameterValue.value "0.785"^^cim:String .
+
+<CAEC8697-9AAF-450A-B736-296D60BD45AF_seq11> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <988B4A18-B5A6-47AE-91D3-68D5DD6290E8> ;
+    cim:ParameterValue.value "0.03"^^cim:String .
+
+<CAEC8697-9AAF-450A-B736-296D60BD45AF_seq12> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EAB5AEC3-DE88-4016-B97F-66D9CDA67611> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<CAEC8697-9AAF-450A-B736-296D60BD45AF_seq13> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <7E7F6414-7AEF-4C23-9C43-82F28D949F3B> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<CAEC8697-9AAF-450A-B736-296D60BD45AF_seq14> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <C9479F9A-722D-416D-8D8E-71FAD92390A9> ;
+    cim:ParameterValue.value "2.8664921465968582"^^cim:String .
+
+<CAEC8697-9AAF-450A-B736-296D60BD45AF_seq15> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9A40656D-D77E-46B0-B706-7797A5F290D5> ;
+    cim:ParameterValue.value "0.67"^^cim:String .
+
+<CAEC8697-9AAF-450A-B736-296D60BD45AF_seq16> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A8A65F06-88C2-4203-ACD8-41BDD15A966F> ;
+    cim:ParameterValue.value "3.821989528795811"^^cim:String .
+
+<CAEC8697-9AAF-450A-B736-296D60BD45AF_seq17> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <E461B486-F24C-4BDD-93A7-CF07A9B971E3> ;
+    cim:ParameterValue.value "0.91"^^cim:String .
+
+<CAEC8697-9AAF-450A-B736-296D60BD45AF_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <90392B45-2438-4859-BA0C-274940B62CE4> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<CAEC8697-9AAF-450A-B736-296D60BD45AF_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <06D9C5F6-2AE2-4B19-9CF3-51F7524E04E5> ;
+    cim:ParameterValue.value "40.0"^^cim:String .
+
+<CAEC8697-9AAF-450A-B736-296D60BD45AF_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6E3516C8-8BA3-4F0C-A793-7893E0A054D0> ;
+    cim:ParameterValue.value "0.02"^^cim:String .
+
+<CAEC8697-9AAF-450A-B736-296D60BD45AF_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <FD880F5C-AD4A-47AB-A26B-5124AA6902A3> ;
+    cim:ParameterValue.value "10.0"^^cim:String .
+
+<CAEC8697-9AAF-450A-B736-296D60BD45AF_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <DBB46C29-E4C4-4CD2-BB5C-0D2C838C89BA> ;
+    cim:ParameterValue.value "-10.0"^^cim:String .
+
+<CAEC8697-9AAF-450A-B736-296D60BD45AF_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <BF4C1769-0357-49BE-8627-7B9CD0D90F60> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<CDA9A08D-4DBA-4589-9457-F70BA8D156A9_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6D737FCB-269D-4868-9E98-D1AA7F43C3B3> ;
+    cim:ParameterValue.value "0.405"^^cim:String .
+
+<CDA9A08D-4DBA-4589-9457-F70BA8D156A9_seq11> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <988B4A18-B5A6-47AE-91D3-68D5DD6290E8> ;
+    cim:ParameterValue.value "0.057"^^cim:String .
+
+<CDA9A08D-4DBA-4589-9457-F70BA8D156A9_seq12> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EAB5AEC3-DE88-4016-B97F-66D9CDA67611> ;
+    cim:ParameterValue.value "0.5"^^cim:String .
+
+<CDA9A08D-4DBA-4589-9457-F70BA8D156A9_seq13> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <7E7F6414-7AEF-4C23-9C43-82F28D949F3B> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<CDA9A08D-4DBA-4589-9457-F70BA8D156A9_seq14> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <C9479F9A-722D-416D-8D8E-71FAD92390A9> ;
+    cim:ParameterValue.value "3.0364372469635628"^^cim:String .
+
+<CDA9A08D-4DBA-4589-9457-F70BA8D156A9_seq15> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9A40656D-D77E-46B0-B706-7797A5F290D5> ;
+    cim:ParameterValue.value "0.66"^^cim:String .
+
+<CDA9A08D-4DBA-4589-9457-F70BA8D156A9_seq16> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A8A65F06-88C2-4203-ACD8-41BDD15A966F> ;
+    cim:ParameterValue.value "4.048582995951417"^^cim:String .
+
+<CDA9A08D-4DBA-4589-9457-F70BA8D156A9_seq17> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <E461B486-F24C-4BDD-93A7-CF07A9B971E3> ;
+    cim:ParameterValue.value "0.88"^^cim:String .
+
+<CDA9A08D-4DBA-4589-9457-F70BA8D156A9_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <90392B45-2438-4859-BA0C-274940B62CE4> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<CDA9A08D-4DBA-4589-9457-F70BA8D156A9_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <06D9C5F6-2AE2-4B19-9CF3-51F7524E04E5> ;
+    cim:ParameterValue.value "6.2"^^cim:String .
+
+<CDA9A08D-4DBA-4589-9457-F70BA8D156A9_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6E3516C8-8BA3-4F0C-A793-7893E0A054D0> ;
+    cim:ParameterValue.value "0.05"^^cim:String .
+
+<CDA9A08D-4DBA-4589-9457-F70BA8D156A9_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <FD880F5C-AD4A-47AB-A26B-5124AA6902A3> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<CDA9A08D-4DBA-4589-9457-F70BA8D156A9_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <DBB46C29-E4C4-4CD2-BB5C-0D2C838C89BA> ;
+    cim:ParameterValue.value "-1.0"^^cim:String .
+
+<CDA9A08D-4DBA-4589-9457-F70BA8D156A9_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <BF4C1769-0357-49BE-8627-7B9CD0D90F60> ;
+    cim:ParameterValue.value "-0.633"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <0C287014-57C4-4414-BF79-E5E8BCFA3008> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq11> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <D0627E06-0E87-489A-97AF-07619C7B9A24> ;
+    cim:ParameterValue.value "0.05"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq12> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <51034D10-D82D-4E1C-88B8-3F9E00D6534E> ;
+    cim:ParameterValue.value "0.04"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq13> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <5BFD03A5-DC6C-4EF3-B44D-65F636D23AB0> ;
+    cim:ParameterValue.value "8.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq14> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <585D0407-70FA-4EAE-B1B2-C1A442650402> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq15> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <698732A1-D3FF-4CEA-8FFB-E36C115915F3> ;
+    cim:ParameterValue.value "0.05"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq16> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <8B53DEF3-7E2D-4D14-A84D-9EEB59CDEC35> ;
+    cim:ParameterValue.value "0.9"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq17> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <79C13399-8782-4240-87E0-63A423C6D699> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq18> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <4051A34B-2CCC-40A8-A6EA-3330982C0446> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq19> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <CAF12779-6345-4830-95B0-ABD44E712D49> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq20> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <90FEE5A4-3651-4C27-81B3-A70359D3A3E7> ;
+    cim:ParameterValue.value "0.05"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq21> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <985F6294-B8E5-48B4-A64E-AA63C6AC57AF> ;
+    cim:ParameterValue.value "-0.05"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq22> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9660C61E-12CD-44B2-9380-BD10E3BB0E23> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq23> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <BB2D4793-35E9-4C00-8EEA-A6A6B11B30D9> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq24> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <76F0C938-726A-402A-9C84-3D1AA4E988A9> ;
+    cim:ParameterValue.value "0.329"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq25> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EDD06008-09DD-4068-891A-005F0DBB1158> ;
+    cim:ParameterValue.value "-0.329"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq26> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <F89005C6-7659-428B-B288-59CCC4E77B6E> ;
+    cim:ParameterValue.value "0.5"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq27> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <C36F0003-2385-43EA-9F33-5B0E048020FA> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq28> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <D5947D7C-F6C7-4445-80FB-0AC5AE647CA0> ;
+    cim:ParameterValue.value "0.25"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq29> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <89900F37-BDD3-4ECF-83BE-A4BEC189ABCC> ;
+    cim:ParameterValue.value "-0.0006"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq30> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <71DA756B-08B1-487E-9487-3F009B4F2382> ;
+    cim:ParameterValue.value "0.0006"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq31> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <84E383C7-8C63-4DC5-93E5-15545BFE4D0D> ;
+    cim:ParameterValue.value "999.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq32> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <835A024D-3610-497B-9FFD-657345CD53B5> ;
+    cim:ParameterValue.value "-999.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq33> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <FBF9F943-1E02-41A1-9F1D-4B81E9FA6B54> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq34> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <5E3D7FC9-9857-4CC1-9AAC-CE4DC662651F> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq35> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <2F057E4B-2294-47CF-B756-F048E7519ECD> ;
+    cim:ParameterValue.value "0.7"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq36> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <0DC3D3E8-ED7F-4C95-8F43-9FA11A7551FF> ;
+    cim:ParameterValue.value "20.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq37> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <979A2FDB-3C8C-41C6-9CFC-06997A727A00> ;
+    cim:ParameterValue.value "20.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <D488032D-90AB-49BE-9FEA-62096C4B2983> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <3A93999C-81B8-4B11-874B-E716310D1E61> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <DDD70F88-374A-4FD5-B53F-1DE139C5748E> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <C388E5B3-C823-4BD9-ACC4-C14C2A73EE41> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <1B13F8F7-FAC3-4CF1-A61F-7B0BCB3CFE34> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<DB7184AD-4842-4D8B-B3EE-0976CE297DB9_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <0047194F-6E80-4D0E-981F-E051363E7604> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<DD8F29BD-AFB3-483C-8934-00B45349CFEE_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6D737FCB-269D-4868-9E98-D1AA7F43C3B3> ;
+    cim:ParameterValue.value "0.528"^^cim:String .
+
+<DD8F29BD-AFB3-483C-8934-00B45349CFEE_seq11> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <988B4A18-B5A6-47AE-91D3-68D5DD6290E8> ;
+    cim:ParameterValue.value "0.0845"^^cim:String .
+
+<DD8F29BD-AFB3-483C-8934-00B45349CFEE_seq12> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EAB5AEC3-DE88-4016-B97F-66D9CDA67611> ;
+    cim:ParameterValue.value "1.26"^^cim:String .
+
+<DD8F29BD-AFB3-483C-8934-00B45349CFEE_seq13> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <7E7F6414-7AEF-4C23-9C43-82F28D949F3B> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<DD8F29BD-AFB3-483C-8934-00B45349CFEE_seq14> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <C9479F9A-722D-416D-8D8E-71FAD92390A9> ;
+    cim:ParameterValue.value "3.191489361702128"^^cim:String .
+
+<DD8F29BD-AFB3-483C-8934-00B45349CFEE_seq15> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9A40656D-D77E-46B0-B706-7797A5F290D5> ;
+    cim:ParameterValue.value "0.072"^^cim:String .
+
+<DD8F29BD-AFB3-483C-8934-00B45349CFEE_seq16> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A8A65F06-88C2-4203-ACD8-41BDD15A966F> ;
+    cim:ParameterValue.value "4.25531914893617"^^cim:String .
+
+<DD8F29BD-AFB3-483C-8934-00B45349CFEE_seq17> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <E461B486-F24C-4BDD-93A7-CF07A9B971E3> ;
+    cim:ParameterValue.value "0.282"^^cim:String .
+
+<DD8F29BD-AFB3-483C-8934-00B45349CFEE_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <90392B45-2438-4859-BA0C-274940B62CE4> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<DD8F29BD-AFB3-483C-8934-00B45349CFEE_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <06D9C5F6-2AE2-4B19-9CF3-51F7524E04E5> ;
+    cim:ParameterValue.value "5.0"^^cim:String .
+
+<DD8F29BD-AFB3-483C-8934-00B45349CFEE_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6E3516C8-8BA3-4F0C-A793-7893E0A054D0> ;
+    cim:ParameterValue.value "0.02"^^cim:String .
+
+<DD8F29BD-AFB3-483C-8934-00B45349CFEE_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <FD880F5C-AD4A-47AB-A26B-5124AA6902A3> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<DD8F29BD-AFB3-483C-8934-00B45349CFEE_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <DBB46C29-E4C4-4CD2-BB5C-0D2C838C89BA> ;
+    cim:ParameterValue.value "-1.0"^^cim:String .
+
+<DD8F29BD-AFB3-483C-8934-00B45349CFEE_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <BF4C1769-0357-49BE-8627-7B9CD0D90F60> ;
+    cim:ParameterValue.value "-0.047"^^cim:String .
+
+<E1FD07DF-F71E-4865-8DB4-2FD3DC68967F_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6D737FCB-269D-4868-9E98-D1AA7F43C3B3> ;
+    cim:ParameterValue.value "1.4"^^cim:String .
+
+<E1FD07DF-F71E-4865-8DB4-2FD3DC68967F_seq11> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <988B4A18-B5A6-47AE-91D3-68D5DD6290E8> ;
+    cim:ParameterValue.value "0.03"^^cim:String .
+
+<E1FD07DF-F71E-4865-8DB4-2FD3DC68967F_seq12> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EAB5AEC3-DE88-4016-B97F-66D9CDA67611> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<E1FD07DF-F71E-4865-8DB4-2FD3DC68967F_seq13> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <7E7F6414-7AEF-4C23-9C43-82F28D949F3B> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<E1FD07DF-F71E-4865-8DB4-2FD3DC68967F_seq14> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <C9479F9A-722D-416D-8D8E-71FAD92390A9> ;
+    cim:ParameterValue.value "4.144736842105263"^^cim:String .
+
+<E1FD07DF-F71E-4865-8DB4-2FD3DC68967F_seq15> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9A40656D-D77E-46B0-B706-7797A5F290D5> ;
+    cim:ParameterValue.value "0.6"^^cim:String .
+
+<E1FD07DF-F71E-4865-8DB4-2FD3DC68967F_seq16> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A8A65F06-88C2-4203-ACD8-41BDD15A966F> ;
+    cim:ParameterValue.value "5.526315789473684"^^cim:String .
+
+<E1FD07DF-F71E-4865-8DB4-2FD3DC68967F_seq17> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <E461B486-F24C-4BDD-93A7-CF07A9B971E3> ;
+    cim:ParameterValue.value "0.9"^^cim:String .
+
+<E1FD07DF-F71E-4865-8DB4-2FD3DC68967F_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <90392B45-2438-4859-BA0C-274940B62CE4> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<E1FD07DF-F71E-4865-8DB4-2FD3DC68967F_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <06D9C5F6-2AE2-4B19-9CF3-51F7524E04E5> ;
+    cim:ParameterValue.value "40.0"^^cim:String .
+
+<E1FD07DF-F71E-4865-8DB4-2FD3DC68967F_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <6E3516C8-8BA3-4F0C-A793-7893E0A054D0> ;
+    cim:ParameterValue.value "0.02"^^cim:String .
+
+<E1FD07DF-F71E-4865-8DB4-2FD3DC68967F_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <FD880F5C-AD4A-47AB-A26B-5124AA6902A3> ;
+    cim:ParameterValue.value "10.5"^^cim:String .
+
+<E1FD07DF-F71E-4865-8DB4-2FD3DC68967F_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <DBB46C29-E4C4-4CD2-BB5C-0D2C838C89BA> ;
+    cim:ParameterValue.value "-10.5"^^cim:String .
+
+<E1FD07DF-F71E-4865-8DB4-2FD3DC68967F_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <BF4C1769-0357-49BE-8627-7B9CD0D90F60> ;
+    cim:ParameterValue.value "1.0"^^cim:String .
+
+<E8DCEB9F-BE8B-4124-B443-BBF8C2C368BD_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9C1B56C0-9371-45ED-8679-AA0C5E8E5CEC> ;
+    cim:ParameterValue.value "1.470588"^^cim:String .
+
+<E8DCEB9F-BE8B-4124-B443-BBF8C2C368BD_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EF182868-4670-4271-9684-231C1ACDF593> ;
+    cim:ParameterValue.value "0.073899"^^cim:String .
+
+<E8DCEB9F-BE8B-4124-B443-BBF8C2C368BD_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <182F1C59-EB7B-4684-95CD-D50341E402BE> ;
+    cim:ParameterValue.value "0.42"^^cim:String .
+
+<E8DCEB9F-BE8B-4124-B443-BBF8C2C368BD_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <419CEBED-8D72-4BAF-9BB1-BBD6404BE950> ;
+    cim:ParameterValue.value "1.2"^^cim:String .
+
+<E8DCEB9F-BE8B-4124-B443-BBF8C2C368BD_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <50A2FF9E-C212-4431-AC6E-A9A6B9BF1A34> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<E8DCEB9F-BE8B-4124-B443-BBF8C2C368BD_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A56F1152-553D-4EBA-B7C0-BA204365C510> ;
+    cim:ParameterValue.value "2.02"^^cim:String .
+
+<E8DCEB9F-BE8B-4124-B443-BBF8C2C368BD_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <4BEAFB82-FFB3-4551-AA12-AE8D4BC09610> ;
+    cim:ParameterValue.value "10.0"^^cim:String .
+
+<EBD324AC-1566-45CD-9C99-C8AB8BDB7625_seq10> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <9C1B56C0-9371-45ED-8679-AA0C5E8E5CEC> ;
+    cim:ParameterValue.value "1.38888"^^cim:String .
+
+<EBD324AC-1566-45CD-9C99-C8AB8BDB7625_seq4> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <EF182868-4670-4271-9684-231C1ACDF593> ;
+    cim:ParameterValue.value "0.191571"^^cim:String .
+
+<EBD324AC-1566-45CD-9C99-C8AB8BDB7625_seq5> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <182F1C59-EB7B-4684-95CD-D50341E402BE> ;
+    cim:ParameterValue.value "3.0"^^cim:String .
+
+<EBD324AC-1566-45CD-9C99-C8AB8BDB7625_seq6> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <419CEBED-8D72-4BAF-9BB1-BBD6404BE950> ;
+    cim:ParameterValue.value "1.2"^^cim:String .
+
+<EBD324AC-1566-45CD-9C99-C8AB8BDB7625_seq7> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <50A2FF9E-C212-4431-AC6E-A9A6B9BF1A34> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<EBD324AC-1566-45CD-9C99-C8AB8BDB7625_seq8> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <A56F1152-553D-4EBA-B7C0-BA204365C510> ;
+    cim:ParameterValue.value "0.0"^^cim:String .
+
+<EBD324AC-1566-45CD-9C99-C8AB8BDB7625_seq9> a cim:ParameterValue ;
+    cim:ParameterValue.ParameterDescriptor <4BEAFB82-FFB3-4551-AA12-AE8D4BC09610> ;
+    cim:ParameterValue.value "5.0"^^cim:String .
 

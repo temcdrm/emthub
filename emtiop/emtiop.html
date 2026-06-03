@@ -2763,6 +2763,154 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="DetailedModelDynamics" class="group">
+         <a href="#DetailedModelDynamics">
+            <h2 class="concrete">DetailedModelDynamics</h2>
+         </a>
+         <p class="package">DetailedModelDescription</p>
+         <p class="comment">The main class that packages all related to this detailed model. This includes all parameters, functions, signals, etc.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="DetailedModelDynamics.DetailedModelTypeDynamics">DetailedModelTypeDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#DetailedModelTypeDynamics">DetailedModelTypeDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The type of detailed model dynamics that is applied to the detailed model dynamics.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="DetailedModelDynamics.DynamicsFunctionBlock">DynamicsFunctionBlock</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#DynamicsFunctionBlock">DynamicsFunctionBlock</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The dynamics function block for this detailed model dynamics.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="DetailedModelDynamics.Equipment">Equipment</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Equipment">Equipment</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The equipment which behaviour this detailed model dynamics represents.</p>
+               </td>
+            </tr>
+         </table>
+         <h3>Inherited Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#DynamicsFunctionBlock.mRID">DynamicsFunctionBlock</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">enabled</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#DynamicsFunctionBlock.enabled">DynamicsFunctionBlock</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#DynamicsFunctionBlock.name">DynamicsFunctionBlock</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
       <div id="DiagramObjectPoint" class="group">
          <a href="#DiagramObjectPoint">
             <h2 class="concrete">DiagramObjectPoint</h2>
@@ -3692,6 +3840,23 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p>see <a class="superclass" href="#ConnectedFacility.ACPointOfCommonCoupling">ConnectedFacility</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Equipments</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..unbounded</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Equipment">Equipment</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#ConnectedFacility.Equipments">ConnectedFacility</a>
                   </p>
                </td>
             </tr>
@@ -5511,6 +5676,22 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
+                  <p class="name" id="ParameterDescriptor.engineeringUnit">engineeringUnit</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The engineering unit of the value.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
                   <p class="name" id="ParameterDescriptor.sequenceNumber">sequenceNumber</p>
                </th>
                <td>
@@ -5613,6 +5794,64 @@ p.package { position: absolute; right: 10px; top: 0px}
                <td>
                   <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
                   </p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="ParameterValue" class="group">
+         <a href="#ParameterValue">
+            <h2 class="concrete">ParameterValue</h2>
+         </a>
+         <p class="package">DetailedModelDescription</p>
+         <p class="comment">Provides the value of a given parameter of a detailed model dynamics.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="ParameterValue.value">value</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The value of the parameter.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ParameterValue.DetailedModelDynamics">DetailedModelDynamics</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#DetailedModelDynamics">DetailedModelDynamics</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The detailed model to which this parameter value applies.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ParameterValue.ParameterDescriptor">ParameterDescriptor</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ParameterDescriptor">ParameterDescriptor</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The parameter descriptor that has this value.</p>
                </td>
             </tr>
          </table>
@@ -7008,6 +7247,23 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p>see <a class="superclass" href="#ConnectedFacility.ACPointOfCommonCoupling">ConnectedFacility</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Equipments</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..unbounded</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Equipment">Equipment</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#ConnectedFacility.Equipments">ConnectedFacility</a>
                   </p>
                </td>
             </tr>
@@ -10358,6 +10614,23 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="comment">The connection point for this facility. It should be associated with a ConnectivityNode within the facility network model, where it may be connected to an external network model.</p>
                </td>
             </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ConnectedFacility.Equipments">Equipments</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..<item>*</item>
+                  </p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Equipment">Equipment</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The Equipments associated with this ConnectedFacility.</p>
+               </td>
+            </tr>
          </table>
          <h3>Inherited Members</h3>
          <table>
@@ -11187,154 +11460,6 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
          <h3>Inherited Members</h3>
-         <table>
-            <tr>
-               <th>
-                  <p class="name">mRID</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#String">String</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">name</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#String">String</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
-      </div>
-      <div id="DetailedModelDynamics" class="group">
-         <a href="#DetailedModelDynamics">
-            <h2 class="abstract">DetailedModelDynamics</h2>
-         </a>
-         <p class="package">DetailedModelDescription</p>
-         <p class="comment">The main class that packages all related to this detailed model. This includes all parameters, functions, signals, etc.</p>
-         <h3>Native Members</h3>
-         <table>
-            <tr>
-               <th>
-                  <p class="name" id="DetailedModelDynamics.DetailedModelTypeDynamics">DetailedModelTypeDynamics</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#DetailedModelTypeDynamics">DetailedModelTypeDynamics</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The type of detailed model dynamics that is applied to the detailed model dynamics.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="DetailedModelDynamics.DynamicsFunctionBlock">DynamicsFunctionBlock</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#DynamicsFunctionBlock">DynamicsFunctionBlock</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The dynamics function block for this detailed model dynamics.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="DetailedModelDynamics.Equipment">Equipment</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Equipment">Equipment</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The equipment which behaviour this detailed model dynamics represents.</p>
-               </td>
-            </tr>
-         </table>
-         <h3>Inherited Members</h3>
-         <table>
-            <tr>
-               <th>
-                  <p class="name">mRID</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#String">String</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#DynamicsFunctionBlock.mRID">DynamicsFunctionBlock</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">enabled</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Boolean">Boolean</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#DynamicsFunctionBlock.enabled">DynamicsFunctionBlock</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">name</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#String">String</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#DynamicsFunctionBlock.name">DynamicsFunctionBlock</a>
-                  </p>
-               </td>
-            </tr>
-         </table>
          <table>
             <tr>
                <th>
@@ -12611,13 +12736,6 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
             </tr>
          </table>
-      </div>
-      <div id="ParameterValue" class="group">
-         <a href="#ParameterValue">
-            <h2 class="abstract">ParameterValue</h2>
-         </a>
-         <p class="package">DetailedModelDescription</p>
-         <p class="comment">Provides the value of a given parameter of a detailed model dynamics.</p>
       </div>
       <div id="PointOfCommonCoupling" class="group">
          <a href="#PointOfCommonCoupling">
