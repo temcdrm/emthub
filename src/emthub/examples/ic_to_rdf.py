@@ -31,7 +31,7 @@ def create_cim_ic (case):
     print ('Branch from, to, tap, pf, qf, pt, qt and EQ/XfEnd ids from', br_name, 'read', br_ic.shape)
     #print (br_ic)
 
-  g = rdflib.Graph(store='Oxigraph')
+  g = rdflib.Graph() # (store='Oxigraph')
   CIM = rdflib.Namespace (CIM_NS)
   g.bind('cim', CIM)
   EMT = rdflib.Namespace (EMT_NS)
