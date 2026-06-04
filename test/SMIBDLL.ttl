@@ -80,9 +80,182 @@
     cim:IdentifiedObject.mRID "F1D8559F-C599-4317-ACC6-7DFCC8D28CAF"^^cim:String ;
     cim:IdentifiedObject.name "4"^^cim:String .
 
+<0A82F415-8F69-431F-8CA1-9561F2857828_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <0A82F415-8F69-431F-8CA1-9561F2857828> ;
+    cim:Terminal.ConnectivityNode <0D346513-A8C4-4B88-9115-F49FDE77FDE3> .
+
+<120A5D19-D703-4508-80BC-CBACDF876508_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <120A5D19-D703-4508-80BC-CBACDF876508> ;
+    cim:Terminal.ConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> .
+
+<120A5D19-D703-4508-80BC-CBACDF876508_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <120A5D19-D703-4508-80BC-CBACDF876508> ;
+    cim:Terminal.ConnectivityNode <D3450F06-6527-4EAD-BFCD-0329101F2511> .
+
+<19826C0D-3F20-484C-87C7-F1A70FEC6F6C_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <19826C0D-3F20-484C-87C7-F1A70FEC6F6C> ;
+    cim:Terminal.ConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> .
+
+<19826C0D-3F20-484C-87C7-F1A70FEC6F6C_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <19826C0D-3F20-484C-87C7-F1A70FEC6F6C> ;
+    cim:Terminal.ConnectivityNode <6EBC949C-1AFF-4C3E-A7C9-0B9C7E462F66> .
+
+<2A5A6262-A2C8-4A68-AC39-58146E85F4EC_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <2A5A6262-A2C8-4A68-AC39-58146E85F4EC> ;
+    cim:Terminal.ConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> .
+
+<2A5A6262-A2C8-4A68-AC39-58146E85F4EC_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <2A5A6262-A2C8-4A68-AC39-58146E85F4EC> ;
+    cim:Terminal.ConnectivityNode <0B2BB3E3-80F5-48BC-883C-4FB49967BCC5> .
+
+<351E0161-F69F-416F-A88D-27AD71DC3B3D_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <351E0161-F69F-416F-A88D-27AD71DC3B3D> ;
+    cim:Terminal.ConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> .
+
+<351E0161-F69F-416F-A88D-27AD71DC3B3D_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <351E0161-F69F-416F-A88D-27AD71DC3B3D> ;
+    cim:Terminal.ConnectivityNode <18CD2BB5-6651-472A-B7C6-74AA4503AB2F> .
+
+<389D91DA-D1F8-4642-A233-274507A27476_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <389D91DA-D1F8-4642-A233-274507A27476> ;
+    cim:Terminal.ConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> .
+
+<389D91DA-D1F8-4642-A233-274507A27476_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <389D91DA-D1F8-4642-A233-274507A27476> ;
+    cim:Terminal.ConnectivityNode <D3450F06-6527-4EAD-BFCD-0329101F2511> .
+
+<3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5> ;
+    cim:Terminal.ConnectivityNode <82B17EC0-8265-4653-BDBC-C2B3CC679545> .
+
+<3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5> ;
+    cim:Terminal.ConnectivityNode <0D346513-A8C4-4B88-9115-F49FDE77FDE3> .
+
+<504652FC-355A-42E0-9462-78117DCEF0A6_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <504652FC-355A-42E0-9462-78117DCEF0A6> ;
+    cim:Terminal.ConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> .
+
+<504652FC-355A-42E0-9462-78117DCEF0A6_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <504652FC-355A-42E0-9462-78117DCEF0A6> ;
+    cim:Terminal.ConnectivityNode <B42190F4-1B21-41CD-9F12-5D2063740289> .
+
+<553C8DD4-48BB-4255-994B-6951693FEC63_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <553C8DD4-48BB-4255-994B-6951693FEC63> ;
+    cim:Terminal.ConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> .
+
+<553C8DD4-48BB-4255-994B-6951693FEC63_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <553C8DD4-48BB-4255-994B-6951693FEC63> ;
+    cim:Terminal.ConnectivityNode <EE6FE71A-A9DE-4A70-962D-76C4496A7D46> .
+
+<6D84F700-4E67-4194-B4FB-2909F016CCE4_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <6D84F700-4E67-4194-B4FB-2909F016CCE4> ;
+    cim:Terminal.ConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> .
+
+<6D84F700-4E67-4194-B4FB-2909F016CCE4_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <6D84F700-4E67-4194-B4FB-2909F016CCE4> ;
+    cim:Terminal.ConnectivityNode <D7FFECE8-9AF8-4EC8-82A6-F09B9E70ABFE> .
+
+<712C072F-5853-445F-B04E-1973FE110433_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <712C072F-5853-445F-B04E-1973FE110433> ;
+    cim:Terminal.ConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> .
+
+<712C072F-5853-445F-B04E-1973FE110433_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <712C072F-5853-445F-B04E-1973FE110433> ;
+    cim:Terminal.ConnectivityNode <50F431B1-2B0D-4643-B99A-2DE6B2086D64> .
+
+<76AB8421-9974-4D8A-BF09-C3C704E7343D_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <76AB8421-9974-4D8A-BF09-C3C704E7343D> ;
+    cim:Terminal.ConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> .
+
+<76AB8421-9974-4D8A-BF09-C3C704E7343D_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <76AB8421-9974-4D8A-BF09-C3C704E7343D> ;
+    cim:Terminal.ConnectivityNode <50F431B1-2B0D-4643-B99A-2DE6B2086D64> .
+
+<9D76B37A-5430-46E2-8E79-C83C845D5C27_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <9D76B37A-5430-46E2-8E79-C83C845D5C27> ;
+    cim:Terminal.ConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> .
+
+<9D76B37A-5430-46E2-8E79-C83C845D5C27_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <9D76B37A-5430-46E2-8E79-C83C845D5C27> ;
+    cim:Terminal.ConnectivityNode <6EBC949C-1AFF-4C3E-A7C9-0B9C7E462F66> .
+
+<B720A0C7-D1AB-43FE-86E0-190BAB17F6DC_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <B720A0C7-D1AB-43FE-86E0-190BAB17F6DC> ;
+    cim:Terminal.ConnectivityNode <82B17EC0-8265-4653-BDBC-C2B3CC679545> .
+
+<B720A0C7-D1AB-43FE-86E0-190BAB17F6DC_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <B720A0C7-D1AB-43FE-86E0-190BAB17F6DC> ;
+    cim:Terminal.ConnectivityNode <EE6FE71A-A9DE-4A70-962D-76C4496A7D46> .
+
+<B99C1747-9C7C-4F5A-B267-0EDD0DA58108_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <B99C1747-9C7C-4F5A-B267-0EDD0DA58108> ;
+    cim:Terminal.ConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> .
+
+<B99C1747-9C7C-4F5A-B267-0EDD0DA58108_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <B99C1747-9C7C-4F5A-B267-0EDD0DA58108> ;
+    cim:Terminal.ConnectivityNode <18CD2BB5-6651-472A-B7C6-74AA4503AB2F> .
+
+<C49D5D63-F29F-4CAB-B39E-7E10D6BE7744_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <C49D5D63-F29F-4CAB-B39E-7E10D6BE7744> ;
+    cim:Terminal.ConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> .
+
+<C49D5D63-F29F-4CAB-B39E-7E10D6BE7744_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <C49D5D63-F29F-4CAB-B39E-7E10D6BE7744> ;
+    cim:Terminal.ConnectivityNode <D7FFECE8-9AF8-4EC8-82A6-F09B9E70ABFE> .
+
+<D3C19ABF-3D9D-40E8-953F-9601694E5211_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <D3C19ABF-3D9D-40E8-953F-9601694E5211> ;
+    cim:Terminal.ConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> .
+
+<D3C19ABF-3D9D-40E8-953F-9601694E5211_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <D3C19ABF-3D9D-40E8-953F-9601694E5211> ;
+    cim:Terminal.ConnectivityNode <0B2BB3E3-80F5-48BC-883C-4FB49967BCC5> .
+
+<ED0C0C3E-4ABF-4CC2-A3D4-913A0CE83692_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <ED0C0C3E-4ABF-4CC2-A3D4-913A0CE83692> ;
+    cim:Terminal.ConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> .
+
+<ED0C0C3E-4ABF-4CC2-A3D4-913A0CE83692_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <ED0C0C3E-4ABF-4CC2-A3D4-913A0CE83692> ;
+    cim:Terminal.ConnectivityNode <B42190F4-1B21-41CD-9F12-5D2063740289> .
+
 <120A5D19-D703-4508-80BC-CBACDF876508> a cim:ACLineSegment ;
-    emt:ConductingEquipment.FromConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> ;
-    emt:ConductingEquipment.ToConnectivityNode <D3450F06-6527-4EAD-BFCD-0329101F2511> ;
     cim:ACLineSegment.b0ch "0.00098989125"^^cim:Susceptance ;
     cim:ACLineSegment.bch "0.0016498187500000002"^^cim:Susceptance ;
     cim:ACLineSegment.r "26.3971"^^cim:Resistance ;
@@ -97,8 +270,6 @@
     cim:IdentifiedObject.name "5_11_1"^^cim:String .
 
 <19826C0D-3F20-484C-87C7-F1A70FEC6F6C> a cim:ACLineSegment ;
-    emt:ConductingEquipment.FromConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> ;
-    emt:ConductingEquipment.ToConnectivityNode <6EBC949C-1AFF-4C3E-A7C9-0B9C7E462F66> ;
     cim:ACLineSegment.b0ch "0.0013205823749999999"^^cim:Susceptance ;
     cim:ACLineSegment.bch "0.0022009706249999997"^^cim:Susceptance ;
     cim:ACLineSegment.r "35.2314"^^cim:Resistance ;
@@ -113,8 +284,6 @@
     cim:IdentifiedObject.name "5_12_1"^^cim:String .
 
 <2A5A6262-A2C8-4A68-AC39-58146E85F4EC> a cim:ACLineSegment ;
-    emt:ConductingEquipment.FromConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> ;
-    emt:ConductingEquipment.ToConnectivityNode <0B2BB3E3-80F5-48BC-883C-4FB49967BCC5> ;
     cim:ACLineSegment.b0ch "0.00079151625"^^cim:Susceptance ;
     cim:ACLineSegment.bch "0.00131919375"^^cim:Susceptance ;
     cim:ACLineSegment.r "21.1071"^^cim:Resistance ;
@@ -129,8 +298,6 @@
     cim:IdentifiedObject.name "5_10_1"^^cim:String .
 
 <504652FC-355A-42E0-9462-78117DCEF0A6> a cim:ACLineSegment ;
-    emt:ConductingEquipment.FromConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> ;
-    emt:ConductingEquipment.ToConnectivityNode <B42190F4-1B21-41CD-9F12-5D2063740289> ;
     cim:ACLineSegment.b0ch "0.00019639124999999995"^^cim:Susceptance ;
     cim:ACLineSegment.bch "0.00032731874999999993"^^cim:Susceptance ;
     cim:ACLineSegment.r "5.237100000000001"^^cim:Resistance ;
@@ -145,8 +312,6 @@
     cim:IdentifiedObject.name "5_6_1"^^cim:String .
 
 <712C072F-5853-445F-B04E-1973FE110433> a cim:ACLineSegment ;
-    emt:ConductingEquipment.FromConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> ;
-    emt:ConductingEquipment.ToConnectivityNode <50F431B1-2B0D-4643-B99A-2DE6B2086D64> ;
     cim:ACLineSegment.b0ch "0.000659200125"^^cim:Susceptance ;
     cim:ACLineSegment.bch "0.001098666875"^^cim:Susceptance ;
     cim:ACLineSegment.r "17.5628"^^cim:Resistance ;
@@ -161,8 +326,6 @@
     cim:IdentifiedObject.name "5_9_1"^^cim:String .
 
 <B720A0C7-D1AB-43FE-86E0-190BAB17F6DC> a cim:ACLineSegment ;
-    emt:ConductingEquipment.FromConnectivityNode <82B17EC0-8265-4653-BDBC-C2B3CC679545> ;
-    emt:ConductingEquipment.ToConnectivityNode <EE6FE71A-A9DE-4A70-962D-76C4496A7D46> ;
     cim:ACLineSegment.b0ch "0.006721277042638102"^^cim:Susceptance ;
     cim:ACLineSegment.bch "0.006721277042638102"^^cim:Susceptance ;
     cim:ACLineSegment.r "0.119025"^^cim:Resistance ;
@@ -177,8 +340,6 @@
     cim:IdentifiedObject.name "2_3_1"^^cim:String .
 
 <B99C1747-9C7C-4F5A-B267-0EDD0DA58108> a cim:ACLineSegment ;
-    emt:ConductingEquipment.FromConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> ;
-    emt:ConductingEquipment.ToConnectivityNode <18CD2BB5-6651-472A-B7C6-74AA4503AB2F> ;
     cim:ACLineSegment.b0ch "0.00039476625000000004"^^cim:Susceptance ;
     cim:ACLineSegment.bch "0.0006579437500000001"^^cim:Susceptance ;
     cim:ACLineSegment.r "10.5271"^^cim:Resistance ;
@@ -193,8 +354,6 @@
     cim:IdentifiedObject.name "5_7_1"^^cim:String .
 
 <C49D5D63-F29F-4CAB-B39E-7E10D6BE7744> a cim:ACLineSegment ;
-    emt:ConductingEquipment.FromConnectivityNode <49775C1A-39F4-48E3-B47E-834A29EC8836> ;
-    emt:ConductingEquipment.ToConnectivityNode <D7FFECE8-9AF8-4EC8-82A6-F09B9E70ABFE> ;
     cim:ACLineSegment.b0ch "0.00049395375"^^cim:Susceptance ;
     cim:ACLineSegment.bch "0.00082325625"^^cim:Susceptance ;
     cim:ACLineSegment.r "13.172099999999999"^^cim:Resistance ;
@@ -209,8 +368,6 @@
     cim:IdentifiedObject.name "5_8_1"^^cim:String .
 
 <351E0161-F69F-416F-A88D-27AD71DC3B3D> a cim:DisconnectingCircuitBreaker ;
-    emt:ConductingEquipment.FromConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> ;
-    emt:ConductingEquipment.ToConnectivityNode <18CD2BB5-6651-472A-B7C6-74AA4503AB2F> ;
     cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
     cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
@@ -218,8 +375,6 @@
     cim:IdentifiedObject.name "4_7_1"^^cim:String .
 
 <389D91DA-D1F8-4642-A233-274507A27476> a cim:DisconnectingCircuitBreaker ;
-    emt:ConductingEquipment.FromConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> ;
-    emt:ConductingEquipment.ToConnectivityNode <D3450F06-6527-4EAD-BFCD-0329101F2511> ;
     cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
     cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
@@ -227,8 +382,6 @@
     cim:IdentifiedObject.name "4_11_1"^^cim:String .
 
 <6D84F700-4E67-4194-B4FB-2909F016CCE4> a cim:DisconnectingCircuitBreaker ;
-    emt:ConductingEquipment.FromConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> ;
-    emt:ConductingEquipment.ToConnectivityNode <D7FFECE8-9AF8-4EC8-82A6-F09B9E70ABFE> ;
     cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
     cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
@@ -236,8 +389,6 @@
     cim:IdentifiedObject.name "4_8_1"^^cim:String .
 
 <76AB8421-9974-4D8A-BF09-C3C704E7343D> a cim:DisconnectingCircuitBreaker ;
-    emt:ConductingEquipment.FromConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> ;
-    emt:ConductingEquipment.ToConnectivityNode <50F431B1-2B0D-4643-B99A-2DE6B2086D64> ;
     cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
     cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
@@ -245,8 +396,6 @@
     cim:IdentifiedObject.name "4_9_1"^^cim:String .
 
 <9D76B37A-5430-46E2-8E79-C83C845D5C27> a cim:DisconnectingCircuitBreaker ;
-    emt:ConductingEquipment.FromConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> ;
-    emt:ConductingEquipment.ToConnectivityNode <6EBC949C-1AFF-4C3E-A7C9-0B9C7E462F66> ;
     cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
     cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
@@ -254,8 +403,6 @@
     cim:IdentifiedObject.name "4_12_1"^^cim:String .
 
 <D3C19ABF-3D9D-40E8-953F-9601694E5211> a cim:DisconnectingCircuitBreaker ;
-    emt:ConductingEquipment.FromConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> ;
-    emt:ConductingEquipment.ToConnectivityNode <0B2BB3E3-80F5-48BC-883C-4FB49967BCC5> ;
     cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
     cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
@@ -263,8 +410,6 @@
     cim:IdentifiedObject.name "4_10_1"^^cim:String .
 
 <ED0C0C3E-4ABF-4CC2-A3D4-913A0CE83692> a cim:DisconnectingCircuitBreaker ;
-    emt:ConductingEquipment.FromConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> ;
-    emt:ConductingEquipment.ToConnectivityNode <B42190F4-1B21-41CD-9F12-5D2063740289> ;
     cim:ConductingEquipment.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
     cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
@@ -272,8 +417,6 @@
     cim:IdentifiedObject.name "4_6_1"^^cim:String .
 
 <0A82F415-8F69-431F-8CA1-9561F2857828> a cim:PowerElectronicsConnection ;
-    emt:ConductingEquipment.FromConnectivityNode <0D346513-A8C4-4B88-9115-F49FDE77FDE3> ;
-    emt:ConductingEquipment.ToConnectivityNode <0D346513-A8C4-4B88-9115-F49FDE77FDE3> ;
     cim:ConductingEquipment.BaseVoltage <E18B2A77-4D06-475A-83D1-257C2DAB9C2D> ;
     cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
     cim:Equipment.inService "true"^^cim:Boolean ;
@@ -311,7 +454,6 @@
     cim:PowerTransformer.vectorGroup "Yy"^^cim:String .
 
 <6BC39BAD-9086-4749-93E7-B3DF14136636> a cim:PowerTransformerEnd ;
-    emt:TransformerEnd.ConnectivityNode <F1D8559F-C599-4317-ACC6-7DFCC8D28CAF> ;
     cim:IdentifiedObject.mRID "6BC39BAD-9086-4749-93E7-B3DF14136636"^^cim:String ;
     cim:IdentifiedObject.name "4_3_0_1_End_1"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <553C8DD4-48BB-4255-994B-6951693FEC63> ;
@@ -320,13 +462,13 @@
     cim:PowerTransformerEnd.ratedS "120000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "230000.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <FA4E9325-13BE-4980-BC1B-D3832EB55232> ;
+    cim:TransformerEnd.Terminal <553C8DD4-48BB-4255-994B-6951693FEC63_1> ;
     cim:TransformerEnd.endNumber "1"^^cim:Integer ;
     cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
 <96513B25-FEEC-4C2D-AC11-8D475B1E2A19> a cim:PowerTransformerEnd ;
-    emt:TransformerEnd.ConnectivityNode <0D346513-A8C4-4B88-9115-F49FDE77FDE3> ;
     cim:IdentifiedObject.mRID "96513B25-FEEC-4C2D-AC11-8D475B1E2A19"^^cim:String ;
     cim:IdentifiedObject.name "2_1_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5> ;
@@ -335,13 +477,13 @@
     cim:PowerTransformerEnd.ratedS "120000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "600.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <E18B2A77-4D06-475A-83D1-257C2DAB9C2D> ;
+    cim:TransformerEnd.Terminal <3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5_2> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
     cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
 <CF35E997-2CC1-4D5D-9A42-F4F0CBBE3D3B> a cim:PowerTransformerEnd ;
-    emt:TransformerEnd.ConnectivityNode <EE6FE71A-A9DE-4A70-962D-76C4496A7D46> ;
     cim:IdentifiedObject.mRID "CF35E997-2CC1-4D5D-9A42-F4F0CBBE3D3B"^^cim:String ;
     cim:IdentifiedObject.name "4_3_0_1_End_2"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <553C8DD4-48BB-4255-994B-6951693FEC63> ;
@@ -350,13 +492,13 @@
     cim:PowerTransformerEnd.ratedS "120000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "34500.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <DBA83F3E-9FA6-453E-9FBC-73FA0BBE83CB> ;
+    cim:TransformerEnd.Terminal <553C8DD4-48BB-4255-994B-6951693FEC63_2> ;
     cim:TransformerEnd.endNumber "2"^^cim:Integer ;
     cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
     cim:TransformerEnd.xground "0.0"^^cim:Reactance .
 
 <E743A608-EA28-4D43-A013-657FEBCEAA6B> a cim:PowerTransformerEnd ;
-    emt:TransformerEnd.ConnectivityNode <82B17EC0-8265-4653-BDBC-C2B3CC679545> ;
     cim:IdentifiedObject.mRID "E743A608-EA28-4D43-A013-657FEBCEAA6B"^^cim:String ;
     cim:IdentifiedObject.name "2_1_0_1_End_1"^^cim:String ;
     cim:PowerTransformerEnd.PowerTransformer <3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5> ;
@@ -365,6 +507,7 @@
     cim:PowerTransformerEnd.ratedS "120000000.0"^^cim:ApparentPower ;
     cim:PowerTransformerEnd.ratedU "34500.0"^^cim:Voltage ;
     cim:TransformerEnd.BaseVoltage <DBA83F3E-9FA6-453E-9FBC-73FA0BBE83CB> ;
+    cim:TransformerEnd.Terminal <3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5_1> ;
     cim:TransformerEnd.endNumber "1"^^cim:Integer ;
     cim:TransformerEnd.grounded "true"^^cim:Boolean ;
     cim:TransformerEnd.rground "0.0"^^cim:Resistance ;
@@ -429,7 +572,8 @@
     cim:IdentifiedObject.name "2_1_0_1_Sat"^^cim:String .
 
 <298095DE-85A1-474C-8316-8CAE0F932952> a emt:IBRPlant ;
-    emt:GeneratingPlant.Equipments <0A82F415-8F69-431F-8CA1-9561F2857828>,
+    emt:ConnectedFacility.ACPointOfCommonCoupling <1265D0D5-9737-4681-9D65-42FEBE3B87C8> ;
+    emt:ConnectedFacility.Equipments <0A82F415-8F69-431F-8CA1-9561F2857828>,
         <3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5>,
         <553C8DD4-48BB-4255-994B-6951693FEC63>,
         <B720A0C7-D1AB-43FE-86E0-190BAB17F6DC> ;
@@ -443,6 +587,11 @@
     emt:IBRPlant.dcLinkVoltage "1200.0"^^cim:Voltage ;
     emt:IBRPlant.switchingFrequency "3060.0"^^cim:Frequency ;
     cim:IdentifiedObject.mRID "298095DE-85A1-474C-8316-8CAE0F932952"^^cim:String ;
+    cim:IdentifiedObject.name "1_1"^^cim:String .
+
+<1265D0D5-9737-4681-9D65-42FEBE3B87C8> a cim:ACPointOfCommonCoupling ;
+    cim:ACPointOfCommonCoupling.ConnectivityNode <82B17EC0-8265-4653-BDBC-C2B3CC679545> ;
+    cim:IdentifiedObject.mRID "1265D0D5-9737-4681-9D65-42FEBE3B87C8"^^cim:String ;
     cim:IdentifiedObject.name "1_1"^^cim:String .
 
 <FDE751E2-C11C-485C-B254-52B43FE55028> a emt:IEEECigreDLL ;
@@ -1133,99 +1282,99 @@
     cim:OperationalLimitType.isInfiniteDuration "false"^^cim:Boolean .
 
 <0CD9E10A-D397-4E9F-995E-9142B3DD934A> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.ConductingEquipment <351E0161-F69F-416F-A88D-27AD71DC3B3D> ;
     cim:IdentifiedObject.mRID "0CD9E10A-D397-4E9F-995E-9142B3DD934A"^^cim:String ;
-    cim:IdentifiedObject.name "4_7_1"^^cim:String .
+    cim:IdentifiedObject.name "4_7_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <351E0161-F69F-416F-A88D-27AD71DC3B3D_1> .
 
 <0EEEA63C-C19A-4ED0-86BF-A980337CC656> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.ConductingEquipment <D3C19ABF-3D9D-40E8-953F-9601694E5211> ;
     cim:IdentifiedObject.mRID "0EEEA63C-C19A-4ED0-86BF-A980337CC656"^^cim:String ;
-    cim:IdentifiedObject.name "4_10_1"^^cim:String .
+    cim:IdentifiedObject.name "4_10_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <D3C19ABF-3D9D-40E8-953F-9601694E5211_1> .
 
 <23E1DBB0-7266-480C-8341-0B4883017E1B> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.ConductingEquipment <2A5A6262-A2C8-4A68-AC39-58146E85F4EC> ;
     cim:IdentifiedObject.mRID "23E1DBB0-7266-480C-8341-0B4883017E1B"^^cim:String ;
-    cim:IdentifiedObject.name "5_10_1"^^cim:String .
+    cim:IdentifiedObject.name "5_10_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <2A5A6262-A2C8-4A68-AC39-58146E85F4EC_1> .
 
 <27DAA770-6DCD-4A4A-B35B-9B5D525E410C> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.TransformerEnd <6BC39BAD-9086-4749-93E7-B3DF14136636> ;
     cim:IdentifiedObject.mRID "27DAA770-6DCD-4A4A-B35B-9B5D525E410C"^^cim:String ;
-    cim:IdentifiedObject.name "4_3_0_1_End_1"^^cim:String .
+    cim:IdentifiedObject.name "4_3_0_1_End_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <553C8DD4-48BB-4255-994B-6951693FEC63_1> .
 
 <2A0B87DD-0658-4EBC-A612-E0A8ACE526AA> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.TransformerEnd <96513B25-FEEC-4C2D-AC11-8D475B1E2A19> ;
     cim:IdentifiedObject.mRID "2A0B87DD-0658-4EBC-A612-E0A8ACE526AA"^^cim:String ;
-    cim:IdentifiedObject.name "2_1_0_1_End_2"^^cim:String .
+    cim:IdentifiedObject.name "2_1_0_1_End_2"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5_2> .
 
 <4EF1A005-2F3C-4A1F-BDBB-63DEB32EA5C2> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.ConductingEquipment <120A5D19-D703-4508-80BC-CBACDF876508> ;
     cim:IdentifiedObject.mRID "4EF1A005-2F3C-4A1F-BDBB-63DEB32EA5C2"^^cim:String ;
-    cim:IdentifiedObject.name "5_11_1"^^cim:String .
+    cim:IdentifiedObject.name "5_11_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <120A5D19-D703-4508-80BC-CBACDF876508_1> .
 
 <601B67D3-DBFE-4ED2-BB22-D0627B589593> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.ConductingEquipment <19826C0D-3F20-484C-87C7-F1A70FEC6F6C> ;
     cim:IdentifiedObject.mRID "601B67D3-DBFE-4ED2-BB22-D0627B589593"^^cim:String ;
-    cim:IdentifiedObject.name "5_12_1"^^cim:String .
+    cim:IdentifiedObject.name "5_12_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <19826C0D-3F20-484C-87C7-F1A70FEC6F6C_1> .
 
 <65DD5976-BB1D-47AB-94EA-CC50EE07826B> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.ConductingEquipment <712C072F-5853-445F-B04E-1973FE110433> ;
     cim:IdentifiedObject.mRID "65DD5976-BB1D-47AB-94EA-CC50EE07826B"^^cim:String ;
-    cim:IdentifiedObject.name "5_9_1"^^cim:String .
+    cim:IdentifiedObject.name "5_9_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <712C072F-5853-445F-B04E-1973FE110433_1> .
 
 <78034673-227A-4BC9-B637-C86FC1EBFEBB> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.TransformerEnd <CF35E997-2CC1-4D5D-9A42-F4F0CBBE3D3B> ;
     cim:IdentifiedObject.mRID "78034673-227A-4BC9-B637-C86FC1EBFEBB"^^cim:String ;
-    cim:IdentifiedObject.name "4_3_0_1_End_2"^^cim:String .
+    cim:IdentifiedObject.name "4_3_0_1_End_2"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <553C8DD4-48BB-4255-994B-6951693FEC63_2> .
 
 <989ACC43-302F-4538-BE44-4D3B50D6268F> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.ConductingEquipment <6D84F700-4E67-4194-B4FB-2909F016CCE4> ;
     cim:IdentifiedObject.mRID "989ACC43-302F-4538-BE44-4D3B50D6268F"^^cim:String ;
-    cim:IdentifiedObject.name "4_8_1"^^cim:String .
+    cim:IdentifiedObject.name "4_8_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <6D84F700-4E67-4194-B4FB-2909F016CCE4_1> .
 
 <BC6DF774-7821-43B8-88DE-DE9CC6828620> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.ConductingEquipment <9D76B37A-5430-46E2-8E79-C83C845D5C27> ;
     cim:IdentifiedObject.mRID "BC6DF774-7821-43B8-88DE-DE9CC6828620"^^cim:String ;
-    cim:IdentifiedObject.name "4_12_1"^^cim:String .
+    cim:IdentifiedObject.name "4_12_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <9D76B37A-5430-46E2-8E79-C83C845D5C27_1> .
 
 <BDD513D6-1EDF-4A40-960E-EF9FE899F1E1> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.ConductingEquipment <504652FC-355A-42E0-9462-78117DCEF0A6> ;
     cim:IdentifiedObject.mRID "BDD513D6-1EDF-4A40-960E-EF9FE899F1E1"^^cim:String ;
-    cim:IdentifiedObject.name "5_6_1"^^cim:String .
+    cim:IdentifiedObject.name "5_6_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <504652FC-355A-42E0-9462-78117DCEF0A6_1> .
 
 <BF0909BA-3FA7-4012-97E2-43ECD51AF96E> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.TransformerEnd <E743A608-EA28-4D43-A013-657FEBCEAA6B> ;
     cim:IdentifiedObject.mRID "BF0909BA-3FA7-4012-97E2-43ECD51AF96E"^^cim:String ;
-    cim:IdentifiedObject.name "2_1_0_1_End_1"^^cim:String .
+    cim:IdentifiedObject.name "2_1_0_1_End_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5_1> .
 
 <CC57B71A-397C-4EA8-9C6C-D816483A57B7> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.ConductingEquipment <389D91DA-D1F8-4642-A233-274507A27476> ;
     cim:IdentifiedObject.mRID "CC57B71A-397C-4EA8-9C6C-D816483A57B7"^^cim:String ;
-    cim:IdentifiedObject.name "4_11_1"^^cim:String .
+    cim:IdentifiedObject.name "4_11_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <389D91DA-D1F8-4642-A233-274507A27476_1> .
 
 <D6D3943F-159C-4A31-B0BD-748E064A2196> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.ConductingEquipment <B99C1747-9C7C-4F5A-B267-0EDD0DA58108> ;
     cim:IdentifiedObject.mRID "D6D3943F-159C-4A31-B0BD-748E064A2196"^^cim:String ;
-    cim:IdentifiedObject.name "5_7_1"^^cim:String .
+    cim:IdentifiedObject.name "5_7_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <B99C1747-9C7C-4F5A-B267-0EDD0DA58108_1> .
 
 <DB8BCEA3-4B43-4755-B44E-04880B345BCC> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.ConductingEquipment <76AB8421-9974-4D8A-BF09-C3C704E7343D> ;
     cim:IdentifiedObject.mRID "DB8BCEA3-4B43-4755-B44E-04880B345BCC"^^cim:String ;
-    cim:IdentifiedObject.name "4_9_1"^^cim:String .
+    cim:IdentifiedObject.name "4_9_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <76AB8421-9974-4D8A-BF09-C3C704E7343D_1> .
 
 <DBDA5B12-0A51-408F-A19C-74BFD3798064> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.ConductingEquipment <ED0C0C3E-4ABF-4CC2-A3D4-913A0CE83692> ;
     cim:IdentifiedObject.mRID "DBDA5B12-0A51-408F-A19C-74BFD3798064"^^cim:String ;
-    cim:IdentifiedObject.name "4_6_1"^^cim:String .
+    cim:IdentifiedObject.name "4_6_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <ED0C0C3E-4ABF-4CC2-A3D4-913A0CE83692_1> .
 
 <F142D777-950C-4861-A79F-47722E966B13> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.ConductingEquipment <B720A0C7-D1AB-43FE-86E0-190BAB17F6DC> ;
     cim:IdentifiedObject.mRID "F142D777-950C-4861-A79F-47722E966B13"^^cim:String ;
-    cim:IdentifiedObject.name "2_3_1"^^cim:String .
+    cim:IdentifiedObject.name "2_3_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <B720A0C7-D1AB-43FE-86E0-190BAB17F6DC_1> .
 
 <FB29D331-BA8F-4706-A1D0-7FE861E8EE56> a cim:OperationalLimitSet ;
-    emt:OperationalLimitSet.ConductingEquipment <C49D5D63-F29F-4CAB-B39E-7E10D6BE7744> ;
     cim:IdentifiedObject.mRID "FB29D331-BA8F-4706-A1D0-7FE861E8EE56"^^cim:String ;
-    cim:IdentifiedObject.name "5_8_1"^^cim:String .
+    cim:IdentifiedObject.name "5_8_1"^^cim:String ;
+    cim:OperationalLimitSet.Terminal <C49D5D63-F29F-4CAB-B39E-7E10D6BE7744_1> .
 
 <07E793D0-7A99-40C8-8026-2703AE6F2AC4> a cim:ApparentPowerLimit ;
     cim:ApparentPowerLimit.value "120000000.0"^^cim:ApparentPower ;
