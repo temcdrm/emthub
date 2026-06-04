@@ -782,7 +782,7 @@ SELECT DISTINCT ?mRID ?name ?Equipment_mRID ?Equipment_type WHERE {
  ?p r:type e:RotatingMachinePlant.
  ?p c:IdentifiedObject.name ?name.
  ?p c:IdentifiedObject.mRID ?mRID.
- ?p e:GeneratingPlant.Equipments ?eq.
+ ?p e:ConnectedFacility.Equipments ?eq.
  ?eq c:IdentifiedObject.mRID ?Equipment_mRID.
  {?eq a ?rawtype.
   bind(strafter(str(?rawtype),"#") as ?Equipment_type)}
@@ -796,7 +796,7 @@ VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:Strin
  ?p r:type e:IBRPlant.
  ?p c:IdentifiedObject.name ?name.
  ?p c:IdentifiedObject.mRID ?mRID.
- ?p e:GeneratingPlant.Equipments ?eq.
+ ?p e:ConnectedFacility.Equipments ?eq.
  ?eq c:Equipment.EquipmentContainer ?sys.
  ?eq c:IdentifiedObject.mRID ?Equipment_mRID.
  {?eq a ?rawtype.
@@ -811,7 +811,7 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?p r:type e:IBRPlant.
  ?p c:IdentifiedObject.name ?name.
  ?p c:IdentifiedObject.mRID ?mRID.
- ?p e:GeneratingPlant.Equipments ?eq.
+ ?p e:ConnectedFacility.Equipments ?eq.
  ?eq r:type c:PowerElectronicsConnection.
  ?eq c:Equipment.EquipmentContainer ?sys.
  ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
