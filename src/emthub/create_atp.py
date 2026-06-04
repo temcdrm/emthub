@@ -671,8 +671,8 @@ def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec_d,
                                kpg = AtpFit6 (0.1),
                                kig = AtpFit6 (0.05)), file=ap)
 
-def AppendWind (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, regc, repc):
-  AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, regc, repc)
+def AppendWind (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec_d, regc_d, repc_d):
+  AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec_d, regc_d, repc_d)
 
 def AppendType14Generator (cn1id, bus, vbase, rmva, Xdp, Ra, icd, mw, mvar, ap, gsu_ang):
   vpu = 1.0
@@ -818,7 +818,7 @@ def AppendMachineDynamics (bus, vpu, deg, mach, gov_d, exc_d, pss_d, ap, gsu_ang
   if gov_d is not None:
     d = gov_d['instance'] # d = gov['data']
     typ_name = gov_d['type']['name'] # gov['type']
-    if typ_name == 'IEEESGO': # 'EMTGovSteamSGO': , was all lowercase
+    if typ_name == 'IEESGO': # 'EMTGovSteamSGO': , was all lowercase
       kgov = d['K1']
       t2 = max(1e-9, d['T2'])
       t1t3 = max(2e-18, d['T1'] * d['T3'])
@@ -855,8 +855,8 @@ def AppendMachineDynamics (bus, vpu, deg, mach, gov_d, exc_d, pss_d, ap, gsu_ang
     typ_name = exc_d['type']['name']    # exc['type']
     if typ_name == 'EXST1': # 'EMTExcST1A':
       kc = d['KC'] # not using CIM vamax, vamin, vimax, vimin
-      ilr = d['ilr']
-      klr = d['klr']
+      #ilr = d['ilr']
+      #klr = d['klr']
       vrmin = abs(d['VRMIN'])
       vrmax = d['VRMAX']
       ka = d['KA']
@@ -864,15 +864,15 @@ def AppendMachineDynamics (bus, vpu, deg, mach, gov_d, exc_d, pss_d, ap, gsu_ang
       ta = max(d['TA'],1e-9)
       tb = max(d['TB'],1e-9)
       tc = max(d['TC'],1e-9)
-      tled = max(1e-9, d['tc1'])
-      tlag = max(1e-9, d['tb1'])
+      #tled = max(1e-9, d['tc1'])
+      #tlag = max(1e-9, d['tb1'])
       kfbk = d['KF'] # 0.0
       tfbk = max(1e-9, d['TF'])
     elif typ_name == 'IEEET1': # 'EMTExcIEEEDC1A':
       ka = d['KA']
       v0pu = vpu + 1.0 / ka
     elif typ_name == 'SEXS': # 'EMTExcSEXS':
-      ka = d['K'] * d['kc']
+      ka = d['K'] * 0.08 # d['kc']
       v0pu = vpu + 1.0 / ka
     else:
       print ('** Unrecognized exciter data for', typ_name, 'at bus', bus)
@@ -899,8 +899,8 @@ def AppendMachineDynamics (bus, vpu, deg, mach, gov_d, exc_d, pss_d, ap, gsu_ang
       pst4 = max(d['T4'],1e-9)
       pst5 = max(d['T5'],1e-9)
       pst6 = max(d['T6'],1e-9)
-      vstmn = d['vrmin']
-      vstmx = d['vrmax']
+      #vstmn = d['vrmin']
+      #vstmx = d['vrmax']
     else:
       print ('** Unrecognized stabilizer data for', pss['type'], 'at bus', bus)
   print (machine_dynamic_template.format(sbus=sbus,

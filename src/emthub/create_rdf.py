@@ -913,7 +913,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
           else:
             model_types_used.add (mdl)
             append_xml_detailed_model (g, key, sm, mdl, dyn_models[mdl], uuids, row)
-        print ('machine dynamics for', key, used)
+        #print ('machine dynamics for', key, used)
 #       for mdl, row in dyr[key].items():
 #         cls = dyn_mapping[mdl]['CIMclass']
 #         used.append (cls)
@@ -990,7 +990,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
         dyr_used[key] = True
         used = []
         for mdl, row in dyr[key].items():
-          print (mdl, row)
+          # print (mdl, row)
           used.append (mdl)
           model_types_used.add (mdl)
           append_xml_detailed_model (g, key, pec, mdl, dyn_models[mdl], uuids, row)
@@ -998,7 +998,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
 #          used.append (cls)
 #          dynID = GetCIMID(cls, key, uuids)
 #          append_xml_wecc_dynamics (g, key, dynID, pec, cls, dyn_defaults, dyn_mapping[mdl]['AttMap'], row)
-        print ('wecc dynamics for', key, used)
+        # print ('wecc dynamics for', key, used)
       else:
         print ('no WECC dynamics found for', key, ftype)
   # warn of any unused dyr file entries
