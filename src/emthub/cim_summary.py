@@ -24,7 +24,7 @@ def graph_summary_dict (root, classes_found):
     ?s a ?class .
   } group by ?class order by ?class"""
 
-  g = rdflib.Graph()
+  g = rdflib.Graph(store='Oxigraph')
   g.parse (root + '.ttl')
 
   d = {}

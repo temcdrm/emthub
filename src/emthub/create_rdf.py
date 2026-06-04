@@ -231,7 +231,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
     CIM(Namespace): an RDF namespace for the core CIM
     EMT(Namespace): an RDF namespace for the EMT extensions
   """
-  g = rdflib.Graph()
+  g = rdflib.Graph(store='Oxigraph')
   CIM = rdflib.Namespace (CIM_NS)
   g.bind('cim', CIM)
   EMT = rdflib.Namespace (EMT_NS)

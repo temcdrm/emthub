@@ -16,7 +16,7 @@ def main():
     idx = int(sys.argv[1])
   case = emthub.CASES[idx]
 
-  g = rdflib.Graph()
+  g = rdflib.Graph(store='Oxigraph')
   fname = case['name']+'.ttl'
   g.parse (fname)
   print ('read', len(g), 'statements from', fname)
@@ -27,7 +27,7 @@ def main():
   icd = None
   fname = case['name']+'_ic.ttl'
   if os.path.exists(fname):
-    g = rdflib.Graph()
+    g = rdflib.Graph(store='Oxigraph')
     g.parse (fname)
     print ('read', len(g), 'initial condition statements from', fname)
     icd = emthub.load_ic_dict (g)

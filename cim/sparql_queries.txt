@@ -307,8 +307,8 @@ SELECT ?name ?mRID ?ConnectivityNode1_name ?BaseVoltage_nominalVoltage ?p ?q ?pC
  ?lr c:LoadResponseCharacteristic.qConstantCurrent ?qConstantCurrent.
  ?lr c:LoadResponseCharacteristic.pConstantPower ?pConstantPower.
  ?lr c:LoadResponseCharacteristic.qConstantPower ?qConstantPower.
- OPTIONAL {?lr c:LoadResponseCharacteristic.pVoltageExponent ?pe.}
- OPTIONAL {?lr c:LoadResponseCharacteristic.qVoltageExponent ?qe.}
+ OPTIONAL {?lr c:LoadResponseCharacteristic.pVoltageExponent ?pVoltageExponent.}
+ OPTIONAL {?lr c:LoadResponseCharacteristic.qVoltageExponent ?qVoltageExponent.}
  ?t1 c:Terminal.ConductingEquipment ?s.
  ?t1 c:Terminal.ConnectivityNode ?cn1.
  ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.

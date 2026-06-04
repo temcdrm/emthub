@@ -10,7 +10,7 @@ EMT_NS = 'http://opensource.ieee.org/emtiop#'
 if __name__ == '__main__':
   CIM = rdflib.Namespace (CIM_NS)
   EMT = rdflib.Namespace (EMT_NS)
-  g = rdflib.Graph()
+  g = rdflib.Graph(store='Oxigraph')
   g.bind('cim', CIM)
   g.bind('emt', EMT)
 

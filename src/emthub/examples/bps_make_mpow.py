@@ -22,7 +22,7 @@ def main():
     print ('{:s} does not use MATPOWER'.format(sys_name))
     quit()
 
-  g = rdflib.Graph()
+  g = rdflib.Graph(store='Oxigraph')
   fname = sys_name + '.ttl'
   g.parse (fname)
   print ('read', len(g), 'statements from', fname)

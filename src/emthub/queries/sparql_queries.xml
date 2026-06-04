@@ -147,11 +147,11 @@ SELECT ?name ?mRID ?BaseVoltage_nominalVoltage ?ConnectivityNode1_name ?Connecti
  ?s c:ACLineSegment.x0 ?x0.
  ?s c:ACLineSegment.b0ch ?b0ch.
  ?t1 c:Terminal.ConductingEquipment ?s.
- ?t1 c:Terminal.ConnectivityNode ?cn1.
  ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
  ?t2 c:Terminal.ConductingEquipment ?s.
- ?t2 c:Terminal.ConnectivityNode ?cn2.
  ?t2 c:ACDCTerminal.sequenceNumber "2"^^c:Integer.
+ ?t2 c:Terminal.ConnectivityNode ?cn2.
  ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID.
  ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name.
  ?cn2 c:IdentifiedObject.mRID ?ConnectivityNode2_mRID.
@@ -177,11 +177,11 @@ SELECT ?name ?ConnectivityNode1_name ?ConnectivityNode2_name ?BaseVoltage_nomina
  ?s c:ConductingEquipment.BaseVoltage ?bv.
  ?bv c:BaseVoltage.nominalVoltage ?BaseVoltage_nominalVoltage.
  ?t1 c:Terminal.ConductingEquipment ?s.
- ?t1 c:Terminal.ConnectivityNode ?cn1.
  ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
  ?t2 c:Terminal.ConductingEquipment ?s.
- ?t2 c:Terminal.ConnectivityNode ?cn2.
  ?t2 c:ACDCTerminal.sequenceNumber "2"^^c:Integer.
+ ?t2 c:Terminal.ConnectivityNode ?cn2.
  ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID.
  ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name.
  ?cn2 c:IdentifiedObject.mRID ?ConnectivityNode2_mRID.
@@ -214,8 +214,8 @@ SELECT ?name ?mRID ?ConnectivityNode1_name ?BaseVoltage_nominalVoltage ?r ?x ?r0
  ?s c:EnergySource.voltageMagnitude ?voltageMagnitude.
  ?s c:EnergySource.voltageAngle ?voltageAngle.
  ?t1 c:Terminal.ConductingEquipment ?s.
- ?t1 c:Terminal.ConnectivityNode ?cn1.
  ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
  ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID. 
  ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name
 } ORDER by ?name
@@ -229,7 +229,7 @@ SELECT ?name ?mRID ?ConnectivityNode1_name ?BaseVoltage_nominalVoltage ?r ?x ?r0
 <classes>SeriesCompensator</classes>
 <value>
 <![CDATA[
-SELECT ?name ?FromConnectivityNode_name ?ToConnectivityNode_name ?BaseVoltage_nominalVoltage ?r ?r0 ?x ?x0 ?mRID ?EquipmentContainer_mRID ?FromConnectivityNode_mRID ?ToConnectivityNode_mRID WHERE {
+SELECT ?name ?ConnectivityNode1_name ?ConnectivityNode2_name ?BaseVoltage_nominalVoltage ?r ?r0 ?x ?x0 ?mRID ?EquipmentContainer_mRID ?ConnectivityNode1_mRID ?ConnectivityNode2_mRID WHERE {
  ?s r:type c:SeriesCompensator.
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?s c:Equipment.EquipmentContainer ?sys.
@@ -241,12 +241,16 @@ SELECT ?name ?FromConnectivityNode_name ?ToConnectivityNode_name ?BaseVoltage_no
  ?s c:SeriesCompensator.r0 ?r0. 
  ?s c:SeriesCompensator.x ?x. 
  ?s c:SeriesCompensator.x0 ?x0. 
- ?s e:ConductingEquipment.FromConnectivityNode ?cn1.
- ?s e:ConductingEquipment.ToConnectivityNode ?cn2.
- ?cn1 c:IdentifiedObject.mRID ?FromConnectivityNode_mRID.
- ?cn1 c:IdentifiedObject.name ?FromConnectivityNode_name.
- ?cn2 c:IdentifiedObject.mRID ?ToConnectivityNode_mRID.
- ?cn2 c:IdentifiedObject.name ?ToConnectivityNode_name.
+ ?t1 c:Terminal.ConductingEquipment ?s.
+ ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
+ ?t2 c:Terminal.ConductingEquipment ?s.
+ ?t2 c:ACDCTerminal.sequenceNumber "2"^^c:Integer.
+ ?t2 c:Terminal.ConnectivityNode ?cn2.
+ ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID.
+ ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name.
+ ?cn2 c:IdentifiedObject.mRID ?ConnectivityNode2_mRID.
+ ?cn2 c:IdentifiedObject.name ?ConnectivityNode2_name
 }
 ORDER by ?name
 ]]>
@@ -434,8 +438,8 @@ SELECT ?name ?ConnectivityNode1_name ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?ma
  ?pec c:PowerElectronicsConnection.maxQ ?maxQ.
  ?pec c:IdentifiedObject.mRID ?mRID.
  ?t1 c:Terminal.ConductingEquipment ?pec.
- ?t1 c:Terminal.ConnectivityNode ?cn1.
  ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
  ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID.
  ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name
 }
@@ -468,8 +472,8 @@ SELECT ?name ?ConnectivityNode1_name ?ratedS ?ratedU ?maxP ?minP ?maxQ ?minQ ?ma
  ?pec c:PowerElectronicsConnection.maxQ ?maxQ.
  ?pec c:IdentifiedObject.mRID ?mRID.
  ?t1 c:Terminal.ConductingEquipment ?pec.
- ?t1 c:Terminal.ConnectivityNode ?cn1.
  ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
  ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID.
  ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name
 }
@@ -823,7 +827,7 @@ ORDER BY ?nominalVoltage
 <classes>LinearShuntCompensator</classes>
 <value>
 <![CDATA[
-SELECT ?name ?BaseVoltage_nominalVoltage ?nomU ?gPerSection ?bPerSection ?sections ?maximumSections ?FromConnectivityNode_name ?mRID ?EquipmentContainer_mRID ?FromConnectivityNode_mRID WHERE {
+SELECT ?name ?BaseVoltage_nominalVoltage ?nomU ?gPerSection ?bPerSection ?sections ?maximumSections ?ConnectivityNode1_name ?mRID ?EquipmentContainer_mRID ?ConnectivityNode1_mRID WHERE {
  ?s r:type c:LinearShuntCompensator.
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?s c:Equipment.EquipmentContainer ?sys.
@@ -836,9 +840,11 @@ SELECT ?name ?BaseVoltage_nominalVoltage ?nomU ?gPerSection ?bPerSection ?sectio
  ?s c:ShuntCompensator.sections ?sections. 
  ?s c:ShuntCompensator.maximumSections ?maximumSections. 
  ?s c:IdentifiedObject.mRID ?mRID. 
- ?s e:ConductingEquipment.FromConnectivityNode ?cn. 
- ?cn c:IdentifiedObject.mRID ?FromConnectivityNode_mRID.
- ?cn c:IdentifiedObject.name ?FromConnectivityNode_name.
+ ?t1 c:Terminal.ConductingEquipment ?s.
+ ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
+ ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID.
+ ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name
 }
 ORDER by ?name
 ]]>
@@ -868,13 +874,13 @@ SELECT ?name ?mRID ?ConnectivityNode1_name ?BaseVoltage_nominalVoltage ?p ?q ?pC
  ?lr c:LoadResponseCharacteristic.qConstantCurrent ?qConstantCurrent.
  ?lr c:LoadResponseCharacteristic.pConstantPower ?pConstantPower.
  ?lr c:LoadResponseCharacteristic.qConstantPower ?qConstantPower.
- OPTIONAL {?lr c:LoadResponseCharacteristic.pVoltageExponent ?pe.}
- OPTIONAL {?lr c:LoadResponseCharacteristic.qVoltageExponent ?qe.}
  ?t1 c:Terminal.ConductingEquipment ?s.
- ?t1 c:Terminal.ConnectivityNode ?cn1.
  ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
  ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID. 
- ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name
+ ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name.
+ OPTIONAL {?lr c:LoadResponseCharacteristic.pVoltageExponent ?pVoltageExponent.}
+ OPTIONAL {?lr c:LoadResponseCharacteristic.qVoltageExponent ?qVoltageExponent.}
 }
 ORDER by ?name
 ]]>
