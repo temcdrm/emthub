@@ -562,20 +562,25 @@ def AppendDLL (bus, key, d, atp_path, ap):
     print ('60{:6s} 0                                                                  1.E3'.format (AtpNode (bus, ph)), file=ap)
   return
 
-def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, regc, repc):
-  #print ('REEC', reec)
-  #print ('REGC', regc)
-  #print ('REPC', repc)
-  print (reec['vFlag'], reec['qFlag'], reec['pqFlag'], reec['pfFlag'], repc['refFlag'], repc['vcmpFlag'], repc['frqFlag'], regc['ivplsw'], reec['pFlag'],
-         reec['kqv'], reec['kqp'], reec['kqi'], reec['kvp'], reec['kvi'], repc['kp'], repc['ki'], repc['kpg'], repc['kig'])
+def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec_d, regc_d, repc_d):
+  reec = reec_d['instance']
+  regc = regc_d['instance']
+  repc = repc_d['instance']
+# print ('REEC', reec)
+# print ('REGC', regc)
+# print ('REPC', repc)
+# print (reec['VFLAG'], reec['QFLAG'], reec['PQFLAG'], reec['PFFLAG'], repc['RefFlag'], repc['VCFlag'], repc['Fflag'], regc['Lvplsw'], reec['PFLAG'],
+#        reec['Kqv'], reec['Kqp'], reec['Kqi'], reec['Kvp'], reec['Kvi'], repc['Kp'], repc['Ki'], repc['Kpg'], repc['Kig'])
+#  print (reec['vFlag'], reec['qFlag'], reec['pqFlag'], reec['pfFlag'], repc['refFlag'], repc['vcmpFlag'], repc['frqFlag'], regc['ivplsw'], reec['pFlag'],
+#         reec['kqv'], reec['kqp'], reec['kqi'], reec['kvp'], reec['kvi'], repc['kp'], repc['ki'], repc['kpg'], repc['kig'])
   sbus = AtpBus (bus)
   sname = 'IBR{:02d}'.format (ibr_count)
   if ppu > 0.0:
     tanpf = qpu / ppu
   else:
     tanpf = 0.0
-  rc = repc['rc']
-  xc = repc['xc']
+  rc = repc['Rc']
+  xc = repc['Xc']
   zc2 = rc*rc + xc*xc
   if use_dyr_file:
     print (solar_template.format(sbus=sbus, sname=sname,
@@ -586,41 +591,41 @@ def AppendSolar (bus, vbase, sbase, ibase, ppu, qpu, vpu, ap, ibr_count, reec, r
                                qpu = AtpFit10 (qpu),
                                vpu = AtpFit10 (vpu),
                                theta = AtpFit10 (1.8),
-                               vflag = AtpFit6 (int(reec['vFlag']=='true')),
-                               qflag = AtpFit6 (int(reec['qFlag']=='true')),
-                               pqflag = AtpFit6 (int(reec['pqFlag']=='true')),
-                               pfflag = AtpFit6 (int(reec['pfFlag']=='true')),
-                               refflag = AtpFit6 (int(repc['refFlag']=='true')),
-                               vcmpflag = AtpFit6 (int(repc['vcmpFlag']=='true')),
-                               frqflag = AtpFit6 (int(repc['frqFlag']=='true')),
-                               lvpsw = AtpFit6 (int(regc['ivplsw']=='true')), #TODO: check the spelling in UML vs. EPRI model user guide
+                               vflag = AtpFit6 (int(reec['VFLAG'])), #=='true')),
+                               qflag = AtpFit6 (int(reec['QFLAG'])), #=='true')),
+                               pqflag = AtpFit6 (int(reec['PQFLAG'])), #=='true')),
+                               pfflag = AtpFit6 (int(reec['PFFLAG'])), #=='true')),
+                               refflag = AtpFit6 (int(repc['RefFlag'])), #=='true')),
+                               vcmpflag = AtpFit6 (int(repc['VCFlag'])), #=='true')),
+                               frqflag = AtpFit6 (int(repc['Fflag'])), #=='true')),
+                               lvpsw = AtpFit6 (int(regc['Lvplsw'])), #=='true')), #TODO: check the spelling in UML vs. EPRI model user guide
                                tanpf = AtpFit6 (tanpf),
-                               pflag = AtpFit6 (int(reec['pFlag']=='true')),
-                               pmin = AtpFit6 (reec['pmin']),
-                               pmax = AtpFit6 (reec['pmax']),
-                               iqrmin = AtpFit6 (regc['iqrmin']),
-                               iqrmax = AtpFit6 (regc['iqrmax']),
-                               vdip = AtpFit6 (reec['vdip']),
-                               vup = AtpFit6 (reec['vup']),
-                               kqv = AtpFit6 (reec['kqv']),
-                               iolim = AtpFit6 (regc['iolim']),
-                               kc = AtpFit6 (repc['kc']),
+                               pflag = AtpFit6 (int(reec['PFLAG'])), #=='true')),
+                               pmin = AtpFit6 (reec['PMIN']),
+                               pmax = AtpFit6 (reec['PMAX']),
+                               iqrmin = AtpFit6 (regc['Iqrmin']),
+                               iqrmax = AtpFit6 (regc['Iqrmax']),
+                               vdip = AtpFit6 (reec['Vdip']),
+                               vup = AtpFit6 (reec['Vup']),
+                               kqv = AtpFit6 (reec['Kqv']),
+                               iolim = AtpFit6 (regc['Iolim']),
+                               kc = AtpFit6 (repc['Kc']),
                                rc = AtpFit6 (rc),
                                xc = AtpFit6 (xc),
                                zc2 = AtpFit6 (zc2),
-                               vqmax = AtpFit6 (reec['vmax']),
-                               vqmin = AtpFit6 (reec['vmin']),
-                               imax = AtpFit6 (reec['imax']),
-                               qmin = AtpFit6 (repc['qmin']),
-                               qmax = AtpFit6 (repc['qmax']),
-                               kqp = AtpFit6 (max(1e-8, reec['kqp'])),
-                               kqi = AtpFit6 (reec['kqi']),
-                               kvp = AtpFit6 (max(1e-8, reec['kvp'])),
-                               kvi = AtpFit6 (reec['kvi']),
-                               kp = AtpFit6 (max(1e-8, repc['kp'])),
-                               ki = AtpFit6 (repc['ki']),
-                               kpg = AtpFit6 (max(1e-8, repc['kpg'])),
-                               kig = AtpFit6 (repc['kig'])), file=ap)
+                               vqmax = AtpFit6 (reec['VMAX']),
+                               vqmin = AtpFit6 (reec['VMIN']),
+                               imax = AtpFit6 (reec['Imax']),
+                               qmin = AtpFit6 (repc['Qmin']),
+                               qmax = AtpFit6 (repc['Qmax']),
+                               kqp = AtpFit6 (max(1e-8, reec['Kqp'])),
+                               kqi = AtpFit6 (reec['Kqi']),
+                               kvp = AtpFit6 (max(1e-8, reec['Kvp'])),
+                               kvi = AtpFit6 (reec['Kvi']),
+                               kp = AtpFit6 (max(1e-8, repc['Kp'])),
+                               ki = AtpFit6 (repc['Ki']),
+                               kpg = AtpFit6 (max(1e-8, repc['Kpg'])),
+                               kig = AtpFit6 (repc['Kig'])), file=ap)
   else:
     print (solar_template.format(sbus=sbus, sname=sname,
                                vbase = AtpFit10 (vbase),
@@ -764,7 +769,7 @@ machine_dynamic_template = """$INCLUDE,SYNCMACH.PCH,{sbus},{sname} $$
   ,{psk5},{psa1},{psa2},{pst3},{pst4},{pst5} $$
   ,{pst6},{vstmn},{vstmx}"""
 
-def AppendMachineDynamics (bus, vpu, deg, mach, gov, exc, pss, ap, gsu_ang):
+def AppendMachineDynamics (bus, vpu, deg, mach, gov_d, exc_d, pss_d, ap, gsu_ang):
   global SM_COUNT
   sbus = AtpBus (bus)
   sname = 'SM{:03d}'.format (SM_COUNT)
@@ -810,25 +815,26 @@ def AppendMachineDynamics (bus, vpu, deg, mach, gov, exc, pss, ap, gsu_ang):
   t1t3 = 0.5
   t1pt3 = 5.1
   pmax = 1.2
-  if gov is not None:
-    d = gov['data']
-    if gov['type'] == 'EMTGovSteamSGO':
-      kgov = d['k1']
-      t2 = max(1e-9, d['t2'])
-      t1t3 = max(2e-18, d['t1'] * d['t3'])
-      t1pt3 = max(1e-9, d['t1'] + d['t3'])
-      pmax = max (1.2, d['pmax']) # pmin not used from CIM?
-    elif gov['type'] == 'EMTGovSteam0':
-      kgov = 1.0 / d['r']
-      pmax = max (1.2, d['vmax'])
-    elif gov['type'] == 'EMTGovHydro1':
-      kgov = 1.0 / d['rperm']
-      pmax = max (1.2, d['gmax'])
-    elif gov['type'] == 'EMTGovGAST':
-      kgov = 1.0 / d['r']
-      pmax = max (1.2, d['vmax'])
+  if gov_d is not None:
+    d = gov_d['instance'] # d = gov['data']
+    typ_name = gov_d['type']['name'] # gov['type']
+    if typ_name == 'IEEESGO': # 'EMTGovSteamSGO': , was all lowercase
+      kgov = d['K1']
+      t2 = max(1e-9, d['T2'])
+      t1t3 = max(2e-18, d['T1'] * d['T3'])
+      t1pt3 = max(1e-9, d['T1'] + d['T3'])
+      pmax = max (1.2, d['PMAX']) # pmin not used from CIM?
+    elif typ_name == 'TGOV1': # 'EMTGovSteam0':, r, vmax
+      kgov = 1.0 / d['R']
+      pmax = max (1.2, d['VMAX'])
+    elif typ_name == 'HYGOV': # 'EMTGovHydro1':, rperm, gmax
+      kgov = 1.0 / d['R']
+      pmax = max (1.2, d['GMAX'])
+    elif typ_name == 'GAST': # 'EMTGovGAST':, r, vmax
+      kgov = 1.0 / d['R']
+      pmax = max (1.2, d['VMAX'])
     else:
-      print ('** Unrecognized governor data for', gov['type'], 'at bus', bus)
+      print ('** Unrecognized governor data for', typ_name, 'at bus', bus)
   # exciter parameters (default ExcST1A)
   kc = 0.038
   ilr = 4.4
@@ -844,31 +850,32 @@ def AppendMachineDynamics (bus, vpu, deg, mach, gov, exc, pss, ap, gsu_ang):
   tlag = 0.025
   kfbk = 0.0
   tfbk = 1.0
-  if exc is not None:
-    d = exc['data']
-    if exc['type'] == 'EMTExcST1A':
-      kc = d['kc'] # not using CIM vamax, vamin, vimax, vimin
+  if exc_d is not None:
+    d = exc_d['instance']               # d = exc['data']
+    typ_name = exc_d['type']['name']    # exc['type']
+    if typ_name == 'EXST1': # 'EMTExcST1A':
+      kc = d['KC'] # not using CIM vamax, vamin, vimax, vimin
       ilr = d['ilr']
       klr = d['klr']
-      vrmin = abs(d['vrmin'])
-      vrmax = d['vrmax']
-      ka = d['ka']
+      vrmin = abs(d['VRMIN'])
+      vrmax = d['VRMAX']
+      ka = d['KA']
       v0pu = vpu + 1.0 / ka
-      ta = max(d['ta'],1e-9)
-      tb = max(d['tb'],1e-9)
-      tc = max(d['tc'],1e-9)
+      ta = max(d['TA'],1e-9)
+      tb = max(d['TB'],1e-9)
+      tc = max(d['TC'],1e-9)
       tled = max(1e-9, d['tc1'])
       tlag = max(1e-9, d['tb1'])
-      kfbk = d['kf'] # 0.0
-      tfbk = max(1e-9, d['tf'])
-    elif exc['type'] == 'EMTExcIEEEDC1A':
-      ka = d['ka']
+      kfbk = d['KF'] # 0.0
+      tfbk = max(1e-9, d['TF'])
+    elif typ_name == 'IEEET1': # 'EMTExcIEEEDC1A':
+      ka = d['KA']
       v0pu = vpu + 1.0 / ka
-    elif exc['type'] == 'EMTExcSEXS':
-      ka = d['k'] * d['kc']
+    elif typ_name == 'SEXS': # 'EMTExcSEXS':
+      ka = d['K'] * d['kc']
       v0pu = vpu + 1.0 / ka
     else:
-      print ('** Unrecognized exciter data for', exc['type'], 'at bus', bus)
+      print ('** Unrecognized exciter data for', typ_name, 'at bus', bus)
   if ka < 1.0:
     print ('** Exciter gain {:.3f} at {:s} is too low for built-in model limiters'.format (ka, str(bus)))
   # stabilizer parameters (default Pss1A)
@@ -881,16 +888,17 @@ def AppendMachineDynamics (bus, vpu, deg, mach, gov, exc, pss, ap, gsu_ang):
   pst6 = max(0.0, 1e-9)
   vstmn = -0.2
   vstmx = 0.2
-  if pss is not None:
-    d = pss['data']
-    if pss['type'] == 'EMTPss1A':
-      psk5 = max(d['ks'],1e-8) # t1 and t2 from CIM not used?
-      psa1 = max(d['a1'],2e-9)
-      psa2 = max(d['a2'],1e-18)
-      pst3 = max(d['t3'],1e-9)
-      pst4 = max(d['t4'],1e-9)
-      pst5 = max(d['t5'],1e-9)
-      pst6 = max(d['t6'],1e-9)
+  if pss_d is not None:
+    d = pss_d['instance']               # d = pss['data']
+    typ_name = pss_d['type']['name']    # pss['type']
+    if typ_name == 'IEEEST': # 'EMTPss1A':
+      psk5 = max(d['KS'],1e-8) # t1 and t2 from CIM not used?
+      psa1 = max(d['A1'],2e-9)
+      psa2 = max(d['A2'],1e-18)
+      pst3 = max(d['T3'],1e-9)
+      pst4 = max(d['T4'],1e-9)
+      pst5 = max(d['T5'],1e-9)
+      pst6 = max(d['T6'],1e-9)
       vstmn = d['vrmin']
       vstmx = d['vrmax']
     else:
@@ -964,7 +972,7 @@ def ParallelMachines (d, icd, atp_buses):
   for key, row in d.items():
     vbase = row['ratedU']
     bus = row['ConnectivityNode1_mRID']
-    ic = icd['EMTBranchFlowIC']['vals'][key]
+    ic = icd['EMTBranchFlowIC']['vals'][key+':1']
     row['p'] = -ic['p'] # account for load convention of shunt power flows
     row['q'] = -ic['q']
     ic = icd['EMTBusVoltageIC']['vals'][bus]
@@ -1380,24 +1388,104 @@ def create_atp (d, icd, fpath, case):
   # dictionary of generators to track ratings and initial conditions
   dgens = {}
 
+  # assemble dynamics model type information into a combined dictionary with 0-based arrays of the described parameters
+  dyn_types = {}
+  for key, row in d['EMTDynamicsModelType']['vals'].items():
+    dyn_types[key] = {'name': row['name'], 'modelKind': row['modelKind'], 'nameKind': row['nameKind'], 
+      'statusKind': row['statusKind'], 'modelKind': row['modelKind'], 'closestStandardModel': row['closestStandardModel'],
+      'n_prm': 0, 'first_seq': 99999}
+  # now count the number of described parameters in each model type
+  for key, row in d['EMTDynamicsParameterDescriptor']['vals'].items():
+    dtyp = dyn_types[row['DetailedModelTypeDynamics_mRID']]
+    dtyp['n_prm'] += 1
+    idx = row['sequenceNumber']
+    if idx < dtyp['first_seq']:
+      dtyp['first_seq'] = idx
+  # now create 0-based arrays for the described parameters for each model type
+  for key, row in dyn_types.items():
+    row['prm_IDs'] = [None] * row['n_prm']
+    row['prm_names'] = [None] * row['n_prm']
+    row['prm_defaults'] = [None] * row['n_prm']
+    row['prm_units'] = [None] * row['n_prm']
+    row['prm_seqs'] = [None] * row['n_prm']
+  # now populate the parameter description arrays for each model type
+  for key, row in d['EMTDynamicsParameterDescriptor']['vals'].items():
+    dtyp = dyn_types[row['DetailedModelTypeDynamics_mRID']]
+    a_idx = row['sequenceNumber'] - dtyp['first_seq']
+    dtyp['prm_IDs'][a_idx] = key
+    dtyp['prm_names'][a_idx] = row['name']
+    dtyp['prm_defaults'][a_idx] = row['typicalValue']
+    dtyp['prm_units'][a_idx] = row['engineeringUnit']
+    dtyp['prm_seqs'][a_idx] = row['sequenceNumber']
+   
+# for key, row in dyn_types.items():
+#   print (key, row['name'], row['modelKind'], row['nameKind'], row['statusKind'], row['closestStandardModel'], row['n_prm'], row['first_seq'])
+#   for tag in ['prm_IDs', 'prm_names', 'prm_defaults', 'prm_units', 'prm_seqs']:
+#     print ('  {:s}'.format (tag), row[tag])
+
+  dyn_parms = {}
+  # assemble all the dynamic instance parameters into a python dictionary (on eqid:typid) of dictionaries (on parameter name)
+  for key, row in d['EMTDynamicsParameter']['vals'].items():
+    toks = key.split(':')
+    eqid = toks[0]
+    dyn_type_id = toks[1]
+    prm_name = toks[2]
+    prm_key = '{:s}:{:s}'.format(eqid, dyn_type_id)
+    if prm_key not in dyn_parms:
+      #print ('adding', prm_key, 'to dyn_parms')
+      dyn_parms[prm_key] = {}
+    dyn_parms[prm_key][prm_name] = row['value']
+  # now check all the collected array lengths and names of controller instance parameters
+  for key, parm_d in dyn_parms.items():
+    toks = key.split(':')
+    dyn_type_id = toks[1]
+    nprm_expected = dyn_types[dyn_type_id]['n_prm']
+    nprm_actual = len(parm_d)
+    if nprm_expected != nprm_actual:
+      print ('*** {:s} has {:d} parameters vs. {:d} expected parameters'.format (key, nprm_actual, nprm_expected))
+    for prm_name in parm_d:
+      if prm_name not in dyn_types[dyn_type_id]['prm_names']:
+        print ('*** {:s} has parameter named {:s} not found in the model type'.format (key, prm_name))
+    for prm_name in dyn_types[dyn_type_id]['prm_names']:
+      if prm_name not in parm_d:
+        print ('*** {:s} is missing parameter named {:s} defined in the model type'.format (key, prm_name))
+
   # collect the WECC dynamics for IBR
   if len(d['EMTSolar']['vals']) > 0 or len(d['EMTWind']['vals']) > 0:
     ibr_dyn = {}
-    for key, row in d['EMTWeccREECA']['vals'].items():
-      eqid = row['PowerElectronicsConnection_mRID']
+    for key, row in d['EMTDynamicsModel']['vals'].items():
+      if row['Equipment_type'] != 'PowerElectronicsConnection':
+        continue
+      elif row['modelKind'] != 'renewableEnergyResource':
+        continue
+      eqid = row['Equipment_mRID']
       if eqid not in ibr_dyn:
-        ibr_dyn[eqid] = {'reec': None, 'regc': None, 'repc':None}
-      ibr_dyn[eqid]['reec'] = row
-    for key, row in d['EMTWeccREGCA']['vals'].items():
-      eqid = row['PowerElectronicsConnection_mRID']
-      if eqid not in ibr_dyn:
-        ibr_dyn[eqid] = {'reec': None, 'regc': None, 'repc':None}
-      ibr_dyn[eqid]['regc'] = row
-    for key, row in d['EMTWeccREPCA']['vals'].items():
-      eqid = row['PowerElectronicsConnection_mRID']
-      if eqid not in ibr_dyn:
-        ibr_dyn[eqid] = {'reec': None, 'regc': None, 'repc':None}
-      ibr_dyn[eqid]['repc'] = row
+        ibr_dyn[eqid] = {'reec': None, 'regc': None, 'repc':None}  # TODO: add the wind turbine dynamics
+      dyn_type_id = row['DetailedModelTypeDynamics_mRID']
+      dyn_type_name = d['EMTDynamicsModelType']['vals'][dyn_type_id]['name'].lower()
+      if 'reec' in dyn_type_name:
+        ibr_dyn[eqid]['reec'] = {'type': dyn_types[dyn_type_id], 'instance': dyn_parms['{:s}:{:s}'.format (eqid, dyn_type_id)]}
+      elif 'regc' in dyn_type_name:
+        ibr_dyn[eqid]['regc'] = {'type': dyn_types[dyn_type_id], 'instance': dyn_parms['{:s}:{:s}'.format (eqid, dyn_type_id)]}
+      elif 'repc' in dyn_type_name:
+        ibr_dyn[eqid]['repc'] = {'type': dyn_types[dyn_type_id], 'instance': dyn_parms['{:s}:{:s}'.format (eqid, dyn_type_id)]}
+#   for key, row in d['EMTWeccREECA']['vals'].items():
+#     eqid = row['PowerElectronicsConnection_mRID']
+#     if eqid not in ibr_dyn:
+#       ibr_dyn[eqid] = {'reec': None, 'regc': None, 'repc':None}
+#     ibr_dyn[eqid]['reec'] = row
+#   for key, row in d['EMTWeccREGCA']['vals'].items():
+#     eqid = row['PowerElectronicsConnection_mRID']
+#     if eqid not in ibr_dyn:
+#       ibr_dyn[eqid] = {'reec': None, 'regc': None, 'repc':None}
+#     ibr_dyn[eqid]['regc'] = row
+#   for key, row in d['EMTWeccREPCA']['vals'].items():
+#     eqid = row['PowerElectronicsConnection_mRID']
+#     if eqid not in ibr_dyn:
+#       ibr_dyn[eqid] = {'reec': None, 'regc': None, 'repc':None}
+#     ibr_dyn[eqid]['repc'] = row
+
+  #print ('ibr_dyn', ibr_dyn)
 
   for key, row in d['EMTSolar']['vals'].items():
     gsu_ang = GetGSUPhaseShift (d['EMTIBRPlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
@@ -1406,7 +1494,7 @@ def create_atp (d, icd, fpath, case):
     nph = len(phases)
     vbase = row['ratedU']
     sbase = row['ratedS']
-    InitializeIBR (key, row, icd)
+    InitializeIBR (key+':1', row, icd)
     wtotal = row['p'] * 1.0 # PV_MULT
     pfang = 0.0
     if row['q'] != 0.0:
@@ -1440,7 +1528,7 @@ def create_atp (d, icd, fpath, case):
       PV_TOTAL += 1e-6 * wtotal
       DUM_NODES += SOLAR_DUM_NODES
       AppendSolar (bus, vbase, sbase, ibase=sbase/vbase, ppu=wtotal/sbase, qpu=row['q']/sbase, vpu=1.0, ap=ap, ibr_count=PV_COUNT+WND_COUNT,
-                   reec=ibr_dyn[key]['reec'], regc=ibr_dyn[key]['regc'], repc=ibr_dyn[key]['repc'])
+                   reec_d=ibr_dyn[key]['reec'], regc_d=ibr_dyn[key]['regc'], repc_d=ibr_dyn[key]['repc'])
     else:
       DLL_COUNT += 1
       DLL_TOTAL += 1e-6 * wtotal
@@ -1457,7 +1545,7 @@ def create_atp (d, icd, fpath, case):
     nph = len(phases)
     vbase = row['ratedU']
     sbase = row['ratedS']
-    InitializeIBR (key, row, icd)
+    InitializeIBR (key+':1', row, icd)
     wtotal = row['p'] * 1.0 # PV_MULT
     rmva = sbase*1e-6
     mw = wtotal*1e-6
@@ -1469,7 +1557,7 @@ def create_atp (d, icd, fpath, case):
       WND_TOTAL += 1e-6 * wtotal
       DUM_NODES += WIND_DUM_NODES
       AppendWind (bus, vbase, sbase, ibase=sbase/vbase, ppu=wtotal/sbase, qpu=row['q']/sbase, vpu=1.0, ap=ap, ibr_count=PV_COUNT+WND_COUNT,
-                   reec=ibr_dyn[key]['reec'], regc=ibr_dyn[key]['regc'], repc=ibr_dyn[key]['repc'])
+                  reec_d=ibr_dyn[key]['reec'], regc_d=ibr_dyn[key]['regc'], repc_d=ibr_dyn[key]['repc'])
     else:
       DLL_COUNT += 1
       DLL_TOTAL += 1e-6 * wtotal
@@ -1484,28 +1572,43 @@ def create_atp (d, icd, fpath, case):
     # lastKey = list(machines.keys())[-1]
     # build a dictionary of all the control dynamics (SynchronousMachineTimeConstantReactance is already embedded in the EMTSyncMachine query)
     gen_dyn = {}
-    for q, res in d.items():
-      if q.startswith ('EMTExc') and len(res['vals']) > 0:
-        #print ('Exciters', q, res['columns'])
-        for dyn_key, dyn_row in res['vals'].items():
-          eqid = dyn_row['SynchronousMachine_mRID']
-          if eqid not in gen_dyn:
-            gen_dyn[eqid] = {'gov': None, 'exc': None, 'pss':None}
-          gen_dyn[eqid]['exc'] = {'type':q, 'data': dyn_row}
-      elif q.startswith ('EMTPss') and len(res['vals']) > 0:
-        #print ('Stabilizers', q, res['columns'])
-        for dyn_key, dyn_row in res['vals'].items():
-          eqid = dyn_row['SynchronousMachine_mRID']
-          if eqid not in gen_dyn:
-            gen_dyn[eqid] = {'gov': None, 'exc': None, 'pss':None}
-          gen_dyn[eqid]['pss'] = {'type':q, 'data': dyn_row}
-      elif q.startswith ('EMTGov') and len(res['vals']) > 0:
-        #print ('Governors', q, res['columns'])
-        for dyn_key, dyn_row in res['vals'].items():
-          eqid = dyn_row['SynchronousMachine_mRID']
-          if eqid not in gen_dyn:
-            gen_dyn[eqid] = {'gov': None, 'exc': None, 'pss':None}
-          gen_dyn[eqid]['gov'] = {'type':q, 'data': dyn_row}
+    for key, row in d['EMTDynamicsModel']['vals'].items():
+      if row['Equipment_type'] != 'SynchronousMachine':
+        continue
+      eqid = row['Equipment_mRID']
+      dyn_type_id = row['DetailedModelTypeDynamics_mRID']
+      if eqid not in gen_dyn:
+        gen_dyn[eqid] = {'gov': None, 'exc': None, 'pss':None}
+      if row['modelKind'] == 'turbineGovernor':
+        gen_dyn[eqid]['gov'] = {'type': dyn_types[dyn_type_id], 'instance': dyn_parms['{:s}:{:s}'.format (eqid, dyn_type_id)]}
+      elif row['modelKind'] == 'excitationSystem':
+        gen_dyn[eqid]['exc'] = {'type': dyn_types[dyn_type_id], 'instance': dyn_parms['{:s}:{:s}'.format (eqid, dyn_type_id)]}
+      elif row['modelKind'] == 'powerSystemStabilizer':
+        gen_dyn[eqid]['pss'] = {'type': dyn_types[dyn_type_id], 'instance': dyn_parms['{:s}:{:s}'.format (eqid, dyn_type_id)]}
+#   for q, res in d.items():
+#     if q.startswith ('EMTExc') and len(res['vals']) > 0:
+#       #print ('Exciters', q, res['columns'])
+#       for dyn_key, dyn_row in res['vals'].items():
+#         eqid = dyn_row['SynchronousMachine_mRID']
+#         if eqid not in gen_dyn:
+#           gen_dyn[eqid] = {'gov': None, 'exc': None, 'pss':None}
+#         gen_dyn[eqid]['exc'] = {'type':q, 'data': dyn_row}
+#     elif q.startswith ('EMTPss') and len(res['vals']) > 0:
+#       #print ('Stabilizers', q, res['columns'])
+#       for dyn_key, dyn_row in res['vals'].items():
+#         eqid = dyn_row['SynchronousMachine_mRID']
+#         if eqid not in gen_dyn:
+#           gen_dyn[eqid] = {'gov': None, 'exc': None, 'pss':None}
+#         gen_dyn[eqid]['pss'] = {'type':q, 'data': dyn_row}
+#     elif q.startswith ('EMTGov') and len(res['vals']) > 0:
+#       #print ('Governors', q, res['columns'])
+#       for dyn_key, dyn_row in res['vals'].items():
+#         eqid = dyn_row['SynchronousMachine_mRID']
+#         if eqid not in gen_dyn:
+#           gen_dyn[eqid] = {'gov': None, 'exc': None, 'pss':None}
+#         gen_dyn[eqid]['gov'] = {'type':q, 'data': dyn_row}
+    #print ('gen_dyn', gen_dyn)
+
     # write all the machines
     for key, row in machines.items():
       gsu_ang = GetGSUPhaseShift (d['EMTRotatingMachinePlant*']['vals'], key, d['EMTPowerXfmrWinding']['vals'])
@@ -1534,7 +1637,7 @@ def create_atp (d, icd, fpath, case):
           gov = gen_dyn[key]['gov']
           exc = gen_dyn[key]['exc']
           pss = gen_dyn[key]['pss']
-          AppendMachineDynamics (bus=bus, vpu=row['vpu'], deg=row['deg'], mach=row, gov=gov, exc=exc, pss=pss, ap=ap, gsu_ang=gsu_ang)
+          AppendMachineDynamics (bus=bus, vpu=row['vpu'], deg=row['deg'], mach=row, gov_d=gov, exc_d=exc, pss_d=pss, ap=ap, gsu_ang=gsu_ang)
           DUM_NODES += MACHINE_DUM_NODES
           dgens[key] = {'Type':'SyncMach', 'Source':'59', 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
     print ('/BRANCH', file=ap)
