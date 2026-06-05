@@ -182,6 +182,18 @@ def append_xml_dynamic_parameters (g, leaf, dyn_defaults, sections, attmap, dyr_
         else:
           g.add ((leaf, rdflib.URIRef (CIM_NS + att), rdflib.Literal(val, datatype=CIM_NS+unit)))
 
+def ConnectToDCNode (g, eq_id, dcn_id, sequenceNumber, CIM, bHybrid = False):
+  trm_id = '{:s}_dc{:d}'.format (eq_id, sequenceNumber)
+  trm = rdflib.URIRef (trm_id)
+  if bHybrid:
+    g.add ((trm, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'PowerElectronicsConnectionDCTerminal')))
+    g.add ((trm, rdflib.URIRef (EMT_NS + 'PowerElectronicsConnectionDCTerminal.PowerElectronicsConnection'), eq_id))
+  else:
+    g.add ((trm, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'DCTerminal')))
+    g.add ((trm, rdflib.URIRef (CIM_NS + 'DCTerminal.DCConductingEquipment'), eq_id))
+  g.add ((trm, rdflib.URIRef (CIM_NS + 'DCBaseTerminal.DCNode'), dcn_id))
+  g.add ((trm, rdflib.URIRef (CIM_NS + 'ACDCTerminal.sequenceNumber'), rdflib.Literal (sequenceNumber, datatype=CIM.Integer)))
+
 def ConnectToConnectivityNode (g, eq_id, cn_id, sequenceNumber, CIM):
   trm_id = '{:s}_{:d}'.format (eq_id, sequenceNumber)
   trm = rdflib.URIRef (trm_id)
@@ -276,6 +288,8 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
     fuid.close()
 
   eq = rdflib.URIRef (case['id']) # no prefix with urn:uuid:
+  # make sure to save the EquipmentContainer mRID, add-on functions like add_ibr_plant will need it
+  uuids['EquipmentContainer:{:s}'.format (case['name'])] = case['id']
 
   g.add ((eq, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'EquipmentContainer')))
   g.add ((eq, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(case['name'], datatype=CIM.String)))
@@ -1154,32 +1168,50 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
 
   The *plant* dictionary keys are as follows, referencing components by *name* rather than *mRID*.
 
-    1) *generator*, the name of the main *PowerElectronicsConnection* or *SynchronousMachine*
-    2) *dll_path*, the name of the DLL to be interfaced. It must be in a callable location.
-    3) *components*, an array of other plant components (not including the *GeneratingUnit* that is associated with the *generator*). Each array item is a two-element array in the form [*CIMClassName*, *name* of the component]
-    4) *attributes*, an array of *IBRPlant* attributes. Each array is a three-element array in the form [*AttributeName*, *value*, *CIM Unit Class*]
+    1) *generator*, the name of the main *PowerElectronicsConnection*.
+    2) *rpa_bus*, the bus number of the facility point of common coupling, or reference point of applicability.
+    3) *inv_bus*, the bus number of generator. It will be moved to make room for the AC filter.
+    4) *container_name*, of the singleton CIM *EquipmentContainer* of all network and facility model components.
+    5) *kv_base*, for the AC side of the *PowerElectronicsConnection*, the system base, not necessarily the equipment's rated voltage.
+    6) *dll_path*, the name of the DLL to be interfaced. It must be in a callable location.
+    7) *components*, an array of other plant components (not including the *GeneratingUnit* that is associated with the *generator*). Each array item is a two-element array in the form [*CIMClassName*, *name* of the component]. This function adds internal componeents for the AC filter and DC bus.
+    8) *attributes*, an array of *IBRPlant* attributes. Each array is a three-element array in the form [*AttributeName*, *value*, *CIM Unit Class*].
+    9) *ac_filter*, a dictionary of AC-side filter parameters used to create a sub-network in CIM to represent the filter. Each array is a two-element array in the form [*value*, *CIM Unit Class*].
+    10) *dc_bus*, a dictionary of DC bus parameters used to create a sub-network in CIM to represent the DC side of the *PowerElectronicsConnection*. Each array is a two-element array in the form [*value*, *CIM Unit Class*].
 
   An example, from *create_smib_dll.py*, follows::
 
-     plant = {'generator': '1_1', 
-         'dll_path': '../dll/bin/gfm_gfl_ibr2.dll',
-         'components': [
-           ['ACLineSegment', '2_3_1'],
-           ['PowerTransformer', '2_1_0_1'],
-           ['PowerTransformer', '4_3_0_1']
-           ],
-         'attributes': [
-           ['acFilterCapacitance', 0.0015, 'Capacitance'],
-           ['acFilterLbridge', 0.0001, 'Inductance'],
-           ['acFilterLgrid', 0.0, 'Inductance'],
-           ['acFilterRbridge', 0.00075, 'Resistance'],
-           ['acFilterRgrid', 0.0, 'Resistance'],
-           ['acFilterKind', 'ungroundedWye', 'IBRFilterKind'],
-           ['dcLinkCapacitance', 0.1, 'Capacitance'],
-           ['dcLinkVoltage', 1200.0, 'Voltage'],
-           ['switchingFrequency', 3060.0, 'Frequency']
-           ]
-         }
+      plant = {'generator': '1_1', 
+               'rpa_bus': '4',
+               'inv_bus': '1',
+               'container_name': 'SMIBDLL',
+               'kv_base': 0.6,
+               'dll_path': './gfm_gfl_ibr2.dll',
+               'components': [
+                 ['ACLineSegment', '2_3_1'],
+                 ['PowerTransformer', '2_1_0_1'],
+                 ['PowerTransformer', '4_3_0_1']
+                 ],
+               'attributes': [
+                 ['switchingFrequency', 3060.0, 'Frequency']
+                 ],
+               'ac_filter' : {
+                  'acFilterCapacitance': [0.0015, 'Capacitance'],
+                  'acFilterLbridge': [0.0001, 'Inductance'],
+                  'acFilterLgrid': [0.0, 'Inductance'],
+                  'acFilterRbridge': [0.00075, 'Resistance'],
+                  'acFilterRgrid': [0.0, 'Resistance'],
+                  'acFilterKind': ['Yn', 'PhaseShuntConnectionKind']
+                 },
+               'dc_bus' : {
+                  'dcLinkCapacitance': [0.1, 'Capacitance'],
+                  'dcLinkVoltage': [1200.0, 'Voltage']
+                 }
+               }
+
+  .. warning::
+     This function is hard-wired for an AC-side tee filter and DC-side link capacitance.
+     No zero-impedance branches are currently allowed.
 
   Args:
     case (dict): an example chosen from *emthub.cim_examples.CASES*
@@ -1211,9 +1243,16 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
   key = plant['generator']
   plantID = GetCIMID ('IBRPlant', key, uuids)
   pecID = GetCIMID ('PowerElectronicsConnection', key, uuids)
-  print ('Adding to IBRPlant', plant['generator'], plantID, 'with inverter', pecID)
+  eqID = GetCIMID ('EquipmentContainer', plant['container_name'], uuids)
+  pocID = GetCIMID ('ConnectivityNode', plant['inv_bus'], uuids) # point of connection for the inverter
+  kvbase = plant['kv_base']
+  bvID = GetCIMID ('BaseVoltage', 'BV_{:.2f}'.format(kvbase), uuids)
   ibr = rdflib.URIRef (plantID)
   pec = rdflib.URIRef (pecID)
+  eq = rdflib.URIRef (eqID)
+  poc = rdflib.URIRef (pocID)
+  bv = rdflib.URIRef (bvID)
+  print ('Adding to IBRPlant', plant['generator'], plantID, 'with inverter', pecID)
 
   # fill out the plant-level components and attributes
   for item in plant['components']:
@@ -1233,9 +1272,140 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
     else:
       g.add ((ibr, rdflib.URIRef (att), rdflib.Literal(val, datatype=CIM_NS+unit)))
 
-  # add the DC bus model
+  ############# add the DC bus model
+  # we need a DCEquipmentContainer (but only one) for the DCNodes
+  makeDCcontainer = False
+  if 'DCEquipmentContainer.'+plant['container_name'] not in uuids:
+    makeDCcontainer = True
+  dceqID = GetCIMID ('DCEquipmentContainer', plant['container_name'], uuids)
+  dceq = rdflib.URIRef (dceqID)
+  if makeDCcontainer:
+    g.add ((dceq, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'DCEquipmentContainer')))
+    g.add ((dceq, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(plant['container_name'], datatype=CIM.String)))
+    g.add ((dceq, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(dceqID, datatype=CIM.String)))
+  # make a DCNode for the link capacitor, DC side of the inverter, and the DCEnergySource
+  dcnName = '{:s}_dcn'.format (key)
+  dcnID = GetCIMID('DCNode', dcnName, uuids)
+  dcn = rdflib.URIRef (dcnID)
+  g.add ((dcn, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'DCNode')))
+  g.add ((dcn, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(dcnName, datatype=CIM.String)))
+  g.add ((dcn, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(dcnID, datatype=CIM.String)))
+  g.add ((dcn, rdflib.URIRef (CIM_NS + 'DCNode.DCEquipmentContainer'), dceq))
+  # DC-side terminal for the PowerElectronicsConnection
+  ConnectToDCNode (g, pec, dcn, 1, CIM, bHybrid = True)
+  # link capacitor as a DCShunt
+  ratedUdc = plant['dc_bus']['dcLinkVoltage'][0]
+  dc_cap_name = '{:s}_dc_cap'.format (key)
+  dc_cap_ID = GetCIMID('DCShunt', dc_cap_name, uuids)
+  dc_cap = rdflib.URIRef (dc_cap_ID)
+  g.add ((dc_cap, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'DCShunt')))
+  g.add ((dc_cap, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(dc_cap_name, datatype=CIM.String)))
+  g.add ((dc_cap, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(dc_cap_ID, datatype=CIM.String)))
+  g.add ((dc_cap, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
+  g.add ((dc_cap, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
+  g.add ((dc_cap, rdflib.URIRef (CIM_NS + 'DCConductingEquipment.ratedUdc'), rdflib.Literal (ratedUdc, datatype=CIM.Voltage)))
+  g.add ((dc_cap, rdflib.URIRef (CIM_NS + 'DCShunt.resistance'), rdflib.Literal (0.0, datatype=CIM.Resistance)))
+  g.add ((dc_cap, rdflib.URIRef (CIM_NS + 'DCShunt.capacitance'), rdflib.Literal (plant['dc_bus']['dcLinkCapacitance'][0], datatype=CIM.Capacitance)))
+  ConnectToDCNode (g, dc_cap, dcn, 1, CIM)
+  # DCEnergySource
+  dc_es_name = '{:s}_dc_es'.format (key)
+  dc_es_ID = GetCIMID('DCEnergySource', dc_es_name, uuids)
+  dc_es = rdflib.URIRef (dc_es_ID)
+  g.add ((dc_es, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'DCEnergySource')))
+  g.add ((dc_es, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(dc_es_name, datatype=CIM.String)))
+  g.add ((dc_es, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(dc_es_ID, datatype=CIM.String)))
+  g.add ((dc_es, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
+  g.add ((dc_es, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
+  g.add ((dc_es, rdflib.URIRef (CIM_NS + 'DCConductingEquipment.ratedUdc'), rdflib.Literal (ratedUdc, datatype=CIM.Voltage)))
+  g.add ((dc_es, rdflib.URIRef (EMT_NS + 'DCEnergySource.kind'), rdflib.URIRef (EMT_NS + 'DCSourceKind.photoVoltaic')))
+  ConnectToDCNode (g, dc_es, dcn, 1, CIM)
 
-  # add the AC filter model
+  ############# add the AC filter model
+  # make two ConnectivityNodes behind the PoC
+  cn1name = '{:s}_cn1'.format (key) # new bus for the PowerElectronicsConnection
+  ID1 = GetCIMID('ConnectivityNode', cn1name, uuids)
+  cn1 = rdflib.URIRef (ID1)
+  g.add ((cn1, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'ConnectivityNode')))
+  g.add ((cn1, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(cn1name, datatype=CIM.String)))
+  g.add ((cn1, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID1, datatype=CIM.String)))
+  g.add ((cn1, rdflib.URIRef (CIM_NS + 'ConnectivityNode.ConnectivityNodeContainer'), eq))
+  cn2name = '{:s}_cn2'.format (key) # new bus for the filter tee point
+  ID2 = GetCIMID('ConnectivityNode', cn2name, uuids)
+  cn2 = rdflib.URIRef (ID2)
+  g.add ((cn2, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'ConnectivityNode')))
+  g.add ((cn2, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(cn2name, datatype=CIM.String)))
+  g.add ((cn2, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID2, datatype=CIM.String)))
+  g.add ((cn2, rdflib.URIRef (CIM_NS + 'ConnectivityNode.ConnectivityNodeContainer'), eq))
+  # move the PEC behind the pcc
+  trm = rdflib.URIRef (pecID + '_1')
+  print ('Reconnecting', trm, 'from', poc, 'to', cn1)
+  g.remove ((trm, rdflib.URIRef (CIM_NS + 'Terminal.ConnectivityNode'), poc))
+  g.add ((trm, rdflib.URIRef (CIM_NS + 'Terminal.ConnectivityNode'), cn1))
+  # filter capacitance
+  ac_cap_name = '{:s}_ac_cap'.format (key)
+  ac_cap_ID = GetCIMID('LinearShuntCompensator', key, uuids)
+  ac_cap = rdflib.URIRef (ac_cap_ID)
+  sectionB = plant['ac_filter']['acFilterCapacitance'][0] * WFREQ
+  g.add ((ac_cap, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator')))
+  g.add ((ac_cap, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(ac_cap_name, datatype=CIM.String)))
+  g.add ((ac_cap, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ac_cap_ID, datatype=CIM.String)))
+  g.add ((ac_cap, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
+  g.add ((ac_cap, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
+  ConnectToConnectivityNode (g, ac_cap, cn2, 1, CIM)
+  g.add ((ac_cap, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
+  g.add ((ac_cap, rdflib.URIRef (CIM_NS + 'ShuntCompensator.nomU'), rdflib.Literal (kvbase * 1000.0, datatype=CIM.Voltage)))
+  g.add ((ac_cap, rdflib.URIRef (CIM_NS + 'ShuntCompensator.sections'), rdflib.Literal (1, datatype=CIM.Integer)))
+  g.add ((ac_cap, rdflib.URIRef (CIM_NS + 'ShuntCompensator.maximumSections'), rdflib.Literal (1, datatype=CIM.Integer)))
+  connKind = plant['ac_filter']['acFilterKind'][0]
+  g.add ((ac_cap, rdflib.URIRef (CIM_NS + 'ShuntCompensator.phaseConnection'), rdflib.URIRef (CIM_NS + 'PhaseShuntConnectionKind.{:s}'.format(connKind))))
+  if connKind == 'D':
+    g.add ((ac_cap, rdflib.URIRef (CIM_NS + 'ShuntCompensator.grounded'), rdflib.Literal (False, datatype=CIM.Boolean)))
+  elif connKind == 'Y':
+    g.add ((ac_cap, rdflib.URIRef (CIM_NS + 'ShuntCompensator.grounded'), rdflib.Literal (True, datatype=CIM.Boolean)))
+  else: # probably 'Yn'
+    g.add ((ac_cap, rdflib.URIRef (CIM_NS + 'ShuntCompensator.grounded'), rdflib.Literal (False, datatype=CIM.Boolean)))
+  g.add ((ac_cap, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator.bPerSection'), rdflib.Literal (sectionB, datatype=CIM.Susceptance)))
+  g.add ((ac_cap, rdflib.URIRef (CIM_NS + 'LinearShuntCompensator.gPerSection'), rdflib.Literal (0.0, datatype=CIM.Conductance)))
+  # inverter-side series RL
+  inv_rl_name = '{:s}_ac_inv_rl'.format (key)
+  inv_rl_ID = GetCIMID('SeriesCompensator', inv_rl_name, uuids)
+  inv_rl = rdflib.URIRef (inv_rl_ID)
+  r = plant['ac_filter']['acFilterRbridge'][0]
+  x = plant['ac_filter']['acFilterLbridge'][0]*WFREQ
+  g.add ((inv_rl, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'SeriesCompensator')))
+  g.add ((inv_rl, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(inv_rl_name, datatype=CIM.String)))
+  g.add ((inv_rl, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(inv_rl_ID, datatype=CIM.String)))
+  g.add ((inv_rl, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
+  g.add ((inv_rl, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
+  ConnectToConnectivityNode (g, inv_rl, cn1, 1, CIM)
+  ConnectToConnectivityNode (g, inv_rl, cn2, 2, CIM)
+  g.add ((inv_rl, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
+  g.add ((inv_rl, rdflib.URIRef (CIM_NS + 'SeriesCompensator.r'), rdflib.Literal (r, datatype=CIM.Resistance)))
+  g.add ((inv_rl, rdflib.URIRef (CIM_NS + 'SeriesCompensator.x'), rdflib.Literal (x, datatype=CIM.Reactance)))
+  g.add ((inv_rl, rdflib.URIRef (CIM_NS + 'SeriesCompensator.r0'), rdflib.Literal (r, datatype=CIM.Resistance)))
+  g.add ((inv_rl, rdflib.URIRef (CIM_NS + 'SeriesCompensator.x0'), rdflib.Literal (x, datatype=CIM.Reactance)))
+  # grid-side series RL
+  grid_rl_name = '{:s}_ac_grid_rl'.format (key)
+  grid_rl_ID = GetCIMID('SeriesCompensator', grid_rl_name, uuids)
+  grid_rl = rdflib.URIRef (grid_rl_ID)
+  r = plant['ac_filter']['acFilterRgrid'][0]
+  x = plant['ac_filter']['acFilterLgrid'][0]*WFREQ
+  g.add ((grid_rl, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'SeriesCompensator')))
+  g.add ((grid_rl, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(grid_rl_name, datatype=CIM.String)))
+  g.add ((grid_rl, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(grid_rl_ID, datatype=CIM.String)))
+  g.add ((grid_rl, rdflib.URIRef (CIM_NS + 'Equipment.EquipmentContainer'), eq))
+  g.add ((grid_rl, rdflib.URIRef (CIM_NS + 'Equipment.inService'), rdflib.Literal (True, datatype=CIM.Boolean)))
+  ConnectToConnectivityNode (g, grid_rl, cn2, 1, CIM)
+  ConnectToConnectivityNode (g, grid_rl, poc, 2, CIM)
+  g.add ((grid_rl, rdflib.URIRef (CIM_NS + 'ConductingEquipment.BaseVoltage'), bv))
+  g.add ((grid_rl, rdflib.URIRef (CIM_NS + 'SeriesCompensator.r'), rdflib.Literal (r, datatype=CIM.Resistance)))
+  g.add ((grid_rl, rdflib.URIRef (CIM_NS + 'SeriesCompensator.x'), rdflib.Literal (x, datatype=CIM.Reactance)))
+  g.add ((grid_rl, rdflib.URIRef (CIM_NS + 'SeriesCompensator.r0'), rdflib.Literal (r, datatype=CIM.Resistance)))
+  g.add ((grid_rl, rdflib.URIRef (CIM_NS + 'SeriesCompensator.x0'), rdflib.Literal (x, datatype=CIM.Reactance)))
+
+  # add internal components to the plant equipment
+  for new_id in [dc_cap_ID, dc_es_ID, grid_rl_ID, inv_rl_ID, ac_cap_ID]:
+    g.add ((ibr, rdflib.URIRef (EMT_NS + 'ConnectedFacility.Equipments'), rdflib.URIRef(new_id)))
 
   # add the DLL interface
   if 'dll_path' in plant and plant['dll_path'] is not None:
@@ -1309,6 +1479,18 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
         g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.multiplier'), rdflib.URIRef (CIM_NS + 'UnitMultiplier.{:s}'.format(mult))))
         if phase is not None:
           g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.phase'), rdflib.URIRef (CIM_NS + 'SinglePhaseKind.{:s}'.format(phase))))
+        if sig_kind == 'acVoltage':
+          g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.ConnectivityNode'), poc))
+        elif sig_kind == 'acCurrent':
+          trm = rdflib.URIRef (inv_rl_ID+'_1')
+          g.add ((pt, rdflib.URIRef (CIM_NS + 'SignalDescriptor.ACDCTerminal'), trm))
+        elif sig_kind == 'acCurrentGrid':
+          trm = rdflib.URIRef (grid_rl_ID+'_1')
+          g.add ((pt, rdflib.URIRef (CIM_NS + 'SignalDescriptor.ACDCTerminal'), trm))
+        elif sig_kind == 'dcVoltage':
+          g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.DCNode'), dcn))
+        elif sig_kind == 'dcMPPTVoltage':
+          g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.DCNode'), dcn))
         #print ('Input', seq, sig['Name'], '***', sig_kind, phase)
         seq += 1
       # list the DLL output signals
@@ -1330,6 +1512,9 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
         g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.multiplier'), rdflib.URIRef (CIM_NS + 'UnitMultiplier.{:s}'.format(mult))))
         if phase is not None:
           g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.phase'), rdflib.URIRef (CIM_NS + 'SinglePhaseKind.{:s}'.format(phase))))
+        if sig_kind in ['modulationIndex', 'vscVoltage']:
+          trm = rdflib.URIRef (pecID+'_1')
+          g.add ((pt, rdflib.URIRef (CIM_NS + 'SignalDescriptor.ACDCTerminal'), trm))
         #print ('Output', seq, sig['Name'], '***', sig_kind, phase)
         seq += 1
     else:
@@ -1415,7 +1600,12 @@ def write_cim_rdf (case, g, CIM, EMT):
     CIM.TextDiagramObject,
     CIM.DiagramObjectPoint,
     CIM.CurveData,
-    CIM.ParameterValue
+    CIM.ParameterValue,
+    CIM.DCEquipmentContainer,
+    CIM.DCNode,
+    EMT.PowerElectronicsConnectionDCTerminal,
+    CIM.DCShunt, # eventually DCLineSegment, DCSeriesDevice, DCGround, DCBreaker, DCDisconnector as well
+    EMT.DCEnergySource
   ]
   with open(case['name']+'.ttl', 'wb') as fp:
     serializer.serialize(fp)

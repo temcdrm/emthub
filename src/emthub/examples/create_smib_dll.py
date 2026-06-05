@@ -80,6 +80,10 @@ tables = {
       ]}}
 
 plant = {'generator': '1_1', 
+         'rpa_bus': '4',
+         'inv_bus': '1',
+         'container_name': 'SMIBDLL',
+         'kv_base': 0.6,
          'dll_path': './gfm_gfl_ibr2.dll',
          'components': [
            ['ACLineSegment', '2_3_1'],
@@ -89,18 +93,18 @@ plant = {'generator': '1_1',
          'attributes': [
            ['switchingFrequency', 3060.0, 'Frequency']
            ],
-         'ac_filter' : [
-           ['acFilterCapacitance', 0.0015, 'Capacitance'],
-           ['acFilterLbridge', 0.0001, 'Inductance'],
-           ['acFilterLgrid', 0.0, 'Inductance'],
-           ['acFilterRbridge', 0.00075, 'Resistance'],
-           ['acFilterRgrid', 0.0, 'Resistance'],
-           ['acFilterKind', 'ungroundedWye', 'IBRFilterKind']
-           ],
-         'dc_bus' : [
-           ['dcLinkCapacitance', 0.1, 'Capacitance'],
-           ['dcLinkVoltage', 1200.0, 'Voltage']
-           ]
+         'ac_filter' : {
+            'acFilterCapacitance': [0.0015, 'Capacitance'],
+            'acFilterLbridge': [0.0001, 'Inductance'],
+            'acFilterLgrid': [0.0, 'Inductance'],
+            'acFilterRbridge': [0.00075, 'Resistance'],
+            'acFilterRgrid': [0.0, 'Resistance'],
+            'acFilterKind': ['Yn', 'PhaseShuntConnectionKind']
+           },
+         'dc_bus' : {
+            'dcLinkCapacitance': [0.1, 'Capacitance'],
+            'dcLinkVoltage': [1200.0, 'Voltage']
+           }
          }
 
 def main():

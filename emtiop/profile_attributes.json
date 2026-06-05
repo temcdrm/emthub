@@ -94,6 +94,10 @@
     }
   },
   "DCEnergySource": {
+    "kind": {
+      "type": "DCSourceKind",
+      "default": null
+    },
     "p": {
       "type": "ActivePower",
       "default": null
@@ -120,10 +124,6 @@
     },
     "rShunt": {
       "type": "Resistance",
-      "default": null
-    },
-    "kind": {
-      "type": "DCSourceKind",
       "default": null
     }
   },
@@ -166,6 +166,10 @@
     },
     "name": {
       "type": "String",
+      "default": null
+    },
+    "DCEquipmentContainer": {
+      "type": "DCEquipmentContainer",
       "default": null
     }
   },
@@ -1017,6 +1021,14 @@
     "width": {
       "type": "Integer",
       "default": null
+    },
+    "ConnectivityNode": {
+      "type": "ConnectivityNode",
+      "default": null
+    },
+    "DCNode": {
+      "type": "DCNode",
+      "default": null
     }
   },
   "IdentifiedObject": {
@@ -1174,6 +1186,10 @@
     },
     "nomU": {
       "type": "Voltage",
+      "default": null
+    },
+    "phaseConnection": {
+      "type": "PhaseShuntConnectionKind",
       "default": null
     },
     "sections": {

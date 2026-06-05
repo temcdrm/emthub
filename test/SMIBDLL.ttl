@@ -35,10 +35,20 @@
     cim:IdentifiedObject.mRID "18CD2BB5-6651-472A-B7C6-74AA4503AB2F"^^cim:String ;
     cim:IdentifiedObject.name "7"^^cim:String .
 
+<236C9BA2-1319-42EF-AED8-A07E3B120AEE> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:IdentifiedObject.mRID "236C9BA2-1319-42EF-AED8-A07E3B120AEE"^^cim:String ;
+    cim:IdentifiedObject.name "1_1_cn2"^^cim:String .
+
 <49775C1A-39F4-48E3-B47E-834A29EC8836> a cim:ConnectivityNode ;
     cim:ConnectivityNode.ConnectivityNodeContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
     cim:IdentifiedObject.mRID "49775C1A-39F4-48E3-B47E-834A29EC8836"^^cim:String ;
     cim:IdentifiedObject.name "5"^^cim:String .
+
+<4F10B5F3-FAC2-4223-A983-E700CA9AEB54> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.ConnectivityNodeContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:IdentifiedObject.mRID "4F10B5F3-FAC2-4223-A983-E700CA9AEB54"^^cim:String ;
+    cim:IdentifiedObject.name "1_1_cn1"^^cim:String .
 
 <50F431B1-2B0D-4643-B99A-2DE6B2086D64> a cim:ConnectivityNode ;
     cim:ConnectivityNode.ConnectivityNodeContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
@@ -83,7 +93,7 @@
 <0A82F415-8F69-431F-8CA1-9561F2857828_1> a cim:Terminal ;
     cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
     cim:Terminal.ConductingEquipment <0A82F415-8F69-431F-8CA1-9561F2857828> ;
-    cim:Terminal.ConnectivityNode <0D346513-A8C4-4B88-9115-F49FDE77FDE3> .
+    cim:Terminal.ConnectivityNode <4F10B5F3-FAC2-4223-A983-E700CA9AEB54> .
 
 <120A5D19-D703-4508-80BC-CBACDF876508_1> a cim:Terminal ;
     cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
@@ -144,6 +154,11 @@
     cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
     cim:Terminal.ConductingEquipment <3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5> ;
     cim:Terminal.ConnectivityNode <0D346513-A8C4-4B88-9115-F49FDE77FDE3> .
+
+<4AAF4340-564A-4D02-912B-2769E3A9C6BF_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <4AAF4340-564A-4D02-912B-2769E3A9C6BF> ;
+    cim:Terminal.ConnectivityNode <236C9BA2-1319-42EF-AED8-A07E3B120AEE> .
 
 <504652FC-355A-42E0-9462-78117DCEF0A6_1> a cim:Terminal ;
     cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
@@ -225,6 +240,16 @@
     cim:Terminal.ConductingEquipment <B99C1747-9C7C-4F5A-B267-0EDD0DA58108> ;
     cim:Terminal.ConnectivityNode <18CD2BB5-6651-472A-B7C6-74AA4503AB2F> .
 
+<C1B5E7AF-5F48-457A-9990-38742140FD4C_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <C1B5E7AF-5F48-457A-9990-38742140FD4C> ;
+    cim:Terminal.ConnectivityNode <4F10B5F3-FAC2-4223-A983-E700CA9AEB54> .
+
+<C1B5E7AF-5F48-457A-9990-38742140FD4C_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <C1B5E7AF-5F48-457A-9990-38742140FD4C> ;
+    cim:Terminal.ConnectivityNode <236C9BA2-1319-42EF-AED8-A07E3B120AEE> .
+
 <C49D5D63-F29F-4CAB-B39E-7E10D6BE7744_1> a cim:Terminal ;
     cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
     cim:Terminal.ConductingEquipment <C49D5D63-F29F-4CAB-B39E-7E10D6BE7744> ;
@@ -244,6 +269,16 @@
     cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
     cim:Terminal.ConductingEquipment <D3C19ABF-3D9D-40E8-953F-9601694E5211> ;
     cim:Terminal.ConnectivityNode <0B2BB3E3-80F5-48BC-883C-4FB49967BCC5> .
+
+<E16FD157-778D-41F1-8FE1-A095E8D617E1_1> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <E16FD157-778D-41F1-8FE1-A095E8D617E1> ;
+    cim:Terminal.ConnectivityNode <236C9BA2-1319-42EF-AED8-A07E3B120AEE> .
+
+<E16FD157-778D-41F1-8FE1-A095E8D617E1_2> a cim:Terminal ;
+    cim:ACDCTerminal.sequenceNumber "2"^^cim:Integer ;
+    cim:Terminal.ConductingEquipment <E16FD157-778D-41F1-8FE1-A095E8D617E1> ;
+    cim:Terminal.ConnectivityNode <0D346513-A8C4-4B88-9115-F49FDE77FDE3> .
 
 <ED0C0C3E-4ABF-4CC2-A3D4-913A0CE83692_1> a cim:Terminal ;
     cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
@@ -416,6 +451,42 @@
     cim:IdentifiedObject.mRID "ED0C0C3E-4ABF-4CC2-A3D4-913A0CE83692"^^cim:String ;
     cim:IdentifiedObject.name "4_6_1"^^cim:String .
 
+<4AAF4340-564A-4D02-912B-2769E3A9C6BF> a cim:LinearShuntCompensator ;
+    cim:ConductingEquipment.BaseVoltage <E18B2A77-4D06-475A-83D1-257C2DAB9C2D> ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "4AAF4340-564A-4D02-912B-2769E3A9C6BF"^^cim:String ;
+    cim:IdentifiedObject.name "1_1_ac_cap"^^cim:String ;
+    cim:LinearShuntCompensator.bPerSection "0.5654866776461628"^^cim:Susceptance ;
+    cim:LinearShuntCompensator.gPerSection "0.0"^^cim:Conductance ;
+    cim:ShuntCompensator.grounded "false"^^cim:Boolean ;
+    cim:ShuntCompensator.maximumSections "1"^^cim:Integer ;
+    cim:ShuntCompensator.nomU "600.0"^^cim:Voltage ;
+    cim:ShuntCompensator.phaseConnection cim:PhaseShuntConnectionKind.Yn ;
+    cim:ShuntCompensator.sections "1"^^cim:Integer .
+
+<C1B5E7AF-5F48-457A-9990-38742140FD4C> a cim:SeriesCompensator ;
+    cim:ConductingEquipment.BaseVoltage <E18B2A77-4D06-475A-83D1-257C2DAB9C2D> ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "C1B5E7AF-5F48-457A-9990-38742140FD4C"^^cim:String ;
+    cim:IdentifiedObject.name "1_1_ac_inv_rl"^^cim:String ;
+    cim:SeriesCompensator.r "0.00075"^^cim:Resistance ;
+    cim:SeriesCompensator.r0 "0.00075"^^cim:Resistance ;
+    cim:SeriesCompensator.x "0.03769911184307752"^^cim:Reactance ;
+    cim:SeriesCompensator.x0 "0.03769911184307752"^^cim:Reactance .
+
+<E16FD157-778D-41F1-8FE1-A095E8D617E1> a cim:SeriesCompensator ;
+    cim:ConductingEquipment.BaseVoltage <E18B2A77-4D06-475A-83D1-257C2DAB9C2D> ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "E16FD157-778D-41F1-8FE1-A095E8D617E1"^^cim:String ;
+    cim:IdentifiedObject.name "1_1_ac_grid_rl"^^cim:String ;
+    cim:SeriesCompensator.r "0.0"^^cim:Resistance ;
+    cim:SeriesCompensator.r0 "0.0"^^cim:Resistance ;
+    cim:SeriesCompensator.x "0.0"^^cim:Reactance ;
+    cim:SeriesCompensator.x0 "0.0"^^cim:Reactance .
+
 <0A82F415-8F69-431F-8CA1-9561F2857828> a cim:PowerElectronicsConnection ;
     cim:ConductingEquipment.BaseVoltage <E18B2A77-4D06-475A-83D1-257C2DAB9C2D> ;
     cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
@@ -575,8 +646,13 @@
     emt:ConnectedFacility.ACPointOfCommonCoupling <1265D0D5-9737-4681-9D65-42FEBE3B87C8> ;
     emt:ConnectedFacility.Equipments <0A82F415-8F69-431F-8CA1-9561F2857828>,
         <3B6C281D-69C1-4E53-8AD3-60B5D42BA2A5>,
+        <3B8B7867-9BC0-4D73-A072-AE112EF61A46>,
+        <4AAF4340-564A-4D02-912B-2769E3A9C6BF>,
         <553C8DD4-48BB-4255-994B-6951693FEC63>,
-        <B720A0C7-D1AB-43FE-86E0-190BAB17F6DC> ;
+        <B720A0C7-D1AB-43FE-86E0-190BAB17F6DC>,
+        <C1B5E7AF-5F48-457A-9990-38742140FD4C>,
+        <E16FD157-778D-41F1-8FE1-A095E8D617E1>,
+        <F6CE8EB1-AE48-4250-8C55-C23155CE882D> ;
     emt:IBRPlant.switchingFrequency "3060.0"^^cim:Frequency ;
     cim:IdentifiedObject.mRID "298095DE-85A1-474C-8316-8CAE0F932952"^^cim:String ;
     cim:IdentifiedObject.name "1_1"^^cim:String .
@@ -950,6 +1026,7 @@
 
 <FDE751E2-C11C-485C-B254-52B43FE55028_i1> a emt:IEEECigreDLLInput ;
     emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.acVoltage ;
+    emt:IEEECigreDLLSignal.ConnectivityNode <0D346513-A8C4-4B88-9115-F49FDE77FDE3> ;
     emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
     emt:IEEECigreDLLSignal.name "Vta"^^cim:String ;
     emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
@@ -971,6 +1048,7 @@
 
 <FDE751E2-C11C-485C-B254-52B43FE55028_i11> a emt:IEEECigreDLLInput ;
     emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.dcMPPTVoltage ;
+    emt:IEEECigreDLLSignal.DCNode <5816BE22-AD5A-4E71-8349-3A4D30E4765A> ;
     emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
     emt:IEEECigreDLLSignal.name "VdcMPPT"^^cim:String ;
     emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
@@ -1001,6 +1079,7 @@
 
 <FDE751E2-C11C-485C-B254-52B43FE55028_i14> a emt:IEEECigreDLLInput ;
     emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.dcVoltage ;
+    emt:IEEECigreDLLSignal.DCNode <5816BE22-AD5A-4E71-8349-3A4D30E4765A> ;
     emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
     emt:IEEECigreDLLSignal.name "Vdc_meas"^^cim:String ;
     emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
@@ -1021,6 +1100,7 @@
 
 <FDE751E2-C11C-485C-B254-52B43FE55028_i2> a emt:IEEECigreDLLInput ;
     emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.acVoltage ;
+    emt:IEEECigreDLLSignal.ConnectivityNode <0D346513-A8C4-4B88-9115-F49FDE77FDE3> ;
     emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
     emt:IEEECigreDLLSignal.name "Vtb"^^cim:String ;
     emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
@@ -1032,6 +1112,7 @@
 
 <FDE751E2-C11C-485C-B254-52B43FE55028_i3> a emt:IEEECigreDLLInput ;
     emt:IEEECigreDLLInput.kind emt:IEEECigreDLLInputKind.acVoltage ;
+    emt:IEEECigreDLLSignal.ConnectivityNode <0D346513-A8C4-4B88-9115-F49FDE77FDE3> ;
     emt:IEEECigreDLLSignal.multiplier cim:UnitMultiplier.k ;
     emt:IEEECigreDLLSignal.name "Vtc"^^cim:String ;
     emt:IEEECigreDLLSignal.parameterKind emt:IEEECigreDLLParameterKind.Real64_Val ;
@@ -1050,6 +1131,7 @@
     emt:IEEECigreDLLSignal.sequenceNumber "4"^^cim:Integer ;
     emt:IEEECigreDLLSignal.unit cim:UnitSymbol.A ;
     emt:IEEECigreDLLSignal.width "1"^^cim:Integer ;
+    cim:SignalDescriptor.ACDCTerminal <C1B5E7AF-5F48-457A-9990-38742140FD4C_1> ;
     cim:SignalDescriptor.DynamicsFunctionBlock <FDE751E2-C11C-485C-B254-52B43FE55028> .
 
 <FDE751E2-C11C-485C-B254-52B43FE55028_i5> a emt:IEEECigreDLLInput ;
@@ -1061,6 +1143,7 @@
     emt:IEEECigreDLLSignal.sequenceNumber "5"^^cim:Integer ;
     emt:IEEECigreDLLSignal.unit cim:UnitSymbol.A ;
     emt:IEEECigreDLLSignal.width "1"^^cim:Integer ;
+    cim:SignalDescriptor.ACDCTerminal <C1B5E7AF-5F48-457A-9990-38742140FD4C_1> ;
     cim:SignalDescriptor.DynamicsFunctionBlock <FDE751E2-C11C-485C-B254-52B43FE55028> .
 
 <FDE751E2-C11C-485C-B254-52B43FE55028_i6> a emt:IEEECigreDLLInput ;
@@ -1072,6 +1155,7 @@
     emt:IEEECigreDLLSignal.sequenceNumber "6"^^cim:Integer ;
     emt:IEEECigreDLLSignal.unit cim:UnitSymbol.A ;
     emt:IEEECigreDLLSignal.width "1"^^cim:Integer ;
+    cim:SignalDescriptor.ACDCTerminal <C1B5E7AF-5F48-457A-9990-38742140FD4C_1> ;
     cim:SignalDescriptor.DynamicsFunctionBlock <FDE751E2-C11C-485C-B254-52B43FE55028> .
 
 <FDE751E2-C11C-485C-B254-52B43FE55028_i7> a emt:IEEECigreDLLInput ;
@@ -1083,6 +1167,7 @@
     emt:IEEECigreDLLSignal.sequenceNumber "7"^^cim:Integer ;
     emt:IEEECigreDLLSignal.unit cim:UnitSymbol.A ;
     emt:IEEECigreDLLSignal.width "1"^^cim:Integer ;
+    cim:SignalDescriptor.ACDCTerminal <E16FD157-778D-41F1-8FE1-A095E8D617E1_1> ;
     cim:SignalDescriptor.DynamicsFunctionBlock <FDE751E2-C11C-485C-B254-52B43FE55028> .
 
 <FDE751E2-C11C-485C-B254-52B43FE55028_i8> a emt:IEEECigreDLLInput ;
@@ -1094,6 +1179,7 @@
     emt:IEEECigreDLLSignal.sequenceNumber "8"^^cim:Integer ;
     emt:IEEECigreDLLSignal.unit cim:UnitSymbol.A ;
     emt:IEEECigreDLLSignal.width "1"^^cim:Integer ;
+    cim:SignalDescriptor.ACDCTerminal <E16FD157-778D-41F1-8FE1-A095E8D617E1_1> ;
     cim:SignalDescriptor.DynamicsFunctionBlock <FDE751E2-C11C-485C-B254-52B43FE55028> .
 
 <FDE751E2-C11C-485C-B254-52B43FE55028_i9> a emt:IEEECigreDLLInput ;
@@ -1105,6 +1191,7 @@
     emt:IEEECigreDLLSignal.sequenceNumber "9"^^cim:Integer ;
     emt:IEEECigreDLLSignal.unit cim:UnitSymbol.A ;
     emt:IEEECigreDLLSignal.width "1"^^cim:Integer ;
+    cim:SignalDescriptor.ACDCTerminal <E16FD157-778D-41F1-8FE1-A095E8D617E1_1> ;
     cim:SignalDescriptor.DynamicsFunctionBlock <FDE751E2-C11C-485C-B254-52B43FE55028> .
 
 <FDE751E2-C11C-485C-B254-52B43FE55028_o1> a emt:IEEECigreDLLOutput ;
@@ -1116,6 +1203,7 @@
     emt:IEEECigreDLLSignal.sequenceNumber "1"^^cim:Integer ;
     emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none ;
     emt:IEEECigreDLLSignal.width "1"^^cim:Integer ;
+    cim:SignalDescriptor.ACDCTerminal <0A82F415-8F69-431F-8CA1-9561F2857828_1> ;
     cim:SignalDescriptor.DynamicsFunctionBlock <FDE751E2-C11C-485C-B254-52B43FE55028> .
 
 <FDE751E2-C11C-485C-B254-52B43FE55028_o10> a emt:IEEECigreDLLOutput ;
@@ -1187,6 +1275,7 @@
     emt:IEEECigreDLLSignal.sequenceNumber "2"^^cim:Integer ;
     emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none ;
     emt:IEEECigreDLLSignal.width "1"^^cim:Integer ;
+    cim:SignalDescriptor.ACDCTerminal <0A82F415-8F69-431F-8CA1-9561F2857828_1> ;
     cim:SignalDescriptor.DynamicsFunctionBlock <FDE751E2-C11C-485C-B254-52B43FE55028> .
 
 <FDE751E2-C11C-485C-B254-52B43FE55028_o3> a emt:IEEECigreDLLOutput ;
@@ -1198,6 +1287,7 @@
     emt:IEEECigreDLLSignal.sequenceNumber "3"^^cim:Integer ;
     emt:IEEECigreDLLSignal.unit cim:UnitSymbol.none ;
     emt:IEEECigreDLLSignal.width "1"^^cim:Integer ;
+    cim:SignalDescriptor.ACDCTerminal <0A82F415-8F69-431F-8CA1-9561F2857828_1> ;
     cim:SignalDescriptor.DynamicsFunctionBlock <FDE751E2-C11C-485C-B254-52B43FE55028> .
 
 <FDE751E2-C11C-485C-B254-52B43FE55028_o4> a emt:IEEECigreDLLOutput ;
@@ -1688,4 +1778,45 @@
     cim:CurveData.Curve <8C421075-1459-4915-8861-D257446A5699> ;
     cim:CurveData.xvalue "1896.2924780409976"^^cim:Float ;
     cim:CurveData.y1value "1.4294839243308464"^^cim:Float .
+
+<61A2E499-3BBB-4251-9FFE-929EC7F6A2EA> a cim:DCEquipmentContainer ;
+    cim:IdentifiedObject.mRID "61A2E499-3BBB-4251-9FFE-929EC7F6A2EA"^^cim:String ;
+    cim:IdentifiedObject.name "SMIBDLL"^^cim:String .
+
+<5816BE22-AD5A-4E71-8349-3A4D30E4765A> a cim:DCNode ;
+    cim:DCNode.DCEquipmentContainer <61A2E499-3BBB-4251-9FFE-929EC7F6A2EA> ;
+    cim:IdentifiedObject.mRID "5816BE22-AD5A-4E71-8349-3A4D30E4765A"^^cim:String ;
+    cim:IdentifiedObject.name "1_1_dcn"^^cim:String .
+
+<0A82F415-8F69-431F-8CA1-9561F2857828_dc1> a emt:PowerElectronicsConnectionDCTerminal ;
+    emt:PowerElectronicsConnectionDCTerminal.PowerElectronicsConnection <0A82F415-8F69-431F-8CA1-9561F2857828> ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:DCBaseTerminal.DCNode <5816BE22-AD5A-4E71-8349-3A4D30E4765A> .
+
+<F6CE8EB1-AE48-4250-8C55-C23155CE882D> a cim:DCShunt ;
+    cim:DCConductingEquipment.ratedUdc "1200.0"^^cim:Voltage ;
+    cim:DCShunt.capacitance "0.1"^^cim:Capacitance ;
+    cim:DCShunt.resistance "0.0"^^cim:Resistance ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "F6CE8EB1-AE48-4250-8C55-C23155CE882D"^^cim:String ;
+    cim:IdentifiedObject.name "1_1_dc_cap"^^cim:String .
+
+<3B8B7867-9BC0-4D73-A072-AE112EF61A46> a emt:DCEnergySource ;
+    emt:DCEnergySource.kind emt:DCSourceKind.photoVoltaic ;
+    cim:DCConductingEquipment.ratedUdc "1200.0"^^cim:Voltage ;
+    cim:Equipment.EquipmentContainer <62CB0930-211D-4762-B5C1-27BF73EAC7C4> ;
+    cim:Equipment.inService "true"^^cim:Boolean ;
+    cim:IdentifiedObject.mRID "3B8B7867-9BC0-4D73-A072-AE112EF61A46"^^cim:String ;
+    cim:IdentifiedObject.name "1_1_dc_es"^^cim:String .
+
+<3B8B7867-9BC0-4D73-A072-AE112EF61A46_dc1> a cim:DCTerminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:DCBaseTerminal.DCNode <5816BE22-AD5A-4E71-8349-3A4D30E4765A> ;
+    cim:DCTerminal.DCConductingEquipment <3B8B7867-9BC0-4D73-A072-AE112EF61A46> .
+
+<F6CE8EB1-AE48-4250-8C55-C23155CE882D_dc1> a cim:DCTerminal ;
+    cim:ACDCTerminal.sequenceNumber "1"^^cim:Integer ;
+    cim:DCBaseTerminal.DCNode <5816BE22-AD5A-4E71-8349-3A4D30E4765A> ;
+    cim:DCTerminal.DCConductingEquipment <F6CE8EB1-AE48-4250-8C55-C23155CE882D> .
 

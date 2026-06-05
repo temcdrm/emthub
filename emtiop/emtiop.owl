@@ -9,25 +9,25 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xml:base="http://www.ucaiug.org/profile" > 
-  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7023">
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-327f">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7024"/>
-    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#SignalDescriptor.ACDCTerminal"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3280"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLSignal.DCNode"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7024">
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3280">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>ACDCTerminal</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ACDCTerminal"/>
+    <rdfs:label>DCNode</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#DCNode"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7025">
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3281">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7026"/>
-    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#SignalDescriptor.DynamicsFunctionBlock"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3282"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLSignal.ConnectivityNode"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7026">
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3282">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>DynamicsFunctionBlock</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#DynamicsFunctionBlock"/>
+    <rdfs:label>ConnectivityNode</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ConnectivityNode"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-784b">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
@@ -866,6 +866,7 @@
   <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f55">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:label>kind</rdfs:label>
     <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#DCSourceKind"/>
@@ -4823,6 +4824,48 @@
     <rdf:first rdf:resource="http://www.ucaiug.org/ns#IfdBaseKind.ifnl"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-5bc7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-5bc8"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#ShuntCompensator.phaseConnection"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-5bc8">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>phaseConnection</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#PhaseShuntConnectionKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-6951">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-6952"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#DCNode.DCEquipmentContainer"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-6952">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DCEquipmentContainer</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#DCEquipmentContainer"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7024"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#SignalDescriptor.ACDCTerminal"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7024">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ACDCTerminal</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ACDCTerminal"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7025">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7026"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#SignalDescriptor.DynamicsFunctionBlock"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7026">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DynamicsFunctionBlock</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#DynamicsFunctionBlock"/>
+  </rdf:Description>
   <rdf:Description rdf:nodeID="Xd2X4d70a073Xa3X19e8e5f8a90Xa3X-7db9">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:allValuesFrom rdf:nodeID="Xd2X4d70a073Xa3X19e8e5f8a90Xa3X-7dba"/>
@@ -5989,9 +6032,11 @@
     <rdfs:subClassOf rdf:resource="#DCConductingEquipment"/>
   </rdf:Description>
   <rdf:Description rdf:about="#DCEquipmentContainer">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#DCEquipmentContainer"/>
     <rdfs:subClassOf rdf:resource="#DCEquipmentContainer"/>
+    <rdfs:subClassOf rdf:resource="#EquipmentContainer"/>
   </rdf:Description>
   <rdf:Description rdf:about="#DCGround">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
@@ -6019,6 +6064,7 @@
     <rdfs:subClassOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X279c"/>
     <rdfs:subClassOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X27f0"/>
     <rdfs:subClassOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X27f1"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-6951"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#DCNode"/>
     <rdfs:subClassOf rdf:resource="#DCNode"/>
     <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
@@ -6041,6 +6087,7 @@
   </rdf:Description>
   <rdf:Description rdf:about="#DCSourceKind">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#DCSourceKind"/>
     <rdfs:subClassOf rdf:resource="#DCSourceKind"/>
@@ -6284,6 +6331,8 @@
   <rdf:Description rdf:about="#IEEECigreDLLSignal">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-327f"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3281"/>
     <rdfs:subClassOf rdf:nodeID="X73X6804221Xa3X19d4f611f9eXa3X-7590"/>
     <rdfs:subClassOf rdf:nodeID="Xd2X65ee4330Xa3X19d31100210Xa3X-6b45"/>
     <rdfs:subClassOf rdf:nodeID="Xd2X65ee4330Xa3X19d31100210Xa3X-6b47"/>
@@ -6767,6 +6816,7 @@
     <rdfs:subClassOf rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7d04"/>
     <rdfs:subClassOf rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7dcb"/>
     <rdfs:subClassOf rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7dcc"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-5bc7"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ShuntCompensator"/>
     <rdfs:subClassOf rdf:resource="#RegulatingCondEq"/>
   </rdf:Description>

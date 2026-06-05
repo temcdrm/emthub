@@ -327,6 +327,8 @@ CREATE TABLE "DCDisconnector"
 CREATE TABLE "DCEnergySource"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
+    -- FK column reference to table representing the "DCSourceKind" enumeration
+    "kind" VARCHAR(100),
     -- The power output, negative for load or charging.
     "p" DOUBLE PRECISION,
     -- Maximum power available from the primary source, e.g., photovoltaic panels
@@ -341,9 +343,7 @@ CREATE TABLE "DCEnergySource"
     -- Series source resistance.
     "rSeries" DOUBLE PRECISION,
     -- Shunt source resistance.
-    "rShunt" DOUBLE PRECISION,
-    -- FK column reference to table representing the "DCSourceKind" class
-    "kind" VARCHAR(100)
+    "rShunt" DOUBLE PRECISION
 );
 
 -- A modelling construct to provide a root class for containment of DC as
@@ -392,7 +392,10 @@ CREATE TABLE "DCNode"
     "mRID" VARCHAR(100) PRIMARY KEY,
     -- The name is any free human readable and possibly non unique text naming
     -- the object.
-    "name" VARCHAR(255) NOT NULL
+    "name" VARCHAR(255) NOT NULL,
+    -- The DC container for the DC nodes.
+    -- FK column reference to table representing the "DCEquipmentContainer" class
+    "DCEquipmentContainer" VARCHAR(100)
 );
 
 -- A series device within the DC system, typically a reactor used for filtering
@@ -417,10 +420,15 @@ CREATE TABLE "DCShunt"
     "resistance" DOUBLE PRECISION
 );
 
-CREATE TABLE "DCSourceKind"
-(
-    "mRID" VARCHAR(100) PRIMARY KEY
-);
+CREATE TABLE "DCSourceKind" ( "name" VARCHAR(100) UNIQUE );
+-- Represent the DCEnergySource with a nonlinear battery model, which should
+-- respond to state-of-charge (SoC) controls.
+INSERT INTO "DCSourceKind" ( "name" ) VALUES ( 'battery' );
+-- For electronic loads. Passive loads can be represented in DCShunt.
+INSERT INTO "DCSourceKind" ( "name" ) VALUES ( 'load' );
+-- Represent the DCEnergySource with a nonlinear PV panel model, which should
+-- respond to maximum power point tracking (MPPT) control
+INSERT INTO "DCSourceKind" ( "name" ) VALUES ( 'photoVoltaic' );
 
 -- A switch within the DC system.
 CREATE TABLE "DCSwitch"
@@ -845,7 +853,15 @@ CREATE TABLE "IEEECigreDLLSignal"
     -- FK column reference to table representing the "UnitSymbol" enumeration
     "unit" VARCHAR(100),
     -- Signal array dimension, defaults to 1.
-    "width" INTEGER
+    "width" INTEGER,
+    -- Use for a bus voltage or other bus quantity signal. Mutually exclusive
+    -- with association to DCNode or ACDCTerminal.
+    -- FK column reference to table representing the "ConnectivityNode" class
+    "ConnectivityNode" VARCHAR(100),
+    -- Use for a DC voltage or other quantity related to DC buses. Mutually exclusive
+    -- with assocation to ConnectivityNode or ACDCTerminal.
+    -- FK column reference to table representing the "DCNode" class
+    "DCNode" VARCHAR(100)
 );
 
 -- This is a class that provides common identification for all classes needing
@@ -1599,6 +1615,9 @@ CREATE TABLE "ShuntCompensator"
     -- should normally be within 10% of the voltage at which the capacitor is
     -- connected to the network.
     "nomU" DOUBLE PRECISION NOT NULL,
+    -- The type of phase connection, such as wye or delta.
+    -- FK column reference to table representing the "PhaseShuntConnectionKind" enumeration
+    "phaseConnection" VARCHAR(100),
     -- Shunt compensator sections in use. Starting value for steady state solution.
     -- The attribute shall be a positive value or zero. Non integer values are
     -- allowed to support continuous variables. The reasons for continuous value
@@ -2672,6 +2691,9 @@ ALTER TABLE "DCDisconnector" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCSwitch" ( 
 -- Inheritance subclass-superclass constraint for table "DCEnergySource"
 ALTER TABLE "DCEnergySource" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCConductingEquipment" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "DCEquipmentContainer"
+ALTER TABLE "DCEquipmentContainer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "EquipmentContainer" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "DCGround"
 ALTER TABLE "DCGround" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCConductingEquipment" ( "mRID" );
 
@@ -2917,11 +2939,11 @@ ALTER TABLE "CurveData" ADD FOREIGN KEY ( "Curve" ) REFERENCES "Curve" ( "mRID" 
 -- Foreign keys for table "DCBaseTerminal"
 ALTER TABLE "DCBaseTerminal" ADD FOREIGN KEY ( "DCNode" ) REFERENCES "DCNode" ( "mRID" );
 
--- Foreign keys for table "DCEnergySource"
-ALTER TABLE "DCEnergySource" ADD FOREIGN KEY ( "kind" ) REFERENCES "DCSourceKind" ( "mRID" );
-
 -- Foreign keys for table "DCLineSegment"
 ALTER TABLE "DCLineSegment" ADD FOREIGN KEY ( "PerLengthParameter" ) REFERENCES "PerLengthDCLineParameter" ( "mRID" );
+
+-- Foreign keys for table "DCNode"
+ALTER TABLE "DCNode" ADD FOREIGN KEY ( "DCEquipmentContainer" ) REFERENCES "DCEquipmentContainer" ( "mRID" );
 
 -- Foreign keys for table "DCTerminal"
 ALTER TABLE "DCTerminal" ADD FOREIGN KEY ( "polarity" ) REFERENCES "DCTerminalPolarityKind" ( "name" );
@@ -2950,6 +2972,14 @@ ALTER TABLE "Equipment" ADD FOREIGN KEY ( "EquipmentContainer" ) REFERENCES "Equ
 -- Foreign keys for table "IEEECigreDLLParameter"
 ALTER TABLE "IEEECigreDLLParameter" ADD FOREIGN KEY ( "parameterKind" ) REFERENCES "IEEECigreDLLParameterKind" ( "name" );
 ALTER TABLE "IEEECigreDLLParameter" ADD FOREIGN KEY ( "IEEECigreDLL" ) REFERENCES "IEEECigreDLL" ( "mRID" );
+
+-- Foreign keys for table "IEEECigreDLLSignal"
+ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "multiplier" ) REFERENCES "UnitMultiplier" ( "name" );
+ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "parameterKind" ) REFERENCES "IEEECigreDLLParameterKind" ( "name" );
+ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "phase" ) REFERENCES "SinglePhaseKind" ( "name" );
+ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "unit" ) REFERENCES "UnitSymbol" ( "name" );
+ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
+ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "DCNode" ) REFERENCES "DCNode" ( "mRID" );
 
 -- Foreign keys for table "MachineSaturation"
 ALTER TABLE "MachineSaturation" ADD FOREIGN KEY ( "SynchronousMachineDetailed" ) REFERENCES "SynchronousMachineDetailed" ( "mRID" );
@@ -2984,6 +3014,9 @@ ALTER TABLE "RatioTapChanger" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "T
 
 -- Foreign keys for table "RotatingMachine"
 ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "GeneratingUnit" ) REFERENCES "GeneratingUnit" ( "mRID" );
+
+-- Foreign keys for table "ShuntCompensator"
+ALTER TABLE "ShuntCompensator" ADD FOREIGN KEY ( "phaseConnection" ) REFERENCES "PhaseShuntConnectionKind" ( "name" );
 
 -- Foreign keys for table "SignalDescriptor"
 ALTER TABLE "SignalDescriptor" ADD FOREIGN KEY ( "ACDCTerminal" ) REFERENCES "ACDCTerminal" ( "mRID" );
@@ -3066,9 +3099,9 @@ ALTER TABLE "TransformerSaturation" ADD FOREIGN KEY ( "TransformerCoreAdmittance
 
 -- Cascade deletes for compounds referenced in table "DCBaseTerminal"
 
--- Cascade deletes for compounds referenced in table "DCEnergySource"
-
 -- Cascade deletes for compounds referenced in table "DCLineSegment"
+
+-- Cascade deletes for compounds referenced in table "DCNode"
 
 -- Cascade deletes for compounds referenced in table "DCTerminal"
 
@@ -3085,6 +3118,8 @@ ALTER TABLE "TransformerSaturation" ADD FOREIGN KEY ( "TransformerCoreAdmittance
 -- Cascade deletes for compounds referenced in table "Equipment"
 
 -- Cascade deletes for compounds referenced in table "IEEECigreDLLParameter"
+
+-- Cascade deletes for compounds referenced in table "IEEECigreDLLSignal"
 
 -- Cascade deletes for compounds referenced in table "MachineSaturation"
 
@@ -3105,6 +3140,8 @@ ALTER TABLE "TransformerSaturation" ADD FOREIGN KEY ( "TransformerCoreAdmittance
 -- Cascade deletes for compounds referenced in table "RatioTapChanger"
 
 -- Cascade deletes for compounds referenced in table "RotatingMachine"
+
+-- Cascade deletes for compounds referenced in table "ShuntCompensator"
 
 -- Cascade deletes for compounds referenced in table "SignalDescriptor"
 
@@ -3148,8 +3185,8 @@ CREATE INDEX ix_ConnectedFacility_ACPointOfCommonCoupling ON "ConnectedFacility"
 CREATE INDEX ix_ConnectivityNode_ConnectivityNodeContainer ON "ConnectivityNode" ( "ConnectivityNodeContainer" );
 CREATE INDEX ix_CurveData_Curve ON "CurveData" ( "Curve" );
 CREATE INDEX ix_DCBaseTerminal_DCNode ON "DCBaseTerminal" ( "DCNode" );
-CREATE INDEX ix_DCEnergySource_kind ON "DCEnergySource" ( "kind" );
 CREATE INDEX ix_DCLineSegment_PerLengthParameter ON "DCLineSegment" ( "PerLengthParameter" );
+CREATE INDEX ix_DCNode_DCEquipmentContainer ON "DCNode" ( "DCEquipmentContainer" );
 CREATE INDEX ix_DCTerminal_DCConductingEquipment ON "DCTerminal" ( "DCConductingEquipment" );
 CREATE INDEX ix_DetailedModelDescriptor_DetailedModelTypeDynamics ON "DetailedModelDescriptor" ( "DetailedModelTypeDynamics" );
 CREATE INDEX ix_DetailedModelDynamics_DetailedModelTypeDynamics ON "DetailedModelDynamics" ( "DetailedModelTypeDynamics" );
@@ -3160,6 +3197,8 @@ CREATE INDEX ix_DiagramObjectPoint_DiagramObject ON "DiagramObjectPoint" ( "Diag
 CREATE INDEX ix_EnergyConsumer_LoadResponse ON "EnergyConsumer" ( "LoadResponse" );
 CREATE INDEX ix_Equipment_EquipmentContainer ON "Equipment" ( "EquipmentContainer" );
 CREATE INDEX ix_IEEECigreDLLParameter_IEEECigreDLL ON "IEEECigreDLLParameter" ( "IEEECigreDLL" );
+CREATE INDEX ix_IEEECigreDLLSignal_ConnectivityNode ON "IEEECigreDLLSignal" ( "ConnectivityNode" );
+CREATE INDEX ix_IEEECigreDLLSignal_DCNode ON "IEEECigreDLLSignal" ( "DCNode" );
 CREATE INDEX ix_MachineSaturation_SynchronousMachineDetailed ON "MachineSaturation" ( "SynchronousMachineDetailed" );
 CREATE INDEX ix_OperationalLimit_OperationalLimitSet ON "OperationalLimit" ( "OperationalLimitSet" );
 CREATE INDEX ix_OperationalLimit_OperationalLimitType ON "OperationalLimit" ( "OperationalLimitType" );

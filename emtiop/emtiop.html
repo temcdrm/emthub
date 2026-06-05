@@ -1499,6 +1499,20 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
+                  <p class="name" id="DCEnergySource.kind">kind</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#DCSourceKind">DCSourceKind</a>
+                  </p>
+               </td>
+               <td/>
+            </tr>
+            <tr>
+               <th>
                   <p class="name" id="DCEnergySource.p">p</p>
                </th>
                <td>
@@ -1609,20 +1623,6 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="comment">Shunt source resistance.</p>
                </td>
             </tr>
-            <tr>
-               <th>
-                  <p class="name" id="DCEnergySource.kind">kind</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#DCSourceKind">DCSourceKind</a>
-                  </p>
-               </td>
-               <td/>
-            </tr>
          </table>
          <h3>Inherited Members</h3>
          <table>
@@ -1697,6 +1697,88 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
             </tr>
          </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#PowerSystemResource.mRID">PowerSystemResource</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#PowerSystemResource.name">PowerSystemResource</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="DCEquipmentContainer" class="group">
+         <a href="#DCEquipmentContainer">
+            <h2 class="concrete">DCEquipmentContainer</h2>
+         </a>
+         <p class="package">DC</p>
+         <p class="comment">A modelling construct to provide a root class for containment of DC as well as AC equipment. The class differ from the EquipmentContainer for AC in that it may also contain DCNode(-s). Hence it can contain both AC and DC equipment.</p>
+         <h3>Inherited Members</h3>
+         <table/>
+         <table/>
          <table>
             <tr>
                <th>
@@ -2231,6 +2313,22 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p class="comment">The name is any free human readable and possibly non unique text naming the object.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="DCNode.DCEquipmentContainer">DCEquipmentContainer</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#DCEquipmentContainer">DCEquipmentContainer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The DC container for the DC nodes.</p>
                </td>
             </tr>
          </table>
@@ -4362,6 +4460,40 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
             </tr>
+            <tr>
+               <th>
+                  <p class="name">ConnectivityNode</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ConnectivityNode">ConnectivityNode</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.ConnectivityNode">IEEECigreDLLSignal</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">DCNode</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#DCNode">DCNode</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.DCNode">IEEECigreDLLSignal</a>
+                  </p>
+               </td>
+            </tr>
          </table>
          <table>
             <tr>
@@ -4616,6 +4748,40 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p>see <a class="superclass" href="#IEEECigreDLLSignal.width">IEEECigreDLLSignal</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">ConnectivityNode</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ConnectivityNode">ConnectivityNode</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.ConnectivityNode">IEEECigreDLLSignal</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">DCNode</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#DCNode">DCNode</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.DCNode">IEEECigreDLLSignal</a>
                   </p>
                </td>
             </tr>
@@ -4895,6 +5061,23 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p>see <a class="superclass" href="#ShuntCompensator.nomU">ShuntCompensator</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">phaseConnection</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PhaseShuntConnectionKind">PhaseShuntConnectionKind</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#ShuntCompensator.phaseConnection">ShuntCompensator</a>
                   </p>
                </td>
             </tr>
@@ -11373,19 +11556,6 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
-      <div id="DCEquipmentContainer" class="group">
-         <a href="#DCEquipmentContainer">
-            <h2 class="abstract">DCEquipmentContainer</h2>
-         </a>
-         <p class="package">DC</p>
-         <p class="comment">A modelling construct to provide a root class for containment of DC as well as AC equipment. The class differ from the EquipmentContainer for AC in that it may also contain DCNode(-s). Hence it can contain both AC and DC equipment.</p>
-      </div>
-      <div id="DCSourceKind" class="group">
-         <a href="#DCSourceKind">
-            <h2 class="abstract">DCSourceKind</h2>
-         </a>
-         <p class="package">Emtiop</p>
-      </div>
       <div id="DCSwitch" class="group">
          <a href="#DCSwitch">
             <h2 class="abstract">DCSwitch</h2>
@@ -12442,6 +12612,38 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p class="comment">Signal array dimension, defaults to 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLSignal.ConnectivityNode">ConnectivityNode</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#ConnectivityNode">ConnectivityNode</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Use for a bus voltage or other bus quantity signal. Mutually exclusive with association to DCNode or ACDCTerminal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLSignal.DCNode">DCNode</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#DCNode">DCNode</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Use for a DC voltage or other quantity related to DC buses. Mutually exclusive with assocation to ConnectivityNode or ACDCTerminal.</p>
                </td>
             </tr>
          </table>
@@ -14010,6 +14212,22 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
+                  <p class="name" id="ShuntCompensator.phaseConnection">phaseConnection</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#PhaseShuntConnectionKind">PhaseShuntConnectionKind</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The type of phase connection, such as wye or delta.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
                   <p class="name" id="ShuntCompensator.sections">sections</p>
                </th>
                <td>
@@ -15337,6 +15555,38 @@ p.package { position: absolute; right: 10px; top: 0px}
                </th>
                <td>
                   <p class="comment">The Y-axis values are assumed to be a straight line between values. Also known as linear interpolation.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="DCSourceKind" class="group">
+         <a href="#DCSourceKind">
+            <h2 class="enumerated">DCSourceKind</h2>
+         </a>
+         <p class="package">Emtiop</p>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">battery</p>
+               </th>
+               <td>
+                  <p class="comment">Represent the DCEnergySource with a nonlinear battery model, which should respond to state-of-charge (SoC) controls.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">load</p>
+               </th>
+               <td>
+                  <p class="comment">For electronic loads. Passive loads can be represented in DCShunt.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">photoVoltaic</p>
+               </th>
+               <td>
+                  <p class="comment">Represent the DCEnergySource with a nonlinear PV panel model, which should respond to maximum power point tracking (MPPT) control</p>
                </td>
             </tr>
          </table>
