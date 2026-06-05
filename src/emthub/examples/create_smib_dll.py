@@ -87,15 +87,19 @@ plant = {'generator': '1_1',
            ['PowerTransformer', '4_3_0_1']
            ],
          'attributes': [
+           ['switchingFrequency', 3060.0, 'Frequency']
+           ],
+         'ac_filter' : [
            ['acFilterCapacitance', 0.0015, 'Capacitance'],
            ['acFilterLbridge', 0.0001, 'Inductance'],
            ['acFilterLgrid', 0.0, 'Inductance'],
            ['acFilterRbridge', 0.00075, 'Resistance'],
            ['acFilterRgrid', 0.0, 'Resistance'],
-           ['acFilterKind', 'ungroundedWye', 'IBRFilterKind'],
+           ['acFilterKind', 'ungroundedWye', 'IBRFilterKind']
+           ],
+         'dc_bus' : [
            ['dcLinkCapacitance', 0.1, 'Capacitance'],
-           ['dcLinkVoltage', 1200.0, 'Voltage'],
-           ['switchingFrequency', 3060.0, 'Frequency']
+           ['dcLinkVoltage', 1200.0, 'Voltage']
            ]
          }
 

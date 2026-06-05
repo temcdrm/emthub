@@ -1233,6 +1233,10 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
     else:
       g.add ((ibr, rdflib.URIRef (att), rdflib.Literal(val, datatype=CIM_NS+unit)))
 
+  # add the DC bus model
+
+  # add the AC filter model
+
   # add the DLL interface
   if 'dll_path' in plant and plant['dll_path'] is not None:
     dllname = os.path.abspath(plant['dll_path'])
@@ -1262,7 +1266,7 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
       g.add ((dll, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
       g.add ((dll, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(dllID, datatype=CIM.String)))
       g.add ((dll, rdflib.URIRef (CIM_NS + 'DynamicsFunctionBlock.enabled'), rdflib.Literal (True, datatype=CIM.Boolean)))
-      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.PowerElectronicsConnection'), pec))
+      g.add ((dll, rdflib.URIRef (CIM_NS + 'DetailedModelDynamics.Equipment'), pec))
       g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.firmwareInstalled'), rdflib.Literal (dllDate, datatype=CIM.DateTime)))
       g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.firmwareVersion'), rdflib.Literal (dllVersion, datatype=CIM.String)))
       g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.snapshotUri'), rdflib.Literal (snapUri, datatype=CIM.String)))
@@ -1295,7 +1299,7 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
         sig_kind, phase = get_dll_input_kind (sig['Name'])
         pt = rdflib.URIRef (dllID+'_i{:d}'.format(seq))
         g.add ((pt, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInput')))
-        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInput.IEEECigreDLL'), dll))
+        g.add ((pt, rdflib.URIRef (CIM_NS + 'SignalDescriptor.DynamicsFunctionBlock'), dll))
         g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInput.kind'), rdflib.URIRef (EMT_NS + 'IEEECigreDLLInputKind.{:s}'.format(sig_kind))))
         g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.sequenceNumber'), rdflib.Literal(seq, datatype=CIM.Integer)))
         g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.width'), rdflib.Literal(sig['Width'], datatype=CIM.Integer)))
@@ -1316,7 +1320,7 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
         sig_kind, phase = get_dll_output_kind (sig['Name'])
         pt = rdflib.URIRef (dllID+'_o{:d}'.format(seq))
         g.add ((pt, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'IEEECigreDLLOutput')))
-        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLOutput.IEEECigreDLL'), dll))
+        g.add ((pt, rdflib.URIRef (CIM_NS + 'SignalDescriptor.DynamicsFunctionBlock'), dll))
         g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLOutput.kind'), rdflib.URIRef (EMT_NS + 'IEEECigreDLLOutputKind.{:s}'.format(sig_kind))))
         g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.sequenceNumber'), rdflib.Literal(seq, datatype=CIM.Integer)))
         g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.width'), rdflib.Literal(sig['Width'], datatype=CIM.Integer)))

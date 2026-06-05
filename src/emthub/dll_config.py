@@ -89,7 +89,7 @@ def get_dll_input_kind (s):
   elif s == 'VdcMPPT':
     kind = 'dcMPPTVoltage'
   elif s == 'Vdc_meas':
-    kind = 'dcMeasuredVoltage'
+    kind = 'dcVoltage'
   elif s == 'Pref':
     kind = 'activePowerReference'
   elif s == 'Qref':
@@ -97,10 +97,10 @@ def get_dll_input_kind (s):
   elif s == 'Vref':
     kind = 'voltageReference'
   elif s.startswith ('Vt'):
-    kind = 'acTerminalVoltage'
+    kind = 'acVoltage'
     phase = s[-1].upper()
   elif s.startswith ('I1'):
-    kind = 'acCurrentVsc'
+    kind = 'acCurrent'
     phase = s[-1].upper()
   elif s.startswith ('I2'):
     kind = 'acCurrentGrid'
