@@ -1618,7 +1618,13 @@ CREATE TABLE "ShuntCompensator"
 -- or external signals.
 CREATE TABLE "SignalDescriptor"
 (
-    "mRID" VARCHAR(100) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The terminal for this signal descriptor.
+    -- FK column reference to table representing the "ACDCTerminal" class
+    "ACDCTerminal" VARCHAR(100),
+    -- The dynamics function block to which this signal belongs to.
+    -- FK column reference to table representing the "DynamicsFunctionBlock" class
+    "DynamicsFunctionBlock" VARCHAR(100)
 );
 
 -- Enumeration of phase identifiers used to designate the specific phase of
@@ -2727,7 +2733,7 @@ ALTER TABLE "HydroGeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Generat
 ALTER TABLE "IBRPlant" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConnectedFacility" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "IEEECigreDLL"
-ALTER TABLE "IEEECigreDLL" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+ALTER TABLE "IEEECigreDLL" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DetailedModelDynamics" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "IEEECigreDLLInput"
 ALTER TABLE "IEEECigreDLLInput" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IEEECigreDLLSignal" ( "mRID" );
@@ -2979,6 +2985,10 @@ ALTER TABLE "RatioTapChanger" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "T
 -- Foreign keys for table "RotatingMachine"
 ALTER TABLE "RotatingMachine" ADD FOREIGN KEY ( "GeneratingUnit" ) REFERENCES "GeneratingUnit" ( "mRID" );
 
+-- Foreign keys for table "SignalDescriptor"
+ALTER TABLE "SignalDescriptor" ADD FOREIGN KEY ( "ACDCTerminal" ) REFERENCES "ACDCTerminal" ( "mRID" );
+ALTER TABLE "SignalDescriptor" ADD FOREIGN KEY ( "DynamicsFunctionBlock" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
+
 -- Foreign keys for table "SvPowerFlow"
 ALTER TABLE "SvPowerFlow" ADD FOREIGN KEY ( "Terminal" ) REFERENCES "Terminal" ( "mRID" );
 
@@ -3096,6 +3106,8 @@ ALTER TABLE "TransformerSaturation" ADD FOREIGN KEY ( "TransformerCoreAdmittance
 
 -- Cascade deletes for compounds referenced in table "RotatingMachine"
 
+-- Cascade deletes for compounds referenced in table "SignalDescriptor"
+
 -- Cascade deletes for compounds referenced in table "SvPowerFlow"
 
 -- Cascade deletes for compounds referenced in table "SvShuntCompensatorSections"
@@ -3159,6 +3171,8 @@ CREATE INDEX ix_PowerElectronicsUnit_PowerElectronicsConnection ON "PowerElectro
 CREATE INDEX ix_PowerTransformerEnd_PowerTransformer ON "PowerTransformerEnd" ( "PowerTransformer" );
 CREATE INDEX ix_RatioTapChanger_TransformerEnd ON "RatioTapChanger" ( "TransformerEnd" );
 CREATE INDEX ix_RotatingMachine_GeneratingUnit ON "RotatingMachine" ( "GeneratingUnit" );
+CREATE INDEX ix_SignalDescriptor_ACDCTerminal ON "SignalDescriptor" ( "ACDCTerminal" );
+CREATE INDEX ix_SignalDescriptor_DynamicsFunctionBlock ON "SignalDescriptor" ( "DynamicsFunctionBlock" );
 CREATE INDEX ix_SvPowerFlow_Terminal ON "SvPowerFlow" ( "Terminal" );
 CREATE INDEX ix_SvShuntCompensatorSections_ShuntCompensator ON "SvShuntCompensatorSections" ( "ShuntCompensator" );
 CREATE INDEX ix_SvStatus_ConductingEquipment ON "SvStatus" ( "ConductingEquipment" );

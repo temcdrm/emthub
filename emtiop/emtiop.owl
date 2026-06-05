@@ -9,16 +9,25 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xml:base="http://www.ucaiug.org/profile" > 
-  <rdf:Description rdf:nodeID="X43X014e87aXa3X19e8eb4258eXa3X-771c">
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7023">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="X43X014e87aXa3X19e8eb4258eXa3X-771d"/>
-    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#NERCDynamicModel.closestStandardModel"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7024"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#SignalDescriptor.ACDCTerminal"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X014e87aXa3X19e8eb4258eXa3X-771d">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
-    <rdfs:label>closestStandardModel</rdfs:label>
-    <owl:equivalentClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7024">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ACDCTerminal</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ACDCTerminal"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7025">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7026"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#SignalDescriptor.DynamicsFunctionBlock"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7026">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DynamicsFunctionBlock</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#DynamicsFunctionBlock"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-784b">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
@@ -29,6 +38,17 @@
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
     <rdfs:label>snapshotUri</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X43X014e87aXa3X19e8eb4258eXa3X-771c">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="X43X014e87aXa3X19e8eb4258eXa3X-771d"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#NERCDynamicModel.closestStandardModel"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X43X014e87aXa3X19e8eb4258eXa3X-771d">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>closestStandardModel</rdfs:label>
     <owl:equivalentClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-2223">
@@ -6215,7 +6235,7 @@
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-7215"/>
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-7217"/>
     <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLL"/>
-    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
+    <rdfs:subClassOf rdf:resource="#DetailedModelDynamics"/>
   </rdf:Description>
   <rdf:Description rdf:about="#IEEECigreDLLInput">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
@@ -6752,6 +6772,8 @@
   </rdf:Description>
   <rdf:Description rdf:about="#SignalDescriptor">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7023"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-7025"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#SignalDescriptor"/>
     <rdfs:subClassOf rdf:resource="#DetailedModelDescriptor"/>
   </rdf:Description>

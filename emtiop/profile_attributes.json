@@ -1181,6 +1181,16 @@
       "default": null
     }
   },
+  "SignalDescriptor": {
+    "ACDCTerminal": {
+      "type": "ACDCTerminal",
+      "default": null
+    },
+    "DynamicsFunctionBlock": {
+      "type": "DynamicsFunctionBlock",
+      "default": null
+    }
+  },
   "SynchronousMachineDetailed": {
     "efdBaseRatio": {
       "type": "Float",
