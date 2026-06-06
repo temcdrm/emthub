@@ -43,6 +43,71 @@ SELECT ?name ?mRID WHERE {
 }
 ORDER by ?name
 
+# EMTEquipmentContainer
+SELECT ?mRID ?name WHERE {
+ ?s r:type c:EquipmentContainer.
+ ?s c:IdentifiedObject.mRID ?mRID.
+ ?s c:IdentifiedObject.name ?name
+}
+ORDER BY ?name
+
+# EMTDCEquipmentContainer
+SELECT ?mRID ?name WHERE {
+ ?s r:type c:DCEquipmentContainer.
+ ?s c:IdentifiedObject.mRID ?mRID.
+ ?s c:IdentifiedObject.name ?name
+}
+ORDER BY ?name
+
+# EMTDCNode
+SELECT DISTINCT ?name ?mRID ?DCEquipmentContainer_mRID WHERE {
+ VALUES ?DCEquipmentContainer_mRID {"61A2E499-3BBB-4251-9FFE-929EC7F6A2EA"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?DCEquipmentContainer_mRID.
+ ?s c:DCNode.DCEquipmentContainer ?sys.
+ ?s r:type c:DCNode.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?mRID
+}
+ORDER by ?name
+
+# EMTDCShunt
+SELECT DISTINCT ?name ?mRID ?EquipmentContainer_mRID ?resistance ?capacitance ?ratedUdc ?DCNode1_mRID WHERE {
+ ?s r:type c:DCShunt.
+#VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?s c:Equipment.EquipmentContainer ?sys.
+ ?s c:DCShunt.resistance ?resistance.
+ ?s c:DCShunt.capacitance ?capacitance.
+ ?s c:DCConductingEquipment.ratedUdc ?ratedUdc.
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?mRID.
+ ?t1 c:DCTerminal.DCConductingEquipment ?s.
+ ?t1 c:DCBaseTerminal.DCNode ?dcn1.
+ ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?dcn1 c:IdentifiedObject.mRID ?DCNode1_mRID
+}
+ORDER by ?name
+
+# EMTDCEnergySource
+SELECT DISTINCT ?name ?mRID ?EquipmentContainer_mRID ?ratedUdc ?kind ?DCNode1_mRID WHERE {
+ ?s r:type e:DCEnergySource.
+#VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?s c:Equipment.EquipmentContainer ?sys.
+ ?s c:DCConductingEquipment.ratedUdc ?ratedUdc.
+ ?s e:DCEnergySource.kind ?kindraw.
+  bind(strafter(str(?kindraw),"DCSourceKind.") as ?kind)
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?mRID.
+ ?t1 c:DCTerminal.DCConductingEquipment ?s.
+ ?t1 c:DCBaseTerminal.DCNode ?dcn1.
+ ?t1 c:ACDCTerminal.sequenceNumber "1"^^c:Integer.
+ ?dcn1 c:IdentifiedObject.mRID ?DCNode1_mRID
+}
+ORDER by ?name
+
 # EMTDynamicsParameter
 SELECT ?Equipment_name ?Equipment_type ?DetailedModelTypeDynamics_name ?sequenceNumber ?name ?value ?ParameterDescriptor_mRID ?Equipment_mRID ?DetailedModelTypeDynamics_mRID WHERE {
  VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
@@ -804,7 +869,7 @@ VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:Strin
 } ORDER by ?mRID ?Equipment_type ?Equipment_mRID
 
 # EMTIBRPlantAttributes
-SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?dcLinkVoltage ?dcLinkCapacitance ?acFilterRgrid ?acFilterLgrid ?acFilterCapacitance ?acFilterRbridge ?acFilterLbridge ?switchingFrequency ?acFilterKind ?IEEECigreDLL_mRID WHERE {
+SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?switchingFrequency ?IEEECigreDLL_mRID WHERE {
 #VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
@@ -815,18 +880,9 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?eq r:type c:PowerElectronicsConnection.
  ?eq c:Equipment.EquipmentContainer ?sys.
  ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
- ?p e:IBRPlant.acFilterCapacitance ?acFilterCapacitance.
- ?p e:IBRPlant.acFilterRgrid ?acFilterRgrid.
- ?p e:IBRPlant.acFilterLgrid ?acFilterLgrid.
- ?p e:IBRPlant.acFilterRbridge ?acFilterRbridge.
- ?p e:IBRPlant.acFilterLbridge ?acFilterLbridge.
- ?p e:IBRPlant.dcLinkCapacitance ?dcLinkCapacitance.
- ?p e:IBRPlant.dcLinkVoltage ?dcLinkVoltage.
  ?p e:IBRPlant.switchingFrequency ?switchingFrequency.
- {?p e:IBRPlant.acFilterKind ?rawkind.
-  bind(strafter(str(?rawkind),"Kind.") as ?acFilterKind)}
  OPTIONAL {
-   ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+   ?d c:DetailedModelDynamics.Equipment ?eq.
    ?d c:IdentifiedObject.mRID ?IEEECigreDLL_mRID
    }
 } ORDER by ?mRID
@@ -838,7 +894,7 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?eq r:type c:PowerElectronicsConnection.
  ?eq c:Equipment.EquipmentContainer ?sys.
- ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
  ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
  ?d c:IdentifiedObject.mRID ?mRID.
  ?d c:IdentifiedObject.name ?name.
@@ -859,7 +915,7 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?eq r:type c:PowerElectronicsConnection.
  ?eq c:Equipment.EquipmentContainer ?sys.
- ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?mRID.
  ?p e:IEEECigreDLLParameter.IEEECigreDLL ?d.
  ?p e:IEEECigreDLLParameter.sequenceNumber ?sequenceNumber.
@@ -875,7 +931,7 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?eq r:type c:PowerElectronicsConnection.
  ?eq c:Equipment.EquipmentContainer ?sys.
- ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?mRID.
  ?p e:IEEECigreDLLParameter.IEEECigreDLL ?d.
 }
@@ -883,15 +939,15 @@ GROUP BY ?mRID
 ORDER BY ?mRID
 
 # EMTIEEECigreDLLInputs
-SELECT DISTINCT ?mRID ?sequenceNumber ?name ?width ?kind ?unit ?multiplier ?phase WHERE {
+SELECT DISTINCT ?mRID ?sequenceNumber ?name ?width ?kind ?unit ?multiplier ?phase ?ConnectivityNode_mRID ?DCNode_mRID ?ACDCTerminal_mRID WHERE {
 #VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?eq r:type c:PowerElectronicsConnection.
  ?eq c:Equipment.EquipmentContainer ?sys.
- ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?mRID.
- ?p e:IEEECigreDLLInput.IEEECigreDLL ?d.
+ ?p c:SignalDescriptor.DynamicsFunctionBlock ?d.
  ?p e:IEEECigreDLLSignal.sequenceNumber ?sequenceNumber.
  ?p e:IEEECigreDLLSignal.name ?name.
  ?p e:IEEECigreDLLSignal.width ?width.
@@ -905,6 +961,12 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
   bind(strafter(str(?rawkind),"Kind.") as ?parameterKind)}
  {?p e:IEEECigreDLLInput.kind ?rawsig.
   bind(strafter(str(?rawsig),"Kind.") as ?kind)}
+ OPTIONAL {?p e:IEEECigreDLLSignal.ConnectivityNode ?cn.
+           ?cn c:IdentifiedObject.mRID ?ConnectivityNode_mRID}
+ OPTIONAL {?p e:IEEECigreDLLSignal.DCNode ?dcn.
+           ?dcn c:IdentifiedObject.mRID ?DCNode_mRID}
+ OPTIONAL {?p c:SignalDescriptor.ACDCTerminal ?trm.
+          bind(substr(str(?trm),strlen(str(?trm))-37,38) as ?ACDCTerminal_mRID)}
 } ORDER by ?mRID ?sequenceNumber
 
 # EMTCountDLLInputs
@@ -914,23 +976,24 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?eq r:type c:PowerElectronicsConnection.
  ?eq c:Equipment.EquipmentContainer ?sys.
- ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?mRID.
- ?p e:IEEECigreDLLInput.IEEECigreDLL ?d.
+ ?p c:SignalDescriptor.DynamicsFunctionBlock ?d.
+ ?p r:type e:IEEECigreDLLInput
 }
 GROUP BY ?mRID
 ORDER BY ?mRID
 
 # EMTIEEECigreDLLOutputs
-SELECT DISTINCT ?mRID ?sequenceNumber ?name ?width ?kind ?unit ?multiplier ?phase WHERE {
+SELECT DISTINCT ?mRID ?sequenceNumber ?name ?width ?kind ?unit ?multiplier ?phase ?ACDCTerminal_mRID WHERE {
 #VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?eq r:type c:PowerElectronicsConnection.
  ?eq c:Equipment.EquipmentContainer ?sys.
- ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?mRID.
- ?p e:IEEECigreDLLOutput.IEEECigreDLL ?d.
+ ?p c:SignalDescriptor.DynamicsFunctionBlock ?d.
  ?p e:IEEECigreDLLSignal.sequenceNumber ?sequenceNumber.
  ?p e:IEEECigreDLLSignal.name ?name.
  ?p e:IEEECigreDLLSignal.width ?width.
@@ -944,6 +1007,8 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
   bind(strafter(str(?rawkind),"Kind.") as ?parameterKind)}
  {?p e:IEEECigreDLLOutput.kind ?rawsig.
   bind(strafter(str(?rawsig),"Kind.") as ?kind)}
+ OPTIONAL {?p c:SignalDescriptor.ACDCTerminal ?trm.
+          bind(substr(str(?trm),strlen(str(?trm))-37,38) as ?ACDCTerminal_mRID)}
 } ORDER by ?mRID ?sequenceNumber
 
 # EMTCountDLLOutputs
@@ -953,9 +1018,10 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?eq r:type c:PowerElectronicsConnection.
  ?eq c:Equipment.EquipmentContainer ?sys.
- ?d e:IEEECigreDLL.PowerElectronicsConnection ?eq.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?mRID.
- ?p e:IEEECigreDLLOutput.IEEECigreDLL ?d.
+ ?p c:SignalDescriptor.DynamicsFunctionBlock ?d.
+ ?p r:type e:IEEECigreDLLOutput
 }
 GROUP BY ?mRID
 ORDER BY ?mRID

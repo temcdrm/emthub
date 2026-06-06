@@ -179,7 +179,8 @@ def load_emt_dict (g, sysid, bTiming=False):
               'EMTXfmrLimit', 'EMTBranchLimit', 'EMTBusVoltage', 'EMTBranchFlow', 'EMTXfmrFlow',
               'EMTIBRPlant*', 'EMTRotatingMachinePlant*', 'EMTIEEECigreDLLParameters*',
               'EMTIBRPlantAttributes', 'EMTCountDLLParameters', 'EMTIEEECigreDLL',
-              'EMTCountDLLInputs', 'EMTIEEECigreDLLInputs*', 'EMTCountDLLOutputs', 'EMTIEEECigreDLLOutputs*']:
+              'EMTCountDLLInputs', 'EMTIEEECigreDLLInputs*', 'EMTCountDLLOutputs', 'EMTIEEECigreDLLOutputs*',
+              'EMTEquipmentContainer', 'EMTDCEquipmentContainer', 'EMTDCNode', 'EMTDCShunt', 'EMTDCEnergySource']:
     if bTiming:
       query_start_time = time.time()
     query_for_values (g, dict[key], sysid)

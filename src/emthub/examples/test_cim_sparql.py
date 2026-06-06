@@ -11,7 +11,7 @@ def main():
   Command-line Arguments:
     **index** (int): case number from 0 to 4
   """
-  idx = 2
+  idx = 4
   if len(sys.argv) > 1:
     idx = int(sys.argv[1])
   case = emthub.CASES[idx]
@@ -24,7 +24,9 @@ def main():
 
   d = emthub.load_emt_dict (g, case['id'], bTiming=True)
 
-  for key in ['EMTLoad']: # ['EMTIEEECigreDLLInputs*', 'EMTIEEECigreDLLOutputs*']:
+  for key in ['EMTIBRPlant*', 'EMTIBRPlantAttributes', 'EMTCountDLLInputs', 'EMTCountDLLOutputs', 'EMTCountDLLParameters',
+              'EMTIEEECigreDLL', 'EMTIEEECigreDLLInputs*', 'EMTIEEECigreDLLOutputs*', 'EMTIEEECigreDLLParameters*',
+              'EMTEquipmentContainer', 'EMTDCEquipmentContainer', 'EMTDCNode', 'EMTDCShunt', 'EMTDCEnergySource']:
     emthub.list_dict_table (d, key)
   quit()
 
