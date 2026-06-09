@@ -1060,6 +1060,117 @@ SELECT DISTINCT ?name ?GeneratingUnit_type ?ConnectivityNode1_name ?RegulatingCo
 ORDER by ?name
 
 ##################################################
+# Examples for Annex C.5 of P3743
+
+PREFIX r:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX c:  <http://www.ucaiug.org/ns#>
+PREFIX e:  <http://opensource.ieee.org/emtiop#>
+SELECT DISTINCT ?name ?GeneratingUnit_type ?ConnectivityNode1_name ?RegulatingCondEq_mRID ?PowerTransformer_mRID ?vectorGroup WHERE {
+ ?s c:IdentifiedObject.name ?name.
+ ?s c:IdentifiedObject.mRID ?RegulatingCondEq_mRID.
+ {?s c:RotatingMachine.GeneratingUnit ?unit.}
+  UNION
+ {?unit c:PowerElectronicsUnit.PowerElectronicsConnection ?s.}
+ {?unit a ?rawtype.
+  bind(strafter(str(?rawtype),"#") as ?GeneratingUnit_type)}
+ ?t1 c:Terminal.ConductingEquipment ?s.
+ ?t1 c:Terminal.ConnectivityNode ?cn1.
+ ?cn1 c:IdentifiedObject.mRID ?ConnectivityNode1_mRID.
+ ?cn1 c:IdentifiedObject.name ?ConnectivityNode1_name.
+ ?end c:TransformerEnd.Terminal ?tx2.
+ ?tx2 c:Terminal.ConnectivityNode ?cn1.
+ ?end c:IdentifiedObject.mRID ?PowerTransformerEnd_mRID.
+ ?end c:PowerTransformerEnd.PowerTransformer ?pxf.
+ ?pxf c:IdentifiedObject.mRID ?PowerTransformer_mRID.
+ ?pxf c:PowerTransformer.vectorGroup ?vectorGroup
+}
+ORDER by ?name
+
+PREFIX r:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX c:  <http://www.ucaiug.org/ns#>
+PREFIX e:  <http://opensource.ieee.org/emtiop#>
+SELECT DISTINCT ?mRID ?name ?Equipment_mRID ?Equipment_type WHERE {
+ ?p r:type e:IBRPlant.
+ ?p c:IdentifiedObject.name ?name.
+ ?p c:IdentifiedObject.mRID ?mRID.
+ ?p e:ConnectedFacility.Equipments ?eq.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?eq c:IdentifiedObject.mRID ?Equipment_mRID.
+ {?eq a ?rawtype.
+  bind(strafter(str(?rawtype),"#") as ?Equipment_type)}
+} ORDER by ?mRID ?Equipment_type ?Equipment_mRID
+
+
+##################################################
+# Examples for Annex C.6 of P3743
+
+SELECT DISTINCT 
+   ?DetailedModelDynamics_mRID 
+   ?sequenceNumber 
+   ?name ?width ?kind ?unit ?multiplier ?phase 
+   ?ConnectivityNode_mRID ?DCNode_mRID ?ACDCTerminal_mRID 
+WHERE {
+#VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
+ ?d c:IdentifiedObject.mRID ?DetailedModelDynamics_mRID.
+ ?p c:SignalDescriptor.DynamicsFunctionBlock ?d.
+ ?p e:IEEECigreDLLSignal.sequenceNumber ?sequenceNumber.
+ ?p e:IEEECigreDLLSignal.name ?name.
+ ?p e:IEEECigreDLLSignal.width ?width.
+ {?p e:IEEECigreDLLSignal.unit ?rawunit.
+  bind(strafter(str(?rawunit),"UnitSymbol.") as ?unit)}
+ {?p e:IEEECigreDLLSignal.multiplier ?rawmult.
+  bind(strafter(str(?rawmult),"UnitMultiplier.") as ?multiplier)}
+ OPTIONAL {?p e:IEEECigreDLLSignal.phase ?rawphase.
+  bind(strafter(str(?rawphase),"Kind.") as ?phase)}
+ {?p e:IEEECigreDLLSignal.parameterKind ?rawkind.
+  bind(strafter(str(?rawkind),"Kind.") as ?parameterKind)}
+ {?p e:IEEECigreDLLInput.kind ?rawsig.
+  bind(strafter(str(?rawsig),"Kind.") as ?kind)}
+ OPTIONAL {?p e:IEEECigreDLLSignal.ConnectivityNode ?cn.
+           ?cn c:IdentifiedObject.mRID ?ConnectivityNode_mRID}
+ OPTIONAL {?p e:IEEECigreDLLSignal.DCNode ?dcn.
+           ?dcn c:IdentifiedObject.mRID ?DCNode_mRID}
+ OPTIONAL {?p c:SignalDescriptor.ACDCTerminal ?trm.
+          bind(substr(str(?trm),strlen(str(?trm))-37,38) as ?ACDCTerminal_mRID)}
+} ORDER by ?DetailedModelDynamics_mRID ?sequenceNumber
+
+SELECT DISTINCT 
+   ?DetailedModelDynamics_mRID 
+   ?sequenceNumber 
+   ?name ?width ?kind ?unit ?multiplier ?phase 
+   ?ACDCTerminal_mRID 
+WHERE {
+#VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
+VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
+ ?d c:IdentifiedObject.mRID ?DetailedModelDynamics_mRID.
+ ?p c:SignalDescriptor.DynamicsFunctionBlock ?d.
+ ?p e:IEEECigreDLLSignal.sequenceNumber ?sequenceNumber.
+ ?p e:IEEECigreDLLSignal.name ?name.
+ ?p e:IEEECigreDLLSignal.width ?width.
+ {?p e:IEEECigreDLLSignal.unit ?rawunit.
+  bind(strafter(str(?rawunit),"UnitSymbol.") as ?unit)}
+ {?p e:IEEECigreDLLSignal.multiplier ?rawmult.
+  bind(strafter(str(?rawmult),"UnitMultiplier.") as ?multiplier)}
+ OPTIONAL {?p e:IEEECigreDLLSignal.phase ?rawphase.
+  bind(strafter(str(?rawphase),"Kind.") as ?phase)}
+ {?p e:IEEECigreDLLSignal.parameterKind ?rawkind.
+  bind(strafter(str(?rawkind),"Kind.") as ?parameterKind)}
+ {?p e:IEEECigreDLLOutput.kind ?rawsig.
+  bind(strafter(str(?rawsig),"Kind.") as ?kind)}
+ OPTIONAL {?p c:SignalDescriptor.ACDCTerminal ?trm.
+          bind(substr(str(?trm),strlen(str(?trm))-37,38) as ?ACDCTerminal_mRID)}
+} ORDER by ?DetailedModelDynamics_mRID ?sequenceNumber
+
+##################################################
 
 for OWL files
 
