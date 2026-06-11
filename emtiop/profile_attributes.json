@@ -405,7 +405,7 @@
       "default": null
     }
   },
-  "MachineSaturation": {
+  "MachineSaturationCurve": {
     "SynchronousMachineDetailed": {
       "type": "SynchronousMachineDetailed",
       "default": null
@@ -829,7 +829,7 @@
       "default": null
     }
   },
-  "TransformerSaturation": {
+  "TransformerSaturationCurve": {
     "TransformerCoreAdmittance": {
       "type": "TransformerCoreAdmittance",
       "default": null

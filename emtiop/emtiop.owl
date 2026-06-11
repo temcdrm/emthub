@@ -9,25 +9,25 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xml:base="http://www.ucaiug.org/profile" > 
-  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-327f">
+  <rdf:Description rdf:nodeID="X53X842c456Xa3X19eb71902a9Xa3X-7ffc">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3280"/>
-    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLSignal.DCNode"/>
+    <owl:allValuesFrom rdf:nodeID="X53X842c456Xa3X19eb71902a9Xa3X-7ffd"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#MachineSaturationCurve.SynchronousMachineDetailed"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3280">
+  <rdf:Description rdf:nodeID="X53X842c456Xa3X19eb71902a9Xa3X-7ffd">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>DCNode</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#DCNode"/>
+    <rdfs:label>SynchronousMachineDetailed</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#SynchronousMachineDetailed"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3281">
+  <rdf:Description rdf:nodeID="X23X286c0cdXa3X19eb70ea101Xa3X-71aa">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3282"/>
-    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLSignal.ConnectivityNode"/>
+    <owl:allValuesFrom rdf:nodeID="X23X286c0cdXa3X19eb70ea101Xa3X-71ab"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#TransformerSaturationCurve.TransformerCoreAdmittance"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3282">
+  <rdf:Description rdf:nodeID="X23X286c0cdXa3X19eb70ea101Xa3X-71ab">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>ConnectivityNode</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ConnectivityNode"/>
+    <rdfs:label>TransformerCoreAdmittance</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#TransformerCoreAdmittance"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="X33X8fed4f7Xa3X19c58cc6063Xa3X-784b">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
@@ -805,21 +805,6 @@
     <rdfs:label>statusKind</rdfs:label>
     <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#NERCModelStatusKind"/>
     <owl:unionOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f47"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f4a">
-    <rdf:first rdf:resource="#SynchronousMachineDetailed"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f4b">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f4c"/>
-    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#MachineSaturation.SynchronousMachineDetailed"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f4c">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>SynchronousMachineDetailed</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#SynchronousMachineDetailed"/>
-    <owl:unionOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f4a"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f4d">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
@@ -3340,26 +3325,6 @@
     <rdfs:label>inService</rdfs:label>
     <owl:equivalentClass rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7e18">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
-    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#TransformerSaturation.TransformerCoreAdmittance"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7e1a">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
-    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#TransformerSaturation.TransformerCoreAdmittance"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7e1b">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7e1c"/>
-    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#TransformerSaturation.TransformerCoreAdmittance"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7e1c">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>TransformerCoreAdmittance</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#TransformerCoreAdmittance"/>
-  </rdf:Description>
   <rdf:Description rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7e1d">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
@@ -4823,6 +4788,26 @@
   <rdf:Description rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7ffc">
     <rdf:first rdf:resource="http://www.ucaiug.org/ns#IfdBaseKind.ifnl"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-327f">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3280"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLSignal.DCNode"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3280">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DCNode</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#DCNode"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3281">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3282"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#IEEECigreDLLSignal.ConnectivityNode"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3282">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ConnectivityNode</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ConnectivityNode"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-5bc7">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
@@ -6331,9 +6316,9 @@
   <rdf:Description rdf:about="#IEEECigreDLLSignal">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="X73X6804221Xa3X19d4f611f9eXa3X-7590"/>
     <rdfs:subClassOf rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-327f"/>
     <rdfs:subClassOf rdf:nodeID="Xd2X3e1fe922Xa3X19e94a23f31Xa3X-3281"/>
-    <rdfs:subClassOf rdf:nodeID="X73X6804221Xa3X19d4f611f9eXa3X-7590"/>
     <rdfs:subClassOf rdf:nodeID="Xd2X65ee4330Xa3X19d31100210Xa3X-6b45"/>
     <rdfs:subClassOf rdf:nodeID="Xd2X65ee4330Xa3X19d31100210Xa3X-6b47"/>
     <rdfs:subClassOf rdf:nodeID="Xd2X65ee4330Xa3X19d31100210Xa3X-6b4a"/>
@@ -6417,12 +6402,12 @@
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#LoadResponseCharacteristic"/>
     <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#MachineSaturation">
+  <rdf:Description rdf:about="#MachineSaturationCurve">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f4b"/>
-    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#MachineSaturation"/>
+    <rdfs:subClassOf rdf:nodeID="X53X842c456Xa3X19eb71902a9Xa3X-7ffc"/>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#MachineSaturationCurve"/>
     <rdfs:subClassOf rdf:resource="#Curve"/>
   </rdf:Description>
   <rdf:Description rdf:about="#MutualCoupling">
@@ -7121,15 +7106,12 @@
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#TransformerMeshImpedance"/>
     <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#TransformerSaturation">
+  <rdf:Description rdf:about="#TransformerSaturationCurve">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>TransformerSaturation</rdfs:label>
-    <rdfs:subClassOf rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7e18"/>
-    <rdfs:subClassOf rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7e1a"/>
-    <rdfs:subClassOf rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7e1b"/>
-    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#TransformerSaturation"/>
+    <rdfs:subClassOf rdf:nodeID="X23X286c0cdXa3X19eb70ea101Xa3X-71aa"/>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#TransformerSaturationCurve"/>
     <rdfs:subClassOf rdf:resource="#Curve"/>
   </rdf:Description>
   <rdf:Description rdf:about="#UnitMultiplier">

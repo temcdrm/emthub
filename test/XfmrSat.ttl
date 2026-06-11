@@ -213,8 +213,8 @@
     cim:TransformerCoreAdmittance.g "6.563747111951271e-05"^^cim:Conductance ;
     cim:TransformerCoreAdmittance.g0 "6.563747111951271e-05"^^cim:Conductance .
 
-<A4548015-D844-4B79-8468-97B6B75936AB> a emt:TransformerSaturation ;
-    emt:TransformerSaturation.TransformerCoreAdmittance <3BC401F3-88EB-44B3-8D1C-75A2A671E0AB> ;
+<A4548015-D844-4B79-8468-97B6B75936AB> a emt:TransformerSaturationCurve ;
+    emt:TransformerSaturationCurve.TransformerCoreAdmittance <3BC401F3-88EB-44B3-8D1C-75A2A671E0AB> ;
     cim:Curve.curveStyle cim:CurveStyle.straightLineYValues ;
     cim:Curve.xMultiplier cim:UnitMultiplier.none ;
     cim:Curve.xUnit cim:UnitSymbol.A ;

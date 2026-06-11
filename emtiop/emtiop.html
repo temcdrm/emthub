@@ -5483,9 +5483,9 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
-      <div id="MachineSaturation" class="group">
-         <a href="#MachineSaturation">
-            <h2 class="concrete">MachineSaturation</h2>
+      <div id="MachineSaturationCurve" class="group">
+         <a href="#MachineSaturationCurve">
+            <h2 class="concrete">MachineSaturationCurve</h2>
          </a>
          <p class="package">Emtiop</p>
          <p class="comment">Use to define machine saturation with more than two points.</p>
@@ -5493,7 +5493,7 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
-                  <p class="name" id="MachineSaturation.SynchronousMachineDetailed">SynchronousMachineDetailed</p>
+                  <p class="name" id="MachineSaturationCurve.SynchronousMachineDetailed">SynchronousMachineDetailed</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -5504,7 +5504,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">The machine this saturation characteristic applies to.</p>
+                  <p class="comment">The synchronous machine this saturation characteristic applies to.</p>
                </td>
             </tr>
          </table>
@@ -10063,9 +10063,9 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
-      <div id="TransformerSaturation" class="group">
-         <a href="#TransformerSaturation">
-            <h2 class="concrete">TransformerSaturation</h2>
+      <div id="TransformerSaturationCurve" class="group">
+         <a href="#TransformerSaturationCurve">
+            <h2 class="concrete">TransformerSaturationCurve</h2>
          </a>
          <p class="package">Emtiop</p>
          <p class="comment">Represents a piecewise linear transformer saturation characteristic. It's connected to the same TransformerEnd as the TransformerCoreAdmittance, which is typically the lowest voltage winding other than a tertiary.  The attached Curve is a piecewise linear magnetization characteristic, plotted as core flux linkage vs. magnetizing current. This replaces the linear magnetizing characteristic defined by TransformerCoreAdmittance.b and TransformerCoreAdmittance.b0. The TransformerSaturation characteristic does not include hysteresis, i.e., the origin point [0,0] is implied. The TransformerCoreAdmittance.g and TransformerCoreAdmittance.g0 should still be used to model core losses.</p>
@@ -10080,10 +10080,10 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
-                  <p class="name" id="TransformerSaturation.TransformerCoreAdmittance">TransformerCoreAdmittance</p>
+                  <p class="name" id="TransformerSaturationCurve.TransformerCoreAdmittance">TransformerCoreAdmittance</p>
                </th>
                <td>
-                  <p class="cardinality">1..1</p>
+                  <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">

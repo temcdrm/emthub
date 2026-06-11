@@ -3996,8 +3996,8 @@
     cim:TransformerCoreAdmittance.g "0.004648760330578512"^^cim:Conductance ;
     cim:TransformerCoreAdmittance.g0 "0.004648760330578512"^^cim:Conductance .
 
-<03A4E4E1-1698-4F68-BF80-8CEAB00BBEFB> a emt:TransformerSaturation ;
-    emt:TransformerSaturation.TransformerCoreAdmittance <C43FD62F-4E1C-442F-B863-A21725843E04> ;
+<03A4E4E1-1698-4F68-BF80-8CEAB00BBEFB> a emt:TransformerSaturationCurve ;
+    emt:TransformerSaturationCurve.TransformerCoreAdmittance <C43FD62F-4E1C-442F-B863-A21725843E04> ;
     cim:Curve.curveStyle cim:CurveStyle.straightLineYValues ;
     cim:Curve.xMultiplier cim:UnitMultiplier.none ;
     cim:Curve.xUnit cim:UnitSymbol.A ;
@@ -4006,8 +4006,8 @@
     cim:IdentifiedObject.mRID "03A4E4E1-1698-4F68-BF80-8CEAB00BBEFB"^^cim:String ;
     cim:IdentifiedObject.name "19_33_0_1_Sat"^^cim:String .
 
-<0D63AE1B-AA2B-4915-B2F4-B6038F370782> a emt:TransformerSaturation ;
-    emt:TransformerSaturation.TransformerCoreAdmittance <D6927090-BAE5-4CFE-A8F1-0516A53959CE> ;
+<0D63AE1B-AA2B-4915-B2F4-B6038F370782> a emt:TransformerSaturationCurve ;
+    emt:TransformerSaturationCurve.TransformerCoreAdmittance <D6927090-BAE5-4CFE-A8F1-0516A53959CE> ;
     cim:Curve.curveStyle cim:CurveStyle.straightLineYValues ;
     cim:Curve.xMultiplier cim:UnitMultiplier.none ;
     cim:Curve.xUnit cim:UnitSymbol.A ;
@@ -4016,8 +4016,8 @@
     cim:IdentifiedObject.mRID "0D63AE1B-AA2B-4915-B2F4-B6038F370782"^^cim:String ;
     cim:IdentifiedObject.name "2_30_0_1_Sat"^^cim:String .
 
-<33FE0CFF-4C85-43DC-920E-7A60E476CDAB> a emt:TransformerSaturation ;
-    emt:TransformerSaturation.TransformerCoreAdmittance <2FAAB59C-C874-428F-B7A4-84DCBEADB82F> ;
+<33FE0CFF-4C85-43DC-920E-7A60E476CDAB> a emt:TransformerSaturationCurve ;
+    emt:TransformerSaturationCurve.TransformerCoreAdmittance <2FAAB59C-C874-428F-B7A4-84DCBEADB82F> ;
     cim:Curve.curveStyle cim:CurveStyle.straightLineYValues ;
     cim:Curve.xMultiplier cim:UnitMultiplier.none ;
     cim:Curve.xUnit cim:UnitSymbol.A ;
@@ -4026,8 +4026,8 @@
     cim:IdentifiedObject.mRID "33FE0CFF-4C85-43DC-920E-7A60E476CDAB"^^cim:String ;
     cim:IdentifiedObject.name "10_32_0_1_Sat"^^cim:String .
 
-<41A6B9C3-F400-4E3F-8A4F-3E62B300E2FD> a emt:TransformerSaturation ;
-    emt:TransformerSaturation.TransformerCoreAdmittance <F18F6CDD-FAC6-4EF0-B8A8-3645BD3BC56C> ;
+<41A6B9C3-F400-4E3F-8A4F-3E62B300E2FD> a emt:TransformerSaturationCurve ;
+    emt:TransformerSaturationCurve.TransformerCoreAdmittance <F18F6CDD-FAC6-4EF0-B8A8-3645BD3BC56C> ;
     cim:Curve.curveStyle cim:CurveStyle.straightLineYValues ;
     cim:Curve.xMultiplier cim:UnitMultiplier.none ;
     cim:Curve.xUnit cim:UnitSymbol.A ;
@@ -4036,8 +4036,8 @@
     cim:IdentifiedObject.mRID "41A6B9C3-F400-4E3F-8A4F-3E62B300E2FD"^^cim:String ;
     cim:IdentifiedObject.name "6_31_0_1_Sat"^^cim:String .
 
-<584BE138-4A91-4F1A-BAB7-7D4BB2C38963> a emt:TransformerSaturation ;
-    emt:TransformerSaturation.TransformerCoreAdmittance <F860400E-CBBF-4735-A8EF-849FEE42A572> ;
+<584BE138-4A91-4F1A-BAB7-7D4BB2C38963> a emt:TransformerSaturationCurve ;
+    emt:TransformerSaturationCurve.TransformerCoreAdmittance <F860400E-CBBF-4735-A8EF-849FEE42A572> ;
     cim:Curve.curveStyle cim:CurveStyle.straightLineYValues ;
     cim:Curve.xMultiplier cim:UnitMultiplier.none ;
     cim:Curve.xUnit cim:UnitSymbol.A ;
@@ -4046,8 +4046,8 @@
     cim:IdentifiedObject.mRID "584BE138-4A91-4F1A-BAB7-7D4BB2C38963"^^cim:String ;
     cim:IdentifiedObject.name "20_34_0_1_Sat"^^cim:String .
 
-<58F30076-EDFE-407E-9AB8-83DA06CA7104> a emt:TransformerSaturation ;
-    emt:TransformerSaturation.TransformerCoreAdmittance <EDDB6F17-75C0-418C-A854-E1DB16008F9F> ;
+<58F30076-EDFE-407E-9AB8-83DA06CA7104> a emt:TransformerSaturationCurve ;
+    emt:TransformerSaturationCurve.TransformerCoreAdmittance <EDDB6F17-75C0-418C-A854-E1DB16008F9F> ;
     cim:Curve.curveStyle cim:CurveStyle.straightLineYValues ;
     cim:Curve.xMultiplier cim:UnitMultiplier.none ;
     cim:Curve.xUnit cim:UnitSymbol.A ;
@@ -4056,8 +4056,8 @@
     cim:IdentifiedObject.mRID "58F30076-EDFE-407E-9AB8-83DA06CA7104"^^cim:String ;
     cim:IdentifiedObject.name "19_20_0_1_Sat"^^cim:String .
 
-<88C8ADE0-066F-4F87-8943-3A2CB91BC562> a emt:TransformerSaturation ;
-    emt:TransformerSaturation.TransformerCoreAdmittance <6C3E8977-539E-4FCA-8B16-6622A9358767> ;
+<88C8ADE0-066F-4F87-8943-3A2CB91BC562> a emt:TransformerSaturationCurve ;
+    emt:TransformerSaturationCurve.TransformerCoreAdmittance <6C3E8977-539E-4FCA-8B16-6622A9358767> ;
     cim:Curve.curveStyle cim:CurveStyle.straightLineYValues ;
     cim:Curve.xMultiplier cim:UnitMultiplier.none ;
     cim:Curve.xUnit cim:UnitSymbol.A ;
@@ -4066,8 +4066,8 @@
     cim:IdentifiedObject.mRID "88C8ADE0-066F-4F87-8943-3A2CB91BC562"^^cim:String ;
     cim:IdentifiedObject.name "25_37_0_1_Sat"^^cim:String .
 
-<B269EBBB-D809-4AAA-BA7A-EB3814869EEC> a emt:TransformerSaturation ;
-    emt:TransformerSaturation.TransformerCoreAdmittance <BB045CB8-9EF8-4795-A12A-FDF7018F5E86> ;
+<B269EBBB-D809-4AAA-BA7A-EB3814869EEC> a emt:TransformerSaturationCurve ;
+    emt:TransformerSaturationCurve.TransformerCoreAdmittance <BB045CB8-9EF8-4795-A12A-FDF7018F5E86> ;
     cim:Curve.curveStyle cim:CurveStyle.straightLineYValues ;
     cim:Curve.xMultiplier cim:UnitMultiplier.none ;
     cim:Curve.xUnit cim:UnitSymbol.A ;
@@ -4076,8 +4076,8 @@
     cim:IdentifiedObject.mRID "B269EBBB-D809-4AAA-BA7A-EB3814869EEC"^^cim:String ;
     cim:IdentifiedObject.name "29_38_0_1_Sat"^^cim:String .
 
-<C2C08DD8-275D-493C-9590-5AAA4C146107> a emt:TransformerSaturation ;
-    emt:TransformerSaturation.TransformerCoreAdmittance <50DF3DF1-3058-42F8-9BEC-6C10E6246F31> ;
+<C2C08DD8-275D-493C-9590-5AAA4C146107> a emt:TransformerSaturationCurve ;
+    emt:TransformerSaturationCurve.TransformerCoreAdmittance <50DF3DF1-3058-42F8-9BEC-6C10E6246F31> ;
     cim:Curve.curveStyle cim:CurveStyle.straightLineYValues ;
     cim:Curve.xMultiplier cim:UnitMultiplier.none ;
     cim:Curve.xUnit cim:UnitSymbol.A ;
@@ -4086,8 +4086,8 @@
     cim:IdentifiedObject.mRID "C2C08DD8-275D-493C-9590-5AAA4C146107"^^cim:String ;
     cim:IdentifiedObject.name "22_35_0_1_Sat"^^cim:String .
 
-<D1A64A37-5754-4FBE-A12A-C9CAE4BD3268> a emt:TransformerSaturation ;
-    emt:TransformerSaturation.TransformerCoreAdmittance <EBE068B3-1CE4-4685-8458-3B6B04005BF9> ;
+<D1A64A37-5754-4FBE-A12A-C9CAE4BD3268> a emt:TransformerSaturationCurve ;
+    emt:TransformerSaturationCurve.TransformerCoreAdmittance <EBE068B3-1CE4-4685-8458-3B6B04005BF9> ;
     cim:Curve.curveStyle cim:CurveStyle.straightLineYValues ;
     cim:Curve.xMultiplier cim:UnitMultiplier.none ;
     cim:Curve.xUnit cim:UnitSymbol.A ;
@@ -4096,8 +4096,8 @@
     cim:IdentifiedObject.mRID "D1A64A37-5754-4FBE-A12A-C9CAE4BD3268"^^cim:String ;
     cim:IdentifiedObject.name "12_11_0_1_Sat"^^cim:String .
 
-<D6EFB224-45B5-4098-9B10-424D425B5EA7> a emt:TransformerSaturation ;
-    emt:TransformerSaturation.TransformerCoreAdmittance <FC575E1C-5B3E-4A17-B9EA-C8E9C0715551> ;
+<D6EFB224-45B5-4098-9B10-424D425B5EA7> a emt:TransformerSaturationCurve ;
+    emt:TransformerSaturationCurve.TransformerCoreAdmittance <FC575E1C-5B3E-4A17-B9EA-C8E9C0715551> ;
     cim:Curve.curveStyle cim:CurveStyle.straightLineYValues ;
     cim:Curve.xMultiplier cim:UnitMultiplier.none ;
     cim:Curve.xUnit cim:UnitSymbol.A ;
@@ -4106,8 +4106,8 @@
     cim:IdentifiedObject.mRID "D6EFB224-45B5-4098-9B10-424D425B5EA7"^^cim:String ;
     cim:IdentifiedObject.name "23_36_0_1_Sat"^^cim:String .
 
-<E44145A3-8AF5-4822-BAEE-E187CBE8FD78> a emt:TransformerSaturation ;
-    emt:TransformerSaturation.TransformerCoreAdmittance <897E98FA-A68B-439B-85D7-D4786D2C89B9> ;
+<E44145A3-8AF5-4822-BAEE-E187CBE8FD78> a emt:TransformerSaturationCurve ;
+    emt:TransformerSaturationCurve.TransformerCoreAdmittance <897E98FA-A68B-439B-85D7-D4786D2C89B9> ;
     cim:Curve.curveStyle cim:CurveStyle.straightLineYValues ;
     cim:Curve.xMultiplier cim:UnitMultiplier.none ;
     cim:Curve.xUnit cim:UnitSymbol.A ;

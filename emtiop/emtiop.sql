@@ -1073,10 +1073,10 @@ CREATE TABLE "LoadResponseCharacteristic"
 );
 
 -- Use to define machine saturation with more than two points.
-CREATE TABLE "MachineSaturation"
+CREATE TABLE "MachineSaturationCurve"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
-    -- The machine this saturation characteristic applies to.
+    -- The synchronous machine this saturation characteristic applies to.
     -- FK column reference to table representing the "SynchronousMachineDetailed" class
     "SynchronousMachineDetailed" VARCHAR(100)
 );
@@ -2187,11 +2187,11 @@ CREATE TABLE "TransformerMeshImpedance"
 -- y1value in associated CurveData should be core flux linkage in peak Vs
 -- (not RMS), referenced to the TransformerEnd associated through TransformerCoreAdmittance.
 -- Do not enter the origin point [0,0].
-CREATE TABLE "TransformerSaturation"
+CREATE TABLE "TransformerSaturationCurve"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
     -- FK column reference to table representing the "TransformerCoreAdmittance" class
-    "TransformerCoreAdmittance" VARCHAR(100) NOT NULL
+    "TransformerCoreAdmittance" VARCHAR(100)
 );
 
 -- The unit multipliers defined for the CIM. When applied to unit symbols,
@@ -2772,8 +2772,8 @@ ALTER TABLE "LinearShuntCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Shun
 -- Inheritance subclass-superclass constraint for table "LoadResponseCharacteristic"
 ALTER TABLE "LoadResponseCharacteristic" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
--- Inheritance subclass-superclass constraint for table "MachineSaturation"
-ALTER TABLE "MachineSaturation" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Curve" ( "mRID" );
+-- Inheritance subclass-superclass constraint for table "MachineSaturationCurve"
+ALTER TABLE "MachineSaturationCurve" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Curve" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "MutualCoupling"
 ALTER TABLE "MutualCoupling" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
@@ -2904,8 +2904,8 @@ ALTER TABLE "TransformerEnd" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedOb
 -- Inheritance subclass-superclass constraint for table "TransformerMeshImpedance"
 ALTER TABLE "TransformerMeshImpedance" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
--- Inheritance subclass-superclass constraint for table "TransformerSaturation"
-ALTER TABLE "TransformerSaturation" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Curve" ( "mRID" );
+-- Inheritance subclass-superclass constraint for table "TransformerSaturationCurve"
+ALTER TABLE "TransformerSaturationCurve" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Curve" ( "mRID" );
 
 ------------------------------------------------------------------------------
 -- Standard foreign key constraint definitions
@@ -2981,8 +2981,8 @@ ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "unit" ) REFERENCES "UnitSymb
 ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
 ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "DCNode" ) REFERENCES "DCNode" ( "mRID" );
 
--- Foreign keys for table "MachineSaturation"
-ALTER TABLE "MachineSaturation" ADD FOREIGN KEY ( "SynchronousMachineDetailed" ) REFERENCES "SynchronousMachineDetailed" ( "mRID" );
+-- Foreign keys for table "MachineSaturationCurve"
+ALTER TABLE "MachineSaturationCurve" ADD FOREIGN KEY ( "SynchronousMachineDetailed" ) REFERENCES "SynchronousMachineDetailed" ( "mRID" );
 
 -- Foreign keys for table "OperationalLimit"
 ALTER TABLE "OperationalLimit" ADD FOREIGN KEY ( "OperationalLimitSet" ) REFERENCES "OperationalLimitSet" ( "mRID" );
@@ -3071,8 +3071,8 @@ ALTER TABLE "TransformerEnd" ADD FOREIGN KEY ( "Terminal" ) REFERENCES "Terminal
 -- Foreign keys for table "TransformerMeshImpedance"
 ALTER TABLE "TransformerMeshImpedance" ADD FOREIGN KEY ( "FromTransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
 
--- Foreign keys for table "TransformerSaturation"
-ALTER TABLE "TransformerSaturation" ADD FOREIGN KEY ( "TransformerCoreAdmittance" ) REFERENCES "TransformerCoreAdmittance" ( "mRID" );
+-- Foreign keys for table "TransformerSaturationCurve"
+ALTER TABLE "TransformerSaturationCurve" ADD FOREIGN KEY ( "TransformerCoreAdmittance" ) REFERENCES "TransformerCoreAdmittance" ( "mRID" );
 
 ------------------------------------------------------------------------------
 -- Cascade delete foreign key constraint definitions (for Compounds)
@@ -3121,7 +3121,7 @@ ALTER TABLE "TransformerSaturation" ADD FOREIGN KEY ( "TransformerCoreAdmittance
 
 -- Cascade deletes for compounds referenced in table "IEEECigreDLLSignal"
 
--- Cascade deletes for compounds referenced in table "MachineSaturation"
+-- Cascade deletes for compounds referenced in table "MachineSaturationCurve"
 
 -- Cascade deletes for compounds referenced in table "OperationalLimit"
 
@@ -3173,7 +3173,7 @@ ALTER TABLE "TransformerSaturation" ADD FOREIGN KEY ( "TransformerCoreAdmittance
 
 -- Cascade deletes for compounds referenced in table "TransformerMeshImpedance"
 
--- Cascade deletes for compounds referenced in table "TransformerSaturation"
+-- Cascade deletes for compounds referenced in table "TransformerSaturationCurve"
 
 ------------------------------------------------------------------------------
 -- Foreign key column indexes for optimized queries and joins
@@ -3199,7 +3199,7 @@ CREATE INDEX ix_Equipment_EquipmentContainer ON "Equipment" ( "EquipmentContaine
 CREATE INDEX ix_IEEECigreDLLParameter_IEEECigreDLL ON "IEEECigreDLLParameter" ( "IEEECigreDLL" );
 CREATE INDEX ix_IEEECigreDLLSignal_ConnectivityNode ON "IEEECigreDLLSignal" ( "ConnectivityNode" );
 CREATE INDEX ix_IEEECigreDLLSignal_DCNode ON "IEEECigreDLLSignal" ( "DCNode" );
-CREATE INDEX ix_MachineSaturation_SynchronousMachineDetailed ON "MachineSaturation" ( "SynchronousMachineDetailed" );
+CREATE INDEX ix_MachineSaturationCurve_SynchronousMachineDetailed ON "MachineSaturationCurve" ( "SynchronousMachineDetailed" );
 CREATE INDEX ix_OperationalLimit_OperationalLimitSet ON "OperationalLimit" ( "OperationalLimitSet" );
 CREATE INDEX ix_OperationalLimit_OperationalLimitType ON "OperationalLimit" ( "OperationalLimitType" );
 CREATE INDEX ix_OperationalLimitSet_Terminal ON "OperationalLimitSet" ( "Terminal" );
@@ -3225,4 +3225,4 @@ CREATE INDEX ix_TransformerCoreAdmittance_TransformerEnd ON "TransformerCoreAdmi
 CREATE INDEX ix_TransformerEnd_BaseVoltage ON "TransformerEnd" ( "BaseVoltage" );
 CREATE INDEX ix_TransformerEnd_Terminal ON "TransformerEnd" ( "Terminal" );
 CREATE INDEX ix_TransformerMeshImpedance_FromTransformerEnd ON "TransformerMeshImpedance" ( "FromTransformerEnd" );
-CREATE INDEX ix_TransformerSaturation_TransformerCoreAdmittance ON "TransformerSaturation" ( "TransformerCoreAdmittance" );
+CREATE INDEX ix_TransformerSaturationCurve_TransformerCoreAdmittance ON "TransformerSaturationCurve" ( "TransformerCoreAdmittance" );
