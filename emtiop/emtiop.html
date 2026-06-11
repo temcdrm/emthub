@@ -948,6 +948,22 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="comment">Container of this connectivity node.</p>
                </td>
             </tr>
+            <tr>
+               <th>
+                  <p class="name" id="ConnectivityNode.TopologicalNode">TopologicalNode</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#TopologicalNode">TopologicalNode</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The topological node to which this connectivity node is assigned.  May depend on the current state of switches in the network.</p>
+               </td>
+            </tr>
          </table>
          <h3>Inherited Members</h3>
          <table>
@@ -2109,22 +2125,6 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p class="comment">Resistance of the DC line segment.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="DCLineSegment.PerLengthParameter">PerLengthParameter</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#PerLengthDCLineParameter">PerLengthDCLineParameter</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">Set of per-length parameters for this line segment.</p>
                </td>
             </tr>
          </table>
@@ -5488,7 +5488,7 @@ p.package { position: absolute; right: 10px; top: 0px}
             <h2 class="concrete">MachineSaturationCurve</h2>
          </a>
          <p class="package">Emtiop</p>
-         <p class="comment">Use to define machine saturation with more than two points.</p>
+         <p class="comment">Use to define machine saturation with more than two points. xUnit is A (RMS current) and y1Unit is none (per-unit voltage).</p>
          <h3>Native Members</h3>
          <table>
             <tr>
@@ -5667,17 +5667,17 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
-      <div id="NERCDynamicModel" class="group">
-         <a href="#NERCDynamicModel">
-            <h2 class="concrete">NERCDynamicModel</h2>
+      <div id="NthAmDynamicModel" class="group">
+         <a href="#NthAmDynamicModel">
+            <h2 class="concrete">NthAmDynamicModel</h2>
          </a>
          <p class="package">Emtiop</p>
-         <p class="comment">Parameterized models from software libraries or user code that rely on documentation provided elsewhere, e.g., software documentation. The model is named within the domain of nameKind, e.g., ST6B for PSSE or esst6b for PSLF. Parameters are maintained by name and sequence number in the NERCDynamicModelParameter class.</p>
+         <p class="comment">Parameterized models from software libraries or user code that rely on documentation provided elsewhere, e.g., software documentation. The model is named within the domain of nameKind, e.g., ST6B for DYR or esst6b for DYD. Parameters are maintained by name and sequence number in the ParameterDescriptor class.</p>
          <h3>Native Members</h3>
          <table>
             <tr>
                <th>
-                  <p class="name" id="NERCDynamicModel.closestStandardModel">closestStandardModel</p>
+                  <p class="name" id="NthAmDynamicModel.closestStandardModel">closestStandardModel</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -5693,14 +5693,14 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name" id="NERCDynamicModel.modelKind">modelKind</p>
+                  <p class="name" id="NthAmDynamicModel.modelKind">modelKind</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#NERCModelKind">NERCModelKind</a>
+                     <a href="#NthAmModelKind">NthAmModelKind</a>
                   </p>
                </td>
                <td>
@@ -5709,28 +5709,28 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name" id="NERCDynamicModel.nameKind">nameKind</p>
+                  <p class="name" id="NthAmDynamicModel.nameKind">nameKind</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#NERCModelNameKind">NERCModelNameKind</a>
+                     <a href="#NthAmModelNameKind">NthAmModelNameKind</a>
                   </p>
                </td>
                <td/>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="NERCDynamicModel.statusKind">statusKind</p>
+                  <p class="name" id="NthAmDynamicModel.statusKind">statusKind</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#NERCModelStatusKind">NERCModelStatusKind</a>
+                     <a href="#NthAmModelStatusKind">NthAmModelStatusKind</a>
                   </p>
                </td>
                <td/>
@@ -8245,18 +8245,18 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name" id="SvVoltage.ConnectivityNode">ConnectivityNode</p>
+                  <p class="name" id="SvVoltage.TopologicalNode">TopologicalNode</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#ConnectivityNode">ConnectivityNode</a>
+                     <a href="#TopologicalNode">TopologicalNode</a>
                   </p>
                </td>
                <td>
-                  <p class="comment">The ConnectivityNode associated with this State Voltage.</p>
+                  <p class="comment">The topological node associated with the voltage state.</p>
                </td>
             </tr>
          </table>
@@ -9688,6 +9688,51 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
             </tr>
          </table>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">mRID</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.mRID">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">name</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IdentifiedObject.name">IdentifiedObject</a>
+                  </p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="TopologicalNode" class="group">
+         <a href="#TopologicalNode">
+            <h2 class="concrete">TopologicalNode</h2>
+         </a>
+         <p class="package">Topology</p>
+         <p class="comment">For a detailed substation model a topological node is a set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes change as the current network state changes (i.e., switches, breakers, etc. change state).</p>
+         <p class="comment">For a planning model, switch statuses are not used to form topological nodes. Instead they are manually created or deleted in a model builder tool. Topological nodes maintained this way are also called "busses".</p>
+         <h3>Inherited Members</h3>
          <table>
             <tr>
                <th>
@@ -16077,9 +16122,9 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
-      <div id="NERCModelKind" class="group">
-         <a href="#NERCModelKind">
-            <h2 class="enumerated">NERCModelKind</h2>
+      <div id="NthAmModelKind" class="group">
+         <a href="#NthAmModelKind">
+            <h2 class="enumerated">NthAmModelKind</h2>
          </a>
          <p class="package">Emtiop</p>
          <p class="comment">Application of this model.</p>
@@ -16152,42 +16197,48 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
-      <div id="NERCModelNameKind" class="group">
-         <a href="#NERCModelNameKind">
-            <h2 class="enumerated">NERCModelNameKind</h2>
+      <div id="NthAmModelNameKind" class="group">
+         <a href="#NthAmModelNameKind">
+            <h2 class="enumerated">NthAmModelNameKind</h2>
          </a>
          <p class="package">Emtiop</p>
          <p class="comment">Describes the naming category for dynamic models recognized by NERC.</p>
          <table>
             <tr>
                <th>
+                  <p class="name">AUX</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">DGS</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">DYD</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">DYR</p>
+               </th>
+               <td/>
+            </tr>
+            <tr>
+               <th>
                   <p class="name">Other</p>
-               </th>
-               <td/>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">PSLF</p>
-               </th>
-               <td/>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">PSSE</p>
-               </th>
-               <td/>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">WECC</p>
                </th>
                <td/>
             </tr>
          </table>
       </div>
-      <div id="NERCModelStatusKind" class="group">
-         <a href="#NERCModelStatusKind">
-            <h2 class="enumerated">NERCModelStatusKind</h2>
+      <div id="NthAmModelStatusKind" class="group">
+         <a href="#NthAmModelStatusKind">
+            <h2 class="enumerated">NthAmModelStatusKind</h2>
          </a>
          <p class="package">Emtiop</p>
          <table>
@@ -16246,6 +16297,55 @@ p.package { position: absolute; right: 10px; top: 0px}
                </th>
                <td>
                   <p class="comment">Low means a monitored value below the limit is a violation.  If applied to a terminal flow, the positive direction is into the terminal.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="PhaseShuntConnectionKind" class="group">
+         <a href="#PhaseShuntConnectionKind">
+            <h2 class="enumerated">PhaseShuntConnectionKind</h2>
+         </a>
+         <p class="package">Wires</p>
+         <p class="comment">The configuration of phase connections for a single terminal device such as a load or capacitor.</p>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">D</p>
+               </th>
+               <td>
+                  <p class="comment">Delta connection.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">G</p>
+               </th>
+               <td>
+                  <p class="comment">Ground connection; use when explicit connection to ground needs to be expressed in combination with the phase code, such as for electrical wire/cable or for meters.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">I</p>
+               </th>
+               <td>
+                  <p class="comment">Independent winding, for single-phase connections.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Y</p>
+               </th>
+               <td>
+                  <p class="comment">Wye connection.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">Yn</p>
+               </th>
+               <td>
+                  <p class="comment">Wye, with neutral brought out for grounding.</p>
                </td>
             </tr>
          </table>

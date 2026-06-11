@@ -77,6 +77,10 @@
     "ConnectivityNodeContainer": {
       "type": "ConnectivityNodeContainer",
       "default": null
+    },
+    "TopologicalNode": {
+      "type": "TopologicalNode",
+      "default": null
     }
   },
   "CurveData": {
@@ -152,10 +156,6 @@
     },
     "resistance": {
       "type": "Resistance",
-      "default": null
-    },
-    "PerLengthParameter": {
-      "type": "PerLengthDCLineParameter",
       "default": null
     }
   },
@@ -411,21 +411,21 @@
       "default": null
     }
   },
-  "NERCDynamicModel": {
+  "NthAmDynamicModel": {
     "closestStandardModel": {
       "type": "String",
       "default": null
     },
     "modelKind": {
-      "type": "NERCModelKind",
+      "type": "NthAmModelKind",
       "default": null
     },
     "nameKind": {
-      "type": "NERCModelNameKind",
+      "type": "NthAmModelNameKind",
       "default": null
     },
     "statusKind": {
-      "type": "NERCModelStatusKind",
+      "type": "NthAmModelStatusKind",
       "default": null
     }
   },
@@ -660,8 +660,8 @@
       "type": "Voltage",
       "default": null
     },
-    "ConnectivityNode": {
-      "type": "ConnectivityNode",
+    "TopologicalNode": {
+      "type": "TopologicalNode",
       "default": null
     }
   },

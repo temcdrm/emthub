@@ -222,7 +222,11 @@ CREATE TABLE "ConnectivityNode"
     "name" VARCHAR(255) NOT NULL,
     -- Container of this connectivity node.
     -- FK column reference to table representing the "ConnectivityNodeContainer" class
-    "ConnectivityNodeContainer" VARCHAR(100) NOT NULL
+    "ConnectivityNodeContainer" VARCHAR(100) NOT NULL,
+    -- The topological node to which this connectivity node is assigned. May depend
+    -- on the current state of switches in the network.
+    -- FK column reference to table representing the "TopologicalNode" class
+    "TopologicalNode" VARCHAR(100)
 );
 
 -- A base class for all objects that may contain connectivity nodes or topological
@@ -379,10 +383,7 @@ CREATE TABLE "DCLineSegment"
     -- Segment length for calculating line section capabilities.
     "length" DOUBLE PRECISION,
     -- Resistance of the DC line segment.
-    "resistance" DOUBLE PRECISION,
-    -- Set of per-length parameters for this line segment.
-    -- FK column reference to table representing the "PerLengthDCLineParameter" class
-    "PerLengthParameter" VARCHAR(100)
+    "resistance" DOUBLE PRECISION
 );
 
 -- DC nodes are points where terminals of DC conducting equipment are connected
@@ -1072,7 +1073,8 @@ CREATE TABLE "LoadResponseCharacteristic"
     "qVoltageExponent" DOUBLE PRECISION NOT NULL
 );
 
--- Use to define machine saturation with more than two points.
+-- Use to define machine saturation with more than two points. xUnit is A
+-- (RMS current) and y1Unit is none (per-unit voltage).
 CREATE TABLE "MachineSaturationCurve"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
@@ -1114,55 +1116,56 @@ CREATE TABLE "MutualCoupling"
 
 -- Parameterized models from software libraries or user code that rely on
 -- documentation provided elsewhere, e.g., software documentation. The model
--- is named within the domain of nameKind, e.g., ST6B for PSSE or esst6b for
--- PSLF. Parameters are maintained by name and sequence number in the NERCDynamicModelParameter
+-- is named within the domain of nameKind, e.g., ST6B for DYR or esst6b for
+-- DYD. Parameters are maintained by name and sequence number in the ParameterDescriptor
 -- class.
-CREATE TABLE "NERCDynamicModel"
+CREATE TABLE "NthAmDynamicModel"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
     -- Name of the closest match from Dynamics / StandardModels, if such a match
     -- exists.
     "closestStandardModel" VARCHAR(255),
     -- Suggested application of this dynamic model.
-    -- FK column reference to table representing the "NERCModelKind" enumeration
+    -- FK column reference to table representing the "NthAmModelKind" enumeration
     "modelKind" VARCHAR(100),
-    -- FK column reference to table representing the "NERCModelNameKind" enumeration
+    -- FK column reference to table representing the "NthAmModelNameKind" enumeration
     "nameKind" VARCHAR(100),
-    -- FK column reference to table representing the "NERCModelStatusKind" enumeration
+    -- FK column reference to table representing the "NthAmModelStatusKind" enumeration
     "statusKind" VARCHAR(100)
 );
 
 -- Application of this model.
-CREATE TABLE "NERCModelKind" ( "name" VARCHAR(100) UNIQUE );
-INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'currentCompensation' );
-INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'excitationSystem' );
-INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'load' );
-INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'loadController' );
-INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'machine' );
-INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'powerSystemStabilizer' );
-INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'protection' );
-INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'renewableEnergyResource' );
-INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'signalPlayback' );
-INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'staticVarAndFACTS' );
-INSERT INTO "NERCModelKind" ( "name" ) VALUES ( 'turbineGovernor' );
+CREATE TABLE "NthAmModelKind" ( "name" VARCHAR(100) UNIQUE );
+INSERT INTO "NthAmModelKind" ( "name" ) VALUES ( 'currentCompensation' );
+INSERT INTO "NthAmModelKind" ( "name" ) VALUES ( 'excitationSystem' );
+INSERT INTO "NthAmModelKind" ( "name" ) VALUES ( 'load' );
+INSERT INTO "NthAmModelKind" ( "name" ) VALUES ( 'loadController' );
+INSERT INTO "NthAmModelKind" ( "name" ) VALUES ( 'machine' );
+INSERT INTO "NthAmModelKind" ( "name" ) VALUES ( 'powerSystemStabilizer' );
+INSERT INTO "NthAmModelKind" ( "name" ) VALUES ( 'protection' );
+INSERT INTO "NthAmModelKind" ( "name" ) VALUES ( 'renewableEnergyResource' );
+INSERT INTO "NthAmModelKind" ( "name" ) VALUES ( 'signalPlayback' );
+INSERT INTO "NthAmModelKind" ( "name" ) VALUES ( 'staticVarAndFACTS' );
+INSERT INTO "NthAmModelKind" ( "name" ) VALUES ( 'turbineGovernor' );
 
 -- Describes the naming category for dynamic models recognized by NERC.
-CREATE TABLE "NERCModelNameKind" ( "name" VARCHAR(100) UNIQUE );
-INSERT INTO "NERCModelNameKind" ( "name" ) VALUES ( 'Other' );
-INSERT INTO "NERCModelNameKind" ( "name" ) VALUES ( 'PSLF' );
-INSERT INTO "NERCModelNameKind" ( "name" ) VALUES ( 'PSSE' );
-INSERT INTO "NERCModelNameKind" ( "name" ) VALUES ( 'WECC' );
+CREATE TABLE "NthAmModelNameKind" ( "name" VARCHAR(100) UNIQUE );
+INSERT INTO "NthAmModelNameKind" ( "name" ) VALUES ( 'AUX' );
+INSERT INTO "NthAmModelNameKind" ( "name" ) VALUES ( 'DGS' );
+INSERT INTO "NthAmModelNameKind" ( "name" ) VALUES ( 'DYD' );
+INSERT INTO "NthAmModelNameKind" ( "name" ) VALUES ( 'DYR' );
+INSERT INTO "NthAmModelNameKind" ( "name" ) VALUES ( 'Other' );
 
-CREATE TABLE "NERCModelStatusKind" ( "name" VARCHAR(100) UNIQUE );
+CREATE TABLE "NthAmModelStatusKind" ( "name" VARCHAR(100) UNIQUE );
 -- NERC allows this model for interconnection-wide studies. NERC used to keep
 -- a list of allowed models; currently, it lists only prohibited models.
-INSERT INTO "NERCModelStatusKind" ( "name" ) VALUES ( 'allowed' );
+INSERT INTO "NthAmModelStatusKind" ( "name" ) VALUES ( 'allowed' );
 -- NERC allows this model in interconnection-wide studies, but other models
 -- are more suitable.
-INSERT INTO "NERCModelStatusKind" ( "name" ) VALUES ( 'deprecated' );
+INSERT INTO "NthAmModelStatusKind" ( "name" ) VALUES ( 'deprecated' );
 -- NERC prohibits use of this model in interconnection-side studies. Some
 -- legacy network examples may still use this model.
-INSERT INTO "NERCModelStatusKind" ( "name" ) VALUES ( 'prohibited' );
+INSERT INTO "NthAmModelStatusKind" ( "name" ) VALUES ( 'prohibited' );
 
 -- A nuclear generating unit.
 CREATE TABLE "NuclearGeneratingUnit"
@@ -1286,6 +1289,22 @@ CREATE TABLE "ParameterValue"
     -- FK column reference to table representing the "ParameterDescriptor" class
     "ParameterDescriptor" VARCHAR(100)
 );
+
+-- The configuration of phase connections for a single terminal device such
+-- as a load or capacitor.
+CREATE TABLE "PhaseShuntConnectionKind" ( "name" VARCHAR(100) UNIQUE );
+-- Delta connection.
+INSERT INTO "PhaseShuntConnectionKind" ( "name" ) VALUES ( 'D' );
+-- Ground connection; use when explicit connection to ground needs to be expressed
+-- in combination with the phase code, such as for electrical wire/cable or
+-- for meters.
+INSERT INTO "PhaseShuntConnectionKind" ( "name" ) VALUES ( 'G' );
+-- Independent winding, for single-phase connections.
+INSERT INTO "PhaseShuntConnectionKind" ( "name" ) VALUES ( 'I' );
+-- Wye connection.
+INSERT INTO "PhaseShuntConnectionKind" ( "name" ) VALUES ( 'Y' );
+-- Wye, with neutral brought out for grounding.
+INSERT INTO "PhaseShuntConnectionKind" ( "name" ) VALUES ( 'Yn' );
 
 -- A photovoltaic device or an aggregation of such devices.
 CREATE TABLE "PhotoVoltaicUnit"
@@ -1758,9 +1777,9 @@ CREATE TABLE "SvVoltage"
     -- The voltage magnitude at the topological node. The attribute shall be a
     -- positive value.
     "v" DOUBLE PRECISION,
-    -- The ConnectivityNode associated with this State Voltage.
-    -- FK column reference to table representing the "ConnectivityNode" class
-    "ConnectivityNode" VARCHAR(100)
+    -- The topological node associated with the voltage state.
+    -- FK column reference to table representing the "TopologicalNode" class
+    "TopologicalNode" VARCHAR(100)
 );
 
 -- A generic device designed to close, or open, or both, one or more electric
@@ -2079,6 +2098,19 @@ CREATE TABLE "TextDiagramObject"
 -- A generating unit whose prime mover could be a steam turbine, combustion
 -- turbine, or diesel engine.
 CREATE TABLE "ThermalGeneratingUnit"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
+
+-- For a detailed substation model a topological node is a set of connectivity
+-- nodes that, in the current network state, are connected together through
+-- any type of closed switches, including jumpers. Topological nodes change
+-- as the current network state changes (i.e., switches, breakers, etc. change
+-- state).
+-- For a planning model, switch statuses are not used to form topological
+-- nodes. Instead they are manually created or deleted in a model builder
+-- tool. Topological nodes maintained this way are also called "busses".
+CREATE TABLE "TopologicalNode"
 (
     "mRID" VARCHAR(100) PRIMARY KEY
 );
@@ -2778,8 +2810,8 @@ ALTER TABLE "MachineSaturationCurve" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Curv
 -- Inheritance subclass-superclass constraint for table "MutualCoupling"
 ALTER TABLE "MutualCoupling" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
--- Inheritance subclass-superclass constraint for table "NERCDynamicModel"
-ALTER TABLE "NERCDynamicModel" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DetailedModelTypeDynamics" ( "mRID" );
+-- Inheritance subclass-superclass constraint for table "NthAmDynamicModel"
+ALTER TABLE "NthAmDynamicModel" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DetailedModelTypeDynamics" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "NuclearGeneratingUnit"
 ALTER TABLE "NuclearGeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "GeneratingUnit" ( "mRID" );
@@ -2895,6 +2927,9 @@ ALTER TABLE "TextDiagramObject" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DiagramOb
 -- Inheritance subclass-superclass constraint for table "ThermalGeneratingUnit"
 ALTER TABLE "ThermalGeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "GeneratingUnit" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "TopologicalNode"
+ALTER TABLE "TopologicalNode" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "TransformerCoreAdmittance"
 ALTER TABLE "TransformerCoreAdmittance" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
@@ -2925,6 +2960,7 @@ ALTER TABLE "ConnectedFacility" ADD FOREIGN KEY ( "ACPointOfCommonCoupling" ) RE
 
 -- Foreign keys for table "ConnectivityNode"
 ALTER TABLE "ConnectivityNode" ADD FOREIGN KEY ( "ConnectivityNodeContainer" ) REFERENCES "ConnectivityNodeContainer" ( "mRID" );
+ALTER TABLE "ConnectivityNode" ADD FOREIGN KEY ( "TopologicalNode" ) REFERENCES "TopologicalNode" ( "mRID" );
 
 -- Foreign keys for table "Curve"
 ALTER TABLE "Curve" ADD FOREIGN KEY ( "curveStyle" ) REFERENCES "CurveStyle" ( "name" );
@@ -2938,9 +2974,6 @@ ALTER TABLE "CurveData" ADD FOREIGN KEY ( "Curve" ) REFERENCES "Curve" ( "mRID" 
 
 -- Foreign keys for table "DCBaseTerminal"
 ALTER TABLE "DCBaseTerminal" ADD FOREIGN KEY ( "DCNode" ) REFERENCES "DCNode" ( "mRID" );
-
--- Foreign keys for table "DCLineSegment"
-ALTER TABLE "DCLineSegment" ADD FOREIGN KEY ( "PerLengthParameter" ) REFERENCES "PerLengthDCLineParameter" ( "mRID" );
 
 -- Foreign keys for table "DCNode"
 ALTER TABLE "DCNode" ADD FOREIGN KEY ( "DCEquipmentContainer" ) REFERENCES "DCEquipmentContainer" ( "mRID" );
@@ -3041,7 +3074,7 @@ ALTER TABLE "SvSwitch" ADD FOREIGN KEY ( "Switch" ) REFERENCES "Switch" ( "mRID"
 ALTER TABLE "SvTapStep" ADD FOREIGN KEY ( "TapChanger" ) REFERENCES "TapChanger" ( "mRID" );
 
 -- Foreign keys for table "SvVoltage"
-ALTER TABLE "SvVoltage" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
+ALTER TABLE "SvVoltage" ADD FOREIGN KEY ( "TopologicalNode" ) REFERENCES "TopologicalNode" ( "mRID" );
 
 -- Foreign keys for table "SynchronousMachine"
 ALTER TABLE "SynchronousMachine" ADD FOREIGN KEY ( "operatingMode" ) REFERENCES "SynchronousMachineOperatingMode" ( "name" );
@@ -3098,8 +3131,6 @@ ALTER TABLE "TransformerSaturationCurve" ADD FOREIGN KEY ( "TransformerCoreAdmit
 -- Cascade deletes for compounds referenced in table "CurveData"
 
 -- Cascade deletes for compounds referenced in table "DCBaseTerminal"
-
--- Cascade deletes for compounds referenced in table "DCLineSegment"
 
 -- Cascade deletes for compounds referenced in table "DCNode"
 
@@ -3183,9 +3214,9 @@ CREATE INDEX ix_ACPointOfCommonCoupling_ConnectivityNode ON "ACPointOfCommonCoup
 CREATE INDEX ix_ConductingEquipment_BaseVoltage ON "ConductingEquipment" ( "BaseVoltage" );
 CREATE INDEX ix_ConnectedFacility_ACPointOfCommonCoupling ON "ConnectedFacility" ( "ACPointOfCommonCoupling" );
 CREATE INDEX ix_ConnectivityNode_ConnectivityNodeContainer ON "ConnectivityNode" ( "ConnectivityNodeContainer" );
+CREATE INDEX ix_ConnectivityNode_TopologicalNode ON "ConnectivityNode" ( "TopologicalNode" );
 CREATE INDEX ix_CurveData_Curve ON "CurveData" ( "Curve" );
 CREATE INDEX ix_DCBaseTerminal_DCNode ON "DCBaseTerminal" ( "DCNode" );
-CREATE INDEX ix_DCLineSegment_PerLengthParameter ON "DCLineSegment" ( "PerLengthParameter" );
 CREATE INDEX ix_DCNode_DCEquipmentContainer ON "DCNode" ( "DCEquipmentContainer" );
 CREATE INDEX ix_DCTerminal_DCConductingEquipment ON "DCTerminal" ( "DCConductingEquipment" );
 CREATE INDEX ix_DetailedModelDescriptor_DetailedModelTypeDynamics ON "DetailedModelDescriptor" ( "DetailedModelTypeDynamics" );
@@ -3217,7 +3248,7 @@ CREATE INDEX ix_SvShuntCompensatorSections_ShuntCompensator ON "SvShuntCompensat
 CREATE INDEX ix_SvStatus_ConductingEquipment ON "SvStatus" ( "ConductingEquipment" );
 CREATE INDEX ix_SvSwitch_Switch ON "SvSwitch" ( "Switch" );
 CREATE INDEX ix_SvTapStep_TapChanger ON "SvTapStep" ( "TapChanger" );
-CREATE INDEX ix_SvVoltage_ConnectivityNode ON "SvVoltage" ( "ConnectivityNode" );
+CREATE INDEX ix_SvVoltage_TopologicalNode ON "SvVoltage" ( "TopologicalNode" );
 CREATE INDEX ix_SynchronousMachineDynamics_SynchronousMachine ON "SynchronousMachineDynamics" ( "SynchronousMachine" );
 CREATE INDEX ix_Terminal_ConductingEquipment ON "Terminal" ( "ConductingEquipment" );
 CREATE INDEX ix_Terminal_ConnectivityNode ON "Terminal" ( "ConnectivityNode" );

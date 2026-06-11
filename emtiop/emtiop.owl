@@ -9,16 +9,6 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xml:base="http://www.ucaiug.org/profile" > 
-  <rdf:Description rdf:nodeID="X53X842c456Xa3X19eb71902a9Xa3X-7ffc">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="X53X842c456Xa3X19eb71902a9Xa3X-7ffd"/>
-    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#MachineSaturationCurve.SynchronousMachineDetailed"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X53X842c456Xa3X19eb71902a9Xa3X-7ffd">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>SynchronousMachineDetailed</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#SynchronousMachineDetailed"/>
-  </rdf:Description>
   <rdf:Description rdf:nodeID="X23X286c0cdXa3X19eb70ea101Xa3X-71aa">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:allValuesFrom rdf:nodeID="X23X286c0cdXa3X19eb70ea101Xa3X-71ab"/>
@@ -38,17 +28,6 @@
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
     <rdfs:label>snapshotUri</rdfs:label>
-    <owl:equivalentClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X014e87aXa3X19e8eb4258eXa3X-771c">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="X43X014e87aXa3X19e8eb4258eXa3X-771d"/>
-    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#NERCDynamicModel.closestStandardModel"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X014e87aXa3X19e8eb4258eXa3X-771d">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
-    <rdfs:label>closestStandardModel</rdfs:label>
     <owl:equivalentClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-2223">
@@ -580,17 +559,6 @@
   <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f1d">
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f1e">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f1f"/>
-    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#DCLineSegment.PerLengthParameter"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f1f">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>PerLengthParameter</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#PerLengthDCLineParameter"/>
-    <owl:unionOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f1d"/>
-  </rdf:Description>
   <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f20">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:allValuesFrom rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f21"/>
@@ -751,60 +719,6 @@
     <rdfs:label>polarity</rdfs:label>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#DCTerminalPolarityKind"/>
     <owl:unionOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f3e"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f41">
-    <rdf:first rdf:resource="#NERCModelKind"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f42">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f43"/>
-    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#NERCDynamicModel.modelKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f43">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>modelKind</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#NERCModelKind"/>
-    <owl:unionOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f41"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f44">
-    <rdf:first rdf:resource="#NERCModelNameKind"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f45">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f46"/>
-    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#NERCDynamicModel.nameKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f46">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>nameKind</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#NERCModelNameKind"/>
-    <owl:unionOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f44"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f47">
-    <rdf:first rdf:resource="#NERCModelStatusKind"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f48">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f49"/>
-    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#NERCDynamicModel.statusKind"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f49">
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
-    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>statusKind</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#NERCModelStatusKind"/>
-    <owl:unionOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f47"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f4d">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
@@ -1484,6 +1398,16 @@
     <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:minCardinality>
     <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#IdentifiedObject.name"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="X53X842c456Xa3X19eb71902a9Xa3X-7ffc">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="X53X842c456Xa3X19eb71902a9Xa3X-7ffd"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#MachineSaturationCurve.SynchronousMachineDetailed"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="X53X842c456Xa3X19eb71902a9Xa3X-7ffd">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SynchronousMachineDetailed</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#SynchronousMachineDetailed"/>
+  </rdf:Description>
   <rdf:Description rdf:nodeID="X73X6804221Xa3X19d4f611f9eXa3X-7590">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:allValuesFrom rdf:nodeID="X73X6804221Xa3X19d4f611f9eXa3X-7591"/>
@@ -1573,21 +1497,6 @@
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
     <rdfs:label>v</rdfs:label>
     <owl:equivalentClass rdf:resource="http://www.ucaiug.org/ns#Voltage"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-53df">
-    <rdf:first rdf:resource="#ConnectivityNode"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-53e0">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-53e1"/>
-    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#SvVoltage.ConnectivityNode"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-53e1">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>ConnectivityNode</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ConnectivityNode"/>
-    <owl:unionOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-53df"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-53e2">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
@@ -5061,6 +4970,92 @@
     <rdfs:label>nominalVoltage</rdfs:label>
     <owl:equivalentClass rdf:resource="http://www.ucaiug.org/ns#Voltage"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-6aca">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-6acb"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#ConnectivityNode.TopologicalNode"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-6acb">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#ofAggregate"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>TopologicalNode</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#TopologicalNode"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71f3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71f4"/>
+    <owl:onProperty rdf:resource="http://www.ucaiug.org/ns#SvVoltage.TopologicalNode"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71f4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>TopologicalNode</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#TopologicalNode"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71f5">
+    <rdf:first rdf:resource="#NthAmModelNameKind"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71f6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71f7"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#NthAmDynamicModel.nameKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71f7">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>nameKind</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#NthAmModelNameKind"/>
+    <owl:unionOf rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71f5"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71f8">
+    <rdf:first rdf:resource="#NthAmModelStatusKind"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71f9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71fa"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#NthAmDynamicModel.statusKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71fa">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>statusKind</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#NthAmModelStatusKind"/>
+    <owl:unionOf rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71f8"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71fb">
+    <rdf:first rdf:resource="#NthAmModelKind"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71fc">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71fd"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#NthAmDynamicModel.modelKind"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71fd">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>modelKind</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#NthAmModelKind"/>
+    <owl:unionOf rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71fb"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71fe">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71ff"/>
+    <owl:onProperty rdf:resource="http://opensource.ieee.org/emtiop#NthAmDynamicModel.closestStandardModel"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71ff">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#attribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label>closestStandardModel</rdfs:label>
+    <owl:equivalentClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
   <rdf:Description rdf:nodeID="Xd2X65ee4330Xa3X19d31100210Xa3X-6b44">
     <rdf:first rdf:resource="#UnitSymbol"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
@@ -5924,6 +5919,7 @@
     <rdfs:subClassOf rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7e72"/>
     <rdfs:subClassOf rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7e74"/>
     <rdfs:subClassOf rdf:nodeID="Xd2X3ac63f37Xa3X19af043c493Xa3X-7e75"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-6aca"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ConnectivityNode"/>
     <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
   </rdf:Description>
@@ -6036,7 +6032,6 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f19"/>
     <rdfs:subClassOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f1b"/>
-    <rdfs:subClassOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f1e"/>
     <rdfs:subClassOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f20"/>
     <rdfs:subClassOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f22"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#DCLineSegment"/>
@@ -6428,37 +6423,37 @@
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#MutualCoupling"/>
     <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#NERCDynamicModel">
+  <rdf:Description rdf:about="#NthAmDynamicModel">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:nodeID="X43X014e87aXa3X19e8eb4258eXa3X-771c"/>
-    <rdfs:subClassOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f42"/>
-    <rdfs:subClassOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f45"/>
-    <rdfs:subClassOf rdf:nodeID="X43X8b4b56bXa3X19e6fc1d067Xa3X-7f48"/>
-    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#NERCDynamicModel"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71f6"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71f9"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71fc"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71fe"/>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#NthAmDynamicModel"/>
     <rdfs:subClassOf rdf:resource="#DetailedModelTypeDynamics"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#NERCModelKind">
+  <rdf:Description rdf:about="#NthAmModelKind">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#NERCModelKind"/>
-    <rdfs:subClassOf rdf:resource="#NERCModelKind"/>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#NthAmModelKind"/>
+    <rdfs:subClassOf rdf:resource="#NthAmModelKind"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#NERCModelNameKind">
+  <rdf:Description rdf:about="#NthAmModelNameKind">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#NERCModelNameKind"/>
-    <rdfs:subClassOf rdf:resource="#NERCModelNameKind"/>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#NthAmModelNameKind"/>
+    <rdfs:subClassOf rdf:resource="#NthAmModelNameKind"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#NERCModelStatusKind">
+  <rdf:Description rdf:about="#NthAmModelStatusKind">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#cimextension"/>
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#NERCModelStatusKind"/>
-    <rdfs:subClassOf rdf:resource="#NERCModelStatusKind"/>
+    <rdfs:subClassOf rdf:resource="http://opensource.ieee.org/emtiop#NthAmModelStatusKind"/>
+    <rdfs:subClassOf rdf:resource="#NthAmModelStatusKind"/>
   </rdf:Description>
   <rdf:Description rdf:about="#NuclearGeneratingUnit">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
@@ -6588,6 +6583,11 @@
     <rdfs:subClassOf rdf:nodeID="Xd2X4d70a073Xa3X19e8e5f8a90Xa3X-7dbd"/>
     <rdfs:subClassOf rdf:nodeID="Xd2X4d70a073Xa3X19e8e5f8a90Xa3X-7dbf"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ParameterValue"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#PhaseShuntConnectionKind">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#enumeration"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#PhaseShuntConnectionKind"/>
   </rdf:Description>
   <rdf:Description rdf:about="#PhotoVoltaicUnit">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
@@ -6873,8 +6873,8 @@
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-53da"/>
-    <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-53e0"/>
     <rdfs:subClassOf rdf:nodeID="X73Xe470774Xa3X19bc9506cd4Xa3X-53e2"/>
+    <rdfs:subClassOf rdf:nodeID="Xd2X60a2113aXa3X19eb7eb0b35Xa3X-71f3"/>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#SvVoltage"/>
     <rdfs:subClassOf rdf:resource="#StateVariable"/>
   </rdf:Description>
@@ -7038,6 +7038,12 @@
     <rdfs:label>ThermalGeneratingUnit</rdfs:label>
     <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#ThermalGeneratingUnit"/>
     <rdfs:subClassOf rdf:resource="#GeneratingUnit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="#TopologicalNode">
+    <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.ucaiug.org/ns#TopologicalNode"/>
+    <rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
   </rdf:Description>
   <rdf:Description rdf:about="#TransformerCoreAdmittance">
     <uml:hasStereotype rdf:resource="http://langdale.com.au/2005/UML#concrete"/>
