@@ -44,9 +44,16 @@ def create_cim_ic (case):
     deg = bus_ic.iloc[i,3]
     cnid = bus_ic.iloc[i,4]
     vmag = vpu * nomv
+    # temporary TopologicalNode for compliance with base CIM
+    tnid = cnid+'_TN'
+    tn = rdflib.URIRef (tnid)
+    g.add ((tn, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'TopologicalNode')))
+    cn = rdflib.URIRef (cnid)
+    g.add ((cn, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'ConnectivityNode')))
+    g.add ((cn, rdflib.URIRef (CIM_NS + 'ConnectivityNode.TopologicalNode'), rdflib.URIRef(tnid)))
     sv = rdflib.URIRef (cnid+'_SvV')
     g.add ((sv, rdflib.RDF.type, rdflib.URIRef (CIM_NS + 'SvVoltage')))
-    g.add ((sv, rdflib.URIRef (EMT_NS + 'SvVoltage.ConnectivityNode'), rdflib.URIRef(cnid)))
+    g.add ((sv, rdflib.URIRef (CIM_NS + 'SvVoltage.TopologicalNode'), rdflib.URIRef(tnid)))
     g.add ((sv, rdflib.URIRef (CIM_NS + 'SvVoltage.v'), rdflib.Literal (vmag, datatype=CIM.Voltage)))
     g.add ((sv, rdflib.URIRef (CIM_NS + 'SvVoltage.angle'), rdflib.Literal (deg, datatype=CIM.AngleDegrees)))
 
@@ -89,7 +96,8 @@ def create_cim_ic (case):
   serializer = OrderedTurtleSerializer(g)
   serializer.class_order = [
     CIM.SvPowerFlow,
-    CIM.SvVoltage
+    CIM.SvVoltage,
+    CIM.TopologicalNode
   ]
   ic_name = case['name']+'_ic.ttl'
   with open(ic_name, 'wb') as fp:

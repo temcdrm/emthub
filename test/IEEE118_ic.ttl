@@ -1,5 +1,4 @@
 @prefix cim: <http://www.ucaiug.org/ns#> .
-@prefix emt: <http://opensource.ieee.org/emtiop#> .
 
 <0065B6BF-B4D9-40D0-A6FA-AD17F1F76419_SvGenPF> a cim:SvPowerFlow ;
     cim:SvPowerFlow.Terminal <0065B6BF-B4D9-40D0-A6FA-AD17F1F76419_1> ;
@@ -2987,967 +2986,1932 @@
     cim:SvPowerFlow.q "3814547.0"^^cim:ReactivePower .
 
 <01DD70D7-1101-417D-9301-5F15252519D5_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <01DD70D7-1101-417D-9301-5F15252519D5> ;
+    cim:SvVoltage.TopologicalNode <01DD70D7-1101-417D-9301-5F15252519D5_TN> ;
     cim:SvVoltage.angle "-10.320941"^^cim:AngleDegrees ;
     cim:SvVoltage.v "135996.24"^^cim:Voltage .
 
 <02CE8ED4-00A8-4078-B4AC-DD28915087B8_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <02CE8ED4-00A8-4078-B4AC-DD28915087B8> ;
+    cim:SvVoltage.TopologicalNode <02CE8ED4-00A8-4078-B4AC-DD28915087B8_TN> ;
     cim:SvVoltage.angle "-2.942031"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <03BDD171-2042-4E30-AE24-226D4D048B4F_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <03BDD171-2042-4E30-AE24-226D4D048B4F> ;
+    cim:SvVoltage.TopologicalNode <03BDD171-2042-4E30-AE24-226D4D048B4F_TN> ;
     cim:SvVoltage.angle "2.021899"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137824.878"^^cim:Voltage .
 
 <043F1C1A-D23E-44F5-83E0-A4A3558D3892_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <043F1C1A-D23E-44F5-83E0-A4A3558D3892> ;
+    cim:SvVoltage.TopologicalNode <043F1C1A-D23E-44F5-83E0-A4A3558D3892_TN> ;
     cim:SvVoltage.angle "-4.358301"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138744.648"^^cim:Voltage .
 
 <0656B6F9-F282-42DD-B24B-AD5F46F79913_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <0656B6F9-F282-42DD-B24B-AD5F46F79913> ;
+    cim:SvVoltage.TopologicalNode <0656B6F9-F282-42DD-B24B-AD5F46F79913_TN> ;
     cim:SvVoltage.angle "10.822968"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <0669852C-2576-4F88-A164-23F0E16EBE6F_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <0669852C-2576-4F88-A164-23F0E16EBE6F> ;
+    cim:SvVoltage.TopologicalNode <0669852C-2576-4F88-A164-23F0E16EBE6F_TN> ;
     cim:SvVoltage.angle "2.045368"^^cim:AngleDegrees ;
     cim:SvVoltage.v "140775.18000000002"^^cim:Voltage .
 
 <0714FE46-4245-46B0-A912-CEF95F283492_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <0714FE46-4245-46B0-A912-CEF95F283492> ;
+    cim:SvVoltage.TopologicalNode <0714FE46-4245-46B0-A912-CEF95F283492_TN> ;
     cim:SvVoltage.angle "3.228071"^^cim:AngleDegrees ;
     cim:SvVoltage.v "140658.846"^^cim:Voltage .
 
 <074DAD71-0F71-4565-AD94-EBD4C3AD40D6_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <074DAD71-0F71-4565-AD94-EBD4C3AD40D6> ;
+    cim:SvVoltage.TopologicalNode <074DAD71-0F71-4565-AD94-EBD4C3AD40D6_TN> ;
     cim:SvVoltage.angle "-5.314206"^^cim:AngleDegrees ;
     cim:SvVoltage.v "350856.375"^^cim:Voltage .
 
 <08CC33E3-30A1-4810-86DF-E5BCB1766499_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <08CC33E3-30A1-4810-86DF-E5BCB1766499> ;
+    cim:SvVoltage.TopologicalNode <08CC33E3-30A1-4810-86DF-E5BCB1766499_TN> ;
     cim:SvVoltage.angle "-1.519073"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <092E07AF-91C3-41DF-8E56-E76EC94CCB4C_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <092E07AF-91C3-41DF-8E56-E76EC94CCB4C> ;
+    cim:SvVoltage.TopologicalNode <092E07AF-91C3-41DF-8E56-E76EC94CCB4C_TN> ;
     cim:SvVoltage.angle "6.971874"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136431.906"^^cim:Voltage .
 
 <09500BDB-1C78-43D9-9AD6-DB6A665135D4_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <09500BDB-1C78-43D9-9AD6-DB6A665135D4> ;
+    cim:SvVoltage.TopologicalNode <09500BDB-1C78-43D9-9AD6-DB6A665135D4_TN> ;
     cim:SvVoltage.angle "-9.017313"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <0960EF82-D800-49EE-89B7-C3D7C4A328FB_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <0960EF82-D800-49EE-89B7-C3D7C4A328FB> ;
+    cim:SvVoltage.TopologicalNode <0960EF82-D800-49EE-89B7-C3D7C4A328FB_TN> ;
     cim:SvVoltage.angle "-8.373741"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137846.406"^^cim:Voltage .
 
 <0B6067E0-8B01-4BF2-9577-16F93EB10DAA_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <0B6067E0-8B01-4BF2-9577-16F93EB10DAA> ;
+    cim:SvVoltage.TopologicalNode <0B6067E0-8B01-4BF2-9577-16F93EB10DAA_TN> ;
     cim:SvVoltage.angle "3.102565"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <0B62EC6E-7FF2-4E9B-8F90-BC414A9F2C3D_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <0B62EC6E-7FF2-4E9B-8F90-BC414A9F2C3D> ;
+    cim:SvVoltage.TopologicalNode <0B62EC6E-7FF2-4E9B-8F90-BC414A9F2C3D_TN> ;
     cim:SvVoltage.angle "11.307669"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <0C36B18C-8460-4AB5-BE01-F1A9725F7750_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <0C36B18C-8460-4AB5-BE01-F1A9725F7750> ;
+    cim:SvVoltage.TopologicalNode <0C36B18C-8460-4AB5-BE01-F1A9725F7750_TN> ;
     cim:SvVoltage.angle "-7.602015"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137878.146"^^cim:Voltage .
 
 <0FCDFEB5-4C9E-47F0-9FBB-4F3E1D8A6CA9_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <0FCDFEB5-4C9E-47F0-9FBB-4F3E1D8A6CA9> ;
+    cim:SvVoltage.TopologicalNode <0FCDFEB5-4C9E-47F0-9FBB-4F3E1D8A6CA9_TN> ;
     cim:SvVoltage.angle "-2.779764"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <12C436BC-F0C7-4585-A312-8992B47E483F_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <12C436BC-F0C7-4585-A312-8992B47E483F> ;
+    cim:SvVoltage.TopologicalNode <12C436BC-F0C7-4585-A312-8992B47E483F_TN> ;
     cim:SvVoltage.angle "-3.930109"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136763.52000000002"^^cim:Voltage .
 
 <13E0B318-149F-4FBD-9A40-E8B1ED560A2F_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <13E0B318-149F-4FBD-9A40-E8B1ED560A2F> ;
+    cim:SvVoltage.TopologicalNode <13E0B318-149F-4FBD-9A40-E8B1ED560A2F_TN> ;
     cim:SvVoltage.angle "-2.218651"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <140A96A2-DC1A-4DFC-B51D-96AEFA18E90D_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <140A96A2-DC1A-4DFC-B51D-96AEFA18E90D> ;
+    cim:SvVoltage.TopologicalNode <140A96A2-DC1A-4DFC-B51D-96AEFA18E90D_TN> ;
     cim:SvVoltage.angle "-6.537901"^^cim:AngleDegrees ;
     cim:SvVoltage.v "139636.40399999998"^^cim:Voltage .
 
 <14D7CD96-E2E7-4DBC-A558-DE159A21ACCC_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <14D7CD96-E2E7-4DBC-A558-DE159A21ACCC> ;
+    cim:SvVoltage.TopologicalNode <14D7CD96-E2E7-4DBC-A558-DE159A21ACCC_TN> ;
     cim:SvVoltage.angle "-5.282647"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <1588A7B3-52C6-42A0-9986-A2CFDB61D821_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <1588A7B3-52C6-42A0-9986-A2CFDB61D821> ;
+    cim:SvVoltage.TopologicalNode <1588A7B3-52C6-42A0-9986-A2CFDB61D821_TN> ;
     cim:SvVoltage.angle "1.133606"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137340.222"^^cim:Voltage .
 
 <18961801-9D07-4D25-93E3-2A8CB866B49D_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <18961801-9D07-4D25-93E3-2A8CB866B49D> ;
+    cim:SvVoltage.TopologicalNode <18961801-9D07-4D25-93E3-2A8CB866B49D_TN> ;
     cim:SvVoltage.angle "-9.755792"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137034.414"^^cim:Voltage .
 
 <189D5CE3-975E-4B00-9E06-7F8DF3CF0F11_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <189D5CE3-975E-4B00-9E06-7F8DF3CF0F11> ;
+    cim:SvVoltage.TopologicalNode <189D5CE3-975E-4B00-9E06-7F8DF3CF0F11_TN> ;
     cim:SvVoltage.angle "-3.105553"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137749.392"^^cim:Voltage .
 
 <1ECA0F0B-4BED-4019-AEBE-C5B0BCB1F578_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <1ECA0F0B-4BED-4019-AEBE-C5B0BCB1F578> ;
+    cim:SvVoltage.TopologicalNode <1ECA0F0B-4BED-4019-AEBE-C5B0BCB1F578_TN> ;
     cim:SvVoltage.angle "-9.03207"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138721.326"^^cim:Voltage .
 
 <1F0431FD-AE3A-4E13-9BCE-1BC6B8CE1A69_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <1F0431FD-AE3A-4E13-9BCE-1BC6B8CE1A69> ;
+    cim:SvVoltage.TopologicalNode <1F0431FD-AE3A-4E13-9BCE-1BC6B8CE1A69_TN> ;
     cim:SvVoltage.angle "-4.674075"^^cim:AngleDegrees ;
     cim:SvVoltage.v "135706.57799999998"^^cim:Voltage .
 
 <203C3FAD-8AA4-42CC-BF97-8FD9E9A63C0C_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <203C3FAD-8AA4-42CC-BF97-8FD9E9A63C0C> ;
+    cim:SvVoltage.TopologicalNode <203C3FAD-8AA4-42CC-BF97-8FD9E9A63C0C_TN> ;
     cim:SvVoltage.angle "-11.679284"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <2041413B-3BB7-4124-B6D9-CE6A9DDDDED3_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <2041413B-3BB7-4124-B6D9-CE6A9DDDDED3> ;
+    cim:SvVoltage.TopologicalNode <2041413B-3BB7-4124-B6D9-CE6A9DDDDED3_TN> ;
     cim:SvVoltage.angle "-7.385792"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138450.708"^^cim:Voltage .
 
 <209ADEDC-536B-4687-89D3-7051B272F319_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <209ADEDC-536B-4687-89D3-7051B272F319> ;
+    cim:SvVoltage.TopologicalNode <209ADEDC-536B-4687-89D3-7051B272F319_TN> ;
     cim:SvVoltage.angle "-4.762366"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137109.486"^^cim:Voltage .
 
 <20F4F03F-E253-4956-8E48-6C4640C094E8_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <20F4F03F-E253-4956-8E48-6C4640C094E8> ;
+    cim:SvVoltage.TopologicalNode <20F4F03F-E253-4956-8E48-6C4640C094E8_TN> ;
     cim:SvVoltage.angle "9.011679"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136836.10799999998"^^cim:Voltage .
 
 <21211A63-6772-4F25-A406-7E27D2BE3507_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <21211A63-6772-4F25-A406-7E27D2BE3507> ;
+    cim:SvVoltage.TopologicalNode <21211A63-6772-4F25-A406-7E27D2BE3507_TN> ;
     cim:SvVoltage.angle "-1.833117"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <216D6B0E-2306-4EB1-97A8-09F387F0AC90_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <216D6B0E-2306-4EB1-97A8-09F387F0AC90> ;
+    cim:SvVoltage.TopologicalNode <216D6B0E-2306-4EB1-97A8-09F387F0AC90_TN> ;
     cim:SvVoltage.angle "-6.462593"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <27853610-B4B4-4896-9156-F068CC6F3C41_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <27853610-B4B4-4896-9156-F068CC6F3C41> ;
+    cim:SvVoltage.TopologicalNode <27853610-B4B4-4896-9156-F068CC6F3C41_TN> ;
     cim:SvVoltage.angle "-11.658008"^^cim:AngleDegrees ;
     cim:SvVoltage.v "135979.818"^^cim:Voltage .
 
 <2B26B191-1683-4804-B190-47A32A1C8741_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <2B26B191-1683-4804-B190-47A32A1C8741> ;
+    cim:SvVoltage.TopologicalNode <2B26B191-1683-4804-B190-47A32A1C8741_TN> ;
     cim:SvVoltage.angle "7.714933"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136493.592"^^cim:Voltage .
 
 <2BE1FD98-90FF-4B9E-9B29-C2259BAFA511_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <2BE1FD98-90FF-4B9E-9B29-C2259BAFA511> ;
+    cim:SvVoltage.TopologicalNode <2BE1FD98-90FF-4B9E-9B29-C2259BAFA511_TN> ;
     cim:SvVoltage.angle "-5.431055"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136932.57"^^cim:Voltage .
 
 <2D043FF1-406D-4CED-982A-76217FB45745_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <2D043FF1-406D-4CED-982A-76217FB45745> ;
+    cim:SvVoltage.TopologicalNode <2D043FF1-406D-4CED-982A-76217FB45745_TN> ;
     cim:SvVoltage.angle "1.634925"^^cim:AngleDegrees ;
     cim:SvVoltage.v "357040.155"^^cim:Voltage .
 
 <2E65B331-D95A-494F-A26B-5D9B0B3ED4E5_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <2E65B331-D95A-494F-A26B-5D9B0B3ED4E5> ;
+    cim:SvVoltage.TopologicalNode <2E65B331-D95A-494F-A26B-5D9B0B3ED4E5_TN> ;
     cim:SvVoltage.angle "-8.656351"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138616.584"^^cim:Voltage .
 
 <2F9554EB-4337-489B-ADC0-73192F236790_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <2F9554EB-4337-489B-ADC0-73192F236790> ;
+    cim:SvVoltage.TopologicalNode <2F9554EB-4337-489B-ADC0-73192F236790_TN> ;
     cim:SvVoltage.angle "-4.154123"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136312.812"^^cim:Voltage .
 
 <2FD31260-7878-4153-825C-1A09B9ED013C_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <2FD31260-7878-4153-825C-1A09B9ED013C> ;
+    cim:SvVoltage.TopologicalNode <2FD31260-7878-4153-825C-1A09B9ED013C_TN> ;
     cim:SvVoltage.angle "-2.570003"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137014.956"^^cim:Voltage .
 
 <30C7B932-36BB-42C8-9BED-44072759A8CA_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <30C7B932-36BB-42C8-9BED-44072759A8CA> ;
+    cim:SvVoltage.TopologicalNode <30C7B932-36BB-42C8-9BED-44072759A8CA_TN> ;
     cim:SvVoltage.angle "-11.042655"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136514.84399999998"^^cim:Voltage .
 
 <30D7BFF6-FC46-415B-B99C-56364A485FB6_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <30D7BFF6-FC46-415B-B99C-56364A485FB6> ;
+    cim:SvVoltage.TopologicalNode <30D7BFF6-FC46-415B-B99C-56364A485FB6_TN> ;
     cim:SvVoltage.angle "-4.045164"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137486.64"^^cim:Voltage .
 
 <31AEF46D-1008-4004-874C-FF67ECD8C4EC_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <31AEF46D-1008-4004-874C-FF67ECD8C4EC> ;
+    cim:SvVoltage.TopologicalNode <31AEF46D-1008-4004-874C-FF67ECD8C4EC_TN> ;
     cim:SvVoltage.angle "2.79035"^^cim:AngleDegrees ;
     cim:SvVoltage.v "343656.57"^^cim:Voltage .
 
 <324DA15C-891F-4372-B016-B4125A295B35_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <324DA15C-891F-4372-B016-B4125A295B35> ;
+    cim:SvVoltage.TopologicalNode <324DA15C-891F-4372-B016-B4125A295B35_TN> ;
     cim:SvVoltage.angle "-11.346546"^^cim:AngleDegrees ;
     cim:SvVoltage.v "135546.084"^^cim:Voltage .
 
 <32FE0EF3-62F6-459B-9E22-CAC689DEEF75_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <32FE0EF3-62F6-459B-9E22-CAC689DEEF75> ;
+    cim:SvVoltage.TopologicalNode <32FE0EF3-62F6-459B-9E22-CAC689DEEF75_TN> ;
     cim:SvVoltage.angle "11.559521"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138163.116"^^cim:Voltage .
 
 <34B76E51-B7B8-463F-8C29-CB7155105B74_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <34B76E51-B7B8-463F-8C29-CB7155105B74> ;
+    cim:SvVoltage.TopologicalNode <34B76E51-B7B8-463F-8C29-CB7155105B74_TN> ;
     cim:SvVoltage.angle "-6.869215"^^cim:AngleDegrees ;
     cim:SvVoltage.v "139892.66999999998"^^cim:Voltage .
 
 <360B9B5C-AA0F-4645-B2CD-EB206B407DC8_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <360B9B5C-AA0F-4645-B2CD-EB206B407DC8> ;
+    cim:SvVoltage.TopologicalNode <360B9B5C-AA0F-4645-B2CD-EB206B407DC8_TN> ;
     cim:SvVoltage.angle "-10.009415"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <3B79813D-3949-4405-8970-753D8E9C54DD_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <3B79813D-3949-4405-8970-753D8E9C54DD> ;
+    cim:SvVoltage.TopologicalNode <3B79813D-3949-4405-8970-753D8E9C54DD_TN> ;
     cim:SvVoltage.angle "-8.649981"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <3BEB2147-E83B-45AE-9D68-023B21ACFBB8_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <3BEB2147-E83B-45AE-9D68-023B21ACFBB8> ;
+    cim:SvVoltage.TopologicalNode <3BEB2147-E83B-45AE-9D68-023B21ACFBB8_TN> ;
     cim:SvVoltage.angle "-1.522587"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138339.342"^^cim:Voltage .
 
 <3DC62CFD-3FE0-4C87-B49D-4B090C724E3F_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <3DC62CFD-3FE0-4C87-B49D-4B090C724E3F> ;
+    cim:SvVoltage.TopologicalNode <3DC62CFD-3FE0-4C87-B49D-4B090C724E3F_TN> ;
     cim:SvVoltage.angle "-2.580299"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <3E5202E6-4EB3-44D9-BA80-7D920083F62C_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <3E5202E6-4EB3-44D9-BA80-7D920083F62C> ;
+    cim:SvVoltage.TopologicalNode <3E5202E6-4EB3-44D9-BA80-7D920083F62C_TN> ;
     cim:SvVoltage.angle "-4.179605"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137439.858"^^cim:Voltage .
 
 <3ED69350-4197-40A2-801D-C1FD01346C37_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <3ED69350-4197-40A2-801D-C1FD01346C37> ;
+    cim:SvVoltage.TopologicalNode <3ED69350-4197-40A2-801D-C1FD01346C37_TN> ;
     cim:SvVoltage.angle "10.624858"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137430.198"^^cim:Voltage .
 
 <3FD3F065-4DF7-480C-ACAF-1D30382A7422_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <3FD3F065-4DF7-480C-ACAF-1D30382A7422> ;
+    cim:SvVoltage.TopologicalNode <3FD3F065-4DF7-480C-ACAF-1D30382A7422_TN> ;
     cim:SvVoltage.angle "12.235206"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <41AF1AFE-B4AE-4CC1-A3E0-D6314EBAB681_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <41AF1AFE-B4AE-4CC1-A3E0-D6314EBAB681> ;
+    cim:SvVoltage.TopologicalNode <41AF1AFE-B4AE-4CC1-A3E0-D6314EBAB681_TN> ;
     cim:SvVoltage.angle "-8.981002"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138110.124"^^cim:Voltage .
 
 <45861E66-50EC-4DB0-B8CC-B5CA72FEE053_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <45861E66-50EC-4DB0-B8CC-B5CA72FEE053> ;
+    cim:SvVoltage.TopologicalNode <45861E66-50EC-4DB0-B8CC-B5CA72FEE053_TN> ;
     cim:SvVoltage.angle "0.502704"^^cim:AngleDegrees ;
     cim:SvVoltage.v "334785.93"^^cim:Voltage .
 
 <4840567B-8B2E-40E6-BC12-81D00D9E534E_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <4840567B-8B2E-40E6-BC12-81D00D9E534E> ;
+    cim:SvVoltage.TopologicalNode <4840567B-8B2E-40E6-BC12-81D00D9E534E_TN> ;
     cim:SvVoltage.angle "3.325163"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137466.768"^^cim:Voltage .
 
 <48CF6A2A-59CD-46E4-AF19-88A52D313796_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <48CF6A2A-59CD-46E4-AF19-88A52D313796> ;
+    cim:SvVoltage.TopologicalNode <48CF6A2A-59CD-46E4-AF19-88A52D313796_TN> ;
     cim:SvVoltage.angle "7.810663"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <49C0544D-452E-42C3-97A9-202D0BA43969_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <49C0544D-452E-42C3-97A9-202D0BA43969> ;
+    cim:SvVoltage.TopologicalNode <49C0544D-452E-42C3-97A9-202D0BA43969_TN> ;
     cim:SvVoltage.angle "-3.631293"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <4B1B751D-931A-4F88-9C71-C7F566B3E7B0_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <4B1B751D-931A-4F88-9C71-C7F566B3E7B0> ;
+    cim:SvVoltage.TopologicalNode <4B1B751D-931A-4F88-9C71-C7F566B3E7B0_TN> ;
     cim:SvVoltage.angle "7.811055"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137962.188"^^cim:Voltage .
 
 <4B744D65-35F8-4DDB-B554-AAAE115A6927_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <4B744D65-35F8-4DDB-B554-AAAE115A6927> ;
+    cim:SvVoltage.TopologicalNode <4B744D65-35F8-4DDB-B554-AAAE115A6927_TN> ;
     cim:SvVoltage.angle "5.442871"^^cim:AngleDegrees ;
     cim:SvVoltage.v "135526.35"^^cim:Voltage .
 
 <4D002654-B2B4-42C9-81EC-917184A8659E_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <4D002654-B2B4-42C9-81EC-917184A8659E> ;
+    cim:SvVoltage.TopologicalNode <4D002654-B2B4-42C9-81EC-917184A8659E_TN> ;
     cim:SvVoltage.angle "2.542501"^^cim:AngleDegrees ;
     cim:SvVoltage.v "339868.815"^^cim:Voltage .
 
 <501C2E7C-0F1F-47CF-9079-957CD8F0A577_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <501C2E7C-0F1F-47CF-9079-957CD8F0A577> ;
+    cim:SvVoltage.TopologicalNode <501C2E7C-0F1F-47CF-9079-957CD8F0A577_TN> ;
     cim:SvVoltage.angle "-11.361383"^^cim:AngleDegrees ;
     cim:SvVoltage.v "135359.232"^^cim:Voltage .
 
 <509CAC7B-DC02-491E-A70F-F598020F6CF3_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <509CAC7B-DC02-491E-A70F-F598020F6CF3> ;
+    cim:SvVoltage.TopologicalNode <509CAC7B-DC02-491E-A70F-F598020F6CF3_TN> ;
     cim:SvVoltage.angle "-8.476008"^^cim:AngleDegrees ;
     cim:SvVoltage.v "139850.856"^^cim:Voltage .
 
 <510B8BF8-A411-4267-B6B2-A84E438751CD_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <510B8BF8-A411-4267-B6B2-A84E438751CD> ;
+    cim:SvVoltage.TopologicalNode <510B8BF8-A411-4267-B6B2-A84E438751CD_TN> ;
     cim:SvVoltage.angle "5.157139"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137740.974"^^cim:Voltage .
 
 <510DD78E-7A28-432F-B3CD-68A43876AB83_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <510DD78E-7A28-432F-B3CD-68A43876AB83> ;
+    cim:SvVoltage.TopologicalNode <510DD78E-7A28-432F-B3CD-68A43876AB83_TN> ;
     cim:SvVoltage.angle "-2.194365"^^cim:AngleDegrees ;
     cim:SvVoltage.v "135698.988"^^cim:Voltage .
 
 <5140BAF6-AE26-4F22-93D8-646A1BDB1460_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <5140BAF6-AE26-4F22-93D8-646A1BDB1460> ;
+    cim:SvVoltage.TopologicalNode <5140BAF6-AE26-4F22-93D8-646A1BDB1460_TN> ;
     cim:SvVoltage.angle "15.957138"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <5409CFF5-B309-4904-81EE-0C66277B03D6_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <5409CFF5-B309-4904-81EE-0C66277B03D6> ;
+    cim:SvVoltage.TopologicalNode <5409CFF5-B309-4904-81EE-0C66277B03D6_TN> ;
     cim:SvVoltage.angle "2.986812"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138995.532"^^cim:Voltage .
 
 <57BF892F-264B-43D0-A8E0-6B5F62C0562F_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <57BF892F-264B-43D0-A8E0-6B5F62C0562F> ;
+    cim:SvVoltage.TopologicalNode <57BF892F-264B-43D0-A8E0-6B5F62C0562F_TN> ;
     cim:SvVoltage.angle "9.942504"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137610.84"^^cim:Voltage .
 
 <5A880B83-D621-4436-9663-44A7452ED909_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <5A880B83-D621-4436-9663-44A7452ED909> ;
+    cim:SvVoltage.TopologicalNode <5A880B83-D621-4436-9663-44A7452ED909_TN> ;
     cim:SvVoltage.angle "-1.989128"^^cim:AngleDegrees ;
     cim:SvVoltage.v "359936.085"^^cim:Voltage .
 
 <5B05EA35-CC73-416F-881F-EC624AD50C77_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <5B05EA35-CC73-416F-881F-EC624AD50C77> ;
+    cim:SvVoltage.TopologicalNode <5B05EA35-CC73-416F-881F-EC624AD50C77_TN> ;
     cim:SvVoltage.angle "-2.483865"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <5C74704E-E0B3-4130-AFC3-929FAB875530_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <5C74704E-E0B3-4130-AFC3-929FAB875530> ;
+    cim:SvVoltage.TopologicalNode <5C74704E-E0B3-4130-AFC3-929FAB875530_TN> ;
     cim:SvVoltage.angle "7.474809"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <5C7DF74D-76E9-4C05-8AD7-AB414D704183_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <5C7DF74D-76E9-4C05-8AD7-AB414D704183> ;
+    cim:SvVoltage.TopologicalNode <5C7DF74D-76E9-4C05-8AD7-AB414D704183_TN> ;
     cim:SvVoltage.angle "1.330661"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <5FFAEBAC-6082-4A8F-B9E1-E3934A37BEF7_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <5FFAEBAC-6082-4A8F-B9E1-E3934A37BEF7> ;
+    cim:SvVoltage.TopologicalNode <5FFAEBAC-6082-4A8F-B9E1-E3934A37BEF7_TN> ;
     cim:SvVoltage.angle "-6.492916"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <62470EDD-3C17-4336-83E0-2B94FA6D2182_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <62470EDD-3C17-4336-83E0-2B94FA6D2182> ;
+    cim:SvVoltage.TopologicalNode <62470EDD-3C17-4336-83E0-2B94FA6D2182_TN> ;
     cim:SvVoltage.angle "-8.040525"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <638973B4-A4D2-4E73-9264-3682F9D321A0_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <638973B4-A4D2-4E73-9264-3682F9D321A0> ;
+    cim:SvVoltage.TopologicalNode <638973B4-A4D2-4E73-9264-3682F9D321A0_TN> ;
     cim:SvVoltage.angle "-4.620897"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <651B79E5-9C01-40ED-BE3F-BD5F4821840F_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <651B79E5-9C01-40ED-BE3F-BD5F4821840F> ;
+    cim:SvVoltage.TopologicalNode <651B79E5-9C01-40ED-BE3F-BD5F4821840F_TN> ;
     cim:SvVoltage.angle "-4.064614"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136328.82"^^cim:Voltage .
 
 <65259240-DA2E-492B-8804-CAC2A970142E_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <65259240-DA2E-492B-8804-CAC2A970142E> ;
+    cim:SvVoltage.TopologicalNode <65259240-DA2E-492B-8804-CAC2A970142E_TN> ;
     cim:SvVoltage.angle "7.108325"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136675.614"^^cim:Voltage .
 
 <678CF40F-A28F-4813-A9E7-C7DAD6E698B0_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <678CF40F-A28F-4813-A9E7-C7DAD6E698B0> ;
+    cim:SvVoltage.TopologicalNode <678CF40F-A28F-4813-A9E7-C7DAD6E698B0_TN> ;
     cim:SvVoltage.angle "4.860545"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <686B1CD1-21E6-40AC-A05B-7C65A71F6C83_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <686B1CD1-21E6-40AC-A05B-7C65A71F6C83> ;
+    cim:SvVoltage.TopologicalNode <686B1CD1-21E6-40AC-A05B-7C65A71F6C83_TN> ;
     cim:SvVoltage.angle "-2.160311"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138763.69199999998"^^cim:Voltage .
 
 <697F9013-B904-405F-86D9-8F3BC0F1990B_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <697F9013-B904-405F-86D9-8F3BC0F1990B> ;
+    cim:SvVoltage.TopologicalNode <697F9013-B904-405F-86D9-8F3BC0F1990B_TN> ;
     cim:SvVoltage.angle "-5.746129"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <6B0332DF-9B96-42BB-BF68-E1919895AFDB_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <6B0332DF-9B96-42BB-BF68-E1919895AFDB> ;
+    cim:SvVoltage.TopologicalNode <6B0332DF-9B96-42BB-BF68-E1919895AFDB_TN> ;
     cim:SvVoltage.angle "1.061653"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138940.884"^^cim:Voltage .
 
 <6C7523EE-785B-429E-850F-CABFE5D33AF5_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <6C7523EE-785B-429E-850F-CABFE5D33AF5> ;
+    cim:SvVoltage.TopologicalNode <6C7523EE-785B-429E-850F-CABFE5D33AF5_TN> ;
     cim:SvVoltage.angle "-10.000988"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137192.838"^^cim:Voltage .
 
 <6DB5286A-2890-4B4F-8561-E13F4E91F04E_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <6DB5286A-2890-4B4F-8561-E13F4E91F04E> ;
+    cim:SvVoltage.TopologicalNode <6DB5286A-2890-4B4F-8561-E13F4E91F04E_TN> ;
     cim:SvVoltage.angle "10.445633"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <6F33F207-5DBD-467D-8DE4-8D37B4E615DE_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <6F33F207-5DBD-467D-8DE4-8D37B4E615DE> ;
+    cim:SvVoltage.TopologicalNode <6F33F207-5DBD-467D-8DE4-8D37B4E615DE_TN> ;
     cim:SvVoltage.angle "1.150557"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <72A50108-1242-4D3E-8987-3FA8433BFE91_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <72A50108-1242-4D3E-8987-3FA8433BFE91> ;
+    cim:SvVoltage.TopologicalNode <72A50108-1242-4D3E-8987-3FA8433BFE91_TN> ;
     cim:SvVoltage.angle "7.36447"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <74681864-BC8D-476F-A8DC-DAE61BE752CE_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <74681864-BC8D-476F-A8DC-DAE61BE752CE> ;
+    cim:SvVoltage.TopologicalNode <74681864-BC8D-476F-A8DC-DAE61BE752CE_TN> ;
     cim:SvVoltage.angle "3.000822"^^cim:AngleDegrees ;
     cim:SvVoltage.v "339627.66"^^cim:Voltage .
 
 <768C9A60-CA63-4649-92F7-BA595D68B8FC_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <768C9A60-CA63-4649-92F7-BA595D68B8FC> ;
+    cim:SvVoltage.TopologicalNode <768C9A60-CA63-4649-92F7-BA595D68B8FC_TN> ;
     cim:SvVoltage.angle "0.091617"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <76DB6EFA-D4BA-4CD9-B934-26CB5015C39E_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <76DB6EFA-D4BA-4CD9-B934-26CB5015C39E> ;
+    cim:SvVoltage.TopologicalNode <76DB6EFA-D4BA-4CD9-B934-26CB5015C39E_TN> ;
     cim:SvVoltage.angle "4.207359"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136551.69"^^cim:Voltage .
 
 <77056770-4E87-43AE-A4B7-80EF67FEDE1B_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <77056770-4E87-43AE-A4B7-80EF67FEDE1B> ;
+    cim:SvVoltage.TopologicalNode <77056770-4E87-43AE-A4B7-80EF67FEDE1B_TN> ;
     cim:SvVoltage.angle "11.418401"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <77068F76-B8E8-49E0-A76D-1EB981237BD7_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <77068F76-B8E8-49E0-A76D-1EB981237BD7> ;
+    cim:SvVoltage.TopologicalNode <77068F76-B8E8-49E0-A76D-1EB981237BD7_TN> ;
     cim:SvVoltage.angle "7.683317"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <77F45203-9149-464D-B4EB-7CD78CE8514A_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <77F45203-9149-464D-B4EB-7CD78CE8514A> ;
+    cim:SvVoltage.TopologicalNode <77F45203-9149-464D-B4EB-7CD78CE8514A_TN> ;
     cim:SvVoltage.angle "-8.036677"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137630.16"^^cim:Voltage .
 
 <78178EB2-515C-40C1-9EF5-D93C1915B736_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <78178EB2-515C-40C1-9EF5-D93C1915B736> ;
+    cim:SvVoltage.TopologicalNode <78178EB2-515C-40C1-9EF5-D93C1915B736_TN> ;
     cim:SvVoltage.angle "4.008147"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <79BADDF4-516D-40C6-A7EA-A3848EC788B3_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <79BADDF4-516D-40C6-A7EA-A3848EC788B3> ;
+    cim:SvVoltage.TopologicalNode <79BADDF4-516D-40C6-A7EA-A3848EC788B3_TN> ;
     cim:SvVoltage.angle "-1.678426"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <7AA5117E-EAC5-4ABE-BD3F-89A0BFB2D679_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <7AA5117E-EAC5-4ABE-BD3F-89A0BFB2D679> ;
+    cim:SvVoltage.TopologicalNode <7AA5117E-EAC5-4ABE-BD3F-89A0BFB2D679_TN> ;
     cim:SvVoltage.angle "-3.020539"^^cim:AngleDegrees ;
     cim:SvVoltage.v "139036.10400000002"^^cim:Voltage .
 
 <7ACB1FEB-4EE6-4BC5-817E-4D74D2338003_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <7ACB1FEB-4EE6-4BC5-817E-4D74D2338003> ;
+    cim:SvVoltage.TopologicalNode <7ACB1FEB-4EE6-4BC5-817E-4D74D2338003_TN> ;
     cim:SvVoltage.angle "-0.338931"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138543.306"^^cim:Voltage .
 
 <7AE43335-8225-455D-B3C4-EA108A8AFB2B_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <7AE43335-8225-455D-B3C4-EA108A8AFB2B> ;
+    cim:SvVoltage.TopologicalNode <7AE43335-8225-455D-B3C4-EA108A8AFB2B_TN> ;
     cim:SvVoltage.angle "0.0"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <7D23EFEF-9560-4034-A9C4-298F6B8FC70D_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <7D23EFEF-9560-4034-A9C4-298F6B8FC70D> ;
+    cim:SvVoltage.TopologicalNode <7D23EFEF-9560-4034-A9C4-298F6B8FC70D_TN> ;
     cim:SvVoltage.angle "-1.465216"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136734.126"^^cim:Voltage .
 
 <7DCDDED9-AB17-4F5F-9B4D-47118B52349C_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <7DCDDED9-AB17-4F5F-9B4D-47118B52349C> ;
+    cim:SvVoltage.TopologicalNode <7DCDDED9-AB17-4F5F-9B4D-47118B52349C_TN> ;
     cim:SvVoltage.angle "7.611801"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <7E2C958D-EFC3-4EB3-B622-B6049DFE0F2E_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <7E2C958D-EFC3-4EB3-B622-B6049DFE0F2E> ;
+    cim:SvVoltage.TopologicalNode <7E2C958D-EFC3-4EB3-B622-B6049DFE0F2E_TN> ;
     cim:SvVoltage.angle "-0.599963"^^cim:AngleDegrees ;
     cim:SvVoltage.v "139140.156"^^cim:Voltage .
 
 <7F2219A4-4C74-423F-BADF-48B38456F68D_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <7F2219A4-4C74-423F-BADF-48B38456F68D> ;
+    cim:SvVoltage.TopologicalNode <7F2219A4-4C74-423F-BADF-48B38456F68D_TN> ;
     cim:SvVoltage.angle "9.128494"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136887.99599999998"^^cim:Voltage .
 
 <8437DFEF-68D9-4BFF-AA7B-EBA864F79C36_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <8437DFEF-68D9-4BFF-AA7B-EBA864F79C36> ;
+    cim:SvVoltage.TopologicalNode <8437DFEF-68D9-4BFF-AA7B-EBA864F79C36_TN> ;
     cim:SvVoltage.angle "-10.184648"^^cim:AngleDegrees ;
     cim:SvVoltage.v "135707.958"^^cim:Voltage .
 
 <84CE4EC4-55E3-4A5C-AD8D-06A7BDC8848E_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <84CE4EC4-55E3-4A5C-AD8D-06A7BDC8848E> ;
+    cim:SvVoltage.TopologicalNode <84CE4EC4-55E3-4A5C-AD8D-06A7BDC8848E_TN> ;
     cim:SvVoltage.angle "12.376753"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <851139CA-C7B7-4E9D-87E0-0F65192D78D0_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <851139CA-C7B7-4E9D-87E0-0F65192D78D0> ;
+    cim:SvVoltage.TopologicalNode <851139CA-C7B7-4E9D-87E0-0F65192D78D0_TN> ;
     cim:SvVoltage.angle "-10.039012"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136828.104"^^cim:Voltage .
 
 <85381297-51EA-4EBF-9D37-F0BA9D2E1ED8_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <85381297-51EA-4EBF-9D37-F0BA9D2E1ED8> ;
+    cim:SvVoltage.TopologicalNode <85381297-51EA-4EBF-9D37-F0BA9D2E1ED8_TN> ;
     cim:SvVoltage.angle "7.445898"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <890468B2-A06F-4ACD-89BD-5C39434ED2BB_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <890468B2-A06F-4ACD-89BD-5C39434ED2BB> ;
+    cim:SvVoltage.TopologicalNode <890468B2-A06F-4ACD-89BD-5C39434ED2BB_TN> ;
     cim:SvVoltage.angle "5.786397"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137689.224"^^cim:Voltage .
 
 <8A2DDCFF-805F-40FD-88AB-1BF1E752DF98_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <8A2DDCFF-805F-40FD-88AB-1BF1E752DF98> ;
+    cim:SvVoltage.TopologicalNode <8A2DDCFF-805F-40FD-88AB-1BF1E752DF98_TN> ;
     cim:SvVoltage.angle "7.060303"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <8CFF3204-84BC-40A4-87CF-8B45321BFEFA_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <8CFF3204-84BC-40A4-87CF-8B45321BFEFA> ;
+    cim:SvVoltage.TopologicalNode <8CFF3204-84BC-40A4-87CF-8B45321BFEFA_TN> ;
     cim:SvVoltage.angle "4.21546"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136991.082"^^cim:Voltage .
 
 <8D3345D9-E18E-4CFF-85BC-BCEDAE4F1E14_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <8D3345D9-E18E-4CFF-85BC-BCEDAE4F1E14> ;
+    cim:SvVoltage.TopologicalNode <8D3345D9-E18E-4CFF-85BC-BCEDAE4F1E14_TN> ;
     cim:SvVoltage.angle "-10.223357"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <8DE9F12C-9BE6-4498-8754-24E6C943F9F4_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <8DE9F12C-9BE6-4498-8754-24E6C943F9F4> ;
+    cim:SvVoltage.TopologicalNode <8DE9F12C-9BE6-4498-8754-24E6C943F9F4_TN> ;
     cim:SvVoltage.angle "8.378547"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <8DFC5E82-6987-4CDC-A143-210F22564C8D_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <8DFC5E82-6987-4CDC-A143-210F22564C8D> ;
+    cim:SvVoltage.TopologicalNode <8DFC5E82-6987-4CDC-A143-210F22564C8D_TN> ;
     cim:SvVoltage.angle "5.735757"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136544.928"^^cim:Voltage .
 
 <8F461F97-D688-40A1-BB9C-E3987167260E_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <8F461F97-D688-40A1-BB9C-E3987167260E> ;
+    cim:SvVoltage.TopologicalNode <8F461F97-D688-40A1-BB9C-E3987167260E_TN> ;
     cim:SvVoltage.angle "4.871172"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137329.734"^^cim:Voltage .
 
 <91B8A157-68CB-489F-9E14-A59C6776A000_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <91B8A157-68CB-489F-9E14-A59C6776A000> ;
+    cim:SvVoltage.TopologicalNode <91B8A157-68CB-489F-9E14-A59C6776A000_TN> ;
     cim:SvVoltage.angle "-5.368302"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137122.32"^^cim:Voltage .
 
 <944A1E0F-5E11-4848-A348-E55125A54460_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <944A1E0F-5E11-4848-A348-E55125A54460> ;
+    cim:SvVoltage.TopologicalNode <944A1E0F-5E11-4848-A348-E55125A54460_TN> ;
     cim:SvVoltage.angle "9.61519"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <95B19311-F051-4E6F-A3E8-812C0A0D9215_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <95B19311-F051-4E6F-A3E8-812C0A0D9215> ;
+    cim:SvVoltage.TopologicalNode <95B19311-F051-4E6F-A3E8-812C0A0D9215_TN> ;
     cim:SvVoltage.angle "1.342659"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137598.144"^^cim:Voltage .
 
 <97C59173-F37B-43C2-918C-258C5CE92460_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <97C59173-F37B-43C2-918C-258C5CE92460> ;
+    cim:SvVoltage.TopologicalNode <97C59173-F37B-43C2-918C-258C5CE92460_TN> ;
     cim:SvVoltage.angle "-6.025323"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136846.044"^^cim:Voltage .
 
 <995BA03C-32EE-429D-8AC8-CF3E7B04833D_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <995BA03C-32EE-429D-8AC8-CF3E7B04833D> ;
+    cim:SvVoltage.TopologicalNode <995BA03C-32EE-429D-8AC8-CF3E7B04833D_TN> ;
     cim:SvVoltage.angle "11.088731"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138219.558"^^cim:Voltage .
 
 <9A0C592D-3424-4EA2-96CB-98FE1BEBA52C_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <9A0C592D-3424-4EA2-96CB-98FE1BEBA52C> ;
+    cim:SvVoltage.TopologicalNode <9A0C592D-3424-4EA2-96CB-98FE1BEBA52C_TN> ;
     cim:SvVoltage.angle "4.922756"^^cim:AngleDegrees ;
     cim:SvVoltage.v "135256.974"^^cim:Voltage .
 
 <9C83A8E3-2541-4BAE-9E8F-851255D449D5_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <9C83A8E3-2541-4BAE-9E8F-851255D449D5> ;
+    cim:SvVoltage.TopologicalNode <9C83A8E3-2541-4BAE-9E8F-851255D449D5_TN> ;
     cim:SvVoltage.angle "-10.500429"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136976.316"^^cim:Voltage .
 
 <9D4A195A-7AF4-415D-B55E-5D3665842E46_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <9D4A195A-7AF4-415D-B55E-5D3665842E46> ;
+    cim:SvVoltage.TopologicalNode <9D4A195A-7AF4-415D-B55E-5D3665842E46_TN> ;
     cim:SvVoltage.angle "-5.741635"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <9D63E2C2-6E35-4319-B0CA-A781AE7857D1_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <9D63E2C2-6E35-4319-B0CA-A781AE7857D1> ;
+    cim:SvVoltage.TopologicalNode <9D63E2C2-6E35-4319-B0CA-A781AE7857D1_TN> ;
     cim:SvVoltage.angle "-1.754024"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <9F53B8F5-4883-4409-B6AC-F29DB6603565_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <9F53B8F5-4883-4409-B6AC-F29DB6603565> ;
+    cim:SvVoltage.TopologicalNode <9F53B8F5-4883-4409-B6AC-F29DB6603565_TN> ;
     cim:SvVoltage.angle "6.876532"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <A250909E-6E48-4D34-9B4B-4E138B35A804_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <A250909E-6E48-4D34-9B4B-4E138B35A804> ;
+    cim:SvVoltage.TopologicalNode <A250909E-6E48-4D34-9B4B-4E138B35A804_TN> ;
     cim:SvVoltage.angle "2.939052"^^cim:AngleDegrees ;
     cim:SvVoltage.v "335329.305"^^cim:Voltage .
 
 <A2CD9DEF-F339-4260-9D1C-18228C7B1B28_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <A2CD9DEF-F339-4260-9D1C-18228C7B1B28> ;
+    cim:SvVoltage.TopologicalNode <A2CD9DEF-F339-4260-9D1C-18228C7B1B28_TN> ;
     cim:SvVoltage.angle "-8.387989"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138998.154"^^cim:Voltage .
 
 <A3CB96EE-DB99-4A6E-A8B2-E8C8C79DFE70_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <A3CB96EE-DB99-4A6E-A8B2-E8C8C79DFE70> ;
+    cim:SvVoltage.TopologicalNode <A3CB96EE-DB99-4A6E-A8B2-E8C8C79DFE70_TN> ;
     cim:SvVoltage.angle "3.363756"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137383.554"^^cim:Voltage .
 
 <A45C8A67-0F2E-4DDB-9E1E-F2A8CBA0FB22_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <A45C8A67-0F2E-4DDB-9E1E-F2A8CBA0FB22> ;
+    cim:SvVoltage.TopologicalNode <A45C8A67-0F2E-4DDB-9E1E-F2A8CBA0FB22_TN> ;
     cim:SvVoltage.angle "2.855653"^^cim:AngleDegrees ;
     cim:SvVoltage.v "339076.695"^^cim:Voltage .
 
 <A51C2AAB-0336-4E17-84CA-1951ADCF5474_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <A51C2AAB-0336-4E17-84CA-1951ADCF5474> ;
+    cim:SvVoltage.TopologicalNode <A51C2AAB-0336-4E17-84CA-1951ADCF5474_TN> ;
     cim:SvVoltage.angle "-1.746765"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137198.22"^^cim:Voltage .
 
 <A536F263-AA7D-4768-9CE4-1E62EAED00FD_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <A536F263-AA7D-4768-9CE4-1E62EAED00FD> ;
+    cim:SvVoltage.TopologicalNode <A536F263-AA7D-4768-9CE4-1E62EAED00FD_TN> ;
     cim:SvVoltage.angle "-4.067315"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137445.10199999998"^^cim:Voltage .
 
 <A74D7496-813B-4F28-B09F-A6A274701B24_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <A74D7496-813B-4F28-B09F-A6A274701B24> ;
+    cim:SvVoltage.TopologicalNode <A74D7496-813B-4F28-B09F-A6A274701B24_TN> ;
     cim:SvVoltage.angle "-5.690986"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <A8E68101-C6C6-40D1-A91A-A1DBD3BC1140_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <A8E68101-C6C6-40D1-A91A-A1DBD3BC1140> ;
+    cim:SvVoltage.TopologicalNode <A8E68101-C6C6-40D1-A91A-A1DBD3BC1140_TN> ;
     cim:SvVoltage.angle "10.088377"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136555.692"^^cim:Voltage .
 
 <AA0DAB76-3586-4362-9D36-8AD2DAF73494_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <AA0DAB76-3586-4362-9D36-8AD2DAF73494> ;
+    cim:SvVoltage.TopologicalNode <AA0DAB76-3586-4362-9D36-8AD2DAF73494_TN> ;
     cim:SvVoltage.angle "-3.887794"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136541.06399999998"^^cim:Voltage .
 
 <ABBE7701-3127-4792-8C25-DD221167F071_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <ABBE7701-3127-4792-8C25-DD221167F071> ;
+    cim:SvVoltage.TopologicalNode <ABBE7701-3127-4792-8C25-DD221167F071_TN> ;
     cim:SvVoltage.angle "13.954502"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138551.586"^^cim:Voltage .
 
 <ABDE259A-7608-45DE-9006-F0C7A0E755A0_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <ABDE259A-7608-45DE-9006-F0C7A0E755A0> ;
+    cim:SvVoltage.TopologicalNode <ABDE259A-7608-45DE-9006-F0C7A0E755A0_TN> ;
     cim:SvVoltage.angle "-3.73566"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <AC2C5DBB-AA95-4E34-B549-ABBB1C46A0B4_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <AC2C5DBB-AA95-4E34-B549-ABBB1C46A0B4> ;
+    cim:SvVoltage.TopologicalNode <AC2C5DBB-AA95-4E34-B549-ABBB1C46A0B4_TN> ;
     cim:SvVoltage.angle "8.006567"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137282.12399999998"^^cim:Voltage .
 
 <AD5E3B9C-BAE2-436B-ACBD-517BF90BB2CB_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <AD5E3B9C-BAE2-436B-ACBD-517BF90BB2CB> ;
+    cim:SvVoltage.TopologicalNode <AD5E3B9C-BAE2-436B-ACBD-517BF90BB2CB_TN> ;
     cim:SvVoltage.angle "15.670182"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <ADCBC5D8-53F7-4E4A-8AFB-1CB511D17E70_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <ADCBC5D8-53F7-4E4A-8AFB-1CB511D17E70> ;
+    cim:SvVoltage.TopologicalNode <ADCBC5D8-53F7-4E4A-8AFB-1CB511D17E70_TN> ;
     cim:SvVoltage.angle "10.047774"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <AEEEBC4C-0AEC-4F52-A400-CCE5FAD28FC6_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <AEEEBC4C-0AEC-4F52-A400-CCE5FAD28FC6> ;
+    cim:SvVoltage.TopologicalNode <AEEEBC4C-0AEC-4F52-A400-CCE5FAD28FC6_TN> ;
     cim:SvVoltage.angle "-10.230533"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136934.08800000002"^^cim:Voltage .
 
 <B26E1176-16F4-40E7-ABBB-F05D18E3770B_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <B26E1176-16F4-40E7-ABBB-F05D18E3770B> ;
+    cim:SvVoltage.TopologicalNode <B26E1176-16F4-40E7-ABBB-F05D18E3770B_TN> ;
     cim:SvVoltage.angle "-4.350074"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136090.08000000002"^^cim:Voltage .
 
 <B2FB721B-900A-45BF-9B1A-57C95DE911C1_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <B2FB721B-900A-45BF-9B1A-57C95DE911C1> ;
+    cim:SvVoltage.TopologicalNode <B2FB721B-900A-45BF-9B1A-57C95DE911C1_TN> ;
     cim:SvVoltage.angle "6.096416"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136933.95"^^cim:Voltage .
 
 <B4909CAB-3D03-4CA0-B55E-FBDC132F9049_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <B4909CAB-3D03-4CA0-B55E-FBDC132F9049> ;
+    cim:SvVoltage.TopologicalNode <B4909CAB-3D03-4CA0-B55E-FBDC132F9049_TN> ;
     cim:SvVoltage.angle "8.226816"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137818.53"^^cim:Voltage .
 
 <B5F5DE6C-0F4A-424A-9649-65E4BAD10FAE_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <B5F5DE6C-0F4A-424A-9649-65E4BAD10FAE> ;
+    cim:SvVoltage.TopologicalNode <B5F5DE6C-0F4A-424A-9649-65E4BAD10FAE_TN> ;
     cim:SvVoltage.angle "3.053977"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137506.37399999998"^^cim:Voltage .
 
 <B7799787-5209-4FE7-88C5-55BD9B4B95A0_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <B7799787-5209-4FE7-88C5-55BD9B4B95A0> ;
+    cim:SvVoltage.TopologicalNode <B7799787-5209-4FE7-88C5-55BD9B4B95A0_TN> ;
     cim:SvVoltage.angle "5.711334"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <B7D4C1AA-2307-4F6A-83B1-DA9BC4130485_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <B7D4C1AA-2307-4F6A-83B1-DA9BC4130485> ;
+    cim:SvVoltage.TopologicalNode <B7D4C1AA-2307-4F6A-83B1-DA9BC4130485_TN> ;
     cim:SvVoltage.angle "9.938454"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <B9C88563-B06E-4141-BEF3-7B819D784226_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <B9C88563-B06E-4141-BEF3-7B819D784226> ;
+    cim:SvVoltage.TopologicalNode <B9C88563-B06E-4141-BEF3-7B819D784226_TN> ;
     cim:SvVoltage.angle "-4.092709"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <B9DFB02A-3D50-4374-9F5D-84573B20A1D5_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <B9DFB02A-3D50-4374-9F5D-84573B20A1D5> ;
+    cim:SvVoltage.TopologicalNode <B9DFB02A-3D50-4374-9F5D-84573B20A1D5_TN> ;
     cim:SvVoltage.angle "-11.107222"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136286.316"^^cim:Voltage .
 
 <BE0231E9-1ADD-4B71-8AAD-FFB7E584B494_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <BE0231E9-1ADD-4B71-8AAD-FFB7E584B494> ;
+    cim:SvVoltage.TopologicalNode <BE0231E9-1ADD-4B71-8AAD-FFB7E584B494_TN> ;
     cim:SvVoltage.angle "-1.344534"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <C0564AC0-8411-4769-B737-6B7FE904B99D_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <C0564AC0-8411-4769-B737-6B7FE904B99D> ;
+    cim:SvVoltage.TopologicalNode <C0564AC0-8411-4769-B737-6B7FE904B99D_TN> ;
     cim:SvVoltage.angle "12.071726"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <C06FA1DE-8EF2-49EA-B780-8744352D55AE_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <C06FA1DE-8EF2-49EA-B780-8744352D55AE> ;
+    cim:SvVoltage.TopologicalNode <C06FA1DE-8EF2-49EA-B780-8744352D55AE_TN> ;
     cim:SvVoltage.angle "-4.228321"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136187.094"^^cim:Voltage .
 
 <C4A1E10B-4B14-492C-AD81-9D84BF186DC8_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <C4A1E10B-4B14-492C-AD81-9D84BF186DC8> ;
+    cim:SvVoltage.TopologicalNode <C4A1E10B-4B14-492C-AD81-9D84BF186DC8_TN> ;
     cim:SvVoltage.angle "0.046165"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <C51BDCBE-A3B9-4196-BF0C-5856B9DAD216_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <C51BDCBE-A3B9-4196-BF0C-5856B9DAD216> ;
+    cim:SvVoltage.TopologicalNode <C51BDCBE-A3B9-4196-BF0C-5856B9DAD216_TN> ;
     cim:SvVoltage.angle "-5.283151"^^cim:AngleDegrees ;
     cim:SvVoltage.v "337109.505"^^cim:Voltage .
 
 <C6E2A26D-9DAA-417B-ABC5-B6741FB6F2A6_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <C6E2A26D-9DAA-417B-ABC5-B6741FB6F2A6> ;
+    cim:SvVoltage.TopologicalNode <C6E2A26D-9DAA-417B-ABC5-B6741FB6F2A6_TN> ;
     cim:SvVoltage.angle "-10.131096"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136950.648"^^cim:Voltage .
 
 <C7F5FB6B-9828-41BE-9A48-5A7F32F2F710_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <C7F5FB6B-9828-41BE-9A48-5A7F32F2F710> ;
+    cim:SvVoltage.TopologicalNode <C7F5FB6B-9828-41BE-9A48-5A7F32F2F710_TN> ;
     cim:SvVoltage.angle "11.422874"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137570.406"^^cim:Voltage .
 
 <C7FA8380-87E7-4C58-AFA0-8B2FD475ACB3_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <C7FA8380-87E7-4C58-AFA0-8B2FD475ACB3> ;
+    cim:SvVoltage.TopologicalNode <C7FA8380-87E7-4C58-AFA0-8B2FD475ACB3_TN> ;
     cim:SvVoltage.angle "-2.724587"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138963.93"^^cim:Voltage .
 
 <C8F12AB1-3F23-40FE-AB0A-E100FF5C39D6_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <C8F12AB1-3F23-40FE-AB0A-E100FF5C39D6> ;
+    cim:SvVoltage.TopologicalNode <C8F12AB1-3F23-40FE-AB0A-E100FF5C39D6_TN> ;
     cim:SvVoltage.angle "1.152368"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137825.706"^^cim:Voltage .
 
 <C9C8744B-3E07-4208-904F-7ADBF3827C05_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <C9C8744B-3E07-4208-904F-7ADBF3827C05> ;
+    cim:SvVoltage.TopologicalNode <C9C8744B-3E07-4208-904F-7ADBF3827C05_TN> ;
     cim:SvVoltage.angle "-8.375338"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <CA8C8DF4-5567-4570-BA34-517016674637_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <CA8C8DF4-5567-4570-BA34-517016674637> ;
+    cim:SvVoltage.TopologicalNode <CA8C8DF4-5567-4570-BA34-517016674637_TN> ;
     cim:SvVoltage.angle "7.616368"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137561.29799999998"^^cim:Voltage .
 
 <D0A10CC7-D8AD-4215-8E4B-3C1AD7A5CA6E_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <D0A10CC7-D8AD-4215-8E4B-3C1AD7A5CA6E> ;
+    cim:SvVoltage.TopologicalNode <D0A10CC7-D8AD-4215-8E4B-3C1AD7A5CA6E_TN> ;
     cim:SvVoltage.angle "-1.733305"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138253.09199999998"^^cim:Voltage .
 
 <D216025C-AB98-416F-8521-0F54ED29A61F_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <D216025C-AB98-416F-8521-0F54ED29A61F> ;
+    cim:SvVoltage.TopologicalNode <D216025C-AB98-416F-8521-0F54ED29A61F_TN> ;
     cim:SvVoltage.angle "6.476433"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <D647434F-8A3B-43F5-AD5E-253C8735CF97_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <D647434F-8A3B-43F5-AD5E-253C8735CF97> ;
+    cim:SvVoltage.TopologicalNode <D647434F-8A3B-43F5-AD5E-253C8735CF97_TN> ;
     cim:SvVoltage.angle "-1.680126"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138164.08200000002"^^cim:Voltage .
 
 <D6C6DD4F-36ED-4C67-9D75-050E3BD93637_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <D6C6DD4F-36ED-4C67-9D75-050E3BD93637> ;
+    cim:SvVoltage.TopologicalNode <D6C6DD4F-36ED-4C67-9D75-050E3BD93637_TN> ;
     cim:SvVoltage.angle "-6.152664"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137701.368"^^cim:Voltage .
 
 <D8011774-950E-4A18-BFFD-C638E4D60BA6_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <D8011774-950E-4A18-BFFD-C638E4D60BA6> ;
+    cim:SvVoltage.TopologicalNode <D8011774-950E-4A18-BFFD-C638E4D60BA6_TN> ;
     cim:SvVoltage.angle "-8.74196"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <D82EB6B3-0AB9-4492-97A5-27B1C4F0DF99_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <D82EB6B3-0AB9-4492-97A5-27B1C4F0DF99> ;
+    cim:SvVoltage.TopologicalNode <D82EB6B3-0AB9-4492-97A5-27B1C4F0DF99_TN> ;
     cim:SvVoltage.angle "16.143146"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <D878B1C6-9388-4B7F-AF4E-56B7CC00D17B_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <D878B1C6-9388-4B7F-AF4E-56B7CC00D17B> ;
+    cim:SvVoltage.TopologicalNode <D878B1C6-9388-4B7F-AF4E-56B7CC00D17B_TN> ;
     cim:SvVoltage.angle "18.301289"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <D889D2DC-4E85-4E24-97EB-D7303255F0B5_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <D889D2DC-4E85-4E24-97EB-D7303255F0B5> ;
+    cim:SvVoltage.TopologicalNode <D889D2DC-4E85-4E24-97EB-D7303255F0B5_TN> ;
     cim:SvVoltage.angle "6.612872"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <D8E901A6-D115-443F-966F-86978DA79F41_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <D8E901A6-D115-443F-966F-86978DA79F41> ;
+    cim:SvVoltage.TopologicalNode <D8E901A6-D115-443F-966F-86978DA79F41_TN> ;
     cim:SvVoltage.angle "-10.357171"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136663.332"^^cim:Voltage .
 
 <D99E5D0B-8D72-4E45-BCA1-813BC1F07349_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <D99E5D0B-8D72-4E45-BCA1-813BC1F07349> ;
+    cim:SvVoltage.TopologicalNode <D99E5D0B-8D72-4E45-BCA1-813BC1F07349_TN> ;
     cim:SvVoltage.angle "4.893707"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <D9D84DC9-3C17-4186-8CE0-45C62EF5EDE8_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <D9D84DC9-3C17-4186-8CE0-45C62EF5EDE8> ;
+    cim:SvVoltage.TopologicalNode <D9D84DC9-3C17-4186-8CE0-45C62EF5EDE8_TN> ;
     cim:SvVoltage.angle "-11.125231"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <DAA0066C-3EDB-4498-929B-0B0F0D8E12FD_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <DAA0066C-3EDB-4498-929B-0B0F0D8E12FD> ;
+    cim:SvVoltage.TopologicalNode <DAA0066C-3EDB-4498-929B-0B0F0D8E12FD_TN> ;
     cim:SvVoltage.angle "-4.17185"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <DB17FA1E-4C06-4979-9DC7-8A0B446AD712_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <DB17FA1E-4C06-4979-9DC7-8A0B446AD712> ;
+    cim:SvVoltage.TopologicalNode <DB17FA1E-4C06-4979-9DC7-8A0B446AD712_TN> ;
     cim:SvVoltage.angle "-11.119029"^^cim:AngleDegrees ;
     cim:SvVoltage.v "135972.366"^^cim:Voltage .
 
 <DFD79262-86EE-494A-ACEA-4CE448E18715_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <DFD79262-86EE-494A-ACEA-4CE448E18715> ;
+    cim:SvVoltage.TopologicalNode <DFD79262-86EE-494A-ACEA-4CE448E18715_TN> ;
     cim:SvVoltage.angle "1.529208"^^cim:AngleDegrees ;
     cim:SvVoltage.v "338491.92"^^cim:Voltage .
 
 <E1AC9427-5D80-4AA2-87CD-40BC030388FD_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <E1AC9427-5D80-4AA2-87CD-40BC030388FD> ;
+    cim:SvVoltage.TopologicalNode <E1AC9427-5D80-4AA2-87CD-40BC030388FD_TN> ;
     cim:SvVoltage.angle "3.336608"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <E2773AC8-47FE-42A0-97F4-799E366CB038_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <E2773AC8-47FE-42A0-97F4-799E366CB038> ;
+    cim:SvVoltage.TopologicalNode <E2773AC8-47FE-42A0-97F4-799E366CB038_TN> ;
     cim:SvVoltage.angle "-3.734859"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137922.858"^^cim:Voltage .
 
 <E39441DB-CA45-46EA-B90C-9C8030BF41ED_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <E39441DB-CA45-46EA-B90C-9C8030BF41ED> ;
+    cim:SvVoltage.TopologicalNode <E39441DB-CA45-46EA-B90C-9C8030BF41ED_TN> ;
     cim:SvVoltage.angle "-3.630087"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137854.68600000002"^^cim:Voltage .
 
 <E4C6346D-936F-4437-A7B6-F700BC3CCCAC_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <E4C6346D-936F-4437-A7B6-F700BC3CCCAC> ;
+    cim:SvVoltage.TopologicalNode <E4C6346D-936F-4437-A7B6-F700BC3CCCAC_TN> ;
     cim:SvVoltage.angle "2.187543"^^cim:AngleDegrees ;
     cim:SvVoltage.v "141436.476"^^cim:Voltage .
 
 <E5590BDA-6BDB-4B8A-88A6-62A522A76002_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <E5590BDA-6BDB-4B8A-88A6-62A522A76002> ;
+    cim:SvVoltage.TopologicalNode <E5590BDA-6BDB-4B8A-88A6-62A522A76002_TN> ;
     cim:SvVoltage.angle "10.449282"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137649.204"^^cim:Voltage .
 
 <E57064EF-43BD-4690-B668-88E86D2E3E3A_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <E57064EF-43BD-4690-B668-88E86D2E3E3A> ;
+    cim:SvVoltage.TopologicalNode <E57064EF-43BD-4690-B668-88E86D2E3E3A_TN> ;
     cim:SvVoltage.angle "-1.834737"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138156.35400000002"^^cim:Voltage .
 
 <E684D319-A57C-4FF9-95A7-5C92115EF8A2_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <E684D319-A57C-4FF9-95A7-5C92115EF8A2> ;
+    cim:SvVoltage.TopologicalNode <E684D319-A57C-4FF9-95A7-5C92115EF8A2_TN> ;
     cim:SvVoltage.angle "0.032669"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <E709E8F9-AE38-4A89-AD48-3044CCEA1963_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <E709E8F9-AE38-4A89-AD48-3044CCEA1963> ;
+    cim:SvVoltage.TopologicalNode <E709E8F9-AE38-4A89-AD48-3044CCEA1963_TN> ;
     cim:SvVoltage.angle "1.895534"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <E831340A-31F5-46AD-8F68-2CE3C706C106_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <E831340A-31F5-46AD-8F68-2CE3C706C106> ;
+    cim:SvVoltage.TopologicalNode <E831340A-31F5-46AD-8F68-2CE3C706C106_TN> ;
     cim:SvVoltage.angle "-4.642894"^^cim:AngleDegrees ;
     cim:SvVoltage.v "344203.395"^^cim:Voltage .
 
 <E8D30B73-D879-46F9-8FC1-9C5FB824D043_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <E8D30B73-D879-46F9-8FC1-9C5FB824D043> ;
+    cim:SvVoltage.TopologicalNode <E8D30B73-D879-46F9-8FC1-9C5FB824D043_TN> ;
     cim:SvVoltage.angle "-8.755109"^^cim:AngleDegrees ;
     cim:SvVoltage.v "139278.708"^^cim:Voltage .
 
 <E9974592-33C7-4BF6-AE6F-05D7E3C68761_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <E9974592-33C7-4BF6-AE6F-05D7E3C68761> ;
+    cim:SvVoltage.TopologicalNode <E9974592-33C7-4BF6-AE6F-05D7E3C68761_TN> ;
     cim:SvVoltage.angle "-9.023877"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138635.352"^^cim:Voltage .
 
 <EA8D77D7-0221-4646-908D-FE2E127FAE35_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <EA8D77D7-0221-4646-908D-FE2E127FAE35> ;
+    cim:SvVoltage.TopologicalNode <EA8D77D7-0221-4646-908D-FE2E127FAE35_TN> ;
     cim:SvVoltage.angle "0.148625"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <EABC958B-8F75-4774-BB51-C1F6DB859135_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <EABC958B-8F75-4774-BB51-C1F6DB859135> ;
+    cim:SvVoltage.TopologicalNode <EABC958B-8F75-4774-BB51-C1F6DB859135_TN> ;
     cim:SvVoltage.angle "1.317501"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137616.498"^^cim:Voltage .
 
 <EBB59E5E-7434-4E4E-9EC0-7C0A3ECCD621_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <EBB59E5E-7434-4E4E-9EC0-7C0A3ECCD621> ;
+    cim:SvVoltage.TopologicalNode <EBB59E5E-7434-4E4E-9EC0-7C0A3ECCD621_TN> ;
     cim:SvVoltage.angle "10.40825"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137486.226"^^cim:Voltage .
 
 <EC2E4BF2-6C48-413A-9A21-FDCFC5326559_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <EC2E4BF2-6C48-413A-9A21-FDCFC5326559> ;
+    cim:SvVoltage.TopologicalNode <EC2E4BF2-6C48-413A-9A21-FDCFC5326559_TN> ;
     cim:SvVoltage.angle "6.345132"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <ED4A70E7-1169-4F7B-8508-C32469E01CC0_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <ED4A70E7-1169-4F7B-8508-C32469E01CC0> ;
+    cim:SvVoltage.TopologicalNode <ED4A70E7-1169-4F7B-8508-C32469E01CC0_TN> ;
     cim:SvVoltage.angle "0.695938"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <F1BC13A2-B01A-405B-9B1A-E0BE7B447C2F_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <F1BC13A2-B01A-405B-9B1A-E0BE7B447C2F> ;
+    cim:SvVoltage.TopologicalNode <F1BC13A2-B01A-405B-9B1A-E0BE7B447C2F_TN> ;
     cim:SvVoltage.angle "-8.897626"^^cim:AngleDegrees ;
     cim:SvVoltage.v "138567.318"^^cim:Voltage .
 
 <F59B21FA-7BF2-4B5F-9E4E-5D367D0ADC89_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <F59B21FA-7BF2-4B5F-9E4E-5D367D0ADC89> ;
+    cim:SvVoltage.TopologicalNode <F59B21FA-7BF2-4B5F-9E4E-5D367D0ADC89_TN> ;
     cim:SvVoltage.angle "-4.806645"^^cim:AngleDegrees ;
     cim:SvVoltage.v "135489.78"^^cim:Voltage .
 
 <F6248BB9-8BDA-4C1B-8D68-46487E9209D6_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <F6248BB9-8BDA-4C1B-8D68-46487E9209D6> ;
+    cim:SvVoltage.TopologicalNode <F6248BB9-8BDA-4C1B-8D68-46487E9209D6_TN> ;
     cim:SvVoltage.angle "10.896524"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <F71B99F1-C168-4CCC-808F-D0534E06E45C_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <F71B99F1-C168-4CCC-808F-D0534E06E45C> ;
+    cim:SvVoltage.TopologicalNode <F71B99F1-C168-4CCC-808F-D0534E06E45C_TN> ;
     cim:SvVoltage.angle "4.618758"^^cim:AngleDegrees ;
     cim:SvVoltage.v "136853.22"^^cim:Voltage .
 
 <F8EE60F6-4661-47BE-9517-BDCF32752F70_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <F8EE60F6-4661-47BE-9517-BDCF32752F70> ;
+    cim:SvVoltage.TopologicalNode <F8EE60F6-4661-47BE-9517-BDCF32752F70_TN> ;
     cim:SvVoltage.angle "-2.241135"^^cim:AngleDegrees ;
     cim:SvVoltage.v "135952.08000000002"^^cim:Voltage .
 
 <F9752C1D-A718-4D8A-A740-D3E2332654D9_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <F9752C1D-A718-4D8A-A740-D3E2332654D9> ;
+    cim:SvVoltage.TopologicalNode <F9752C1D-A718-4D8A-A740-D3E2332654D9_TN> ;
     cim:SvVoltage.angle "13.05752"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <FCE91F21-D3C5-4FBA-B54B-FBD6B76F73F7_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <FCE91F21-D3C5-4FBA-B54B-FBD6B76F73F7> ;
+    cim:SvVoltage.TopologicalNode <FCE91F21-D3C5-4FBA-B54B-FBD6B76F73F7_TN> ;
     cim:SvVoltage.angle "-7.219269"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137013.024"^^cim:Voltage .
 
 <FE0885F0-E134-4BBE-AA54-1747F5054049_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <FE0885F0-E134-4BBE-AA54-1747F5054049> ;
+    cim:SvVoltage.TopologicalNode <FE0885F0-E134-4BBE-AA54-1747F5054049_TN> ;
     cim:SvVoltage.angle "7.463788"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
 
 <FFD2DC87-5D13-401D-AA71-7774E44B88C5_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <FFD2DC87-5D13-401D-AA71-7774E44B88C5> ;
+    cim:SvVoltage.TopologicalNode <FFD2DC87-5D13-401D-AA71-7774E44B88C5_TN> ;
     cim:SvVoltage.angle "1.333584"^^cim:AngleDegrees ;
     cim:SvVoltage.v "137718.894"^^cim:Voltage .
 
 <FFEAC9B2-BFA8-4077-8E8E-5C390E18DB8C_SvV> a cim:SvVoltage ;
-    emt:SvVoltage.ConnectivityNode <FFEAC9B2-BFA8-4077-8E8E-5C390E18DB8C> ;
+    cim:SvVoltage.TopologicalNode <FFEAC9B2-BFA8-4077-8E8E-5C390E18DB8C_TN> ;
     cim:SvVoltage.angle "-7.603281"^^cim:AngleDegrees ;
     cim:SvVoltage.v "13800.0"^^cim:Voltage .
+
+<01DD70D7-1101-417D-9301-5F15252519D5_TN> a cim:TopologicalNode .
+
+<02CE8ED4-00A8-4078-B4AC-DD28915087B8_TN> a cim:TopologicalNode .
+
+<03BDD171-2042-4E30-AE24-226D4D048B4F_TN> a cim:TopologicalNode .
+
+<043F1C1A-D23E-44F5-83E0-A4A3558D3892_TN> a cim:TopologicalNode .
+
+<0656B6F9-F282-42DD-B24B-AD5F46F79913_TN> a cim:TopologicalNode .
+
+<0669852C-2576-4F88-A164-23F0E16EBE6F_TN> a cim:TopologicalNode .
+
+<0714FE46-4245-46B0-A912-CEF95F283492_TN> a cim:TopologicalNode .
+
+<074DAD71-0F71-4565-AD94-EBD4C3AD40D6_TN> a cim:TopologicalNode .
+
+<08CC33E3-30A1-4810-86DF-E5BCB1766499_TN> a cim:TopologicalNode .
+
+<092E07AF-91C3-41DF-8E56-E76EC94CCB4C_TN> a cim:TopologicalNode .
+
+<09500BDB-1C78-43D9-9AD6-DB6A665135D4_TN> a cim:TopologicalNode .
+
+<0960EF82-D800-49EE-89B7-C3D7C4A328FB_TN> a cim:TopologicalNode .
+
+<0B6067E0-8B01-4BF2-9577-16F93EB10DAA_TN> a cim:TopologicalNode .
+
+<0B62EC6E-7FF2-4E9B-8F90-BC414A9F2C3D_TN> a cim:TopologicalNode .
+
+<0C36B18C-8460-4AB5-BE01-F1A9725F7750_TN> a cim:TopologicalNode .
+
+<0FCDFEB5-4C9E-47F0-9FBB-4F3E1D8A6CA9_TN> a cim:TopologicalNode .
+
+<12C436BC-F0C7-4585-A312-8992B47E483F_TN> a cim:TopologicalNode .
+
+<13E0B318-149F-4FBD-9A40-E8B1ED560A2F_TN> a cim:TopologicalNode .
+
+<140A96A2-DC1A-4DFC-B51D-96AEFA18E90D_TN> a cim:TopologicalNode .
+
+<14D7CD96-E2E7-4DBC-A558-DE159A21ACCC_TN> a cim:TopologicalNode .
+
+<1588A7B3-52C6-42A0-9986-A2CFDB61D821_TN> a cim:TopologicalNode .
+
+<18961801-9D07-4D25-93E3-2A8CB866B49D_TN> a cim:TopologicalNode .
+
+<189D5CE3-975E-4B00-9E06-7F8DF3CF0F11_TN> a cim:TopologicalNode .
+
+<1ECA0F0B-4BED-4019-AEBE-C5B0BCB1F578_TN> a cim:TopologicalNode .
+
+<1F0431FD-AE3A-4E13-9BCE-1BC6B8CE1A69_TN> a cim:TopologicalNode .
+
+<203C3FAD-8AA4-42CC-BF97-8FD9E9A63C0C_TN> a cim:TopologicalNode .
+
+<2041413B-3BB7-4124-B6D9-CE6A9DDDDED3_TN> a cim:TopologicalNode .
+
+<209ADEDC-536B-4687-89D3-7051B272F319_TN> a cim:TopologicalNode .
+
+<20F4F03F-E253-4956-8E48-6C4640C094E8_TN> a cim:TopologicalNode .
+
+<21211A63-6772-4F25-A406-7E27D2BE3507_TN> a cim:TopologicalNode .
+
+<216D6B0E-2306-4EB1-97A8-09F387F0AC90_TN> a cim:TopologicalNode .
+
+<27853610-B4B4-4896-9156-F068CC6F3C41_TN> a cim:TopologicalNode .
+
+<2B26B191-1683-4804-B190-47A32A1C8741_TN> a cim:TopologicalNode .
+
+<2BE1FD98-90FF-4B9E-9B29-C2259BAFA511_TN> a cim:TopologicalNode .
+
+<2D043FF1-406D-4CED-982A-76217FB45745_TN> a cim:TopologicalNode .
+
+<2E65B331-D95A-494F-A26B-5D9B0B3ED4E5_TN> a cim:TopologicalNode .
+
+<2F9554EB-4337-489B-ADC0-73192F236790_TN> a cim:TopologicalNode .
+
+<2FD31260-7878-4153-825C-1A09B9ED013C_TN> a cim:TopologicalNode .
+
+<30C7B932-36BB-42C8-9BED-44072759A8CA_TN> a cim:TopologicalNode .
+
+<30D7BFF6-FC46-415B-B99C-56364A485FB6_TN> a cim:TopologicalNode .
+
+<31AEF46D-1008-4004-874C-FF67ECD8C4EC_TN> a cim:TopologicalNode .
+
+<324DA15C-891F-4372-B016-B4125A295B35_TN> a cim:TopologicalNode .
+
+<32FE0EF3-62F6-459B-9E22-CAC689DEEF75_TN> a cim:TopologicalNode .
+
+<34B76E51-B7B8-463F-8C29-CB7155105B74_TN> a cim:TopologicalNode .
+
+<360B9B5C-AA0F-4645-B2CD-EB206B407DC8_TN> a cim:TopologicalNode .
+
+<3B79813D-3949-4405-8970-753D8E9C54DD_TN> a cim:TopologicalNode .
+
+<3BEB2147-E83B-45AE-9D68-023B21ACFBB8_TN> a cim:TopologicalNode .
+
+<3DC62CFD-3FE0-4C87-B49D-4B090C724E3F_TN> a cim:TopologicalNode .
+
+<3E5202E6-4EB3-44D9-BA80-7D920083F62C_TN> a cim:TopologicalNode .
+
+<3ED69350-4197-40A2-801D-C1FD01346C37_TN> a cim:TopologicalNode .
+
+<3FD3F065-4DF7-480C-ACAF-1D30382A7422_TN> a cim:TopologicalNode .
+
+<41AF1AFE-B4AE-4CC1-A3E0-D6314EBAB681_TN> a cim:TopologicalNode .
+
+<45861E66-50EC-4DB0-B8CC-B5CA72FEE053_TN> a cim:TopologicalNode .
+
+<4840567B-8B2E-40E6-BC12-81D00D9E534E_TN> a cim:TopologicalNode .
+
+<48CF6A2A-59CD-46E4-AF19-88A52D313796_TN> a cim:TopologicalNode .
+
+<49C0544D-452E-42C3-97A9-202D0BA43969_TN> a cim:TopologicalNode .
+
+<4B1B751D-931A-4F88-9C71-C7F566B3E7B0_TN> a cim:TopologicalNode .
+
+<4B744D65-35F8-4DDB-B554-AAAE115A6927_TN> a cim:TopologicalNode .
+
+<4D002654-B2B4-42C9-81EC-917184A8659E_TN> a cim:TopologicalNode .
+
+<501C2E7C-0F1F-47CF-9079-957CD8F0A577_TN> a cim:TopologicalNode .
+
+<509CAC7B-DC02-491E-A70F-F598020F6CF3_TN> a cim:TopologicalNode .
+
+<510B8BF8-A411-4267-B6B2-A84E438751CD_TN> a cim:TopologicalNode .
+
+<510DD78E-7A28-432F-B3CD-68A43876AB83_TN> a cim:TopologicalNode .
+
+<5140BAF6-AE26-4F22-93D8-646A1BDB1460_TN> a cim:TopologicalNode .
+
+<5409CFF5-B309-4904-81EE-0C66277B03D6_TN> a cim:TopologicalNode .
+
+<57BF892F-264B-43D0-A8E0-6B5F62C0562F_TN> a cim:TopologicalNode .
+
+<5A880B83-D621-4436-9663-44A7452ED909_TN> a cim:TopologicalNode .
+
+<5B05EA35-CC73-416F-881F-EC624AD50C77_TN> a cim:TopologicalNode .
+
+<5C74704E-E0B3-4130-AFC3-929FAB875530_TN> a cim:TopologicalNode .
+
+<5C7DF74D-76E9-4C05-8AD7-AB414D704183_TN> a cim:TopologicalNode .
+
+<5FFAEBAC-6082-4A8F-B9E1-E3934A37BEF7_TN> a cim:TopologicalNode .
+
+<62470EDD-3C17-4336-83E0-2B94FA6D2182_TN> a cim:TopologicalNode .
+
+<638973B4-A4D2-4E73-9264-3682F9D321A0_TN> a cim:TopologicalNode .
+
+<651B79E5-9C01-40ED-BE3F-BD5F4821840F_TN> a cim:TopologicalNode .
+
+<65259240-DA2E-492B-8804-CAC2A970142E_TN> a cim:TopologicalNode .
+
+<678CF40F-A28F-4813-A9E7-C7DAD6E698B0_TN> a cim:TopologicalNode .
+
+<686B1CD1-21E6-40AC-A05B-7C65A71F6C83_TN> a cim:TopologicalNode .
+
+<697F9013-B904-405F-86D9-8F3BC0F1990B_TN> a cim:TopologicalNode .
+
+<6B0332DF-9B96-42BB-BF68-E1919895AFDB_TN> a cim:TopologicalNode .
+
+<6C7523EE-785B-429E-850F-CABFE5D33AF5_TN> a cim:TopologicalNode .
+
+<6DB5286A-2890-4B4F-8561-E13F4E91F04E_TN> a cim:TopologicalNode .
+
+<6F33F207-5DBD-467D-8DE4-8D37B4E615DE_TN> a cim:TopologicalNode .
+
+<72A50108-1242-4D3E-8987-3FA8433BFE91_TN> a cim:TopologicalNode .
+
+<74681864-BC8D-476F-A8DC-DAE61BE752CE_TN> a cim:TopologicalNode .
+
+<768C9A60-CA63-4649-92F7-BA595D68B8FC_TN> a cim:TopologicalNode .
+
+<76DB6EFA-D4BA-4CD9-B934-26CB5015C39E_TN> a cim:TopologicalNode .
+
+<77056770-4E87-43AE-A4B7-80EF67FEDE1B_TN> a cim:TopologicalNode .
+
+<77068F76-B8E8-49E0-A76D-1EB981237BD7_TN> a cim:TopologicalNode .
+
+<77F45203-9149-464D-B4EB-7CD78CE8514A_TN> a cim:TopologicalNode .
+
+<78178EB2-515C-40C1-9EF5-D93C1915B736_TN> a cim:TopologicalNode .
+
+<79BADDF4-516D-40C6-A7EA-A3848EC788B3_TN> a cim:TopologicalNode .
+
+<7AA5117E-EAC5-4ABE-BD3F-89A0BFB2D679_TN> a cim:TopologicalNode .
+
+<7ACB1FEB-4EE6-4BC5-817E-4D74D2338003_TN> a cim:TopologicalNode .
+
+<7AE43335-8225-455D-B3C4-EA108A8AFB2B_TN> a cim:TopologicalNode .
+
+<7D23EFEF-9560-4034-A9C4-298F6B8FC70D_TN> a cim:TopologicalNode .
+
+<7DCDDED9-AB17-4F5F-9B4D-47118B52349C_TN> a cim:TopologicalNode .
+
+<7E2C958D-EFC3-4EB3-B622-B6049DFE0F2E_TN> a cim:TopologicalNode .
+
+<7F2219A4-4C74-423F-BADF-48B38456F68D_TN> a cim:TopologicalNode .
+
+<8437DFEF-68D9-4BFF-AA7B-EBA864F79C36_TN> a cim:TopologicalNode .
+
+<84CE4EC4-55E3-4A5C-AD8D-06A7BDC8848E_TN> a cim:TopologicalNode .
+
+<851139CA-C7B7-4E9D-87E0-0F65192D78D0_TN> a cim:TopologicalNode .
+
+<85381297-51EA-4EBF-9D37-F0BA9D2E1ED8_TN> a cim:TopologicalNode .
+
+<890468B2-A06F-4ACD-89BD-5C39434ED2BB_TN> a cim:TopologicalNode .
+
+<8A2DDCFF-805F-40FD-88AB-1BF1E752DF98_TN> a cim:TopologicalNode .
+
+<8CFF3204-84BC-40A4-87CF-8B45321BFEFA_TN> a cim:TopologicalNode .
+
+<8D3345D9-E18E-4CFF-85BC-BCEDAE4F1E14_TN> a cim:TopologicalNode .
+
+<8DE9F12C-9BE6-4498-8754-24E6C943F9F4_TN> a cim:TopologicalNode .
+
+<8DFC5E82-6987-4CDC-A143-210F22564C8D_TN> a cim:TopologicalNode .
+
+<8F461F97-D688-40A1-BB9C-E3987167260E_TN> a cim:TopologicalNode .
+
+<91B8A157-68CB-489F-9E14-A59C6776A000_TN> a cim:TopologicalNode .
+
+<944A1E0F-5E11-4848-A348-E55125A54460_TN> a cim:TopologicalNode .
+
+<95B19311-F051-4E6F-A3E8-812C0A0D9215_TN> a cim:TopologicalNode .
+
+<97C59173-F37B-43C2-918C-258C5CE92460_TN> a cim:TopologicalNode .
+
+<995BA03C-32EE-429D-8AC8-CF3E7B04833D_TN> a cim:TopologicalNode .
+
+<9A0C592D-3424-4EA2-96CB-98FE1BEBA52C_TN> a cim:TopologicalNode .
+
+<9C83A8E3-2541-4BAE-9E8F-851255D449D5_TN> a cim:TopologicalNode .
+
+<9D4A195A-7AF4-415D-B55E-5D3665842E46_TN> a cim:TopologicalNode .
+
+<9D63E2C2-6E35-4319-B0CA-A781AE7857D1_TN> a cim:TopologicalNode .
+
+<9F53B8F5-4883-4409-B6AC-F29DB6603565_TN> a cim:TopologicalNode .
+
+<A250909E-6E48-4D34-9B4B-4E138B35A804_TN> a cim:TopologicalNode .
+
+<A2CD9DEF-F339-4260-9D1C-18228C7B1B28_TN> a cim:TopologicalNode .
+
+<A3CB96EE-DB99-4A6E-A8B2-E8C8C79DFE70_TN> a cim:TopologicalNode .
+
+<A45C8A67-0F2E-4DDB-9E1E-F2A8CBA0FB22_TN> a cim:TopologicalNode .
+
+<A51C2AAB-0336-4E17-84CA-1951ADCF5474_TN> a cim:TopologicalNode .
+
+<A536F263-AA7D-4768-9CE4-1E62EAED00FD_TN> a cim:TopologicalNode .
+
+<A74D7496-813B-4F28-B09F-A6A274701B24_TN> a cim:TopologicalNode .
+
+<A8E68101-C6C6-40D1-A91A-A1DBD3BC1140_TN> a cim:TopologicalNode .
+
+<AA0DAB76-3586-4362-9D36-8AD2DAF73494_TN> a cim:TopologicalNode .
+
+<ABBE7701-3127-4792-8C25-DD221167F071_TN> a cim:TopologicalNode .
+
+<ABDE259A-7608-45DE-9006-F0C7A0E755A0_TN> a cim:TopologicalNode .
+
+<AC2C5DBB-AA95-4E34-B549-ABBB1C46A0B4_TN> a cim:TopologicalNode .
+
+<AD5E3B9C-BAE2-436B-ACBD-517BF90BB2CB_TN> a cim:TopologicalNode .
+
+<ADCBC5D8-53F7-4E4A-8AFB-1CB511D17E70_TN> a cim:TopologicalNode .
+
+<AEEEBC4C-0AEC-4F52-A400-CCE5FAD28FC6_TN> a cim:TopologicalNode .
+
+<B26E1176-16F4-40E7-ABBB-F05D18E3770B_TN> a cim:TopologicalNode .
+
+<B2FB721B-900A-45BF-9B1A-57C95DE911C1_TN> a cim:TopologicalNode .
+
+<B4909CAB-3D03-4CA0-B55E-FBDC132F9049_TN> a cim:TopologicalNode .
+
+<B5F5DE6C-0F4A-424A-9649-65E4BAD10FAE_TN> a cim:TopologicalNode .
+
+<B7799787-5209-4FE7-88C5-55BD9B4B95A0_TN> a cim:TopologicalNode .
+
+<B7D4C1AA-2307-4F6A-83B1-DA9BC4130485_TN> a cim:TopologicalNode .
+
+<B9C88563-B06E-4141-BEF3-7B819D784226_TN> a cim:TopologicalNode .
+
+<B9DFB02A-3D50-4374-9F5D-84573B20A1D5_TN> a cim:TopologicalNode .
+
+<BE0231E9-1ADD-4B71-8AAD-FFB7E584B494_TN> a cim:TopologicalNode .
+
+<C0564AC0-8411-4769-B737-6B7FE904B99D_TN> a cim:TopologicalNode .
+
+<C06FA1DE-8EF2-49EA-B780-8744352D55AE_TN> a cim:TopologicalNode .
+
+<C4A1E10B-4B14-492C-AD81-9D84BF186DC8_TN> a cim:TopologicalNode .
+
+<C51BDCBE-A3B9-4196-BF0C-5856B9DAD216_TN> a cim:TopologicalNode .
+
+<C6E2A26D-9DAA-417B-ABC5-B6741FB6F2A6_TN> a cim:TopologicalNode .
+
+<C7F5FB6B-9828-41BE-9A48-5A7F32F2F710_TN> a cim:TopologicalNode .
+
+<C7FA8380-87E7-4C58-AFA0-8B2FD475ACB3_TN> a cim:TopologicalNode .
+
+<C8F12AB1-3F23-40FE-AB0A-E100FF5C39D6_TN> a cim:TopologicalNode .
+
+<C9C8744B-3E07-4208-904F-7ADBF3827C05_TN> a cim:TopologicalNode .
+
+<CA8C8DF4-5567-4570-BA34-517016674637_TN> a cim:TopologicalNode .
+
+<D0A10CC7-D8AD-4215-8E4B-3C1AD7A5CA6E_TN> a cim:TopologicalNode .
+
+<D216025C-AB98-416F-8521-0F54ED29A61F_TN> a cim:TopologicalNode .
+
+<D647434F-8A3B-43F5-AD5E-253C8735CF97_TN> a cim:TopologicalNode .
+
+<D6C6DD4F-36ED-4C67-9D75-050E3BD93637_TN> a cim:TopologicalNode .
+
+<D8011774-950E-4A18-BFFD-C638E4D60BA6_TN> a cim:TopologicalNode .
+
+<D82EB6B3-0AB9-4492-97A5-27B1C4F0DF99_TN> a cim:TopologicalNode .
+
+<D878B1C6-9388-4B7F-AF4E-56B7CC00D17B_TN> a cim:TopologicalNode .
+
+<D889D2DC-4E85-4E24-97EB-D7303255F0B5_TN> a cim:TopologicalNode .
+
+<D8E901A6-D115-443F-966F-86978DA79F41_TN> a cim:TopologicalNode .
+
+<D99E5D0B-8D72-4E45-BCA1-813BC1F07349_TN> a cim:TopologicalNode .
+
+<D9D84DC9-3C17-4186-8CE0-45C62EF5EDE8_TN> a cim:TopologicalNode .
+
+<DAA0066C-3EDB-4498-929B-0B0F0D8E12FD_TN> a cim:TopologicalNode .
+
+<DB17FA1E-4C06-4979-9DC7-8A0B446AD712_TN> a cim:TopologicalNode .
+
+<DFD79262-86EE-494A-ACEA-4CE448E18715_TN> a cim:TopologicalNode .
+
+<E1AC9427-5D80-4AA2-87CD-40BC030388FD_TN> a cim:TopologicalNode .
+
+<E2773AC8-47FE-42A0-97F4-799E366CB038_TN> a cim:TopologicalNode .
+
+<E39441DB-CA45-46EA-B90C-9C8030BF41ED_TN> a cim:TopologicalNode .
+
+<E4C6346D-936F-4437-A7B6-F700BC3CCCAC_TN> a cim:TopologicalNode .
+
+<E5590BDA-6BDB-4B8A-88A6-62A522A76002_TN> a cim:TopologicalNode .
+
+<E57064EF-43BD-4690-B668-88E86D2E3E3A_TN> a cim:TopologicalNode .
+
+<E684D319-A57C-4FF9-95A7-5C92115EF8A2_TN> a cim:TopologicalNode .
+
+<E709E8F9-AE38-4A89-AD48-3044CCEA1963_TN> a cim:TopologicalNode .
+
+<E831340A-31F5-46AD-8F68-2CE3C706C106_TN> a cim:TopologicalNode .
+
+<E8D30B73-D879-46F9-8FC1-9C5FB824D043_TN> a cim:TopologicalNode .
+
+<E9974592-33C7-4BF6-AE6F-05D7E3C68761_TN> a cim:TopologicalNode .
+
+<EA8D77D7-0221-4646-908D-FE2E127FAE35_TN> a cim:TopologicalNode .
+
+<EABC958B-8F75-4774-BB51-C1F6DB859135_TN> a cim:TopologicalNode .
+
+<EBB59E5E-7434-4E4E-9EC0-7C0A3ECCD621_TN> a cim:TopologicalNode .
+
+<EC2E4BF2-6C48-413A-9A21-FDCFC5326559_TN> a cim:TopologicalNode .
+
+<ED4A70E7-1169-4F7B-8508-C32469E01CC0_TN> a cim:TopologicalNode .
+
+<F1BC13A2-B01A-405B-9B1A-E0BE7B447C2F_TN> a cim:TopologicalNode .
+
+<F59B21FA-7BF2-4B5F-9E4E-5D367D0ADC89_TN> a cim:TopologicalNode .
+
+<F6248BB9-8BDA-4C1B-8D68-46487E9209D6_TN> a cim:TopologicalNode .
+
+<F71B99F1-C168-4CCC-808F-D0534E06E45C_TN> a cim:TopologicalNode .
+
+<F8EE60F6-4661-47BE-9517-BDCF32752F70_TN> a cim:TopologicalNode .
+
+<F9752C1D-A718-4D8A-A740-D3E2332654D9_TN> a cim:TopologicalNode .
+
+<FCE91F21-D3C5-4FBA-B54B-FBD6B76F73F7_TN> a cim:TopologicalNode .
+
+<FE0885F0-E134-4BBE-AA54-1747F5054049_TN> a cim:TopologicalNode .
+
+<FFD2DC87-5D13-401D-AA71-7774E44B88C5_TN> a cim:TopologicalNode .
+
+<FFEAC9B2-BFA8-4077-8E8E-5C390E18DB8C_TN> a cim:TopologicalNode .
+
+<01DD70D7-1101-417D-9301-5F15252519D5> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <01DD70D7-1101-417D-9301-5F15252519D5_TN> .
+
+<02CE8ED4-00A8-4078-B4AC-DD28915087B8> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <02CE8ED4-00A8-4078-B4AC-DD28915087B8_TN> .
+
+<03BDD171-2042-4E30-AE24-226D4D048B4F> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <03BDD171-2042-4E30-AE24-226D4D048B4F_TN> .
+
+<043F1C1A-D23E-44F5-83E0-A4A3558D3892> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <043F1C1A-D23E-44F5-83E0-A4A3558D3892_TN> .
+
+<0656B6F9-F282-42DD-B24B-AD5F46F79913> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <0656B6F9-F282-42DD-B24B-AD5F46F79913_TN> .
+
+<0669852C-2576-4F88-A164-23F0E16EBE6F> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <0669852C-2576-4F88-A164-23F0E16EBE6F_TN> .
+
+<0714FE46-4245-46B0-A912-CEF95F283492> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <0714FE46-4245-46B0-A912-CEF95F283492_TN> .
+
+<074DAD71-0F71-4565-AD94-EBD4C3AD40D6> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <074DAD71-0F71-4565-AD94-EBD4C3AD40D6_TN> .
+
+<08CC33E3-30A1-4810-86DF-E5BCB1766499> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <08CC33E3-30A1-4810-86DF-E5BCB1766499_TN> .
+
+<092E07AF-91C3-41DF-8E56-E76EC94CCB4C> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <092E07AF-91C3-41DF-8E56-E76EC94CCB4C_TN> .
+
+<09500BDB-1C78-43D9-9AD6-DB6A665135D4> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <09500BDB-1C78-43D9-9AD6-DB6A665135D4_TN> .
+
+<0960EF82-D800-49EE-89B7-C3D7C4A328FB> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <0960EF82-D800-49EE-89B7-C3D7C4A328FB_TN> .
+
+<0B6067E0-8B01-4BF2-9577-16F93EB10DAA> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <0B6067E0-8B01-4BF2-9577-16F93EB10DAA_TN> .
+
+<0B62EC6E-7FF2-4E9B-8F90-BC414A9F2C3D> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <0B62EC6E-7FF2-4E9B-8F90-BC414A9F2C3D_TN> .
+
+<0C36B18C-8460-4AB5-BE01-F1A9725F7750> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <0C36B18C-8460-4AB5-BE01-F1A9725F7750_TN> .
+
+<0FCDFEB5-4C9E-47F0-9FBB-4F3E1D8A6CA9> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <0FCDFEB5-4C9E-47F0-9FBB-4F3E1D8A6CA9_TN> .
+
+<12C436BC-F0C7-4585-A312-8992B47E483F> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <12C436BC-F0C7-4585-A312-8992B47E483F_TN> .
+
+<13E0B318-149F-4FBD-9A40-E8B1ED560A2F> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <13E0B318-149F-4FBD-9A40-E8B1ED560A2F_TN> .
+
+<140A96A2-DC1A-4DFC-B51D-96AEFA18E90D> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <140A96A2-DC1A-4DFC-B51D-96AEFA18E90D_TN> .
+
+<14D7CD96-E2E7-4DBC-A558-DE159A21ACCC> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <14D7CD96-E2E7-4DBC-A558-DE159A21ACCC_TN> .
+
+<1588A7B3-52C6-42A0-9986-A2CFDB61D821> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <1588A7B3-52C6-42A0-9986-A2CFDB61D821_TN> .
+
+<18961801-9D07-4D25-93E3-2A8CB866B49D> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <18961801-9D07-4D25-93E3-2A8CB866B49D_TN> .
+
+<189D5CE3-975E-4B00-9E06-7F8DF3CF0F11> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <189D5CE3-975E-4B00-9E06-7F8DF3CF0F11_TN> .
+
+<1ECA0F0B-4BED-4019-AEBE-C5B0BCB1F578> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <1ECA0F0B-4BED-4019-AEBE-C5B0BCB1F578_TN> .
+
+<1F0431FD-AE3A-4E13-9BCE-1BC6B8CE1A69> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <1F0431FD-AE3A-4E13-9BCE-1BC6B8CE1A69_TN> .
+
+<203C3FAD-8AA4-42CC-BF97-8FD9E9A63C0C> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <203C3FAD-8AA4-42CC-BF97-8FD9E9A63C0C_TN> .
+
+<2041413B-3BB7-4124-B6D9-CE6A9DDDDED3> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <2041413B-3BB7-4124-B6D9-CE6A9DDDDED3_TN> .
+
+<209ADEDC-536B-4687-89D3-7051B272F319> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <209ADEDC-536B-4687-89D3-7051B272F319_TN> .
+
+<20F4F03F-E253-4956-8E48-6C4640C094E8> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <20F4F03F-E253-4956-8E48-6C4640C094E8_TN> .
+
+<21211A63-6772-4F25-A406-7E27D2BE3507> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <21211A63-6772-4F25-A406-7E27D2BE3507_TN> .
+
+<216D6B0E-2306-4EB1-97A8-09F387F0AC90> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <216D6B0E-2306-4EB1-97A8-09F387F0AC90_TN> .
+
+<27853610-B4B4-4896-9156-F068CC6F3C41> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <27853610-B4B4-4896-9156-F068CC6F3C41_TN> .
+
+<2B26B191-1683-4804-B190-47A32A1C8741> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <2B26B191-1683-4804-B190-47A32A1C8741_TN> .
+
+<2BE1FD98-90FF-4B9E-9B29-C2259BAFA511> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <2BE1FD98-90FF-4B9E-9B29-C2259BAFA511_TN> .
+
+<2D043FF1-406D-4CED-982A-76217FB45745> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <2D043FF1-406D-4CED-982A-76217FB45745_TN> .
+
+<2E65B331-D95A-494F-A26B-5D9B0B3ED4E5> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <2E65B331-D95A-494F-A26B-5D9B0B3ED4E5_TN> .
+
+<2F9554EB-4337-489B-ADC0-73192F236790> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <2F9554EB-4337-489B-ADC0-73192F236790_TN> .
+
+<2FD31260-7878-4153-825C-1A09B9ED013C> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <2FD31260-7878-4153-825C-1A09B9ED013C_TN> .
+
+<30C7B932-36BB-42C8-9BED-44072759A8CA> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <30C7B932-36BB-42C8-9BED-44072759A8CA_TN> .
+
+<30D7BFF6-FC46-415B-B99C-56364A485FB6> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <30D7BFF6-FC46-415B-B99C-56364A485FB6_TN> .
+
+<31AEF46D-1008-4004-874C-FF67ECD8C4EC> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <31AEF46D-1008-4004-874C-FF67ECD8C4EC_TN> .
+
+<324DA15C-891F-4372-B016-B4125A295B35> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <324DA15C-891F-4372-B016-B4125A295B35_TN> .
+
+<32FE0EF3-62F6-459B-9E22-CAC689DEEF75> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <32FE0EF3-62F6-459B-9E22-CAC689DEEF75_TN> .
+
+<34B76E51-B7B8-463F-8C29-CB7155105B74> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <34B76E51-B7B8-463F-8C29-CB7155105B74_TN> .
+
+<360B9B5C-AA0F-4645-B2CD-EB206B407DC8> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <360B9B5C-AA0F-4645-B2CD-EB206B407DC8_TN> .
+
+<3B79813D-3949-4405-8970-753D8E9C54DD> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <3B79813D-3949-4405-8970-753D8E9C54DD_TN> .
+
+<3BEB2147-E83B-45AE-9D68-023B21ACFBB8> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <3BEB2147-E83B-45AE-9D68-023B21ACFBB8_TN> .
+
+<3DC62CFD-3FE0-4C87-B49D-4B090C724E3F> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <3DC62CFD-3FE0-4C87-B49D-4B090C724E3F_TN> .
+
+<3E5202E6-4EB3-44D9-BA80-7D920083F62C> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <3E5202E6-4EB3-44D9-BA80-7D920083F62C_TN> .
+
+<3ED69350-4197-40A2-801D-C1FD01346C37> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <3ED69350-4197-40A2-801D-C1FD01346C37_TN> .
+
+<3FD3F065-4DF7-480C-ACAF-1D30382A7422> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <3FD3F065-4DF7-480C-ACAF-1D30382A7422_TN> .
+
+<41AF1AFE-B4AE-4CC1-A3E0-D6314EBAB681> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <41AF1AFE-B4AE-4CC1-A3E0-D6314EBAB681_TN> .
+
+<45861E66-50EC-4DB0-B8CC-B5CA72FEE053> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <45861E66-50EC-4DB0-B8CC-B5CA72FEE053_TN> .
+
+<4840567B-8B2E-40E6-BC12-81D00D9E534E> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <4840567B-8B2E-40E6-BC12-81D00D9E534E_TN> .
+
+<48CF6A2A-59CD-46E4-AF19-88A52D313796> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <48CF6A2A-59CD-46E4-AF19-88A52D313796_TN> .
+
+<49C0544D-452E-42C3-97A9-202D0BA43969> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <49C0544D-452E-42C3-97A9-202D0BA43969_TN> .
+
+<4B1B751D-931A-4F88-9C71-C7F566B3E7B0> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <4B1B751D-931A-4F88-9C71-C7F566B3E7B0_TN> .
+
+<4B744D65-35F8-4DDB-B554-AAAE115A6927> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <4B744D65-35F8-4DDB-B554-AAAE115A6927_TN> .
+
+<4D002654-B2B4-42C9-81EC-917184A8659E> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <4D002654-B2B4-42C9-81EC-917184A8659E_TN> .
+
+<501C2E7C-0F1F-47CF-9079-957CD8F0A577> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <501C2E7C-0F1F-47CF-9079-957CD8F0A577_TN> .
+
+<509CAC7B-DC02-491E-A70F-F598020F6CF3> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <509CAC7B-DC02-491E-A70F-F598020F6CF3_TN> .
+
+<510B8BF8-A411-4267-B6B2-A84E438751CD> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <510B8BF8-A411-4267-B6B2-A84E438751CD_TN> .
+
+<510DD78E-7A28-432F-B3CD-68A43876AB83> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <510DD78E-7A28-432F-B3CD-68A43876AB83_TN> .
+
+<5140BAF6-AE26-4F22-93D8-646A1BDB1460> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <5140BAF6-AE26-4F22-93D8-646A1BDB1460_TN> .
+
+<5409CFF5-B309-4904-81EE-0C66277B03D6> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <5409CFF5-B309-4904-81EE-0C66277B03D6_TN> .
+
+<57BF892F-264B-43D0-A8E0-6B5F62C0562F> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <57BF892F-264B-43D0-A8E0-6B5F62C0562F_TN> .
+
+<5A880B83-D621-4436-9663-44A7452ED909> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <5A880B83-D621-4436-9663-44A7452ED909_TN> .
+
+<5B05EA35-CC73-416F-881F-EC624AD50C77> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <5B05EA35-CC73-416F-881F-EC624AD50C77_TN> .
+
+<5C74704E-E0B3-4130-AFC3-929FAB875530> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <5C74704E-E0B3-4130-AFC3-929FAB875530_TN> .
+
+<5C7DF74D-76E9-4C05-8AD7-AB414D704183> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <5C7DF74D-76E9-4C05-8AD7-AB414D704183_TN> .
+
+<5FFAEBAC-6082-4A8F-B9E1-E3934A37BEF7> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <5FFAEBAC-6082-4A8F-B9E1-E3934A37BEF7_TN> .
+
+<62470EDD-3C17-4336-83E0-2B94FA6D2182> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <62470EDD-3C17-4336-83E0-2B94FA6D2182_TN> .
+
+<638973B4-A4D2-4E73-9264-3682F9D321A0> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <638973B4-A4D2-4E73-9264-3682F9D321A0_TN> .
+
+<651B79E5-9C01-40ED-BE3F-BD5F4821840F> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <651B79E5-9C01-40ED-BE3F-BD5F4821840F_TN> .
+
+<65259240-DA2E-492B-8804-CAC2A970142E> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <65259240-DA2E-492B-8804-CAC2A970142E_TN> .
+
+<678CF40F-A28F-4813-A9E7-C7DAD6E698B0> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <678CF40F-A28F-4813-A9E7-C7DAD6E698B0_TN> .
+
+<686B1CD1-21E6-40AC-A05B-7C65A71F6C83> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <686B1CD1-21E6-40AC-A05B-7C65A71F6C83_TN> .
+
+<697F9013-B904-405F-86D9-8F3BC0F1990B> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <697F9013-B904-405F-86D9-8F3BC0F1990B_TN> .
+
+<6B0332DF-9B96-42BB-BF68-E1919895AFDB> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <6B0332DF-9B96-42BB-BF68-E1919895AFDB_TN> .
+
+<6C7523EE-785B-429E-850F-CABFE5D33AF5> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <6C7523EE-785B-429E-850F-CABFE5D33AF5_TN> .
+
+<6DB5286A-2890-4B4F-8561-E13F4E91F04E> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <6DB5286A-2890-4B4F-8561-E13F4E91F04E_TN> .
+
+<6F33F207-5DBD-467D-8DE4-8D37B4E615DE> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <6F33F207-5DBD-467D-8DE4-8D37B4E615DE_TN> .
+
+<72A50108-1242-4D3E-8987-3FA8433BFE91> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <72A50108-1242-4D3E-8987-3FA8433BFE91_TN> .
+
+<74681864-BC8D-476F-A8DC-DAE61BE752CE> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <74681864-BC8D-476F-A8DC-DAE61BE752CE_TN> .
+
+<768C9A60-CA63-4649-92F7-BA595D68B8FC> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <768C9A60-CA63-4649-92F7-BA595D68B8FC_TN> .
+
+<76DB6EFA-D4BA-4CD9-B934-26CB5015C39E> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <76DB6EFA-D4BA-4CD9-B934-26CB5015C39E_TN> .
+
+<77056770-4E87-43AE-A4B7-80EF67FEDE1B> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <77056770-4E87-43AE-A4B7-80EF67FEDE1B_TN> .
+
+<77068F76-B8E8-49E0-A76D-1EB981237BD7> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <77068F76-B8E8-49E0-A76D-1EB981237BD7_TN> .
+
+<77F45203-9149-464D-B4EB-7CD78CE8514A> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <77F45203-9149-464D-B4EB-7CD78CE8514A_TN> .
+
+<78178EB2-515C-40C1-9EF5-D93C1915B736> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <78178EB2-515C-40C1-9EF5-D93C1915B736_TN> .
+
+<79BADDF4-516D-40C6-A7EA-A3848EC788B3> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <79BADDF4-516D-40C6-A7EA-A3848EC788B3_TN> .
+
+<7AA5117E-EAC5-4ABE-BD3F-89A0BFB2D679> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <7AA5117E-EAC5-4ABE-BD3F-89A0BFB2D679_TN> .
+
+<7ACB1FEB-4EE6-4BC5-817E-4D74D2338003> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <7ACB1FEB-4EE6-4BC5-817E-4D74D2338003_TN> .
+
+<7AE43335-8225-455D-B3C4-EA108A8AFB2B> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <7AE43335-8225-455D-B3C4-EA108A8AFB2B_TN> .
+
+<7D23EFEF-9560-4034-A9C4-298F6B8FC70D> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <7D23EFEF-9560-4034-A9C4-298F6B8FC70D_TN> .
+
+<7DCDDED9-AB17-4F5F-9B4D-47118B52349C> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <7DCDDED9-AB17-4F5F-9B4D-47118B52349C_TN> .
+
+<7E2C958D-EFC3-4EB3-B622-B6049DFE0F2E> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <7E2C958D-EFC3-4EB3-B622-B6049DFE0F2E_TN> .
+
+<7F2219A4-4C74-423F-BADF-48B38456F68D> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <7F2219A4-4C74-423F-BADF-48B38456F68D_TN> .
+
+<8437DFEF-68D9-4BFF-AA7B-EBA864F79C36> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <8437DFEF-68D9-4BFF-AA7B-EBA864F79C36_TN> .
+
+<84CE4EC4-55E3-4A5C-AD8D-06A7BDC8848E> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <84CE4EC4-55E3-4A5C-AD8D-06A7BDC8848E_TN> .
+
+<851139CA-C7B7-4E9D-87E0-0F65192D78D0> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <851139CA-C7B7-4E9D-87E0-0F65192D78D0_TN> .
+
+<85381297-51EA-4EBF-9D37-F0BA9D2E1ED8> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <85381297-51EA-4EBF-9D37-F0BA9D2E1ED8_TN> .
+
+<890468B2-A06F-4ACD-89BD-5C39434ED2BB> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <890468B2-A06F-4ACD-89BD-5C39434ED2BB_TN> .
+
+<8A2DDCFF-805F-40FD-88AB-1BF1E752DF98> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <8A2DDCFF-805F-40FD-88AB-1BF1E752DF98_TN> .
+
+<8CFF3204-84BC-40A4-87CF-8B45321BFEFA> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <8CFF3204-84BC-40A4-87CF-8B45321BFEFA_TN> .
+
+<8D3345D9-E18E-4CFF-85BC-BCEDAE4F1E14> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <8D3345D9-E18E-4CFF-85BC-BCEDAE4F1E14_TN> .
+
+<8DE9F12C-9BE6-4498-8754-24E6C943F9F4> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <8DE9F12C-9BE6-4498-8754-24E6C943F9F4_TN> .
+
+<8DFC5E82-6987-4CDC-A143-210F22564C8D> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <8DFC5E82-6987-4CDC-A143-210F22564C8D_TN> .
+
+<8F461F97-D688-40A1-BB9C-E3987167260E> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <8F461F97-D688-40A1-BB9C-E3987167260E_TN> .
+
+<91B8A157-68CB-489F-9E14-A59C6776A000> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <91B8A157-68CB-489F-9E14-A59C6776A000_TN> .
+
+<944A1E0F-5E11-4848-A348-E55125A54460> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <944A1E0F-5E11-4848-A348-E55125A54460_TN> .
+
+<95B19311-F051-4E6F-A3E8-812C0A0D9215> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <95B19311-F051-4E6F-A3E8-812C0A0D9215_TN> .
+
+<97C59173-F37B-43C2-918C-258C5CE92460> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <97C59173-F37B-43C2-918C-258C5CE92460_TN> .
+
+<995BA03C-32EE-429D-8AC8-CF3E7B04833D> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <995BA03C-32EE-429D-8AC8-CF3E7B04833D_TN> .
+
+<9A0C592D-3424-4EA2-96CB-98FE1BEBA52C> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <9A0C592D-3424-4EA2-96CB-98FE1BEBA52C_TN> .
+
+<9C83A8E3-2541-4BAE-9E8F-851255D449D5> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <9C83A8E3-2541-4BAE-9E8F-851255D449D5_TN> .
+
+<9D4A195A-7AF4-415D-B55E-5D3665842E46> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <9D4A195A-7AF4-415D-B55E-5D3665842E46_TN> .
+
+<9D63E2C2-6E35-4319-B0CA-A781AE7857D1> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <9D63E2C2-6E35-4319-B0CA-A781AE7857D1_TN> .
+
+<9F53B8F5-4883-4409-B6AC-F29DB6603565> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <9F53B8F5-4883-4409-B6AC-F29DB6603565_TN> .
+
+<A250909E-6E48-4D34-9B4B-4E138B35A804> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <A250909E-6E48-4D34-9B4B-4E138B35A804_TN> .
+
+<A2CD9DEF-F339-4260-9D1C-18228C7B1B28> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <A2CD9DEF-F339-4260-9D1C-18228C7B1B28_TN> .
+
+<A3CB96EE-DB99-4A6E-A8B2-E8C8C79DFE70> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <A3CB96EE-DB99-4A6E-A8B2-E8C8C79DFE70_TN> .
+
+<A45C8A67-0F2E-4DDB-9E1E-F2A8CBA0FB22> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <A45C8A67-0F2E-4DDB-9E1E-F2A8CBA0FB22_TN> .
+
+<A51C2AAB-0336-4E17-84CA-1951ADCF5474> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <A51C2AAB-0336-4E17-84CA-1951ADCF5474_TN> .
+
+<A536F263-AA7D-4768-9CE4-1E62EAED00FD> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <A536F263-AA7D-4768-9CE4-1E62EAED00FD_TN> .
+
+<A74D7496-813B-4F28-B09F-A6A274701B24> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <A74D7496-813B-4F28-B09F-A6A274701B24_TN> .
+
+<A8E68101-C6C6-40D1-A91A-A1DBD3BC1140> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <A8E68101-C6C6-40D1-A91A-A1DBD3BC1140_TN> .
+
+<AA0DAB76-3586-4362-9D36-8AD2DAF73494> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <AA0DAB76-3586-4362-9D36-8AD2DAF73494_TN> .
+
+<ABBE7701-3127-4792-8C25-DD221167F071> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <ABBE7701-3127-4792-8C25-DD221167F071_TN> .
+
+<ABDE259A-7608-45DE-9006-F0C7A0E755A0> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <ABDE259A-7608-45DE-9006-F0C7A0E755A0_TN> .
+
+<AC2C5DBB-AA95-4E34-B549-ABBB1C46A0B4> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <AC2C5DBB-AA95-4E34-B549-ABBB1C46A0B4_TN> .
+
+<AD5E3B9C-BAE2-436B-ACBD-517BF90BB2CB> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <AD5E3B9C-BAE2-436B-ACBD-517BF90BB2CB_TN> .
+
+<ADCBC5D8-53F7-4E4A-8AFB-1CB511D17E70> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <ADCBC5D8-53F7-4E4A-8AFB-1CB511D17E70_TN> .
+
+<AEEEBC4C-0AEC-4F52-A400-CCE5FAD28FC6> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <AEEEBC4C-0AEC-4F52-A400-CCE5FAD28FC6_TN> .
+
+<B26E1176-16F4-40E7-ABBB-F05D18E3770B> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <B26E1176-16F4-40E7-ABBB-F05D18E3770B_TN> .
+
+<B2FB721B-900A-45BF-9B1A-57C95DE911C1> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <B2FB721B-900A-45BF-9B1A-57C95DE911C1_TN> .
+
+<B4909CAB-3D03-4CA0-B55E-FBDC132F9049> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <B4909CAB-3D03-4CA0-B55E-FBDC132F9049_TN> .
+
+<B5F5DE6C-0F4A-424A-9649-65E4BAD10FAE> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <B5F5DE6C-0F4A-424A-9649-65E4BAD10FAE_TN> .
+
+<B7799787-5209-4FE7-88C5-55BD9B4B95A0> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <B7799787-5209-4FE7-88C5-55BD9B4B95A0_TN> .
+
+<B7D4C1AA-2307-4F6A-83B1-DA9BC4130485> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <B7D4C1AA-2307-4F6A-83B1-DA9BC4130485_TN> .
+
+<B9C88563-B06E-4141-BEF3-7B819D784226> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <B9C88563-B06E-4141-BEF3-7B819D784226_TN> .
+
+<B9DFB02A-3D50-4374-9F5D-84573B20A1D5> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <B9DFB02A-3D50-4374-9F5D-84573B20A1D5_TN> .
+
+<BE0231E9-1ADD-4B71-8AAD-FFB7E584B494> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <BE0231E9-1ADD-4B71-8AAD-FFB7E584B494_TN> .
+
+<C0564AC0-8411-4769-B737-6B7FE904B99D> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <C0564AC0-8411-4769-B737-6B7FE904B99D_TN> .
+
+<C06FA1DE-8EF2-49EA-B780-8744352D55AE> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <C06FA1DE-8EF2-49EA-B780-8744352D55AE_TN> .
+
+<C4A1E10B-4B14-492C-AD81-9D84BF186DC8> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <C4A1E10B-4B14-492C-AD81-9D84BF186DC8_TN> .
+
+<C51BDCBE-A3B9-4196-BF0C-5856B9DAD216> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <C51BDCBE-A3B9-4196-BF0C-5856B9DAD216_TN> .
+
+<C6E2A26D-9DAA-417B-ABC5-B6741FB6F2A6> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <C6E2A26D-9DAA-417B-ABC5-B6741FB6F2A6_TN> .
+
+<C7F5FB6B-9828-41BE-9A48-5A7F32F2F710> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <C7F5FB6B-9828-41BE-9A48-5A7F32F2F710_TN> .
+
+<C7FA8380-87E7-4C58-AFA0-8B2FD475ACB3> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <C7FA8380-87E7-4C58-AFA0-8B2FD475ACB3_TN> .
+
+<C8F12AB1-3F23-40FE-AB0A-E100FF5C39D6> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <C8F12AB1-3F23-40FE-AB0A-E100FF5C39D6_TN> .
+
+<C9C8744B-3E07-4208-904F-7ADBF3827C05> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <C9C8744B-3E07-4208-904F-7ADBF3827C05_TN> .
+
+<CA8C8DF4-5567-4570-BA34-517016674637> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <CA8C8DF4-5567-4570-BA34-517016674637_TN> .
+
+<D0A10CC7-D8AD-4215-8E4B-3C1AD7A5CA6E> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <D0A10CC7-D8AD-4215-8E4B-3C1AD7A5CA6E_TN> .
+
+<D216025C-AB98-416F-8521-0F54ED29A61F> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <D216025C-AB98-416F-8521-0F54ED29A61F_TN> .
+
+<D647434F-8A3B-43F5-AD5E-253C8735CF97> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <D647434F-8A3B-43F5-AD5E-253C8735CF97_TN> .
+
+<D6C6DD4F-36ED-4C67-9D75-050E3BD93637> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <D6C6DD4F-36ED-4C67-9D75-050E3BD93637_TN> .
+
+<D8011774-950E-4A18-BFFD-C638E4D60BA6> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <D8011774-950E-4A18-BFFD-C638E4D60BA6_TN> .
+
+<D82EB6B3-0AB9-4492-97A5-27B1C4F0DF99> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <D82EB6B3-0AB9-4492-97A5-27B1C4F0DF99_TN> .
+
+<D878B1C6-9388-4B7F-AF4E-56B7CC00D17B> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <D878B1C6-9388-4B7F-AF4E-56B7CC00D17B_TN> .
+
+<D889D2DC-4E85-4E24-97EB-D7303255F0B5> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <D889D2DC-4E85-4E24-97EB-D7303255F0B5_TN> .
+
+<D8E901A6-D115-443F-966F-86978DA79F41> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <D8E901A6-D115-443F-966F-86978DA79F41_TN> .
+
+<D99E5D0B-8D72-4E45-BCA1-813BC1F07349> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <D99E5D0B-8D72-4E45-BCA1-813BC1F07349_TN> .
+
+<D9D84DC9-3C17-4186-8CE0-45C62EF5EDE8> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <D9D84DC9-3C17-4186-8CE0-45C62EF5EDE8_TN> .
+
+<DAA0066C-3EDB-4498-929B-0B0F0D8E12FD> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <DAA0066C-3EDB-4498-929B-0B0F0D8E12FD_TN> .
+
+<DB17FA1E-4C06-4979-9DC7-8A0B446AD712> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <DB17FA1E-4C06-4979-9DC7-8A0B446AD712_TN> .
+
+<DFD79262-86EE-494A-ACEA-4CE448E18715> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <DFD79262-86EE-494A-ACEA-4CE448E18715_TN> .
+
+<E1AC9427-5D80-4AA2-87CD-40BC030388FD> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <E1AC9427-5D80-4AA2-87CD-40BC030388FD_TN> .
+
+<E2773AC8-47FE-42A0-97F4-799E366CB038> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <E2773AC8-47FE-42A0-97F4-799E366CB038_TN> .
+
+<E39441DB-CA45-46EA-B90C-9C8030BF41ED> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <E39441DB-CA45-46EA-B90C-9C8030BF41ED_TN> .
+
+<E4C6346D-936F-4437-A7B6-F700BC3CCCAC> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <E4C6346D-936F-4437-A7B6-F700BC3CCCAC_TN> .
+
+<E5590BDA-6BDB-4B8A-88A6-62A522A76002> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <E5590BDA-6BDB-4B8A-88A6-62A522A76002_TN> .
+
+<E57064EF-43BD-4690-B668-88E86D2E3E3A> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <E57064EF-43BD-4690-B668-88E86D2E3E3A_TN> .
+
+<E684D319-A57C-4FF9-95A7-5C92115EF8A2> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <E684D319-A57C-4FF9-95A7-5C92115EF8A2_TN> .
+
+<E709E8F9-AE38-4A89-AD48-3044CCEA1963> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <E709E8F9-AE38-4A89-AD48-3044CCEA1963_TN> .
+
+<E831340A-31F5-46AD-8F68-2CE3C706C106> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <E831340A-31F5-46AD-8F68-2CE3C706C106_TN> .
+
+<E8D30B73-D879-46F9-8FC1-9C5FB824D043> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <E8D30B73-D879-46F9-8FC1-9C5FB824D043_TN> .
+
+<E9974592-33C7-4BF6-AE6F-05D7E3C68761> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <E9974592-33C7-4BF6-AE6F-05D7E3C68761_TN> .
+
+<EA8D77D7-0221-4646-908D-FE2E127FAE35> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <EA8D77D7-0221-4646-908D-FE2E127FAE35_TN> .
+
+<EABC958B-8F75-4774-BB51-C1F6DB859135> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <EABC958B-8F75-4774-BB51-C1F6DB859135_TN> .
+
+<EBB59E5E-7434-4E4E-9EC0-7C0A3ECCD621> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <EBB59E5E-7434-4E4E-9EC0-7C0A3ECCD621_TN> .
+
+<EC2E4BF2-6C48-413A-9A21-FDCFC5326559> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <EC2E4BF2-6C48-413A-9A21-FDCFC5326559_TN> .
+
+<ED4A70E7-1169-4F7B-8508-C32469E01CC0> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <ED4A70E7-1169-4F7B-8508-C32469E01CC0_TN> .
+
+<F1BC13A2-B01A-405B-9B1A-E0BE7B447C2F> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <F1BC13A2-B01A-405B-9B1A-E0BE7B447C2F_TN> .
+
+<F59B21FA-7BF2-4B5F-9E4E-5D367D0ADC89> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <F59B21FA-7BF2-4B5F-9E4E-5D367D0ADC89_TN> .
+
+<F6248BB9-8BDA-4C1B-8D68-46487E9209D6> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <F6248BB9-8BDA-4C1B-8D68-46487E9209D6_TN> .
+
+<F71B99F1-C168-4CCC-808F-D0534E06E45C> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <F71B99F1-C168-4CCC-808F-D0534E06E45C_TN> .
+
+<F8EE60F6-4661-47BE-9517-BDCF32752F70> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <F8EE60F6-4661-47BE-9517-BDCF32752F70_TN> .
+
+<F9752C1D-A718-4D8A-A740-D3E2332654D9> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <F9752C1D-A718-4D8A-A740-D3E2332654D9_TN> .
+
+<FCE91F21-D3C5-4FBA-B54B-FBD6B76F73F7> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <FCE91F21-D3C5-4FBA-B54B-FBD6B76F73F7_TN> .
+
+<FE0885F0-E134-4BBE-AA54-1747F5054049> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <FE0885F0-E134-4BBE-AA54-1747F5054049_TN> .
+
+<FFD2DC87-5D13-401D-AA71-7774E44B88C5> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <FFD2DC87-5D13-401D-AA71-7774E44B88C5_TN> .
+
+<FFEAC9B2-BFA8-4077-8E8E-5C390E18DB8C> a cim:ConnectivityNode ;
+    cim:ConnectivityNode.TopologicalNode <FFEAC9B2-BFA8-4077-8E8E-5C390E18DB8C_TN> .
 

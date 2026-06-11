@@ -975,17 +975,18 @@ ORDER BY ?Equipment_mRID ?isInfiniteDuration ?OperationalLimitType_name ?value
 <id>EMTBusVoltage</id>
 <keyfld>mRID</keyfld>
 <description>Bus voltages from power flow in a merged instance, keyed on *ConnectivityNode*.</description>
-<classes>SvVoltage,ConnectivityNode</classes>
+<classes>SvVoltage,ConnectivityNode,TopologicalNode</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?name ?v ?angle WHERE {
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?s c:ConnectivityNode.TopologicalNode ?tn.
  ?s c:ConnectivityNode.ConnectivityNodeContainer ?sys.
  ?s c:IdentifiedObject.mRID ?mRID.
  ?s c:IdentifiedObject.name ?name.
- ?sv e:SvVoltage.ConnectivityNode ?s.
+ ?sv c:SvVoltage.TopologicalNode ?tn.
  ?sv c:SvVoltage.v ?v.
- ?sv c:SvVoltage.angle ?angle.
+ ?sv c:SvVoltage.angle ?angle
 }
 ORDER BY ?name
 ]]>
@@ -1045,14 +1046,15 @@ ORDER BY ?name
 <id>EMTBusVoltageIC</id>
 <keyfld>mRID</keyfld>
 <description>Bus voltages from power flow in a standalone file. Keyed on *ConnectivityNode*. Filtering on *EquipmentContainer* is not supported in standalone IC files.</description>
-<classes>SvVoltage,ConnectivityNode</classes>
+<classes>SvVoltage,ConnectivityNode,TopologicalNode</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?v ?angle WHERE {
- ?sv e:SvVoltage.ConnectivityNode ?cn.
+ ?sv c:SvVoltage.TopologicalNode ?tn.
+ ?cn c:ConnectivityNode.TopologicalNode ?tn.
   bind(substr(str(?cn),strlen(str(?cn))-35) as ?mRID)
  ?sv c:SvVoltage.v ?v.
- ?sv c:SvVoltage.angle ?angle.
+ ?sv c:SvVoltage.angle ?angle
 } ORDER BY ?mRID
 ]]>
 </value>
