@@ -502,7 +502,7 @@ SELECT ?PowerTransformer_name ?PowerTransformer_mRID ?TransformerCoreAdmittance_
  ?end c:PowerTransformerEnd.PowerTransformer ?p.
  ?adm c:TransformerCoreAdmittance.TransformerEnd ?end.
  ?adm c:IdentifiedObject.mRID ?TransformerCoreAdmittance_mRID.
- ?sat e:TransformerSaturation.TransformerCoreAdmittance ?adm.
+ ?sat e:TransformerSaturationCurve.TransformerCoreAdmittance ?adm.
  ?crv c:CurveData.Curve ?sat.
  ?crv c:CurveData.xvalue ?xvalue.
  ?crv c:CurveData.y1value ?y1value.

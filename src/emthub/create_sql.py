@@ -95,7 +95,7 @@ def create_cim_sql (tables, kvbases, bus_kvbases, baseMVA, case):
   # TODO: see if deleting from IdentifiedObject is enough, i.e., cascading deletes will clean out the other tables
   for table_name in ['WeccWTGTA', 'WeccWTGARA', 'WeccREPCA', 'WeccREGCA', 'WeccREECA', 'WeccREEC', 'WeccDynamics',
                      'GovSteamSGO', 'TurbineGovernorDynamics', 'PssIEEE1A', 'PowerSystemStabilizerDynamics',
-                     'ExcST1A', 'ExcitationSystemDynamics', 'TransformerSaturation', 'TransformerMeshImpedance',
+                     'ExcST1A', 'ExcitationSystemDynamics', 'TransformerSaturationCurve', 'TransformerMeshImpedance',
                      'TransformerCoreAdmittance', 'ThermalGeneratingUnit', 'TextDiagramObject', 'SynchronousMachineTimeConstantReactance',
                      'SynchronousMachineDetailed', 'SynchronousMachineDynamics', 'SeriesCompensator', 'RotatingMachineDynamics',
                      'PowerTransformerEnd', 'PowerTransformer', 'PowerElectronicsWindUnit', 'PhotoVoltaicUnit',

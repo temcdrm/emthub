@@ -372,7 +372,7 @@ ORDER BY ?PowerTransformer_name ?FromTransformerEnd_endNumber ?ToTransformerEnd_
 <id>EMTXfmrSaturation</id>
 <keyfld>PowerTransformer_mRID:amps</keyfld>
 <description>Non-linear transformer saturation data. Does not include hysteresis, so the resistive portion of *TransformerCoreAdmittance* should still be included, but this replaces the inductive portion of *TransformerCoreAdmittance*.</description>
-<classes>TransformerSaturation,CurveData</classes>
+<classes>TransformerSaturationCurve,CurveData</classes>
 <value>
 <![CDATA[
 SELECT ?PowerTransformer_name ?PowerTransformer_mRID ?TransformerCoreAdmittance_mRID ?amps ?vs WHERE {
@@ -384,7 +384,7 @@ SELECT ?PowerTransformer_name ?PowerTransformer_mRID ?TransformerCoreAdmittance_
  ?end c:PowerTransformerEnd.PowerTransformer ?p.
  ?adm c:TransformerCoreAdmittance.TransformerEnd ?end.
  ?adm c:IdentifiedObject.mRID ?TransformerCoreAdmittance_mRID.
- ?sat e:TransformerSaturation.TransformerCoreAdmittance ?adm.
+ ?sat e:TransformerSaturationCurve.TransformerCoreAdmittance ?adm.
  ?crv c:CurveData.Curve ?sat.
  ?crv c:CurveData.xvalue ?xvalue.
  ?crv c:CurveData.y1value ?y1value.

@@ -47,6 +47,10 @@ MIN_IMAG = 0.00015
 MIN_PNLL = 0.00010
 TOPEN = 9990.0
 
+# for AC filters in IBR plants
+RMIN = 0.0001
+XMIN = 0.001
+
 MACHINE_NPOLES = 2.0
 MACHINE_H = 3.0
 MACHINE_J = 2.0*MACHINE_H*math.pow(0.5*MACHINE_NPOLES/OMEGA, 2.0) # multiply by RMVA for HICO in million kg-m2
@@ -456,19 +460,8 @@ def AppendDLL (bus, key, d, atp_path, ap):
   dll = d['EMTIEEECigreDLL']['vals'][dll_key]
   dll_path = dll['uri']
   nparms = d['EMTCountDLLParameters']['vals'][dll_key]['count']
-  dcV = atts['dcLinkVoltage']
-  dcCap = atts['dcLinkCapacitance'] * 1.0e6
-  acCap = atts['acFilterCapacitance'] * 1.0e6
-  acRgrid = atts['acFilterLgrid']
-  acXgrid = atts['acFilterLgrid'] * OMEGA
-  if acXgrid < 1.0e-6:
-    acXgrid = 1.0e-6
-  acRbridge = atts['acFilterRbridge']
-  acXbridge = atts['acFilterLbridge'] * OMEGA
-  if acXbridge < 1.0e-6:
-    acXbridge = 1.0e-6
+  dcV = 1200.0 #  atts['dcLinkVoltage']: TODO - need a better way
   swtFreq = atts['switchingFrequency']
-  filterKind = atts['acFilterKind']
   print ('C DLL interface to {:s} follows\nC'.format(os.path.basename (dll_path)), file=ap)
   print ('appending a DLL at', bus, 'from', dll_path, 'with', nparms, 'parameters')
 
@@ -510,26 +503,26 @@ def AppendDLL (bus, key, d, atp_path, ap):
   write_atp_dll_interface (dll_path, atp_path, parms, bus, ap)
 
   # netlist the AC filter, TACS-controlled source, and measuring switches
-  print ('/BRANCH', file=ap)
-  print ('C < n1 >< n2 ><ref1><ref2>< R  >< X  >< C  >', file=ap)
-  for phs in [['G', 'D'], ['H', 'E'], ['I', 'F']]:
-    ph1 = phs[0]
-    ph2 = phs[1]
-    print ('  {:6s}{:6s}            {:s}{:s}'.format (AtpNode(bus, ph1), AtpNode(bus, ph2), AtpFit6 (acRgrid), AtpFit6 (acXgrid)), file=ap)
-  for phs in [['J', 'G'], ['K', 'H'], ['L', 'I']]:
-    ph1 = phs[0]
-    ph2 = phs[1]
-    print ('  {:6s}{:6s}            {:s}{:s}'.format (AtpNode(bus, ph1), AtpNode(bus, ph2), AtpFit6 (acRbridge), AtpFit6 (acXbridge)), file=ap)
-  if filterKind == 'ungroundedWye':
-    for phs in [['G', 'Z'], ['H', 'Z'], ['I', 'Z']]:
-      ph1 = phs[0]
-      ph2 = phs[1]
-      print ('  {:6s}{:6s}                        {:s}'.format (AtpNode(bus, ph1), AtpNode(bus, ph2), AtpFit6 (acCap)), file=ap) 
-  elif filterKind == 'delta':
-    for phs in [['G', 'H'], ['H', 'I'], ['I', 'G']]:
-      ph1 = phs[0]
-      ph2 = phs[1]
-      print ('  {:6s}{:6s}                        {:s}'.format (AtpNode(bus, ph1), AtpNode(bus, ph2), AtpFit6 (acCap)), file=ap) 
+# print ('/BRANCH', file=ap)
+# print ('C < n1 >< n2 ><ref1><ref2>< R  >< X  >< C  >', file=ap)
+# for phs in [['G', 'D'], ['H', 'E'], ['I', 'F']]:
+#   ph1 = phs[0]
+#   ph2 = phs[1]
+#   print ('  {:6s}{:6s}            {:s}{:s}'.format (AtpNode(bus, ph1), AtpNode(bus, ph2), AtpFit6 (acRgrid), AtpFit6 (acXgrid)), file=ap)
+# for phs in [['J', 'G'], ['K', 'H'], ['L', 'I']]:
+#   ph1 = phs[0]
+#   ph2 = phs[1]
+#   print ('  {:6s}{:6s}            {:s}{:s}'.format (AtpNode(bus, ph1), AtpNode(bus, ph2), AtpFit6 (acRbridge), AtpFit6 (acXbridge)), file=ap)
+# if filterKind == 'ungroundedWye':
+#   for phs in [['G', 'Z'], ['H', 'Z'], ['I', 'Z']]:
+#     ph1 = phs[0]
+#     ph2 = phs[1]
+#     print ('  {:6s}{:6s}                        {:s}'.format (AtpNode(bus, ph1), AtpNode(bus, ph2), AtpFit6 (acCap)), file=ap)
+# elif filterKind == 'delta':
+#   for phs in [['G', 'H'], ['H', 'I'], ['I', 'G']]:
+#     ph1 = phs[0]
+#     ph2 = phs[1]
+#     print ('  {:6s}{:6s}                        {:s}'.format (AtpNode(bus, ph1), AtpNode(bus, ph2), AtpFit6 (acCap)), file=ap)
 
   print ('/SWITCH', file=ap)
   print ('C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1', file=ap)
@@ -1281,12 +1274,13 @@ def create_atp (d, icd, fpath, case):
   for key, row in d['EMTCompSeries']['vals'].items():
     bus1 = AtpBus(atp_buses[row['ConnectivityNode1_mRID']])
     bus2 = AtpBus(atp_buses[row['ConnectivityNode2_mRID']])
-    if row['x'] > 0.0:
+    if row['x'] >= 0.0:
+      # guard against zero-impedance branches in AC filters for IBR
       print ('C =============================================================================', file=ap)
       print ('C series reactor {:s} from {:s} to {:s}'.format (row['name'], row['ConnectivityNode1_name'], row['ConnectivityNode2_name']), file=ap)
       print ('C < n1 >< n2 ><ref1><ref2>< R  >< X  >< C  >', file=ap)
-      print ('51{:5s}A{:5s}A            {:s}{:s}'.format (bus1, bus2, AtpFit6 (row['r0']), AtpFit6 (row['x0'])), file=ap)
-      print ('52{:5s}B{:5s}B            {:s}{:s}'.format (bus1, bus2, AtpFit6 (row['r']), AtpFit6 (row['x'])), file=ap)
+      print ('51{:5s}A{:5s}A            {:s}{:s}'.format (bus1, bus2, AtpFit6 (max(RMIN, row['r0'])), AtpFit6 (max(XMIN, row['x0']))), file=ap)
+      print ('52{:5s}B{:5s}B            {:s}{:s}'.format (bus1, bus2, AtpFit6 (max(RMIN, row['r'])), AtpFit6 (max(XMIN, row['x']))), file=ap)
       print ('53{:5s}C{:5s}C'.format(bus1, bus2), file=ap)
     else:
       cuf = -1.0e6 / row['x'] / OMEGA

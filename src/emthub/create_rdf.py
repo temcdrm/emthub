@@ -802,12 +802,12 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
 
     # write default saturation curve
     satname = '{:s}_Sat'.format (key)
-    ID = GetCIMID('TransformerSaturation', satname, uuids)
+    ID = GetCIMID('TransformerSaturationCurve', satname, uuids)
     sat = rdflib.URIRef (ID)
-    g.add ((sat, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'TransformerSaturation')))
+    g.add ((sat, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'TransformerSaturationCurve')))
     g.add ((sat, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(satname, datatype=CIM.String)))
     g.add ((sat, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
-    g.add ((sat, rdflib.URIRef (EMT_NS + 'TransformerSaturation.TransformerCoreAdmittance'), core))
+    g.add ((sat, rdflib.URIRef (EMT_NS + 'TransformerSaturationCurve.TransformerCoreAdmittance'), core))
     g.add ((sat, rdflib.URIRef (CIM_NS + 'Curve.curveStyle'), rdflib.URIRef (CIM_NS + 'CurveStyle.straightLineYValues')))
     g.add ((sat, rdflib.URIRef (CIM_NS + 'Curve.xUnit'), rdflib.URIRef (CIM_NS + 'UnitSymbol.A')))
     g.add ((sat, rdflib.URIRef (CIM_NS + 'Curve.y1Unit'), rdflib.URIRef (CIM_NS + 'UnitSymbol.Vs')))
@@ -1586,7 +1586,7 @@ def write_cim_rdf (case, g, CIM, EMT):
     CIM.RatioTapChanger,
     CIM.TransformerMeshImpedance,
     CIM.TransformerCoreAdmittance,
-    EMT.TransformerSaturation,
+    EMT.TransformerSaturationCurve,
     EMT.IBRPlant,
     EMT.RotatingMachinePlant,
     CIM.ACPointOfCommonCoupling,
