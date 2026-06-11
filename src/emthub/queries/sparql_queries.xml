@@ -1569,8 +1569,8 @@ SELECT DISTINCT ?mRID ?name ?modelKind ?Equipment_type ?Equipment_name ?Equipmen
  ?eq r:type ?typeraw.
   bind(strafter(str(?typeraw),"#") as ?Equipment_type)
  ?dyn c:DetailedModelDynamics.DetailedModelTypeDynamics ?typ.
- ?typ e:NERCDynamicModel.modelKind ?modelKindRaw.  
-  bind(strafter(str(?modelKindRaw),"NERCModelKind.") as ?modelKind)
+ ?typ e:NthAmDynamicModel.modelKind ?modelKindRaw.  
+  bind(strafter(str(?modelKindRaw),"NthAmModelKind.") as ?modelKind)
  ?typ c:IdentifiedObject.mRID ?DetailedModelTypeDynamics_mRID.
  ?typ c:IdentifiedObject.name ?DetailedModelTypeDynamics_name
 }
@@ -1582,7 +1582,7 @@ ORDER BY ?name
 <id>EMTDynamicsModelType</id>
 <keyfld>mRID</keyfld>
 <description>A type of controller defined from proprietary file formats.</description>
-<classes>NERCDynamicModel</classes>
+<classes>NthAmDynamicModel</classes>
 <value>
 <![CDATA[
 SELECT DISTINCT ?mRID ?name ?modelKind ?nameKind ?statusKind ?closestStandardModel WHERE {
@@ -1590,13 +1590,13 @@ SELECT DISTINCT ?mRID ?name ?modelKind ?nameKind ?statusKind ?closestStandardMod
  ?eq c:Equipment.EquipmentContainer ?sys.
  ?dyn c:DetailedModelDynamics.Equipment ?eq.
  ?dyn c:DetailedModelDynamics.DetailedModelTypeDynamics ?typ.
- ?typ e:NERCDynamicModel.modelKind ?modelKindRaw.  
- ?typ e:NERCDynamicModel.nameKind ?nameKindRaw.  
- ?typ e:NERCDynamicModel.statusKind ?statusKindRaw.  
-  bind(strafter(str(?modelKindRaw),"NERCModelKind.") as ?modelKind)
-  bind(strafter(str(?nameKindRaw),"NERCModelNameKind.") as ?nameKind)
-  bind(strafter(str(?statusKindRaw),"NERCModelStatusKind.") as ?statusKind)
- ?typ e:NERCDynamicModel.closestStandardModel ?closestStandardModel.
+ ?typ e:NthAmDynamicModel.modelKind ?modelKindRaw.  
+ ?typ e:NthAmDynamicModel.nameKind ?nameKindRaw.  
+ ?typ e:NthAmDynamicModel.statusKind ?statusKindRaw.  
+  bind(strafter(str(?modelKindRaw),"NthAmModelKind.") as ?modelKind)
+  bind(strafter(str(?nameKindRaw),"NthAmModelNameKind.") as ?nameKind)
+  bind(strafter(str(?statusKindRaw),"NthAmModelStatusKind.") as ?statusKind)
+ ?typ e:NthAmDynamicModel.closestStandardModel ?closestStandardModel.
  ?typ c:IdentifiedObject.mRID ?mRID.
  ?typ c:IdentifiedObject.name ?name
 }

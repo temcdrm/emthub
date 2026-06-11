@@ -2161,43 +2161,43 @@
     cim:IdentifiedObject.mRID "EBD324AC-1566-45CD-9C99-C8AB8BDB7625"^^cim:String ;
     cim:IdentifiedObject.name "32_1_turbineGovernor"^^cim:String .
 
-<1D697002-8710-4710-9717-6B074A9F66EF> a emt:NERCDynamicModel ;
-    emt:NERCDynamicModel.closestStandardModel "ExcIEEEDC1A"^^cim:String ;
-    emt:NERCDynamicModel.modelKind emt:NERCModelKind.excitationSystem ;
-    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.PSSE ;
-    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+<1D697002-8710-4710-9717-6B074A9F66EF> a emt:NthAmDynamicModel ;
+    emt:NthAmDynamicModel.closestStandardModel "ExcIEEEDC1A"^^cim:String ;
+    emt:NthAmDynamicModel.modelKind emt:NthAmModelKind.excitationSystem ;
+    emt:NthAmDynamicModel.nameKind emt:NthAmModelNameKind.DYR ;
+    emt:NthAmDynamicModel.statusKind emt:NthAmModelStatusKind.allowed ;
     cim:IdentifiedObject.mRID "1D697002-8710-4710-9717-6B074A9F66EF"^^cim:String ;
     cim:IdentifiedObject.name "IEEET1"^^cim:String .
 
-<32034FA3-7303-4F91-8110-A05EE463DF7F> a emt:NERCDynamicModel ;
-    emt:NERCDynamicModel.closestStandardModel "WeccREPCA"^^cim:String ;
-    emt:NERCDynamicModel.modelKind emt:NERCModelKind.renewableEnergyResource ;
-    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.WECC ;
-    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+<32034FA3-7303-4F91-8110-A05EE463DF7F> a emt:NthAmDynamicModel ;
+    emt:NthAmDynamicModel.closestStandardModel "WeccREPCA"^^cim:String ;
+    emt:NthAmDynamicModel.modelKind emt:NthAmModelKind.renewableEnergyResource ;
+    emt:NthAmDynamicModel.nameKind emt:NthAmModelNameKind.DYR ;
+    emt:NthAmDynamicModel.statusKind emt:NthAmModelStatusKind.allowed ;
     cim:IdentifiedObject.mRID "32034FA3-7303-4F91-8110-A05EE463DF7F"^^cim:String ;
     cim:IdentifiedObject.name "REPCA1"^^cim:String .
 
-<737C9425-B23D-4692-BB9D-6C1801A341BE> a emt:NERCDynamicModel ;
-    emt:NERCDynamicModel.closestStandardModel "WeccREECA"^^cim:String ;
-    emt:NERCDynamicModel.modelKind emt:NERCModelKind.renewableEnergyResource ;
-    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.WECC ;
-    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+<737C9425-B23D-4692-BB9D-6C1801A341BE> a emt:NthAmDynamicModel ;
+    emt:NthAmDynamicModel.closestStandardModel "WeccREECA"^^cim:String ;
+    emt:NthAmDynamicModel.modelKind emt:NthAmModelKind.renewableEnergyResource ;
+    emt:NthAmDynamicModel.nameKind emt:NthAmModelNameKind.DYR ;
+    emt:NthAmDynamicModel.statusKind emt:NthAmModelStatusKind.allowed ;
     cim:IdentifiedObject.mRID "737C9425-B23D-4692-BB9D-6C1801A341BE"^^cim:String ;
     cim:IdentifiedObject.name "REECA1"^^cim:String .
 
-<ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> a emt:NERCDynamicModel ;
-    emt:NERCDynamicModel.closestStandardModel "WeccREGCA"^^cim:String ;
-    emt:NERCDynamicModel.modelKind emt:NERCModelKind.renewableEnergyResource ;
-    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.WECC ;
-    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+<ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> a emt:NthAmDynamicModel ;
+    emt:NthAmDynamicModel.closestStandardModel "WeccREGCA"^^cim:String ;
+    emt:NthAmDynamicModel.modelKind emt:NthAmModelKind.renewableEnergyResource ;
+    emt:NthAmDynamicModel.nameKind emt:NthAmModelNameKind.DYR ;
+    emt:NthAmDynamicModel.statusKind emt:NthAmModelStatusKind.allowed ;
     cim:IdentifiedObject.mRID "ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8"^^cim:String ;
     cim:IdentifiedObject.name "REGCA1"^^cim:String .
 
-<F7BBFF29-107F-46E5-AF37-71341F6B1587> a emt:NERCDynamicModel ;
-    emt:NERCDynamicModel.closestStandardModel "GovSteam0"^^cim:String ;
-    emt:NERCDynamicModel.modelKind emt:NERCModelKind.turbineGovernor ;
-    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.PSSE ;
-    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+<F7BBFF29-107F-46E5-AF37-71341F6B1587> a emt:NthAmDynamicModel ;
+    emt:NthAmDynamicModel.closestStandardModel "GovSteam0"^^cim:String ;
+    emt:NthAmDynamicModel.modelKind emt:NthAmModelKind.turbineGovernor ;
+    emt:NthAmDynamicModel.nameKind emt:NthAmModelNameKind.DYR ;
+    emt:NthAmDynamicModel.statusKind emt:NthAmModelStatusKind.allowed ;
     cim:IdentifiedObject.mRID "F7BBFF29-107F-46E5-AF37-71341F6B1587"^^cim:String ;
     cim:IdentifiedObject.name "TGOV1"^^cim:String .
 

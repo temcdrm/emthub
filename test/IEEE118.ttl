@@ -13052,67 +13052,67 @@
     cim:IdentifiedObject.mRID "FF2F6DCF-CF90-4DB8-BF30-C715FA386498"^^cim:String ;
     cim:IdentifiedObject.name "139_1_turbineGovernor"^^cim:String .
 
-<32034FA3-7303-4F91-8110-A05EE463DF7F> a emt:NERCDynamicModel ;
-    emt:NERCDynamicModel.closestStandardModel "WeccREPCA"^^cim:String ;
-    emt:NERCDynamicModel.modelKind emt:NERCModelKind.renewableEnergyResource ;
-    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.WECC ;
-    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+<32034FA3-7303-4F91-8110-A05EE463DF7F> a emt:NthAmDynamicModel ;
+    emt:NthAmDynamicModel.closestStandardModel "WeccREPCA"^^cim:String ;
+    emt:NthAmDynamicModel.modelKind emt:NthAmModelKind.renewableEnergyResource ;
+    emt:NthAmDynamicModel.nameKind emt:NthAmModelNameKind.DYR ;
+    emt:NthAmDynamicModel.statusKind emt:NthAmModelStatusKind.allowed ;
     cim:IdentifiedObject.mRID "32034FA3-7303-4F91-8110-A05EE463DF7F"^^cim:String ;
     cim:IdentifiedObject.name "REPCA1"^^cim:String .
 
-<737C9425-B23D-4692-BB9D-6C1801A341BE> a emt:NERCDynamicModel ;
-    emt:NERCDynamicModel.closestStandardModel "WeccREECA"^^cim:String ;
-    emt:NERCDynamicModel.modelKind emt:NERCModelKind.renewableEnergyResource ;
-    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.WECC ;
-    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+<737C9425-B23D-4692-BB9D-6C1801A341BE> a emt:NthAmDynamicModel ;
+    emt:NthAmDynamicModel.closestStandardModel "WeccREECA"^^cim:String ;
+    emt:NthAmDynamicModel.modelKind emt:NthAmModelKind.renewableEnergyResource ;
+    emt:NthAmDynamicModel.nameKind emt:NthAmModelNameKind.DYR ;
+    emt:NthAmDynamicModel.statusKind emt:NthAmModelStatusKind.allowed ;
     cim:IdentifiedObject.mRID "737C9425-B23D-4692-BB9D-6C1801A341BE"^^cim:String ;
     cim:IdentifiedObject.name "REECA1"^^cim:String .
 
-<86604D1C-DB00-4E4C-9348-1E6D5FFFE060> a emt:NERCDynamicModel ;
-    emt:NERCDynamicModel.closestStandardModel "WeccWTGARA"^^cim:String ;
-    emt:NERCDynamicModel.modelKind emt:NERCModelKind.renewableEnergyResource ;
-    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.WECC ;
-    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+<86604D1C-DB00-4E4C-9348-1E6D5FFFE060> a emt:NthAmDynamicModel ;
+    emt:NthAmDynamicModel.closestStandardModel "WeccWTGARA"^^cim:String ;
+    emt:NthAmDynamicModel.modelKind emt:NthAmModelKind.renewableEnergyResource ;
+    emt:NthAmDynamicModel.nameKind emt:NthAmModelNameKind.DYR ;
+    emt:NthAmDynamicModel.statusKind emt:NthAmModelStatusKind.allowed ;
     cim:IdentifiedObject.mRID "86604D1C-DB00-4E4C-9348-1E6D5FFFE060"^^cim:String ;
     cim:IdentifiedObject.name "WTARA1"^^cim:String .
 
-<88DA0C9F-1A84-46A4-B8AC-1DD293730816> a emt:NERCDynamicModel ;
-    emt:NERCDynamicModel.closestStandardModel "Pss1A"^^cim:String ;
-    emt:NERCDynamicModel.modelKind emt:NERCModelKind.powerSystemStabilizer ;
-    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.PSSE ;
-    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+<88DA0C9F-1A84-46A4-B8AC-1DD293730816> a emt:NthAmDynamicModel ;
+    emt:NthAmDynamicModel.closestStandardModel "Pss1A"^^cim:String ;
+    emt:NthAmDynamicModel.modelKind emt:NthAmModelKind.powerSystemStabilizer ;
+    emt:NthAmDynamicModel.nameKind emt:NthAmModelNameKind.DYR ;
+    emt:NthAmDynamicModel.statusKind emt:NthAmModelStatusKind.allowed ;
     cim:IdentifiedObject.mRID "88DA0C9F-1A84-46A4-B8AC-1DD293730816"^^cim:String ;
     cim:IdentifiedObject.name "IEEEST"^^cim:String .
 
-<C8DA2CB6-6699-4EE7-9AE6-FE0FE22DB229> a emt:NERCDynamicModel ;
-    emt:NERCDynamicModel.closestStandardModel "ExcST1A"^^cim:String ;
-    emt:NERCDynamicModel.modelKind emt:NERCModelKind.excitationSystem ;
-    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.PSSE ;
-    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+<C8DA2CB6-6699-4EE7-9AE6-FE0FE22DB229> a emt:NthAmDynamicModel ;
+    emt:NthAmDynamicModel.closestStandardModel "ExcST1A"^^cim:String ;
+    emt:NthAmDynamicModel.modelKind emt:NthAmModelKind.excitationSystem ;
+    emt:NthAmDynamicModel.nameKind emt:NthAmModelNameKind.DYR ;
+    emt:NthAmDynamicModel.statusKind emt:NthAmModelStatusKind.allowed ;
     cim:IdentifiedObject.mRID "C8DA2CB6-6699-4EE7-9AE6-FE0FE22DB229"^^cim:String ;
     cim:IdentifiedObject.name "EXST1"^^cim:String .
 
-<D988EC5E-7EF1-418F-9F69-96995339E4BE> a emt:NERCDynamicModel ;
-    emt:NERCDynamicModel.closestStandardModel "WeccWTGTA"^^cim:String ;
-    emt:NERCDynamicModel.modelKind emt:NERCModelKind.renewableEnergyResource ;
-    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.WECC ;
-    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+<D988EC5E-7EF1-418F-9F69-96995339E4BE> a emt:NthAmDynamicModel ;
+    emt:NthAmDynamicModel.closestStandardModel "WeccWTGTA"^^cim:String ;
+    emt:NthAmDynamicModel.modelKind emt:NthAmModelKind.renewableEnergyResource ;
+    emt:NthAmDynamicModel.nameKind emt:NthAmModelNameKind.DYR ;
+    emt:NthAmDynamicModel.statusKind emt:NthAmModelStatusKind.allowed ;
     cim:IdentifiedObject.mRID "D988EC5E-7EF1-418F-9F69-96995339E4BE"^^cim:String ;
     cim:IdentifiedObject.name "WTDTA1"^^cim:String .
 
-<ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> a emt:NERCDynamicModel ;
-    emt:NERCDynamicModel.closestStandardModel "WeccREGCA"^^cim:String ;
-    emt:NERCDynamicModel.modelKind emt:NERCModelKind.renewableEnergyResource ;
-    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.WECC ;
-    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.allowed ;
+<ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8> a emt:NthAmDynamicModel ;
+    emt:NthAmDynamicModel.closestStandardModel "WeccREGCA"^^cim:String ;
+    emt:NthAmDynamicModel.modelKind emt:NthAmModelKind.renewableEnergyResource ;
+    emt:NthAmDynamicModel.nameKind emt:NthAmModelNameKind.DYR ;
+    emt:NthAmDynamicModel.statusKind emt:NthAmModelStatusKind.allowed ;
     cim:IdentifiedObject.mRID "ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8"^^cim:String ;
     cim:IdentifiedObject.name "REGCA1"^^cim:String .
 
-<F825AD7A-F24D-485E-9347-D437A4714031> a emt:NERCDynamicModel ;
-    emt:NERCDynamicModel.closestStandardModel "GovSteamSGO"^^cim:String ;
-    emt:NERCDynamicModel.modelKind emt:NERCModelKind.turbineGovernor ;
-    emt:NERCDynamicModel.nameKind emt:NERCModelNameKind.PSSE ;
-    emt:NERCDynamicModel.statusKind emt:NERCModelStatusKind.prohibited ;
+<F825AD7A-F24D-485E-9347-D437A4714031> a emt:NthAmDynamicModel ;
+    emt:NthAmDynamicModel.closestStandardModel "GovSteamSGO"^^cim:String ;
+    emt:NthAmDynamicModel.modelKind emt:NthAmModelKind.turbineGovernor ;
+    emt:NthAmDynamicModel.nameKind emt:NthAmModelNameKind.DYR ;
+    emt:NthAmDynamicModel.statusKind emt:NthAmModelStatusKind.prohibited ;
     cim:IdentifiedObject.mRID "F825AD7A-F24D-485E-9347-D437A4714031"^^cim:String ;
     cim:IdentifiedObject.name "IEESGO"^^cim:String .
 

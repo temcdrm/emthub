@@ -1031,15 +1031,15 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
   for key in model_types_used:
     model_type = dyn_models[key]
     ID = model_type['mRID']
-    uuids['NERCDynamicModel' + ':' + key] = ID
+    uuids['NthAmDynamicModel' + ':' + key] = ID
     mtyp = rdflib.URIRef (ID)
-    g.add ((mtyp, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'NERCDynamicModel')))
+    g.add ((mtyp, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'NthAmDynamicModel')))
     g.add ((mtyp, rdflib.URIRef (CIM_NS + 'IdentifiedObject.name'), rdflib.Literal(key, datatype=CIM.String)))
     g.add ((mtyp, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(ID, datatype=CIM.String)))
-    g.add ((mtyp, rdflib.URIRef (EMT_NS + 'NERCDynamicModel.modelKind'), rdflib.URIRef (EMT_NS + 'NERCModelKind.{:s}'.format(model_type['modelKind']))))
-    g.add ((mtyp, rdflib.URIRef (EMT_NS + 'NERCDynamicModel.nameKind'), rdflib.URIRef (EMT_NS + 'NERCModelNameKind.{:s}'.format(model_type['nameKind']))))
-    g.add ((mtyp, rdflib.URIRef (EMT_NS + 'NERCDynamicModel.statusKind'), rdflib.URIRef (EMT_NS + 'NERCModelStatusKind.{:s}'.format(model_type['statusKind']))))
-    g.add ((mtyp, rdflib.URIRef (EMT_NS + 'NERCDynamicModel.closestStandardModel'), rdflib.Literal(model_type['closestStandardModel'], datatype=CIM.String)))
+    g.add ((mtyp, rdflib.URIRef (EMT_NS + 'NthAmDynamicModel.modelKind'), rdflib.URIRef (EMT_NS + 'NthAmModelKind.{:s}'.format(model_type['modelKind']))))
+    g.add ((mtyp, rdflib.URIRef (EMT_NS + 'NthAmDynamicModel.nameKind'), rdflib.URIRef (EMT_NS + 'NthAmModelNameKind.{:s}'.format(model_type['nameKind']))))
+    g.add ((mtyp, rdflib.URIRef (EMT_NS + 'NthAmDynamicModel.statusKind'), rdflib.URIRef (EMT_NS + 'NthAmModelStatusKind.{:s}'.format(model_type['statusKind']))))
+    g.add ((mtyp, rdflib.URIRef (EMT_NS + 'NthAmDynamicModel.closestStandardModel'), rdflib.Literal(model_type['closestStandardModel'], datatype=CIM.String)))
     parms = model_type['parameterDescriptors']
     for i in range(3,len(parms)):
       ID = parms[i]['mRID']
@@ -1562,25 +1562,11 @@ def write_cim_rdf (case, g, CIM, EMT):
     CIM.SynchronousMachineSimplified,
     CIM.SynchronousMachineTimeConstantReactance,
     CIM.DetailedModelDynamics,
-    EMT.NERCDynamicModel,
+    EMT.NthAmDynamicModel,
     CIM.ParameterDescriptor,
-#   CIM.GovGAST,
-#   CIM.GovHydro1,
-#   CIM.GovSteam0,
-#   CIM.GovSteamSGO,
-#   CIM.ExcIEEEDC1A,
-#   CIM.ExcSEXS,
-#   CIM.ExcST1A,
-#   CIM.PssIEEE1A,
-#   CIM.Pss1A,
     CIM.PowerElectronicsConnection,
     CIM.PhotoVoltaicUnit,
     CIM.PowerElectronicsWindUnit,
-#   CIM.WeccREECA,
-#   CIM.WeccREGCA,
-#   CIM.WeccREPCA,
-#   CIM.WeccWTGARA,
-#   CIM.WeccWTGTA,
     CIM.PowerTransformer,
     CIM.PowerTransformerEnd,
     CIM.RatioTapChanger,
@@ -1604,7 +1590,12 @@ def write_cim_rdf (case, g, CIM, EMT):
     CIM.DCEquipmentContainer,
     CIM.DCNode,
     EMT.PowerElectronicsConnectionDCTerminal,
-    CIM.DCShunt, # eventually DCLineSegment, DCSeriesDevice, DCGround, DCBreaker, DCDisconnector as well
+    CIM.DCShunt,
+    CIM.DCLineSegment, 
+    CIM.DCSeriesDevice, 
+    CIM.DCGround, 
+    CIM.DCBreaker, 
+    CIM.DCDisconnector,
     EMT.DCEnergySource
   ]
   with open(case['name']+'.ttl', 'wb') as fp:
