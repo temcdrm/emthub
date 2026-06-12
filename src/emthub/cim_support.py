@@ -155,7 +155,8 @@ def load_detailed_model_types():
   The data comes from a JSON file included in the package named *detailed_model_types.json*.
 
   Returns:
-    detailed_models(dict): dictionary of detailed models, keyed on model name.
+    detailed_models(dict): dictionary of detailed models, keyed first on model kind, which is
+    like a namespace for each supported file extension, and second on model name.
   """
   s = importlib.resources.read_text ('emthub.queries', DETAILED_MODELS)
   detailed_models = json.loads (s)

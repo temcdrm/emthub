@@ -167,30 +167,32 @@ if __name__ == '__main__':
 
   fp.close()
 
-  # now document the detaield model types
+  # now document the detailed model types
   fp = open ('dynamics_doc.rst', 'w')
-  for key in sorted(TYPES):
-    mdl = TYPES[key]
-    add_header (key, '_', fp)
-    print ('**nameKind**: {:s}\n'.format (mdl['nameKind']), file=fp)
-    print ('**modelKind**: {:s}\n'.format (mdl['modelKind']), file=fp)
-    print ('**statusKind**: {:s}\n'.format (mdl['statusKind']), file=fp)
-    print ('**description**: {:s}\n'.format (mdl['description']), file=fp)
-    print ('**closestStandardModel**: {:s}\n'.format (mdl['closestStandardModel']), file=fp)
-    print ('**mRID**: {:s}\n'.format (mdl['mRID']), file=fp)
-    print ('.. list-table:: {:s} Parameters\n   :widths: 20 20 20 20 20\n   :header-rows: 1\n'.format (key), file=fp)
-    print ('   * - Name', file=fp)
-    print ('     - Number', file=fp)
-    print ('     - Value', file=fp)
-    print ('     - Unit', file=fp)
-    print ('     - mRID', file=fp)
-    for p in mdl['parameterDescriptors']:
-      print ('   * - {:s}\n     - {:d}\n     - {:s}\n     - {:s}\n     - {:s}'.format (p['name'],
-                                                                                       p['sequenceNumber'],
-                                                                                       str(p['typicalValue']),
-                                                                                       p['engineeringUnit'],
-                                                                                       p['mRID']), file=fp)
-    print ('\n', file=fp)
+  for kind in sorted(TYPES):
+    add_header (kind+' Files', '-', fp)
+    for key in sorted(TYPES[kind]):
+      mdl = TYPES[kind][key]
+      add_header (key, '^', fp)
+      print ('**nameKind**: {:s}\n'.format (mdl['nameKind']), file=fp)
+      print ('**modelKind**: {:s}\n'.format (mdl['modelKind']), file=fp)
+      print ('**statusKind**: {:s}\n'.format (mdl['statusKind']), file=fp)
+      print ('**description**: {:s}\n'.format (mdl['description']), file=fp)
+      print ('**closestStandardModel**: {:s}\n'.format (mdl['closestStandardModel']), file=fp)
+      print ('**mRID**: {:s}\n'.format (mdl['mRID']), file=fp)
+      print ('.. list-table:: {:s} Parameters\n   :widths: 20 20 20 20 20\n   :header-rows: 1\n'.format (key), file=fp)
+      print ('   * - Name', file=fp)
+      print ('     - Number', file=fp)
+      print ('     - Value', file=fp)
+      print ('     - Unit', file=fp)
+      print ('     - mRID', file=fp)
+      for p in mdl['parameterDescriptors']:
+        print ('   * - {:s}\n     - {:d}\n     - {:s}\n     - {:s}\n     - {:s}'.format (p['name'],
+                                                                                         p['sequenceNumber'],
+                                                                                         str(p['typicalValue']),
+                                                                                         p['engineeringUnit'],
+                                                                                         p['mRID']), file=fp)
+      print ('\n', file=fp)
 
   fp.close()
 

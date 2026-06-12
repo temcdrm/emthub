@@ -11,10 +11,10 @@ in *Emtiop*; only the *SynchronousMachineTimeConstantReactance* is used
 from *StandardModels*.
 
 For each dynamics controller type supported, the following attributes
-are defined on the CIM class *NERCDynamicModel*:
+are defined on the CIM class *NthAmDynamicModel*:
  
 - **Model (Header)**: a mnemonic for this controller type, typically a 6-character codeword from the original *dyr* file schema.
-- **nameKind**: the domain from which the *Model* name comes. May be *PSSE*, *PSLF*, *WECC*, or *Other*. Use *Other* for user-code models that are not implemented in a DLL.
+- **nameKind**: the domain from which the *Model* name comes. May be *AUX*, *DGS*, *DYD*, *DYR* or *Other*. Use *Other* for user-code models that are not implemented in a DLL.
 - **modelKind**: the expected application of this controller type. The package currently supports *machine*, *renewableEnergyResource*, *excitationSystem*, *powerSystemStabilizer*, and *turbineGovernor*.
 - **statusKind**: the allowable use of this controller type for interconnection-wide studies in North America. May be *allowed*, *deprecated*, or *prohibited*.
 - **description**: brief description of the controller, if available. Otherwise, use *Model* and *modelKind* for interpretation.

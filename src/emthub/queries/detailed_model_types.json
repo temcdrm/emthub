@@ -1,2314 +1,2322 @@
 {
-  "GENCLS": {
-    "mRID": "5CD518B0-8D8A-4020-AEB0-B41EC186DDC3",
-    "description": "",
-    "closestStandardModel": "SynchronousMachineSimplified",
-    "nameKind": "DYR",
-    "modelKind": "machine",
-    "statusKind": "prohibited",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "BC3AEB61-662E-47AA-8956-68D93978BDFF",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
-      },
-      {
-        "name": "Model",
-        "mRID": "2A681790-3ABC-4697-BB4C-8C6F7F80751A",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
-      },
-      {
-        "name": "ID",
-        "mRID": "8D738EAB-9017-4E0F-91FE-45B063ABFBC7",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
-      },
-      {
-        "name": "H",
-        "mRID": "AD0CFE37-D644-4FD2-9B3A-81C6028527B0",
-        "typicalValue": 3.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 4
-      },
-      {
-        "name": "D",
-        "mRID": "DDAF1A07-94BB-4F66-B03B-D0C988D6B68E",
-        "typicalValue": 0.0,
-        "engineeringUnit": "Float",
-        "sequenceNumber": 5
-      }
-    ]
+  "AUX": {
   },
-  "GENSAL": {
-    "mRID": "F44A9DA5-A1F6-41C7-BD55-48A744850B3D",
-    "description": "",
-    "closestStandardModel": "SynchronousMachineTimeConstantReactance",
-    "nameKind": "DYR",
-    "modelKind": "machine",
-    "statusKind": "prohibited",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "4D9BD4E8-A771-4C65-9BB5-3D786F0C5B3A",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
-      },
-      {
-        "name": "Model",
-        "mRID": "B22DC44E-B45B-4832-B70D-6EA69AEBCDDE",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
-      },
-      {
-        "name": "ID",
-        "mRID": "23A908A0-1931-464F-AEEB-2CE328F20B61",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
-      },
-      {
-        "name": "Td10",
-        "mRID": "78CCB41D-D801-45C2-B6FC-C89209083A3F",
-        "typicalValue": 7.563,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 4
-      },
-      {
-        "name": "Td20",
-        "mRID": "063E48CE-988F-453D-97A0-7BC8C734BD58",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 5
-      },
-      {
-        "name": "Tq20",
-        "mRID": "E3863138-5E6D-4C86-87A2-13BE6F4E624C",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 6
-      },
-      {
-        "name": "H",
-        "mRID": "010FBF35-A869-40BA-8D04-5F9F36B335AA",
-        "typicalValue": 3.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 7
-      },
-      {
-        "name": "D",
-        "mRID": "6FE8A59B-400B-468E-906C-ED74BFF7E6A6",
-        "typicalValue": 0.0,
-        "engineeringUnit": "Float",
-        "sequenceNumber": 8
-      },
-      {
-        "name": "Xd",
-        "mRID": "C693B998-673E-4CC4-8B51-57A4268D2209",
-        "typicalValue": 1.43,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 9
-      },
-      {
-        "name": "Xq",
-        "mRID": "BE1A1169-154C-4FAC-93B5-6D9BF25AB8B7",
-        "typicalValue": 1.33,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 10
-      },
-      {
-        "name": "Xd1",
-        "mRID": "7E5C18A5-7272-4533-AAB5-E524364DC249",
-        "typicalValue": 0.146,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 11
-      },
-      {
-        "name": "Xd2",
-        "mRID": "34A9A563-A55C-4F8B-8C8F-18298AB8EB47",
-        "typicalValue": 0.114,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 12
-      },
-      {
-        "name": "Xl",
-        "mRID": "B771A5AA-44D6-4092-920E-3494DE3E626F",
-        "typicalValue": 0.096,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 13
-      },
-      {
-        "name": "S10",
-        "mRID": "087C10FD-75B9-4435-AE76-3177159FCC91",
-        "typicalValue": 0.02,
-        "engineeringUnit": "Float",
-        "sequenceNumber": 14
-      },
-      {
-        "name": "S12",
-        "mRID": "57600D39-5AA3-4BD4-B457-C3BD1B80AC60",
-        "typicalValue": 0.12,
-        "engineeringUnit": "Float",
-        "sequenceNumber": 15
-      }
-    ]
+  "DGS": {
   },
-  "GENROU": {
-    "mRID": "EE35876D-BB35-4573-B16B-DC3A66702322",
-    "description": "",
-    "closestStandardModel": "SynchronousMachineTimeConstantReactance",
-    "nameKind": "DYR",
-    "modelKind": "machine",
-    "statusKind": "deprecated",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "DF6465B4-FC2E-4515-9C1F-44DEEB8AA28F",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
-      },
-      {
-        "name": "Model",
-        "mRID": "DC35B3CA-4B12-4A94-B592-E7BE86CFCC90",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
-      },
-      {
-        "name": "ID",
-        "mRID": "5188FD9C-BA21-47E3-BBEB-76CC38C0CB10",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
-      },
-      {
-        "name": "Td10",
-        "mRID": "25032EC4-FA15-4C83-860E-32D8EB13D88C",
-        "typicalValue": 7.563,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 4
-      },
-      {
-        "name": "Td20",
-        "mRID": "149D6972-5E43-4E41-A0A5-F54B89E267F4",
-        "typicalValue": 0.017,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 5
-      },
-      {
-        "name": "Tq10",
-        "mRID": "1D5F030D-F946-45F1-9F8E-16EC8BB54F0E",
-        "typicalValue": 1.133,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 6
-      },
-      {
-        "name": "Tq20",
-        "mRID": "2C60A143-5190-420E-BE5E-56F00522F3F3",
-        "typicalValue": 0.05,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 7
-      },
-      {
-        "name": "H",
-        "mRID": "426AA788-6D71-4E75-8124-BA345F32D5F5",
-        "typicalValue": 3.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 8
-      },
-      {
-        "name": "D",
-        "mRID": "08D55B1A-A8E2-400B-8E3D-EA1AFEF27C46",
-        "typicalValue": 0.0,
-        "engineeringUnit": "Float",
-        "sequenceNumber": 9
-      },
-      {
-        "name": "Xd",
-        "mRID": "D3B8A25D-E4B9-4435-A46A-7615939424ED",
-        "typicalValue": 1.43,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 10
-      },
-      {
-        "name": "Xq",
-        "mRID": "F83388F7-6B84-4893-9326-0A81043D40F3",
-        "typicalValue": 1.33,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 11
-      },
-      {
-        "name": "Xd1",
-        "mRID": "98CE0D22-1F07-46CA-BBB4-8E8049FC90DF",
-        "typicalValue": 0.146,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 12
-      },
-      {
-        "name": "Xq1",
-        "mRID": "E1D7AE94-C0EC-4D93-A14E-C12770D2C77F",
-        "typicalValue": 0.258,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 13
-      },
-      {
-        "name": "Xd2",
-        "mRID": "7D910E14-5835-44AA-857A-907A3F97F918",
-        "typicalValue": 0.114,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 14
-      },
-      {
-        "name": "Xl",
-        "mRID": "40F8F789-EEFB-4259-B50E-E6B806899343",
-        "typicalValue": 0.096,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 15
-      },
-      {
-        "name": "S10",
-        "mRID": "FCB1A458-A938-4467-98D9-4096737FE78D",
-        "typicalValue": 0.02,
-        "engineeringUnit": "Float",
-        "sequenceNumber": 16
-      },
-      {
-        "name": "S12",
-        "mRID": "A7BA2517-3D89-4026-A90B-E8FE1A68F24E",
-        "typicalValue": 0.12,
-        "engineeringUnit": "Float",
-        "sequenceNumber": 17
-      }
-    ]
+  "DYD": {
   },
-  "SEXS": {
-    "mRID": "854A4288-2FB4-47F9-A194-395CF22DD4E8",
-    "description": "",
-    "closestStandardModel": "ExcSEXS",
-    "nameKind": "DYR",
-    "modelKind": "excitationSystem",
-    "statusKind": "prohibited",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "5FEC78BC-65D5-49CE-9D30-EA7F3D225EEF",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
+  "DYR": {
+      "GENCLS": {
+        "mRID": "5CD518B0-8D8A-4020-AEB0-B41EC186DDC3",
+        "description": "",
+        "closestStandardModel": "SynchronousMachineSimplified",
+        "nameKind": "DYR",
+        "modelKind": "machine",
+        "statusKind": "prohibited",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "BC3AEB61-662E-47AA-8956-68D93978BDFF",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "2A681790-3ABC-4697-BB4C-8C6F7F80751A",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "8D738EAB-9017-4E0F-91FE-45B063ABFBC7",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "H",
+            "mRID": "AD0CFE37-D644-4FD2-9B3A-81C6028527B0",
+            "typicalValue": 3.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "D",
+            "mRID": "DDAF1A07-94BB-4F66-B03B-D0C988D6B68E",
+            "typicalValue": 0.0,
+            "engineeringUnit": "Float",
+            "sequenceNumber": 5
+          }
+        ]
       },
-      {
-        "name": "Model",
-        "mRID": "8C11F175-B4E3-49A7-91C5-7396992785F8",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
+      "GENSAL": {
+        "mRID": "F44A9DA5-A1F6-41C7-BD55-48A744850B3D",
+        "description": "",
+        "closestStandardModel": "SynchronousMachineTimeConstantReactance",
+        "nameKind": "DYR",
+        "modelKind": "machine",
+        "statusKind": "prohibited",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "4D9BD4E8-A771-4C65-9BB5-3D786F0C5B3A",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "B22DC44E-B45B-4832-B70D-6EA69AEBCDDE",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "23A908A0-1931-464F-AEEB-2CE328F20B61",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "Td10",
+            "mRID": "78CCB41D-D801-45C2-B6FC-C89209083A3F",
+            "typicalValue": 7.563,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "Td20",
+            "mRID": "063E48CE-988F-453D-97A0-7BC8C734BD58",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 5
+          },
+          {
+            "name": "Tq20",
+            "mRID": "E3863138-5E6D-4C86-87A2-13BE6F4E624C",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 6
+          },
+          {
+            "name": "H",
+            "mRID": "010FBF35-A869-40BA-8D04-5F9F36B335AA",
+            "typicalValue": 3.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 7
+          },
+          {
+            "name": "D",
+            "mRID": "6FE8A59B-400B-468E-906C-ED74BFF7E6A6",
+            "typicalValue": 0.0,
+            "engineeringUnit": "Float",
+            "sequenceNumber": 8
+          },
+          {
+            "name": "Xd",
+            "mRID": "C693B998-673E-4CC4-8B51-57A4268D2209",
+            "typicalValue": 1.43,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 9
+          },
+          {
+            "name": "Xq",
+            "mRID": "BE1A1169-154C-4FAC-93B5-6D9BF25AB8B7",
+            "typicalValue": 1.33,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 10
+          },
+          {
+            "name": "Xd1",
+            "mRID": "7E5C18A5-7272-4533-AAB5-E524364DC249",
+            "typicalValue": 0.146,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 11
+          },
+          {
+            "name": "Xd2",
+            "mRID": "34A9A563-A55C-4F8B-8C8F-18298AB8EB47",
+            "typicalValue": 0.114,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 12
+          },
+          {
+            "name": "Xl",
+            "mRID": "B771A5AA-44D6-4092-920E-3494DE3E626F",
+            "typicalValue": 0.096,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 13
+          },
+          {
+            "name": "S10",
+            "mRID": "087C10FD-75B9-4435-AE76-3177159FCC91",
+            "typicalValue": 0.02,
+            "engineeringUnit": "Float",
+            "sequenceNumber": 14
+          },
+          {
+            "name": "S12",
+            "mRID": "57600D39-5AA3-4BD4-B457-C3BD1B80AC60",
+            "typicalValue": 0.12,
+            "engineeringUnit": "Float",
+            "sequenceNumber": 15
+          }
+        ]
       },
-      {
-        "name": "ID",
-        "mRID": "A55C670D-7976-40C8-8A33-5A332070D53E",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
+      "GENROU": {
+        "mRID": "EE35876D-BB35-4573-B16B-DC3A66702322",
+        "description": "",
+        "closestStandardModel": "SynchronousMachineTimeConstantReactance",
+        "nameKind": "DYR",
+        "modelKind": "machine",
+        "statusKind": "deprecated",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "DF6465B4-FC2E-4515-9C1F-44DEEB8AA28F",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "DC35B3CA-4B12-4A94-B592-E7BE86CFCC90",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "5188FD9C-BA21-47E3-BBEB-76CC38C0CB10",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "Td10",
+            "mRID": "25032EC4-FA15-4C83-860E-32D8EB13D88C",
+            "typicalValue": 7.563,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "Td20",
+            "mRID": "149D6972-5E43-4E41-A0A5-F54B89E267F4",
+            "typicalValue": 0.017,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 5
+          },
+          {
+            "name": "Tq10",
+            "mRID": "1D5F030D-F946-45F1-9F8E-16EC8BB54F0E",
+            "typicalValue": 1.133,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 6
+          },
+          {
+            "name": "Tq20",
+            "mRID": "2C60A143-5190-420E-BE5E-56F00522F3F3",
+            "typicalValue": 0.05,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 7
+          },
+          {
+            "name": "H",
+            "mRID": "426AA788-6D71-4E75-8124-BA345F32D5F5",
+            "typicalValue": 3.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 8
+          },
+          {
+            "name": "D",
+            "mRID": "08D55B1A-A8E2-400B-8E3D-EA1AFEF27C46",
+            "typicalValue": 0.0,
+            "engineeringUnit": "Float",
+            "sequenceNumber": 9
+          },
+          {
+            "name": "Xd",
+            "mRID": "D3B8A25D-E4B9-4435-A46A-7615939424ED",
+            "typicalValue": 1.43,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 10
+          },
+          {
+            "name": "Xq",
+            "mRID": "F83388F7-6B84-4893-9326-0A81043D40F3",
+            "typicalValue": 1.33,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 11
+          },
+          {
+            "name": "Xd1",
+            "mRID": "98CE0D22-1F07-46CA-BBB4-8E8049FC90DF",
+            "typicalValue": 0.146,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 12
+          },
+          {
+            "name": "Xq1",
+            "mRID": "E1D7AE94-C0EC-4D93-A14E-C12770D2C77F",
+            "typicalValue": 0.258,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 13
+          },
+          {
+            "name": "Xd2",
+            "mRID": "7D910E14-5835-44AA-857A-907A3F97F918",
+            "typicalValue": 0.114,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 14
+          },
+          {
+            "name": "Xl",
+            "mRID": "40F8F789-EEFB-4259-B50E-E6B806899343",
+            "typicalValue": 0.096,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 15
+          },
+          {
+            "name": "S10",
+            "mRID": "FCB1A458-A938-4467-98D9-4096737FE78D",
+            "typicalValue": 0.02,
+            "engineeringUnit": "Float",
+            "sequenceNumber": 16
+          },
+          {
+            "name": "S12",
+            "mRID": "A7BA2517-3D89-4026-A90B-E8FE1A68F24E",
+            "typicalValue": 0.12,
+            "engineeringUnit": "Float",
+            "sequenceNumber": 17
+          }
+        ]
       },
-      {
-        "name": "TATB",
-        "mRID": "360A2A9E-48B2-49FA-83F5-5518A4E16F81",
-        "typicalValue": 0.1,
-        "engineeringUnit": "Float",
-        "sequenceNumber": 4
+      "SEXS": {
+        "mRID": "854A4288-2FB4-47F9-A194-395CF22DD4E8",
+        "description": "",
+        "closestStandardModel": "ExcSEXS",
+        "nameKind": "DYR",
+        "modelKind": "excitationSystem",
+        "statusKind": "prohibited",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "5FEC78BC-65D5-49CE-9D30-EA7F3D225EEF",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "8C11F175-B4E3-49A7-91C5-7396992785F8",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "A55C670D-7976-40C8-8A33-5A332070D53E",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "TATB",
+            "mRID": "360A2A9E-48B2-49FA-83F5-5518A4E16F81",
+            "typicalValue": 0.1,
+            "engineeringUnit": "Float",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "TB",
+            "mRID": "1FAE8B08-8F08-4773-AD98-AB0360E820EF",
+            "typicalValue": 10.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 5
+          },
+          {
+            "name": "K",
+            "mRID": "1D4EF184-08B1-4633-BA51-0C3A121FDF94",
+            "typicalValue": 100.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 6
+          },
+          {
+            "name": "TE",
+            "mRID": "0FAB61D9-EF26-4BCB-94FE-A19CBE2F3945",
+            "typicalValue": 0.05,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 7
+          },
+          {
+            "name": "EMIN",
+            "mRID": "8C71701D-5C80-4E16-A5DB-9356BCB91854",
+            "typicalValue": -5.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 8
+          },
+          {
+            "name": "EMAX",
+            "mRID": "87E5FD37-97F8-4DE7-B23E-C3EA78AFF8FF",
+            "typicalValue": 5.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 9
+          }
+        ]
       },
-      {
-        "name": "TB",
-        "mRID": "1FAE8B08-8F08-4773-AD98-AB0360E820EF",
-        "typicalValue": 10.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 5
+      "EXST1": {
+        "mRID": "C8DA2CB6-6699-4EE7-9AE6-FE0FE22DB229",
+        "description": "",
+        "closestStandardModel": "ExcST1A",
+        "nameKind": "DYR",
+        "modelKind": "excitationSystem",
+        "statusKind": "allowed",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "64D9432B-5466-4201-BC3E-6644F8F2EB75",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "679E5D3B-6D51-44F9-B659-2F0D2024D8F7",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "93720EDE-2C55-4055-B700-9897AE0BF544",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "TR",
+            "mRID": "CB71678F-2489-4392-A902-2829A8BF7A79",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "VIMAX",
+            "mRID": "79326BD2-E93E-43A5-978C-67FD273BF4B7",
+            "typicalValue": 0.1,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 5
+          },
+          {
+            "name": "VIMIN",
+            "mRID": "248B970E-A434-416A-B70E-574B18238F12",
+            "typicalValue": -0.1,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 6
+          },
+          {
+            "name": "TC",
+            "mRID": "5DCA73CD-94F6-43F2-8A6C-3536A37AC895",
+            "typicalValue": 1.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 7
+          },
+          {
+            "name": "TB",
+            "mRID": "953919DC-E8B4-46FA-A3F9-532B8088440E",
+            "typicalValue": 10.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 8
+          },
+          {
+            "name": "KA",
+            "mRID": "F44C075A-280A-4B13-8D6A-4FD378F90D62",
+            "typicalValue": 40.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 9
+          },
+          {
+            "name": "TA",
+            "mRID": "1299F2CC-34FE-4FE3-9446-C8C8F7BCECBA",
+            "typicalValue": 0.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 10
+          },
+          {
+            "name": "VRMAX",
+            "mRID": "069F89A9-DA85-49EC-869A-A08926CF0BFD",
+            "typicalValue": 4.5,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 11
+          },
+          {
+            "name": "VRMIN",
+            "mRID": "AD2D1F99-BFDB-4D25-B887-232AE715B38C",
+            "typicalValue": -4.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 12
+          },
+          {
+            "name": "KC",
+            "mRID": "1160B75E-445F-4DEB-A6C9-A0A5F255FD10",
+            "typicalValue": 0.038,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 13
+          },
+          {
+            "name": "KF",
+            "mRID": "502534AF-9A0C-4C4E-82A1-EE7DC5008296",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 14
+          },
+          {
+            "name": "TF",
+            "mRID": "095932C8-2280-4B7A-BBBE-A4F1328EB5DE",
+            "typicalValue": 1.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 15
+          }
+        ]
       },
-      {
-        "name": "K",
-        "mRID": "1D4EF184-08B1-4633-BA51-0C3A121FDF94",
-        "typicalValue": 100.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 6
+      "IEEET1": {
+        "mRID": "1D697002-8710-4710-9717-6B074A9F66EF",
+        "description": "",
+        "closestStandardModel": "ExcIEEEDC1A",
+        "nameKind": "DYR",
+        "modelKind": "excitationSystem",
+        "statusKind": "allowed",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "A2D8BF5B-322A-4AB0-925D-F172700930A7",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "ED1B2A45-0F14-421D-B913-F281302F101D",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "0FD64F33-C52A-47EB-90FC-051C9B6FDB23",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "TR",
+            "mRID": "90392B45-2438-4859-BA0C-274940B62CE4",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "KA",
+            "mRID": "06D9C5F6-2AE2-4B19-9CF3-51F7524E04E5",
+            "typicalValue": 46.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 5
+          },
+          {
+            "name": "TA",
+            "mRID": "6E3516C8-8BA3-4F0C-A793-7893E0A054D0",
+            "typicalValue": 0.06,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 6
+          },
+          {
+            "name": "VRMAX",
+            "mRID": "FD880F5C-AD4A-47AB-A26B-5124AA6902A3",
+            "typicalValue": 1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 7
+          },
+          {
+            "name": "VRMIN",
+            "mRID": "DBB46C29-E4C4-4CD2-BB5C-0D2C838C89BA",
+            "typicalValue": -0.9,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 8
+          },
+          {
+            "name": "KE",
+            "mRID": "BF4C1769-0357-49BE-8627-7B9CD0D90F60",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 9
+          },
+          {
+            "name": "TE",
+            "mRID": "6D737FCB-269D-4868-9E98-D1AA7F43C3B3",
+            "typicalValue": 0.46,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 10
+          },
+          {
+            "name": "KF",
+            "mRID": "988B4A18-B5A6-47AE-91D3-68D5DD6290E8",
+            "typicalValue": 0.1,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 11
+          },
+          {
+            "name": "TF",
+            "mRID": "EAB5AEC3-DE88-4016-B97F-66D9CDA67611",
+            "typicalValue": 1.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 12
+          },
+          {
+            "name": "Switch",
+            "mRID": "7E7F6414-7AEF-4C23-9C43-82F28D949F3B",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 13
+          },
+          {
+            "name": "E1",
+            "mRID": "C9479F9A-722D-416D-8D8E-71FAD92390A9",
+            "typicalValue": 3.1,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 14
+          },
+          {
+            "name": "SE1",
+            "mRID": "9A40656D-D77E-46B0-B706-7797A5F290D5",
+            "typicalValue": 0.33,
+            "engineeringUnit": "Float",
+            "sequenceNumber": 15
+          },
+          {
+            "name": "E2",
+            "mRID": "A8A65F06-88C2-4203-ACD8-41BDD15A966F",
+            "typicalValue": 2.3,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 16
+          },
+          {
+            "name": "SE2",
+            "mRID": "E461B486-F24C-4BDD-93A7-CF07A9B971E3",
+            "typicalValue": 0.1,
+            "engineeringUnit": "Float",
+            "sequenceNumber": 17
+          }
+        ]
       },
-      {
-        "name": "TE",
-        "mRID": "0FAB61D9-EF26-4BCB-94FE-A19CBE2F3945",
-        "typicalValue": 0.05,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 7
+      "GAST": {
+        "mRID": "29FF9352-92BE-4FFD-997A-749ADC634210",
+        "description": "",
+        "closestStandardModel": "GovGAST",
+        "nameKind": "DYR",
+        "modelKind": "turbineGovernor",
+        "statusKind": "prohibited",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "6A42DEEC-D642-4609-A960-58F3986FB50E",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "B87C6967-BC0C-4103-9D12-FEA161036F1D",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "CC395F87-C6C5-43AF-9285-7755602FFD99",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "R",
+            "mRID": "CB95A3BF-352B-418B-B0C9-475BE1358A19",
+            "typicalValue": 0.04,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "T1",
+            "mRID": "CD6015AA-7290-4EAC-9170-74E6854AEABA",
+            "typicalValue": 0.5,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 5
+          },
+          {
+            "name": "T2",
+            "mRID": "66C2A1AE-A75E-47DE-B28A-89DB41CFC9B2",
+            "typicalValue": 0.5,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 6
+          },
+          {
+            "name": "T3",
+            "mRID": "9531379C-9987-448B-93F2-C93367255C10",
+            "typicalValue": 3.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 7
+          },
+          {
+            "name": "AT",
+            "mRID": "B16EC670-A401-410E-A063-F52BF42C666D",
+            "typicalValue": 1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 8
+          },
+          {
+            "name": "KT",
+            "mRID": "2613C99B-D811-4C55-9576-199FD4A6560E",
+            "typicalValue": 3.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 9
+          },
+          {
+            "name": "VMAX",
+            "mRID": "9CD50017-DCF2-4A34-990E-71775206495B",
+            "typicalValue": 1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 10
+          },
+          {
+            "name": "VMIN",
+            "mRID": "A89155CF-28AE-49FA-845C-BEFB840D366B",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 11
+          },
+          {
+            "name": "Dt",
+            "mRID": "CCC1AE88-3059-4ED4-BFE7-73862D183C07",
+            "typicalValue": 0.18,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 12
+          }
+        ]
       },
-      {
-        "name": "EMIN",
-        "mRID": "8C71701D-5C80-4E16-A5DB-9356BCB91854",
-        "typicalValue": -5.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 8
+      "TGOV1": {
+        "mRID": "F7BBFF29-107F-46E5-AF37-71341F6B1587",
+        "description": "",
+        "closestStandardModel": "GovSteam0",
+        "nameKind": "DYR",
+        "modelKind": "turbineGovernor",
+        "statusKind": "allowed",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "63D52583-E641-4473-B924-05D8AE95E110",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "208D50BB-630F-48E4-95DF-F33425C54C09",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "8D2C99C3-CE5B-4651-B60B-0714E24CA39C",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "R",
+            "mRID": "EF182868-4670-4271-9684-231C1ACDF593",
+            "typicalValue": 0.05,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "T1",
+            "mRID": "182F1C59-EB7B-4684-95CD-D50341E402BE",
+            "typicalValue": 0.5,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 5
+          },
+          {
+            "name": "VMAX",
+            "mRID": "419CEBED-8D72-4BAF-9BB1-BBD6404BE950",
+            "typicalValue": 1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 6
+          },
+          {
+            "name": "VMIN",
+            "mRID": "50A2FF9E-C212-4431-AC6E-A9A6B9BF1A34",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 7
+          },
+          {
+            "name": "T2",
+            "mRID": "A56F1152-553D-4EBA-B7C0-BA204365C510",
+            "typicalValue": 3.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 8
+          },
+          {
+            "name": "T3",
+            "mRID": "4BEAFB82-FFB3-4551-AA12-AE8D4BC09610",
+            "typicalValue": 10.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 9
+          },
+          {
+            "name": "Dt",
+            "mRID": "9C1B56C0-9371-45ED-8679-AA0C5E8E5CEC",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 10
+          }
+        ]
       },
-      {
-        "name": "EMAX",
-        "mRID": "87E5FD37-97F8-4DE7-B23E-C3EA78AFF8FF",
-        "typicalValue": 5.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 9
+      "HYGOV": {
+        "mRID": "7C2D15AE-D394-44A7-96CB-5C80427A42B6",
+        "description": "",
+        "closestStandardModel": "GovHydro1",
+        "nameKind": "DYR",
+        "modelKind": "turbineGovernor",
+        "statusKind": "allowed",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "01C9398B-A526-4BE2-A369-F0934BE09D86",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "EEBC03F2-B78A-4A2E-B777-31DFCE7A0D53",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "C1AC96C6-2E6C-4883-A312-24013C56FF48",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "R",
+            "mRID": "6880E7DA-6B48-44CC-945F-BDEAB96CA696",
+            "typicalValue": 0.04,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "r",
+            "mRID": "41FF412D-FECF-44D4-B6B2-EF1AF70532C2",
+            "typicalValue": 0.3,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 5
+          },
+          {
+            "name": "Tr",
+            "mRID": "6355ED50-353B-47C4-86CA-AFAB3ABAEBDB",
+            "typicalValue": 5.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 6
+          },
+          {
+            "name": "Tf",
+            "mRID": "FC365731-77BE-406B-804D-AC8E4A4C4D3E",
+            "typicalValue": 0.05,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 7
+          },
+          {
+            "name": "Tg",
+            "mRID": "D253096C-0E85-47E9-B471-1DCA2EFF263D",
+            "typicalValue": 0.5,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 8
+          },
+          {
+            "name": "VELM",
+            "mRID": "3C592791-CE83-417D-9F38-899FE3310908",
+            "typicalValue": 0.2,
+            "engineeringUnit": "Float",
+            "sequenceNumber": 9
+          },
+          {
+            "name": "GMAX",
+            "mRID": "5CD6DA0E-369D-4BDC-8DEB-8CAD4E6D000A",
+            "typicalValue": 1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 10
+          },
+          {
+            "name": "GMIN",
+            "mRID": "1F710253-5741-454E-95BC-3AEB3208D8ED",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 11
+          },
+          {
+            "name": "Tw",
+            "mRID": "066BB9BC-2E8B-4C80-816E-E53964C377BF",
+            "typicalValue": 1.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 12
+          },
+          {
+            "name": "At",
+            "mRID": "FDC81E4B-12CA-46A3-B354-4E7CD90223B4",
+            "typicalValue": 1.2,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 13
+          },
+          {
+            "name": "Dturb",
+            "mRID": "04804D4B-E401-453C-BD94-67B940740AB7",
+            "typicalValue": 0.5,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 14
+          },
+          {
+            "name": "qNL",
+            "mRID": "8DE593E0-BFCB-45B8-ADC2-EF85B981FE26",
+            "typicalValue": 0.08,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 15
+          }
+        ]
+      },
+      "IEESGO": {
+        "mRID": "F825AD7A-F24D-485E-9347-D437A4714031",
+        "description": "",
+        "closestStandardModel": "GovSteamSGO",
+        "nameKind": "DYR",
+        "modelKind": "turbineGovernor",
+        "statusKind": "prohibited",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "48689ECA-7FB8-469B-A7BD-7FD2CF437EC7",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "97A784C4-F9C3-4F2B-A2D4-C28B3581F6C4",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "35504746-086F-4918-8C9F-AB270E4F06CF",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "T1",
+            "mRID": "F92CC7D1-E58E-4C96-B5F5-FF18FB934D71",
+            "typicalValue": 5.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "T2",
+            "mRID": "D935A410-9662-4811-BB7B-81B0907895CB",
+            "typicalValue": 5.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 5
+          },
+          {
+            "name": "T3",
+            "mRID": "CAF5FFF9-ECBE-4A8B-A391-7568DB44B078",
+            "typicalValue": 0.1,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 6
+          },
+          {
+            "name": "T4",
+            "mRID": "39E52BDC-255A-49B2-BE80-92E20240C63E",
+            "typicalValue": 0.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 7
+          },
+          {
+            "name": "T5",
+            "mRID": "18E1330D-02DD-4C0E-9E9A-FA406AEFEE76",
+            "typicalValue": 0.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 8
+          },
+          {
+            "name": "T6",
+            "mRID": "1C2B1AC1-177A-4EAB-9322-D6DEF1B995D8",
+            "typicalValue": 0.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 9
+          },
+          {
+            "name": "K1",
+            "mRID": "666A1142-4B6E-4942-984E-24FF97A5A62D",
+            "typicalValue": 25.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 10
+          },
+          {
+            "name": "K2",
+            "mRID": "259A5850-9DEF-47B0-A34A-8D1F4876210C",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 11
+          },
+          {
+            "name": "K3",
+            "mRID": "2C884552-0A10-4E68-8302-19695662A563",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 12
+          },
+          {
+            "name": "PMAX",
+            "mRID": "4FB81493-5BD7-4AC1-BC71-90E7C6BE008D",
+            "typicalValue": 0.9,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 13
+          },
+          {
+            "name": "PMIN",
+            "mRID": "F4F40632-4BA4-47C6-B3A4-D9ECBADD6593",
+            "typicalValue": 0.05,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 14
+          }
+        ]
+      },
+      "IEEEST": {
+        "mRID": "88DA0C9F-1A84-46A4-B8AC-1DD293730816",
+        "description": "",
+        "closestStandardModel": "Pss1A",
+        "nameKind": "DYR",
+        "modelKind": "powerSystemStabilizer",
+        "statusKind": "allowed",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "8D35215A-1544-46BB-8310-3AB2023AADF8",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "CABE4911-0CF3-4A50-8039-44ADFA9D38B9",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "13B5AEB6-0D8A-4B07-A5A9-D6F481D85DF1",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "MODE",
+            "mRID": "4E329B38-269A-4906-98C9-B8D6D87F4CE3",
+            "typicalValue": "rotorAngularFrequencyDeviation",
+            "engineeringUnit": "InputSignalKind",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "BUSR",
+            "mRID": "AE1A189E-90DC-4820-A0B6-DCF485F1FA86",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 5
+          },
+          {
+            "name": "A1",
+            "mRID": "3C687FA6-309A-4DEC-B945-D616E00C4165",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 6
+          },
+          {
+            "name": "A2",
+            "mRID": "2D1BD53F-A65E-448D-8186-0EFDE2C60CAC",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 7
+          },
+          {
+            "name": "A3",
+            "mRID": "010E719E-9B1A-4991-A47D-DF67285F475F",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 8
+          },
+          {
+            "name": "A4",
+            "mRID": "A5380CA1-5782-4EB6-9352-83835BF36273",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 9
+          },
+          {
+            "name": "A5",
+            "mRID": "7E941B65-70F9-4E23-8257-2C5E8776E28D",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 10
+          },
+          {
+            "name": "A6",
+            "mRID": "8D4541DA-F458-48A0-B00A-C0B628E93E08",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 11
+          },
+          {
+            "name": "T1",
+            "mRID": "1B4B54DC-C4C9-458A-8EDE-535C077F1156",
+            "typicalValue": 1.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 12
+          },
+          {
+            "name": "T2",
+            "mRID": "343361F9-5599-4CA6-A451-9B2A601E4393",
+            "typicalValue": 0.5,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 13
+          },
+          {
+            "name": "T3",
+            "mRID": "2EC855E9-0CB9-4C4D-99C8-2743C28AB462",
+            "typicalValue": 2.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 14
+          },
+          {
+            "name": "T4",
+            "mRID": "F06FC26A-B4F6-4760-9AD3-A934A0C13C0B",
+            "typicalValue": 0.1,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 15
+          },
+          {
+            "name": "T5",
+            "mRID": "7D7B8E7B-A548-4623-A117-D0677B6BF6C3",
+            "typicalValue": 10.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 16
+          },
+          {
+            "name": "T6",
+            "mRID": "7FF23EEA-6198-41CD-8725-3DB9030BABAC",
+            "typicalValue": 0.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 17
+          },
+          {
+            "name": "KS",
+            "mRID": "C89902D5-EE8A-4D09-859B-998E19FEA3A4",
+            "typicalValue": 2.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 18
+          },
+          {
+            "name": "LSMAX",
+            "mRID": "95E86A1A-54D0-4C70-8050-6084849A527A",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 19
+          },
+          {
+            "name": "LSMIN",
+            "mRID": "795EB7B3-1BFC-4831-8E07-7A23026F42BB",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 20
+          },
+          {
+            "name": "VCU",
+            "mRID": "24FE04AC-5723-41AF-858D-7884A0FC5E71",
+            "typicalValue": 5.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 21
+          },
+          {
+            "name": "VCL",
+            "mRID": "D91DACFF-9614-4967-8012-50DE0A3474D6",
+            "typicalValue": -5.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 22
+          }
+        ]
+      },
+      "REGCA1": {
+        "mRID": "ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8",
+        "description": "",
+        "closestStandardModel": "WeccREGCA",
+        "nameKind": "DYR",
+        "modelKind": "renewableEnergyResource",
+        "statusKind": "allowed",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "DB3B77A0-8CF1-499C-9E27-555B4F7E53BB",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "D3329ED5-3D8A-482F-BFC4-BB87CC921725",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "CD5A7A89-E411-4CB3-B864-CD7BBDFA788A",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "Lvplsw",
+            "mRID": "83AB5D99-8196-4243-A3AA-B07B201C4326",
+            "typicalValue": true,
+            "engineeringUnit": "Boolean",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "Tg",
+            "mRID": "D6980FD5-7C98-4CCA-877A-62933645447B",
+            "typicalValue": 0.02,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 5
+          },
+          {
+            "name": "Rrpwr",
+            "mRID": "1BD3442D-C02B-4F7C-B622-4E30A1E2CEB4",
+            "typicalValue": 10.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 6
+          },
+          {
+            "name": "Brkpt",
+            "mRID": "5A737BB4-EEA3-486E-8CC8-539E68A8535C",
+            "typicalValue": 0.9,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 7
+          },
+          {
+            "name": "Zerox",
+            "mRID": "A8914BCC-F7DD-4D17-9E31-653DF9574126",
+            "typicalValue": 0.4,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 8
+          },
+          {
+            "name": "Lvpl1",
+            "mRID": "1C552845-EFF1-41FE-8675-13942D1998EF",
+            "typicalValue": 1.2,
+            "engineeringUnit": "Float",
+            "sequenceNumber": 9
+          },
+          {
+            "name": "Volim",
+            "mRID": "DD4D6806-5715-4CC6-9BA4-533808562B15",
+            "typicalValue": 1.2,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 10
+          },
+          {
+            "name": "Lvpnt1",
+            "mRID": "2851E921-7603-4FEF-905B-DA437652F5B6",
+            "typicalValue": 0.8,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 11
+          },
+          {
+            "name": "Lvpnt0",
+            "mRID": "42881242-0903-44F8-A565-A9273B186223",
+            "typicalValue": 0.4,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 12
+          },
+          {
+            "name": "Iolim",
+            "mRID": "37B6A0A0-E321-4310-8628-2DE1A38049CB",
+            "typicalValue": -1.2,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 13
+          },
+          {
+            "name": "Tfltr",
+            "mRID": "A1B04507-70C4-47FC-8BDC-7BA27ABC1004",
+            "typicalValue": 0.015,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 14
+          },
+          {
+            "name": "Khv",
+            "mRID": "CA6613C5-B2D6-4792-87DB-D070DBB135D8",
+            "typicalValue": 0.7,
+            "engineeringUnit": "Float",
+            "sequenceNumber": 15
+          },
+          {
+            "name": "Iqrmax",
+            "mRID": "93487D57-F243-425B-ACA0-D46A78117183",
+            "typicalValue": 999.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 16
+          },
+          {
+            "name": "Iqrmin",
+            "mRID": "237103F2-35B0-4DB3-AAF3-1906C3C5AC8A",
+            "typicalValue": -999.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 17
+          },
+          {
+            "name": "Accel",
+            "mRID": "7058A063-4FEC-4A0B-A459-19BC3F4C4445",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 18
+          }
+        ]
+      },
+      "REECA1": {
+        "mRID": "737C9425-B23D-4692-BB9D-6C1801A341BE",
+        "description": "",
+        "closestStandardModel": "WeccREECA",
+        "nameKind": "DYR",
+        "modelKind": "renewableEnergyResource",
+        "statusKind": "allowed",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "2FAEA6F3-3016-4491-BDA0-103200BA5747",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "E0886164-F8BC-422D-A29D-16201DE9AA77",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "4E39C110-9848-49BC-876E-14ED740C4093",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "BUSR",
+            "mRID": "1CA731D1-E8F8-42DB-8E58-DA4B9B4DF9A9",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "PFFLAG",
+            "mRID": "AF0BF4AF-764A-4628-AAB8-19225B40A158",
+            "typicalValue": false,
+            "engineeringUnit": "Boolean",
+            "sequenceNumber": 5
+          },
+          {
+            "name": "VFLAG",
+            "mRID": "ACEA907F-0EF7-477C-81D9-7CC34BC16131",
+            "typicalValue": true,
+            "engineeringUnit": "Boolean",
+            "sequenceNumber": 6
+          },
+          {
+            "name": "QFLAG",
+            "mRID": "786A2C31-C177-448E-86CA-7E56F04ADB41",
+            "typicalValue": true,
+            "engineeringUnit": "Boolean",
+            "sequenceNumber": 7
+          },
+          {
+            "name": "PFLAG",
+            "mRID": "03067421-28C4-4AF8-B5BC-F4F0ED7B6020",
+            "typicalValue": true,
+            "engineeringUnit": "Boolean",
+            "sequenceNumber": 8
+          },
+          {
+            "name": "PQFLAG",
+            "mRID": "BDF4DE52-2DBE-46FD-853E-1773C2327B6B",
+            "typicalValue": false,
+            "engineeringUnit": "Boolean",
+            "sequenceNumber": 9
+          },
+          {
+            "name": "Vdip",
+            "mRID": "2F0F6B77-D760-4F6C-8D1B-392A3585FD42",
+            "typicalValue": 0.87,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 10
+          },
+          {
+            "name": "Vup",
+            "mRID": "A8A79AB1-06D8-4EB5-8789-804DB75C179C",
+            "typicalValue": 1.15,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 11
+          },
+          {
+            "name": "Trv",
+            "mRID": "6D2B92F8-30CD-4D7E-9169-C9A28224F03B",
+            "typicalValue": 0.03,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 12
+          },
+          {
+            "name": "dbd1",
+            "mRID": "81A62F12-5154-48FB-8E58-C092D556B9CD",
+            "typicalValue": -0.05,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 13
+          },
+          {
+            "name": "dbd2",
+            "mRID": "376022E5-AFA5-40C1-96D9-E4F70F848656",
+            "typicalValue": 0.05,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 14
+          },
+          {
+            "name": "Kqv",
+            "mRID": "9335B9A4-747B-437A-99F4-204967E17E6F",
+            "typicalValue": 5.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 15
+          },
+          {
+            "name": "Iqh1",
+            "mRID": "C63ADBF4-919D-4787-BD71-34B568D41C8C",
+            "typicalValue": 1.05,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 16
+          },
+          {
+            "name": "Iql1",
+            "mRID": "7E2A4B97-8ABF-43CF-9D7D-81334EA8DB7F",
+            "typicalValue": -1.05,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 17
+          },
+          {
+            "name": "Vref0",
+            "mRID": "BBB70981-1913-45EA-A8C0-4E7B935CDF21",
+            "typicalValue": 1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 18
+          },
+          {
+            "name": "Iqfrz",
+            "mRID": "9C3747D1-F1CA-419E-9564-77912CF01ACE",
+            "typicalValue": 0.05,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 19
+          },
+          {
+            "name": "Thld",
+            "mRID": "5CBA6640-2682-4FD7-BF12-1A8B906497D8",
+            "typicalValue": 0.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 20
+          },
+          {
+            "name": "Thld2",
+            "mRID": "49E007D9-1474-40AC-A5F9-C091BCD70704",
+            "typicalValue": 0.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 21
+          },
+          {
+            "name": "Tp",
+            "mRID": "92C925AE-4C42-421A-9ADE-0BEB3E6B3D85",
+            "typicalValue": 0.05,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 22
+          },
+          {
+            "name": "QMax",
+            "mRID": "2BCC9F74-3065-4293-B7D9-6656FD97FD26",
+            "typicalValue": 0.7,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 23
+          },
+          {
+            "name": "QMin",
+            "mRID": "B60E708D-BFAF-4BCC-BFB6-B93E722E2616",
+            "typicalValue": -0.7,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 24
+          },
+          {
+            "name": "VMAX",
+            "mRID": "2A95B34F-025C-4ACD-AABD-C51E487ED44A",
+            "typicalValue": 1.07,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 25
+          },
+          {
+            "name": "VMIN",
+            "mRID": "8BC2AA90-AF1A-40AC-9794-98EEDDA69B8C",
+            "typicalValue": 0.9,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 26
+          },
+          {
+            "name": "Kqp",
+            "mRID": "ED37BC37-3EA1-4DA1-819A-5A4A426DD864",
+            "typicalValue": 0.1,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 27
+          },
+          {
+            "name": "Kqi",
+            "mRID": "A6CDABC0-69EB-4141-B5F8-360AD976FCF5",
+            "typicalValue": 0.1,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 28
+          },
+          {
+            "name": "Kvp",
+            "mRID": "62F16062-1BF3-49FD-B2F4-7CE208A297FB",
+            "typicalValue": 5.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 29
+          },
+          {
+            "name": "Kvi",
+            "mRID": "346F4B13-FD65-4E57-868F-AFC2DC3966F5",
+            "typicalValue": 1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 30
+          },
+          {
+            "name": "Vbias",
+            "mRID": "C1CBD55E-8049-4DBB-8AC8-6556AFAD243F",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 31
+          },
+          {
+            "name": "Tiq",
+            "mRID": "037C243D-5476-4FA4-903F-3DE832AB97CE",
+            "typicalValue": 0.015,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 32
+          },
+          {
+            "name": "dPmax",
+            "mRID": "9FEFADB8-FCA6-467E-A0E0-6A0B8070418C",
+            "typicalValue": 999.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 33
+          },
+          {
+            "name": "dPmin",
+            "mRID": "370643E2-4DA4-42FB-A876-5FCBE065B5B7",
+            "typicalValue": -999.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 34
+          },
+          {
+            "name": "PMAX",
+            "mRID": "19F78225-C18F-4719-8D24-EED695C07960",
+            "typicalValue": 1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 35
+          },
+          {
+            "name": "PMIN",
+            "mRID": "C6AC5C89-7A2F-4437-BAA9-BC8D0FEA4730",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 36
+          },
+          {
+            "name": "Imax",
+            "mRID": "1395498F-FE58-4DEE-B0AD-B6C1819E4990",
+            "typicalValue": 1.2,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 37
+          },
+          {
+            "name": "Tpord",
+            "mRID": "BF07A12F-1BA1-4D3D-A577-52F398259E19",
+            "typicalValue": 0.03,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 38
+          },
+          {
+            "name": "Vq1",
+            "mRID": "143CC459-8716-4B19-A68F-251F8FE10BF9",
+            "typicalValue": -1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 39
+          },
+          {
+            "name": "Iq1",
+            "mRID": "6994AC3F-5173-454C-8778-D96D0444276B",
+            "typicalValue": 1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 40
+          },
+          {
+            "name": "Vq2",
+            "mRID": "E23B8641-EF32-4D48-A58C-CEC86DB07934",
+            "typicalValue": 2.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 41
+          },
+          {
+            "name": "Iq2",
+            "mRID": "D241E5C1-F4DB-4654-B9A3-3EB7D40667EE",
+            "typicalValue": 1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 42
+          },
+          {
+            "name": "Vq3",
+            "mRID": "B254F02C-781F-4547-8E08-25604E82D04D",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 43
+          },
+          {
+            "name": "Iq3",
+            "mRID": "B9B701FD-166D-41BB-9647-4547B48564F4",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 44
+          },
+          {
+            "name": "Vq4",
+            "mRID": "712D3456-5E20-4D6C-9C73-67AC138CA33D",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 45
+          },
+          {
+            "name": "Iq4",
+            "mRID": "3CF71436-E804-4378-ABB7-B3F22497BADC",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 46
+          },
+          {
+            "name": "Vp1",
+            "mRID": "B4556CE5-5583-424D-B0F1-1F82C056803F",
+            "typicalValue": -1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 47
+          },
+          {
+            "name": "Ip1",
+            "mRID": "352229D4-CFB4-4F23-B8C2-D36A5C7D401D",
+            "typicalValue": 1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 48
+          },
+          {
+            "name": "Vp2",
+            "mRID": "31832411-11CC-4FDE-8D39-3F03A8411A3F",
+            "typicalValue": 2.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 49
+          },
+          {
+            "name": "Ip2",
+            "mRID": "319A0D2C-2719-4CB6-94AD-04386C646CDD",
+            "typicalValue": 1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 50
+          },
+          {
+            "name": "Vp3",
+            "mRID": "4AF992A7-010D-42CF-890B-DA4A92212AB1",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 51
+          },
+          {
+            "name": "Ip3",
+            "mRID": "10947A42-96E4-46D4-9524-3734F3FC497B",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 52
+          },
+          {
+            "name": "Vp4",
+            "mRID": "FB0B16CC-534F-41FF-87A6-2B76CC033CAF",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 53
+          },
+          {
+            "name": "Ip4",
+            "mRID": "2AAD6538-D75E-4AFF-BE8A-DAF56935C8CE",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 54
+          }
+        ]
+      },
+      "REECB1": {
+        "mRID": "B4680043-B42B-4ABF-8875-E7A281A3D5B8",
+        "description": "",
+        "closestStandardModel": "WeccREECA",
+        "nameKind": "DYR",
+        "modelKind": "renewableEnergyResource",
+        "statusKind": "prohibited",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "59AB3E8E-F13E-48E8-B4C1-5958E9B854C5",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "C546FD6B-D2FA-4977-9FA0-52290697D27B",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "0B13A538-7510-4BD8-9AF7-39BCDCF6B66C",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "PFFLAG",
+            "mRID": "767B6CDB-5513-4704-841E-59AA0C758472",
+            "typicalValue": false,
+            "engineeringUnit": "Boolean",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "VFLAG",
+            "mRID": "A4ABD856-A607-44E3-92B8-B02F60BFF739",
+            "typicalValue": true,
+            "engineeringUnit": "Boolean",
+            "sequenceNumber": 5
+          },
+          {
+            "name": "QFLAG",
+            "mRID": "E64D8020-5AF7-4FFA-8DEE-7F45CC0186A4",
+            "typicalValue": true,
+            "engineeringUnit": "Boolean",
+            "sequenceNumber": 6
+          },
+          {
+            "name": "PFLAG",
+            "mRID": "298A347A-1FB9-40C0-ADDF-FAB7566B8145",
+            "typicalValue": true,
+            "engineeringUnit": "Boolean",
+            "sequenceNumber": 7
+          },
+          {
+            "name": "PQFLAG",
+            "mRID": "CA39CA54-19E5-4F08-8633-03C14B8BF029",
+            "typicalValue": false,
+            "engineeringUnit": "Boolean",
+            "sequenceNumber": 8
+          },
+          {
+            "name": "Vdip",
+            "mRID": "1576C754-2DE1-4D1A-A318-0B0F8A2BF76A",
+            "typicalValue": 0.87,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 9
+          },
+          {
+            "name": "Vup",
+            "mRID": "E91890F2-5A16-431D-B4E5-63B4B2E7EEB9",
+            "typicalValue": 1.15,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 10
+          },
+          {
+            "name": "Trv",
+            "mRID": "8CB649B1-E009-45EC-92D2-3B0A83A7F411",
+            "typicalValue": 0.03,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 11
+          },
+          {
+            "name": "dbd1",
+            "mRID": "BE92D39B-6DCF-499A-B9C8-DC04BF1F4566",
+            "typicalValue": -0.05,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 12
+          },
+          {
+            "name": "dbd2",
+            "mRID": "BC9F8A06-F60B-482C-8FAB-DEDA9F288CC6",
+            "typicalValue": 0.05,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 13
+          },
+          {
+            "name": "Kqv",
+            "mRID": "42483453-93FE-4710-9D07-841BFC6CAA22",
+            "typicalValue": 5.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 14
+          },
+          {
+            "name": "Iqh1",
+            "mRID": "E18946BC-DE03-42DB-B89E-035B1FF797D7",
+            "typicalValue": 1.05,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 15
+          },
+          {
+            "name": "Iql1",
+            "mRID": "E1BDF520-638A-484B-86D3-5C54EEE6B636",
+            "typicalValue": -1.05,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 16
+          },
+          {
+            "name": "Vref0",
+            "mRID": "86006D8F-A043-43F5-A7EF-DD537A6124A5",
+            "typicalValue": 1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 17
+          },
+          {
+            "name": "Tp",
+            "mRID": "A95F6111-9CDC-40A2-8750-6A9DD31E3BD8",
+            "typicalValue": 0.05,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 18
+          },
+          {
+            "name": "QMax",
+            "mRID": "A33C4B03-9188-4BA4-8CD5-65622596F469",
+            "typicalValue": 0.7,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 19
+          },
+          {
+            "name": "QMin",
+            "mRID": "B722E85B-287A-49E3-BC78-A15314F2BA40",
+            "typicalValue": -0.7,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 20
+          },
+          {
+            "name": "VMAX",
+            "mRID": "E893FCED-668A-4917-9457-51FE38B5A314",
+            "typicalValue": 1.07,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 21
+          },
+          {
+            "name": "VMIN",
+            "mRID": "A3114F1D-5BEA-4716-BFE6-1E283371FE3D",
+            "typicalValue": 0.9,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 22
+          },
+          {
+            "name": "Kqp",
+            "mRID": "9CB6F2A3-435E-44E9-81B5-0CB0F339F881",
+            "typicalValue": 0.1,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 23
+          },
+          {
+            "name": "Kqi",
+            "mRID": "4D20D1F6-159C-4559-A148-63A82944160A",
+            "typicalValue": 0.1,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 24
+          },
+          {
+            "name": "Kvp",
+            "mRID": "A68174BA-EB89-41AE-9E73-B72CF37BE72F",
+            "typicalValue": 5.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 25
+          },
+          {
+            "name": "Kvi",
+            "mRID": "A38C1CF1-B6CB-4C58-A3E2-1E865DFCB359",
+            "typicalValue": 1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 26
+          },
+          {
+            "name": "Tiq",
+            "mRID": "1A13F00E-4101-42A1-ADA6-069D113D3C34",
+            "typicalValue": 0.015,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 27
+          },
+          {
+            "name": "dPmax",
+            "mRID": "56D7E6FE-035D-4524-B071-F4CD0EF2204C",
+            "typicalValue": 999.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 28
+          },
+          {
+            "name": "dPmin",
+            "mRID": "6BFD4D02-64C3-4B59-A00F-6B3CD9FD3D61",
+            "typicalValue": -999.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 29
+          },
+          {
+            "name": "PMAX",
+            "mRID": "1C9E0D6E-0F44-462A-B632-954A6E9C784E",
+            "typicalValue": 1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 30
+          },
+          {
+            "name": "PMIN",
+            "mRID": "3625354D-03D0-47E7-95C9-EF89512F9506",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 31
+          },
+          {
+            "name": "Imax",
+            "mRID": "1E9969CE-BDB4-4F08-AC0D-25F96034233B",
+            "typicalValue": 1.2,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 32
+          },
+          {
+            "name": "Tpord",
+            "mRID": "AA624219-4CB6-4377-BE2D-64504D41D666",
+            "typicalValue": 0.03,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 33
+          }
+        ]
+      },
+      "REPCA1": {
+        "mRID": "32034FA3-7303-4F91-8110-A05EE463DF7F",
+        "description": "",
+        "closestStandardModel": "WeccREPCA",
+        "nameKind": "DYR",
+        "modelKind": "renewableEnergyResource",
+        "statusKind": "allowed",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "13D956D2-9975-461F-9BFF-B222E24302F4",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "2BA9FFC4-0F2F-4E37-A5BB-E3F1114B177E",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "303094B6-477F-4B87-9C6F-7C9EA3A744B2",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "BUSR",
+            "mRID": "D488032D-90AB-49BE-9FEA-62096C4B2983",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "BUS1",
+            "mRID": "3A93999C-81B8-4B11-874B-E716310D1E61",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 5
+          },
+          {
+            "name": "BUS2",
+            "mRID": "DDD70F88-374A-4FD5-B53F-1DE139C5748E",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 6
+          },
+          {
+            "name": "CKTID",
+            "mRID": "C388E5B3-C823-4BD9-ACC4-C14C2A73EE41",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 7
+          },
+          {
+            "name": "VCFlag",
+            "mRID": "1B13F8F7-FAC3-4CF1-A61F-7B0BCB3CFE34",
+            "typicalValue": true,
+            "engineeringUnit": "Boolean",
+            "sequenceNumber": 8
+          },
+          {
+            "name": "RefFlag",
+            "mRID": "0047194F-6E80-4D0E-981F-E051363E7604",
+            "typicalValue": true,
+            "engineeringUnit": "Boolean",
+            "sequenceNumber": 9
+          },
+          {
+            "name": "Fflag",
+            "mRID": "0C287014-57C4-4414-BF79-E5E8BCFA3008",
+            "typicalValue": true,
+            "engineeringUnit": "Boolean",
+            "sequenceNumber": 10
+          },
+          {
+            "name": "Tfltr",
+            "mRID": "D0627E06-0E87-489A-97AF-07619C7B9A24",
+            "typicalValue": 0.02,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 11
+          },
+          {
+            "name": "Kp",
+            "mRID": "51034D10-D82D-4E1C-88B8-3F9E00D6534E",
+            "typicalValue": 10.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 12
+          },
+          {
+            "name": "Ki",
+            "mRID": "5BFD03A5-DC6C-4EF3-B44D-65F636D23AB0",
+            "typicalValue": 5.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 13
+          },
+          {
+            "name": "Tft",
+            "mRID": "585D0407-70FA-4EAE-B1B2-C1A442650402",
+            "typicalValue": 0.0,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 14
+          },
+          {
+            "name": "Tfv",
+            "mRID": "698732A1-D3FF-4CEA-8FFB-E36C115915F3",
+            "typicalValue": 0.08,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 15
+          },
+          {
+            "name": "Vfrz",
+            "mRID": "8B53DEF3-7E2D-4D14-A84D-9EEB59CDEC35",
+            "typicalValue": 0.35,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 16
+          },
+          {
+            "name": "Rc",
+            "mRID": "79C13399-8782-4240-87E0-63A423C6D699",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 17
+          },
+          {
+            "name": "Xc",
+            "mRID": "4051A34B-2CCC-40A8-A6EA-3330982C0446",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 18
+          },
+          {
+            "name": "Kc",
+            "mRID": "CAF12779-6345-4830-95B0-ABD44E712D49",
+            "typicalValue": 0.02,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 19
+          },
+          {
+            "name": "emax",
+            "mRID": "90FEE5A4-3651-4C27-81B3-A70359D3A3E7",
+            "typicalValue": 999.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 20
+          },
+          {
+            "name": "emin",
+            "mRID": "985F6294-B8E5-48B4-A64E-AA63C6AC57AF",
+            "typicalValue": -999.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 21
+          },
+          {
+            "name": "dbd1",
+            "mRID": "9660C61E-12CD-44B2-9380-BD10E3BB0E23",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 22
+          },
+          {
+            "name": "dbd2",
+            "mRID": "BB2D4793-35E9-4C00-8EEA-A6A6B11B30D9",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 23
+          },
+          {
+            "name": "Qmax",
+            "mRID": "76F0C938-726A-402A-9C84-3D1AA4E988A9",
+            "typicalValue": 0.7,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 24
+          },
+          {
+            "name": "Qmin",
+            "mRID": "EDD06008-09DD-4068-891A-005F0DBB1158",
+            "typicalValue": -0.7,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 25
+          },
+          {
+            "name": "Kpg",
+            "mRID": "F89005C6-7659-428B-B288-59CCC4E77B6E",
+            "typicalValue": 0.1,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 26
+          },
+          {
+            "name": "Kig",
+            "mRID": "C36F0003-2385-43EA-9F33-5B0E048020FA",
+            "typicalValue": 0.05,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 27
+          },
+          {
+            "name": "Tp",
+            "mRID": "D5947D7C-F6C7-4445-80FB-0AC5AE647CA0",
+            "typicalValue": 0.03,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 28
+          },
+          {
+            "name": "fdbd1",
+            "mRID": "89900F37-BDD3-4ECF-83BE-A4BEC189ABCC",
+            "typicalValue": -0.01,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 29
+          },
+          {
+            "name": "fdbd2",
+            "mRID": "71DA756B-08B1-487E-9487-3F009B4F2382",
+            "typicalValue": 0.01,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 30
+          },
+          {
+            "name": "femax",
+            "mRID": "84E383C7-8C63-4DC5-93E5-15545BFE4D0D",
+            "typicalValue": 999.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 31
+          },
+          {
+            "name": "femin",
+            "mRID": "835A024D-3610-497B-9FFD-657345CD53B5",
+            "typicalValue": -999.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 32
+          },
+          {
+            "name": "Pmax",
+            "mRID": "FBF9F943-1E02-41A1-9F1D-4B81E9FA6B54",
+            "typicalValue": 1.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 33
+          },
+          {
+            "name": "Pmin",
+            "mRID": "5E3D7FC9-9857-4CC1-9AAC-CE4DC662651F",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 34
+          },
+          {
+            "name": "Tg",
+            "mRID": "2F057E4B-2294-47CF-B756-F048E7519ECD",
+            "typicalValue": 0.08,
+            "engineeringUnit": "Seconds",
+            "sequenceNumber": 35
+          },
+          {
+            "name": "Ddn",
+            "mRID": "0DC3D3E8-ED7F-4C95-8F43-9FA11A7551FF",
+            "typicalValue": 20.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 36
+          },
+          {
+            "name": "Dup",
+            "mRID": "979A2FDB-3C8C-41C6-9CFC-06997A727A00",
+            "typicalValue": 0.0,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 37
+          }
+        ]
+      },
+      "WTDTA1": {
+        "mRID": "D988EC5E-7EF1-418F-9F69-96995339E4BE",
+        "description": "",
+        "closestStandardModel": "WeccWTGTA",
+        "nameKind": "DYR",
+        "modelKind": "renewableEnergyResource",
+        "statusKind": "allowed",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "4DFA7ED9-C478-41D1-9EFC-CBB5A5CAE4A7",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "383E3FBE-18A6-4BB9-A142-6ED5CD55A622",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "375B2BD1-C09F-4DBE-B0AC-FBF886F806CE",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "H",
+            "mRID": "FCFCC2DE-CEA2-4F22-9D80-BAFA9504F29B",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "DAMP",
+            "mRID": "9666AC13-89F6-4C44-A210-FB1DE4F87240",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 5
+          },
+          {
+            "name": "Htfrac",
+            "mRID": "FE403C09-3419-43C0-821A-70AEE0A090EC",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 6
+          },
+          {
+            "name": "Freq1",
+            "mRID": "DC2A17B5-F42E-458B-B3FB-A23716A472D9",
+            "typicalValue": "",
+            "engineeringUnit": "",
+            "sequenceNumber": 7
+          },
+          {
+            "name": "Dshaft",
+            "mRID": "53487495-3E33-4BD4-925E-5FCF38B971A1",
+            "typicalValue": 1.5,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 8
+          }
+        ]
+      },
+      "WTARA1": {
+        "mRID": "86604D1C-DB00-4E4C-9348-1E6D5FFFE060",
+        "description": "",
+        "closestStandardModel": "WeccWTGARA",
+        "nameKind": "DYR",
+        "modelKind": "renewableEnergyResource",
+        "statusKind": "allowed",
+        "parameterDescriptors": [
+          {
+            "name": "Bus",
+            "mRID": "F9CA8BEE-E97E-4771-8999-9219885382DF",
+            "typicalValue": "",
+            "engineeringUnit": "Integer",
+            "sequenceNumber": 1
+          },
+          {
+            "name": "Model",
+            "mRID": "EABCD859-78EC-424B-B652-59EA87389E1E",
+            "typicalValue": "",
+            "engineeringUnit": "String",
+            "sequenceNumber": 2
+          },
+          {
+            "name": "ID",
+            "mRID": "B51CB8F2-E4DE-4C3D-94BA-6B138F7DC777",
+            "typicalValue": "1",
+            "engineeringUnit": "String",
+            "sequenceNumber": 3
+          },
+          {
+            "name": "Ka",
+            "mRID": "0B09C389-F0A5-4FB8-B802-7BD22FFDDD49",
+            "typicalValue": 0.01,
+            "engineeringUnit": "PU",
+            "sequenceNumber": 4
+          },
+          {
+            "name": "theta0",
+            "mRID": "F3C76E21-540E-4189-9FF5-BC9C3E3C05D7",
+            "typicalValue": 0.0,
+            "engineeringUnit": "AngleDegrees",
+            "sequenceNumber": 5
+          }
+        ]
       }
-    ]
-  },
-  "EXST1": {
-    "mRID": "C8DA2CB6-6699-4EE7-9AE6-FE0FE22DB229",
-    "description": "",
-    "closestStandardModel": "ExcST1A",
-    "nameKind": "DYR",
-    "modelKind": "excitationSystem",
-    "statusKind": "allowed",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "64D9432B-5466-4201-BC3E-6644F8F2EB75",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
-      },
-      {
-        "name": "Model",
-        "mRID": "679E5D3B-6D51-44F9-B659-2F0D2024D8F7",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
-      },
-      {
-        "name": "ID",
-        "mRID": "93720EDE-2C55-4055-B700-9897AE0BF544",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
-      },
-      {
-        "name": "TR",
-        "mRID": "CB71678F-2489-4392-A902-2829A8BF7A79",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 4
-      },
-      {
-        "name": "VIMAX",
-        "mRID": "79326BD2-E93E-43A5-978C-67FD273BF4B7",
-        "typicalValue": 0.1,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 5
-      },
-      {
-        "name": "VIMIN",
-        "mRID": "248B970E-A434-416A-B70E-574B18238F12",
-        "typicalValue": -0.1,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 6
-      },
-      {
-        "name": "TC",
-        "mRID": "5DCA73CD-94F6-43F2-8A6C-3536A37AC895",
-        "typicalValue": 1.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 7
-      },
-      {
-        "name": "TB",
-        "mRID": "953919DC-E8B4-46FA-A3F9-532B8088440E",
-        "typicalValue": 10.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 8
-      },
-      {
-        "name": "KA",
-        "mRID": "F44C075A-280A-4B13-8D6A-4FD378F90D62",
-        "typicalValue": 40.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 9
-      },
-      {
-        "name": "TA",
-        "mRID": "1299F2CC-34FE-4FE3-9446-C8C8F7BCECBA",
-        "typicalValue": 0.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 10
-      },
-      {
-        "name": "VRMAX",
-        "mRID": "069F89A9-DA85-49EC-869A-A08926CF0BFD",
-        "typicalValue": 4.5,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 11
-      },
-      {
-        "name": "VRMIN",
-        "mRID": "AD2D1F99-BFDB-4D25-B887-232AE715B38C",
-        "typicalValue": -4.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 12
-      },
-      {
-        "name": "KC",
-        "mRID": "1160B75E-445F-4DEB-A6C9-A0A5F255FD10",
-        "typicalValue": 0.038,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 13
-      },
-      {
-        "name": "KF",
-        "mRID": "502534AF-9A0C-4C4E-82A1-EE7DC5008296",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 14
-      },
-      {
-        "name": "TF",
-        "mRID": "095932C8-2280-4B7A-BBBE-A4F1328EB5DE",
-        "typicalValue": 1.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 15
-      }
-    ]
-  },
-  "IEEET1": {
-    "mRID": "1D697002-8710-4710-9717-6B074A9F66EF",
-    "description": "",
-    "closestStandardModel": "ExcIEEEDC1A",
-    "nameKind": "DYR",
-    "modelKind": "excitationSystem",
-    "statusKind": "allowed",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "A2D8BF5B-322A-4AB0-925D-F172700930A7",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
-      },
-      {
-        "name": "Model",
-        "mRID": "ED1B2A45-0F14-421D-B913-F281302F101D",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
-      },
-      {
-        "name": "ID",
-        "mRID": "0FD64F33-C52A-47EB-90FC-051C9B6FDB23",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
-      },
-      {
-        "name": "TR",
-        "mRID": "90392B45-2438-4859-BA0C-274940B62CE4",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 4
-      },
-      {
-        "name": "KA",
-        "mRID": "06D9C5F6-2AE2-4B19-9CF3-51F7524E04E5",
-        "typicalValue": 46.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 5
-      },
-      {
-        "name": "TA",
-        "mRID": "6E3516C8-8BA3-4F0C-A793-7893E0A054D0",
-        "typicalValue": 0.06,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 6
-      },
-      {
-        "name": "VRMAX",
-        "mRID": "FD880F5C-AD4A-47AB-A26B-5124AA6902A3",
-        "typicalValue": 1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 7
-      },
-      {
-        "name": "VRMIN",
-        "mRID": "DBB46C29-E4C4-4CD2-BB5C-0D2C838C89BA",
-        "typicalValue": -0.9,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 8
-      },
-      {
-        "name": "KE",
-        "mRID": "BF4C1769-0357-49BE-8627-7B9CD0D90F60",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 9
-      },
-      {
-        "name": "TE",
-        "mRID": "6D737FCB-269D-4868-9E98-D1AA7F43C3B3",
-        "typicalValue": 0.46,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 10
-      },
-      {
-        "name": "KF",
-        "mRID": "988B4A18-B5A6-47AE-91D3-68D5DD6290E8",
-        "typicalValue": 0.1,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 11
-      },
-      {
-        "name": "TF",
-        "mRID": "EAB5AEC3-DE88-4016-B97F-66D9CDA67611",
-        "typicalValue": 1.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 12
-      },
-      {
-        "name": "Switch",
-        "mRID": "7E7F6414-7AEF-4C23-9C43-82F28D949F3B",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 13
-      },
-      {
-        "name": "E1",
-        "mRID": "C9479F9A-722D-416D-8D8E-71FAD92390A9",
-        "typicalValue": 3.1,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 14
-      },
-      {
-        "name": "SE1",
-        "mRID": "9A40656D-D77E-46B0-B706-7797A5F290D5",
-        "typicalValue": 0.33,
-        "engineeringUnit": "Float",
-        "sequenceNumber": 15
-      },
-      {
-        "name": "E2",
-        "mRID": "A8A65F06-88C2-4203-ACD8-41BDD15A966F",
-        "typicalValue": 2.3,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 16
-      },
-      {
-        "name": "SE2",
-        "mRID": "E461B486-F24C-4BDD-93A7-CF07A9B971E3",
-        "typicalValue": 0.1,
-        "engineeringUnit": "Float",
-        "sequenceNumber": 17
-      }
-    ]
-  },
-  "GAST": {
-    "mRID": "29FF9352-92BE-4FFD-997A-749ADC634210",
-    "description": "",
-    "closestStandardModel": "GovGAST",
-    "nameKind": "DYR",
-    "modelKind": "turbineGovernor",
-    "statusKind": "prohibited",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "6A42DEEC-D642-4609-A960-58F3986FB50E",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
-      },
-      {
-        "name": "Model",
-        "mRID": "B87C6967-BC0C-4103-9D12-FEA161036F1D",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
-      },
-      {
-        "name": "ID",
-        "mRID": "CC395F87-C6C5-43AF-9285-7755602FFD99",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
-      },
-      {
-        "name": "R",
-        "mRID": "CB95A3BF-352B-418B-B0C9-475BE1358A19",
-        "typicalValue": 0.04,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 4
-      },
-      {
-        "name": "T1",
-        "mRID": "CD6015AA-7290-4EAC-9170-74E6854AEABA",
-        "typicalValue": 0.5,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 5
-      },
-      {
-        "name": "T2",
-        "mRID": "66C2A1AE-A75E-47DE-B28A-89DB41CFC9B2",
-        "typicalValue": 0.5,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 6
-      },
-      {
-        "name": "T3",
-        "mRID": "9531379C-9987-448B-93F2-C93367255C10",
-        "typicalValue": 3.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 7
-      },
-      {
-        "name": "AT",
-        "mRID": "B16EC670-A401-410E-A063-F52BF42C666D",
-        "typicalValue": 1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 8
-      },
-      {
-        "name": "KT",
-        "mRID": "2613C99B-D811-4C55-9576-199FD4A6560E",
-        "typicalValue": 3.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 9
-      },
-      {
-        "name": "VMAX",
-        "mRID": "9CD50017-DCF2-4A34-990E-71775206495B",
-        "typicalValue": 1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 10
-      },
-      {
-        "name": "VMIN",
-        "mRID": "A89155CF-28AE-49FA-845C-BEFB840D366B",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 11
-      },
-      {
-        "name": "Dt",
-        "mRID": "CCC1AE88-3059-4ED4-BFE7-73862D183C07",
-        "typicalValue": 0.18,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 12
-      }
-    ]
-  },
-  "TGOV1": {
-    "mRID": "F7BBFF29-107F-46E5-AF37-71341F6B1587",
-    "description": "",
-    "closestStandardModel": "GovSteam0",
-    "nameKind": "DYR",
-    "modelKind": "turbineGovernor",
-    "statusKind": "allowed",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "63D52583-E641-4473-B924-05D8AE95E110",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
-      },
-      {
-        "name": "Model",
-        "mRID": "208D50BB-630F-48E4-95DF-F33425C54C09",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
-      },
-      {
-        "name": "ID",
-        "mRID": "8D2C99C3-CE5B-4651-B60B-0714E24CA39C",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
-      },
-      {
-        "name": "R",
-        "mRID": "EF182868-4670-4271-9684-231C1ACDF593",
-        "typicalValue": 0.05,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 4
-      },
-      {
-        "name": "T1",
-        "mRID": "182F1C59-EB7B-4684-95CD-D50341E402BE",
-        "typicalValue": 0.5,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 5
-      },
-      {
-        "name": "VMAX",
-        "mRID": "419CEBED-8D72-4BAF-9BB1-BBD6404BE950",
-        "typicalValue": 1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 6
-      },
-      {
-        "name": "VMIN",
-        "mRID": "50A2FF9E-C212-4431-AC6E-A9A6B9BF1A34",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 7
-      },
-      {
-        "name": "T2",
-        "mRID": "A56F1152-553D-4EBA-B7C0-BA204365C510",
-        "typicalValue": 3.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 8
-      },
-      {
-        "name": "T3",
-        "mRID": "4BEAFB82-FFB3-4551-AA12-AE8D4BC09610",
-        "typicalValue": 10.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 9
-      },
-      {
-        "name": "Dt",
-        "mRID": "9C1B56C0-9371-45ED-8679-AA0C5E8E5CEC",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 10
-      }
-    ]
-  },
-  "HYGOV": {
-    "mRID": "7C2D15AE-D394-44A7-96CB-5C80427A42B6",
-    "description": "",
-    "closestStandardModel": "GovHydro1",
-    "nameKind": "DYR",
-    "modelKind": "turbineGovernor",
-    "statusKind": "allowed",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "01C9398B-A526-4BE2-A369-F0934BE09D86",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
-      },
-      {
-        "name": "Model",
-        "mRID": "EEBC03F2-B78A-4A2E-B777-31DFCE7A0D53",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
-      },
-      {
-        "name": "ID",
-        "mRID": "C1AC96C6-2E6C-4883-A312-24013C56FF48",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
-      },
-      {
-        "name": "R",
-        "mRID": "6880E7DA-6B48-44CC-945F-BDEAB96CA696",
-        "typicalValue": 0.04,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 4
-      },
-      {
-        "name": "r",
-        "mRID": "41FF412D-FECF-44D4-B6B2-EF1AF70532C2",
-        "typicalValue": 0.3,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 5
-      },
-      {
-        "name": "Tr",
-        "mRID": "6355ED50-353B-47C4-86CA-AFAB3ABAEBDB",
-        "typicalValue": 5.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 6
-      },
-      {
-        "name": "Tf",
-        "mRID": "FC365731-77BE-406B-804D-AC8E4A4C4D3E",
-        "typicalValue": 0.05,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 7
-      },
-      {
-        "name": "Tg",
-        "mRID": "D253096C-0E85-47E9-B471-1DCA2EFF263D",
-        "typicalValue": 0.5,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 8
-      },
-      {
-        "name": "VELM",
-        "mRID": "3C592791-CE83-417D-9F38-899FE3310908",
-        "typicalValue": 0.2,
-        "engineeringUnit": "Float",
-        "sequenceNumber": 9
-      },
-      {
-        "name": "GMAX",
-        "mRID": "5CD6DA0E-369D-4BDC-8DEB-8CAD4E6D000A",
-        "typicalValue": 1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 10
-      },
-      {
-        "name": "GMIN",
-        "mRID": "1F710253-5741-454E-95BC-3AEB3208D8ED",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 11
-      },
-      {
-        "name": "Tw",
-        "mRID": "066BB9BC-2E8B-4C80-816E-E53964C377BF",
-        "typicalValue": 1.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 12
-      },
-      {
-        "name": "At",
-        "mRID": "FDC81E4B-12CA-46A3-B354-4E7CD90223B4",
-        "typicalValue": 1.2,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 13
-      },
-      {
-        "name": "Dturb",
-        "mRID": "04804D4B-E401-453C-BD94-67B940740AB7",
-        "typicalValue": 0.5,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 14
-      },
-      {
-        "name": "qNL",
-        "mRID": "8DE593E0-BFCB-45B8-ADC2-EF85B981FE26",
-        "typicalValue": 0.08,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 15
-      }
-    ]
-  },
-  "IEESGO": {
-    "mRID": "F825AD7A-F24D-485E-9347-D437A4714031",
-    "description": "",
-    "closestStandardModel": "GovSteamSGO",
-    "nameKind": "DYR",
-    "modelKind": "turbineGovernor",
-    "statusKind": "prohibited",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "48689ECA-7FB8-469B-A7BD-7FD2CF437EC7",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
-      },
-      {
-        "name": "Model",
-        "mRID": "97A784C4-F9C3-4F2B-A2D4-C28B3581F6C4",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
-      },
-      {
-        "name": "ID",
-        "mRID": "35504746-086F-4918-8C9F-AB270E4F06CF",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
-      },
-      {
-        "name": "T1",
-        "mRID": "F92CC7D1-E58E-4C96-B5F5-FF18FB934D71",
-        "typicalValue": 5.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 4
-      },
-      {
-        "name": "T2",
-        "mRID": "D935A410-9662-4811-BB7B-81B0907895CB",
-        "typicalValue": 5.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 5
-      },
-      {
-        "name": "T3",
-        "mRID": "CAF5FFF9-ECBE-4A8B-A391-7568DB44B078",
-        "typicalValue": 0.1,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 6
-      },
-      {
-        "name": "T4",
-        "mRID": "39E52BDC-255A-49B2-BE80-92E20240C63E",
-        "typicalValue": 0.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 7
-      },
-      {
-        "name": "T5",
-        "mRID": "18E1330D-02DD-4C0E-9E9A-FA406AEFEE76",
-        "typicalValue": 0.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 8
-      },
-      {
-        "name": "T6",
-        "mRID": "1C2B1AC1-177A-4EAB-9322-D6DEF1B995D8",
-        "typicalValue": 0.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 9
-      },
-      {
-        "name": "K1",
-        "mRID": "666A1142-4B6E-4942-984E-24FF97A5A62D",
-        "typicalValue": 25.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 10
-      },
-      {
-        "name": "K2",
-        "mRID": "259A5850-9DEF-47B0-A34A-8D1F4876210C",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 11
-      },
-      {
-        "name": "K3",
-        "mRID": "2C884552-0A10-4E68-8302-19695662A563",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 12
-      },
-      {
-        "name": "PMAX",
-        "mRID": "4FB81493-5BD7-4AC1-BC71-90E7C6BE008D",
-        "typicalValue": 0.9,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 13
-      },
-      {
-        "name": "PMIN",
-        "mRID": "F4F40632-4BA4-47C6-B3A4-D9ECBADD6593",
-        "typicalValue": 0.05,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 14
-      }
-    ]
-  },
-  "IEEEST": {
-    "mRID": "88DA0C9F-1A84-46A4-B8AC-1DD293730816",
-    "description": "",
-    "closestStandardModel": "Pss1A",
-    "nameKind": "DYR",
-    "modelKind": "powerSystemStabilizer",
-    "statusKind": "allowed",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "8D35215A-1544-46BB-8310-3AB2023AADF8",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
-      },
-      {
-        "name": "Model",
-        "mRID": "CABE4911-0CF3-4A50-8039-44ADFA9D38B9",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
-      },
-      {
-        "name": "ID",
-        "mRID": "13B5AEB6-0D8A-4B07-A5A9-D6F481D85DF1",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
-      },
-      {
-        "name": "MODE",
-        "mRID": "4E329B38-269A-4906-98C9-B8D6D87F4CE3",
-        "typicalValue": "rotorAngularFrequencyDeviation",
-        "engineeringUnit": "InputSignalKind",
-        "sequenceNumber": 4
-      },
-      {
-        "name": "BUSR",
-        "mRID": "AE1A189E-90DC-4820-A0B6-DCF485F1FA86",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 5
-      },
-      {
-        "name": "A1",
-        "mRID": "3C687FA6-309A-4DEC-B945-D616E00C4165",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 6
-      },
-      {
-        "name": "A2",
-        "mRID": "2D1BD53F-A65E-448D-8186-0EFDE2C60CAC",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 7
-      },
-      {
-        "name": "A3",
-        "mRID": "010E719E-9B1A-4991-A47D-DF67285F475F",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 8
-      },
-      {
-        "name": "A4",
-        "mRID": "A5380CA1-5782-4EB6-9352-83835BF36273",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 9
-      },
-      {
-        "name": "A5",
-        "mRID": "7E941B65-70F9-4E23-8257-2C5E8776E28D",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 10
-      },
-      {
-        "name": "A6",
-        "mRID": "8D4541DA-F458-48A0-B00A-C0B628E93E08",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 11
-      },
-      {
-        "name": "T1",
-        "mRID": "1B4B54DC-C4C9-458A-8EDE-535C077F1156",
-        "typicalValue": 1.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 12
-      },
-      {
-        "name": "T2",
-        "mRID": "343361F9-5599-4CA6-A451-9B2A601E4393",
-        "typicalValue": 0.5,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 13
-      },
-      {
-        "name": "T3",
-        "mRID": "2EC855E9-0CB9-4C4D-99C8-2743C28AB462",
-        "typicalValue": 2.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 14
-      },
-      {
-        "name": "T4",
-        "mRID": "F06FC26A-B4F6-4760-9AD3-A934A0C13C0B",
-        "typicalValue": 0.1,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 15
-      },
-      {
-        "name": "T5",
-        "mRID": "7D7B8E7B-A548-4623-A117-D0677B6BF6C3",
-        "typicalValue": 10.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 16
-      },
-      {
-        "name": "T6",
-        "mRID": "7FF23EEA-6198-41CD-8725-3DB9030BABAC",
-        "typicalValue": 0.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 17
-      },
-      {
-        "name": "KS",
-        "mRID": "C89902D5-EE8A-4D09-859B-998E19FEA3A4",
-        "typicalValue": 2.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 18
-      },
-      {
-        "name": "LSMAX",
-        "mRID": "95E86A1A-54D0-4C70-8050-6084849A527A",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 19
-      },
-      {
-        "name": "LSMIN",
-        "mRID": "795EB7B3-1BFC-4831-8E07-7A23026F42BB",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 20
-      },
-      {
-        "name": "VCU",
-        "mRID": "24FE04AC-5723-41AF-858D-7884A0FC5E71",
-        "typicalValue": 5.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 21
-      },
-      {
-        "name": "VCL",
-        "mRID": "D91DACFF-9614-4967-8012-50DE0A3474D6",
-        "typicalValue": -5.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 22
-      }
-    ]
-  },
-  "REGCA1": {
-    "mRID": "ED023EB7-2094-44E5-94E1-A6A4BDDC9BA8",
-    "description": "",
-    "closestStandardModel": "WeccREGCA",
-    "nameKind": "DYR",
-    "modelKind": "renewableEnergyResource",
-    "statusKind": "allowed",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "DB3B77A0-8CF1-499C-9E27-555B4F7E53BB",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
-      },
-      {
-        "name": "Model",
-        "mRID": "D3329ED5-3D8A-482F-BFC4-BB87CC921725",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
-      },
-      {
-        "name": "ID",
-        "mRID": "CD5A7A89-E411-4CB3-B864-CD7BBDFA788A",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
-      },
-      {
-        "name": "Lvplsw",
-        "mRID": "83AB5D99-8196-4243-A3AA-B07B201C4326",
-        "typicalValue": true,
-        "engineeringUnit": "Boolean",
-        "sequenceNumber": 4
-      },
-      {
-        "name": "Tg",
-        "mRID": "D6980FD5-7C98-4CCA-877A-62933645447B",
-        "typicalValue": 0.02,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 5
-      },
-      {
-        "name": "Rrpwr",
-        "mRID": "1BD3442D-C02B-4F7C-B622-4E30A1E2CEB4",
-        "typicalValue": 10.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 6
-      },
-      {
-        "name": "Brkpt",
-        "mRID": "5A737BB4-EEA3-486E-8CC8-539E68A8535C",
-        "typicalValue": 0.9,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 7
-      },
-      {
-        "name": "Zerox",
-        "mRID": "A8914BCC-F7DD-4D17-9E31-653DF9574126",
-        "typicalValue": 0.4,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 8
-      },
-      {
-        "name": "Lvpl1",
-        "mRID": "1C552845-EFF1-41FE-8675-13942D1998EF",
-        "typicalValue": 1.2,
-        "engineeringUnit": "Float",
-        "sequenceNumber": 9
-      },
-      {
-        "name": "Volim",
-        "mRID": "DD4D6806-5715-4CC6-9BA4-533808562B15",
-        "typicalValue": 1.2,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 10
-      },
-      {
-        "name": "Lvpnt1",
-        "mRID": "2851E921-7603-4FEF-905B-DA437652F5B6",
-        "typicalValue": 0.8,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 11
-      },
-      {
-        "name": "Lvpnt0",
-        "mRID": "42881242-0903-44F8-A565-A9273B186223",
-        "typicalValue": 0.4,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 12
-      },
-      {
-        "name": "Iolim",
-        "mRID": "37B6A0A0-E321-4310-8628-2DE1A38049CB",
-        "typicalValue": -1.2,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 13
-      },
-      {
-        "name": "Tfltr",
-        "mRID": "A1B04507-70C4-47FC-8BDC-7BA27ABC1004",
-        "typicalValue": 0.015,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 14
-      },
-      {
-        "name": "Khv",
-        "mRID": "CA6613C5-B2D6-4792-87DB-D070DBB135D8",
-        "typicalValue": 0.7,
-        "engineeringUnit": "Float",
-        "sequenceNumber": 15
-      },
-      {
-        "name": "Iqrmax",
-        "mRID": "93487D57-F243-425B-ACA0-D46A78117183",
-        "typicalValue": 999.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 16
-      },
-      {
-        "name": "Iqrmin",
-        "mRID": "237103F2-35B0-4DB3-AAF3-1906C3C5AC8A",
-        "typicalValue": -999.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 17
-      },
-      {
-        "name": "Accel",
-        "mRID": "7058A063-4FEC-4A0B-A459-19BC3F4C4445",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 18
-      }
-    ]
-  },
-  "REECA1": {
-    "mRID": "737C9425-B23D-4692-BB9D-6C1801A341BE",
-    "description": "",
-    "closestStandardModel": "WeccREECA",
-    "nameKind": "DYR",
-    "modelKind": "renewableEnergyResource",
-    "statusKind": "allowed",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "2FAEA6F3-3016-4491-BDA0-103200BA5747",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
-      },
-      {
-        "name": "Model",
-        "mRID": "E0886164-F8BC-422D-A29D-16201DE9AA77",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
-      },
-      {
-        "name": "ID",
-        "mRID": "4E39C110-9848-49BC-876E-14ED740C4093",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
-      },
-      {
-        "name": "BUSR",
-        "mRID": "1CA731D1-E8F8-42DB-8E58-DA4B9B4DF9A9",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 4
-      },
-      {
-        "name": "PFFLAG",
-        "mRID": "AF0BF4AF-764A-4628-AAB8-19225B40A158",
-        "typicalValue": false,
-        "engineeringUnit": "Boolean",
-        "sequenceNumber": 5
-      },
-      {
-        "name": "VFLAG",
-        "mRID": "ACEA907F-0EF7-477C-81D9-7CC34BC16131",
-        "typicalValue": true,
-        "engineeringUnit": "Boolean",
-        "sequenceNumber": 6
-      },
-      {
-        "name": "QFLAG",
-        "mRID": "786A2C31-C177-448E-86CA-7E56F04ADB41",
-        "typicalValue": true,
-        "engineeringUnit": "Boolean",
-        "sequenceNumber": 7
-      },
-      {
-        "name": "PFLAG",
-        "mRID": "03067421-28C4-4AF8-B5BC-F4F0ED7B6020",
-        "typicalValue": true,
-        "engineeringUnit": "Boolean",
-        "sequenceNumber": 8
-      },
-      {
-        "name": "PQFLAG",
-        "mRID": "BDF4DE52-2DBE-46FD-853E-1773C2327B6B",
-        "typicalValue": false,
-        "engineeringUnit": "Boolean",
-        "sequenceNumber": 9
-      },
-      {
-        "name": "Vdip",
-        "mRID": "2F0F6B77-D760-4F6C-8D1B-392A3585FD42",
-        "typicalValue": 0.87,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 10
-      },
-      {
-        "name": "Vup",
-        "mRID": "A8A79AB1-06D8-4EB5-8789-804DB75C179C",
-        "typicalValue": 1.15,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 11
-      },
-      {
-        "name": "Trv",
-        "mRID": "6D2B92F8-30CD-4D7E-9169-C9A28224F03B",
-        "typicalValue": 0.03,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 12
-      },
-      {
-        "name": "dbd1",
-        "mRID": "81A62F12-5154-48FB-8E58-C092D556B9CD",
-        "typicalValue": -0.05,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 13
-      },
-      {
-        "name": "dbd2",
-        "mRID": "376022E5-AFA5-40C1-96D9-E4F70F848656",
-        "typicalValue": 0.05,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 14
-      },
-      {
-        "name": "Kqv",
-        "mRID": "9335B9A4-747B-437A-99F4-204967E17E6F",
-        "typicalValue": 5.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 15
-      },
-      {
-        "name": "Iqh1",
-        "mRID": "C63ADBF4-919D-4787-BD71-34B568D41C8C",
-        "typicalValue": 1.05,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 16
-      },
-      {
-        "name": "Iql1",
-        "mRID": "7E2A4B97-8ABF-43CF-9D7D-81334EA8DB7F",
-        "typicalValue": -1.05,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 17
-      },
-      {
-        "name": "Vref0",
-        "mRID": "BBB70981-1913-45EA-A8C0-4E7B935CDF21",
-        "typicalValue": 1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 18
-      },
-      {
-        "name": "Iqfrz",
-        "mRID": "9C3747D1-F1CA-419E-9564-77912CF01ACE",
-        "typicalValue": 0.05,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 19
-      },
-      {
-        "name": "Thld",
-        "mRID": "5CBA6640-2682-4FD7-BF12-1A8B906497D8",
-        "typicalValue": 0.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 20
-      },
-      {
-        "name": "Thld2",
-        "mRID": "49E007D9-1474-40AC-A5F9-C091BCD70704",
-        "typicalValue": 0.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 21
-      },
-      {
-        "name": "Tp",
-        "mRID": "92C925AE-4C42-421A-9ADE-0BEB3E6B3D85",
-        "typicalValue": 0.05,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 22
-      },
-      {
-        "name": "QMax",
-        "mRID": "2BCC9F74-3065-4293-B7D9-6656FD97FD26",
-        "typicalValue": 0.7,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 23
-      },
-      {
-        "name": "QMin",
-        "mRID": "B60E708D-BFAF-4BCC-BFB6-B93E722E2616",
-        "typicalValue": -0.7,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 24
-      },
-      {
-        "name": "VMAX",
-        "mRID": "2A95B34F-025C-4ACD-AABD-C51E487ED44A",
-        "typicalValue": 1.07,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 25
-      },
-      {
-        "name": "VMIN",
-        "mRID": "8BC2AA90-AF1A-40AC-9794-98EEDDA69B8C",
-        "typicalValue": 0.9,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 26
-      },
-      {
-        "name": "Kqp",
-        "mRID": "ED37BC37-3EA1-4DA1-819A-5A4A426DD864",
-        "typicalValue": 0.1,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 27
-      },
-      {
-        "name": "Kqi",
-        "mRID": "A6CDABC0-69EB-4141-B5F8-360AD976FCF5",
-        "typicalValue": 0.1,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 28
-      },
-      {
-        "name": "Kvp",
-        "mRID": "62F16062-1BF3-49FD-B2F4-7CE208A297FB",
-        "typicalValue": 5.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 29
-      },
-      {
-        "name": "Kvi",
-        "mRID": "346F4B13-FD65-4E57-868F-AFC2DC3966F5",
-        "typicalValue": 1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 30
-      },
-      {
-        "name": "Vbias",
-        "mRID": "C1CBD55E-8049-4DBB-8AC8-6556AFAD243F",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 31
-      },
-      {
-        "name": "Tiq",
-        "mRID": "037C243D-5476-4FA4-903F-3DE832AB97CE",
-        "typicalValue": 0.015,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 32
-      },
-      {
-        "name": "dPmax",
-        "mRID": "9FEFADB8-FCA6-467E-A0E0-6A0B8070418C",
-        "typicalValue": 999.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 33
-      },
-      {
-        "name": "dPmin",
-        "mRID": "370643E2-4DA4-42FB-A876-5FCBE065B5B7",
-        "typicalValue": -999.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 34
-      },
-      {
-        "name": "PMAX",
-        "mRID": "19F78225-C18F-4719-8D24-EED695C07960",
-        "typicalValue": 1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 35
-      },
-      {
-        "name": "PMIN",
-        "mRID": "C6AC5C89-7A2F-4437-BAA9-BC8D0FEA4730",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 36
-      },
-      {
-        "name": "Imax",
-        "mRID": "1395498F-FE58-4DEE-B0AD-B6C1819E4990",
-        "typicalValue": 1.2,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 37
-      },
-      {
-        "name": "Tpord",
-        "mRID": "BF07A12F-1BA1-4D3D-A577-52F398259E19",
-        "typicalValue": 0.03,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 38
-      },
-      {
-        "name": "Vq1",
-        "mRID": "143CC459-8716-4B19-A68F-251F8FE10BF9",
-        "typicalValue": -1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 39
-      },
-      {
-        "name": "Iq1",
-        "mRID": "6994AC3F-5173-454C-8778-D96D0444276B",
-        "typicalValue": 1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 40
-      },
-      {
-        "name": "Vq2",
-        "mRID": "E23B8641-EF32-4D48-A58C-CEC86DB07934",
-        "typicalValue": 2.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 41
-      },
-      {
-        "name": "Iq2",
-        "mRID": "D241E5C1-F4DB-4654-B9A3-3EB7D40667EE",
-        "typicalValue": 1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 42
-      },
-      {
-        "name": "Vq3",
-        "mRID": "B254F02C-781F-4547-8E08-25604E82D04D",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 43
-      },
-      {
-        "name": "Iq3",
-        "mRID": "B9B701FD-166D-41BB-9647-4547B48564F4",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 44
-      },
-      {
-        "name": "Vq4",
-        "mRID": "712D3456-5E20-4D6C-9C73-67AC138CA33D",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 45
-      },
-      {
-        "name": "Iq4",
-        "mRID": "3CF71436-E804-4378-ABB7-B3F22497BADC",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 46
-      },
-      {
-        "name": "Vp1",
-        "mRID": "B4556CE5-5583-424D-B0F1-1F82C056803F",
-        "typicalValue": -1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 47
-      },
-      {
-        "name": "Ip1",
-        "mRID": "352229D4-CFB4-4F23-B8C2-D36A5C7D401D",
-        "typicalValue": 1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 48
-      },
-      {
-        "name": "Vp2",
-        "mRID": "31832411-11CC-4FDE-8D39-3F03A8411A3F",
-        "typicalValue": 2.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 49
-      },
-      {
-        "name": "Ip2",
-        "mRID": "319A0D2C-2719-4CB6-94AD-04386C646CDD",
-        "typicalValue": 1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 50
-      },
-      {
-        "name": "Vp3",
-        "mRID": "4AF992A7-010D-42CF-890B-DA4A92212AB1",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 51
-      },
-      {
-        "name": "Ip3",
-        "mRID": "10947A42-96E4-46D4-9524-3734F3FC497B",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 52
-      },
-      {
-        "name": "Vp4",
-        "mRID": "FB0B16CC-534F-41FF-87A6-2B76CC033CAF",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 53
-      },
-      {
-        "name": "Ip4",
-        "mRID": "2AAD6538-D75E-4AFF-BE8A-DAF56935C8CE",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 54
-      }
-    ]
-  },
-  "REECB1": {
-    "mRID": "B4680043-B42B-4ABF-8875-E7A281A3D5B8",
-    "description": "",
-    "closestStandardModel": "WeccREECA",
-    "nameKind": "DYR",
-    "modelKind": "renewableEnergyResource",
-    "statusKind": "prohibited",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "59AB3E8E-F13E-48E8-B4C1-5958E9B854C5",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
-      },
-      {
-        "name": "Model",
-        "mRID": "C546FD6B-D2FA-4977-9FA0-52290697D27B",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
-      },
-      {
-        "name": "ID",
-        "mRID": "0B13A538-7510-4BD8-9AF7-39BCDCF6B66C",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
-      },
-      {
-        "name": "PFFLAG",
-        "mRID": "767B6CDB-5513-4704-841E-59AA0C758472",
-        "typicalValue": false,
-        "engineeringUnit": "Boolean",
-        "sequenceNumber": 4
-      },
-      {
-        "name": "VFLAG",
-        "mRID": "A4ABD856-A607-44E3-92B8-B02F60BFF739",
-        "typicalValue": true,
-        "engineeringUnit": "Boolean",
-        "sequenceNumber": 5
-      },
-      {
-        "name": "QFLAG",
-        "mRID": "E64D8020-5AF7-4FFA-8DEE-7F45CC0186A4",
-        "typicalValue": true,
-        "engineeringUnit": "Boolean",
-        "sequenceNumber": 6
-      },
-      {
-        "name": "PFLAG",
-        "mRID": "298A347A-1FB9-40C0-ADDF-FAB7566B8145",
-        "typicalValue": true,
-        "engineeringUnit": "Boolean",
-        "sequenceNumber": 7
-      },
-      {
-        "name": "PQFLAG",
-        "mRID": "CA39CA54-19E5-4F08-8633-03C14B8BF029",
-        "typicalValue": false,
-        "engineeringUnit": "Boolean",
-        "sequenceNumber": 8
-      },
-      {
-        "name": "Vdip",
-        "mRID": "1576C754-2DE1-4D1A-A318-0B0F8A2BF76A",
-        "typicalValue": 0.87,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 9
-      },
-      {
-        "name": "Vup",
-        "mRID": "E91890F2-5A16-431D-B4E5-63B4B2E7EEB9",
-        "typicalValue": 1.15,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 10
-      },
-      {
-        "name": "Trv",
-        "mRID": "8CB649B1-E009-45EC-92D2-3B0A83A7F411",
-        "typicalValue": 0.03,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 11
-      },
-      {
-        "name": "dbd1",
-        "mRID": "BE92D39B-6DCF-499A-B9C8-DC04BF1F4566",
-        "typicalValue": -0.05,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 12
-      },
-      {
-        "name": "dbd2",
-        "mRID": "BC9F8A06-F60B-482C-8FAB-DEDA9F288CC6",
-        "typicalValue": 0.05,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 13
-      },
-      {
-        "name": "Kqv",
-        "mRID": "42483453-93FE-4710-9D07-841BFC6CAA22",
-        "typicalValue": 5.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 14
-      },
-      {
-        "name": "Iqh1",
-        "mRID": "E18946BC-DE03-42DB-B89E-035B1FF797D7",
-        "typicalValue": 1.05,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 15
-      },
-      {
-        "name": "Iql1",
-        "mRID": "E1BDF520-638A-484B-86D3-5C54EEE6B636",
-        "typicalValue": -1.05,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 16
-      },
-      {
-        "name": "Vref0",
-        "mRID": "86006D8F-A043-43F5-A7EF-DD537A6124A5",
-        "typicalValue": 1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 17
-      },
-      {
-        "name": "Tp",
-        "mRID": "A95F6111-9CDC-40A2-8750-6A9DD31E3BD8",
-        "typicalValue": 0.05,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 18
-      },
-      {
-        "name": "QMax",
-        "mRID": "A33C4B03-9188-4BA4-8CD5-65622596F469",
-        "typicalValue": 0.7,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 19
-      },
-      {
-        "name": "QMin",
-        "mRID": "B722E85B-287A-49E3-BC78-A15314F2BA40",
-        "typicalValue": -0.7,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 20
-      },
-      {
-        "name": "VMAX",
-        "mRID": "E893FCED-668A-4917-9457-51FE38B5A314",
-        "typicalValue": 1.07,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 21
-      },
-      {
-        "name": "VMIN",
-        "mRID": "A3114F1D-5BEA-4716-BFE6-1E283371FE3D",
-        "typicalValue": 0.9,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 22
-      },
-      {
-        "name": "Kqp",
-        "mRID": "9CB6F2A3-435E-44E9-81B5-0CB0F339F881",
-        "typicalValue": 0.1,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 23
-      },
-      {
-        "name": "Kqi",
-        "mRID": "4D20D1F6-159C-4559-A148-63A82944160A",
-        "typicalValue": 0.1,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 24
-      },
-      {
-        "name": "Kvp",
-        "mRID": "A68174BA-EB89-41AE-9E73-B72CF37BE72F",
-        "typicalValue": 5.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 25
-      },
-      {
-        "name": "Kvi",
-        "mRID": "A38C1CF1-B6CB-4C58-A3E2-1E865DFCB359",
-        "typicalValue": 1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 26
-      },
-      {
-        "name": "Tiq",
-        "mRID": "1A13F00E-4101-42A1-ADA6-069D113D3C34",
-        "typicalValue": 0.015,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 27
-      },
-      {
-        "name": "dPmax",
-        "mRID": "56D7E6FE-035D-4524-B071-F4CD0EF2204C",
-        "typicalValue": 999.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 28
-      },
-      {
-        "name": "dPmin",
-        "mRID": "6BFD4D02-64C3-4B59-A00F-6B3CD9FD3D61",
-        "typicalValue": -999.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 29
-      },
-      {
-        "name": "PMAX",
-        "mRID": "1C9E0D6E-0F44-462A-B632-954A6E9C784E",
-        "typicalValue": 1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 30
-      },
-      {
-        "name": "PMIN",
-        "mRID": "3625354D-03D0-47E7-95C9-EF89512F9506",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 31
-      },
-      {
-        "name": "Imax",
-        "mRID": "1E9969CE-BDB4-4F08-AC0D-25F96034233B",
-        "typicalValue": 1.2,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 32
-      },
-      {
-        "name": "Tpord",
-        "mRID": "AA624219-4CB6-4377-BE2D-64504D41D666",
-        "typicalValue": 0.03,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 33
-      }
-    ]
-  },
-  "REPCA1": {
-    "mRID": "32034FA3-7303-4F91-8110-A05EE463DF7F",
-    "description": "",
-    "closestStandardModel": "WeccREPCA",
-    "nameKind": "DYR",
-    "modelKind": "renewableEnergyResource",
-    "statusKind": "allowed",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "13D956D2-9975-461F-9BFF-B222E24302F4",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
-      },
-      {
-        "name": "Model",
-        "mRID": "2BA9FFC4-0F2F-4E37-A5BB-E3F1114B177E",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
-      },
-      {
-        "name": "ID",
-        "mRID": "303094B6-477F-4B87-9C6F-7C9EA3A744B2",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
-      },
-      {
-        "name": "BUSR",
-        "mRID": "D488032D-90AB-49BE-9FEA-62096C4B2983",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 4
-      },
-      {
-        "name": "BUS1",
-        "mRID": "3A93999C-81B8-4B11-874B-E716310D1E61",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 5
-      },
-      {
-        "name": "BUS2",
-        "mRID": "DDD70F88-374A-4FD5-B53F-1DE139C5748E",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 6
-      },
-      {
-        "name": "CKTID",
-        "mRID": "C388E5B3-C823-4BD9-ACC4-C14C2A73EE41",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 7
-      },
-      {
-        "name": "VCFlag",
-        "mRID": "1B13F8F7-FAC3-4CF1-A61F-7B0BCB3CFE34",
-        "typicalValue": true,
-        "engineeringUnit": "Boolean",
-        "sequenceNumber": 8
-      },
-      {
-        "name": "RefFlag",
-        "mRID": "0047194F-6E80-4D0E-981F-E051363E7604",
-        "typicalValue": true,
-        "engineeringUnit": "Boolean",
-        "sequenceNumber": 9
-      },
-      {
-        "name": "Fflag",
-        "mRID": "0C287014-57C4-4414-BF79-E5E8BCFA3008",
-        "typicalValue": true,
-        "engineeringUnit": "Boolean",
-        "sequenceNumber": 10
-      },
-      {
-        "name": "Tfltr",
-        "mRID": "D0627E06-0E87-489A-97AF-07619C7B9A24",
-        "typicalValue": 0.02,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 11
-      },
-      {
-        "name": "Kp",
-        "mRID": "51034D10-D82D-4E1C-88B8-3F9E00D6534E",
-        "typicalValue": 10.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 12
-      },
-      {
-        "name": "Ki",
-        "mRID": "5BFD03A5-DC6C-4EF3-B44D-65F636D23AB0",
-        "typicalValue": 5.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 13
-      },
-      {
-        "name": "Tft",
-        "mRID": "585D0407-70FA-4EAE-B1B2-C1A442650402",
-        "typicalValue": 0.0,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 14
-      },
-      {
-        "name": "Tfv",
-        "mRID": "698732A1-D3FF-4CEA-8FFB-E36C115915F3",
-        "typicalValue": 0.08,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 15
-      },
-      {
-        "name": "Vfrz",
-        "mRID": "8B53DEF3-7E2D-4D14-A84D-9EEB59CDEC35",
-        "typicalValue": 0.35,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 16
-      },
-      {
-        "name": "Rc",
-        "mRID": "79C13399-8782-4240-87E0-63A423C6D699",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 17
-      },
-      {
-        "name": "Xc",
-        "mRID": "4051A34B-2CCC-40A8-A6EA-3330982C0446",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 18
-      },
-      {
-        "name": "Kc",
-        "mRID": "CAF12779-6345-4830-95B0-ABD44E712D49",
-        "typicalValue": 0.02,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 19
-      },
-      {
-        "name": "emax",
-        "mRID": "90FEE5A4-3651-4C27-81B3-A70359D3A3E7",
-        "typicalValue": 999.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 20
-      },
-      {
-        "name": "emin",
-        "mRID": "985F6294-B8E5-48B4-A64E-AA63C6AC57AF",
-        "typicalValue": -999.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 21
-      },
-      {
-        "name": "dbd1",
-        "mRID": "9660C61E-12CD-44B2-9380-BD10E3BB0E23",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 22
-      },
-      {
-        "name": "dbd2",
-        "mRID": "BB2D4793-35E9-4C00-8EEA-A6A6B11B30D9",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 23
-      },
-      {
-        "name": "Qmax",
-        "mRID": "76F0C938-726A-402A-9C84-3D1AA4E988A9",
-        "typicalValue": 0.7,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 24
-      },
-      {
-        "name": "Qmin",
-        "mRID": "EDD06008-09DD-4068-891A-005F0DBB1158",
-        "typicalValue": -0.7,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 25
-      },
-      {
-        "name": "Kpg",
-        "mRID": "F89005C6-7659-428B-B288-59CCC4E77B6E",
-        "typicalValue": 0.1,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 26
-      },
-      {
-        "name": "Kig",
-        "mRID": "C36F0003-2385-43EA-9F33-5B0E048020FA",
-        "typicalValue": 0.05,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 27
-      },
-      {
-        "name": "Tp",
-        "mRID": "D5947D7C-F6C7-4445-80FB-0AC5AE647CA0",
-        "typicalValue": 0.03,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 28
-      },
-      {
-        "name": "fdbd1",
-        "mRID": "89900F37-BDD3-4ECF-83BE-A4BEC189ABCC",
-        "typicalValue": -0.01,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 29
-      },
-      {
-        "name": "fdbd2",
-        "mRID": "71DA756B-08B1-487E-9487-3F009B4F2382",
-        "typicalValue": 0.01,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 30
-      },
-      {
-        "name": "femax",
-        "mRID": "84E383C7-8C63-4DC5-93E5-15545BFE4D0D",
-        "typicalValue": 999.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 31
-      },
-      {
-        "name": "femin",
-        "mRID": "835A024D-3610-497B-9FFD-657345CD53B5",
-        "typicalValue": -999.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 32
-      },
-      {
-        "name": "Pmax",
-        "mRID": "FBF9F943-1E02-41A1-9F1D-4B81E9FA6B54",
-        "typicalValue": 1.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 33
-      },
-      {
-        "name": "Pmin",
-        "mRID": "5E3D7FC9-9857-4CC1-9AAC-CE4DC662651F",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 34
-      },
-      {
-        "name": "Tg",
-        "mRID": "2F057E4B-2294-47CF-B756-F048E7519ECD",
-        "typicalValue": 0.08,
-        "engineeringUnit": "Seconds",
-        "sequenceNumber": 35
-      },
-      {
-        "name": "Ddn",
-        "mRID": "0DC3D3E8-ED7F-4C95-8F43-9FA11A7551FF",
-        "typicalValue": 20.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 36
-      },
-      {
-        "name": "Dup",
-        "mRID": "979A2FDB-3C8C-41C6-9CFC-06997A727A00",
-        "typicalValue": 0.0,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 37
-      }
-    ]
-  },
-  "WTDTA1": {
-    "mRID": "D988EC5E-7EF1-418F-9F69-96995339E4BE",
-    "description": "",
-    "closestStandardModel": "WeccWTGTA",
-    "nameKind": "DYR",
-    "modelKind": "renewableEnergyResource",
-    "statusKind": "allowed",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "4DFA7ED9-C478-41D1-9EFC-CBB5A5CAE4A7",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
-      },
-      {
-        "name": "Model",
-        "mRID": "383E3FBE-18A6-4BB9-A142-6ED5CD55A622",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
-      },
-      {
-        "name": "ID",
-        "mRID": "375B2BD1-C09F-4DBE-B0AC-FBF886F806CE",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
-      },
-      {
-        "name": "H",
-        "mRID": "FCFCC2DE-CEA2-4F22-9D80-BAFA9504F29B",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 4
-      },
-      {
-        "name": "DAMP",
-        "mRID": "9666AC13-89F6-4C44-A210-FB1DE4F87240",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 5
-      },
-      {
-        "name": "Htfrac",
-        "mRID": "FE403C09-3419-43C0-821A-70AEE0A090EC",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 6
-      },
-      {
-        "name": "Freq1",
-        "mRID": "DC2A17B5-F42E-458B-B3FB-A23716A472D9",
-        "typicalValue": "",
-        "engineeringUnit": "",
-        "sequenceNumber": 7
-      },
-      {
-        "name": "Dshaft",
-        "mRID": "53487495-3E33-4BD4-925E-5FCF38B971A1",
-        "typicalValue": 1.5,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 8
-      }
-    ]
-  },
-  "WTARA1": {
-    "mRID": "86604D1C-DB00-4E4C-9348-1E6D5FFFE060",
-    "description": "",
-    "closestStandardModel": "WeccWTGARA",
-    "nameKind": "DYR",
-    "modelKind": "renewableEnergyResource",
-    "statusKind": "allowed",
-    "parameterDescriptors": [
-      {
-        "name": "Bus",
-        "mRID": "F9CA8BEE-E97E-4771-8999-9219885382DF",
-        "typicalValue": "",
-        "engineeringUnit": "Integer",
-        "sequenceNumber": 1
-      },
-      {
-        "name": "Model",
-        "mRID": "EABCD859-78EC-424B-B652-59EA87389E1E",
-        "typicalValue": "",
-        "engineeringUnit": "String",
-        "sequenceNumber": 2
-      },
-      {
-        "name": "ID",
-        "mRID": "B51CB8F2-E4DE-4C3D-94BA-6B138F7DC777",
-        "typicalValue": "1",
-        "engineeringUnit": "String",
-        "sequenceNumber": 3
-      },
-      {
-        "name": "Ka",
-        "mRID": "0B09C389-F0A5-4FB8-B802-7BD22FFDDD49",
-        "typicalValue": 0.01,
-        "engineeringUnit": "PU",
-        "sequenceNumber": 4
-      },
-      {
-        "name": "theta0",
-        "mRID": "F3C76E21-540E-4189-9FF5-BC9C3E3C05D7",
-        "typicalValue": 0.0,
-        "engineeringUnit": "AngleDegrees",
-        "sequenceNumber": 5
-      }
-    ]
   }
 }

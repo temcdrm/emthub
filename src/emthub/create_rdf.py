@@ -919,14 +919,14 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
         used = []
         for mdl, row in dyr[key].items():
           used.append (mdl)
-          cls = dyn_models[mdl]['closestStandardModel']
+          cls = dyn_models['DYR'][mdl]['closestStandardModel']
           if cls.startswith ('SynchronousMachine'):
             dyn = create_xml_machine_dynamics (g, cls, key, uuids)
             append_xml_dynamic_parameters (g, dyn, dyn_defaults, [cls, 'SynchronousMachineDetailed', 'RotatingMachineDynamics', 'DynamicsFunctionBlock'], dyn_mapping[mdl]['AttMap'], row)
             g.add ((dyn, rdflib.URIRef (CIM_NS + 'SynchronousMachineDynamics.SynchronousMachine'), sm))
           else:
             model_types_used.add (mdl)
-            append_xml_detailed_model (g, key, sm, mdl, dyn_models[mdl], uuids, row)
+            append_xml_detailed_model (g, key, sm, mdl, dyn_models['DYR'][mdl], uuids, row)
         #print ('machine dynamics for', key, used)
 #       for mdl, row in dyr[key].items():
 #         cls = dyn_mapping[mdl]['CIMclass']
@@ -1007,7 +1007,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
           # print (mdl, row)
           used.append (mdl)
           model_types_used.add (mdl)
-          append_xml_detailed_model (g, key, pec, mdl, dyn_models[mdl], uuids, row)
+          append_xml_detailed_model (g, key, pec, mdl, dyn_models['DYR'][mdl], uuids, row)
 #          cls = dyn_mapping[mdl]['CIMclass']
 #          used.append (cls)
 #          dynID = GetCIMID(cls, key, uuids)
@@ -1029,7 +1029,7 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
   # write the DetailedModelTypeDynamicss that we need
   print ('Adding DetailedModelTypeDynamics for', model_types_used)
   for key in model_types_used:
-    model_type = dyn_models[key]
+    model_type = dyn_models['DYR'][key]
     ID = model_type['mRID']
     uuids['NthAmDynamicModel' + ':' + key] = ID
     mtyp = rdflib.URIRef (ID)
