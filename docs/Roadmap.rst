@@ -214,8 +214,9 @@ This roadmap applies to stakeholders that primarily import CIM network models to
 Dynamics Model Maintainers
 --------------------------
 
-This roadmap applies to stakeholders that add or update *NthAmDynamicModels*. This may include power system phasor domain 
-transient (PSPDT) developers, EMT developers, or others familiar with the underlying PDPDT text file formats.
+This roadmap applies to stakeholders that add or update entries to be supported in 
+`NthAmDynamicModel <profile.html#NthAmDynamicModel>`_. This may include power system phasor domain 
+transient (PSPDT) developers, EMT developers, or others familiar with the underlying PSPDT text file formats.
 
 #. :ref:`target-roadmap-users` Roadmap is a pre-requisite.
 #. Access to at least one EMT simulation tool is a pre-requisite.
