@@ -354,32 +354,38 @@ def AtpNode(bus, phs):
     return 'B{:4s}{:1s}'.format(bus, phs).replace(' ', '_')
   return '{:5s}{:1s}'.format(bus, phs).replace(' ', '_')
 
-def TranslateInputNameForTacs (nm, bus):
+def matching_probe (d, kind, phase):
+  for key, row in d.items():
+    if row['phase'] == phase and row['kind'] == kind:
+      return key
+  return 'UKNOWN'
+
+def TranslateInputNameForTacs (nm, type_90_sources, type_91_sources):
   if 'IDC' in nm:
     return 'UNUSED'
   elif 'VDC' in nm:
     return 'UNUSED'
   elif nm == 'VTA':
-    return AtpNode (bus, 'A')
+    return matching_probe (type_90_sources, 'acVoltage', 'A')
   elif nm == 'VTB':
-    return AtpNode (bus, 'B')
+    return matching_probe (type_90_sources, 'acVoltage', 'B')
   elif nm == 'VTC':
-    return AtpNode (bus, 'C')
+    return matching_probe (type_90_sources, 'acVoltage', 'C')
   elif nm == 'I1A':
-    return AtpNode (bus, 'J')
+    return matching_probe (type_91_sources, 'acCurrent', 'A')
   elif nm == 'I1B':
-    return AtpNode (bus, 'K')
+    return matching_probe (type_91_sources, 'acCurrent', 'B')
   elif nm == 'I1C':
-    return AtpNode (bus, 'L')
+    return matching_probe (type_91_sources, 'acCurrent', 'C')
   elif nm == 'I2A':
-    return AtpNode (bus, 'D')
+    return matching_probe (type_91_sources, 'acCurrentGrid', 'A')
   elif nm == 'I2B':
-    return AtpNode (bus, 'E')
+    return matching_probe (type_91_sources, 'acCurrentGrid', 'B')
   elif nm == 'I2C':
-    return AtpNode (bus, 'F')
+    return matching_probe (type_91_sources, 'acCurrentGrid', 'C')
   return nm
 
-def write_atp_dll_interface (dll_fullname, atp_path, parm_vals, bus, ap):
+def write_atp_dll_interface (dll_fullname, atp_path, parm_vals, bus, type_90_sources, type_91_sources, ap):
   """Netlists an ATP module that calls an IEEE/Cigre DLL.
 
   This function calls the DLL through its API to obtain its full metadata.
@@ -392,6 +398,8 @@ def write_atp_dll_interface (dll_fullname, atp_path, parm_vals, bus, ap):
     atp_path (str): path where the ATP main netlist and include files are being written.
     parm_vals (list): array of DLL parameters that came from CIM data. Only floating-point values are supported in ATP.
     bus (str): the root ATP bus name where this DLL is connected. ATP only allows 5 characters in this name.
+    type_90_sources (dict): kind and phase of voltage inputs, keyed on the ATP/TACS bus name
+    type_91_sources (dict): kind and phase of current inputs, keyed on the ATP/TACS bus name of a measuring switch.
     ap (file): handle of the file that has been opened for the main ATP netlist.
   """
   mod_name = 'DLL1' # ATP only allows one instance, and the DLL name must already be compiled and linked into the ATP solver
@@ -446,7 +454,7 @@ def write_atp_dll_interface (dll_fullname, atp_path, parm_vals, bus, ap):
   print ('INPUT', file=ap)
   for i in range(d['NumInputPorts']):
     nm = d['InputPortsInfo'][i]['Name'].upper()
-    nm = TranslateInputNameForTacs (nm, bus)
+    nm = TranslateInputNameForTacs (nm, type_90_sources, type_91_sources)
     if len(nm) > 6:
       print ('** truncating', nm, 'to', nm[0:6], 'for TACS')
     print ('  MM{:04d} {{tacs({:s})}}'.format(i+1, nm[0:6]), file=ap)

@@ -109,9 +109,11 @@ def AtpBus(bus):
     return 'B{:4s}'.format(bus).replace(' ', '_')
   return '{:5s}'.format(bus).replace(' ', '_')
 
-def GetNextScratchBus ():
+def GetNextScratchBus (forModels=False):
   global NEXT_BUSNUM
   NEXT_BUSNUM += 1
+  if forModels:
+    return 'P{:4s}'.format(str(NEXT_BUSNUM)).replace(' ', '_')
   return '_{:4s}'.format(str(NEXT_BUSNUM)).replace(' ', '_')
 
 # should preserve order
@@ -447,7 +449,7 @@ def FormatSignalInfo (row):
     mult = ''
   return '{:10s} {:22s} {:1s} {:s}{:s}'.format (row['name'], row['kind'], phs, mult, unit)
 
-def AppendDLL (bus, key, d, atp_path, ap):
+def AppendDLL (bus, key, d, current_probes, atp_buses, atp_dc_buses, atp_path, ap):
   #list_dict_table (d, 'EMTIBRPlantAttributes')
   if key not in d['EMTIBRPlantAttributes']['vals']:
     print ('** PEC ID', key, 'not found in extended plant attributes for DLL interface')
@@ -464,6 +466,42 @@ def AppendDLL (bus, key, d, atp_path, ap):
   swtFreq = atts['switchingFrequency']
   print ('C DLL interface to {:s} follows\nC'.format(os.path.basename (dll_path)), file=ap)
   print ('appending a DLL at', bus, 'from', dll_path, 'with', nparms, 'parameters')
+
+  # find all the input signals for TACS and the DLL interface
+  type_90_sources = {}
+  type_91_sources = {}
+  for key, ary in d['EMTIEEECigreDLLInputs*']['vals'].items():
+    if key == dll_key:
+      for row in ary:
+        kind = row['kind']
+        phase = row['phase']
+        cn = row['ConnectivityNode_mRID']
+        if cn is not None:
+          probe = AtpNode (atp_buses[cn], phase)
+          print ('ac voltage', phase, 'from', cn, 'at', probe)
+          if probe in type_90_sources:
+            print (' already there!')
+          else:
+            type_90_sources[probe] = {'kind': kind, 'phase': phase}
+        dcn = row['DCNode_mRID']
+        if dcn is not None:
+          probe = AtpNode (atp_dc_buses[dcn], 'P')
+          print ('dc voltage from', dcn, 'at', probe)
+          if probe in type_90_sources:
+            print (' already there!')
+          else:
+            type_90_sources[probe] = {'kind': kind, 'phase': phase}
+        trm = row['ACDCTerminal_mRID']
+        if trm is not None:
+          toks = trm.split('_')
+          eqid = toks[0]
+          seq = int(toks[1])
+          probe = AtpNode (current_probes[eqid][seq], phase)
+          print ('current at', probe)
+          if probe in type_91_sources:
+            print (' already there!')
+          else:
+            type_91_sources[probe] = {'kind': kind, 'phase': phase}
 
   # summary information about the signals
   nin =  d['EMTCountDLLInputs']['vals'][dll_key]['count']
@@ -500,58 +538,29 @@ def AppendDLL (bus, key, d, atp_path, ap):
         else:
           val = float (row['value'])
           parms[idx] = val
-  write_atp_dll_interface (dll_path, atp_path, parms, bus, ap)
+  write_atp_dll_interface (dll_path, atp_path, parms, bus, type_90_sources, type_91_sources, ap)
 
-  # netlist the AC filter, TACS-controlled source, and measuring switches
-# print ('/BRANCH', file=ap)
-# print ('C < n1 >< n2 ><ref1><ref2>< R  >< X  >< C  >', file=ap)
-# for phs in [['G', 'D'], ['H', 'E'], ['I', 'F']]:
-#   ph1 = phs[0]
-#   ph2 = phs[1]
-#   print ('  {:6s}{:6s}            {:s}{:s}'.format (AtpNode(bus, ph1), AtpNode(bus, ph2), AtpFit6 (acRgrid), AtpFit6 (acXgrid)), file=ap)
-# for phs in [['J', 'G'], ['K', 'H'], ['L', 'I']]:
-#   ph1 = phs[0]
-#   ph2 = phs[1]
-#   print ('  {:6s}{:6s}            {:s}{:s}'.format (AtpNode(bus, ph1), AtpNode(bus, ph2), AtpFit6 (acRbridge), AtpFit6 (acXbridge)), file=ap)
-# if filterKind == 'ungroundedWye':
-#   for phs in [['G', 'Z'], ['H', 'Z'], ['I', 'Z']]:
-#     ph1 = phs[0]
-#     ph2 = phs[1]
-#     print ('  {:6s}{:6s}                        {:s}'.format (AtpNode(bus, ph1), AtpNode(bus, ph2), AtpFit6 (acCap)), file=ap)
-# elif filterKind == 'delta':
-#   for phs in [['G', 'H'], ['H', 'I'], ['I', 'G']]:
-#     ph1 = phs[0]
-#     ph2 = phs[1]
-#     print ('  {:6s}{:6s}                        {:s}'.format (AtpNode(bus, ph1), AtpNode(bus, ph2), AtpFit6 (acCap)), file=ap)
-
-  print ('/SWITCH', file=ap)
-  print ('C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1', file=ap)
-  for phs in [['D', 'A'], ['E', 'B'], ['F', 'C'], ['M', 'J'], ['N', 'K'], ['O', 'L']]:
-    ph1 = phs[0]
-    ph2 = phs[1]
-    print ('  {:6s}{:6s}{:10.3f}{:10.3f}                    MEASURING                1'.format (AtpNode (bus, ph1), 
-      AtpNode (bus, ph2), -1.0, TOPEN), file=ap)
+  # netlist the TACS-controlled sources for probes, outputs and inverter voltage
   print ('/TACS', file=ap)
   print ('90PREF                                                                      1.E3', file=ap)
   print ('90QREF                                                                      1.E3', file=ap)
   print ('90VREF                                                                      1.E3', file=ap)
-  for ph in ['A', 'B', 'C']:
-    print ('90{:6s}                                                                    1.E3'.format (AtpNode (bus, ph)), file=ap)
-  for ph in ['J', 'K', 'L', 'D', 'E', 'F']:
-    print ('91{:6s}                                                                    1.E3'.format (AtpNode (bus, ph)), file=ap)
+  for probe in type_90_sources:
+    print ('90{:6s}                                                                    1.E3'.format (probe), file=ap)
+    print ('33{:6s}'.format (probe), file=ap)
+  for probe in type_91_sources:
+    print ('91{:6s}                                                                    1.E3'.format (probe), file=ap)
+    print ('33{:6s}'.format (probe), file=ap)
+
   mgain = dcV * 0.5
   mroot = 'DLL1M'
-  for phs in [['M', 'A'], ['N', 'B'], ['O', 'C']]:
-    ph1 = phs[0]
-    ph2 = phs[1]
-    print ('27{:6s}'.format (AtpNode (mroot, ph2)), file=ap)
-    print ('98{:6s}  = {:s} * {:s}'.format (AtpNode (bus, ph1), AtpFit6 (mgain), AtpNode (mroot, ph2)), file=ap)
+  for phs in ['A', 'B', 'C']:
+    print ('27{:6s}'.format (AtpNode (mroot, phs)), file=ap)
+    print ('98{:6s}  = {:s} * {:s}'.format (AtpNode (bus, phs), AtpFit6 (mgain), AtpNode (mroot, phs)), file=ap)
   print ('98UNUSED  =      0.0', file=ap)
-  for ph in ['A', 'B', 'C', 'D', 'E', 'F', 'M', 'N', 'O']:
-    print ('33{:6s}'.format (AtpNode (bus, ph)), file=ap)
   print ('/SOURCE', file=ap)
   print ('C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >', file=ap)
-  for ph in ['M', 'N', 'O']:
+  for ph in ['A', 'B', 'C']:
     print ('60{:6s} 0                                                                  1.E3'.format (AtpNode (bus, ph)), file=ap)
   return
 
@@ -1022,6 +1031,12 @@ def GetGSUPhaseShift (d, key, dxf):
               return 0.0
   return 0.0
 
+def find_class_from_mrid (eqid, d):
+  for tag in ['EMTCompSeries', 'EMTDisconnectingCircuitBreaker', 'EMTLine', 'EMTPowerXfmrWinding']:
+    if eqid in d[tag]['vals']:
+      return tag
+  return None
+
 def create_atp (d, icd, fpath, case):
   """Write an ATP netlist from CIM loaded into a Python dictionary.
 
@@ -1058,6 +1073,15 @@ def create_atp (d, icd, fpath, case):
     cim_bus_names[key] = data['name']
     bus_kv[key] = 0.001 * data['BaseVoltage_nominalVoltage']
     idx += 1
+
+  # add the DC buses
+  atp_dc_buses = {} # find the ATP bus number (as a string) from the CIM DCNode id
+  idc = len(atp_buses) + 1
+  for key, row in d['EMTDCNode']['vals'].items():
+    atp_dc_buses[key] = str(idc)
+    cim_bus_names[key] = row['name']
+    idc += 1
+
   print ('Mapping {:d} buses to {:s}.atpmap'.format (idx-1, fname))
   fp = open (fpath + fname + '.atpmap', mode='w')
   print ('ATP Bus CIM Bus               CIM ID                                Bus kV', file=fp)
@@ -1067,7 +1091,29 @@ def create_atp (d, icd, fpath, case):
   print ('\nCIM Bus              ATP Bus  CIM ID                                Bus kV', file=fp)
   for key in atp_buses:
     print ('{:20s} {:6s}   {:36s} {:7.3f}'.format (cim_bus_names[key], atp_buses[key], key, bus_kv[key]), file=fp)
+  if len(atp_dc_buses) > 0:
+    print ('\nCIM DCNode           ATP Bus  CIM ID', file=fp)
+    for key in atp_dc_buses:
+      print ('{:20s} {:6s}   {:36s}'.format (cim_bus_names[key], atp_dc_buses[key], key), file=fp)
   fp.close()
+
+  # find the measurements of currents, d[eqid][end] = atp_bus
+  current_probes = {}
+  for key, ary in d['EMTIEEECigreDLLInputs*']['vals'].items():
+    for row in ary:
+      trm = row['ACDCTerminal_mRID']
+      if trm is not None:
+        phase = row['phase']
+        toks = trm.split('_')
+        eqid = toks[0]
+        seq = int(toks[1])
+        eqcls = find_class_from_mrid (eqid, d)
+        #print (eqid, seq, phase, eqcls)
+        if eqid not in current_probes:
+          current_probes[eqid] = {}
+        if seq not in current_probes[eqid]:
+          current_probes[eqid][seq] = ''
+  #print ('current_probes:', current_probes)
 
   machines = ParallelMachines (d['EMTSyncMachine']['vals'], icd, atp_buses)
 
@@ -1274,6 +1320,27 @@ def create_atp (d, icd, fpath, case):
   for key, row in d['EMTCompSeries']['vals'].items():
     bus1 = AtpBus(atp_buses[row['ConnectivityNode1_mRID']])
     bus2 = AtpBus(atp_buses[row['ConnectivityNode2_mRID']])
+    if key in current_probes:
+      print ('C ============================= CURRENT PROBES ================================', file=ap)
+      print ('/SWITCH', file=ap)
+      print ('C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >               1', file=ap)
+      if 1 in current_probes[key]:
+        swtbus1 = GetNextScratchBus(forModels=True)
+        #print ('*** Break into', key, 'end 1 at', swtbus1)
+        print ('  {:5s}A{:5s}A      -1.0    9999.0                    MEASURING                1'.format (bus1, swtbus1), file=ap)
+        print ('  {:5s}B{:5s}B      -1.0    9999.0                    MEASURING                1'.format (bus1, swtbus1), file=ap)
+        print ('  {:5s}C{:5s}C      -1.0    9999.0                    MEASURING                1'.format (bus1, swtbus1), file=ap)
+        current_probes[key][1] = swtbus1
+        bus1 = swtbus1
+      if 2 in current_probes[key]:
+        swtbus2 = GetNextScratchBus(forModels=True)
+        current_probes[key][2] = swtbus2
+        #print ('*** Break into', key, 'end 2 at', swtbus2)
+        print ('  {:5s}A{:5s}A      -1.0    9999.0                    MEASURING                1'.format (bus2, swtbus2), file=ap)
+        print ('  {:5s}B{:5s}B      -1.0    9999.0                    MEASURING                1'.format (bus2, swtbus2), file=ap)
+        print ('  {:5s}C{:5s}C      -1.0    9999.0                    MEASURING                1'.format (bus2, swtbus2), file=ap)
+        bus2 = swtbus2
+      print ('/BRANCH', file=ap)
     if row['x'] >= 0.0:
       # guard against zero-impedance branches in AC filters for IBR
       print ('C =============================================================================', file=ap)
@@ -1381,6 +1448,7 @@ def create_atp (d, icd, fpath, case):
 
   # dictionary of generators to track ratings and initial conditions
   dgens = {}
+  print ('DLL current_probes:', current_probes)
 
   # assemble dynamics model type information into a combined dictionary with 0-based arrays of the described parameters
   dyn_types = {}
@@ -1527,7 +1595,7 @@ def create_atp (d, icd, fpath, case):
       DLL_COUNT += 1
       DLL_TOTAL += 1e-6 * wtotal
       DUM_NODES += DLL_DUM_NODES
-      AppendDLL (bus, key, d, ap=ap, atp_path=fpath)
+      AppendDLL (bus, key, d, current_probes, atp_buses, atp_dc_buses, ap=ap, atp_path=fpath)
     if mw != 0.0 or mvar != 0.0:
       AppendIBRInitializer (row['ConnectivityNode1_mRID'], bus, vbase, rmva, 0.2, 0.0, icd, mw, mvar, ap, gsu_ang)
     dgens[key] = {'Type':'Solar', 'Source':None, 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
@@ -1556,7 +1624,7 @@ def create_atp (d, icd, fpath, case):
       DLL_COUNT += 1
       DLL_TOTAL += 1e-6 * wtotal
       DUM_NODES += DLL_DUM_NODES
-      AppendDLL (bus, key, d, ap=ap, atp_path=fpath)
+      AppendDLL (bus, key, d, current_probes, atp_buses, atp_dc_buses, ap=ap, atp_path=fpath)
     if mw != 0.0 or mvar != 0.0:
       AppendIBRInitializer (row['ConnectivityNode1_mRID'], bus, vbase, rmva, 0.2, 0.0, icd, mw, mvar, ap, gsu_ang)
     dgens[key] = {'Type':'Wind', 'Source':None, 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
@@ -1635,6 +1703,33 @@ def create_atp (d, icd, fpath, case):
           DUM_NODES += MACHINE_DUM_NODES
           dgens[key] = {'Type':'SyncMach', 'Source':'59', 'Name':row['name'], 'Bus':AtpBus(bus), 'kV': vbase*0.001, 'S': sbase*1e-6, 'P':0.0, 'Q':0.0, 'Vmag':0.0, 'Vang':0.0}
     print ('/BRANCH', file=ap)
+
+  # write the DC components
+  for key, row in d['EMTDCShunt']['vals'].items():
+    dcid = row['DCNode1_mRID']
+    dcn = d['EMTDCNode']['vals'][dcid]['name']
+    dcb = atp_dc_buses[dcid]
+    res = row['resistance']
+    if res <= 0.0:
+      res = 0.001
+    cuf = row['capacitance'] * 1.0e6
+    print ('C =============================================================================', file=ap)
+    print ('C DC Shunt {:s} at {:s}'.format (row['name'], dcn), file=ap)
+    print ('/BRANCH', file=ap)
+    print ('C < n 1>< n 2><ref1><ref2><       R      ><      X       ><      C       ><   >', file=ap)
+    print ('$VINTAGE,1', file=ap)
+    print ('  ' + AtpNode (dcb, 'P') + PadBlanks(18) + '{:16e}'.format(res) + PadBlanks(16) + '{:16e}'.format(cuf), file=ap)
+    print ('$VINTAGE,0', file=ap)
+  for key, row in d['EMTDCEnergySource']['vals'].items():
+    dcid = row['DCNode1_mRID']
+    dcn = d['EMTDCNode']['vals'][dcid]['name']
+    dcb = atp_dc_buses[dcid]
+    ratedUdc = row['ratedUdc']
+    print ('C =============================================================================', file=ap)
+    print ('C DC Source {:s} at {:s}'.format (row['name'], dcn), file=ap)
+    print ('/SOURCE', file=ap)
+    print ('C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >', file=ap)
+    print ('11{:s}  {:10.3f}{:s}{:10.3f}{:10.3f}'.format (AtpNode (dcb, 'P'), ratedUdc, PadBlanks(40), -1.0, 9999.0), file=ap)
 
   ap.close()
   with open('{:s}{:s}_dgen.json'.format(fpath, fname), 'w') as jp: 

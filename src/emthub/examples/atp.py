@@ -263,9 +263,9 @@ def plot_smibdll (atp_root, bPng):
   freq = np.array (df['M:FREQP']) / 60.0
   pout = np.array (df['M:POUT'])
   qout = np.array (df['M:QOUT'])
-  ia = np.array (df['I:B1D:B1A'])
-  ib = np.array (df['I:B1E:B1B'])
-  ic = np.array (df['I:B1F:B1C'])
+  ia = np.array (df['I:B6A:P1A'])
+  ib = np.array (df['I:B6B:P1B'])
+  ic = np.array (df['I:B6C:P1C'])
   va = np.array (df['T:B1A'])
   vb = np.array (df['T:B1B'])
   vc = np.array (df['T:B1C'])
@@ -454,6 +454,7 @@ def plot_case (atp_root, bPng):
 def run_atp_case (atp_root):
   if atp_root == 'SMIBDLL':
     cmdline = 'c:\\atp\\atpmingw\\mytpbig ' + atp_root + '.atp >nul'
+    #cmdline = 'c:\\atp\\atpmingw\\mytpbig ' + atp_root + '.atp'
   else:
     cmdline = 'c:\\atp\\atpgnu\\runtpgig ' + atp_root + '.atp >nul'
   print (cmdline)
