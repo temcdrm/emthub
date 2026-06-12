@@ -208,6 +208,140 @@ This roadmap applies to stakeholders that primarily import CIM network models to
 
 .. image:: assets/FileFlow.png
 
+
+.. _target-roadmap-dynamics:
+
+Dynamics Model Maintainers
+--------------------------
+
+This roadmap applies to stakeholders that add or update *NthAmDynamicModels*. This may include power system phasor domain 
+transient (PSPDT) developers, EMT developers, or others familiar with the underlying PDPDT text file formats.
+
+#. :ref:`target-roadmap-users` Roadmap is a pre-requisite.
+#. Access to at least one EMT simulation tool is a pre-requisite.
+#. Examine the format of *detailed_model_types.json* in the :ref:`target-repository` *src/emthub/queries* subdirectory. This will be referred 
+   to as the **configuration file**.
+#. Find the applicable section in the **configuration file** that you wish to modify. The current choices are *AUX*, *DGS*, *DYD*, *DYR*, and *Other*. 
+   The last choice is really intended for user code models in local settings. New choices can be added by :ref:`target-roadmap-profile` as needed.
+#. To correct an existing **configuration file** entry, you should first edit the file and test the changes locally.
+
+.. warning::
+    Do not change any existing *mRID* values found in the **configuration file**. These are shared globally by all users of this package. Changes to the *mRID* could break existing models for all those users.
+
+6. To test these relatively simple changes, you should have a PSPDT text file that references the changed dynamics model type.
+   Follow a typical users process of importing the text files to CIM RDF, exporting for EMT simulation, running the
+   EMT model in at least one tool, and verifying the EMT outputs are correct.
+#. Also verify the documentation will update correctly, by invoking *make html* in the repository *docs* subdirectory.
+#. After a good local test, commit your changes to the repository via a pull request. After the pull request has been approved and
+   merged, the next release will include your changes.
+
+To add brand new models to the **configuration file**, some additional steps are needed. The overall framework of local testing and
+pull request still applies, but each new entry for the **configuration file** should consider the following:
+
+#. Find the correct section in the file. See `NthAmModelNameKind <profile.html#NthAmModelNameKind>`_ for valid choices.
+#. Add a model entry with *name* that matches the PSPDT file format's "model type" keyword.
+#. Create a random UUID4 to become the new *mRID* for this new entry. Many tools and scripting library functions are able to create a random UUID4. Once created and saved in the **configuration file**, this *mRID* should never change. 
+   It should be maintained in the package to guarantee persistence.
+#. Add a *description*.
+#. Review the standard controller models in CIM dynamics, and identify the *closestStandardModel*. There may not be an exact match, but if there is a relatively close match, that should be provided as a starting
+   point for a future migration from PSPDT text file models to the standard CIM models. Chances are, the developer adding this model to **configuation file** is best positioned to identify the closest match.
+#. Specify *nameKind* to match the file section. See `NthAmModelNameKind <profile.html#NthAmModelNameKind>`_ for valid choices.
+#. Specify the *modelKind* for the expected application.  See `NthAmModelKind <profile.html#NthAmModelKind>`_ for valid choices.
+#. Specify the *statusKind* for allowability in North American interconnection studies.  See `NthAmModelStatusKind <profile.html#NthAmModelStatusKind>`_ for valid choices.
+#. Provide an array of *parameterDescriptors*, one for each value found in a "row" or "line" for this model in the PDPDT text file. Each descriptor should have:
+
+    a. *name*, which should match the name given in PSPDT documentation.
+    #. *mRID*, to be generated randomly and then maintained under version control for global persistence.
+    #. *typicalValue*, if available. This may help in specifying the default value in a future migration to *closestStandardModel*.
+    #. *engineeringUnit*, if available. This may help in specifying the correct CIM data type in a future migration to *closestStandardModel*.
+    #. *sequenceNumber*, starting with 1, which should match the order expected in the PSPDT text file.
+
+For illustration, a reduced-size version of the original **configuration file** follows.::
+
+    {
+      "AUX": {
+      },
+      "DGS": {
+      },
+      "DYD": {
+      },
+      "DYR": {
+        "SEXS": {
+	  "mRID": "854A4288-2FB4-47F9-A194-395CF22DD4E8",
+	  "description": "Legacy static exciter",
+	  "closestStandardModel": "ExcSEXS",
+	  "nameKind": "DYR",
+	  "modelKind": "excitationSystem",
+	  "statusKind": "prohibited",
+	  "parameterDescriptors": [
+	    {
+	      "name": "Bus",
+	      "mRID": "5FEC78BC-65D5-49CE-9D30-EA7F3D225EEF",
+	      "typicalValue": "",
+	      "engineeringUnit": "Integer",
+	      "sequenceNumber": 1
+	    },
+	    {
+	      "name": "Model",
+	      "mRID": "8C11F175-B4E3-49A7-91C5-7396992785F8",
+	      "typicalValue": "",
+	      "engineeringUnit": "String",
+	      "sequenceNumber": 2
+	    },
+	    {
+	      "name": "ID",
+	      "mRID": "A55C670D-7976-40C8-8A33-5A332070D53E",
+	      "typicalValue": "1",
+	      "engineeringUnit": "String",
+	      "sequenceNumber": 3
+	    },
+	    {
+	      "name": "TATB",
+	      "mRID": "360A2A9E-48B2-49FA-83F5-5518A4E16F81",
+	      "typicalValue": 0.1,
+	      "engineeringUnit": "Float",
+	      "sequenceNumber": 4
+	    },
+	    {
+	      "name": "TB",
+	      "mRID": "1FAE8B08-8F08-4773-AD98-AB0360E820EF",
+	      "typicalValue": 10.0,
+	      "engineeringUnit": "Seconds",
+	      "sequenceNumber": 5
+	    },
+	    {
+	      "name": "K",
+	      "mRID": "1D4EF184-08B1-4633-BA51-0C3A121FDF94",
+	      "typicalValue": 100.0,
+	      "engineeringUnit": "PU",
+	      "sequenceNumber": 6
+	    },
+	    {
+	      "name": "TE",
+	      "mRID": "0FAB61D9-EF26-4BCB-94FE-A19CBE2F3945",
+	      "typicalValue": 0.05,
+	      "engineeringUnit": "Seconds",
+	      "sequenceNumber": 7
+	    },
+	    {
+	      "name": "EMIN",
+	      "mRID": "8C71701D-5C80-4E16-A5DB-9356BCB91854",
+	      "typicalValue": -5.0,
+	      "engineeringUnit": "PU",
+	      "sequenceNumber": 8
+	    },
+	    {
+	      "name": "EMAX",
+	      "mRID": "87E5FD37-97F8-4DE7-B23E-C3EA78AFF8FF",
+	      "typicalValue": 5.0,
+	      "engineeringUnit": "PU",
+	      "sequenceNumber": 9
+	    }
+	  ]
+        }
+      }
+    }
+
 .. _target-roadmap-dll:
 
 DLL Developers

@@ -114,6 +114,7 @@ Next, choose one of the roadmaps to follow:
 - :ref:`target-roadmap-users` to just run all the examples.
 - :ref:`target-roadmap-profile` for maintaining the CIM extensions and profile.
 - :ref:`target-roadmap-network` for developing and testing CIM data import to EMT tools.
+- :ref:`target-roadmap-dynamics` for adding or maintaining more standardized controller models that are read from text files.
 - :ref:`target-roadmap-dll` for developing and testing DLL models.
 
 Consult the :ref:`target-bibliography` as needed for background information. 
