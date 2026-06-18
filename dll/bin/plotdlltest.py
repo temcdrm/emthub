@@ -7,19 +7,26 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 plots = {
-  "PPC_voltage_step.csv": {"tmin": 0.0, "tmax": 5.0, "ttick": 1.0, "title": "PPC Voltage Step Test",
+  "scrx9.csv": {"tmin": 1.0, "tmax": 3.0, "ttick": 0.2, "title": "SCRX9 Excitation System Test",
+                "ytitles": ["Inputs [pu]", "Outputs [pu]"],
+                "signals": [{"name": "VRef", "base": 1.0, "axis": 0},
+                            {"name": "VT", "base": 1.0, "axis": 0},
+                            {"name": "VUEL", "base": 1.0, "axis": 1},
+                            {"name": "VOEL", "base": 1.0, "axis": 1},
+                            {"name": "EFD", "base": 1.0, "axis": 1}]},
+  "ppc_voltage_step.csv": {"tmin": 0.0, "tmax": 5.0, "ttick": 1.0, "title": "PPC Voltage Step Test",
                         "ytitles": ["Inputs [pu]", "Outputs [pu]"],
                         "signals": [{"name": "Vmeas", "base": 1.0, "axis": 0},
                                     {"name": "Plant_pref", "base": 1.0, "axis": 0},
                                     {"name": "Qext", "base": 1.0, "axis": 0},
                                     {"name": "Pref", "base": 1.0, "axis": 1}]},
-  "PPC_qmeas_step.csv": {"tmin": 0.0, "tmax": 5.0, "ttick": 1.0, "title": "PPC Reactive Power Step Test",
+  "ppc_qmeas_step.csv": {"tmin": 0.0, "tmax": 5.0, "ttick": 1.0, "title": "PPC Reactive Power Step Test",
                         "ytitles": ["Inputs [pu]", "Outputs [pu]"],
                         "signals": [{"name": "Qmeas", "base": 1.0, "axis": 0},
                                     {"name": "Plant_pref", "base": 1.0, "axis": 0},
                                     {"name": "Qext", "base": 1.0, "axis": 0},
                                     {"name": "Pref", "base": 1.0, "axis": 1}]},
-  "PPC_freq_step.csv": {"tmin": 0.0, "tmax": 10.0, "ttick": 1.0, "title": "PPC Frequency Step Test",
+  "ppc_freq_step.csv": {"tmin": 0.0, "tmax": 10.0, "ttick": 1.0, "title": "PPC Frequency Step Test",
                         "ytitles": ["Inputs [pu]", "Outputs [pu]"],
                         "signals": [{"name": "Freq", "base": 1.0, "axis": 0},
                                     {"name": "Plant_pref", "base": 1.0, "axis": 0},
@@ -80,10 +87,10 @@ if __name__ == '__main__':
     all_channels = True
   df = pd.read_csv (data_path, index_col='t')
   df.info()
-  if data_path in plots and all_channels == False:
+  if data_path.lower() in plots and all_channels == False:
     plot_page (df, plots[data_path])
   else:
-    df.plot(subplots=True, title=data_path)
+    df.plot(subplots=True, title=data_path.lower())
     plt.show()
     plt.close()
 
