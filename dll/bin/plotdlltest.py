@@ -5,8 +5,26 @@ import sys
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import math
+
+# CERTS inverter is 100 kW, 480 V
+hwpv_vbase = 480.0 * math.sqrt(2.0) / math.sqrt(3.0)
+hwpv_ibase = math.sqrt(2.0) * 100.0e3 / 480.0 / math.sqrt(3.0)
+hwpv_vdcbase = 1.0 / 0.00260668
+hwpv_idcbase = 100.0e3 / hwpv_vdcbase
 
 plots = {
+  "hwpv.csv": {"tmin": 0.5, "tmax": 5.5, "ttick": 0.5, "title": "HWPV Generalized Block Diagram Test",
+                "ytitles": ["Inputs [pu]", "Outputs [pu]"],
+                "signals": [{"name": "G", "base": 1000.0, "axis": 0},
+                            {"name": "Ctl", "base": 1.0, "axis": 0},
+                            {"name": "GVrms", "base": 1000.0, "axis": 0},
+                            {"name": "Vd", "base": hwpv_vbase, "axis": 0},
+                            {"name": "Vq", "base": hwpv_vbase, "axis": 0},
+                            {"name": "Id", "base": hwpv_ibase, "axis": 1},
+                            {"name": "Iq", "base": hwpv_ibase, "axis": 1},
+                            {"name": "Idc", "base": hwpv_idcbase, "axis": 1},
+                            {"name": "Vdc", "base": hwpv_vdcbase, "axis": 1}]},
   "scrx9.csv": {"tmin": 1.0, "tmax": 3.0, "ttick": 0.2, "title": "SCRX9 Excitation System Test",
                 "ytitles": ["Inputs [pu]", "Outputs [pu]"],
                 "signals": [{"name": "VRef", "base": 1.0, "axis": 0},
@@ -62,7 +80,7 @@ def plot_page (df, cfg):
     base = sig['base']
     axis = sig['axis']
     if base != 1.0:
-      lbl = '{:s} / {:s}'.format (key, str(base))
+      lbl = '{:s} / {:s}'.format (key, str(round(base, 2)))
     else:
       lbl = key
     ax[axis].plot (t[imin:imax], np.array(df[key])[imin:imax]/base, label=lbl)
