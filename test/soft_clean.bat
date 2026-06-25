@@ -17,7 +17,6 @@ del commands.script 2>nul
 del *.log 2>nul
 del *.tmp 2>nul
 del *.bin 2>nul
-del *.hdf5 2>nul
 del *.dat 2>nul
 del *.cfg 2>nul
 del *.png 2>nul
