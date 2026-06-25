@@ -91,7 +91,8 @@ plant = {'generator': '1_1',
            ['PowerTransformer', '4_3_0_1']
            ],
          'attributes': [
-           ['switchingFrequency', 3060.0, 'Frequency']
+           ['switchingFrequency', 3060.0, 'Frequency'],
+           ['dcLinkVoltage', 1200.0, 'Voltage']
            ],
          'ac_filter' : {
             'acFilterCapacitance': [0.0015, 'Capacitance'],

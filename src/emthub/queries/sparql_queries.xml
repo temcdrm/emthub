@@ -1352,18 +1352,18 @@ SELECT ?name ?a1 ?a2 ?a3 ?a4 ?a5 ?a6 ?a7 ?a8 ?inputSignalType ?kd ?ks ?t1 ?t2
 <classes>IEEECigreDLLParameter,IEEECigreDLL</classes>
 <value>
 <![CDATA[
-SELECT DISTINCT ?mRID ?sequenceNumber ?parameterKind ?value WHERE {
+SELECT DISTINCT ?mRID ?dllSequenceNumber ?dllParameterKind ?value WHERE {
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?eq r:type c:PowerElectronicsConnection.
  ?eq c:Equipment.EquipmentContainer ?sys.
  ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?mRID.
  ?p e:IEEECigreDLLParameter.IEEECigreDLL ?d.
- ?p e:IEEECigreDLLParameter.sequenceNumber ?sequenceNumber.
+ ?p e:IEEECigreDLLParameter.dllSequenceNumber ?dllSequenceNumber.
  ?p e:IEEECigreDLLParameter.value ?value.
- {?p e:IEEECigreDLLParameter.parameterKind ?rawkind.
-  bind(strafter(str(?rawkind),"Kind.") as ?parameterKind)}
-} ORDER by ?mRID ?sequenceNumber
+ {?p e:IEEECigreDLLParameter.dllParameterKind ?rawkind.
+  bind(strafter(str(?rawkind),"Kind.") as ?dllParameterKind)}
+} ORDER by ?mRID ?dllSequenceNumber
 ]]>
 </value>
 </query>
@@ -1395,24 +1395,25 @@ ORDER BY ?mRID
 <classes>IEEECigreDLLInput,IEEECigreDLL</classes>
 <value>
 <![CDATA[
-SELECT DISTINCT ?mRID ?sequenceNumber ?name ?width ?kind ?unit ?multiplier ?phase ?ConnectivityNode_mRID ?DCNode_mRID ?ACDCTerminal_mRID WHERE {
+SELECT DISTINCT ?mRID ?dllSequenceNumber ?dllName ?dllWidth ?dllParameterKind ?kind ?sensorRatio ?unit ?multiplier ?phase ?ConnectivityNode_mRID ?DCNode_mRID ?ACDCTerminal_mRID WHERE {
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?eq r:type c:PowerElectronicsConnection.
  ?eq c:Equipment.EquipmentContainer ?sys.
  ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?mRID.
  ?p c:SignalDescriptor.DynamicsFunctionBlock ?d.
- ?p e:IEEECigreDLLSignal.sequenceNumber ?sequenceNumber.
- ?p e:IEEECigreDLLSignal.name ?name.
- ?p e:IEEECigreDLLSignal.width ?width.
+ ?p e:IEEECigreDLLSignal.dllSequenceNumber ?dllSequenceNumber.
+ ?p e:IEEECigreDLLInput.sensorRatio ?sensorRatio.
+ ?p e:IEEECigreDLLSignal.dllName ?dllName.
+ ?p e:IEEECigreDLLSignal.dllWidth ?dllWidth.
  {?p e:IEEECigreDLLSignal.unit ?rawunit.
   bind(strafter(str(?rawunit),"UnitSymbol.") as ?unit)}
  {?p e:IEEECigreDLLSignal.multiplier ?rawmult.
   bind(strafter(str(?rawmult),"UnitMultiplier.") as ?multiplier)}
  OPTIONAL {?p e:IEEECigreDLLSignal.phase ?rawphase.
   bind(strafter(str(?rawphase),"Kind.") as ?phase)}
- {?p e:IEEECigreDLLSignal.parameterKind ?rawkind.
-  bind(strafter(str(?rawkind),"Kind.") as ?parameterKind)}
+ {?p e:IEEECigreDLLSignal.dllParameterKind ?rawkind.
+  bind(strafter(str(?rawkind),"Kind.") as ?dllParameterKind)}
  {?p e:IEEECigreDLLInput.kind ?rawsig.
   bind(strafter(str(?rawsig),"Kind.") as ?kind)}
  OPTIONAL {?p e:IEEECigreDLLSignal.ConnectivityNode ?cn.
@@ -1421,7 +1422,7 @@ SELECT DISTINCT ?mRID ?sequenceNumber ?name ?width ?kind ?unit ?multiplier ?phas
            ?dcn c:IdentifiedObject.mRID ?DCNode_mRID}
  OPTIONAL {?p c:SignalDescriptor.ACDCTerminal ?trm.
           bind(substr(str(?trm),strlen(str(?trm))-37,38) as ?ACDCTerminal_mRID)}
-} ORDER by ?mRID ?sequenceNumber
+} ORDER by ?mRID ?dllSequenceNumber
 ]]>
 </value>
 </query>
@@ -1454,29 +1455,34 @@ ORDER BY ?mRID
 <classes>IEEECigreDLLOutput,IEEECigreDLL</classes>
 <value>
 <![CDATA[
-SELECT DISTINCT ?mRID ?sequenceNumber ?name ?width ?kind ?unit ?multiplier ?phase ?ACDCTerminal_mRID WHERE {
+SELECT DISTINCT ?mRID ?dllSequenceNumber ?dllName ?dllWidth ?dllParameterKind ?kind ?scalingRatio ?unit ?multiplier ?phase ?ConnectivityNode_mRID ?DCNode_mRID ?ACDCTerminal_mRID WHERE {
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?eq r:type c:PowerElectronicsConnection.
  ?eq c:Equipment.EquipmentContainer ?sys.
  ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?mRID.
  ?p c:SignalDescriptor.DynamicsFunctionBlock ?d.
- ?p e:IEEECigreDLLSignal.sequenceNumber ?sequenceNumber.
- ?p e:IEEECigreDLLSignal.name ?name.
- ?p e:IEEECigreDLLSignal.width ?width.
+ ?p e:IEEECigreDLLSignal.dllSequenceNumber ?dllSequenceNumber.
+ ?p e:IEEECigreDLLOutput.scalingRatio ?scalingRatio.
+ ?p e:IEEECigreDLLSignal.dllName ?dllName.
+ ?p e:IEEECigreDLLSignal.dllWidth ?dllWidth.
  {?p e:IEEECigreDLLSignal.unit ?rawunit.
   bind(strafter(str(?rawunit),"UnitSymbol.") as ?unit)}
  {?p e:IEEECigreDLLSignal.multiplier ?rawmult.
   bind(strafter(str(?rawmult),"UnitMultiplier.") as ?multiplier)}
  OPTIONAL {?p e:IEEECigreDLLSignal.phase ?rawphase.
   bind(strafter(str(?rawphase),"Kind.") as ?phase)}
- {?p e:IEEECigreDLLSignal.parameterKind ?rawkind.
-  bind(strafter(str(?rawkind),"Kind.") as ?parameterKind)}
+ {?p e:IEEECigreDLLSignal.dllParameterKind ?rawkind.
+  bind(strafter(str(?rawkind),"Kind.") as ?dllParameterKind)}
  {?p e:IEEECigreDLLOutput.kind ?rawsig.
   bind(strafter(str(?rawsig),"Kind.") as ?kind)}
+ OPTIONAL {?p e:IEEECigreDLLSignal.ConnectivityNode ?cn.
+           ?cn c:IdentifiedObject.mRID ?ConnectivityNode_mRID}
+ OPTIONAL {?p e:IEEECigreDLLSignal.DCNode ?dcn.
+           ?dcn c:IdentifiedObject.mRID ?DCNode_mRID}
  OPTIONAL {?p c:SignalDescriptor.ACDCTerminal ?trm.
           bind(substr(str(?trm),strlen(str(?trm))-37,38) as ?ACDCTerminal_mRID)}
-} ORDER by ?mRID ?sequenceNumber
+} ORDER by ?mRID ?dllSequenceNumber
 ]]>
 </value>
 </query>
@@ -1508,7 +1514,8 @@ ORDER BY ?mRID
 <classes>IEEECigreDLL</classes>
 <value>
 <![CDATA[
-SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?firmwareInstalled ?firmwareVersion ?supportsEMT ?supportsRMS ?timestep ?uri ?snapshotUri ?vendorName WHERE {
+SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?uri ?snapshotUri ?shareable ?dllDLLInterfaceVersion ?dllEmtRmsMode ?dllFixedStepBaseSampleTime 
+                ?dllModelName ?dllModelVersion WHERE {
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?eq r:type c:PowerElectronicsConnection.
  ?eq c:Equipment.EquipmentContainer ?sys.
@@ -1516,14 +1523,15 @@ SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?firmwareInstalled 
  ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
  ?d c:IdentifiedObject.mRID ?mRID.
  ?d c:IdentifiedObject.name ?name.
- ?d e:IEEECigreDLL.firmwareInstalled ?firmwareInstalled.
- ?d e:IEEECigreDLL.firmwareVersion ?firmwareVersion.
- ?d e:IEEECigreDLL.supportsEMT ?supportsEMT.
- ?d e:IEEECigreDLL.supportsRMS ?supportsRMS.
- ?d e:IEEECigreDLL.timestep ?timestep.
  ?d e:IEEECigreDLL.uri ?uri.
  ?d e:IEEECigreDLL.snapshotUri ?snapshotUri.
- ?d e:IEEECigreDLL.vendorName ?vendorName.
+ ?d e:IEEECigreDLL.shareable ?shareable.
+ ?d e:IEEECigreDLL.dllDLLInterfaceVersion ?dllDLLInterfaceVersion.
+ {?d e:IEEECigreDLL.dllEmtRmsMode ?rawMode.
+  bind(strafter(str(?rawMode),"Kind.") as ?dllEmtRmsMode)}
+ ?d e:IEEECigreDLL.dllFixedStepBaseSampleTime ?dllFixedStepBaseSampleTime.
+ ?d e:IEEECigreDLL.dllModelName ?dllModelName.
+ ?d e:IEEECigreDLL.dllModelVersion ?dllModelVersion.
 } ORDER by ?mRID
 ]]>
 </value>
@@ -1535,7 +1543,7 @@ SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?firmwareInstalled 
 <classes>IBRPlant</classes>
 <value>
 <![CDATA[
-SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?switchingFrequency ?IEEECigreDLL_mRID WHERE {
+SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?switchingFrequency ?dcLinkVoltage ?IEEECigreDLL_mRID WHERE {
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?p r:type e:IBRPlant.
  ?p c:IdentifiedObject.name ?name.
@@ -1545,6 +1553,7 @@ SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?switchingFrequency
  ?eq c:Equipment.EquipmentContainer ?sys.
  ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
  ?p e:IBRPlant.switchingFrequency ?switchingFrequency.
+ ?p e:IBRPlant.dcLinkVoltage ?dcLinkVoltage.
  OPTIONAL {
    ?d c:DetailedModelDynamics.Equipment ?eq.
    ?d c:IdentifiedObject.mRID ?IEEECigreDLL_mRID

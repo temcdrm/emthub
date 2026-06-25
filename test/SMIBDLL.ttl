@@ -653,6 +653,7 @@
         <C1B5E7AF-5F48-457A-9990-38742140FD4C>,
         <E16FD157-778D-41F1-8FE1-A095E8D617E1>,
         <F6CE8EB1-AE48-4250-8C55-C23155CE882D> ;
+    emt:IBRPlant.dcLinkVoltage "1200.0"^^cim:Voltage ;
     emt:IBRPlant.switchingFrequency "3060.0"^^cim:Frequency ;
     cim:IdentifiedObject.mRID "298095DE-85A1-474C-8316-8CAE0F932952"^^cim:String ;
     cim:IdentifiedObject.name "1_1"^^cim:String .

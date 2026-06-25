@@ -1194,6 +1194,7 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
                  ],
                'attributes': [
                  ['switchingFrequency', 3060.0, 'Frequency']
+                 ['dcLinkVoltage', 1200.0, 'Voltage']
                  ],
                'ac_filter' : {
                   'acFilterCapacitance': [0.0015, 'Capacitance'],
