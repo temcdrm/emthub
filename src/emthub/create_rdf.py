@@ -1413,17 +1413,19 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
     if os.path.exists(dllname):
       print ('create DLL interface for', dllname)
       d = get_dll_interface (dllname, bPrint=False)
-      #print (d)
-      bRMS = False
-      bEMT = True
-      mode = d['EMT_RMS_Mode']
-      if mode == 2:
-        bRMS = True
-        bEMT = False
-      elif mode == 3:
-        bRMS = True
+      print (d['ModelName'], d['EMT_RMS_Mode'])
+      mode = 'SupportsNone'
+      if d['EMT_RMS_Mode'] == 1:
+        mode = 'SupportsEMT'
+      elif d['EMT_RMS_Mode'] == 2:
+        mode = 'SupportsRMS'
+      elif d['EMT_RMS_Mode'] == 3:
+        mode = 'SupportsBoth'
       dllVersion = d['ModelVersion']
-      dllDate = datetime.datetime.strptime (d['ModelLastModifiedDate'], '%B %d, %Y').isoformat()
+      dllCreatedDate = datetime.datetime.strptime (d['ModelCreated'], '%B %d, %Y').isoformat()
+      dllModifiedDate = datetime.datetime.strptime (d['ModelLastModifiedDate'], '%B %d, %Y').isoformat()
+      div = d['DLLInterfaceVersion']
+      dllInterfaceVersion = '{:d}.{:d}.{:d}.{:d}'.format (div[0], div[1], div[2], div[3])
       snapUri = ''
       dt = d['FixedStepBaseSampleTime']
       vendorName = d['ModelCreator']
@@ -1437,44 +1439,81 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
       g.add ((dll, rdflib.URIRef (CIM_NS + 'IdentifiedObject.mRID'), rdflib.Literal(dllID, datatype=CIM.String)))
       g.add ((dll, rdflib.URIRef (CIM_NS + 'DynamicsFunctionBlock.enabled'), rdflib.Literal (True, datatype=CIM.Boolean)))
       g.add ((dll, rdflib.URIRef (CIM_NS + 'DetailedModelDynamics.Equipment'), pec))
-      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.firmwareInstalled'), rdflib.Literal (dllDate, datatype=CIM.DateTime)))
-      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.firmwareVersion'), rdflib.Literal (dllVersion, datatype=CIM.String)))
+      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.dllDLLInterfaceVersion'), rdflib.Literal (dllInterfaceVersion, datatype=CIM.String)))
+      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.dllEmtRmsMode'), rdflib.URIRef (EMT_NS + 'IEEECigreDLLModeKind.{:s}'.format(mode))))
+      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.dllFixedStepBaseSampleTime'), rdflib.Literal (dt, datatype=CIM.Seconds)))
+      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.dllModelVersion'), rdflib.Literal (dllVersion, datatype=CIM.String)))
+      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.dllModelName'), rdflib.Literal (d['ModelName'], datatype=CIM.String)))
+      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.shareable'), rdflib.Literal (True, datatype=CIM.Boolean)))
       g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.snapshotUri'), rdflib.Literal (snapUri, datatype=CIM.String)))
-      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.supportsEMT'), rdflib.Literal (bEMT, datatype=CIM.Boolean)))
-      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.supportsRMS'), rdflib.Literal (bRMS, datatype=CIM.Boolean)))
-      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.timestep'), rdflib.Literal (dt, datatype=CIM.Seconds)))
       g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.uri'), rdflib.Literal (dllname, datatype=CIM.String)))
-      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.vendorName'), rdflib.Literal (vendorName, datatype=CIM.String)))
+      # make an information class
+      infID = dllID+'_info'
+      inf = rdflib.URIRef(infID)
+      g.add ((dll, rdflib.URIRef (EMT_NS + 'IEEECigreDLL.IEEECigreDLLInfo'), inf))
+      g.add ((inf, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInfo')))
+      g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInfo.dllGeneralInformation'), rdflib.Literal (d['GeneralInformation'], datatype=CIM.String)))
+      g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInfo.dllModelCreator'), rdflib.Literal (d['ModelCreator'], datatype=CIM.String)))
+      g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInfo.dllModelDescription'), rdflib.Literal (d['ModelDescription'], datatype=CIM.String)))
+      g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInfo.dllModelLastModifiedBy'), rdflib.Literal (d['ModelLastModifiedBy'], datatype=CIM.String)))
+      g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInfo.dllModelModifiedComment'), rdflib.Literal (d['ModelModifiedComment'], datatype=CIM.String)))
+      g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInfo.dllModelModifiedHistory'), rdflib.Literal (d['ModelModifiedHistory'], datatype=CIM.String)))
+      g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInfo.dllNumDoubleStates'), rdflib.Literal (d['NumDoubleStates'], datatype=CIM.Integer)))
+      g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInfo.dllNumFloatStates'), rdflib.Literal (d['NumFloatStates'], datatype=CIM.Integer)))
+      g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInfo.dllNumIntStates'), rdflib.Literal (d['NumIntStates'], datatype=CIM.Integer)))
+      g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInfo.dllNumParameters'), rdflib.Literal (d['NumParameters'], datatype=CIM.Integer)))
+      g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInfo.dllNumInputPorts'), rdflib.Literal (d['NumInputPorts'], datatype=CIM.Integer)))
+      g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInfo.dllNumOutputPorts'), rdflib.Literal (d['NumOutputPorts'], datatype=CIM.Integer)))
+      g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInfo.dllModelCreated'), rdflib.Literal (dllCreatedDate, datatype=CIM.DateTime)))
+      g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInfo.dllModelLastModifiedDate'), rdflib.Literal (dllModifiedDate, datatype=CIM.DateTime)))
 
       # create the DLL parameters with default values
       # print (d['ParametersInfo'])
-      seq = 1
+      seq = 0
       for parm in d['ParametersInfo']:
         kind = get_dll_cim_parameter_kind (parm['DataType'])
         val = str(parm['DefaultValue'])
         #print (seq, kind, val)
-        pt = rdflib.URIRef (dllID+'_{:d}'.format(seq))
+        ptID = dllID+'_{:d}'.format(seq)
+        pt = rdflib.URIRef (ptID)
         g.add ((pt, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameter')))
         g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameter.IEEECigreDLL'), dll))
-        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameter.sequenceNumber'), rdflib.Literal(seq, datatype=CIM.Integer)))
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameter.dllSequenceNumber'), rdflib.Literal(seq, datatype=CIM.Integer)))
         g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameter.value'), rdflib.Literal(val, datatype=CIM.String)))
-        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameter.parameterKind'), rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameterKind.{:s}'.format(kind))))
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameter.dllParameterKind'), rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameterKind.{:s}'.format(kind))))
+        # make an info class
+        infID = ptID + '_info'
+        inf = rdflib.URIRef(infID)
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameter.IEEECigreDLLParameterInfo'), inf))
+        g.add ((inf, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameterInfo')))
+        g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameterInfo.dllName'), rdflib.Literal (parm['Name'], datatype=CIM.String)))
+        g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameterInfo.dllGroupName'), rdflib.Literal (parm['GroupName'], datatype=CIM.String)))
+        g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameterInfo.dllDescription'), rdflib.Literal (parm['Description'], datatype=CIM.String)))
+        g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameterInfo.dllUnit'), rdflib.Literal (parm['Unit'], datatype=CIM.String)))
+        g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameterInfo.dllDefaultValue'), rdflib.Literal (str(parm['DefaultValue']), datatype=CIM.String)))
+        g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameterInfo.dllMinValue'), rdflib.Literal (str(parm['MinValue']), datatype=CIM.String)))
+        g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameterInfo.dllMaxValue'), rdflib.Literal (str(parm['MaxValue']), datatype=CIM.String)))
+        bFixed = False
+        if parm['FixedValue'] != 0:
+          bFixed = True
+        g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameterInfo.dllFixedValue'), rdflib.Literal (bFixed, datatype=CIM.Boolean)))
         seq += 1
       # list the DLL input signals
       #print (d['InputPortsInfo'])
-      seq = 1
+      seq = 0
       for sig in d['InputPortsInfo']:
         kind = get_dll_cim_parameter_kind (sig['DataType'])
         unit, mult = get_dll_sig_cim_units (sig['Unit'])
         sig_kind, phase = get_dll_input_kind (sig['Name'])
-        pt = rdflib.URIRef (dllID+'_i{:d}'.format(seq))
+        ptID = dllID+'_i{:d}'.format(seq)
+        pt = rdflib.URIRef (ptID)
         g.add ((pt, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInput')))
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.dllName'), rdflib.Literal(sig['Name'], datatype=CIM.String)))
         g.add ((pt, rdflib.URIRef (CIM_NS + 'SignalDescriptor.DynamicsFunctionBlock'), dll))
         g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInput.kind'), rdflib.URIRef (EMT_NS + 'IEEECigreDLLInputKind.{:s}'.format(sig_kind))))
-        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.sequenceNumber'), rdflib.Literal(seq, datatype=CIM.Integer)))
-        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.width'), rdflib.Literal(sig['Width'], datatype=CIM.Integer)))
-        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.name'), rdflib.Literal(sig['Name'], datatype=CIM.String)))
-        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.parameterKind'), rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameterKind.{:s}'.format(kind))))
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.dllSequenceNumber'), rdflib.Literal(seq, datatype=CIM.Integer)))
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.dllWidth'), rdflib.Literal(sig['Width'], datatype=CIM.Integer)))
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.dllParameterKind'), rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameterKind.{:s}'.format(kind))))
         g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.unit'), rdflib.URIRef (CIM_NS + 'UnitSymbol.{:s}'.format(unit))))
         g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.multiplier'), rdflib.URIRef (CIM_NS + 'UnitMultiplier.{:s}'.format(mult))))
         if phase is not None:
@@ -1492,22 +1531,31 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
         elif sig_kind == 'dcMPPTVoltage':
           g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.DCNode'), dcn))
         #print ('Input', seq, sig['Name'], '***', sig_kind, phase)
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLInput.sensorRatio'), rdflib.Literal(1.0, datatype=CIM.Float)))
+        # make an info class
+        infID = ptID + '_info'
+        inf = rdflib.URIRef(infID)
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.IEEECigreDLLSignalInfo'), inf))
+        g.add ((inf, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignalInfo')))
+        g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignalInfo.dllDescription'), rdflib.Literal (sig['Description'], datatype=CIM.String)))
+        g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignalInfo.dllUnit'), rdflib.Literal (sig['Unit'], datatype=CIM.String)))
         seq += 1
       # list the DLL output signals
       #print (d['OutputPortsInfo'])
-      seq = 1
+      seq = 0
       for sig in d['OutputPortsInfo']:
         kind = get_dll_cim_parameter_kind (sig['DataType'])
         unit, mult = get_dll_sig_cim_units (sig['Unit'])
         sig_kind, phase = get_dll_output_kind (sig['Name'])
-        pt = rdflib.URIRef (dllID+'_o{:d}'.format(seq))
+        ptID = dllID+'_o{:d}'.format(seq)
+        pt = rdflib.URIRef (ptID)
         g.add ((pt, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'IEEECigreDLLOutput')))
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.dllName'), rdflib.Literal(sig['Name'], datatype=CIM.String)))
         g.add ((pt, rdflib.URIRef (CIM_NS + 'SignalDescriptor.DynamicsFunctionBlock'), dll))
         g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLOutput.kind'), rdflib.URIRef (EMT_NS + 'IEEECigreDLLOutputKind.{:s}'.format(sig_kind))))
-        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.sequenceNumber'), rdflib.Literal(seq, datatype=CIM.Integer)))
-        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.width'), rdflib.Literal(sig['Width'], datatype=CIM.Integer)))
-        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.name'), rdflib.Literal(sig['Name'], datatype=CIM.String)))
-        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.parameterKind'), rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameterKind.{:s}'.format(kind))))
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.dllSequenceNumber'), rdflib.Literal(seq, datatype=CIM.Integer)))
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.dllWidth'), rdflib.Literal(sig['Width'], datatype=CIM.Integer)))
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.dllParameterKind'), rdflib.URIRef (EMT_NS + 'IEEECigreDLLParameterKind.{:s}'.format(kind))))
         g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.unit'), rdflib.URIRef (CIM_NS + 'UnitSymbol.{:s}'.format(unit))))
         g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.multiplier'), rdflib.URIRef (CIM_NS + 'UnitMultiplier.{:s}'.format(mult))))
         if phase is not None:
@@ -1516,6 +1564,14 @@ def add_ibr_plant (case, plant, g, CIM, EMT):
           trm = rdflib.URIRef (pecID+'_1')
           g.add ((pt, rdflib.URIRef (CIM_NS + 'SignalDescriptor.ACDCTerminal'), trm))
         #print ('Output', seq, sig['Name'], '***', sig_kind, phase)
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLOutput.scalingRatio'), rdflib.Literal(1.0, datatype=CIM.Float)))
+        # make an info class
+        infID = ptID + '_info'
+        inf = rdflib.URIRef(infID)
+        g.add ((pt, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignal.IEEECigreDLLSignalInfo'), inf))
+        g.add ((inf, rdflib.RDF.type, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignalInfo')))
+        g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignalInfo.dllDescription'), rdflib.Literal (sig['Description'], datatype=CIM.String)))
+        g.add ((inf, rdflib.URIRef (EMT_NS + 'IEEECigreDLLSignalInfo.dllUnit'), rdflib.Literal (sig['Unit'], datatype=CIM.String)))
         seq += 1
     else:
       print ('can not find the dll', dllname)
@@ -1580,6 +1636,9 @@ def write_cim_rdf (case, g, CIM, EMT):
     EMT.IEEECigreDLLParameter,
     EMT.IEEECigreDLLInput,
     EMT.IEEECigreDLLOutput,
+    EMT.IEEECigreDLLInfo,
+    EMT.IEEECigreDLLParameterInfo,
+    EMT.IEEECigreDLLSignalInfo,
     CIM.OperationalLimitType,
     CIM.OperationalLimitSet,
     CIM.ApparentPowerLimit,

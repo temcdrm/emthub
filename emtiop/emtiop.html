@@ -3907,6 +3907,22 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
+                  <p class="name" id="IBRPlant.dcLinkVoltage">dcLinkVoltage</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Voltage">Voltage</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Voltage of the DC bus, used to scale average source models or to supply switching models of the converter.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
                   <p class="name" id="IBRPlant.switchingFrequency">switchingFrequency</p>
                </th>
                <td>
@@ -3918,7 +3934,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">PWM switching frequency.</p>
+                  <p class="comment">Pulse width modulation (PWM) switching frequency of the firing pulses in a switching model of the converter.</p>
                </td>
             </tr>
          </table>
@@ -4037,28 +4053,60 @@ p.package { position: absolute; right: 10px; top: 0px}
             <h2 class="concrete">IEEECigreDLL</h2>
          </a>
          <p class="package">Emtiop</p>
-         <p class="comment">A dynamic link library (DLL) interface for inverter-based resource (IBR) control, as defined in Cigre Technical Brochure TB 958 and IEEE Standards Association P3597.</p>
+         <p class="comment">A dynamic link library (DLL) interface for inverter-based resource (IBR) control and other control applications, as defined in Cigre Technical Brochure TB 958 and IEEE Standards Association P3597. Attributes prefixed by <b>dll</b> correspond to members of the IEEE_Cigre_DLLInterface_Model_Info header file structure; they should be obtained and verified using the DLL API.</p>
          <h3>Native Members</h3>
          <table>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLL.firmwareInstalled">firmwareInstalled</p>
+                  <p class="name" id="IEEECigreDLL.dllDLLInterfaceVersion">dllDLLInterfaceVersion</p>
                </th>
                <td>
-                  <p class="cardinality">0..1</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#DateTime">DateTime</a>
+                     <a href="#String">String</a>
                   </p>
                </td>
                <td>
-                  <p class="comment">Date and time of the firmware installation at the IBR plant. The DLL is expected to represent this version of the firmware.</p>
+                  <p class="comment">Codifies a four-number version of the DLL interface standard supported by this DLL, in string format, as returned from the DLL API.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLL.firmwareVersion">firmwareVersion</p>
+                  <p class="name" id="IEEECigreDLL.dllEmtRmsMode">dllEmtRmsMode</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreDLLModeKind">IEEECigreDLLModeKind</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Identify whether the DLL runs in EMT, RMS, or both kinds of simulation, as returned from the DLL API.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLL.dllFixedStepBaseSampleTime">dllFixedStepBaseSampleTime</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Seconds">Seconds</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Hard-coded simulation time step for this DLL, as returned from the DLL API.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLL.dllModelName">dllModelName</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -4069,7 +4117,39 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Version of the hardware provider's firmware, or the model provider's code.</p>
+                  <p class="comment">The ModelName as returned from the DLL API. Not necessarily equal to the inherited IdentifiedObject.name.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLL.dllModelVersion">dllModelVersion</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Version of this DLL, as returned from the DLL API.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLL.shareable">shareable</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">True if this DLL can be loaded and used by different instances of Equipment in the same simulation. This information is not available from the DLL API; it must be determined from careful review of the DLL documentation.</p>
                </td>
             </tr>
             <tr>
@@ -4085,55 +4165,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Location of the optional snapshot file for initializing the DLL from a saved state. Either a universal resource identifier or network-accessible filename.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="IEEECigreDLL.supportsEMT">supportsEMT</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Boolean">Boolean</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">True if the DLL supports EMT simulation.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="IEEECigreDLL.supportsRMS">supportsRMS</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Boolean">Boolean</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">True if the DLL supports RMS, i.e., phasor domain, simulation.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="IEEECigreDLL.timestep">timestep</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Seconds">Seconds</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">Hard-coded simulation time step for this DLL.</p>
+                  <p class="comment">Location of the optional snapshot file for initializing the DLL from a saved state. Either a universal resource identifier or network-accessible filename. It is not obtainable from the DLL API.</p>
                </td>
             </tr>
             <tr>
@@ -4141,7 +4173,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name" id="IEEECigreDLL.uri">uri</p>
                </th>
                <td>
-                  <p class="cardinality">0..1</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
@@ -4149,23 +4181,23 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Location of the DLL, e.g., a universal resource identifier or network-accessible filename.</p>
+                  <p class="comment">Location of the DLL, e.g., a universal resource identifier or network-accessible filename. It is not obtainable from the DLL API.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLL.vendorName">vendorName</p>
+                  <p class="name" id="IEEECigreDLL.IEEECigreDLLInfo">IEEECigreDLLInfo</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#String">String</a>
+                     <a href="#IEEECigreDLLInfo">IEEECigreDLLInfo</a>
                   </p>
                </td>
                <td>
-                  <p class="comment">Name of the model (code) provider.</p>
+                  <p class="comment">Expanded set of attributes available from the DLL API.</p>
                </td>
             </tr>
          </table>
@@ -4314,12 +4346,246 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
+      <div id="IEEECigreDLLInfo" class="group">
+         <a href="#IEEECigreDLLInfo">
+            <h2 class="concrete">IEEECigreDLLInfo</h2>
+         </a>
+         <p class="package">Emtiop</p>
+         <p class="comment">Supplemental information about his DLL from the API.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInfo.dllGeneralInformation">dllGeneralInformation</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">One of two general description fields; also see the dllModelDescription attribute.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInfo.dllModelCreated">dllModelCreated</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#DateTime">DateTime</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Date and time of the first DLL version.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInfo.dllModelCreator">dllModelCreator</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Identifies the person or the organization who first created the DLL.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInfo.dllModelDescription">dllModelDescription</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">One of two general description fields; also see the dllGeneralDescription attribute.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInfo.dllModelLastModifiedBy">dllModelLastModifiedBy</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Identifies the person or the organization who first created the DLL.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInfo.dllModelLastModifiedDate">dllModelLastModifiedDate</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#DateTime">DateTime</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Date and time of the latest DLL version.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInfo.dllModelModifiedComment">dllModelModifiedComment</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">A description of the latest DLL update.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInfo.dllModelModifiedHistory">dllModelModifiedHistory</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">A history of DLL updates, may be a change log or other multi-paragraph text.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInfo.dllNumDoubleStates">dllNumDoubleStates</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Size of internal double-precision array storage needed by the DLL for state variables. These are not represented in CIM, but the information could help identify different versions of the DLL. The EMT/RMS simulator manages this memory.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInfo.dllNumFloatStates">dllNumFloatStates</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Size of internal single-precision array storage needed by the DLL for state variables. These are not represented in CIM, but the information could help identify different versions of the DLL. The EMT/RMS simulator manages this memory.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInfo.dllNumInputPorts">dllNumInputPorts</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The number of input ports expected by the DLL, which should match cardinality of the associated IEEECigreDLL -> IEEECigreDLLInputSignals.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInfo.dllNumIntStates">dllNumIntStates</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Size of internal integer array storage needed by the DLL for state variables. These are not represented in CIM, but the information could help identify different versions of the DLL. The EMT/RMS simulator manages this memory.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInfo.dllNumOutputPorts">dllNumOutputPorts</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The number of output ports expected by the DLL, which should match cardinality of the associated IEEECigreDLL -> IEEECigreDLLOutputSignals.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInfo.dllNumParameters">dllNumParameters</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The number of input parameters expected by the DLL, which should match cardinality of the associated IEEECigreDLL -> IEEECigreDLLParameters.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
       <div id="IEEECigreDLLInput" class="group">
          <a href="#IEEECigreDLLInput">
             <h2 class="concrete">IEEECigreDLLInput</h2>
          </a>
          <p class="package">Emtiop</p>
-         <p class="comment">Connects the set of DLL input signals, as defined in its API, to points in the network model.</p>
+         <p class="comment">Connects the set of DLL input signals, as defined in its API, to points in the network model or to external references, like other controllers.</p>
          <h3>Native Members</h3>
          <table>
             <tr>
@@ -4338,9 +4604,93 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="comment">The type of input signal. If remoteInputSignal, supply the RemoteInputSignal association. The phase attribute is required for acTerminalVoltage, acCurrentVsc, and acCurrentGrid. If apiDefined, the DLL must be queried through its API for more information.</p>
                </td>
             </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLInput.sensorRatio">sensorRatio</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Float">Float</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Ratio between measured quantity on the power network and signal quantity in the control system, e.g., a current transformer (CT) or voltage transformer (VT) ratio. Should be greater than or equal to 1.</p>
+               </td>
+            </tr>
          </table>
          <h3>Inherited Members</h3>
          <table>
+            <tr>
+               <th>
+                  <p class="name">dllName</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.dllName">IEEECigreDLLSignal</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">dllParameterKind</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreDLLParameterKind">IEEECigreDLLParameterKind</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.dllParameterKind">IEEECigreDLLSignal</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">dllSequenceNumber</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.dllSequenceNumber">IEEECigreDLLSignal</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">dllWidth</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.dllWidth">IEEECigreDLLSignal</a>
+                  </p>
+               </td>
+            </tr>
             <tr>
                <th>
                   <p class="name">multiplier</p>
@@ -4355,40 +4705,6 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p>see <a class="superclass" href="#IEEECigreDLLSignal.multiplier">IEEECigreDLLSignal</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">name</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#String">String</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.name">IEEECigreDLLSignal</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">parameterKind</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#IEEECigreDLLParameterKind">IEEECigreDLLParameterKind</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.parameterKind">IEEECigreDLLSignal</a>
                   </p>
                </td>
             </tr>
@@ -4411,23 +4727,6 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name">sequenceNumber</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Integer">Integer</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.sequenceNumber">IEEECigreDLLSignal</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
                   <p class="name">unit</p>
                </th>
                <td>
@@ -4440,23 +4739,6 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p>see <a class="superclass" href="#IEEECigreDLLSignal.unit">IEEECigreDLLSignal</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">width</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Integer">Integer</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.width">IEEECigreDLLSignal</a>
                   </p>
                </td>
             </tr>
@@ -4491,6 +4773,23 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p>see <a class="superclass" href="#IEEECigreDLLSignal.DCNode">IEEECigreDLLSignal</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">IEEECigreDLLSignalInfo</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreDLLSignalInfo">IEEECigreDLLSignalInfo</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.IEEECigreDLLSignalInfo">IEEECigreDLLSignal</a>
                   </p>
                </td>
             </tr>
@@ -4629,9 +4928,93 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="comment">The type of output signal. The phase attribute must be supplied with modulationIndex and vscVoltage. If apiDefined, obtain more information from the DLL API.</p>
                </td>
             </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLOutput.scalingRatio">scalingRatio</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Float">Float</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Ratio between the controller output and the power system connection point. For example, a modulation index output could be multiplied by 50% of the DC link voltage of a converter to create a controlled voltage source connected to the AC power network. If the DC link voltage is 1200 V, the scalingRatio should then be 600. May be any value, noting that a value of zero has no effect on the power network.</p>
+               </td>
+            </tr>
          </table>
          <h3>Inherited Members</h3>
          <table>
+            <tr>
+               <th>
+                  <p class="name">dllName</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.dllName">IEEECigreDLLSignal</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">dllParameterKind</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreDLLParameterKind">IEEECigreDLLParameterKind</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.dllParameterKind">IEEECigreDLLSignal</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">dllSequenceNumber</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.dllSequenceNumber">IEEECigreDLLSignal</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">dllWidth</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.dllWidth">IEEECigreDLLSignal</a>
+                  </p>
+               </td>
+            </tr>
             <tr>
                <th>
                   <p class="name">multiplier</p>
@@ -4646,40 +5029,6 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p>see <a class="superclass" href="#IEEECigreDLLSignal.multiplier">IEEECigreDLLSignal</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">name</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#String">String</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.name">IEEECigreDLLSignal</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">parameterKind</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#IEEECigreDLLParameterKind">IEEECigreDLLParameterKind</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.parameterKind">IEEECigreDLLSignal</a>
                   </p>
                </td>
             </tr>
@@ -4702,23 +5051,6 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name">sequenceNumber</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Integer">Integer</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.sequenceNumber">IEEECigreDLLSignal</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
                   <p class="name">unit</p>
                </th>
                <td>
@@ -4731,23 +5063,6 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p>see <a class="superclass" href="#IEEECigreDLLSignal.unit">IEEECigreDLLSignal</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">width</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Integer">Integer</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.width">IEEECigreDLLSignal</a>
                   </p>
                </td>
             </tr>
@@ -4782,6 +5097,23 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p>see <a class="superclass" href="#IEEECigreDLLSignal.DCNode">IEEECigreDLLSignal</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">IEEECigreDLLSignalInfo</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreDLLSignalInfo">IEEECigreDLLSignalInfo</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.IEEECigreDLLSignalInfo">IEEECigreDLLSignal</a>
                   </p>
                </td>
             </tr>
@@ -4906,7 +5238,7 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLParameter.parameterKind">parameterKind</p>
+                  <p class="name" id="IEEECigreDLLParameter.dllParameterKind">dllParameterKind</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -4917,15 +5249,15 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">The C type of this parameter as expected by the DLL application program interface (API). This also determines the memory size of this parameter in the array of DLL inputs.</p>
+                  <p class="comment">The C type of this parameter as expected by the DLL application program interface (API). This also determines the memory size of this parameter in the array of DLL inputs. It indicates whether the value attribute should be considered a string, integer, or floating point value.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLParameter.sequenceNumber">sequenceNumber</p>
+                  <p class="name" id="IEEECigreDLLParameter.dllSequenceNumber">dllSequenceNumber</p>
                </th>
                <td>
-                  <p class="cardinality">0..1</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
@@ -4941,7 +5273,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name" id="IEEECigreDLLParameter.value">value</p>
                </th>
                <td>
-                  <p class="cardinality">0..1</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
@@ -4949,7 +5281,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">The parameter value, to be parsed from string format according to the parameterKind.</p>
+                  <p class="comment">The parameter value, to be parsed from string format according to the dllParameterKind.</p>
                </td>
             </tr>
             <tr>
@@ -4957,7 +5289,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name" id="IEEECigreDLLParameter.IEEECigreDLL">IEEECigreDLL</p>
                </th>
                <td>
-                  <p class="cardinality">0..1</p>
+                  <p class="cardinality">1..1</p>
                </td>
                <td class="type">
                   <p class="type">
@@ -4966,6 +5298,202 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p class="comment">The DLL associated with this parameter.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLParameter.IEEECigreDLLParameterInfo">IEEECigreDLLParameterInfo</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreDLLParameterInfo">IEEECigreDLLParameterInfo</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Expanded set of attributes available from the DLL API.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="IEEECigreDLLParameterInfo" class="group">
+         <a href="#IEEECigreDLLParameterInfo">
+            <h2 class="concrete">IEEECigreDLLParameterInfo</h2>
+         </a>
+         <p class="package">Emtiop</p>
+         <p class="comment">Supplemental information about this parameter from the DLL API.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLParameterInfo.dllDefaultValue">dllDefaultValue</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Default value assigned by the DLL.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLParameterInfo.dllDescription">dllDescription</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">General description.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLParameterInfo.dllFixedValue">dllFixedValue</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Boolean">Boolean</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">True if the parameter can be changed any time during simulation, False if the parameter value must be set and time zero and not changed thereafter.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLParameterInfo.dllGroupName">dllGroupName</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">A group name, if applicable.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLParameterInfo.dllMaxValue">dllMaxValue</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Maximum value allowed, for numerical parameters.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLParameterInfo.dllMinValue">dllMinValue</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Minimum value allowed, for numerical parameters.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLParameterInfo.dllName">dllName</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The name of this parameter, as returned by the DLL API. If there is an inherited IdentifiedObject.name attribute, it may not necessarily match this name.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLParameterInfo.dllUnit">dllUnit</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The parameter units expected by the DLL. This may not correspond to CIM units, so interpretation may be required.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="IEEECigreDLLSignalInfo" class="group">
+         <a href="#IEEECigreDLLSignalInfo">
+            <h2 class="concrete">IEEECigreDLLSignalInfo</h2>
+         </a>
+         <p class="package">Emtiop</p>
+         <p class="comment">Supplemental information about the signal from the DLL API.</p>
+         <h3>Native Members</h3>
+         <table>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLSignalInfo.dllDescription">dllDescription</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">A description of the signal as written by the DLL developer.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLSignalInfo.dllUnit">dllUnit</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#String">String</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The signal units expected by the DLL. This may not correspond to CIM units, so interpretation may be required.</p>
                </td>
             </tr>
          </table>
@@ -12549,23 +13077,7 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLSignal.multiplier">multiplier</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#UnitMultiplier">UnitMultiplier</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">Multiplier for the units of this signal.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="IEEECigreDLLSignal.name">name</p>
+                  <p class="name" id="IEEECigreDLLSignal.dllName">dllName</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -12576,12 +13088,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">The signal name from the DLL API. It may be helpful to interpret the signal's meaning.</p>
+                  <p class="comment">The name of this signal, as returned by the DLL API. The inherited IdentifiedObject.name attribute might not necessarily match this name.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLSignal.parameterKind">parameterKind</p>
+                  <p class="name" id="IEEECigreDLLSignal.dllParameterKind">dllParameterKind</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -12593,6 +13105,54 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p class="comment">Establishes the signal value size, in bytes, expected in the DLL API.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLSignal.dllSequenceNumber">dllSequenceNumber</p>
+               </th>
+               <td>
+                  <p class="cardinality">1..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">The signal's expected zero-based sequence number in the DLL API array for input and output signals.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLSignal.dllWidth">dllWidth</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Signal array dimension from the DLL API, defaults to 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLSignal.multiplier">multiplier</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#UnitMultiplier">UnitMultiplier</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Multiplier for the units of this signal, in CIM. May require interpretation of information returned from the DLL API.</p>
                </td>
             </tr>
             <tr>
@@ -12613,22 +13173,6 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLSignal.sequenceNumber">sequenceNumber</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Integer">Integer</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The signal's expected sequence number in the DLL API array.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
                   <p class="name" id="IEEECigreDLLSignal.unit">unit</p>
                </th>
                <td>
@@ -12640,23 +13184,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Signal units, if applicable.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="IEEECigreDLLSignal.width">width</p>
-               </th>
-               <td>
-                  <p class="cardinality">0..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Integer">Integer</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">Signal array dimension, defaults to 1.</p>
+                  <p class="comment">Signal units, if applicable, in CIM. May require interpretation of information returned from the DLL API.</p>
                </td>
             </tr>
             <tr>
@@ -12689,6 +13217,22 @@ p.package { position: absolute; right: 10px; top: 0px}
                </td>
                <td>
                   <p class="comment">Use for a DC voltage or other quantity related to DC buses. Mutually exclusive with assocation to ConnectivityNode or ACDCTerminal.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreDLLSignal.IEEECigreDLLSignalInfo">IEEECigreDLLSignalInfo</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreDLLSignalInfo">IEEECigreDLLSignalInfo</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Expanded set of attributes available from the DLL API.</p>
                </td>
             </tr>
          </table>
@@ -15745,6 +16289,46 @@ p.package { position: absolute; right: 10px; top: 0px}
                </th>
                <td>
                   <p class="comment">Voltage control reference. Typically in per-unit and positive sequence, but the DLL API should be used to verify units.</p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="IEEECigreDLLModeKind" class="group">
+         <a href="#IEEECigreDLLModeKind">
+            <h2 class="enumerated">IEEECigreDLLModeKind</h2>
+         </a>
+         <p class="package">Emtiop</p>
+         <table>
+            <tr>
+               <th>
+                  <p class="name">SupportsBoth</p>
+               </th>
+               <td>
+                  <p class="comment">The DLL runs in either EMT or RMS simulations.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">SupportsEMT</p>
+               </th>
+               <td>
+                  <p class="comment">The DLL runs in EMT but not RMS simulations.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">SupportsNone</p>
+               </th>
+               <td>
+                  <p class="comment">This DLL is unusable.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">SupportsRMS</p>
+               </th>
+               <td>
+                  <p class="comment">The DLL runs in RMS simulation, e.g., power flow, short-circuit, positive sequence dynamics, transient stability. It does not run in EMT simulation.</p>
                </td>
             </tr>
          </table>

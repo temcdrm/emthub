@@ -298,6 +298,7 @@ def get_dll_interface (dll_name, bPrint = True):
        'ModelCreator': info.ModelCreator.decode('utf-8'), 
        'ModelLastModifiedDate': info.ModelLastModifiedDate.decode('utf-8'), 
        'ModelLastModifiedBy': info.ModelLastModifiedBy.decode('utf-8'), 
+       'ModelModifiedComment': info.ModelModifiedComment.decode('utf-8'), 
        'ModelModifiedHistory': info.ModelModifiedHistory.decode('utf-8'), 
        'FixedStepBaseSampleTime': info.FixedStepBaseSampleTime,
        'EMT_RMS_Mode': info.EMT_RMS_Mode,
@@ -327,7 +328,12 @@ def get_dll_interface (dll_name, bPrint = True):
     d['OutputPortsInfo'][i] = row
 
   for i in range(info.NumParameters):
+    if parameters[i].GroupName is not None:
+      groupName = parameters[i].GroupName.decode('utf-8')
+    else:
+      groupName = ''
     row = {'Name': parameters[i].Name.decode('utf-8'),
+           'GroupName': groupName,
            'Description': parameters[i].Description.decode('utf-8'),
            'Unit':  parameters[i].Unit.decode('utf-8'),
            'DataType': parameters[i].DataType,  # TODO: account for this in Default/Min/Max values

@@ -280,42 +280,108 @@
     }
   },
   "IBRPlant": {
+    "dcLinkVoltage": {
+      "type": "Voltage",
+      "default": null
+    },
     "switchingFrequency": {
       "type": "Frequency",
       "default": null
     }
   },
   "IEEECigreDLL": {
-    "firmwareInstalled": {
-      "type": "DateTime",
+    "dllDLLInterfaceVersion": {
+      "type": "String",
       "default": null
     },
-    "firmwareVersion": {
+    "dllEmtRmsMode": {
+      "type": "IEEECigreDLLModeKind",
+      "default": null
+    },
+    "dllFixedStepBaseSampleTime": {
+      "type": "Seconds",
+      "default": null
+    },
+    "dllModelName": {
       "type": "String",
+      "default": null
+    },
+    "dllModelVersion": {
+      "type": "String",
+      "default": null
+    },
+    "shareable": {
+      "type": "Boolean",
       "default": null
     },
     "snapshotUri": {
       "type": "String",
       "default": null
     },
-    "supportsEMT": {
-      "type": "Boolean",
-      "default": null
-    },
-    "supportsRMS": {
-      "type": "Boolean",
-      "default": null
-    },
-    "timestep": {
-      "type": "Seconds",
-      "default": null
-    },
     "uri": {
       "type": "String",
       "default": null
     },
-    "vendorName": {
+    "IEEECigreDLLInfo": {
+      "type": "IEEECigreDLLInfo",
+      "default": null
+    }
+  },
+  "IEEECigreDLLInfo": {
+    "dllGeneralInformation": {
       "type": "String",
+      "default": null
+    },
+    "dllModelCreated": {
+      "type": "DateTime",
+      "default": null
+    },
+    "dllModelCreator": {
+      "type": "String",
+      "default": null
+    },
+    "dllModelDescription": {
+      "type": "String",
+      "default": null
+    },
+    "dllModelLastModifiedBy": {
+      "type": "String",
+      "default": null
+    },
+    "dllModelLastModifiedDate": {
+      "type": "DateTime",
+      "default": null
+    },
+    "dllModelModifiedComment": {
+      "type": "String",
+      "default": null
+    },
+    "dllModelModifiedHistory": {
+      "type": "String",
+      "default": null
+    },
+    "dllNumDoubleStates": {
+      "type": "Integer",
+      "default": null
+    },
+    "dllNumFloatStates": {
+      "type": "Integer",
+      "default": null
+    },
+    "dllNumInputPorts": {
+      "type": "Integer",
+      "default": null
+    },
+    "dllNumIntStates": {
+      "type": "Integer",
+      "default": null
+    },
+    "dllNumOutputPorts": {
+      "type": "Integer",
+      "default": null
+    },
+    "dllNumParameters": {
+      "type": "Integer",
       "default": null
     }
   },
@@ -323,20 +389,28 @@
     "kind": {
       "type": "IEEECigreDLLInputKind",
       "default": null
+    },
+    "sensorRatio": {
+      "type": "Float",
+      "default": null
     }
   },
   "IEEECigreDLLOutput": {
     "kind": {
       "type": "IEEECigreDLLOutputKind",
       "default": null
+    },
+    "scalingRatio": {
+      "type": "Float",
+      "default": null
     }
   },
   "IEEECigreDLLParameter": {
-    "parameterKind": {
+    "dllParameterKind": {
       "type": "IEEECigreDLLParameterKind",
       "default": null
     },
-    "sequenceNumber": {
+    "dllSequenceNumber": {
       "type": "Integer",
       "default": null
     },
@@ -346,6 +420,54 @@
     },
     "IEEECigreDLL": {
       "type": "IEEECigreDLL",
+      "default": null
+    },
+    "IEEECigreDLLParameterInfo": {
+      "type": "IEEECigreDLLParameterInfo",
+      "default": null
+    }
+  },
+  "IEEECigreDLLParameterInfo": {
+    "dllDefaultValue": {
+      "type": "String",
+      "default": null
+    },
+    "dllDescription": {
+      "type": "String",
+      "default": null
+    },
+    "dllFixedValue": {
+      "type": "Boolean",
+      "default": null
+    },
+    "dllGroupName": {
+      "type": "String",
+      "default": null
+    },
+    "dllMaxValue": {
+      "type": "String",
+      "default": null
+    },
+    "dllMinValue": {
+      "type": "String",
+      "default": null
+    },
+    "dllName": {
+      "type": "String",
+      "default": null
+    },
+    "dllUnit": {
+      "type": "String",
+      "default": null
+    }
+  },
+  "IEEECigreDLLSignalInfo": {
+    "dllDescription": {
+      "type": "String",
+      "default": null
+    },
+    "dllUnit": {
+      "type": "String",
       "default": null
     }
   },
@@ -994,32 +1116,32 @@
     }
   },
   "IEEECigreDLLSignal": {
-    "multiplier": {
-      "type": "UnitMultiplier",
-      "default": null
-    },
-    "name": {
+    "dllName": {
       "type": "String",
       "default": null
     },
-    "parameterKind": {
+    "dllParameterKind": {
       "type": "IEEECigreDLLParameterKind",
+      "default": null
+    },
+    "dllSequenceNumber": {
+      "type": "Integer",
+      "default": null
+    },
+    "dllWidth": {
+      "type": "Integer",
+      "default": null
+    },
+    "multiplier": {
+      "type": "UnitMultiplier",
       "default": null
     },
     "phase": {
       "type": "SinglePhaseKind",
       "default": null
     },
-    "sequenceNumber": {
-      "type": "Integer",
-      "default": null
-    },
     "unit": {
       "type": "UnitSymbol",
-      "default": null
-    },
-    "width": {
-      "type": "Integer",
       "default": null
     },
     "ConnectivityNode": {
@@ -1028,6 +1150,10 @@
     },
     "DCNode": {
       "type": "DCNode",
+      "default": null
+    },
+    "IEEECigreDLLSignalInfo": {
+      "type": "IEEECigreDLLSignalInfo",
       "default": null
     }
   },

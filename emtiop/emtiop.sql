@@ -683,40 +683,103 @@ CREATE TABLE "HydroGeneratingUnit"
 CREATE TABLE "IBRPlant"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
-    -- PWM switching frequency.
+    -- Voltage of the DC bus, used to scale average source models or to supply
+    -- switching models of the converter.
+    "dcLinkVoltage" DOUBLE PRECISION,
+    -- Pulse width modulation (PWM) switching frequency of the firing pulses in
+    -- a switching model of the converter.
     "switchingFrequency" DOUBLE PRECISION
 );
 
 -- A dynamic link library (DLL) interface for inverter-based resource (IBR)
--- control, as defined in Cigre Technical Brochure TB 958 and IEEE Standards
--- Association P3597.
+-- control and other control applications, as defined in Cigre Technical Brochure
+-- TB 958 and IEEE Standards Association P3597. Attributes prefixed by <b>dll</b>
+-- correspond to members of the IEEE_Cigre_DLLInterface_Model_Info header
+-- file structure; they should be obtained and verified using the DLL API.
 CREATE TABLE "IEEECigreDLL"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Date and time of the firmware installation at the IBR plant. The DLL is
-    -- expected to represent this version of the firmware.
-    "firmwareInstalled" TIMESTAMP,
-    -- Version of the hardware provider's firmware, or the model provider's code.
-    "firmwareVersion" VARCHAR(255),
+    -- Codifies a four-number version of the DLL interface standard supported
+    -- by this DLL, in string format, as returned from the DLL API.
+    "dllDLLInterfaceVersion" VARCHAR(255) NOT NULL,
+    -- Identify whether the DLL runs in EMT, RMS, or both kinds of simulation,
+    -- as returned from the DLL API.
+    -- FK column reference to table representing the "IEEECigreDLLModeKind" enumeration
+    "dllEmtRmsMode" VARCHAR(100) NOT NULL,
+    -- Hard-coded simulation time step for this DLL, as returned from the DLL
+    -- API.
+    "dllFixedStepBaseSampleTime" DOUBLE PRECISION NOT NULL,
+    -- The ModelName as returned from the DLL API. Not necessarily equal to the
+    -- inherited IdentifiedObject.name.
+    "dllModelName" VARCHAR(255),
+    -- Version of this DLL, as returned from the DLL API.
+    "dllModelVersion" VARCHAR(255),
+    -- True if this DLL can be loaded and used by different instances of Equipment
+    -- in the same simulation. This information is not available from the DLL
+    -- API; it must be determined from careful review of the DLL documentation.
+    "shareable" INTEGER NOT NULL DEFAULT 1 CHECK ("shareable" IN (0, 1)) NOT NULL,
     -- Location of the optional snapshot file for initializing the DLL from a
     -- saved state. Either a universal resource identifier or network-accessible
-    -- filename.
+    -- filename. It is not obtainable from the DLL API.
     "snapshotUri" VARCHAR(255),
-    -- True if the DLL supports EMT simulation.
-    "supportsEMT" INTEGER NOT NULL DEFAULT 1 CHECK ("supportsEMT" IN (0, 1)),
-    -- True if the DLL supports RMS, i.e., phasor domain, simulation.
-    "supportsRMS" INTEGER NOT NULL DEFAULT 1 CHECK ("supportsRMS" IN (0, 1)),
-    -- Hard-coded simulation time step for this DLL.
-    "timestep" DOUBLE PRECISION,
     -- Location of the DLL, e.g., a universal resource identifier or network-accessible
-    -- filename.
-    "uri" VARCHAR(255),
-    -- Name of the model (code) provider.
-    "vendorName" VARCHAR(255)
+    -- filename. It is not obtainable from the DLL API.
+    "uri" VARCHAR(255) NOT NULL,
+    -- Expanded set of attributes available from the DLL API.
+    -- FK column reference to table representing the "IEEECigreDLLInfo" class
+    "IEEECigreDLLInfo" VARCHAR(100)
+);
+
+-- Supplemental information about his DLL from the API.
+CREATE TABLE "IEEECigreDLLInfo"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- One of two general description fields; also see the dllModelDescription
+    -- attribute.
+    "dllGeneralInformation" VARCHAR(255),
+    -- Date and time of the first DLL version.
+    "dllModelCreated" TIMESTAMP,
+    -- Identifies the person or the organization who first created the DLL.
+    "dllModelCreator" VARCHAR(255),
+    -- One of two general description fields; also see the dllGeneralDescription
+    -- attribute.
+    "dllModelDescription" VARCHAR(255),
+    -- Identifies the person or the organization who first created the DLL.
+    "dllModelLastModifiedBy" VARCHAR(255),
+    -- Date and time of the latest DLL version.
+    "dllModelLastModifiedDate" TIMESTAMP,
+    -- A description of the latest DLL update.
+    "dllModelModifiedComment" VARCHAR(255),
+    -- A history of DLL updates, may be a change log or other multi-paragraph
+    -- text.
+    "dllModelModifiedHistory" VARCHAR(255),
+    -- Size of internal double-precision array storage needed by the DLL for state
+    -- variables. These are not represented in CIM, but the information could
+    -- help identify different versions of the DLL. The EMT/RMS simulator manages
+    -- this memory.
+    "dllNumDoubleStates" INTEGER,
+    -- Size of internal single-precision array storage needed by the DLL for state
+    -- variables. These are not represented in CIM, but the information could
+    -- help identify different versions of the DLL. The EMT/RMS simulator manages
+    -- this memory.
+    "dllNumFloatStates" INTEGER,
+    -- The number of input ports expected by the DLL, which should match cardinality
+    -- of the associated IEEECigreDLL -&gt; IEEECigreDLLInputSignals.
+    "dllNumInputPorts" INTEGER,
+    -- Size of internal integer array storage needed by the DLL for state variables.
+    -- These are not represented in CIM, but the information could help identify
+    -- different versions of the DLL. The EMT/RMS simulator manages this memory.
+    "dllNumIntStates" INTEGER,
+    -- The number of output ports expected by the DLL, which should match cardinality
+    -- of the associated IEEECigreDLL -&gt; IEEECigreDLLOutputSignals.
+    "dllNumOutputPorts" INTEGER,
+    -- The number of input parameters expected by the DLL, which should match
+    -- cardinality of the associated IEEECigreDLL -&gt; IEEECigreDLLParameters.
+    "dllNumParameters" INTEGER
 );
 
 -- Connects the set of DLL input signals, as defined in its API, to points
--- in the network model.
+-- in the network model or to external references, like other controllers.
 CREATE TABLE "IEEECigreDLLInput"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
@@ -725,7 +788,11 @@ CREATE TABLE "IEEECigreDLLInput"
     -- and acCurrentGrid. If apiDefined, the DLL must be queried through its API
     -- for more information.
     -- FK column reference to table representing the "IEEECigreDLLInputKind" enumeration
-    "kind" VARCHAR(100)
+    "kind" VARCHAR(100),
+    -- Ratio between measured quantity on the power network and signal quantity
+    -- in the control system, e.g., a current transformer (CT) or voltage transformer
+    -- (VT) ratio. Should be greater than or equal to 1.
+    "sensorRatio" DOUBLE PRECISION
 );
 
 CREATE TABLE "IEEECigreDLLInputKind" ( "name" VARCHAR(100) UNIQUE );
@@ -761,6 +828,17 @@ INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'reactivePowerReference'
 -- but the DLL API should be used to verify units.
 INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'voltageReference' );
 
+CREATE TABLE "IEEECigreDLLModeKind" ( "name" VARCHAR(100) UNIQUE );
+-- The DLL runs in either EMT or RMS simulations.
+INSERT INTO "IEEECigreDLLModeKind" ( "name" ) VALUES ( 'SupportsBoth' );
+-- The DLL runs in EMT but not RMS simulations.
+INSERT INTO "IEEECigreDLLModeKind" ( "name" ) VALUES ( 'SupportsEMT' );
+-- This DLL is unusable.
+INSERT INTO "IEEECigreDLLModeKind" ( "name" ) VALUES ( 'SupportsNone' );
+-- The DLL runs in RMS simulation, e.g., power flow, short-circuit, positive
+-- sequence dynamics, transient stability. It does not run in EMT simulation.
+INSERT INTO "IEEECigreDLLModeKind" ( "name" ) VALUES ( 'SupportsRMS' );
+
 -- Connects the set of DLL output signals, as defined in its API, to points
 -- in the network model.
 CREATE TABLE "IEEECigreDLLOutput"
@@ -769,7 +847,14 @@ CREATE TABLE "IEEECigreDLLOutput"
     -- The type of output signal. The phase attribute must be supplied with modulationIndex
     -- and vscVoltage. If apiDefined, obtain more information from the DLL API.
     -- FK column reference to table representing the "IEEECigreDLLOutputKind" enumeration
-    "kind" VARCHAR(100)
+    "kind" VARCHAR(100),
+    -- Ratio between the controller output and the power system connection point.
+    -- For example, a modulation index output could be multiplied by 50% of the
+    -- DC link voltage of a converter to create a controlled voltage source connected
+    -- to the AC power network. If the DC link voltage is 1200 V, the scalingRatio
+    -- should then be 600. May be any value, noting that a value of zero has no
+    -- effect on the power network.
+    "scalingRatio" DOUBLE PRECISION
 );
 
 CREATE TABLE "IEEECigreDLLOutputKind" ( "name" VARCHAR(100) UNIQUE );
@@ -803,17 +888,47 @@ CREATE TABLE "IEEECigreDLLParameter"
     "mRID" VARCHAR(100) PRIMARY KEY,
     -- The C type of this parameter as expected by the DLL application program
     -- interface (API). This also determines the memory size of this parameter
-    -- in the array of DLL inputs.
+    -- in the array of DLL inputs. It indicates whether the value attribute should
+    -- be considered a string, integer, or floating point value.
     -- FK column reference to table representing the "IEEECigreDLLParameterKind" enumeration
-    "parameterKind" VARCHAR(100),
+    "dllParameterKind" VARCHAR(100),
     -- The zero-based array index for this parameter, as expected in the DLL's
     -- application program interface (API).
-    "sequenceNumber" INTEGER,
-    -- The parameter value, to be parsed from string format according to the parameterKind.
-    "value" VARCHAR(255),
+    "dllSequenceNumber" INTEGER NOT NULL,
+    -- The parameter value, to be parsed from string format according to the dllParameterKind.
+    "value" VARCHAR(255) NOT NULL,
     -- The DLL associated with this parameter.
     -- FK column reference to table representing the "IEEECigreDLL" class
-    "IEEECigreDLL" VARCHAR(100)
+    "IEEECigreDLL" VARCHAR(100) NOT NULL,
+    -- Expanded set of attributes available from the DLL API.
+    -- FK column reference to table representing the "IEEECigreDLLParameterInfo" class
+    "IEEECigreDLLParameterInfo" VARCHAR(100)
+);
+
+-- Supplemental information about this parameter from the DLL API.
+CREATE TABLE "IEEECigreDLLParameterInfo"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Default value assigned by the DLL.
+    "dllDefaultValue" VARCHAR(255),
+    -- General description.
+    "dllDescription" VARCHAR(255),
+    -- True if the parameter can be changed any time during simulation, False
+    -- if the parameter value must be set and time zero and not changed thereafter.
+    "dllFixedValue" INTEGER NOT NULL DEFAULT 1 CHECK ("dllFixedValue" IN (0, 1)),
+    -- A group name, if applicable.
+    "dllGroupName" VARCHAR(255),
+    -- Maximum value allowed, for numerical parameters.
+    "dllMaxValue" VARCHAR(255),
+    -- Minimum value allowed, for numerical parameters.
+    "dllMinValue" VARCHAR(255),
+    -- The name of this parameter, as returned by the DLL API. If there is an
+    -- inherited IdentifiedObject.name attribute, it may not necessarily match
+    -- this name.
+    "dllName" VARCHAR(255),
+    -- The parameter units expected by the DLL. This may not correspond to CIM
+    -- units, so interpretation may be required.
+    "dllUnit" VARCHAR(255)
 );
 
 CREATE TABLE "IEEECigreDLLParameterKind" ( "name" VARCHAR(100) UNIQUE );
@@ -836,25 +951,28 @@ INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Uint8_Val' );
 CREATE TABLE "IEEECigreDLLSignal"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Multiplier for the units of this signal.
-    -- FK column reference to table representing the "UnitMultiplier" enumeration
-    "multiplier" VARCHAR(100),
-    -- The signal name from the DLL API. It may be helpful to interpret the signal's
-    -- meaning.
-    "name" VARCHAR(255),
+    -- The name of this signal, as returned by the DLL API. The inherited IdentifiedObject.name
+    -- attribute might not necessarily match this name.
+    "dllName" VARCHAR(255),
     -- Establishes the signal value size, in bytes, expected in the DLL API.
     -- FK column reference to table representing the "IEEECigreDLLParameterKind" enumeration
-    "parameterKind" VARCHAR(100),
+    "dllParameterKind" VARCHAR(100),
+    -- The signal's expected zero-based sequence number in the DLL API array for
+    -- input and output signals.
+    "dllSequenceNumber" INTEGER NOT NULL,
+    -- Signal array dimension from the DLL API, defaults to 1.
+    "dllWidth" INTEGER,
+    -- Multiplier for the units of this signal, in CIM. May require interpretation
+    -- of information returned from the DLL API.
+    -- FK column reference to table representing the "UnitMultiplier" enumeration
+    "multiplier" VARCHAR(100),
     -- The signal's phase, as applicable, for multiphase signal connections.
     -- FK column reference to table representing the "SinglePhaseKind" enumeration
     "phase" VARCHAR(100),
-    -- The signal's expected sequence number in the DLL API array.
-    "sequenceNumber" INTEGER,
-    -- Signal units, if applicable.
+    -- Signal units, if applicable, in CIM. May require interpretation of information
+    -- returned from the DLL API.
     -- FK column reference to table representing the "UnitSymbol" enumeration
     "unit" VARCHAR(100),
-    -- Signal array dimension, defaults to 1.
-    "width" INTEGER,
     -- Use for a bus voltage or other bus quantity signal. Mutually exclusive
     -- with association to DCNode or ACDCTerminal.
     -- FK column reference to table representing the "ConnectivityNode" class
@@ -862,7 +980,21 @@ CREATE TABLE "IEEECigreDLLSignal"
     -- Use for a DC voltage or other quantity related to DC buses. Mutually exclusive
     -- with assocation to ConnectivityNode or ACDCTerminal.
     -- FK column reference to table representing the "DCNode" class
-    "DCNode" VARCHAR(100)
+    "DCNode" VARCHAR(100),
+    -- Expanded set of attributes available from the DLL API.
+    -- FK column reference to table representing the "IEEECigreDLLSignalInfo" class
+    "IEEECigreDLLSignalInfo" VARCHAR(100)
+);
+
+-- Supplemental information about the signal from the DLL API.
+CREATE TABLE "IEEECigreDLLSignalInfo"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- A description of the signal as written by the DLL developer.
+    "dllDescription" VARCHAR(255),
+    -- The signal units expected by the DLL. This may not correspond to CIM units,
+    -- so interpretation may be required.
+    "dllUnit" VARCHAR(255)
 );
 
 -- This is a class that provides common identification for all classes needing
@@ -3002,17 +3134,23 @@ ALTER TABLE "EnergyConsumer" ADD FOREIGN KEY ( "LoadResponse" ) REFERENCES "Load
 -- Foreign keys for table "Equipment"
 ALTER TABLE "Equipment" ADD FOREIGN KEY ( "EquipmentContainer" ) REFERENCES "EquipmentContainer" ( "mRID" );
 
+-- Foreign keys for table "IEEECigreDLL"
+ALTER TABLE "IEEECigreDLL" ADD FOREIGN KEY ( "dllEmtRmsMode" ) REFERENCES "IEEECigreDLLModeKind" ( "name" );
+ALTER TABLE "IEEECigreDLL" ADD FOREIGN KEY ( "IEEECigreDLLInfo" ) REFERENCES "IEEECigreDLLInfo" ( "mRID" );
+
 -- Foreign keys for table "IEEECigreDLLParameter"
-ALTER TABLE "IEEECigreDLLParameter" ADD FOREIGN KEY ( "parameterKind" ) REFERENCES "IEEECigreDLLParameterKind" ( "name" );
+ALTER TABLE "IEEECigreDLLParameter" ADD FOREIGN KEY ( "dllParameterKind" ) REFERENCES "IEEECigreDLLParameterKind" ( "name" );
 ALTER TABLE "IEEECigreDLLParameter" ADD FOREIGN KEY ( "IEEECigreDLL" ) REFERENCES "IEEECigreDLL" ( "mRID" );
+ALTER TABLE "IEEECigreDLLParameter" ADD FOREIGN KEY ( "IEEECigreDLLParameterInfo" ) REFERENCES "IEEECigreDLLParameterInfo" ( "mRID" );
 
 -- Foreign keys for table "IEEECigreDLLSignal"
+ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "dllParameterKind" ) REFERENCES "IEEECigreDLLParameterKind" ( "name" );
 ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "multiplier" ) REFERENCES "UnitMultiplier" ( "name" );
-ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "parameterKind" ) REFERENCES "IEEECigreDLLParameterKind" ( "name" );
 ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "phase" ) REFERENCES "SinglePhaseKind" ( "name" );
 ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "unit" ) REFERENCES "UnitSymbol" ( "name" );
 ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
 ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "DCNode" ) REFERENCES "DCNode" ( "mRID" );
+ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "IEEECigreDLLSignalInfo" ) REFERENCES "IEEECigreDLLSignalInfo" ( "mRID" );
 
 -- Foreign keys for table "MachineSaturationCurve"
 ALTER TABLE "MachineSaturationCurve" ADD FOREIGN KEY ( "SynchronousMachineDetailed" ) REFERENCES "SynchronousMachineDetailed" ( "mRID" );
@@ -3148,6 +3286,8 @@ ALTER TABLE "TransformerSaturationCurve" ADD FOREIGN KEY ( "TransformerCoreAdmit
 
 -- Cascade deletes for compounds referenced in table "Equipment"
 
+-- Cascade deletes for compounds referenced in table "IEEECigreDLL"
+
 -- Cascade deletes for compounds referenced in table "IEEECigreDLLParameter"
 
 -- Cascade deletes for compounds referenced in table "IEEECigreDLLSignal"
@@ -3227,9 +3367,12 @@ CREATE INDEX ix_DiagramObject_IdentifiedObject ON "DiagramObject" ( "IdentifiedO
 CREATE INDEX ix_DiagramObjectPoint_DiagramObject ON "DiagramObjectPoint" ( "DiagramObject" );
 CREATE INDEX ix_EnergyConsumer_LoadResponse ON "EnergyConsumer" ( "LoadResponse" );
 CREATE INDEX ix_Equipment_EquipmentContainer ON "Equipment" ( "EquipmentContainer" );
+CREATE INDEX ix_IEEECigreDLL_IEEECigreDLLInfo ON "IEEECigreDLL" ( "IEEECigreDLLInfo" );
 CREATE INDEX ix_IEEECigreDLLParameter_IEEECigreDLL ON "IEEECigreDLLParameter" ( "IEEECigreDLL" );
+CREATE INDEX ix_IEEECigreDLLParameter_IEEECigreDLLParameterInfo ON "IEEECigreDLLParameter" ( "IEEECigreDLLParameterInfo" );
 CREATE INDEX ix_IEEECigreDLLSignal_ConnectivityNode ON "IEEECigreDLLSignal" ( "ConnectivityNode" );
 CREATE INDEX ix_IEEECigreDLLSignal_DCNode ON "IEEECigreDLLSignal" ( "DCNode" );
+CREATE INDEX ix_IEEECigreDLLSignal_IEEECigreDLLSignalInfo ON "IEEECigreDLLSignal" ( "IEEECigreDLLSignalInfo" );
 CREATE INDEX ix_MachineSaturationCurve_SynchronousMachineDetailed ON "MachineSaturationCurve" ( "SynchronousMachineDetailed" );
 CREATE INDEX ix_OperationalLimit_OperationalLimitSet ON "OperationalLimit" ( "OperationalLimitSet" );
 CREATE INDEX ix_OperationalLimit_OperationalLimitType ON "OperationalLimit" ( "OperationalLimitType" );
