@@ -339,7 +339,7 @@ def AtpStarEquivalent(wdgs, meshes, taps):
 
 def AtpStarCore(wdgs, dict, pid, bUseSaturation):
   # determine steady-state exciting branch from the core admittance attributes
-  # TODO: account fo effect of taps on core admittance and saturation?
+  # TODO: account for effect of taps on core admittance and saturation?
   core = dict['EMTPowerXfmrCore']['vals'][pid]
   cim_b = core['b']
   cim_g = core['g']
@@ -447,7 +447,7 @@ def FormatSignalInfo (row):
     mult = row['multiplier']
   else:
     mult = ''
-  return '{:10s} {:22s} {:1s} {:s}{:s}'.format (row['name'], row['kind'], phs, mult, unit)
+  return '{:10s} {:22s} {:1s} {:s}{:s}'.format (row['dllName'], row['kind'], phs, mult, unit)
 
 def AppendDLL (bus, key, d, current_probes, atp_buses, atp_dc_buses, atp_path, ap):
   #list_dict_table (d, 'EMTIBRPlantAttributes')
@@ -462,7 +462,7 @@ def AppendDLL (bus, key, d, current_probes, atp_buses, atp_dc_buses, atp_path, a
   dll = d['EMTIEEECigreDLL']['vals'][dll_key]
   dll_path = dll['uri']
   nparms = d['EMTCountDLLParameters']['vals'][dll_key]['count']
-  dcV = 1200.0 #  atts['dcLinkVoltage']: TODO - need a better way
+  dcV = atts['dcLinkVoltage']
   swtFreq = atts['switchingFrequency']
   print ('C DLL interface to {:s} follows\nC'.format(os.path.basename (dll_path)), file=ap)
   print ('appending a DLL at', bus, 'from', dll_path, 'with', nparms, 'parameters')
@@ -509,7 +509,7 @@ def AppendDLL (bus, key, d, current_probes, atp_buses, atp_dc_buses, atp_path, a
   for key, ary in d['EMTIEEECigreDLLInputs*']['vals'].items():
     if key == dll_key:
       for row in ary:
-        idx = int(row['sequenceNumber']) - 1
+        idx = int(row['dllSequenceNumber'])
         inputs[idx] = FormatSignalInfo (row)
 
   nout =  d['EMTCountDLLOutputs']['vals'][dll_key]['count']
@@ -517,7 +517,7 @@ def AppendDLL (bus, key, d, current_probes, atp_buses, atp_dc_buses, atp_path, a
   for key, ary in d['EMTIEEECigreDLLOutputs*']['vals'].items():
     if key == dll_key:
       for row in ary:
-        idx = int(row['sequenceNumber']) - 1
+        idx = int(row['dllSequenceNumber'])
         outputs[idx] = FormatSignalInfo (row)
 
   print ('C DLL input signals and CIM attributes:', file=ap)
@@ -532,9 +532,9 @@ def AppendDLL (bus, key, d, current_probes, atp_buses, atp_dc_buses, atp_path, a
   for key, ary in d['EMTIEEECigreDLLParameters*']['vals'].items():
     if key == dll_key:
       for row in ary:
-        idx = int(row['sequenceNumber']) - 1
-        if row['parameterKind'] != 'Real64_Val':
-          print ('  DLL parameter', row['sequenceNumber'], 'has unsupported parameterKind', row['parameterKind'], ', ATP allows only Real64_Val')
+        idx = int(row['dllSequenceNumber'])
+        if row['dllParameterKind'] != 'Real64_Val':
+          print ('  DLL parameter', row['dllSequenceNumber'], 'has unsupported parameterKind', row['dllParameterKind'], ', ATP allows only Real64_Val')
         else:
           val = float (row['value'])
           parms[idx] = val
