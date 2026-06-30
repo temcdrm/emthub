@@ -1822,7 +1822,7 @@ WHERE {
 <query>
 <id>EMTIEEECigreDLLParameterInfos*</id>
 <keyfld>mRID*</keyfld>
-<description>Supplemental information from the DLL API about an IEEE/Cigre DLL interfaces parameters.</description>
+<description>Supplemental information from the DLL API about an IEEE/Cigre DLL interfaces parameters. May return multiple rows for the same DLL *mRID*.</description>
 <classes>IEEECigreDLLParameter,IEEECigreDLLParameterInfo,IEEECigreDLL</classes>
 <value>
 <![CDATA[
@@ -1861,7 +1861,7 @@ WHERE {
 <query>
 <id>EMTIEEECigreDLLInputSignalInfos*</id>
 <keyfld>mRID*</keyfld>
-<description>Supplemental information from the DLL API about an IEEE/Cigre DLL interface's input ports (signals).</description>
+<description>Supplemental information from the DLL API about an IEEE/Cigre DLL interface's input ports (signals). May return multiple rows for the same DLL *mRID*.</description>
 <classes>IEEECigreDLLInput,IEEECigreDLLSignalInfo,IEEECigreDLL</classes>
 <value>
 <![CDATA[
@@ -1889,7 +1889,7 @@ WHERE {
 <query>
 <id>EMTIEEECigreDLLOutputSignalInfos*</id>
 <keyfld>mRID*</keyfld>
-<description>Supplemental information from the DLL API about an IEEE/Cigre DLL interface's output ports (signals).</description>
+<description>Supplemental information from the DLL API about an IEEE/Cigre DLL interface's output ports (signals). May return multiple rows for the same DLL *mRID*.</description>
 <classes>IEEECigreDLLOutput,IEEECigreDLLSignalInfo,IEEECigreDLL</classes>
 <value>
 <![CDATA[
