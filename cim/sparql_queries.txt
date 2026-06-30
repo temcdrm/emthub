@@ -913,6 +913,117 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?d e:IEEECigreDLL.dllModelVersion ?dllModelVersion.
 } ORDER by ?mRID
 
+# EMTIEEECigreDLLInfo
+SELECT DISTINCT ?mRID 
+ ?dllGeneralInformation 
+ ?dllModelCreated
+ ?dllModelCreator
+ ?dllModelDescription
+ ?dllModelLastModifiedBy
+ ?dllModelLastModifiedDate
+ ?dllModelModifiedComment
+ ?dllModelModifiedHistory
+ ?dllNumDoubleStates
+ ?dllNumFloatStates
+ ?dllNumIntStates
+ ?dllNumInputPorts
+ ?dllNumOutputPorts
+ ?dllNumParameters
+WHERE {
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
+ ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
+ ?d c:IdentifiedObject.mRID ?mRID.
+ ?d e:IEEECigreDLL.IEEECigreDLLInfo ?i.
+ ?i e:IEEECigreDLLInfo.dllGeneralInformation ?dllGeneralInformation.
+ ?i e:IEEECigreDLLInfo.dllModelCreated ?dllModelCreated.
+ ?i e:IEEECigreDLLInfo.dllModelCreator ?dllModelCreator.
+ ?i e:IEEECigreDLLInfo.dllModelDescription ?dllModelDescription.
+ ?i e:IEEECigreDLLInfo.dllModelLastModifiedBy ?dllModelLastModifiedBy.
+ ?i e:IEEECigreDLLInfo.dllModelLastModifiedDate ?dllModelLastModifiedDate.
+ ?i e:IEEECigreDLLInfo.dllModelModifiedComment ?dllModelModifiedComment.
+ ?i e:IEEECigreDLLInfo.dllModelModifiedHistory ?dllModelModifiedHistory.
+ ?i e:IEEECigreDLLInfo.dllNumDoubleStates ?dllNumDoubleStates.
+ ?i e:IEEECigreDLLInfo.dllNumFloatStates ?dllNumFloatStates.
+ ?i e:IEEECigreDLLInfo.dllNumIntStates ?dllNumIntStates.
+ ?i e:IEEECigreDLLInfo.dllNumInputPorts ?dllNumInputPorts.
+ ?i e:IEEECigreDLLInfo.dllNumOutputPorts ?dllNumOutputPorts.
+ ?i e:IEEECigreDLLInfo.dllNumParameters ?dllNumParameters
+} ORDER by ?mRID
+
+# EMTIEEECigreDLLParameterInfos
+SELECT DISTINCT ?mRID 
+ ?dllSequenceNumber 
+ ?dllDefaultValue
+ ?dllDescription
+ ?dllFixedValue
+ ?dllGroupName
+ ?dllMaxValue
+ ?dllMinValue
+ ?dllName
+ ?dllUnit 
+WHERE {
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
+ ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
+ ?d c:IdentifiedObject.mRID ?mRID.
+ ?p e:IEEECigreDLLParameter.IEEECigreDLL ?d.
+ ?p e:IEEECigreDLLParameter.dllSequenceNumber ?dllSequenceNumber.
+ ?p e:IEEECigreDLLParameter.IEEECigreDLLParameterInfo ?i.
+ ?i e:IEEECigreDLLParameterInfo.dllDefaultValue ?dllDefaultValue.
+ ?i e:IEEECigreDLLParameterInfo.dllMinValue ?dllMinValue.
+ ?i e:IEEECigreDLLParameterInfo.dllMaxValue ?dllMaxValue.
+ ?i e:IEEECigreDLLParameterInfo.dllFixedValue ?dllFixedValue.
+ ?i e:IEEECigreDLLParameterInfo.dllName ?dllName.
+ ?i e:IEEECigreDLLParameterInfo.dllUnit ?dllUnit.
+ ?i e:IEEECigreDLLParameterInfo.dllGroupName ?dllGroupName.
+ ?i e:IEEECigreDLLParameterInfo.dllDescription ?dllDescription
+} ORDER by ?mRID ?dllSequenceNumber
+
+# EMTIEEECigreDLLInputSignalInfos
+SELECT DISTINCT ?mRID 
+ ?dllSequenceNumber 
+ ?dllDescription
+ ?dllUnit 
+WHERE {
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
+ ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
+ ?d c:IdentifiedObject.mRID ?mRID.
+ ?s c:SignalDescriptor.DynamicsFunctionBlock ?d.
+ ?s e:IEEECigreDLLSignal.dllSequenceNumber ?dllSequenceNumber.
+ ?s e:IEEECigreDLLSignal.IEEECigreDLLSignalInfo ?i.
+ ?s e:IEEECigreDLLInput.kind ?k.
+ ?i e:IEEECigreDLLSignalInfo.dllUnit ?dllUnit.
+ ?i e:IEEECigreDLLSignalInfo.dllDescription ?dllDescription
+} ORDER by ?mRID ?dllSequenceNumber
+
+# EMTIEEECigreDLLOutputSignalInfos
+SELECT DISTINCT ?mRID 
+ ?dllSequenceNumber 
+ ?dllDescription
+ ?dllUnit 
+WHERE {
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
+ ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
+ ?d c:IdentifiedObject.mRID ?mRID.
+ ?s c:SignalDescriptor.DynamicsFunctionBlock ?d.
+ ?s e:IEEECigreDLLSignal.dllSequenceNumber ?dllSequenceNumber.
+ ?s e:IEEECigreDLLSignal.IEEECigreDLLSignalInfo ?i.
+ ?s e:IEEECigreDLLOutput.kind ?k.
+ ?i e:IEEECigreDLLSignalInfo.dllUnit ?dllUnit.
+ ?i e:IEEECigreDLLSignalInfo.dllDescription ?dllDescription
+} ORDER by ?mRID ?dllSequenceNumber
+
 # EMTIEEECigreDLLParameters
 SELECT DISTINCT ?mRID ?dllSequenceNumber ?dllParameterKind ?value WHERE {
 #VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}

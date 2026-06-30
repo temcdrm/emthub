@@ -1771,4 +1771,147 @@ ORDER by ?name
 ]]>
 </value>
 </query>
+<query>
+<id>EMTIEEECigreDLLInfo</id>
+<keyfld>mRID</keyfld>
+<description>Supplemental information from the DLL API about an IEEE/Cigre DLL interface.</description>
+<classes>IEEECigreDLL,IEEECigreDLLInfo</classes>
+<value>
+<![CDATA[
+SELECT DISTINCT ?mRID 
+ ?dllGeneralInformation 
+ ?dllModelCreated
+ ?dllModelCreator
+ ?dllModelDescription
+ ?dllModelLastModifiedBy
+ ?dllModelLastModifiedDate
+ ?dllModelModifiedComment
+ ?dllModelModifiedHistory
+ ?dllNumDoubleStates
+ ?dllNumFloatStates
+ ?dllNumIntStates
+ ?dllNumInputPorts
+ ?dllNumOutputPorts
+ ?dllNumParameters
+WHERE {
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
+ ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
+ ?d c:IdentifiedObject.mRID ?mRID.
+ ?d e:IEEECigreDLL.IEEECigreDLLInfo ?i.
+ ?i e:IEEECigreDLLInfo.dllGeneralInformation ?dllGeneralInformation.
+ ?i e:IEEECigreDLLInfo.dllModelCreated ?dllModelCreated.
+ ?i e:IEEECigreDLLInfo.dllModelCreator ?dllModelCreator.
+ ?i e:IEEECigreDLLInfo.dllModelDescription ?dllModelDescription.
+ ?i e:IEEECigreDLLInfo.dllModelLastModifiedBy ?dllModelLastModifiedBy.
+ ?i e:IEEECigreDLLInfo.dllModelLastModifiedDate ?dllModelLastModifiedDate.
+ ?i e:IEEECigreDLLInfo.dllModelModifiedComment ?dllModelModifiedComment.
+ ?i e:IEEECigreDLLInfo.dllModelModifiedHistory ?dllModelModifiedHistory.
+ ?i e:IEEECigreDLLInfo.dllNumDoubleStates ?dllNumDoubleStates.
+ ?i e:IEEECigreDLLInfo.dllNumFloatStates ?dllNumFloatStates.
+ ?i e:IEEECigreDLLInfo.dllNumIntStates ?dllNumIntStates.
+ ?i e:IEEECigreDLLInfo.dllNumInputPorts ?dllNumInputPorts.
+ ?i e:IEEECigreDLLInfo.dllNumOutputPorts ?dllNumOutputPorts.
+ ?i e:IEEECigreDLLInfo.dllNumParameters ?dllNumParameters
+} ORDER by ?mRID
+]]>
+</value>
+</query>
+<query>
+<id>EMTIEEECigreDLLParameterInfos*</id>
+<keyfld>mRID*</keyfld>
+<description>Supplemental information from the DLL API about an IEEE/Cigre DLL interfaces parameters.</description>
+<classes>IEEECigreDLLParameter,IEEECigreDLLParameterInfo,IEEECigreDLL</classes>
+<value>
+<![CDATA[
+SELECT DISTINCT ?mRID 
+ ?dllSequenceNumber 
+ ?dllDefaultValue
+ ?dllDescription
+ ?dllFixedValue
+ ?dllGroupName
+ ?dllMaxValue
+ ?dllMinValue
+ ?dllName
+ ?dllUnit 
+WHERE {
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
+ ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
+ ?d c:IdentifiedObject.mRID ?mRID.
+ ?p e:IEEECigreDLLParameter.IEEECigreDLL ?d.
+ ?p e:IEEECigreDLLParameter.dllSequenceNumber ?dllSequenceNumber.
+ ?p e:IEEECigreDLLParameter.IEEECigreDLLParameterInfo ?i.
+ ?i e:IEEECigreDLLParameterInfo.dllDefaultValue ?dllDefaultValue.
+ ?i e:IEEECigreDLLParameterInfo.dllMinValue ?dllMinValue.
+ ?i e:IEEECigreDLLParameterInfo.dllMaxValue ?dllMaxValue.
+ ?i e:IEEECigreDLLParameterInfo.dllFixedValue ?dllFixedValue.
+ ?i e:IEEECigreDLLParameterInfo.dllName ?dllName.
+ ?i e:IEEECigreDLLParameterInfo.dllUnit ?dllUnit.
+ ?i e:IEEECigreDLLParameterInfo.dllGroupName ?dllGroupName.
+ ?i e:IEEECigreDLLParameterInfo.dllDescription ?dllDescription
+} ORDER by ?mRID ?dllSequenceNumber
+]]>
+</value>
+</query>
+<query>
+<id>EMTIEEECigreDLLInputSignalInfos*</id>
+<keyfld>mRID*</keyfld>
+<description>Supplemental information from the DLL API about an IEEE/Cigre DLL interface's input ports (signals).</description>
+<classes>IEEECigreDLLInput,IEEECigreDLLSignalInfo,IEEECigreDLL</classes>
+<value>
+<![CDATA[
+SELECT DISTINCT ?mRID 
+ ?dllSequenceNumber 
+ ?dllDescription
+ ?dllUnit 
+WHERE {
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
+ ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
+ ?d c:IdentifiedObject.mRID ?mRID.
+ ?s c:SignalDescriptor.DynamicsFunctionBlock ?d.
+ ?s e:IEEECigreDLLSignal.dllSequenceNumber ?dllSequenceNumber.
+ ?s e:IEEECigreDLLSignal.IEEECigreDLLSignalInfo ?i.
+ ?s e:IEEECigreDLLInput.kind ?k.
+ ?i e:IEEECigreDLLSignalInfo.dllUnit ?dllUnit.
+ ?i e:IEEECigreDLLSignalInfo.dllDescription ?dllDescription
+} ORDER by ?mRID ?dllSequenceNumber
+]]>
+</value>
+</query>
+<query>
+<id>EMTIEEECigreDLLOutputSignalInfos*</id>
+<keyfld>mRID*</keyfld>
+<description>Supplemental information from the DLL API about an IEEE/Cigre DLL interface's output ports (signals).</description>
+<classes>IEEECigreDLLOutput,IEEECigreDLLSignalInfo,IEEECigreDLL</classes>
+<value>
+<![CDATA[
+SELECT DISTINCT ?mRID 
+ ?dllSequenceNumber 
+ ?dllDescription
+ ?dllUnit 
+WHERE {
+ ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
+ ?eq r:type c:PowerElectronicsConnection.
+ ?eq c:Equipment.EquipmentContainer ?sys.
+ ?d c:DetailedModelDynamics.Equipment ?eq.
+ ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
+ ?d c:IdentifiedObject.mRID ?mRID.
+ ?s c:SignalDescriptor.DynamicsFunctionBlock ?d.
+ ?s e:IEEECigreDLLSignal.dllSequenceNumber ?dllSequenceNumber.
+ ?s e:IEEECigreDLLSignal.IEEECigreDLLSignalInfo ?i.
+ ?s e:IEEECigreDLLOutput.kind ?k.
+ ?i e:IEEECigreDLLSignalInfo.dllUnit ?dllUnit.
+ ?i e:IEEECigreDLLSignalInfo.dllDescription ?dllDescription
+} ORDER by ?mRID ?dllSequenceNumber
+]]>
+</value>
+</query>
 </queries>
