@@ -5,7 +5,7 @@
 #define DLL_NAME "GFM_GFL_IBR.dll"
 
 #define TMAX 0.5
-#define VBASE 600.0
+#define VBASE 650.0
 #define SBASE 1.0e6
 #define XPU 0.20
 #define RPU 0.01
