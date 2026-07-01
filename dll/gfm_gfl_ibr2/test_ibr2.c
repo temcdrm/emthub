@@ -3,60 +3,92 @@
 // see https://learn.microsoft.com/en-us/windows/win32/dlls/using-run-time-dynamic-linking
 
 #define DLL_NAME "GFM_GFL_IBR2.dll"
-#define TMAX 5.0
+
+#define TMAX 2.0
+#define VBASE 600.0
+#define SBASE 1.0e6
+#define XPU 0.20
+#define RPU 0.01
+#define VDC_NOM 1200.0
+
 // relative output path for execution from the build directory, e.g., release\test or debug\test
 #define CSV_NAME "ibr2.csv"
 
 #include <windows.h> 
 #include <stdio.h> 
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 #include "IEEE_Cigre_DLLWrapper.h"
  
 void initialize_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, int nPorts)
 {
-  double EFD = 1.0;
+  double val = 0.0;
   char *pData = (char *) pModel->ExternalOutputs;
-  memcpy (pData + pMap[0].offset, &EFD, pMap[0].size);
-}
-
-void update_inputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, double t, int nPorts)
-{
-  double Vref = 1.0;
-  double Ec = 1.0;
-  double Vs = 0.0;
-  double IFD = 0.0;
-  double VT = 1.0;
-  double VUEL = -5.0;
-  double VOEL = 5.0;
-  if (t >= 2.0 && t <= 2.15) { // fault
-    Ec = 0.5;
-    VT = Ec;
-  }
-  char *pData = (char *) pModel->ExternalInputs;
-  memcpy (pData + pMap[0].offset, &Vref, pMap[0].size);
-  memcpy (pData + pMap[1].offset, &Ec, pMap[1].size);
-  memcpy (pData + pMap[2].offset, &Vs, pMap[2].size);
-  memcpy (pData + pMap[3].offset, &IFD, pMap[3].size);
-  memcpy (pData + pMap[4].offset, &VT, pMap[4].size);
-  memcpy (pData + pMap[5].offset, &VUEL, pMap[5].size);
-  memcpy (pData + pMap[6].offset, &VOEL, pMap[6].size);
-}
-
-double extract_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, int nPorts)
-{
-  char *pData = (char *) pModel->ExternalOutputs;
-  double efd = 0.0;
   for (int i = 0; i < nPorts; i++) {
-    memcpy (&efd, pData + pMap[i].offset, pMap[i].size);
+    memcpy (pData + pMap[i].offset, &val, pMap[i].size);
   }
-  return efd;
+}
+
+void update_inputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, double t, 
+                    double kVa, double kVb, double kVc, double kIa, double kIb, double kIc)
+{
+  double Pref = 0.9, Qref = 0.0, Vref = 1.05; // units pu
+  char *pData = (char *) pModel->ExternalInputs;
+  memcpy (pData + pMap[0].offset, &kVa, pMap[0].size);
+  memcpy (pData + pMap[1].offset, &kVb, pMap[1].size);
+  memcpy (pData + pMap[2].offset, &kVc, pMap[2].size);
+  memcpy (pData + pMap[3].offset, &kIa, pMap[3].size);
+  memcpy (pData + pMap[4].offset, &kIb, pMap[4].size);
+  memcpy (pData + pMap[5].offset, &kIc, pMap[5].size);
+  memcpy (pData + pMap[6].offset, &kIa, pMap[6].size);
+  memcpy (pData + pMap[7].offset, &kIb, pMap[7].size);
+  memcpy (pData + pMap[8].offset, &kIc, pMap[8].size);
+  if (t > 0.1) {
+    memcpy (pData + pMap[11].offset, &Pref, pMap[11].size);
+    memcpy (pData + pMap[12].offset, &Qref, pMap[12].size);
+    memcpy (pData + pMap[14].offset, &Vref, pMap[14].size);
+  }
+}
+
+void set_parameter (Wrapped_IEEE_Cigre_DLL *pWrap, double val, int idx)
+{
+  char *pData = (char *) pWrap->pModel->Parameters;
+  ArrayMap *pMap = pWrap->pParameterMap;
+  memcpy (pData + pMap[idx].offset, &val, pMap[idx].size);
+}
+
+double extract_output (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, int idx)
+{
+  char *pData = (char *) pModel->ExternalOutputs;
+  double val = 0.0;
+  memcpy (&val, pData + pMap[idx].offset, pMap[idx].size);
+  return val;
 }
 
 int main( void ) 
 {
+  double Ea = 0.0, Eb = 0.0, Ec = 0.0; // inverter voltage outputs from the DLL
+  double Vsa, Vsb, Vsc; // infinite bus source voltages
+  double Ia, Ib, Ic; // currents in the SMIB impedance
+  double Ha = 0.0, Hb = 0.0, Hc = 0.0; // RL integration history currents
+  double rl_y, rl_zi, rl_yi; // RL adjustments
+  double omega = 120.0 * M_PI;
+  double Zbase = VBASE * VBASE / SBASE;
+  double res = Zbase * RPU;
+  double x = Zbase * XPU;
+  double ind = x / omega;
+  double Vmag = VBASE * sqrt (2.0 / 3.0);
+  double rad120 = 120.0 * M_PI / 180.0;
+
   show_struct_alignment_requirements ();
   Wrapped_IEEE_Cigre_DLL *pWrap = CreateFirstDLLModel (DLL_NAME);
   if (NULL != pWrap) {
+    set_parameter (pWrap, 0.2, 12); // tstart_up
+    set_parameter (pWrap, 0.0, 53); // Rchoke
+    set_parameter (pWrap, 0.0, 54); // Lchoke
+    set_parameter (pWrap, 0.0, 55); // Cfilt
+    set_parameter (pWrap, 1.0e8, 56); // Rdamp
     PrintDLLModelParameters (pWrap);
     // initialize the model
     if (NULL != pWrap->Model_FirstCall) {
@@ -80,13 +112,37 @@ int main( void )
     FILE *fp = fopen (CSV_NAME, "w");
     write_csv_header (fp, pWrap->pInfo);
     double tstop = TMAX + 0.5 * dt;
+
+    // setting up for trapezoidal integration
+    rl_y = 1.0 / (res + 2.0 * ind / dt);
+    rl_zi = 1.0 - 2.0 * res * rl_y;
+    rl_yi = 2.0 * rl_y * (1.0 - res * rl_y);
+
     while (t <= tstop) {
+      // simulate the SMIB impedance
+      // infinite bus source voltages behind the impedance
+      Vsa = Vmag * sin (omega*t);
+      Vsb = Vmag * sin (omega*t - rad120);
+      Vsc = Vmag * sin (omega*t + rad120);
+      // SMIB impedance currents at this time step
+      Ia = Ha + rl_y * (Ea - Vsa);
+      Ib = Hb + rl_y * (Eb - Vsb);
+      Ic = Hc + rl_y * (Ec - Vsc);
+      // updating the history terms
+      Ha = rl_zi * Ha + rl_yi * (Ea - Vsa);
+      Hb = rl_zi * Hb + rl_yi * (Eb - Vsb);
+      Hc = rl_zi * Hc + rl_yi * (Ec - Vsc);
+
       // update the inputs for this next DLL step
       pWrap->pModel->Time = t;
-      update_inputs (pWrap->pModel, pWrap->pInputMap, t, pWrap->pInfo->NumInputPorts);
-      // execute the DLL
+      update_inputs (pWrap->pModel, pWrap->pInputMap, t, Ea/1000.0, Eb/1000.0, Ec/1000.0, Ia/1000.0, Ib/1000.0, Ic/1000.0);
+
+      // execute the DLL for updated inverter voltages and other outputs
       pWrap->Model_Outputs (pWrap->pModel);
-      double efd = extract_outputs (pWrap->pModel, pWrap->pOutputMap, pWrap->pInfo->NumOutputPorts);
+      Ea = VDC_NOM * 0.5 * extract_output (pWrap->pModel, pWrap->pOutputMap, 0);
+      Eb = VDC_NOM * 0.5 * extract_output (pWrap->pModel, pWrap->pOutputMap, 1);
+      Ec = VDC_NOM * 0.5 * extract_output (pWrap->pModel, pWrap->pOutputMap, 2);
+
       write_csv_values (fp, pWrap->pModel, pWrap->pInfo, pWrap->pInputMap, pWrap->pOutputMap, t);
       check_messages ("Model_Outputs", pWrap->pModel);
       t += dt;
