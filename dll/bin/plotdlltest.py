@@ -118,7 +118,8 @@ def plot_page (df, cfg):
   amax = np.where(t==tmax)
   imin = int(amin[0][0])
   imax = int(amax[0][0])
-  nticks = int((tmax-tmin)/cfg['ttick']) + 1
+  nticks = int(1.00001*(tmax-tmin)/cfg['ttick']) + 1
+  #print (tmax, tmin, cfg['ttick'], nticks)
   tticks = np.linspace (tmin, tmax, num=nticks, endpoint=True)
   nrows = len(cfg['ytitles'])
   ncols = 1

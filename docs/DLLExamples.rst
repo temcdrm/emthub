@@ -7,9 +7,6 @@
 DLL Examples
 ============
 
-.. warning::
-    This section is not complete yet.
-
 These projects build a supporting wrapper around the IEEE/Cigre specification
 for dynamic link libraries (DLLs), and three examples. They should be built
 in the following order.
@@ -85,6 +82,63 @@ File Directory
 Results
 ^^^^^^^
 
+The following result shows a drop in terminal voltage at 2.0 s to 0.5 pu. The *EFD*
+output responds as limited by the overexcitation limiter value, *VOEL*.
+
+.. image:: assets/test_scrx9.png
+
+.. _target-examples-grid:
+
+Grid Impedance
+--------------
+
+This tests a single-machine, infinite-bus (SMIB) grid that an inverter model may be connected to.
+The grid consists of a three-phase voltage source with three-phase source impedance.
+Trapezoidal integration is used to solve for currents in the source impedance, given 
+the voltages on each terminal of the impedance. One terminal voltage is defined by the
+SMIB voltage source. The other terminal voltage is defined by the connected DLL's output.
+
+In this example, the DLL's output voltage is mimiced in code. The purpose of this test
+is to verify proper execution of the trapezoidal integration at each time step. The output should
+show inductive currents all beginning at zero, then gradually assume the expected
+sinusoidal shapes, 120 degrees apart, with no DC offset in the current. The DLL
+controller action is not included. To do that, code from this example is incorporated into 
+the *../gfm_gfl_ibr/test_ibr.c* and *../gfm_gfl_ibr2/test_ibr2.c* source files.
+
+Build Instructions - Windows
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Open the *x64 Native Tools Command Prompt for VS 2022* from Windows Start Menu
+2. From the *grid* project directory (``rd /s build`` if it exists):
+
+    a. ``md build``
+    b. ``cmake -B build -A x64``
+    c. ``cmake --build build --config Release`` or ``cmake --build build --config Debug``
+    d. ``cmake --install build``
+
+3. From the *../bin* directory, check the trapezoidal integration output:
+
+    a. ``test_grid`` should produce an output *grid.csv* file
+    b. Verify with ``python plotdlltest.py grid.csv``
+
+File Directory
+^^^^^^^^^^^^^^
+
+- *CMakeLists.txt* generates the detailed build instructions
+- *test_grid.c* implements trapezoidal integration for current in a three-phase source impedance
+
+Results
+^^^^^^^
+
+The following result shows the voltages at each terminal and the currents through
+each phase of a 0.01 + j 0.20 per-unit grid impedance. The source voltage is 600 volts
+line-to-line and the base power is 1 MW. The phase angle between terminal voltages is 11.54
+degrees, to create approximately 1 per-unit or 1 MW power flow. The inductive currents
+begin at zero, so there is a transient response as the DC offset decays and the power
+flow approaches 1 MW.
+
+.. image:: assets/test_grid.png
+
 .. _target-examples-gfm1:
 
 GFM GFL v1
@@ -124,6 +178,16 @@ File Directory
 
 Results
 ^^^^^^^
+
+The base voltage is 0.65 kV and the base power is 1 MW. The SMIB impedance 
+is 0.01 + j 0.2 pu. The AC output filter of the inverter is not 
+implemented. At 0.1 s, the control requests 1.05 pu voltage and 0.9 pu 
+power output. *Qref* is not changed but the reactive power output must be 
+controlled to achieve the desired output value. The DLL controls the phase 
+currents are controlled to nearly achieve these requests by 0.5 s, as seen 
+in plotted values of *Pout*, *Qout*, and *Vd*. 
+
+.. image:: assets/test_ibr.png
 
 .. _target-examples-gfm2:
 
@@ -167,6 +231,19 @@ File Directory
 Results
 ^^^^^^^
 
+The base voltage is 600 V and the base power is 1 MW. The SMIB impedance 
+is 0.01 + j 0.2 pu. The AC output filter of the inverter is not 
+implemented. The nominal DC voltages is 1200 V, half that value is 
+multiplied by the DLL output modulation indices to create average source 
+voltages. At 0.1 s, the control requests 1.05 pu voltage and 0.9 pu power 
+output. However, the internal DLL control is not released until 0.2 s. 
+*Qref* is not changed but the reactive power output must be controlled to 
+achieve the desired output value. The DLL controls the phase currents are 
+controlled to achieve these requests by 1.4 s, as seen in plotted values 
+of *Pout*, *Qout*, and *Vtd1*. 
+
+.. image:: assets/test_ibr2.png
+
 .. _target-examples-hwpv:
 
 HWPV
@@ -204,7 +281,7 @@ Follow these instructions to make 64-bit and 32-bit versions of the DLL:
        directory. Some of these must be run at reduced power output, until new versions are trained 
        with sensitivity optimization, as described in `pecblocks documentation <https://pecblocks.readthedocs.io/en/latest/>`_
 
-4. From this _hwpv_ project directory (`rd /s build` and `rd /s build32` if they exist):
+4. From this _hwpv_ project directory (``rd /s build`` and ``rd /s build32`` if they exist):
 
     a. ``md build``
     b. ``md build32``
@@ -230,6 +307,15 @@ File Directory
 Results
 ^^^^^^^
 
+This result shows example response of the generalized block diagram model to ramp and step changes
+in the inputs (solar irradiance, *G*, AC terminal voltage, *Vd* and *Vq*, a polynomial input feature,
+*GVrms*, and an inverter mode transition flag, *Ctl*). The outputs *Id* and *Iq* drive a controlled
+Norton equivalent current source on the AC side. The outputs *Idc* and *Vdc* are estimated quantities
+for an external controller, i.e., they are not coupled to an electrical model on the DC side of the
+converter in this example.
+
+.. image:: assets/test_hwpv.png
+
 .. _target-examples-repca1:
 
 WECC REPCA1
@@ -243,7 +329,7 @@ Limitations:
 - Parameters are fixed at initialization
 - Snapshots and states are unsupported
 
-Prequisites:
+Prerequisites:
 
 - Compiler and Cmake as described above
 - OpenModelica (Tested with version 1.26.3)
@@ -306,6 +392,25 @@ File Directory
 
 Results
 ^^^^^^^
+
+The following result shows response of the plant controller to a step increase in terminal voltage.
+There is no change in the plant active power reference, but the plant reactive power should decrease
+(absorbing) to reduce the terminal voltage.
+
+.. image:: assets/test_ppc_vstep.png
+
+The following result shows response of the plant controller to a step reduction in the external
+reactive power reference. There is no effect on the plant active power reference. There is no
+response in measured reactive power because there is no power system connected to the controller.
+
+.. image:: assets/test_ppc_qstep.png
+
+The following result shows response of the plant controller to a step increase in the measured
+frequency. There is no effect on the plant **requested** active power reference. However, the
+controlled *Pref* should decrease in response to the frequency. There is no corresponding
+response in system frequency becasue there is no power system connected to the controller.
+
+.. image:: assets/test_ppc_fstep.png
 
 Licenses
 ^^^^^^^^
