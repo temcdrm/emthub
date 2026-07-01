@@ -14,6 +14,18 @@ hwpv_vdcbase = 1.0 / 0.00260668
 hwpv_idcbase = 100.0e3 / hwpv_vdcbase
 
 plots = {
+  "grid.csv": {"tmin": 0.0, "tmax": 0.2, "ttick": 0.04, "title": "SMIB Impedance Test",
+                "ytitles": ["Voltage [V]", "Iinv [kA]", "Power [MW]"],
+                "signals": [{"name": "Vsa", "base": 1.0, "axis": 0},
+                            {"name": "Vsb", "base": 1.0, "axis": 0},
+                            {"name": "Vsc", "base": 1.0, "axis": 0},
+                            {"name": "Vta", "base": 1.0, "axis": 0},
+                            {"name": "Vtb", "base": 1.0, "axis": 0},
+                            {"name": "Vtc", "base": 1.0, "axis": 0},
+                            {"name": "Ia", "base": 1000.0, "axis": 1},
+                            {"name": "Ib", "base": 1000.0, "axis": 1},
+                            {"name": "Ic", "base": 1000.0, "axis": 1},
+                            {"name": "P", "base": 1.0e6, "axis": 2}]},
   "hwpv.csv": {"tmin": 0.5, "tmax": 5.5, "ttick": 0.5, "title": "HWPV Generalized Block Diagram Test",
                 "ytitles": ["Inputs [pu]", "Outputs [pu]"],
                 "signals": [{"name": "G", "base": 1000.0, "axis": 0},

@@ -1,95 +1,69 @@
 // Copyright (C) 2024-26 Meltran, Inc
 
-#define TMAX 10.0
-// relative output path for execution from the build directory, e.g., release\test or debug\test
+#define TMAX 0.2
+#define DT 1.0e-5
+#define VBASE 600.0
+#define SBASE 1.0e6
+#define XPU 0.20
+#define RPU 0.01
+#define VANG 11.54  // inverter terminal leads source by this many degrees, want 1 = sin(deg)/Xpu
+
 #define CSV_NAME "grid.csv"
 
-#include <windows.h> 
+#define _USE_MATH_DEFINES
 #include <stdio.h> 
-
-#include "IEEE_Cigre_DLLWrapper.h"
- 
-void initialize_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, int nPorts)
-{
-  double EFD = 1.0;
-  char *pData = (char *) pModel->ExternalOutputs;
-  memcpy (pData + pMap[0].offset, &EFD, pMap[0].size);
-}
-
-void update_inputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, double t, int nPorts)
-{
-  double Vref = 1.0;
-  double Ec = 1.0;
-  double Vs = 0.0;
-  double IFD = 0.0;
-  double VT = 1.0;
-  double VUEL = -5.0;
-  double VOEL = 5.0;
-  if (t >= 2.0 && t <= 2.15) { // fault
-    Ec = 0.5;
-    VT = Ec;
-  }
-  char *pData = (char *) pModel->ExternalInputs;
-  memcpy (pData + pMap[0].offset, &Vref, pMap[0].size);
-  memcpy (pData + pMap[1].offset, &Ec, pMap[1].size);
-  memcpy (pData + pMap[2].offset, &Vs, pMap[2].size);
-  memcpy (pData + pMap[3].offset, &IFD, pMap[3].size);
-  memcpy (pData + pMap[4].offset, &VT, pMap[4].size);
-  memcpy (pData + pMap[5].offset, &VUEL, pMap[5].size);
-  memcpy (pData + pMap[6].offset, &VOEL, pMap[6].size);
-}
-
-double extract_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, int nPorts)
-{
-  char *pData = (char *) pModel->ExternalOutputs;
-  double efd = 0.0;
-  for (int i = 0; i < nPorts; i++) {
-    memcpy (&efd, pData + pMap[i].offset, pMap[i].size);
-  }
-  return efd;
-}
+#include <math.h>
 
 int main( void ) 
 {
-  show_struct_alignment_requirements ();
-  Wrapped_IEEE_Cigre_DLL *pWrap = CreateFirstDLLModel (DLL_NAME);
-  if (NULL != pWrap) {
-    PrintDLLModelParameters (pWrap);
-    // initialize the model
-    if (NULL != pWrap->Model_FirstCall) {
-      pWrap->Model_FirstCall (pWrap->pModel);
-    }
-    printf("calling CheckParameters\n");
-    pWrap->Model_CheckParameters (pWrap->pModel);
-    check_messages ("Model_CheckParameters", pWrap->pModel);
+  double t = 0.0, dt = DT;
+  double omega = 120.0 * M_PI;
+  double Zbase = VBASE * VBASE / SBASE;
+  double res = Zbase * RPU;
+  double x = Zbase * XPU;
+  double ind = x / omega;
+  double Vmag = VBASE * sqrt (2.0 / 3.0);
+  double rad120 = 120.0 * M_PI / 180.0;
+  double radAng = VANG * M_PI / 180.0;
+  double Vsa, Vsb, Vsc, Vta, Vtb, Vtc, Ia, Ib, Ic, P;
+  double Ha = 0.0, Hb = 0.0, Hc = 0.0; // trapezoidal integration history currents
+  double rl_y, rl_zi, rl_yi; // RL adjustments
 
-    // initialize time-stepping
-    printf("calling Initialize\n");
-    initialize_outputs (pWrap->pModel, pWrap->pOutputMap, pWrap->pInfo->NumOutputPorts);
-    pWrap->Model_Initialize (pWrap->pModel);
-    check_messages ("Model_Initialize", pWrap->pModel);
+  // RL integration adjustments
+  rl_y = 1.0 / (res + 2.0 * ind / dt);
+  rl_zi = 1.0 - 2.0 * res * rl_y;
+  rl_yi = 2.0 * rl_y * (1.0 - res * rl_y);
 
-    // time step loop, matching the DLL's desired time step
-    double dt = pWrap->pInfo->FixedStepBaseSampleTime;
-    printf("Looping with dt=%g, tmax=%g\n", dt, TMAX);
-    double t = 0.0;
-    printf("opening %s\n", CSV_NAME);
-    FILE *fp = fopen (CSV_NAME, "w");
-    write_csv_header (fp, pWrap->pInfo);
-    double tstop = TMAX + 0.5 * dt;
-    while (t <= tstop) {
-      // update the inputs for this next DLL step
-      pWrap->pModel->Time = t;
-      update_inputs (pWrap->pModel, pWrap->pInputMap, t, pWrap->pInfo->NumInputPorts);
-      // execute the DLL
-      pWrap->Model_Outputs (pWrap->pModel);
-      double efd = extract_outputs (pWrap->pModel, pWrap->pOutputMap, pWrap->pInfo->NumOutputPorts);
-      write_csv_values (fp, pWrap->pModel, pWrap->pInfo, pWrap->pInputMap, pWrap->pOutputMap, t);
-      check_messages ("Model_Outputs", pWrap->pModel);
-      t += dt;
-    }
-    fclose (fp);
-    FreeFirstDLLModel (pWrap);
+  printf("Looping with dt=%g, tmax=%g, tau=%g\n", dt, TMAX, ind/res);
+  printf("opening %s\n", CSV_NAME);
+  FILE *fp = fopen (CSV_NAME, "w");
+  fprintf (fp, "t,Vsa,Vsb,Vsc,Vta,Vtb,Vtc,Ia,Ib,Ic,P\n");
+  double tstop = TMAX + 0.5 * dt;
+
+  while (t <= tstop) {
+    // infinite bus source voltages behind the impedance
+    Vsa = Vmag * sin (omega*t);
+    Vsb = Vmag * sin (omega*t - rad120);
+    Vsc = Vmag * sin (omega*t + rad120);
+    // inverter average source voltages to be created by the DLL
+    Vta = Vmag * sin (omega*t + radAng);
+    Vtb = Vmag * sin (omega*t + radAng - rad120);
+    Vtc = Vmag * sin (omega*t + radAng + rad120);
+    // SMIB impedance currents at this time step
+    Ia = Ha + rl_y * (Vta - Vsa);
+    Ib = Hb + rl_y * (Vtb - Vsb);
+    Ic = Hc + rl_y * (Vtc - Vsc);
+    // updating the history terms
+    Ha = rl_zi * Ha + rl_yi * (Vta - Vsa);
+    Hb = rl_zi * Hb + rl_yi * (Vtb - Vsb);
+    Hc = rl_zi * Hc + rl_yi * (Vtc - Vsc);
+    // inverter output power
+    P = Ia*Vta + Ib*Vtb + Ic*Vtc;
+
+    fprintf (fp, "%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g\n", t, Vsa, Vsb, Vsc, Vta, Vtb, Vtc, Ia, Ib, Ic, P);
+    t += dt;
   }
+
+  fclose (fp);
   return 0;
 }
