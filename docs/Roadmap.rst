@@ -2,8 +2,8 @@
    :format: html latex
 ..
 
-Roadmap
-=======
+Roadmaps
+========
 
 These subsections provide a suggested order of activities for different
 kinds of stakeholders approaching EMT model interoperability.
@@ -252,7 +252,7 @@ pull request still applies, but each new entry for the **configuration file** sh
 #. Provide an array of *parameterDescriptors*, one for each value found in a "row" or "line" for this model in the PDPDT text file. Each descriptor should have:
 
     a. *name*, which should match the name given in PSPDT documentation.
-    #. *mRID*, to be generated randomly and then maintained under version control for global persistence.
+    #. *mRID*, to be generated randomly and then **maintained under version control for global persistence**.
     #. *typicalValue*, if available. This may help in specifying the default value in a future migration to *closestStandardModel*.
     #. *engineeringUnit*, if available. This may help in specifying the correct CIM data type in a future migration to *closestStandardModel*.
     #. *sequenceNumber*, starting with 1, which should match the order expected in the PSPDT text file.
@@ -348,12 +348,20 @@ For illustration, a reduced-size version of the original **configuration file** 
 DLL Developers
 --------------
 
-.. note::
-    To be completed.
-
 This roadmap applies to stakeholders that primarily build DLL models of IBR and other controllers. This includes IBR hardware vendors, their consultants,
 researchers, and EMT software developers who are building test cases.
 
 #. :ref:`target-roadmap-users` Roadmap is a pre-requisite.
-#. Run all five :ref:`target-examples-dll`.
-#. **Talk about build tools (already addressed in the DLL examples), P3597 involvement, and testing in a SMIB with an EMT simulator.**
+#. Run all six :ref:`target-examples-dll`.
+#. The examples in this repository and the DLL interface specification all contemplate using the C language and Windows tools for developing DLLs.
+   However, any language that can produce a DLL may be used, including but not limited to Fortran and Pascal. Furthermore, a "DLL" may be produced
+   for other operating systems, under a name like "dylib" or "so", for EMT simulators that might run on those other operating systems. It should
+   be possible to localize the different build environments for a DLL through a cross-platform *CMakeLists.txt* file, and by including system-dependent
+   header files at the top of the DLL source file.
+#. One example in this repository uses *Modelica* to generate C code, which is then compiled and linked to produce the DLL. There are other
+   software tools available that have C-code generators. This allows a developer to produce the DLL without writing C code from scratch. When
+   the reference controller model has already been implemented in another software tool that has code generation, this path is likely to
+   save time and improve the model fidelity.
+#. DLL developers should consider participating in `IEEE P3597 <https://standards.ieee.org/ieee/3597/12053/>`_, or at least observing its activity.
+#. The DLL should be tested in at least one EMT simulator before publicly releasing the DLL. A few examples in this repository connect the
+   DLL to a simple grid equivalent source, but that's not sufficient for testing. Those examples also use an EMT solver for testing the DLL.
