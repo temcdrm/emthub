@@ -48,6 +48,26 @@ testing.
 
 .. image:: assets/UserPaths.png
 
+MATPOWER
+^^^^^^^^
+
+`MATPOWER <https://matpower.org/>`_ is an open-source power flow (PF) 
+solver used in most of the examples. It is a prerequisite that should be 
+installed before proceeding further. If you have MATLAB, then MATPOWER can run 
+as a MATLAB add-on. Otherwise, MATPOWER can run in the open-source `Octave <https://octave.org/>`_ package. 
+
+Alternative Transients Program (ATP)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`ATP <https://www.atp-emtp.org/>`_ is a free-to-use but not open-source 
+EMT solver. It has restrictive license terms. Utilities, researchers, and 
+some consultants are generally able to license ATP, but generally not EMT 
+tool developers. The examples in this package run in ATP, so you may wish
+to consider obtaining an ATP license and installing it. If not, you may still
+create and examine ATP models from CIM using this package, which may be
+helpful in developing other CIM-to-EMT model conversions. Therefore,
+ATP is not a prerequisite for this package.
+
 .. _target-quick-start:
 
 Quick Start - Windows
@@ -88,8 +108,8 @@ To create an ATP netlist::
 This creates an ATP network model in `SMIBDLL_net.atp` and part of the DLL interface in `DLL1.mod`. Even if you
 don't have ATP installed, it may be profitable to explore the content of these files.
 
-Optional - ATP on Windows
--------------------------
+Optional - DLLs in ATP
+----------------------
 
 To **run** `SMIBDLL` in ATP, which is a 32-bit solver, you should copy `gfm_gfl_ibr2.dll32` into an ATP bin directory.
 See `ATP DLL Readme <https://github.com/temcdrm/emthub/tree/main/atp/dll>`_ for more information. This involves linking
