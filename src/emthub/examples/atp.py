@@ -16,6 +16,10 @@ from comtrade import Comtrade
 import matplotlib.pyplot as plt
 from scipy import signal
 
+ATP_FOR_NETWORKS = 'c:\\atp\\atpgnu\\runtpgig'
+ATP_FOR_DLLS = 'c:\\atp\\atpmingw\\mytpbig'
+ATP_GTPPL32 = 'c:\\atp\\gtppl32\\gtppl32'
+
 atp_roots = ['IEEE39', 'IEEE118', 'WECC240', 'XfmrSat', 'SMIBDLL']
 atp_path = '.'
 
@@ -453,15 +457,14 @@ def plot_case (atp_root, bPng):
 
 def run_atp_case (atp_root):
   if atp_root == 'SMIBDLL':
-    cmdline = 'c:\\atp\\atpmingw\\mytpbig ' + atp_root + '.atp >nul'
-    #cmdline = 'c:\\atp\\atpmingw\\mytpbig ' + atp_root + '.atp'
+    cmdline = '{:s} {:s}.atp >nul'.format (ATP_FOR_DLLS, atp_root)
   else:
-    cmdline = 'c:\\atp\\atpgnu\\runtpgig ' + atp_root + '.atp >nul'
+    cmdline = '{:s} {:s}.atp >nul'.format (ATP_FOR_NETWORKS, atp_root)
   print (cmdline)
   pw0 = subprocess.Popen (cmdline, cwd=atp_path, shell=True)
   pw0.wait()
 
-  cmdline = 'c:\\atp\\gtppl32\\gtppl32 @@commands.script > nul'
+  cmdline = '{:s} @@commands.script > nul'.format (ATP_GTPPL32)
   fp = open ('commands.script', mode='w')
   print ('file', atp_root, file=fp)
   print ('comtrade all', file=fp)
@@ -474,8 +477,18 @@ def run_atp_case (atp_root):
 def main():
   """Runs or post-processes ATP from an existing netlist.
 
+  There are three paths to ATP executables in this script. Any of them can be
+  changed by editing lines 19-21 of this script. They are:
+
+    *ATP_FOR_NETWORKS* is the solver used for most of the network examples. It should be the "gig" version distributed with ATP. The *STARTUP* file for this version of ATP must be in the same directory. If necessary, use different file extensions to keep different variants of *STARTUP*.
+
+    *ATP_FOR_DLLS* is the solver used for the SMIBDLL example. It should have been recompiled and linked to call the DLLs. The *STARTUP* file for this version of ATP must be in the same directory. If necessary, use different file extensions to keep different variants of *STARTUP*.
+
+    *ATP_GTPPL32* is the command-line plotting and post processing program that comes with ATP. It converts PL4 output to COMTRADE.
+
   Command-line Arguments:
     **index** (int): case number from 0 to 4
+
     **option** (str): either **run** to execute ATP, **convert** to convert PL4 to COMTRADE and then HDF5, **plot** to plot HDF5 on screen, or **png** to plot HDF5 to a file.
   """
   if len(sys.argv) != 3:

@@ -132,27 +132,63 @@ Example Scripts for Users
 These are distributed in the *examples* subdirectory, and obtainable by *emthub-extract-case #*.
 The command-line documentation follows.
 
+atp.py
+^^^^^^
+
 .. autofunction:: emthub.examples.atp.main
+   :noindex:
+
+bps_make_mpow.py
+^^^^^^^^^^^^^^^^
 
 .. autofunction:: emthub.examples.bps_make_mpow.main
+   :noindex:
+
+cim_summary.py
+^^^^^^^^^^^^^^
 
 .. autofunction:: emthub.examples.cim_summary.main
+   :noindex:
+
+cim_to_atp.py
+^^^^^^^^^^^^^
 
 .. autofunction:: emthub.examples.cim_to_atp.main
+   :noindex:
+
+create_smib_dll.py
+^^^^^^^^^^^^^^^^^^
 
 .. autofunction:: emthub.examples.create_smib_dll.main
+   :noindex:
+
+ic_to_rdf.py
+^^^^^^^^^^^^
 
 .. autofunction:: emthub.examples.ic_to_rdf.main
+   :noindex:
+
+mpow.py
+^^^^^^^
 
 .. autofunction:: emthub.examples.mpow.main
+   :noindex:
+
+plot_bps.py
+^^^^^^^^^^^
 
 .. autofunction:: emthub.examples.plot_bps.main
+   :noindex:
+
+raw_to_rdf.py
+^^^^^^^^^^^^^
 
 .. autofunction:: emthub.examples.raw_to_rdf.main
+   :noindex:
+
+test_cim_sparql.py
+^^^^^^^^^^^^^^^^^^
 
 .. autofunction:: emthub.examples.test_cim_sparql.main
-
-
-
-
+   :noindex:
 
