@@ -62,15 +62,15 @@ def GetCIMID(cls, nm, uuids, identify=False):
     return str(uuid.uuid4()).upper() # for unidentified CIM instances
 
 def create_cim_sql (tables, kvbases, bus_kvbases, baseMVA, case):
-  """Create SQL db from results of load_psse_rawfile.
+  """Create SQL db from results of load_rawfile.
 
   TODO: Not fully implemented.
 
   Args:
-    tables (dict): dictionary of tables from *load_psse_rawfile*
-    kvbases (dict): dictionary of system-wide voltage bases found in *load_psse_rawfile*
-    bus_kvbases (dict): dictionary of bus voltage bases found in *load_psse_rawfile*
-    baseMVA (float): the base MVA from the rawfile, usually 100, found in *load_psse_rawfile*
+    tables (dict): dictionary of tables from *load_rawfile*
+    kvbases (dict): dictionary of system-wide voltage bases found in *load_rawfile*
+    bus_kvbases (dict): dictionary of bus voltage bases found in *load_rawfile*
+    baseMVA (float): the base MVA from the rawfile, usually 100, found in *load_rawfile*
   """
   # read the existing mRID map for persistence
   # TODO: consolidate this step with XML export

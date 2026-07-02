@@ -19,9 +19,9 @@ from otsrdflib import OrderedTurtleSerializer
 
 from .cim_support import load_dynamics_defaults
 from .cim_support import load_detailed_model_types
-from .cim_support import load_psse_dyrfile 
+from .cim_support import load_dyrfile 
 from .cim_support import load_dynamics_mapping
-from .cim_support import summarize_psse_dyrfile
+from .cim_support import summarize_dyrfile
 from .cim_support import match_dyr_generators
 from .cim_sparql import list_dict_table
 from .cim_sparql import adhoc_sparql_dict
@@ -216,9 +216,9 @@ def GetTerminalRef (eq_id, sequenceNumber):
   return rdflib.URIRef (trm_id)
 
 def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True, bWantGraph=False):
-  """Create RDF in TTL/XML formats from results of load_psse_rawfile.
+  """Create RDF in TTL/XML formats from results of load_rawfile.
 
-  This function calls *load_psse_dyrfile* internally, as configured in the *case* argument.
+  This function calls *load_dyrfile* internally, as configured in the *case* argument.
   It also creates basic IBR plant and conventional generating plant data, for plants
   that can be interpreted from the generator (*PowerElectronicsConverter* or *SynchronousMachine*)
   and a generator step-up (GSU) transformer that is directly connected to the generator.
@@ -230,10 +230,10 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
   interface before calling *write_cim_rdf*.
 
   Args:
-    tables (dict): data tables, returned from *load_psse_rawfile*
-    kvbases (dict): bus kV bases found in the system, returned from *load_psse_rawfile*
-    bus_kvbases (dict): kV bases for each bus, returned from *load_psse_rawfile*
-    baseMVA (float): system MVA base, returned from *load_psse_rawfile*
+    tables (dict): data tables, returned from *load_rawfile*
+    kvbases (dict): bus kV bases found in the system, returned from *load_rawfile*
+    bus_kvbases (dict): kV bases for each bus, returned from *load_rawfile*
+    baseMVA (float): system MVA base, returned from *load_rawfile*
     case (dict): an example chosen from *emthub.cim_examples.CASES*
     bSerialize (bool): call *write_cim_rdf* on the graph produced
     bWantGraph (bool): return the RDF graph and namespaces for additional processing
@@ -834,9 +834,9 @@ def create_cim_rdf (tables, kvbases, bus_kvbases, baseMVA, case, bSerialize=True
 
   # write the generators: synchronous machine, generating unit, exciter, governor, stabilizer
   dyr = None
-  dyr_df = load_psse_dyrfile (case)
+  dyr_df = load_dyrfile (case)
   if dyr_df is not None:
-    dyr_summary = summarize_psse_dyrfile (dyr_df, case, bDetails=False)
+    dyr_summary = summarize_dyrfile (dyr_df, case, bDetails=False)
     dyr = match_dyr_generators (dyr_df)
   dyn_defaults = load_dynamics_defaults ()  # TODO: remove if choice made to rely on DetailedModelTypeDynamics
   dyn_mapping = load_dynamics_mapping ()  # TODO: remove if choice made to rely on DetailedModelTypeDynamics

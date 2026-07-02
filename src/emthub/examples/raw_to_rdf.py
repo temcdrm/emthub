@@ -14,8 +14,8 @@ def main():
     case_id = int(sys.argv[1])
   case = emthub.CASES[case_id]
 
-  tables, kvbases, bus_kvbases, baseMVA = emthub.load_psse_rawfile (case['name']+'.raw')
-#  emthub.print_psse_table (tables, 'GENERATOR')
+  tables, kvbases, bus_kvbases, baseMVA = emthub.load_rawfile (case['name']+'.raw')
+#  emthub.print_raw_table (tables, 'GENERATOR')
 
   print ('All kV Bases =', kvbases)
 

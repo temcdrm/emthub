@@ -15,8 +15,8 @@ Public Functions:
     :build_bus_lists: Order the buses (connectivity nodes) sequentially.
     :build_system_graph: Auto-layout a diagram of the CIM network, returning a networkx graph.
     :create_atp: Write an ATP netlist from CIM loaded into a Python dictionary.
-    :create_cim_rdf: Create RDF in TTL/XML formats from results of load_psse_rawfile.
-    :create_cim_sql: Create SQL db from results of load_psse_rawfile.
+    :create_cim_rdf: Create RDF in TTL/XML formats from results of load_rawfile.
+    :create_cim_sql: Create SQL db from results of load_rawfile.
     :create_matpower: Write a MATPOWER netlist from CIM loaded into a Python dictionary.
     :extract_case: Copy example files for one case into the current directory.
     :get_dll_interface: Returns a Python dictionary of the interface to an IEEE/Cigre DLL.
@@ -28,21 +28,21 @@ Public Functions:
     :load_dynamics_mapping: Load a dictionary of CIM classes and attributes corresponding to dyr file contents.
     :load_emt_dict: Load an RDF graph into Python dictionary using packaged SPARQL queries.
     :load_ic_dict: Load an RDF graph into Python dictionary from standalone power flow solution file.
-    :load_psse_dyrfile: Load contents of a PSSE dyrfile into a Pandas dataframe.
-    :load_psse_meta: Load PSSE rawfile metadata into a Python dictionary.
-    :load_psse_rawfile: Load contents of a PSSE rawfile into a Python dictionary.
+    :load_dyrfile: Load contents of a (PSSE) dyrfile into a Pandas dataframe.
+    :load_raw_meta: Load (PSSE) rawfile metadata into a Python dictionary.
+    :load_rawfile: Load contents of a (PSSE) rawfile into a Python dictionary.
     :load_system_graph: Load the networkx layout (graph) from a JSON file.
     :match_dyr_generators: Collect dyrfile models from Pandas dataframe into a Python dictionary by generator name/id.
     :plot_system_graph: Plot the transmission system topology from a networkx layout (graph).
     :print_cim_summaries: Print class names and counts found in list of Turtle files.
-    :print_psse_table: Print a named dictionary loaded from section of a PSSE rawfile.
+    :print_raw_table: Print a named dictionary loaded from section of a (PSSE) rawfile.
     :print_solution_summary: Prints a summary of solved MATPOWER case to console.
     :read_matpower_casefile: Read a MATPOWER m file into Python dictionary.
     :run_matpower_and_wait: Runs MATPOWER from command line on Windows, Mac, or Linux.
     :save_system_graph: Save the networkx layout (graph) to a JSON file.
     :summarize_casefile: Report the table sizes, total load, and total generation in a loaded MATPOWER case file.
     :summarize_graph: Count the class instances by namespace in an RDF graph.
-    :summarize_psse_dyrfile: Enumerate contents of a loaded PSSE dyrfile dataframe.
+    :summarize_dyrfile: Enumerate contents of a loaded (PSSE) dyrfile dataframe.
     :write_atp_dll_interface: Netlists an ATP module that calls an IEEE/Cigre DLL.
     :write_cim_rdf: Serialize the (possibly modified) return value from create_cim_rdf.
     :write_most_table_indices: Writes some array column indices not included in the base MATPOWER set.
@@ -69,12 +69,12 @@ from .cim_summary import print_cim_summaries
 from .cim_support import load_detailed_model_types
 from .cim_support import load_dynamics_defaults
 from .cim_support import load_dynamics_mapping
-from .cim_support import load_psse_dyrfile
-from .cim_support import load_psse_meta
-from .cim_support import load_psse_rawfile
+from .cim_support import load_dyrfile
+from .cim_support import load_raw_meta
+from .cim_support import load_rawfile
 from .cim_support import match_dyr_generators
-from .cim_support import print_psse_table
-from .cim_support import summarize_psse_dyrfile
+from .cim_support import print_raw_table
+from .cim_support import summarize_dyrfile
 
 from .create_atp import create_atp
 

@@ -17,12 +17,12 @@ import math
 DYNAMICS_DEFAULTS = 'dynamics_defaults.json'
 DYNAMICS_MAPPING = 'dyr_mapping.json'
 DETAILED_MODELS = 'detailed_model_types.json'
-METAFILE = 'psseraw.json'
+METAFILE = 'raw_mapping.json'
 
-def load_psse_dyrfile (case):
-  """Load contents of a PSSE dyrfile into a Pandas dataframe.
+def load_dyrfile (case):
+  """Load contents of a (PSSE) dyrfile into a Pandas dataframe.
 
-  The PSSE DYR file does not conform to CSV standards:
+  The (PSSE) DYR file does not conform to CSV standards:
 
     1) A line beginning with / or // is a comment to be ignored
     2) Rows span lines. Each row ends with a single /
@@ -77,8 +77,8 @@ def row_length (row):
       return i
   return len(row)
 
-def summarize_psse_dyrfile (dyr, case, bDetails=False):
-  """Enumerate contents of a loaded PSSE dyrfile dataframe.
+def summarize_dyrfile (dyr, case, bDetails=False):
+  """Enumerate contents of a loaded (PSSE) dyrfile dataframe.
 
   Use this for checking the numbers and sizes of dynamic models read.
   Each model of the same type should have the same size. Names of the
@@ -86,7 +86,7 @@ def summarize_psse_dyrfile (dyr, case, bDetails=False):
   this function.
 
   Args:
-    dyr (DataFrame): return value from *load_psse_dyrfile*
+    dyr (DataFrame): return value from *load_dyrfile*
     case (dict): an example chosen from *emthub.cim_examples.CASES*
     bDetails (bool): print *dyr* using built-in Pandas formatting
 
@@ -126,7 +126,7 @@ def match_dyr_generators (df, bPrint=False):
   model types.  The model types are taken from column 2 of each dyr file entry.
 
   Args:
-    df (DataFrame): the return value from *load_psse_dyrfile*
+    df (DataFrame): the return value from *load_dyrfile*
     bPrint (bool): print the dynamic model types and data found for each generator
 
   Returns:
@@ -201,12 +201,12 @@ def load_dynamics_mapping(bReverseLookup = True):
       attmap[dyr]['AttMap'][att['cim']] = i
   return attmap
 
-def load_psse_meta():
-  """Load PSSE rawfile metadata into a Python dictionary.
+def load_raw_meta():
+  """Load (PSSE) rawfile metadata into a Python dictionary.
 
   The data comes from a JSON file included in the package named *psseraw.json*.
   It currently supports versions 33, 34, and 35. This function does not have
-  to called separately from *load_psse_rawfile*.
+  to called separately from *load_rawfile*.
 
   Returns:
     meta(dict): schema of tables found in supported *rawfile* versions.
@@ -215,14 +215,14 @@ def load_psse_meta():
   meta = json.loads (s)
   return meta
 
-def print_psse_table (tables, table_name):
-  """Print a named dictionary loaded from section of a PSSE rawfile.
+def print_raw_table (tables, table_name):
+  """Print a named dictionary loaded from section of a (PSSE) rawfile.
 
-  Use this function to verify the data imported from *load_psse_rawfile*.
+  Use this function to verify the data imported from *load_rawfile*.
   Also reveals the column names in each table.
 
   Args:
-    tables (dict): returned from *load_psse_rawfile*
+    tables (dict): returned from *load_rawfile*
     table_name (str): name of the table to print. Should be one of 'BUS', 'LOAD', 'FIXED SHUNT', 'SWITCHED SHUNT', 'GENERATOR', 'BRANCH', 'SYSTEM SWITCHING DEVICE', 'TRANSFORMER'
   """
   if table_name not in tables:
@@ -336,23 +336,23 @@ def read_version_33_34(tables, baseMVA, reader, sections, bTwoTitles, bPrint=Fal
         table['winding_data'].append (winding_data)
       table['data'].append (data)
 
-def load_psse_rawfile(fname, bPrint=False):
-  """Load contents of a PSSE rawfile into a Python dictionary.
+def load_rawfile(fname, bPrint=False):
+  """Load contents of a (PSSE) rawfile into a Python dictionary.
 
   Versions 33, 34, and 35 are supported. The corresponding dynamics data should be read using
-  *load_psse_dyrfile*, which does not have versions.
+  *load_dyrfile*, which does not have versions.
 
   Args:
-    fname (str): name of the PSSE *rawfile* to read.
+    fname (str): name of the (PSSE) *rawfile* to read.
     bPrint (bool): for debugging, print the contents of each *rawfile* row as it's parsed.
 
   Returns:
-    tables(dict): dictionary of table data, following the schema from *load_psse_meta*.
+    tables(dict): dictionary of table data, following the schema from *load_raw_meta*.
     kvbases(dict): dictionary of voltage (kV) bases found in the system data, keyed on a constructed name for CIM *BaseVoltage* instances.
     bus_kvbases(dict): dictionary of voltage (kV) bases for each bus in the system.
     baseMVA(float): the system MVA base.
   """
-  meta = load_psse_meta()
+  meta = load_raw_meta()
   tables = {}
   bus_kvbases = {}
   kvbases = {}
