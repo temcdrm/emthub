@@ -152,7 +152,7 @@ ercot8_base_load = np.array ([[7182.65, 6831.0, 6728.83, 6781.1, 6985.44, 7291.9
 [2650.16, 2535.62, 2503.87, 2529.95, 2610.47, 2727.27, 2864.48, 3034.58, 3187.67, 3315.82, 3425.81, 3527.87, 3636.74, 3766.01, 3911.17, 4055.18, 4170.85, 4212.81, 4159.51, 4043.84, 3947.45, 3827.25, 3612.92, 3213.76],
 [56.55, 51.95, 50.65, 50.57, 51.68, 53.72, 56.25, 59.4, 62.76, 65.57, 67.97, 70.06, 72.15, 74.53, 77.34, 80.29, 83.0, 84.73, 84.61, 82.72, 80.5, 78.53, 75.32, 69.74]])
 
-def run_matpower_and_wait (fscript, quiet=False):
+def run_matpower_and_wait (fscript, quiet=False, cmd=None):
   """Runs MATPOWER from command line on Windows, Mac, or Linux.
 
   Octave and MATPOWER must be installed. On Windows, Octave should be installed
@@ -161,8 +161,11 @@ def run_matpower_and_wait (fscript, quiet=False):
   Args:
     fscript (str): the name of a MATPOWER m-file to run.
     quiet (bool): request a progress notification to the console.
+    cmd (str): a command line to run MATPOWER when not using the default installation.
   """
-  if sys.platform == 'win32':
+  if cmd is not None:
+    octave = cmd
+  elif sys.platform == 'win32':
     octave = '"C:\Program Files\GNU Octave\Octave-10.3.0\octave-launch.exe" --no-gui'
   else:
     octave = 'octave --no-window-system --no-gui >octave.log 2>&1 '

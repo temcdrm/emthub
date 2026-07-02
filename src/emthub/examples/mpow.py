@@ -245,12 +245,28 @@ def append_overloads_to_summary(fname, d):
 def main():
   """Runs MATPOWER from a previously generated netlist.
 
+  On Windows, the default *cmd* to run MATPOWER is::
+
+    '"C:\\Program Files\\GNU Octave\\Octave-10.3.0\\octave-launch.exe" --no-gui'
+
+  On Linux and Mac OS, the default *cmd* to run MATPOWER is::
+
+    'octave --no-window-system --no-gui >octave.log 2>&1 '
+
   Command-line Arguments:
     **index** (int): case number from 0 to 4
+
+    **cmd** (str): optional, the full command line to execute MATPOWER if not using the default Octave installation. It should be in quotation marks, using backslash to escape embedded quotes on Windows, for example::
+
+        python mpow.py 0 "\\"C:\Program Files\GNU Octave\Octave-10.3.0\octave-launch.exe\\" --no-gui"
+
   """
   case_id = 0
+  cmd = None
   if len(sys.argv) > 1:
     case_id = int(sys.argv[1])
+    if len(sys.argv) > 2:
+      cmd = sys.argv[2]
   sys_name = CASES[case_id]['name']
   if 'UseMATPOWER' in CASES[case_id]:
     if not CASES[case_id]['UseMATPOWER']:
@@ -269,7 +285,7 @@ def main():
   else:
     fscript, fsolved, fsummary = write_solve_file (sys_name, load_scale, editfile, CASES[case_id]['gen_PG'])
 
-  mpow.run_matpower_and_wait (fscript)
+  mpow.run_matpower_and_wait (fscript, cmd=cmd)
 
   r = mpow.read_matpower_casefile (fsolved)
   mpow.summarize_casefile (r, 'Solved')
