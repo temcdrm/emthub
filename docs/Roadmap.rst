@@ -209,6 +209,92 @@ This roadmap applies to stakeholders that primarily import CIM network models to
 .. image:: assets/FileFlow.png
 
 
+.. _target-roadmap-importer:
+
+Text File Import Maintainers
+----------------------------
+
+This roadmap applies to stakeholders that maintain or modify network model importers from text files to CIM.
+Currently, this package supports import from three *rawfile* versions through a set of API functions, with
+assistance from a JSON configuration file. Not all sections of the *rawfile* are currently supported; only
+the sections testable in the five :ref:`target-examples-network` are currently supported. The number of
+supported *rawfile* versions and sections could both be increased with updates to API functions and the 
+JSON configuration file.
+
+The *rawfile* generally consists of power flow (PF) data. For dynamics data import, see the next roadmap
+for :ref:`target-roadmap-dynamics`.
+
+The JSON configuration file may be found in *raw_mapping.json* in the :ref:`target-repository` *src/emthub/queries* subdirectory.
+It contains a dictionary of *version_sections*, keyed by the version number. Each version contains a
+dictionary of *rawfile* tables, keyed by the upper-case table name. The upper-case table name is expected
+to match the starting and ending line of a named section in the *rawfile*. For example, *BUS* is expected
+to match lines containing *BEGIN BUS DATA* and *END BUS DATA* in the *rawfile*. Part of the current
+*raw_mapping.json* configuration file is shown below.::
+
+    {
+      "version_sections": {
+        "35": {
+          "BUS": {
+              "column_count": 13,
+              "columns": [
+                  {
+                      "Name": "Number",
+                      "Index": 0,
+                      "Type": "Integer"
+                  },
+                  {
+                      "Name": "Name",
+                      "Index": 1,
+                      "Type": "String"
+                  },
+                  {
+                      "Name": "BaseKV",
+                      "Index": 2,
+                      "Type": "Float"
+                  },
+                  {
+                      "Name": "Type",
+                      "Index": 3,
+                      "Type": "Integer"
+                  }
+              ]
+          },
+          "LOAD": {
+              "column_count": 18,
+              "columns": [
+
+Regarding this JSON file:
+
+#. The *column_count* for each named table should match the number of comma-separated values in the *rawfile*, but not each CSV must be used.
+#. The *columns* array for each named table specifies each CSV used in the translation:
+
+    a. *Name* should match the *rawfile* documentation, but it only needs to be unique within *columns* for this table.
+    #. *Index* is the zero-based position of this value in the CSV row.
+    #. *Type* should be *Integer*, *String*, or *Float*.
+
+#.  New importer features should begin with changes to this JSON file.
+
+Regarding the API functions that use the JSON file:
+
+#. `load_raw_meta <api.html#emthub.cim_support.load_raw_meta>`_ reads the JSON file and returns a Python dictionary of its contents. This function is usually not called directly and its code may not require changes.
+#. `load_rawfile <api.html#emthub.cim_support.load_rawfile>`_ reads the *rawfile* and returns a Python dictionary of its contents. It calls the previous function. This function's code, and some helper functions that it calls, should be updated to support new features in *raw_mapping.json*.
+#. `print_raw_table <api.html#emthub.cim_support.print_raw_table>`_ displays a named *rawfile* table from the Python dictionary of its contents. Use this for guidance on how to use the *rawfile* contents in Python code. This function's code may not require changes.
+
+To use the new importer features, some of the API functions should also be updated:
+
+#. Check `create_rdf <api.html#create-rdf>`_ for changes needed in RDF implementations.
+#. Check `create_sql <api.html#create-sql>`_ for changes needed in SQL implementations.
+
+To add other types of text file importer, i.e., something other than *rawfile*:
+
+#. Ensure the file extension is unique, e.g., *EPC*, *AUX*, *DGS*.
+#. Create an appropriate JSON configuration file for the newly supported file extension.
+#. Add API functions as needed to support the new file extension.
+#. Add a small calling program for the new file extension. Currently, only *raw_to_rdf.py* is provided in 
+   the :ref:`target-repository` *src/emthub/examples* subdirectory. A script like this should be provided
+   to create CIM RDF and possibly CIM SQL from the new file extension.
+#. Consider adding dynamics model support following the roadmap for :ref:`target-roadmap-dynamics`.
+
 .. _target-roadmap-dynamics:
 
 Dynamics Model Maintainers
@@ -342,6 +428,12 @@ For illustration, a reduced-size version of the original **configuration file** 
         }
       }
     }
+
+After updating the **configuration file**, some of the API functions should also be updated:
+
+#. Check `create_rdf <api.html#create-rdf>`_ for changes needed in RDF implementations.
+#. Check `create_sql <api.html#create-sql>`_ for changes needed in SQL implementations.
+#. The functions in `cim_support <api.html#cim-support>`_ should not require changes, even in functions having *dyr* in the name.
 
 .. _target-roadmap-dll:
 
