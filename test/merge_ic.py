@@ -4,8 +4,8 @@ import sys
 import rdflib
 from otsrdflib import OrderedTurtleSerializer
 
-CIM_NS = 'http://www.ucaiug.org/ns#'
-EMT_NS = 'http://opensource.ieee.org/emtiop#'
+CIM_NS = 'http://www.ucaiug.org/grid18v15#'
+EMT_NS = 'http://opensource.ieee.org/emtiop01v01#'
 
 if __name__ == '__main__':
   CIM = rdflib.Namespace (CIM_NS)

@@ -14,8 +14,8 @@ import networkx
 import math
 import sqlite3
  
-CIM_NS = 'http://www.ucaiug.org/ns#'
-EMT_NS = 'http://opensource.ieee.org/emtiop#'
+CIM_NS = 'http://www.ucaiug.org/grid18v15#'
+EMT_NS = 'http://opensource.ieee.org/emtiop01v01#'
 
 WFREQ = 2.0 * math.pi * 60.0
 M_PER_MILE = 1609.344

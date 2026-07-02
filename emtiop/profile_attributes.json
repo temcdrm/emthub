@@ -1,4 +1,14 @@
 {
+  "ACDCConverterDCTerminal": {
+    "polarity": {
+      "type": "DCPolarityKind",
+      "default": null
+    },
+    "DCConductingEquipment": {
+      "type": "ACDCConverter",
+      "default": null
+    }
+  },
   "ACLineSegment": {
     "b0ch": {
       "type": "Susceptance",
@@ -35,6 +45,110 @@
     "value": {
       "type": "ApparentPower",
       "default": null
+    }
+  },
+  "AsynchronousMachine": {
+    "asynchronousMachineType": {
+      "type": "AsynchronousMachineKind",
+      "default": null
+    },
+    "converterFedDrive": {
+      "type": "Boolean",
+      "default": null
+    },
+    "efficiency": {
+      "type": "PerCent",
+      "default": null
+    },
+    "iaIrRatio": {
+      "type": "Float",
+      "default": null
+    },
+    "nominalFrequency": {
+      "type": "Frequency",
+      "default": null
+    },
+    "nominalSpeed": {
+      "type": "RotationSpeed",
+      "default": null
+    },
+    "polePairNumber": {
+      "type": "Integer",
+      "default": null
+    },
+    "ratedMechanicalPower": {
+      "type": "ActivePower",
+      "default": null
+    },
+    "reversible": {
+      "type": "Boolean",
+      "default": null
+    },
+    "rr1": {
+      "type": "Resistance",
+      "default": null
+    },
+    "rr2": {
+      "type": "Resistance",
+      "default": null
+    },
+    "rxLockedRotorRatio": {
+      "type": "Float",
+      "default": null
+    },
+    "tpo": {
+      "type": "Seconds",
+      "default": null
+    },
+    "tppo": {
+      "type": "Seconds",
+      "default": null
+    },
+    "xlr1": {
+      "type": "Reactance",
+      "default": null
+    },
+    "xlr2": {
+      "type": "Reactance",
+      "default": null
+    },
+    "xm": {
+      "type": "Reactance",
+      "default": null
+    },
+    "xp": {
+      "type": "Reactance",
+      "default": null
+    },
+    "xpp": {
+      "type": "Reactance",
+      "default": null
+    },
+    "xs": {
+      "type": "Reactance",
+      "default": null
+    }
+  },
+  "AsynchronousMachineTimeConstantReactance": {
+    "tpo": {
+      "type": "Seconds",
+      "default": 5.0
+    },
+    "tppo": {
+      "type": "Seconds",
+      "default": 0.03
+    },
+    "xp": {
+      "type": "PU",
+      "default": 0.5
+    },
+    "xpp": {
+      "type": "PU",
+      "default": 0.2
+    },
+    "xs": {
+      "type": "PU",
+      "default": 1.8
     }
   },
   "BaseVoltage": {
@@ -80,6 +194,64 @@
     },
     "TopologicalNode": {
       "type": "TopologicalNode",
+      "default": null
+    }
+  },
+  "CsConverter": {
+    "alpha": {
+      "type": "AngleDegrees",
+      "default": null
+    },
+    "gamma": {
+      "type": "AngleDegrees",
+      "default": null
+    },
+    "maxAlpha": {
+      "type": "AngleDegrees",
+      "default": null
+    },
+    "maxGamma": {
+      "type": "AngleDegrees",
+      "default": null
+    },
+    "maxIdc": {
+      "type": "CurrentFlow",
+      "default": null
+    },
+    "minAlpha": {
+      "type": "AngleDegrees",
+      "default": null
+    },
+    "minGamma": {
+      "type": "AngleDegrees",
+      "default": null
+    },
+    "minIdc": {
+      "type": "CurrentFlow",
+      "default": null
+    },
+    "operatingMode": {
+      "type": "CsOperatingModeKind",
+      "default": null
+    },
+    "pPccControl": {
+      "type": "CsPpccControlKind",
+      "default": null
+    },
+    "ratedIdc": {
+      "type": "CurrentFlow",
+      "default": null
+    },
+    "targetAlpha": {
+      "type": "AngleDegrees",
+      "default": null
+    },
+    "targetGamma": {
+      "type": "AngleDegrees",
+      "default": null
+    },
+    "targetIdc": {
+      "type": "CurrentFlow",
       "default": null
     }
   },
@@ -170,6 +342,10 @@
     },
     "DCEquipmentContainer": {
       "type": "DCEquipmentContainer",
+      "default": null
+    },
+    "DCTopologicalNode": {
+      "type": "DCTopologicalNode",
       "default": null
     }
   },
@@ -615,6 +791,16 @@
       "default": null
     }
   },
+  "PhaseTapChangerLinear": {
+    "stepPhaseShiftIncrement": {
+      "type": "AngleDegrees",
+      "default": null
+    },
+    "xMax": {
+      "type": "Reactance",
+      "default": null
+    }
+  },
   "PowerElectronicsConnection": {
     "maxIFault": {
       "type": "PU",
@@ -704,6 +890,52 @@
     },
     "x0": {
       "type": "Reactance",
+      "default": null
+    }
+  },
+  "StaticVarCompensator": {
+    "capacitiveRating": {
+      "type": "Reactance",
+      "default": null
+    },
+    "inductiveRating": {
+      "type": "Reactance",
+      "default": null
+    },
+    "q": {
+      "type": "ReactivePower",
+      "default": null
+    },
+    "slope": {
+      "type": "VoltagePerReactivePower",
+      "default": null
+    },
+    "sVCControlMode": {
+      "type": "SVCControlMode",
+      "default": null
+    },
+    "voltageSetPoint": {
+      "type": "Voltage",
+      "default": null
+    }
+  },
+  "SvDCPowerFlow": {
+    "p": {
+      "type": "ActivePower",
+      "default": null
+    },
+    "DCTerminal": {
+      "type": "DCTerminal",
+      "default": null
+    }
+  },
+  "SvDCVoltage": {
+    "v": {
+      "type": "Voltage",
+      "default": null
+    },
+    "DCTopologicalNode": {
+      "type": "DCTopologicalNode",
       "default": null
     }
   },
@@ -957,9 +1189,151 @@
       "default": null
     }
   },
+  "VsConverter": {
+    "delta": {
+      "type": "AngleDegrees",
+      "default": null
+    },
+    "droop": {
+      "type": "PU",
+      "default": null
+    },
+    "droopCompensation": {
+      "type": "Resistance",
+      "default": null
+    },
+    "maxModulationIndex": {
+      "type": "Float",
+      "default": null
+    },
+    "maxValveCurrent": {
+      "type": "CurrentFlow",
+      "default": null
+    },
+    "pPccControl": {
+      "type": "VsPpccControlKind",
+      "default": null
+    },
+    "qPccControl": {
+      "type": "VsQpccControlKind",
+      "default": null
+    },
+    "qShare": {
+      "type": "PerCent",
+      "default": null
+    },
+    "targetPhasePcc": {
+      "type": "AngleDegrees",
+      "default": null
+    },
+    "targetPowerFactorPcc": {
+      "type": "Float",
+      "default": null
+    },
+    "targetPWMfactor": {
+      "type": "Float",
+      "default": null
+    },
+    "targetQpcc": {
+      "type": "ReactivePower",
+      "default": null
+    },
+    "targetUpcc": {
+      "type": "Voltage",
+      "default": null
+    },
+    "uv": {
+      "type": "Voltage",
+      "default": null
+    }
+  },
+  "ACDCConverter": {
+    "baseS": {
+      "type": "ApparentPower",
+      "default": null
+    },
+    "idc": {
+      "type": "CurrentFlow",
+      "default": null
+    },
+    "idleLoss": {
+      "type": "ActivePower",
+      "default": null
+    },
+    "maxP": {
+      "type": "ActivePower",
+      "default": null
+    },
+    "maxUdc": {
+      "type": "Voltage",
+      "default": null
+    },
+    "minP": {
+      "type": "ActivePower",
+      "default": null
+    },
+    "minUdc": {
+      "type": "Voltage",
+      "default": null
+    },
+    "numberOfValves": {
+      "type": "Integer",
+      "default": null
+    },
+    "p": {
+      "type": "ActivePower",
+      "default": null
+    },
+    "poleLossP": {
+      "type": "ActivePower",
+      "default": null
+    },
+    "q": {
+      "type": "ReactivePower",
+      "default": null
+    },
+    "ratedUdc": {
+      "type": "Voltage",
+      "default": null
+    },
+    "resistiveLoss": {
+      "type": "Resistance",
+      "default": null
+    },
+    "switchingLoss": {
+      "type": "ActivePowerPerCurrentFlow",
+      "default": null
+    },
+    "targetPpcc": {
+      "type": "ActivePower",
+      "default": null
+    },
+    "targetUdc": {
+      "type": "Voltage",
+      "default": null
+    },
+    "uc": {
+      "type": "Voltage",
+      "default": null
+    },
+    "udc": {
+      "type": "Voltage",
+      "default": null
+    },
+    "valveU0": {
+      "type": "Voltage",
+      "default": null
+    }
+  },
   "ACDCTerminal": {
     "sequenceNumber": {
       "type": "Integer",
+      "default": null
+    }
+  },
+  "AsynchronousMachineDynamics": {
+    "AsynchronousMachine": {
+      "type": "AsynchronousMachine",
       "default": null
     }
   },
@@ -1224,6 +1598,12 @@
     },
     "OperationalLimitType": {
       "type": "OperationalLimitType",
+      "default": null
+    }
+  },
+  "PhaseTapChanger": {
+    "TransformerEnd": {
+      "type": "TransformerEnd",
       "default": null
     }
   },

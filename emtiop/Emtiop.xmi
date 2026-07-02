@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="windows-1252" standalone="no" ?>
-<XMI xmi.version="1.2" xmlns:UML="org.omg.xmi.namespace.UML" timestamp="2026-06-24 22:26:01">
+<XMI xmi.version="1.2" xmlns:UML="org.omg.xmi.namespace.UML" timestamp="2026-07-02 13:21:28">
 	<XMI.header>
 		<XMI.documentation>
 			<XMI.exporter>Enterprise Architect</XMI.exporter>
@@ -10,28 +10,28 @@
 	<XMI.content>
 		<UML:Model name="Emtiop" xmi.id="MX_EAID_68F3A560_E3C8_422e_8A8A_D3464C8A967A" isRoot="true" isLeaf="false" isAbstract="false" isSpecification="false" visibility="public">
 			<UML:Namespace.ownedElement>
-				<UML:Stereotype xmi.id="EAID_250E2CA6_6420_4c56_A9AA_328151300BC8" name="CIMExtension" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
+				<UML:Stereotype xmi.id="EAID_3A871CE4_B30A_4e72_AABD_FE9A65BB0366" name="CIMExtension" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
 					<UML:Stereotype.baseClass>Package</UML:Stereotype.baseClass>
 				</UML:Stereotype>
 				<UML:ModelElement.stereotype>
-					<UML:Stereotype xmi.idref="EAID_250E2CA6_6420_4c56_A9AA_328151300BC8"/>
+					<UML:Stereotype xmi.idref="EAID_3A871CE4_B30A_4e72_AABD_FE9A65BB0366"/>
 				</UML:ModelElement.stereotype>
 				<UML:Class name="MachineSaturationCurve" xmi.id="EAID_08D2CE41_7CBA_4631_8CD0_98D130F7B9CD" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:GeneralizableElement.generalization>
 						<UML:Generalization xmi.idref="EAID_9999B593_31E9_4def_998B_1BECD9473E12"/>
 					</UML:GeneralizableElement.generalization>
 				</UML:Class>
-				<UML:Stereotype xmi.id="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA" name="CIMExtension" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
+				<UML:Stereotype xmi.id="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04" name="CIMExtension" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
 					<UML:Stereotype.baseClass>Class</UML:Stereotype.baseClass>
 				</UML:Stereotype>
 				<UML:DataType xmi.id="EAID_73A500A6_E7FF_4abe_8FDA_E68B4E60FF9F" name="Curve" visibility="public" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="EAID_B272216C_A098_436d_80C8_02AD11F5B97F" name="SynchronousMachineDetailed" visibility="public" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:Class name="ConnectedFacility" xmi.id="EAID_0C440DC4_4D78_4d54_B3B1_6BC0BA88FEBB" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:GeneralizableElement.generalization>
 						<UML:Generalization xmi.idref="EAID_065FDB1E_A334_4fa4_B1ED_6C8D9E527219"/>
@@ -59,10 +59,10 @@
 				<UML:Comment xmi.id="EAID_0FB50C00_5BAC_4d9c_A43B_007185071E81" visibility="public" isSpecification="false"/>
 				<UML:Enumeration name="DCSourceKind" xmi.id="EAID_1140B936_8410_45ba_84B9_2EB84B4C8FE6" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_CA8D664B_F21E_4d91_AB25_3478ABDB9773"/>
+						<UML:Stereotype xmi.idref="EAID_B4121AFA_8ABF_4979_B313_5D09CD963B4C"/>
 					</UML:ModelElement.stereotype>
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_05851D05_450A_4222_9FE6_33A90CAF6FFD"/>
+						<UML:Stereotype xmi.idref="EAID_23733C6B_987F_4582_9116_CCF1D835515D"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="photoVoltaic" xmi.id="EAID_2091F475_D024_4683_A516_AE5D7FCEBB70" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -70,17 +70,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_19DB0C71_CDC2_4ac8_AF01_5AC3BE6B4396">
+								<UML:Multiplicity xmi.id="EAID_FBE74C9B_D3F1_4957_8395_F3AC87EF135B">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_612CB117_77CD_476c_BAB6_7B451B1EDF16" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_C89E0C63_8574_4780_AC5B_E7EAE9284C7A" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_66632FAA_5E79_4bd9_8100_A15CD96AECF2"/>
+								<UML:Expression xmi.id="EAID_B443796A_613D_40e8_A420_8BA3C80556DE"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -89,17 +89,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_7EAC72C0_25B9_4e2a_9241_986BCDAC3CC8">
+								<UML:Multiplicity xmi.id="EAID_3066C6EA_EC87_4c37_A512_46B32C29C812">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_EFCB50DE_5117_4e14_B0C3_90816BD16D86" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_93258140_2A4C_4f0f_B55C_5E70A8134AA8" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_15EB7ED5_8FE4_417a_B42B_FCC230C2EB47"/>
+								<UML:Expression xmi.id="EAID_A8320140_35E5_4762_BEA2_3A2EA231646C"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -108,35 +108,35 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_94F263D8_F0E4_41b8_A951_00BD752EDF60">
+								<UML:Multiplicity xmi.id="EAID_D1395574_99BB_4d06_8060_40B65E392B81">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_B0D04F64_87A9_414c_B4DD_9A1CA5FDF715" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_FBFC7622_945E_44b0_A7D1_B167A1B9B436" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_68212C56_8CE6_4ed1_BCF0_9EEB835252B6"/>
+								<UML:Expression xmi.id="EAID_123633A7_AE41_4e7a_A404_800B8221E98F"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
 					</UML:Classifier.feature>
 				</UML:Enumeration>
-				<UML:Stereotype xmi.id="EAID_CA8D664B_F21E_4d91_AB25_3478ABDB9773" name="CIMExtension" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
+				<UML:Stereotype xmi.id="EAID_B4121AFA_8ABF_4979_B313_5D09CD963B4C" name="CIMExtension" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
 					<UML:Stereotype.baseClass>Enumeration</UML:Stereotype.baseClass>
 				</UML:Stereotype>
-				<UML:Stereotype xmi.id="EAID_05851D05_450A_4222_9FE6_33A90CAF6FFD" name="enumeration" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
+				<UML:Stereotype xmi.id="EAID_23733C6B_987F_4582_9116_CCF1D835515D" name="enumeration" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
 					<UML:Stereotype.baseClass>Enumeration</UML:Stereotype.baseClass>
 				</UML:Stereotype>
-				<UML:Stereotype xmi.id="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90" name="enum" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
+				<UML:Stereotype xmi.id="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024" name="enum" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
 					<UML:Stereotype.baseClass>Attribute</UML:Stereotype.baseClass>
 				</UML:Stereotype>
 				<UML:Comment xmi.id="EAID_118938DF_7E6A_4cdc_AC05_F82C84BFD8C5" visibility="public" isSpecification="false"/>
 				<UML:Class name="IEEECigreDLLInput" xmi.id="EAID_13298CB1_D689_446c_BCC2_3AAC894B6D20" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="kind" xmi.id="EAID_1237B548_1AA3_4cf2_9324_F930C3083D8B" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -144,14 +144,14 @@
 								<UML:Classifier xmi.idref="EAID_85B8E983_EE2F_403f_AB95_89512D2C9C9E"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_8C374982_E9B4_4e0a_A0FB_5D58098BAF77">
+								<UML:Multiplicity xmi.id="EAID_1E91077F_9BFE_49aa_892A_628688F7CE63">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_1B4DCD67_9856_42fd_986F_95433D1FE8C8" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_AA7A25CA_122D_490d_B2AA_922FA8CDFCE6" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_04828DCD_CD43_4f4d_A574_817B034E9C9E"/>
+								<UML:Expression xmi.id="EAID_F11C6A38_E9CB_4606_8B8B_399E3F3F6B1D"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -160,14 +160,14 @@
 								<UML:Classifier xmi.idref="EAID_921A00A7_D33C_43ea_9DE4_70A026CBA70F"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_01126FD7_58E2_4237_B1C4_8A09E43A79E3">
+								<UML:Multiplicity xmi.id="EAID_CA9B29AB_2460_4451_91DC_F0E547F7537A">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_717A3999_C352_4c4e_9633_01CEEA01EE8D" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_CB2C1978_6D84_4120_B860_912305B24E4B" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_B63819ED_DC0B_4958_9218_AE154F6422EE"/>
+								<UML:Expression xmi.id="EAID_E522F50D_3C41_4518_A15F_0B871B9703CE"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -187,7 +187,7 @@
 				<UML:Comment xmi.id="EAID_14608A02_1109_4ef5_9959_F3CB0647E49A" visibility="public" isSpecification="false"/>
 				<UML:Class name="IEEECigreDLLOutput" xmi.id="EAID_1E3817AD_61B4_4617_85A3_D404B4E676FE" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="kind" xmi.id="EAID_42E8F19B_73B7_42b8_B2C3_D39E100E9152" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -195,14 +195,14 @@
 								<UML:Classifier xmi.idref="EAID_821F7B28_5215_496e_B03B_27C243409D68"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_6CC1B90C_8826_4bd9_9E59_6487761739A3">
+								<UML:Multiplicity xmi.id="EAID_F6ADCFE0_005B_4d28_B4AE_2C2E513B4050">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_80FD0782_6A69_4a59_9213_833998EB0CE2" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_EE1D5B7A_F171_4595_945C_0FD0198721CD" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_34D6E038_7B06_42c3_9176_D57423DE96AE"/>
+								<UML:Expression xmi.id="EAID_D3D0BFF2_AE06_4386_B7D7_06EC9C322CAA"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -211,14 +211,14 @@
 								<UML:Classifier xmi.idref="EAID_921A00A7_D33C_43ea_9DE4_70A026CBA70F"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_E6C989C5_2463_4990_8DBD_C5E4F6761563">
+								<UML:Multiplicity xmi.id="EAID_BA26C0AA_B68A_4dc3_99B9_A5AAEC15231A">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_BB48079D_850E_48b9_BD03_CEF1A73D153E" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_B6F41873_1339_472b_8859_97EADB056181" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_54B52C01_BD97_4b97_BB1D_741F2E9F8714"/>
+								<UML:Expression xmi.id="EAID_D6372706_A311_4de0_8470_C842BDB6C937"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -237,7 +237,7 @@
 				</UML:Generalization>
 				<UML:Class name="NthAmDynamicModel" xmi.id="EAID_303A4169_58C3_4aee_A17A_92026FB281C5" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="closestStandardModel" xmi.id="EAID_7DA97028_5354_411c_B87F_07FB4C1B736C" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -245,14 +245,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_4B64F36E_EF24_4008_8CA5_49768D580E91">
+								<UML:Multiplicity xmi.id="EAID_58B69B16_8631_46b1_AC79_FA06364328DA">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_15746728_7CB7_44c6_9A9D_D99595591DC0" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_8EBC4963_6C58_498f_BECA_D98AD231AC21" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_8B6261BB_B8AD_4753_B102_A123DCDA7D4B"/>
+								<UML:Expression xmi.id="EAID_756F8EC5_CDF0_4b3d_B926_9DCE94512624"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -261,14 +261,14 @@
 								<UML:Classifier xmi.idref="EAID_71CCF873_FEF6_4c4f_A8E4_38D9FCEC1590"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_6AAA27D1_3F57_4df9_9209_9EAE50D67EEC">
+								<UML:Multiplicity xmi.id="EAID_2B3B2B40_35A6_4129_8041_CC90B605E5C1">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_99D98E16_3E4E_454e_B220_1CBE2F79751E" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_7DB2292D_C511_4bbe_B3DC_6060116F8D5C" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_1D205B26_1820_4297_934A_3764058203CB"/>
+								<UML:Expression xmi.id="EAID_6BC6D341_8E1E_4986_B166_330A6E7F2480"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -277,14 +277,14 @@
 								<UML:Classifier xmi.idref="EAID_EEFA8003_D650_4709_B643_D52D7B762676"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_082D40B1_9172_40cb_A849_ADAE39E6DB0C">
+								<UML:Multiplicity xmi.id="EAID_0CE8735E_A9F3_4f4a_B65F_75F11F06E041">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_44340909_8B4C_43ed_BC81_67B61DEF7D47" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_CE1569B1_76B4_4c88_B296_1A73C8CA5DDB" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_901C1492_5EEB_48c6_8D31_B5F63C9B914C"/>
+								<UML:Expression xmi.id="EAID_B6390D7E_C0FC_4cb9_947A_921E28633DC8"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -293,14 +293,14 @@
 								<UML:Classifier xmi.idref="EAID_B0568C83_EE25_45bd_B39C_044E1BFDB617"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_77451F96_9988_4b65_BF95_4EE19AA37D52">
+								<UML:Multiplicity xmi.id="EAID_44768673_17FF_45e7_9E2B_07B6E37E4E53">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_C2F48D20_4A51_459e_9559_59C926EF1A3A" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_26314CD8_AB46_4da5_9C65_02409523872C" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_48DB2DE3_DEFB_4ad7_B0EC_CF68E93A1BEF"/>
+								<UML:Expression xmi.id="EAID_7AC1FEA9_3854_41f3_B85F_92A9815583A1"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -314,7 +314,7 @@
 				<UML:Comment xmi.id="EAID_37686F36_5816_4b4e_957A_C860E89CFC65" visibility="public" isSpecification="false"/>
 				<UML:Class name="IBRPlant" xmi.id="EAID_42038FD2_A349_48b5_9779_D40E62A25373" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="dcLinkVoltage" xmi.id="EAID_90A249FE_7838_4409_90BB_3259E3CBCD54" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -322,14 +322,14 @@
 								<UML:Classifier xmi.idref="EAID_233C330A_11B8_4705_879C_5497380F1D82"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_5E30A4ED_3B00_4d6f_9E87_116381889A97">
+								<UML:Multiplicity xmi.id="EAID_91FA2D6D_0B13_4df4_96E2_206C8A1DEC30">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_F7CA204B_885B_43e3_BC19_AC4BFB606B40" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_77C737FC_D8B9_41b0_9837_C26E656A1F0B" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_649CC2A3_074C_4754_81A3_DB63617A1963"/>
+								<UML:Expression xmi.id="EAID_E538DA0C_9ED0_4238_BF0E_C265A25B5F5F"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -338,14 +338,14 @@
 								<UML:Classifier xmi.idref="EAID_DD71FE93_4683_440c_8622_A8AA2EB44F6F"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_AC3B4114_12E9_42c4_A790_F2C3BCD85A08">
+								<UML:Multiplicity xmi.id="EAID_97B9C385_9A9E_480d_B9F4_35D718EA67A6">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_DA2CA196_D177_434a_A8AE_FBF34B0AD6E8" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_92FCB5D9_B4B8_4a9b_A9EC_491ABA9F29F0" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_B959D8CE_FED6_4215_992E_B385A242ECEB"/>
+								<UML:Expression xmi.id="EAID_2CFAA224_1BF6_48d6_9F3D_EB138A9B77BE"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -358,7 +358,7 @@
 				<UML:Comment xmi.id="EAID_5567A377_5F25_4983_8492_59C5F34B7B45" visibility="public" isSpecification="false"/>
 				<UML:Class name="IEEECigreDLLParameterInfo" xmi.id="EAID_5A5FF747_00CB_47c7_9B8F_BCA1A13590EF" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="dllDefaultValue" xmi.id="EAID_D30193C5_823E_4f2a_8EB5_BD5035B4425C" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -366,14 +366,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_0D667F0C_B73B_467f_AB3E_27AF627B1F69">
+								<UML:Multiplicity xmi.id="EAID_8F12CAC8_30F3_4d96_A628_2CB89B93A19D">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_1BEB7407_1FBB_4f0a_8DC7_6C0C2E874A75" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_3E808E4F_119D_4dad_B931_EE06FE07DFBA" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_EEA89508_7372_45ef_8C55_ACE768B763D9"/>
+								<UML:Expression xmi.id="EAID_03CC9569_ED17_4e71_B453_CBB400A40E68"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -382,14 +382,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_7597281D_EB70_4fef_A315_6C3F80CDE9EA">
+								<UML:Multiplicity xmi.id="EAID_9D7036F2_98BC_43f2_B3A7_990CCAC1E4A4">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_8C6AA297_E30E_4fb8_8D77_B03B5006706C" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_9B2A453D_BBFA_4f4e_B0CF_9456926AD738" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_A946692E_1F61_4783_A46F_A4699EA5B988"/>
+								<UML:Expression xmi.id="EAID_95389853_EC24_410d_86DB_1E5621DCE261"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -398,14 +398,14 @@
 								<UML:Classifier xmi.idref="EAID_9F8964F1_6C32_465b_A83D_F5A201A291C3"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_F84ACCB0_7AFC_483e_90B1_7E4B39901060">
+								<UML:Multiplicity xmi.id="EAID_188441D4_A6E3_40a2_9692_5BAA8D1D4C00">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_5E12F2DE_6385_461d_95CB_5B73615F3F6C" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_94518D07_5397_4c3b_BB74_4C068964D590" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_18625C93_6575_4c35_AE80_DF9EE9A40456"/>
+								<UML:Expression xmi.id="EAID_C73701AE_C534_4e43_833D_FD90CCBA17E8"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -414,14 +414,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_3849B544_9E9F_4568_864A_F0BC9E05BA0C">
+								<UML:Multiplicity xmi.id="EAID_74D3D8D9_A621_4c7a_AFC9_39126BAAB4AD">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_CC1C5804_CA3A_45f2_9C76_9380301E3CAF" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_B768A5D2_8011_4407_8F66_210363081AD8" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_1EDA5DC3_5D35_4177_BA22_ECFCDAC99D11"/>
+								<UML:Expression xmi.id="EAID_EBDDFD62_7321_4f2b_9BA3_AEF814634CDC"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -430,14 +430,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_44848E76_18B3_4d33_90A7_B61A4D429ACB">
+								<UML:Multiplicity xmi.id="EAID_3947468A_BC69_498d_BDEF_0F3257F249D6">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_1C77011E_DC9F_45d8_A8F3_CA4E864BD47C" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_751693E7_1601_4140_8B54_13BA2B4789F0" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_7AED0112_24AF_46d8_9AA0_6FEC35BA1329"/>
+								<UML:Expression xmi.id="EAID_BC827700_7BEC_4935_B18E_E2FE912CBF7E"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -446,14 +446,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_7B677C6E_B54C_4cb2_A857_62F88A6F31DA">
+								<UML:Multiplicity xmi.id="EAID_75D722A9_9A78_4b0f_9825_E397BB3EDEA3">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_98A13DD2_E0F8_418a_B2E1_6A5BAF908A2B" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_F84EECBE_788D_464d_924F_A274C29D1830" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_6BBADAF8_225B_4ec4_9659_914F3F6750BC"/>
+								<UML:Expression xmi.id="EAID_0B4457C7_AA9B_4829_9AA4_56B25BFD86B8"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -462,14 +462,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_33B9DAA0_01A8_4609_9778_6A86CF0C587B">
+								<UML:Multiplicity xmi.id="EAID_1CF74E6F_0656_4ea4_8081_0457D19D977D">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_AD7F11EB_6CDD_4515_A212_D0D2013FF287" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_11534388_8747_4e82_9FFA_60F123588763" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_EA4B50C9_439A_4776_AACA_56701A0E13A9"/>
+								<UML:Expression xmi.id="EAID_1172695E_6094_46e7_8B5F_8F7DE40157F9"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -478,14 +478,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_D335C35A_42AC_4b4e_A890_5D15245E6156">
+								<UML:Multiplicity xmi.id="EAID_1F5FDACC_913D_499e_879D_F4E2AFDF7E18">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_4B35CD14_52C3_4d0d_AD3F_0A11244C6007" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_09DC2CA3_945A_4dbd_A739_8E5D25B060FC" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_E16B2F70_4CF0_40fb_8E07_F9DF5CAF9F7D"/>
+								<UML:Expression xmi.id="EAID_DC1E17F1_5A6E_427f_B620_EC683B157BA2"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -505,10 +505,10 @@
 								<UML:Class xmi.idref="EAID_87EA71F2_114B_4dad_8692_E78C27AD3A12"/>
 							</UML:AssociationEnd.participant>
 							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue xmi.id="EAID_9AA7AB7C_3174_4961_982B_C77E06F0CDA6" isSpecification="false">
+								<UML:TaggedValue xmi.id="EAID_46899F8E_7090_4a74_BC44_C93AFB993B48" isSpecification="false">
 									<UML:TaggedValue.dataValue>Minimum set of attributes required to use this parameter.</UML:TaggedValue.dataValue>
 									<UML:TaggedValue.type>
-										<UML:TagDefinition xmi.idref="EAID_0EB82A08_F8D9_4cff_9576_5687CFC5ACFD"/>
+										<UML:TagDefinition xmi.idref="EAID_E7D8B313_D2C9_4d9f_9E9E_EBF7549238FE"/>
 									</UML:TaggedValue.type>
 								</UML:TaggedValue>
 							</UML:ModelElement.taggedValue>
@@ -525,25 +525,25 @@
 								<UML:Class xmi.idref="EAID_5A5FF747_00CB_47c7_9B8F_BCA1A13590EF"/>
 							</UML:AssociationEnd.participant>
 							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue xmi.id="EAID_8801AE18_502F_484d_8FF5_0F173F9A3F96" isSpecification="false">
+								<UML:TaggedValue xmi.id="EAID_A90459D3_8069_4d2a_9BD9_1DADFE2083B3" isSpecification="false">
 									<UML:TaggedValue.dataValue>Expanded set of attributes available from the DLL API.</UML:TaggedValue.dataValue>
 									<UML:TaggedValue.type>
-										<UML:TagDefinition xmi.idref="EAID_0EB82A08_F8D9_4cff_9576_5687CFC5ACFD"/>
+										<UML:TagDefinition xmi.idref="EAID_E7D8B313_D2C9_4d9f_9E9E_EBF7549238FE"/>
 									</UML:TaggedValue.type>
 								</UML:TaggedValue>
 							</UML:ModelElement.taggedValue>
 						</UML:AssociationEnd>
 					</UML:Association.connection>
 				</UML:Association>
-				<UML:TagDefinition xmi.id="EAID_0EB82A08_F8D9_4cff_9576_5687CFC5ACFD" name="description" isSpecification="false" tagType="String"/>
+				<UML:TagDefinition xmi.id="EAID_E7D8B313_D2C9_4d9f_9E9E_EBF7549238FE" name="description" isSpecification="false" tagType="String"/>
 				<UML:Comment xmi.id="EAID_6774354F_3A1A_42c6_8771_7CE0A61015C8" visibility="public" isSpecification="false"/>
 				<UML:Comment xmi.id="EAID_70BE4C77_7C67_4da4_918F_11E741E8FAF5" visibility="public" isSpecification="false"/>
 				<UML:Enumeration name="NthAmModelKind" xmi.id="EAID_71CCF873_FEF6_4c4f_A8E4_38D9FCEC1590" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_CA8D664B_F21E_4d91_AB25_3478ABDB9773"/>
+						<UML:Stereotype xmi.idref="EAID_B4121AFA_8ABF_4979_B313_5D09CD963B4C"/>
 					</UML:ModelElement.stereotype>
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_05851D05_450A_4222_9FE6_33A90CAF6FFD"/>
+						<UML:Stereotype xmi.idref="EAID_23733C6B_987F_4582_9116_CCF1D835515D"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="machine" xmi.id="EAID_2AF45ED0_BA0E_4299_AC64_9E5EC6E83160" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -551,17 +551,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_52303450_9198_4b77_8439_8821D41523F9">
+								<UML:Multiplicity xmi.id="EAID_33C3D051_4684_443a_B20A_DD07215E34C9">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_B5C4B4DD_C993_4faa_AD63_762030AAA48E" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_67A18D9C_5DCA_4d7c_BAA8_26FB84C15626" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_EC3DD98A_F93F_4a67_8A85_5FF3CF59C022"/>
+								<UML:Expression xmi.id="EAID_7E22689C_F092_4cb3_86A4_B6287D8791C8"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -570,17 +570,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_A5512AFA_5093_4831_9BAD_BEA938DD7978">
+								<UML:Multiplicity xmi.id="EAID_AFA810BA_A354_4e37_9799_8D22A416981B">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_98170C6B_3E62_4f96_9734_DDDB4931984A" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_85EB0F74_9F80_4455_8C4C_096A2D484531" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_5B23A4D6_8EFA_41fb_8AB6_CF451791F398"/>
+								<UML:Expression xmi.id="EAID_422AAB8F_700F_4974_A2A3_B2FD5528B02A"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -589,17 +589,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_A846D0A3_72D3_4f55_A063_42F1EB652187">
+								<UML:Multiplicity xmi.id="EAID_CA648EB1_CEB7_43a2_8298_74F20A6BEFF3">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_9F320A33_4C1E_4fd5_93FF_FC4B8A6B6B92" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_B03BC8F1_CE0B_4f53_8A00_3446F54B1FB5" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_FA39C859_F18E_4397_983F_13D9E8C572F0"/>
+								<UML:Expression xmi.id="EAID_3C9989A3_1A37_4554_9884_AA0F6A4AFCE7"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -608,17 +608,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_46CC83B4_6DDD_46bd_90AB_C0D68073ED79">
+								<UML:Multiplicity xmi.id="EAID_9595D267_782E_41e2_9C2D_17199E21F546">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_83013311_1711_4abf_AFCD_24CBB49702C6" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_B72539A3_D96E_42fa_A05E_C1A3FE6B332C" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_1D913E16_F28B_480f_A887_9FCE6140C2F4"/>
+								<UML:Expression xmi.id="EAID_FE28B385_F1E0_40ed_925C_F303B774E505"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -627,17 +627,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_8000C486_13E2_406a_90D5_3970D9B1C4BA">
+								<UML:Multiplicity xmi.id="EAID_895DA50A_A603_4e30_9678_4FEA4DFF2919">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_88D62739_5B5F_4629_9F32_EE10A089B847" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_0D9A10D3_741E_41da_915B_1CD13639B06E" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_BFF29ED7_91E5_48d8_94FA_45E163CECB60"/>
+								<UML:Expression xmi.id="EAID_F367CF37_7FED_4edb_A665_DE96142FD036"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -646,17 +646,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_065B79F1_6214_414d_A1D6_52A18D4697E5">
+								<UML:Multiplicity xmi.id="EAID_44E1E7A5_2137_468e_B928_CD2D945C23A8">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_4AC7EE38_04D2_4893_B8BC_4D719A13BF58" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_5C2A6F1D_BA54_4c4c_894E_92C329EB268A" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_303AE176_726E_4096_92A1_7DAA950C5B36"/>
+								<UML:Expression xmi.id="EAID_74276A71_8A54_4a12_931B_CF9B6805B53C"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -665,17 +665,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_ACAAB747_D648_410b_95E7_75D3B674DA78">
+								<UML:Multiplicity xmi.id="EAID_A4E4D53B_C36D_426c_9C31_9637086B8692">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_8438D0DC_26CB_47ec_A522_0B4C069FC110" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_B57698B7_72B7_486f_9A85_F75298134B1A" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_453D2120_4565_45f9_9B13_0144DE3DE3B0"/>
+								<UML:Expression xmi.id="EAID_77FFC2B7_5993_4915_A520_6CE7B055B1E9"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -684,17 +684,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_C3D28248_EB5F_4695_849C_0746E9767C2C">
+								<UML:Multiplicity xmi.id="EAID_B3CA60F4_ABA0_449c_9739_8FE9AD94AE47">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_60234665_18B4_4e52_85E5_99322FF032DE" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_CA048C80_53E4_4dc3_85E7_9B07C2009A58" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_4BC89104_B53D_4639_AAEF_453FD6CC424E"/>
+								<UML:Expression xmi.id="EAID_BEC45C34_A7B0_4acd_B1FD_785B56221DD8"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -703,17 +703,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_35B63609_3DD8_44e0_B319_E0339E12A0A8">
+								<UML:Multiplicity xmi.id="EAID_FBA40D1A_EC1A_4b1c_94ED_043BA020EC36">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_25B075A9_D07D_4e7b_86CD_2A987D68C469" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_4E1490FD_B567_4fbd_9FB4_A726F16B4135" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_50EE4DAF_0E83_49dc_A1F1_5A2215874BD8"/>
+								<UML:Expression xmi.id="EAID_2D457867_0FC2_4592_B293_02497411A309"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -722,17 +722,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_100DC526_6CEF_4161_8C73_6576D59A1872">
+								<UML:Multiplicity xmi.id="EAID_3FF70E36_A4E1_4a86_9C7B_A0BABF13C77B">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_9FD06E75_0A9E_4c7e_9BB4_7A382F9A391D" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_8DAAC132_1FD4_4b99_BBFA_9B3B422C9888" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_8C6E163E_8DB4_4fc4_8BB9_D75BD4A8BA4C"/>
+								<UML:Expression xmi.id="EAID_62779DE4_D201_4a49_AACE_BEA8C229D6C7"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -741,17 +741,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_CE592F12_939B_4ef2_94C5_DB94C3289D2C">
+								<UML:Multiplicity xmi.id="EAID_59B7C9E9_D7C9_4bb4_98E2_56CF3F66B9D5">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_7F298A37_D602_46fe_AE33_B356293C66EB" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_E3183450_42FA_47f0_B8B0_861B3B41A58C" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_EAC8D23C_C69C_40e2_B2CE_946EE3B3105A"/>
+								<UML:Expression xmi.id="EAID_2CE16113_9933_4f9a_B1D6_969D26A380EA"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -759,10 +759,10 @@
 				</UML:Enumeration>
 				<UML:Class name="IEEECigreDLLOutputKind" xmi.id="EAID_821F7B28_5215_496e_B03B_27C243409D68" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_383969D1_4F55_4edf_81DD_7A5D768CD32A"/>
+						<UML:Stereotype xmi.idref="EAID_115D525A_EA60_4e9c_B999_FBFB45B65F2C"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="activePower" xmi.id="EAID_5012E83C_13DD_42d6_ABD7_BE1C76047AD7" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -770,17 +770,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_B660676D_C65B_45dd_BF1B_35FDB1C0427F">
+								<UML:Multiplicity xmi.id="EAID_5273DB3B_2128_43ed_9929_E6AE85511E16">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_8D54FD39_D736_4b45_8B60_5546F3328B82" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_384112CB_ACF7_483b_8089_BE897C4E6260" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_E1EC1910_8A88_4069_950E_36BE26C9289E"/>
+								<UML:Expression xmi.id="EAID_A218925C_AD3F_43c8_9FB1_D26DFBC16E83"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -789,17 +789,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_0F24184F_83AC_45c6_86B1_4872A5C2D121">
+								<UML:Multiplicity xmi.id="EAID_49B8602A_EA0F_49ad_9F5E_6288DD393383">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_8F288952_6061_4c51_A42E_507E82B364D3" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_6CE5EA4B_36DF_4027_BBB8_10B06F2FB672" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_AF117D02_5D8E_4bfd_B4D3_41108E6A3BEE"/>
+								<UML:Expression xmi.id="EAID_AA1D9DD5_301A_42f8_80CA_B5080E4AFF51"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -808,17 +808,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_C016EE7F_D334_45f6_8661_AA1F24A013D1">
+								<UML:Multiplicity xmi.id="EAID_4CC36C65_9916_46c2_9188_E43867E6052A">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_5D657E8C_5460_4646_9B9E_0C6ED6A3173F" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_5657FF43_E4A3_4f16_B005_186D889E574B" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_7521D95A_C7A0_4903_97F5_E98931686F52"/>
+								<UML:Expression xmi.id="EAID_D7F06801_B5F6_4994_AD0B_FE48BA244F38"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -827,17 +827,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_EC34E952_6219_41d3_9690_722BA9474F3F">
+								<UML:Multiplicity xmi.id="EAID_82A82D1F_C434_4c6b_8023_25BD9EF5C018">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_4E968819_F9CA_423c_9284_9EDA023200B5" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_0863C102_ED67_486b_8256_56BAF94BA4FA" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_411ADBB9_92A7_4dac_94A8_60C414BAC9D4"/>
+								<UML:Expression xmi.id="EAID_0A5B7DB9_0BD5_45e2_A86A_1DE4AA771F8C"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -846,17 +846,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_AEC479D6_F884_4e45_B496_2045C6E42314">
+								<UML:Multiplicity xmi.id="EAID_1A93A8DF_BD02_4912_BAE7_07092645AF61">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_5393F315_B4AA_4451_B75A_A2087BB0DD7E" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_CB3CCB87_51D0_4312_A3D2_4C6AB678A349" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_FDA9BA6C_42F0_4b21_8DAF_C7704226FE54"/>
+								<UML:Expression xmi.id="EAID_700A05E3_B001_4f66_AE03_29FA25F0E573"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -865,17 +865,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_51FAEE48_744A_4aeb_9E6B_DB469084D883">
+								<UML:Multiplicity xmi.id="EAID_703EBC74_0AE0_42c7_B379_C78CDB8A541D">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_41CFA3CB_BC16_4a05_A8C1_4391E8E91390" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_7A7156E4_38CB_424c_816C_4592FEC55573" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_A0B3AF61_5A84_44ca_B616_856737AD68A7"/>
+								<UML:Expression xmi.id="EAID_CE83E7E8_80E8_41b0_B831_1910A42AC29B"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -884,33 +884,33 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_4B0FB96C_49D1_439c_815C_D46157E7540A">
+								<UML:Multiplicity xmi.id="EAID_D02F9A27_E57A_465d_8BDF_A61C7798C8BB">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_A6090CA1_7C39_4f2e_9601_AD43FD164A8E" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_4D10B4AC_2893_4f33_8E2A_C0075F0D1382" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_4666290E_A257_4e17_B8B5_4D56E7802871"/>
+								<UML:Expression xmi.id="EAID_5FAB793C_C817_4556_B87B_1B6E823A257A"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
 					</UML:Classifier.feature>
 				</UML:Class>
-				<UML:Stereotype xmi.id="EAID_383969D1_4F55_4edf_81DD_7A5D768CD32A" name="enumeration" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
+				<UML:Stereotype xmi.id="EAID_115D525A_EA60_4e9c_B999_FBFB45B65F2C" name="enumeration" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
 					<UML:Stereotype.baseClass>Class</UML:Stereotype.baseClass>
 				</UML:Stereotype>
 				<UML:Comment xmi.id="EAID_8271D14C_510B_49d6_AC80_3C8C2898A131" visibility="public" isSpecification="false"/>
 				<UML:DataType xmi.id="EAID_68F3A560_E3C8_422e_8A8A_D3464C8A967A" name="Emtiop" visibility="public" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:Class name="IEEECigreDLLInputKind" xmi.id="EAID_85B8E983_EE2F_403f_AB95_89512D2C9C9E" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_383969D1_4F55_4edf_81DD_7A5D768CD32A"/>
+						<UML:Stereotype xmi.idref="EAID_115D525A_EA60_4e9c_B999_FBFB45B65F2C"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="acCurrent" xmi.id="EAID_2E700AB0_3C46_4906_AE23_2E6559D218D0" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -918,17 +918,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_A1ED6532_3556_4eb6_BD6D_49FCEC0071BE">
+								<UML:Multiplicity xmi.id="EAID_4A342D63_C8DC_4155_B206_9968BC6A1942">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_3974487C_6180_4b90_A596_819E0F43EBD5" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_A139D24D_35A0_45c1_8066_7CE151CD07DD" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_7C7A00C3_B2D6_4e06_93CF_3C4F46B5EB99"/>
+								<UML:Expression xmi.id="EAID_FC41B545_EB9C_45ef_A5F5_265743C4D770"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -937,17 +937,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_D38653C8_AAE7_4e8a_B3B6_488D5B7B5AC3">
+								<UML:Multiplicity xmi.id="EAID_B815BD99_6070_4693_990A_42FE86840DDB">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_BCA4B327_F701_4c06_88E3_9971B02BEFCD" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_FC125155_4CF2_4b77_9554_67DEA0403FB9" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_8AE471EB_8835_448b_AC05_FFF2941F6CCF"/>
+								<UML:Expression xmi.id="EAID_5257567C_1D93_4676_A83B_F4964F26C66E"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -956,17 +956,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_7E2785B8_4645_4cc8_9381_B3B03D3F5F09">
+								<UML:Multiplicity xmi.id="EAID_BFC14D19_0903_43fb_968A_06B130C3BC9E">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_7D799B06_5AF1_4639_94D6_3757096D339A" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_96105970_3709_428d_B0DE_D80A2310D594" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_BE9F1C31_0B84_42cc_AA12_3BE2C59FF0E0"/>
+								<UML:Expression xmi.id="EAID_81521C92_4282_41f3_8EDD_93A068066D7E"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -975,17 +975,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_8EE24D0F_5041_4987_8362_2A702CF24381">
+								<UML:Multiplicity xmi.id="EAID_2639F53F_6BC7_4913_9A1E_083CF7B394B4">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_51D2269A_F7E0_4e1d_8E61_AE4EE7615E1B" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_E07CF62F_6473_4512_A17F_D516AEDC0966" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_FC68B48C_951C_442d_A7B6_AD818EC1C19C"/>
+								<UML:Expression xmi.id="EAID_16AC3577_6D4B_4c46_9D33_1FFB95287AC0"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -994,17 +994,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_DCDC2518_1C88_4263_847D_C29848243AA1">
+								<UML:Multiplicity xmi.id="EAID_5AA11F0D_8965_4010_BC93_DE97E0696583">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_76C1214F_4D62_4238_9618_8FE309620561" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_E7BAD50A_4C34_414e_B422_724846E2C642" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_18A00C11_108B_4a33_A7EC_43E5FF06FD4A"/>
+								<UML:Expression xmi.id="EAID_4307125A_FB43_49ef_99BC_99D43D5B47CB"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1013,17 +1013,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_201347B2_5834_4c93_B07F_978E388558BF">
+								<UML:Multiplicity xmi.id="EAID_313992D2_4CBF_4132_82D3_E8C707537D6D">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_56E8D6A5_2DBE_4ece_AF83_9BA81CFC03FE" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_7D443A3F_E9B0_4c7b_B285_D2B15D9B3A2C" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_EEDCE590_F6B2_4113_A9CE_E0269792F649"/>
+								<UML:Expression xmi.id="EAID_CAF36802_1C34_4a7d_A6AB_793F736CDBDD"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1032,17 +1032,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_DF24E56E_39C5_410e_A863_F36547F058B8">
+								<UML:Multiplicity xmi.id="EAID_C3993DCF_FFEC_4dc8_807D_8D17F8196485">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_3ED1F4CD_0F7E_4efc_9690_48FD82893065" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_DDCC1665_BE2B_48dc_9E2C_FE1DC26D20F8" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_9D677828_7189_4409_A6A0_B2170445C95B"/>
+								<UML:Expression xmi.id="EAID_4F3FDA66_4BA2_4492_89DC_2FE4D70FA470"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1051,17 +1051,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_F35FCE47_4D7F_4883_B6B0_9CA2A7469CBD">
+								<UML:Multiplicity xmi.id="EAID_FB636C2B_D7F5_4b50_A879_286CF292331B">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_FFF06609_8FB1_4f20_B87C_7974E621494F" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_471EB891_FC3D_4973_ADC4_94997F86FAE6" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_D1B65439_5523_4b8c_B8CD_EA902C98F10A"/>
+								<UML:Expression xmi.id="EAID_9FA7DA7E_D1AB_485c_8DFE_EAB930F5E47B"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1070,17 +1070,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_F1CFD66D_BFD3_45d5_8819_7C58C5A83E31">
+								<UML:Multiplicity xmi.id="EAID_4B195CEF_D2D7_422e_915F_FE49D3D8DA4E">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_9712A8DD_9379_40e0_AC20_2792219362A6" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_EF2A4D87_CE8B_4d11_8E8B_B8322A29BC90" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_4D114E5D_E5DB_4e4a_A27E_EDE1B8EB7113"/>
+								<UML:Expression xmi.id="EAID_178185A9_59E7_4916_A11B_12440F4E9302"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1089,17 +1089,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_2CF9FC08_4F34_4ea5_8560_6A3F322E2B35">
+								<UML:Multiplicity xmi.id="EAID_2CD78C2F_460A_4999_B455_B8CAD1AF4551">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_2F65B682_F647_438b_AE75_2F11191C7076" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_E77CC382_3FD2_414b_9444_DCECFAB7EFD9" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_2BEECB88_72D4_4b00_BB54_AA9278D06A9E"/>
+								<UML:Expression xmi.id="EAID_71629E7A_1889_4fe8_B5DB_515D1A59DF65"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1107,7 +1107,7 @@
 				</UML:Class>
 				<UML:Class name="IEEECigreDLLParameter" xmi.id="EAID_87EA71F2_114B_4dad_8692_E78C27AD3A12" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="dllParameterKind" xmi.id="EAID_083DDE7F_0C4A_4eb3_A900_06F6596D4FF6" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -1115,14 +1115,14 @@
 								<UML:Classifier xmi.idref="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_326B793C_944D_426b_935D_698C4E370395">
+								<UML:Multiplicity xmi.id="EAID_67C52766_50B0_46b3_B481_7B36AF9D0921">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_54619C18_07B7_4a77_9508_84BCB50CE015" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_4F7DF3C1_AF3E_4b09_AC02_8E4CFD324167" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_55DC34CB_2F00_4b25_BCCD_1F645F7AC005"/>
+								<UML:Expression xmi.id="EAID_0DA85D60_C779_4885_AA56_E57E06C3EBB9"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1131,14 +1131,14 @@
 								<UML:Classifier xmi.idref="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_C3652370_05F3_4226_A17B_2F40BBD7A955">
+								<UML:Multiplicity xmi.id="EAID_B317FC2B_0022_4e28_8098_2E9AA0F286B0">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_0B5D0037_F897_478d_8167_12D954B5A6BA" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_85A9266E_184D_4cf6_865F_930E32F3F963" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_2CC865FF_D702_4198_BA8A_CD1DDDA19ADD"/>
+								<UML:Expression xmi.id="EAID_53935E46_C129_4567_AB78_1B62E09A4395"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1147,14 +1147,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_2FAF533C_6FE2_4fb2_94B6_A6DE9A4AE780">
+								<UML:Multiplicity xmi.id="EAID_EBB6BC19_1D2C_40bf_87C4_9EDC40F1D2E1">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_D94092CA_D074_404b_A5B7_3BEDB57C1F3B" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_F3C32F35_C316_4ace_9489_A650292ED657" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_7C7D1320_40DB_4b17_9AF3_E1827756AC6D"/>
+								<UML:Expression xmi.id="EAID_003FF67B_7B47_416f_A5D2_937F10D07B8E"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1174,10 +1174,10 @@
 								<UML:Class xmi.idref="EAID_FE82DEC1_98ED_4d75_B9F9_082E4B494C70"/>
 							</UML:AssociationEnd.participant>
 							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue xmi.id="EAID_59025F31_460F_4c06_A983_9A0EAABB0E5B" isSpecification="false">
+								<UML:TaggedValue xmi.id="EAID_7B37935E_22CB_4052_9959_F783D84ECD4B" isSpecification="false">
 									<UML:TaggedValue.dataValue>The DLL associated with this parameter.</UML:TaggedValue.dataValue>
 									<UML:TaggedValue.type>
-										<UML:TagDefinition xmi.idref="EAID_0EB82A08_F8D9_4cff_9576_5687CFC5ACFD"/>
+										<UML:TagDefinition xmi.idref="EAID_E7D8B313_D2C9_4d9f_9E9E_EBF7549238FE"/>
 									</UML:TaggedValue.type>
 								</UML:TaggedValue>
 							</UML:ModelElement.taggedValue>
@@ -1194,10 +1194,10 @@
 								<UML:Class xmi.idref="EAID_87EA71F2_114B_4dad_8692_E78C27AD3A12"/>
 							</UML:AssociationEnd.participant>
 							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue xmi.id="EAID_1C8588C2_441D_42d7_B363_3191B4DF3F4E" isSpecification="false">
+								<UML:TaggedValue xmi.id="EAID_A83051BB_C6FF_404b_BDF1_AB886A55D102" isSpecification="false">
 									<UML:TaggedValue.dataValue>The set of parameters associated with this DLL interface.</UML:TaggedValue.dataValue>
 									<UML:TaggedValue.type>
-										<UML:TagDefinition xmi.idref="EAID_0EB82A08_F8D9_4cff_9576_5687CFC5ACFD"/>
+										<UML:TagDefinition xmi.idref="EAID_E7D8B313_D2C9_4d9f_9E9E_EBF7549238FE"/>
 									</UML:TaggedValue.type>
 								</UML:TaggedValue>
 							</UML:ModelElement.taggedValue>
@@ -1206,7 +1206,7 @@
 				</UML:Association>
 				<UML:Class name="PowerElectronicsConnectionDCTerminal" xmi.id="EAID_894AFF31_07B8_423a_AFB9_E5F054714594" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="polarity" xmi.id="EAID_B665A31D_1C2F_4af6_B2A3_A040BFC261C3" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -1214,14 +1214,14 @@
 								<UML:Classifier xmi.idref="EAID_09086925_F185_4228_AD42_A487DE5FC8C5"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_C563123B_C3D3_408b_8DB0_9EAD19A80EBF">
+								<UML:Multiplicity xmi.id="EAID_FB893902_A401_492c_971E_6186B91A047C">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_F48F4B13_7638_4be0_AEDD_A1516AEFCDCA" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_12C7C3BC_334C_4e2a_B805_513B74086BC7" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_FA08CFBF_03EF_4c6f_9807_2F7314393EC0"/>
+								<UML:Expression xmi.id="EAID_31B8FBE3_5C91_492b_A107_D39071E0B467"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1234,10 +1234,10 @@
 				<UML:DataType xmi.id="EAID_AEF4A2AB_D126_4311_B299_CAB7D826A16E" name="PowerElectronicsConnection" visibility="public" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:Class name="IEEECigreDLLParameterKind" xmi.id="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_383969D1_4F55_4edf_81DD_7A5D768CD32A"/>
+						<UML:Stereotype xmi.idref="EAID_115D525A_EA60_4e9c_B999_FBFB45B65F2C"/>
 					</UML:ModelElement.stereotype>
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="Char_Val" xmi.id="EAID_C758A914_85B1_4ce5_9844_4AFDB305ED73" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -1245,17 +1245,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_1A621755_5905_488b_9146_7D083EC1EBB0">
+								<UML:Multiplicity xmi.id="EAID_6291CCA3_45BB_4cb9_9B7C_73FFFF9F224F">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_7D17DC92_3149_4b80_8D30_99B91618DFE6" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_64383EBD_9AB5_4a07_86AC_E45D40767308" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_5E0B8430_D0CD_4431_89F5_5ED6292DD23B"/>
+								<UML:Expression xmi.id="EAID_B35AB11F_E593_4882_B207_4D765C024B41"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1264,17 +1264,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_97262FE1_13FE_4fd1_A74D_DCEBEDC2C3E1">
+								<UML:Multiplicity xmi.id="EAID_9008E5FF_8327_4a46_94D0_40FAC366D653">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_88D40A77_0869_41ab_8B11_AFD7EA3112F0" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_EF35CC4A_94AA_44f4_8D2F_67AB21A31053" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_28836D97_59EF_4e9a_979E_545CF3663325"/>
+								<UML:Expression xmi.id="EAID_5975461B_16FA_414a_986F_C27290766702"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1283,17 +1283,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_E472FE82_20C6_460d_95B3_16119EE586B3">
+								<UML:Multiplicity xmi.id="EAID_4924B8B1_E899_49e5_8B10_C5197BC1088B">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_C1E87E67_1B1B_4075_A372_F9CCEF1BFD2C" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_66842905_D851_4aef_A372_109CB0F6299C" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_A29F5D85_0530_4597_A5E2_9E43044D41B9"/>
+								<UML:Expression xmi.id="EAID_DF77A2F2_6528_4748_9C25_0978A3CA1A6C"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1302,17 +1302,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_C4781424_A0F9_4f8a_97EA_381C1C4C838A">
+								<UML:Multiplicity xmi.id="EAID_4BBDE026_2188_4c4e_AE53_897287A1B77D">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_3E29C042_2B2E_4ea2_8CD2_6CF74AB4EA7B" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_89BA98F6_1612_40b3_9C1F_117E79D89D46" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_A90E20DC_09D6_4ee1_954E_604C42AC5BB7"/>
+								<UML:Expression xmi.id="EAID_64762B06_3975_4a06_B60D_9801C8777E31"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1321,17 +1321,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_86365C17_3A50_40e3_86B7_F7278F90C6B7">
+								<UML:Multiplicity xmi.id="EAID_A7621E79_D50E_4a39_AE44_3893DE7A4FA1">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_EB0059A3_BB1A_4aaf_8023_F295BEB472DE" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_635153F6_EDB4_41a0_8DDB_5FC24AC20577" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_8B3C698C_A6C9_45e8_A430_E0B259653C4D"/>
+								<UML:Expression xmi.id="EAID_321E1F7E_F266_4083_8778_7E619B076A6F"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1340,17 +1340,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_77806E29_8C85_4aa6_A4B7_FEA9869B3458">
+								<UML:Multiplicity xmi.id="EAID_FE915B19_6B15_46b6_9C3D_94A0D095A206">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_2F483BD7_A246_4a52_8DF6_9F70E3D0AE0F" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_E032173A_A30D_47f2_A1AF_B6BF221EA0DC" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_F2E62042_E609_4702_9911_508A074025E7"/>
+								<UML:Expression xmi.id="EAID_07F779B3_B7AA_4643_B7D4_AA3EC42BB7A7"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1359,17 +1359,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_DA462C37_72E4_4485_AC3E_B0ABBFDD78E1">
+								<UML:Multiplicity xmi.id="EAID_659ADAB1_C5C5_451f_85CD_DB9931A8A290">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_E32C11DA_0186_4021_900D_07AEF278D89E" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_F7B866FB_485C_47e2_9C63_4846603301C8" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_F8B92463_678B_4cf5_9278_F31ED2B96054"/>
+								<UML:Expression xmi.id="EAID_28FC373E_3BD8_412f_8E06_9A421CA494CE"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1378,17 +1378,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_420E88B3_94C4_4490_A320_66D42EC8D0F3">
+								<UML:Multiplicity xmi.id="EAID_48C18467_9893_424c_AFB1_C80C1637BC96">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_8B5A3CF5_BCE5_463d_830C_41D454BE2555" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_E7787BA4_C381_4f82_9D21_DF0429C4191F" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_49061DB9_5D7F_44d5_9EDB_7654C8DD875E"/>
+								<UML:Expression xmi.id="EAID_E55FD982_1FF1_4704_94D6_ABB6BA6B4AFC"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1397,17 +1397,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_4BD071FC_7492_48b5_ABD2_D5634E15F50B">
+								<UML:Multiplicity xmi.id="EAID_BA01A732_EDDF_46fa_B35C_94A159206B2D">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_F82F601C_45C3_405d_8C6D_D84D02F5BD59" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_0D543711_A3EB_41d9_8814_B7016BE219B6" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_8E02129C_E83D_4aa1_A6BC_4F503D190241"/>
+								<UML:Expression xmi.id="EAID_4A735E6D_6C5A_468e_878E_395E95A153E5"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1416,17 +1416,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_0BE12325_B975_4ff0_9A2F_43EBEBDB1B97">
+								<UML:Multiplicity xmi.id="EAID_6733C5A1_B184_4855_A6AF_87992A9F293A">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_DB7F98EF_8A54_438c_A14F_504129A19B47" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_C4B06330_59E8_40bc_BF77_FC80DD6873D1" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_0056C6E1_D087_431b_B794_A77EF18A2ADD"/>
+								<UML:Expression xmi.id="EAID_1B1ACFBB_D8EA_4261_A7D4_1C227D2FE512"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1434,7 +1434,7 @@
 				</UML:Class>
 				<UML:Class name="IEEECigreDLLSignalInfo" xmi.id="EAID_9180E087_921F_4fd5_9987_AEDF3001A7F9" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="dllDescription" xmi.id="EAID_8BB34984_439A_4d30_838D_AF4019876F0D" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -1442,14 +1442,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_2E029CCC_1ABA_44a3_A9E6_9C53679F4E25">
+								<UML:Multiplicity xmi.id="EAID_C614AEAB_EFDE_4665_98CD_0E2FDD6ACFC7">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_CBB89580_2ABB_468f_AB8A_65DC1BCD5538" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_D69EC42B_F2B7_409b_9C47_F9475C45C287" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_2353B3A0_803B_4da8_B4D2_CE9CC652BAFE"/>
+								<UML:Expression xmi.id="EAID_E204B327_FF0C_49f7_A64A_C406051DCA69"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1458,14 +1458,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_375F7FB1_9E4F_4bfe_900A_BCAD00D0D9FC">
+								<UML:Multiplicity xmi.id="EAID_22C7C295_563F_42a4_9A07_D472FA5CCF5A">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_13D92D03_3B8A_45df_88F6_DA425ACC8C39" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_E030CF1D_EA2F_4c15_876C_833E73A5556C" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_BAB2588C_2DE1_436b_B31B_23168906F932"/>
+								<UML:Expression xmi.id="EAID_DA8F7A31_640A_4af2_81ED_462F20A7E522"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1485,10 +1485,10 @@
 								<UML:Class xmi.idref="EAID_9C01A523_ED17_437d_9E28_AC7CFAB911DB"/>
 							</UML:AssociationEnd.participant>
 							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue xmi.id="EAID_2C259C8A_BADF_414b_AE07_C12AECE86245" isSpecification="false">
+								<UML:TaggedValue xmi.id="EAID_6791FE43_CF50_45cd_A475_5F9601779993" isSpecification="false">
 									<UML:TaggedValue.dataValue>Minimum set of attributes required to use this signal.</UML:TaggedValue.dataValue>
 									<UML:TaggedValue.type>
-										<UML:TagDefinition xmi.idref="EAID_0EB82A08_F8D9_4cff_9576_5687CFC5ACFD"/>
+										<UML:TagDefinition xmi.idref="EAID_E7D8B313_D2C9_4d9f_9E9E_EBF7549238FE"/>
 									</UML:TaggedValue.type>
 								</UML:TaggedValue>
 							</UML:ModelElement.taggedValue>
@@ -1505,10 +1505,10 @@
 								<UML:Class xmi.idref="EAID_9180E087_921F_4fd5_9987_AEDF3001A7F9"/>
 							</UML:AssociationEnd.participant>
 							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue xmi.id="EAID_060608AA_9C3C_4b94_89B5_494626AD60E8" isSpecification="false">
+								<UML:TaggedValue xmi.id="EAID_AF739DBA_BC37_4b03_9986_F2D84D3379F7" isSpecification="false">
 									<UML:TaggedValue.dataValue>Expanded set of attributes available from the DLL API.</UML:TaggedValue.dataValue>
 									<UML:TaggedValue.type>
-										<UML:TagDefinition xmi.idref="EAID_0EB82A08_F8D9_4cff_9576_5687CFC5ACFD"/>
+										<UML:TagDefinition xmi.idref="EAID_E7D8B313_D2C9_4d9f_9E9E_EBF7549238FE"/>
 									</UML:TaggedValue.type>
 								</UML:TaggedValue>
 							</UML:ModelElement.taggedValue>
@@ -1517,7 +1517,7 @@
 				</UML:Association>
 				<UML:Class name="DCEnergySource" xmi.id="EAID_9194F924_D270_478e_8AC6_4A247A14D286" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="kind" xmi.id="EAID_E0225689_BC52_4c5f_88F8_FC91D71CC648" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -1525,14 +1525,14 @@
 								<UML:Classifier xmi.idref="EAID_1140B936_8410_45ba_84B9_2EB84B4C8FE6"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_5D70CB0D_7235_4893_B065_0DFC88A04C71">
+								<UML:Multiplicity xmi.id="EAID_0C561262_8A0D_442f_9060_46A5897B054E">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_488947B2_5742_4f22_8397_591B1503093F" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_32D09ABD_7F59_4de0_AEA7_9AEA23C03433" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_B29B8BB7_D27E_4d8c_A215_9F4E2D56F8C5"/>
+								<UML:Expression xmi.id="EAID_2F7BBE46_A553_4f96_930B_534B344A39BD"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1541,14 +1541,14 @@
 								<UML:Classifier xmi.idref="EAID_E52EDC2D_8972_42c7_A7EB_D8C017E138A4"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_D980F261_A902_4ace_BA37_8071CF2028E9">
+								<UML:Multiplicity xmi.id="EAID_5D91F555_F73D_4730_AC01_767E86086647">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_A689272A_FD97_4b0a_A874_532DEF34DAE7" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_4854F09B_EC7B_4124_AEE3_184669C82700" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_FCF205DE_53FD_4fd2_B644_A6E8CA21C476"/>
+								<UML:Expression xmi.id="EAID_A46C9560_1E53_4b2e_B5AD_BA03FFA0DD92"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1557,14 +1557,14 @@
 								<UML:Classifier xmi.idref="EAID_E52EDC2D_8972_42c7_A7EB_D8C017E138A4"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_81AAF665_744D_4a23_B991_D16EF74930D9">
+								<UML:Multiplicity xmi.id="EAID_C24579DF_9163_49a1_86BD_A468B5A0236E">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_3985F4D1_31AC_489c_A5EA_9F7A1BD89826" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_27522399_EC66_4f70_9A51_6D0BA3BD7D97" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_6B649CBB_3E05_4e5a_9538_7B4897FCBE23"/>
+								<UML:Expression xmi.id="EAID_3A13AB89_FDED_41b2_B3FE_40537FAD95CD"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1573,14 +1573,14 @@
 								<UML:Classifier xmi.idref="EAID_E52EDC2D_8972_42c7_A7EB_D8C017E138A4"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_611DF2F6_E2F9_45f3_93C2_95A0F9FDB3A6">
+								<UML:Multiplicity xmi.id="EAID_4BDD9DB9_6084_40a0_8B46_3DE92CF4BCD9">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_F4575868_6F3F_4197_93CB_BB0BF9E9749F" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_39459CB9_7450_4fd6_B8B0_F22219D98F78" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_1BE0D619_30D3_4003_8CEE_98808701F713"/>
+								<UML:Expression xmi.id="EAID_64FFD5A7_29A4_41ad_95AC_8AF31E095410"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1589,14 +1589,14 @@
 								<UML:Classifier xmi.idref="EAID_E52EDC2D_8972_42c7_A7EB_D8C017E138A4"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_284A7EDB_FC64_4376_A977_7CA26FAE46E5">
+								<UML:Multiplicity xmi.id="EAID_504D9485_0C5A_4f97_B918_94878C9E3F87">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_F9D8BE54_3443_4192_9663_84BB39A572B9" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_8473B694_842E_4dc6_9A6A_ECB8C4E37ACF" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_574F1D55_A884_4837_8266_D1C09AD37727"/>
+								<UML:Expression xmi.id="EAID_419D23AD_3D13_46d0_A2A2_B3AC48BC8C4A"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1605,14 +1605,14 @@
 								<UML:Classifier xmi.idref="EAID_E52EDC2D_8972_42c7_A7EB_D8C017E138A4"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_B4A537A4_D1FA_4453_ACA8_65335F44DA25">
+								<UML:Multiplicity xmi.id="EAID_3E7FE869_1583_4054_807F_C664946D8231">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_106D4191_9068_4d9c_B917_CF3EA28FA3DC" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_9CBF0484_3983_4270_9D37_94BC69A5C188" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_0A1FBA08_46C7_4c4e_8293_9E14136D6FB9"/>
+								<UML:Expression xmi.id="EAID_C61D2074_D658_4e48_AF0B_1DEA61A10553"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1621,14 +1621,14 @@
 								<UML:Classifier xmi.idref="EAID_EDB281E6_BBB4_438d_953B_7D746CAF55B5"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_FEF854EC_B850_47c9_8003_C784ED990A61">
+								<UML:Multiplicity xmi.id="EAID_99311C37_672F_4078_A936_C8746F37547A">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_C44503EB_3646_4096_B95A_A01A6D9FD32B" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_332C69B4_4921_4e5c_8588_E5C79C37147A" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_B7E4B8BA_584E_46c0_B9F2_18AEBFFAE63C"/>
+								<UML:Expression xmi.id="EAID_663B188C_BF5A_40c4_A9B3_64B3E3AA44D1"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1637,14 +1637,14 @@
 								<UML:Classifier xmi.idref="EAID_EDB281E6_BBB4_438d_953B_7D746CAF55B5"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_273A560B_863C_43ac_8A32_6E3C98264137">
+								<UML:Multiplicity xmi.id="EAID_4E3765D1_D77C_4d34_80B3_3029B7EBC3A3">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_55A317F3_06C2_4ab5_B780_8455B8D0AE82" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_76D85D65_2A15_4bd8_A669_A970BBD0D165" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_4514118E_C998_4405_A054_5BE773F2500B"/>
+								<UML:Expression xmi.id="EAID_D51BEC94_1541_499a_B293_FDC585C07668"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1656,7 +1656,7 @@
 				<UML:DataType xmi.id="EAID_2D8739A1_0186_49f3_8C35_04EDE046E614" name="DCConductingEquipment" visibility="public" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:Class name="IEEECigreDLLSignal" xmi.id="EAID_9C01A523_ED17_437d_9E28_AC7CFAB911DB" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="dllName" xmi.id="EAID_4047689C_E8A8_487f_9B1C_4D5CB61DE713" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -1664,14 +1664,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_789EC380_4265_4012_9BB7_E1B757161607">
+								<UML:Multiplicity xmi.id="EAID_93AF9CA4_EA87_490c_9A7D_7C73430DDD97">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_7E4A2D2B_BAAD_47f6_A005_664F4096CB20" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_69342A6E_E96D_4d3c_A91B_C1561FB5B07B" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_55131733_6A3D_4649_A906_EBA038611FE9"/>
+								<UML:Expression xmi.id="EAID_A2EF712F_F9D9_448c_97A6_BB4B744DD482"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1680,14 +1680,14 @@
 								<UML:Classifier xmi.idref="EAID_8A4C296F_C2FC_4c7d_8ECC_EE048DD0356B"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_972DAF9B_2654_428c_8835_4DCFF940E7A1">
+								<UML:Multiplicity xmi.id="EAID_42264D11_917A_40d6_8B57_494D28636497">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_5620A7EE_419F_486e_AC9F_3C1CA24C3FCE" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_E70001AC_B025_4949_A6C3_7BAF7EC2CFCC" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_BE6B62D4_4D84_45c4_89A6_7E03FCBDF9BB"/>
+								<UML:Expression xmi.id="EAID_B607BCB2_85D3_4758_9B58_C9636F7B9DA1"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1696,14 +1696,14 @@
 								<UML:Classifier xmi.idref="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_1EAAF120_0763_4c8a_9606_72BF009D87CD">
+								<UML:Multiplicity xmi.id="EAID_128521C7_5C7C_487b_B31D_39E400814C11">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_921D4111_B8F2_4b17_85BA_4533EB30CE22" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_2F04BA17_51E9_43ad_B793_AD78CA6ED270" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_D8F08B2D_A2BF_4758_89E8_5039838A9076"/>
+								<UML:Expression xmi.id="EAID_5250764F_DC07_404e_B5E3_565CC5ACCD37"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1712,14 +1712,14 @@
 								<UML:Classifier xmi.idref="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_0B84E1D8_53E7_4452_9BE0_F9FBD935588D">
+								<UML:Multiplicity xmi.id="EAID_6831BB15_434C_4bab_9985_AE0D26DD68E0">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_3AEEEFAE_8A1E_40c3_94A6_759E87BCB299" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_D7BBBE44_07F4_48c5_B368_172DDEFCF149" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_F115DEE5_8BF3_4333_AFD6_3131A54D06ED"/>
+								<UML:Expression xmi.id="EAID_106D83B7_9C3D_4fa3_AB33_0828E622CCE6"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1728,14 +1728,14 @@
 								<UML:Classifier xmi.idref="EAID_DC62CC93_2E3F_4b9c_9C81_C84C30A6C67D"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_5E228286_FA6E_4b37_ACB7_459DE58B8F0B">
+								<UML:Multiplicity xmi.id="EAID_02061522_2366_4f40_AB0F_5A664439D878">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_3CE431E7_FF7C_4842_9B51_14862D6DBF39" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_4BC25DCE_2852_4f8b_AD5F_FBFBDCFFA4D0" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_AF101F11_C247_4867_A79E_D8D4524BCDEB"/>
+								<UML:Expression xmi.id="EAID_AC61A4F8_C34E_4791_9F01_9F78204E3E65"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1744,14 +1744,14 @@
 								<UML:Classifier xmi.idref="EAID_0AD52D65_4270_45c1_9AF4_29C53A398AE3"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_BFAD8E74_6885_4ab4_9DDE_A77476EA1D65">
+								<UML:Multiplicity xmi.id="EAID_B491F372_8AC9_4d10_84E7_6C50CD187469">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_DCB1D777_6A7C_4c35_8F39_069D1C819CC4" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_3840281C_4E3E_49d8_9054_62EB16127890" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_8134502B_FC14_4652_A367_9E2C7A27F06A"/>
+								<UML:Expression xmi.id="EAID_71328E35_E6FC_418f_9DD3_493924878D88"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1760,14 +1760,14 @@
 								<UML:Classifier xmi.idref="EAID_80012160_A038_43b5_BA6F_9862E525518C"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_062FFC19_6A8A_4200_B6C9_A3A82F6629BF">
+								<UML:Multiplicity xmi.id="EAID_8C848717_932E_43ea_A1F8_7737460B2C62">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_48FFF35D_27F9_4311_8902_D0610FBCB0A7" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_A6BE0A17_C1CD_4ab2_9BDD_DB16D24BE26D" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_904D7AD3_270A_47bf_BF93_46D9E42DEA6C"/>
+								<UML:Expression xmi.id="EAID_AEFE84B8_9850_4857_AA9C_5D4A2933D794"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1781,7 +1781,7 @@
 				<UML:DataType xmi.id="EAID_203CCDC9_3887_4e57_8C59_B429AADB60F6" name="DCNode" visibility="public" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:Class name="IEEECigreDLLInfo" xmi.id="EAID_9C43719A_771A_459c_950E_2368D8836371" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="dllGeneralInformation" xmi.id="EAID_54E9CDB9_F4DB_4278_B41D_A7585B10C97E" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -1789,14 +1789,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_711BF87E_A2B4_4ccc_BE08_8BDD711EDAE6">
+								<UML:Multiplicity xmi.id="EAID_1213CEC3_8820_4d34_9245_B82E865B9616">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_105BB51C_83BB_499b_AC1D_C2DA2D221340" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_5CC77197_8872_4bac_B48A_D124569B3151" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_55EADDCC_C9B5_4ce8_AC6A_488E1F20F300"/>
+								<UML:Expression xmi.id="EAID_6B384E1C_C56B_4100_B552_ED714D6D5BE8"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1805,14 +1805,14 @@
 								<UML:Classifier xmi.idref="EAID_EEAE6E83_944C_489c_8E25_CFB85F80C3EB"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_67886033_ED7D_49d3_BB38_97A08C45A37A">
+								<UML:Multiplicity xmi.id="EAID_0FF5BD48_F553_4a50_9626_9B99BCBA2CAD">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_9E4D706E_13B7_4925_8341_B01210017E97" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_48B4B13D_6A9D_4327_9350_303046310F36" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_059D276D_3B84_4404_BDA6_01A3B1511035"/>
+								<UML:Expression xmi.id="EAID_4A268D29_077C_4933_AAFA_0F948C93052F"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1821,14 +1821,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_B577D98C_38D6_4583_BAC4_2ACBA9523497">
+								<UML:Multiplicity xmi.id="EAID_E50C0237_387C_48fd_AA6B_DDC05B108CEC">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_5FCBC38F_CFB7_4fd5_86CB_DEA039CF163F" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_6C9F5647_99FC_4d5e_AB54_5B0C814A46CD" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_BA565F1C_CAD2_4699_94AD_8ED023A1C87A"/>
+								<UML:Expression xmi.id="EAID_024B8CED_3573_4dc3_ABBB_263CC3CC2CB2"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1837,14 +1837,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_858430F8_7210_4173_B4DF_D21B27E372CD">
+								<UML:Multiplicity xmi.id="EAID_42B177EC_D8BF_4adc_A283_D30CAD6C0D64">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_AF3B143C_9FCE_46a3_BDB1_DB6F2647DE52" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_5C8F59D7_45CE_4537_A0F0_DE39558A0020" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_813DAA6F_C4EE_41cf_989D_19DF20808DF5"/>
+								<UML:Expression xmi.id="EAID_913036BD_9C19_42a6_91BA_BD1CCF6674D1"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1853,14 +1853,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_30189550_5605_4513_B3A3_60216EE31733">
+								<UML:Multiplicity xmi.id="EAID_2E53B201_EE85_45ce_B573_AFEB2E3AB33F">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_8B72D332_C014_4f24_AEEB_6607F485B6C7" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_56C0FEDD_3605_4a8f_933C_0F3D3F8D5AF6" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_C7CC3704_30E0_4f8a_B55A_0EAB3E7E36A9"/>
+								<UML:Expression xmi.id="EAID_CF1BA6EC_C384_43af_91F1_9BB3A1AE46F2"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1869,14 +1869,14 @@
 								<UML:Classifier xmi.idref="EAID_EEAE6E83_944C_489c_8E25_CFB85F80C3EB"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_86939E9D_0774_492b_B2BA_76B17AB16CE9">
+								<UML:Multiplicity xmi.id="EAID_B88663FB_9C9A_4725_B6AC_5002940827FC">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_603DF086_FE14_4ea7_BDEE_F0105338ADDB" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_9EF4F08A_1393_44d8_AF9B_CA091D65E486" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_705C3D18_605F_4568_8249_6A897F1DA8E6"/>
+								<UML:Expression xmi.id="EAID_1F9A078B_3C1C_4a3c_B291_414B8CE9229B"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1885,14 +1885,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_7E51C60E_7CBC_4ef4_ADCA_DEF93BA9F483">
+								<UML:Multiplicity xmi.id="EAID_E5BD47E7_6767_4cb6_99E5_D128D9F38249">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_7585A015_1510_438b_9D62_1E25F067CD82" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_9EDA4697_36B8_4d69_839D_4E4AAFD7198D" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_15BDB1D9_BD83_414d_A06F_30846932030C"/>
+								<UML:Expression xmi.id="EAID_ED5BA499_759D_4441_A300_339DFF7C581D"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1901,14 +1901,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_0B6483E9_2216_495d_875A_D1432D04DCD9">
+								<UML:Multiplicity xmi.id="EAID_CCB4993C_83E6_4331_AA3F_42A4804C3746">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_CB655980_AC48_41dc_AC19_C9356E28046B" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_32EF0FD0_B672_434e_88C8_43B9997741FE" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_881E3166_1612_4b96_8E2B_52FF178C2232"/>
+								<UML:Expression xmi.id="EAID_F1E62484_3B09_46bc_8B32_E96306410F89"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1917,14 +1917,14 @@
 								<UML:Classifier xmi.idref="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_A2FAB8A3_D45A_4586_B410_06A99228EC50">
+								<UML:Multiplicity xmi.id="EAID_379B71FA_8ED3_4780_9347_45C34CABB4D4">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_1B1B2F0B_C0B1_48ff_B081_31F065FB0C02" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_24536B38_EC22_4c08_B326_916169CB0679" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_887E7FE2_10FA_41b3_8068_7B537A644547"/>
+								<UML:Expression xmi.id="EAID_1FCD7091_CA3A_45ce_9BD6_E91AF21FFFB3"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1933,14 +1933,14 @@
 								<UML:Classifier xmi.idref="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_AA2C7768_2476_4bad_A58C_D96B3C538645">
+								<UML:Multiplicity xmi.id="EAID_EE543EAD_45DB_4b43_A1E8_6E66D47F597D">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_43C3CCBB_DED4_4d88_AE02_2CC06A5A126C" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_CE19F028_ACDE_47a0_A710_CF702B19526D" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_DCDAA1C8_EF2C_4f58_A56A_E56512753B54"/>
+								<UML:Expression xmi.id="EAID_9976BD30_8BAB_40a1_9D47_242CAB89680A"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1949,14 +1949,14 @@
 								<UML:Classifier xmi.idref="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_1C0E8A55_7E5B_450b_9DF2_896FCBBEA5B4">
+								<UML:Multiplicity xmi.id="EAID_DBA64EB2_21CD_46fa_88DE_85DB0A9405AC">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_61B3A498_2049_4c85_A8E0_382CC533620A" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_79A0D2B8_902D_400f_9ED8_A4F22B81060D" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_C63900B7_5597_4407_A192_D6D51D727B4C"/>
+								<UML:Expression xmi.id="EAID_0CA6B20A_D763_4807_8121_76FA7B62135F"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1965,14 +1965,14 @@
 								<UML:Classifier xmi.idref="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_BD4E177D_3A34_4bde_92BA_807D755F0AD2">
+								<UML:Multiplicity xmi.id="EAID_47109F38_7D35_4b34_82FB_F618944DDF7C">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_D1A16755_D224_495d_9574_B2A978379017" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_DBA42D4C_0CFC_4ee5_8D53_141EAB69369E" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_52184C98_5898_4b7e_945B_CC33D8FC63F4"/>
+								<UML:Expression xmi.id="EAID_104F8B22_193D_4556_BBA0_DADA3D7FAC04"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1981,14 +1981,14 @@
 								<UML:Classifier xmi.idref="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_47CFDF01_8B68_4b9a_9A29_0B3064C55CF9">
+								<UML:Multiplicity xmi.id="EAID_35CF57A4_952A_4340_8F1C_3732B537B6F8">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_735E1D8B_0BFF_4661_A4A2_C9221B82A89A" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_A64F0AC8_238C_467d_8726_C1BC040F4B46" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_507F8593_462B_40ed_BE43_AF51EE48FBD8"/>
+								<UML:Expression xmi.id="EAID_27C9A742_B935_484e_B189_D22C6A167EB8"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -1997,14 +1997,14 @@
 								<UML:Classifier xmi.idref="EAID_5F6B613B_C31A_4476_8050_E600FBD5F789"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_364A1803_6287_4cbf_81F6_9B88C6863960">
+								<UML:Multiplicity xmi.id="EAID_8C3CB529_EA53_48ae_ACDC_69435DCBBDD2">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_4A8A3E30_79FD_43c4_9BFA_CF1C2E4A6550" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_EAAB4B65_73AB_4ed3_BB5D_3405E23ED75F" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_BCF386F0_B08C_4016_9B56_70B4E6176728"/>
+								<UML:Expression xmi.id="EAID_A8A2462D_DDF2_4b09_A0EC_C3DA0A76D2F9"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2024,10 +2024,10 @@
 								<UML:Class xmi.idref="EAID_FE82DEC1_98ED_4d75_B9F9_082E4B494C70"/>
 							</UML:AssociationEnd.participant>
 							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue xmi.id="EAID_B2BC196F_679F_49a6_AACE_6E3E7131F615" isSpecification="false">
+								<UML:TaggedValue xmi.id="EAID_87E9624D_3689_4cf1_88A6_3AF064797F0C" isSpecification="false">
 									<UML:TaggedValue.dataValue>Minimum set of attributes required to use this DLL.</UML:TaggedValue.dataValue>
 									<UML:TaggedValue.type>
-										<UML:TagDefinition xmi.idref="EAID_0EB82A08_F8D9_4cff_9576_5687CFC5ACFD"/>
+										<UML:TagDefinition xmi.idref="EAID_E7D8B313_D2C9_4d9f_9E9E_EBF7549238FE"/>
 									</UML:TaggedValue.type>
 								</UML:TaggedValue>
 							</UML:ModelElement.taggedValue>
@@ -2044,10 +2044,10 @@
 								<UML:Class xmi.idref="EAID_9C43719A_771A_459c_950E_2368D8836371"/>
 							</UML:AssociationEnd.participant>
 							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue xmi.id="EAID_1E6B25A2_4BF9_4dc1_BBDC_5E81001B7176" isSpecification="false">
+								<UML:TaggedValue xmi.id="EAID_16620987_93A0_43c3_81E6_27BF6CB8A916" isSpecification="false">
 									<UML:TaggedValue.dataValue>Expanded set of attributes available from the DLL API.</UML:TaggedValue.dataValue>
 									<UML:TaggedValue.type>
-										<UML:TagDefinition xmi.idref="EAID_0EB82A08_F8D9_4cff_9576_5687CFC5ACFD"/>
+										<UML:TagDefinition xmi.idref="EAID_E7D8B313_D2C9_4d9f_9E9E_EBF7549238FE"/>
 									</UML:TaggedValue.type>
 								</UML:TaggedValue>
 							</UML:ModelElement.taggedValue>
@@ -2056,7 +2056,7 @@
 				</UML:Association>
 				<UML:Class name="RotatingMachinePlant" xmi.id="EAID_A8F8F566_1B41_431a_A965_44E4E0B221E3" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:GeneralizableElement.generalization>
 						<UML:Generalization xmi.idref="EAID_94DBAF56_6A0D_4b58_8B5B_B4557BFA06CB"/>
@@ -2064,10 +2064,10 @@
 				</UML:Class>
 				<UML:Enumeration name="NthAmModelStatusKind" xmi.id="EAID_B0568C83_EE25_45bd_B39C_044E1BFDB617" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_CA8D664B_F21E_4d91_AB25_3478ABDB9773"/>
+						<UML:Stereotype xmi.idref="EAID_B4121AFA_8ABF_4979_B313_5D09CD963B4C"/>
 					</UML:ModelElement.stereotype>
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_05851D05_450A_4222_9FE6_33A90CAF6FFD"/>
+						<UML:Stereotype xmi.idref="EAID_23733C6B_987F_4582_9116_CCF1D835515D"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="allowed" xmi.id="EAID_F15BBFBF_D618_4f11_ACEB_A2BFFDA99517" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -2075,17 +2075,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_478897C7_7943_43eb_A4B9_8041BCDC3899">
+								<UML:Multiplicity xmi.id="EAID_F329D707_6571_462d_9EE8_9A085A94EA98">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_9D7396E7_E506_4126_BD1C_439BBA20FFEA" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_B2A9F97D_28F1_4673_8F95_8EED6D9B2887" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_12098A63_8D77_426d_BDAC_53D0E4CCD175"/>
+								<UML:Expression xmi.id="EAID_742F1439_0F90_43ac_BEFF_EDCB9A3DA16B"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2094,17 +2094,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_583B5738_353B_4246_81D3_01C33C567A52">
+								<UML:Multiplicity xmi.id="EAID_2A477163_5D30_4190_BF2D_916C0D277859">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_01F85A54_7B29_4670_85B6_A2EB4B7E82EC" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_6A7AB346_297D_4483_ACBD_C10C584C9720" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_520D0E8E_6334_4658_A523_9E1B806B0FFF"/>
+								<UML:Expression xmi.id="EAID_7D191338_50ED_4f9d_86F6_706BC1C4414E"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2113,17 +2113,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_CF2FDDEB_9D15_45d8_9176_ADE002755BE2">
+								<UML:Multiplicity xmi.id="EAID_E2F33DAE_F2AF_4ec5_8A10_8DD66614082C">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_9B801E2B_68EE_422e_9BD8_E68F40E3F72D" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_993E13FB_36B9_4a78_8F4D_CA7FF4D556F7" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_773AA5D9_3DC5_4306_9DFB_114347D4CAC6"/>
+								<UML:Expression xmi.id="EAID_25F011EB_28AA_4fe8_95B7_98359C5D5305"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2131,7 +2131,7 @@
 				</UML:Enumeration>
 				<UML:Class name="TransformerSaturationCurve" xmi.id="EAID_C6EEFAD4_B447_40ce_9080_478CAA5A006C" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:GeneralizableElement.generalization>
 						<UML:Generalization xmi.idref="EAID_53C66C17_A275_4e92_88D0_0DCAD87C1B0E"/>
@@ -2141,10 +2141,10 @@
 				<UML:Comment xmi.id="EAID_D93F77F5_B114_4e57_8AF6_0A2DC3A96E42" visibility="public" isSpecification="false"/>
 				<UML:Class name="IEEECigreDLLModeKind" xmi.id="EAID_DD78CA0D_60C1_4b81_860D_AE63093F41A9" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_383969D1_4F55_4edf_81DD_7A5D768CD32A"/>
+						<UML:Stereotype xmi.idref="EAID_115D525A_EA60_4e9c_B999_FBFB45B65F2C"/>
 					</UML:ModelElement.stereotype>
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="SupportsEMT" xmi.id="EAID_3E87E613_95F0_4244_81E8_EE1D963CD4C6" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -2152,17 +2152,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_065D84DE_54E2_49ef_A557_0CC2A0C59FF8">
+								<UML:Multiplicity xmi.id="EAID_F2C310A1_CC08_414e_BD9D_33BA53873525">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_D7CEA30D_245A_48af_A1B6_B925D73B89DC" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_F9F3D87F_42E1_4a54_AE2B_48BA948A2631" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_50A46B42_16EA_48b0_A63B_BB7750EA481E"/>
+								<UML:Expression xmi.id="EAID_5ADB0D56_7DCC_4a86_8723_7F098AC418E8"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2171,17 +2171,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_C254FBD8_F7AC_4e69_AAF8_49E837EBE2A9">
+								<UML:Multiplicity xmi.id="EAID_9F9E0262_F3A0_4f24_9DA6_9E848AB0FE4F">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_A93A6B84_3420_418e_AC26_2A03B57DA9F2" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_62B6B6EF_8F0E_412f_8811_7DD69F2DBFC6" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_68B1E411_FD5D_45a4_87E9_C32D2CFA13F2"/>
+								<UML:Expression xmi.id="EAID_400FFA23_603A_4d30_933A_7AA1E14AFFFB"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2190,17 +2190,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_1420C9A3_D082_4195_8485_33BD2C22F089">
+								<UML:Multiplicity xmi.id="EAID_53899140_4660_4f24_B6F6_A8C4759CDFCC">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_42FF1EC7_EAC4_47e4_B447_343302B2C6A2" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_90B78502_6077_472f_AF4A_322EAB8B23CC" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_BFA25274_CB7E_4cdf_B189_1CDFA391A0DB"/>
+								<UML:Expression xmi.id="EAID_42D0D9B9_3C55_4d1d_8BF7_E3C7DAEB57D1"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2209,17 +2209,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_35EE8BEF_D46C_4d34_B180_8B18C0173FEB">
+								<UML:Multiplicity xmi.id="EAID_8E5123E9_5F4E_43d4_9856_F5DC5444B3B5">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_693AFBD6_18AA_480e_AE5F_A1FF38477D3A" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_482CE56F_219F_4614_818F_80BADE474443" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_2C178DE5_0B65_4a7c_BEE9_90D9420E73BB"/>
+								<UML:Expression xmi.id="EAID_99A45EF6_B806_4a18_BB40_479084272F50"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2228,10 +2228,10 @@
 				<UML:Comment xmi.id="EAID_E7793D3B_7886_4ef5_81BB_0320EF6B493A" visibility="public" isSpecification="false"/>
 				<UML:Enumeration name="NthAmModelNameKind" xmi.id="EAID_EEFA8003_D650_4709_B643_D52D7B762676" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_CA8D664B_F21E_4d91_AB25_3478ABDB9773"/>
+						<UML:Stereotype xmi.idref="EAID_B4121AFA_8ABF_4979_B313_5D09CD963B4C"/>
 					</UML:ModelElement.stereotype>
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_05851D05_450A_4222_9FE6_33A90CAF6FFD"/>
+						<UML:Stereotype xmi.idref="EAID_23733C6B_987F_4582_9116_CCF1D835515D"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="DYR" xmi.id="EAID_D741AB3C_77ED_4888_BAFB_978CC46F5CB8" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -2239,17 +2239,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_040FA643_02D6_47a1_A48B_E1B2A1A876AE">
+								<UML:Multiplicity xmi.id="EAID_21D8560A_DFCB_490a_9081_F2882DF5051A">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_0758754E_9840_4d87_A911_0FC47DB3C610" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_F46D956C_5B4C_40bd_BD52_7E768C377B7B" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_A4CE4F52_6C32_483e_AC77_802579DE430B"/>
+								<UML:Expression xmi.id="EAID_B9A41FD6_F2AA_47d6_BE55_A96773A62F34"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2258,17 +2258,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_480F6167_316B_481e_B3AD_3C0CD1471E4B">
+								<UML:Multiplicity xmi.id="EAID_816D326F_59A8_428c_A643_EC71A040169C">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_721E0A35_59B0_4181_84F7_DD6AA95CFA27" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_0C7F9CE9_80A8_4c22_A165_8A6E86521455" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_C278AEB0_E923_41ae_B2B3_CCF3C8D5AE57"/>
+								<UML:Expression xmi.id="EAID_A05D27A0_D69E_4874_8092_ADDC7192B970"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2277,17 +2277,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_8AD808E0_EA87_41dd_891D_FF44A0DE980D">
+								<UML:Multiplicity xmi.id="EAID_A8F73C79_E7B9_4745_B4FC_CD92675E089C">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_29FD17F5_15D1_41de_94B3_30730E236014" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_CC056AAB_4EAE_4fd3_A97B_0FD0BFA8A5E9" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_9A1E472B_89AE_45f4_85ED_210D16602D6F"/>
+								<UML:Expression xmi.id="EAID_2FABF9A4_8C7D_47dd_8218_D9F9F42BDE3D"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2296,17 +2296,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_1454CF57_2B67_4d8c_8DC5_0A52D6042F07">
+								<UML:Multiplicity xmi.id="EAID_9315B48E_CFD3_4a39_B4B9_374D833A482C">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_CCD07B62_5FFC_4073_90B8_658F7D987C23" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_47E60544_4593_449a_8C0D_498E30348802" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_F15A0475_6E10_4c55_9C40_86BAC7A488A8"/>
+								<UML:Expression xmi.id="EAID_97B0BDB6_8025_457d_BE38_4FE8022C06C1"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2315,17 +2315,17 @@
 								<UML:DataType xmi.idref="eaxmiid0"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_EE2BD4B0_F67C_438a_BB97_C4E54BEE192C">
+								<UML:Multiplicity xmi.id="EAID_8EA05F4D_707C_460e_AD9A_6334CE9A2C69">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_231BE4D5_ADCC_4364_AE2F_1E956252F8C4" lower="1" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_98A5563C_2371_4f62_8257_7CA4CF68F43F" lower="1" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_B4F13B55_DCE7_4b7d_A0FD_45D6A21EDD8F"/>
+								<UML:Expression xmi.id="EAID_AA93778B_1C4F_4614_9C24_FD808B8BD9D3"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.stereotype>
-								<UML:Stereotype xmi.idref="EAID_29FF34BD_00C1_4cb2_AFC1_5E5AF2758F90"/>
+								<UML:Stereotype xmi.idref="EAID_AF7C55B7_B4C5_4cc3_AA6E_9F7B17E64024"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2334,7 +2334,7 @@
 				<UML:Comment xmi.id="EAID_F285346A_4C68_4c70_8B10_EAF57553CC99" visibility="public" isSpecification="false"/>
 				<UML:Class name="IEEECigreDLL" xmi.id="EAID_FE82DEC1_98ED_4d75_B9F9_082E4B494C70" visibility="public" isSpecification="false" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 					<UML:ModelElement.stereotype>
-						<UML:Stereotype xmi.idref="EAID_E59F9D90_B5DD_44b5_9685_D511E4E796AA"/>
+						<UML:Stereotype xmi.idref="EAID_AED9E0D6_45FB_4351_9A84_389A78C02B04"/>
 					</UML:ModelElement.stereotype>
 					<UML:Classifier.feature>
 						<UML:Attribute name="dllDLLInterfaceVersion" xmi.id="EAID_8EA766A8_DDED_49e3_8D72_BA972AF2839D" visibility="public" ownerScope="instance" changeability="changeable" ordering="unordered" targetScope="instance">
@@ -2342,14 +2342,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_8CABB50F_3C19_4ef4_B73B_4DC9ABA35AFF">
+								<UML:Multiplicity xmi.id="EAID_1F241B1F_209B_4a44_9E14_54A062C623CE">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_2442D1BF_2C2B_460b_93F4_EC0821EF2624" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_52C01F52_5E8E_4947_AD2E_91FEEF5CA5A8" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_6011E730_42A5_4cf9_80E1_210CB0917F9C"/>
+								<UML:Expression xmi.id="EAID_2CAE68C2_CC83_4b2d_B664_CC2B280109A7"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2358,14 +2358,14 @@
 								<UML:Classifier xmi.idref="EAID_DD78CA0D_60C1_4b81_860D_AE63093F41A9"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_AB29D65B_A434_46b5_AF4B_1F40D4D9D890">
+								<UML:Multiplicity xmi.id="EAID_D7EF77E1_39E5_41e8_9358_99BE844CDB46">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_9603FD0B_B390_4125_B683_555397FE9D2F" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_50CEC638_2382_4ecf_9FA9_922F7406E61E" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_D5F4BDDB_3E69_408a_9970_37630EF6DFD8"/>
+								<UML:Expression xmi.id="EAID_F1BE49E0_9017_43ed_B6CD_4EB8D7D63EAB"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2374,14 +2374,14 @@
 								<UML:Classifier xmi.idref="EAID_A2008978_193D_4955_8102_599E43C7CFE4"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_16C3A36D_A0F2_40cd_B4CE_BE300EA204D0">
+								<UML:Multiplicity xmi.id="EAID_780D5D2E_322E_4ca4_AAFD_C91B1709AA13">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_B951FD0C_F8E4_4182_8429_B8574D80E866" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_5D4C3067_9D29_4033_AC18_133E930C8787" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_06C3A3BA_6A23_42db_833A_6AE4F837D4BF"/>
+								<UML:Expression xmi.id="EAID_F88631EB_E9F1_4c00_BFDF_42EF47E99B9E"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2390,14 +2390,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_6A41B6D0_2825_42cb_B1EE_57F3FF3579ED">
+								<UML:Multiplicity xmi.id="EAID_79385394_AC22_425a_BA7F_E11AFB569DF3">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_E1091221_DE1E_481d_8C1A_3F7DF0C7D9E8" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_B6076BF0_26EF_4fcf_BEDB_96355A90065E" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_BA2FD34C_F624_4d97_8DED_BE2237F64E39"/>
+								<UML:Expression xmi.id="EAID_D5E4261A_1945_4420_A9CE_F1F72F9CE9FE"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2406,14 +2406,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_12609E8D_D908_4dc4_B72B_2C84DA4A8D65">
+								<UML:Multiplicity xmi.id="EAID_29A3C610_BC92_4654_B1E1_646B46696383">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_F6DEF7F6_8277_45b2_BE46_F67460D5628B" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_1150B597_D963_47c0_9C04_A4185CEFB279" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_4DC8A88F_A221_4285_85CB_A9DCD42D029B"/>
+								<UML:Expression xmi.id="EAID_A90858D6_F6F7_48b9_AC4D_959B895B73F1"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2422,14 +2422,14 @@
 								<UML:Classifier xmi.idref="EAID_9F8964F1_6C32_465b_A83D_F5A201A291C3"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_FEDC8686_8D82_4734_89B7_F2EA7D433838">
+								<UML:Multiplicity xmi.id="EAID_9655282B_CA04_46a2_A6DA_EA5627875FA6">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_215A42BF_2D37_4674_87D9_E91CC589FC24" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_8CBB90D6_29E4_4880_9B0D_80B999174D5F" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_37447B0B_3C64_4d21_8105_B3B5B7DCD035"/>
+								<UML:Expression xmi.id="EAID_B40464CF_9B28_41f6_B8CF_EA134CBADEFF"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2438,14 +2438,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_8BB6A2AD_B97E_4c0a_95D8_44A6F00FA86E">
+								<UML:Multiplicity xmi.id="EAID_AA0CC5E0_16E1_43ff_BDD2_D40E1371BBA9">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_35416533_7459_40d7_9993_15071BA43F80" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_FDAED2E3_C1C9_4149_9263_E775B8BE76BA" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_07B8031A_D552_406b_A678_C97A9397C0E3"/>
+								<UML:Expression xmi.id="EAID_53A191D1_8004_4706_B5BC_C98BF80461EB"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>
@@ -2454,14 +2454,14 @@
 								<UML:Classifier xmi.idref="EAID_E50DF78B_84CE_42e9_A275_A956DEF45490"/>
 							</UML:StructuralFeature.type>
 							<UML:StructuralFeature.multiplicity>
-								<UML:Multiplicity xmi.id="EAID_97308729_3352_4bd6_8A7F_4F4071F92DD7">
+								<UML:Multiplicity xmi.id="EAID_41278AAE_6869_4dbb_8B58_F80C9606D5FD">
 									<UML:Multiplicity.range>
-										<UML:MultiplicityRange xmi.id="EAID_0F9E4374_A666_4969_9F69_FF9093085C07" lower="0" upper="1"/>
+										<UML:MultiplicityRange xmi.id="EAID_025644A2_04A6_40e2_80CE_64510575E60A" lower="0" upper="1"/>
 									</UML:Multiplicity.range>
 								</UML:Multiplicity>
 							</UML:StructuralFeature.multiplicity>
 							<UML:Attribute.initialValue>
-								<UML:Expression xmi.id="EAID_9D279426_1C70_4486_B72C_AD2B3668E414"/>
+								<UML:Expression xmi.id="EAID_631DA060_FF0B_4538_B515_80A14CD05046"/>
 							</UML:Attribute.initialValue>
 							<UML:ModelElement.taggedValue/>
 						</UML:Attribute>

@@ -1,4 +1,4 @@
-@prefix cim: <http://www.ucaiug.org/ns#> .
+@prefix cim: <http://www.ucaiug.org/grid18v15#> .
 
 <473050BC-A2DA-4E64-9803-78DC64176786_SvXfmrPF_1> a cim:SvPowerFlow ;
     cim:SvPowerFlow.Terminal <473050BC-A2DA-4E64-9803-78DC64176786_1> ;

@@ -28,6 +28,107 @@
 -- ==========================================================================================
 --
 
+-- A unit with valves for three phases, together with unit control equipment,
+-- essential protective and switching devices, DC storage capacitors, phase
+-- reactors and auxiliaries, if any, used for conversion.
+CREATE TABLE "ACDCConverter"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Base apparent power of the converter pole. The attribute shall be a positive
+    -- value.
+    "baseS" DOUBLE PRECISION,
+    -- Converter DC current, also called Id. It is converter's state variable,
+    -- result from power flow.
+    "idc" DOUBLE PRECISION,
+    -- Active power loss in pole at no power transfer. It is the converter's configuration
+    -- data used in power flow. The attribute shall be a positive value.
+    "idleLoss" DOUBLE PRECISION,
+    -- Maximum active power limit. The value is overwritten by values of VsCapabilityCurve,
+    -- if present.
+    "maxP" DOUBLE PRECISION,
+    -- The maximum voltage on the DC side at which the converter should operate.
+    -- It is the converter's configuration data used in power flow. The attribute
+    -- shall be a positive value.
+    "maxUdc" DOUBLE PRECISION,
+    -- Minimum active power limit. The value is overwritten by values of VsCapabilityCurve,
+    -- if present.
+    "minP" DOUBLE PRECISION,
+    -- The minimum voltage on the DC side at which the converter should operate.
+    -- It is the converter's configuration data used in power flow. The attribute
+    -- shall be a positive value.
+    "minUdc" DOUBLE PRECISION,
+    -- Number of valves in the converter. Used in loss calculations.
+    "numberOfValves" INTEGER,
+    -- Active power at the point of common coupling. Load sign convention is used,
+    -- i.e. positive sign means flow out from a node.
+    -- Starting value for a steady state solution in the case a simplified power
+    -- flow model is used.
+    "p" DOUBLE PRECISION,
+    -- The active power loss at a DC Pole
+    -- = idleLoss + switchingLoss*|Idc| + resitiveLoss*Idc^2.
+    -- For lossless operation Pdc=Pac.
+    -- For rectifier operation with losses Pdc=Pac-lossP.
+    -- For inverter operation with losses Pdc=Pac+lossP.
+    -- It is converter's state variable used in power flow. The attribute shall
+    -- be a positive value.
+    "poleLossP" DOUBLE PRECISION,
+    -- Reactive power at the point of common coupling. Load sign convention is
+    -- used, i.e. positive sign means flow out from a node.
+    -- Starting value for a steady state solution in the case a simplified power
+    -- flow model is used.
+    "q" DOUBLE PRECISION,
+    -- Rated converter DC voltage, also called UdN. The attribute shall be a positive
+    -- value. It is the converter's configuration data used in power flow. For
+    -- instance a bipolar DC link with value 200 kV has a 400kV difference between
+    -- the dc lines.
+    "ratedUdc" DOUBLE PRECISION,
+    -- It is the converter's configuration data used in power flow. Refer to poleLossP.
+    -- The attribute shall be a positive value.
+    "resistiveLoss" DOUBLE PRECISION,
+    -- Switching losses, relative to the base apparent power 'baseS'. Refer to
+    -- poleLossP. The attribute shall be a positive value.
+    "switchingLoss" DOUBLE PRECISION,
+    -- Real power injection target in AC grid, at point of common coupling. Load
+    -- sign convention is used, i.e. positive sign means flow out from a node.
+    "targetPpcc" DOUBLE PRECISION,
+    -- Target value for DC voltage magnitude. The attribute shall be a positive
+    -- value.
+    "targetUdc" DOUBLE PRECISION,
+    -- Line-to-line converter voltage, the voltage at the AC side of the valve.
+    -- It is converter's state variable, result from power flow. The attribute
+    -- shall be a positive value.
+    "uc" DOUBLE PRECISION,
+    -- Converter voltage at the DC side, also called Ud. It is converter's state
+    -- variable, result from power flow. The attribute shall be a positive value.
+    "udc" DOUBLE PRECISION,
+    -- Valve threshold voltage, also called Uvalve. Forward voltage drop when
+    -- the valve is conducting. Used in loss calculations, i.e. the switchLoss
+    -- depend on numberOfValves*valveU0.
+    "valveU0" DOUBLE PRECISION
+);
+
+-- A DC electrical connection point at the AC/DC converter. The AC/DC converter
+-- is electrically connected also to the AC side. The AC connection is inherited
+-- from the AC conducting equipment in the same way as any other AC equipment.
+-- The AC/DC converter DC terminal is separate from generic DC terminal to
+-- restrict the connection with the AC side to AC/DC converter and so that
+-- no other DC conducting equipment can be connected to the AC side.
+CREATE TABLE "ACDCConverterDCTerminal"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Represents the normal network polarity condition. Depending on the converter
+    -- configuration the value shall be set as follows:
+    -- - For a monopole with two converter terminals use DCPolarityKind "positive"
+    -- and "negative".
+    -- - For a bi-pole or symmetric monopole with three converter terminals use
+    -- DCPolarityKind "positive", "middle" and "negative".
+    -- FK column reference to table representing the "DCPolarityKind" enumeration
+    "polarity" VARCHAR(100),
+    -- A DC converter terminal belong to an DC converter.
+    -- FK column reference to table representing the "ACDCConverter" class
+    "DCConductingEquipment" VARCHAR(100)
+);
+
 -- An electrical connection point (AC or DC) to a piece of conducting equipment.
 -- Terminals are connected at physical connection points called connectivity
 -- nodes.
@@ -125,7 +226,123 @@ CREATE TABLE "ApparentPowerLimit"
 -- the rotor windings, e.g. squirrel-cage induction machine.
 CREATE TABLE "AsynchronousMachine"
 (
-    "mRID" VARCHAR(100) PRIMARY KEY
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Indicates the type of Asynchronous Machine (motor or generator).
+    -- FK column reference to table representing the "AsynchronousMachineKind" enumeration
+    "asynchronousMachineType" VARCHAR(100),
+    -- Indicates whether the machine is a converter fed drive. Used for short
+    -- circuit data exchange according to IEC 60909.
+    "converterFedDrive" INTEGER NOT NULL DEFAULT 1 CHECK ("converterFedDrive" IN (0, 1)),
+    -- Efficiency of the asynchronous machine at nominal operation as a percentage.
+    -- Indicator for converter drive motors. Used for short circuit data exchange
+    -- according to IEC 60909.
+    "efficiency" DOUBLE PRECISION,
+    -- Ratio of locked-rotor current to the rated current of the motor (Ia/Ir).
+    -- Used for short circuit data exchange according to IEC 60909.
+    "iaIrRatio" DOUBLE PRECISION,
+    -- Nameplate data indicates if the machine is 50 Hz or 60 Hz.
+    "nominalFrequency" DOUBLE PRECISION,
+    -- Nameplate data. Depends on the slip and number of pole pairs.
+    "nominalSpeed" DOUBLE PRECISION,
+    -- Number of pole pairs of stator. Used for short circuit data exchange according
+    -- to IEC 60909.
+    "polePairNumber" INTEGER,
+    -- Rated mechanical power (Pr in IEC 60909-0). Used for short circuit data
+    -- exchange according to IEC 60909.
+    "ratedMechanicalPower" DOUBLE PRECISION,
+    -- Indicates for converter drive motors if the power can be reversible. Used
+    -- for short circuit data exchange according to IEC 60909.
+    "reversible" INTEGER NOT NULL DEFAULT 1 CHECK ("reversible" IN (0, 1)),
+    -- Damper 1 winding resistance.
+    "rr1" DOUBLE PRECISION,
+    -- Damper 2 winding resistance.
+    "rr2" DOUBLE PRECISION,
+    -- Locked rotor ratio (R/X). Used for short circuit data exchange according
+    -- to IEC 60909.
+    "rxLockedRotorRatio" DOUBLE PRECISION,
+    -- Transient rotor time constant (greater than tppo).
+    "tpo" DOUBLE PRECISION,
+    -- Sub-transient rotor time constant (greater than 0).
+    "tppo" DOUBLE PRECISION,
+    -- Damper 1 winding leakage reactance.
+    "xlr1" DOUBLE PRECISION,
+    -- Damper 2 winding leakage reactance.
+    "xlr2" DOUBLE PRECISION,
+    -- Magnetizing reactance.
+    "xm" DOUBLE PRECISION,
+    -- Transient reactance (unsaturated) (greater than or equal to xpp).
+    "xp" DOUBLE PRECISION,
+    -- Sub-transient reactance (unsaturated).
+    "xpp" DOUBLE PRECISION,
+    -- Synchronous reactance (greater than xp).
+    "xs" DOUBLE PRECISION
+);
+
+-- Asynchronous machine whose behaviour is described by reference to a standard
+-- model expressed in either time constant reactance form or equivalent circuit
+-- form <font color="#0f0f0f">or by definition of a user-defined model.</font>
+-- Parameter details:
+-- <ol>
+-- <li>Asynchronous machine parameters such as <i>Xl, Xs,</i> etc. are actually
+-- used as inductances in the model, but are commonly referred to as reactances
+-- since, at nominal frequency, the PU values are the same. However, some
+-- references use the symbol <i>L</i> instead of <i>X</i>.</li>
+-- </ol>
+CREATE TABLE "AsynchronousMachineDynamics"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Asynchronous machine to which this asynchronous machine dynamics model
+    -- applies.
+    -- FK column reference to table representing the "AsynchronousMachine" class
+    "AsynchronousMachine" VARCHAR(100)
+);
+
+-- Kind of Asynchronous Machine.
+CREATE TABLE "AsynchronousMachineKind" ( "name" VARCHAR(100) UNIQUE );
+-- The Asynchronous Machine is a generator.
+INSERT INTO "AsynchronousMachineKind" ( "name" ) VALUES ( 'generator' );
+-- The Asynchronous Machine is a motor.
+INSERT INTO "AsynchronousMachineKind" ( "name" ) VALUES ( 'motor' );
+
+-- Parameter details:
+-- <ol>
+-- <li>If <i>X'' </i>=<i> X'</i>, a single cage (one equivalent rotor winding
+-- per axis) is modelled.</li>
+-- <li>The “<i>p</i>” in the attribute names is a substitution for a “prime”
+-- in the usual parameter notation, e.g. <i>tpo</i> refers to <i>T'o</i>.</li>
+-- </ol>
+-- The parameters used for models expressed in time constant reactance form
+-- include:
+-- - RotatingMachine.ratedS (<i>MVAbase</i>);
+-- - RotatingMachineDynamics.damping (<i>D</i>);
+-- - RotatingMachineDynamics.inertia (<i>H</i>);
+-- - RotatingMachineDynamics.saturationFactor (<i>S1</i>);
+-- - RotatingMachineDynamics.saturationFactor120 (<i>S12</i>);
+-- - RotatingMachineDynamics.statorLeakageReactance (<i>Xl</i>);
+-- - RotatingMachineDynamics.statorResistance (<i>Rs</i>);
+-- - .xs (<i>Xs</i>);
+-- - .xp (<i>X'</i>);
+-- - .xpp (<i>X''</i>);
+-- - .tpo (<i>T'o</i>);
+-- - .tppo (<i>T''o</i>).
+CREATE TABLE "AsynchronousMachineTimeConstantReactance"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Transient rotor time constant (<i>T'o</i>) (&gt; AsynchronousMachineTimeConstantReactance.tppo).
+    -- Typical value = 5.
+    "tpo" DOUBLE PRECISION,
+    -- Subtransient rotor time constant (<i>T''o</i>) (&gt; 0). Typical value
+    -- = 0,03.
+    "tppo" DOUBLE PRECISION,
+    -- Transient reactance (unsaturated) (<i>X'</i>) (&gt;= AsynchronousMachineTimeConstantReactance.xpp).
+    -- Typical value = 0,5.
+    "xp" DOUBLE PRECISION,
+    -- Subtransient reactance (unsaturated) (<i>X''</i>) (&gt; RotatingMachineDynamics.statorLeakageReactance).
+    -- Typical value = 0,2.
+    "xpp" DOUBLE PRECISION,
+    -- Synchronous reactance (<i>Xs</i>) (&gt;= AsynchronousMachineTimeConstantReactance.xp).
+    -- Typical value = 1,8.
+    "xs" DOUBLE PRECISION
 );
 
 -- Defines a system base voltage which is referenced. This may be different
@@ -143,15 +360,10 @@ CREATE TABLE "BaseVoltage"
 
 -- The state of the battery unit.
 CREATE TABLE "BatteryStateKind" ( "name" VARCHAR(100) UNIQUE );
--- Stored energy is increasing.
 INSERT INTO "BatteryStateKind" ( "name" ) VALUES ( 'charging' );
--- Stored energy is decreasing.
 INSERT INTO "BatteryStateKind" ( "name" ) VALUES ( 'discharging' );
--- Unable to discharge, and not charging.
 INSERT INTO "BatteryStateKind" ( "name" ) VALUES ( 'empty' );
--- Unable to charge, and not discharging.
 INSERT INTO "BatteryStateKind" ( "name" ) VALUES ( 'full' );
--- Neither charging nor discharging, but able to do so.
 INSERT INTO "BatteryStateKind" ( "name" ) VALUES ( 'waiting' );
 
 -- An electrochemical energy storage device.
@@ -236,6 +448,106 @@ CREATE TABLE "ConnectivityNodeContainer"
     "mRID" VARCHAR(100) PRIMARY KEY
 );
 
+-- DC side of the current source converter (CSC).
+-- The firing angle controls the dc voltage at the converter, both for rectifier
+-- and inverter. The difference between the dc voltages of the rectifier and
+-- inverter determines the dc current. The extinction angle is used to limit
+-- the dc voltage at the inverter, if needed, and is not used in active power
+-- control. The firing angle, transformer tap position and number of connected
+-- filters are the primary means to control a current source dc line. Higher
+-- level controls are built on top, e.g. DC voltage, dc current and active
+-- power. From a steady state perspective it is sufficient to specify the
+-- desired active power transfer (ACDCConverter.targetPpcc) and the control
+-- functions will set the dc voltage, dc current, firing angle, transformer
+-- tap position and number of connected filters to meet this. Therefore attributes
+-- targetAlpha and targetGamma are not applicable in this case.
+-- Attributes targetAlpha and targetGamma are mutually exclusive therefore
+-- only one of them can be defined to describe an operating target.
+-- The reactive power consumed by the converter is a function of the firing
+-- angle, transformer tap position and number of connected filter, which can
+-- be approximated with half of the active power. The losses are a function
+-- of the dc voltage and dc current.
+-- The attributes minAlpha and maxAlpha define the range of firing angles
+-- for rectifier operation between which no discrete tap changer action takes
+-- place. The range is typically 10 to 18 degrees.
+-- The attributes minGamma and maxGamma define the range of extinction angles
+-- for inverter operation between which no discrete tap changer action takes
+-- place. The range is typically 17 to 20 degrees.
+CREATE TABLE "CsConverter"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Firing angle that determines the DC voltage at the converter DC terminal.
+    -- Typical value between 10 degrees and 18 degrees for a rectifier. It is
+    -- converter's state variable, result from power flow. The attribute shall
+    -- be a positive value.
+    "alpha" DOUBLE PRECISION,
+    -- Extinction angle. It is used to limit the DC voltage at the inverter if
+    -- needed. Typical value between 17 degrees and 20 degrees for an inverter.
+    -- It is converter's state variable, result from power flow. The attribute
+    -- shall be a positive value.
+    "gamma" DOUBLE PRECISION,
+    -- Maximum firing angle. It is the converter's configuration data used in
+    -- power flow. The attribute shall be a positive value.
+    "maxAlpha" DOUBLE PRECISION,
+    -- Maximum extinction angle. It is the converter's configuration data used
+    -- in power flow. The attribute shall be a positive value.
+    "maxGamma" DOUBLE PRECISION,
+    -- The maximum direct current (Id) on the DC side at which the converter should
+    -- operate. It is the converter's configuration data use in power flow. The
+    -- attribute shall be a positive value.
+    "maxIdc" DOUBLE PRECISION,
+    -- Minimum firing angle. It is the converter's configuration data used in
+    -- power flow. The attribute shall be a positive value.
+    "minAlpha" DOUBLE PRECISION,
+    -- Minimum extinction angle. It is the converter's configuration data used
+    -- in power flow. The attribute shall be a positive value.
+    "minGamma" DOUBLE PRECISION,
+    -- The minimum direct current (Id) on the DC side at which the converter should
+    -- operate. It is the converter's configuration data used in power flow. The
+    -- attribute shall be a positive value.
+    "minIdc" DOUBLE PRECISION,
+    -- Indicates whether the DC pole is operating as an inverter or as a rectifier.
+    -- It is converter's control variable used in power flow.
+    -- FK column reference to table representing the "CsOperatingModeKind" enumeration
+    "operatingMode" VARCHAR(100),
+    -- Kind of active power control.
+    -- FK column reference to table representing the "CsPpccControlKind" enumeration
+    "pPccControl" VARCHAR(100),
+    -- Rated converter DC current, also called IdN. The attribute shall be a positive
+    -- value. It is the converter's configuration data used in power flow.
+    "ratedIdc" DOUBLE PRECISION,
+    -- Target firing angle. It is converter's control variable used in power flow.
+    -- It is only applicable for rectifier control. Allowed values are within
+    -- the range minAlpha&lt;=targetAlpha&lt;=maxAlpha. The attribute shall be
+    -- a positive value.
+    "targetAlpha" DOUBLE PRECISION,
+    -- Target extinction angle. It is converter's control variable used in power
+    -- flow. It is only applicable for inverter control. Allowed values are within
+    -- the range minGamma&lt;=targetGamma&lt;=maxGamma. The attribute shall be
+    -- a positive value.
+    "targetGamma" DOUBLE PRECISION,
+    -- DC current target value. It is converter's control variable used in power
+    -- flow. The attribute shall be a positive value.
+    "targetIdc" DOUBLE PRECISION
+);
+
+-- Operating mode for DC line operating as Current Source Converter.
+CREATE TABLE "CsOperatingModeKind" ( "name" VARCHAR(100) UNIQUE );
+-- Operating as inverter, which is the power receiving end.
+INSERT INTO "CsOperatingModeKind" ( "name" ) VALUES ( 'inverter' );
+-- Operating as rectifier, which is the power sending end.
+INSERT INTO "CsOperatingModeKind" ( "name" ) VALUES ( 'rectifier' );
+
+-- Active power control modes for DC line operating as Current Source Converter.
+CREATE TABLE "CsPpccControlKind" ( "name" VARCHAR(100) UNIQUE );
+-- Control is active power control at AC side, at point of common coupling.
+-- Target is provided by ACDCConverter.targetPpcc.
+INSERT INTO "CsPpccControlKind" ( "name" ) VALUES ( 'activePower' );
+-- Control is DC current with target value provided by CsConverter.targetIdc.
+INSERT INTO "CsPpccControlKind" ( "name" ) VALUES ( 'dcCurrent' );
+-- Control is DC voltage with target value provided by ACDCConverter.targetUdc.
+INSERT INTO "CsPpccControlKind" ( "name" ) VALUES ( 'dcVoltage' );
+
 -- A multi-purpose curve or functional relationship between an independent
 -- variable (X-axis) and dependent (Y-axis) variables.
 CREATE TABLE "Curve"
@@ -278,11 +590,7 @@ CREATE TABLE "CurveData"
 
 -- Style or shape of curve.
 CREATE TABLE "CurveStyle" ( "name" VARCHAR(100) UNIQUE );
--- The Y-axis values are assumed constant until the next curve point and prior
--- to the first curve point.
 INSERT INTO "CurveStyle" ( "name" ) VALUES ( 'constantYValue' );
--- The Y-axis values are assumed to be a straight line between values. Also
--- known as linear interpolation.
 INSERT INTO "CurveStyle" ( "name" ) VALUES ( 'straightLineYValues' );
 
 -- An electrical connection point at a piece of DC conducting equipment. DC
@@ -396,8 +704,25 @@ CREATE TABLE "DCNode"
     "name" VARCHAR(255) NOT NULL,
     -- The DC container for the DC nodes.
     -- FK column reference to table representing the "DCEquipmentContainer" class
-    "DCEquipmentContainer" VARCHAR(100)
+    "DCEquipmentContainer" VARCHAR(100),
+    -- The DC topological node to which this DC connectivity node is assigned.
+    -- May depend on the current state of switches in the network.
+    -- FK column reference to table representing the "DCTopologicalNode" class
+    "DCTopologicalNode" VARCHAR(100)
 );
+
+-- Polarity for DC circuits.
+CREATE TABLE "DCPolarityKind" ( "name" VARCHAR(100) UNIQUE );
+-- Middle pole. The converter terminal is the midpoint in a bipolar or symmetric
+-- monopole configuration. The midpoint can be grounded and/or have a metallic
+-- return.
+INSERT INTO "DCPolarityKind" ( "name" ) VALUES ( 'middle' );
+-- Negative pole. The converter terminal is intended to operate at a negative
+-- voltage relative the midpoint or positive terminal.
+INSERT INTO "DCPolarityKind" ( "name" ) VALUES ( 'negative' );
+-- Positive pole. The converter terminal is intended to operate at a positive
+-- voltage relative the midpoint or negative terminal.
+INSERT INTO "DCPolarityKind" ( "name" ) VALUES ( 'positive' );
 
 -- A series device within the DC system, typically a reactor used for filtering
 -- or smoothing. Needed for transient and short circuit studies.
@@ -477,6 +802,12 @@ CREATE TABLE "DCTerminalPolarityKind" ( "name" VARCHAR(100) UNIQUE );
 INSERT INTO "DCTerminalPolarityKind" ( "name" ) VALUES ( 'negative' );
 -- Positive terminal.
 INSERT INTO "DCTerminalPolarityKind" ( "name" ) VALUES ( 'positive' );
+
+-- DC bus.
+CREATE TABLE "DCTopologicalNode"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY
+);
 
 -- Describes different components of a detailed model.
 CREATE TABLE "DetailedModelDescriptor"
@@ -1009,41 +1340,23 @@ CREATE TABLE "IdentifiedObject"
 
 -- Excitation base system mode.
 CREATE TABLE "IfdBaseKind" ( "name" VARCHAR(100) UNIQUE );
--- Air gap line mode.
 INSERT INTO "IfdBaseKind" ( "name" ) VALUES ( 'ifag' );
--- Full load system mode.
 INSERT INTO "IfdBaseKind" ( "name" ) VALUES ( 'iffl' );
--- No load system with saturation mode.
 INSERT INTO "IfdBaseKind" ( "name" ) VALUES ( 'ifnl' );
 
 -- Types of input signals. In dynamics modelling, commonly represented by
 -- the <i>j</i> parameter.
 CREATE TABLE "InputSignalKind" ( "name" VARCHAR(100) UNIQUE );
--- Input signal is amplitude of remote branch current.
 INSERT INTO "InputSignalKind" ( "name" ) VALUES ( 'branchCurrent' );
--- Input signal is bus voltage fr<font color="#0f0f0f">equency. This could
--- be a terminal frequency or remote frequency.</font>
 INSERT INTO "InputSignalKind" ( "name" ) VALUES ( 'busFrequency' );
--- Input signal is deviation of bus voltage frequ<font color="#0f0f0f">ency.
--- This could be a terminal frequency deviation or remote frequency deviation.</font>
 INSERT INTO "InputSignalKind" ( "name" ) VALUES ( 'busFrequencyDeviation' );
--- Input signal <font color="#0f0f0f">is bus voltage. This could be a terminal
--- voltage or remote voltage.</font>
 INSERT INTO "InputSignalKind" ( "name" ) VALUES ( 'busVoltage' );
--- Input signal is derivative of bus voltag<font color="#0f0f0f">e. This could
--- be a terminal voltage derivative or remote voltage derivative.</font>
 INSERT INTO "InputSignalKind" ( "name" ) VALUES ( 'busVoltageDerivative' );
--- Input signal is generator field current.
 INSERT INTO "InputSignalKind" ( "name" ) VALUES ( 'fieldCurrent' );
--- Input signal is generator accelerating power.
 INSERT INTO "InputSignalKind" ( "name" ) VALUES ( 'generatorAcceleratingPower' );
--- Input signal is generator electrical power on rated <i>S</i>.
 INSERT INTO "InputSignalKind" ( "name" ) VALUES ( 'generatorElectricalPower' );
--- Input signal is generator mechanical power.
 INSERT INTO "InputSignalKind" ( "name" ) VALUES ( 'generatorMechanicalPower' );
--- Input signal is rotor or shaft angular frequency (speed) deviation.
 INSERT INTO "InputSignalKind" ( "name" ) VALUES ( 'rotorAngularFrequencyDeviation' );
--- Input signal is rotor or shaft speed (angular frequency).
 INSERT INTO "InputSignalKind" ( "name" ) VALUES ( 'rotorSpeed' );
 
 -- Limit kinds.
@@ -1438,6 +1751,40 @@ INSERT INTO "PhaseShuntConnectionKind" ( "name" ) VALUES ( 'Y' );
 -- Wye, with neutral brought out for grounding.
 INSERT INTO "PhaseShuntConnectionKind" ( "name" ) VALUES ( 'Yn' );
 
+-- A transformer phase shifting tap model that controls the phase angle difference
+-- across the power transformer and potentially the active power flow through
+-- the power transformer. This phase tap model may also impact the voltage
+-- magnitude.
+CREATE TABLE "PhaseTapChanger"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Transformer end to which this phase tap changer belongs.
+    -- FK column reference to table representing the "TransformerEnd" class
+    "TransformerEnd" VARCHAR(100)
+);
+
+-- Describes a tap changer with a linear relation between the tap step and
+-- the phase angle difference across the transformer. This is a mathematical
+-- model that is an approximation of a real phase tap changer.
+-- The phase angle is computed as stepPhaseShiftIncrement times the tap position.
+-- The voltage magnitude of both sides is the same.
+CREATE TABLE "PhaseTapChangerLinear"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Phase shift per step position. A positive value indicates a positive angle
+    -- variation from the Terminal at the PowerTransformerEnd, where the TapChanger
+    -- is located, into the transformer.
+    -- The actual phase shift increment might be more accurately computed from
+    -- the symmetrical or asymmetrical models or a tap step table lookup if those
+    -- are available.
+    "stepPhaseShiftIncrement" DOUBLE PRECISION,
+    -- The reactance depends on the tap position according to a "u" shaped curve.
+    -- The maximum reactance (xMax) appears at the low and high tap positions.
+    -- Depending on the "u" curve the attribute can be either higher or lower
+    -- than PowerTransformerEnd.x.
+    "xMax" DOUBLE PRECISION
+);
+
 -- A photovoltaic device or an aggregation of such devices.
 CREATE TABLE "PhotoVoltaicUnit"
 (
@@ -1655,7 +2002,7 @@ CREATE TABLE "RatioTapChanger"
     -- When the increment is negative, the voltage decreases when the tap step
     -- increases.
     "stepVoltageIncrement" DOUBLE PRECISION NOT NULL,
-    -- The transformer end for this additional ratio tap changer.
+    -- Transformer end to which this ratio tap changer belongs.
     -- FK column reference to table representing the "TransformerEnd" class
     "TransformerEnd" VARCHAR(100) NOT NULL
 );
@@ -1730,10 +2077,15 @@ CREATE TABLE "RotatingMachinePlant"
 
 -- Type of rotor on physical machine.
 CREATE TABLE "RotorKind" ( "name" VARCHAR(100) UNIQUE );
--- Round rotor type of synchronous machine.
 INSERT INTO "RotorKind" ( "name" ) VALUES ( 'roundRotor' );
--- Salient pole type of synchronous machine.
 INSERT INTO "RotorKind" ( "name" ) VALUES ( 'salientPole' );
+
+-- Static VAr Compensator control mode.
+CREATE TABLE "SVCControlMode" ( "name" VARCHAR(100) UNIQUE );
+-- Reactive power control.
+INSERT INTO "SVCControlMode" ( "name" ) VALUES ( 'reactivePower' );
+-- Voltage control.
+INSERT INTO "SVCControlMode" ( "name" ) VALUES ( 'voltage' );
 
 -- A Series Compensator is a series capacitor or reactor or an AC transmission
 -- line without charging susceptance. It is a two terminal device.
@@ -1819,6 +2171,67 @@ INSERT INTO "SinglePhaseKind" ( "name" ) VALUES ( 's2' );
 CREATE TABLE "StateVariable"
 (
     "mRID" VARCHAR(100) PRIMARY KEY
+);
+
+-- A facility for providing variable and controllable shunt reactive power.
+-- The SVC typically consists of a stepdown transformer, filter, thyristor-controlled
+-- reactor, and thyristor-switched capacitor arms.
+-- The SVC may operate in fixed MVar output mode or in voltage control mode.
+-- When in voltage control mode, the output of the SVC will be proportional
+-- to the deviation of voltage at the controlled bus from the voltage setpoint.
+-- The SVC characteristic slope defines the proportion. If the voltage at
+-- the controlled bus is equal to the voltage setpoint, the SVC MVar output
+-- is zero.
+CREATE TABLE "StaticVarCompensator"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Capacitive reactance at maximum capacitive reactive power. Shall always
+    -- be positive.
+    "capacitiveRating" DOUBLE PRECISION,
+    -- Inductive reactance at maximum inductive reactive power. Shall always be
+    -- negative.
+    "inductiveRating" DOUBLE PRECISION,
+    -- Reactive power injection. Load sign convention is used, i.e. positive sign
+    -- means flow out from a node.
+    -- Starting value for a steady state solution.
+    "q" DOUBLE PRECISION,
+    -- The characteristics slope of an SVC defines how the reactive power output
+    -- changes in proportion to the difference between the regulated bus voltage
+    -- and the voltage setpoint.
+    -- The attribute shall be a positive value or zero.
+    "slope" DOUBLE PRECISION,
+    -- SVC control mode.
+    -- FK column reference to table representing the "SVCControlMode" enumeration
+    "sVCControlMode" VARCHAR(100),
+    -- The reactive power output of the SVC is proportional to the difference
+    -- between the voltage at the regulated bus and the voltage setpoint. When
+    -- the regulated bus voltage is equal to the voltage setpoint, the reactive
+    -- power output is zero.
+    "voltageSetPoint" DOUBLE PRECISION
+);
+
+-- State variable for power flow. Load convention is used for flow direction.
+-- This means flow out from the DCTopologicalNode into the equipment is positive.
+CREATE TABLE "SvDCPowerFlow"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- The active power flow. Load sign convention is used, i.e. positive sign
+    -- means flow out from a DCTopologicalNode (bus) into the conducting equipment.
+    "p" DOUBLE PRECISION,
+    -- The DC terminal associated with the DC power flow state variable.
+    -- FK column reference to table representing the "DCTerminal" class
+    "DCTerminal" VARCHAR(100)
+);
+
+-- State variable for direct current voltage.
+CREATE TABLE "SvDCVoltage"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- State variable for direct current voltage.
+    "v" DOUBLE PRECISION,
+    -- The DC topological node associated with the DC voltage state.
+    -- FK column reference to table representing the "DCTopologicalNode" class
+    "DCTopologicalNode" VARCHAR(100)
 );
 
 -- State variable for power flow. Load convention is used for flow direction.
@@ -2024,62 +2437,26 @@ CREATE TABLE "SynchronousMachineDynamics"
 
 -- Synchronous machine type.
 CREATE TABLE "SynchronousMachineKind" ( "name" VARCHAR(100) UNIQUE );
--- Indicates the synchronous machine can operate as a condenser.
 INSERT INTO "SynchronousMachineKind" ( "name" ) VALUES ( 'condenser' );
--- Indicates the synchronous machine can operate as a generator.
 INSERT INTO "SynchronousMachineKind" ( "name" ) VALUES ( 'generator' );
--- Indicates the synchronous machine can operate as a generator or as a condenser.
 INSERT INTO "SynchronousMachineKind" ( "name" ) VALUES ( 'generatorOrCondenser' );
--- Indicates the synchronous machine can operate as a generator or as a condenser
--- or as a motor.
 INSERT INTO "SynchronousMachineKind" ( "name" ) VALUES ( 'generatorOrCondenserOrMotor' );
--- Indicates the synchronous machine can operate as a generator or as a motor.
 INSERT INTO "SynchronousMachineKind" ( "name" ) VALUES ( 'generatorOrMotor' );
--- Indicates the synchronous machine can operate as a motor.
 INSERT INTO "SynchronousMachineKind" ( "name" ) VALUES ( 'motor' );
--- Indicates the synchronous machine can operate as a motor or as a condenser.
 INSERT INTO "SynchronousMachineKind" ( "name" ) VALUES ( 'motorOrCondenser' );
 
 -- Type of synchronous machine model used in dynamic simulation applications.
 CREATE TABLE "SynchronousMachineModelKind" ( "name" VARCHAR(100) UNIQUE );
--- Subtransient synchronous machine model.
--- In order to model type SubtransientSilentPole standard model type the SynchronousMachineTimeConstantReactance.modelType
--- shall be set to subtransient, .rotorType shall be set to salientPole and
--- the attributes SynchronousMachineDetailed.saturationFactorQAxis and SynchronousMachineDetailed.saturationFactor120QAxisthe
--- are either not exchanged or set to 0.
--- In order to model type SubtransientRoundRotor standard model type the SynchronousMachineTimeConstantReactance.modelType
--- shall be set to subtransient, .rotorType shall be set to is roundRotor
--- and the following attributes are required:
--- – SynchronousMachineTimeConstantReactance.xQuadTrans
--- – SynchronousMachineTimeConstantReactance.tpqo
--- – SynchronousMachineDetailed.saturationFactorQAxis
--- – SynchronousMachineDetailed.saturationFactor120QAxis
--- – RotatingMachineDynamics.saturationFactor
--- – RotatingMachineDynamics.saturationFactor120.
 INSERT INTO "SynchronousMachineModelKind" ( "name" ) VALUES ( 'subtransient' );
--- Simplified version of subtransient synchronous machine model where magnetic
--- coupling between the direct- and quadrature- axes is ignored.
--- Therefore if the SynchronousMachineTimeConstantReactance.modelType is set
--- to subtransientSimplified and SynchronousMachineTimeConstantReactance.rotorType
--- is set to roundRotor the attributes SynchronousMachineDetailed.saturationFactorQAxis,
--- SynchronousMachineDetailed.saturationFactor120QAxis and RotatingMachineDynamics.statorResistance
--- are either not exchanged or set to 0.
 INSERT INTO "SynchronousMachineModelKind" ( "name" ) VALUES ( 'subtransientSimplified' );
--- Simplified version of a subtransient synchronous machine model with no
--- damper circuit on the direct-axis.
 INSERT INTO "SynchronousMachineModelKind" ( "name" ) VALUES ( 'subtransientSimplifiedDirectAxis' );
--- WECC type F variant of subtransient synchronous machine model.
 INSERT INTO "SynchronousMachineModelKind" ( "name" ) VALUES ( 'subtransientTypeF' );
--- WECC type J variant of subtransient synchronous machine model.
 INSERT INTO "SynchronousMachineModelKind" ( "name" ) VALUES ( 'subtransientTypeJ' );
 
 -- Synchronous machine operating mode.
 CREATE TABLE "SynchronousMachineOperatingMode" ( "name" VARCHAR(100) UNIQUE );
--- Operating as condenser.
 INSERT INTO "SynchronousMachineOperatingMode" ( "name" ) VALUES ( 'condenser' );
--- Operating as generator.
 INSERT INTO "SynchronousMachineOperatingMode" ( "name" ) VALUES ( 'generator' );
--- Operating as motor.
 INSERT INTO "SynchronousMachineOperatingMode" ( "name" ) VALUES ( 'motor' );
 
 -- The simplified model represents a synchronous generator as a constant internal
@@ -2382,47 +2759,26 @@ CREATE TABLE "TransformerSaturationCurve"
 -- is easier to conceptualize the multiplier "m" as creating the proper unit
 -- "m&#222;", and not the forbidden unit "mkg".
 CREATE TABLE "UnitMultiplier" ( "name" VARCHAR(100) UNIQUE );
--- Exa 10**18.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'E' );
--- Giga 10**9.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'G' );
--- Mega 10**6.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'M' );
--- Peta 10**15.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'P' );
--- Tera 10**12.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'T' );
--- Yotta 10**24.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'Y' );
--- Zetta 10**21.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'Z' );
--- Atto 10**-18.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'a' );
--- Centi 10**-2.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'c' );
--- Deci 10**-1.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'd' );
--- Deca 10**1.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'da' );
--- Femto 10**-15.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'f' );
--- Hecto 10**2.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'h' );
--- Kilo 10**3.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'k' );
--- Milli 10**-3.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'm' );
--- Micro 10**-6.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'micro' );
--- Nano 10**-9.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'n' );
--- No multiplier or equivalently multiply by 1.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'none' );
--- Pico 10**-12.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'p' );
--- Yocto 10**-24.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'y' );
--- Zepto 10**-21.
 INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'z' );
 
 -- The derived units defined for usage in the CIM. In some cases, the derived
@@ -2452,351 +2808,262 @@ INSERT INTO "UnitMultiplier" ( "name" ) VALUES ( 'z' );
 -- scale the raw data of those sources into SI-based units.
 -- The integer values are used for harmonization with IEC 61850.
 CREATE TABLE "UnitSymbol" ( "name" VARCHAR(100) UNIQUE );
--- Current in amperes.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'A' );
--- Amperes squared (A^2).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'A2' );
--- Ampere-squared hour, ampere-squared hour.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'A2h' );
--- Ampere squared time in square amperes (A^2*s).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'A2s' );
--- Current, ratio of amperages.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'APerA' );
--- Amperes per metre (A/m), magnetic field strength.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'APerm' );
--- Ampere-hours, ampere-hours.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Ah' );
--- Ampere seconds (A*s).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'As' );
--- Radioactivity in becquerels (1/s).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Bq' );
--- Energy, British Thermal Units.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Btu' );
--- Electric charge in coulombs (A*s).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'C' );
--- Exposure (x rays), coulombs per kilogram.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'CPerkg' );
--- Surface charge density, coulombs per square metre.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'CPerm2' );
--- Electric charge density, coulombs per cubic metre.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'CPerm3' );
--- Electric capacitance in farads (C/V).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'F' );
--- Permittivity, farads per metre.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'FPerm' );
--- Magnetic flux density, gausses (1 G = 10e-4*T).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'G' );
--- Absorbed dose in grays (J/kg).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Gy' );
--- Absorbed dose rate, grays per second.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'GyPers' );
--- Electric inductance in henrys (Wb/A).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'H' );
--- Permeability, henrys per metre.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'HPerm' );
--- Frequency in hertz (1/s).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Hz' );
--- Frequency, rate of frequency change.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'HzPerHz' );
--- Rate of change of frequency in hertz per second.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'HzPers' );
--- Energy in joules (N*m = C*V = W*s).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'J' );
--- Heat capacity in joules/kelvin.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'JPerK' );
--- Specific energy, J/kg.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'JPerkg' );
--- Specific heat capacity, specific entropy, joules per kilogram Kelvin.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'JPerkgK' );
--- Insulation energy density, joules per square metre or watt second per square
--- metre.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'JPerm2' );
--- Energy density, joules per cubic metre.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'JPerm3' );
--- Molar energy, joules per mole.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'JPermol' );
--- Molar entropy, molar heat capacity, joules per mole kelvin.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'JPermolK' );
--- Energy rate in joules per second (J/s).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'JPers' );
--- Temperature in kelvins.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'K' );
--- Temperature change rate in kelvins per second.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'KPers' );
--- Length, nautical miles (1 M = 1852 m).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'M' );
--- Magnetic flux, maxwells (1 Mx = 10-8 Wb).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Mx' );
--- Force in newtons (kg*m/s^2).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'N' );
--- Surface tension, newton per metre.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'NPerm' );
--- Moment of force, newton metres.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Nm' );
--- Magnetic field in oersteds, (1 Oe = (10^3/(4*pi)) A/m = 79.57747 A/m).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Oe' );
--- Pressure in pascals (N/m^2). Note: the absolute or relative measurement
--- of pressure is implied with this entry. See below for more explicit forms.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Pa' );
--- Pressure change rate in pascals per second.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'PaPers' );
--- Dynamic viscosity, pascal seconds.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Pas' );
--- Quantity power, Q.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Q' );
--- Quantity energy, Qh.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Qh' );
--- Conductance in siemens.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'S' );
--- Conductance per length (F/m).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'SPerm' );
--- Dose equivalent in sieverts (J/kg).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Sv' );
--- Magnetic flux density in teslas (Wb/m^2).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'T' );
--- Electric potential in volts (W/A).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'V' );
--- Volt squared (W^2/A^2).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'V2' );
--- Volt-squared hour, volt-squared-hours.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'V2h' );
--- Apparent power in volt amperes. See also real power and reactive power.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VA' );
--- Apparent energy in volt ampere hours.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VAh' );
--- Reactive power in volt amperes reactive. The "reactive" or "imaginary"
--- component of electrical power (V*I*sin(phi)). (See also real power and
--- apparent power).
--- Note: Different meter designs use different methods to arrive at their
--- results. Some meters may compute reactive power as an arithmetic value,
--- while others compute the value vectorially. The data consumer should determine
--- the method in use and the suitability of the measurement for the intended
--- purpose.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VAr' );
--- Reactive energy in volt ampere reactive hours.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VArh' );
--- Magnetic flux in volt per hertz.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VPerHz' );
--- Voltage, ratio of voltages.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VPerV' );
--- Power factor, PF, the ratio of the active power to the apparent power.
--- Note: The sign convention used for power factor will differ between IEC
--- meters and EEI (ANSI) meters. It is assumed that the data consumers understand
--- the type of meter being used and agree on the sign convention in use at
--- any given utility.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VPerVA' );
--- Power factor, PF, the ratio of the active power to the apparent power.
--- Note: The sign convention used for power factor will differ between IEC
--- meters and EEI (ANSI) meters. It is assumed that the data consumers understand
--- the type of meter being used and agree on the sign convention in use at
--- any given utility.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VPerVAr' );
--- Electric field strength, volts per metre.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'VPerm' );
--- Volt-hour, Volt hours.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Vh' );
--- Volt seconds (Ws/A).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Vs' );
--- Real power in watts (J/s). Electrical power may have real and reactive
--- components. The real portion of electrical power (I^2*R or V*I*cos(phi)),
--- is expressed in Watts. See also apparent power and reactive power.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'W' );
--- Active power per current flow, watts per Ampere.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'WPerA' );
--- Signal Strength, ratio of power.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'WPerW' );
--- Heat flux density, irradiance, watts per square metre.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'WPerm2' );
--- Radiance, watts per square metre steradian.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'WPerm2sr' );
--- Thermal conductivity in watt/metres kelvin.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'WPermK' );
--- Ramp rate in watts per second.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'WPers' );
--- Radiant intensity, watts per steradian.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'WPersr' );
--- Magnetic flux in webers (V*s).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Wb' );
--- Real energy in watt hours.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'Wh' );
--- Plane angle, minutes.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'anglemin' );
--- Plane angle, seconds.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'anglesec' );
--- Pressure in bars, (1 bar = 100 kPa).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'bar' );
--- Luminous intensity in candelas.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'cd' );
--- Data rate (baud) in characters per second.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'charPers' );
--- Number of characters.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'character' );
--- Power factor, dimensionless.
--- Note 1: This definition of power factor only holds for balanced systems.
--- See the alternative definition under code 153.
--- Note 2 : Beware of differing sign conventions in use between the IEC and
--- EEI. It is assumed that the data consumer understands the type of meter
--- in use and the sign convention in use by the utility.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'cosPhi' );
--- Amount of substance, counter value.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'count' );
--- Time in days, day = 24 h = 86400 s.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'd' );
--- Sound pressure level in decibels. Note: multiplier "d" is included in this
--- unit symbol for compatibility with IEC 61850-7-3.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'dB' );
--- Power level (logarithmic ratio of signal strength , Bel-mW), normalized
--- to 1 mW. Note: multiplier "d" is included in this unit symbol for compatibility
--- with IEC 61850-7-3.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'dBm' );
--- Plane angle in degrees.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'deg' );
--- Relative temperature in degrees Celsius (degC).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'degC' );
--- Volume, cubic feet.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'ft3' );
--- Concentration, The ratio of the mass of a solute divided by the mass of
--- the solution.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'gPerg' );
--- Volume in gallons, US gallon (1 gal = 231 in^3 = 128 fl ounce).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'gal' );
--- Time in hours, hour = 60 min = 3600 s.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'h' );
--- Area, hectares.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'ha' );
--- Catalytic activity, katal = mol/s.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'kat' );
--- Catalytic activity concentration, katals per cubic metre.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'katPerm3' );
--- Mass in kilograms. Note: multiplier "k" is included in this unit symbol
--- for compatibility with IEC 61850-7-3.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'kg' );
--- Weight per energy in kilograms per joule (kg/J). Note: multiplier "k" is
--- included in this unit symbol for compatibility with IEC 61850-7-3.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'kgPerJ' );
--- Mass per length in kilogram/metres (kg/m). Note: multiplier "k" is included
--- in this unit symbol for compatibility with mass datatype.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'kgPerm' );
--- Density in kilogram/cubic metres (kg/m^3). Note: multiplier "k" is included
--- in this unit symbol for compatibility with IEC 61850-7-3.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'kgPerm3' );
--- Moment of mass in kilogram metres (kg*m) (first moment of mass). Note:
--- multiplier "k" is included in this unit symbol for compatibility with IEC
--- 61850-7-3.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'kgm' );
--- Moment of mass in kilogram square metres (kg*m^2) (Second moment of mass,
--- commonly called the moment of inertia). Note: multiplier "k" is included
--- in this unit symbol for compatibility with IEC 61850-7-3.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'kgm2' );
--- Speed, knots (1 kn = 1852/3600) m/s.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'kn' );
--- Volume in litres, litre = dm^3 = m^3/1000.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'l' );
--- Volumetric flow rate, litres per hour.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'lPerh' );
--- Concentration, The ratio of the volume of a solute divided by the volume
--- of the solution.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'lPerl' );
--- Volumetric flow rate in litres per second.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'lPers' );
--- Luminous flux in lumens (cd*sr).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'lm' );
--- Illuminance in lux (lm/m^2).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'lx' );
--- Length in metres.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm' );
--- Area in square metres (m^2).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm2' );
--- Viscosity in square metres/second (m^2/s).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm2Pers' );
--- Volume in cubic metres (m^3).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm3' );
--- Volume, cubic metres, with the value compensated for weather effects.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm3Compensated' );
--- Volumetric flow rate, cubic metres per hour.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm3Perh' );
--- Specific volume, cubic metres per kilogram, v.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm3Perkg' );
--- Volumetric flow rate in cubic metres per second (m^3/s).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm3Pers' );
--- Volume, cubic metres, with the value uncompensated for weather effects.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'm3Uncompensated' );
--- Fuel efficiency in metres per cubic metres (m/m^3).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'mPerm3' );
--- Velocity in metres per second (m/s).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'mPers' );
--- Acceleration in metres per second squared (m/s^2).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'mPers2' );
--- Time in minutes, minute = 60 s.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'min' );
--- Pressure, millimetres of mercury (1 mmHg is approximately 133.3 Pa).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'mmHg' );
--- Amount of substance in moles.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'mol' );
--- Concentration, Molality, the amount of solute in moles and the amount of
--- solvent in kilograms.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'molPerkg' );
--- Concentration, The amount of substance concentration, (c), the amount of
--- solvent in moles divided by the volume of solution in m^3.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'molPerm3' );
--- Concentration, Molar fraction, the ratio of the molar amount of a solute
--- divided by the molar amount of the solution.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'molPermol' );
--- Dimension less quantity, e.g. count, per unit, etc.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'none' );
--- Electric resistance in ohms (V/A).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'ohm' );
--- Electric resistance per length in ohms per metre ((V/A)/m).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'ohmPerm' );
--- Resistivity, ohm metres, (rho).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'ohmm' );
--- Reciprocal of frequency (1/Hz).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'onePerHz' );
--- Wavenumber, reciprocal metres, (1/m).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'onePerm' );
--- Concentration in parts per million.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'ppm' );
--- Plane angle in radians (m/m).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'rad' );
--- Angular velocity in radians per second (rad/s).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'radPers' );
--- Angular acceleration, radians per second squared.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'radPers2' );
--- Amount of rotation, revolutions.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'rev' );
--- Rotations per second (1/s). See also Hz (1/s).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'rotPers' );
--- Time in seconds.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 's' );
--- Time, Ratio of time.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'sPers' );
--- Solid angle in steradians (m^2/m^2).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'sr' );
--- Energy, therms.
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'therm' );
--- Mass in tons, "tonne" or "metric ton" (1000 kg = 1 Mg).
 INSERT INTO "UnitSymbol" ( "name" ) VALUES ( 'tonne' );
+
+-- DC side of the voltage source converter (VSC).
+CREATE TABLE "VsConverter"
+(
+    "mRID" VARCHAR(100) PRIMARY KEY,
+    -- Angle between VsConverter.uv and ACDCConverter.uc. It is converter's state
+    -- variable used in power flow. The attribute shall be a positive value or
+    -- zero.
+    "delta" DOUBLE PRECISION,
+    -- Droop constant. The pu value is obtained as D [kV/MW] * Sb / Ubdc. The
+    -- attribute shall be a positive value.
+    "droop" DOUBLE PRECISION,
+    -- Compensation constant. Used to compensate for voltage drop when controlling
+    -- voltage at a distant bus. The attribute shall be a positive value.
+    "droopCompensation" DOUBLE PRECISION,
+    -- The maximum quotient between the AC converter voltage (Uc) and DC voltage
+    -- (Ud). A factor typically less than 1. It is converter's configuration data
+    -- used in power flow.
+    "maxModulationIndex" DOUBLE PRECISION,
+    -- The maximum current through a valve. It is converter's configuration data.
+    "maxValveCurrent" DOUBLE PRECISION,
+    -- Kind of control of real power and/or DC voltage.
+    -- FK column reference to table representing the "VsPpccControlKind" enumeration
+    "pPccControl" VARCHAR(100),
+    -- Kind of reactive power control.
+    -- FK column reference to table representing the "VsQpccControlKind" enumeration
+    "qPccControl" VARCHAR(100),
+    -- Reactive power sharing factor among parallel converters on Uac control.
+    -- The attribute shall be a positive value or zero.
+    "qShare" DOUBLE PRECISION,
+    -- Phase target at AC side, at point of common coupling. The attribute shall
+    -- be a positive value.
+    "targetPhasePcc" DOUBLE PRECISION,
+    -- Power factor target at the AC side, at point of common coupling. The attribute
+    -- shall be a positive value.
+    "targetPowerFactorPcc" DOUBLE PRECISION,
+    -- Magnitude of pulse-modulation factor. The attribute shall be a positive
+    -- value.
+    "targetPWMfactor" DOUBLE PRECISION,
+    -- Reactive power injection target in AC grid, at point of common coupling.
+    -- Load sign convention is used, i.e. positive sign means flow out from a
+    -- node.
+    "targetQpcc" DOUBLE PRECISION,
+    -- Voltage target in AC grid, at point of common coupling. The attribute shall
+    -- be a positive value.
+    "targetUpcc" DOUBLE PRECISION,
+    -- Line-to-line voltage on the valve side of the converter transformer. It
+    -- is converter's state variable, result from power flow. The attribute shall
+    -- be a positive value.
+    "uv" DOUBLE PRECISION
+);
+
+-- Types applicable to the control of real power and/or DC voltage by voltage
+-- source converter.
+CREATE TABLE "VsPpccControlKind" ( "name" VARCHAR(100) UNIQUE );
+-- Control is real power at point of common coupling. The target value is
+-- provided by ACDCConverter.targetPpcc.
+INSERT INTO "VsPpccControlKind" ( "name" ) VALUES ( 'pPcc' );
+-- Control is active power at point of common coupling and local DC voltage,
+-- with the droop. Target values are provided by ACDCConverter.targetPpcc,
+-- ACDCConverter.targetUdc and VsConverter.droop.
+INSERT INTO "VsPpccControlKind" ( "name" ) VALUES ( 'pPccAndUdcDroop' );
+-- Control is active power at point of common coupling and the pilot DC voltage,
+-- with the droop. The mode is used for Multi Terminal DC (MTDC) systems where
+-- multiple DC substations are connected to the DC transmission lines. The
+-- pilot voltage is then used to coordinate the control the DC voltage across
+-- the DC substations. Targets are provided by ACDCConverter.targetPpcc, ACDCConverter.targetUdc
+-- and VsConverter.droop.
+INSERT INTO "VsPpccControlKind" ( "name" ) VALUES ( 'pPccAndUdcDroopPilot' );
+-- Control is active power at point of common coupling and compensated DC
+-- voltage, with the droop. Compensation factor is the resistance, as an approximation
+-- of the DC voltage of a common (real or virtual) node in the DC network.
+-- Targets are provided by ACDCConverter.targetPpcc, ACDCConverter.targetUdc,
+-- VsConverter.droop and VsConverter.droopCompensation.
+INSERT INTO "VsPpccControlKind" ( "name" ) VALUES ( 'pPccAndUdcDroopWithCompensation' );
+-- Control is phase at point of common coupling. Target is provided by VsConverter.targetPhasePcc.
+INSERT INTO "VsPpccControlKind" ( "name" ) VALUES ( 'phasePcc' );
+-- Control is DC voltage with target value provided by ACDCConverter.targetUdc.
+INSERT INTO "VsPpccControlKind" ( "name" ) VALUES ( 'udc' );
+
+-- Kind of reactive power control at point of common coupling for a voltage
+-- source converter.
+CREATE TABLE "VsQpccControlKind" ( "name" VARCHAR(100) UNIQUE );
+-- Control is power factor at point of common coupling. Target is provided
+-- by VsConverter.targetPowerFactorPcc.
+INSERT INTO "VsQpccControlKind" ( "name" ) VALUES ( 'powerFactorPcc' );
+-- No explicit control. Pulse-modulation factor is directly set in magnitude
+-- (VsConverter.targetPWMfactor) and phase (VsConverter.targetPhasePcc).
+INSERT INTO "VsQpccControlKind" ( "name" ) VALUES ( 'pulseWidthModulation' );
+-- Control is reactive power at point of common coupling. Target is provided
+-- by VsConverter.targetQpcc.
+INSERT INTO "VsQpccControlKind" ( "name" ) VALUES ( 'reactivePcc' );
+-- Control is voltage at point of common coupling. Target is provided by VsConverter.targetUpcc.
+INSERT INTO "VsQpccControlKind" ( "name" ) VALUES ( 'voltagePcc' );
 
 -- Winding connection type.
 CREATE TABLE "WindingConnection" ( "name" VARCHAR(100) UNIQUE );
--- Autotransformer common winding.
 INSERT INTO "WindingConnection" ( "name" ) VALUES ( 'A' );
--- Delta.
 INSERT INTO "WindingConnection" ( "name" ) VALUES ( 'D' );
--- Independent winding, for single-phase connections.
 INSERT INTO "WindingConnection" ( "name" ) VALUES ( 'I' );
--- Wye.
 INSERT INTO "WindingConnection" ( "name" ) VALUES ( 'Y' );
--- Wye, with neutral brought out for grounding.
 INSERT INTO "WindingConnection" ( "name" ) VALUES ( 'Yn' );
--- ZigZag.
 INSERT INTO "WindingConnection" ( "name" ) VALUES ( 'Z' );
--- ZigZag, with neutral brought out for grounding.
 INSERT INTO "WindingConnection" ( "name" ) VALUES ( 'Zn' );
 
 ------------------------------------------------------------------------------
 -- Inheritance constraint definitions
 ------------------------------------------------------------------------------
+
+-- Inheritance subclass-superclass constraint for table "ACDCConverter"
+ALTER TABLE "ACDCConverter" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConductingEquipment" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "ACDCConverterDCTerminal"
+ALTER TABLE "ACDCConverterDCTerminal" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCBaseTerminal" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "ACDCTerminal"
 ALTER TABLE "ACDCTerminal" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
@@ -2812,6 +3079,12 @@ ALTER TABLE "ApparentPowerLimit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Operatio
 
 -- Inheritance subclass-superclass constraint for table "AsynchronousMachine"
 ALTER TABLE "AsynchronousMachine" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RotatingMachine" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "AsynchronousMachineDynamics"
+ALTER TABLE "AsynchronousMachineDynamics" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RotatingMachineDynamics" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "AsynchronousMachineTimeConstantReactance"
+ALTER TABLE "AsynchronousMachineTimeConstantReactance" ADD FOREIGN KEY ( "mRID" ) REFERENCES "AsynchronousMachineDynamics" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "BaseVoltage"
 ALTER TABLE "BaseVoltage" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
@@ -2836,6 +3109,9 @@ ALTER TABLE "ConnectivityNode" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Identified
 
 -- Inheritance subclass-superclass constraint for table "ConnectivityNodeContainer"
 ALTER TABLE "ConnectivityNodeContainer" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerSystemResource" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "CsConverter"
+ALTER TABLE "CsConverter" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ACDCConverter" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "Curve"
 ALTER TABLE "Curve" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
@@ -2878,6 +3154,9 @@ ALTER TABLE "DCSwitch" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCConductingEquipm
 
 -- Inheritance subclass-superclass constraint for table "DCTerminal"
 ALTER TABLE "DCTerminal" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DCBaseTerminal" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "DCTopologicalNode"
+ALTER TABLE "DCTopologicalNode" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "DetailedModelDescriptor"
 ALTER TABLE "DetailedModelDescriptor" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" ( "mRID" );
@@ -2957,6 +3236,12 @@ ALTER TABLE "PSRType" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IdentifiedObject" (
 -- Inheritance subclass-superclass constraint for table "ParameterDescriptor"
 ALTER TABLE "ParameterDescriptor" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DetailedModelDescriptor" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "PhaseTapChanger"
+ALTER TABLE "PhaseTapChanger" ADD FOREIGN KEY ( "mRID" ) REFERENCES "TapChanger" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "PhaseTapChangerLinear"
+ALTER TABLE "PhaseTapChangerLinear" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PhaseTapChanger" ( "mRID" );
+
 -- Inheritance subclass-superclass constraint for table "PhotoVoltaicUnit"
 ALTER TABLE "PhotoVoltaicUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "PowerElectronicsUnit" ( "mRID" );
 
@@ -3010,6 +3295,15 @@ ALTER TABLE "ShuntCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Regulating
 
 -- Inheritance subclass-superclass constraint for table "SignalDescriptor"
 ALTER TABLE "SignalDescriptor" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DetailedModelDescriptor" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "StaticVarCompensator"
+ALTER TABLE "StaticVarCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "RegulatingCondEq" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "SvDCPowerFlow"
+ALTER TABLE "SvDCPowerFlow" ADD FOREIGN KEY ( "mRID" ) REFERENCES "StateVariable" ( "mRID" );
+
+-- Inheritance subclass-superclass constraint for table "SvDCVoltage"
+ALTER TABLE "SvDCVoltage" ADD FOREIGN KEY ( "mRID" ) REFERENCES "StateVariable" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "SvPowerFlow"
 ALTER TABLE "SvPowerFlow" ADD FOREIGN KEY ( "mRID" ) REFERENCES "StateVariable" ( "mRID" );
@@ -3074,12 +3368,22 @@ ALTER TABLE "TransformerMeshImpedance" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Id
 -- Inheritance subclass-superclass constraint for table "TransformerSaturationCurve"
 ALTER TABLE "TransformerSaturationCurve" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Curve" ( "mRID" );
 
+-- Inheritance subclass-superclass constraint for table "VsConverter"
+ALTER TABLE "VsConverter" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ACDCConverter" ( "mRID" );
+
 ------------------------------------------------------------------------------
 -- Standard foreign key constraint definitions
 ------------------------------------------------------------------------------
 
+-- Foreign keys for table "ACDCConverterDCTerminal"
+ALTER TABLE "ACDCConverterDCTerminal" ADD FOREIGN KEY ( "polarity" ) REFERENCES "DCPolarityKind" ( "name" );
+ALTER TABLE "ACDCConverterDCTerminal" ADD FOREIGN KEY ( "DCConductingEquipment" ) REFERENCES "ACDCConverter" ( "mRID" );
+
 -- Foreign keys for table "ACPointOfCommonCoupling"
 ALTER TABLE "ACPointOfCommonCoupling" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
+
+-- Foreign keys for table "AsynchronousMachineDynamics"
+ALTER TABLE "AsynchronousMachineDynamics" ADD FOREIGN KEY ( "AsynchronousMachine" ) REFERENCES "AsynchronousMachine" ( "mRID" );
 
 -- Foreign keys for table "BatteryUnit"
 ALTER TABLE "BatteryUnit" ADD FOREIGN KEY ( "batteryState" ) REFERENCES "BatteryStateKind" ( "name" );
@@ -3109,6 +3413,7 @@ ALTER TABLE "DCBaseTerminal" ADD FOREIGN KEY ( "DCNode" ) REFERENCES "DCNode" ( 
 
 -- Foreign keys for table "DCNode"
 ALTER TABLE "DCNode" ADD FOREIGN KEY ( "DCEquipmentContainer" ) REFERENCES "DCEquipmentContainer" ( "mRID" );
+ALTER TABLE "DCNode" ADD FOREIGN KEY ( "DCTopologicalNode" ) REFERENCES "DCTopologicalNode" ( "mRID" );
 
 -- Foreign keys for table "DCTerminal"
 ALTER TABLE "DCTerminal" ADD FOREIGN KEY ( "polarity" ) REFERENCES "DCTerminalPolarityKind" ( "name" );
@@ -3169,6 +3474,9 @@ ALTER TABLE "OperationalLimitType" ADD FOREIGN KEY ( "direction" ) REFERENCES "O
 ALTER TABLE "ParameterValue" ADD FOREIGN KEY ( "DetailedModelDynamics" ) REFERENCES "DetailedModelDynamics" ( "mRID" );
 ALTER TABLE "ParameterValue" ADD FOREIGN KEY ( "ParameterDescriptor" ) REFERENCES "ParameterDescriptor" ( "mRID" );
 
+-- Foreign keys for table "PhaseTapChanger"
+ALTER TABLE "PhaseTapChanger" ADD FOREIGN KEY ( "TransformerEnd" ) REFERENCES "TransformerEnd" ( "mRID" );
+
 -- Foreign keys for table "PowerElectronicsConnectionDCTerminal"
 ALTER TABLE "PowerElectronicsConnectionDCTerminal" ADD FOREIGN KEY ( "polarity" ) REFERENCES "DCTerminalPolarityKind" ( "name" );
 ALTER TABLE "PowerElectronicsConnectionDCTerminal" ADD FOREIGN KEY ( "PowerElectronicsConnection" ) REFERENCES "PowerElectronicsConnection" ( "mRID" );
@@ -3192,6 +3500,12 @@ ALTER TABLE "ShuntCompensator" ADD FOREIGN KEY ( "phaseConnection" ) REFERENCES 
 -- Foreign keys for table "SignalDescriptor"
 ALTER TABLE "SignalDescriptor" ADD FOREIGN KEY ( "ACDCTerminal" ) REFERENCES "ACDCTerminal" ( "mRID" );
 ALTER TABLE "SignalDescriptor" ADD FOREIGN KEY ( "DynamicsFunctionBlock" ) REFERENCES "DynamicsFunctionBlock" ( "mRID" );
+
+-- Foreign keys for table "SvDCPowerFlow"
+ALTER TABLE "SvDCPowerFlow" ADD FOREIGN KEY ( "DCTerminal" ) REFERENCES "DCTerminal" ( "mRID" );
+
+-- Foreign keys for table "SvDCVoltage"
+ALTER TABLE "SvDCVoltage" ADD FOREIGN KEY ( "DCTopologicalNode" ) REFERENCES "DCTopologicalNode" ( "mRID" );
 
 -- Foreign keys for table "SvPowerFlow"
 ALTER TABLE "SvPowerFlow" ADD FOREIGN KEY ( "Terminal" ) REFERENCES "Terminal" ( "mRID" );
@@ -3254,7 +3568,11 @@ ALTER TABLE "TransformerSaturationCurve" ADD FOREIGN KEY ( "TransformerCoreAdmit
 -- Compound data. Such child data will be deleted concurrently to
 -- that of its parent data.
 
+-- Cascade deletes for compounds referenced in table "ACDCConverterDCTerminal"
+
 -- Cascade deletes for compounds referenced in table "ACPointOfCommonCoupling"
+
+-- Cascade deletes for compounds referenced in table "AsynchronousMachineDynamics"
 
 -- Cascade deletes for compounds referenced in table "BatteryUnit"
 
@@ -3302,6 +3620,8 @@ ALTER TABLE "TransformerSaturationCurve" ADD FOREIGN KEY ( "TransformerCoreAdmit
 
 -- Cascade deletes for compounds referenced in table "ParameterValue"
 
+-- Cascade deletes for compounds referenced in table "PhaseTapChanger"
+
 -- Cascade deletes for compounds referenced in table "PowerElectronicsConnectionDCTerminal"
 
 -- Cascade deletes for compounds referenced in table "PowerElectronicsUnit"
@@ -3315,6 +3635,10 @@ ALTER TABLE "TransformerSaturationCurve" ADD FOREIGN KEY ( "TransformerCoreAdmit
 -- Cascade deletes for compounds referenced in table "ShuntCompensator"
 
 -- Cascade deletes for compounds referenced in table "SignalDescriptor"
+
+-- Cascade deletes for compounds referenced in table "SvDCPowerFlow"
+
+-- Cascade deletes for compounds referenced in table "SvDCVoltage"
 
 -- Cascade deletes for compounds referenced in table "SvPowerFlow"
 
@@ -3350,7 +3674,9 @@ ALTER TABLE "TransformerSaturationCurve" ADD FOREIGN KEY ( "TransformerCoreAdmit
 -- Foreign key column indexes for optimized queries and joins
 ------------------------------------------------------------------------------
 
+CREATE INDEX ix_ACDCConverterDCTerminal_DCConductingEquipment ON "ACDCConverterDCTerminal" ( "DCConductingEquipment" );
 CREATE INDEX ix_ACPointOfCommonCoupling_ConnectivityNode ON "ACPointOfCommonCoupling" ( "ConnectivityNode" );
+CREATE INDEX ix_AsynchronousMachineDynamics_AsynchronousMachine ON "AsynchronousMachineDynamics" ( "AsynchronousMachine" );
 CREATE INDEX ix_ConductingEquipment_BaseVoltage ON "ConductingEquipment" ( "BaseVoltage" );
 CREATE INDEX ix_ConnectedFacility_ACPointOfCommonCoupling ON "ConnectedFacility" ( "ACPointOfCommonCoupling" );
 CREATE INDEX ix_ConnectivityNode_ConnectivityNodeContainer ON "ConnectivityNode" ( "ConnectivityNodeContainer" );
@@ -3358,6 +3684,7 @@ CREATE INDEX ix_ConnectivityNode_TopologicalNode ON "ConnectivityNode" ( "Topolo
 CREATE INDEX ix_CurveData_Curve ON "CurveData" ( "Curve" );
 CREATE INDEX ix_DCBaseTerminal_DCNode ON "DCBaseTerminal" ( "DCNode" );
 CREATE INDEX ix_DCNode_DCEquipmentContainer ON "DCNode" ( "DCEquipmentContainer" );
+CREATE INDEX ix_DCNode_DCTopologicalNode ON "DCNode" ( "DCTopologicalNode" );
 CREATE INDEX ix_DCTerminal_DCConductingEquipment ON "DCTerminal" ( "DCConductingEquipment" );
 CREATE INDEX ix_DetailedModelDescriptor_DetailedModelTypeDynamics ON "DetailedModelDescriptor" ( "DetailedModelTypeDynamics" );
 CREATE INDEX ix_DetailedModelDynamics_DetailedModelTypeDynamics ON "DetailedModelDynamics" ( "DetailedModelTypeDynamics" );
@@ -3379,6 +3706,7 @@ CREATE INDEX ix_OperationalLimit_OperationalLimitType ON "OperationalLimit" ( "O
 CREATE INDEX ix_OperationalLimitSet_Terminal ON "OperationalLimitSet" ( "Terminal" );
 CREATE INDEX ix_ParameterValue_DetailedModelDynamics ON "ParameterValue" ( "DetailedModelDynamics" );
 CREATE INDEX ix_ParameterValue_ParameterDescriptor ON "ParameterValue" ( "ParameterDescriptor" );
+CREATE INDEX ix_PhaseTapChanger_TransformerEnd ON "PhaseTapChanger" ( "TransformerEnd" );
 CREATE INDEX ix_PowerElectronicsConnectionDCTerminal_PowerElectronicsConnection ON "PowerElectronicsConnectionDCTerminal" ( "PowerElectronicsConnection" );
 CREATE INDEX ix_PowerElectronicsUnit_PowerElectronicsConnection ON "PowerElectronicsUnit" ( "PowerElectronicsConnection" );
 CREATE INDEX ix_PowerTransformerEnd_PowerTransformer ON "PowerTransformerEnd" ( "PowerTransformer" );
@@ -3386,6 +3714,8 @@ CREATE INDEX ix_RatioTapChanger_TransformerEnd ON "RatioTapChanger" ( "Transform
 CREATE INDEX ix_RotatingMachine_GeneratingUnit ON "RotatingMachine" ( "GeneratingUnit" );
 CREATE INDEX ix_SignalDescriptor_ACDCTerminal ON "SignalDescriptor" ( "ACDCTerminal" );
 CREATE INDEX ix_SignalDescriptor_DynamicsFunctionBlock ON "SignalDescriptor" ( "DynamicsFunctionBlock" );
+CREATE INDEX ix_SvDCPowerFlow_DCTerminal ON "SvDCPowerFlow" ( "DCTerminal" );
+CREATE INDEX ix_SvDCVoltage_DCTopologicalNode ON "SvDCVoltage" ( "DCTopologicalNode" );
 CREATE INDEX ix_SvPowerFlow_Terminal ON "SvPowerFlow" ( "Terminal" );
 CREATE INDEX ix_SvShuntCompensatorSections_ShuntCompensator ON "SvShuntCompensatorSections" ( "ShuntCompensator" );
 CREATE INDEX ix_SvStatus_ConductingEquipment ON "SvStatus" ( "ConductingEquipment" );

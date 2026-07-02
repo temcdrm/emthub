@@ -8,8 +8,8 @@ from rdflib.namespace import XSD
 from otsrdflib import OrderedTurtleSerializer
 import emthub.api as emthub
 
-CIM_NS = 'http://www.ucaiug.org/ns#'
-EMT_NS = 'http://opensource.ieee.org/emtiop#'
+CIM_NS = 'http://www.ucaiug.org/grid18v15#'
+EMT_NS = 'http://opensource.ieee.org/emtiop01v01#'
 
 def create_cim_ic (case):
   bus_ic = None

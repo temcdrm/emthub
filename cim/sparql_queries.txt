@@ -23,8 +23,8 @@ SELECT ?s ?attr ?val where {
 
 
 PREFIX r:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX c:  <http://www.ucaiug.org/ns#>
-PREFIX e:  <http://opensource.ieee.org/emtiop#>
+PREFIX c:  <http://www.ucaiug.org/grid18v15#>
+PREFIX e:  <http://opensource.ieee.org/emtiop01v01#>
 #PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 ##################################################

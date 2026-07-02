@@ -1,5 +1,5 @@
-@prefix cim: <http://www.ucaiug.org/ns#> .
-@prefix emt: <http://opensource.ieee.org/emtiop#> .
+@prefix cim: <http://www.ucaiug.org/grid18v15#> .
+@prefix emt: <http://opensource.ieee.org/emtiop01v01#> .
 
 <93EA6BF1-A569-4190-9590-98A62780489E> a cim:EquipmentContainer ;
     cim:IdentifiedObject.mRID "93EA6BF1-A569-4190-9590-98A62780489E"^^cim:String ;
