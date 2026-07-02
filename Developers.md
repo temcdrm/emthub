@@ -37,7 +37,7 @@ However, Blazegraph does require a local Java installation.
 
 To deploy the project on PyPi, staring in the directory of your git clone, where `setup.py` is located:
 
-- Make sure that the version number in `setup.cfg` and `src\emthub\version.py` is new.
+- Make sure that the version number in `docs\conf.py` and `src\emthub\version.py` is new.
 - Invoke `rd /s /q dist` on Windows (would be `rm -rf dist` on Linux or Mac OS X)
 - `python -m build`
 - `twine check dist/*` should not show any errors
@@ -47,11 +47,11 @@ To deploy the project on PyPi, staring in the directory of your git clone, where
 
 ### File and Scripting Workflow
 
-![FileFlow](FileFlow.png)
+![FileFlow](docs/assets/FileFlow.png)
 
 ### Extension and Profile Workflow
 
-![ProfileFlow](ProfileFlow.png)
+![ProfileFlow](docs/assets/ProfileFlow.png)
 
 
 Copyright &copy; 2024-26, Meltran, Inc
