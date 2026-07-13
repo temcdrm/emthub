@@ -101,8 +101,13 @@ example instance files against the profile.
 #. Start *CIMTool*. Version *2.3.0 RC4* was used in this demonstration.
 #. Use the *File/New/CIMTool Project* menu command.
 #. On the page **New CIMTool Project**, name the project *emtioptest*. It will typically create the workspace in *C:\\CIMTool-2.3.0-RC4\\workspace\\emtioptest*. Click *Next >*.
-#. On the page **Project Copyright Templates Configuration**, select the option *Do not include copyrights* and click *Next >*.
-#. On the page **Import Initial Schema**:
+#. On the page **Project Copyright Templates Configuration**, click the option *Select custom copyrights*. 
+   Browse to the multi-line and single-line template files, as provided in the *emtiop* subdirectory of this repository,
+   as shown below. Then click *Next >*.
+
+.. image:: assets/CIMTool0_copyrights.png
+
+6. On the page **Import Initial Schema**:
 
    - Browse to the *CIM_Grid_18v15.xmi* file containing the base CIM schema, which includes the *Grid18v15* package.
    - Specify the *Namespace URI* as *http://www.ucauig.org/ns#* (check the *Preference* option if necessary).
