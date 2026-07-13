@@ -173,7 +173,9 @@ The last command summarizes CIM class counts in each example.
 Repository
 ----------
 
-See `EMTHub directory <https://github.com/temcdrm/emthub>`_
+See `EMTHub directory <https://github.com/temcdrm/emthub>`_. This content is moving to
+an `IEEE Open-source Project <https://opensource.ieee.org/emtiop>`_ but that migration is under IEEE compliance
+review, and is not yet public.
 
 To make a local copy, first `Install Git <https://github.com/git-guides/install-git>`_. Then 
 invoke this command from a directory where source code will be kept, such as `c:\src`::
