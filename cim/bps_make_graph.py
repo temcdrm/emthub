@@ -13,7 +13,7 @@ if __name__ == '__main__':
   sys_id = case['id']
   sys_name = case['name']
 
-  g = rdflib.Graph()
+  g = rdflib.Graph(store='Oxigraph')
   fname = sys_name + '.ttl'
   g.parse ('../test/' + fname)
   print ('read', len(g), 'statements from', fname)

@@ -9,7 +9,7 @@ See [IEEE P3743](https://standards.ieee.org/ieee/3743/12233/) and
 
 Users: [On-line Documentation](https://emthub.readthedocs.io/en/latest/)
 
-Developers: [Code Repository](https://github.com/temcdrm/emthub)
+Developers: [Code Repository](https://github.com/temcdrm/emthub), currently under migration to [IEEE Platform](https://opensource.ieee.org/emtiop)
 
 Copyright &copy; 2024-26, Meltran, Inc
 

@@ -30,6 +30,7 @@ nodeTypes = {
 edgeTypes = {
   'transformer': {'color':'gray',    'tag':'Xfmr'},
   'series':      {'color':'magenta', 'tag':'Cap'},
+  'seriesRL':    {'color':'brown',   'tag':'RL'},
   'cb':          {'color':'purple',  'tag':'CB'},
   'lineEHV':     {'color':'red',     'tag':'EHV'},
   'lineHV':      {'color':'orange',  'tag':'HV'},
@@ -63,6 +64,10 @@ def get_edge_highlights(data):
     color = edgeTypes['transformer']['color']
     edgeTypes['transformer']['count'] += 1
   elif data['eclass'] == 'series':
+    weight = 3.0
+    color = edgeTypes['seriesRL']['color']
+    edgeTypes['seriesRL']['count'] += 1
+  elif data['eclass'] == 'seriesRL':
     weight = 20.0
     color = edgeTypes['series']['color']
     edgeTypes['series']['count'] += 1
@@ -281,8 +286,12 @@ def build_system_graph (d):
     G.add_edge(data['cn1id'],data['cn2id'],eclass='transformer',eid=key,
                edata={'km':1.0, 'name':data['name']}, weight=1.0)
   for key, data in d['EMTCompSeries']['vals'].items():
-    G.add_edge(data['ConnectivityNode1_mRID'],data['ConnectivityNode2_mRID'],eclass='series',eid=key,
-               edata={'km':1.0, 'kv':0.001*data['BaseVoltage_nominalVoltage'], 'name':data['name']}, weight=1.0)
+    if data['x'] < 0.0:
+      G.add_edge(data['ConnectivityNode1_mRID'],data['ConnectivityNode2_mRID'],eclass='series',eid=key,
+                 edata={'km':1.0, 'kv':0.001*data['BaseVoltage_nominalVoltage'], 'name':data['name']}, weight=1.0)
+    else:
+      G.add_edge(data['ConnectivityNode1_mRID'],data['ConnectivityNode2_mRID'],eclass='seriesRL',eid=key,
+                 edata={'km':1.0, 'kv':0.001*data['BaseVoltage_nominalVoltage'], 'name':data['name']}, weight=1.0)
   for key, data in d['EMTDisconnectingCircuitBreaker']['vals'].items():
     G.add_edge(data['ConnectivityNode1_mRID'],data['ConnectivityNode2_mRID'],eclass='cb',eid=key,
                edata={'km':1.0, 'kv':0.001*data['BaseVoltage_nominalVoltage'], 'name':data['name']}, weight=1.0)
