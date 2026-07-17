@@ -98,9 +98,9 @@ importing the profile from version control, and checking one of the
 example instance files against the profile. 
 
 #. Extract the :ref:`target-repository` if you haven't already.
-#. Start *CIMTool*. Version *2.3.0 RC4* was used in this demonstration.
+#. Start *CIMTool*. Version *2.3.0 RC11* was used in this demonstration.
 #. Use the *File/New/CIMTool Project* menu command.
-#. On the page **New CIMTool Project**, name the project *emtioptest*. It will typically create the workspace in *C:\\CIMTool-2.3.0-RC4\\workspace\\emtioptest*. Click *Next >*.
+#. On the page **New CIMTool Project**, name the project *twoxmi*. It will typically create the workspace in *C:\\CIMTool-2.3.0-RC11\\workspace\\twoxmi*. Click *Next >*.
 #. On the page **Project Copyright Templates Configuration**, click the option *Select custom copyrights*. 
    Browse to the multi-line and single-line template files, as provided in the *emtiop* subdirectory of this repository,
    as shown below. Then click *Next >*.
@@ -110,8 +110,8 @@ example instance files against the profile.
 6. On the page **Import Initial Schema**:
 
    - Browse to the *CIM_Grid_18v15.xmi* file containing the base CIM schema, which includes the *Grid18v15* package.
-   - Specify the *Namespace URI* as *http://www.ucauig.org/ns#* (check the *Preference* option if necessary).
-   - Leave the *During import merge shadow class extensions* and *Enable self-healing* options checked (these may be grayed out). 
+   - Enter the *Namespace URI* as *http://www.ucauig.org/grid18v15#*.
+   - Leave the *During import merge shadow class extensions* and *Enable self-healing* options checked if possible (these may be grayed out). 
    - Turn off the *CIMTool Schema Model Validation Report*. 
    - The page should look similar to the screen shot below. Click *Finish*.
 
@@ -134,12 +134,14 @@ example instance files against the profile.
 .. image:: assets/EA1.png
 
 9. The next step is to add the CIM extension *xmi* file to the base CIM *xmi* file in *CIMTool*.
-10. Right-click on the *Schema* item under the *emtioptest* workspace in *Project Explorer*. Click *Import* on the pop-up menu and then select *Import Schema*, as shown below.
+10. Right-click on the *Schema* item under the *twoxmi* workspace in *Project Explorer*. Click *Import* on the pop-up menu and then select *Import Schema*, as shown below.
 
 .. image:: assets/CIMTool3.png
 
-11. Click *Next* to bring up the **Import Schema** page, similar to item 6. Leave the options as before, but browse to *Emtiop.xmi* 
-    in your local copy of the GitHub repository. The page should be similar to the screen shot below. Then click *Finish*.
+11. Click *Next* to bring up the **Import Schema** page, similar to item 6. Leave the options as before, 
+    but browse to *Emtiop.xmi* in your local copy of the GitHub repository. Enter the *Namespace URI* 
+    as *http://opensource.ieee.org/emtiop01v01#*. The page should be similar to the screen shot below. 
+    Then click *Finish*.
 
 .. image:: assets/CIMTool4.png
 
@@ -147,7 +149,7 @@ example instance files against the profile.
 
 .. image:: assets/CIMTool5.png
 
-13. Right-click on the *Profiles* item under the *emtioptest* workspace in *Project Explorer*. Click *Import* on the pop-up menu 
+13. Right-click on the *Profiles* item under the *twoxmi* workspace in *Project Explorer*. Click *Import* on the pop-up menu 
     and then select *Import Profile*. Click *Next*. This brings up the **Import Profile** page. Click *Browse* and navigate to the 
     archived *emtiop.owl* file as shown below. Then click *Finish*.
 
@@ -157,7 +159,7 @@ example instance files against the profile.
     reported. These are generally caused by mismatches in different versions of the profile and CIM extension, which
     may require some iterations to resolve. The profile import should produce no errors before taking the next step.
 
-15. Right-click on the *Instances* item under the *emtioptest* workspace in *Project Explorer*. Click *Import* on 
+15. Right-click on the *Instances* item under the *twoxmi* workspace in *Project Explorer*. Click *Import* on 
     the pop-up menu and then select *Import Model (CIM/XML file)*. Then click *Next*. This brings up the **Import a Model** page.
     Click *Browse* and navigate to one of the example CIM RDF files, in *xml* format, as shown below. [2]_ The *Namespace URI* should be
     left as shown. The correct check boxes for *Project* and *Profile* should be selected. Then click *Next*. 
