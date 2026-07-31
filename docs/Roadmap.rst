@@ -71,13 +71,13 @@ This roadmap applies to stakeholders that primarily manage CIM UML and profiles.
 
 These files, tools, and on-line documents provide the initial knowledge 
 base to perform segments of the workflow shown below. In the upper left, 
-the file *CIM_Grid_18v15.xmi* [1]_ has been reduced in size, by deleting the 
+the file *CIM_Grid_18v15.qea* [1]_ has been reduced in size, by deleting the 
 unnecesary (for EMT) *Enterprise* and *Market* packages. For *CIMTool*, it 
 was also necessary to delete profile packages distributed within the base 
 CIM file by the CIM Users Group. The three shaded files are key items 
 maintained on the open-source software site for P3743: 
  
-#. *Emtiop.xmi* contains the CIM extensions for EMT, output from  the UML editor and input to *CIMTool*. This file is relatively small and kept under version control. It should be possible to use this extension file with future versions of the base CIM. The format is a variant of *xml*.
+#. *CIM_Grid_18v15_Emtiop.qea* contains the CIM extensions for EMT, added to the base CIM, then saved from the UML editor for input to *CIMTool*. This file is kept under version control. The format is an SQLite3 database.
 #. *emtiop.owl* is the profile for EMT. This is created by selecting classes and attributes from the base CIM with extensions in *CIMTool*. You should check example CIM RDF instance files, some of them listed at the lower left, against the profile and resolve any errors.
 #. *emtiop.html* documents the classes and attributes used in the profile for EMT. It is built automatically from *CIMTool* and included in this on-line documentation as part of :ref:`target-cim-profile`. 
 
@@ -98,94 +98,83 @@ importing the profile from version control, and checking one of the
 example instance files against the profile. 
 
 #. Extract the :ref:`target-repository` if you haven't already.
-#. Start *CIMTool*. Version *2.3.0 RC11* was used in this demonstration.
+#. Start *CIMTool*. Version *2.3.0* was used in this demonstration.
 #. Use the *File/New/CIMTool Project* menu command.
-#. On the page **New CIMTool Project**, name the project *twoxmi*. It will typically create the workspace in *C:\\CIMTool-2.3.0-RC11\\workspace\\twoxmi*. Click *Next >*.
+#. On the page **New CIMTool Project**, name the project *emtioptest*. It will typically create the workspace in *C:\\CIMTool-2.3.0\\workspace\\emtioptest*. Click *Next >*.
 #. On the page **Project Copyright Templates Configuration**, click the option *Select custom copyrights*. 
    Browse to the multi-line and single-line template files, as provided in the *emtiop* subdirectory of this repository,
-   as shown below. Then click *Next >*.
+   as shown below. Then click *Finish*.
 
 .. image:: assets/CIMTool0_copyrights.png
 
-6. On the page **Import Initial Schema**:
+6. With *emtioptest* selected in the *Project Explorer*, use the *Project/Properties* menu command. 
+   Set the check boxes for *Enable self-healing ...* and *During import merge shadow/mixin extensions ...*, as
+   shown below. Click *Apply and Close*.
 
-   - Browse to the *CIM_Grid_18v15.xmi* file containing the base CIM schema, which includes the *Grid18v15* package.
-   - Enter the *Namespace URI* as *http://www.ucauig.org/grid18v15#*.
-   - Leave the *During import merge shadow class extensions* and *Enable self-healing* options checked if possible (these may be grayed out). 
+.. image:: assets/CIMTool0_checkboxes.png
+
+7. Right-click on the *Schema* item under the *emtioptest* workspace in *Project Explorer*. 
+   Click *Import* on the pop-up menu and then select *CIMTool/Import Schema*. On the page **Import Schema**:
+
+   - Browse to the *CIM_Grid_18v15_Emtiop_01v01.qea* file containing the extended CIM schema, which includes the *Grid18v15* and *Emtiop01v01* packages.
+   - Enter the *Namespace URI* for the base CIM as *http://www.ucauig.org/grid18v15#*.
+   - Leave the *During import merge shadow/mixin extensions* and *Enable self-healing* options checked if they appear. 
    - Turn off the *CIMTool Schema Model Validation Report*. 
    - The page should look similar to the screen shot below. Click *Finish*.
 
 .. image:: assets/CIMTool1.png
 
-7. The *Project Explorer* should show the imported CIM base schema, as shown below.
+8. The *Project Explorer* should show the imported CIM schema with extensions, as shown below.
 
 .. image:: assets/CIMTool2.png
 
-8. Use either the archived CIM extensions in *Emtiop.xmi*, or export your own *Emtiop.xmi* from the UML editing tool (*EA* or an alternative). 
-   This same procedure was used to create the base *CIM_Grid_18v15.xmi* file.
-
-   - In *EA*, select the <<CIMExtension>> Emtiop* pacakge in the *Browser*, *Project* tab on the left-hand side of the application.
-   - Invoke the *Export / Other Formats* menu command from the *Publish* tab in the ribbon.
-   - Select the *UML 1.4 (XMI 1.2)* export type.
-   - Select **only** the *Format XML Output* and *Exclude EA Extensions* options. Your dialog should be similar to that shown below. 
-     Verify that the *Package* at the top is *Emtiop*. Verify that *Filename* shows your desired output file.
-   - Click *Export* and then you may exit *EA*
-
-.. image:: assets/EA1.png
-
-9. The next step is to add the CIM extension *xmi* file to the base CIM *xmi* file in *CIMTool*.
-10. Right-click on the *Schema* item under the *twoxmi* workspace in *Project Explorer*. Click *Import* on the pop-up menu and then select *Import Schema*, as shown below.
-
-.. image:: assets/CIMTool3.png
-
-11. Click *Next* to bring up the **Import Schema** page, similar to item 6. Leave the options as before, 
-    but browse to *Emtiop.xmi* in your local copy of the GitHub repository. Enter the *Namespace URI* 
-    as *http://opensource.ieee.org/emtiop01v01#*. The page should be similar to the screen shot below. 
-    Then click *Finish*.
-
-.. image:: assets/CIMTool4.png
-
-12. The *Project Explorer* and *Project Browser* should reflect the content of both *xmi* files, as shown below.
-
-.. image:: assets/CIMTool5.png
-
-13. Right-click on the *Profiles* item under the *twoxmi* workspace in *Project Explorer*. Click *Import* on the pop-up menu 
-    and then select *Import Profile*. Click *Next*. This brings up the **Import Profile** page. Click *Browse* and navigate to the 
-    archived *emtiop.owl* file as shown below. Then click *Finish*.
+9. Right-click on the *Profiles* item under the *emtiop* workspace in *Project Explorer*. Click *Import* on the pop-up menu 
+   and then select *CIMTool/Import Profile*. Click *Next*. This brings up the **Import Profile** page. Click *Browse* and navigate to the 
+   archived *emtiop.owl* file as shown below. Then click *Finish*.
 
 .. image:: assets/CIMTool6.png
 
-14. This imports and verifies the profile against the loaded schema of base CIM with extensions. Correct any errors
+10. This imports and verifies the profile against the loaded schema of base CIM with extensions. Correct any errors
     reported. These are generally caused by mismatches in different versions of the profile and CIM extension, which
     may require some iterations to resolve. The profile import should produce no errors before taking the next step.
 
-15. Right-click on the *Instances* item under the *twoxmi* workspace in *Project Explorer*. Click *Import* on 
+11. Double-click on the name *Profiles/emtiop.owl* in the *Project Browser*, then click on the *Profile Summary* tab
+    for *emtiop.owl* that appears in the middle of the program window. Click the *Edit* button next to the *Namespace*
+    edit field, and enter the value *http://opensource.ieee.org/emtiop0vp01#*. This will be the Profile namespace,
+    which does not affect RDF XML and TTL files, but may affect other implementations of CIM not used for EMT. Note
+    that the **v** in the extension namespace is replace with **p** in the profile namespace, as they should not
+    be the same. The program window should appear as below, when this step has been completed.
+
+.. image:: assets/CIMTool6_ns.png
+
+12. Use *File/Save* or press *Ctrl-S* to save and rebuild the profile with its new profile namespace.
+
+13. Right-click on the *Instances* item under the *emtiop* workspace in *Project Explorer*. Click *Import* on 
     the pop-up menu and then select *Import Model (CIM/XML file)*. Then click *Next*. This brings up the **Import a Model** page.
-    Click *Browse* and navigate to one of the example CIM RDF files, in *xml* format, as shown below. [2]_ The *Namespace URI* should be
-    left as shown. The correct check boxes for *Project* and *Profile* should be selected. Then click *Next*. 
+    Click *Browse* and navigate to one of the example CIM RDF files, in *xml* format, as shown below. [2]_ The *Namespace URI* 
+    has been edited to match the profile namespace from step 11, but this is not necessary when importing CIM/XML instance files. 
+    In future instance file imports, you may leave the *Namespace URI* field unchanged.
+    The correct check boxes for *Project* and *Profile* should be selected, as below. Then click *Next*. 
 
 .. image:: assets/CIMTool7.png
 
-16. The **Model Details** page should have a proper *Model file name* filled in. If you are re-importing the same model in
+14. The **Model Details** page should have a proper *Model file name* filled in. If you are re-importing the same model in
     the process of fixing errors, select the check box to *Replace existing model*. For a first-time import of that model,
     the check box should be disabled. Click *Finish*.
 
-17. This imports and verifies the network model against the profile, including CIM extensions. Any errors should be
+15. This imports and verifies the network model against the profile, including CIM extensions. Any errors should be
     resolved before testing other network models, and before deploying any code. This may require iterations in the
     CIM extensions, the profile, and/or the code used to create the network model *xml* files from *raw* and *dyr* files.
 
 From this point, please consult the *CIMTool* documentation and the *CIM Modeling Guide*
 for advice on how to proceed.
 
-.. [1] Instead of importing two separate *xmi* files to *CIMTool*, it is 
-   also possible to import one *CIM_Grid_18v15_Emtiop.qea* file. This 
-   combined *qea* file is not under version control; a developer would have 
-   to merge the two separate *xmi* files into a single *qea* file using the 
-   commercial UML editor. This approach can be more efficient in working on 
-   CIM extensions and profiles in a single workflow. At significant 
-   milestones, be sure to export *Emtiop.xmi* from the UML editor for version 
-   control. We keep two *xmi* files under version control because only the 
-   smaller *Emtiop.xmi* is expected to change frequently.
+.. [1] Instead of importing one *qea* file to *CIMTool*, it is 
+   also possible to import two *xmi* files, one for the Grid base CIM and
+   another for the Emtiop extension CIM. This is the conventional way of
+   maintaining CIM UML extensions for CIMTool, but it requires more
+   classes, associations, and dependencies to maintain the extension *xmi*.
+   Most CIM modelers currently use the single *qea* file approach.
    
 .. [2] The example *xml* files were generated in the directory shown by
    completing the :ref:`target-roadmap-users` Roadmap in that directory. 
