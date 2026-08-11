@@ -449,3 +449,68 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+OpenIBR
+-------
+
+This example is based on HeronPower's OpenIBR library under an Apache 2.0 license.
+The library is incorporated using 
+``git submodule add  https://github.com/HeronPower/OpenIBR.git dll/ThirdParty/HeronPower/OpenIBR``.
+Library documentation is in the ''dll/ThirdParty/HeronPower/OpenIBR/documentation`` subdirectory; 
+just open the **md** files in your browser from GitHub.
+
+The example connects a reference implementation of the WECC REGFM_C1
+grid-forming hybrid control model, powered by a battery source, to
+a SMIB. The supporting library comes with PV and data center examples,
+and Simulink test cases. In this repository, we use the IEEE CIGRE DLL
+interface to access the same functionality from a Python test harness.
+By using the IEEE CIGRE DLL interface, this example may run in other EMT
+simulators.
+
+Build Instructions - Windows
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Follow these instructions to make 64-bit and 32-bit versions of the DLL:
+
+1. Open the *x64 Native Tools Command Prompt for VS 2022* from Windows Start Menu.
+2. From the repository root:
+
+    a. Checkout git submodule *OpenIBR* from its git repository:
+       ``git submodule update --init --recursive``
+
+3. From the *dll/ThirdParty/HeronPower/OpenIBR/schema_tools* sub-directory:
+
+    a. Generate the C header files from OpenIBR schema definitions:
+       ``python generate_all_headers.py``
+    b. The schema definitions for model parameters and signal groups are maintained in *YAML* files.
+       This step translates the *YAML* specifications into header files for C compilation.
+       The header file names end with *autogen* and are dispersed under the
+       *dll/ThirdParty/HeronPower/OpenIBR/c_language_library* directory. These header files 
+       are not maintained under version control.
+
+4. From the *dll/OpenIBR* project directory:
+
+    a. Remove *build* and *build32* if they already exist.
+    b. ``md build``
+    c. ``md build32``
+    d. ``cmake -B build -A x64``
+    e. ``cmake -B build32 -A Win32``
+    f. ``cmake --build build --config Release`` or ``cmake --build build --config Debug``
+    g. ``cmake --install build``
+    h. ``cmake --build build32 --config Release`` or ``cmake --build build32 --config Debug``
+    i. ``cmake --install build32``
+
+5. From the *build* and *build32* directories, check the exported functions:
+
+    a. ``dumpbin /exports Release\OpenIBR.dll`` or ``dumpbin /exports Debug\OpenIBR.dll``
+    b. ``Release\TEST_OpenIBR.exe`` generates CSV output for the wrapper-based harness
+    c. ``python ..\dll\bin\plotdlltest.py openibr.csv`` plots one of the CSV output files
+
+6. From the installed output directories:
+
+    a. x64 installs to *dll\bin*
+    b. Win32 installs to *dll\bin32*
+    c. ``TEST_OpenIBR.exe`` can also be run from those installed directories
+
+The tests write CSV outputs for the configured scenarios.
+
+
