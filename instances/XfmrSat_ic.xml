@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:cim="http://www.ucaiug.org/grid18v15#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <cim:ConnectivityNode rdf:about="1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E">
+    <cim:ConnectivityNode.TopologicalNode rdf:resource="1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E_TN" />
+  </cim:ConnectivityNode>
+  <cim:SvVoltage rdf:about="1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E_SvV">
+    <cim:SvVoltage.TopologicalNode rdf:resource="1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E_TN" />
+    <cim:SvVoltage.angle rdf:datatype="http://www.ucaiug.org/grid18v15#AngleDegrees">-37.253315</cim:SvVoltage.angle>
+    <cim:SvVoltage.v rdf:datatype="http://www.ucaiug.org/grid18v15#Voltage">125825.088</cim:SvVoltage.v>
+  </cim:SvVoltage>
+  <cim:TopologicalNode rdf:about="1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E_TN" />
+  <cim:ConnectivityNode rdf:about="212BCE15-7CAE-4469-B001-5040D60466C6">
+    <cim:ConnectivityNode.TopologicalNode rdf:resource="212BCE15-7CAE-4469-B001-5040D60466C6_TN" />
+  </cim:ConnectivityNode>
+  <cim:SvVoltage rdf:about="212BCE15-7CAE-4469-B001-5040D60466C6_SvV">
+    <cim:SvVoltage.TopologicalNode rdf:resource="212BCE15-7CAE-4469-B001-5040D60466C6_TN" />
+    <cim:SvVoltage.angle rdf:datatype="http://www.ucaiug.org/grid18v15#AngleDegrees">-37.253086</cim:SvVoltage.angle>
+    <cim:SvVoltage.v rdf:datatype="http://www.ucaiug.org/grid18v15#Voltage">125825.088</cim:SvVoltage.v>
+  </cim:SvVoltage>
+  <cim:TopologicalNode rdf:about="212BCE15-7CAE-4469-B001-5040D60466C6_TN" />
+  <cim:SvPowerFlow rdf:about="473050BC-A2DA-4E64-9803-78DC64176786_SvXfmrPF_1">
+    <cim:SvPowerFlow.Terminal rdf:resource="473050BC-A2DA-4E64-9803-78DC64176786_1" />
+    <cim:SvPowerFlow.p rdf:datatype="http://www.ucaiug.org/grid18v15#ActivePower">335194123.0</cim:SvPowerFlow.p>
+    <cim:SvPowerFlow.q rdf:datatype="http://www.ucaiug.org/grid18v15#ReactivePower">21283497.0</cim:SvPowerFlow.q>
+  </cim:SvPowerFlow>
+  <cim:SvPowerFlow rdf:about="473050BC-A2DA-4E64-9803-78DC64176786_SvXfmrPF_2">
+    <cim:SvPowerFlow.Terminal rdf:resource="473050BC-A2DA-4E64-9803-78DC64176786_2" />
+    <cim:SvPowerFlow.p rdf:datatype="http://www.ucaiug.org/grid18v15#ActivePower">-332533853.0</cim:SvPowerFlow.p>
+    <cim:SvPowerFlow.q rdf:datatype="http://www.ucaiug.org/grid18v15#ReactivePower">-1330.0</cim:SvPowerFlow.q>
+  </cim:SvPowerFlow>
+  <cim:ConnectivityNode rdf:about="5A74B6F3-2B95-47DE-88FC-902A6643D37A">
+    <cim:ConnectivityNode.TopologicalNode rdf:resource="5A74B6F3-2B95-47DE-88FC-902A6643D37A_TN" />
+  </cim:ConnectivityNode>
+  <cim:SvVoltage rdf:about="5A74B6F3-2B95-47DE-88FC-902A6643D37A_SvV">
+    <cim:SvVoltage.TopologicalNode rdf:resource="5A74B6F3-2B95-47DE-88FC-902A6643D37A_TN" />
+    <cim:SvVoltage.angle rdf:datatype="http://www.ucaiug.org/grid18v15#AngleDegrees">-33.619911</cim:SvVoltage.angle>
+    <cim:SvVoltage.v rdf:datatype="http://www.ucaiug.org/grid18v15#Voltage">317717.745</cim:SvVoltage.v>
+  </cim:SvVoltage>
+  <cim:TopologicalNode rdf:about="5A74B6F3-2B95-47DE-88FC-902A6643D37A_TN" />
+  <cim:SvPowerFlow rdf:about="68B79170-F5A8-481F-9792-6838B2D02849_SvLinePF_1">
+    <cim:SvPowerFlow.Terminal rdf:resource="68B79170-F5A8-481F-9792-6838B2D02849_1" />
+    <cim:SvPowerFlow.p rdf:datatype="http://www.ucaiug.org/grid18v15#ActivePower">355950166.0</cim:SvPowerFlow.p>
+    <cim:SvPowerFlow.q rdf:datatype="http://www.ucaiug.org/grid18v15#ReactivePower">-6724663.0</cim:SvPowerFlow.q>
+  </cim:SvPowerFlow>
+  <cim:SvPowerFlow rdf:about="68B79170-F5A8-481F-9792-6838B2D02849_SvLinePF_2">
+    <cim:SvPowerFlow.Terminal rdf:resource="68B79170-F5A8-481F-9792-6838B2D02849_2" />
+    <cim:SvPowerFlow.p rdf:datatype="http://www.ucaiug.org/grid18v15#ActivePower">-335194123.0</cim:SvPowerFlow.p>
+    <cim:SvPowerFlow.q rdf:datatype="http://www.ucaiug.org/grid18v15#ReactivePower">-21284827.0</cim:SvPowerFlow.q>
+  </cim:SvPowerFlow>
+  <cim:SvPowerFlow rdf:about="81D2A6A9-1FBB-440E-A92D-D71E703D650A_SvGenPF">
+    <cim:SvPowerFlow.Terminal rdf:resource="81D2A6A9-1FBB-440E-A92D-D71E703D650A_1" />
+    <cim:SvPowerFlow.p rdf:datatype="http://www.ucaiug.org/grid18v15#ActivePower">-355950166.0</cim:SvPowerFlow.p>
+    <cim:SvPowerFlow.q rdf:datatype="http://www.ucaiug.org/grid18v15#ReactivePower">6724663.0</cim:SvPowerFlow.q>
+  </cim:SvPowerFlow>
+  <cim:SvPowerFlow rdf:about="8952618F-8852-4420-9850-514793565B23_SvLinePF_1">
+    <cim:SvPowerFlow.Terminal rdf:resource="8952618F-8852-4420-9850-514793565B23_1" />
+    <cim:SvPowerFlow.p rdf:datatype="http://www.ucaiug.org/grid18v15#ActivePower">335194123.0</cim:SvPowerFlow.p>
+    <cim:SvPowerFlow.q rdf:datatype="http://www.ucaiug.org/grid18v15#ReactivePower">21284827.0</cim:SvPowerFlow.q>
+  </cim:SvPowerFlow>
+  <cim:SvPowerFlow rdf:about="8952618F-8852-4420-9850-514793565B23_SvLinePF_2">
+    <cim:SvPowerFlow.Terminal rdf:resource="8952618F-8852-4420-9850-514793565B23_2" />
+    <cim:SvPowerFlow.p rdf:datatype="http://www.ucaiug.org/grid18v15#ActivePower">-335194123.0</cim:SvPowerFlow.p>
+    <cim:SvPowerFlow.q rdf:datatype="http://www.ucaiug.org/grid18v15#ReactivePower">-21283497.0</cim:SvPowerFlow.q>
+  </cim:SvPowerFlow>
+  <cim:SvPowerFlow rdf:about="AD792DFF-2C58-4BBF-8D75-2F72CFAB796B_SvLinePF_1">
+    <cim:SvPowerFlow.Terminal rdf:resource="AD792DFF-2C58-4BBF-8D75-2F72CFAB796B_1" />
+    <cim:SvPowerFlow.p rdf:datatype="http://www.ucaiug.org/grid18v15#ActivePower">332533853.0</cim:SvPowerFlow.p>
+    <cim:SvPowerFlow.q rdf:datatype="http://www.ucaiug.org/grid18v15#ReactivePower">1330.0</cim:SvPowerFlow.q>
+  </cim:SvPowerFlow>
+  <cim:SvPowerFlow rdf:about="AD792DFF-2C58-4BBF-8D75-2F72CFAB796B_SvLinePF_2">
+    <cim:SvPowerFlow.Terminal rdf:resource="AD792DFF-2C58-4BBF-8D75-2F72CFAB796B_2" />
+    <cim:SvPowerFlow.p rdf:datatype="http://www.ucaiug.org/grid18v15#ActivePower">-332533853.0</cim:SvPowerFlow.p>
+    <cim:SvPowerFlow.q rdf:datatype="http://www.ucaiug.org/grid18v15#ReactivePower">-0.0</cim:SvPowerFlow.q>
+  </cim:SvPowerFlow>
+  <cim:ConnectivityNode rdf:about="D3C50564-2BA5-4B81-AFF0-BB99CE54E804">
+    <cim:ConnectivityNode.TopologicalNode rdf:resource="D3C50564-2BA5-4B81-AFF0-BB99CE54E804_TN" />
+  </cim:ConnectivityNode>
+  <cim:SvVoltage rdf:about="D3C50564-2BA5-4B81-AFF0-BB99CE54E804_SvV">
+    <cim:SvVoltage.TopologicalNode rdf:resource="D3C50564-2BA5-4B81-AFF0-BB99CE54E804_TN" />
+    <cim:SvVoltage.angle rdf:datatype="http://www.ucaiug.org/grid18v15#AngleDegrees">0.0</cim:SvVoltage.angle>
+    <cim:SvVoltage.v rdf:datatype="http://www.ucaiug.org/grid18v15#Voltage">345000.0</cim:SvVoltage.v>
+  </cim:SvVoltage>
+  <cim:TopologicalNode rdf:about="D3C50564-2BA5-4B81-AFF0-BB99CE54E804_TN" />
+  <cim:ConnectivityNode rdf:about="FA16A3CC-2849-410E-91E7-88674CCA513D">
+    <cim:ConnectivityNode.TopologicalNode rdf:resource="FA16A3CC-2849-410E-91E7-88674CCA513D_TN" />
+  </cim:ConnectivityNode>
+  <cim:SvVoltage rdf:about="FA16A3CC-2849-410E-91E7-88674CCA513D_SvV">
+    <cim:SvVoltage.TopologicalNode rdf:resource="FA16A3CC-2849-410E-91E7-88674CCA513D_TN" />
+    <cim:SvVoltage.angle rdf:datatype="http://www.ucaiug.org/grid18v15#AngleDegrees">-33.620138</cim:SvVoltage.angle>
+    <cim:SvVoltage.v rdf:datatype="http://www.ucaiug.org/grid18v15#Voltage">317717.745</cim:SvVoltage.v>
+  </cim:SvVoltage>
+  <cim:TopologicalNode rdf:about="FA16A3CC-2849-410E-91E7-88674CCA513D_TN" />
+</rdf:RDF>

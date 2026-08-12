@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:cim="http://www.ucaiug.org/grid18v15#" xmlns:emt="http://opensource.ieee.org/emtiop01v01#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <cim:ApparentPowerLimit rdf:about="0674DBE6-3CD3-47FB-B17D-215870733DA6">
+    <cim:ApparentPowerLimit.value rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">600000000.0</cim:ApparentPowerLimit.value>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">0674DBE6-3CD3-47FB-B17D-215870733DA6</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_End_1_ONAN_ShortTerm</cim:IdentifiedObject.name>
+    <cim:OperationalLimit.OperationalLimitSet rdf:resource="F889E8D1-860B-43E1-9FC5-9EDD7ACB232E" />
+    <cim:OperationalLimit.OperationalLimitType rdf:resource="864DF75A-01F5-4786-ACA8-8BAD51C85A69" />
+  </cim:ApparentPowerLimit>
+  <cim:ApparentPowerLimit rdf:about="076029B9-3EEE-4334-BD2D-E09BC2FC9CAF">
+    <cim:ApparentPowerLimit.value rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">600000000.0</cim:ApparentPowerLimit.value>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">076029B9-3EEE-4334-BD2D-E09BC2FC9CAF</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">2_3_1_Normal</cim:IdentifiedObject.name>
+    <cim:OperationalLimit.OperationalLimitSet rdf:resource="C88A0588-F2CA-4474-9E1A-E0F7F855F89C" />
+    <cim:OperationalLimit.OperationalLimitType rdf:resource="9B53D10B-5004-45B0-B977-BF08C85D9DA7" />
+  </cim:ApparentPowerLimit>
+  <cim:OperationalLimitSet rdf:about="0A8F26A9-8D80-4BDE-8066-B38274DD0E16">
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">0A8F26A9-8D80-4BDE-8066-B38274DD0E16</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">1_2_1</cim:IdentifiedObject.name>
+    <cim:OperationalLimitSet.Terminal rdf:resource="68B79170-F5A8-481F-9792-6838B2D02849_1" />
+  </cim:OperationalLimitSet>
+  <cim:BaseVoltage rdf:about="1D69A23C-D4C3-4ED4-A4D4-356766B66621">
+    <cim:BaseVoltage.nominalVoltage rdf:datatype="http://www.ucaiug.org/grid18v15#Voltage">345000.0</cim:BaseVoltage.nominalVoltage>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">1D69A23C-D4C3-4ED4-A4D4-356766B66621</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">BV_345.00</cim:IdentifiedObject.name>
+  </cim:BaseVoltage>
+  <cim:ConnectivityNode rdf:about="1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E">
+    <cim:ConnectivityNode.ConnectivityNodeContainer rdf:resource="93EA6BF1-A569-4190-9590-98A62780489E" />
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">5</cim:IdentifiedObject.name>
+  </cim:ConnectivityNode>
+  <cim:ConnectivityNode rdf:about="212BCE15-7CAE-4469-B001-5040D60466C6">
+    <cim:ConnectivityNode.ConnectivityNodeContainer rdf:resource="93EA6BF1-A569-4190-9590-98A62780489E" />
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">212BCE15-7CAE-4469-B001-5040D60466C6</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">4</cim:IdentifiedObject.name>
+  </cim:ConnectivityNode>
+  <cim:ApparentPowerLimit rdf:about="2B2F6C6A-A6E7-4EC1-AF7F-42F53003636E">
+    <cim:ApparentPowerLimit.value rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">666666666.6666666</cim:ApparentPowerLimit.value>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">2B2F6C6A-A6E7-4EC1-AF7F-42F53003636E</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_End_2_ONAF</cim:IdentifiedObject.name>
+    <cim:OperationalLimit.OperationalLimitSet rdf:resource="92E48490-212F-4EEE-81A2-27E9A45FC58F" />
+    <cim:OperationalLimit.OperationalLimitType rdf:resource="9B53D10B-5004-45B0-B977-BF08C85D9DA7" />
+  </cim:ApparentPowerLimit>
+  <cim:ApparentPowerLimit rdf:about="2B508360-A84D-4632-B168-97A7597517D1">
+    <cim:ApparentPowerLimit.value rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">666666666.6666666</cim:ApparentPowerLimit.value>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">2B508360-A84D-4632-B168-97A7597517D1</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_End_1_ONAF</cim:IdentifiedObject.name>
+    <cim:OperationalLimit.OperationalLimitSet rdf:resource="F889E8D1-860B-43E1-9FC5-9EDD7ACB232E" />
+    <cim:OperationalLimit.OperationalLimitType rdf:resource="9B53D10B-5004-45B0-B977-BF08C85D9DA7" />
+  </cim:ApparentPowerLimit>
+  <cim:ApparentPowerLimit rdf:about="31828FEA-8F15-4407-B179-10E2AA9544FA">
+    <cim:ApparentPowerLimit.value rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">799999999.9999999</cim:ApparentPowerLimit.value>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">31828FEA-8F15-4407-B179-10E2AA9544FA</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_End_1_ONAF_ShortTerm</cim:IdentifiedObject.name>
+    <cim:OperationalLimit.OperationalLimitSet rdf:resource="F889E8D1-860B-43E1-9FC5-9EDD7ACB232E" />
+    <cim:OperationalLimit.OperationalLimitType rdf:resource="864DF75A-01F5-4786-ACA8-8BAD51C85A69" />
+  </cim:ApparentPowerLimit>
+  <cim:ApparentPowerLimit rdf:about="33A71D31-0E3E-475D-AB81-2BC2B03CB191">
+    <cim:ApparentPowerLimit.value rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">600000000.0</cim:ApparentPowerLimit.value>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">33A71D31-0E3E-475D-AB81-2BC2B03CB191</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">1_2_1_Normal</cim:IdentifiedObject.name>
+    <cim:OperationalLimit.OperationalLimitSet rdf:resource="0A8F26A9-8D80-4BDE-8066-B38274DD0E16" />
+    <cim:OperationalLimit.OperationalLimitType rdf:resource="9B53D10B-5004-45B0-B977-BF08C85D9DA7" />
+  </cim:ApparentPowerLimit>
+  <cim:ApparentPowerLimit rdf:about="35614308-6C00-4B25-981A-08F538EDD5FB">
+    <cim:ApparentPowerLimit.value rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">600000000.0</cim:ApparentPowerLimit.value>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">35614308-6C00-4B25-981A-08F538EDD5FB</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_End_2_ONAN_ShortTerm</cim:IdentifiedObject.name>
+    <cim:OperationalLimit.OperationalLimitSet rdf:resource="92E48490-212F-4EEE-81A2-27E9A45FC58F" />
+    <cim:OperationalLimit.OperationalLimitType rdf:resource="864DF75A-01F5-4786-ACA8-8BAD51C85A69" />
+  </cim:ApparentPowerLimit>
+  <cim:TransformerCoreAdmittance rdf:about="3BC401F3-88EB-44B3-8D1C-75A2A671E0AB">
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">3BC401F3-88EB-44B3-8D1C-75A2A671E0AB</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_Core</cim:IdentifiedObject.name>
+    <cim:TransformerCoreAdmittance.TransformerEnd rdf:resource="B4ED2857-F5D2-471F-9764-FC6799526E55" />
+    <cim:TransformerCoreAdmittance.b rdf:datatype="http://www.ucaiug.org/grid18v15#Susceptance">0.00026254988447805085</cim:TransformerCoreAdmittance.b>
+    <cim:TransformerCoreAdmittance.b0 rdf:datatype="http://www.ucaiug.org/grid18v15#Susceptance">0.00026254988447805085</cim:TransformerCoreAdmittance.b0>
+    <cim:TransformerCoreAdmittance.g rdf:datatype="http://www.ucaiug.org/grid18v15#Conductance">6.563747111951271e-05</cim:TransformerCoreAdmittance.g>
+    <cim:TransformerCoreAdmittance.g0 rdf:datatype="http://www.ucaiug.org/grid18v15#Conductance">6.563747111951271e-05</cim:TransformerCoreAdmittance.g0>
+  </cim:TransformerCoreAdmittance>
+  <cim:LoadResponseCharacteristic rdf:about="3C4BC1F7-406A-42A1-8788-50BB322944EB">
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">3C4BC1F7-406A-42A1-8788-50BB322944EB</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">LoadResp_Zp=100.000_Ip=0.000_Pp=0.000_Zq=100.000_Iq=0.000_Pq=0.000</cim:IdentifiedObject.name>
+    <cim:LoadResponseCharacteristic.exponentModel rdf:datatype="http://www.ucaiug.org/grid18v15#Boolean">false</cim:LoadResponseCharacteristic.exponentModel>
+    <cim:LoadResponseCharacteristic.pConstantCurrent rdf:datatype="http://www.ucaiug.org/grid18v15#Float">0.0</cim:LoadResponseCharacteristic.pConstantCurrent>
+    <cim:LoadResponseCharacteristic.pConstantImpedance rdf:datatype="http://www.ucaiug.org/grid18v15#Float">100.0</cim:LoadResponseCharacteristic.pConstantImpedance>
+    <cim:LoadResponseCharacteristic.pConstantPower rdf:datatype="http://www.ucaiug.org/grid18v15#Float">0.0</cim:LoadResponseCharacteristic.pConstantPower>
+    <cim:LoadResponseCharacteristic.pFrequencyExponent rdf:datatype="http://www.ucaiug.org/grid18v15#Float">0.0</cim:LoadResponseCharacteristic.pFrequencyExponent>
+    <cim:LoadResponseCharacteristic.pVoltageExponent rdf:datatype="http://www.ucaiug.org/grid18v15#Float">0.0</cim:LoadResponseCharacteristic.pVoltageExponent>
+    <cim:LoadResponseCharacteristic.qConstantCurrent rdf:datatype="http://www.ucaiug.org/grid18v15#Float">0.0</cim:LoadResponseCharacteristic.qConstantCurrent>
+    <cim:LoadResponseCharacteristic.qConstantImpedance rdf:datatype="http://www.ucaiug.org/grid18v15#Float">100.0</cim:LoadResponseCharacteristic.qConstantImpedance>
+    <cim:LoadResponseCharacteristic.qConstantPower rdf:datatype="http://www.ucaiug.org/grid18v15#Float">0.0</cim:LoadResponseCharacteristic.qConstantPower>
+    <cim:LoadResponseCharacteristic.qFrequencyExponent rdf:datatype="http://www.ucaiug.org/grid18v15#Float">0.0</cim:LoadResponseCharacteristic.qFrequencyExponent>
+    <cim:LoadResponseCharacteristic.qVoltageExponent rdf:datatype="http://www.ucaiug.org/grid18v15#Float">0.0</cim:LoadResponseCharacteristic.qVoltageExponent>
+  </cim:LoadResponseCharacteristic>
+  <cim:ApparentPowerLimit rdf:about="4180C87E-0559-4884-BCE4-9F17477C6236">
+    <cim:ApparentPowerLimit.value rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">1000000000.0</cim:ApparentPowerLimit.value>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">4180C87E-0559-4884-BCE4-9F17477C6236</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_End_1_OFAF_ShortTerm</cim:IdentifiedObject.name>
+    <cim:OperationalLimit.OperationalLimitSet rdf:resource="F889E8D1-860B-43E1-9FC5-9EDD7ACB232E" />
+    <cim:OperationalLimit.OperationalLimitType rdf:resource="864DF75A-01F5-4786-ACA8-8BAD51C85A69" />
+  </cim:ApparentPowerLimit>
+  <cim:PowerTransformer rdf:about="473050BC-A2DA-4E64-9803-78DC64176786">
+    <cim:Equipment.EquipmentContainer rdf:resource="93EA6BF1-A569-4190-9590-98A62780489E" />
+    <cim:Equipment.inService rdf:datatype="http://www.ucaiug.org/grid18v15#Boolean">true</cim:Equipment.inService>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">473050BC-A2DA-4E64-9803-78DC64176786</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1</cim:IdentifiedObject.name>
+    <cim:PowerTransformer.vectorGroup rdf:datatype="http://www.ucaiug.org/grid18v15#String">Yy</cim:PowerTransformer.vectorGroup>
+  </cim:PowerTransformer>
+  <cim:Terminal rdf:about="473050BC-A2DA-4E64-9803-78DC64176786_1">
+    <cim:ACDCTerminal.sequenceNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:ACDCTerminal.sequenceNumber>
+    <cim:Terminal.ConductingEquipment rdf:resource="473050BC-A2DA-4E64-9803-78DC64176786" />
+    <cim:Terminal.ConnectivityNode rdf:resource="FA16A3CC-2849-410E-91E7-88674CCA513D" />
+  </cim:Terminal>
+  <cim:Terminal rdf:about="473050BC-A2DA-4E64-9803-78DC64176786_2">
+    <cim:ACDCTerminal.sequenceNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">2</cim:ACDCTerminal.sequenceNumber>
+    <cim:Terminal.ConductingEquipment rdf:resource="473050BC-A2DA-4E64-9803-78DC64176786" />
+    <cim:Terminal.ConnectivityNode rdf:resource="212BCE15-7CAE-4469-B001-5040D60466C6" />
+  </cim:Terminal>
+  <cim:TextDiagramObject rdf:about="47B73D7D-9E80-41CC-9BE1-7485A11042D6">
+    <cim:DiagramObject.IdentifiedObject rdf:resource="212BCE15-7CAE-4469-B001-5040D60466C6" />
+    <cim:DiagramObject.drawingOrder rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:DiagramObject.drawingOrder>
+    <cim:DiagramObject.isPolygon rdf:datatype="http://www.ucaiug.org/grid18v15#Boolean">false</cim:DiagramObject.isPolygon>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">47B73D7D-9E80-41CC-9BE1-7485A11042D6</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">4</cim:IdentifiedObject.name>
+    <cim:TextDiagramObject.text rdf:datatype="http://www.ucaiug.org/grid18v15#String">4 LOW SIDE 138.00 kV</cim:TextDiagramObject.text>
+  </cim:TextDiagramObject>
+  <cim:DiagramObjectPoint rdf:about="47B73D7D-9E80-41CC-9BE1-7485A11042D6_pt1">
+    <cim:DiagramObjectPoint.DiagramObject rdf:resource="47B73D7D-9E80-41CC-9BE1-7485A11042D6" />
+    <cim:DiagramObjectPoint.sequenceNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:DiagramObjectPoint.sequenceNumber>
+    <cim:DiagramObjectPoint.xPosition rdf:datatype="http://www.ucaiug.org/grid18v15#Float">-0.2505416644185298</cim:DiagramObjectPoint.xPosition>
+    <cim:DiagramObjectPoint.yPosition rdf:datatype="http://www.ucaiug.org/grid18v15#Float">0.0016317681235825214</cim:DiagramObjectPoint.yPosition>
+  </cim:DiagramObjectPoint>
+  <cim:ConnectivityNode rdf:about="5A74B6F3-2B95-47DE-88FC-902A6643D37A">
+    <cim:ConnectivityNode.ConnectivityNodeContainer rdf:resource="93EA6BF1-A569-4190-9590-98A62780489E" />
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">5A74B6F3-2B95-47DE-88FC-902A6643D37A</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">2</cim:IdentifiedObject.name>
+  </cim:ConnectivityNode>
+  <cim:ApparentPowerLimit rdf:about="625A2878-8C4E-4B36-8E42-B4FFC996C70E">
+    <cim:ApparentPowerLimit.value rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">500000000.0</cim:ApparentPowerLimit.value>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">625A2878-8C4E-4B36-8E42-B4FFC996C70E</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_End_2_ONAN</cim:IdentifiedObject.name>
+    <cim:OperationalLimit.OperationalLimitSet rdf:resource="92E48490-212F-4EEE-81A2-27E9A45FC58F" />
+    <cim:OperationalLimit.OperationalLimitType rdf:resource="9B53D10B-5004-45B0-B977-BF08C85D9DA7" />
+  </cim:ApparentPowerLimit>
+  <cim:ACLineSegment rdf:about="68B79170-F5A8-481F-9792-6838B2D02849">
+    <cim:ACLineSegment.b0ch rdf:datatype="http://www.ucaiug.org/grid18v15#Susceptance">0.0012551984877126653</cim:ACLineSegment.b0ch>
+    <cim:ACLineSegment.bch rdf:datatype="http://www.ucaiug.org/grid18v15#Susceptance">0.002091997479521109</cim:ACLineSegment.bch>
+    <cim:ACLineSegment.r rdf:datatype="http://www.ucaiug.org/grid18v15#Resistance">19.99977075</cim:ACLineSegment.r>
+    <cim:ACLineSegment.r0 rdf:datatype="http://www.ucaiug.org/grid18v15#Resistance">39.9995415</cim:ACLineSegment.r0>
+    <cim:ACLineSegment.x rdf:datatype="http://www.ucaiug.org/grid18v15#Reactance">188.49989250000002</cim:ACLineSegment.x>
+    <cim:ACLineSegment.x0 rdf:datatype="http://www.ucaiug.org/grid18v15#Reactance">565.4996775000001</cim:ACLineSegment.x0>
+    <cim:ConductingEquipment.BaseVoltage rdf:resource="1D69A23C-D4C3-4ED4-A4D4-356766B66621" />
+    <cim:Conductor.length rdf:datatype="http://www.ucaiug.org/grid18v15#Length">482229.2854332631</cim:Conductor.length>
+    <cim:Equipment.EquipmentContainer rdf:resource="93EA6BF1-A569-4190-9590-98A62780489E" />
+    <cim:Equipment.inService rdf:datatype="http://www.ucaiug.org/grid18v15#Boolean">true</cim:Equipment.inService>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">68B79170-F5A8-481F-9792-6838B2D02849</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">1_2_1</cim:IdentifiedObject.name>
+  </cim:ACLineSegment>
+  <cim:Terminal rdf:about="68B79170-F5A8-481F-9792-6838B2D02849_1">
+    <cim:ACDCTerminal.sequenceNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:ACDCTerminal.sequenceNumber>
+    <cim:Terminal.ConductingEquipment rdf:resource="68B79170-F5A8-481F-9792-6838B2D02849" />
+    <cim:Terminal.ConnectivityNode rdf:resource="D3C50564-2BA5-4B81-AFF0-BB99CE54E804" />
+  </cim:Terminal>
+  <cim:Terminal rdf:about="68B79170-F5A8-481F-9792-6838B2D02849_2">
+    <cim:ACDCTerminal.sequenceNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">2</cim:ACDCTerminal.sequenceNumber>
+    <cim:Terminal.ConductingEquipment rdf:resource="68B79170-F5A8-481F-9792-6838B2D02849" />
+    <cim:Terminal.ConnectivityNode rdf:resource="5A74B6F3-2B95-47DE-88FC-902A6643D37A" />
+  </cim:Terminal>
+  <cim:PowerTransformerEnd rdf:about="7507DEC9-7F4B-4C0C-ABC1-477372339EBF">
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">7507DEC9-7F4B-4C0C-ABC1-477372339EBF</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_End_1</cim:IdentifiedObject.name>
+    <cim:PowerTransformerEnd.PowerTransformer rdf:resource="473050BC-A2DA-4E64-9803-78DC64176786" />
+    <cim:PowerTransformerEnd.connectionKind rdf:resource="http://www.ucaiug.org/grid18v15#WindingConnection.Y" />
+    <cim:PowerTransformerEnd.phaseAngleClock rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">0</cim:PowerTransformerEnd.phaseAngleClock>
+    <cim:PowerTransformerEnd.ratedS rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">500000000.0</cim:PowerTransformerEnd.ratedS>
+    <cim:PowerTransformerEnd.ratedU rdf:datatype="http://www.ucaiug.org/grid18v15#Voltage">345000.0</cim:PowerTransformerEnd.ratedU>
+    <cim:TransformerEnd.BaseVoltage rdf:resource="1D69A23C-D4C3-4ED4-A4D4-356766B66621" />
+    <cim:TransformerEnd.Terminal rdf:resource="473050BC-A2DA-4E64-9803-78DC64176786_1" />
+    <cim:TransformerEnd.endNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:TransformerEnd.endNumber>
+    <cim:TransformerEnd.grounded rdf:datatype="http://www.ucaiug.org/grid18v15#Boolean">true</cim:TransformerEnd.grounded>
+    <cim:TransformerEnd.rground rdf:datatype="http://www.ucaiug.org/grid18v15#Resistance">0.0</cim:TransformerEnd.rground>
+    <cim:TransformerEnd.xground rdf:datatype="http://www.ucaiug.org/grid18v15#Reactance">0.0</cim:TransformerEnd.xground>
+  </cim:PowerTransformerEnd>
+  <cim:TextDiagramObject rdf:about="7BC958B0-8A6B-4AA5-AAEB-88157EFFD042">
+    <cim:DiagramObject.IdentifiedObject rdf:resource="1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E" />
+    <cim:DiagramObject.drawingOrder rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:DiagramObject.drawingOrder>
+    <cim:DiagramObject.isPolygon rdf:datatype="http://www.ucaiug.org/grid18v15#Boolean">false</cim:DiagramObject.isPolygon>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">7BC958B0-8A6B-4AA5-AAEB-88157EFFD042</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">5</cim:IdentifiedObject.name>
+    <cim:TextDiagramObject.text rdf:datatype="http://www.ucaiug.org/grid18v15#String">5 LOAD 138.00 kV</cim:TextDiagramObject.text>
+  </cim:TextDiagramObject>
+  <cim:DiagramObjectPoint rdf:about="7BC958B0-8A6B-4AA5-AAEB-88157EFFD042_pt1">
+    <cim:DiagramObjectPoint.DiagramObject rdf:resource="7BC958B0-8A6B-4AA5-AAEB-88157EFFD042" />
+    <cim:DiagramObjectPoint.sequenceNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:DiagramObjectPoint.sequenceNumber>
+    <cim:DiagramObjectPoint.xPosition rdf:datatype="http://www.ucaiug.org/grid18v15#Float">-0.25158165343721434</cim:DiagramObjectPoint.xPosition>
+    <cim:DiagramObjectPoint.yPosition rdf:datatype="http://www.ucaiug.org/grid18v15#Float">0.00399744415330113</cim:DiagramObjectPoint.yPosition>
+  </cim:DiagramObjectPoint>
+  <cim:ApparentPowerLimit rdf:about="7BDA09A9-6260-471A-9F40-E1DC563010E2">
+    <cim:ApparentPowerLimit.value rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">500000000.0</cim:ApparentPowerLimit.value>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">7BDA09A9-6260-471A-9F40-E1DC563010E2</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_End_1_ONAN</cim:IdentifiedObject.name>
+    <cim:OperationalLimit.OperationalLimitSet rdf:resource="F889E8D1-860B-43E1-9FC5-9EDD7ACB232E" />
+    <cim:OperationalLimit.OperationalLimitType rdf:resource="9B53D10B-5004-45B0-B977-BF08C85D9DA7" />
+  </cim:ApparentPowerLimit>
+  <cim:ApparentPowerLimit rdf:about="7CFD2971-198C-4768-961D-3B9BE3FE6333">
+    <cim:ApparentPowerLimit.value rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">833333333.3333334</cim:ApparentPowerLimit.value>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">7CFD2971-198C-4768-961D-3B9BE3FE6333</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_End_2_OFAF</cim:IdentifiedObject.name>
+    <cim:OperationalLimit.OperationalLimitSet rdf:resource="92E48490-212F-4EEE-81A2-27E9A45FC58F" />
+    <cim:OperationalLimit.OperationalLimitType rdf:resource="9B53D10B-5004-45B0-B977-BF08C85D9DA7" />
+  </cim:ApparentPowerLimit>
+  <cim:TextDiagramObject rdf:about="80AA3CCF-6DBC-4C71-A74D-6D0489638926">
+    <cim:DiagramObject.IdentifiedObject rdf:resource="5A74B6F3-2B95-47DE-88FC-902A6643D37A" />
+    <cim:DiagramObject.drawingOrder rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:DiagramObject.drawingOrder>
+    <cim:DiagramObject.isPolygon rdf:datatype="http://www.ucaiug.org/grid18v15#Boolean">false</cim:DiagramObject.isPolygon>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">80AA3CCF-6DBC-4C71-A74D-6D0489638926</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">2</cim:IdentifiedObject.name>
+    <cim:TextDiagramObject.text rdf:datatype="http://www.ucaiug.org/grid18v15#String">2 LINE END 345.00 kV</cim:TextDiagramObject.text>
+  </cim:TextDiagramObject>
+  <cim:DiagramObjectPoint rdf:about="80AA3CCF-6DBC-4C71-A74D-6D0489638926_pt1">
+    <cim:DiagramObjectPoint.DiagramObject rdf:resource="80AA3CCF-6DBC-4C71-A74D-6D0489638926" />
+    <cim:DiagramObjectPoint.sequenceNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:DiagramObjectPoint.sequenceNumber>
+    <cim:DiagramObjectPoint.xPosition rdf:datatype="http://www.ucaiug.org/grid18v15#Float">-0.248421345395677</cim:DiagramObjectPoint.xPosition>
+    <cim:DiagramObjectPoint.yPosition rdf:datatype="http://www.ucaiug.org/grid18v15#Float">-0.003081329042064154</cim:DiagramObjectPoint.yPosition>
+  </cim:DiagramObjectPoint>
+  <cim:EnergySource rdf:about="81D2A6A9-1FBB-440E-A92D-D71E703D650A">
+    <cim:ConductingEquipment.BaseVoltage rdf:resource="1D69A23C-D4C3-4ED4-A4D4-356766B66621" />
+    <cim:EnergySource.nominalVoltage rdf:datatype="http://www.ucaiug.org/grid18v15#Voltage">345000.0</cim:EnergySource.nominalVoltage>
+    <cim:EnergySource.r rdf:datatype="http://www.ucaiug.org/grid18v15#Resistance">0.0</cim:EnergySource.r>
+    <cim:EnergySource.r0 rdf:datatype="http://www.ucaiug.org/grid18v15#Resistance">0.0</cim:EnergySource.r0>
+    <cim:EnergySource.voltageAngle rdf:datatype="http://www.ucaiug.org/grid18v15#AngleRadians">0.0</cim:EnergySource.voltageAngle>
+    <cim:EnergySource.voltageMagnitude rdf:datatype="http://www.ucaiug.org/grid18v15#Voltage">345000.0</cim:EnergySource.voltageMagnitude>
+    <cim:EnergySource.x rdf:datatype="http://www.ucaiug.org/grid18v15#Reactance">0.001</cim:EnergySource.x>
+    <cim:EnergySource.x0 rdf:datatype="http://www.ucaiug.org/grid18v15#Reactance">0.001</cim:EnergySource.x0>
+    <cim:Equipment.EquipmentContainer rdf:resource="93EA6BF1-A569-4190-9590-98A62780489E" />
+    <cim:Equipment.inService rdf:datatype="http://www.ucaiug.org/grid18v15#Boolean">true</cim:Equipment.inService>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">81D2A6A9-1FBB-440E-A92D-D71E703D650A</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">1_1</cim:IdentifiedObject.name>
+  </cim:EnergySource>
+  <cim:Terminal rdf:about="81D2A6A9-1FBB-440E-A92D-D71E703D650A_1">
+    <cim:ACDCTerminal.sequenceNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:ACDCTerminal.sequenceNumber>
+    <cim:Terminal.ConductingEquipment rdf:resource="81D2A6A9-1FBB-440E-A92D-D71E703D650A" />
+    <cim:Terminal.ConnectivityNode rdf:resource="D3C50564-2BA5-4B81-AFF0-BB99CE54E804" />
+  </cim:Terminal>
+  <cim:OperationalLimitType rdf:about="864DF75A-01F5-4786-ACA8-8BAD51C85A69">
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">864DF75A-01F5-4786-ACA8-8BAD51C85A69</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">ShortTerm</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.acceptableDuration rdf:datatype="http://www.ucaiug.org/grid18v15#Seconds">14400.0</cim:OperationalLimitType.acceptableDuration>
+    <cim:OperationalLimitType.direction rdf:resource="http://www.ucaiug.org/grid18v15#OperationalLimitDirectionKind.absoluteValue" />
+    <cim:OperationalLimitType.isInfiniteDuration rdf:datatype="http://www.ucaiug.org/grid18v15#Boolean">false</cim:OperationalLimitType.isInfiniteDuration>
+  </cim:OperationalLimitType>
+  <cim:DisconnectingCircuitBreaker rdf:about="8952618F-8852-4420-9850-514793565B23">
+    <cim:ConductingEquipment.BaseVoltage rdf:resource="1D69A23C-D4C3-4ED4-A4D4-356766B66621" />
+    <cim:Equipment.EquipmentContainer rdf:resource="93EA6BF1-A569-4190-9590-98A62780489E" />
+    <cim:Equipment.inService rdf:datatype="http://www.ucaiug.org/grid18v15#Boolean">true</cim:Equipment.inService>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">8952618F-8852-4420-9850-514793565B23</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">2_3_1</cim:IdentifiedObject.name>
+  </cim:DisconnectingCircuitBreaker>
+  <cim:Terminal rdf:about="8952618F-8852-4420-9850-514793565B23_1">
+    <cim:ACDCTerminal.sequenceNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:ACDCTerminal.sequenceNumber>
+    <cim:Terminal.ConductingEquipment rdf:resource="8952618F-8852-4420-9850-514793565B23" />
+    <cim:Terminal.ConnectivityNode rdf:resource="5A74B6F3-2B95-47DE-88FC-902A6643D37A" />
+  </cim:Terminal>
+  <cim:Terminal rdf:about="8952618F-8852-4420-9850-514793565B23_2">
+    <cim:ACDCTerminal.sequenceNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">2</cim:ACDCTerminal.sequenceNumber>
+    <cim:Terminal.ConductingEquipment rdf:resource="8952618F-8852-4420-9850-514793565B23" />
+    <cim:Terminal.ConnectivityNode rdf:resource="FA16A3CC-2849-410E-91E7-88674CCA513D" />
+  </cim:Terminal>
+  <cim:OperationalLimitSet rdf:about="92E48490-212F-4EEE-81A2-27E9A45FC58F">
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">92E48490-212F-4EEE-81A2-27E9A45FC58F</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_End_2</cim:IdentifiedObject.name>
+    <cim:OperationalLimitSet.Terminal rdf:resource="473050BC-A2DA-4E64-9803-78DC64176786_2" />
+  </cim:OperationalLimitSet>
+  <cim:EquipmentContainer rdf:about="93EA6BF1-A569-4190-9590-98A62780489E">
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">93EA6BF1-A569-4190-9590-98A62780489E</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">XfmrSat</cim:IdentifiedObject.name>
+  </cim:EquipmentContainer>
+  <cim:OperationalLimitType rdf:about="9B53D10B-5004-45B0-B977-BF08C85D9DA7">
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">9B53D10B-5004-45B0-B977-BF08C85D9DA7</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">Normal</cim:IdentifiedObject.name>
+    <cim:OperationalLimitType.direction rdf:resource="http://www.ucaiug.org/grid18v15#OperationalLimitDirectionKind.absoluteValue" />
+    <cim:OperationalLimitType.isInfiniteDuration rdf:datatype="http://www.ucaiug.org/grid18v15#Boolean">true</cim:OperationalLimitType.isInfiniteDuration>
+  </cim:OperationalLimitType>
+  <cim:OperationalLimitSet rdf:about="9FC8F4AB-ADFB-4E97-B6A0-3E77571DF9A4">
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">9FC8F4AB-ADFB-4E97-B6A0-3E77571DF9A4</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">4_5_1</cim:IdentifiedObject.name>
+    <cim:OperationalLimitSet.Terminal rdf:resource="AD792DFF-2C58-4BBF-8D75-2F72CFAB796B_1" />
+  </cim:OperationalLimitSet>
+  <emt:TransformerSaturationCurve rdf:about="A4548015-D844-4B79-8468-97B6B75936AB">
+    <emt:TransformerSaturationCurve.TransformerCoreAdmittance rdf:resource="3BC401F3-88EB-44B3-8D1C-75A2A671E0AB" />
+    <cim:Curve.curveStyle rdf:resource="http://www.ucaiug.org/grid18v15#CurveStyle.straightLineYValues" />
+    <cim:Curve.xMultiplier rdf:resource="http://www.ucaiug.org/grid18v15#UnitMultiplier.none" />
+    <cim:Curve.xUnit rdf:resource="http://www.ucaiug.org/grid18v15#UnitSymbol.A" />
+    <cim:Curve.y1Multiplier rdf:resource="http://www.ucaiug.org/grid18v15#UnitMultiplier.none" />
+    <cim:Curve.y1Unit rdf:resource="http://www.ucaiug.org/grid18v15#UnitSymbol.Vs" />
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">A4548015-D844-4B79-8468-97B6B75936AB</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_Sat</cim:IdentifiedObject.name>
+  </emt:TransformerSaturationCurve>
+  <cim:CurveData rdf:about="A4548015-D844-4B79-8468-97B6B75936AB_pt1">
+    <cim:CurveData.Curve rdf:resource="A4548015-D844-4B79-8468-97B6B75936AB" />
+    <cim:CurveData.xvalue rdf:datatype="http://www.ucaiug.org/grid18v15#Float">32.541530399293435</cim:CurveData.xvalue>
+    <cim:CurveData.y1value rdf:datatype="http://www.ucaiug.org/grid18v15#Float">328.77215118686684</cim:CurveData.y1value>
+  </cim:CurveData>
+  <cim:CurveData rdf:about="A4548015-D844-4B79-8468-97B6B75936AB_pt2">
+    <cim:CurveData.Curve rdf:resource="A4548015-D844-4B79-8468-97B6B75936AB" />
+    <cim:CurveData.xvalue rdf:datatype="http://www.ucaiug.org/grid18v15#Float">132.54153039929344</cim:CurveData.xvalue>
+    <cim:CurveData.y1value rdf:datatype="http://www.ucaiug.org/grid18v15#Float">330.3886561128626</cim:CurveData.y1value>
+  </cim:CurveData>
+  <cim:DisconnectingCircuitBreaker rdf:about="AD792DFF-2C58-4BBF-8D75-2F72CFAB796B">
+    <cim:ConductingEquipment.BaseVoltage rdf:resource="FEAB7567-9E47-4A63-91C6-DB80E48E393B" />
+    <cim:Equipment.EquipmentContainer rdf:resource="93EA6BF1-A569-4190-9590-98A62780489E" />
+    <cim:Equipment.inService rdf:datatype="http://www.ucaiug.org/grid18v15#Boolean">true</cim:Equipment.inService>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">AD792DFF-2C58-4BBF-8D75-2F72CFAB796B</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">4_5_1</cim:IdentifiedObject.name>
+  </cim:DisconnectingCircuitBreaker>
+  <cim:Terminal rdf:about="AD792DFF-2C58-4BBF-8D75-2F72CFAB796B_1">
+    <cim:ACDCTerminal.sequenceNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:ACDCTerminal.sequenceNumber>
+    <cim:Terminal.ConductingEquipment rdf:resource="AD792DFF-2C58-4BBF-8D75-2F72CFAB796B" />
+    <cim:Terminal.ConnectivityNode rdf:resource="212BCE15-7CAE-4469-B001-5040D60466C6" />
+  </cim:Terminal>
+  <cim:Terminal rdf:about="AD792DFF-2C58-4BBF-8D75-2F72CFAB796B_2">
+    <cim:ACDCTerminal.sequenceNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">2</cim:ACDCTerminal.sequenceNumber>
+    <cim:Terminal.ConductingEquipment rdf:resource="AD792DFF-2C58-4BBF-8D75-2F72CFAB796B" />
+    <cim:Terminal.ConnectivityNode rdf:resource="1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E" />
+  </cim:Terminal>
+  <cim:ApparentPowerLimit rdf:about="B1CA609A-0885-4AEB-A4F0-36E2B548ABDA">
+    <cim:ApparentPowerLimit.value rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">833333333.3333334</cim:ApparentPowerLimit.value>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">B1CA609A-0885-4AEB-A4F0-36E2B548ABDA</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_End_1_OFAF</cim:IdentifiedObject.name>
+    <cim:OperationalLimit.OperationalLimitSet rdf:resource="F889E8D1-860B-43E1-9FC5-9EDD7ACB232E" />
+    <cim:OperationalLimit.OperationalLimitType rdf:resource="9B53D10B-5004-45B0-B977-BF08C85D9DA7" />
+  </cim:ApparentPowerLimit>
+  <cim:PowerTransformerEnd rdf:about="B4ED2857-F5D2-471F-9764-FC6799526E55">
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">B4ED2857-F5D2-471F-9764-FC6799526E55</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_End_2</cim:IdentifiedObject.name>
+    <cim:PowerTransformerEnd.PowerTransformer rdf:resource="473050BC-A2DA-4E64-9803-78DC64176786" />
+    <cim:PowerTransformerEnd.connectionKind rdf:resource="http://www.ucaiug.org/grid18v15#WindingConnection.Y" />
+    <cim:PowerTransformerEnd.phaseAngleClock rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">0</cim:PowerTransformerEnd.phaseAngleClock>
+    <cim:PowerTransformerEnd.ratedS rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">500000000.0</cim:PowerTransformerEnd.ratedS>
+    <cim:PowerTransformerEnd.ratedU rdf:datatype="http://www.ucaiug.org/grid18v15#Voltage">138000.0</cim:PowerTransformerEnd.ratedU>
+    <cim:TransformerEnd.BaseVoltage rdf:resource="FEAB7567-9E47-4A63-91C6-DB80E48E393B" />
+    <cim:TransformerEnd.Terminal rdf:resource="473050BC-A2DA-4E64-9803-78DC64176786_2" />
+    <cim:TransformerEnd.endNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">2</cim:TransformerEnd.endNumber>
+    <cim:TransformerEnd.grounded rdf:datatype="http://www.ucaiug.org/grid18v15#Boolean">true</cim:TransformerEnd.grounded>
+    <cim:TransformerEnd.rground rdf:datatype="http://www.ucaiug.org/grid18v15#Resistance">0.0</cim:TransformerEnd.rground>
+    <cim:TransformerEnd.xground rdf:datatype="http://www.ucaiug.org/grid18v15#Reactance">0.0</cim:TransformerEnd.xground>
+  </cim:PowerTransformerEnd>
+  <cim:EnergyConsumer rdf:about="C03E1E94-9701-44E0-9D21-DF93F48F1052">
+    <cim:ConductingEquipment.BaseVoltage rdf:resource="FEAB7567-9E47-4A63-91C6-DB80E48E393B" />
+    <cim:EnergyConsumer.LoadResponse rdf:resource="3C4BC1F7-406A-42A1-8788-50BB322944EB" />
+    <cim:EnergyConsumer.p rdf:datatype="http://www.ucaiug.org/grid18v15#ActivePower">400000000.0</cim:EnergyConsumer.p>
+    <cim:EnergyConsumer.q rdf:datatype="http://www.ucaiug.org/grid18v15#ReactivePower">0.0</cim:EnergyConsumer.q>
+    <cim:Equipment.EquipmentContainer rdf:resource="93EA6BF1-A569-4190-9590-98A62780489E" />
+    <cim:Equipment.inService rdf:datatype="http://www.ucaiug.org/grid18v15#Boolean">true</cim:Equipment.inService>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">C03E1E94-9701-44E0-9D21-DF93F48F1052</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">5_1</cim:IdentifiedObject.name>
+  </cim:EnergyConsumer>
+  <cim:Terminal rdf:about="C03E1E94-9701-44E0-9D21-DF93F48F1052_1">
+    <cim:ACDCTerminal.sequenceNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:ACDCTerminal.sequenceNumber>
+    <cim:Terminal.ConductingEquipment rdf:resource="C03E1E94-9701-44E0-9D21-DF93F48F1052" />
+    <cim:Terminal.ConnectivityNode rdf:resource="1FB3938E-D0BE-4AF9-8A2A-1EA4EA9C7B4E" />
+  </cim:Terminal>
+  <cim:OperationalLimitSet rdf:about="C88A0588-F2CA-4474-9E1A-E0F7F855F89C">
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">C88A0588-F2CA-4474-9E1A-E0F7F855F89C</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">2_3_1</cim:IdentifiedObject.name>
+    <cim:OperationalLimitSet.Terminal rdf:resource="8952618F-8852-4420-9850-514793565B23_1" />
+  </cim:OperationalLimitSet>
+  <cim:TransformerMeshImpedance rdf:about="D144E5DA-C8ED-4353-91DC-2A4CA748189C">
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">D144E5DA-C8ED-4353-91DC-2A4CA748189C</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_Mesh</cim:IdentifiedObject.name>
+    <cim:TransformerMeshImpedance.FromTransformerEnd rdf:resource="7507DEC9-7F4B-4C0C-ABC1-477372339EBF" />
+    <cim:TransformerMeshImpedance.ToTransformerEnd rdf:resource="B4ED2857-F5D2-471F-9764-FC6799526E55" />
+    <cim:TransformerMeshImpedance.r rdf:datatype="http://www.ucaiug.org/grid18v15#Resistance">2.3805</cim:TransformerMeshImpedance.r>
+    <cim:TransformerMeshImpedance.r0 rdf:datatype="http://www.ucaiug.org/grid18v15#Resistance">2.3805</cim:TransformerMeshImpedance.r0>
+    <cim:TransformerMeshImpedance.x rdf:datatype="http://www.ucaiug.org/grid18v15#Reactance">19.044</cim:TransformerMeshImpedance.x>
+    <cim:TransformerMeshImpedance.x0 rdf:datatype="http://www.ucaiug.org/grid18v15#Reactance">19.044</cim:TransformerMeshImpedance.x0>
+  </cim:TransformerMeshImpedance>
+  <cim:TextDiagramObject rdf:about="D2278790-2142-4017-A46E-58120D7A7B2A">
+    <cim:DiagramObject.IdentifiedObject rdf:resource="D3C50564-2BA5-4B81-AFF0-BB99CE54E804" />
+    <cim:DiagramObject.drawingOrder rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:DiagramObject.drawingOrder>
+    <cim:DiagramObject.isPolygon rdf:datatype="http://www.ucaiug.org/grid18v15#Boolean">false</cim:DiagramObject.isPolygon>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">D2278790-2142-4017-A46E-58120D7A7B2A</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">1</cim:IdentifiedObject.name>
+    <cim:TextDiagramObject.text rdf:datatype="http://www.ucaiug.org/grid18v15#String">1 SOURCE 345.00 kV</cim:TextDiagramObject.text>
+  </cim:TextDiagramObject>
+  <cim:DiagramObjectPoint rdf:about="D2278790-2142-4017-A46E-58120D7A7B2A_pt1">
+    <cim:DiagramObjectPoint.DiagramObject rdf:resource="D2278790-2142-4017-A46E-58120D7A7B2A" />
+    <cim:DiagramObjectPoint.sequenceNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:DiagramObjectPoint.sequenceNumber>
+    <cim:DiagramObjectPoint.xPosition rdf:datatype="http://www.ucaiug.org/grid18v15#Float">0.9999999999999999</cim:DiagramObjectPoint.xPosition>
+    <cim:DiagramObjectPoint.yPosition rdf:datatype="http://www.ucaiug.org/grid18v15#Float">-0.0018348578680013885</cim:DiagramObjectPoint.yPosition>
+  </cim:DiagramObjectPoint>
+  <cim:ApparentPowerLimit rdf:about="D2D6E90D-5259-4A30-B0B2-D2EE72815C3D">
+    <cim:ApparentPowerLimit.value rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">1000000000.0</cim:ApparentPowerLimit.value>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">D2D6E90D-5259-4A30-B0B2-D2EE72815C3D</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_End_2_OFAF_ShortTerm</cim:IdentifiedObject.name>
+    <cim:OperationalLimit.OperationalLimitSet rdf:resource="92E48490-212F-4EEE-81A2-27E9A45FC58F" />
+    <cim:OperationalLimit.OperationalLimitType rdf:resource="864DF75A-01F5-4786-ACA8-8BAD51C85A69" />
+  </cim:ApparentPowerLimit>
+  <cim:ConnectivityNode rdf:about="D3C50564-2BA5-4B81-AFF0-BB99CE54E804">
+    <cim:ConnectivityNode.ConnectivityNodeContainer rdf:resource="93EA6BF1-A569-4190-9590-98A62780489E" />
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">D3C50564-2BA5-4B81-AFF0-BB99CE54E804</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">1</cim:IdentifiedObject.name>
+  </cim:ConnectivityNode>
+  <cim:ApparentPowerLimit rdf:about="DB835BE6-1B69-4F1D-8971-8C003169FA0E">
+    <cim:ApparentPowerLimit.value rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">720000000.0</cim:ApparentPowerLimit.value>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">DB835BE6-1B69-4F1D-8971-8C003169FA0E</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">1_2_1_ShortTerm</cim:IdentifiedObject.name>
+    <cim:OperationalLimit.OperationalLimitSet rdf:resource="0A8F26A9-8D80-4BDE-8066-B38274DD0E16" />
+    <cim:OperationalLimit.OperationalLimitType rdf:resource="864DF75A-01F5-4786-ACA8-8BAD51C85A69" />
+  </cim:ApparentPowerLimit>
+  <cim:TextDiagramObject rdf:about="DBB167AD-6323-4775-86B4-7F97B5418FC2">
+    <cim:DiagramObject.IdentifiedObject rdf:resource="FA16A3CC-2849-410E-91E7-88674CCA513D" />
+    <cim:DiagramObject.drawingOrder rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:DiagramObject.drawingOrder>
+    <cim:DiagramObject.isPolygon rdf:datatype="http://www.ucaiug.org/grid18v15#Boolean">false</cim:DiagramObject.isPolygon>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">DBB167AD-6323-4775-86B4-7F97B5418FC2</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3</cim:IdentifiedObject.name>
+    <cim:TextDiagramObject.text rdf:datatype="http://www.ucaiug.org/grid18v15#String">3 HIGH SIDE 345.00 kV</cim:TextDiagramObject.text>
+  </cim:TextDiagramObject>
+  <cim:DiagramObjectPoint rdf:about="DBB167AD-6323-4775-86B4-7F97B5418FC2_pt1">
+    <cim:DiagramObjectPoint.DiagramObject rdf:resource="DBB167AD-6323-4775-86B4-7F97B5418FC2" />
+    <cim:DiagramObjectPoint.sequenceNumber rdf:datatype="http://www.ucaiug.org/grid18v15#Integer">1</cim:DiagramObjectPoint.sequenceNumber>
+    <cim:DiagramObjectPoint.xPosition rdf:datatype="http://www.ucaiug.org/grid18v15#Float">-0.2494553367485787</cim:DiagramObjectPoint.xPosition>
+    <cim:DiagramObjectPoint.yPosition rdf:datatype="http://www.ucaiug.org/grid18v15#Float">-0.0007130253668181081</cim:DiagramObjectPoint.yPosition>
+  </cim:DiagramObjectPoint>
+  <cim:ApparentPowerLimit rdf:about="DCFF0DF4-8A95-438B-9AC0-5981EA9B2FEB">
+    <cim:ApparentPowerLimit.value rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">799999999.9999999</cim:ApparentPowerLimit.value>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">DCFF0DF4-8A95-438B-9AC0-5981EA9B2FEB</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_End_2_ONAF_ShortTerm</cim:IdentifiedObject.name>
+    <cim:OperationalLimit.OperationalLimitSet rdf:resource="92E48490-212F-4EEE-81A2-27E9A45FC58F" />
+    <cim:OperationalLimit.OperationalLimitType rdf:resource="864DF75A-01F5-4786-ACA8-8BAD51C85A69" />
+  </cim:ApparentPowerLimit>
+  <cim:ApparentPowerLimit rdf:about="F5244B60-48FF-4017-AFC9-E47798BFA9B8">
+    <cim:ApparentPowerLimit.value rdf:datatype="http://www.ucaiug.org/grid18v15#ApparentPower">600000000.0</cim:ApparentPowerLimit.value>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">F5244B60-48FF-4017-AFC9-E47798BFA9B8</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">4_5_1_Normal</cim:IdentifiedObject.name>
+    <cim:OperationalLimit.OperationalLimitSet rdf:resource="9FC8F4AB-ADFB-4E97-B6A0-3E77571DF9A4" />
+    <cim:OperationalLimit.OperationalLimitType rdf:resource="9B53D10B-5004-45B0-B977-BF08C85D9DA7" />
+  </cim:ApparentPowerLimit>
+  <cim:OperationalLimitSet rdf:about="F889E8D1-860B-43E1-9FC5-9EDD7ACB232E">
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">F889E8D1-860B-43E1-9FC5-9EDD7ACB232E</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3_4_0_1_End_1</cim:IdentifiedObject.name>
+    <cim:OperationalLimitSet.Terminal rdf:resource="473050BC-A2DA-4E64-9803-78DC64176786_1" />
+  </cim:OperationalLimitSet>
+  <cim:ConnectivityNode rdf:about="FA16A3CC-2849-410E-91E7-88674CCA513D">
+    <cim:ConnectivityNode.ConnectivityNodeContainer rdf:resource="93EA6BF1-A569-4190-9590-98A62780489E" />
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">FA16A3CC-2849-410E-91E7-88674CCA513D</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">3</cim:IdentifiedObject.name>
+  </cim:ConnectivityNode>
+  <cim:BaseVoltage rdf:about="FEAB7567-9E47-4A63-91C6-DB80E48E393B">
+    <cim:BaseVoltage.nominalVoltage rdf:datatype="http://www.ucaiug.org/grid18v15#Voltage">138000.0</cim:BaseVoltage.nominalVoltage>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.ucaiug.org/grid18v15#String">FEAB7567-9E47-4A63-91C6-DB80E48E393B</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.ucaiug.org/grid18v15#String">BV_138.00</cim:IdentifiedObject.name>
+  </cim:BaseVoltage>
+</rdf:RDF>

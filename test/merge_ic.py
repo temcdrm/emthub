@@ -18,11 +18,12 @@ if __name__ == '__main__':
   if len(sys.argv) > 1:
     froot = sys.argv[1]
 
+  # do the TTL merge first
   fnetwork = froot + '.ttl'
   fic = froot + '_ic.ttl'
-  fttl = froot + '_merged.ttl'
+  fmerge = froot + '_merged.ttl'
   fxml = froot + '_merged.xml'
-  print ('Combining', fnetwork, 'and', fic, 'to form', fttl, 'and', fxml)
+  print ('Combining', fnetwork, 'and', fic, 'to form', fmerge)
 
   g.parse (fnetwork, publicID="")
   print ('Read', len(g), 'network statements from', fnetwork)
@@ -90,7 +91,21 @@ if __name__ == '__main__':
     CIM.SvPowerFlow,
     CIM.TopologicalNode
   ]
-  with open(fttl, 'wb') as fp:
+  with open(fmerge, 'wb') as fp:
     serializer.serialize(fp, base='')
+
+  # now do an XML merge
+  # TODO: this prepends cwd to internal URI in merged output, in spite of publicID
+  fnetwork = froot + '.xml'
+  fic = froot + '_ic.xml'
+  fmerge = froot + '_merged.xml'
+  print ('Combining', fnetwork, 'and', fic, 'to form', fmerge)
+
+  g.parse (fnetwork, publicID="")
+  print ('Read', len(g), 'network statements from', fnetwork)
+  g.parse (fic, publicID="")
+  print ('Total', len(g), 'statements after merging from', fic)
+
+  g.serialize (destination=fmerge, format='pretty-xml', max_depth=1)
 
 
