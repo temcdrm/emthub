@@ -149,8 +149,8 @@ typedef struct _MyModelParameters {
 IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     [0] = {
         .Name = "TAdTB",                                        // Parameter Names
-        .Description = "Smoothing Time Constant",               // Description
-        .Unit = "sec",                                          // Units
+        .Description = "Gain reduction ratio of lead/lag block",  
+        .Unit = "",                                             // Units
         .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,  // Signal Type
         .FixedValue = 0,                                        // 0 for parameters which can be modified at any time, 1 for parameters which need to be defined at T0 but cannot be changed.
         .DefaultValue.Real64_Val = 0.1,                         // Default value
@@ -234,15 +234,15 @@ IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
 IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
     .DLLInterfaceVersion = { 1, 1, 0, 1 },                              // Release number of the API used during code generation
     .ModelName = "SCRX9",                                               // Model name
-    .ModelVersion = "1.1.0.1",                                          // Model version
+    .ModelVersion = "1.1.0.2",                                          // Model version
     .ModelDescription = "SCRX9 - Bus fed or Solid Fed Static Exciter",  // Model description
     .GeneralInformation = "General Information",                        // General information
     .ModelCreated = "September 14, 2021",                               // Model created on
     .ModelCreator = "gdi",                                              // Model created by
     .ModelLastModifiedDate = "October 24, 2024",                        // Model last modified on
     .ModelLastModifiedBy = "temc",                                      // Model last modified by
-    .ModelModifiedComment = "Version 1.1.0.1 for IEEE/Cigre DLL API V2",// Model modified comment
-    .ModelModifiedHistory = "History of Changes: V1.0.0.0 Initial model for API V1; V1.1.0.0 for API V2; 1.1.0.1 Wrapper", // Model modified history
+    .ModelModifiedComment = "Version 1.1.0.2 for IEEE/Cigre DLL API V2",// Model modified comment
+    .ModelModifiedHistory = "History of Changes: V1.0.0.0 Initial model for API V1; V1.1.0.0 for API V2; 1.1.0.1 Wrapper; 1.1.0.2 TAdTB description", // Model modified history
     .FixedStepBaseSampleTime = 0.005,                                   // Time Step sampling time (sec)
 
     // Inputs

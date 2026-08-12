@@ -2,8 +2,7 @@
 
 This is an example DLL for the IEEE/Cigre specification, implementing grid-forming (GFL) 
 and grid-following (GFL) behaviors for inverter-based resources (IBR). Developed by EPRI.
-See https://www.epri.com/research/products/3002028322. This is a newer version of the
-EPRI-developed IBR model presented in _../gfm_gfl_ibr_. 
+See https://www.epri.com/research/products/3002028322. 
 
 ## Build Instructions - Windows
 
@@ -31,5 +30,30 @@ Then follow these instructions to make 64-bit and 32-bit versions of the DLL:
 - _CMakeLists.txt_ generates the detailed build instructions
 - _gfm_gfl_ibr2.c_ is the unmodified example file from Vishal Verma of EPRI, OCR-scanned from the report downloadable from https://www.epri.com/research/products/3002028322
 - _test_ibr2.c_ is a test harness, mimicking the DLL import and calling functions of a simulation tool
+
+## License
+
+Copyright &copy; 2023 Electric Power Research Institute (EPRI), Inc.
+
+Title: Code Based Generic Inverter Based Resource Model, see https://www.epri.com/research/products/3002028322
+
+Author: Vishal Verma
+
+Adapted under CC BY 4.0, https://creativecommons.org/licenses/by/4.0/
+
+Modified 2025-2026 by Meltran, Inc, as follows:
+
+- Remove currTime input, edit parameter descriptions, add Pout and Qout
+- Add Vref input signal and more filter parameters
+- Fixed choke units, Q control, AW clamps
+- Pre-windup protection for Qcl, added Tv
+
+This model now has:
+
+- 15 inputs (input current time has been removed, Vref added) 
+- 15 outputs (3 ouputs are essential, others can be used for debugging) 
+- 58 parameters
+
+See the git repository change log for full details.
 
 Copyright &copy; 2024-26, Meltran, Inc

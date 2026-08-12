@@ -1,3 +1,6 @@
 [submodule "dll/ppc/fmu/OpenIPSL"]
 	path = dll/ppc/fmu/OpenIPSL
 	url = https://github.com/OpenIPSL/OpenIPSL.git
+[submodule "dll/ThirdParty/HeronPower/OpenIBR"]
+	path = dll/ThirdParty/HeronPower/OpenIBR
+	url = https://github.com/HeronPower/OpenIBR.git

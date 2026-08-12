@@ -2,16 +2,17 @@
 
 // see https://learn.microsoft.com/en-us/windows/win32/dlls/using-run-time-dynamic-linking
 
-#define DLL_NAME "GFM_GFL_IBR.dll"
+#define DLL_NAME "OpenIBR.dll"
 
-#define TMAX 0.5
-#define VBASE 650.0
+#define TMAX 2.0
+#define VBASE 600.0
 #define SBASE 1.0e6
 #define XPU 0.20
 #define RPU 0.01
+#define VDC_NOM 1200.0
 
 // relative output path for execution from the build directory, e.g., release\test or debug\test
-#define CSV_NAME "ibr.csv"
+#define CSV_NAME "OpenIBR.csv"
 
 #include <windows.h> 
 #include <stdio.h> 
@@ -32,7 +33,7 @@ void initialize_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMa
 void update_inputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, double t, 
                     double kVa, double kVb, double kVc, double kIa, double kIb, double kIc)
 {
-  double Pref = 0.9, Qref = 0.0, Vref = 1.05; // units MW, MVar, pu
+  double Pref = 0.9, Qref = 0.0, Vref = 1.05; // units pu
   char *pData = (char *) pModel->ExternalInputs;
   memcpy (pData + pMap[0].offset, &kVa, pMap[0].size);
   memcpy (pData + pMap[1].offset, &kVb, pMap[1].size);
@@ -44,9 +45,9 @@ void update_inputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, do
   memcpy (pData + pMap[7].offset, &kIb, pMap[7].size);
   memcpy (pData + pMap[8].offset, &kIc, pMap[8].size);
   if (t > 0.1) {
-    memcpy (pData + pMap[9].offset, &Pref, pMap[9].size);
-    memcpy (pData + pMap[10].offset, &Qref, pMap[10].size);
-    memcpy (pData + pMap[11].offset, &Vref, pMap[11].size);
+    memcpy (pData + pMap[11].offset, &Pref, pMap[11].size);
+    memcpy (pData + pMap[12].offset, &Qref, pMap[12].size);
+    memcpy (pData + pMap[14].offset, &Vref, pMap[14].size);
   }
 }
 
@@ -83,11 +84,11 @@ int main( void )
   show_struct_alignment_requirements ();
   Wrapped_IEEE_Cigre_DLL *pWrap = CreateFirstDLLModel (DLL_NAME);
   if (NULL != pWrap) {
-    set_parameter (pWrap, 1.0, 1);  // Sbase
-    set_parameter (pWrap, 0.0, 37); // Rchoke
-    set_parameter (pWrap, 0.0, 38); // Lchoke
-    set_parameter (pWrap, 0.0, 39); // Cfilt
-    set_parameter (pWrap, 1.0e8, 40); // Rdamp
+    set_parameter (pWrap, 0.2, 12); // tstart_up
+    set_parameter (pWrap, 0.0, 53); // Rchoke
+    set_parameter (pWrap, 0.0, 54); // Lchoke
+    set_parameter (pWrap, 0.0, 55); // Cfilt
+    set_parameter (pWrap, 1.0e8, 56); // Rdamp
     PrintDLLModelParameters (pWrap);
     // initialize the model
     if (NULL != pWrap->Model_FirstCall) {
@@ -138,9 +139,9 @@ int main( void )
 
       // execute the DLL for updated inverter voltages and other outputs
       pWrap->Model_Outputs (pWrap->pModel);
-      Ea = 1000.0 * extract_output (pWrap->pModel, pWrap->pOutputMap, 0);
-      Eb = 1000.0 * extract_output (pWrap->pModel, pWrap->pOutputMap, 1);
-      Ec = 1000.0 * extract_output (pWrap->pModel, pWrap->pOutputMap, 2);
+      Ea = VDC_NOM * 0.5 * extract_output (pWrap->pModel, pWrap->pOutputMap, 0);
+      Eb = VDC_NOM * 0.5 * extract_output (pWrap->pModel, pWrap->pOutputMap, 1);
+      Ec = VDC_NOM * 0.5 * extract_output (pWrap->pModel, pWrap->pOutputMap, 2);
 
       write_csv_values (fp, pWrap->pModel, pWrap->pInfo, pWrap->pInputMap, pWrap->pOutputMap, t);
       check_messages ("Model_Outputs", pWrap->pModel);
