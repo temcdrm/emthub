@@ -8,7 +8,7 @@ DLL Examples
 ============
 
 These projects build a supporting wrapper around the IEEE/Cigre specification
-for dynamic link libraries (DLLs), and three examples. They should be built
+for dynamic link libraries (DLLs), and four examples. They should be built
 in the following order.
 
 1. First, install the compiler and Cmake from `Visual Studio <https://visualstudio.microsoft.com/downloads/>`_
@@ -16,16 +16,14 @@ in the following order.
    Python is also used for plotting test results.
 2. All DLL builds are performed in the *x64 Native Tools Command Prompt for VS 2022*, 
    which is on the Windows Start Menu.
-3. Build the *wrapper* project, as the following **four** examples depend on it.
+3. Build the *wrapper* project, as the following four examples depend on it.
 4. Build and test the *SCRX9* example, which is a self-contained static 
    exciter DLL from Electranix.
-5. Build and test the *GFM_GFL_IBR* example, which is a self-contained inverter-based 
-   resource (IBR) controller from EPRI.
-6. Build and test the *GFM_GFL_IBR2* example, which is version 2 of a self-contained IBR controller from EPRI.
-7. Build and test the *HWPV* example, which is a data-driven IBR model from PNNL and UCF. 
+5. Build and test the *GFM_GFL_IBR2* example, which is version 2 of a self-contained IBR controller from EPRI.
+6. Build and test the *HWPV* example, which is a data-driven IBR model from PNNL and UCF. 
    This example is not self-contained; you will have to download and build a JSON support 
    library, and sample data-driven model files.
-8. Build and test the *PPC* example, which is a renewable plant controlller model 
+7. Build and test the *PPC* example, which is a renewable plant controlller model 
    (WECC REPCA) compiled with OpenModelica (a required download for this example).
 
 The build instructions will produce 64-bit and 32-bit versions of all example DLLs, 
@@ -139,56 +137,6 @@ flow approaches 1 MW.
 
 .. image:: assets/test_grid.png
 
-.. _target-examples-gfm1:
-
-GFM GFL v1
-----------
-
-This is an example DLL for the IEEE/Cigre specification, implementing grid-forming (GFL) 
-and grid-following (GFL) behaviors for inverter-based resources (IBR). Developed by EPRI.
-
-Build Instructions - Windows
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Follow these instructions to make 64-bit and 32-bit versions of the DLL:
-
-1. Open the *x64 Native Tools Command Prompt for VS 2022* from Windows Start Menu
-2. From the *GFM_GFL_IBR* project directory (``rd /s build`` and ``rd /s build32`` if they exist):
-
-    a. ``md build``
-    b. ``md build32``
-    c. ``cmake -B build -A x64``
-    d. ``cmake -B build32 -A Win32``
-    e. ``cmake --build build --config Release`` or ``cmake --build build --config Debug``
-    f. ``cmake --install build``
-    g. ``cmake --build build32 --config Release` or ``cmake --build build32 --config Debug``
-    h. ``cmake --install build32``
-
-3. From the *../bin* and *../bin32* directories, check the **DLL wrapper**:
-
-    a. ``test_ibr`` should produce an output *ibr.csv* file
-    b. Verify with ``python plotdlltest.py ibr.csv``
-
-File Directory
-^^^^^^^^^^^^^^
-
-- *CMakeLists.txt* generates the detailed build instructions
-- *GFM_GFL_IBR.c* is the unmodified example file from Deepak Ramasubramanian of EPRI
-- *test_ibr.c* is a test harness, mimicking the DLL import and calling functions of a simulation tool
-
-Results
-^^^^^^^
-
-The base voltage is 0.65 kV and the base power is 1 MW. The SMIB impedance 
-is 0.01 + j 0.2 pu. The AC output filter of the inverter is not 
-implemented. At 0.1 s, the control requests 1.05 pu voltage and 0.9 pu 
-power output. *Qref* is not changed but the reactive power output must be 
-controlled to achieve the desired output value. The DLL controls the phase 
-currents are controlled to nearly achieve these requests by 0.5 s, as seen 
-in plotted values of *Pout*, *Qout*, and *Vd*. 
-
-.. image:: assets/test_ibr.png
-
 .. _target-examples-gfm2:
 
 GFM GFL v2
@@ -196,8 +144,7 @@ GFM GFL v2
 
 This is an example DLL for the IEEE/Cigre specification, implementing grid-forming (GFL) 
 and grid-following (GFL) behaviors for inverter-based resources (IBR). 
-See `EPRI Report <https://www.epri.com/research/products/3002028322>`_. This is a newer version of the
-EPRI-developed IBR model presented in *../gfm_gfl_ibr*. 
+See `EPRI Report <https://www.epri.com/research/products/3002028322>`_.
 
 Build Instructions - Windows
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -220,6 +167,33 @@ Follow these instructions to make 64-bit and 32-bit versions of the DLL:
 
     a. ``test_ibr2`` should produce an output *ibr2.csv* file
     b. Verify with ``python plotdlltest.py ibr2.csv``
+
+License
+^^^^^^^
+
+Copyright 2023 Electric Power Research Institute (EPRI), Inc.
+
+Title: Code Based Generic Inverter Based Resource Model, see https://www.epri.com/research/products/3002028322 
+
+Author: Vishal Verma
+
+Adapted under CC BY 4.0, https://creativecommons.org/licenses/by/4.0/
+
+Modified 2025-2026 by Meltran, Inc, as follows:
+
+- Remove currTime input, edit parameter descriptions, add Pout and Qout
+- Add Vref input signal and more filter parameters
+- Fixed choke units, Q control, AW clamps
+- Pre-windup protection for Qcl, added Tv
+
+This model now has:
+
+- 15 inputs (input current time has been removed, Vref added) 
+- 15 outputs (3 ouputs are essential, others can be used for debugging) 
+- 58 parameters
+
+See the git repository change log for full details.
+
 
 File Directory
 ^^^^^^^^^^^^^^

@@ -1,15 +1,21 @@
-﻿/* 
+﻿/*
+Copyright 2023 Electric Power Research Institute (EPRI), Inc.
+Title: Code Based Generic Inverter Based Resource Model,
+       see https://www.epri.com/research/products/3002028322
+Author: Vishal Verma
+Adapted under CC BY 4.0, https://creativecommons.org/licenses/by/4.0/
 
-This model has.
-- 15 inputs (input current time has been removed, Vref added) 
-- 15 outputs (3 ouputs are essential, others can be used for debugging) 
-- 58 parameters 
-
-This model will be compiled into a DLL, and then can be used in ANY power system 
-simulation program by running the "DLLImport" tool that comes with each program 
-
-September 21, 2023, Vishal Verma 
-*/ 
+Modified 2025-2026 by Meltran, Inc, as follows:
+  Remove currTime input, edit parameter descriptions, add Pout and Qout
+  Add Vref input signal and more filter parameters
+  Fixed choke units, Q control, AW clamps
+  Pre-windup protection for Qcl, added Tv
+This model now has:
+  15 inputs (input current time has been removed, Vref added) 
+  15 outputs (3 ouputs are essential, others can be used for debugging) 
+  58 parameters
+See the git repository change log for full details.
+*/
 
 #include <windows.h> 
 #include <stdio.h> 
@@ -938,12 +944,12 @@ IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
   .ModelName = "IBR-Average-Model",             // Model name   
   .ModelVersion = "1.1.0.5",                    // Model version   
   .ModelDescription = "GFD-IBR-Average",        // Model description 
-  .GeneralInformation= "General Information",   // General information
+  .GeneralInformation= "CC BY 4.0 License from EPRI",   // General information
   .ModelCreated = "September 21, 2023",         // Model created on  
   .ModelCreator = "EPRI",                       // Model created by     
   .ModelLastModifiedDate= "February 27, 2026",  // Model last modified on  
   .ModelLastModifiedBy = "IEEE EMTIOP WG",      // Model last modified by 
-  .ModelModifiedComment = "Remove currTime input, edit parameter descriptions, add Pout and Qout\nAdd Vref input signal and more filter parameters\nFix choke units, Q control, AW clamps\nPre-windup protection for Qcl, added Tv", // Model modified comment 
+  .ModelModifiedComment = "Essential changes to anti-windup clamps, and pre-windup protection for Qcl", // Model modified comment 
   .ModelModifiedHistory = "Second instance",    // Model modified history 
   .FixedStepBaseSampleTime = 0.00001,           // Time Step sampling time (sec)  
   // Inputs 
