@@ -6,208 +6,198 @@ char ErrorMessage[1000];
 
 // define model input signals
 typedef struct _MyModelInputs {
-    real64_T VRef;
-    real64_T Ec;
+    real64_T Vref;
+    real64_T Vc;
     real64_T Vs;
-    real64_T IFD;
-    real64_T VT;
-    real64_T VUEL;
-    real64_T VOEL;
 } MyModelInputs;
 
 IEEE_Cigre_DLLInterface_Signal InputSignals[] = {
     [0] = {
-        .Name = "VRef",                                        
-        .Description = "Reference voltage",                    
-        .Unit = "pu",                                          
-        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-        .Width = 1                                             
+        .Name = "Vref",
+        .Description = "Reference voltage",
+        .Unit = "pu",
+        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
+        .Width = 1
     },
     [1] = {
-        .Name = "Ec",                                          
-        .Description = "Measured voltage",                     
-        .Unit = "pu",                                          
-        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-        .Width = 1                                             
+        .Name = "Vc",
+        .Description = "Measured voltage",
+        .Unit = "pu",
+        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
+        .Width = 1
     },
     [2] = {
-        .Name = "Vs",                                          
-        .Description = "Stabilizer signal",                    
-        .Unit = "pu",                                          
-        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-        .Width = 1                                             
-    },
-    [3] = {
-        .Name = "IFD",                                         
-        .Description = "Field Current",                        
-        .Unit = "pu",                                          
-        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-        .Width = 1                                             
-    },
-    [4] = {
-        .Name = "VT",                                          
-        .Description = "Terminal voltage",                     
-        .Unit = "pu",                                          
-        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-        .Width = 1                                             
-    },
-    [5] = {
-        .Name = "VUEL",                                        
-        .Description = "Under excitation limit",               
-        .Unit = "pu",                                          
-        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-        .Width = 1                                             
-    },
-    [6] = {
-        .Name = "VOEL",                                        
-        .Description = "Over excitation limit",                
-        .Unit = "pu",                                          
-        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-        .Width = 1                                             
+        .Name = "Vs",
+        .Description = "Stabilizer plus over/under excitation limiter signals",
+        .Unit = "pu",
+        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
+        .Width = 1
     }
 };
 
 // define model output signals
 typedef struct _MyModelOutputs {
-    real64_T EFD;
+    real64_T Efd;
 } MyModelOutputs;
 
-IEEE_Cigre_DLLInterface_Signal OutputSignals[] = {    
+IEEE_Cigre_DLLInterface_Signal OutputSignals[] = {
     [0] = {
-        .Name = "EFD",                                         
-        .Description = "Output Field Voltage",                 
-        .Unit = "pu",                                          
-        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-        .Width = 1                                             
+        .Name = "Efd",
+        .Description = "Output field voltage",
+        .Unit = "pu",
+        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
+        .Width = 1
     }
 };
 
 // define model parameters
 typedef struct _MyModelParameters {
-    real64_T TAdTB;
-    real64_T TB;
+    real64_T TaTb;
+    real64_T Tb;
     real64_T K;
     real64_T TE;
-    real64_T EMin;
-    real64_T EMax;
-    int32_T  CSwitch;
-    real64_T RCdRFD;
+    real64_T Emin;
+    real64_T Emax;
+    real64_T Kc;
+    real64_T Tc;
+    real64_T EfdMin;
+    real64_T EfdMax;
 } MyModelParameters;
 
 IEEE_Cigre_DLLInterface_Parameter Parameters[] = {
     [0] = {
-        .Name = "TAdTB",                                       
-        .Description = "Smoothing Time Constant",              
-        .Unit = "sec",                                         
-        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-        .FixedValue = 0,                                       
-        .DefaultValue.Real64_Val = 0.1,                        
-        .MinValue.Real64_Val = 0.001,                          
-        .MaxValue.Real64_Val = 100.0                           
+        .Name = "TaTb",
+        .Description = "Ratio of lead/lag time constants",
+        .Unit = "sec",
+        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
+        .FixedValue = 0,
+        .DefaultValue.Real64_Val = 0.1,
+        .MinValue.Real64_Val = 0.001,
+        .MaxValue.Real64_Val = 100.0
     },
     [1] = {
-        .Name = "TB",                                          
-        .Description = "Smoothing Time Constant",              
-        .Unit = "sec",                                         
-        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-        .FixedValue = 0,                                       
-        .DefaultValue.Real64_Val = 10.0,                       
-        .MinValue.Real64_Val = 0.001,                          
-        .MaxValue.Real64_Val = 100.0                           
-    },    
+        .Name = "Tb",
+        .Description = "Lag time constant",
+        .Unit = "sec",
+        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
+        .FixedValue = 0,
+        .DefaultValue.Real64_Val = 10.0,
+        .MinValue.Real64_Val = 0.001,
+        .MaxValue.Real64_Val = 100.0
+    },
     [2] = {
-        .Name = "K",                                           
-        .Description = "Gain",                                 
-        .Unit = "pu",                                          
-        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-        .FixedValue = 0,                                       
-        .DefaultValue.Real64_Val = 100.0,                      
-        .MinValue.Real64_Val = 0.001,                          
-        .MaxValue.Real64_Val = 1000.0                          
+        .Name = "K",
+        .Description = "Gain",
+        .Unit = "pu",
+        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
+        .FixedValue = 0,
+        .DefaultValue.Real64_Val = 100.0,
+        .MinValue.Real64_Val = 0.001,
+        .MaxValue.Real64_Val = 1000.0
     },
     [3] = {
-        .Name = "TE",                                          
-        .Description = "Time Constant",                        
-        .Unit = "sec",                                         
-        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-        .FixedValue = 0,                                       
-        .DefaultValue.Real64_Val = 0.05,                       
-        .MinValue.Real64_Val = 0.001,                          
-        .MaxValue.Real64_Val = 100.0                           
+        .Name = "Te",
+        .Description = "Gain time constant",
+        .Unit = "sec",
+        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
+        .FixedValue = 0,
+        .DefaultValue.Real64_Val = 0.05,
+        .MinValue.Real64_Val = 0.001,
+        .MaxValue.Real64_Val = 100.0
     },
     [4] = {
-        .Name = "EMin",                                        
-        .Description = "Min Field Voltage",                    
-        .Unit = "pu",                                          
-        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-        .FixedValue = 0,                                       
-        .DefaultValue.Real64_Val = -5.0,                       
-        .MinValue.Real64_Val = -100.0,                         
-        .MaxValue.Real64_Val = -1.0                            
+        .Name = "Emin",
+        .Description = "Minimum field voltage (anti-windup limit)",
+        .Unit = "pu",
+        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
+        .FixedValue = 0,
+        .DefaultValue.Real64_Val = -5.0,
+        .MinValue.Real64_Val = -100.0,
+        .MaxValue.Real64_Val = -1.0
     },
     [5] = {
-        .Name = "EMax",                                        
-        .Description = "Max Field Voltage",                    
-        .Unit = "pu",                                          
-        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-        .FixedValue = 0,                                       
-        .DefaultValue.Real64_Val = 5.0,                        
-        .MinValue.Real64_Val = 1.0,                            
-        .MaxValue.Real64_Val = 100.0                           
+        .Name = "Emax",
+        .Description = "Maximum field voltage (anti-windup limit)",
+        .Unit = "pu",
+        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
+        .FixedValue = 0,
+        .DefaultValue.Real64_Val = 5.0,
+        .MinValue.Real64_Val = 1.0,
+        .MaxValue.Real64_Val = 100.0
     },
     [6] = {
-        .Name = "CSwitch",                                     
-        .Description = "Power source: 0=VT, 1=1.0",            
-        .Unit = "",                                            
-        .DataType = IEEE_Cigre_DLLInterface_DataType_int32_T,  
-        .FixedValue = 0,                                       
-        .DefaultValue.Int32_Val = 1,                           
-        .MinValue.Int32_Val = 0,                               
-        .MaxValue.Int32_Val = 1                                
+        .Name = "Kc",
+        .Description = "PI controller gain, >0 if TC >0",
+        .Unit = "pu",
+        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
+        .FixedValue = 0,
+        .DefaultValue.Real64_Val = 0.08,
+        .MinValue.Real64_Val = 0.0,
+        .MaxValue.Real64_Val = 1000.0
     },
     [7] = {
-        .Name = "RCdRFD",                                      
-        .Description = "Field resistance ratio",               
-        .Unit = "",                                            
-        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T, 
-        .FixedValue = 0,                                       
-        .DefaultValue.Real64_Val = 10.0,                       
-        .MinValue.Real64_Val = 0.001,                          
-        .MaxValue.Real64_Val = 100.0                           
-    }
+        .Name = "Tc",
+        .Description = "PI controller phase lead time constant (0 disables PI)",
+        .Unit = "sec",
+        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
+        .FixedValue = 0,
+        .DefaultValue.Real64_Val = 0.0,
+        .MinValue.Real64_Val = 0.0,
+        .MaxValue.Real64_Val = 100.0
+    },
+    [8] = {
+        .Name = "EfdMin",
+        .Description = "Minimum field voltage (static clipping)",
+        .Unit = "pu",
+        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
+        .FixedValue = 0,
+        .DefaultValue.Real64_Val = -5.0,
+        .MinValue.Real64_Val = -100.0,
+        .MaxValue.Real64_Val = -1.0
+    },
+    [9] = {
+        .Name = "EfdMax",
+        .Description = "Maximum field voltage (static clipping)",
+        .Unit = "pu",
+        .DataType = IEEE_Cigre_DLLInterface_DataType_real64_T,
+        .FixedValue = 0,
+        .DefaultValue.Real64_Val = 5.0,
+        .MinValue.Real64_Val = 1.0,
+        .MaxValue.Real64_Val = 100.0
+    },
 };
 
 // top-level model metadata
 IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
-    .DLLInterfaceVersion = { 1, 1, 0, 1 }, 
-    .ModelName = "SEXS",                                             
-    .ModelVersion = "1.0.0.0",                                        
-    .ModelDescription = "SEXS - Legacy static excitation system model",
-    .GeneralInformation = "Prohibited by NERC",                      
-    .ModelCreated = "August 10, 2026",                             
-    .ModelCreator = "gdi",                                            
-    .ModelLastModifiedDate = "August 10, 2026",                      
-    .ModelLastModifiedBy = "temc",                                    
+    .DLLInterfaceVersion = { 1, 1, 0, 1 },
+    .ModelName = "SEXS",
+    .ModelVersion = "1.0.0.0",
+    .ModelDescription = "The CIM ExcSEXS, a legacy static excitation system model",
+    .GeneralInformation = "Prohibited by NERC",
+    .ModelCreated = "August 13, 2026",
+    .ModelCreator = "temc",
+    .ModelLastModifiedDate = "August 13, 2026",
+    .ModelLastModifiedBy = "temc",
     .ModelModifiedComment = "Version 1.1.0.1 for IEEE/Cigre DLL API V2",
-    .ModelModifiedHistory = "", 
+    .ModelModifiedHistory = "",
     .FixedStepBaseSampleTime = 0.005,
 
     // Inputs
-    .NumInputPorts = 7,              
-    .InputPortsInfo = InputSignals,  
+    .NumInputPorts = 3,
+    .InputPortsInfo = InputSignals,
 
     // Outputs
-    .NumOutputPorts = 1,             
+    .NumOutputPorts = 1,
     .OutputPortsInfo = OutputSignals,
 
     // Parameters
-    .NumParameters = 8,              
-    .ParametersInfo = Parameters,    
+    .NumParameters = 10,
+    .ParametersInfo = Parameters,
 
     // Number of State Variables
-    .NumIntStates = 0,               
-    .NumFloatStates = 0,             
-    .NumDoubleStates = 6             
+    .NumIntStates = 0,
+    .NumFloatStates = 0,
+    .NumDoubleStates = 6
 };
 
 // ----------------------------------------------------------------
@@ -489,7 +479,7 @@ __declspec(dllexport) int32_T __cdecl Model_PrintInfo() {
         for (int k = 0; k < Model_Info.NumOutputPorts; k++) {
             printf("  %s\n", Model_Info.OutputPortsInfo[k].Name);
         }
-        
+
         printf("Number of parameters:   %d\n", Model_Info.NumParameters);
         printf("Parameter description:");
         for (int k = 0; k < Model_Info.NumParameters; k++) {

@@ -74,7 +74,7 @@ plots = {
                             {"name": "Iq", "base": hwpv_ibase, "axis": 1},
                             {"name": "Idc", "base": hwpv_idcbase, "axis": 1},
                             {"name": "Vdc", "base": hwpv_vdcbase, "axis": 1}]},
-  "scrx9.csv": {"tmin": 1.0, "tmax": 3.0, "ttick": 0.2, "title": "SCRX9 Excitation System Test",
+  "sexs.csv": {"tmin": 1.0, "tmax": 3.0, "ttick": 0.2, "title": "SEXS Excitation System Test",
                 "ytitles": ["Inputs [pu]", "Outputs [pu]"],
                 "signals": [{"name": "VRef", "base": 1.0, "axis": 0},
                             {"name": "VT", "base": 1.0, "axis": 0},
@@ -145,7 +145,7 @@ def plot_page (df, cfg):
   plt.show()
   plt.close()
 
-data_path = 'scrx9.csv'
+data_path = 'sexs.csv'
 all_channels = False
 
 if __name__ == '__main__':
