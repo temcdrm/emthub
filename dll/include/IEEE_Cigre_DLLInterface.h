@@ -20,28 +20,28 @@ typedef struct _IEEE_Cigre_DLLInterface_Signal
 } IEEE_Cigre_DLLInterface_Signal;
 
 union DefaultValueU {
-    const char_T            Char_Val;
-    const char_T * const    Char_Ptr;
-    const int8_T            Int8_Val;
-    const uint8_T           Uint8_Val;
-    const int16_T           Int16_Val;
-    const uint16_T          Uint16_Val;
-    const  int32_T           Int32_Val;
-    const uint32_T          Uint32_Val;
-    const real32_T          Real32_Val;
-    const real64_T          Real64_Val;
+    const char_T          Char_Val;
+    const char_T * const  Char_Ptr;
+    const int8_T          Int8_Val;
+    const uint8_T         Uint8_Val;
+    const int16_T         Int16_Val;
+    const uint16_T        Uint16_Val;
+    const int32_T         Int32_Val;
+    const uint32_T        Uint32_Val;
+    const real32_T        Real32_Val;
+    const real64_T        Real64_Val;
 };
 
 union MinMaxValueU {
-    const char_T            Char_Val;
-    const int8_T            Int8_Val;
-    const uint8_T           Uint8_Val;
-    const int16_T           Int16_Val;
-    const uint16_T          Uint16_Val;
-    const int32_T           Int32_Val;
-    const uint32_T          Uint32_Val;
-    const real32_T          Real32_Val;
-    const real64_T          Real64_Val;
+    const char_T          Char_Val;
+    const int8_T          Int8_Val;
+    const uint8_T         Uint8_Val;
+    const int16_T         Int16_Val;
+    const uint16_T        Uint16_Val;
+    const int32_T         Int32_Val;
+    const uint32_T        Uint32_Val;
+    const real32_T        Real32_Val;
+    const real64_T        Real64_Val;
 };
 
 typedef struct _IEEE_Cigre_DLLInterface_Parameter
@@ -109,7 +109,7 @@ typedef int32_T (__cdecl* Model_Initialize) (IEEE_Cigre_DLLInterface_Instance *p
 typedef int32_T (__cdecl* Model_Outputs) (IEEE_Cigre_DLLInterface_Instance *pModelInstance);
 typedef int32_T (__cdecl* Model_Iterate) (IEEE_Cigre_DLLInterface_Instance *pModelInstance);
 typedef int32_T (__cdecl* Model_Terminate) (IEEE_Cigre_DLLInterface_Instance *pModelInstance);
-typedef int32_T (__cdecl* Model_PrintInfo) (void)
+typedef int32_T (__cdecl* Model_PrintInfo) (void);
 */
 
 #endif /* __IEEE_Cigre_DLLInterface__ */
