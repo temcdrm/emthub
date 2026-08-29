@@ -37,6 +37,9 @@ after compiling and linking the DLLs. An ATP license is required for access to t
 SEXS
 ----
 
+.. note::
+    To be completed
+
 This is a legacy static excitation system model, prohibited by NERC for use in
 new interconnection studies, but still useful in demonstrations.
 
@@ -423,6 +426,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 OpenIBR
 -------
+
+.. note::
+    To be completed
 
 This example is based on HeronPower's OpenIBR library under an Apache 2.0 license.
 The library is incorporated using 
