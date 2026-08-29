@@ -871,7 +871,7 @@ VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:Strin
 } ORDER by ?mRID ?Equipment_type ?Equipment_mRID
 
 # EMTIBRPlantAttributes
-SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?switchingFrequency ?dcLinkVoltage ?IEEECigreDLL_mRID WHERE {
+SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?switchingFrequency ?dcLinkVoltage ?IEEECigreAPI_mRID WHERE {
 #VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
@@ -886,13 +886,13 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?p e:IBRPlant.dcLinkVoltage ?dcLinkVoltage.
  OPTIONAL {
    ?d c:DetailedModelDynamics.Equipment ?eq.
-   ?d c:IdentifiedObject.mRID ?IEEECigreDLL_mRID
+   ?d c:IdentifiedObject.mRID ?IEEECigreAPI_mRID
    }
 } ORDER by ?mRID
 
-# EMTIEEECigreDLL
-SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?uri ?snapshotUri ?shareable ?dllDLLInterfaceVersion ?dllEmtRmsMode ?dllFixedStepBaseSampleTime 
-                ?dllModelName ?dllModelVersion WHERE {
+# EMTIEEECigreAPI
+SELECT DISTINCT ?mRID ?name ?PowerElectronicsConnection_mRID ?uri ?snapshotUri ?shareable ?apiDLLInterfaceVersion ?apiEmtRmsMode ?apiFixedStepBaseSampleTime 
+                ?apiModelName ?apiModelVersion WHERE {
 #VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
@@ -902,33 +902,33 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
  ?d c:IdentifiedObject.mRID ?mRID.
  ?d c:IdentifiedObject.name ?name.
- ?d e:IEEECigreDLL.uri ?uri.
- ?d e:IEEECigreDLL.snapshotUri ?snapshotUri.
- ?d e:IEEECigreDLL.shareable ?shareable.
- ?d e:IEEECigreDLL.dllDLLInterfaceVersion ?dllDLLInterfaceVersion.
- {?d e:IEEECigreDLL.dllEmtRmsMode ?rawMode.
-  bind(strafter(str(?rawMode),"Kind.") as ?dllEmtRmsMode)}
- ?d e:IEEECigreDLL.dllFixedStepBaseSampleTime ?dllFixedStepBaseSampleTime.
- ?d e:IEEECigreDLL.dllModelName ?dllModelName.
- ?d e:IEEECigreDLL.dllModelVersion ?dllModelVersion.
+ ?d e:IEEECigreAPI.uri ?uri.
+ ?d e:IEEECigreAPI.snapshotUri ?snapshotUri.
+ ?d e:IEEECigreAPI.shareable ?shareable.
+ ?d e:IEEECigreAPI.apiDLLInterfaceVersion ?apiDLLInterfaceVersion.
+ {?d e:IEEECigreAPI.apiEmtRmsMode ?rawMode.
+  bind(strafter(str(?rawMode),"Kind.") as ?apiEmtRmsMode)}
+ ?d e:IEEECigreAPI.apiFixedStepBaseSampleTime ?apiFixedStepBaseSampleTime.
+ ?d e:IEEECigreAPI.apiModelName ?apiModelName.
+ ?d e:IEEECigreAPI.apiModelVersion ?apiModelVersion.
 } ORDER by ?mRID
 
-# EMTIEEECigreDLLInfo
+# EMTIEEECigreAPIInfo
 SELECT DISTINCT ?mRID 
- ?dllGeneralInformation 
- ?dllModelCreated
- ?dllModelCreator
- ?dllModelDescription
- ?dllModelLastModifiedBy
- ?dllModelLastModifiedDate
- ?dllModelModifiedComment
- ?dllModelModifiedHistory
- ?dllNumDoubleStates
- ?dllNumFloatStates
- ?dllNumIntStates
- ?dllNumInputPorts
- ?dllNumOutputPorts
- ?dllNumParameters
+ ?apiGeneralInformation 
+ ?apiModelCreated
+ ?apiModelCreator
+ ?apiModelDescription
+ ?apiModelLastModifiedBy
+ ?apiModelLastModifiedDate
+ ?apiModelModifiedComment
+ ?apiModelModifiedHistory
+ ?apiNumDoubleStates
+ ?apiNumFloatStates
+ ?apiNumIntStates
+ ?apiNumInputPorts
+ ?apiNumOutputPorts
+ ?apiNumParameters
 WHERE {
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?eq r:type c:PowerElectronicsConnection.
@@ -936,34 +936,34 @@ WHERE {
  ?d c:DetailedModelDynamics.Equipment ?eq.
  ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
  ?d c:IdentifiedObject.mRID ?mRID.
- ?d e:IEEECigreDLL.IEEECigreDLLInfo ?i.
- ?i e:IEEECigreDLLInfo.dllGeneralInformation ?dllGeneralInformation.
- ?i e:IEEECigreDLLInfo.dllModelCreated ?dllModelCreated.
- ?i e:IEEECigreDLLInfo.dllModelCreator ?dllModelCreator.
- ?i e:IEEECigreDLLInfo.dllModelDescription ?dllModelDescription.
- ?i e:IEEECigreDLLInfo.dllModelLastModifiedBy ?dllModelLastModifiedBy.
- ?i e:IEEECigreDLLInfo.dllModelLastModifiedDate ?dllModelLastModifiedDate.
- ?i e:IEEECigreDLLInfo.dllModelModifiedComment ?dllModelModifiedComment.
- ?i e:IEEECigreDLLInfo.dllModelModifiedHistory ?dllModelModifiedHistory.
- ?i e:IEEECigreDLLInfo.dllNumDoubleStates ?dllNumDoubleStates.
- ?i e:IEEECigreDLLInfo.dllNumFloatStates ?dllNumFloatStates.
- ?i e:IEEECigreDLLInfo.dllNumIntStates ?dllNumIntStates.
- ?i e:IEEECigreDLLInfo.dllNumInputPorts ?dllNumInputPorts.
- ?i e:IEEECigreDLLInfo.dllNumOutputPorts ?dllNumOutputPorts.
- ?i e:IEEECigreDLLInfo.dllNumParameters ?dllNumParameters
+ ?d e:IEEECigreAPI.IEEECigreAPIInfo ?i.
+ ?i e:IEEECigreAPIInfo.apiGeneralInformation ?apiGeneralInformation.
+ ?i e:IEEECigreAPIInfo.apiModelCreated ?apiModelCreated.
+ ?i e:IEEECigreAPIInfo.apiModelCreator ?apiModelCreator.
+ ?i e:IEEECigreAPIInfo.apiModelDescription ?apiModelDescription.
+ ?i e:IEEECigreAPIInfo.apiModelLastModifiedBy ?apiModelLastModifiedBy.
+ ?i e:IEEECigreAPIInfo.apiModelLastModifiedDate ?apiModelLastModifiedDate.
+ ?i e:IEEECigreAPIInfo.apiModelModifiedComment ?apiModelModifiedComment.
+ ?i e:IEEECigreAPIInfo.apiModelModifiedHistory ?apiModelModifiedHistory.
+ ?i e:IEEECigreAPIInfo.apiNumDoubleStates ?apiNumDoubleStates.
+ ?i e:IEEECigreAPIInfo.apiNumFloatStates ?apiNumFloatStates.
+ ?i e:IEEECigreAPIInfo.apiNumIntStates ?apiNumIntStates.
+ ?i e:IEEECigreAPIInfo.apiNumInputPorts ?apiNumInputPorts.
+ ?i e:IEEECigreAPIInfo.apiNumOutputPorts ?apiNumOutputPorts.
+ ?i e:IEEECigreAPIInfo.apiNumParameters ?apiNumParameters
 } ORDER by ?mRID
 
-# EMTIEEECigreDLLParameterInfos
+# EMTIEEECigreAPIParameterInfos
 SELECT DISTINCT ?mRID 
- ?dllSequenceNumber 
- ?dllDefaultValue
- ?dllDescription
- ?dllFixedValue
- ?dllGroupName
- ?dllMaxValue
- ?dllMinValue
- ?dllName
- ?dllUnit 
+ ?apiSequenceNumber 
+ ?apiDefaultValue
+ ?apiDescription
+ ?apiFixedValue
+ ?apiGroupName
+ ?apiMaxValue
+ ?apiMinValue
+ ?apiName
+ ?apiUnit 
 WHERE {
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?eq r:type c:PowerElectronicsConnection.
@@ -971,24 +971,24 @@ WHERE {
  ?d c:DetailedModelDynamics.Equipment ?eq.
  ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
  ?d c:IdentifiedObject.mRID ?mRID.
- ?p e:IEEECigreDLLParameter.IEEECigreDLL ?d.
- ?p e:IEEECigreDLLParameter.dllSequenceNumber ?dllSequenceNumber.
- ?p e:IEEECigreDLLParameter.IEEECigreDLLParameterInfo ?i.
- ?i e:IEEECigreDLLParameterInfo.dllDefaultValue ?dllDefaultValue.
- ?i e:IEEECigreDLLParameterInfo.dllMinValue ?dllMinValue.
- ?i e:IEEECigreDLLParameterInfo.dllMaxValue ?dllMaxValue.
- ?i e:IEEECigreDLLParameterInfo.dllFixedValue ?dllFixedValue.
- ?i e:IEEECigreDLLParameterInfo.dllName ?dllName.
- ?i e:IEEECigreDLLParameterInfo.dllUnit ?dllUnit.
- ?i e:IEEECigreDLLParameterInfo.dllGroupName ?dllGroupName.
- ?i e:IEEECigreDLLParameterInfo.dllDescription ?dllDescription
-} ORDER by ?mRID ?dllSequenceNumber
+ ?p e:IEEECigreAPIParameter.IEEECigreAPI ?d.
+ ?p e:IEEECigreAPIParameter.apiSequenceNumber ?apiSequenceNumber.
+ ?p e:IEEECigreAPIParameter.IEEECigreAPIParameterInfo ?i.
+ ?i e:IEEECigreAPIParameterInfo.apiDefaultValue ?apiDefaultValue.
+ ?i e:IEEECigreAPIParameterInfo.apiMinValue ?apiMinValue.
+ ?i e:IEEECigreAPIParameterInfo.apiMaxValue ?apiMaxValue.
+ ?i e:IEEECigreAPIParameterInfo.apiFixedValue ?apiFixedValue.
+ ?i e:IEEECigreAPIParameterInfo.apiName ?apiName.
+ ?i e:IEEECigreAPIParameterInfo.apiUnit ?apiUnit.
+ ?i e:IEEECigreAPIParameterInfo.apiGroupName ?apiGroupName.
+ ?i e:IEEECigreAPIParameterInfo.apiDescription ?apiDescription
+} ORDER by ?mRID ?apiSequenceNumber
 
-# EMTIEEECigreDLLInputSignalInfos
+# EMTIEEECigreAPIInputSignalInfos
 SELECT DISTINCT ?mRID 
- ?dllSequenceNumber 
- ?dllDescription
- ?dllUnit 
+ ?apiSequenceNumber 
+ ?apiDescription
+ ?apiUnit 
 WHERE {
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?eq r:type c:PowerElectronicsConnection.
@@ -997,18 +997,18 @@ WHERE {
  ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
  ?d c:IdentifiedObject.mRID ?mRID.
  ?s c:SignalDescriptor.DynamicsFunctionBlock ?d.
- ?s e:IEEECigreDLLSignal.dllSequenceNumber ?dllSequenceNumber.
- ?s e:IEEECigreDLLSignal.IEEECigreDLLSignalInfo ?i.
- ?s e:IEEECigreDLLInput.kind ?k.
- ?i e:IEEECigreDLLSignalInfo.dllUnit ?dllUnit.
- ?i e:IEEECigreDLLSignalInfo.dllDescription ?dllDescription
-} ORDER by ?mRID ?dllSequenceNumber
+ ?s e:IEEECigreAPISignal.apiSequenceNumber ?apiSequenceNumber.
+ ?s e:IEEECigreAPISignal.IEEECigreAPISignalInfo ?i.
+ ?s e:IEEECigreAPIInput.kind ?k.
+ ?i e:IEEECigreAPISignalInfo.apiUnit ?apiUnit.
+ ?i e:IEEECigreAPISignalInfo.apiDescription ?apiDescription
+} ORDER by ?mRID ?apiSequenceNumber
 
-# EMTIEEECigreDLLOutputSignalInfos
+# EMTIEEECigreAPIOutputSignalInfos
 SELECT DISTINCT ?mRID 
- ?dllSequenceNumber 
- ?dllDescription
- ?dllUnit 
+ ?apiSequenceNumber 
+ ?apiDescription
+ ?apiUnit 
 WHERE {
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
  ?eq r:type c:PowerElectronicsConnection.
@@ -1017,15 +1017,15 @@ WHERE {
  ?eq c:IdentifiedObject.mRID ?PowerElectronicsConnection_mRID.
  ?d c:IdentifiedObject.mRID ?mRID.
  ?s c:SignalDescriptor.DynamicsFunctionBlock ?d.
- ?s e:IEEECigreDLLSignal.dllSequenceNumber ?dllSequenceNumber.
- ?s e:IEEECigreDLLSignal.IEEECigreDLLSignalInfo ?i.
- ?s e:IEEECigreDLLOutput.kind ?k.
- ?i e:IEEECigreDLLSignalInfo.dllUnit ?dllUnit.
- ?i e:IEEECigreDLLSignalInfo.dllDescription ?dllDescription
-} ORDER by ?mRID ?dllSequenceNumber
+ ?s e:IEEECigreAPISignal.apiSequenceNumber ?apiSequenceNumber.
+ ?s e:IEEECigreAPISignal.IEEECigreAPISignalInfo ?i.
+ ?s e:IEEECigreAPIOutput.kind ?k.
+ ?i e:IEEECigreAPISignalInfo.apiUnit ?apiUnit.
+ ?i e:IEEECigreAPISignalInfo.apiDescription ?apiDescription
+} ORDER by ?mRID ?apiSequenceNumber
 
-# EMTIEEECigreDLLParameters
-SELECT DISTINCT ?mRID ?dllSequenceNumber ?dllParameterKind ?value WHERE {
+# EMTIEEECigreAPIParameters
+SELECT DISTINCT ?mRID ?apiSequenceNumber ?apiParameterKind ?value WHERE {
 #VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
@@ -1033,14 +1033,14 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?eq c:Equipment.EquipmentContainer ?sys.
  ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?mRID.
- ?p e:IEEECigreDLLParameter.IEEECigreDLL ?d.
- ?p e:IEEECigreDLLParameter.dllSequenceNumber ?dllSequenceNumber.
- ?p e:IEEECigreDLLParameter.value ?value.
- {?p e:IEEECigreDLLParameter.dllParameterKind ?rawkind.
-  bind(strafter(str(?rawkind),"Kind.") as ?dllParameterKind)}
-} ORDER by ?mRID ?dllSequenceNumber
+ ?p e:IEEECigreAPIParameter.IEEECigreAPI ?d.
+ ?p e:IEEECigreAPIParameter.apiSequenceNumber ?apiSequenceNumber.
+ ?p e:IEEECigreAPIParameter.value ?value.
+ {?p e:IEEECigreAPIParameter.apiParameterKind ?rawkind.
+  bind(strafter(str(?rawkind),"Kind.") as ?apiParameterKind)}
+} ORDER by ?mRID ?apiSequenceNumber
 
-# EMTCountDLLParameters
+# EMTCountAPIParameters
 SELECT ?mRID (count(?p) as ?count) WHERE {
 #VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
@@ -1049,13 +1049,13 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?eq c:Equipment.EquipmentContainer ?sys.
  ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?mRID.
- ?p e:IEEECigreDLLParameter.IEEECigreDLL ?d.
+ ?p e:IEEECigreAPIParameter.IEEECigreAPI ?d.
 }
 GROUP BY ?mRID
 ORDER BY ?mRID
 
-# EMTIEEECigreDLLInputs
-SELECT DISTINCT ?mRID ?dllSequenceNumber ?dllName ?dllWidth ?dllParameterKind ?kind ?sensorRatio ?unit ?multiplier ?phase ?ConnectivityNode_mRID ?DCNode_mRID ?ACDCTerminal_mRID WHERE {
+# EMTIEEECigreAPIInputs
+SELECT DISTINCT ?mRID ?apiSequenceNumber ?apiName ?apiWidth ?apiParameterKind ?kind ?sensorRatio ?unit ?multiplier ?phase ?ConnectivityNode_mRID ?DCNode_mRID ?ACDCTerminal_mRID WHERE {
 #VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
@@ -1064,29 +1064,29 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?mRID.
  ?p c:SignalDescriptor.DynamicsFunctionBlock ?d.
- ?p e:IEEECigreDLLSignal.dllSequenceNumber ?dllSequenceNumber.
- ?p e:IEEECigreDLLInput.sensorRatio ?sensorRatio.
- ?p e:IEEECigreDLLSignal.dllName ?dllName.
- ?p e:IEEECigreDLLSignal.dllWidth ?dllWidth.
- {?p e:IEEECigreDLLSignal.unit ?rawunit.
+ ?p e:IEEECigreAPISignal.apiSequenceNumber ?apiSequenceNumber.
+ ?p e:IEEECigreAPIInput.sensorRatio ?sensorRatio.
+ ?p e:IEEECigreAPISignal.apiName ?apiName.
+ ?p e:IEEECigreAPISignal.apiWidth ?apiWidth.
+ {?p e:IEEECigreAPISignal.unit ?rawunit.
   bind(strafter(str(?rawunit),"UnitSymbol.") as ?unit)}
- {?p e:IEEECigreDLLSignal.multiplier ?rawmult.
+ {?p e:IEEECigreAPISignal.multiplier ?rawmult.
   bind(strafter(str(?rawmult),"UnitMultiplier.") as ?multiplier)}
- OPTIONAL {?p e:IEEECigreDLLSignal.phase ?rawphase.
+ OPTIONAL {?p e:IEEECigreAPISignal.phase ?rawphase.
   bind(strafter(str(?rawphase),"Kind.") as ?phase)}
- {?p e:IEEECigreDLLSignal.dllParameterKind ?rawkind.
-  bind(strafter(str(?rawkind),"Kind.") as ?dllParameterKind)}
- {?p e:IEEECigreDLLInput.kind ?rawsig.
+ {?p e:IEEECigreAPISignal.apiParameterKind ?rawkind.
+  bind(strafter(str(?rawkind),"Kind.") as ?apiParameterKind)}
+ {?p e:IEEECigreAPIInput.kind ?rawsig.
   bind(strafter(str(?rawsig),"Kind.") as ?kind)}
- OPTIONAL {?p e:IEEECigreDLLSignal.ConnectivityNode ?cn.
+ OPTIONAL {?p e:IEEECigreAPISignal.ConnectivityNode ?cn.
            ?cn c:IdentifiedObject.mRID ?ConnectivityNode_mRID}
- OPTIONAL {?p e:IEEECigreDLLSignal.DCNode ?dcn.
+ OPTIONAL {?p e:IEEECigreAPISignal.DCNode ?dcn.
            ?dcn c:IdentifiedObject.mRID ?DCNode_mRID}
  OPTIONAL {?p c:SignalDescriptor.ACDCTerminal ?trm.
           bind(substr(str(?trm),strlen(str(?trm))-37,38) as ?ACDCTerminal_mRID)}
-} ORDER by ?mRID ?dllSequenceNumber
+} ORDER by ?mRID ?apiSequenceNumber
 
-# EMTCountDLLInputs
+# EMTCountAPIInputs
 SELECT ?mRID (count(?p) as ?count) WHERE {
 #VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
@@ -1096,13 +1096,13 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?mRID.
  ?p c:SignalDescriptor.DynamicsFunctionBlock ?d.
- ?p r:type e:IEEECigreDLLInput
+ ?p r:type e:IEEECigreAPIInput
 }
 GROUP BY ?mRID
 ORDER BY ?mRID
 
-# EMTIEEECigreDLLOutputs
-SELECT DISTINCT ?mRID ?dllSequenceNumber ?dllName ?dllWidth ?dllParameterKind ?kind ?scalingRatio ?unit ?multiplier ?phase ?ConnectivityNode_mRID ?DCNode_mRID ?ACDCTerminal_mRID WHERE {
+# EMTIEEECigreAPIOutputs
+SELECT DISTINCT ?mRID ?apiSequenceNumber ?apiName ?apiWidth ?apiParameterKind ?kind ?scalingRatio ?unit ?multiplier ?phase ?ConnectivityNode_mRID ?DCNode_mRID ?ACDCTerminal_mRID WHERE {
 #VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
  ?sys c:IdentifiedObject.mRID ?EquipmentContainer_mRID.
@@ -1111,29 +1111,29 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?mRID.
  ?p c:SignalDescriptor.DynamicsFunctionBlock ?d.
- ?p e:IEEECigreDLLSignal.dllSequenceNumber ?dllSequenceNumber.
- ?p e:IEEECigreDLLOutput.scalingRatio ?scalingRatio.
- ?p e:IEEECigreDLLSignal.dllName ?dllName.
- ?p e:IEEECigreDLLSignal.dllWidth ?dllWidth.
- {?p e:IEEECigreDLLSignal.unit ?rawunit.
+ ?p e:IEEECigreAPISignal.apiSequenceNumber ?apiSequenceNumber.
+ ?p e:IEEECigreAPIOutput.scalingRatio ?scalingRatio.
+ ?p e:IEEECigreAPISignal.apiName ?apiName.
+ ?p e:IEEECigreAPISignal.apiWidth ?apiWidth.
+ {?p e:IEEECigreAPISignal.unit ?rawunit.
   bind(strafter(str(?rawunit),"UnitSymbol.") as ?unit)}
- {?p e:IEEECigreDLLSignal.multiplier ?rawmult.
+ {?p e:IEEECigreAPISignal.multiplier ?rawmult.
   bind(strafter(str(?rawmult),"UnitMultiplier.") as ?multiplier)}
- OPTIONAL {?p e:IEEECigreDLLSignal.phase ?rawphase.
+ OPTIONAL {?p e:IEEECigreAPISignal.phase ?rawphase.
   bind(strafter(str(?rawphase),"Kind.") as ?phase)}
- {?p e:IEEECigreDLLSignal.dllParameterKind ?rawkind.
-  bind(strafter(str(?rawkind),"Kind.") as ?dllParameterKind)}
- {?p e:IEEECigreDLLOutput.kind ?rawsig.
+ {?p e:IEEECigreAPISignal.apiParameterKind ?rawkind.
+  bind(strafter(str(?rawkind),"Kind.") as ?apiParameterKind)}
+ {?p e:IEEECigreAPIOutput.kind ?rawsig.
   bind(strafter(str(?rawsig),"Kind.") as ?kind)}
- OPTIONAL {?p e:IEEECigreDLLSignal.ConnectivityNode ?cn.
+ OPTIONAL {?p e:IEEECigreAPISignal.ConnectivityNode ?cn.
            ?cn c:IdentifiedObject.mRID ?ConnectivityNode_mRID}
- OPTIONAL {?p e:IEEECigreDLLSignal.DCNode ?dcn.
+ OPTIONAL {?p e:IEEECigreAPISignal.DCNode ?dcn.
            ?dcn c:IdentifiedObject.mRID ?DCNode_mRID}
  OPTIONAL {?p c:SignalDescriptor.ACDCTerminal ?trm.
           bind(substr(str(?trm),strlen(str(?trm))-37,38) as ?ACDCTerminal_mRID)}
-} ORDER by ?mRID ?dllSequenceNumber
+} ORDER by ?mRID ?apiSequenceNumber
 
-# EMTCountDLLOutputs
+# EMTCountAPIOutputs
 SELECT ?mRID (count(?p) as ?count) WHERE {
 #VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
 VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:String}
@@ -1143,7 +1143,7 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?mRID.
  ?p c:SignalDescriptor.DynamicsFunctionBlock ?d.
- ?p r:type e:IEEECigreDLLOutput
+ ?p r:type e:IEEECigreAPIOutput
 }
 GROUP BY ?mRID
 ORDER BY ?mRID
@@ -1240,22 +1240,22 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?DetailedModelDynamics_mRID.
  ?p c:SignalDescriptor.DynamicsFunctionBlock ?d.
- ?p e:IEEECigreDLLSignal.sequenceNumber ?sequenceNumber.
- ?p e:IEEECigreDLLSignal.name ?name.
- ?p e:IEEECigreDLLSignal.width ?width.
- {?p e:IEEECigreDLLSignal.unit ?rawunit.
+ ?p e:IEEECigreAPISignal.sequenceNumber ?sequenceNumber.
+ ?p e:IEEECigreAPISignal.name ?name.
+ ?p e:IEEECigreAPISignal.width ?width.
+ {?p e:IEEECigreAPISignal.unit ?rawunit.
   bind(strafter(str(?rawunit),"UnitSymbol.") as ?unit)}
- {?p e:IEEECigreDLLSignal.multiplier ?rawmult.
+ {?p e:IEEECigreAPISignal.multiplier ?rawmult.
   bind(strafter(str(?rawmult),"UnitMultiplier.") as ?multiplier)}
- OPTIONAL {?p e:IEEECigreDLLSignal.phase ?rawphase.
+ OPTIONAL {?p e:IEEECigreAPISignal.phase ?rawphase.
   bind(strafter(str(?rawphase),"Kind.") as ?phase)}
- {?p e:IEEECigreDLLSignal.parameterKind ?rawkind.
+ {?p e:IEEECigreAPISignal.parameterKind ?rawkind.
   bind(strafter(str(?rawkind),"Kind.") as ?parameterKind)}
- {?p e:IEEECigreDLLInput.kind ?rawsig.
+ {?p e:IEEECigreAPIInput.kind ?rawsig.
   bind(strafter(str(?rawsig),"Kind.") as ?kind)}
- OPTIONAL {?p e:IEEECigreDLLSignal.ConnectivityNode ?cn.
+ OPTIONAL {?p e:IEEECigreAPISignal.ConnectivityNode ?cn.
            ?cn c:IdentifiedObject.mRID ?ConnectivityNode_mRID}
- OPTIONAL {?p e:IEEECigreDLLSignal.DCNode ?dcn.
+ OPTIONAL {?p e:IEEECigreAPISignal.DCNode ?dcn.
            ?dcn c:IdentifiedObject.mRID ?DCNode_mRID}
  OPTIONAL {?p c:SignalDescriptor.ACDCTerminal ?trm.
           bind(substr(str(?trm),strlen(str(?trm))-37,38) as ?ACDCTerminal_mRID)}
@@ -1275,18 +1275,18 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?DetailedModelDynamics_mRID.
  ?p c:SignalDescriptor.DynamicsFunctionBlock ?d.
- ?p e:IEEECigreDLLSignal.sequenceNumber ?sequenceNumber.
- ?p e:IEEECigreDLLSignal.name ?name.
- ?p e:IEEECigreDLLSignal.width ?width.
- {?p e:IEEECigreDLLSignal.unit ?rawunit.
+ ?p e:IEEECigreAPISignal.sequenceNumber ?sequenceNumber.
+ ?p e:IEEECigreAPISignal.name ?name.
+ ?p e:IEEECigreAPISignal.width ?width.
+ {?p e:IEEECigreAPISignal.unit ?rawunit.
   bind(strafter(str(?rawunit),"UnitSymbol.") as ?unit)}
- {?p e:IEEECigreDLLSignal.multiplier ?rawmult.
+ {?p e:IEEECigreAPISignal.multiplier ?rawmult.
   bind(strafter(str(?rawmult),"UnitMultiplier.") as ?multiplier)}
- OPTIONAL {?p e:IEEECigreDLLSignal.phase ?rawphase.
+ OPTIONAL {?p e:IEEECigreAPISignal.phase ?rawphase.
   bind(strafter(str(?rawphase),"Kind.") as ?phase)}
- {?p e:IEEECigreDLLSignal.parameterKind ?rawkind.
+ {?p e:IEEECigreAPISignal.parameterKind ?rawkind.
   bind(strafter(str(?rawkind),"Kind.") as ?parameterKind)}
- {?p e:IEEECigreDLLOutput.kind ?rawsig.
+ {?p e:IEEECigreAPIOutput.kind ?rawsig.
   bind(strafter(str(?rawsig),"Kind.") as ?kind)}
  OPTIONAL {?p c:SignalDescriptor.ACDCTerminal ?trm.
           bind(substr(str(?trm),strlen(str(?trm))-37,38) as ?ACDCTerminal_mRID)}

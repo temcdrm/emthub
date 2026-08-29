@@ -24,9 +24,9 @@ def main():
 
   d = emthub.load_emt_dict (g, case['id'], bTiming=True)
 
-  for key in ['EMTIEEECigreDLLInfo', 'EMTIEEECigreDLLParameterInfos*', 'EMTIEEECigreDLLInputSignalInfos*', 'EMTIEEECigreDLLOutputSignalInfos*']:
+  for key in ['EMTIEEECigreAPIInfo', 'EMTIEEECigreAPIParameterInfos*', 'EMTIEEECigreAPIInputSignalInfos*', 'EMTIEEECigreAPIOutputSignalInfos*']:
 #  for key in ['EMTIBRPlant*', 'EMTIBRPlantAttributes', 'EMTCountDLLInputs', 'EMTCountDLLOutputs', 'EMTCountDLLParameters',
-#              'EMTIEEECigreDLL', 'EMTIEEECigreDLLInputs*', 'EMTIEEECigreDLLOutputs*', 'EMTIEEECigreDLLParameters*',
+#              'EMTIEEECigreAPI', 'EMTIEEECigreAPIInputs*', 'EMTIEEECigreAPIOutputs*', 'EMTIEEECigreAPIParameters*',
 #              'EMTEquipmentContainer', 'EMTDCEquipmentContainer', 'EMTDCNode', 'EMTDCShunt', 'EMTDCEnergySource']:
     emthub.list_dict_table (d, key)
   quit()

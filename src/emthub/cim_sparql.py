@@ -177,12 +177,12 @@ def load_emt_dict (g, sysid, bTiming=False):
               # 'EMTWeccWTGTA', 'EMTWeccWTGARA', 
               'EMTEnergySource', 'EMTDisconnectingCircuitBreaker',
               'EMTXfmrLimit', 'EMTBranchLimit', 'EMTBusVoltage', 'EMTBranchFlow', 'EMTXfmrFlow',
-              'EMTIBRPlant*', 'EMTRotatingMachinePlant*', 'EMTIEEECigreDLLParameters*',
-              'EMTIBRPlantAttributes', 'EMTCountDLLParameters', 'EMTIEEECigreDLL',
-              'EMTCountDLLInputs', 'EMTIEEECigreDLLInputs*', 'EMTCountDLLOutputs', 'EMTIEEECigreDLLOutputs*',
+              'EMTIBRPlant*', 'EMTRotatingMachinePlant*', 'EMTIEEECigreAPIParameters*',
+              'EMTIBRPlantAttributes', 'EMTCountAPIParameters', 'EMTIEEECigreAPI',
+              'EMTCountAPIInputs', 'EMTIEEECigreAPIInputs*', 'EMTCountAPIOutputs', 'EMTIEEECigreAPIOutputs*',
               'EMTEquipmentContainer', 'EMTDCEquipmentContainer', 'EMTDCNode', 'EMTDCShunt', 'EMTDCEnergySource',
-              'EMTIEEECigreDLLInfo', 'EMTIEEECigreDLLParameterInfos*', 'EMTIEEECigreDLLInputSignalInfos*', 
-              'EMTIEEECigreDLLOutputSignalInfos*']:
+              'EMTIEEECigreAPIInfo', 'EMTIEEECigreAPIParameterInfos*', 'EMTIEEECigreAPIInputSignalInfos*', 
+              'EMTIEEECigreAPIOutputSignalInfos*']:
     if bTiming:
       query_start_time = time.time()
     query_for_values (g, dict[key], sysid)

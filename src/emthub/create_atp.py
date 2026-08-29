@@ -447,7 +447,7 @@ def FormatSignalInfo (row):
     mult = row['multiplier']
   else:
     mult = ''
-  return '{:10s} {:22s} {:1s} {:s}{:s}'.format (row['dllName'], row['kind'], phs, mult, unit)
+  return '{:10s} {:22s} {:1s} {:s}{:s}'.format (row['apiName'], row['kind'], phs, mult, unit)
 
 def AppendDLL (bus, key, d, current_probes, atp_buses, atp_dc_buses, atp_path, ap):
   #list_dict_table (d, 'EMTIBRPlantAttributes')
@@ -455,13 +455,13 @@ def AppendDLL (bus, key, d, current_probes, atp_buses, atp_dc_buses, atp_path, a
     print ('** PEC ID', key, 'not found in extended plant attributes for DLL interface')
     return
   atts = d['EMTIBRPlantAttributes']['vals'][key]
-  dll_key = atts['IEEECigreDLL_mRID']
-  if dll_key not in d['EMTIEEECigreDLL']['vals']:
+  dll_key = atts['IEEECigreAPI_mRID']
+  if dll_key not in d['EMTIEEECigreAPI']['vals']:
     print ('** DLL ID', key, 'not found in the DLL interfaces')
     return
-  dll = d['EMTIEEECigreDLL']['vals'][dll_key]
+  dll = d['EMTIEEECigreAPI']['vals'][dll_key]
   dll_path = dll['uri']
-  nparms = d['EMTCountDLLParameters']['vals'][dll_key]['count']
+  nparms = d['EMTCountAPIParameters']['vals'][dll_key]['count']
   dcV = atts['dcLinkVoltage']
   swtFreq = atts['switchingFrequency']
   print ('C DLL interface to {:s} follows\nC'.format(os.path.basename (dll_path)), file=ap)
@@ -470,7 +470,7 @@ def AppendDLL (bus, key, d, current_probes, atp_buses, atp_dc_buses, atp_path, a
   # find all the input signals for TACS and the DLL interface
   type_90_sources = {}
   type_91_sources = {}
-  for key, ary in d['EMTIEEECigreDLLInputs*']['vals'].items():
+  for key, ary in d['EMTIEEECigreAPIInputs*']['vals'].items():
     if key == dll_key:
       for row in ary:
         kind = row['kind']
@@ -504,20 +504,20 @@ def AppendDLL (bus, key, d, current_probes, atp_buses, atp_dc_buses, atp_path, a
             type_91_sources[probe] = {'kind': kind, 'phase': phase}
 
   # summary information about the signals
-  nin =  d['EMTCountDLLInputs']['vals'][dll_key]['count']
+  nin =  d['EMTCountAPIInputs']['vals'][dll_key]['count']
   inputs = nin * [None]
-  for key, ary in d['EMTIEEECigreDLLInputs*']['vals'].items():
+  for key, ary in d['EMTIEEECigreAPIInputs*']['vals'].items():
     if key == dll_key:
       for row in ary:
-        idx = int(row['dllSequenceNumber'])
+        idx = int(row['apiSequenceNumber'])
         inputs[idx] = FormatSignalInfo (row)
 
-  nout =  d['EMTCountDLLOutputs']['vals'][dll_key]['count']
+  nout =  d['EMTCountAPIOutputs']['vals'][dll_key]['count']
   outputs = nout * [None]
-  for key, ary in d['EMTIEEECigreDLLOutputs*']['vals'].items():
+  for key, ary in d['EMTIEEECigreAPIOutputs*']['vals'].items():
     if key == dll_key:
       for row in ary:
-        idx = int(row['dllSequenceNumber'])
+        idx = int(row['apiSequenceNumber'])
         outputs[idx] = FormatSignalInfo (row)
 
   print ('C DLL input signals and CIM attributes:', file=ap)
@@ -529,12 +529,12 @@ def AppendDLL (bus, key, d, current_probes, atp_buses, atp_dc_buses, atp_path, a
 
   # read in the parameters and write ATP MODELS
   parms = nparms * [None]
-  for key, ary in d['EMTIEEECigreDLLParameters*']['vals'].items():
+  for key, ary in d['EMTIEEECigreAPIParameters*']['vals'].items():
     if key == dll_key:
       for row in ary:
-        idx = int(row['dllSequenceNumber'])
-        if row['dllParameterKind'] != 'Real64_Val':
-          print ('  DLL parameter', row['dllSequenceNumber'], 'has unsupported parameterKind', row['dllParameterKind'], ', ATP allows only Real64_Val')
+        idx = int(row['apiSequenceNumber'])
+        if row['apiParameterKind'] != 'Real64_Val':
+          print ('  DLL parameter', row['apiSequenceNumber'], 'has unsupported parameterKind', row['apiParameterKind'], ', ATP allows only Real64_Val')
         else:
           val = float (row['value'])
           parms[idx] = val
@@ -1099,7 +1099,7 @@ def create_atp (d, icd, fpath, case):
 
   # find the measurements of currents, d[eqid][end] = atp_bus
   current_probes = {}
-  for key, ary in d['EMTIEEECigreDLLInputs*']['vals'].items():
+  for key, ary in d['EMTIEEECigreAPIInputs*']['vals'].items():
     for row in ary:
       trm = row['ACDCTerminal_mRID']
       if trm is not None:

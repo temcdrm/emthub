@@ -21,7 +21,7 @@ def main():
   g.parse (fname)
   print ('read', len(g), 'statements from', fname)
   d = emthub.load_emt_dict (g, case['id'], bTiming=False)
-  for key in ['EMTBaseVoltage']: # , 'EMTIBRPlantAttributes', 'EMTIEEECigreDLL', 'EMTIEEECigreDLLInputs*', 'EMTIEEECigreDLLOutputs*']:
+  for key in ['EMTBaseVoltage']: # , 'EMTIBRPlantAttributes', 'EMTIEEECigreAPI', 'EMTIEEECigreAPIInputs*', 'EMTIEEECigreAPIOutputs*']:
     emthub.list_dict_table (d, key)
 
   icd = None

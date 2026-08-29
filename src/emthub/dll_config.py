@@ -1,7 +1,7 @@
 # Copyright (C) 2024-26 Meltran, Inc
 
 """
-  Functions to query an IEEE/Cigre DLL through its API.
+  Functions to query an IEEE/Cigre DLL through its TB 958 API.
 """
 
 import os
