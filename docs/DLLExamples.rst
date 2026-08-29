@@ -17,8 +17,7 @@ in the following order.
 2. All DLL builds are performed in the *x64 Native Tools Command Prompt for VS 2022*, 
    which is on the Windows Start Menu.
 3. Build the *wrapper* project, as the following four examples depend on it.
-4. Build and test the *SCRX9* example, which is a self-contained static 
-   exciter DLL from Electranix.
+4. Build and test the *SEXS* example, which is a self-contained excitation system example.
 5. Build and test the *GFM_GFL_IBR2* example, which is version 2 of a self-contained IBR controller from EPRI.
 6. Build and test the *HWPV* example, which is a data-driven IBR model from PNNL and UCF. 
    This example is not self-contained; you will have to download and build a JSON support 
@@ -33,13 +32,16 @@ These five examples can be built and tested in Python. To run the DLL
 examples in ATP, follow the `linking instructions <https://github.com/temcdrm/emthubsupport/tree/main/atp/dll>`_
 after compiling and linking the DLLs. An ATP license is required for access to these linking instructions.
 
-.. _target-examples-scrx9:
+.. _target-examples-sexs:
 
-SCRX9
------
+SEXS
+----
 
-This is an example DLL for the IEEE/Cigre specification, a static exciter model
-for synchronous machines. Developed by Electranix.
+.. note::
+    To be completed
+
+This is a legacy static excitation system model, prohibited by NERC for use in
+new interconnection studies, but still useful in demonstrations.
 
 Build Instructions - Windows
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -47,7 +49,7 @@ Build Instructions - Windows
 Follow these instructions to make 64-bit and 32-bit versions of the DLL:
 
 1. Open the *x64 Native Tools Command Prompt for VS 2022* from Windows Start Menu
-2. From the *SCRX9* project directory (``rd /s build`` and ``rd /s build32`` if they exist):
+2. From the *SEXS* project directory (``rd /s build`` and ``rd /s build32`` if they exist):
 
     a. ``md build``
     b. ``md build32``
@@ -58,24 +60,23 @@ Follow these instructions to make 64-bit and 32-bit versions of the DLL:
     g. ``cmake --build build32 --config Release` or ``cmake --build build32 --config Debug``
     h. ``cmake --install build32``
 
-3. From the *SCRX9/build* and *SCRX9/build32* directories, check the exported functions with no wrapper:
+3. From the *SEXS/build* and *SEXS/build32* directories, check the exported functions with no wrapper:
 
-    a. ``dumpbin /exports release/SCRX9.dll`` or ``dumpbin /exports debug/SCRX9.dll``
+    a. ``dumpbin /exports release/sexs.dll`` or ``dumpbin /exports debug/sexs.dll``
     b. ``release/test`` generates an output CSV file in the *../../bin* directory
-    c. From the *../bin* directory, relative to *SCRX9*, check outputs with ``python plotdlltest.py``
+    c. From the *../bin* directory, relative to *sexs*, check outputs with ``python plotdlltest.py``
 
 4. From the *../bin* and *../bin32* directories, check the **DLL wrapper**:
 
-    a. ``test_scrx9`` should give the same results as ``release/test`` above
-    b. Verify with ``python plotdlltest.py`` from the *../bin* and *../bin32* directories relative to *SCRX9*
+    a. ``test_sexs`` should give the same results as ``release/test`` above
+    b. Verify with ``python plotdlltest.py`` from the *../bin* and *../bin32* directories relative to *sexs*
 
 File Directory
 ^^^^^^^^^^^^^^
 
 - *CMakeLists.txt* generates the detailed build instructions
-- *SCRX9.c* is the (nearly) unmodified example file from Garth Irwin of Electranix
-- *test.c* is a test harness, mimicking the DLL import and calling functions of a simulation tool
-- *test_scrx9.c* is a test harness, invoking the DLL through an EMTHub wrapper that supports all IEEE/Cigre DLLs
+- *sexs.c* implements the static excitation system model
+- *test_sexs.c* is a test harness, invoking the DLL through an EMTHub wrapper that supports all IEEE/Cigre DLLs
 
 Results
 ^^^^^^^
@@ -83,7 +84,7 @@ Results
 The following result shows a drop in terminal voltage at 2.0 s to 0.5 pu. The *EFD*
 output responds as limited by the overexcitation limiter value, *VOEL*.
 
-.. image:: assets/test_scrx9.png
+.. image:: assets/test_SEXS.png
 
 .. _target-examples-grid:
 
@@ -425,6 +426,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 OpenIBR
 -------
+
+.. note::
+    To be completed
 
 This example is based on HeronPower's OpenIBR library under an Apache 2.0 license.
 The library is incorporated using 

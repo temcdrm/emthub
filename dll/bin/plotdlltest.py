@@ -74,13 +74,11 @@ plots = {
                             {"name": "Iq", "base": hwpv_ibase, "axis": 1},
                             {"name": "Idc", "base": hwpv_idcbase, "axis": 1},
                             {"name": "Vdc", "base": hwpv_vdcbase, "axis": 1}]},
-  "scrx9.csv": {"tmin": 1.0, "tmax": 3.0, "ttick": 0.2, "title": "SCRX9 Excitation System Test",
+  "sexs.csv": {"tmin": 0.0, "tmax": 2.0, "ttick": 0.2, "title": "SEXS Excitation System Test",
                 "ytitles": ["Inputs [pu]", "Outputs [pu]"],
-                "signals": [{"name": "VRef", "base": 1.0, "axis": 0},
-                            {"name": "VT", "base": 1.0, "axis": 0},
-                            {"name": "VUEL", "base": 1.0, "axis": 1},
-                            {"name": "VOEL", "base": 1.0, "axis": 1},
-                            {"name": "EFD", "base": 1.0, "axis": 1}]},
+                "signals": [{"name": "Vref", "base": 1.0, "axis": 0},
+                            {"name": "Vc", "base": 1.0, "axis": 0},
+                            {"name": "Efd", "base": 1.0, "axis": 1}]},
   "ppc_voltage_step.csv": {"tmin": 0.0, "tmax": 5.0, "ttick": 1.0, "title": "PPC Voltage Step Test",
                         "ytitles": ["Inputs [pu]", "Outputs [pu]"],
                         "signals": [{"name": "Vmeas", "base": 1.0, "axis": 0},
@@ -145,7 +143,7 @@ def plot_page (df, cfg):
   plt.show()
   plt.close()
 
-data_path = 'scrx9.csv'
+data_path = 'sexs.csv'
 all_channels = False
 
 if __name__ == '__main__':

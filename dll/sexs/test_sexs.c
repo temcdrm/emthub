@@ -3,7 +3,7 @@
 // see https://learn.microsoft.com/en-us/windows/win32/dlls/using-run-time-dynamic-linking
 
 #define DLL_NAME "SEXS.dll"
-#define TMAX 10.0
+#define TMAX 5.0
 // relative output path for execution from the build directory, e.g., release\test or debug\test
 #define CSV_NAME "sexs.csv"
 
@@ -14,42 +14,36 @@
  
 void initialize_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, int nPorts)
 {
-  double EFD = 1.0;
+  double Efd = 1.0;
   char *pData = (char *) pModel->ExternalOutputs;
-  memcpy (pData + pMap[0].offset, &EFD, pMap[0].size);
+  memcpy (pData + pMap[0].offset, &Efd, pMap[0].size);
 }
 
 void update_inputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, double t, int nPorts)
 {
   double Vref = 1.0;
-  double Ec = 1.0;
+  double Vc = 1.0;
   double Vs = 0.0;
-  double IFD = 0.0;
-  double VT = 1.0;
-  double VUEL = -5.0;
-  double VOEL = 5.0;
-  if (t >= 2.0 && t <= 2.15) { // fault
-    Ec = 0.5;
-    VT = Ec;
+//  if (t >= 0.1) {
+//    Vref = 1.01;
+//  }
+  if (t >= 0.4 && t <= 0.6) { // fault
+    Vc = 0.5;
   }
   char *pData = (char *) pModel->ExternalInputs;
   memcpy (pData + pMap[0].offset, &Vref, pMap[0].size);
-  memcpy (pData + pMap[1].offset, &Ec, pMap[1].size);
+  memcpy (pData + pMap[1].offset, &Vc, pMap[1].size);
   memcpy (pData + pMap[2].offset, &Vs, pMap[2].size);
-  memcpy (pData + pMap[3].offset, &IFD, pMap[3].size);
-  memcpy (pData + pMap[4].offset, &VT, pMap[4].size);
-  memcpy (pData + pMap[5].offset, &VUEL, pMap[5].size);
-  memcpy (pData + pMap[6].offset, &VOEL, pMap[6].size);
 }
 
 double extract_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, int nPorts)
 {
   char *pData = (char *) pModel->ExternalOutputs;
-  double efd = 0.0;
+  double Efd = 0.0;
   for (int i = 0; i < nPorts; i++) {
-    memcpy (&efd, pData + pMap[i].offset, pMap[i].size);
+    memcpy (&Efd, pData + pMap[i].offset, pMap[i].size);
   }
-  return efd;
+  return Efd;
 }
 
 int main( void ) 
@@ -68,6 +62,7 @@ int main( void )
 
     // initialize time-stepping
     printf("calling Initialize\n");
+    update_inputs (pWrap->pModel, pWrap->pInputMap, -1.0, pWrap->pInfo->NumInputPorts);
     initialize_outputs (pWrap->pModel, pWrap->pOutputMap, pWrap->pInfo->NumOutputPorts);
     pWrap->Model_Initialize (pWrap->pModel);
     check_messages ("Model_Initialize", pWrap->pModel);

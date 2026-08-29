@@ -99,13 +99,17 @@ def create_cim_ic (case):
     CIM.SvVoltage,
     CIM.TopologicalNode
   ]
-  ic_name = case['name']+'_ic.ttl'
-  with open(ic_name, 'wb') as fp:
+  ic_name = case['name']+'_ic'
+  with open(ic_name+'.ttl', 'wb') as fp:
     serializer.serialize(fp)
-  print ('wrote initial conditions to', ic_name)
+
+  g.serialize (destination=ic_name+'.xml', format='pretty-xml', max_depth=1)
+  g.serialize (destination=ic_name+'.json', format='json-ld', indent=2)
+
+  print ('Wrote initial conditions', ic_name, 'to ttl, xml, json')
 
 def main():
-  """Converts initial conditions from MATPOWER to CIM RDF (TTL file).
+  """Converts initial conditions from MATPOWER to CIM RDF (TTL and XML files).
 
   Command-line Arguments:
     **index** (int): case number from 0 to 4
