@@ -5754,20 +5754,20 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
-      <div id="IEEECigreDLL" class="group">
-         <a href="#IEEECigreDLL">
-            <h2 class="concrete">IEEECigreDLL</h2>
+      <div id="IEEECigreAPI" class="group">
+         <a href="#IEEECigreAPI">
+            <h2 class="concrete">IEEECigreAPI</h2>
          </a>
          <p class="package">Emtiop</p>
-         <p class="comment">A dynamic link library (DLL) interface for inverter-based resource (IBR) control and other control applications, as defined in Cigre Technical Brochure TB 958 and IEEE Standards Association P3597. Attributes prefixed by <b>dll</b> correspond to members of the IEEE_Cigre_DLLInterface_Model_Info header file structure; they should be obtained and verified using the DLL API.</p>
+         <p class="comment">A dynamic link library (DLL) or other application programming interface (API) for inverter-based resource (IBR) control and other control applications, as defined in CIGRE Technical Brochure TB 958 and IEEE Standards Association P3597. Attributes prefixed by <b>api</b> correspond to members of the IEEE_Cigre_DLLInterface_Model_Info header file structure that was documented in TB 958; they should be obtained and verified using the API.</p>
          <h3>Native Members</h3>
          <table>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLL.dllDLLInterfaceVersion">dllDLLInterfaceVersion</p>
+                  <p class="name" id="IEEECigreAPI.apiDLLInterfaceVersion">apiDLLInterfaceVersion</p>
                </th>
                <td>
-                  <p class="cardinality">1..1</p>
+                  <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
@@ -5775,31 +5775,31 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Codifies a four-number version of the DLL interface standard supported by this DLL, in string format, as returned from the DLL API.</p>
+                  <p class="comment">Codifies a four-number version of the CIGRE TB 958 interface standard supported by this model, in string format, as returned from the API.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLL.dllEmtRmsMode">dllEmtRmsMode</p>
+                  <p class="name" id="IEEECigreAPI.apiEmtRmsMode">apiEmtRmsMode</p>
                </th>
                <td>
-                  <p class="cardinality">1..1</p>
+                  <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#IEEECigreDLLModeKind">IEEECigreDLLModeKind</a>
+                     <a href="#IEEECigreAPIModeKind">IEEECigreAPIModeKind</a>
                   </p>
                </td>
                <td>
-                  <p class="comment">Identify whether the DLL runs in EMT, RMS, or both kinds of simulation, as returned from the DLL API.</p>
+                  <p class="comment">Identify whether the model runs in EMT, RMS, or both kinds of simulation, as returned from the CIGRE TB 958 API.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLL.dllFixedStepBaseSampleTime">dllFixedStepBaseSampleTime</p>
+                  <p class="name" id="IEEECigreAPI.apiFixedStepBaseSampleTime">apiFixedStepBaseSampleTime</p>
                </th>
                <td>
-                  <p class="cardinality">1..1</p>
+                  <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
@@ -5807,12 +5807,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Hard-coded simulation time step for this DLL, as returned from the DLL API.</p>
+                  <p class="comment">Hard-coded simulation time step for this model, as returned from the CIGRE TB 958 API.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLL.dllModelName">dllModelName</p>
+                  <p class="name" id="IEEECigreAPI.apiModelName">apiModelName</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -5823,12 +5823,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">The ModelName as returned from the DLL API. Not necessarily equal to the inherited IdentifiedObject.name.</p>
+                  <p class="comment">The ModelName as returned from the CIGRE TB 958 API. Not necessarily equal to the inherited IdentifiedObject.name.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLL.dllModelVersion">dllModelVersion</p>
+                  <p class="name" id="IEEECigreAPI.apiModelVersion">apiModelVersion</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -5839,15 +5839,15 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Version of this DLL, as returned from the DLL API.</p>
+                  <p class="comment">Version of this model instance, as returned from the CIGRE TB 958 API.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLL.shareable">shareable</p>
+                  <p class="name" id="IEEECigreAPI.shareable">shareable</p>
                </th>
                <td>
-                  <p class="cardinality">1..1</p>
+                  <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
@@ -5860,7 +5860,7 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLL.snapshotUri">snapshotUri</p>
+                  <p class="name" id="IEEECigreAPI.snapshotUri">snapshotUri</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -5876,10 +5876,10 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLL.uri">uri</p>
+                  <p class="name" id="IEEECigreAPI.uri">uri</p>
                </th>
                <td>
-                  <p class="cardinality">1..1</p>
+                  <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
@@ -5892,18 +5892,18 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLL.IEEECigreDLLInfo">IEEECigreDLLInfo</p>
+                  <p class="name" id="IEEECigreAPI.IEEECigreAPIInfo">IEEECigreAPIInfo</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#IEEECigreDLLInfo">IEEECigreDLLInfo</a>
+                     <a href="#IEEECigreAPIInfo">IEEECigreAPIInfo</a>
                   </p>
                </td>
                <td>
-                  <p class="comment">Expanded set of attributes available from the DLL API.</p>
+                  <p class="comment">Expanded set of attributes available from the CIGRE TB 958 API.</p>
                </td>
             </tr>
          </table>
@@ -6052,17 +6052,17 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
-      <div id="IEEECigreDLLInfo" class="group">
-         <a href="#IEEECigreDLLInfo">
-            <h2 class="concrete">IEEECigreDLLInfo</h2>
+      <div id="IEEECigreAPIInfo" class="group">
+         <a href="#IEEECigreAPIInfo">
+            <h2 class="concrete">IEEECigreAPIInfo</h2>
          </a>
          <p class="package">Emtiop</p>
-         <p class="comment">Supplemental information about his DLL from the API.</p>
+         <p class="comment">Supplemental information about this interface from the CIGRE TB 958 API.</p>
          <h3>Native Members</h3>
          <table>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLInfo.dllGeneralInformation">dllGeneralInformation</p>
+                  <p class="name" id="IEEECigreAPIInfo.apiGeneralInformation">apiGeneralInformation</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6073,12 +6073,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">One of two general description fields; also see the dllModelDescription attribute.</p>
+                  <p class="comment">One of two general description fields; also see the apiModelDescription attribute.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLInfo.dllModelCreated">dllModelCreated</p>
+                  <p class="name" id="IEEECigreAPIInfo.apiModelCreated">apiModelCreated</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6089,12 +6089,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Date and time of the first DLL version.</p>
+                  <p class="comment">Date and time of the first model (not API) version.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLInfo.dllModelCreator">dllModelCreator</p>
+                  <p class="name" id="IEEECigreAPIInfo.apiModelCreator">apiModelCreator</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6105,12 +6105,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Identifies the person or the organization who first created the DLL.</p>
+                  <p class="comment">Identifies the person or the organization who first created the model.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLInfo.dllModelDescription">dllModelDescription</p>
+                  <p class="name" id="IEEECigreAPIInfo.apiModelDescription">apiModelDescription</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6121,12 +6121,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">One of two general description fields; also see the dllGeneralDescription attribute.</p>
+                  <p class="comment">One of two general description fields; also see the apiGeneralDescription attribute.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLInfo.dllModelLastModifiedBy">dllModelLastModifiedBy</p>
+                  <p class="name" id="IEEECigreAPIInfo.apiModelLastModifiedBy">apiModelLastModifiedBy</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6137,12 +6137,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Identifies the person or the organization who first created the DLL.</p>
+                  <p class="comment">Identifies the person or the organization who first created the model.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLInfo.dllModelLastModifiedDate">dllModelLastModifiedDate</p>
+                  <p class="name" id="IEEECigreAPIInfo.apiModelLastModifiedDate">apiModelLastModifiedDate</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6153,12 +6153,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Date and time of the latest DLL version.</p>
+                  <p class="comment">Date and time of the latest model version.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLInfo.dllModelModifiedComment">dllModelModifiedComment</p>
+                  <p class="name" id="IEEECigreAPIInfo.apiModelModifiedComment">apiModelModifiedComment</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6169,12 +6169,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">A description of the latest DLL update.</p>
+                  <p class="comment">A description of the latest model update.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLInfo.dllModelModifiedHistory">dllModelModifiedHistory</p>
+                  <p class="name" id="IEEECigreAPIInfo.apiModelModifiedHistory">apiModelModifiedHistory</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6185,12 +6185,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">A history of DLL updates, may be a change log or other multi-paragraph text.</p>
+                  <p class="comment">A history of model updates; may be a change log or other multi-paragraph text.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLInfo.dllNumDoubleStates">dllNumDoubleStates</p>
+                  <p class="name" id="IEEECigreAPIInfo.apiNumDoubleStates">apiNumDoubleStates</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6201,12 +6201,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Size of internal double-precision array storage needed by the DLL for state variables. These are not represented in CIM, but the information could help identify different versions of the DLL. The EMT/RMS simulator manages this memory.</p>
+                  <p class="comment">Size of internal double-precision array storage needed by the model instance for state variables. These are not represented in CIM, but the information could help identify different versions of this model. The EMT/RMS simulator manages this memory.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLInfo.dllNumFloatStates">dllNumFloatStates</p>
+                  <p class="name" id="IEEECigreAPIInfo.apiNumFloatStates">apiNumFloatStates</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6217,12 +6217,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Size of internal single-precision array storage needed by the DLL for state variables. These are not represented in CIM, but the information could help identify different versions of the DLL. The EMT/RMS simulator manages this memory.</p>
+                  <p class="comment">Size of internal single-precision array storage needed by this model for state variables. These are not represented in CIM, but the information could help identify different versions of this model. The EMT/RMS simulator manages this memory.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLInfo.dllNumInputPorts">dllNumInputPorts</p>
+                  <p class="name" id="IEEECigreAPIInfo.apiNumInputPorts">apiNumInputPorts</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6233,12 +6233,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">The number of input ports expected by the DLL, which should match cardinality of the associated IEEECigreDLL -> IEEECigreDLLInputSignals.</p>
+                  <p class="comment">The number of input ports expected by this model, which should match cardinality of the associated IEEECigreAPI -> IEEECigreAPIInputSignals.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLInfo.dllNumIntStates">dllNumIntStates</p>
+                  <p class="name" id="IEEECigreAPIInfo.apiNumIntStates">apiNumIntStates</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6249,12 +6249,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Size of internal integer array storage needed by the DLL for state variables. These are not represented in CIM, but the information could help identify different versions of the DLL. The EMT/RMS simulator manages this memory.</p>
+                  <p class="comment">Size of internal integer array storage needed by this model for state variables. These are not represented in CIM, but the information could help identify different versions of this model. The EMT/RMS simulator manages this memory.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLInfo.dllNumOutputPorts">dllNumOutputPorts</p>
+                  <p class="name" id="IEEECigreAPIInfo.apiNumOutputPorts">apiNumOutputPorts</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6265,12 +6265,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">The number of output ports expected by the DLL, which should match cardinality of the associated IEEECigreDLL -> IEEECigreDLLOutputSignals.</p>
+                  <p class="comment">The number of output ports expected by this model, which should match cardinality of the associated IEEECigreAPI -> IEEECigreAPIOutputSignals.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLInfo.dllNumParameters">dllNumParameters</p>
+                  <p class="name" id="IEEECigreAPIInfo.apiNumParameters">apiNumParameters</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6281,38 +6281,55 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">The number of input parameters expected by the DLL, which should match cardinality of the associated IEEECigreDLL -> IEEECigreDLLParameters.</p>
+                  <p class="comment">The number of input parameters expected by this model, which should match cardinality of the associated IEEECigreAPI -> IEEECigreAPIParameters.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreAPIInfo.IEEECigreAPIs">IEEECigreAPIs</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..<item>*</item>
+                  </p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreAPI">IEEECigreAPI</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Minimum set of attributes required to use this model.</p>
                </td>
             </tr>
          </table>
       </div>
-      <div id="IEEECigreDLLInput" class="group">
-         <a href="#IEEECigreDLLInput">
-            <h2 class="concrete">IEEECigreDLLInput</h2>
+      <div id="IEEECigreAPIInput" class="group">
+         <a href="#IEEECigreAPIInput">
+            <h2 class="concrete">IEEECigreAPIInput</h2>
          </a>
          <p class="package">Emtiop</p>
-         <p class="comment">Connects the set of DLL input signals, as defined in its API, to points in the network model or to external references, like other controllers.</p>
+         <p class="comment">Connects the set of CIGRE TB 958 API input signals, for this instance, to points in the network model or to external references, like other controllers.</p>
          <h3>Native Members</h3>
          <table>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLInput.kind">kind</p>
+                  <p class="name" id="IEEECigreAPIInput.kind">kind</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#IEEECigreDLLInputKind">IEEECigreDLLInputKind</a>
+                     <a href="#IEEECigreAPIInputKind">IEEECigreAPIInputKind</a>
                   </p>
                </td>
                <td>
-                  <p class="comment">The type of input signal. If remoteInputSignal, supply the RemoteInputSignal association. The phase attribute is required for acTerminalVoltage, acCurrentVsc, and acCurrentGrid. If apiDefined, the DLL must be queried through its API for more information.</p>
+                  <p class="comment">The type of input signal. If remoteInputSignal, supply the RemoteInputSignal association. The phase attribute is required for acTerminalVoltage, acCurrentVsc, and acCurrentGrid. If apiDefined, the model must be queried through its API for more information.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLInput.sensorRatio">sensorRatio</p>
+                  <p class="name" id="IEEECigreAPIInput.sensorRatio">sensorRatio</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6331,7 +6348,7 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
-                  <p class="name">dllName</p>
+                  <p class="name">apiName</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6342,47 +6359,30 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.dllName">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.apiName">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name">dllParameterKind</p>
+                  <p class="name">apiParameterKind</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#IEEECigreDLLParameterKind">IEEECigreDLLParameterKind</a>
+                     <a href="#IEEECigreAPIParameterKind">IEEECigreAPIParameterKind</a>
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.dllParameterKind">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.apiParameterKind">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name">dllSequenceNumber</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Integer">Integer</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.dllSequenceNumber">IEEECigreDLLSignal</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">dllWidth</p>
+                  <p class="name">apiSequenceNumber</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6393,7 +6393,24 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.dllWidth">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.apiSequenceNumber">IEEECigreAPISignal</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">apiWidth</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.apiWidth">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
@@ -6410,7 +6427,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.multiplier">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.multiplier">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
@@ -6427,7 +6444,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.phase">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.phase">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
@@ -6444,7 +6461,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.unit">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.unit">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
@@ -6461,7 +6478,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.ConnectivityNode">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.ConnectivityNode">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
@@ -6478,24 +6495,24 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.DCNode">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.DCNode">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name">IEEECigreDLLSignalInfo</p>
+                  <p class="name">IEEECigreAPISignalInfo</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#IEEECigreDLLSignalInfo">IEEECigreDLLSignalInfo</a>
+                     <a href="#IEEECigreAPISignalInfo">IEEECigreAPISignalInfo</a>
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.IEEECigreDLLSignalInfo">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.IEEECigreAPISignalInfo">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
@@ -6610,33 +6627,33 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
-      <div id="IEEECigreDLLOutput" class="group">
-         <a href="#IEEECigreDLLOutput">
-            <h2 class="concrete">IEEECigreDLLOutput</h2>
+      <div id="IEEECigreAPIOutput" class="group">
+         <a href="#IEEECigreAPIOutput">
+            <h2 class="concrete">IEEECigreAPIOutput</h2>
          </a>
          <p class="package">Emtiop</p>
-         <p class="comment">Connects the set of DLL output signals, as defined in its API, to points in the network model.</p>
+         <p class="comment">Connects the set of CIGRE TB 958 API output signals, for this instance, to points in the network model.</p>
          <h3>Native Members</h3>
          <table>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLOutput.kind">kind</p>
+                  <p class="name" id="IEEECigreAPIOutput.kind">kind</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#IEEECigreDLLOutputKind">IEEECigreDLLOutputKind</a>
+                     <a href="#IEEECigreAPIOutputKind">IEEECigreAPIOutputKind</a>
                   </p>
                </td>
                <td>
-                  <p class="comment">The type of output signal. The phase attribute must be supplied with modulationIndex and vscVoltage. If apiDefined, obtain more information from the DLL API.</p>
+                  <p class="comment">The type of output signal. The phase attribute must be supplied with modulationIndex and vscVoltage. If apiDefined, obtain more information from the CIGRE TB 958 API.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLOutput.scalingRatio">scalingRatio</p>
+                  <p class="name" id="IEEECigreAPIOutput.scalingRatio">scalingRatio</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6655,7 +6672,7 @@ p.package { position: absolute; right: 10px; top: 0px}
          <table>
             <tr>
                <th>
-                  <p class="name">dllName</p>
+                  <p class="name">apiName</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6666,47 +6683,30 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.dllName">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.apiName">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name">dllParameterKind</p>
+                  <p class="name">apiParameterKind</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#IEEECigreDLLParameterKind">IEEECigreDLLParameterKind</a>
+                     <a href="#IEEECigreAPIParameterKind">IEEECigreAPIParameterKind</a>
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.dllParameterKind">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.apiParameterKind">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name">dllSequenceNumber</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Integer">Integer</a>
-                  </p>
-               </td>
-               <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.dllSequenceNumber">IEEECigreDLLSignal</a>
-                  </p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name">dllWidth</p>
+                  <p class="name">apiSequenceNumber</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -6717,7 +6717,24 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.dllWidth">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.apiSequenceNumber">IEEECigreAPISignal</a>
+                  </p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name">apiWidth</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.apiWidth">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
@@ -6734,7 +6751,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.multiplier">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.multiplier">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
@@ -6751,7 +6768,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.phase">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.phase">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
@@ -6768,7 +6785,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.unit">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.unit">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
@@ -6785,7 +6802,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.ConnectivityNode">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.ConnectivityNode">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
@@ -6802,24 +6819,24 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.DCNode">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.DCNode">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name">IEEECigreDLLSignalInfo</p>
+                  <p class="name">IEEECigreAPISignalInfo</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#IEEECigreDLLSignalInfo">IEEECigreDLLSignalInfo</a>
+                     <a href="#IEEECigreAPISignalInfo">IEEECigreAPISignalInfo</a>
                   </p>
                </td>
                <td>
-                  <p>see <a class="superclass" href="#IEEECigreDLLSignal.IEEECigreDLLSignalInfo">IEEECigreDLLSignal</a>
+                  <p>see <a class="superclass" href="#IEEECigreAPISignal.IEEECigreAPISignalInfo">IEEECigreAPISignal</a>
                   </p>
                </td>
             </tr>
@@ -6934,36 +6951,36 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
-      <div id="IEEECigreDLLParameter" class="group">
-         <a href="#IEEECigreDLLParameter">
-            <h2 class="concrete">IEEECigreDLLParameter</h2>
+      <div id="IEEECigreAPIParameter" class="group">
+         <a href="#IEEECigreAPIParameter">
+            <h2 class="concrete">IEEECigreAPIParameter</h2>
          </a>
          <p class="package">Emtiop</p>
-         <p class="comment">A single value in the array of DLL input values. The meaning of this parameter is discoverable through the DLL's application program interface (API) and/or documentation provided with the DLL. This CIM class maintains only the essential parameter setting and location/size in the array of DLL inputs.</p>
+         <p class="comment">A single value in the array of CIGRE TB 958 API input values. The meaning of this parameter is discoverable through the API for an implementation, like a DLL, and/or documentation provided with the model. This CIM class maintains only the essential parameter setting and location/size in the array of API inputs.</p>
          <h3>Native Members</h3>
          <table>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLParameter.dllParameterKind">dllParameterKind</p>
+                  <p class="name" id="IEEECigreAPIParameter.apiParameterKind">apiParameterKind</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#IEEECigreDLLParameterKind">IEEECigreDLLParameterKind</a>
+                     <a href="#IEEECigreAPIParameterKind">IEEECigreAPIParameterKind</a>
                   </p>
                </td>
                <td>
-                  <p class="comment">The C type of this parameter as expected by the DLL application program interface (API). This also determines the memory size of this parameter in the array of DLL inputs. It indicates whether the value attribute should be considered a string, integer, or floating point value.</p>
+                  <p class="comment">The C type of this parameter as expected by the CIGRE TB 958 API. This also determines the memory size of this parameter in the array of model inputs. It indicates whether the value attribute should be considered a string, integer, or floating point value.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLParameter.dllSequenceNumber">dllSequenceNumber</p>
+                  <p class="name" id="IEEECigreAPIParameter.apiSequenceNumber">apiSequenceNumber</p>
                </th>
                <td>
-                  <p class="cardinality">1..1</p>
+                  <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
@@ -6971,15 +6988,15 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">The zero-based array index for this parameter, as expected in the DLL's application program interface (API).</p>
+                  <p class="comment">The zero-based array index for this parameter, as expected in the CIGRE TB 958 API.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLParameter.value">value</p>
+                  <p class="name" id="IEEECigreAPIParameter.value">value</p>
                </th>
                <td>
-                  <p class="cardinality">1..1</p>
+                  <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
@@ -6987,54 +7004,54 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">The parameter value, to be parsed from string format according to the dllParameterKind.</p>
+                  <p class="comment">The parameter value, to be parsed from string format according to the apiParameterKind.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLParameter.IEEECigreDLL">IEEECigreDLL</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#IEEECigreDLL">IEEECigreDLL</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The DLL associated with this parameter.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="IEEECigreDLLParameter.IEEECigreDLLParameterInfo">IEEECigreDLLParameterInfo</p>
+                  <p class="name" id="IEEECigreAPIParameter.IEEECigreAPI">IEEECigreAPI</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#IEEECigreDLLParameterInfo">IEEECigreDLLParameterInfo</a>
+                     <a href="#IEEECigreAPI">IEEECigreAPI</a>
                   </p>
                </td>
                <td>
-                  <p class="comment">Expanded set of attributes available from the DLL API.</p>
+                  <p class="comment">The API model instance associated with this parameter.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreAPIParameter.IEEECigreAPIParameterInfo">IEEECigreAPIParameterInfo</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreAPIParameterInfo">IEEECigreAPIParameterInfo</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Expanded set of attributes available from the CIGRE TB 958 API.</p>
                </td>
             </tr>
          </table>
       </div>
-      <div id="IEEECigreDLLParameterInfo" class="group">
-         <a href="#IEEECigreDLLParameterInfo">
-            <h2 class="concrete">IEEECigreDLLParameterInfo</h2>
+      <div id="IEEECigreAPIParameterInfo" class="group">
+         <a href="#IEEECigreAPIParameterInfo">
+            <h2 class="concrete">IEEECigreAPIParameterInfo</h2>
          </a>
          <p class="package">Emtiop</p>
-         <p class="comment">Supplemental information about this parameter from the DLL API.</p>
+         <p class="comment">Supplemental information about this parameter from the CIGRE TB 958 API.</p>
          <h3>Native Members</h3>
          <table>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLParameterInfo.dllDefaultValue">dllDefaultValue</p>
+                  <p class="name" id="IEEECigreAPIParameterInfo.apiDefaultValue">apiDefaultValue</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -7045,12 +7062,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Default value assigned by the DLL.</p>
+                  <p class="comment">Default value internally assigned by the model implementation.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLParameterInfo.dllDescription">dllDescription</p>
+                  <p class="name" id="IEEECigreAPIParameterInfo.apiDescription">apiDescription</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -7066,7 +7083,7 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLParameterInfo.dllFixedValue">dllFixedValue</p>
+                  <p class="name" id="IEEECigreAPIParameterInfo.apiFixedValue">apiFixedValue</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -7082,7 +7099,7 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLParameterInfo.dllGroupName">dllGroupName</p>
+                  <p class="name" id="IEEECigreAPIParameterInfo.apiGroupName">apiGroupName</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -7098,7 +7115,7 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLParameterInfo.dllMaxValue">dllMaxValue</p>
+                  <p class="name" id="IEEECigreAPIParameterInfo.apiMaxValue">apiMaxValue</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -7114,7 +7131,7 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLParameterInfo.dllMinValue">dllMinValue</p>
+                  <p class="name" id="IEEECigreAPIParameterInfo.apiMinValue">apiMinValue</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -7130,7 +7147,7 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLParameterInfo.dllName">dllName</p>
+                  <p class="name" id="IEEECigreAPIParameterInfo.apiName">apiName</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -7141,12 +7158,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">The name of this parameter, as returned by the DLL API. If there is an inherited IdentifiedObject.name attribute, it may not necessarily match this name.</p>
+                  <p class="comment">The name of this parameter, as returned by the CIGRE TB 958 API. If there is an inherited IdentifiedObject.name attribute, it may not necessarily match this name.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLParameterInfo.dllUnit">dllUnit</p>
+                  <p class="name" id="IEEECigreAPIParameterInfo.apiUnit">apiUnit</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -7157,22 +7174,39 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">The parameter units expected by the DLL. This may not correspond to CIM units, so interpretation may be required.</p>
+                  <p class="comment">The parameter units expected by the CIGRE TB 958 API. This may not correspond to CIM units, so interpretation may be required.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreAPIParameterInfo.IEEECigreAPIParameters">IEEECigreAPIParameters</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..<item>*</item>
+                  </p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreAPIParameter">IEEECigreAPIParameter</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Minimum set of attributes required to use this parameter.</p>
                </td>
             </tr>
          </table>
       </div>
-      <div id="IEEECigreDLLSignalInfo" class="group">
-         <a href="#IEEECigreDLLSignalInfo">
-            <h2 class="concrete">IEEECigreDLLSignalInfo</h2>
+      <div id="IEEECigreAPISignalInfo" class="group">
+         <a href="#IEEECigreAPISignalInfo">
+            <h2 class="concrete">IEEECigreAPISignalInfo</h2>
          </a>
          <p class="package">Emtiop</p>
-         <p class="comment">Supplemental information about the signal from the DLL API.</p>
+         <p class="comment">Supplemental information about the signal from the CIGRE TB 958 API.</p>
          <h3>Native Members</h3>
          <table>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLSignalInfo.dllDescription">dllDescription</p>
+                  <p class="name" id="IEEECigreAPISignalInfo.apiDescription">apiDescription</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -7183,12 +7217,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">A description of the signal as written by the DLL developer.</p>
+                  <p class="comment">A description of the signal as written by the model's developer.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLSignalInfo.dllUnit">dllUnit</p>
+                  <p class="name" id="IEEECigreAPISignalInfo.apiUnit">apiUnit</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -7199,7 +7233,24 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">The signal units expected by the DLL. This may not correspond to CIM units, so interpretation may be required.</p>
+                  <p class="comment">The signal units expected by the CIGRE TB 958 API. This may not correspond to CIM units, so interpretation may be required.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreAPISignalInfo.IEEECigreAPISignals">IEEECigreAPISignals</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..<item>*</item>
+                  </p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#IEEECigreAPISignal">IEEECigreAPISignal</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Minimum set of attributes required to use this signal.</p>
                </td>
             </tr>
          </table>
@@ -16444,17 +16495,17 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
-      <div id="IEEECigreDLLSignal" class="group">
-         <a href="#IEEECigreDLLSignal">
-            <h2 class="abstract">IEEECigreDLLSignal</h2>
+      <div id="IEEECigreAPISignal" class="group">
+         <a href="#IEEECigreAPISignal">
+            <h2 class="abstract">IEEECigreAPISignal</h2>
          </a>
          <p class="package">Emtiop</p>
-         <p class="comment">The parent class for DLL input and output signals. Use the ACDCTerminal association for network flows, the DCNode association for DC bus quantities, the ConnectivityNode association for AC bus quantities, or no association for references levels or other signals not connected to the electric power networks.</p>
+         <p class="comment">The parent class for CIGRE TB 958 input and output signals. Use the ACDCTerminal association for network flows, the DCNode association for DC bus quantities, the ConnectivityNode association for AC bus quantities, or no association for references levels or other signals not connected to the electric power networks.</p>
          <h3>Native Members</h3>
          <table>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLSignal.dllName">dllName</p>
+                  <p class="name" id="IEEECigreAPISignal.apiName">apiName</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -16465,44 +16516,28 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">The name of this signal, as returned by the DLL API. The inherited IdentifiedObject.name attribute might not necessarily match this name.</p>
+                  <p class="comment">The name of this signal, as returned by the CIGRE TB 958 API. The inherited IdentifiedObject.name attribute might not necessarily match this name.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLSignal.dllParameterKind">dllParameterKind</p>
+                  <p class="name" id="IEEECigreAPISignal.apiParameterKind">apiParameterKind</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#IEEECigreDLLParameterKind">IEEECigreDLLParameterKind</a>
+                     <a href="#IEEECigreAPIParameterKind">IEEECigreAPIParameterKind</a>
                   </p>
                </td>
                <td>
-                  <p class="comment">Establishes the signal value size, in bytes, expected in the DLL API.</p>
+                  <p class="comment">Establishes the signal value size, in bytes, expected in the CIGRE TB 958 API.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLSignal.dllSequenceNumber">dllSequenceNumber</p>
-               </th>
-               <td>
-                  <p class="cardinality">1..1</p>
-               </td>
-               <td class="type">
-                  <p class="type">
-                     <a href="#Integer">Integer</a>
-                  </p>
-               </td>
-               <td>
-                  <p class="comment">The signal's expected zero-based sequence number in the DLL API array for input and output signals.</p>
-               </td>
-            </tr>
-            <tr>
-               <th>
-                  <p class="name" id="IEEECigreDLLSignal.dllWidth">dllWidth</p>
+                  <p class="name" id="IEEECigreAPISignal.apiSequenceNumber">apiSequenceNumber</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -16513,12 +16548,28 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Signal array dimension from the DLL API, defaults to 1.</p>
+                  <p class="comment">The signal's expected zero-based sequence number in the CIGRE TB 958 API array for input and output signals.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLSignal.multiplier">multiplier</p>
+                  <p class="name" id="IEEECigreAPISignal.apiWidth">apiWidth</p>
+               </th>
+               <td>
+                  <p class="cardinality">0..1</p>
+               </td>
+               <td class="type">
+                  <p class="type">
+                     <a href="#Integer">Integer</a>
+                  </p>
+               </td>
+               <td>
+                  <p class="comment">Signal array dimension from the CIGRE TB 958 API, defaults to 1.</p>
+               </td>
+            </tr>
+            <tr>
+               <th>
+                  <p class="name" id="IEEECigreAPISignal.multiplier">multiplier</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -16529,12 +16580,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Multiplier for the units of this signal, in CIM. May require interpretation of information returned from the DLL API.</p>
+                  <p class="comment">Multiplier for the units of this signal, in CIM. May require interpretation of information returned from the CIGRE TB 958 API.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLSignal.phase">phase</p>
+                  <p class="name" id="IEEECigreAPISignal.phase">phase</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -16550,7 +16601,7 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLSignal.unit">unit</p>
+                  <p class="name" id="IEEECigreAPISignal.unit">unit</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -16561,12 +16612,12 @@ p.package { position: absolute; right: 10px; top: 0px}
                   </p>
                </td>
                <td>
-                  <p class="comment">Signal units, if applicable, in CIM. May require interpretation of information returned from the DLL API.</p>
+                  <p class="comment">Signal units, if applicable, in CIM. May require interpretation of information returned from the CIGRE TB 958 API.</p>
                </td>
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLSignal.ConnectivityNode">ConnectivityNode</p>
+                  <p class="name" id="IEEECigreAPISignal.ConnectivityNode">ConnectivityNode</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -16582,7 +16633,7 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLSignal.DCNode">DCNode</p>
+                  <p class="name" id="IEEECigreAPISignal.DCNode">DCNode</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
@@ -16598,18 +16649,18 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
             <tr>
                <th>
-                  <p class="name" id="IEEECigreDLLSignal.IEEECigreDLLSignalInfo">IEEECigreDLLSignalInfo</p>
+                  <p class="name" id="IEEECigreAPISignal.IEEECigreAPISignalInfo">IEEECigreAPISignalInfo</p>
                </th>
                <td>
                   <p class="cardinality">0..1</p>
                </td>
                <td class="type">
                   <p class="type">
-                     <a href="#IEEECigreDLLSignalInfo">IEEECigreDLLSignalInfo</a>
+                     <a href="#IEEECigreAPISignalInfo">IEEECigreAPISignalInfo</a>
                   </p>
                </td>
                <td>
-                  <p class="comment">Expanded set of attributes available from the DLL API.</p>
+                  <p class="comment">Expanded set of attributes available from the CIGRE TB 958 API.</p>
                </td>
             </tr>
          </table>
@@ -19887,9 +19938,9 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
-      <div id="IEEECigreDLLInputKind" class="group">
-         <a href="#IEEECigreDLLInputKind">
-            <h2 class="enumerated">IEEECigreDLLInputKind</h2>
+      <div id="IEEECigreAPIInputKind" class="group">
+         <a href="#IEEECigreAPIInputKind">
+            <h2 class="enumerated">IEEECigreAPIInputKind</h2>
          </a>
          <p class="package">Emtiop</p>
          <table>
@@ -19898,7 +19949,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">acCurrent</p>
                </th>
                <td>
-                  <p class="comment">AC current from inverter into the AC filter. Requires the phase attribute. Typically in Amperes, but the DLL API should be used to verify units.</p>
+                  <p class="comment">AC current from inverter into the AC filter. Requires the phase attribute. Typically in Amperes, but the CIGRE TB 958 API should be used to verify units.</p>
                </td>
             </tr>
             <tr>
@@ -19906,7 +19957,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">acCurrentGrid</p>
                </th>
                <td>
-                  <p class="comment">AC current from AC filter into the grid. Requires the phase attribute. Typically in Amperes, but the DLL API should be used to verify units.</p>
+                  <p class="comment">AC current from AC filter into the grid. Requires the phase attribute. Typically in Amperes, but the CIGRE TB 958 API should be used to verify units.</p>
                </td>
             </tr>
             <tr>
@@ -19914,7 +19965,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">acVoltage</p>
                </th>
                <td>
-                  <p class="comment">AC voltage at the filter-to-grid connection point. Requires the phase attribute. Typically in Volts, but the DLL API should be used to verify units.</p>
+                  <p class="comment">AC voltage at the filter-to-grid connection point. Requires the phase attribute. Typically in Volts, but the CIGRE TB 958 API should be used to verify units.</p>
                </td>
             </tr>
             <tr>
@@ -19922,7 +19973,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">activePowerReference</p>
                </th>
                <td>
-                  <p class="comment">Active power control reference. Typically in per-unit but the DLL API should be used to verify units.</p>
+                  <p class="comment">Active power control reference. Typically in per-unit but the CIGRE TB 958 API should be used to verify units.</p>
                </td>
             </tr>
             <tr>
@@ -19930,7 +19981,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">apiDefined</p>
                </th>
                <td>
-                  <p class="comment">Another kind of input or control signal not enumerated in CIM. Use the DLL API for more information.</p>
+                  <p class="comment">Another kind of input or control signal not enumerated in CIM. Use the CIGRE TB 958 API for more information.</p>
                </td>
             </tr>
             <tr>
@@ -19954,7 +20005,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">dcVoltage</p>
                </th>
                <td>
-                  <p class="comment">DC voltage at the inverter stage, if DC bus modeling applies. Typically in Volts, but the DLL API should be used to verify units.</p>
+                  <p class="comment">DC voltage at the inverter stage, if DC bus modeling applies. Typically in Volts, but the CIGRE TB 958 API should be used to verify units.</p>
                </td>
             </tr>
             <tr>
@@ -19962,7 +20013,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">reactivePowerReference</p>
                </th>
                <td>
-                  <p class="comment">Reactive power control reference. Typically in per-unit but the DLL API should be used to verify units.</p>
+                  <p class="comment">Reactive power control reference. Typically in per-unit but the CIGRE TB 958 API should be used to verify units.</p>
                </td>
             </tr>
             <tr>
@@ -19970,14 +20021,14 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">voltageReference</p>
                </th>
                <td>
-                  <p class="comment">Voltage control reference. Typically in per-unit and positive sequence, but the DLL API should be used to verify units.</p>
+                  <p class="comment">Voltage control reference. Typically in per-unit and positive sequence, but the CIGRE TB 958 API should be used to verify units.</p>
                </td>
             </tr>
          </table>
       </div>
-      <div id="IEEECigreDLLModeKind" class="group">
-         <a href="#IEEECigreDLLModeKind">
-            <h2 class="enumerated">IEEECigreDLLModeKind</h2>
+      <div id="IEEECigreAPIModeKind" class="group">
+         <a href="#IEEECigreAPIModeKind">
+            <h2 class="enumerated">IEEECigreAPIModeKind</h2>
          </a>
          <p class="package">Emtiop</p>
          <table>
@@ -19986,7 +20037,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">SupportsBoth</p>
                </th>
                <td>
-                  <p class="comment">The DLL runs in either EMT or RMS simulations.</p>
+                  <p class="comment">The CIGRE TB 958 model runs in either EMT or RMS simulations.</p>
                </td>
             </tr>
             <tr>
@@ -19994,7 +20045,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">SupportsEMT</p>
                </th>
                <td>
-                  <p class="comment">The DLL runs in EMT but not RMS simulations.</p>
+                  <p class="comment">The CIGRE TB 958 model runs in EMT but not RMS simulations.</p>
                </td>
             </tr>
             <tr>
@@ -20002,7 +20053,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">SupportsNone</p>
                </th>
                <td>
-                  <p class="comment">This DLL is unusable.</p>
+                  <p class="comment">This CIGRE TB 958 model is unusable.</p>
                </td>
             </tr>
             <tr>
@@ -20010,14 +20061,14 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">SupportsRMS</p>
                </th>
                <td>
-                  <p class="comment">The DLL runs in RMS simulation, e.g., power flow, short-circuit, positive sequence dynamics, transient stability. It does not run in EMT simulation.</p>
+                  <p class="comment">The CIGRE TB 958 model runs in RMS simulation, e.g., power flow, short-circuit, positive sequence dynamics, transient stability. It does not run in EMT simulation.</p>
                </td>
             </tr>
          </table>
       </div>
-      <div id="IEEECigreDLLOutputKind" class="group">
-         <a href="#IEEECigreDLLOutputKind">
-            <h2 class="enumerated">IEEECigreDLLOutputKind</h2>
+      <div id="IEEECigreAPIOutputKind" class="group">
+         <a href="#IEEECigreAPIOutputKind">
+            <h2 class="enumerated">IEEECigreAPIOutputKind</h2>
          </a>
          <p class="package">Emtiop</p>
          <table>
@@ -20034,7 +20085,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">apiDefined</p>
                </th>
                <td>
-                  <p class="comment">Typically a convenience output for plotting and analysis. Use DLL API for more information.</p>
+                  <p class="comment">Typically a convenience output for plotting and analysis. Use CIGRE TB 958 API for more information.</p>
                </td>
             </tr>
             <tr>
@@ -20050,7 +20101,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">pllFrequency</p>
                </th>
                <td>
-                  <p class="comment">Frequency estimated from the DLL's phase locked loop or similar algorithm.</p>
+                  <p class="comment">Frequency estimated from the model's phase locked loop or similar algorithm.</p>
                </td>
             </tr>
             <tr>
@@ -20066,7 +20117,7 @@ p.package { position: absolute; right: 10px; top: 0px}
                   <p class="name">rideThroughMode</p>
                </th>
                <td>
-                  <p class="comment">A flag indicating fault-ride-through mode is active, based on logic internal to the DLL.</p>
+                  <p class="comment">A flag indicating fault-ride-through mode is active, based on logic internal to the model.</p>
                </td>
             </tr>
             <tr>
@@ -20079,11 +20130,12 @@ p.package { position: absolute; right: 10px; top: 0px}
             </tr>
          </table>
       </div>
-      <div id="IEEECigreDLLParameterKind" class="group">
-         <a href="#IEEECigreDLLParameterKind">
-            <h2 class="enumerated">IEEECigreDLLParameterKind</h2>
+      <div id="IEEECigreAPIParameterKind" class="group">
+         <a href="#IEEECigreAPIParameterKind">
+            <h2 class="enumerated">IEEECigreAPIParameterKind</h2>
          </a>
          <p class="package">Emtiop</p>
+         <p class="comment">Indicates the type and size (bytes) of a parameter, as documented in IEEE_Cigre_DLLInterface_types.h from CIGRE TB 958.</p>
          <table>
             <tr>
                <th>

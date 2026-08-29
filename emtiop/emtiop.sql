@@ -1022,103 +1022,104 @@ CREATE TABLE "IBRPlant"
     "switchingFrequency" DOUBLE PRECISION
 );
 
--- A dynamic link library (DLL) interface for inverter-based resource (IBR)
--- control and other control applications, as defined in Cigre Technical Brochure
--- TB 958 and IEEE Standards Association P3597. Attributes prefixed by <b>dll</b>
--- correspond to members of the IEEE_Cigre_DLLInterface_Model_Info header
--- file structure; they should be obtained and verified using the DLL API.
-CREATE TABLE "IEEECigreDLL"
+-- A dynamic link library (DLL) or other application programming interface
+-- (API) for inverter-based resource (IBR) control and other control applications,
+-- as defined in CIGRE Technical Brochure TB 958 and IEEE Standards Association
+-- P3597. Attributes prefixed by <b>api</b> correspond to members of the IEEE_Cigre_DLLInterface_Model_Info
+-- header file structure that was documented in TB 958; they should be obtained
+-- and verified using the API.
+CREATE TABLE "IEEECigreAPI"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Codifies a four-number version of the DLL interface standard supported
-    -- by this DLL, in string format, as returned from the DLL API.
-    "dllDLLInterfaceVersion" VARCHAR(255) NOT NULL,
-    -- Identify whether the DLL runs in EMT, RMS, or both kinds of simulation,
-    -- as returned from the DLL API.
-    -- FK column reference to table representing the "IEEECigreDLLModeKind" enumeration
-    "dllEmtRmsMode" VARCHAR(100) NOT NULL,
-    -- Hard-coded simulation time step for this DLL, as returned from the DLL
-    -- API.
-    "dllFixedStepBaseSampleTime" DOUBLE PRECISION NOT NULL,
-    -- The ModelName as returned from the DLL API. Not necessarily equal to the
-    -- inherited IdentifiedObject.name.
-    "dllModelName" VARCHAR(255),
-    -- Version of this DLL, as returned from the DLL API.
-    "dllModelVersion" VARCHAR(255),
+    -- Codifies a four-number version of the CIGRE TB 958 interface standard supported
+    -- by this model, in string format, as returned from the API.
+    "apiDLLInterfaceVersion" VARCHAR(255),
+    -- Identify whether the model runs in EMT, RMS, or both kinds of simulation,
+    -- as returned from the CIGRE TB 958 API.
+    -- FK column reference to table representing the "IEEECigreAPIModeKind" enumeration
+    "apiEmtRmsMode" VARCHAR(100),
+    -- Hard-coded simulation time step for this model, as returned from the CIGRE
+    -- TB 958 API.
+    "apiFixedStepBaseSampleTime" DOUBLE PRECISION,
+    -- The ModelName as returned from the CIGRE TB 958 API. Not necessarily equal
+    -- to the inherited IdentifiedObject.name.
+    "apiModelName" VARCHAR(255),
+    -- Version of this model instance, as returned from the CIGRE TB 958 API.
+    "apiModelVersion" VARCHAR(255),
     -- True if this DLL can be loaded and used by different instances of Equipment
     -- in the same simulation. This information is not available from the DLL
     -- API; it must be determined from careful review of the DLL documentation.
-    "shareable" INTEGER NOT NULL DEFAULT 1 CHECK ("shareable" IN (0, 1)) NOT NULL,
+    "shareable" INTEGER NOT NULL DEFAULT 1 CHECK ("shareable" IN (0, 1)),
     -- Location of the optional snapshot file for initializing the DLL from a
     -- saved state. Either a universal resource identifier or network-accessible
     -- filename. It is not obtainable from the DLL API.
     "snapshotUri" VARCHAR(255),
     -- Location of the DLL, e.g., a universal resource identifier or network-accessible
     -- filename. It is not obtainable from the DLL API.
-    "uri" VARCHAR(255) NOT NULL,
-    -- Expanded set of attributes available from the DLL API.
-    -- FK column reference to table representing the "IEEECigreDLLInfo" class
-    "IEEECigreDLLInfo" VARCHAR(100)
+    "uri" VARCHAR(255),
+    -- Expanded set of attributes available from the CIGRE TB 958 API.
+    -- FK column reference to table representing the "IEEECigreAPIInfo" class
+    "IEEECigreAPIInfo" VARCHAR(100)
 );
 
--- Supplemental information about his DLL from the API.
-CREATE TABLE "IEEECigreDLLInfo"
+-- Supplemental information about this interface from the CIGRE TB 958 API.
+CREATE TABLE "IEEECigreAPIInfo"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
-    -- One of two general description fields; also see the dllModelDescription
+    -- One of two general description fields; also see the apiModelDescription
     -- attribute.
-    "dllGeneralInformation" VARCHAR(255),
-    -- Date and time of the first DLL version.
-    "dllModelCreated" TIMESTAMP,
-    -- Identifies the person or the organization who first created the DLL.
-    "dllModelCreator" VARCHAR(255),
-    -- One of two general description fields; also see the dllGeneralDescription
+    "apiGeneralInformation" VARCHAR(255),
+    -- Date and time of the first model (not API) version.
+    "apiModelCreated" TIMESTAMP,
+    -- Identifies the person or the organization who first created the model.
+    "apiModelCreator" VARCHAR(255),
+    -- One of two general description fields; also see the apiGeneralDescription
     -- attribute.
-    "dllModelDescription" VARCHAR(255),
-    -- Identifies the person or the organization who first created the DLL.
-    "dllModelLastModifiedBy" VARCHAR(255),
-    -- Date and time of the latest DLL version.
-    "dllModelLastModifiedDate" TIMESTAMP,
-    -- A description of the latest DLL update.
-    "dllModelModifiedComment" VARCHAR(255),
-    -- A history of DLL updates, may be a change log or other multi-paragraph
+    "apiModelDescription" VARCHAR(255),
+    -- Identifies the person or the organization who first created the model.
+    "apiModelLastModifiedBy" VARCHAR(255),
+    -- Date and time of the latest model version.
+    "apiModelLastModifiedDate" TIMESTAMP,
+    -- A description of the latest model update.
+    "apiModelModifiedComment" VARCHAR(255),
+    -- A history of model updates; may be a change log or other multi-paragraph
     -- text.
-    "dllModelModifiedHistory" VARCHAR(255),
-    -- Size of internal double-precision array storage needed by the DLL for state
-    -- variables. These are not represented in CIM, but the information could
-    -- help identify different versions of the DLL. The EMT/RMS simulator manages
-    -- this memory.
-    "dllNumDoubleStates" INTEGER,
-    -- Size of internal single-precision array storage needed by the DLL for state
-    -- variables. These are not represented in CIM, but the information could
-    -- help identify different versions of the DLL. The EMT/RMS simulator manages
-    -- this memory.
-    "dllNumFloatStates" INTEGER,
-    -- The number of input ports expected by the DLL, which should match cardinality
-    -- of the associated IEEECigreDLL -&gt; IEEECigreDLLInputSignals.
-    "dllNumInputPorts" INTEGER,
-    -- Size of internal integer array storage needed by the DLL for state variables.
+    "apiModelModifiedHistory" VARCHAR(255),
+    -- Size of internal double-precision array storage needed by the model instance
+    -- for state variables. These are not represented in CIM, but the information
+    -- could help identify different versions of this model. The EMT/RMS simulator
+    -- manages this memory.
+    "apiNumDoubleStates" INTEGER,
+    -- Size of internal single-precision array storage needed by this model for
+    -- state variables. These are not represented in CIM, but the information
+    -- could help identify different versions of this model. The EMT/RMS simulator
+    -- manages this memory.
+    "apiNumFloatStates" INTEGER,
+    -- The number of input ports expected by this model, which should match cardinality
+    -- of the associated IEEECigreAPI -&gt; IEEECigreAPIInputSignals.
+    "apiNumInputPorts" INTEGER,
+    -- Size of internal integer array storage needed by this model for state variables.
     -- These are not represented in CIM, but the information could help identify
-    -- different versions of the DLL. The EMT/RMS simulator manages this memory.
-    "dllNumIntStates" INTEGER,
-    -- The number of output ports expected by the DLL, which should match cardinality
-    -- of the associated IEEECigreDLL -&gt; IEEECigreDLLOutputSignals.
-    "dllNumOutputPorts" INTEGER,
-    -- The number of input parameters expected by the DLL, which should match
-    -- cardinality of the associated IEEECigreDLL -&gt; IEEECigreDLLParameters.
-    "dllNumParameters" INTEGER
+    -- different versions of this model. The EMT/RMS simulator manages this memory.
+    "apiNumIntStates" INTEGER,
+    -- The number of output ports expected by this model, which should match cardinality
+    -- of the associated IEEECigreAPI -&gt; IEEECigreAPIOutputSignals.
+    "apiNumOutputPorts" INTEGER,
+    -- The number of input parameters expected by this model, which should match
+    -- cardinality of the associated IEEECigreAPI -&gt; IEEECigreAPIParameters.
+    "apiNumParameters" INTEGER
 );
 
--- Connects the set of DLL input signals, as defined in its API, to points
--- in the network model or to external references, like other controllers.
-CREATE TABLE "IEEECigreDLLInput"
+-- Connects the set of CIGRE TB 958 API input signals, for this instance,
+-- to points in the network model or to external references, like other controllers.
+CREATE TABLE "IEEECigreAPIInput"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
     -- The type of input signal. If remoteInputSignal, supply the RemoteInputSignal
     -- association. The phase attribute is required for acTerminalVoltage, acCurrentVsc,
-    -- and acCurrentGrid. If apiDefined, the DLL must be queried through its API
-    -- for more information.
-    -- FK column reference to table representing the "IEEECigreDLLInputKind" enumeration
+    -- and acCurrentGrid. If apiDefined, the model must be queried through its
+    -- API for more information.
+    -- FK column reference to table representing the "IEEECigreAPIInputKind" enumeration
     "kind" VARCHAR(100),
     -- Ratio between measured quantity on the power network and signal quantity
     -- in the control system, e.g., a current transformer (CT) or voltage transformer
@@ -1126,58 +1127,62 @@ CREATE TABLE "IEEECigreDLLInput"
     "sensorRatio" DOUBLE PRECISION
 );
 
-CREATE TABLE "IEEECigreDLLInputKind" ( "name" VARCHAR(100) UNIQUE );
+CREATE TABLE "IEEECigreAPIInputKind" ( "name" VARCHAR(100) UNIQUE );
 -- AC current from inverter into the AC filter. Requires the phase attribute.
--- Typically in Amperes, but the DLL API should be used to verify units.
-INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'acCurrent' );
+-- Typically in Amperes, but the CIGRE TB 958 API should be used to verify
+-- units.
+INSERT INTO "IEEECigreAPIInputKind" ( "name" ) VALUES ( 'acCurrent' );
 -- AC current from AC filter into the grid. Requires the phase attribute.
--- Typically in Amperes, but the DLL API should be used to verify units.
-INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'acCurrentGrid' );
+-- Typically in Amperes, but the CIGRE TB 958 API should be used to verify
+-- units.
+INSERT INTO "IEEECigreAPIInputKind" ( "name" ) VALUES ( 'acCurrentGrid' );
 -- AC voltage at the filter-to-grid connection point. Requires the phase attribute.
--- Typically in Volts, but the DLL API should be used to verify units.
-INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'acVoltage' );
--- Active power control reference. Typically in per-unit but the DLL API should
--- be used to verify units.
-INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'activePowerReference' );
+-- Typically in Volts, but the CIGRE TB 958 API should be used to verify units.
+INSERT INTO "IEEECigreAPIInputKind" ( "name" ) VALUES ( 'acVoltage' );
+-- Active power control reference. Typically in per-unit but the CIGRE TB
+-- 958 API should be used to verify units.
+INSERT INTO "IEEECigreAPIInputKind" ( "name" ) VALUES ( 'activePowerReference' );
 -- Another kind of input or control signal not enumerated in CIM. Use the
--- DLL API for more information.
-INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'apiDefined' );
+-- CIGRE TB 958 API for more information.
+INSERT INTO "IEEECigreAPIInputKind" ( "name" ) VALUES ( 'apiDefined' );
 -- DC current into the inverter stage, if DC bus modeling applies. Typically
 -- in Amperes, but the DLL API should be used to verify units.
-INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'dcCurrent' );
+INSERT INTO "IEEECigreAPIInputKind" ( "name" ) VALUES ( 'dcCurrent' );
 -- DC voltage command from the maximum power point tracking system, if DC
 -- bus modeling applies. Typically in Volts, but the DLL API should be used
 -- to verify units.
-INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'dcMPPTVoltage' );
+INSERT INTO "IEEECigreAPIInputKind" ( "name" ) VALUES ( 'dcMPPTVoltage' );
 -- DC voltage at the inverter stage, if DC bus modeling applies. Typically
--- in Volts, but the DLL API should be used to verify units.
-INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'dcVoltage' );
--- Reactive power control reference. Typically in per-unit but the DLL API
--- should be used to verify units.
-INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'reactivePowerReference' );
+-- in Volts, but the CIGRE TB 958 API should be used to verify units.
+INSERT INTO "IEEECigreAPIInputKind" ( "name" ) VALUES ( 'dcVoltage' );
+-- Reactive power control reference. Typically in per-unit but the CIGRE TB
+-- 958 API should be used to verify units.
+INSERT INTO "IEEECigreAPIInputKind" ( "name" ) VALUES ( 'reactivePowerReference' );
 -- Voltage control reference. Typically in per-unit and positive sequence,
--- but the DLL API should be used to verify units.
-INSERT INTO "IEEECigreDLLInputKind" ( "name" ) VALUES ( 'voltageReference' );
+-- but the CIGRE TB 958 API should be used to verify units.
+INSERT INTO "IEEECigreAPIInputKind" ( "name" ) VALUES ( 'voltageReference' );
 
-CREATE TABLE "IEEECigreDLLModeKind" ( "name" VARCHAR(100) UNIQUE );
--- The DLL runs in either EMT or RMS simulations.
-INSERT INTO "IEEECigreDLLModeKind" ( "name" ) VALUES ( 'SupportsBoth' );
--- The DLL runs in EMT but not RMS simulations.
-INSERT INTO "IEEECigreDLLModeKind" ( "name" ) VALUES ( 'SupportsEMT' );
--- This DLL is unusable.
-INSERT INTO "IEEECigreDLLModeKind" ( "name" ) VALUES ( 'SupportsNone' );
--- The DLL runs in RMS simulation, e.g., power flow, short-circuit, positive
--- sequence dynamics, transient stability. It does not run in EMT simulation.
-INSERT INTO "IEEECigreDLLModeKind" ( "name" ) VALUES ( 'SupportsRMS' );
+CREATE TABLE "IEEECigreAPIModeKind" ( "name" VARCHAR(100) UNIQUE );
+-- The CIGRE TB 958 model runs in either EMT or RMS simulations.
+INSERT INTO "IEEECigreAPIModeKind" ( "name" ) VALUES ( 'SupportsBoth' );
+-- The CIGRE TB 958 model runs in EMT but not RMS simulations.
+INSERT INTO "IEEECigreAPIModeKind" ( "name" ) VALUES ( 'SupportsEMT' );
+-- This CIGRE TB 958 model is unusable.
+INSERT INTO "IEEECigreAPIModeKind" ( "name" ) VALUES ( 'SupportsNone' );
+-- The CIGRE TB 958 model runs in RMS simulation, e.g., power flow, short-circuit,
+-- positive sequence dynamics, transient stability. It does not run in EMT
+-- simulation.
+INSERT INTO "IEEECigreAPIModeKind" ( "name" ) VALUES ( 'SupportsRMS' );
 
--- Connects the set of DLL output signals, as defined in its API, to points
--- in the network model.
-CREATE TABLE "IEEECigreDLLOutput"
+-- Connects the set of CIGRE TB 958 API output signals, for this instance,
+-- to points in the network model.
+CREATE TABLE "IEEECigreAPIOutput"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
     -- The type of output signal. The phase attribute must be supplied with modulationIndex
-    -- and vscVoltage. If apiDefined, obtain more information from the DLL API.
-    -- FK column reference to table representing the "IEEECigreDLLOutputKind" enumeration
+    -- and vscVoltage. If apiDefined, obtain more information from the CIGRE TB
+    -- 958 API.
+    -- FK column reference to table representing the "IEEECigreAPIOutputKind" enumeration
     "kind" VARCHAR(100),
     -- Ratio between the controller output and the power system connection point.
     -- For example, a modulation index output could be multiplied by 50% of the
@@ -1188,120 +1193,124 @@ CREATE TABLE "IEEECigreDLLOutput"
     "scalingRatio" DOUBLE PRECISION
 );
 
-CREATE TABLE "IEEECigreDLLOutputKind" ( "name" VARCHAR(100) UNIQUE );
+CREATE TABLE "IEEECigreAPIOutputKind" ( "name" VARCHAR(100) UNIQUE );
 -- Active power from internal calculation; a convenience output.
-INSERT INTO "IEEECigreDLLOutputKind" ( "name" ) VALUES ( 'activePower' );
--- Typically a convenience output for plotting and analysis. Use DLL API for
--- more information.
-INSERT INTO "IEEECigreDLLOutputKind" ( "name" ) VALUES ( 'apiDefined' );
+INSERT INTO "IEEECigreAPIOutputKind" ( "name" ) VALUES ( 'activePower' );
+-- Typically a convenience output for plotting and analysis. Use CIGRE TB
+-- 958 API for more information.
+INSERT INTO "IEEECigreAPIOutputKind" ( "name" ) VALUES ( 'apiDefined' );
 -- Modulation index for PWM switching in a detailed VSC model. May be scaled
 -- by Vdc/2 in an average model. Requires the phase attribute. If these outputs
 -- are not provided, then vscVoltage outputs shall be provided.
-INSERT INTO "IEEECigreDLLOutputKind" ( "name" ) VALUES ( 'modulationIndex' );
--- Frequency estimated from the DLL's phase locked loop or similar algorithm.
-INSERT INTO "IEEECigreDLLOutputKind" ( "name" ) VALUES ( 'pllFrequency' );
+INSERT INTO "IEEECigreAPIOutputKind" ( "name" ) VALUES ( 'modulationIndex' );
+-- Frequency estimated from the model's phase locked loop or similar algorithm.
+INSERT INTO "IEEECigreAPIOutputKind" ( "name" ) VALUES ( 'pllFrequency' );
 -- Reactive power from internal calculation; a convenience output.
-INSERT INTO "IEEECigreDLLOutputKind" ( "name" ) VALUES ( 'reactivePower' );
+INSERT INTO "IEEECigreAPIOutputKind" ( "name" ) VALUES ( 'reactivePower' );
 -- A flag indicating fault-ride-through mode is active, based on logic internal
--- to the DLL.
-INSERT INTO "IEEECigreDLLOutputKind" ( "name" ) VALUES ( 'rideThroughMode' );
+-- to the model.
+INSERT INTO "IEEECigreAPIOutputKind" ( "name" ) VALUES ( 'rideThroughMode' );
 -- VSC source voltage for an average model. Requires the phase attribute.
 -- If these outputs are not provided then modulationIndex outputs shall be
 -- provided.
-INSERT INTO "IEEECigreDLLOutputKind" ( "name" ) VALUES ( 'vscVoltage' );
+INSERT INTO "IEEECigreAPIOutputKind" ( "name" ) VALUES ( 'vscVoltage' );
 
--- A single value in the array of DLL input values. The meaning of this parameter
--- is discoverable through the DLL's application program interface (API) and/or
--- documentation provided with the DLL. This CIM class maintains only the
--- essential parameter setting and location/size in the array of DLL inputs.
-CREATE TABLE "IEEECigreDLLParameter"
+-- A single value in the array of CIGRE TB 958 API input values. The meaning
+-- of this parameter is discoverable through the API for an implementation,
+-- like a DLL, and/or documentation provided with the model. This CIM class
+-- maintains only the essential parameter setting and location/size in the
+-- array of API inputs.
+CREATE TABLE "IEEECigreAPIParameter"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
-    -- The C type of this parameter as expected by the DLL application program
-    -- interface (API). This also determines the memory size of this parameter
-    -- in the array of DLL inputs. It indicates whether the value attribute should
-    -- be considered a string, integer, or floating point value.
-    -- FK column reference to table representing the "IEEECigreDLLParameterKind" enumeration
-    "dllParameterKind" VARCHAR(100),
-    -- The zero-based array index for this parameter, as expected in the DLL's
-    -- application program interface (API).
-    "dllSequenceNumber" INTEGER NOT NULL,
-    -- The parameter value, to be parsed from string format according to the dllParameterKind.
-    "value" VARCHAR(255) NOT NULL,
-    -- The DLL associated with this parameter.
-    -- FK column reference to table representing the "IEEECigreDLL" class
-    "IEEECigreDLL" VARCHAR(100) NOT NULL,
-    -- Expanded set of attributes available from the DLL API.
-    -- FK column reference to table representing the "IEEECigreDLLParameterInfo" class
-    "IEEECigreDLLParameterInfo" VARCHAR(100)
+    -- The C type of this parameter as expected by the CIGRE TB 958 API. This
+    -- also determines the memory size of this parameter in the array of model
+    -- inputs. It indicates whether the value attribute should be considered a
+    -- string, integer, or floating point value.
+    -- FK column reference to table representing the "IEEECigreAPIParameterKind" enumeration
+    "apiParameterKind" VARCHAR(100),
+    -- The zero-based array index for this parameter, as expected in the CIGRE
+    -- TB 958 API.
+    "apiSequenceNumber" INTEGER,
+    -- The parameter value, to be parsed from string format according to the apiParameterKind.
+    "value" VARCHAR(255),
+    -- The API model instance associated with this parameter.
+    -- FK column reference to table representing the "IEEECigreAPI" class
+    "IEEECigreAPI" VARCHAR(100),
+    -- Expanded set of attributes available from the CIGRE TB 958 API.
+    -- FK column reference to table representing the "IEEECigreAPIParameterInfo" class
+    "IEEECigreAPIParameterInfo" VARCHAR(100)
 );
 
--- Supplemental information about this parameter from the DLL API.
-CREATE TABLE "IEEECigreDLLParameterInfo"
+-- Supplemental information about this parameter from the CIGRE TB 958 API.
+CREATE TABLE "IEEECigreAPIParameterInfo"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
-    -- Default value assigned by the DLL.
-    "dllDefaultValue" VARCHAR(255),
+    -- Default value internally assigned by the model implementation.
+    "apiDefaultValue" VARCHAR(255),
     -- General description.
-    "dllDescription" VARCHAR(255),
+    "apiDescription" VARCHAR(255),
     -- True if the parameter can be changed any time during simulation, False
     -- if the parameter value must be set and time zero and not changed thereafter.
-    "dllFixedValue" INTEGER NOT NULL DEFAULT 1 CHECK ("dllFixedValue" IN (0, 1)),
+    "apiFixedValue" INTEGER NOT NULL DEFAULT 1 CHECK ("apiFixedValue" IN (0, 1)),
     -- A group name, if applicable.
-    "dllGroupName" VARCHAR(255),
+    "apiGroupName" VARCHAR(255),
     -- Maximum value allowed, for numerical parameters.
-    "dllMaxValue" VARCHAR(255),
+    "apiMaxValue" VARCHAR(255),
     -- Minimum value allowed, for numerical parameters.
-    "dllMinValue" VARCHAR(255),
-    -- The name of this parameter, as returned by the DLL API. If there is an
-    -- inherited IdentifiedObject.name attribute, it may not necessarily match
-    -- this name.
-    "dllName" VARCHAR(255),
-    -- The parameter units expected by the DLL. This may not correspond to CIM
-    -- units, so interpretation may be required.
-    "dllUnit" VARCHAR(255)
+    "apiMinValue" VARCHAR(255),
+    -- The name of this parameter, as returned by the CIGRE TB 958 API. If there
+    -- is an inherited IdentifiedObject.name attribute, it may not necessarily
+    -- match this name.
+    "apiName" VARCHAR(255),
+    -- The parameter units expected by the CIGRE TB 958 API. This may not correspond
+    -- to CIM units, so interpretation may be required.
+    "apiUnit" VARCHAR(255)
 );
 
-CREATE TABLE "IEEECigreDLLParameterKind" ( "name" VARCHAR(100) UNIQUE );
-INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Char_Ptr' );
-INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Char_Val' );
-INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Int16_Val' );
-INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Int32_Val' );
-INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Int8_Val' );
-INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Real32_Val' );
-INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Real64_Val' );
-INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Uint16_Val' );
-INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Uint32_Val' );
-INSERT INTO "IEEECigreDLLParameterKind" ( "name" ) VALUES ( 'Uint8_Val' );
+-- Indicates the type and size (bytes) of a parameter, as documented in IEEE_Cigre_DLLInterface_types.h
+-- from CIGRE TB 958.
+CREATE TABLE "IEEECigreAPIParameterKind" ( "name" VARCHAR(100) UNIQUE );
+INSERT INTO "IEEECigreAPIParameterKind" ( "name" ) VALUES ( 'Char_Ptr' );
+INSERT INTO "IEEECigreAPIParameterKind" ( "name" ) VALUES ( 'Char_Val' );
+INSERT INTO "IEEECigreAPIParameterKind" ( "name" ) VALUES ( 'Int16_Val' );
+INSERT INTO "IEEECigreAPIParameterKind" ( "name" ) VALUES ( 'Int32_Val' );
+INSERT INTO "IEEECigreAPIParameterKind" ( "name" ) VALUES ( 'Int8_Val' );
+INSERT INTO "IEEECigreAPIParameterKind" ( "name" ) VALUES ( 'Real32_Val' );
+INSERT INTO "IEEECigreAPIParameterKind" ( "name" ) VALUES ( 'Real64_Val' );
+INSERT INTO "IEEECigreAPIParameterKind" ( "name" ) VALUES ( 'Uint16_Val' );
+INSERT INTO "IEEECigreAPIParameterKind" ( "name" ) VALUES ( 'Uint32_Val' );
+INSERT INTO "IEEECigreAPIParameterKind" ( "name" ) VALUES ( 'Uint8_Val' );
 
--- The parent class for DLL input and output signals. Use the ACDCTerminal
+-- The parent class for CIGRE TB 958 input and output signals. Use the ACDCTerminal
 -- association for network flows, the DCNode association for DC bus quantities,
 -- the ConnectivityNode association for AC bus quantities, or no association
 -- for references levels or other signals not connected to the electric power
 -- networks.
-CREATE TABLE "IEEECigreDLLSignal"
+CREATE TABLE "IEEECigreAPISignal"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
-    -- The name of this signal, as returned by the DLL API. The inherited IdentifiedObject.name
-    -- attribute might not necessarily match this name.
-    "dllName" VARCHAR(255),
-    -- Establishes the signal value size, in bytes, expected in the DLL API.
-    -- FK column reference to table representing the "IEEECigreDLLParameterKind" enumeration
-    "dllParameterKind" VARCHAR(100),
-    -- The signal's expected zero-based sequence number in the DLL API array for
-    -- input and output signals.
-    "dllSequenceNumber" INTEGER NOT NULL,
-    -- Signal array dimension from the DLL API, defaults to 1.
-    "dllWidth" INTEGER,
+    -- The name of this signal, as returned by the CIGRE TB 958 API. The inherited
+    -- IdentifiedObject.name attribute might not necessarily match this name.
+    "apiName" VARCHAR(255),
+    -- Establishes the signal value size, in bytes, expected in the CIGRE TB 958
+    -- API.
+    -- FK column reference to table representing the "IEEECigreAPIParameterKind" enumeration
+    "apiParameterKind" VARCHAR(100),
+    -- The signal's expected zero-based sequence number in the CIGRE TB 958 API
+    -- array for input and output signals.
+    "apiSequenceNumber" INTEGER,
+    -- Signal array dimension from the CIGRE TB 958 API, defaults to 1.
+    "apiWidth" INTEGER,
     -- Multiplier for the units of this signal, in CIM. May require interpretation
-    -- of information returned from the DLL API.
+    -- of information returned from the CIGRE TB 958 API.
     -- FK column reference to table representing the "UnitMultiplier" enumeration
     "multiplier" VARCHAR(100),
     -- The signal's phase, as applicable, for multiphase signal connections.
     -- FK column reference to table representing the "SinglePhaseKind" enumeration
     "phase" VARCHAR(100),
     -- Signal units, if applicable, in CIM. May require interpretation of information
-    -- returned from the DLL API.
+    -- returned from the CIGRE TB 958 API.
     -- FK column reference to table representing the "UnitSymbol" enumeration
     "unit" VARCHAR(100),
     -- Use for a bus voltage or other bus quantity signal. Mutually exclusive
@@ -1312,20 +1321,20 @@ CREATE TABLE "IEEECigreDLLSignal"
     -- with assocation to ConnectivityNode or ACDCTerminal.
     -- FK column reference to table representing the "DCNode" class
     "DCNode" VARCHAR(100),
-    -- Expanded set of attributes available from the DLL API.
-    -- FK column reference to table representing the "IEEECigreDLLSignalInfo" class
-    "IEEECigreDLLSignalInfo" VARCHAR(100)
+    -- Expanded set of attributes available from the CIGRE TB 958 API.
+    -- FK column reference to table representing the "IEEECigreAPISignalInfo" class
+    "IEEECigreAPISignalInfo" VARCHAR(100)
 );
 
--- Supplemental information about the signal from the DLL API.
-CREATE TABLE "IEEECigreDLLSignalInfo"
+-- Supplemental information about the signal from the CIGRE TB 958 API.
+CREATE TABLE "IEEECigreAPISignalInfo"
 (
     "mRID" VARCHAR(100) PRIMARY KEY,
-    -- A description of the signal as written by the DLL developer.
-    "dllDescription" VARCHAR(255),
-    -- The signal units expected by the DLL. This may not correspond to CIM units,
-    -- so interpretation may be required.
-    "dllUnit" VARCHAR(255)
+    -- A description of the signal as written by the model's developer.
+    "apiDescription" VARCHAR(255),
+    -- The signal units expected by the CIGRE TB 958 API. This may not correspond
+    -- to CIM units, so interpretation may be required.
+    "apiUnit" VARCHAR(255)
 );
 
 -- This is a class that provides common identification for all classes needing
@@ -3197,17 +3206,17 @@ ALTER TABLE "HydroGeneratingUnit" ADD FOREIGN KEY ( "mRID" ) REFERENCES "Generat
 -- Inheritance subclass-superclass constraint for table "IBRPlant"
 ALTER TABLE "IBRPlant" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ConnectedFacility" ( "mRID" );
 
--- Inheritance subclass-superclass constraint for table "IEEECigreDLL"
-ALTER TABLE "IEEECigreDLL" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DetailedModelDynamics" ( "mRID" );
+-- Inheritance subclass-superclass constraint for table "IEEECigreAPI"
+ALTER TABLE "IEEECigreAPI" ADD FOREIGN KEY ( "mRID" ) REFERENCES "DetailedModelDynamics" ( "mRID" );
 
--- Inheritance subclass-superclass constraint for table "IEEECigreDLLInput"
-ALTER TABLE "IEEECigreDLLInput" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IEEECigreDLLSignal" ( "mRID" );
+-- Inheritance subclass-superclass constraint for table "IEEECigreAPIInput"
+ALTER TABLE "IEEECigreAPIInput" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IEEECigreAPISignal" ( "mRID" );
 
--- Inheritance subclass-superclass constraint for table "IEEECigreDLLOutput"
-ALTER TABLE "IEEECigreDLLOutput" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IEEECigreDLLSignal" ( "mRID" );
+-- Inheritance subclass-superclass constraint for table "IEEECigreAPIOutput"
+ALTER TABLE "IEEECigreAPIOutput" ADD FOREIGN KEY ( "mRID" ) REFERENCES "IEEECigreAPISignal" ( "mRID" );
 
--- Inheritance subclass-superclass constraint for table "IEEECigreDLLSignal"
-ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "mRID" ) REFERENCES "SignalDescriptor" ( "mRID" );
+-- Inheritance subclass-superclass constraint for table "IEEECigreAPISignal"
+ALTER TABLE "IEEECigreAPISignal" ADD FOREIGN KEY ( "mRID" ) REFERENCES "SignalDescriptor" ( "mRID" );
 
 -- Inheritance subclass-superclass constraint for table "LinearShuntCompensator"
 ALTER TABLE "LinearShuntCompensator" ADD FOREIGN KEY ( "mRID" ) REFERENCES "ShuntCompensator" ( "mRID" );
@@ -3439,23 +3448,23 @@ ALTER TABLE "EnergyConsumer" ADD FOREIGN KEY ( "LoadResponse" ) REFERENCES "Load
 -- Foreign keys for table "Equipment"
 ALTER TABLE "Equipment" ADD FOREIGN KEY ( "EquipmentContainer" ) REFERENCES "EquipmentContainer" ( "mRID" );
 
--- Foreign keys for table "IEEECigreDLL"
-ALTER TABLE "IEEECigreDLL" ADD FOREIGN KEY ( "dllEmtRmsMode" ) REFERENCES "IEEECigreDLLModeKind" ( "name" );
-ALTER TABLE "IEEECigreDLL" ADD FOREIGN KEY ( "IEEECigreDLLInfo" ) REFERENCES "IEEECigreDLLInfo" ( "mRID" );
+-- Foreign keys for table "IEEECigreAPI"
+ALTER TABLE "IEEECigreAPI" ADD FOREIGN KEY ( "apiEmtRmsMode" ) REFERENCES "IEEECigreAPIModeKind" ( "name" );
+ALTER TABLE "IEEECigreAPI" ADD FOREIGN KEY ( "IEEECigreAPIInfo" ) REFERENCES "IEEECigreAPIInfo" ( "mRID" );
 
--- Foreign keys for table "IEEECigreDLLParameter"
-ALTER TABLE "IEEECigreDLLParameter" ADD FOREIGN KEY ( "dllParameterKind" ) REFERENCES "IEEECigreDLLParameterKind" ( "name" );
-ALTER TABLE "IEEECigreDLLParameter" ADD FOREIGN KEY ( "IEEECigreDLL" ) REFERENCES "IEEECigreDLL" ( "mRID" );
-ALTER TABLE "IEEECigreDLLParameter" ADD FOREIGN KEY ( "IEEECigreDLLParameterInfo" ) REFERENCES "IEEECigreDLLParameterInfo" ( "mRID" );
+-- Foreign keys for table "IEEECigreAPIParameter"
+ALTER TABLE "IEEECigreAPIParameter" ADD FOREIGN KEY ( "apiParameterKind" ) REFERENCES "IEEECigreAPIParameterKind" ( "name" );
+ALTER TABLE "IEEECigreAPIParameter" ADD FOREIGN KEY ( "IEEECigreAPI" ) REFERENCES "IEEECigreAPI" ( "mRID" );
+ALTER TABLE "IEEECigreAPIParameter" ADD FOREIGN KEY ( "IEEECigreAPIParameterInfo" ) REFERENCES "IEEECigreAPIParameterInfo" ( "mRID" );
 
--- Foreign keys for table "IEEECigreDLLSignal"
-ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "dllParameterKind" ) REFERENCES "IEEECigreDLLParameterKind" ( "name" );
-ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "multiplier" ) REFERENCES "UnitMultiplier" ( "name" );
-ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "phase" ) REFERENCES "SinglePhaseKind" ( "name" );
-ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "unit" ) REFERENCES "UnitSymbol" ( "name" );
-ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
-ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "DCNode" ) REFERENCES "DCNode" ( "mRID" );
-ALTER TABLE "IEEECigreDLLSignal" ADD FOREIGN KEY ( "IEEECigreDLLSignalInfo" ) REFERENCES "IEEECigreDLLSignalInfo" ( "mRID" );
+-- Foreign keys for table "IEEECigreAPISignal"
+ALTER TABLE "IEEECigreAPISignal" ADD FOREIGN KEY ( "apiParameterKind" ) REFERENCES "IEEECigreAPIParameterKind" ( "name" );
+ALTER TABLE "IEEECigreAPISignal" ADD FOREIGN KEY ( "multiplier" ) REFERENCES "UnitMultiplier" ( "name" );
+ALTER TABLE "IEEECigreAPISignal" ADD FOREIGN KEY ( "phase" ) REFERENCES "SinglePhaseKind" ( "name" );
+ALTER TABLE "IEEECigreAPISignal" ADD FOREIGN KEY ( "unit" ) REFERENCES "UnitSymbol" ( "name" );
+ALTER TABLE "IEEECigreAPISignal" ADD FOREIGN KEY ( "ConnectivityNode" ) REFERENCES "ConnectivityNode" ( "mRID" );
+ALTER TABLE "IEEECigreAPISignal" ADD FOREIGN KEY ( "DCNode" ) REFERENCES "DCNode" ( "mRID" );
+ALTER TABLE "IEEECigreAPISignal" ADD FOREIGN KEY ( "IEEECigreAPISignalInfo" ) REFERENCES "IEEECigreAPISignalInfo" ( "mRID" );
 
 -- Foreign keys for table "MachineSaturationCurve"
 ALTER TABLE "MachineSaturationCurve" ADD FOREIGN KEY ( "SynchronousMachineDetailed" ) REFERENCES "SynchronousMachineDetailed" ( "mRID" );
@@ -3604,11 +3613,11 @@ ALTER TABLE "TransformerSaturationCurve" ADD FOREIGN KEY ( "TransformerCoreAdmit
 
 -- Cascade deletes for compounds referenced in table "Equipment"
 
--- Cascade deletes for compounds referenced in table "IEEECigreDLL"
+-- Cascade deletes for compounds referenced in table "IEEECigreAPI"
 
--- Cascade deletes for compounds referenced in table "IEEECigreDLLParameter"
+-- Cascade deletes for compounds referenced in table "IEEECigreAPIParameter"
 
--- Cascade deletes for compounds referenced in table "IEEECigreDLLSignal"
+-- Cascade deletes for compounds referenced in table "IEEECigreAPISignal"
 
 -- Cascade deletes for compounds referenced in table "MachineSaturationCurve"
 
@@ -3694,12 +3703,12 @@ CREATE INDEX ix_DiagramObject_IdentifiedObject ON "DiagramObject" ( "IdentifiedO
 CREATE INDEX ix_DiagramObjectPoint_DiagramObject ON "DiagramObjectPoint" ( "DiagramObject" );
 CREATE INDEX ix_EnergyConsumer_LoadResponse ON "EnergyConsumer" ( "LoadResponse" );
 CREATE INDEX ix_Equipment_EquipmentContainer ON "Equipment" ( "EquipmentContainer" );
-CREATE INDEX ix_IEEECigreDLL_IEEECigreDLLInfo ON "IEEECigreDLL" ( "IEEECigreDLLInfo" );
-CREATE INDEX ix_IEEECigreDLLParameter_IEEECigreDLL ON "IEEECigreDLLParameter" ( "IEEECigreDLL" );
-CREATE INDEX ix_IEEECigreDLLParameter_IEEECigreDLLParameterInfo ON "IEEECigreDLLParameter" ( "IEEECigreDLLParameterInfo" );
-CREATE INDEX ix_IEEECigreDLLSignal_ConnectivityNode ON "IEEECigreDLLSignal" ( "ConnectivityNode" );
-CREATE INDEX ix_IEEECigreDLLSignal_DCNode ON "IEEECigreDLLSignal" ( "DCNode" );
-CREATE INDEX ix_IEEECigreDLLSignal_IEEECigreDLLSignalInfo ON "IEEECigreDLLSignal" ( "IEEECigreDLLSignalInfo" );
+CREATE INDEX ix_IEEECigreAPI_IEEECigreAPIInfo ON "IEEECigreAPI" ( "IEEECigreAPIInfo" );
+CREATE INDEX ix_IEEECigreAPIParameter_IEEECigreAPI ON "IEEECigreAPIParameter" ( "IEEECigreAPI" );
+CREATE INDEX ix_IEEECigreAPIParameter_IEEECigreAPIParameterInfo ON "IEEECigreAPIParameter" ( "IEEECigreAPIParameterInfo" );
+CREATE INDEX ix_IEEECigreAPISignal_ConnectivityNode ON "IEEECigreAPISignal" ( "ConnectivityNode" );
+CREATE INDEX ix_IEEECigreAPISignal_DCNode ON "IEEECigreAPISignal" ( "DCNode" );
+CREATE INDEX ix_IEEECigreAPISignal_IEEECigreAPISignalInfo ON "IEEECigreAPISignal" ( "IEEECigreAPISignalInfo" );
 CREATE INDEX ix_MachineSaturationCurve_SynchronousMachineDetailed ON "MachineSaturationCurve" ( "SynchronousMachineDetailed" );
 CREATE INDEX ix_OperationalLimit_OperationalLimitSet ON "OperationalLimit" ( "OperationalLimitSet" );
 CREATE INDEX ix_OperationalLimit_OperationalLimitType ON "OperationalLimit" ( "OperationalLimitType" );

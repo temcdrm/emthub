@@ -465,24 +465,24 @@
       "default": null
     }
   },
-  "IEEECigreDLL": {
-    "dllDLLInterfaceVersion": {
+  "IEEECigreAPI": {
+    "apiDLLInterfaceVersion": {
       "type": "String",
       "default": null
     },
-    "dllEmtRmsMode": {
-      "type": "IEEECigreDLLModeKind",
+    "apiEmtRmsMode": {
+      "type": "IEEECigreAPIModeKind",
       "default": null
     },
-    "dllFixedStepBaseSampleTime": {
+    "apiFixedStepBaseSampleTime": {
       "type": "Seconds",
       "default": null
     },
-    "dllModelName": {
+    "apiModelName": {
       "type": "String",
       "default": null
     },
-    "dllModelVersion": {
+    "apiModelVersion": {
       "type": "String",
       "default": null
     },
@@ -498,72 +498,76 @@
       "type": "String",
       "default": null
     },
-    "IEEECigreDLLInfo": {
-      "type": "IEEECigreDLLInfo",
+    "IEEECigreAPIInfo": {
+      "type": "IEEECigreAPIInfo",
       "default": null
     }
   },
-  "IEEECigreDLLInfo": {
-    "dllGeneralInformation": {
+  "IEEECigreAPIInfo": {
+    "apiGeneralInformation": {
       "type": "String",
       "default": null
     },
-    "dllModelCreated": {
+    "apiModelCreated": {
       "type": "DateTime",
       "default": null
     },
-    "dllModelCreator": {
+    "apiModelCreator": {
       "type": "String",
       "default": null
     },
-    "dllModelDescription": {
+    "apiModelDescription": {
       "type": "String",
       "default": null
     },
-    "dllModelLastModifiedBy": {
+    "apiModelLastModifiedBy": {
       "type": "String",
       "default": null
     },
-    "dllModelLastModifiedDate": {
+    "apiModelLastModifiedDate": {
       "type": "DateTime",
       "default": null
     },
-    "dllModelModifiedComment": {
+    "apiModelModifiedComment": {
       "type": "String",
       "default": null
     },
-    "dllModelModifiedHistory": {
+    "apiModelModifiedHistory": {
       "type": "String",
       "default": null
     },
-    "dllNumDoubleStates": {
+    "apiNumDoubleStates": {
       "type": "Integer",
       "default": null
     },
-    "dllNumFloatStates": {
+    "apiNumFloatStates": {
       "type": "Integer",
       "default": null
     },
-    "dllNumInputPorts": {
+    "apiNumInputPorts": {
       "type": "Integer",
       "default": null
     },
-    "dllNumIntStates": {
+    "apiNumIntStates": {
       "type": "Integer",
       "default": null
     },
-    "dllNumOutputPorts": {
+    "apiNumOutputPorts": {
       "type": "Integer",
       "default": null
     },
-    "dllNumParameters": {
+    "apiNumParameters": {
       "type": "Integer",
+      "default": null
+    },
+    "IEEECigreAPIs": {
+      "type": "IEEECigreAPI",
       "default": null
     }
   },
-  "IEEECigreDLLInput": {
+  "IEEECigreAPIInput": {
     "kind": {
-      "type": "IEEECigreDLLInputKind",
+      "type": "IEEECigreAPIInputKind",
       "default": null
     },
     "sensorRatio": {
@@ -571,9 +575,9 @@
       "default": null
     }
   },
-  "IEEECigreDLLOutput": {
+  "IEEECigreAPIOutput": {
     "kind": {
-      "type": "IEEECigreDLLOutputKind",
+      "type": "IEEECigreAPIOutputKind",
       "default": null
     },
     "scalingRatio": {
@@ -581,12 +585,12 @@
       "default": null
     }
   },
-  "IEEECigreDLLParameter": {
-    "dllParameterKind": {
-      "type": "IEEECigreDLLParameterKind",
+  "IEEECigreAPIParameter": {
+    "apiParameterKind": {
+      "type": "IEEECigreAPIParameterKind",
       "default": null
     },
-    "dllSequenceNumber": {
+    "apiSequenceNumber": {
       "type": "Integer",
       "default": null
     },
@@ -594,56 +598,64 @@
       "type": "String",
       "default": null
     },
-    "IEEECigreDLL": {
-      "type": "IEEECigreDLL",
+    "IEEECigreAPI": {
+      "type": "IEEECigreAPI",
       "default": null
     },
-    "IEEECigreDLLParameterInfo": {
-      "type": "IEEECigreDLLParameterInfo",
+    "IEEECigreAPIParameterInfo": {
+      "type": "IEEECigreAPIParameterInfo",
       "default": null
     }
   },
-  "IEEECigreDLLParameterInfo": {
-    "dllDefaultValue": {
+  "IEEECigreAPIParameterInfo": {
+    "apiDefaultValue": {
       "type": "String",
       "default": null
     },
-    "dllDescription": {
+    "apiDescription": {
       "type": "String",
       "default": null
     },
-    "dllFixedValue": {
+    "apiFixedValue": {
       "type": "Boolean",
       "default": null
     },
-    "dllGroupName": {
+    "apiGroupName": {
       "type": "String",
       "default": null
     },
-    "dllMaxValue": {
+    "apiMaxValue": {
       "type": "String",
       "default": null
     },
-    "dllMinValue": {
+    "apiMinValue": {
       "type": "String",
       "default": null
     },
-    "dllName": {
+    "apiName": {
       "type": "String",
       "default": null
     },
-    "dllUnit": {
+    "apiUnit": {
       "type": "String",
+      "default": null
+    },
+    "IEEECigreAPIParameters": {
+      "type": "IEEECigreAPIParameter",
       "default": null
     }
   },
-  "IEEECigreDLLSignalInfo": {
-    "dllDescription": {
+  "IEEECigreAPISignalInfo": {
+    "apiDescription": {
       "type": "String",
       "default": null
     },
-    "dllUnit": {
+    "apiUnit": {
       "type": "String",
+      "default": null
+    },
+    "IEEECigreAPISignals": {
+      "type": "IEEECigreAPISignal",
       "default": null
     }
   },
@@ -1489,20 +1501,20 @@
       "default": null
     }
   },
-  "IEEECigreDLLSignal": {
-    "dllName": {
+  "IEEECigreAPISignal": {
+    "apiName": {
       "type": "String",
       "default": null
     },
-    "dllParameterKind": {
-      "type": "IEEECigreDLLParameterKind",
+    "apiParameterKind": {
+      "type": "IEEECigreAPIParameterKind",
       "default": null
     },
-    "dllSequenceNumber": {
+    "apiSequenceNumber": {
       "type": "Integer",
       "default": null
     },
-    "dllWidth": {
+    "apiWidth": {
       "type": "Integer",
       "default": null
     },
@@ -1526,8 +1538,8 @@
       "type": "DCNode",
       "default": null
     },
-    "IEEECigreDLLSignalInfo": {
-      "type": "IEEECigreDLLSignalInfo",
+    "IEEECigreAPISignalInfo": {
+      "type": "IEEECigreAPISignalInfo",
       "default": null
     }
   },
