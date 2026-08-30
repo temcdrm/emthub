@@ -1185,8 +1185,8 @@ ORDER by ?name
 # Examples for Annex C.5 of P3743
 
 PREFIX r:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX c:  <http://www.ucaiug.org/ns#>
-PREFIX e:  <http://opensource.ieee.org/emtiop#>
+PREFIX c:  <http://www.ucaiug.org/grid18v15#>
+PREFIX e:  <http://opensource.ieee.org/emtiop01v01#>
 SELECT DISTINCT ?name ?GeneratingUnit_type ?ConnectivityNode1_name ?RegulatingCondEq_mRID ?PowerTransformer_mRID ?vectorGroup WHERE {
  ?s c:IdentifiedObject.name ?name.
  ?s c:IdentifiedObject.mRID ?RegulatingCondEq_mRID.
@@ -1209,8 +1209,8 @@ SELECT DISTINCT ?name ?GeneratingUnit_type ?ConnectivityNode1_name ?RegulatingCo
 ORDER by ?name
 
 PREFIX r:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX c:  <http://www.ucaiug.org/ns#>
-PREFIX e:  <http://opensource.ieee.org/emtiop#>
+PREFIX c:  <http://www.ucaiug.org/grid18v15#>
+PREFIX e:  <http://opensource.ieee.org/emtiop01v01#>
 SELECT DISTINCT ?mRID ?name ?Equipment_mRID ?Equipment_type WHERE {
  ?p r:type e:IBRPlant.
  ?p c:IdentifiedObject.name ?name.
@@ -1226,10 +1226,13 @@ SELECT DISTINCT ?mRID ?name ?Equipment_mRID ?Equipment_type WHERE {
 ##################################################
 # Examples for Annex C.6 of P3743
 
+PREFIX r:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX c:  <http://www.ucaiug.org/grid18v15#>
+PREFIX e:  <http://opensource.ieee.org/emtiop01v01#>
 SELECT DISTINCT 
    ?DetailedModelDynamics_mRID 
-   ?sequenceNumber 
-   ?name ?width ?kind ?unit ?multiplier ?phase 
+   ?apiSequenceNumber 
+   ?apiName ?apiWidth ?apiParameterKind ?unit ?multiplier ?phase 
    ?ConnectivityNode_mRID ?DCNode_mRID ?ACDCTerminal_mRID 
 WHERE {
 #VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
@@ -1240,17 +1243,17 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?DetailedModelDynamics_mRID.
  ?p c:SignalDescriptor.DynamicsFunctionBlock ?d.
- ?p e:IEEECigreAPISignal.sequenceNumber ?sequenceNumber.
- ?p e:IEEECigreAPISignal.name ?name.
- ?p e:IEEECigreAPISignal.width ?width.
+ ?p e:IEEECigreAPISignal.apiSequenceNumber ?apiSequenceNumber.
+ ?p e:IEEECigreAPISignal.apiName ?apiName.
+ ?p e:IEEECigreAPISignal.apiWidth ?apiWidth.
  {?p e:IEEECigreAPISignal.unit ?rawunit.
   bind(strafter(str(?rawunit),"UnitSymbol.") as ?unit)}
  {?p e:IEEECigreAPISignal.multiplier ?rawmult.
   bind(strafter(str(?rawmult),"UnitMultiplier.") as ?multiplier)}
  OPTIONAL {?p e:IEEECigreAPISignal.phase ?rawphase.
   bind(strafter(str(?rawphase),"Kind.") as ?phase)}
- {?p e:IEEECigreAPISignal.parameterKind ?rawkind.
-  bind(strafter(str(?rawkind),"Kind.") as ?parameterKind)}
+ {?p e:IEEECigreAPISignal.apiParameterKind ?rawkind.
+  bind(strafter(str(?rawkind),"Kind.") as ?apiParameterKind)}
  {?p e:IEEECigreAPIInput.kind ?rawsig.
   bind(strafter(str(?rawsig),"Kind.") as ?kind)}
  OPTIONAL {?p e:IEEECigreAPISignal.ConnectivityNode ?cn.
@@ -1259,12 +1262,16 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
            ?dcn c:IdentifiedObject.mRID ?DCNode_mRID}
  OPTIONAL {?p c:SignalDescriptor.ACDCTerminal ?trm.
           bind(substr(str(?trm),strlen(str(?trm))-37,38) as ?ACDCTerminal_mRID)}
-} ORDER by ?DetailedModelDynamics_mRID ?sequenceNumber
+# FILTER (BOUND(?ConnectivityNode_mRID) || BOUND(?DCNode_mRID) || BOUND(?ACDCTerminal_mRID))
+} ORDER by ?DetailedModelDynamics_mRID ?apiSequenceNumber
 
+PREFIX r:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX c:  <http://www.ucaiug.org/grid18v15#>
+PREFIX e:  <http://opensource.ieee.org/emtiop01v01#>
 SELECT DISTINCT 
    ?DetailedModelDynamics_mRID 
-   ?sequenceNumber 
-   ?name ?width ?kind ?unit ?multiplier ?phase 
+   ?apiSequenceNumber 
+   ?apiName ?apiWidth ?apiParameterKind ?unit ?multiplier ?phase 
    ?ACDCTerminal_mRID 
 WHERE {
 #VALUES ?EquipmentContainer_mRID {"6477751A-0472-4FD6-B3C3-3AD4945CBE56"^^c:String}
@@ -1275,29 +1282,29 @@ VALUES ?EquipmentContainer_mRID {"62CB0930-211D-4762-B5C1-27BF73EAC7C4"^^c:Strin
  ?d c:DetailedModelDynamics.Equipment ?eq.
  ?d c:IdentifiedObject.mRID ?DetailedModelDynamics_mRID.
  ?p c:SignalDescriptor.DynamicsFunctionBlock ?d.
- ?p e:IEEECigreAPISignal.sequenceNumber ?sequenceNumber.
- ?p e:IEEECigreAPISignal.name ?name.
- ?p e:IEEECigreAPISignal.width ?width.
+ ?p e:IEEECigreAPISignal.apiSequenceNumber ?apiSequenceNumber.
+ ?p e:IEEECigreAPISignal.apiName ?apiName.
+ ?p e:IEEECigreAPISignal.apiWidth ?apiWidth.
  {?p e:IEEECigreAPISignal.unit ?rawunit.
   bind(strafter(str(?rawunit),"UnitSymbol.") as ?unit)}
  {?p e:IEEECigreAPISignal.multiplier ?rawmult.
   bind(strafter(str(?rawmult),"UnitMultiplier.") as ?multiplier)}
  OPTIONAL {?p e:IEEECigreAPISignal.phase ?rawphase.
   bind(strafter(str(?rawphase),"Kind.") as ?phase)}
- {?p e:IEEECigreAPISignal.parameterKind ?rawkind.
-  bind(strafter(str(?rawkind),"Kind.") as ?parameterKind)}
+ {?p e:IEEECigreAPISignal.apiParameterKind ?rawkind.
+  bind(strafter(str(?rawkind),"Kind.") as ?apiParameterKind)}
  {?p e:IEEECigreAPIOutput.kind ?rawsig.
   bind(strafter(str(?rawsig),"Kind.") as ?kind)}
  OPTIONAL {?p c:SignalDescriptor.ACDCTerminal ?trm.
           bind(substr(str(?trm),strlen(str(?trm))-37,38) as ?ACDCTerminal_mRID)}
-} ORDER by ?DetailedModelDynamics_mRID ?sequenceNumber
+} ORDER by ?DetailedModelDynamics_mRID ?apiSequenceNumber
 
 ##################################################
 
 for OWL files
 
-PREFIX cim:  <http://www.ucaiug.org/ns#>
-PREFIX emt:  <http://opensource.ieee.org/emtiop#>
+PREFIX c:  <http://www.ucaiug.org/grid18v15#>
+PREFIX e:  <http://opensource.ieee.org/emtiop01v01#>
 PREFIX msg:  <http://langdale.com.au/2005/Message#>
 PREFIX owl:  <http://www.w3.org/2002/07/owl#>
 PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
