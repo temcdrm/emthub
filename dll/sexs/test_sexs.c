@@ -12,33 +12,34 @@
 
 #include "IEEE_Cigre_DLLWrapper.h"
  
-void initialize_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, int nPorts)
-{
-  double Efd = 1.0;
-  char *pData = (char *) pModel->ExternalOutputs;
-  memcpy (pData + pMap[0].offset, &Efd, pMap[0].size);
-}
-
-void update_inputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, double t, int nPorts)
-{
-  double Vref = 1.0;
-  double Vc = 1.0;
-  double Vs = 0.0;
-//  if (t >= 0.1) {
-//    Vref = 1.01;
+//void initialize_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, int nPorts)
+//{
+//  double Efd = 1.0;
+//  char *pData = (char *) pModel->ExternalOutputs;
+//  memcpy (pData + pMap[0].offset, &Efd, pMap[0].size);
+//}
+//
+//void update_inputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, double t, int nPorts)
+//{
+//  double Vref = 1.0;
+//  double Vc = 1.0;
+//  double Vs = 0.0;
+////  if (t >= 0.1) {
+////    Vref = 1.01;
+////  }
+//  if (t >= 0.2 && t <= 0.35) { // fault
+//    Vc = 0.5;
 //  }
-  if (t >= 0.2 && t <= 0.35) { // fault
-    Vc = 0.5;
-  }
-  char *pData = (char *) pModel->ExternalInputs;
-  memcpy (pData + pMap[0].offset, &Vref, pMap[0].size);
-  memcpy (pData + pMap[1].offset, &Vc, pMap[1].size);
-  memcpy (pData + pMap[2].offset, &Vs, pMap[2].size);
-}
+//  char *pData = (char *) pModel->ExternalInputs;
+//  memcpy (pData + pMap[0].offset, &Vref, pMap[0].size);
+//  memcpy (pData + pMap[1].offset, &Vc, pMap[1].size);
+//  memcpy (pData + pMap[2].offset, &Vs, pMap[2].size);
+//}
 
 int main( void ) 
 {
   int idxTc, idxKc, idxEmin, idxEmax, idxEfdMin, idxEfdMax, idxVref, idxVs, idxVc, idxEfd;
+  double t, Vref = 1.0, Vs = 0.0, VcOLD, VcOLS, VcCL, EfdOLD = 1.0, EfdOLS = 1.0, EfdCL = 1.0;
   show_struct_alignment_requirements ();
 
   // create three instances of the DLL for testing
@@ -63,6 +64,17 @@ int main( void )
   // configure the different tests
   set_dll_real_value ((char *) pMdlOLD->Parameters, pWrap->pParameterMap, idxKc, 1.0);
   set_dll_real_value ((char *) pMdlOLD->Parameters, pWrap->pParameterMap, idxTc, 1.0);
+  // set the constant inputs
+  set_dll_real_value ((char *) pMdlOLD->ExternalInputs, pWrap->pInputMap, idxVref, Vref);
+  set_dll_real_value ((char *) pMdlOLS->ExternalInputs, pWrap->pInputMap, idxVref, Vref);
+  set_dll_real_value ((char *) pMdlCL->ExternalInputs, pWrap->pInputMap, idxVref, Vref);
+  set_dll_real_value ((char *) pMdlOLD->ExternalInputs, pWrap->pInputMap, idxVs, Vs);
+  set_dll_real_value ((char *) pMdlOLS->ExternalInputs, pWrap->pInputMap, idxVs, Vs);
+  set_dll_real_value ((char *) pMdlCL->ExternalInputs, pWrap->pInputMap, idxVs, Vs);
+  // initialize the outputs
+  set_dll_real_value ((char *) pMdlOLD->ExternalOutputs, pWrap->pOutputMap, idxEfd, EfdOLD);
+  set_dll_real_value ((char *) pMdlOLS->ExternalOutputs, pWrap->pOutputMap, idxEfd, EfdOLS);
+  set_dll_real_value ((char *) pMdlCL->ExternalOutputs, pWrap->pOutputMap, idxEfd, EfdCL);
 
   if (NULL != pWrap) {
     PrintDLLModelParameters (pWrap);
@@ -82,8 +94,6 @@ int main( void )
 
     // initialize time-stepping
     printf("calling Initialize\n");
-    update_inputs (pMdlOLD, pWrap->pInputMap, -1.0, pWrap->pInfo->NumInputPorts);
-    initialize_outputs (pMdlOLD, pWrap->pOutputMap, pWrap->pInfo->NumOutputPorts);
     pWrap->Model_Initialize (pMdlOLD);
     check_messages ("Model_Initialize", pMdlOLD);
 
@@ -93,25 +103,31 @@ int main( void )
     double t = 0.0;
     printf("opening %s\n", CSV_NAME);
     FILE *fp = fopen (CSV_NAME, "w");
-    write_csv_header (fp, pWrap->pInfo);  // TODO: replace
+    fprintf (fp, "t,Vref,Vs,VcOLS,EfdOLS,VcOLD,EfdOLD,VcCL,EfdCL\n"); // csv header
     double tstop = TMAX + 0.5 * dt;
     while (t <= tstop) {
       // update the inputs for this next DLL step
+      if (t >= 0.2 && t <= 0.35) {
+        VcOLD = VcOLS = VcCL = 0.5;
+      } else {
+        VcOLD = VcOLS = VcCL = 1.0;
+      }
       pMdlOLD->Time = t;
-      update_inputs (pMdlOLD, pWrap->pInputMap, t, pWrap->pInfo->NumInputPorts);
       pMdlOLS->Time = t;
-      update_inputs (pMdlOLS, pWrap->pInputMap, t, pWrap->pInfo->NumInputPorts);
       pMdlCL->Time = t;
-      update_inputs (pMdlCL, pWrap->pInputMap, t, pWrap->pInfo->NumInputPorts);
+      set_dll_real_value ((char *) pMdlOLD->ExternalInputs, pWrap->pInputMap, idxVc, VcOLD);
+      set_dll_real_value ((char *) pMdlOLS->ExternalInputs, pWrap->pInputMap, idxVc, VcOLS);
+      set_dll_real_value ((char *) pMdlCL->ExternalInputs, pWrap->pInputMap, idxVc, VcCL);
       // execute the DLL
       pWrap->Model_Outputs (pMdlOLD);
       pWrap->Model_Outputs (pMdlOLS);
       pWrap->Model_Outputs (pMdlCL);
       // extract and write the outputs
-      double efdOLD = get_dll_real_value (pMdlOLD->ExternalOutputs, pWrap->pOutputMap, idxEfd);
-      double efdOLS = get_dll_real_value (pMdlOLS->ExternalOutputs, pWrap->pOutputMap, idxEfd);
-      double efdCL = get_dll_real_value (pMdlCL->ExternalOutputs, pWrap->pOutputMap, idxEfd);
-      write_csv_values (fp, pMdlOLD, pWrap->pInfo, pWrap->pInputMap, pWrap->pOutputMap, t);  // TODO: replace
+      EfdOLD = get_dll_real_value (pMdlOLD->ExternalOutputs, pWrap->pOutputMap, idxEfd);
+      EfdOLS = get_dll_real_value (pMdlOLS->ExternalOutputs, pWrap->pOutputMap, idxEfd);
+      EfdCL = get_dll_real_value (pMdlCL->ExternalOutputs, pWrap->pOutputMap, idxEfd);
+      fprintf (fp, "%g,%g,%g,%g,%g,%g,%g,%g,%g\n", 
+               t, Vref, Vs, VcOLS, EfdOLS, VcOLD, EfdOLD, VcCL, EfdCL); // csv values
       check_messages ("Model_Outputs", pMdlOLD);
       check_messages ("Model_Outputs", pMdlOLS);
       check_messages ("Model_Outputs", pMdlCL);

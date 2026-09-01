@@ -493,7 +493,7 @@ Wrapped_IEEE_Cigre_DLL * CreateFirstDLLModel (char *dll_name)
     // create a model instance, initialized to default values
     pWrap->pModel = CreateModelInstance (pWrap->pInfo, &pWrap->pParameterMap, &pWrap->pInputMap, &pWrap->pOutputMap);
     // keep track of all wrapped instances
-    pWrap->max_instances = 5;
+    pWrap->max_instances = 2;
     pWrap->num_instances = 0;
     pWrap->pAllModels = malloc(pWrap->max_instances * sizeof(IEEE_Cigre_DLLInterface_Instance *));
     pWrap->pAllModels[pWrap->num_instances] = pWrap->pModel;
