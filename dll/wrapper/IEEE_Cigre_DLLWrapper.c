@@ -22,6 +22,8 @@
 
 #include "IEEE_Cigre_DLLWrapper.h"
  
+#define CAPACITY 10
+ 
 struct MyCharPtrStruct {
   char_T c;
   char_T *v;
@@ -52,6 +54,43 @@ struct MyReal64Struct {
   real64_T v;
 };
 
+double get_dll_real_value (char *pBase, ArrayMap *pMap, int idx)
+{
+  double val = 0.0;
+  memcpy (&val, pBase + pMap[idx].offset, pMap[idx].size);
+  return val;
+}
+
+int find_dll_signal_index (const IEEE_Cigre_DLLInterface_Signal *pSignals, int count, const char *name)
+{
+  for (int i = 0; i < count; ++i) {
+    if (strcmp (pSignals[i].Name, name) == 0) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+int find_dll_parameter_index (const IEEE_Cigre_DLLInterface_Model_Info *pInfo, const char *name)
+{
+  for (int i = 0; i < pInfo->NumParameters; ++i) {
+    if (strcmp (pInfo->ParametersInfo[i].Name, name) == 0) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+void set_dll_real_value (char *pBase, ArrayMap *pMap, int idx, double value)
+{
+  memcpy (pBase + pMap[idx].offset, &value, pMap[idx].size);
+}
+
+void set_dll_int32_value (char *pBase, ArrayMap *pMap, int idx, int32_T value)
+{
+  memcpy (pBase + pMap[idx].offset, &value, pMap[idx].size);
+}
+ 
 void show_struct_alignment_requirements () {
 #ifndef ATP_MINGW
   printf ("Char alignment requirement: %zu\n", offsetof(struct MyCharStruct, v));
@@ -272,43 +311,6 @@ IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInter
   return pModel;
 }
 
-void FreeModelInstance (IEEE_Cigre_DLLInterface_Instance *pModel, ArrayMap *pParameterMap,
-                        ArrayMap *pInputMap, ArrayMap *pOutputMap)
-{
-#ifndef ATP_MINGW
-  printf("freeing pModel\n");
-#endif
-  if (NULL != pModel->ExternalInputs) {
-    free (pModel->ExternalInputs);
-  }
-  if (NULL != pModel->ExternalOutputs) {
-    free (pModel->ExternalOutputs);
-  }
-  if (NULL != pModel->IntStates) {
-    free (pModel->IntStates);
-  }
-  if (NULL != pModel->FloatStates) {
-    free (pModel->FloatStates);
-  }
-  if (NULL != pModel->DoubleStates) {
-    free (pModel->DoubleStates);
-  }
-  if (NULL != pModel->Parameters) {
-    free (pModel->Parameters);
-  }
-  free (pModel);
-  if (NULL != pInputMap) {
-    free (pInputMap);
-  }
-  if (NULL != pOutputMap) {
-    free (pOutputMap);
-  }
-  if (NULL != pParameterMap) {
-    free (pParameterMap);
-  }
-  return;
-}
-
 void check_messages (const char *loc, IEEE_Cigre_DLLInterface_Instance *pModel)
 {
 #ifndef ATP_MINGW
@@ -490,6 +492,12 @@ Wrapped_IEEE_Cigre_DLL * CreateFirstDLLModel (char *dll_name)
     pWrap->pInfo = pWrap->Model_GetInfo();
     // create a model instance, initialized to default values
     pWrap->pModel = CreateModelInstance (pWrap->pInfo, &pWrap->pParameterMap, &pWrap->pInputMap, &pWrap->pOutputMap);
+    // keep track of all wrapped instances
+    pWrap->max_instances = 5;
+    pWrap->num_instances = 0;
+    pWrap->pAllModels = malloc(pWrap->max_instances * sizeof(IEEE_Cigre_DLLInterface_Instance *));
+    pWrap->pAllModels[pWrap->num_instances] = pWrap->pModel;
+    pWrap->num_instances += 1;
   } else {
     printf ("LoadLibrary failed on %s\n", dll_name);
     free (pWrap);
@@ -498,18 +506,84 @@ Wrapped_IEEE_Cigre_DLL * CreateFirstDLLModel (char *dll_name)
   return pWrap;
 }
 
-void FreeFirstDLLModel (Wrapped_IEEE_Cigre_DLL *pWrap)
+IEEE_Cigre_DLLInterface_Instance * AddModelInstance (Wrapped_IEEE_Cigre_DLL *pWrap)
 {
-  // free the Model data and library
-  int val = pWrap->Model_Terminate (pWrap->pModel);
-//  if (IEEE_Cigre_DLLInterface_Return_OK != val) { // messages not initialized if the model was never used
-    check_messages ("Model_Terminate", pWrap->pModel);
-//  }
-  FreeModelInstance (pWrap->pModel, pWrap->pParameterMap, pWrap->pInputMap, pWrap->pOutputMap);
+  IEEE_Cigre_DLLInterface_Instance *pModel;
+  pModel = CreateModelInstance (pWrap->pInfo, &pWrap->pParameterMap, &pWrap->pInputMap, &pWrap->pOutputMap);
+  if (pWrap->num_instances >= pWrap->max_instances) {
+    pWrap->max_instances *= 2;
+    IEEE_Cigre_DLLInterface_Instance **pNew = realloc (pWrap->pAllModels, pWrap->max_instances * sizeof(IEEE_Cigre_DLLInterface_Instance *));
+    free (pWrap->pAllModels);
+    pWrap->pAllModels = pNew;
+  }
+  pWrap->pAllModels[pWrap->num_instances] = pModel;
+  pWrap->num_instances += 1;
+  return pModel;
+}
+
+void FreeModelInstance (IEEE_Cigre_DLLInterface_Instance *pModel)
+{
+#ifndef ATP_MINGW
+  printf("freeing pModel\n");
+#endif
+  if (NULL != pModel->ExternalInputs) {
+    free (pModel->ExternalInputs);
+  }
+  if (NULL != pModel->ExternalOutputs) {
+    free (pModel->ExternalOutputs);
+  }
+  if (NULL != pModel->IntStates) {
+    free (pModel->IntStates);
+  }
+  if (NULL != pModel->FloatStates) {
+    free (pModel->FloatStates);
+  }
+  if (NULL != pModel->DoubleStates) {
+    free (pModel->DoubleStates);
+  }
+  if (NULL != pModel->Parameters) {
+    free (pModel->Parameters);
+  }
+  free (pModel);
+  return;
+}
+
+void FreeModelWrapper (Wrapped_IEEE_Cigre_DLL *pWrap)
+{
+  if (NULL != pWrap->pInputMap) {
+    free (pWrap->pInputMap);
+  }
+  if (NULL != pWrap->pOutputMap) {
+    free (pWrap->pOutputMap);
+  }
+  if (NULL != pWrap->pParameterMap) {
+    free (pWrap->pParameterMap);
+  }
+  if (NULL != pWrap->pAllModels) {
+    free (pWrap->pAllModels);
+  }
   FreeLibrary (pWrap->hLib);
   free (pWrap);
+}
+
+void FreeAllDLLModels (Wrapped_IEEE_Cigre_DLL *pWrap)
+{
+  for (int i = 0; i < pWrap->num_instances; i++) {
+    // free the Model data and library
+    int val = pWrap->Model_Terminate (pWrap->pAllModels[i]);
+  //  if (IEEE_Cigre_DLLInterface_Return_OK != val) { // messages not initialized if the model was never used
+      check_messages ("Model_Terminate", pWrap->pAllModels[i]);
+  //  }
+    FreeModelInstance (pWrap->pAllModels[i]);
+  }
+  FreeModelWrapper (pWrap);
 #ifndef ATP_MINGW
   printf ("normal finish\n"); 
 #endif
+}
+
+void FreeFirstDLLModel (Wrapped_IEEE_Cigre_DLL *pWrap)
+{
+  FreeAllDLLModels (pWrap);
 }
 

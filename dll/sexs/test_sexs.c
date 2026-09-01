@@ -3,7 +3,7 @@
 // see https://learn.microsoft.com/en-us/windows/win32/dlls/using-run-time-dynamic-linking
 
 #define DLL_NAME "SEXS.dll"
-#define TMAX 5.0
+#define TMAX 0.8
 // relative output path for execution from the build directory, e.g., release\test or debug\test
 #define CSV_NAME "sexs.csv"
 
@@ -27,7 +27,7 @@ void update_inputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, do
 //  if (t >= 0.1) {
 //    Vref = 1.01;
 //  }
-  if (t >= 0.4 && t <= 0.6) { // fault
+  if (t >= 0.2 && t <= 0.35) { // fault
     Vc = 0.5;
   }
   char *pData = (char *) pModel->ExternalInputs;
@@ -36,36 +36,56 @@ void update_inputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, do
   memcpy (pData + pMap[2].offset, &Vs, pMap[2].size);
 }
 
-double extract_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, int nPorts)
-{
-  char *pData = (char *) pModel->ExternalOutputs;
-  double Efd = 0.0;
-  for (int i = 0; i < nPorts; i++) {
-    memcpy (&Efd, pData + pMap[i].offset, pMap[i].size);
-  }
-  return Efd;
-}
-
 int main( void ) 
 {
+  int idxTc, idxKc, idxEmin, idxEmax, idxEfdMin, idxEfdMax, idxVref, idxVs, idxVc, idxEfd;
   show_struct_alignment_requirements ();
-  Wrapped_IEEE_Cigre_DLL *pWrap = CreateFirstDLLModel (DLL_NAME);
+
+  // create three instances of the DLL for testing
+  Wrapped_IEEE_Cigre_DLL *pWrap = CreateFirstDLLModel (DLL_NAME); // pWrap for open-loop test, dynamic limiters
+  IEEE_Cigre_DLLInterface_Instance *pMdlOLD = pWrap->pModel;
+  IEEE_Cigre_DLLInterface_Instance *pMdlOLS = AddModelInstance (pWrap);
+  IEEE_Cigre_DLLInterface_Instance *pMdlCL = AddModelInstance (pWrap);
+  // parameter indexes from the wrapper
+  idxKc = find_dll_parameter_index (pWrap->pInfo, "Kc");
+  idxTc = find_dll_parameter_index (pWrap->pInfo, "Tc");
+  idxEmin = find_dll_parameter_index (pWrap->pInfo, "Emin");
+  idxEmax = find_dll_parameter_index (pWrap->pInfo, "Emax");
+  idxEfdMin = find_dll_parameter_index (pWrap->pInfo, "EfdEmin");
+  idxEfdMax = find_dll_parameter_index (pWrap->pInfo, "EfdEmin");
+  // input signal indexes from the wrapper
+  idxVref = find_dll_signal_index (pWrap->pInfo->InputPortsInfo, pWrap->pInfo->NumInputPorts, "Vref");
+  idxVs = find_dll_signal_index (pWrap->pInfo->InputPortsInfo, pWrap->pInfo->NumInputPorts, "Vs");
+  idxVc = find_dll_signal_index (pWrap->pInfo->InputPortsInfo, pWrap->pInfo->NumInputPorts, "Vc");
+  // output signal indexes from the wrapper
+  idxEfd = find_dll_signal_index (pWrap->pInfo->OutputPortsInfo, pWrap->pInfo->NumOutputPorts, "Efd");
+
+  // configure the different tests
+  set_dll_real_value ((char *) pMdlOLD->Parameters, pWrap->pParameterMap, idxKc, 1.0);
+  set_dll_real_value ((char *) pMdlOLD->Parameters, pWrap->pParameterMap, idxTc, 1.0);
+
   if (NULL != pWrap) {
     PrintDLLModelParameters (pWrap);
-    // initialize the model
+    // initialize all the models
     if (NULL != pWrap->Model_FirstCall) {
-      pWrap->Model_FirstCall (pWrap->pModel);
+      pWrap->Model_FirstCall (pMdlOLD);
+      pWrap->Model_FirstCall (pMdlOLS);
+      pWrap->Model_FirstCall (pMdlCL);
     }
     printf("calling CheckParameters\n");
-    pWrap->Model_CheckParameters (pWrap->pModel);
-    check_messages ("Model_CheckParameters", pWrap->pModel);
+    pWrap->Model_CheckParameters (pMdlOLD);
+    check_messages ("Model_CheckParameters", pMdlOLD);
+    pWrap->Model_CheckParameters (pMdlOLS);
+    check_messages ("Model_CheckParameters", pMdlOLS);
+    pWrap->Model_CheckParameters (pMdlCL);
+    check_messages ("Model_CheckParameters", pMdlCL);
 
     // initialize time-stepping
     printf("calling Initialize\n");
-    update_inputs (pWrap->pModel, pWrap->pInputMap, -1.0, pWrap->pInfo->NumInputPorts);
-    initialize_outputs (pWrap->pModel, pWrap->pOutputMap, pWrap->pInfo->NumOutputPorts);
-    pWrap->Model_Initialize (pWrap->pModel);
-    check_messages ("Model_Initialize", pWrap->pModel);
+    update_inputs (pMdlOLD, pWrap->pInputMap, -1.0, pWrap->pInfo->NumInputPorts);
+    initialize_outputs (pMdlOLD, pWrap->pOutputMap, pWrap->pInfo->NumOutputPorts);
+    pWrap->Model_Initialize (pMdlOLD);
+    check_messages ("Model_Initialize", pMdlOLD);
 
     // time step loop, matching the DLL's desired time step
     double dt = pWrap->pInfo->FixedStepBaseSampleTime;
@@ -73,21 +93,32 @@ int main( void )
     double t = 0.0;
     printf("opening %s\n", CSV_NAME);
     FILE *fp = fopen (CSV_NAME, "w");
-    write_csv_header (fp, pWrap->pInfo);
+    write_csv_header (fp, pWrap->pInfo);  // TODO: replace
     double tstop = TMAX + 0.5 * dt;
     while (t <= tstop) {
       // update the inputs for this next DLL step
-      pWrap->pModel->Time = t;
-      update_inputs (pWrap->pModel, pWrap->pInputMap, t, pWrap->pInfo->NumInputPorts);
+      pMdlOLD->Time = t;
+      update_inputs (pMdlOLD, pWrap->pInputMap, t, pWrap->pInfo->NumInputPorts);
+      pMdlOLS->Time = t;
+      update_inputs (pMdlOLS, pWrap->pInputMap, t, pWrap->pInfo->NumInputPorts);
+      pMdlCL->Time = t;
+      update_inputs (pMdlCL, pWrap->pInputMap, t, pWrap->pInfo->NumInputPorts);
       // execute the DLL
-      pWrap->Model_Outputs (pWrap->pModel);
-      double efd = extract_outputs (pWrap->pModel, pWrap->pOutputMap, pWrap->pInfo->NumOutputPorts);
-      write_csv_values (fp, pWrap->pModel, pWrap->pInfo, pWrap->pInputMap, pWrap->pOutputMap, t);
-      check_messages ("Model_Outputs", pWrap->pModel);
+      pWrap->Model_Outputs (pMdlOLD);
+      pWrap->Model_Outputs (pMdlOLS);
+      pWrap->Model_Outputs (pMdlCL);
+      // extract and write the outputs
+      double efdOLD = get_dll_real_value (pMdlOLD->ExternalOutputs, pWrap->pOutputMap, idxEfd);
+      double efdOLS = get_dll_real_value (pMdlOLS->ExternalOutputs, pWrap->pOutputMap, idxEfd);
+      double efdCL = get_dll_real_value (pMdlCL->ExternalOutputs, pWrap->pOutputMap, idxEfd);
+      write_csv_values (fp, pMdlOLD, pWrap->pInfo, pWrap->pInputMap, pWrap->pOutputMap, t);  // TODO: replace
+      check_messages ("Model_Outputs", pMdlOLD);
+      check_messages ("Model_Outputs", pMdlOLS);
+      check_messages ("Model_Outputs", pMdlCL);
       t += dt;
     }
     fclose (fp);
-    FreeFirstDLLModel (pWrap);
+    FreeAllDLLModels (pWrap);
   }
   return 0;
 }

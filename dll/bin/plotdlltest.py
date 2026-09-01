@@ -74,7 +74,7 @@ plots = {
                             {"name": "Iq", "base": hwpv_ibase, "axis": 1},
                             {"name": "Idc", "base": hwpv_idcbase, "axis": 1},
                             {"name": "Vdc", "base": hwpv_vdcbase, "axis": 1}]},
-  "sexs.csv": {"tmin": 0.0, "tmax": 2.0, "ttick": 0.2, "title": "SEXS Excitation System Test",
+  "sexs.csv": {"tmin": 0.0, "tmax": 0.8, "ttick": 0.1, "title": "SEXS Excitation System Test",
                 "ytitles": ["Inputs [pu]", "Outputs [pu]"],
                 "signals": [{"name": "Vref", "base": 1.0, "axis": 0},
                             {"name": "Vc", "base": 1.0, "axis": 0},

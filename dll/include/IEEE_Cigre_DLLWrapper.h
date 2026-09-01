@@ -42,16 +42,21 @@ typedef struct _Wrapped_IEEE_Cigre_DLL_ {
   IEEE_Cigre_DLLInterface_Instance *pModel;
   ArrayMap *pParameterMap; 
   ArrayMap *pInputMap; 
-  ArrayMap *pOutputMap; 
+  ArrayMap *pOutputMap;
+  int max_instances;
+  int num_instances; 
+  IEEE_Cigre_DLLInterface_Instance **pAllModels;
 } Wrapped_IEEE_Cigre_DLL;
 
 Wrapped_IEEE_Cigre_DLL * CreateFirstDLLModel (char *dll_name);
+IEEE_Cigre_DLLInterface_Instance * AddModelInstance (Wrapped_IEEE_Cigre_DLL *pWrap);
 
 #ifndef ATP_MINGW
 void PrintDLLModelParameters (Wrapped_IEEE_Cigre_DLL *pWrap);
 #endif
 
-void FreeFirstDLLModel (Wrapped_IEEE_Cigre_DLL *pWrap);
+void FreeFirstDLLModel (Wrapped_IEEE_Cigre_DLL *pWrap);  // for backward compatibility, calls FreeAllDLLModels
+void FreeAllDLLModels (Wrapped_IEEE_Cigre_DLL *pWrap);
 
 void show_struct_alignment_requirements ();
 
@@ -68,8 +73,9 @@ IEEE_Cigre_DLLInterface_Instance* CreateModelInstance (const IEEE_Cigre_DLLInter
                                                        ArrayMap **pInputMap,
                                                        ArrayMap **pOutputMap);
 
-void FreeModelInstance (IEEE_Cigre_DLLInterface_Instance *pModel, ArrayMap *pParameterMap,
-                        ArrayMap *pInputMap, ArrayMap *pOutputMap);
+void FreeModelInstance (IEEE_Cigre_DLLInterface_Instance *pModel);
+
+void FreeModelWrapper (Wrapped_IEEE_Cigre_DLL *pWrap);
 
 void check_messages (const char *loc, IEEE_Cigre_DLLInterface_Instance *pModel);
 
@@ -80,6 +86,14 @@ void write_csv_header (FILE *fp, const IEEE_Cigre_DLLInterface_Model_Info *pInfo
 
 void write_csv_values (FILE *fp, IEEE_Cigre_DLLInterface_Instance *pModel, const IEEE_Cigre_DLLInterface_Model_Info *pInfo, 
                        ArrayMap *pInputMap, ArrayMap *pOutputMap, double t);
+
+double get_dll_real_value (char *pBase, ArrayMap *pMap, int idx);
+
+int find_dll_signal_index (const IEEE_Cigre_DLLInterface_Signal *pSignals, int count, const char *name);
+
+int find_dll_parameter_index (const IEEE_Cigre_DLLInterface_Model_Info *pInfo, const char *name);
+
+void set_dll_int32_value (char *pBase, ArrayMap *pMap, int idx, int32_T value);
 #endif
 
 #endif

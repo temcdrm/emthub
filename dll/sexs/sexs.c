@@ -203,7 +203,7 @@ IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
   // Number of State Variables
   .NumIntStates = 0,
   .NumFloatStates = 0,
-  .NumDoubleStates = 6
+  .NumDoubleStates = 7
 };
 
 // ----------------------------------------------------------------
@@ -309,7 +309,7 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
 
   // local variables
   double Verr = inputs->Vref + inputs->Vs - inputs->Vc;
-  double y2, y1, y0;
+  double y2, y1, y0, Verr0;
 
   // test Efd initial condition against the clipping limit.
   if (outputs->Efd < parameters->EfdMin) {
@@ -331,12 +331,16 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
   }
   y0 = initialize_leadlag (1.0, parameters->TaTb*parameters->Tb, parameters->Tb, y1, &states[0]);
 
+  // save the initial error offset
+  Verr0 = y0;
+  states[6] = Verr0;
+
   // how close is the error signal based on the initial input values?
   sprintf_s(ErrorMessage, sizeof(ErrorMessage), "SEXS Message - input Verr (%f) compared to back-calculated Verr (%f).\n", Verr, y0);
   ret = MAX (ret,IEEE_Cigre_DLLInterface_Return_Message);
 
   printf("Initial y2=%0.5g, y1=%0.5g, y0=%0.5g\n", y2, y1, y0);
-  for (int i = 0; i < 6; i++) {
+  for (int i = 0; i < 7; i++) {
     printf("  State %1d=%0.5g\n", i, states[i]);
   }
 
@@ -444,18 +448,22 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   double Verr, y1, y2;
 
   // Voltage summation loop
-  Verr = inputs->Vref + inputs->Vs - inputs->Vc;
+  Verr = inputs->Vref + inputs->Vs - inputs->Vc + states[6];
   y1 = leadlag (1.0, parameters->TaTb*parameters->Tb, parameters->Tb, delt, Verr, &states[0], -1.0e8, 1.0e8);
   if (parameters->Tc > 0.0) {
     // apply anti-windup limit on the PI block
-    y2 = PIblock (parameters->Kc, parameters->Kc/parameters->Tc, delt, y1, &states[2], parameters->Emin, parameters->Emax, -1.0e8, 1.0e8);
+//    y2 = PIblock (parameters->Kc, parameters->Kc/parameters->Tc, delt, y1, &states[2], parameters->Emin, parameters->Emax, -1.0e8, 1.0e8);
+    y2 = PIblock (parameters->Kc, parameters->Kc/parameters->Tc, delt, y1, &states[2], -1.0e8, 1.0e8, -1.0e8, 1.0e8);
   } else {
     y2 = y1;
   }
   // apply static limit on the output low-pass block
-  outputs->Efd = realpole (parameters->K, parameters->Te, delt, y2, &states[4], parameters->EfdMin, parameters->EfdMax);
+  outputs->Efd = realpole (parameters->K, parameters->Te, delt, y2, &states[4], -1.0e8, 1.0e8);
+  // static output limiting
+  outputs->Efd = fmin (outputs->Efd, parameters->EfdMax);
+  outputs->Efd = fmax (outputs->Efd, parameters->EfdMin);
 
-  printf("Verr=%0.5g, y1=%0.5g, y2=%0.5g, Efd=%0.5g\n", Verr, y1, y2, outputs->Efd);
+  // printf("Verr=%0.5g, y1=%0.5g, y2=%0.5g, Efd=%0.5g\n", Verr, y1, y2, outputs->Efd);
 
   instance->LastGeneralMessage = ErrorMessage;
   return ret;
