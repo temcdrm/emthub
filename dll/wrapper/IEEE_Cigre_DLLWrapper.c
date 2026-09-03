@@ -68,6 +68,7 @@ int find_dll_signal_index (const IEEE_Cigre_DLLInterface_Signal *pSignals, int c
       return i;
     }
   }
+  printf("*** signal index for %s not found\n", name);
   return -1;
 }
 
@@ -78,6 +79,7 @@ int find_dll_parameter_index (const IEEE_Cigre_DLLInterface_Model_Info *pInfo, c
       return i;
     }
   }
+  printf("*** parameter index for %s not found\n", name);
   return -1;
 }
 
@@ -493,9 +495,9 @@ Wrapped_IEEE_Cigre_DLL * CreateFirstDLLModel (char *dll_name)
     // create a model instance, initialized to default values
     pWrap->pModel = CreateModelInstance (pWrap->pInfo, &pWrap->pParameterMap, &pWrap->pInputMap, &pWrap->pOutputMap);
     // keep track of all wrapped instances
-    pWrap->max_instances = 2;
+    pWrap->max_instances = 2;  // start with 2, so the SEXS test case verifies that the realloc mechanism works
     pWrap->num_instances = 0;
-    pWrap->pAllModels = malloc(pWrap->max_instances * sizeof(IEEE_Cigre_DLLInterface_Instance *));
+    pWrap->pAllModels = calloc(pWrap->max_instances, sizeof(IEEE_Cigre_DLLInterface_Instance *));
     pWrap->pAllModels[pWrap->num_instances] = pWrap->pModel;
     pWrap->num_instances += 1;
   } else {
@@ -513,8 +515,7 @@ IEEE_Cigre_DLLInterface_Instance * AddModelInstance (Wrapped_IEEE_Cigre_DLL *pWr
   if (pWrap->num_instances >= pWrap->max_instances) {
     pWrap->max_instances *= 2;
     IEEE_Cigre_DLLInterface_Instance **pNew = realloc (pWrap->pAllModels, pWrap->max_instances * sizeof(IEEE_Cigre_DLLInterface_Instance *));
-    free (pWrap->pAllModels);
-    pWrap->pAllModels = pNew;
+    pWrap->pAllModels = pNew; // note: realloc frees original memory if needed so don't call it explicitly
   }
   pWrap->pAllModels[pWrap->num_instances] = pModel;
   pWrap->num_instances += 1;

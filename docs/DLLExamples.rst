@@ -37,11 +37,10 @@ after compiling and linking the DLLs. An ATP license is required for access to t
 SEXS
 ----
 
-.. note::
-    To be completed
-
 This is a legacy static excitation system model, prohibited by NERC for use in
-new interconnection studies, but still useful in demonstrations.
+new interconnection studies, but still useful in demonstrations. The source
+code illustrates how the DLL wrapper library of EMTHub can manage multiple instances
+of the same API model.
 
 Build Instructions - Windows
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -81,8 +80,21 @@ File Directory
 Results
 ^^^^^^^
 
-The following result shows a drop in terminal voltage at 2.0 s to 0.5 pu. The *EFD*
-output responds as limited by the overexcitation limiter value, *VOEL*.
+This version of the excitation system uses a PI block, defined by parameters *Kc* and *Tc*, before the output
+real pole. Static limiting can be applied to the final output, defined by *EfdMax* and *EfdMin*. However,
+static limits allow the internal integrator states to move further into saturation, which delays post-fault
+recovery. Therefore, dynamic limiting can be applied to the output real pole, defined by *Emax* and *Emin*. 
+Sometimes, these are called anti-windup limits. When these are exceeded, and when inputs would then drive
+the final output further into saturation, all of the control block integrator states are frozen until
+the sign of the error reverses. This is a simple implementation of dynamic limiting.
+
+The following rresult compares three cases in the same run. There is no supplemental input, *Vs*, from
+a stabilizer or over/under excitation limiter. The terminal voltage, *Vc*, drops to 0.5 pu from 0.2s to 0.35s. 
+The reference voltage, *Vref*, stays constant at 1.0 pu. The three cases are:
+
+- *OLS* for open-loop with static limits. The output *EfdOLS* clips at 5, but does not begin recovery until about 0.375s. This is later than the fault clearing at 0.35s because internal integration states have saturated.
+- *OLD* for open-loop with dynamic limits. The output *EfdOLD* overshoots the limit at 5, due to the 1ms model time step. This might be reduced with a better anti-windup implementation. *EfdOLD* begins to recover immediately upon recovery of *VcOLD*.
+- *CL* for closed-loop, with a very simple feedback mechanism to represent an external grid response. The output *EfdCL* does not reach its limit, and is also able to control *VcCL* to some extent. There is an overshoot of *VcCL* after the fault clears. Furthermore, the steady-state error in *EfdCL* gradually approaches zero. In the two open-loop cases, the final steady-state error grows because the system has no means of correcting it.
 
 .. image:: assets/test_SEXS.png
 

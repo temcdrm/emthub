@@ -180,13 +180,13 @@ IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
   .ModelVersion = "1.0.0.0",
   .ModelDescription = "The CIM ExcSEXS, a legacy static excitation system model",
   .GeneralInformation = "Prohibited by NERC",
-  .ModelCreated = "August 14, 2026",
+  .ModelCreated = "September 3, 2026",
   .ModelCreator = "temc",
-  .ModelLastModifiedDate = "August 14, 2026",
+  .ModelLastModifiedDate = "September 3, 2026",
   .ModelLastModifiedBy = "temc",
   .ModelModifiedComment = "",
   .ModelModifiedHistory = "",
-  .FixedStepBaseSampleTime = 0.005,
+  .FixedStepBaseSampleTime = 0.001,
 
   // Inputs
   .NumInputPorts = 3,
@@ -348,10 +348,9 @@ __declspec(dllexport) int32_T __cdecl Model_Initialize(IEEE_Cigre_DLLInterface_I
   return ret;
 };
 
-// Pure integrator with gain, anti-windup and static clipping.
+// Pure integrator with gain and optional anti-windup clipping.
 // The two_states are y and u from the previous step, updated within this function.
-double integrator (double k, double dt, double u, double *two_states, 
-                   double aw_min, double aw_max, double clip_min, double clip_max) {
+double integrator (double k, double dt, double u, double *two_states, double aw_min, double aw_max) {
   double y = two_states[0];
   double dy = 0.5*k*dt*(u+two_states[1]);
   // anti-windup clipping by conditional integration
@@ -360,74 +359,77 @@ double integrator (double k, double dt, double u, double *two_states,
   } else if (dy < 0.0 && y >= aw_min) {
     y += dy;
   }
-  // static clipping
-  y = fmin (y, clip_max);
-  y = fmax (y, clip_min);
   // update states for the next step
   two_states[0] = y;
   two_states[1] = u;
   return y;
 }
 
-// Proportional-Integral control block with optional anti-windup and static clipping
+// Proportional-Integral control block with optional anti-windup clipping from external flag
 // The two_states are integrator (Ki/s) y and total u from the previous step, updated within this function.
-double PIblock (double kp, double ki, double dt, double u, double *two_states,
-                double aw_min, double aw_max, double clip_min, double clip_max) {
+double PIblock (double kp, double ki, double dt, double u, double *two_states, int aw_flag) {
   double yp = kp*u; // the proportional term
-  // check for windup using the previous integrator state
-  double yi = two_states[0];
-  double dyi = 0.5*ki*dt*(u+two_states[1]);
-  double ytest = yp + yi + dyi;
-  double y;
-  if (ytest > aw_max && dyi > 0.0) {
-    y = aw_max;
-    yi = y - yp;
-  } else if (ytest < aw_min && dyi < 0.0) {
-    y = aw_min;
-    yi = y + yp;
-  } else {
-    y = ytest;
-    yi += dyi;
+  double dyi = 0.5*ki*dt*(u+two_states[1]); // the candidate change in integrator state
+  double yi; // the integral term
+  // check whether the integrator should be frozen
+  if (aw_flag > 0 && dyi > 0.0) {
+    //printf("PI AW setting %0.5g to 0\n", dyi);
+    dyi = 0.0;
+  } else if (aw_flag < 0 && dyi < 0.0) {
+    //printf("PI AW setting %0.5g to 0\n", dyi);
+    dyi = 0.0;
   }
-  // static clipping
-  y = fmin (y, clip_max);
-  y = fmax (y, clip_min);
+  yi = two_states[0] + dyi;
   two_states[0] = yi;
   two_states[1] = u;
-  return y;
+  return yp+yi;
 }
 
-// First-order lag block with gain and static clipping.
+// First-order lag block with gain and optional dynamic clipping from an external flag.
 // The two_states are y and u from the previous step, updated within this function.
-double realpole (double k, double tau, double dt, double u, double *two_states, 
-                 double clip_min, double clip_max) {
+double realpole (double k, double tau, double dt, double u, double *two_states, int aw_flag) {
   double ktau = 0.5*dt/tau;
   double y = (two_states[0]*(1.0-ktau) + (u+two_states[1])*k*ktau) / (1.0+ktau);
-  // static clipping
-  y = fmin (y, clip_max);
-  y = fmax (y, clip_min);
+  // check for dynamic limiting
+  if (aw_flag > 0 && (y-two_states[0])>0.0) {
+    y = two_states[0];
+    //printf("Real Pole setting +dy to 0\n");
+  } else if (aw_flag < 0 && (y-two_states[0])<0.0) {
+    y = two_states[0];
+    //printf("Real Pole setting -dy to 0\n");
+  }
   // update states for the next step
   two_states[0] = y;
   two_states[1] = u;
   return y;
 }
 
-// First-order lead-lag block with gain and static clipping.
+// First-order lead-lag block with gain and optional dynamic clipping from an external flag.
 // The two_states are y and u from the previous step, updated within this function.
-double leadlag (double k, double tau1, double tau2, double dt, double u, double *two_states,
-                double clip_min, double clip_max) {
+double leadlag (double k, double tau1, double tau2, double dt, double u, double *two_states, int aw_flag) {
   double y, ktau2;
   if (tau1 < 1.0e-8) {
-    return realpole (k, tau2, dt, u, two_states, clip_min, clip_max);
+    return realpole (k, tau2, dt, u, two_states, aw_flag);
   }
   ktau2 = 0.5*dt/tau2;
   y = (two_states[0] + (u-two_states[1])*k*tau1/tau2 + ktau2*(k*u+k*two_states[1]-two_states[0])) / (1.0 + ktau2);
-  // static clipping
-  y = fmin (y, clip_max);
-  y = fmax (y, clip_min);
+  // check for dynamic limiting
+  if (aw_flag > 0 && (y-two_states[0])>0.0) {
+    y = two_states[0];
+    //printf("Lead/Lag setting +dy to 0\n");
+  } else if (aw_flag < 0 && (y-two_states[0])<0.0) {
+    y = two_states[0];
+    //printf("Lead/Lag setting -dy to 0\n");
+  }
   // update states for the next step
   two_states[0] = y;
   two_states[1] = u;
+  return y;
+}
+
+double static_limiter (double y, double ymin, double ymax) {
+  y = fmin (y, ymax);
+  y = fmax (y, ymin);
   return y;
 }
 
@@ -445,23 +447,25 @@ __declspec(dllexport) int32_T __cdecl Model_Outputs(IEEE_Cigre_DLLInterface_Inst
   MyModelParameters* parameters = (MyModelParameters*)instance->Parameters;
   double *states = instance->DoubleStates;
   // local variables
-  double Verr, y1, y2;
+  double Verr, y1, y2, aw_flag = 0;
+
+  // if the total output was saturated against an anti-windup limit, then stop the integrators from further saturation
+  if (outputs->Efd >= parameters->Emax) {
+    aw_flag = 1;
+  } else if (outputs->Efd <= parameters->Emin) {
+    aw_flag = -1;
+  }
 
   // Voltage summation loop
   Verr = inputs->Vref + inputs->Vs - inputs->Vc + states[6];
-  y1 = leadlag (1.0, parameters->TaTb*parameters->Tb, parameters->Tb, delt, Verr, &states[0], -1.0e8, 1.0e8);
+  y1 = leadlag (1.0, parameters->TaTb*parameters->Tb, parameters->Tb, delt, Verr, &states[0], aw_flag);
   if (parameters->Tc > 0.0) {
-    // apply anti-windup limit on the PI block
-//    y2 = PIblock (parameters->Kc, parameters->Kc/parameters->Tc, delt, y1, &states[2], parameters->Emin, parameters->Emax, -1.0e8, 1.0e8);
-    y2 = PIblock (parameters->Kc, parameters->Kc/parameters->Tc, delt, y1, &states[2], -1.0e8, 1.0e8, -1.0e8, 1.0e8);
+    y2 = PIblock (parameters->Kc, parameters->Kc/parameters->Tc, delt, y1, &states[2], aw_flag);
   } else {
     y2 = y1;
   }
-  // apply static limit on the output low-pass block
-  outputs->Efd = realpole (parameters->K, parameters->Te, delt, y2, &states[4], -1.0e8, 1.0e8);
-  // static output limiting
-  outputs->Efd = fmin (outputs->Efd, parameters->EfdMax);
-  outputs->Efd = fmax (outputs->Efd, parameters->EfdMin);
+  outputs->Efd = realpole (parameters->K, parameters->Te, delt, y2, &states[4], aw_flag);
+  outputs->Efd = static_limiter (outputs->Efd, parameters->EfdMin, parameters->EfdMax);
 
   // printf("Verr=%0.5g, y1=%0.5g, y2=%0.5g, Efd=%0.5g\n", Verr, y1, y2, outputs->Efd);
 

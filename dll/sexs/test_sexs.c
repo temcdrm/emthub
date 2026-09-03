@@ -12,34 +12,11 @@
 
 #include "IEEE_Cigre_DLLWrapper.h"
  
-//void initialize_outputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, int nPorts)
-//{
-//  double Efd = 1.0;
-//  char *pData = (char *) pModel->ExternalOutputs;
-//  memcpy (pData + pMap[0].offset, &Efd, pMap[0].size);
-//}
-//
-//void update_inputs (IEEE_Cigre_DLLInterface_Instance* pModel, ArrayMap *pMap, double t, int nPorts)
-//{
-//  double Vref = 1.0;
-//  double Vc = 1.0;
-//  double Vs = 0.0;
-////  if (t >= 0.1) {
-////    Vref = 1.01;
-////  }
-//  if (t >= 0.2 && t <= 0.35) { // fault
-//    Vc = 0.5;
-//  }
-//  char *pData = (char *) pModel->ExternalInputs;
-//  memcpy (pData + pMap[0].offset, &Vref, pMap[0].size);
-//  memcpy (pData + pMap[1].offset, &Vc, pMap[1].size);
-//  memcpy (pData + pMap[2].offset, &Vs, pMap[2].size);
-//}
-
 int main( void ) 
 {
   int idxTc, idxKc, idxEmin, idxEmax, idxEfdMin, idxEfdMax, idxVref, idxVs, idxVc, idxEfd;
-  double t, Vref = 1.0, Vs = 0.0, VcOLD, VcOLS, VcCL, EfdOLD = 1.0, EfdOLS = 1.0, EfdCL = 1.0;
+  double t, Vref = 1.0, Vsrc = 1.0, Vs = 0.0, VcOLD, VcOLS, VcCL, EfdOLD = 1.0, EfdOLS = 1.0, EfdCL = 1.0;
+  double KC = 1.0, TC = 1.0;
   show_struct_alignment_requirements ();
 
   // create three instances of the DLL for testing
@@ -52,8 +29,8 @@ int main( void )
   idxTc = find_dll_parameter_index (pWrap->pInfo, "Tc");
   idxEmin = find_dll_parameter_index (pWrap->pInfo, "Emin");
   idxEmax = find_dll_parameter_index (pWrap->pInfo, "Emax");
-  idxEfdMin = find_dll_parameter_index (pWrap->pInfo, "EfdEmin");
-  idxEfdMax = find_dll_parameter_index (pWrap->pInfo, "EfdEmin");
+  idxEfdMin = find_dll_parameter_index (pWrap->pInfo, "EfdMin");
+  idxEfdMax = find_dll_parameter_index (pWrap->pInfo, "EfdMax");
   // input signal indexes from the wrapper
   idxVref = find_dll_signal_index (pWrap->pInfo->InputPortsInfo, pWrap->pInfo->NumInputPorts, "Vref");
   idxVs = find_dll_signal_index (pWrap->pInfo->InputPortsInfo, pWrap->pInfo->NumInputPorts, "Vs");
@@ -62,8 +39,16 @@ int main( void )
   idxEfd = find_dll_signal_index (pWrap->pInfo->OutputPortsInfo, pWrap->pInfo->NumOutputPorts, "Efd");
 
   // configure the different tests
-  set_dll_real_value ((char *) pMdlOLD->Parameters, pWrap->pParameterMap, idxKc, 1.0);
-  set_dll_real_value ((char *) pMdlOLD->Parameters, pWrap->pParameterMap, idxTc, 1.0);
+  set_dll_real_value ((char *) pMdlOLD->Parameters, pWrap->pParameterMap, idxKc, KC); // all will use PI block
+  set_dll_real_value ((char *) pMdlOLD->Parameters, pWrap->pParameterMap, idxTc, TC);
+  set_dll_real_value ((char *) pMdlOLS->Parameters, pWrap->pParameterMap, idxKc, KC);
+  set_dll_real_value ((char *) pMdlOLS->Parameters, pWrap->pParameterMap, idxTc, TC);
+  set_dll_real_value ((char *) pMdlCL->Parameters, pWrap->pParameterMap, idxKc, KC);
+  set_dll_real_value ((char *) pMdlCL->Parameters, pWrap->pParameterMap, idxTc, TC);
+  set_dll_real_value ((char *) pMdlOLS->Parameters, pWrap->pParameterMap, idxEmax, 1.0e8); // disable the AW limits on OLS
+  set_dll_real_value ((char *) pMdlOLS->Parameters, pWrap->pParameterMap, idxEmin, -1.0e8);
+  set_dll_real_value ((char *) pMdlOLD->Parameters, pWrap->pParameterMap, idxEfdMax, 1.0e8); // disable the static limits on OLD
+  set_dll_real_value ((char *) pMdlOLD->Parameters, pWrap->pParameterMap, idxEfdMin, -1.0e8);
   // set the constant inputs
   set_dll_real_value ((char *) pMdlOLD->ExternalInputs, pWrap->pInputMap, idxVref, Vref);
   set_dll_real_value ((char *) pMdlOLS->ExternalInputs, pWrap->pInputMap, idxVref, Vref);
@@ -96,6 +81,10 @@ int main( void )
     printf("calling Initialize\n");
     pWrap->Model_Initialize (pMdlOLD);
     check_messages ("Model_Initialize", pMdlOLD);
+    pWrap->Model_Initialize (pMdlOLS);
+    check_messages ("Model_Initialize", pMdlOLS);
+    pWrap->Model_Initialize (pMdlCL);
+    check_messages ("Model_Initialize", pMdlCL);
 
     // time step loop, matching the DLL's desired time step
     double dt = pWrap->pInfo->FixedStepBaseSampleTime;
@@ -108,9 +97,11 @@ int main( void )
     while (t <= tstop) {
       // update the inputs for this next DLL step
       if (t >= 0.2 && t <= 0.35) {
-        VcOLD = VcOLS = VcCL = 0.5;
+        VcOLD = VcOLS = 0.5;
+        VcCL = 0.5 * EfdCL;
       } else {
-        VcOLD = VcOLS = VcCL = 1.0;
+        VcOLD = VcOLS = 1.0;
+        VcCL = 0.5 * (Vsrc + EfdCL);
       }
       pMdlOLD->Time = t;
       pMdlOLS->Time = t;
