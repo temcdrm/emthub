@@ -1,0 +1,14 @@
+pandoc ../emtiop/emtiop.html -o profile_reference.pdf --pdf-engine=weasyprint --css=landscape.css
+
+weasyprint -q ../emtiop/emtiop.html profile_reference.pdf -s landscape.css
+
+
+
+It seems like Astro supports markdown, but not restructured text. We would lose functionality, e.g., in our current workflow the Python API documentation is automatically generated to rst files, and we are able to incorporate HTML documentation of our CIM profile that is automatically generated from CIMTool. I have tried converting all these rst to md using pandoc, and confirmed that we lose the API doc, many other cross links, table of contents, and extensive table and code block formatting.
+
+The following now seems like a better alternative. The documentation source files would be maintained on IEEE's web site. They would be published in two (or more) ways:
+
+1. **IEEE hosted PDFs**: I am able to build the documentation in two PDF files, using Sphinx and weasyprint. They retain the API documentation and CIM profile documentation. Those two PDF files could serve as the IEEE-hosted documentation for users to download.
+2. **Externally-hosted HTML**: Because of the Apache 2.0 license, I can do a sparse checkout of the IEEE's documentation source files into another repository. Existing web hooks will keep on-line HTML updated [here](https://emthub.readthedocs.io/en/latest/).
+
+

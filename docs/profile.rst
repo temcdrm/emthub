@@ -11,5 +11,11 @@ The CIM extensions and profile for EMT are in the `emthub/emtiop` repository fol
 4) *Emtiop.xmi* contains the CIM extensions, for importing into a UML editor that has the core CIM UML
 5) *emtiop_sqlite.sql* contains hand-edits to *emtiop.sql* that work with *sqlite*
 
-.. raw:: html
-   :file: ../emtiop/emtiop.html
+.. only:: html
+
+   .. raw:: html
+      :file: ../emtiop/emtiop.html
+
+.. only:: latex
+
+   .. include:: profile_reference.rst

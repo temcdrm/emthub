@@ -1,0 +1,58 @@
+@page { 
+    size: letter landscape;
+    margin: 1in; /* Margin is required so the number has space to render */
+    
+    @bottom-right {
+        content: "Page " counter(page) " of " counter(pages);
+        font-family: Arial, sans-serif;
+        font-size: 10pt;
+    }
+}
+
+/* Optional: Hide the page number on the very first page (e.g., Cover Page) */
+@page :first {
+    @bottom-right {
+        content: "";
+    }
+}
+
+/* Force the TOC section to stay on its own page */
+.toc {
+    page-break-after: always;
+}
+
+.toc ul {
+    list-style: none;
+    padding: 0;
+}
+
+.toc li {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 0.5em;
+}
+
+/* This targets the text link */
+.toc a {
+    text-decoration: none;
+    color: black;
+    flex-grow: 1;
+    display: flex;
+    align-items: end;
+}
+
+/* This creates the automatic dot-leaders (...) connecting the text to the number */
+.toc a::after {
+    content: " .........................................................................................................................................";
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0 10px;
+    color: #999;
+}
+
+/* This injects the dynamic page number of the linked ID target */
+.toc li::after {
+    content: target-counter(attr(href, url), page);
+    font-weight: bold;
+}

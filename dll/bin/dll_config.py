@@ -6,8 +6,8 @@ import json
 from ctypes import *
 from enum import IntEnum
 
-dll_name = 'c:/src/emthub/dll/bin/gfm_gfl_ibr2.dll'
-json_name = 'gfm_gfl_ibr2.json'
+dll_name = 'c:/src/emthub/dll/bin/GFM_Battery_OpenIBR.dll'
+json_name = 'OpenIBR.json'
 
 class DLLDataType(IntEnum): 
   char_T     = 1
