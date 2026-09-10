@@ -1053,10 +1053,18 @@ CREATE TABLE "IEEECigreAPI"
     "shareable" INTEGER NOT NULL DEFAULT 1 CHECK ("shareable" IN (0, 1)),
     -- Location of the optional snapshot file for initializing the API model from
     -- a saved state. Either a universal resource identifier or network-accessible
-    -- filename. It is not obtainable from the CIGRE TB 958 API.
+    -- filename. It is not obtainable from the CIGRE TB 958 API. The value should
+    -- conform to RFC 3986, and it may be an absolute or relative path. If relative
+    -- path, the application software should allow the user to specify the base
+    -- location. The current working directory may be used as the default base
+    -- location if not otherwise specified.
     "snapshotUri" VARCHAR(255),
     -- Location of the API model, e.g., a universal resource identifier or network-accessible
-    -- filename. It is not obtainable from the CIGRE TB 958 API.
+    -- filename. It is not obtainable from the CIGRE TB 958 API. The value should
+    -- conform to RFC 3986, and it may be an absolute or relative path. If relative
+    -- path, the application software should allow the user to specify the base
+    -- location. The current working directory may be used as the default base
+    -- location if not otherwise specified.
     "uri" VARCHAR(255),
     -- Expanded set of attributes available from the CIGRE TB 958 API.
     -- FK column reference to table representing the "IEEECigreAPIInfo" class
