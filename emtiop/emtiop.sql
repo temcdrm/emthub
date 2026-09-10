@@ -1046,16 +1046,17 @@ CREATE TABLE "IEEECigreAPI"
     "apiModelName" VARCHAR(255),
     -- Version of this model instance, as returned from the CIGRE TB 958 API.
     "apiModelVersion" VARCHAR(255),
-    -- True if this DLL can be loaded and used by different instances of Equipment
-    -- in the same simulation. This information is not available from the DLL
-    -- API; it must be determined from careful review of the DLL documentation.
+    -- True if this API model can be loaded and used by different instances of
+    -- Equipment in the same simulation. This information is not available from
+    -- the CIGRE TB 958 API; it must be determined from careful review of the
+    -- API model documentation.
     "shareable" INTEGER NOT NULL DEFAULT 1 CHECK ("shareable" IN (0, 1)),
-    -- Location of the optional snapshot file for initializing the DLL from a
-    -- saved state. Either a universal resource identifier or network-accessible
-    -- filename. It is not obtainable from the DLL API.
+    -- Location of the optional snapshot file for initializing the API model from
+    -- a saved state. Either a universal resource identifier or network-accessible
+    -- filename. It is not obtainable from the CIGRE TB 958 API.
     "snapshotUri" VARCHAR(255),
-    -- Location of the DLL, e.g., a universal resource identifier or network-accessible
-    -- filename. It is not obtainable from the DLL API.
+    -- Location of the API model, e.g., a universal resource identifier or network-accessible
+    -- filename. It is not obtainable from the CIGRE TB 958 API.
     "uri" VARCHAR(255),
     -- Expanded set of attributes available from the CIGRE TB 958 API.
     -- FK column reference to table representing the "IEEECigreAPIInfo" class
@@ -1146,11 +1147,11 @@ INSERT INTO "IEEECigreAPIInputKind" ( "name" ) VALUES ( 'activePowerReference' )
 -- CIGRE TB 958 API for more information.
 INSERT INTO "IEEECigreAPIInputKind" ( "name" ) VALUES ( 'apiDefined' );
 -- DC current into the inverter stage, if DC bus modeling applies. Typically
--- in Amperes, but the DLL API should be used to verify units.
+-- in Amperes, but the CIGRE TB 958 API should be used to verify units.
 INSERT INTO "IEEECigreAPIInputKind" ( "name" ) VALUES ( 'dcCurrent' );
 -- DC voltage command from the maximum power point tracking system, if DC
--- bus modeling applies. Typically in Volts, but the DLL API should be used
--- to verify units.
+-- bus modeling applies. Typically in Volts, but the CIGRE TB 958 API should
+-- be used to verify units.
 INSERT INTO "IEEECigreAPIInputKind" ( "name" ) VALUES ( 'dcMPPTVoltage' );
 -- DC voltage at the inverter stage, if DC bus modeling applies. Typically
 -- in Volts, but the CIGRE TB 958 API should be used to verify units.
