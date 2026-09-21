@@ -79,6 +79,7 @@ maintained on the open-source software site for P3743:
  
 #. *CIM_Grid_18v15_Emtiop.qea* contains the CIM extensions for EMT, added to the base CIM, then saved from the UML editor for input to *CIMTool*. This file is kept under version control. The format is an SQLite3 database.
 #. *emtiop.owl* is the profile for EMT. This is created by selecting classes and attributes from the base CIM with extensions in *CIMTool*. You should check example CIM RDF instance files, some of them listed at the lower left, against the profile and resolve any errors.
+   The same check runs from the command line with ``validate_cim.py`` after regenerating the export schema with ``emtiop/build_rdf_map.py``; see :ref:`target-triplets`.
 #. *emtiop.html* documents the classes and attributes used in the profile for EMT. It is built automatically from *CIMTool* and included in this on-line documentation as part of :ref:`target-cim-profile`. 
 
 .. image:: assets/ProfileFlow.png
