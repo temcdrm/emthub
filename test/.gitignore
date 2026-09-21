@@ -13,3 +13,6 @@
 *.dll32
 *.hdf5
 matpower_write_ic.m
+*.sarif
+*_violations.csv
+*_violations_meta.csv

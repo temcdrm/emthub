@@ -1,0 +1,45 @@
+# SHACL shapes for EMTIOP instance data: engineering rules the profile cannot express.
+# Profile conformance (cardinality, datatypes, enumerations, association targets) is
+# checked from emtiop_rdf_map_*.json by triplets.validation.validate_schema; these
+# shapes add value ranges and structural rules on top (sh:class needs a concrete
+# class; subclass-aware association targets are the schema check's job).  Run with
+# src/emthub/examples/validate_cim.py.
+@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cim: <http://www.ucaiug.org/grid18v15#> .
+@prefix emt: <http://opensource.ieee.org/emtiop01v01#> .
+@prefix :    <http://opensource.ieee.org/emtiop01p01/shapes#> .
+
+:BaseVoltage a sh:NodeShape ;
+    sh:targetClass cim:BaseVoltage ;
+    sh:property [ sh:path cim:BaseVoltage.nominalVoltage ; sh:minExclusive 0.0 ;
+                  sh:message "BaseVoltage.nominalVoltage must be positive" ] .
+
+:SvVoltage a sh:NodeShape ;
+    sh:targetClass cim:SvVoltage ;
+    sh:property [ sh:path cim:SvVoltage.v ; sh:minInclusive 0.0 ;
+                  sh:message "SvVoltage.v is a magnitude, not negative" ] ;
+    sh:property [ sh:path cim:SvVoltage.angle ; sh:minInclusive -180.0 ; sh:maxInclusive 180.0 ;
+                  sh:message "SvVoltage.angle outside [-180, 180] degrees" ] .
+
+:Terminal a sh:NodeShape ;
+    sh:targetClass cim:Terminal ;
+    sh:property [ sh:path cim:ACDCTerminal.sequenceNumber ; sh:minInclusive 1 ; sh:maxInclusive 3 ;
+                  sh:message "Terminal.sequenceNumber must be 1, 2 or 3" ] ;
+    sh:property [ sh:path cim:Terminal.ConductingEquipment ; sh:minCount 1 ;
+                  sh:message "Terminal without ConductingEquipment" ] .
+
+:ConnectivityNode a sh:NodeShape ;
+    sh:targetClass cim:ConnectivityNode ;
+    sh:property [ sh:path [ sh:inversePath cim:Terminal.ConnectivityNode ] ; sh:minCount 1 ;
+                  sh:message "ConnectivityNode has no Terminal" ] .
+
+:SvPowerFlow a sh:NodeShape ;
+    sh:targetClass cim:SvPowerFlow ;
+    sh:property [ sh:path cim:SvPowerFlow.Terminal ; sh:minCount 1 ; sh:class cim:Terminal ;
+                  sh:message "SvPowerFlow must reference a Terminal" ] .
+
+:ApparentPowerLimit a sh:NodeShape ;
+    sh:targetClass cim:ApparentPowerLimit ;
+    sh:property [ sh:path cim:ApparentPowerLimit.value ; sh:minExclusive 0.0 ;
+                  sh:message "ApparentPowerLimit.value must be positive" ] .
