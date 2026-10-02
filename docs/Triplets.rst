@@ -200,11 +200,39 @@ from the ``ConnectivityNode`` names, terminals from their
 source follows the same three steps: read into pandas, shape one table per
 class, export.
 
-The reverse direction is available on the command line. ``cim-spreadsheet
--i IEEE118.xml -o IEEE118.xlsx`` writes one sheet per class; after editing,
-``cim-spreadsheet -i IEEE118.xlsx -o out/ --rdf-map <section file>`` writes
-CIM RDF/XML again (the command-line tool takes the schema section itself,
-not the sectioned file).
+CIM RDF/XML to CSV and back
+---------------------------
+
+A model can be edited as one CSV file per class and written back:
+
+.. code-block:: python
+
+    import glob
+    import pandas
+    import triplets
+    from triplets.tools import tableviews_to_triplets
+    from emthub.cim_triplets import load_rdf_map, write_cimxml
+
+    data = pandas.read_RDF(["IEEE39.xml"])          # CIM RDF/XML -> csv/<Class>.csv
+    for cls in data.query("KEY == 'Type'").VALUE.unique():
+        data.type_tableview(cls, string_to_number=False, multivalue=True).to_csv(f"csv/{cls}.csv")
+
+    tables = {path.split("/")[-1][:-4]: pandas.read_csv(path, index_col="ID", dtype=str)
+              for path in glob.glob("csv/*.csv")}   # csv/<Class>.csv -> CIM RDF/XML
+    back = tableviews_to_triplets(tables, multivalue=True)
+    back["INSTANCE_ID"] = data.INSTANCE_ID.iloc[0]
+    write_cimxml(back, load_rdf_map("552_ED2"), "IEEE39_from_csv.xml")
+
+``string_to_number=False`` and ``dtype=str`` keep every value as written,
+and ``multivalue=True`` keeps properties with several values (e.g.
+``ConnectedFacility.Equipments``) as one list cell. On IEEE39 the file
+written back holds the same triples, except empty strings: CSV cannot tell
+an empty value from a missing one.
+
+``cim-spreadsheet -i IEEE39.xml -o IEEE39.xlsx`` writes one sheet per class
+for viewing, with numbers as numeric cells. Its way back
+(``--direction to-cim``) fails in triplets 0.2.0
+(https://github.com/Haigutus/triplets/issues/125).
 
 Validation
 ----------
