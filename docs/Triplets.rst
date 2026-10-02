@@ -116,6 +116,40 @@ profile also refers to CIM datatypes in two namespaces
 (``http://www.ucaiug.org/ns#Voltage`` and ``grid18v15#Voltage``); both are
 mapped by local name.
 
+RAW to CIM RDF/XML
+------------------
+
+``raw_to_rdf_triplets.py`` writes the same model as ``raw_to_rdf.py`` from
+the same inputs (``<case>.raw``, ``<case>.dyr``, ``<case>_mRIDs.dat`` and
+``<case>_Network.json`` for the bus diagram), built as one table per class:
+
+* the network equipment: container, limit types, base voltages, nodes and
+  bus diagram, lines, series compensators, switches, loads, shunts and
+  two-winding transformers, with their terminals and ratings;
+* generators with their generating units, an EnergySource at the swing bus
+  when there are none;
+* the dyr dynamics: machine models, detailed models with their parameter
+  values, and the model types with their parameter descriptors;
+* an IBR or rotating machine plant with its point of common coupling per
+  generator that has a step-up transformer; rotating machine GSUs become
+  ``Yd1``.
+
+Run it in ``test/`` after ``emthub-extract-case``::
+
+    python raw_to_rdf_triplets.py 1                        # IEEE118.xml, 552 Ed. 2
+    python raw_to_rdf_triplets.py 1 --serialization plain  # bare identifiers, as raw_to_rdf.py
+
+With ``--serialization plain`` the output holds exactly the triples
+``raw_to_rdf.py`` writes, which are the committed ``instances/<case>.xml``
+(cases 0–3, compared triple by triple). Only CIM RDF/XML is written, no TTL or
+JSON-LD. Enumeration values are given by local name
+(``WindingConnection.D``); the schema adds the namespace.
+
+mRIDs come from ``<case>_mRIDs.dat``. ``raw_to_rdf.py`` gives any object the
+map lacks a new uuid4 and rewrites the map; this script stops and lists them
+instead. ``--new-mrids`` accepts them: each gets a new uuid4, appended to
+the map, so the existing entries never change.
+
 CSV to CIM RDF/XML
 ------------------
 

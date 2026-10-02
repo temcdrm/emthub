@@ -43,15 +43,16 @@ def full_model(model_id, description, created, schema, authority="http://opensou
                             index=pandas.Index([model_id], name="ID"))
 
 
-def to_triplets(tableviews, instance_id, header=None):
+def to_triplets(tableviews, instance_id, header=None, multivalue=False):
     """Wide per-class tables (index ``ID``, columns = ``Class.attribute``) -> triplets.
 
     Objects come out in dict order then row order, attributes in column order; the
-    header, when given, goes first.
+    header, when given, goes first. With *multivalue*, a list cell becomes one triplet
+    per item (e.g. ``ConnectedFacility.Equipments``).
     """
     if header is not None:
         tableviews = {"FullModel": header, **tableviews}
-    data = tableviews_to_triplets(tableviews)
+    data = tableviews_to_triplets(tableviews, multivalue=multivalue)
     data["INSTANCE_ID"] = instance_id
     return data
 
