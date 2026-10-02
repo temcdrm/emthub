@@ -6675,6 +6675,1096 @@
       "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
       "cim": "http://www.ucaiug.org/grid18v15#",
       "emt": "http://opensource.ieee.org/emtiop01v01#"
+    },
+    "AttributeDatatypes": {
+      "ACDCTerminal.sequenceNumber": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "IdentifiedObject.name": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IdentifiedObject.mRID": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "ACLineSegment.bch": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACLineSegment.r": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACLineSegment.r0": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACLineSegment.x0": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACLineSegment.x": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACLineSegment.b0ch": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "Conductor.length": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "Equipment.inService": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "ApparentPowerLimit.value": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.xs": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.xpp": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.xp": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.xm": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.xlr2": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.xlr1": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.tppo": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.tpo": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.rxLockedRotorRatio": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.rr2": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.rr1": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.reversible": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "AsynchronousMachine.ratedMechanicalPower": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.polePairNumber": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "AsynchronousMachine.nominalSpeed": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.nominalFrequency": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.iaIrRatio": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.efficiency": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachine.converterFedDrive": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "RotatingMachine.q": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "RotatingMachine.p": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "RotatingMachine.ratedS": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "RotatingMachine.ratedU": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachineTimeConstantReactance.xs": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachineTimeConstantReactance.xpp": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachineTimeConstantReactance.xp": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachineTimeConstantReactance.tppo": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "AsynchronousMachineTimeConstantReactance.tpo": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "RotatingMachineDynamics.inertia": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "RotatingMachineDynamics.damping": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "RotatingMachineDynamics.statorLeakageReactance": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "RotatingMachineDynamics.statorResistance": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DynamicsFunctionBlock.enabled": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "BaseVoltage.nominalVoltage": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "BatteryUnit.storedE": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "BatteryUnit.ratedE": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "PowerElectronicsUnit.maxP": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "PowerElectronicsUnit.minP": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "CsConverter.targetIdc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "CsConverter.targetGamma": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "CsConverter.targetAlpha": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "CsConverter.ratedIdc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "CsConverter.minIdc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "CsConverter.minGamma": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "CsConverter.minAlpha": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "CsConverter.maxIdc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "CsConverter.maxGamma": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "CsConverter.maxAlpha": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "CsConverter.gamma": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "CsConverter.alpha": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.valveU0": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.udc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.uc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.targetUdc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.targetPpcc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.switchingLoss": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.resistiveLoss": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.ratedUdc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.q": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.poleLossP": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.p": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.numberOfValves": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "ACDCConverter.minUdc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.minP": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.maxUdc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.maxP": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.idleLoss": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.idc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ACDCConverter.baseS": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "CurveData.xvalue": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "CurveData.y1value": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCSwitch.open": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "DCSwitch.normalOpen": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "DCSwitch.locked": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "DCSwitch.retained": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "DCConductingEquipment.ratedUdc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCConductingEquipment.ratedCurrent": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCEnergySource.pMax": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCEnergySource.p": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCEnergySource.pMinLoad": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCEnergySource.rSeries": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCEnergySource.pMaxLoad": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCEnergySource.pMin": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCEnergySource.rShunt": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCGround.r": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCGround.inductance": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCLineSegment.length": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCLineSegment.capacitance": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCLineSegment.resistance": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCLineSegment.inductance": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCSeriesDevice.resistance": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCSeriesDevice.inductance": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCShunt.resistance": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DCShunt.capacitance": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DiagramObjectPoint.xPosition": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DiagramObjectPoint.yPosition": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "DiagramObjectPoint.sequenceNumber": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "EnergyConsumer.q": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "EnergyConsumer.p": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "EnergySource.x0": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "EnergySource.x": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "EnergySource.voltageMagnitude": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "EnergySource.voltageAngle": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "EnergySource.r0": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "EnergySource.r": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "EnergySource.nominalVoltage": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "GeneratingUnit.maxOperatingP": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "GeneratingUnit.minOperatingP": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "IBRPlant.dcLinkVoltage": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "IBRPlant.switchingFrequency": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "IEEECigreAPI.apiModelName": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPI.shareable": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "IEEECigreAPI.apiModelVersion": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPI.uri": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPI.apiDLLInterfaceVersion": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPI.snapshotUri": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPI.apiFixedStepBaseSampleTime": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "IEEECigreAPIInfo.apiNumParameters": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "IEEECigreAPIInfo.apiNumOutputPorts": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "IEEECigreAPIInfo.apiNumIntStates": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "IEEECigreAPIInfo.apiNumInputPorts": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "IEEECigreAPIInfo.apiNumFloatStates": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "IEEECigreAPIInfo.apiNumDoubleStates": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "IEEECigreAPIInfo.apiModelModifiedHistory": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPIInfo.apiModelModifiedComment": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPIInfo.apiModelLastModifiedDate": {
+        "type": "Attribute",
+        "xsd:type": "xsd:dateTime"
+      },
+      "IEEECigreAPIInfo.apiModelLastModifiedBy": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPIInfo.apiModelDescription": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPIInfo.apiModelCreator": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPIInfo.apiModelCreated": {
+        "type": "Attribute",
+        "xsd:type": "xsd:dateTime"
+      },
+      "IEEECigreAPIInfo.apiGeneralInformation": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPIInput.sensorRatio": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "IEEECigreAPISignal.apiSequenceNumber": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "IEEECigreAPISignal.apiName": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPISignal.apiWidth": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "IEEECigreAPIOutput.scalingRatio": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "IEEECigreAPIParameter.value": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPIParameter.apiSequenceNumber": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "IEEECigreAPIParameterInfo.apiUnit": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPIParameterInfo.apiName": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPIParameterInfo.apiMinValue": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPIParameterInfo.apiMaxValue": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPIParameterInfo.apiGroupName": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPIParameterInfo.apiFixedValue": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "IEEECigreAPIParameterInfo.apiDescription": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPIParameterInfo.apiDefaultValue": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPISignalInfo.apiUnit": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "IEEECigreAPISignalInfo.apiDescription": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "LinearShuntCompensator.gPerSection": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "LinearShuntCompensator.bPerSection": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ShuntCompensator.nomU": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ShuntCompensator.sections": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ShuntCompensator.maximumSections": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "ShuntCompensator.grounded": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "LoadResponseCharacteristic.pVoltageExponent": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "LoadResponseCharacteristic.pFrequencyExponent": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "LoadResponseCharacteristic.pConstantImpedance": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "LoadResponseCharacteristic.pConstantPower": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "LoadResponseCharacteristic.pConstantCurrent": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "LoadResponseCharacteristic.qConstantPower": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "LoadResponseCharacteristic.qConstantImpedance": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "LoadResponseCharacteristic.qFrequencyExponent": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "LoadResponseCharacteristic.qConstantCurrent": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "LoadResponseCharacteristic.exponentModel": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "LoadResponseCharacteristic.qVoltageExponent": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "NthAmDynamicModel.closestStandardModel": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "OperationalLimitType.isInfiniteDuration": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "OperationalLimitType.acceptableDuration": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "ParameterDescriptor.typicalValue": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "ParameterDescriptor.sequenceNumber": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "ParameterDescriptor.engineeringUnit": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "ParameterValue.value": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "PhaseTapChangerLinear.xMax": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "PhaseTapChangerLinear.stepPhaseShiftIncrement": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "TapChanger.step": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "TapChanger.normalStep": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "TapChanger.neutralU": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "TapChanger.neutralStep": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "TapChanger.lowStep": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "TapChanger.highStep": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "PowerElectronicsConnection.ratedU": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "PowerElectronicsConnection.maxQ": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "PowerElectronicsConnection.p": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "PowerElectronicsConnection.q": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "PowerElectronicsConnection.ratedS": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "PowerElectronicsConnection.minQ": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "PowerElectronicsConnection.maxIFault": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "PowerTransformer.vectorGroup": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "PowerTransformerEnd.ratedU": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "PowerTransformerEnd.ratedS": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "PowerTransformerEnd.phaseAngleClock": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "TransformerEnd.xground": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "TransformerEnd.rground": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "TransformerEnd.grounded": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "TransformerEnd.endNumber": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "RatioTapChanger.stepVoltageIncrement": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SeriesCompensator.r": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SeriesCompensator.x0": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SeriesCompensator.x": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SeriesCompensator.r0": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "StaticVarCompensator.voltageSetPoint": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "StaticVarCompensator.slope": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "StaticVarCompensator.q": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "StaticVarCompensator.inductiveRating": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "StaticVarCompensator.capacitiveRating": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SvDCPowerFlow.p": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SvDCVoltage.v": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SvPowerFlow.p": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SvPowerFlow.q": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SvShuntCompensatorSections.sections": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SvStatus.inService": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "SvSwitch.open": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "SvTapStep.position": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SvVoltage.v": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SvVoltage.angle": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachine.earthingStarPointR": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachine.minQ": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachine.earthing": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "SynchronousMachine.earthingStarPointX": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachine.maxQ": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineTimeConstantReactance.xQuadSubtrans": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineTimeConstantReactance.tppdo": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineTimeConstantReactance.xDirectTrans": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineTimeConstantReactance.ks": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineTimeConstantReactance.tc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineTimeConstantReactance.xDirectSubtrans": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineTimeConstantReactance.tpdo": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineTimeConstantReactance.xDirectSync": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineTimeConstantReactance.xQuadSync": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineTimeConstantReactance.tppqo": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineTimeConstantReactance.xQuadTrans": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineTimeConstantReactance.tpqo": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineDetailed.saturationFactor120": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineDetailed.saturationFactorQAxis": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineDetailed.saturationFactor": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineDetailed.efdBaseRatio": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "SynchronousMachineDetailed.saturationFactor120QAxis": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "TextDiagramObject.text": {
+        "type": "Attribute",
+        "xsd:type": "xsd:string"
+      },
+      "DiagramObject.drawingOrder": {
+        "type": "Attribute",
+        "xsd:type": "xsd:integer"
+      },
+      "DiagramObject.isPolygon": {
+        "type": "Attribute",
+        "xsd:type": "xsd:boolean"
+      },
+      "TransformerCoreAdmittance.g0": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "TransformerCoreAdmittance.g": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "TransformerCoreAdmittance.b0": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "TransformerCoreAdmittance.b": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "TransformerMeshImpedance.r0": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "TransformerMeshImpedance.r": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "TransformerMeshImpedance.x": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "TransformerMeshImpedance.x0": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "VsConverter.uv": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "VsConverter.targetUpcc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "VsConverter.targetQpcc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "VsConverter.targetPowerFactorPcc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "VsConverter.targetPhasePcc": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "VsConverter.targetPWMfactor": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "VsConverter.qShare": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "VsConverter.maxValveCurrent": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "VsConverter.maxModulationIndex": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "VsConverter.droopCompensation": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "VsConverter.droop": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      },
+      "VsConverter.delta": {
+        "type": "Attribute",
+        "xsd:type": "xsd:float"
+      }
     }
   }
 }

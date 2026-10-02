@@ -32,6 +32,37 @@ Reading and writing CIM RDF/XML
 under the namespace and identifier convention the schema prescribes, so the
 data itself carries only bare identifiers and plain values.
 
+Typed values (``rdf:datatype``)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+IEC 61970-552 files carry no ``rdf:datatype``: the type of each value comes
+from the profile, and CIMTool and the CGMES tools read it from there.
+``validate_cim.py`` checks every value against the profile's ``xsd:type``
+either way. Generic RDF tools can use typed literals (numeric comparisons in
+SPARQL, for example); ``datatypes=True`` writes them from the schema:
+
+.. code-block:: python
+
+    from triplets.export import export_to_cimxml
+    from emthub.cim_triplets import load_rdf_map
+
+    schema = load_rdf_map("552_ED2")            # data with a FullModel header
+    export_to_cimxml(data, rdf_map=schema, export_type="xml_per_instance",
+                     datatypes=True)
+
+    plain = load_rdf_map("plain")["EMTIOP"]     # header-less data
+    export_to_cimxml(data, rdf_map=plain, export_type="xml_per_instance",
+                     datatypes=True)
+
+.. code-block:: xml
+
+    <cim:SvVoltage.v rdf:datatype="http://www.w3.org/2001/XMLSchema#float">135979.818</cim:SvVoltage.v>
+    <cim:IdentifiedObject.name>BUS1</cim:IdentifiedObject.name>
+
+``xsd:string`` values stay untyped. Without ``datatypes=True`` the output is
+unchanged. The option uses the lxml engine of triplets (``engine="auto"``
+picks it).
+
 Element order is kept
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -71,7 +102,11 @@ emtiop_rdf_map_plain.json       Bare identifiers, no header — what ``ic_to_rdf
 Each file holds one section, ``{"EMTIOP": {...}}``. Pass ``schema["EMTIOP"]``
 to the exporter for header-less data and the whole ``schema`` to the
 validator (``profiles=["EMTIOP"]``); ``emthub.cim_triplets.write_cimxml``
-picks the right one.
+picks the right one. The plain schema's section also holds
+``AttributeDatatypes``, the attribute types once more, nested: triplets reads
+the types for ``datatypes=True`` one level below the map it is given, and
+header-less data is exported with the section itself. It is never a class or
+KEY, so exports without ``datatypes=True`` are unchanged.
 
 Four restrictions in *emtiop.owl* carry a cardinality but no
 ``owl:allValuesFrom`` (``ns#IdentifiedObject.Name`` and the
