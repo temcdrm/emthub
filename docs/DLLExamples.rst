@@ -308,63 +308,31 @@ converter in this example.
 WECC REPCA1
 -----------
 
-This directory contains an IEEE/CIGRE DLL wrapper around an FMU exported from OpenIPSL's 
-`REPCA1` plant controller implementation [1]_. Other resources [2]_ and [3]_.
+This example contains an IEEE/CIGRE DLL wrapper which statically links to a FMU
+exported from OpenIPSL's `REPCA1` plant controller implementation [1]_.
+Other resources [2]_ and [3]_.
 
 Limitations:
 
 - Parameters are fixed at initialization
 - Snapshots and states are unsupported
 
-Prerequisites:
-
-- Compiler and Cmake as described above
-- OpenModelica (Tested with version 1.26.3)
-- Python 3 (Tested with version 3.14.3)
-
-.. [1] M. De Castro et al., “Version [OpenIPSL 2.0.0] - [iTesla Power Systems Library (iPSL): 
-       A Modelica library for phasor time-domain simulations],” SoftwareX, vol. 21, p. 101277, 
+.. [1] M. De Castro et al., “Version [OpenIPSL 2.0.0] - [iTesla Power Systems Library (iPSL):
+       A Modelica library for phasor time-domain simulations],” SoftwareX, vol. 21, p. 101277,
        Feb. 2023, doi: 10.1016/j.softx.2022.101277.
 
-.. [2] “Inverter-Based Resources Power Plant  Modeling and Validation Guideline.” 
+.. [2] “Inverter-Based Resources Power Plant  Modeling and Validation Guideline.”
        WECC. [Online]. Available: https://www.wecc.org/sites/default/files/documents/meeting/2026/IBR%20Power%20Plant%20Modeling%20and%20Validation%20Guideline.pdf
 
-.. [3] “Model User Guide for Generic Renewable Energy Systems.” [Online]. 
+.. [3] “Model User Guide for Generic Renewable Energy Systems.” [Online].
        Available: https://www.epri.com/research/products/000000003002027129
 
 Build Instructions - Windows
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Follow these instructions to make 64-bit and 32-bit versions of the DLL:
-
-1. Open the *x64 Native Tools Command Prompt for VS 2022* from Windows Start Menu.
-2. From the repository root:
-
-    a. Checkout git submodule *OpenIPSL* from its git repository:
-       ``git submodule update --init --recursive``
-    b. Regenerate the FMU build files (default as-tested path to omc.exe is shown):
-       ``python dll\ppc\fmu\generate_fmu_build.py --omc-cmd "c:\program files\openmodelica1.26.3-64bit\bin\omc.exe"``
-    c. Remove *build* and *build32* if they already exist.
-    d. ``md build``
-    e. ``md build32``
-    f. ``cmake -S dll\ppc -B build -A x64``
-    g. ``cmake -S dll\ppc -B build32 -A Win32``
-    h. ``cmake --build build --config Release`` or ``cmake --build build --config Debug``
-    i. ``cmake --install build``
-    j. ``cmake --build build32 --config Release`` or ``cmake --build build32 --config Debug``
-    k. ``cmake --install build32``
-
-3. From the *build* and *build32* directories, check the exported functions:
-
-    a. ``dumpbin /exports Release\PPC.dll`` or ``dumpbin /exports Debug\PPC.dll``
-    b. ``Release\TEST_PPC.exe`` generates CSV output for the wrapper-based harness
-    c. ``python ..\dll\bin\plotdlltest.py ppc_voltage_step.csv`` plots one of the CSV output files
-
-4. From the installed output directories:
-
-    a. x64 installs to *dll\bin*
-    b. Win32 installs to *dll\bin32*
-    c. ``TEST_PPC.exe`` can also be run from those installed directories
+.. include:: ../dll/ppc/readme.md
+   :start-after: <!-- PPC_BUILD_SETUP_START -->
+   :end-before: <!-- PPC_BUILD_SETUP_END -->
 
 The tests write CSV outputs for the configured scenarios.
 
@@ -373,36 +341,59 @@ File Directory
 
 - *fmu/PPC.mo*: wrapper model around `OpenIPSL.Electrical.Renewables.PSSE.PlantController.REPCA1`
 - *fmu/export_fmu.mos*: OpenModelica FMU export script
-- *fmu/generate_fmu_build.py*: regenerates `dll/ppc/CMakeLists.txt` after FMU export
+- *CMakeLists.txt*: configures FMU generation and builds the PPC wrapper
+- *fmu/generate_fmu_build.py*: exports the FMU and generates build metadata and headers
 - *PPC.c*: IEEE/CIGRE DLL wrapper around the exported FMU
 - *test_ppc.c*: test harness using `DLLWrapper`
 
 Results
 ^^^^^^^
 
-The following result shows response of the plant controller to a step increase in terminal voltage.
-There is no change in the plant active power reference, but the plant reactive power should decrease
-(absorbing) to reduce the terminal voltage.
+*NOTE*: The power plant controller is configured to step through the OpenModelica model every 20ms.
 
-.. image:: assets/test_ppc_vstep.png
+The following result shows the response of the plant controller to a step increase in the external
+active-power reference. Frequency control is enabled (``FrqFlag=1``), but both over-frequency and
+under-frequency droop gains are zero, so the response is driven only by the active-power reference.
+Reactive-power control is selected (``RefFlag=0``), with line-drop compensation disabled
+(``VcmpFlag=0``). The active-power controller output increases while the reactive-power controller
+output is unaffected.
 
-The following result shows response of the plant controller to a step reduction in the external
-reactive power reference. There is no effect on the plant active power reference. There is no
-response in measured reactive power because there is no power system connected to the controller.
+.. image:: assets/test_ppc_pref_step.png
 
-.. image:: assets/test_ppc_qstep.png
+The following result shows the response of the plant controller to a step increase in the external
+reactive-power reference. Frequency control is disabled (``FrqFlag=0``), and reactive-power control
+is selected (``RefFlag=0``), with line-drop compensation disabled (``VcmpFlag=0``). The
+reactive-power controller output increases while the active-power controller output is unaffected.
 
-The following result shows response of the plant controller to a step increase in the measured
-frequency. There is no effect on the plant **requested** active power reference. However, the
-controlled *Pref* should decrease in response to the frequency. There is no corresponding
-response in system frequency becasue there is no power system connected to the controller.
+.. image:: assets/test_ppc_qref_step.png
 
-.. image:: assets/test_ppc_fstep.png
+The following result shows the response of the plant controller to a step increase in measured
+terminal voltage. Frequency control is disabled (``FrqFlag=0``), voltage control is selected
+(``RefFlag=1``), and line-drop compensation is enabled (``VcmpFlag=1``). The reactive-power
+controller output decreases, absorbing reactive power to reduce the terminal voltage, while the
+active-power controller output is unaffected.
+
+.. image:: assets/test_ppc_voltage_step.png
+
+The following result shows the response of the plant controller to a step increase in measured
+reactive power. Frequency control is disabled (``FrqFlag=0``), and reactive-power control is
+selected (``RefFlag=0``), with line-drop compensation disabled (``VcmpFlag=0``). The
+reactive-power controller output decreases while the active-power controller output is unaffected.
+
+.. image:: assets/test_ppc_qmeas_step.png
+
+The following result shows the response of the plant controller to a step increase in measured
+frequency. Frequency control is enabled (``FrqFlag=1``), while reactive-power control is selected
+(``RefFlag=0``) and line-drop compensation is disabled (``VcmpFlag=0``). The active-power
+controller output decreases in response to the frequency increase, while the reactive-power
+controller output is unaffected.
+
+.. image:: assets/test_ppc_freq_step.png
 
 Licenses
 ^^^^^^^^
 
-**IEEE**: Contributions as per IEEE Open Source Apache 2.0 CLA for P3743 WG EMTIOP
+**IEEE**: IEEE/CIGRE wrapper created by Prabhpreet Dua, licensed as per IEEE Open Source Apache 2.0 CLA for P3743 WG EMTIOP
 
 **OpenIPSL**: license as per open-source license in repository source (https://github.com/OpenIPSL/OpenIPSL.git):
 
@@ -436,71 +427,201 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+..
+	This directory contains an IEEE/CIGRE DLL wrapper around an FMU exported from OpenIPSL's 
+	`REPCA1` plant controller implementation [1]_. Other resources [2]_ and [3]_.
+
+	Limitations:
+
+	- Parameters are fixed at initialization
+	- Snapshots and states are unsupported
+
+	Prerequisites:
+
+	- Compiler and Cmake as described above
+	- OpenModelica (Tested with version 1.26.3)
+	- Python 3 (Tested with version 3.14.3)
+
+	.. [1] M. De Castro et al., “Version [OpenIPSL 2.0.0] - [iTesla Power Systems Library (iPSL): 
+	       A Modelica library for phasor time-domain simulations],” SoftwareX, vol. 21, p. 101277, 
+	       Feb. 2023, doi: 10.1016/j.softx.2022.101277.
+
+	.. [2] “Inverter-Based Resources Power Plant  Modeling and Validation Guideline.” 
+	       WECC. [Online]. Available: https://www.wecc.org/sites/default/files/documents/meeting/2026/IBR%20Power%20Plant%20Modeling%20and%20Validation%20Guideline.pdf
+
+	.. [3] “Model User Guide for Generic Renewable Energy Systems.” [Online]. 
+	       Available: https://www.epri.com/research/products/000000003002027129
+
+	Build Instructions - Windows
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+	Follow these instructions to make 64-bit and 32-bit versions of the DLL:
+
+	1. Open the *x64 Native Tools Command Prompt for VS 2022* from Windows Start Menu.
+	2. From the repository root:
+
+	    a. Checkout git submodule *OpenIPSL* from its git repository:
+	       ``git submodule update --init --recursive``
+	    b. Regenerate the FMU build files (default as-tested path to omc.exe is shown):
+	       ``python dll\ppc\fmu\generate_fmu_build.py --omc-cmd "c:\program files\openmodelica1.26.3-64bit\bin\omc.exe"``
+	    c. Remove *build* and *build32* if they already exist.
+	    d. ``md build``
+	    e. ``md build32``
+	    f. ``cmake -S dll\ppc -B build -A x64``
+	    g. ``cmake -S dll\ppc -B build32 -A Win32``
+	    h. ``cmake --build build --config Release`` or ``cmake --build build --config Debug``
+	    i. ``cmake --install build``
+	    j. ``cmake --build build32 --config Release`` or ``cmake --build build32 --config Debug``
+	    k. ``cmake --install build32``
+
+	3. From the *build* and *build32* directories, check the exported functions:
+
+	    a. ``dumpbin /exports Release\PPC.dll`` or ``dumpbin /exports Debug\PPC.dll``
+	    b. ``Release\TEST_PPC.exe`` generates CSV output for the wrapper-based harness
+	    c. ``python ..\dll\bin\plotdlltest.py ppc_voltage_step.csv`` plots one of the CSV output files
+
+	4. From the installed output directories:
+
+	    a. x64 installs to *dll\bin*
+	    b. Win32 installs to *dll\bin32*
+	    c. ``TEST_PPC.exe`` can also be run from those installed directories
+
+	The tests write CSV outputs for the configured scenarios.
+
+	File Directory
+	^^^^^^^^^^^^^^
+
+	- *fmu/PPC.mo*: wrapper model around `OpenIPSL.Electrical.Renewables.PSSE.PlantController.REPCA1`
+	- *fmu/export_fmu.mos*: OpenModelica FMU export script
+	- *fmu/generate_fmu_build.py*: regenerates `dll/ppc/CMakeLists.txt` after FMU export
+	- *PPC.c*: IEEE/CIGRE DLL wrapper around the exported FMU
+	- *test_ppc.c*: test harness using `DLLWrapper`
+
+	Results
+	^^^^^^^
+
+	The following result shows response of the plant controller to a step increase in terminal voltage.
+	There is no change in the plant active power reference, but the plant reactive power should decrease
+	(absorbing) to reduce the terminal voltage.
+
+	.. image:: assets/test_ppc_vstep.png
+
+	The following result shows response of the plant controller to a step reduction in the external
+	reactive power reference. There is no effect on the plant active power reference. There is no
+	response in measured reactive power because there is no power system connected to the controller.
+
+	.. image:: assets/test_ppc_qstep.png
+
+	The following result shows response of the plant controller to a step increase in the measured
+	frequency. There is no effect on the plant **requested** active power reference. However, the
+	controlled *Pref* should decrease in response to the frequency. There is no corresponding
+	response in system frequency becasue there is no power system connected to the controller.
+
+	.. image:: assets/test_ppc_fstep.png
+
+	Licenses
+	^^^^^^^^
+
+	**IEEE**: Contributions as per IEEE Open Source Apache 2.0 CLA for P3743 WG EMTIOP
+
+	**OpenIPSL**: license as per open-source license in repository source (https://github.com/OpenIPSL/OpenIPSL.git):
+
+	BSD 3-Clause License
+
+	Copyright (c) 2016-2026 Luigi Vanfretti, ALSETLab (formerly SmarTS Lab) and contributors.
+	All rights reserved.
+
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
+
+	* Redistributions of source code must retain the above copyright notice, this
+	  list of conditions and the following disclaimer.
+
+	* Redistributions in binary form must reproduce the above copyright notice,
+	  this list of conditions and the following disclaimer in the documentation
+	  and/or other materials provided with the distribution.
+
+	* Neither the name of the copyright holder nor the names of its
+	  contributors may be used to endorse or promote products derived from
+	  this software without specific prior written permission.
+
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+	AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+	IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+	DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+	FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+	DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+	SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+	CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+	OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 OpenIBR
 -------
 
 .. note::
     To be completed
 
-This example is based on HeronPower's OpenIBR library under an Apache 2.0 license.
-The library is incorporated using 
-``git submodule add  https://github.com/HeronPower/OpenIBR.git dll/ThirdParty/HeronPower/OpenIBR``.
-Library documentation is in the ''dll/ThirdParty/HeronPower/OpenIBR/documentation`` subdirectory; 
-just open the **md** files in your browser from GitHub.
+.. 
+	This example is based on HeronPower's OpenIBR library under an Apache 2.0 license.
+	The library is incorporated using 
+	``git submodule add  https://github.com/HeronPower/OpenIBR.git dll/ThirdParty/HeronPower/OpenIBR``.
+	Library documentation is in the ''dll/ThirdParty/HeronPower/OpenIBR/documentation`` subdirectory; 
+	just open the **md** files in your browser from GitHub.
 
-The example connects a reference implementation of the WECC REGFM_C1
-grid-forming hybrid control model, powered by a battery source, to
-a SMIB. The supporting library comes with PV and data center examples,
-and Simulink test cases. In this repository, we use the IEEE CIGRE DLL
-interface to access the same functionality from a Python test harness.
-By using the IEEE CIGRE DLL interface, this example may run in other EMT
-simulators.
+	The example connects a reference implementation of the WECC REGFM_C1
+	grid-forming hybrid control model, powered by a battery source, to
+	a SMIB. The supporting library comes with PV and data center examples,
+	and Simulink test cases. In this repository, we use the IEEE CIGRE DLL
+	interface to access the same functionality from a Python test harness.
+	By using the IEEE CIGRE DLL interface, this example may run in other EMT
+	simulators.
 
-Build Instructions - Windows
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	Build Instructions - Windows
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Follow these instructions to make 64-bit and 32-bit versions of the DLL:
+	Follow these instructions to make 64-bit and 32-bit versions of the DLL:
 
-1. Open the *x64 Native Tools Command Prompt for VS 2022* from Windows Start Menu.
-2. From the repository root:
+	1. Open the *x64 Native Tools Command Prompt for VS 2022* from Windows Start Menu.
+	2. From the repository root:
 
-    a. Checkout git submodule *OpenIBR* from its git repository:
-       ``git submodule update --init --recursive``
+	    a. Checkout git submodule *OpenIBR* from its git repository:
+	       ``git submodule update --init --recursive``
 
-3. From the *dll/ThirdParty/HeronPower/OpenIBR/schema_tools* sub-directory:
+	3. From the *dll/ThirdParty/HeronPower/OpenIBR/schema_tools* sub-directory:
 
-    a. Generate the C header files from OpenIBR schema definitions:
-       ``python generate_all_headers.py``
-    b. The schema definitions for model parameters and signal groups are maintained in *YAML* files.
-       This step translates the *YAML* specifications into header files for C compilation.
-       The header file names end with *autogen* and are dispersed under the
-       *dll/ThirdParty/HeronPower/OpenIBR/c_language_library* directory. These header files 
-       are not maintained under version control.
+	    a. Generate the C header files from OpenIBR schema definitions:
+	       ``python generate_all_headers.py``
+	    b. The schema definitions for model parameters and signal groups are maintained in *YAML* files.
+	       This step translates the *YAML* specifications into header files for C compilation.
+	       The header file names end with *autogen* and are dispersed under the
+	       *dll/ThirdParty/HeronPower/OpenIBR/c_language_library* directory. These header files 
+	       are not maintained under version control.
 
-4. From the *dll/OpenIBR* project directory:
+	4. From the *dll/OpenIBR* project directory:
 
-    a. Remove *build* and *build32* if they already exist.
-    b. ``md build``
-    c. ``md build32``
-    d. ``cmake -B build -A x64``
-    e. ``cmake -B build32 -A Win32``
-    f. ``cmake --build build --config Release`` or ``cmake --build build --config Debug``
-    g. ``cmake --install build``
-    h. ``cmake --build build32 --config Release`` or ``cmake --build build32 --config Debug``
-    i. ``cmake --install build32``
+	    a. Remove *build* and *build32* if they already exist.
+	    b. ``md build``
+	    c. ``md build32``
+	    d. ``cmake -B build -A x64``
+	    e. ``cmake -B build32 -A Win32``
+	    f. ``cmake --build build --config Release`` or ``cmake --build build --config Debug``
+	    g. ``cmake --install build``
+	    h. ``cmake --build build32 --config Release`` or ``cmake --build build32 --config Debug``
+	    i. ``cmake --install build32``
 
-5. From the *build* and *build32* directories, check the exported functions:
+	5. From the *build* and *build32* directories, check the exported functions:
 
-    a. ``dumpbin /exports Release\OpenIBR.dll`` or ``dumpbin /exports Debug\OpenIBR.dll``
-    b. ``Release\TEST_OpenIBR.exe`` generates CSV output for the wrapper-based harness
-    c. ``python ..\dll\bin\plotdlltest.py openibr.csv`` plots one of the CSV output files
+	    a. ``dumpbin /exports Release\OpenIBR.dll`` or ``dumpbin /exports Debug\OpenIBR.dll``
+	    b. ``Release\TEST_OpenIBR.exe`` generates CSV output for the wrapper-based harness
+	    c. ``python ..\dll\bin\plotdlltest.py openibr.csv`` plots one of the CSV output files
 
-6. From the installed output directories:
+	6. From the installed output directories:
 
-    a. x64 installs to *dll\bin*
-    b. Win32 installs to *dll\bin32*
-    c. ``TEST_OpenIBR.exe`` can also be run from those installed directories
+	    a. x64 installs to *dll\bin*
+	    b. Win32 installs to *dll\bin32*
+	    c. ``TEST_OpenIBR.exe`` can also be run from those installed directories
 
-The tests write CSV outputs for the configured scenarios.
+	The tests write CSV outputs for the configured scenarios.
 
 
