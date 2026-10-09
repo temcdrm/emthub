@@ -5,9 +5,10 @@ import sys
 import json
 from ctypes import *
 from enum import IntEnum
+import hashlib
 
-dll_name = 'c:/src/emthub/dll/bin/gfm_gfl_ibr2.dll'
-json_name = 'gfm_gfl_ibr2.json'
+dll_name = 'c:/src/emthub/dll/bin/ibr2.dll'
+json_name = 'ibr2.json'
 
 class DLLDataType(IntEnum): 
   char_T     = 1
@@ -107,6 +108,12 @@ class DLLINSTANCE(Structure): # TODO: not tested yet
 if __name__ == '__main__':
   if len(sys.argv) > 1:
     dll_name = sys.argv[1]
+
+  with open (dll_name, 'rb') as f:
+    digest = hashlib.file_digest(f, 'sha256')
+    checksum = digest.hexdigest()
+    print ('DLL checksum', checksum)
+
   dll = CDLL (dll_name)
   print (dll_name, dll)
 
@@ -172,7 +179,8 @@ if __name__ == '__main__':
                                                         parameters[i].MaxValue.real64_T))  #TODO: match union members to DataType
 
   # DLL dictionary for JSON serialization
-  d = {'location': dll_name, 
+  d = {'location': dll_name,
+       'checksum': checksum, 
        'DLLInterfaceVersion': [info.DLLInterfaceVersion[i] for i in range(4)],
        'ModelName': info.ModelName.decode('utf-8'), 
        'ModelVersion': info.ModelVersion.decode('utf-8'), 
