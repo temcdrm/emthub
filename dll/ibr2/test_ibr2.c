@@ -2,7 +2,7 @@
 
 // see https://learn.microsoft.com/en-us/windows/win32/dlls/using-run-time-dynamic-linking
 
-#define DLL_NAME "GFM_GFL_IBR2.dll"
+#define DLL_NAME "IBR2.dll"
 
 #define TMAX 2.0
 #define VBASE 600.0

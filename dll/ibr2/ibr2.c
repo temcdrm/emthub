@@ -942,12 +942,12 @@ IEEE_Cigre_DLLInterface_Model_Info Model_Info = {
   .DLLInterfaceVersion = { 1, 1, 0, 0},         // Release number of the API 
   // used during code generation 
   .ModelName = "IBR-Average-Model",             // Model name   
-  .ModelVersion = "1.1.0.5",                    // Model version   
-  .ModelDescription = "GFD-IBR-Average",        // Model description 
+  .ModelVersion = "1.1.0.6",                    // Model version   
+  .ModelDescription = "GFL-IBR-Average",        // Model description 
   .GeneralInformation= "CC BY 4.0 License from EPRI",   // General information
   .ModelCreated = "September 21, 2023",         // Model created on  
   .ModelCreator = "EPRI",                       // Model created by     
-  .ModelLastModifiedDate= "February 27, 2026",  // Model last modified on  
+  .ModelLastModifiedDate= "October 9, 2026",  // Model last modified on  
   .ModelLastModifiedBy = "IEEE EMTIOP WG",      // Model last modified by 
   .ModelModifiedComment = "Essential changes to anti-windup clamps, and pre-windup protection for Qcl", // Model modified comment 
   .ModelModifiedHistory = "Second instance",    // Model modified history 

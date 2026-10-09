@@ -1,7 +1,7 @@
-# GFM GFL IBR2 Example
+# IBR2 Example
 
-This is an example DLL for the IEEE/Cigre specification, implementing grid-forming (GFL) 
-and grid-following (GFL) behaviors for inverter-based resources (IBR). Developed by EPRI.
+This is an example DLL for the IEEE/Cigre specification, implementing grid-following (GFL) 
+behavior for inverter-based resources (IBR). Developed by EPRI.
 See https://www.epri.com/research/products/3002028322. 
 
 ## Build Instructions - Windows
@@ -12,7 +12,7 @@ Install compiler and Cmake from: https://visualstudio.microsoft.com/downloads/
 Then follow these instructions to make 64-bit and 32-bit versions of the DLL:
 
 1. Open the *x64 Native Tools Command Prompt for VS 2022* from Windows Start Menu
-2. From the _gfm_gfl_ibr2_ project directory (`rd /s build` and `rd /s build32` if they exist):
+2. From the _ibr2_ project directory (`rd /s build` and `rd /s build32` if they exist):
     1. `md build`
     2. `md build32`
     3. `cmake -B build -A x64`
@@ -28,7 +28,7 @@ Then follow these instructions to make 64-bit and 32-bit versions of the DLL:
 ## File Directory
 
 - _CMakeLists.txt_ generates the detailed build instructions
-- _gfm_gfl_ibr2.c_ is the unmodified example file from Vishal Verma of EPRI, OCR-scanned from the report downloadable from https://www.epri.com/research/products/3002028322
+- _ibr2.c_ is the unmodified example file from Vishal Verma of EPRI, OCR-scanned from the report downloadable from https://www.epri.com/research/products/3002028322
 - _test_ibr2.c_ is a test harness, mimicking the DLL import and calling functions of a simulation tool
 
 ## License
