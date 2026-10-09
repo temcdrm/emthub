@@ -7,6 +7,7 @@ EMTHub\ |reg|
 
    Overview
    Roadmap
+   Triplets
    NetworkExamples
    DLLExamples
    api
